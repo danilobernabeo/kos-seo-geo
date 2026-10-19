@@ -127,10 +127,17 @@ $immagine = function ($percorso) use ($modx, $CANON) {
     return $img;
 };
 
-/** Data ISO 8601 con fuso, da timestamp MODX. */
-$data = function ($ts) {
-    $ts = (int) $ts;
-    return $ts > 0 ? date('c', $ts) : null;
+/** Data ISO 8601 con fuso. In MODX 3 get('publishedon'/'editedon') restituisce la data
+ *  già formattata ("2025-03-04 10:12:00"), non il timestamp: si accettano entrambi. */
+$data = function ($v) use ($cfg) {
+    if ($v === null || $v === '' || $v === '0' || $v === 0) return null;
+    // La stringa formattata da MODX è nel fuso del server (MODX Cloud: America/Chicago):
+    // si interpreta in quel fuso e si emette nel fuso del sito, così l'offset è +01:00/+02:00.
+    $ts = is_numeric($v) ? (int) $v : strtotime((string) $v);
+    if ($ts === false || $ts <= 0) return null;
+    $d = new DateTime('@' . $ts);
+    $d->setTimezone(new DateTimeZone($cfg('timezone', 'Europe/Rome')));
+    return $d->format('c');
 };
 
 /** Toglie ricorsivamente null, stringhe vuote e array vuoti. */
