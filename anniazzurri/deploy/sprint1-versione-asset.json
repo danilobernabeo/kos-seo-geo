@@ -1,0 +1,10 @@
+{
+  "nome": "AA-14 versione automatica di CSS e JS + AA-18 H1 della home",
+  "settings": [],
+  "elements": [
+    {"type": "plugin", "name": "AssetVersion", "file": "shared/plugins/AssetVersion.php",
+     "description": "Aggiunge ?v=<data file> ai CSS e JS locali (cache lunga senza file vecchi)",
+     "events": ["OnWebPagePrerender"], "disabled": false},
+    {"type": "chunk", "name": "heading-home2", "file": "anniazzurri/elements/chunks/heading-home2.html", "baseline": "anniazzurri/baseline/chunks/heading-home2.html"}
+  ]
+}

@@ -143,6 +143,20 @@ foreach ($m['elements'] ?? [] as $e) {
         if (!$obj->save()) { echo "    ! salvataggio fallito\n"; $errori++; }
         else $registro[$e['type'] . ':' . $e['name']] = sha1($nuovo);
     }
+    // Eventi dei plugin (solo aggiunta: quelli già collegati restano).
+    if ($e['type'] === 'plugin' && !empty($e['events'])) {
+        foreach ($e['events'] as $ev) {
+            $pid = $obj && $obj->get('id') ? (int) $obj->get('id') : 0;
+            $c = $pid ? $modx->getObject(\MODX\Revolution\modPluginEvent::class, ['pluginid' => $pid, 'event' => $ev]) : null;
+            if ($c) continue;
+            echo "    + evento $ev\n";
+            if ($scrivi && $pid) {
+                $c = $modx->newObject(\MODX\Revolution\modPluginEvent::class);
+                $c->fromArray(['pluginid' => $pid, 'event' => $ev, 'priority' => 0, 'propertyset' => 0], '', true, true);
+                if (!$c->save()) { echo "    ! collegamento evento fallito\n"; $errori++; }
+            }
+        }
+    }
 }
 
 if ($scrivi) {
