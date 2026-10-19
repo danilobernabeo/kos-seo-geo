@@ -1,0 +1,131 @@
+# Anni Azzurri
+
+> Anni Azzurri è la rete di residenze sanitarie assistenziali (RSA) per anziani del gruppo KOS, gestita da KOS Care S.r.l. Conta 57 residenze in 8 regioni italiane, oltre a centri diurni, un hospice e servizi di assistenza domiciliare.
+
+Questo file elenca le pagine principali di anniazzurri.it per aiutare i sistemi di intelligenza artificiale a trovare informazioni aggiornate. La pagina di ogni residenza riporta indirizzo, contatti, servizi, tipologie di ospiti accolti e modalità di accesso.
+
+## Trovare una residenza
+
+- [Tutte le residenze](https://anniazzurri.it/residenze)
+- [RSA in Emilia-Romagna](https://anniazzurri.it/rsa-in-emilia-romagna)
+- [RSA nel Lazio](https://anniazzurri.it/rsa-nel-lazio)
+- [RSA in Liguria](https://anniazzurri.it/rsa-in-liguria)
+- [RSA in Lombardia](https://anniazzurri.it/rsa-in-lombardia)
+- [RSA nelle Marche](https://anniazzurri.it/rsa-nelle-marche)
+- [RSA in Piemonte](https://anniazzurri.it/rsa-in-piemonte)
+- [RSA in Toscana](https://anniazzurri.it/rsa-in-toscana)
+- [RSA in Veneto](https://anniazzurri.it/rsa-in-veneto)
+
+## Residenze per anziani
+
+### Emilia-Romagna
+
+- [Residenza Anni Azzurri Ducale 1](https://anniazzurri.it/residenza-anni-azzurri-ducale-1): RSA, Modena (MO)
+- [Residenza Anni Azzurri Ducale 2-3](https://anniazzurri.it/residenza-anni-azzurri-ducale-2-3): RSA, Modena (MO)
+- [Residenza Anni Azzurri Idice](https://anniazzurri.it/residenza-anni-azzurri-idice): RSA, Castenaso (BO)
+- [Residenza Anni Azzurri Il Giardino](https://anniazzurri.it/residenza-anni-azzurri-il-giardino): RSA, Bagnolo in Piano (RE)
+- [Residenza Anni Azzurri Villa Pineta](https://anniazzurri.it/residenza-anni-azzurri-villa-pineta): RSA, Pavullo nel Frignano (MO)
+- [Residenza Anni Azzurri Villa dei Ciliegi](https://anniazzurri.it/residenza-anni-azzurri-villa-dei-ciliegi): RSA, Valsamoggia (BO)
+
+### Lazio
+
+- [Residenza Anni Azzurri Parco di Veio](https://anniazzurri.it/residenza-anni-azzurri-parco-di-veio): RSA, Roma (RM)
+
+### Liguria
+
+- [Residenza Anni Azzurri B. Franchiolo](https://anniazzurri.it/residenza-anni-azzurri-b-franchiolo): RSA, Sanremo (IM)
+- [Residenza Anni Azzurri Casa Serena](https://anniazzurri.it/residenza-anni-azzurri-casa-serena): RSA, Carasco (GE)
+- [Residenza Anni Azzurri Castagnola](https://anniazzurri.it/residenza-anni-azzurri-castagnola): RSA, Chiavari (GE)
+- [Residenza Anni Azzurri Casteldonino](https://anniazzurri.it/residenza-anni-azzurri-casteldonino): RSA, Favale di Malvaro (GE)
+- [Residenza Anni Azzurri Le Grange](https://anniazzurri.it/residenza-anni-azzurri-le-grange): RSA, Riva Ligure (IM)
+- [Residenza Anni Azzurri Minerva](https://anniazzurri.it/residenza-anni-azzurri-minerva): RSA, Rapallo (GE)
+- [Residenza Anni Azzurri Sacra Famiglia](https://anniazzurri.it/residenza-anni-azzurri-sacra-famiglia): RSA, Rivarolo (GE)
+- [Residenza Anni Azzurri Sestri Ponente](https://anniazzurri.it/residenza-anni-azzurri-sestri-ponente): RSA, Genova (GE)
+
+### Lombardia
+
+- [Residenza Anni Azzurri Melograno](https://anniazzurri.it/residenza-anni-azzurri-melograno): RSA, Cassina De' Pecchi (MI)
+- [Residenza Anni Azzurri Mirasole](https://anniazzurri.it/residenza-anni-azzurri-mirasole): RSA, Noverasco - Opera (MI)
+- [Residenza Anni Azzurri Navigli](https://anniazzurri.it/residenza-anni-azzurri-navigli): RSA, Milano (MI)
+- [Residenza Anni Azzurri Parco Sempione](https://anniazzurri.it/residenza-anni-azzurri-parco-sempione): RSA, Milano (MI)
+- [Residenza Anni Azzurri Polo Geriatrico Riabilitativo Cinisello](https://anniazzurri.it/residenza-anni-azzurri-pgr-cinisello): RSA, Cinisello Balsamo (MI)
+- [Residenza Anni Azzurri Polo Geriatrico Riabilitativo Milano](https://anniazzurri.it/residenza-anni-azzurri-pgr-milano): RSA, Milano (MI)
+- [Residenza Anni Azzurri Rezzato](https://anniazzurri.it/residenza-anni-azzurri-rezzato): RSA, Rezzato (BS)
+- [Residenza Anni Azzurri San Faustino](https://anniazzurri.it/residenza-anni-azzurri-san-faustino): RSA, Milano (MI)
+- [Residenza Anni Azzurri San Luca](https://anniazzurri.it/residenza-anni-azzurri-san-luca): RSA, Milano (MI)
+- [Residenza Anni Azzurri San Martino](https://anniazzurri.it/residenza-anni-azzurri-san-martino): RSA, Bollate (MI)
+- [Residenza Anni Azzurri San Rocco](https://anniazzurri.it/residenza-anni-azzurri-san-rocco): RSA, Segrate (MI)
+- [Residenza Anni Azzurri San Sisto](https://anniazzurri.it/residenza-anni-azzurri-san-sisto): RSA, Bergamo (BG)
+- [Residenza Anni Azzurri San Sisto 2](https://anniazzurri.it/residenza-anni-azzurri-san-sisto-2): RSA, Bergamo (BG)
+- [Residenza Anni Azzurri Sant'Ambrogio](https://anniazzurri.it/residenza-anni-azzurri-santambrogio): RSA, Milano (MI)
+- [Residenza Anni Azzurri Vico Mercati](https://anniazzurri.it/residenza-anni-azzurri-vico-mercati): RSA, Vimercate (MB)
+- [Residenza Anni Azzurri Villa Clarice](https://anniazzurri.it/residenza-anni-azzurri-villa-clarice): RSA, Cermenate (CO)
+- [Residenza Anni Azzurri Villa Reale](https://anniazzurri.it/residenza-anni-azzurri-villa-reale): RSA, Monza (MB)
+- [Residenza Anni Azzurri Villaggio San Francesco](https://anniazzurri.it/residenza-anni-azzurri-villaggio-san-francesco): RSA, Villanuova sul Clisi (BS)
+
+### Marche
+
+- [Residenza Anni Azzurri Abitare il Tempo](https://anniazzurri.it/residenza-anni-azzurri-abitare-il-tempo): RSA, Loreto (AN)
+- [Residenza Anni Azzurri Casa Argento](https://anniazzurri.it/residenza-anni-azzurri-casa-argento): RSA, Fossombrone (PU)
+- [Residenza Anni Azzurri Conero](https://anniazzurri.it/residenza-anni-azzurri-conero): RSA, Ancona (AN)
+- [Residenza Anni Azzurri Dorica](https://anniazzurri.it/residenza-anni-azzurri-dorica): RSA, Loc. Baraccola Sud - Ancona (AN)
+- [Residenza Anni Azzurri San Giuseppe](https://anniazzurri.it/residenza-anni-azzurri-san-giuseppe): RSA, San Benedetto del Tronto (AP)
+- [Residenza Anni Azzurri Santa Maria in Chienti](https://anniazzurri.it/residenza-anni-azzurri-santa-maria-in-chienti): RSA, Montecosaro Scalo (MC)
+- [Residenza Anni Azzurri Valdaso](https://anniazzurri.it/residenza-anni-azzurri-valdaso): RSA, Campofilone (FM)
+
+### Piemonte
+
+- [Residenza Anni Azzurri Borgomanero](https://anniazzurri.it/residenza-anni-azzurri-borgomanero): RSA, Borgomanero (NO)
+- [Residenza Anni Azzurri Carmagnola](https://anniazzurri.it/residenza-anni-azzurri-carmagnola): RSA, Carmagnola (TO)
+- [Residenza Anni Azzurri Cit Turin](https://anniazzurri.it/residenza-anni-azzurri-cit-turin): RSA, Torino (TO)
+- [Residenza Anni Azzurri La Corte](https://anniazzurri.it/residenza-anni-azzurri-la-corte): RSA, Marene (CN)
+- [Residenza Anni Azzurri Montanaro](https://anniazzurri.it/residenza-anni-azzurri-montanaro): RSA, Montanaro (TO)
+- [Residenza Anni Azzurri Palladio](https://anniazzurri.it/residenza-anni-azzurri-palladio): RSA, Dormelletto (NO)
+- [Residenza Anni Azzurri San Lorenzo](https://anniazzurri.it/residenza-anni-azzurri-san-lorenzo): RSA, Gattinara (VC)
+- [Residenza Anni Azzurri Santena](https://anniazzurri.it/residenza-anni-azzurri-santena): RSA, Santena (TO)
+- [Residenza Anni Azzurri Tonengo d'Asti](https://anniazzurri.it/residenza-anni-azzurri-tonengo): RSA, Tonengo d'Asti (AT)
+- [Residenza Anni Azzurri Villa San Vincenzo](https://anniazzurri.it/residenza-anni-azzurri-villa-san-vincenzo): RSA, Scarnafigi (CN)
+- [Residenza Anni Azzurri Volpiano](https://anniazzurri.it/residenza-anni-azzurri-volpiano): RSA, Volpiano (TO)
+
+### Toscana
+
+- [Residenza Anni Azzurri Beato Angelico](https://anniazzurri.it/residenza-anni-azzurri-beato-angelico): RSA, Borgo San Lorenzo (FI)
+- [Residenza Anni Azzurri Campi Bisenzio](https://anniazzurri.it/residenza-anni-azzurri-campi-bisenzio): RSA, Campi Bisenzio (FI)
+- [Residenza Anni Azzurri Il Poggione](https://anniazzurri.it/residenza-anni-azzurri-il-poggione): RSA, Grosseto (GR)
+
+### Veneto
+
+- [Residenza Anni Azzurri Mestre](https://anniazzurri.it/residenza-anni-azzurri-mestre): RSA, Favaro Veneto (VE)
+- [Residenza Anni Azzurri Quarto d'Altino](https://anniazzurri.it/residenza-anni-azzurri-quarto-d-altino): RSA, Quarto d'Altino (VE)
+- [Residenza Anni Azzurri Sant'Anna](https://anniazzurri.it/residenza-anni-azzurri-sant-anna): RSA, Villadose (RO)
+
+## Centri diurni e hospice
+
+- [Centro Diurno Alzheimer San Giuseppe](https://anniazzurri.it/centro-diurno-alzheimer-san-giuseppe)
+- [Centro Diurno Anni Azzurri La Limonaia](https://anniazzurri.it/centro-diurno-anni-azzurri-la-limonaia)
+- [Centro Diurno Anni Azzurri Maremma](https://anniazzurri.it/centro-diurno-anni-azzurri-la-maremma)
+- [Centro Diurno Integrato Anni Azzurri Biancospino](https://anniazzurri.it/centro-diurno-integrato-anni-azzurri-biancospino)
+- [Centro Diurno Integrato Anni Azzurri San Rocco](https://anniazzurri.it/centro-diurno-integrato-anni-azzurri-san-rocco)
+- [Hospice Beati Coniugi Martin](https://anniazzurri.it/hospice-beati-coniugi-martin)
+
+## Servizi
+
+- [Cure e assistenza domiciliare](https://anniazzurri.it/cure-e-assistenza-domiciliare)
+- [Cure domiciliari con il Servizio Sanitario](https://anniazzurri.it/assistenza-e-cure-domiciliari-gratuite-con-il-servizio-sanitario)
+- [Cure domiciliari in regime privato](https://anniazzurri.it/assistenza-e-cure-domiciliari-in-regime-privato)
+- [RSA Aperta](https://anniazzurri.it/rsa-aperta)
+
+## Guide per le famiglie
+
+- [Cosa sono le RSA](https://anniazzurri.it/cosa-sono-le-rsa)
+- [Differenza tra RSA e casa di riposo](https://anniazzurri.it/differenza-tra-rsa-e-casa-di-riposo)
+- [Tipologie di strutture per anziani](https://anniazzurri.it/quali-sono-le-tipologie-di-strutture-per-anziani)
+- [Accesso in RSA: chi può richiederlo e come funziona](https://anniazzurri.it/accesso-in-rsa-chi-puo-richiederlo-e-come-funziona)
+- [Quanto costa una casa di riposo](https://anniazzurri.it/quanto-costa-una-casa-di-riposo)
+- [Differenza tra RSA e hospice](https://anniazzurri.it/rsa-e-hospice-differenza)
+- [Cosa portare in RSA](https://anniazzurri.it/cosa-portare-in-rsa)
+
+## Optional
+
+- [News e approfondimenti](https://anniazzurri.it/news/)
+- [KOS](https://kosgroup.com/it): il gruppo di cui fa parte Anni Azzurri

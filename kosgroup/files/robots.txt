@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /*?query=
+Disallow: /*&query=
+Disallow: /*?formId=
+Disallow: /*&formId=
+
+Sitemap: https://kosgroup.com/sitemap.xml

@@ -1,0 +1,134 @@
+# KOS
+
+> KOS S.p.A. è un gruppo italiano di servizi sanitari e socio-sanitari: centri di riabilitazione, cliniche e comunità psichiatriche, ambulatori, poliambulatori e punti prelievo. Le residenze per anziani del gruppo sono presentate sul sito anniazzurri.it (KOS Care S.r.l.).
+
+Questo file elenca le pagine principali di kosgroup.com per aiutare i sistemi di intelligenza artificiale a trovare informazioni aggiornate su strutture, servizi e contatti. La scheda di ogni struttura riporta indirizzo, telefono, servizi e modalità di accesso.
+
+## Servizi e cure
+
+- [Riabilitazione](https://kosgroup.com/it/servizi-e-cure/riabilitazione): aree e trattamenti di riabilitazione
+- [Psichiatria](https://kosgroup.com/it/servizi-e-cure/psichiatria): percorsi di cura psichiatrici
+- [Ambulatori e medicina specialistica](https://kosgroup.com/it/servizi-e-cure/ambulatori-e-medicina-specialistica): visite ed esami specialistici
+
+## Strutture per tipologia
+
+- [Centri di riabilitazione](https://kosgroup.com/it/strutture/centri-riabilitazione)
+- [Ambulatori di riabilitazione](https://kosgroup.com/it/strutture/ambulatori-di-riabilitazione)
+- [Cliniche psichiatriche](https://kosgroup.com/it/strutture/cliniche-psichiatriche)
+
+## Strutture
+
+### Campania
+
+- [Villa Margherita Benevento](https://kosgroup.com/it/centri/villa-margherita-benevento): centro di riabilitazione, Benevento (BN)
+
+### Emilia-Romagna
+
+- [Centro Cardinal Ferrari](https://kosgroup.com/it/centri/centro-cardinal-ferrari): centro di riabilitazione, Fontanellato (PR)
+- [Poliambulatorio Villa Pineta](https://kosgroup.com/it/centri/poliambulatorio-villa-pineta): poliambulatorio, Modena (MO)
+- [Villa Azzurra](https://kosgroup.com/it/centri/villa-azzurra): clinica psichiatrica, punto prelievi, Riolo Terme (RA)
+- [Villa Pineta](https://kosgroup.com/it/centri/villa-pineta): centro di riabilitazione, poliambulatorio, Pavullo nel Frignano (MO)
+- [Villa Rosa](https://kosgroup.com/it/centri/villa-rosa): clinica psichiatrica, Modena (MO)
+- [Villa Rosa Diagnostica](https://kosgroup.com/it/centri/villa-rosa-diagnostica): poliambulatorio, Modena (MO)
+
+### Lazio
+
+- [Poliambulatorio Parco di Veio](https://kosgroup.com/it/centri/poliambulatorio-parco-di-veio): poliambulatorio, Roma (RM)
+- [Villa Armonia](https://kosgroup.com/it/centri/villa-armonia): clinica psichiatrica, Roma (RM)
+- [Villa Sant'Alessandro](https://kosgroup.com/it/centri/villa-sant-alessandro): clinica psichiatrica, Roma (RM)
+
+### Liguria
+
+- [Casa Mioglia](https://kosgroup.com/it/centri/casa-mioglia): comunità terapeutica psichiatrica, Mioglia (SV)
+- [Casa Pero](https://kosgroup.com/it/centri/casa-pero): comunità terapeutica psichiatrica, Pero (SV)
+- [Casa Sanremo](https://kosgroup.com/it/centri/casa-sanremo): comunità terapeutica psichiatrica, San Remo (IM)
+- [Casa Varazze](https://kosgroup.com/it/centri/casa-varazze): comunità terapeutica psichiatrica, Varazze (SV)
+- [Corte Carcare](https://kosgroup.com/it/centri/corte-carcare): comunità terapeutica riabilitativa per minori, Carcare (SV)
+- [Corte Orero](https://kosgroup.com/it/centri/corte-orero): comunità terapeutica riabilitativa per minori, Orero (GE)
+
+### Lombardia
+
+- [Casa Cima](https://kosgroup.com/it/centri/casa-cima): comunità terapeutica psichiatrica, Milano (MI)
+- [Casa Villa Maura](https://kosgroup.com/it/centri/casa-villa-maura): comunità terapeutica psichiatrica, Pavia (PV)
+- [Centro Medico Riabilitativo](https://kosgroup.com/it/centri/centro-medico-riabilitativo): poliambulatorio, Cinisello Balsamo (MI)
+- [Poliambulatorio San Martino](https://kosgroup.com/it/centri/poliambulatorio-san-martino): poliambulatorio, Bollate (MI)
+- [Santo Stefano Casorate](https://kosgroup.com/it/centri/santo-stefano-casorate): centro di riabilitazione, Casorate Primo (PV)
+- [Santo Stefano Mede](https://kosgroup.com/it/centri/santo-stefano-mede): centro di riabilitazione, Mede (PV)
+- [Villa San Giuseppe](https://kosgroup.com/it/centri/villa-san-giuseppe): centro di riabilitazione, Anzano del Parco (CO)
+
+### Marche
+
+- [Centro Ambulatoriale Santo Stefano Ascoli Piceno](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-ascoli-piceno): ambulatorio di riabilitazione, Ascoli Piceno (AP)
+- [Centro Ambulatoriale Santo Stefano Camerino](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-camerino): ambulatorio di riabilitazione, Camerino (MC)
+- [Centro Ambulatoriale Santo Stefano Civitanova Marche](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-civitanova-marche): ambulatorio di riabilitazione, Civitanova Marche (MC)
+- [Centro Ambulatoriale Santo Stefano Fabriano](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-fabriano): ambulatorio di riabilitazione, Fabriano (AN)
+- [Centro Ambulatoriale Santo Stefano Filottrano](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-filottrano): ambulatorio di riabilitazione, Filottrano (AN)
+- [Centro Ambulatoriale Santo Stefano Jesi](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-jesi): ambulatorio di riabilitazione, Jesi (AN)
+- [Centro Ambulatoriale Santo Stefano Macerata](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-macerata): ambulatorio di riabilitazione, Macerata (MC)
+- [Centro Ambulatoriale Santo Stefano Matelica](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-matelica): ambulatorio di riabilitazione, Matelica (MC)
+- [Centro Ambulatoriale Santo Stefano Pesaro](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-pesaro): ambulatorio di riabilitazione, Pesaro (PU)
+- [Centro Ambulatoriale Santo Stefano Porto Potenza Picena](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-porto-potenza-picena): ambulatorio di riabilitazione, Porto Potenza Picena (MC)
+- [Centro Ambulatoriale Santo Stefano San Benedetto del Tronto](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-san-benedetto-del-tronto): ambulatorio di riabilitazione, San Benedetto del Tronto (AP)
+- [Centro Ambulatoriale Santo Stefano San Severino](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-san-severino): ambulatorio di riabilitazione, San Severino Marche (Taccoli (MC)
+- [Centro Ambulatoriale Santo Stefano Tolentino](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-tolentino): ambulatorio di riabilitazione, Tolentino (MC)
+- [Centro Santo Stefano Cagli](https://kosgroup.com/it/centri/centro-santo-stefano-cagli): centro di riabilitazione, Cagli (PU)
+- [Centro Santo Stefano Macerata Feltria](https://kosgroup.com/it/centri/centro-santo-stefano-macerata-feltria): centro di riabilitazione, Macerata Feltria (PU)
+- [Centro Venerabile Marcucci](https://kosgroup.com/it/centri/centro-venerabile-marcucci): centro di riabilitazione, Ascoli Piceno (AP)
+- [Clinica Dentale Porto Potenza Picena](https://kosgroup.com/it/centri/clinica-dentale-porto-potenza-picena): clinica dentale, Porto Potenza Picena (MC)
+- [Clinica Dentale Villalba](https://kosgroup.com/it/centri/clinica-dentale-villalba): clinica dentale, Macerata (MC)
+- [Fidia](https://kosgroup.com/it/centri/fidia): ambulatorio di riabilitazione, Civitanova Marche (MC)
+- [Istituto Santo Stefano](https://kosgroup.com/it/centri/istituto-santo-stefano): centro di riabilitazione, Porto Potenza Picena (MC)
+- [Laboratorio Analisi Gamma](https://kosgroup.com/it/centri/punto-prelievi-gamma): punto prelievi, Fano (PU)
+- [Myolab](https://kosgroup.com/it/centri/myolab): ambulatorio di riabilitazione, Jesi (AN)
+- [Poliambulatorio Santo Stefano](https://kosgroup.com/it/centri/poliambulatorio-santo-stefano): poliambulatorio, Porto Potenza Picena (MC)
+- [Poliambulatorio Valdaso](https://kosgroup.com/it/centri/poliambulatorio-valdaso): poliambulatorio, Campofilone (FM)
+- [Poliambulatorio Villalba](https://kosgroup.com/it/centri/poliambulatorio-villalba): poliambulatorio, Macerata (MC)
+- [Punto Prelievi Biemme](https://kosgroup.com/it/centri/punto-prelievi-biemme): punto prelievi, Castelraimondo (MC)
+- [Punto Prelievi Delta](https://kosgroup.com/it/centri/punto-prelievi-delta): punto prelievi, Porto Recanati (MC)
+- [Punto Prelievi Salus Villalba](https://kosgroup.com/it/centri/punto-prelievi-salus-villalba): punto prelievi, Macerata (MC)
+- [Punto Prelievi Selemar](https://kosgroup.com/it/centri/punto-prelievi-selemar): punto prelievi, Urbino (PU)
+- [Villa Adria](https://kosgroup.com/it/centri/villa-adria): centro di riabilitazione, Torrette di Ancona (AN)
+- [Villa Fastiggi](https://kosgroup.com/it/centri/villa-fastiggi): centro di riabilitazione, Pesaro (PU)
+- [Villa Jolanda](https://kosgroup.com/it/centri/villa-jolanda): clinica psichiatrica, Maiolati Spontini (AN)
+- [Villa dei Pini Civitanova](https://kosgroup.com/it/centri/villa-dei-pini-civitanova): ospedale, Civitanova Marche (MC)
+
+### Piemonte
+
+- [Casa Sampeyre](https://kosgroup.com/it/centri/casa-sampeyre): comunità terapeutica psichiatrica, Sampeyre (CN)
+
+### Toscana
+
+- [Villa dei Pini Firenze](https://kosgroup.com/it/centri/villa-dei-pini-firenze): clinica psichiatrica, Firenze (FI)
+- [Ville di Nozzano](https://kosgroup.com/it/centri/ville-di-nozzano): clinica psichiatrica, Nozzano San Pietro (LU)
+
+### Trentino-Alto Adige
+
+- [Ospedale San Pancrazio](https://kosgroup.com/it/centri/ospedale-san-pancrazio): clinica psichiatrica, centro di riabilitazione, Arco di Trento (TN)
+
+### Umbria
+
+- [Centro Residenziale Santo Stefano Foligno](https://kosgroup.com/it/centri/centro-residenziale-santo-stefano-foligno): centro di riabilitazione, Foligno (PG)
+
+### Veneto
+
+- [Villa Margherita Vicenza](https://kosgroup.com/it/centri/villa-margherita-vicenza-riabilitazione): centro di riabilitazione, Arcugnano (VI)
+- [Villa Margherita Vicenza](https://kosgroup.com/it/centri/villa-margherita-vicenza-psichiatria): clinica psichiatrica, comunità terapeutica psichiatrica, Arcugnano (VI)
+
+## Chi siamo
+
+- [Visione, valori e missione](https://kosgroup.com/it/chi-siamo/gruppo-kos/visione-valori-missione)
+- [La nostra storia](https://kosgroup.com/it/chi-siamo/gruppo-kos/la-nostra-storia)
+- [Il management](https://kosgroup.com/it/chi-siamo/governance/il-management)
+- [Cura delle persone](https://kosgroup.com/it/chi-siamo/qualita-delle-cure/cura-delle-persone)
+
+## Lavorare in KOS
+
+- [Perché lavorare in KOS](https://kosgroup.com/it/lavorare-in-kos/perche-lavorare-in-kos)
+- [Formazione KOS Academy](https://kosgroup.com/it/lavorare-in-kos/formazione-kos-academy)
+
+## Optional
+
+- [Approfondimenti](https://kosgroup.com/it/news-e-media/approfondimenti): articoli divulgativi su patologie e percorsi di cura
+- [News](https://kosgroup.com/it/news-e-media/news)
+- [English version](https://kosgroup.com/en)
+- [Anni Azzurri](https://anniazzurri.it/): residenze per anziani del gruppo KOS
