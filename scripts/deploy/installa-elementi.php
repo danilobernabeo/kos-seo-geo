@@ -108,7 +108,11 @@ foreach ($m['elements'] ?? [] as $e) {
 
     if ($obj) {
         $att = $norm((string) $obj->getContent(), $e['type']);
-        if ($att === $nuovo && !isset($e['disabled'])) { echo "  = $etichetta già aggiornato\n"; continue; }
+        if ($att === $nuovo && !isset($e['disabled'])) {
+            echo "  = $etichetta già aggiornato\n";
+            $registro[$e['type'] . ':' . $e['name']] = sha1($nuovo);
+            continue;
+        }
         if (!empty($e['baseline'])) {
             $bl = $norm($leggi($e['baseline']), $e['type']);
             $nostra = ($registro[$e['type'] . ':' . $e['name']] ?? null) === sha1($att);
