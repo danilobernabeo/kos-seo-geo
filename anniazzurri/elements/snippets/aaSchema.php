@@ -5,13 +5,16 @@
  * Costruisce il JSON-LD delle pagine e il box autore visibile.
  * Un solo snippet: la logica dell'@id dell'entità persona sta in un posto solo.
  *
- * USO NEL TEMPLATE
- *   articolo      <head>  [[!aaSchema? &type=`article`]]
- *                 <body>  [[!aaSchema? &type=`box`]]
- *   pagina autore <head>  [[!aaSchema? &type=`profile`]]
+ * USO
+ *   tutte le pagine, una sola volta (chunk footer-script*):   [[aaSchema]]
+ *       il tipo si ricava dal template: articolo, pagina autore o pagina generica
+ *   box autore, nel template articolo:                       [[aaSchema? &type=`box`]]
+ *
+ *   Sostituisce i tre JSON-LD scritti a mano nei footer (Organization, WebSite,
+ *   BreadcrumbList): un solo @graph per pagina, emesso lato server (voce AA-8).
  *
  * PARAMETRI
- *   &type     article | profile | box        (default: article)
+ *   &type     auto | page | article | profile | box   (default: auto)
  *   &author   id risorsa autore; se omesso lo legge dalla TV aut.ref
  *   &pretty   1 = JSON indentato (solo per debug)
  *
@@ -54,7 +57,20 @@ $PARENT_ID= $cfg('parent_org_id', 'https://kosgroup.com/#organization');
 $LANG     = $cfg('lang',      'it-IT');
 $SLASH    = (int) $cfg('trailing_slash', 0);   // gli URL del sito sono piatti, senza slash finale
 $FRAG_PAT = $cfg('frag_patologia', '#condition');
-$FRAG_STR = $cfg('frag_struttura', '#struttura');
+$FRAG_STR = $cfg('frag_struttura', '#struttura');   // in decisione: #struttura o #localbusiness
+
+$csv = function ($v) {
+    return array_values(array_filter(array_map('trim', explode(',', (string) $v)), 'strlen'));
+};
+$START = (int) $modx->getOption('site_start', null, 1);
+/* Esclusioni delle briciole: la STESSA impostazione usata dallo snippet BreadCrumb
+ * nel chunk breadcrumb-stripe (&exclude=`[[++aa.breadcrumb_exclude]]`), così
+ * briciole visibili e BreadcrumbList hanno sempre lo stesso percorso. */
+$ESCLUDI = array_map('intval', $csv($cfg('breadcrumb_exclude', '2,4,48,54,55,68,78,85,93,97,98,100,109,156')));
+/* Template per tipo di pagina (nomi, separati da virgola). */
+$TPL_ARTICOLO   = $csv($cfg('tpl_article',    'interna-articolo'));
+$TPL_PROFILO    = $csv($cfg('tpl_profile',    'autore'));
+$TPL_COLLEZIONE = $csv($cfg('tpl_collection', 'regione,provincia,residenze,news,le-nostre-storie-indice'));
 
 /* --- helper ---------------------------------------------------------------- */
 
@@ -133,7 +149,20 @@ $pulisci = function ($a) use (&$pulisci) {
  * Emesso per intero su ogni pagina: è anche il valore di author sui contenuti
  * della redazione, quindi deve essere risolvibile senza seguire altri @id.
  */
-$org = function () use ($cfg, $ORG_ID, $PARENT_ID, $CANON, $pulisci) {
+$org = function () use ($cfg, $csv, $ORG_ID, $PARENT_ID, $CANON, $pulisci) {
+
+    // Logo con @id proprio, URL assoluto (il footer storico aveva una doppia barra).
+    $logo = null;
+    if ($l = $cfg('org_logo', '/assets/logo-anni.svg')) {
+        $logo = [
+            '@type' => 'ImageObject',
+            '@id'   => $CANON . '/#logo',
+            'url'   => preg_match('#^https?://#i', $l) ? $l : $CANON . '/' . ltrim($l, '/'),
+        ];
+    }
+    // Profili social ufficiali (impostazione aa.org_sameAs, separati da virgola).
+    // Mai kosgroup.com: è un'altra società, collegata con parentOrganization.
+    $social = $csv($cfg('org_sameAs', ''));
 
     // KOS Care S.r.l. e KOS S.p.A. sono soggetti giuridici distinti, con partite
     // IVA diverse: il legame è di controllo, non di identità. Quindi
@@ -154,6 +183,9 @@ $org = function () use ($cfg, $ORG_ID, $PARENT_ID, $CANON, $pulisci) {
         'legalName'          => $cfg('org_legal', 'KOS Care S.r.l.'),
         'vatID'              => $cfg('org_vat',   'IT01148190547'),
         'url'                => $cfg('org_url',   $CANON . '/'),
+        'logo'               => $logo,
+        'telephone'          => $cfg('org_phone', ''),
+        'sameAs'             => $social,
         'parentOrganization' => $parent,
         'address'            => [
             '@type'           => 'PostalAddress',
@@ -270,18 +302,39 @@ $persona = function ($idAutore) use (
     return $pulisci($p);
 };
 
-/* --- briciole di pane ------------------------------------------------------- */
-$briciole = function ($res) use ($modx, $url, $CLS_RES, $cfg, $CANON) {
-    $voci = [['name' => $cfg('org_name', 'Anni Azzurri'), 'item' => $cfg('org_url', $CANON . '/')]];
+/* --- briciole di pane -------------------------------------------------------
+ * Stesse regole dello snippet BreadCrumb del chunk breadcrumb-stripe:
+ * - si risale l'albero MODX fino alla radice (gli URL sono piatti, l'albero no);
+ * - si saltano la home (aggiunta in testa) e le risorse in aa.breadcrumb_exclude;
+ * - risorse nascoste o non pubblicate restano, come fa BreadCrumb per default;
+ * - pagetitle per home e livelli intermedi, menutitle (o pagetitle) per la pagina corrente;
+ * - URL assoluti nella forma canonica.
+ * Sulla home non si emette nessuna BreadcrumbList.
+ */
+$briciole = function ($res) use ($modx, $url, $CLS_RES, $START, $ESCLUDI, $CANON) {
+    $id = (int) $res->get('id');
+    if ($id === $START) return [];
 
-    $catena = array_reverse($modx->getParentIds($res->get('id'), 10, ['context' => $res->get('context_key')]));
-    foreach ($catena as $pid) {
-        if ((int) $pid <= 0) continue;
-        $p = $modx->getObject($CLS_RES, (int) $pid);
-        if (!$p || !$p->get('published')) continue;
-        $voci[] = ['name' => $p->get('menutitle') ?: $p->get('pagetitle'), 'item' => $url($pid)];
+    $catena = [];
+    $rid = $id;
+    for ($giri = 0; $rid > 0 && $giri < 100; $giri++) {
+        $r = ($rid === $id) ? $res : $modx->getObject($CLS_RES, $rid);
+        if (!$r) break;
+        if ($rid !== $START && !in_array($rid, $ESCLUDI, true)) array_unshift($catena, $r);
+        $rid = (int) $r->get('parent');
     }
-    $voci[] = ['name' => $res->get('pagetitle'), 'item' => null];
+
+    $voci = [];
+    if ($home = $modx->getObject($CLS_RES, $START)) {
+        $voci[] = ['name' => $home->get('pagetitle'), 'item' => $CANON . '/'];
+    }
+    foreach ($catena as $r) {
+        $corrente = ((int) $r->get('id') === $id);
+        $voci[] = [
+            'name' => $corrente ? ($r->get('menutitle') ?: $r->get('pagetitle')) : $r->get('pagetitle'),
+            'item' => $url($r->get('id')),
+        ];
+    }
 
     $lista = [];
     foreach ($voci as $i => $v) {
@@ -293,6 +346,28 @@ $briciole = function ($res) use ($modx, $url, $CLS_RES, $cfg, $CANON) {
         ], function ($x) { return $x !== null && $x !== ''; });
     }
     return $lista;
+};
+
+/* Nodo BreadcrumbList, o null se non ci sono almeno due livelli. */
+$nodoBriciole = function ($res, $pagina) use ($briciole) {
+    $l = $briciole($res);
+    return count($l) < 2 ? null : [
+        '@type'           => 'BreadcrumbList',
+        '@id'             => $pagina . '#breadcrumb',
+        'itemListElement' => $l,
+    ];
+};
+
+/* Nodo WebSite. */
+$sito = function () use ($cfg, $CANON, $SITE_ID, $ORG_ID, $LANG) {
+    return [
+        '@type'      => 'WebSite',
+        '@id'        => $SITE_ID,
+        'url'        => $cfg('org_url', $CANON . '/'),
+        'name'       => $cfg('org_name', 'Anni Azzurri'),
+        'inLanguage' => $LANG,
+        'publisher'  => ['@id' => $ORG_ID],
+    ];
 };
 
 /* --- riferimenti a patologie e strutture ------------------------------------ */
@@ -308,7 +383,7 @@ $riferimenti = function ($csv, $frammento) use ($url) {
  * ESECUZIONE
  * ========================================================================== */
 
-$type   = strtolower((string) $modx->getOption('type', $scriptProperties, 'article'));
+$type   = strtolower((string) $modx->getOption('type', $scriptProperties, 'auto'));
 $pretty = (int) $modx->getOption('pretty', $scriptProperties, 0);
 $res    = $modx->resource;
 if (!$res) return '';
@@ -317,6 +392,19 @@ $flags = JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE;
 if ($pretty) $flags |= JSON_PRETTY_PRINT;
 
 $paginaCorrente = $url($res->get('id'));
+if ((int) $res->get('id') === $START) $paginaCorrente = $CANON . '/';
+
+if ($type === 'auto') {
+    $tpl = $res->getOne('Template');
+    $nomeTpl = $tpl ? $tpl->get('templatename') : '';
+    $type = in_array($nomeTpl, $TPL_ARTICOLO, true) ? 'article'
+          : (in_array($nomeTpl, $TPL_PROFILO, true) ? 'profile' : 'page');
+}
+$json = function ($grafo) use ($flags) {
+    return '<script type="application/ld+json">'
+         . json_encode(['@context' => 'https://schema.org', '@graph' => array_values(array_filter($grafo))], $flags)
+         . '</script>';
+};
 
 /* --- autore della pagina corrente ------------------------------------------ */
 $idAutore = (int) $modx->getOption('author', $scriptProperties, $tv($res, 'aut.ref'));
@@ -415,24 +503,33 @@ if ($type === 'profile') {
             'breadcrumb' => ['@id' => $paginaCorrente . '#breadcrumb'],
         ]),
         $io,
-        [
-            '@type'           => 'BreadcrumbList',
-            '@id'             => $paginaCorrente . '#breadcrumb',
-            'itemListElement' => $briciole($res),
-        ],
-        [
-            '@type'     => 'WebSite',
-            '@id'       => $SITE_ID,
-            'url'       => $cfg('org_url', $CANON . '/'),
-            'name'      => $cfg('org_name', 'Anni Azzurri'),
-            'publisher' => ['@id' => $ORG_ID],
-        ],
+        $nodoBriciole($res, $paginaCorrente),
+        $sito(),
         $org(),
     ];
+    return $json($grafo);
+}
 
-    return '<script type="application/ld+json">'
-         . json_encode(['@context' => 'https://schema.org', '@graph' => $grafo], $flags)
-         . '</script>';
+/* --------------------------------------------------------- pagina generica */
+if ($type === 'page') {
+    $tpl = $res->getOne('Template');
+    $nomeTpl = $tpl ? $tpl->get('templatename') : '';
+    $home = ((int) $res->get('id') === $START);
+    $br = $nodoBriciole($res, $paginaCorrente);
+
+    $pagina = $pulisci([
+        '@type'       => in_array($nomeTpl, $TPL_COLLEZIONE, true) ? 'CollectionPage' : 'WebPage',
+        '@id'         => $paginaCorrente . '#webpage',
+        'url'         => $paginaCorrente,
+        'name'        => $res->get('longtitle') ?: $res->get('pagetitle'),
+        'description' => $res->get('description'),
+        'inLanguage'  => $LANG,
+        'isPartOf'    => ['@id' => $SITE_ID],
+        'about'       => $home ? ['@id' => $ORG_ID] : null,
+        'breadcrumb'  => $br ? ['@id' => $paginaCorrente . '#breadcrumb'] : null,
+        'dateModified'=> $data($res->get('editedon') ?: $res->get('publishedon')),
+    ]);
+    return $json([$pagina, $br, $sito(), $org()]);
 }
 
 /* ---------------------------------------------------------------- articolo */
@@ -466,8 +563,8 @@ $pagina = [
     'name'       => $res->get('longtitle') ?: $res->get('pagetitle'),
     'inLanguage' => $LANG,
     'isPartOf'   => ['@id' => $SITE_ID],
-    'breadcrumb' => ['@id' => $paginaCorrente . '#breadcrumb'],
 ];
+if ($nodoBr = $nodoBriciole($res, $paginaCorrente)) $pagina['breadcrumb'] = ['@id' => $paginaCorrente . '#breadcrumb'];
 if ($sanitario) {
     $pagina['audience'] = ['@type' => 'MedicalAudience', 'audienceType' => 'Patient'];
     if ($rev = $tv($res, 'rev.data')) $pagina['lastReviewed'] = $rev;
@@ -480,20 +577,8 @@ $grafo = [$pulisci($articolo), $pulisci($pagina)];
 if ($autore)  $grafo[] = $autore;
 if ($revisore) $grafo[] = $revisore;
 
-$grafo[] = [
-    '@type'           => 'BreadcrumbList',
-    '@id'             => $paginaCorrente . '#breadcrumb',
-    'itemListElement' => $briciole($res),
-];
-$grafo[] = [
-    '@type'     => 'WebSite',
-    '@id'       => $SITE_ID,
-    'url'       => $cfg('org_url', $CANON . '/'),
-    'name'      => $cfg('org_name', 'Anni Azzurri'),
-    'publisher' => ['@id' => $ORG_ID],
-];
+$grafo[] = $nodoBr;
+$grafo[] = $sito();
 $grafo[] = $org();
 
-return '<script type="application/ld+json">'
-     . json_encode(['@context' => 'https://schema.org', '@graph' => $grafo], $flags)
-     . '</script>';
+return $json($grafo);
