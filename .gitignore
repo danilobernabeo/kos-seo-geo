@@ -1,0 +1,24 @@
+# credenziali e configurazioni locali
+config.inc.php
+*.env
+.env*
+secrets/
+*.key
+*.pem
+
+# dump e export di dati
+*.sql.gz
+*.dump
+dump/
+export-*/
+*.csv
+*.xlsx
+
+# cache e file di sistema
+core/cache/
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+node_modules/

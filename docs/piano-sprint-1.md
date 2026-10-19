@@ -1,0 +1,60 @@
+# Piano di avvio: sprint 1 (linee A e B) e interfacciamento RetailTune (C1)
+
+Avvio 19 ottobre 2026. Consegna sprint 1: venerdì 30 ottobre; verifica Cerved/ProWeb 2-6 novembre.
+Scadenza RetailTune: specifiche dei widget, tipologie e attributi entro venerdì 23 ottobre (percorso critico della linea C: import preliminare entro 6 novembre, widget di test entro 16 novembre).
+
+Legenda: **[2 siti]** = si fa una volta e vale per entrambi; **[KOS]** = kosgroup.com; **[AA]** = anniazzurri.it; tra parentesi la voce dell'audit (KosGroup / Anni Azzurri).
+
+## Fase 0 — Lunedì 19: avvio e richieste (bloccano il resto)
+
+1. **[2 siti] Ambienti di prova su MODX Cloud.** Clonare le due istanze di produzione in due cloud di sviluppo, protetti da accesso e in noindex. Backup del database prima di ogni rilascio.
+2. **[2 siti] Repository degli elementi MODX.** Esportare template, chunk, snippet, plugin e TV in un repository git (uno per sito o uno con due cartelle). Da qui si lavora anche con Claude Code.
+3. **[2 siti] Richieste da inviare oggi**, perché hanno tempi esterni:
+   - all'IT (mail del 19 ottobre): CNAME `stage.anniazzurri.it` e `stage.kosgroup.com` verso i cloud di sviluppo MODX Cloud (domini di test per RetailTune, Google Maps, Cookiebot; protetti da password, robots disallow e X-Robots-Tag noindex), verifica CAA per Let's Encrypt, preavviso CNAME `mappe.*`, gestione DNS dei domini storici (polodiagnostico.it, neomesia.com, sstefano.it, myolab.it, casadicuravillalpini.it);
+   - verifiche sull'ambiente di prova: con Claude Code sul PC di Danilo o con script lanciati da lui (l'area di lavoro cloud non raggiunge né `.modx.dev` né `stage.*`, e il recupero web rispetta il robots.txt);
+   - a KOS: controllo del DNS dei domini storici (redirect, voce 4 KOS); record CNAME `mappe.kosgroup.com` e `mappe.anniazzurri.it` appena RetailTune comunica il valore; approvazione categoria Cookiebot per Google Maps (proposta: marketing); chiave Google Maps con Maps JavaScript API e referrer dei domini di test e produzione;
+   - all'agenzia: slide di riferimento sulle breadcrumb (voce 8 AA); strumento e IP usati per il test dei bot AI;
+   - a MODX Cloud: rotazione di nginx_error.log (5 GB e 2,8 GB, mai ruotati) e attivazione dell'access log;
+   - a Danilo/KOS: export dei chunk dei servizi delle residenze AA (normalizzazione per gli attributi RetailTune).
+
+## Fase 1 — 19-23 ottobre: interfacciamento RetailTune (percorso critico)
+
+4. **[2 siti] Elenco anomalie Yext da correggere** (KOS corregge entro il 30 ottobre; da quell'export si importano le TV e RetailTune). Fonte: export Yext del 15 ottobre, entrambi i marchi. Già emerse per KOS: campo CTA con URL `modx.dev` su 54 entità; doppione Villalba (`VPI00_VPM` / `Villalba`); Parco di Veio con nome e link della residenza AA; Punto Prelievi Delta senza sito web; tipologie di Corte Carcare, Corte Orero e Villa Margherita Vicenza; indirizzi (Clinica Dentale Porto Potenza Picena 217/194, Parco di Veio 41/43), 11 telefoni e 4 email diversi. Da fare: stessa analisi sulle 58 entità AA.
+5. **[2 siti] Tipologie per RetailTune** (entro 23 ottobre): elenco unico per i due marchi con codice stabile, etichetta, tipo schema.org e corrispondenza con i valori Yext ("Centri riabilitazione" → "Centri di riabilitazione", "Laboratorio analisi" → "Punti prelievo"). KOS: 11 valori di `tipo_struttura`. AA: dal campo Yext "Tipologia di Struttura" e dal sito.
+6. **[KOS] Attributi dei servizi**: gruppi Riabilitazione, Psichiatria, Visite ed esami dalle aree del sito, con la mappatura decisa sulle 72 coppie "da decidere" del file di mappatura. Attributo "Prenotazione online" (20 strutture tuotempo) e URL di prenotazione. Tecnologie fuori dai filtri (al più un attributo "Riabilitazione robotica e tecnologica").
+7. **[AA] Attributi dei servizi**: normalizzazione dai chunk delle residenze (servizi offerti, ospiti accolti). Se l'export arriva tardi, si parte con tipologia e area geografica e i filtri per servizi entrano nella seconda fase prevista da RetailTune.
+8. **[2 siti] Specifiche dei widget** (entro 23 ottobre), sul modello di configurazione RetailTune: filtri per pagina (mappa generale, pagine provincia AA, mappe per area KOS via `storeids`), domini di test, categoria Cookiebot, riferimenti di stile di ciascun sito, link dei punti (campo link = URL canonico della scheda). Decisioni da chiudere: Villa Margherita Vicenza (una entità, due pagine: link a `/it/villa-margherita` se esiste); sedi condivise a stesso indirizzo; Valdaso e Parco di Veio con id nuovo.
+9. **[2 siti] Domande aperte a RetailTune** (nella stessa consegna): più tipologie per struttura, combinazione dei filtri, ricerca per parole chiave, URL di prenotazione verso Google, `storeids` da pagina.
+
+## Fase 2 — 19-30 ottobre in parallelo: sprint 1
+
+Interventi comuni (stessa piattaforma MODX Cloud, stessa logica):
+10. **[2 siti] Accesso dei crawler AI (6 KOS / 19 AA)**: verifica fatta il 18 ottobre (test user agent e log): nessun blocco di GPTBot e Bingbot. Da completare: ClaudeBot e PerplexityBot sugli intervalli IP pubblicati; nota di chiusura con le evidenze per Cerved/ProWeb (l'audit AA stesso segnala GPTBot e ClaudeBot come possibile falso negativo con codice 200).
+11. **[2 siti] robots.txt**: rimozione del Crawl-delay per Bingbot (19 KOS), verifica dello stesso su AA; nessun blocco su PDF fino alla deindicizzazione.
+12. **[2 siti] llms.txt (18 KOS)**: stessa struttura per i due siti (chi siamo, sezioni principali, strutture, contatti); contenuto da validare con KOS. Su AA non è voce d'audit ma è nel perimetro (B1).
+13. **[2 siti] Cache delle risorse statiche (3 KOS; 14 AA)**: stessa regola web sui due cloud. Per AA anticipa una voce dello sprint 4: consentito, non penalizzato.
+14. **[2 siti] favicon.ico e apple-touch-icon** nella radice: ~56.000 richieste 404 su AA nelle ultime 200.000 righe di log; verificare anche KOS.
+15. **[2 siti] Convenzione degli identificativi**: scheda di una pagina per l'agenzia (forme canoniche fissate il 15 ottobre: `https://kosgroup.com/#organization`, `https://anniazzurri.it/#organization`, entità sotto `/it` su KOS).
+16. **[2 siti] Libreria unica del dato strutturato**: un solo snippet parametrico (base canonica per sito) che costruisce il `@graph`, partendo da quello già scritto per la firma degli approfondimenti AA (`aaSchema`). Nello sprint 1 escono: ente AA con `parentOrganization` e BreadcrumbList AA; il nodo ente di KOS e le breadcrumb KOS sono pronti con la stessa funzione ed escono nello sprint 2 come da calendario (o prima).
+
+Interventi del singolo sito:
+17. **[KOS] Redirect 301 dai domini storici (4)**: polodiagnostico.it, neomesia.com, sstefano.it, myolab.it, casadicuravillalpi... **Attenzione**: su Yext Casa Sanfré punta a neomesia.com e Fisioclinics a polodiagnostico.it: i redirect vanno mappati pagina per pagina e quelle entità decise prima.
+18. **[AA] Titoli H1 mancanti (18)**: individuare template e pagine senza H1 e correggere nei template.
+19. **[AA] Canonical duplicato (7)**: KOS lo indica come risolto, in attesa di conferma: verifica sul codice sorgente delle pagine e chiusura.
+20. **[AA] Ente e percorsi di navigazione (8)**: Organization di KOS Care + BreadcrumbList. Slide 34-35 dell'audit: oggi il markup contiene solo la pagina finale; deve includere tutti i livelli Home › Regione › Provincia › Residenza, con `name` = titolo della pagina e `item` = URL canonico. Esempio dell'agenzia per Vico Mercati: "Anni Azzurri" `https://anniazzurri.it/` › "Le RSA in Lombardia" `/rsa-in-lombardia` › "RSA in provincia di Monza e Brianza" `/rsa-in-provincia-di-monza-e-brianza` › "Residenza Anni Azzurri Vico Mercati". Gli URL di AA sono piatti: il percorso va ricostruito dai dati (query B1-B3 in `aa-gerarchia-breadcrumb.sql`), non da `getParentIds`; la funzione `$briciole` di `aaSchema` va adattata. Le briciole visibili devono avere lo stesso percorso.
+    - **Origine del markup attuale (19 ottobre):** il footer di AA contiene tre blocchi JSON-LD scritti a mano su tutte le pagine: `Organization` (senza `@id`, senza `legalName`, logo `[[!++site_url]]/assets/logo-anni.svg` con doppia barra), `WebSite` (solo `url`) e `BreadcrumbList` con una sola voce costruita da `[[*pagetitle]]` e `[[++site_url]][[*alias]]`. Le briciole visibili le genera lo snippet `BreadCrumb` (albero MODX, `&exclude=2,4,48,54,55,68,78,85,93,97,98,100,109,156`).
+    - **Intervento:** togliere i tre blocchi dal footer e sostituirli con un unico `@graph` emesso da `aaSchema` su tutte le pagine: `WebSite` (`https://anniazzurri.it/#website`, name, publisher → `#organization`, inLanguage), `Organization` completo (`#organization`, legalName, vatID, logo assoluto come ImageObject, `parentOrganization` → `https://kosgroup.com/#organization`, sameAs solo profili social), `BreadcrumbList` (`URL#breadcrumb`, tranne la home) con le stesse regole di `BreadCrumb`: esclusioni in un'impostazione di sistema condivisa (`aa.breadcrumb_exclude`), `pagetitle` per i livelli intermedi, `menutitle` o `pagetitle` per la pagina corrente, URL canonici assoluti. Un solo rilascio per i tre nodi, per non avere duplicati intermedi. Collaudo: confronto automatico briciole visibili / JSON-LD su un campione per template.
+    - H1 (18 AA, slide 20): le pagine senza H1 sono la homepage e `galleria-fotografica-convegno-anni-azzurri-2025`; H1 proposti per la home: "RSA e case di riposo in Italia", "RSA Anni Azzurri", "Case di riposo Anni Azzurri", "Anni Azzurri" (da scegliere con KOS).
+    - Canonical (7 AA, slide 17): due canonical, uno lato server e uno generato lato client; tenere il server, togliere quello client.
+    - **Frammento dell'identificativo delle residenze**: le slide 29-30 chiedono `@id = URL#localbusiness` (es. `https://anniazzurri.it/residenza-anni-azzurri-navigli#localbusiness`); la convenzione del 15 ottobre e lo snippet `aaSchema` usano `#struttura`. Da decidere prima di pubblicare: allinearsi a `#localbusiness` evita contestazioni in verifica (proposta).
+
+## Fase 3 — 26-30 ottobre: collaudo e rilascio
+
+21. Collaudo sugli ambienti di prova: validatore schema.org e Rich Results Test, controllo di robots.txt, llms.txt, intestazioni di cache, redirect.
+22. Rilascio in produzione (fuori orario di punta, backup prima), svuotamento cache MODX.
+23. Nota di consegna dello sprint 1 per Cerved/ProWeb: interventi per voce d'audit, URL da verificare, evidenze (log bot).
+
+## Preparazione per lo sprint 2 (da avviare nella settimana del 26)
+- Script di import dei dati anagrafici dall'export Yext corretto nelle TV dei due siti (import 2-6 novembre), con report delle differenze su KOS.
+- Creazione delle TV anagrafiche su AA.
+- Attività già registrate per lo sprint 2: cache di `docList`, codifica URL in `listLda`, redirect cartelle documenti (KOS); immagini e PDF mancanti (AA).
