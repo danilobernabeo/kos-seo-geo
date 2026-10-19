@@ -1,0 +1,9 @@
+{
+  "nome": "KOS-3 versione automatica di CSS e JS",
+  "settings": [],
+  "elements": [
+    {"type": "plugin", "name": "AssetVersion", "file": "shared/plugins/AssetVersion.php",
+     "description": "Aggiunge ?v=<data file> ai CSS e JS locali (cache lunga senza file vecchi)",
+     "events": ["OnWebPagePrerender"], "disabled": false}
+  ]
+}
