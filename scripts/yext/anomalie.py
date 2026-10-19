@@ -127,9 +127,10 @@ for t,f in L:
     ws.append([t]); ws.cell(ws.max_row,1).font=f; ws.cell(ws.max_row,1).alignment=Alignment(wrap_text=True)
 ws.column_dimensions['A'].width=120; ws.cell(1,1).font=Font(name=F,size=14,bold=True)
 CTA_IDS="KCA00_MAU, JES00_JES, KCA00_AJE, KCA00_ASB, KCA00_MIO, KCA00_OVA, KCA00_OVZ, KCA00_OVJ, KCA00_DEG, KCA00_OV1, KCA00_OCF, KCA00_APS, KCA00_APP, KCA00_OSP, KCA00_APO, KCA00_OSS, KCA00_CIM, KCA00_PER, KCA00_OSG, KCA00_AFA, KCA00_OAC, KCA00_SAM, KCA00_SAS, KCA00_AFI, KCA00_ORE, VPI00_VPS, VPI00_DLB, VMA00_OAR, KCA00_ACM, FID00_FIS, KCA00_ACA, KCA00_ASS, KCA00_ATO, KCA00_OFO, KCA00_OBE, KCA00_TU1, KCA00_SRM, KCA00_TU2, VMA00_OBN, KCA00_OVP, KCA00_AMA, KCA00_AMC, VPI00_VPM, Temporary 7, KCA08202, Temporary 1, PDUrbino, 104, 100, 101, 105, 107, 106, 108"
+FATTI={'1009':'Corretto da Danilo Bernabeo il 19/10','KCA00_PGM':'Corretto da Danilo Bernabeo il 19/10','KCA00_PGC':'Corretto da Danilo Bernabeo il 19/10'}
 Yd=[]
 for i,r in enumerate(sorted(Y_ROWS,key=lambda r:({'Alta':0,'Media':1,'Bassa':2}[r[7]],r[0]))):
-    Yd.append((i+1,)+r+('',''))
+    Yd.append((i+1,)+r+(('Fatto',FATTI[r[1]]) if r[1] in FATTI else ('','')))
 w1=sheet('Da correggere su Yext',['N.','Marchio','Entità Yext','Struttura','Campo','Valore attuale su Yext','Problema','Azione richiesta','Priorità','Esito','Note KOS'],Yd,[5,8,18,32,16,34,40,46,9,14,28],esito=(10,11),prio_col=9)
 dv=DataValidation(type='list',formula1='"Fatto,Non necessario,Da discutere"',allow_blank=True); w1.add_data_validation(dv); dv.add(f'J2:J{w1.max_row}')
 w2=sheet('Decisioni',['N.','Marchio','Tema','Situazione','Proposta','Esito','Note KOS'],[(i+1,)+r+('','') for i,r in enumerate(D_ROWS)],[5,8,30,55,60,14,30],esito=(6,7))
