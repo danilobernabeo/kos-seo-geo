@@ -11,10 +11,10 @@
  * Per ogni elemento:
  *   - se esiste, confronta il contenuto attuale con la baseline del repository: se è diverso
  *     qualcuno l'ha modificato dopo l'istantanea → si ferma (salvo --forza);
- *   - salva il contenuto attuale in backup/<data>/ prima di sovrascriverlo;
+ *   - salva il contenuto attuale in ~/backup-kos-seo-geo/<data>/ prima di sovrascriverlo;
  *   - crea l'elemento se non esiste.
- * Alla fine svuota la cache e scrive backup/<data>/ripristino.json: per tornare indietro
- *   php scripts/deploy/installa-elementi.php /www backup/<data>/ripristino.json --scrivi
+ * Alla fine svuota la cache e scrive ~/backup-kos-seo-geo/<data>/ripristino.json: per tornare indietro
+ *   php scripts/deploy/installa-elementi.php /www ~/backup-kos-seo-geo/<data>/ripristino.json --scrivi
  */
 declare(strict_types=1);
 
@@ -50,13 +50,15 @@ $norm = static function (string $s, string $tipo): string {
     return trim($s);
 };
 $leggi = static function (string $rel) use ($base): string {
-    $p = $base . '/' . ltrim($rel, '/');
+    $p = $rel[0] === '/' ? $rel : $base . '/' . $rel;
     if (!is_file($p)) { fwrite(STDERR, "File mancante: $rel\n"); exit(1); }
     return (string) file_get_contents($p);
 };
 
 $stamp  = date('Ymd-His');
-$bkDir  = $base . '/backup/' . $stamp;
+// Backup fuori dalla cartella dell'archivio, che viene sostituita a ogni installazione.
+$bkRoot = rtrim((string) (getenv('HOME') ?: $base), '/') . '/backup-kos-seo-geo';
+$bkDir  = $bkRoot . '/' . $stamp;
 $ripristino = ['nome' => 'ripristino ' . $stamp, 'settings' => [], 'elements' => []];
 $errori = 0;
 echo ($scrivi ? "== APPLICAZIONE" : "== PROVA (nessuna scrittura; aggiungere --scrivi)") . " — " . ($m['nome'] ?? $manifest) . "\n";
@@ -110,11 +112,11 @@ foreach ($m['elements'] ?? [] as $e) {
             }
         }
         echo "  ~ $etichetta" . ($att === $nuovo ? '' : ' (contenuto)') . (isset($e['disabled']) ? " (disattivato → " . ($e['disabled'] ? 'sì' : 'no') . ")" : '') . "\n";
-        $rel = 'backup/' . $stamp . '/' . $e['type'] . 's/' . $e['name'] . ($e['type'] === 'chunk' || $e['type'] === 'template' ? '.html' : '.php');
+        $rel = $bkDir . '/' . $e['type'] . 's/' . $e['name'] . ($e['type'] === 'chunk' || $e['type'] === 'template' ? '.html' : '.php');
         $ripristino['elements'][] = ['type' => $e['type'], 'name' => $e['name'], 'file' => $rel] + (isset($e['disabled']) ? ['disabled' => (bool) $obj->get('disabled')] : []);
         if ($scrivi) {
-            if (!is_dir(dirname($base . '/' . $rel))) mkdir(dirname($base . '/' . $rel), 0775, true);
-            file_put_contents($base . '/' . $rel, (string) $obj->getContent());
+            if (!is_dir(dirname($rel))) mkdir(dirname($rel), 0775, true);
+            file_put_contents($rel, (string) $obj->getContent());
         }
     } else {
         echo "  + $etichetta (nuovo)\n";
@@ -136,7 +138,7 @@ if ($scrivi) {
     if (!is_dir($bkDir)) mkdir($bkDir, 0775, true);
     file_put_contents($bkDir . '/ripristino.json', json_encode($ripristino, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
     $modx->cacheManager->refresh();
-    echo "== Cache svuotata. Backup e manifest di ripristino in backup/$stamp/\n";
+    echo "== Cache svuotata. Backup e manifest di ripristino in $bkDir/\n";
 }
 echo $errori ? "== $errori problemi: vedi sopra.\n" : "== Nessun problema.\n";
 exit($errori ? 2 : 0);

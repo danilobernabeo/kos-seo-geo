@@ -28,7 +28,7 @@ Con lo script `scripts/deploy/installa-elementi.php` e il manifest `anniazzurri/
 plugin `PaginationCanonical` riattivato). Lo script:
 - prima prova senza scrivere, poi applica con `--scrivi`;
 - si ferma se un elemento sul sito è cambiato rispetto alla baseline (modifica fatta dopo l'istantanea);
-- salva gli elementi sostituiti e un manifest di ripristino in `backup/<data>/`;
+- salva gli elementi sostituiti e un manifest di ripristino in `~/backup-kos-seo-geo/<data>/` sul cloud;
 - svuota la cache.
 
 Da PowerShell, nella cartella del repository:
@@ -41,8 +41,7 @@ ssh aa-stage "rm -rf ~/kos-seo-geo && mkdir -p ~/kos-seo-geo && tar xf ~/aa8.tar
 ssh aa-stage "cd ~/kos-seo-geo && php scripts/deploy/installa-elementi.php /www anniazzurri/deploy/aa-8.json --scrivi"
 ```
 
-Ripristino: `php scripts/deploy/installa-elementi.php /www backup/<data>/ripristino.json --scrivi`
-(dalla stessa cartella; attenzione a non cancellarla con `rm -rf` prima di aver salvato il backup).
+Ripristino: `cd ~/kos-seo-geo && php scripts/deploy/installa-elementi.php /www ~/backup-kos-seo-geo/<data>/ripristino.json --scrivi`
 
 Ancora da impostare a mano, dopo conferma: `aa.org_phone` (+39 800 131 851).
 Tre template non usano i `footer-script` (`BaseTemplate`, `convegnoAA`, `recruiting`): da verificare
