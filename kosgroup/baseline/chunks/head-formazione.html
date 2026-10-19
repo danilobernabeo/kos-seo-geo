@@ -1,0 +1,200 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>[[*longtitle:default=`[[*pagetitle]]`]]</title>
+  <meta name="description" content="[[*description]]">
+
+[[$GTM_head]]
+
+  [[*id:is=`1`:then=`
+  <link rel="alternate" hreflang="it" href="[[~[[*id]]? &scheme=`full`]]" />
+  <link rel="alternate" hreflang="en" href="[[~990? &scheme=`full`]]" />
+  <link rel="alternate" hreflang="x-default" href="[[~[[*id]]? &scheme=`full`]]" />
+  `]]
+
+  [[!Canonical]]
+  <base href="[[!++site_url]]">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Web Fonts  -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="regset/vendor/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="regset/vendor/font-awesome/css/font-awesome.css" />
+		<link rel="stylesheet" href="regset/vendor/magnific-popup/magnific-popup.css" />
+		<link rel="stylesheet" href="regset/vendor/bootstrap-multiselect/bootstrap-multiselect.css" />		
+		<link rel="stylesheet" href="regset/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" />	
+		<link rel="stylesheet" href="regset/vendor/select2/css/select2.css" />
+		<link rel="stylesheet" href="regset/vendor/select2-bootstrap-theme/select2-bootstrap.css" />
+
+		<!-- Specific Page Vendor CSS -->
+		<link rel="stylesheet" href="regset/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css" />
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="regset/stylesheets/theme.css" />
+
+		<!-- Skin CSS -->
+		<link rel="stylesheet" href="regset/stylesheets/skins/default.css" />
+
+		<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href="regset/stylesheets/theme-custom.css">	
+
+		<!-- Head Libs -->
+		<script src="regset/vendor/modernizr/modernizr.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <script>
+        $(function() {
+            // Gestione specializzazione ECM
+            $("#ecm_prof_id").change(function() {
+                var prof = $('#ecm_prof_id').val();
+                $("#ecm_disc_id").select2("val", "");
+
+                if(prof > 0 && prof < 31) {
+                    $("#ecm_disc_id").load("/assets/specdataka/" + $(this).val() + ".txt");
+                    $("#ecm_disc_id").attr('required', true);
+                    $("#specdiv").show();
+                } else {
+                    $("#ecm_disc_id").select2("val", "");
+                    $("#ecm_disc_id").attr('required', false);
+                    $("#specdiv").hide();
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $("#specdiv").hide();
+        });
+    </script>
+
+    <script>
+        $(function() {
+            // Gestione reclutamento
+            $("#reclutato").change(function() {
+                var org = $('#reclutato').val();
+
+                if(org == 'Si') {
+                    $("#org_reclutatore").attr('required', true);
+                    $("#recdiv").show();
+                } else {
+                    $("#org_reclutatore").attr('required', false);
+                    $("#recdiv").hide();
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $("#recdiv").hide();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            // Nascondi inizialmente i div
+            $("#pagante").hide();
+            $("#dati_fatturazione").hide();
+            
+            // Gestisci il cambio della select partecipante
+            $("#partecipante").change(function() {
+                var tipo = $(this).val();
+                
+                if(tipo == "Medico Ortopedico" || tipo == "Fisioterapista, Fisiatra, Specializzandi, Infermieri") {
+                    $("#pagante").show();
+                    $("[name='allegato']").attr('required', true);
+                    $("#richiesta_fattura").attr('required', true);
+                } else {
+                    $("#pagante").hide();
+                    $("[name='allegato']").attr('required', false);
+                    $("#richiesta_fattura").attr('required', false);
+                    $("#richiesta_fattura").val('');
+                    $("#dati_fatturazione").hide();
+                    resetFatturazioneFields();
+                }
+            });
+            
+            // Gestisci il cambio della select richiesta_fattura
+            $("#richiesta_fattura").change(function() {
+                if($(this).val() == "Si") {
+                    $("#dati_fatturazione").show();
+                    $("[name='fatturazione']").attr('required', true);
+                    if($("#fself").is(":checked")) {
+                        $("[name='fself_piva']").attr('required', true);
+                    } else {
+                        setRequiredAltroIntestatario(true);
+                    }
+                } else {
+                    $("#dati_fatturazione").hide();
+                    resetFatturazioneFields();
+                }
+            });
+            
+            // Funzione per resettare i campi della fatturazione
+            function resetFatturazioneFields() {
+                $("[name='fatturazione']").attr('required', false);
+                $("[name='fself_piva']").attr('required', false);
+                setRequiredAltroIntestatario(false);
+                // Resetta i valori dei campi
+                $("#ifSelf input").val('');
+                $("#ifOther input").val('');
+                // Resetta le select
+                $("#ifOther select").each(function() {
+                    if($(this).hasClass('select2-hidden-accessible')) {
+                        $(this).select2('val', '');
+                    } else {
+                        $(this).val('');
+                    }
+                });
+            }
+            
+            // Funzione per gestire i required dei campi altro intestatario
+            function setRequiredAltroIntestatario(required) {
+                $("[name='fnominativo']").attr('required', required);
+                $("[name='findirizzo']").attr('required', required);
+                $("[name='fcap']").attr('required', required);
+                $("[name='fcomune']").attr('required', required);
+                $("[name='fprovincia']").attr('required', required);
+                $("[name='fcodice_fiscale']").attr('required', required);
+                $("[name='fpartita_iva']").attr('required', required);
+                $("[name='fsid']").attr('required', required);
+            }
+        });
+
+function yesnoCheck() {
+    if (document.getElementById('fother').checked) {
+        document.getElementById('ifOther').style.display = 'block';
+        document.getElementById('ifSelf').style.display = 'none';
+        // Rendi obbligatori i campi per altro intestatario
+        $("[name='fnominativo']").attr('required', true);
+        $("[name='findirizzo']").attr('required', true);
+        $("[name='fcap']").attr('required', true);
+        $("[name='fcomune']").attr('required', true);
+        $("[name='fprovincia']").attr('required', true);
+        $("[name='fcodice_fiscale']").attr('required', true);
+        $("[name='fpartita_iva']").attr('required', true);
+        $("[name='fsid']").attr('required', true);
+        // Rimuovi obbligatorietà campi me stesso
+        $("[name='fself_piva']").attr('required', false);
+        $("[name='fself_sid']").attr('required', false);
+    } else {
+        document.getElementById('ifOther').style.display = 'none';
+        document.getElementById('ifSelf').style.display = 'block';
+        // Rendi obbligatori i campi per me stesso
+        $("[name='fself_piva']").attr('required', true);
+        $("[name='fself_sid']").attr('required', true);
+        // Rimuovi obbligatorietà altri campi
+        $("[name='fnominativo']").attr('required', false);
+        $("[name='findirizzo']").attr('required', false);
+        $("[name='fcap']").attr('required', false);
+        $("[name='fcomune']").attr('required', false);
+        $("[name='fprovincia']").attr('required', false);
+        $("[name='fcodice_fiscale']").attr('required', false);
+        $("[name='fpartita_iva']").attr('required', false);
+        $("[name='fsid']").attr('required', false);
+    }
+}
+    </script>
+</head>

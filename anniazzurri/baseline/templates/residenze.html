@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+
+[[$head]]
+
+<body class="residenze-page">
+[[$GTM_body]]
+
+[[$menu-sticky]]
+
+[[$menu-navbar]]
+
+[[$menu-side-navbar]]
+<main id="main-content" tabindex="-1">
+
+[[$breadcrumb-stripe]]
+
+  <div heading="" class="bg-cover-center position-relative" style="background-image: url('/assets/img/residenze.jpg')" stripe-one-col-media-component="">
+    <div class="overlay"></div>
+    <div class="container position-relative">
+      <div class="row content-container align-items-center">
+        <div class="col-10 col-md-8 col-lg-6 text-white">
+          <h1 class="mb-2">Le Nostre Residenze</h1>
+          <p class="h5">Vi presentiamo le nostre Case di riposo: [[getResources? &parents=`2` &limit=`0` &where=`{"template:=":2}`]] [[+total]] residenze per anziani in 8 Regioni.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+[[*content]]
+
+</main>
+[[$footer]]
+
+[[$footer-script]]
+
+</body>
+
+</html>

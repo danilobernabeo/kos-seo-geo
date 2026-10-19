@@ -1,0 +1,39 @@
+      <div class="contacts col-lg-5 col-xl-4 mb-4 mb-lg-0">
+        <div class="card h-auto bg-ice text-primary border-0">
+          <div class="card-body p-3 p-lg-4">
+            <h5 class="card-title">Contatti</h5>
+            <div class="card-text d-flex align-items-start">
+              <i class="text-azure bi bi-geo-alt"></i>
+              <div class="content-right ps-2 pb-3">
+                <span class="font-weight-600" data-yext-field="name" data-yext-id="[[*data-yext-id]]"></span>
+                <br><span data-yext-field="address1" data-yext-id="[[*data-yext-id]]"></span><br><span data-yext-field="zip" data-yext-id="[[*data-yext-id]]"></span> <span data-yext-field="city" data-yext-id="[[*data-yext-id]]"></span> <span data-yext-field="state" data-yext-id="[[*data-yext-id]]"></span>
+              </div>
+            </div>
+            <div class="card-text d-flex align-items-start">
+              <i class="text-azure bi bi-envelope"></i>
+              <div class="content-right ps-2 pb-3 text-truncate">
+                <a class="font-weight-600 text-decoration-underline" data-yext-field="email" data-yext-id="[[*data-yext-id]]"></a>
+              </div>
+            </div>
+            <div class="card-text d-flex align-items-start">
+              <i class="text-azure bi bi-person"></i>
+              <div class="content-right ps-2 pb-3 text-truncate">
+                <a href="mailto:[[*emailDirettore]]" title="Contatta il direttore della [[*pagetitle]]" class="font-weight-600 text-decoration-underline">[[*emailDirettore]]</a>
+             </div>
+            </div>
+            <div class="card-text d-flex align-items-start pb-3">
+              <i class="text-azure bi bi-telephone"></i>
+              <div class="content-right ps-2">
+                <a data-yext-field="phone" data-yext-id="[[*data-yext-id]]"></a>
+              </div>
+            </div>
+            <div class="card-text d-flex align-items-start pb-3">
+              <i class="text-azure bi bi-printer"></i>
+              <div class="content-right ps-2">
+                <span>0365 336160</span>
+              </div>
+            </div>
+            [[!ContactInfo]]
+          </div>
+        </div>
+      </div>

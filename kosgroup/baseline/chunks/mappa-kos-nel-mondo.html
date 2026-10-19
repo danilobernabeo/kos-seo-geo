@@ -1,0 +1,150 @@
+<div class="container" style="position: relative;">
+  <div id="mappa"></div>
+  <div id="custom-content-layer" class="custom-content-layer-dim">
+    <div id="custom-content"></div>
+  </div>
+</div>
+
+
+  <script src="https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/src/markerclusterer.js"></script>
+  <script>
+  
+    [[$mappa-aubergine]]
+
+function initMap() {
+  const mappa = new google.maps.Map(document.getElementById('mappa'), {
+    center: { lat: 48.1657, lng: 10.4515 },
+    zoom: 5,
+    styles: aubergineStyle
+  });
+
+  fetch('[[!++site_url]]assets/json/strutture.txt')
+    .then(response => response.json())
+    .then(data => {
+      const markers = data.map((struttura, index) => {
+        const customMarkerIconUrl = "/assets/img/" + struttura.pin;
+        
+        const marker = new google.maps.Marker({
+          position: { lat: struttura.lat, lng: struttura.lon },
+          map: mappa,
+          title: struttura.nome_struttura,
+          icon: customMarkerIconUrl
+        });
+
+        // Gestione tags
+        const maxTagsForFirstLoop = 3;
+        let tagHtmlfirst = '';
+        let tagHtmlsecond = '';
+        const tagsArray = struttura.tag.split(',');
+
+        for (let i = 0; i < tagsArray.length; i++) {
+          const tag = tagsArray[i];
+          if (i < maxTagsForFirstLoop) {
+            tagHtmlfirst += `<p class="maptipo">${tag}</p>`;
+          } else {
+            tagHtmlsecond += `<p class="maptipo">${tag}</p>`;
+          }
+        }
+
+        let tagsContent = '';
+        if (tagsArray.length > 3) {
+          tagsContent = `
+            <div class="col-12" style="display:flex; align-items:center;gap:10px;">
+              <p style="margin-bottom:0px;">
+                <img style="vertical-align: middle;position: relative;top: -2px;width: 16px;height: 16px;" src="${customMarkerIconUrl}">
+              </p>
+              ${tagHtmlfirst}
+              <p style="margin-bottom:0px;">
+                <button id="plus-${index}" style="background: none; border: none; display: block;" onclick="expandTags(${index})">
+                  <img style="vertical-align: middle;position: relative;top: -3px;" src="assets/img/icons/plus.svg">
+                </button>
+                <button id="minus-${index}" style="background: none; border: none; display: none;" onclick="collapseTags(${index})">
+                  <img style="vertical-align: middle;position: relative;top: -3px;" src="assets/img/icons/minus.svg">
+                </button>
+              </p>
+            </div>
+            <div class="col-12" id="tags-${index}" style="display: none; align-items: center; gap: 5px; margin-left: 20px; max-width: 100%; flex-wrap: wrap;">
+              ${tagHtmlsecond}
+            </div>`;
+        } else if (tagsArray.length >= 1) {
+          tagsContent = `
+            <div class="col-12" style="display:flex; align-items:center;gap:10px;">
+              <p style="margin-bottom:0px;">
+                <img style="vertical-align: middle;position: relative;top: -2px;width: 16px;height: 16px;" src="${customMarkerIconUrl}">
+              </p>
+              ${tagHtmlfirst}
+            </div>`;
+        }
+
+        const telephoneText = struttura.tel?.length > 5 
+          ? `<p class="mapp">
+              <img style="vertical-align: unset;position: relative;top: 2px;" src="assets/img/icons/phone.svg">
+              <a href="tel:${struttura.tel}">${struttura.tel}</a>
+            </p>`
+          : '';
+
+        marker.addListener('click', () => {
+          document.getElementById('custom-content').innerHTML = `
+            <div class="row" style="padding:10px;">
+              <div class="col-12">
+                <div class="col-12" id="close" style="display: block;">
+                  <p style="text-align:right;margin-top:-20px;margin-bottom:15px;">
+                    <button style="background:none;border:none;" onclick="toggleCustomElement()">
+                      <img src="assets/img/icons/close.svg">
+                    </button>
+                  </p>
+                </div>
+                ${tagsContent}
+                <div class="col-12">
+                  <p class="maptitle">${struttura.nome_struttura}</p>
+                  <img src="${struttura.img}" class="rounded img-fluid" style="margin-bottom:20px;">
+                  <p class="mapp">
+                    <img style="vertical-align: unset;position: relative;top: 2px;" src="assets/img/icons/adress.svg">
+                    ${struttura.indirizzo}
+                  </p>
+                  ${telephoneText}
+                </div>
+                <div class="col-12">
+                  <a class="btn hover-top btn-collab-map1" href="${struttura.link_sito}" target="_blank" role="button">
+                    SITO WEB <img class="iconbutton2" src="assets/img/icons/uniscitianoiarrow.svg">
+                  </a>
+                </div>
+              </div>
+            </div>`;
+          
+          document.getElementById('custom-content-layer').style.display = 'block';
+        });
+
+        return marker;
+      });
+
+      new MarkerClusterer(mappa, markers, {
+        imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+        maxZoom: 12,
+        gridSize: 50,
+        minimumClusterSize: 2,
+        zoomOnClick: true,
+        averageCenter: true
+      });
+    });
+}
+
+function toggleCustomElement() {
+  const element = document.getElementById("custom-content-layer");
+  element.style.display = element.style.display === "none" ? "block" : "none";
+}
+
+function expandTags(id) {
+  document.getElementById(`tags-${id}`).style.display = "flex";
+  document.getElementById(`minus-${id}`).style.display = "block";
+  document.getElementById(`plus-${id}`).style.display = "none";
+}
+
+function collapseTags(id) {
+  document.getElementById(`tags-${id}`).style.display = "none";
+  document.getElementById(`minus-${id}`).style.display = "none";
+  document.getElementById(`plus-${id}`).style.display = "block";
+}
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMuGmga1fmTSwLIAgVB6gyjiQeba0lCcM&callback=initMap"></script>

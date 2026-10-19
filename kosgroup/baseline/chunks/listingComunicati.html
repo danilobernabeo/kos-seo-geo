@@ -1,0 +1,72 @@
+<div class="row box-news">
+    <div class="col col-lg-9">
+        <table class="table table-bordered">
+        <caption class="sr-only">Comunicati stampa – elenco in ordine cronologico</caption>
+            <thead>
+                <tr>
+                    <th class="comunicato-data text-center" scope="col">DATA</th>
+                    <th class="comunicato-descrizione" scope="col">TITOLO</th>
+                    <th class="comunicato-allegato text-center" scope="col">ALLEGATO</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                [[!pdoPage?
+                    &parents=`33`
+                    &depth=`2`
+                    &limit=`10`
+                    &tpl=`@INLINE
+                        <tr>
+                            <th class="comunicato-data text-center" scope="row">
+                                <div class="data">
+                                    <span class="parte1">[[+formatted_date]]</span>
+                                </div>
+                            </th>
+                            <td id="com_[[+id]]" class="comunicato-descrizione">[[+pagetitle]]</td>
+                            <td class="comunicato-allegato text-center">
+                                <a class="btn btn-primary" href="[[+tv.comunicatoPdf]]" download aria-labelledby="com_[[+id]] dl_[[+id]]" target="_blank" rel="noopener">
+                                    <img src="/assets/img/download.svg" width="35" height="35" alt="" aria-hidden="true">
+                                    <span aria-hidden="true">PDF</span>
+				                    <span id="dl_[[+id]]" class="sr-only">
+                				      – scarica il comunicato (PDF)
+                				    </span>
+                                </a>
+                            </td>
+                        </tr>
+                    `
+                    &includeTVs=`comunicatoData,comunicatoPdf`
+                    &processTVs=`1`
+                    &prepareSnippet=`prepareComunicati`
+                    &sortby=`comunicatoData`
+                    &sortdir=`DESC`
+                    &where=`{"published":1,"deleted":0}`
+                    &tplPage=`@INLINE <li class="page-item[[+active:then=` active`]]"><a class="page-link" href="[[+href]]">[[+pageNo]]</a></li>`
+                    &tplPageWrapper=`@INLINE <div class="service__pagination">
+                        <nav aria-label="Paginazione">
+                            <ul class="pagination">
+                                [[+prev]]
+                                [[+pages]]
+                                [[+next]]
+                            </ul>
+                        </nav>
+                    </div>`
+                    &tplPagePrev=`@INLINE <li class="page-item">
+                        <a class="page-link" href="[[+href]]" aria-label="Pagina precedente">
+                            <span aria-hidden="true"><i class="far fa-chevron-left"></i></span>
+                            <span class="sr-only">Pagina precedente</span>
+                        </a>
+                    </li>`
+                    &tplPageNext=`@INLINE <li class="page-item">
+                        <a class="page-link" href="[[+href]]" aria-label="Pagina successiva">
+                            <span aria-hidden="true"><i class="far fa-chevron-right"></i></span>
+                            <span class="sr-only">Pagina successiva</span>
+                        </a>
+                    </li>`
+                    &showLog=`0`
+                ]]
+            </tbody>
+        </table>
+
+        [[!+page.nav]]
+    </div>
+</div>

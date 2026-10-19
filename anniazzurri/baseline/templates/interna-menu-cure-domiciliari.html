@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="it">
+
+[[$head]]
+
+<body class="soluzioni-cure-page region-page">
+[[$GTM_body]]
+
+[[$menu-sticky]]
+
+[[$menu-navbar]]
+
+[[$menu-side-navbar]]
+<main id="main-content" tabindex="-1">
+
+[[$breadcrumb-stripe]]
+
+[[$heading-interna-menu-cure-domiciliari]]
+
+  <div class="container py-4 py-lg-5 position-relative">
+    <div id="content-anchor"></div>
+    <div class="row">
+      <div class="col-12 col-lg-4 pb-3">
+        <div stripe-internal-menu="">
+          <div class="card bg-ice px-2 px-lg-4 border-0">
+            <div role="button" tabindex="0" class="mx-n2 mx-lg-n4 d-lg-none accordion text-primary bg-ice" data-bs-toggle="collapse" data-bs-target="#list-group" aria-expanded="true">
+              <div class="fs-2 icon-flag">
+                <i class="h-100 d-flex align-items-center justify-content-center bi bi-chevron-up"></i>
+              </div>
+              <div class="accordion-header d-flex align-items-center flex-grow-1 bg-blue-sky text-uppercase h-100 ps-3">Contenuto sezione</div>
+            </div>
+            <div id="list-group" class="d-lg-block collapse show py-3">
+          [[!Wayfinder?
+            &startId=`[[*parent]]`
+            &rowTpl=`menu-interna-row`
+            &outerTpl=`menu-interna-outer`
+            &hereTpl=`menu-interna-here`
+          ]]
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-8 pt-3 pt-lg-0">
+        [[*content]]
+      </div>
+    </div>
+  </div>
+
+</main>
+[[$footer]]
+
+[[$footer-script]]
+
+</body>
+
+</html>

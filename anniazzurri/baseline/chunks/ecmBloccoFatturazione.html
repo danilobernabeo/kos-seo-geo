@@ -1,0 +1,120 @@
+<fieldset class="mb-5" id="blocco-pagamento">
+  <legend class="h5 text-primary">Quota di iscrizione</legend>
+  <div class="row g-4">
+
+    <div class="col-12">
+      <p class="mb-0">[[+istruzioniPagamento:default=`Allega la ricevuta del bonifico effettuato. Il file resta allegato alla comunicazione e non viene conservato sul sito.`]]</p>
+    </div>
+
+    <div class="col-12 col-md-8">
+      <label class="form-label" for="allegato">Ricevuta di pagamento <span class="text-danger" aria-hidden="true">*</span></label>
+      <input class="form-control form-control-lg" id="allegato" name="allegato" type="file"
+             accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+             required aria-required="true" aria-describedby="err-allegato hint-allegato">
+      <span class="form-text" id="hint-allegato">Formati ammessi: PDF, JPG, PNG. Dimensione massima 5 MB.</span>
+      <span class="invalid-feedback d-block" id="err-allegato" role="alert">[[!+fi.error.allegato]]</span>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <label class="form-label" for="richiesta_fattura">Richiedi fattura <span class="text-danger" aria-hidden="true">*</span></label>
+      <select class="form-select form-select-lg" id="richiesta_fattura" name="richiesta_fattura" required aria-required="true" aria-describedby="err-richiesta_fattura">
+        <option value="">Seleziona</option>
+        <option value="No"[[!+fi.richiesta_fattura:is=`No`:then=` selected`]]>No</option>
+        <option value="Si"[[!+fi.richiesta_fattura:is=`Si`:then=` selected`]]>Sì</option>
+      </select>
+      <span class="invalid-feedback d-block" id="err-richiesta_fattura" role="alert">[[!+fi.error.richiesta_fattura]]</span>
+    </div>
+
+    <div class="col-12" id="wrap-fatturazione">
+      <fieldset class="border rounded p-3">
+        <legend class="form-label mb-2 px-2 w-auto">Dati per la fatturazione</legend>
+
+        <div class="row g-3 mb-3">
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="fintestatario" id="fself" value="self"
+                     [[!+fi.fintestatario:FormItIsChecked=`self`]]>
+              <label class="form-check-label" for="fself">Intesta la fattura a me, con i dati anagrafici indicati sopra</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="fintestatario" id="fother" value="other"
+                     [[!+fi.fintestatario:FormItIsChecked=`other`]]>
+              <label class="form-check-label" for="fother">Intesta la fattura a un altro soggetto</label>
+            </div>
+            <span class="invalid-feedback d-block" id="err-fintestatario" role="alert">[[!+fi.error.fintestatario]]</span>
+          </div>
+        </div>
+
+        <div class="row g-3" id="wrap-fself">
+          <div class="col-12 col-md-6">
+            <label class="form-label" for="fself_piva">Partita IVA <span class="text-danger" aria-hidden="true">*</span></label>
+            <input class="form-control" id="fself_piva" name="fself_piva" type="text" inputmode="numeric" maxlength="11"
+                   value="[[!+fi.fself_piva]]" aria-describedby="err-fself_piva">
+            <span class="invalid-feedback d-block" id="err-fself_piva" role="alert">[[!+fi.error.fself_piva]]</span>
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="form-label" for="fself_sid">Codice destinatario SDI o PEC <span class="text-danger" aria-hidden="true">*</span></label>
+            <input class="form-control" id="fself_sid" name="fself_sid" type="text"
+                   value="[[!+fi.fself_sid]]" aria-describedby="err-fself_sid hint-fself_sid">
+            <span class="form-text" id="hint-fself_sid">Codice a 7 caratteri oppure indirizzo PEC.</span>
+            <span class="invalid-feedback d-block" id="err-fself_sid" role="alert">[[!+fi.error.fself_sid]]</span>
+          </div>
+        </div>
+
+        <div class="row g-3" id="wrap-fother">
+          <div class="col-12">
+            <label class="form-label" for="fnominativo">Ragione sociale o nominativo <span class="text-danger" aria-hidden="true">*</span></label>
+            <input class="form-control" id="fnominativo" name="fnominativo" type="text"
+                   value="[[!+fi.fnominativo]]" aria-describedby="err-fnominativo">
+            <span class="invalid-feedback d-block" id="err-fnominativo" role="alert">[[!+fi.error.fnominativo]]</span>
+          </div>
+          <div class="col-12">
+            <label class="form-label" for="findirizzo">Indirizzo <span class="text-danger" aria-hidden="true">*</span></label>
+            <input class="form-control" id="findirizzo" name="findirizzo" type="text"
+                   value="[[!+fi.findirizzo]]" aria-describedby="err-findirizzo">
+            <span class="invalid-feedback d-block" id="err-findirizzo" role="alert">[[!+fi.error.findirizzo]]</span>
+          </div>
+          <div class="col-12 col-md-3">
+            <label class="form-label" for="fcap">CAP <span class="text-danger" aria-hidden="true">*</span></label>
+            <input class="form-control" id="fcap" name="fcap" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5"
+                   value="[[!+fi.fcap]]" aria-describedby="err-fcap">
+            <span class="invalid-feedback d-block" id="err-fcap" role="alert">[[!+fi.error.fcap]]</span>
+          </div>
+          <div class="col-12 col-md-5">
+            <label class="form-label" for="fcomune">Comune <span class="text-danger" aria-hidden="true">*</span></label>
+            <input class="form-control" id="fcomune" name="fcomune" type="text"
+                   value="[[!+fi.fcomune]]" aria-describedby="err-fcomune">
+            <span class="invalid-feedback d-block" id="err-fcomune" role="alert">[[!+fi.error.fcomune]]</span>
+          </div>
+          <div class="col-12 col-md-4">
+            <label class="form-label" for="fprovincia">Provincia <span class="text-danger" aria-hidden="true">*</span></label>
+            <select class="form-select" id="fprovincia" name="fprovincia" aria-describedby="err-fprovincia">
+              [[$ecmOptProvince? &selProvincia=`[[!+fi.fprovincia]]`]]
+            </select>
+            <span class="invalid-feedback d-block" id="err-fprovincia" role="alert">[[!+fi.error.fprovincia]]</span>
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="form-label" for="fcodice_fiscale">Codice fiscale <span class="text-danger" aria-hidden="true">*</span></label>
+            <input class="form-control text-uppercase" id="fcodice_fiscale" name="fcodice_fiscale" type="text" maxlength="16"
+                   value="[[!+fi.fcodice_fiscale]]" aria-describedby="err-fcodice_fiscale">
+            <span class="invalid-feedback d-block" id="err-fcodice_fiscale" role="alert">[[!+fi.error.fcodice_fiscale]]</span>
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="form-label" for="fpartita_iva">Partita IVA <span class="text-danger" aria-hidden="true">*</span></label>
+            <input class="form-control" id="fpartita_iva" name="fpartita_iva" type="text" inputmode="numeric" maxlength="11"
+                   value="[[!+fi.fpartita_iva]]" aria-describedby="err-fpartita_iva">
+            <span class="invalid-feedback d-block" id="err-fpartita_iva" role="alert">[[!+fi.error.fpartita_iva]]</span>
+          </div>
+          <div class="col-12">
+            <label class="form-label" for="fsid">Codice destinatario SDI o PEC <span class="text-danger" aria-hidden="true">*</span></label>
+            <input class="form-control" id="fsid" name="fsid" type="text"
+                   value="[[!+fi.fsid]]" aria-describedby="err-fsid">
+            <span class="invalid-feedback d-block" id="err-fsid" role="alert">[[!+fi.error.fsid]]</span>
+          </div>
+        </div>
+
+      </fieldset>
+    </div>
+
+  </div>
+</fieldset>

@@ -1,0 +1,21 @@
+{
+    "id": 55,
+    "name": "messaggioRingraziamento",
+    "caption": "Messaggio di ringraziamento",
+    "description": "",
+    "category": "Landing",
+    "type": "textarea",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "inputHeight": "140",
+        "textareaGrow": "true",
+        "textareaResizable": "true"
+    },
+    "output_properties": [],
+    "templates": [
+        15
+    ]
+}

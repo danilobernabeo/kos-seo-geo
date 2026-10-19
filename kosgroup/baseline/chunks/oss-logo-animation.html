@@ -1,0 +1,43 @@
+<!-- OSS logo animation – begin -->
+<style>
+  /* puoi spostare queste regole nel tuo foglio style.css */
+  .logo-animation-wrapper{
+    width:100%;
+    display:flex;
+    justify-content:center;      /* centratura orizzontale */
+    margin:2rem 0;               /* spazio sopra e sotto */
+  }
+  .logo-animation-wrapper video{
+    /* rapporto 1:1 indipendente dalla traccia mp4 */
+    aspect-ratio:1 / 1;
+    width:clamp(192px, 40vmin, 400px); /* responsive: min 125 px, max 260 px */
+    height:auto;                      /* mantiene il quadrato */
+    object-fit:contain;               /* nessun ritaglio */
+    border-radius:8px;                /* facoltativo – tondo morbido */
+    box-shadow:0 4px 10px rgba(0,0,0,.08); /* facoltativo */
+  }
+</style>
+
+<div class="logo-animation-wrapper">
+<video
+  src="/assets/img/progetti-speciali/oss-logo-animation.mp4"
+  autoplay loop muted playsinline preload="metadata"
+  aria-describedby="ossLogoDesc">
+
+  <!-- Traccia descrittiva -->
+  <track
+    kind="descriptions"
+    srclang="it"
+    label="Descrizione logo"
+    src="/assets/vtt/logo-oss.vtt"
+    default>
+
+  Il tuo browser non supporta il video HTML5.
+</video>
+
+<!-- Alternativa testuale per utenti non-multimedia -->
+<p id="ossLogoDesc" class="sr-only">
+  Animazione del logo OSS: un cuore feice appare avvolto da due braccia che lo confortano e lo proteggono, infine viene circondato dalla scritta Nel gruppo KOS io sono un OSS e il ciclo ricomincia.
+</p>
+</div>
+<!-- OSS logo animation – end -->

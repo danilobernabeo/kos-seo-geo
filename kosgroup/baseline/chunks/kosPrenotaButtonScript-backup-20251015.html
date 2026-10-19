@@ -1,0 +1,35 @@
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Trova TUTTI i bottoni con la classe 
+    var buttons = document.querySelectorAll('.kos-booking-btn');
+    
+    // Aggiunge il click handler a ciascuno
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            var sessionId = 'kos_' + Date.now() + '_' + Math.random().toString(36).substr(2,5);
+            var currentPage = window.location.pathname;
+            
+            // ???? DataLayer per GTM
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'booking_start',
+                'source_type': 'widget',  
+                'referrer_page': currentPage,
+                'booking_session_id': sessionId
+            });
+            
+            // ???? URL con cross-domain tracking
+            var finalUrl = 'https://app.tuotempo.com/mop/index.php?dbName=tt_kosgroup_portale' + 
+                          '&kos_session=' + sessionId + 
+                          '&kos_referrer=' + encodeURIComponent(currentPage);
+            
+            setTimeout(function() {
+                window.location.href = finalUrl;
+            }, 300);
+        });
+    });
+
+});
+</script>

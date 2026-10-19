@@ -1,0 +1,263 @@
+<!-- CHUNK: waveReportTemplate -->
+<div class="wave-accessibility-report">
+    <style>
+    .wave-report { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    .wave-header { background: #2c3e50; color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+    .wave-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; padding: 20px; background: #f8f9fa; }
+    .wave-stat-card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center; }
+    .wave-stat-number { font-size: 2em; font-weight: bold; margin-bottom: 5px; }
+    .wave-stat-label { color: #666; font-size: 0.9em; }
+    .wave-critical { color: #e74c3c; }
+    .wave-warning { color: #f39c12; }
+    .wave-success { color: #27ae60; }
+    .wave-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    .wave-table th, .wave-table td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+    .wave-table th { background: #34495e; color: white; }
+    .wave-priority-critica { background: #ffebee; }
+    .wave-priority-alta { background: #fff3e0; }
+    .wave-priority-media { background: #f3e5f5; }
+    .wave-priority-bassa { background: #e8f5e8; }
+    .wave-actions { margin-top: 20px; padding: 20px; background: #ecf0f1; border-radius: 8px; }
+    .wave-action-item { margin: 10px 0; padding: 10px; background: white; border-left: 4px solid #3498db; }
+    .wave-progress { width: 100%; height: 20px; background: #ddd; border-radius: 10px; overflow: hidden; }
+    .wave-progress-bar { height: 100%; transition: width 0.5s ease; }
+    </style>
+
+    <div class="wave-report">
+        <!-- Header -->
+        <div class="wave-header">
+            <h2>???? Report Accessibilità WAVE</h2>
+            <p>Analisi automatica conformità WCAG 2.1 - Aggiornato: [[+date:strtotime:date=`%d/%m/%Y %H:%M`]]</p>
+        </div>
+
+        [[+mode:eq=`check`:then=`
+        <!-- Statistiche Check Mode -->
+        <div class="wave-stats">
+            <div class="wave-stat-card">
+                <div class="wave-stat-number">[[+total_urls]]</div>
+                <div class="wave-stat-label">Pagine Verificate</div>
+            </div>
+            <div class="wave-stat-card">
+                <div class="wave-stat-number wave-critical">[[+total_errors]]</div>
+                <div class="wave-stat-label">Errori Totali</div>
+            </div>
+            <div class="wave-stat-card">
+                <div class="wave-stat-number [[+critical_urls:gt=`0`:then=`wave-critical`:else=`wave-success`]]">[[+critical_urls]]</div>
+                <div class="wave-stat-label">Pagine Critiche</div>
+            </div>
+            <div class="wave-stat-card">
+                <div class="wave-stat-number wave-[[+compliance_percentage:gt=`80`:then=`success`:else=`warning`]]">
+                    [[+total_errors:eq=`0`:then=`100`:else=`[[+compliance_percentage:default=`0`]]`]]%
+                </div>
+                <div class="wave-stat-label">Conformità</div>
+            </div>
+        </div>
+
+        <!-- Tabella Risultati Dettagliati -->
+        <table class="wave-table">
+            <thead>
+                <tr>
+                    <th>???? Pagina</th>
+                    <th>???? Errori</th>
+                    <th>⚠️ Alert</th>
+                    <th>✅ Features</th>
+                    <th>???? Priorità</th>
+                    <th>???? Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                [[+results:default=`<tr><td colspan="6">Nessun risultato disponibile</td></tr>`]]
+                [[+results:is=`array`:then=`
+                [[+results:each=`
+                <tr class="wave-priority-[[+priority]]">
+                    <td>
+                        <a href="[[+url]]" target="_blank" title="Apri pagina">
+                            [[+url:replace=`[[++site_url]]=/`:replace=`/= / `]]
+                        </a>
+                    </td>
+                    <td>
+                        <span class="wave-[[+errors:gt=`0`:then=`critical`:else=`success`]]">
+                            [[+errors]]
+                        </span>
+                    </td>
+                    <td>[[+alerts]]</td>
+                    <td>[[+features]]</td>
+                    <td>
+                        <span class="badge badge-[[+priority:eq=`critica`:then=`danger`:else=`[[+priority:eq=`alta`:then=`warning`:else=`secondary`]]`]]">
+                            [[+priority:ucfirst]]
+                        </span>
+                    </td>
+                    <td>
+                        [[+errors:gt=`0`:then=`
+                        <small>
+                            [[+contrast_errors:gt=`0`:then=`???? Contrasti ([[+contrast_errors]])<br>`]]
+                            [[+missing_alt:gt=`0`:then=`????️ Alt text ([[+missing_alt]])<br>`]]
+                            [[+form_issues:gt=`0`:then=`???? Form ([[+form_issues]])<br>`]]
+                            [[+heading_issues:gt=`0`:then=`???? Heading ([[+heading_issues]])<br>`]]
+                        </small>
+                        `:else=`✅ Conforme`]]
+                    </td>
+                </tr>
+                `]]
+                `]]
+            </tbody>
+        </table>
+        `]]
+
+        [[+mode:eq=`dashboard`:then=`
+        <!-- Dashboard Mode -->
+        <div class="wave-stats">
+            <div class="wave-stat-card">
+                <div class="wave-stat-number">[[+results:count]]</div>
+                <div class="wave-stat-label">Verifiche Oggi</div>
+            </div>
+        </div>
+        
+        <h3>???? Top Priorità</h3>
+        <table class="wave-table">
+            <thead>
+                <tr>
+                    <th>Pagina</th>
+                    <th>Errori</th>
+                    <th>Ultimo Check</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                [[+results:each=`
+                <tr>
+                    <td>[[+url:replace=`[[++site_url]]=/`]]</td>
+                    <td class="wave-[[+errors:gt=`0`:then=`critical`:else=`success`]]">[[+errors]]</td>
+                    <td>[[+timestamp:strtotime:date=`%H:%M`]]</td>
+                    <td>[[+status:eq=`success`:then=`✅`:else=`❌`]]</td>
+                </tr>
+                `]]
+            </tbody>
+        </table>
+        `]]
+
+        [[+mode:eq=`report`:then=`
+        <!-- Report Mode -->
+        <div class="wave-stats">
+            <div class="wave-stat-card">
+                <div class="wave-stat-number">[[+report.total_checks]]</div>
+                <div class="wave-stat-label">Check Settimanali</div>
+            </div>
+            <div class="wave-stat-card">
+                <div class="wave-stat-number">[[+report.avg_errors:number_format]]</div>
+                <div class="wave-stat-label">Media Errori</div>
+            </div>
+            <div class="wave-stat-card">
+                <div class="wave-stat-number wave-[[+report.compliance_score:gt=`80`:then=`success`:else=`warning`]]">
+                    [[+report.compliance_score]]%
+                </div>
+                <div class="wave-stat-label">Score Conformità</div>
+            </div>
+        </div>
+
+        <div class="wave-progress">
+            <div class="wave-progress-bar wave-[[+report.compliance_score:gt=`80`:then=`success`:else=`warning`]]" 
+                 style="width: [[+report.compliance_score]]%; background: [[+report.compliance_score:gt=`80`:then=`#27ae60`:else=`#f39c12`]];"></div>
+        </div>
+        `]]
+
+        <!-- Azioni Raccomandante -->
+        <div class="wave-actions">
+            <h3>⚡ Azioni Immediate per Conformità EAA 2025</h3>
+            
+            [[+total_errors:gt=`0`:then=`
+            <div class="wave-action-item">
+                <strong>???? PRIORITÀ CRITICA:</strong>
+                Risolvere [[+total_errors]] errori di accessibilità entro il 28 giugno 2025
+            </div>
+            `]]
+            
+            [[+critical_urls:gt=`0`:then=`
+            <div class="wave-action-item">
+                <strong>???? FOCUS:</strong>
+                [[+critical_urls]] pagine richiedono intervento immediato (>10 errori)
+            </div>
+            `]]
+            
+            <div class="wave-action-item">
+                <strong>???? PROSSIMI PASSI:</strong>
+                <ol>
+                    <li>Correggere errori di contrasto colori</li>
+                    <li>Aggiungere alt text alle immagini</li>
+                    <li>Verificare form labels</li>
+                    <li>Pubblicare Dichiarazione di Accessibilità</li>
+                </ol>
+            </div>
+            
+            <div class="wave-action-item">
+                <strong>???? MONITORING:</strong>
+                <a href="[[~[[*id]]]]?mode=dashboard" class="btn btn-primary">Vai al Dashboard</a>
+                <a href="[[~[[*id]]]]?mode=report" class="btn btn-secondary">Report Settimanale</a>
+                <a href="[[~[[*id]]]]?mode=check" class="btn btn-success">Nuova Verifica</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CHUNK: waveEmailTemplate (per notifiche automatiche) -->
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+    <div style="background: #2c3e50; color: white; padding: 20px; text-align: center;">
+        <h2>???? Alert Accessibilità WAVE</h2>
+        <p>Report automatico - [[+date:strtotime:date=`%d/%m/%Y`]]</p>
+    </div>
+    
+    <div style="padding: 20px; background: #f8f9fa;">
+        <h3>Riepilogo Situazione</h3>
+        <ul>
+            <li><strong>Pagine verificate:</strong> [[+total_urls]]</li>
+            <li><strong>Errori totali:</strong> [[+total_errors]]</li>
+            <li><strong>Pagine critiche:</strong> [[+critical_urls]]</li>
+        </ul>
+        
+        [[+critical_urls:gt=`0`:then=`
+        <div style="background: #ffebee; border-left: 4px solid #e74c3c; padding: 15px; margin: 20px 0;">
+            <strong>⚠️ ATTENZIONE:</strong> 
+            [[+critical_urls]] pagine hanno più di 10 errori di accessibilità.
+            Intervento urgente richiesto per conformità EAA 2025.
+        </div>
+        `]]
+        
+        <p><a href="[[++site_url]]manager/" style="background: #3498db; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Vai al Manager MODX</a></p>
+    </div>
+</div>
+
+<!-- CHUNK: waveWidgetDashboard (per Manager MODX) -->
+<div class="wave-dashboard-widget">
+    <h3>???? Accessibilità WAVE</h3>
+    
+    [[+results:count:gt=`0`:then=`
+    <div class="wave-mini-stats">
+        <div class="stat">
+            <span class="number">[[+total_errors:default=`0`]]</span>
+            <span class="label">Errori</span>
+        </div>
+        <div class="stat">
+            <span class="number">[[+compliance_score:default=`0`]]%</span>
+            <span class="label">Conformità</span>
+        </div>
+    </div>
+    
+    <div class="wave-quick-actions">
+        <a href="[[~[[++wave_report_resource]]]]?mode=check" class="btn btn-sm btn-primary">Verifica Now</a>
+        <a href="[[~[[++wave_report_resource]]]]" class="btn btn-sm btn-secondary">Report</a>
+    </div>
+    `:else=`
+    <p>Nessuna verifica recente.</p>
+    <a href="[[~[[++wave_report_resource]]]]?mode=check" class="btn btn-primary">Prima Verifica</a>
+    `]]
+    
+    <style>
+    .wave-dashboard-widget { padding: 15px; }
+    .wave-mini-stats { display: flex; gap: 15px; margin: 15px 0; }
+    .wave-mini-stats .stat { text-align: center; flex: 1; }
+    .wave-mini-stats .number { display: block; font-size: 1.5em; font-weight: bold; }
+    .wave-mini-stats .label { font-size: 0.8em; color: #666; }
+    .wave-quick-actions { margin-top: 15px; }
+    .wave-quick-actions .btn { margin-right: 5px; }
+    </style>
+</div>

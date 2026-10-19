@@ -1,0 +1,22 @@
+{
+    "id": 27,
+    "name": "evento_sottotitolo",
+    "caption": "",
+    "description": "",
+    "category": "KOSAcademy",
+    "type": "text",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        61
+    ]
+}

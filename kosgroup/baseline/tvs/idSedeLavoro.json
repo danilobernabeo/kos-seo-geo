@@ -1,0 +1,23 @@
+{
+    "id": 41,
+    "name": "idSedeLavoro",
+    "caption": "id della Sede di lavoro",
+    "description": "",
+    "category": "Medici",
+    "type": "text",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        8,
+        12
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "id": 16,
+    "name": "regione",
+    "caption": "Regione di recruiting",
+    "description": "",
+    "category": "",
+    "type": "text",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        35,
+        37,
+        54
+    ]
+}

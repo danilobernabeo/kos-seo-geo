@@ -1,0 +1,26 @@
+{
+    "id": 46,
+    "name": "descrizioneHome",
+    "caption": "Descrizione box homepage",
+    "description": "",
+    "category": "Contenuti",
+    "type": "text",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        6,
+        13,
+        14,
+        16,
+        20
+    ]
+}

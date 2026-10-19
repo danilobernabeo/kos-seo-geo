@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://assets.sitescdn.net/answers/v1.7.0/answers.css">
+<script>
+function initAnswers() {
+    ANSWERS.init({
+        apiKey: 'db3887930e1b19bc3ce1da86a637388a',
+        experienceKey: 'it-answer-anniazzurri',
+        experienceVersion: 'PRODUCTION',
+        locale: 'it',
+        businessId: '2183129',
+        onReady: function () {
+            ANSWERS.addComponent('SearchBar', {
+                container: '.search_form',
+                redirectUrl: '[[!++site_url]]cerca',
+                submitIcon: "magnifying_glass",
+                placeholderText: 'Descrivi la tua necessità'
+            });
+        }
+    });
+}
+</script>
+<script src="https://assets.sitescdn.net/answers/v1.7.0/answers.min.js" onload="ANSWERS.domReady(initAnswers)" async defer></script>

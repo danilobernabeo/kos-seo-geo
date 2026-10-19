@@ -1,0 +1,25 @@
+{
+    "id": 17,
+    "name": "bgCitazione",
+    "caption": "Immagine citazione",
+    "description": "",
+    "category": "Contenuti",
+    "type": "image",
+    "elements": null,
+    "default_text": "/assets/img/servizi-main-bg-2.jpg",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": [],
+    "templates": [
+        2,
+        4,
+        6,
+        13,
+        14,
+        16,
+        18,
+        20
+    ]
+}

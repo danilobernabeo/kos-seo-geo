@@ -1,0 +1,21 @@
+{
+    "id": 64,
+    "name": "translationId",
+    "caption": "Id pagina italiana",
+    "description": "",
+    "category": "English version",
+    "type": "number",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minValue": "",
+        "maxValue": "",
+        "allowDecimals": "0"
+    },
+    "output_properties": [],
+    "templates": [
+        20
+    ]
+}

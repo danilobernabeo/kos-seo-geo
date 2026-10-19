@@ -1,0 +1,24 @@
+{
+    "id": 35,
+    "name": "embedCode",
+    "caption": "Codice di embed yt",
+    "description": "",
+    "category": "Video",
+    "type": "text",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        7,
+        10,
+        11
+    ]
+}

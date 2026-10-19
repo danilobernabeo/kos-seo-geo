@@ -1,0 +1,30 @@
+{
+    "id": 7,
+    "name": "approfondimenti",
+    "caption": "Approfondimenti",
+    "description": "",
+    "category": "Contenuti",
+    "type": "textarea",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "inputHeight": "140",
+        "textareaGrow": "false",
+        "textareaResizable": "false"
+    },
+    "output_properties": [],
+    "templates": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        13,
+        14,
+        16,
+        18,
+        20
+    ]
+}

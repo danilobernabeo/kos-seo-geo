@@ -1,0 +1,276 @@
+[[!FormIt? 
+  &hooks=`recaptchav3,spam,setDynamicBCC,FormItSaveForm,email,redirect` 
+  &formEncrypt=`1` 
+  &emailTpl=`contactLandingFormEmail_SAN` 
+  &validate=`name:required,surname:required,email:required:email,cellulare:required:regex:^[0-9\s\-+()]{9,20}$,specializzazione:required,privacy:required` 
+  &validationErrorMessage=`Si sono verificati alcuni errori.` 
+  &placeholderPrefix=`fi.` 
+  &emailSubject=`Richiesta di contatto - [[+surname]]` 
+  &emailTo=`[[+email]]` 
+  &emailFrom=`sanpancrazio@kosgroup.com` 
+  &emailFromName=`Ospedale San Pancrazio` 
+  &redirectTo=`855` 
+]]
+
+<div class="row mt-4">
+  <form id="[[*pagetitle]]" action="[[~[[*id]]]]" method="post" class="content-left text-brown col-12">
+    <input type="hidden" name="nospam:blank" />
+  
+    <div class="mb-3 row g-4">
+  
+       <div class="col-12 col-md-6">
+        <label class="form-label text-white" for="name">Nome*</label>
+        <input class="form-control form-control-lg" id="name" name="name" type="text" required />
+       </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label text-white" for="surname">Cognome*</label>
+            <input class="form-control form-control-lg" id="surname" name="surname" type="text" required />
+        </div>
+
+        <div class="col-12 col-md-12">
+            <label class="form-label text-white" for="email">Email*</label>
+            <input class="form-control form-control-lg" id="email" name="email"  type="email" required />
+            [[!+fi.error.email:notempty=`<span class="error">[[!+fi.error.email]]</span>`]]
+        </div>
+
+        <div class="col-12 col-md-12">
+            <label class="form-label text-white" for="cellulare">Cellulare*</label>
+            <input class="form-control form-control-lg" id="cellulare" name="cellulare" 
+                   type="text" 
+                   pattern="[0-9\s\-+()]{9,20}" 
+                   title="Inserisci un numero di telefono valido con almeno 9 caratteri." 
+                   required />
+            <div class="invalid-feedback" id="phone-feedback">Inserisci un numero di telefono valido con almeno 9 caratteri.</div>
+            [[!+fi.error.cellulare:notempty=`<span class="error">[[!+fi.error.cellulare]]</span>`]]
+        </div>
+
+        <div class="col-12 col-md-12">
+            <label class="form-label text-white" for="specializzazione">Sono interessato a *</label>
+            <select class="form-control form-control-lg" id="specializzazione" name="specializzazione" required>
+                <option value="">Seleziona un argomento</option>
+                <option value="info-generali">Informazioni generali</option>
+                <option value="pavimento-pelvico">Pavimento pelvico e ginnastica pelvica</option>
+                <option value="onde-urto">Terapia con le onde d'urto</option>
+                <option value="gastroenterologia">Gastroenterologia</option>
+            </select>
+            [[!+fi.error.specializzazione:notempty=`<span class="error">[[!+fi.error.specializzazione]]</span>`]]
+            <div id="specializzazione-error" class="text-danger mt-1" style="display: none; font-size: 0.875rem;">
+                <strong>⚠ Seleziona un argomento.</strong>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-12 mb-4">
+            <label class="form-label text-white" for="messaggio">Vuoi dirci qualcosa?</label>
+            <textarea class="form-control" id="messaggio" name="messaggio" rows="5" placeholder="Scrivi qui il tuo messaggio..."></textarea>
+        </div>
+
+    </div>
+
+    <div class="row mb-2 mt-2">
+     <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" id="privacy" name="privacy" type="checkbox" value="accetto" required />
+                <label class="form-check-label small text-white" for="privacy">Ho letto l'<a class="text-azure text-decoration-underline" href="/assets/doc/kos-care-gdpr-informativa.pdf" target="_blank">Informativa sul trattamento dei miei dati personali</a> ed acconsento alla loro elaborazione nelle formule espresse.</label>
+                [[!+fi.error.privacy:notempty=`<span class="error">[[!+fi.error.privacy]]</span>`]]
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            <div class="col-sm-12 col-md-offset-1">
+                [[!recaptchav3_render]]
+                [[!+fi.error.recaptchav3_error]]
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 mb-5">
+            <div class="d-flex justify-content-center py-5">
+              <button name="submit" type="submit" class="btn btn-primary btn-orange">Invia la tua richiesta</button>
+            </div>
+        </div>
+    </div>
+  </form>
+</div>
+
+<style>
+/* Select nativa stilizzata */
+select#specializzazione {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 12px;
+    padding-right: 2.5rem !important;
+    display: block !important;
+}
+
+select#specializzazione:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+select#specializzazione.is-invalid {
+    border-color: #dc3545 !important;
+    background-color: rgba(220, 53, 69, 0.05) !important;
+}
+
+select#specializzazione.is-valid {
+    border-color: #28a745 !important;
+}
+
+/* Nascondi nice-select se esiste ancora */
+#specializzazione + .nice-select {
+    display: none !important;
+}
+</style>
+
+<script>
+// Funzione per scroll al form con precompilazione select
+function scrollToContactWithSpec(event, specValue) {
+    event.preventDefault();
+    
+    // Aggiorna l'URL con il parametro spec
+    const url = new URL(window.location);
+    url.searchParams.set('spec', specValue);
+    window.history.pushState({}, '', url);
+    
+    // Precompila immediatamente la select
+    const selectElement = document.getElementById('specializzazione');
+    if (selectElement) {
+        selectElement.value = specValue;
+        
+        // Evidenzia temporaneamente
+        selectElement.style.boxShadow = '0 0 0 3px rgba(242, 128, 65, 0.3)';
+        selectElement.style.borderColor = '#f28041';
+        
+        setTimeout(() => {
+            selectElement.style.boxShadow = '';
+            selectElement.style.borderColor = '';
+        }, 2000);
+    }
+    
+    // Scroll al form
+    const targetElement = document.getElementById('contatti');
+    if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const selectElement = document.getElementById('specializzazione');
+    const errorDiv = document.getElementById('specializzazione-error');
+    const form = document.querySelector('form');
+    
+    // ASPETTA che nice-select sia stato applicato, poi distruggilo
+    setTimeout(function() {
+        // Distruggi nice-select su questo campo
+        if ($(selectElement).next('.nice-select').length) {
+            $(selectElement).next('.nice-select').remove();
+            $(selectElement).show();
+        }
+        
+        console.log('Nice-select rimosso dalla select specializzazione');
+    }, 100);
+    
+    // ===== PRECOMPILAZIONE SELECT =====
+    setTimeout(function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const spec = urlParams.get('spec');
+        
+        if (spec && selectElement) {
+            selectElement.value = spec;
+            selectElement.style.boxShadow = '0 0 0 3px rgba(242, 128, 65, 0.3)';
+            selectElement.style.borderColor = '#f28041';
+            
+            setTimeout(() => {
+                selectElement.style.boxShadow = '';
+                selectElement.style.borderColor = '';
+            }, 2000);
+        }
+    }, 150);
+    
+    // ===== VALIDAZIONE TELEFONO =====
+    const phoneInput = document.getElementById('cellulare');
+    const phonePattern = /^[0-9\s\-+()]*$/;
+    
+    phoneInput.addEventListener('input', function() {
+        if (!phonePattern.test(this.value)) {
+            this.value = this.value.slice(0, -1);
+        }
+        
+        if (this.value.length > 0) {
+            if (this.value.length < 9) {
+                this.classList.add('is-invalid');
+                this.classList.remove('is-valid');
+            } else {
+                this.classList.add('is-valid');
+                this.classList.remove('is-invalid');
+            }
+        } else {
+            this.classList.remove('is-valid', 'is-invalid');
+        }
+    });
+    
+    phoneInput.addEventListener('blur', function() {
+        if (this.value.length > 0 && this.value.length < 9) {
+            this.classList.add('is-invalid');
+        }
+    });
+    
+    // ===== VALIDAZIONE SELECT =====
+    selectElement.addEventListener('change', function() {
+        console.log('Select changed:', this.value);
+        if (this.value === '') {
+            this.classList.add('is-invalid');
+            this.classList.remove('is-valid');
+            errorDiv.style.display = 'block';
+            console.log('Mostro errore');
+        } else {
+            this.classList.remove('is-invalid');
+            this.classList.add('is-valid');
+            errorDiv.style.display = 'none';
+            console.log('Nascondo errore');
+        }
+    });
+    
+    // ===== VALIDAZIONE AL SUBMIT =====
+    form.addEventListener('submit', function(e) {
+        console.log('Submit form');
+        let isValid = true;
+        let firstError = null;
+        
+        // Verifica telefono
+        if (phoneInput.value.length < 9) {
+            e.preventDefault();
+            phoneInput.classList.add('is-invalid');
+            if (!firstError) firstError = phoneInput;
+            isValid = false;
+            console.log('Errore telefono');
+        }
+        
+        // Verifica select
+        if (selectElement.value === '') {
+            e.preventDefault();
+            selectElement.classList.add('is-invalid');
+            errorDiv.style.display = 'block';
+            if (!firstError) firstError = selectElement;
+            isValid = false;
+            console.log('Errore select, valore:', selectElement.value);
+        }
+        
+        if (!isValid) {
+            if (firstError) {
+                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            return false;
+        }
+    });
+});
+</script>

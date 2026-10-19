@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it">
+
+[[$head-video]]
+
+<body>
+
+[[$GTM_body]]
+
+    <a href="[[~[[*id]]]]#main-content" class="skip-link">Vai al contenuto principale</a>
+    <div class="main__area" id="main-content" tabindex="-1">
+
+    [[$menu]]
+
+
+    <div class="main__content" id="skip-target" tabindex="-1">
+
+        <section>
+            <div class="container"> 
+
+                [[$breadcrumb]]
+
+                <div class="box-foto-full pb-3 px-0">
+                    <div class="responsive-yt">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/[[*embedCode]]" title="video [[*pagetitle]]" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+
+                <div class="row align-items-start">  
+                    <div id="intro-pagina-foto" class="col-12 col-lg-8">
+                        
+                        <div id="intro-pagina-foto-content-txt">
+                            <h1>[[*pagetitle]]</h1>
+                            [[!DisplayResourceTags? &showFallback=`0`]]
+                        </div>
+
+                        <div id="contenuto-articolo" data-aos="fade-up">
+
+                            <div id="testo-articolo">
+                                [[*introtext:notempty=`<h2>[[*introtext]]</h2>`]]
+                                [[*content]]
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-inline d-block d-lg-none"> 
+
+                            <aside class="sidebar-content box-social bg-grigio" aria-label="Condivisione sui social network">
+                                [[$condividiSocial]]
+                            </aside>
+                        </div>
+
+                    </div>
+                    <!-- fine contenuto prima di sidebar-->
+
+
+                    <div class="col-12 col-lg-4 sticky-sidebar sidebar-right d-none d-lg-block"> 
+                        <div class="sidebar__inner">
+
+                            <aside class="sidebar-content box-social bg-grigio" aria-label="Condivisione sui social network">
+                                [[$condividiSocial]]
+                            </aside>
+
+                        </div>
+                    </div>
+                        
+                    </div>
+                </div>
+        </section>
+
+        [[$news-correlate]]
+
+
+        [[$kosplayer-banner]]
+
+        </div>
+
+    [[$footer]]
+
+    </div>
+
+<button id="backToTop" title="Torna su">↑</button>
+
+[[$scripts]]
+
+</body>
+
+</html>

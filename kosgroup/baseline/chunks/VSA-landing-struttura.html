@@ -1,0 +1,284 @@
+<style>
+    #vsaSlider,
+    #vsaSlider * {
+        box-sizing: border-box;
+    }
+    #vsaSlider {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    #vsaSliderTrack {
+        display: flex !important;
+        width: 100% !important;
+    }
+    .vsa-slider__slide {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+    .vsa-slider__slide img {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: none !important;
+        min-height: 0 !important;
+        object-fit: none !important;
+        display: block !important;
+    }
+
+    /* ---------- Slider ---------- */
+    .vsa-slider {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem;
+    }
+
+    .vsa-slider__track {
+        display: flex;
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: transform;
+    }
+
+    .vsa-slider__track.is-dragging {
+        transition: none;
+    }
+
+    .vsa-slider__slide {
+        min-width: 100%;
+        flex-shrink: 0;
+    }
+
+    .vsa-slider__slide img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 1rem;
+    }
+
+    /* ---------- Dots ---------- */
+    .vsa-slider__dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .vsa-slider__dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: none;
+        background-color: #ccc;
+        cursor: pointer;
+        padding: 0;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .vsa-slider__dot:hover {
+        background-color: #999;
+    }
+
+    .vsa-slider__dot.is-active {
+        background-color: var(--bs-primary, #0d6efd);
+        transform: scale(1.25);
+    }
+</style>
+
+<div class="container">
+    <div class="w-100 bg-white py-3 mb-3">
+        <div class="position-relative overflow-hidden container">
+            <div class="row g-4 pt-4 pb-2 align-items-center">
+
+                <div class="col-12 col-lg-6 ps-lg-5">
+                    <h2 class="text-primary pb-3">Dove ti accoglieremo</h2>
+                    <p>Villa Sant'Alessandro è immersa nel verde della Via Nomentana, a pochi minuti dal centro di Roma. Un ambiente <b>riservato e accogliente</b>, progettato per farti sentire a tuo agio fin dal primo momento.</p>
+                    <p>Gli spazi — interni ed esterni — sono pensati per favorire il <b>benessere e la tranquillità</b>: sale luminose per i colloqui individuali, aree dedicate alle attività di gruppo e un ampio giardino dove ritrovare un momento di calma.</p>
+                    <p>Un luogo di cura che non sembra un luogo di cura — ma uno spazio dove prenderti il tempo per <b>stare meglio</b>.</p>
+                    <p class="py-3">
+                        <a class="btn btn-primary"
+                           href="#contatti"
+                           onclick="scrollToAnchor(event, 'contatti')"
+                           title="Vieni a trovarci">Vieni a trovarci</a>
+                    </p>
+                </div>
+
+                <div class="col-12 col-lg-6 pe-lg-4">
+                    <div class="vsa-slider" id="vsaSlider">
+                        <div class="vsa-slider__track" id="vsaSliderTrack">
+                            <!-- Slide 1 -->
+                            <div class="vsa-slider__slide">
+                                <img src="/assets/img/struttura-vsa-01.jpg"
+                                     alt="Vista esterna di Villa Sant'Alessandro"
+                                     loading="lazy">
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="vsa-slider__slide">
+                                <img src="/assets/img/struttura-vsa-02.jpg"
+                                     alt="Reception di Villa Sant'Alessandro"
+                                     loading="lazy">
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="vsa-slider__slide">
+                                <img src="/assets/img/struttura-vsa-03.jpg"
+                                     alt="Palestra di Villa Sant'Alessandro"
+                                     loading="lazy">
+                            </div>
+                            <!-- Slide 4 -->
+                            <div class="vsa-slider__slide">
+                                <img src="/assets/img/struttura-vsa-04.jpg"
+                                     alt="Attività in giardino di Villa Sant'Alessandro"
+                                     loading="lazy">
+                            </div>
+                            <div class="vsa-slider__slide">
+                                <img src="/assets/img/struttura-vsa-05.jpg"
+                                     alt="Team multidisciplinare di Villa Sant'Alessandro"
+                                     loading="lazy">
+                            </div>
+                            <div class="vsa-slider__slide">
+                                <img src="/assets/img/struttura-vsa-06.jpg"
+                                     alt="Spazi interni comuni di Villa Sant'Alessandro"
+                                     loading="lazy">
+                            </div>
+                            <div class="vsa-slider__slide">
+                                <img src="/assets/img/struttura-vsa-07.jpg"
+                                     alt="Palestra di Villa Sant'Alessandro"
+                                     loading="lazy">
+                            </div>
+                            <div class="vsa-slider__slide">
+                                <img src="/assets/img/struttura-vsa-08.jpg"
+                                     alt="Spazi interni comuni di Villa Sant'Alessandro"
+                                     loading="lazy">
+                            </div>
+                        </div>
+                        <div class="vsa-slider__dots" id="vsaSliderDots"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    /**
+     * Slider vanilla JS — touch/mouse, dots, autoplay opzionale
+     * Nessuna dipendenza esterna
+     */
+    (function () {
+        'use strict';
+
+        var track = document.getElementById('vsaSliderTrack');
+        var dotsContainer = document.getElementById('vsaSliderDots');
+        if (!track || !dotsContainer) return;
+
+        var slides = track.querySelectorAll('.vsa-slider__slide');
+        var total = slides.length;
+        var current = 0;
+
+        /* --- Crea dots --- */
+        for (var i = 0; i < total; i++) {
+            var dot = document.createElement('button');
+            dot.className = 'vsa-slider__dot' + (i === 0 ? ' is-active' : '');
+            dot.setAttribute('aria-label', 'Vai alla foto ' + (i + 1));
+            dot.dataset.index = i;
+            dotsContainer.appendChild(dot);
+        }
+
+        var dots = dotsContainer.querySelectorAll('.vsa-slider__dot');
+
+        function goTo(index) {
+            if (index < 0) index = total - 1;
+            if (index >= total) index = 0;
+            current = index;
+            track.style.transform = 'translateX(-' + (current * 100) + '%)';
+            for (var j = 0; j < dots.length; j++) {
+                dots[j].classList.toggle('is-active', j === current);
+            }
+        }
+
+        /* --- Click sui dots --- */
+        dotsContainer.addEventListener('click', function (e) {
+            var btn = e.target.closest('.vsa-slider__dot');
+            if (btn) goTo(parseInt(btn.dataset.index, 10));
+        });
+
+        /* --- Touch / Mouse drag --- */
+        var startX = 0;
+        var moveX = 0;
+        var isDragging = false;
+        var threshold = 40; // px minimi per considerare uno swipe
+
+        function onDragStart(x) {
+            isDragging = true;
+            startX = x;
+            moveX = 0;
+            track.classList.add('is-dragging');
+        }
+
+        function onDragMove(x) {
+            if (!isDragging) return;
+            moveX = x - startX;
+            var offset = -(current * 100);
+            var pxToPercent = (moveX / track.offsetWidth) * 100;
+            track.style.transform = 'translateX(' + (offset + pxToPercent) + '%)';
+        }
+
+        function onDragEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            track.classList.remove('is-dragging');
+            if (Math.abs(moveX) > threshold) {
+                goTo(moveX < 0 ? current + 1 : current - 1);
+            } else {
+                goTo(current);
+            }
+        }
+
+        /* Touch events */
+        track.addEventListener('touchstart', function (e) {
+            onDragStart(e.touches[0].clientX);
+        }, { passive: true });
+
+        track.addEventListener('touchmove', function (e) {
+            onDragMove(e.touches[0].clientX);
+        }, { passive: true });
+
+        track.addEventListener('touchend', onDragEnd);
+
+        /* Mouse events */
+        track.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            onDragStart(e.clientX);
+        });
+
+        document.addEventListener('mousemove', function (e) {
+            onDragMove(e.clientX);
+        });
+
+        document.addEventListener('mouseup', onDragEnd);
+
+        /* Previeni drag nativo delle immagini */
+        track.addEventListener('dragstart', function (e) {
+            e.preventDefault();
+        });
+
+        /* --- Autoplay opzionale (ogni 5s, si ferma al drag) --- */
+        var autoplayInterval = setInterval(function () {
+            if (!isDragging) goTo(current + 1);
+        }, 5000);
+
+        /* Ferma autoplay al primo tocco/interazione */
+        var stopAutoplay = function () {
+            clearInterval(autoplayInterval);
+            track.removeEventListener('touchstart', stopAutoplay);
+            track.removeEventListener('mousedown', stopAutoplay);
+            dotsContainer.removeEventListener('click', stopAutoplay);
+        };
+
+        track.addEventListener('touchstart', stopAutoplay, { passive: true });
+        track.addEventListener('mousedown', stopAutoplay);
+        dotsContainer.addEventListener('click', stopAutoplay);
+
+    })();
+</script>

@@ -1,0 +1,18 @@
+{
+    "id": 28,
+    "name": "evento_informativa",
+    "caption": "",
+    "description": "",
+    "category": "KOSAcademy",
+    "type": "file",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": [],
+    "templates": [
+        61
+    ]
+}

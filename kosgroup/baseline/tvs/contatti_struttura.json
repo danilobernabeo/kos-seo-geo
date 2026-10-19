@@ -1,0 +1,28 @@
+{
+    "id": 4,
+    "name": "contatti_struttura",
+    "caption": "Contatti",
+    "description": "",
+    "category": "Base",
+    "type": "textarea",
+    "elements": null,
+    "default_text": "                                    <ul class=\"lista-contatti-struttura\">\n                                        <li><img src=\"/assets/img/mail.png\" width=\"24\" height=\"24\" alt=\"icona mail\"/><a href=\"mailto:accettazione@villaazzurra.com\">accettazione@villaazzurra.com</a></li>\n                                        <li><img src=\"/assets/img/phone-ring.png\" width=\"24\" height=\"24\" alt=\"icona telefono\"/><a href=\"tel:+390546978911\">0546 978911</a></li>\n                                        <li><img src=\"/assets/img/medical-card.png\" width=\"24\" height=\"24\" alt=\"icona idcarta\"/>Direttore sanitario: Claudia Tolini</li>\n                                        <li><img src=\"/assets/img/medical-card.png\" width=\"24\" height=\"24\" alt=\"icona idcarta\"/>Direttore Clinico: Gloria Samory</li>\n                                        <li><img src=\"/assets/img/medical-card.png\" width=\"24\" height=\"24\" alt=\"icona idcarta\"/>Direttore di Struttura: Camilla Fabbri</li>\n                                    </ul>",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "inputHeight": "140",
+        "textareaGrow": "false",
+        "textareaResizable": "false"
+    },
+    "output_properties": [],
+    "templates": [
+        2,
+        4,
+        6,
+        13,
+        14,
+        16,
+        18,
+        20
+    ]
+}

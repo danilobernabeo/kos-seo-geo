@@ -1,0 +1,163 @@
+  <style>
+    .percorso-section {
+      padding: 4rem 0;
+      background-color: var(--grigio-100);
+    }
+    
+    .percorso-timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .percorso-timeline::before {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background-color: rgba(32,145,176);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+    }
+    
+    .percorso-container {
+      padding: 10px 40px;
+      position: relative;
+      background-color: inherit;
+      width: 50%;
+    }
+    
+    .left {
+      left: 0;
+    }
+    
+    .right {
+      left: 50%;
+    }
+    
+    .percorso-container::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      right: -13px;
+      background-color: white;
+      border: 4px solid rgba(32,145,176);
+      top: 20px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .left::after {
+      right: -13px;
+    }
+    
+    .right::after {
+      left: -12px;
+    }
+    
+    .percorso-content {
+      padding: 20px 30px;
+      background-color: white;
+      position: relative;
+      border-radius: 6px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .percorso-number {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background-color: rgba(32,145,176);
+      color: white;
+      border-radius: 50%;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    
+    .percorso-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      xcolor: rgba(32,145,176);
+    }
+    
+    /* Responsive per dispositivi mobili */
+    @media screen and (max-width: 767px) {
+      .percorso-timeline::before {
+        left: 31px;
+      }
+      
+      .percorso-container {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .right {
+        left: 0;
+      }
+      
+      .left::after, .right::after {
+        left: 19px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="percorso-section">
+    <div class="container">
+      <h2 class="text-center text-primary">Come si svolge la prima visita</h2>
+      <p>La tua forma migliore merita un metodo su misura: scopri come possiamo guidarti passo dopo passo verso un’alimentazione equilibrata e con risultati che durano.</p>
+      <div class="percorso-timeline">
+        <div class="percorso-container left">
+          <div class="percorso-content">
+            <div class="percorso-number">1</div>
+            <h3 class="percorso-title">Anamnesi completa e analisi esami del sangue</h3>
+            <p>Ci racconti la tua giornata tipo, eventuali terapie e patologie; rivediamo insieme gli esami per fotografare il tuo stato metabolico di partenza.</p>
+          </div>
+        </div>
+        
+        <div class="percorso-container right">
+          <div class="percorso-content">
+            <div class="percorso-number">2</div>
+            <h3 class="percorso-title">Misurazioni antropometriche + BIA</h3>
+            <p>Rileviamo peso, altezza, circonferenze e composizione corporea (massa grassa / magra, idratazione) per partire da dati oggettivi.</p>
+          </div>
+        </div>
+        
+        <div class="percorso-container left">
+          <div class="percorso-content">
+            <div class="percorso-number">3</div>
+            <h3 class="percorso-title">Definizione degli obiettivi SMART</h3>
+            <p>Stabiliamo insieme traguardi Specifici, Misurabili, Raggiungibili, Realistici e con una scadenza chiara, così da monitorare i progressi con chiarezza.</p>
+          </div>
+        </div>
+        
+        <div class="percorso-container right">
+          <div class="percorso-content">
+            <div class="percorso-number">4</div>
+            <h3 class="percorso-title">Consegna piano alimentare digitale in 48 h</h3>
+            <p>Ricevi via e-mail un programma personalizzato con ricette, porzioni calibrate e consigli pratici per la tua routine.</p>
+          </div>
+        </div>
+        
+        <div class="percorso-container left">
+          <div class="percorso-content">
+            <div class="percorso-number">5</div>
+            <h3 class="percorso-title">Pianificazione follow-up mensile (in studio o video)</h3>
+            <p>Programmiamo controlli regolari per monitorare i progressi, adattare il piano e mantenere alta la motivazione, con la libertà di scegliere tra ambulatorio o teleconsulto.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+<p class="mt-5 text-center">
+<a class="btn btn-primary" 
+   href="#contatti" 
+   onclick="scrollToAnchor(event, 'contatti')" 
+   title="Prenota la tua visita nutrizionale">Prenota la tua visita nutrizionale</a>
+</p>
+  </section>

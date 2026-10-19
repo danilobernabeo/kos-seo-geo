@@ -1,0 +1,18 @@
+{
+    "id": 20,
+    "name": "ogImage",
+    "caption": "",
+    "description": "",
+    "category": "",
+    "type": "image",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": [],
+    "templates": [
+        3
+    ]
+}

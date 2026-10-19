@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+
+[[$head]]
+
+<body>
+
+[[$GTM_body]]
+
+    <a href="[[~[[*id]]]]#main-content" class="skip-link">Vai al contenuto principale</a>
+    <div class="main__area" id="main-content" tabindex="-1">
+
+    [[$menu]]
+
+
+    <div class="main__content" id="skip-target" tabindex="-1">
+
+         <!-- =================== INTRO AREA START ===================== -->
+        <section>
+            <div class="container"> 
+
+[[$breadcrumb]]
+
+                <div class="row align-items-start">  
+
+[[*infoImage:notempty=`<div class="col-12 col-lg-4 order-lg-2"><div class="w-50 img-thumbnail d-inline-block"><img src="[[*infoImage]]" alt="[[*pagetitle]]"></div></div>`]]
+
+                    <div id="intro-pagina-foto" class="col-12 col-lg-8 order-lg-1">
+
+                        <div id="intro-pagina-foto-content-txt" class="titolo-animato pt-5">
+                            <h1>[[*pagetitle]]</h1>
+                        </div> 
+
+                        <!-- CONTENUTO ARTICOLO START -->
+                        <div id="contenuto-articolo" data-aos="fade-up">
+
+                            <div id="testo-articolo">
+                                [[*content]]
+                                <h2>Tipo di convenzione</h2>
+                                <p>[[*tipoConvenzione]]</p>
+                                <h2>Area clinica</h2>
+                                <p>[[*areaClinica]]</p>
+                            </div>
+                            <!-- TESTO ARTICOLO END -->
+
+                        </div>
+                        <!-- CONTENUTO ARTICOLO END -->
+
+                    </div>
+
+
+
+                </div>
+        </section>
+
+        <!-- =================== INTRO AREA END ===================== -->
+
+        [[$sedeSpecializzazione]]
+
+    </div>
+
+    [[$footer]]
+
+    </div>
+
+<button id="backToTop" title="Torna su">↑</button>
+
+[[$scripts]]
+
+</body>
+
+</html>

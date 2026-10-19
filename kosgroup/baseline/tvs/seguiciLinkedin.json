@@ -1,0 +1,29 @@
+{
+    "id": 30,
+    "name": "seguiciLinkedin",
+    "caption": "Canale linkedin",
+    "description": "",
+    "category": "Social",
+    "type": "text",
+    "elements": null,
+    "default_text": "https://www.linkedin.com/company/kos",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        2,
+        4,
+        6,
+        13,
+        14,
+        16,
+        18,
+        20
+    ]
+}

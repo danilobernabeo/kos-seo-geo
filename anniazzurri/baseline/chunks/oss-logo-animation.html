@@ -1,0 +1,32 @@
+<style>
+  /* puoi spostare queste regole nel tuo foglio style.css */
+  .logo-animation-wrapper{
+    width:100%;
+    display:flex;
+    justify-content:center;      /* centratura orizzontale */
+    margin:2rem 0;               /* spazio sopra e sotto */
+  }
+  .logo-animation-wrapper video{
+    /* rapporto 1:1 indipendente dalla traccia mp4 */
+    aspect-ratio:1 / 1;
+    width:clamp(192px, 40vmin, 400px); /* responsive: min 125 px, max 260 px */
+    height:auto;                      /* mantiene il quadrato */
+    object-fit:contain;               /* nessun ritaglio */
+    border-radius:8px;                /* facoltativo – tondo morbido */
+    box-shadow:0 4px 10px rgba(0,0,0,.08); /* facoltativo */
+  }
+</style>
+
+<div class="logo-animation-wrapper">
+  <video
+    src="/assets/img/news/oss-logo-animation.mp4"
+    autoplay
+    loop
+    muted
+    playsinline           <!-- evita la UI “a tutto schermo” su iOS -->
+    preload="metadata"    <!-- scarica solo i meta finché non serve -->
+    aria-label="Logo animato OSS">
+      <!-- Fallback per browser molto vecchi -->
+      Il tuo browser non supporta il video HTML5.
+  </video>
+</div>

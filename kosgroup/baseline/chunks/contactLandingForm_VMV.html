@@ -1,0 +1,103 @@
+<div class="row mt-4">
+  <form id="[[*alias]]" action="[[~[[*id]]]]" method="post" class="col-12">
+    <input type="hidden" name="nospam:blank" />
+
+    <div class="mb-3 row g-4">
+
+      <div class="col-12 col-md-6">
+        <label class="form-label text-white" for="nome">Nome*</label>
+        <input class="form-control form-control-lg" id="nome" name="nome" type="text"
+               value="[[!+fi.nome]]" placeholder="Inserisci il tuo nome"
+               autocomplete="name" required />
+        [[!+fi.error.nome:notempty=`<span class="error text-warning small">[[!+fi.error.nome]]</span>`]]
+      </div>
+
+      <div class="col-12 col-md-6">
+        <label class="form-label text-white" for="telefono">Telefono*</label>
+        <input class="form-control form-control-lg" id="telefono" name="telefono" type="tel"
+               value="[[!+fi.telefono]]" placeholder="Il numero a cui contattarti"
+               pattern="[0-9\s\-+()]{9,20}"
+               title="Inserisci un numero di telefono valido con almeno 9 caratteri."
+               autocomplete="tel" required />
+        [[!+fi.error.telefono:notempty=`<span class="error text-warning small">[[!+fi.error.telefono]]</span>`]]
+      </div>
+
+      <div class="col-12">
+        <label class="form-label text-white" for="email">Email*</label>
+        <input class="form-control form-control-lg" id="email" name="email" type="email"
+               value="[[!+fi.email]]" placeholder="Inserisci il tuo indirizzo email"
+               autocomplete="email" required />
+        [[!+fi.error.email:notempty=`<span class="error text-warning small">[[!+fi.error.email]]</span>`]]
+      </div>
+
+      <div class="col-12">
+        <label class="form-label text-white" for="messaggio">Messaggio</label>
+        <textarea class="form-control" id="messaggio" name="messaggio" rows="5"
+                  placeholder="Scrivi in poche parole quali informazioni desideri ricevere">[[!+fi.messaggio]]</textarea>
+        <div class="form-text small mt-2" style="color: rgba(255,255,255,.75);">Per tutelare la tua riservatezza, non inserire referti o informazioni cliniche dettagliate.</div>
+        [[!+fi.error.messaggio:notempty=`<span class="error text-warning small">[[!+fi.error.messaggio]]</span>`]]
+      </div>
+
+    </div>
+
+    <div class="row mb-2 mt-2">
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" id="privacy" name="privacy" type="checkbox" value="accetto" required />
+          <label class="form-check-label small text-white" for="privacy">Ho letto l'<a class="text-white text-decoration-underline" href="/assets/doc/kos-care-gdpr-informativa.pdf" target="_blank" rel="noopener">Informativa sul trattamento dei dati personali</a> ed acconsento alla loro elaborazione nelle formule espresse.*</label>
+          [[!+fi.error.privacy:notempty=`<span class="error text-warning small d-block">[[!+fi.error.privacy]]</span>`]]
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <div class="col-sm-12">
+          <script src="https://www.google.com/recaptcha/api.js?render=6LemOAQrAAAAADKGEiUVhnyN5tjEy_P-fD5FzL87&hl=it"></script>
+          <input type="hidden" name="recaptcha-token">
+          <input type="hidden" name="recaptcha-action" value="villamargherita">
+          <script>
+            grecaptcha.ready(function() {
+              grecaptcha.execute('6LemOAQrAAAAADKGEiUVhnyN5tjEy_P-fD5FzL87', {action: 'villamargherita'}).then(function(token) {
+                document.querySelector('[name="recaptcha-token"]').value = token;
+              });
+            });
+          </script>
+          [[!+fi.error.recaptcha:notempty=`<span class="error text-warning small">[[!+fi.error.recaptcha]]</span>`]]
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 mb-5">
+        <div class="d-flex justify-content-center py-5">
+          <button name="submit" type="submit" class="btn btn-primary">Invia la richiesta</button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<script>
+(function () {
+  var form = document.getElementById('[[*alias]]');
+  if (!form) return;
+  var sending = false;
+  form.addEventListener('submit', function (e) {
+    if (sending) { e.preventDefault(); return; }
+    sending = true;
+    var btn = form.querySelector('button[type="submit"]');
+    if (!btn) return;
+    setTimeout(function () {
+      btn.disabled = true;
+      btn.textContent = 'INVIO IN CORSO...';
+    }, 50);
+    setTimeout(function () {
+      sending = false;
+      btn.disabled = false;
+      btn.textContent = 'Invia la richiesta';
+    }, 10000);
+  });
+})();
+</script>

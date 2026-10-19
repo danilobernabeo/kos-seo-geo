@@ -1,0 +1,69 @@
+<style>
+/* Desktop: bottone inline accanto alle voci di menu */
+.menu-contatti-btn{display:inline-flex;align-items:center;gap:.4em;line-height:1;white-space:nowrap;margin-right:.6rem;font-size:.75rem}
+.menu-contatti-btn i{font-size:.95rem;line-height:1}
+/* Mobile: fascia blu a tutta larghezza, agganciata sopra il menu */
+.contatti-bar-mobile{display:block;width:100%;text-align:center;text-decoration:none;background:#314883;color:#fff!important;font-weight:600;text-transform:uppercase;font-size:.8rem;letter-spacing:.02em;padding:.55rem 1rem}
+.contatti-bar-mobile:hover,.contatti-bar-mobile:focus{background:#253764;color:#fff!important}
+.contatti-bar-mobile i{margin-right:.4em}
+</style>
+<script>
+(function(){
+  "use strict";
+
+  // Helper di scroll: riusa quello del sito se esiste, altrimenti lo definisce.
+  // preventDefault + scroll fluido sullo stesso documento, cosi' il <base href>
+  // del template non manda a https://sito/#...
+  window.scrollToAnchor = window.scrollToAnchor || function(e, id){
+    var target = document.getElementById(id);
+    if(!target) return;
+    if(e && e.preventDefault) e.preventDefault();
+    target.scrollIntoView({ behavior: "smooth" });
+    if(window.history && history.replaceState){
+	    history.replaceState(
+	        null,
+	        "",
+	        window.location.pathname + window.location.search + "#" + id
+	    );
+	}
+  };
+
+  function initContattiBtn(){
+    if(!document.getElementById("contatti")) return;                 // solo se c'e' il form
+    if(document.documentElement.hasAttribute("data-contatti-injected")) return; // anti-doppioni
+    var navWrap = document.getElementById("main-navbar");
+    if(!navWrap) return;
+    var nav = navWrap.querySelector("nav");
+    var hamburger = nav ? nav.querySelector(".hamburger") : null;
+    var href = window.location.pathname + window.location.search + "#contatti";
+    document.documentElement.setAttribute("data-contatti-injected", "1");
+
+    // --- Desktop (xl+): bottone inline accanto al menu ---
+    if(nav){
+      var holder = hamburger ? hamburger.parentNode : nav;
+      var btn = document.createElement("a");
+      btn.href = href;
+      btn.className = "btn btn-primary menu-contatti-btn d-none d-xl-inline-flex";
+      btn.setAttribute("title", "Contattaci");
+      btn.setAttribute("onclick", "scrollToAnchor(event, 'contatti')");
+      btn.innerHTML = '<i class="bi bi-headset" aria-hidden="true"></i><span>Contattaci</span>';
+      if(hamburger){ holder.insertBefore(btn, hamburger); } else { holder.appendChild(btn); }
+    }
+
+    // --- Mobile (<xl): fascia blu a tutta larghezza sopra il menu ---
+    var bar = document.createElement("a");
+    bar.href = href;
+    bar.className = "contatti-bar-mobile d-xl-none";
+    bar.setAttribute("title", "Contattaci");
+    bar.setAttribute("onclick", "scrollToAnchor(event, 'contatti')");
+    bar.innerHTML = '<i class="bi bi-headset" aria-hidden="true"></i><span>Contattaci</span>';
+    navWrap.insertBefore(bar, navWrap.firstChild);
+  }
+
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", initContattiBtn);
+  } else {
+    initContattiBtn();
+  }
+})();
+</script>

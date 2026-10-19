@@ -1,0 +1,18 @@
+{
+    "id": 14,
+    "name": "programma",
+    "caption": "Programma",
+    "description": "Programma convegno",
+    "category": "",
+    "type": "file",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": [],
+    "templates": [
+        30
+    ]
+}

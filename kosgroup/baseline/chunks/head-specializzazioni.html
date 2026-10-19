@@ -1,0 +1,43 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>[[*longtitle:default=`[[*pagetitle]]`]]</title>
+  <meta name="description" content="[[*description:htmlent]]">
+  [[*noindex:is=`1`:then=`<meta name="robots" content="noindex, nofollow">`]]
+
+[[$GTM_head]]
+
+  [[!Canonical]]
+  <base href="[[++site_url]]">
+
+  <!-- Open Graph / Twitter: foto del medico (TV infoImage) o immagine KOS predefinita -->
+  <meta property="og:site_name" content="KOS Group">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[[*longtitle:default=`[[*pagetitle]]`:htmlent]]">
+  <meta property="og:description" content="[[*description:default=`[[*ruolo]]`:htmlent]]">
+  <meta property="og:url" content="[[~[[*id]]? &scheme=`full`]]">
+  <meta property="og:image" content="https://kosgroup.com/[[*infoImage:default=`assets/img/kos-condivisione-social.jpg`:replace=`/assets/==assets/`:replace=` ==%20`]]">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/css/all.min.css" rel="stylesheet" />
+  <link href="/assets/css/fontawesome.css" rel="stylesheet" />
+  <link href="/assets/css/default.css" rel="stylesheet" />
+  <link href="/assets/css/nice-select.css" rel="stylesheet" />
+  <link href="/assets/css/aos.css" rel="stylesheet">
+  <link href="/assets/css/swiper.min.css" rel="stylesheet" />
+  <link href="/assets/css/photoswipe.css" rel="stylesheet">
+  <link href="/assets/css/style.css" rel="stylesheet" />
+  <link href="/assets/css/custom.css?v=20260921b" rel="stylesheet" />
+
+  <script src="/assets/js/scroll-anchors.js" defer></script>
+
+  <link rel="icon" type="image/png" href="/assets/img/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
+  <link rel="shortcut icon" href="/assets/img/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="KOS Group" />
+  <link rel="manifest" href="/assets/img/site.webmanifest" />
+</head>

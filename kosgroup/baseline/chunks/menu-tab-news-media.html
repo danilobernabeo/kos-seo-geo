@@ -1,0 +1,16 @@
+<section id="filtri-cat-articoli" class="container-fluid px-0 pt-2 pb-3 pt-lg-2 pb-lg-3">
+    <div class="container col-12">
+        <small>[[pdoField? &id=`5` &field=`pagetitle`]]</small>
+        <div class="filtri-cat-articoli-btns">
+            [[pdoMenu?
+                &parents=`5`
+                &level=`1`
+                &tpl=`@INLINE <a class="[[+id:is=`[[*id]]`:then=`fisso btn btn-outline-dark`:else=`btn btn-outline-primary`]]" href="[[+link]]">[[+menutitle]]</a>`
+                &tplOuter=`@INLINE <span>[[+wrapper]]</span>`
+                &sortby=`menuindex`
+                &sortdir=`ASC`
+                &showHidden=`0`
+            ]]
+        </div>
+    </div>
+</section>

@@ -1,0 +1,28 @@
+<!-- Regole valide per ogni evento. Una per riga, separate da virgola.
+     I commenti e gli a capo vengono rimossi da ecmIscrizione. -->
+
+name:required:stripTags,
+surname:required:stripTags,
+birthdate:required:ecmValidatori=^dataNascita^,
+birthcity:required:stripTags,
+birthprov:required,
+birthstate:required,
+fiscalcode:required:ecmValidatori=^codiceFiscale^,
+
+address:required:stripTags,
+cap:required:ecmValidatori=^cap^,
+city:required:stripTags,
+province:required,
+state:required,
+tel1:required:stripTags,
+email:required:email,
+
+ecm_prof_id:required,
+ecm_disc_id:ecmRichiestoSe=^ecm_prof_id!0;1000|Indica la disciplina di specializzazione.^,
+status:required,
+org_id:ecmRichiestoSe=^status=D|Indica l'ente di appartenenza.^,
+reclutato:required,
+org_reclutatore:ecmRichiestoSe=^reclutato=Si|Indica l'ente reclutatore.^,
+
+note:stripTags,
+privacy:required:contains=^accetto^

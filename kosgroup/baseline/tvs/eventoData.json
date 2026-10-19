@@ -1,0 +1,27 @@
+{
+    "id": 37,
+    "name": "eventoData",
+    "caption": "Data dell'evento",
+    "description": "",
+    "category": "Eventi",
+    "type": "date",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "startDay": "0",
+        "disabledDays": "",
+        "disabledDates": "",
+        "minDateValue": "",
+        "maxDateValue": "",
+        "hideTime": "0",
+        "minTimeValue": "",
+        "maxTimeValue": "",
+        "timeIncrement": "15"
+    },
+    "output_properties": [],
+    "templates": [
+        7
+    ]
+}

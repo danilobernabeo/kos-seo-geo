@@ -1,0 +1,30 @@
+{
+    "id": 65,
+    "name": "idHubspotContattoPsi",
+    "caption": "form HubSpot richiesta contatto psichiatria",
+    "description": "",
+    "category": "HubSpot",
+    "type": "text",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        2,
+        4,
+        6,
+        13,
+        14,
+        15,
+        16,
+        18,
+        20
+    ]
+}

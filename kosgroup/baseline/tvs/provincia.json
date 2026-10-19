@@ -1,0 +1,24 @@
+{
+    "id": 50,
+    "name": "provincia",
+    "caption": "Provincia",
+    "description": "",
+    "category": "Base",
+    "type": "text",
+    "elements": null,
+    "default_text": "test regione",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        2,
+        4,
+        18
+    ]
+}

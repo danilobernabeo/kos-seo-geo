@@ -1,0 +1,18 @@
+{
+    "id": 15,
+    "name": "segreteria",
+    "caption": "Segreteria",
+    "description": "Segreteria organizzativa",
+    "category": "",
+    "type": "richtext",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": [],
+    "templates": [
+        30
+    ]
+}

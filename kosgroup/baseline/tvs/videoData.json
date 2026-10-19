@@ -1,0 +1,27 @@
+{
+    "id": 36,
+    "name": "videoData",
+    "caption": "Data del video",
+    "description": "",
+    "category": "Video",
+    "type": "date",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "false",
+        "startDay": "0",
+        "disabledDays": "",
+        "disabledDates": "",
+        "minDateValue": "",
+        "maxDateValue": "",
+        "hideTime": "0",
+        "minTimeValue": "",
+        "maxTimeValue": "",
+        "timeIncrement": "15"
+    },
+    "output_properties": [],
+    "templates": [
+        10
+    ]
+}

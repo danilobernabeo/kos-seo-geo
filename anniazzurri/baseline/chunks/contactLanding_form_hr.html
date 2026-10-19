@@ -1,0 +1,72 @@
+<div class="row mt-5">
+
+  <form  id="form-[[*id]]" action="[[~[[*id]]]]" method="post" class="content-left text-brown col-12" enctype="multipart/form-data">
+  <input type="hidden" name="nospam:blank" />
+  <input type="hidden" name="region" value="[[*data-yext-id]]" />
+  
+    <div class="mb-3 row g-4">
+  
+       <div class="col-12 col-md-6">
+        <label class="form-label text-white" for="name">Nome*</label>
+        <input class="form-control form-control-lg" id="name" name="name" type="text" required />
+       </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label text-white" for="surname">Cognome*</label>
+            <input class="form-control form-control-lg" id="surname" name="surname" type="text" required />
+        </div>
+
+        <div class="col-12 col-md-12">
+            <label class="form-label text-white" for="email">Email*</label>
+            <input class="form-control form-control-lg" id="email" name="email"  type="email" required />
+        </div>
+
+        <div class="col-12 col-md-12">
+            <label class="form-label text-white" for="cellulare">Cellulare*</label>
+            <input class="form-control form-control-lg" id="cellulare" name="cellulare"  type="text" required />
+        </div>
+
+        <div class="col-12 col-md-12">
+            <label class="form-label text-white" for="regione">Regione di preferenza*</label>
+            <select class="form-select form-select-lg" id="regione" name="regione" required>
+                <option value="" selected disabled>Seleziona una regione</option>
+                <option value="Veneto">Veneto</option>
+                <option value="Piemonte">Piemonte</option>
+                <option value="Liguria">Liguria</option>
+                <option value="Emilia-Romagna">Emilia-Romagna</option>
+            </select>
+        </div>
+
+        <div class="col-12 col-md-12 mb-4">
+            <label class="form-label text-white" for="uploadcv">Carica il tuo CV*</label>
+            <input class="form-control form-control-lg" id="uploadcv" name="uploadcv"  type="file" required />
+        </div>
+
+    </div>
+    
+    <div class="row mb-4 mt-2">
+     <div class="col-12 xcol-lg-6">
+            <div class="form-check">
+                <input class="form-check-input" id="titolo" name="titolo" type="checkbox" value="confermo" required />
+                <label class="form-check-label small text-white" for="titolo">[[*cta-landing]]</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-2 mt-2">
+     <div class="col-12 xcol-lg-6">
+            <div class="form-check">
+                <input class="form-check-input" id="privacy" name="privacy" type="checkbox" value="accetto" required />
+                <label class="form-check-label small text-white" for="privacy">Ho letto l'<a class="text-white text-decoration-underline" href="/assets/doc/KOS-Care_GDPR_Informativa.pdf" target="_blank">Informativa sul trattamento dei miei dati personali</a> ed acconsento alla loro elaborazione nelle formule espresse.</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 xcol-lg-6">
+            <div class="d-flex justify-content-center">
+            <button class="mt-lg-5 mt-4 btn text-white py-3 px-4 font-weight-600" style="background:#f28041;">CANDIDATI ORA</button></form>
+            </div>
+        </div>
+    </div>
+</div>

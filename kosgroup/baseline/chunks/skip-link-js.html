@@ -1,0 +1,15 @@
+<script>
+(function () {
+  var link = document.querySelector('.skip-link');
+  if (!link) return;
+  link.addEventListener('click', function (e) {
+    var main = document.getElementById('skip-target') 
+               || document.getElementById('main-content');
+    if (!main) return;
+    e.preventDefault();
+    if (!main.hasAttribute('tabindex')) { main.setAttribute('tabindex', '-1'); }
+    main.focus();
+    main.scrollIntoView();
+  });
+})();
+</script>

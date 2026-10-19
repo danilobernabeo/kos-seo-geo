@@ -1,0 +1,21 @@
+{
+    "id": 70,
+    "name": "schemaJsonLd",
+    "caption": "markup schema",
+    "description": "",
+    "category": "SEO-GEO",
+    "type": "textarea",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "inputHeight": "140",
+        "textareaGrow": "false",
+        "textareaResizable": "false"
+    },
+    "output_properties": [],
+    "templates": [
+        7
+    ]
+}

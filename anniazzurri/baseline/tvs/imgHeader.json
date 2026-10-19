@@ -1,0 +1,20 @@
+{
+    "id": 4,
+    "name": "imgHeader",
+    "caption": "Immagine header",
+    "description": "",
+    "category": "",
+    "type": "image",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": [],
+    "templates": [
+        6,
+        30,
+        31
+    ]
+}

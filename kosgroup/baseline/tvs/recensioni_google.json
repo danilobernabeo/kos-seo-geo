@@ -1,0 +1,29 @@
+{
+    "id": 3,
+    "name": "recensioni_google",
+    "caption": "Recensioni Google",
+    "description": "",
+    "category": "Base",
+    "type": "text",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        2,
+        4,
+        6,
+        13,
+        14,
+        16,
+        18,
+        20
+    ]
+}

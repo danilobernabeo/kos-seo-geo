@@ -1,0 +1,18 @@
+{
+    "id": 22,
+    "name": "modale3",
+    "caption": "Terza modale (per Villa dei Pini)",
+    "description": "",
+    "category": "Contenuti",
+    "type": "textarea",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": [],
+    "templates": [
+        4
+    ]
+}

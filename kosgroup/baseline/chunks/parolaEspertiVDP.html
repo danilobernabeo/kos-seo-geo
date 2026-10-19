@@ -1,0 +1,332 @@
+<!-- =================== PAROLA AI NOSTRI ESPERTI START ===================== -->
+
+<!-- lite-youtube (self-hosted) -->
+<link rel="stylesheet" href="/assets/css/lite-yt-embed.css">
+<script src="/assets/js/lite-yt-embed.js"></script>
+
+<style>
+/* Bottoni filtro specialità */
+.video-filtri {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.video-filter-btn {
+    padding: 6px 16px;
+    border: 2px solid var(--color-primary, #1B7F9D);
+    background: transparent;
+    color: var(--color-primary, #1B7F9D);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all .2s;
+}
+
+.video-filter-btn.active,
+.video-filter-btn:hover {
+    background: var(--color-primary, #1B7F9D);
+    color: #fff;
+}
+
+/* Slide nascoste dal filtro */
+#parola-esperti .swiper-slide[data-specialita].hidden {
+    display: none;
+}
+
+/* Thumbnail nella card */
+#parola-esperti .news-media lite-youtube {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+}
+
+#parola-esperti .news-media.news-video {
+    cursor: pointer;
+    position: relative;
+}
+
+#parola-esperti .video-speaker {
+    margin: 0;
+    color: #6c757d;
+}
+
+/* Nascondi icona play del tema */
+#parola-esperti .news-media.news-video::after {
+    display: none !important;
+}
+
+/* Nascondi pallini swiper */
+#parola-esperti .swiper-pagination,
+#blocco-video-esperti .swiper-pagination {
+    display: none !important;
+}
+
+/* Titolo cliccabile */
+#parola-esperti .news-contenuto-tesuale h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    cursor: pointer;
+}
+
+#parola-esperti .news-contenuto-tesuale h3:hover {
+    opacity: 0.75;
+}
+
+/* Focus visibile per navigazione da tastiera */
+#parola-esperti .news-contenuto-tesuale h3:focus,
+#parola-esperti .news-media.news-video:focus {
+    outline: 2px solid var(--color-primary, #1B7F9D);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* ===== LIGHTBOX ===== */
+#ve-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(0, 0, 0, 0.85);
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+#ve-lightbox.active {
+    display: flex;
+}
+
+#ve-lightbox-inner {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+}
+
+#ve-lightbox-ratio {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+}
+
+#ve-lightbox-ratio iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 4px;
+}
+
+#ve-lightbox-close {
+    position: absolute;
+    top: -44px;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: border-color .2s;
+}
+
+#ve-lightbox-close:hover,
+#ve-lightbox-close:focus {
+    border-color: #fff;
+    outline: none;
+}
+
+#ve-lightbox-close svg {
+    width: 16px;
+    height: 16px;
+    stroke: #fff;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+}
+</style>
+
+<!-- Lightbox overlay -->
+<div id="ve-lightbox" role="dialog" aria-modal="true" aria-label="Riproduzione video">
+    <div id="ve-lightbox-inner">
+        <button id="ve-lightbox-close" aria-label="Chiudi video">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <line x1="2" y1="2" x2="14" y2="14"/>
+                <line x1="14" y1="2" x2="2" y2="14"/>
+            </svg>
+        </button>
+        <div id="ve-lightbox-ratio">
+            <!-- iframe YouTube iniettato via JS -->
+        </div>
+    </div>
+</div>
+
+[[!videoEsperti? &containerId=`blocco-video-esperti`]]
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    var container = document.getElementById('blocco-video-esperti');
+    if (!container) return;
+
+    // --- Sposta il lightbox nel body per evitare stacking context ---
+    var lightbox = document.getElementById('ve-lightbox');
+    document.body.appendChild(lightbox);
+
+    var lightboxRatio = document.getElementById('ve-lightbox-ratio');
+    var closeBtn      = document.getElementById('ve-lightbox-close');
+    var lastFocused   = null;
+
+    function openLightbox(videoId, videoTitle) {
+        lastFocused = document.activeElement;
+        lightbox.setAttribute('aria-label', 'Riproduzione video: ' + (videoTitle || ''));
+        lightboxRatio.innerHTML = '<iframe '
+            + 'src="https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0" '
+            + 'title="' + (videoTitle || 'Video') + '" '
+            + 'allow="autoplay; fullscreen" '
+            + 'allowfullscreen></iframe>';
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightboxRatio.innerHTML = '';
+        document.body.style.overflow = '';
+
+        // Resetta tutti i lite-youtube eventualmente attivati
+        document.querySelectorAll('#parola-esperti lite-youtube.lyt-activated').forEach(function (lyt) {
+            var iframe = lyt.querySelector('iframe');
+            if (iframe) iframe.remove();
+            lyt.classList.remove('lyt-activated');
+        });
+
+        // Riporta il focus all'elemento che aveva aperto il modal
+        if (lastFocused) lastFocused.focus();
+    }
+
+    // Recupera videoId e titolo dalla slide e apri lightbox
+    function openFromElement(el) {
+        var slide   = el.closest('.swiper-slide');
+        var lyt     = slide ? slide.querySelector('lite-youtube') : null;
+        var h3      = slide ? slide.querySelector('h3') : null;
+        var videoId = lyt ? lyt.getAttribute('videoid') : null;
+        var title   = h3 ? h3.textContent.trim() : '';
+        if (videoId) openLightbox(videoId, title);
+    }
+
+    // Click sulla miniatura → apri lightbox (capture phase per precedere lite-youtube)
+    document.querySelectorAll('#parola-esperti .news-media.news-video').forEach(function (wrap) {
+        wrap.setAttribute('tabindex', '0');
+        wrap.setAttribute('role', 'button');
+        wrap.setAttribute('aria-label', function() {
+            var h3 = wrap.closest('.swiper-slide') ? wrap.closest('.swiper-slide').querySelector('h3') : null;
+            return 'Riproduci video: ' + (h3 ? h3.textContent.trim() : '');
+        }());
+
+        wrap.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            openFromElement(this);
+        }, true);
+
+        // Accessibilità tastiera sulla miniatura
+        wrap.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openFromElement(this);
+            }
+        });
+    });
+
+    // Click sul titolo → stessa azione della miniatura
+    document.querySelectorAll('#parola-esperti .news-contenuto-tesuale h3').forEach(function (h3) {
+        h3.setAttribute('role', 'button');
+        h3.setAttribute('tabindex', '0');
+
+        h3.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            openFromElement(this);
+        }, true);
+
+        // Accessibilità tastiera sul titolo
+        h3.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openFromElement(this);
+            }
+        });
+    });
+
+    // Chiudi con il bottone X
+    closeBtn.addEventListener('click', closeLightbox);
+
+    // Chiudi cliccando sull'overlay fuori dal video
+    lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    // Chiudi con ESC, intrappola Tab nel modal
+    document.addEventListener('keydown', function (e) {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'Tab') {
+            e.preventDefault();
+            closeBtn.focus();
+        }
+    });
+
+    // --- Inizializza Swiper ---
+    var swiper = new Swiper('#blocco-video-esperti', {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        grabCursor: true,
+        watchSlidesProgress: true,
+        breakpoints: {
+            576: { slidesPerView: 1.2 },
+            768: { slidesPerView: 1.5 },
+            992: { slidesPerView: 2 },
+            1200: { slidesPerView: 2 }
+        },
+        navigation: {
+            nextEl: '#blocco-video-esperti .swiper-button-next',
+            prevEl: '#blocco-video-esperti .swiper-button-prev'
+        }
+    });
+
+    // --- Filtri per specialità ---
+    document.querySelectorAll('.video-filter-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.video-filter-btn')
+                    .forEach(function (b) { b.classList.remove('active'); });
+            this.classList.add('active');
+
+            var filter = this.dataset.filter;
+
+            document.querySelectorAll('#blocco-video-esperti .swiper-slide').forEach(function (slide) {
+                if (filter === 'tutti' || slide.dataset.specialita === filter) {
+                    slide.classList.remove('hidden');
+                } else {
+                    slide.classList.add('hidden');
+                }
+            });
+
+            swiper.slideTo(0);
+            swiper.update();
+        });
+    });
+
+});
+</script>
+
+<!-- =================== PAROLA AI NOSTRI ESPERTI END ===================== -->

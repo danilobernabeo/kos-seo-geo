@@ -1,0 +1,118 @@
+<div stripe-news="" class="container pb-4 pb-lg-5">
+  <div class="row">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="h3 text-primary mb-0">Altre notizie</h2>
+      </div>
+    </div>
+    <div class="row mt-2 mt-lg-4 gy-md-4 gy-3">
+      [[!pdoPage?
+        &element=`pdoResources`
+        &parents=`8`
+        &limit=`9`
+        &offset=`1`
+        &tpl=`pdoListItem`
+        &includeContent=`1`
+        &includeTVs=`newsImage`
+        &tvPrefix=``
+        &sortby=`publishedon`
+        &sortdir=`DESC`
+        &pageLimit=`5`
+        &pageVarKey=`page`
+        &pageNavVar=`page.nav`
+        &setMeta=`1`
+        &tplPage=`@INLINE <li class="page-item d-none d-md-block"><a class="page-link" href="[[+href]]">[[+pageNo]]</a></li>`
+        &tplPageActive=`@INLINE <li class="page-item active d-none d-md-block"><span class="page-link">[[+pageNo]]</span></li>`
+        &tplPageFirst=`@INLINE `
+        &tplPageLast=`@INLINE `
+        &tplPagePrev=`@INLINE <li class="page-item page-prev"><a class="page-link" href="[[+href]]"><i class="bi bi-arrow-left-short"></i></a></li>`
+        &tplPageNext=`@INLINE <li class="page-item page-next"><a class="page-link" href="[[+href]]"><i class="bi bi-arrow-right-short"></i></a></li>`
+        &tplPageSkip=`@INLINE <li class="page-item disabled d-none d-md-block"><span class="page-link">...</span></li>`
+        &tplPageWrapper=`@INLINE <ul class="pagination pagination-square justify-content-center align-items-center"><li class="page-item d-md-none page-counter"><span class="page-link">Pagina [[+page]]</span></li>[[+first]][[+prev]][[+pages]][[+next]][[+last]]</ul>`
+      ]]
+    </div>
+    
+    <!-- Paginazione Bootstrap -->
+    [[!+page.nav:notempty=`
+    <div class="row mt-4">
+      <div class="col-12">
+        <nav aria-label="Paginazione notizie">
+          [[!+page.nav]]
+        </nav>
+      </div>
+    </div>
+    `]]
+    
+  </div>
+</div>
+
+<style>
+.pagination-square .page-link {
+  background-color: transparent;
+  border: none;
+  color: var(--bs-azure, #17a2b8);
+  padding: 0;
+  margin: 0 0.25rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+
+.pagination-square .page-link:hover {
+  background-color: rgba(23, 162, 184, 0.1);
+  color: var(--bs-azure, #17a2b8);
+  transform: none;
+}
+
+.pagination-square .page-item.active .page-link {
+  background-color: var(--bs-primary, #007bff);
+  border: none;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Nascondi completamente gli elementi disabled */
+.pagination-square .page-item.disabled {
+  display: none !important;
+}
+
+/* Icone frecce più grandi */
+.pagination-square .page-prev .page-link i,
+.pagination-square .page-next .page-link i {
+  font-size: 1.75rem;
+}
+
+/* Mobile: nascondi numeri, mostra solo frecce e "Pagina X" */
+@media (max-width: 767.98px) {
+  .pagination-square {
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+  }
+  
+  .pagination-square .page-counter {
+    order: 2;
+    margin: 0;
+  }
+  
+  .pagination-square .page-counter .page-link {
+    width: auto;
+    padding: 0 0.75rem;
+    font-weight: 500;
+    color: var(--bs-primary, #007bff);
+    background-color: transparent;
+    white-space: nowrap;
+  }
+  
+  .pagination-square .page-prev {
+    order: 1;
+  }
+  
+  .pagination-square .page-next {
+    order: 3;
+  }
+}
+</style>

@@ -1,0 +1,119 @@
+<div class="row mt-5">
+	<div class="col-12 pb-3">
+		<h2 class="h3 mb-1 text-primary">Vuoi rimanere aggiornato?</h2>
+		<p class="h4 text-azure">Lasciaci i tuoi dati e ti invieremo periodicamente una email per informarti sugli eventi formativi che organizziamo.</p>
+	</div>
+
+	<form  id="[[*description]]" action="[[~[[*id]]]]" method="post" class="content-left text-brown col-12">
+	<input type="hidden" name="nospam:blank" />
+	
+    <div class="mb-3 row g-4">
+	   <div class="col-12 col-md-6">
+        <label class="form-label" for="name">Nome*</label>
+        <input class="form-control form-control-lg" id="name" name="name" type="text" required />
+       </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="surname">Cognome*</label>
+            <input class="form-control form-control-lg" id="surname" name="surname" type="text" required />
+        </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="email">Email*</label>
+            <input class="form-control form-control-lg" id="email" name="email"  type="email" required />
+        </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="region">Regione di residenza*</label>
+            <select aria-label="Regione di residenza" class="form-select form-select-lg" id="region" name="region" required>
+                <option value="">Seleziona</option>
+                <option value="Abruzzo">Abruzzo</option>
+                <option value="Basilicata">Basilicata</option>
+                <option value="Calabria">Calabria</option>
+                <option value="Campania">Campania</option>
+                <option value="Emilia Romagna">Emilia Romagna</option>
+                <option value="Friuli Venezia Giulia">Friuli Venezia Giulia</option>
+                <option value="Lazio">Lazio</option>
+                <option value="Liguria">Liguria</option>
+                <option value="Lombardia">Lombardia</option>
+                <option value="Marche">Marche</option>
+                <option value="Molise">Molise</option>
+                <option value="Piemonte">Piemonte</option>
+                <option value="Puglia">Puglia</option>
+                <option value="Sardegna">Sardegna</option>
+                <option value="Sicilia">Sicilia</option>
+                <option value="Toscana">Toscana</option>
+                <option value="Trentino Alto Adige">Trentino Alto Adige</option>
+                <option value="Umbria">Umbria</option>
+                <option value="Val d'Aosta">Val d'Aosta</option>
+                <option value="Veneto">Veneto</option>
+            </select>
+        </div>
+
+	   <div class="col-12">
+            <label class="form-label" for="professione">Professione*</label>
+            <select aria-label="Professione" class="form-select form-select-lg" id="professione" name="professione" required>
+                <option value="">Seleziona una professione</option>                                                        
+                <option value="1 - Medico chirurgo">Medico chirurgo</option>              
+                <option value="2 - Odontoiatra">Odontoiatra</option>
+                <option value="3 - Farmacista">Farmacista</option>
+                <option value="4 - Veterinario">Veterinario</option>
+                <option value="5 - Psicologo">Psicologo</option>
+                <option value="6 - Biologo">Biologo</option>
+                <option value="7 - Chimico">Chimico</option>
+                <option value="8 - Fisico">Fisico</option>
+                <option value="9 - Assistente sanitario">Assistente sanitario</option>
+                <option value="10 - Dietista">Dietista</option>
+                <option value="11 - Educatore professionale">Educatore professionale</option>
+                <option value="12 - Fisioterapista">Fisioterapista</option>
+                <option value="13 - Igienista dentale">Igienista dentale</option>
+                <option value="14 - Infermiere">Infermiere</option>
+                <option value="15 - Infermiere pediatrico">Infermiere pediatrico</option>
+                <option value="16 - Logopedista">Logopedista</option>
+                <option value="17 - Ortottista-assistente di oftalmologia">Ortottista-assistente di oftalmologia</option>
+                <option value="18 - Ostetrica-o">Ostetrica-o</option>
+                <option value="19 - Podologo">Podologo</option>
+                <option value="20 - Tecnico audiometrista">Tecnico audiometrista</option>
+                <option value="21 - Tecnico audioprotesista">Tecnico audioprotesista</option>
+                <option value="22 - Tecnico della fisiopatologia cardiocircolatoria e perfusione cardiovascolare">Tecnico della fisiopatologia cardiocircolatoria e perfusione cardiovascolare</option>
+                <option value="23 - Tecnico della prevenzione nell'ambiente e nei luoghi di lavoro">Tecnico della prevenzione nell'ambiente e nei luoghi di lavoro</option>
+                <option value="24 - Tecnico della riabilitazione psichiatrica">Tecnico della riabilitazione psichiatrica</option>
+                <option value="25 - Tecnico di neurofisiopatologia">Tecnico di neurofisiopatologia</option>
+                <option value="26 - Tecnico ortopedico">Tecnico ortopedico</option>
+                <option value="27 - Tecnico sanitario di radiologia medica">Tecnico sanitario di radiologia medica</option>
+                <option value="28 - Tecnico sanitario laboratorio biomedico">Tecnico sanitario laboratorio biomedico</option>
+                <option value="29 - Terapista della neuro e psicomotricità dell'età evolutiva">Terapista della neuro e psicomotricità dell'età evolutiva</option>
+                <option value="30 - Terapista occupazionale">Terapista occupazionale</option>
+                <option value="1000 - Assistente sociale">Assistente sociale</option>
+                <option value="0 - Altro">Altro</option>
+            </select>
+        </div>
+
+	   <div class="col-12">
+        <label class="form-label" for="message">Vuoi lasciarci un messaggio?</label>
+        <textarea class="form-control" id="message" name="message" rows="4"></textarea>
+    </div>
+</div>
+
+<!--	<p class="small">Ho letto l'<a class="text-azure text-decoration-underline" href="assets/doc/kos-care-gdpr-informativa.pdf" target="_blank">Informativa sul trattamento dei miei dati personali</a> ed acconsento alla loro elaborazione nelle formule espresse:</p> -->
+
+	<div class="row mb-2 mt-2">
+	   <div class="col-12 xcol-lg-6">
+            <div class="form-check">
+                <input class="form-check-input" id="privacy" name="privacy" type="checkbox" value="accetto" required />
+                <label class="form-check-label small" for="privacy">Ho letto l'<a class="text-azure text-decoration-underline" href="/assets/doc/KOS-Care_GDPR_Informativa.pdf" target="_blank">Informativa sul trattamento dei miei dati personali</a> ed acconsento alla loro elaborazione nelle formule espresse:</label>
+            </div>
+        </div>
+    </div>
+
+	<div class="row">
+    	<div class="col-12 xcol-lg-6">
+            <div class="form-check">
+                <input class="form-check-input" name="promotion" type="checkbox" value="accetto" />
+                <label class="form-check-label small" for="promotion">Inviatemi messaggi informativi e promozionali.</label>
+            </div>
+        
+            <button class="mt-lg-5 mt-4 btn btn-primary">TENETEMI AGGIORNATO</button></form>
+        </div>
+    </div>
+</div>

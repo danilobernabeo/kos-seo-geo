@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="[[++cultureKey]]">
+<head>
+    <base href="[[++site_url]]" />
+    <title>[[*pagetitle]] | [[++site_name]]</title>
+    <meta charset="[[++modx_charset]]">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard accessibilità WAVE per monitoraggio conformità WCAG 2.1">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+    body { 
+        background: #f8f9fa; 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    }
+    .dashboard-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+    }
+    .dashboard-nav {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+        padding: 1rem;
+    }
+    .dashboard-nav .nav-link {
+        color: #495057;
+        font-weight: 500;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        margin: 0 0.25rem;
+        transition: all 0.3s ease;
+    }
+    .dashboard-nav .nav-link:hover {
+        background: #e9ecef;
+        color: #212529;
+    }
+    .dashboard-nav .nav-link.active {
+        background: #667eea;
+        color: white;
+    }
+    .footer-info {
+        margin-top: 3rem;
+        padding: 2rem 0;
+        background: white;
+        border-top: 1px solid #dee2e6;
+    }
+    .eaa-countdown {
+        background: #fff3cd;
+        border: 1px solid #ffeaa7;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+    .compliance-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+    }
+    </style>
+</head>
+<body>
+    <!-- Compliance Badge -->
+    <div class="compliance-badge">
+        <span class="badge bg-warning fs-6">
+            <i class="fas fa-clock"></i> EAA 2025
+        </span>
+    </div>
+
+    <!-- Header -->
+    <div class="dashboard-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="mb-0">
+                        <i class="fas fa-universal-access"></i>
+                        Dashboard Accessibilità
+                    </h1>
+                    <p class="mb-0 opacity-75">
+                        Monitoraggio conformità WCAG 2.1 - European Accessibility Act
+                    </p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <a href="[[++site_url]]" class="btn btn-light">
+                        <i class="fas fa-home"></i> Torna al Sito
+                    </a>
+                    [[+modx.user.id:notempty=`
+                    <a href="[[++site_url]]manager/" class="btn btn-outline-light ms-2">
+                        <i class="fas fa-cog"></i> Manager
+                    </a>
+                    `]]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="container">
+        <div class="dashboard-nav">
+            <ul class="nav nav-pills justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link [[+modx.request.mode:eq=`check`:then=`active`]]" 
+                       href="[[~[[*id]]]]?mode=check">
+                        <i class="fas fa-search"></i> Verifica Ora
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link [[+modx.request.mode:eq=`dashboard`:then=`active`]]" 
+                       href="[[~[[*id]]]]?mode=dashboard">
+                        <i class="fas fa-chart-line"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link [[+modx.request.mode:eq=`report`:then=`active`]]" 
+                       href="[[~[[*id]]]]?mode=report">
+                        <i class="fas fa-file-alt"></i> Report
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#help" data-bs-toggle="collapse">
+                        <i class="fas fa-question-circle"></i> Aiuto
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- EAA Countdown Alert -->
+        <div class="eaa-countdown">
+            <h5 class="mb-2">
+                <i class="fas fa-exclamation-triangle text-warning"></i>
+                European Accessibility Act 2025
+            </h5>
+            <p class="mb-0">
+                <strong>Scadenza:</strong> 28 Giugno 2025 - 
+                <span id="countdown-timer">Calcolo in corso...</span>
+            </p>
+        </div>
+
+        <!-- Help Section (Collapsible) -->
+        <div class="collapse" id="help">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-info-circle text-info"></i>
+                        Come Usare la Dashboard
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6><i class="fas fa-search"></i> Verifica Ora</h6>
+                            <p class="small">Esegue scansione immediata delle pagine critiche con WAVE API</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h6><i class="fas fa-chart-line"></i> Dashboard</h6>
+                            <p class="small">Mostra risultati recenti e trend di accessibilità</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h6><i class="fas fa-file-alt"></i> Report</h6>
+                            <p class="small">Statistiche aggregate e analisi settimanali</p>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    
+                    <h6><i class="fas fa-flag"></i> Priorità per EAA 2025:</h6>
+                    <ol class="small">
+                        <li><strong>Contrasti:</strong> Minimo 4.5:1 per testi normali</li>
+                        <li><strong>Alt Text:</strong> Tutte le immagini devono avere descrizioni</li>
+                        <li><strong>Form Labels:</strong> Ogni campo deve essere etichettato</li>
+                        <li><strong>Navigazione Tastiera:</strong> Tutti gli elementi devono essere raggiungibili</li>
+                        <li><strong>Struttura Heading:</strong> Gerarchia logica H1>H2>H3</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="row">
+            <div class="col-12">
+                <!-- WAVE Report Content -->
+                [[!WAVEChecker]]
+            </div>
+        </div>
+
+        <!-- Footer Info -->
+        <div class="footer-info">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6><i class="fas fa-book"></i> Informazioni Legal</h6>
+                    <p class="small text-muted">
+                        Questa dashboard supporta la conformità al <strong>Decreto Legislativo 27 maggio 2022, n. 82</strong>
+                        di attuazione della <strong>Direttiva UE 2019/882</strong> (European Accessibility Act).
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h6><i class="fas fa-cog"></i> Supporto Tecnico</h6>
+                    <p class="small text-muted">
+                        <strong>Powered by:</strong> WAVE API | MODX 3.1<br>
+                        <strong>Ultimo aggiornamento:</strong> [[*editedon:date=`%d/%m/%Y %H:%M`]]<br>
+                        <strong>Cache:</strong> 30 minuti
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Countdown Timer -->
+    <script>
+    // EAA Countdown Timer
+    function updateCountdown() {
+        const eaaDate = new Date('2025-06-28T23:59:59');
+        const now = new Date();
+        const diff = eaaDate - now;
+        
+        if (diff <= 0) {
+            document.getElementById('countdown-timer').innerHTML = 
+                '<span class="text-danger"><strong>SCADENZA RAGGIUNTA!</strong></span>';
+            return;
+        }
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        
+        let countdownText = '';
+        if (days > 0) {
+            countdownText = `<strong>${days} giorni</strong>`;
+            if (days <= 7) {
+                countdownText = `<span class="text-danger">${countdownText}</span>`;
+            } else if (days <= 30) {
+                countdownText = `<span class="text-warning">${countdownText}</span>`;
+            }
+        } else {
+            countdownText = `<span class="text-danger"><strong>${hours} ore rimanenti!</strong></span>`;
+        }
+        
+        document.getElementById('countdown-timer').innerHTML = countdownText;
+    }
+    
+    // Aggiorna countdown ogni minuto
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+    
+    // Auto-refresh per dashboard mode
+    if (window.location.search.includes('mode=dashboard')) {
+        setTimeout(function() {
+            if (confirm('Aggiornare i dati della dashboard?')) {
+                window.location.reload();
+            }
+        }, 300000); // 5 minuti
+    }
+    </script>
+
+    <!-- Google Analytics (se necessario) -->
+    [[+modx.user.id:empty=`
+    <!-- GA4 Code Here if needed -->
+    `]]
+</body>
+</html>

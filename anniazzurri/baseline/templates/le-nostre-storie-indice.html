@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="it">
+<!-- Template della PAGINA INDICE della rubrica, da assegnare alla risorsa
+     contenitore «le-nostre-storie».
+     Usa lo stesso head-storia delle singole storie, quindi stesso foglio,
+     stessa Lora, stesso avorio. -->
+[[$head-storia]]
+<body class="news-content-page storia-page">
+[[$GTM_body]]
+[[$menu-sticky]]
+[[$menu-navbar]]
+[[$menu-side-navbar]]
+<main id="main-content" tabindex="-1">
+[[$breadcrumb-stripe]]
+<script>
+
+  (function () {
+    var tocco = false;
+    var righe = document.querySelectorAll('[stripe-breadcrumb] .breadcrumb');
+    function inFondo() {
+      if (tocco) return;
+      Array.prototype.forEach.call(righe, function (o) { o.scrollLeft = o.scrollWidth; });
+    }
+    Array.prototype.forEach.call(righe, function (o) {
+      o.addEventListener('pointerdown', function () { tocco = true; }, { once: true });
+      o.addEventListener('keydown', function () { tocco = true; }, { once: true });
+    });
+    inFondo();
+    window.addEventListener('load', inFondo);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(inFondo);
+  })();
+</script>
+
+  <div stripe-fascia>
+    <img class="fascia-rubrica"
+         src="/assets/img/le-nostre-storie/rubrica-le-nostre-storie-980x380.jpg"
+         alt="Le nostre storie — Residenza Anni Azzurri, Favaro Veneto"
+         width="980" height="380">
+  </div>
+
+
+  <div stripe-text class="container pt-0 pb-4 pb-md-5">
+    <div class="row justify-content-center">
+      <div class="col-12 colonna-larga">
+
+        <h1 class="visually-hidden">[[*pagetitle]]</h1>
+
+        <div class="intro-rubrica testo-storia text-brown">
+          [[*content]]
+        </div>
+
+        <div class="row">
+          [[!getResources?
+              &parents=`[[*id]]`
+              &depth=`1`
+              &limit=`0`
+              &tpl=`storia-scheda`
+              &includeTVs=`storiaMini`
+              &showHidden=`1`
+              &sortby=`{"publishedon":"DESC"}`
+              &wrapIfEmpty=`0`
+          ]]
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+[[$footer]]
+[[$footer-script]]
+</body>
+</html>

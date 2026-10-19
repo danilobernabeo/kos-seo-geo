@@ -1,0 +1,429 @@
+<style>
+  /* Utility compatibili con Bootstrap */
+  .program-table .time { white-space: nowrap; width: 7rem; }
+  .program-table .session-row { background-color: #f8f9fa; }
+  .program-table .break-row { background-color: #e9ecef; font-style: italic; }
+  .program-table .roundtable-highlight { background:#fff3cd; border-left:4px solid #ce1531; }
+  .program-table .roundtable-highlight .badge-rt {
+    display: inline-block; padding: .25rem .5rem; border-radius: 999px;
+    background:#ce1531; color:#fff; font-weight:700; font-size:.75rem; letter-spacing:.02em;
+  }
+
+  /* Elenchi interni alle celle senza bullet e senza indentazione */
+  .program-table .plain-list { list-style: none; padding-inline-start: 0; margin-bottom: 0; }
+
+  /* Affiliazioni: spazio tra i blocchi e coerenza visiva con la tabella del programma */
+  .affiliations-table td { padding-top: .5rem; padding-bottom: 1rem; }
+
+  /* Riga rossa sotto i titoli */
+  .section-title{
+    position: relative;
+    padding-bottom: .5rem;
+    margin-bottom: 1rem;
+  }
+  .section-title::after{
+    content: "";
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 100%;
+    height: 3px;
+    background: #ce1531;     /* rosso brand */
+    border-radius: 2px;
+  }
+
+  .table > :not(:first-child) {
+    border-top: 0px !important;
+  }
+
+  /* --- Scheda informativa dell'evento --- */
+  .event-facts { margin-bottom: 2.5rem; }
+  .event-facts .fact {
+    height: 100%;
+    padding: 1rem 1.25rem;
+    background: #f8f9fa;
+    border-left: 4px solid #ce1531;
+    border-radius: 0 .25rem .25rem 0;
+  }
+  .event-facts dt {
+    font-size: .8125rem;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: .25rem;
+  }
+  .event-facts dd {
+    margin-bottom: 0;
+    font-size: 1.125rem;
+    line-height: 1.35;
+    color: #212529;
+  }
+  .event-facts .fact-figure {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #ce1531;
+    display: block;
+  }
+  .event-facts .fact-note {
+    display: block;
+    font-size: .875rem;
+    color: #6c757d;
+    margin-top: .125rem;
+  }
+</style>
+
+<!-- Scheda informativa: destinatari, crediti, capienza -->
+<section class="event-facts mt-4" aria-labelledby="info-evento">
+  <h2 id="info-evento" class="visually-hidden">Informazioni sull'evento</h2>
+
+  <dl class="row row-cols-1 row-cols-md-3 g-3 mb-0">
+    <div class="col">
+      <div class="fact">
+        <dt>Destinatari</dt>
+        <dd>
+        <span class="fact-note">Tutte le professioni sanitarie a livello nazionale e gli assistenti sociali della Regione Lombardia</span>
+        </dd>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="fact">
+        <dt>Crediti ECM</dt>
+        <dd>
+          <span class="fact-figure">2,1</span>
+          <span class="fact-note">Provider KOS Care (ID n. 3740)</span>
+        </dd>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="fact">
+        <dt>Numero massimo partecipanti</dt>
+        <dd>
+          <span class="fact-figure">250</span>
+          <span class="fact-note">Iscrizione obbligatoria fino a esaurimento posti</span>
+        </dd>
+      </div>
+    </div>
+  </dl>
+</section>
+
+<div class="align-btn-group mt-4">
+  <h2 class="h3 section-title" style="color:#ce1531;">Programma</h2>
+
+  <table class="table program-table">
+    <caption class="visually-hidden">Programma del convegno</caption>
+    <tbody>
+      <tr>
+        <td class="time">8:00 – 8:30</td>
+        <td>Registrazione dei partecipanti</td>
+      </tr>
+      <tr>
+        <td class="time">8:30 – 8:40</td>
+        <td><strong class="text-primary">Saluto di benvenuto e presentazione degli ospiti istituzionali</strong> a cura di <em>Dott. Johnny Vinella</em> - Direttore Hospice Beati Coniugi Martin.</td>
+      </tr>
+      <tr>
+        <td class="time">8:40 – 9:00</td>
+        <td><strong class="text-primary">Saluti istituzionali</strong>:
+          <ul class="plain-list">
+            <li><strong>Dott. Guido Bertolaso</strong> - Assessore Regionale al Welfare - Regione Lombardia</li>
+            <li><strong>Dott. Giuseppe Motta</strong> - Amministratore Delegato Gruppo KOS</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="time">&nbsp;</td>
+        <td><strong class="text-primary">Apertura dei lavori</strong> a cura del Responsabile Scientifico <em>Dott. Vincenzo Primerano</em> - Direttore Sanitario Hospice Beati Coniugi Martin</td>
+      </tr>
+
+      <!-- I SESSIONE -->
+      <tr class="session-row">
+        <td colspan="2">
+          <strong style="color:#ce1531;">I SESSIONE – "LA SCELTA DI FINE VITA TRA DIRITTO, ETICA E RESPONSABILITÀ DI CURA"</strong><br>
+          Moderatori: <em>Antonio De Tanti – Vincenzo Primerano – Sonia Serpi</em>
+        </td>
+      </tr>
+      <tr>
+        <td class="time">9:00 – 9:30</td>
+        <td><strong class="text-primary">La Legge 219/2017 – Il diritto, la parola del Magistrato: "Contenuto della legge. Tutela e consenso"</strong><br><em>Benito Melchionna</em></td>
+      </tr>
+      <tr>
+        <td class="time">9:30 – 10:00</td>
+        <td><strong class="text-primary">La posizione della Chiesa: il dialogo tra coscienza credente e norme civili nel fine vita</strong><br><em>Don Paolo Fontana</em></td>
+      </tr>
+      <tr>
+        <td class="time">10:00 – 10:30</td>
+        <td><strong class="text-primary">L'impegno del CEF nella definizione dei principi ispiratori delle cure sino al fine vita e le linee della Legge n. 219 del 2017</strong><br><em>Patrizia Borsellino</em></td>
+      </tr>
+      <tr>
+        <td class="time">10:30 – 11:00</td>
+        <td><strong class="text-primary">Costruire la culla del congedo: competenze, sensibilità e reti territoriali nel tempo delle scelte</strong><br><em>Gabriella Farina</em></td>
+      </tr>
+      <tr>
+        <td class="time">11:00 – 11:10</td>
+        <td><strong class="text-primary">Discussione e spazio per le domande</strong></td>
+      </tr>
+      <tr class="break-row">
+        <td class="time">11:10 – 11:20</td>
+        <td><em><strong>Coffee Break</strong></em></td>
+      </tr>
+
+      <!-- II SESSIONE -->
+      <tr class="session-row">
+        <td colspan="2">
+          <strong style="color:#ce1531;">II SESSIONE – "COSTRUIRE IL CONGEDO: COMPETENZE E RESPONSABILITÀ NELLA DECISIONE DEL FINE VITA"</strong><br>
+          Moderatori: <em>Antonio De Tanti – Vincenzo Primerano – Sonia Serpi</em>
+        </td>
+      </tr>
+      <tr>
+        <td class="time">11:20 – 11:40</td>
+        <td><strong class="text-primary">Legge 219 - Fine vita e donazione di organi e tessuti</strong><br><em>Massimo Cardillo</em></td>
+      </tr>
+      <tr>
+        <td class="time">11:40 – 12:00</td>
+        <td><strong class="text-primary">Il coraggio di esserci e camminare amorevolmente accanto</strong><br><em>Francesco Schittulli</em></td>
+      </tr>
+      <tr>
+        <td class="time">12:00 – 12:20</td>
+        <td><strong class="text-primary">Onorare la <em>Parola Custodita</em>: il ruolo dell'infermiere tra alleanza terapeutica e diritto alla dignità</strong><br><em>Pasqualino D'Aloia</em></td>
+      </tr>
+      <tr>
+        <td class="time">12:20 – 12:50</td>
+        <td><strong class="text-primary">L'affermazione delle libertà civili e i diritti umani e suicidio medicalmente assistito</strong><br><em>Mario Riccio</em></td>
+      </tr>
+      <tr>
+        <td class="time">12:50 – 13:00</td>
+        <td><strong>Discussione e spazio per le domande</strong></td>
+      </tr>
+      <tr class="break-row">
+        <td class="time">13:00 – 14:00</td>
+        <td><em><strong>Pranzo</strong></em></td>
+      </tr>
+
+      <tr>
+        <td class="time">14:00</td>
+        <td><strong class="text-primary">Ripresa dei lavori</strong> a cura del Responsabile Scientifico <em>Dott. Vincenzo Primerano</em> - Direttore Sanitario Hospice Beati Coniugi Martin.</td>
+      </tr>
+
+      <!-- III SESSIONE -->
+      <tr class="session-row">
+        <td colspan="2">
+          <strong style="color:#ce1531;">III SESSIONE – "CUSTODIRE LA VOLONTÀ, ACCOMPAGNARE NELLA CURA"</strong><br>
+          Moderatori: <em>Antonio De Tanti – Vincenzo Primerano – Sonia Serpi</em>
+        </td>
+      </tr>
+      <tr>
+        <td class="time">14:00 – 14:30</td>
+        <td><strong class="text-primary">Il giuramento della tenerezza: il medico di fronte alle DAT e al rispetto della volontà del paziente</strong><br><em>Maria Grazia Manfredi</em></td>
+      </tr>
+      <tr>
+        <td class="time">14:30 – 15:00</td>
+        <td><strong class="text-primary">Progettare la dignità: le istituzioni regionali e il diritto a una scelta consapevole e protetta</strong><br><em>Giulio Gallera</em></td>
+      </tr>
+      <tr>
+        <td class="time">15:00 – 15:30</td>
+        <td><strong class="text-primary">Le disposizioni sulla donazione degli organi e tessuti espresse dai cittadini con la sottoscrizione della nuova carta d'identità elettronica</strong><br><em>Gaia Romani</em></td>
+      </tr>
+      <tr>
+        <td class="time">15:30 – 15:50</td>
+        <td><strong class="text-primary">Intrecciare fili di vita e di rispetto: accompagnare la fragilità sociale ed emotiva nel tempo delle scelte. La presenza del servizio sociale accanto alle famiglie</strong><br><em>Sara Alberici</em></td>
+      </tr>
+      <tr>
+        <td class="time">15:50 – 16:20</td>
+        <td><strong class="text-primary">Umanizzazione delle cure in terapia intensiva</strong><br><em>Giovanni Mistraletti</em></td>
+      </tr>
+      <tr>
+        <td class="time">16:20 – 16:40</td>
+        <td><strong class="text-primary">La comunicazione del fine vita - Umanizzazione delle cure in Hospice</strong><br><em>Vincenzo Primerano</em></td>
+      </tr>
+      <tr class="break-row">
+        <td class="time">16:40 – 17:00</td>
+        <td><em><strong>Coffee Break</strong></em></td>
+      </tr>
+
+      <!-- TAVOLA ROTONDA -->
+      <tr class="roundtable-highlight">
+        <td class="time">17:00 – 17:45</td>
+        <td>
+          <span class="badge-rt">TAVOLA ROTONDA</span>
+          <strong> DARE VOCE ALLE SCELTE, DARE SENSO ALLA CURA</strong><br>
+          Discussant:
+          <ul class="mb-0 mt-2">
+            <li><em>Paola Musi</em></li>
+            <li><em>Immacolata Di Carlo</em></li>
+            <li><em>Claudio Medici</em></li>
+            <li><em>Valentina Di Mattei</em></li>
+            <li><em>Simona Regondi</em></li>
+            <li><em>Raffaele Angelo Franco Galato</em></li>
+            <li><em>Stefano Cereda</em></li>
+            <li><em>Antonio Ferriero</em></li>
+            <li><em>Sonia Yaleni Neciosup Aviles</em></li>
+          </ul>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="time">17:45 – 18:00</td>
+        <td><strong class="text-primary">Considerazioni conclusive e chiusura dei lavori</strong> a cura del Responsabile Scientifico <em>Dott. Vincenzo Primerano</em></td>
+      </tr>
+      <tr>
+        <td class="time">18:00 – 18:15</td>
+        <td><strong>Verifica apprendimento e gradimento ECM</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Sezione affiliazioni (una colonna, stesso stile) -->
+<div class="mt-5">
+  <h3 class="section-title" style="color:#ce1531;">Affiliazioni</h3>
+  <p class="mb-2"><strong>Interverranno al convegno, in ordine alfabetico.</strong></p>
+  <table class="table program-table affiliations-table">
+    <tbody>
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Sara Alberici</strong><br>
+        <em>Vice Presidente Ordine degli Assistenti Sociali della Lombardia</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Guido Bertolaso</strong><br>
+        <em>Assessore Regionale al Welfare - Regione Lombardia</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Gaia Romani</strong><br>
+        <em>Assessora al Decentramento, Quartieri e Partecipazione, Servizi Civici e Generali di Milano</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Prof.ssa Patrizia Borsellino</strong><br>
+        <em>Presidente del Comitato per l'Etica di Fine Vita - CEF</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Massimo Cardillo</strong><br>
+        <em>Direttore della S.C. Trapianti Lombardia - N.I.T.p.</em><br>
+        <em>Fondazione IRCCS Ca' Granda Ospedale Maggiore Policlinico di Milano</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Stefano Cereda</strong><br>
+        <em>Medico Oncologo Palliativista - Cure Palliative Domiciliari Andromeda</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Pasqualino D'Aloia</strong><br>
+        <em>Presidente Ordine delle Professioni Infermieristiche - OPI</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Antonio De Tanti</strong><br>
+        <em>Direttore Medico Scientifico del Gruppo KOS</em><br>
+        <em>Presidente Società Italiana di Riabilitazione Neurologica - SIRN</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Immacolata Di Carlo</strong><br>
+        <em>Consigliere del Direttivo Nazionale della Federazione Cure Palliative</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Gabriella Farina</strong><br>
+        <em>Direttrice Dipartimento di Oncologia ASST FBF/Sacco</em><br>
+        <em>Direttrice della Rete Locale Cure Palliative Milano</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Antonio Ferriero</strong><br>
+        <em>Direttore Sanitario Polo Geriatrico Riabilitativo - Milano</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Don Paolo Fontana</strong><br>
+        <em>Incaricato Regionale della Pastorale della Salute</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Raffaele Angelo Franco Galato</strong><br>
+        <em>Direttore Sanitario Cure Palliative Domiciliari Andromeda</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Avv. Giulio Gallera</strong><br>
+        <em>Consigliere Regionale e Componente della Commissione Sanità</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Maria Grazia Manfredi</strong><br>
+        <em>Medico di Medicina Generale e membro del Consiglio Direttivo dell’OMCeO Milano</em>
+      </td></tr>
+      
+      <tr><td>
+        <strong class="text-primary">Dott. Claudio Medici</strong><br>
+        <em>Volontario LILT e autore del libro "La nostalgia è l'amore che resta"</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Benito Melchionna</strong><br>
+        <em>Magistrato, Procuratore Emerito della Repubblica</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Giovanni Mistraletti</strong><br>
+        <em>Direttore di Rianimazione e Anestesia dell'Ospedale di Legnano - ASST Ovest Milanese</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Giuseppe Motta</strong><br>
+        <em>Amministratore Delegato Gruppo KOS</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Paola Musi</strong><br>
+        <em>Psicologa Clinica e Counselor - Assistente Spirituale</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Sonia Yaleni Neciosup Aviles</strong><br>
+        <em>Coordinatrice Infermieristica Hospice Beati Coniugi Martin</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Valentina Di Mattei</strong><br>
+        <em>Presidente dell'Ordine degli Psicologi della Lombardia</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Vincenzo Primerano</strong><br>
+        <em>Direttore Sanitario Hospice Beati Coniugi Martin</em><br>
+        <em>Responsabile Scientifico del convegno</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Simona Regondi</strong><br>
+        <em>Presidente dell'Ordine degli Assistenti Sociali</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Mario Riccio</strong><br>
+        <em>Anestesista Rianimatore</em><br>
+        <em>Consigliere dell'Associazione Luca Coscioni</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Francesco Schittulli</strong><br>
+        <em>Senologo, Chirurgo Oncologo</em><br>
+        <em>Presidente Nazionale della Lega Italiana per la Lotta contro i Tumori - LILT</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Sonia Serpi</strong><br>
+        <em>Direttore Sanitario RSA Anni Azzurri Villa Clarice - Cermenate (CO)</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Johnny Vinella</strong><br>
+        <em>Direttore Hospice Beati Coniugi Martin</em>
+      </td></tr>
+    </tbody>
+  </table>
+</div>

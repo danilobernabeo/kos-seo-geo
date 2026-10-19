@@ -1,0 +1,41 @@
+<!-- Etichetta visibile (facoltativa) -->
+<small aria-hidden="true">Condividi questo articolo</small>
+
+<!-- elenco di icone -->
+<ul class="box-social-icone d-flex align-items-center list-unstyled m-0" aria-label="Condividi questo articolo">
+  <li>
+    <a class="social-link whatsapp"
+       href="https://api.whatsapp.com/send?text=[[*pagetitle:urlencode]]%20-%20[[~[[*id]]? &scheme=`full`]]"
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Condividi su WhatsApp">
+      <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+  </li>
+
+  <li>
+    <a class="social-link telegram"
+       href="https://t.me/share/url?url=[[~[[*id]]? &scheme=`full`]]&amp;text=[[*pagetitle:urlencode]]"
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Condividi su Telegram">
+      <i class="fab fa-telegram" aria-hidden="true"></i>
+    </a>
+  </li>
+
+  <li>
+    <a class="social-link linkedin"
+       href="https://www.linkedin.com/sharing/share-offsite/?url=[[~[[*id]]? &scheme=`full`]]"
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Condividi su LinkedIn">
+      <i class="fab fa-linkedin" aria-hidden="true"></i>
+    </a>
+  </li>
+
+  <li>
+    <a class="social-link facebook"
+       href="https://www.facebook.com/sharer/sharer.php?u=[[~[[*id]]? &scheme=`full`]]"
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Condividi su Facebook">
+      <i class="fab fa-facebook" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>

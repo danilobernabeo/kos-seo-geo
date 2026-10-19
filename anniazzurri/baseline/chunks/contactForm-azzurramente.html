@@ -1,0 +1,109 @@
+<!-- Form Contatti AzzurraMente -->
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="info-box">
+      <h2 class="title">Richiedi Informazioni</h2>
+
+      [[!+fi.error_message:notempty=`
+      <div class="alert alert-danger" role="alert" tabindex="-1" id="fi-errori">
+        <strong>Non è stato possibile inviare la richiesta.</strong>
+        Se qui sotto trovi dei campi segnalati, correggili e invia di nuovo.
+      </div>`]]
+
+      <form id="form-azzurramente" action="[[~[[*id]]]]" method="post" class="needs-validation" novalidate>
+
+        <!-- Trappola antispam: invisibile e fuori dall'ordine di tabulazione.
+             Il validatore blank in &validate scarta l'invio se risulta
+             compilata, cosa che gli automatismi fanno quasi sempre. -->
+        <div style="position:absolute;left:-9999px" aria-hidden="true">
+          <label for="website">Non compilare questo campo</label>
+          <input type="text" id="website" name="website" value="" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="row g-3">
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="nome" class="form-label">Nome*</label>
+              <input type="text" class="form-control" id="nome" name="nome"
+                     value="[[!+fi.nome]]" autocomplete="given-name" required
+                     aria-describedby="err-nome srv-nome">
+              <div class="invalid-feedback" id="err-nome">Inserisci il tuo nome</div>
+              [[!+fi.error.nome:notempty=`<div class="text-danger small mt-1" id="srv-nome" role="alert">[[!+fi.error.nome]]</div>`]]
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="cognome" class="form-label">Cognome*</label>
+              <input type="text" class="form-control" id="cognome" name="cognome"
+                     value="[[!+fi.cognome]]" autocomplete="family-name" required
+                     aria-describedby="err-cognome srv-cognome">
+              <div class="invalid-feedback" id="err-cognome">Inserisci il tuo cognome</div>
+              [[!+fi.error.cognome:notempty=`<div class="text-danger small mt-1" id="srv-cognome" role="alert">[[!+fi.error.cognome]]</div>`]]
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email*</label>
+              <input type="email" class="form-control" id="email" name="email"
+                     value="[[!+fi.email]]" autocomplete="email" required
+                     aria-describedby="err-email srv-email">
+              <div class="invalid-feedback" id="err-email">Inserisci un indirizzo email valido</div>
+              [[!+fi.error.email:notempty=`<div class="text-danger small mt-1" id="srv-email" role="alert">[[!+fi.error.email]]</div>`]]
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="telefono" class="form-label">Telefono*</label>
+              <input type="tel" class="form-control" id="telefono" name="telefono"
+                     value="[[!+fi.telefono]]" autocomplete="tel" required
+                     aria-describedby="err-telefono srv-telefono">
+              <div class="invalid-feedback" id="err-telefono">Inserisci un recapito telefonico</div>
+              [[!+fi.error.telefono:notempty=`<div class="text-danger small mt-1" id="srv-telefono" role="alert">[[!+fi.error.telefono]]</div>`]]
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="mb-3">
+              <label for="note" class="form-label">Note</label>
+              <textarea class="form-control" id="note" name="note" rows="4"
+                        aria-describedby="srv-note">[[!+fi.note]]</textarea>
+              [[!+fi.error.note:notempty=`<div class="text-danger small mt-1" id="srv-note" role="alert">[[!+fi.error.note]]</div>`]]
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="mb-3">
+              <div class="form-check">
+                <!-- Una casella non spuntata non viene inviata: il campo
+                     sparisce dal POST. Il campo nascosto fa sì che privacy
+                     arrivi sempre, vuoto se non spuntata, così la validazione
+                     può rifiutare l'invio senza consenso. -->
+                <input type="hidden" name="privacy" value="">
+                <input class="form-check-input" type="checkbox" id="privacy" name="privacy" value="accetto"
+                       required aria-describedby="err-privacy srv-privacy" [[!+fi.privacy:FormItIsChecked=`accetto`]]>
+                <label class="form-check-label" for="privacy">
+                  Ho letto l'<a class="text-azure text-decoration-underline"
+                     href="/assets/doc/KOS-Care_GDPR_Informativa.pdf"
+                     target="_blank" rel="noopener noreferrer">Informativa sul trattamento dei miei dati personali</a>
+                  (documento PDF, si apre in una nuova finestra)
+                  ed acconsento alla loro elaborazione nelle formule espresse.*
+                </label>
+                <div class="invalid-feedback" id="err-privacy">Devi accettare l'informativa sulla privacy per procedere</div>
+                [[!+fi.error.privacy:notempty=`<div class="text-danger small mt-1" id="srv-privacy" role="alert">[[!+fi.error.privacy]]</div>`]]
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Invia Richiesta</button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,263 @@
+<div class="row mt-5">
+  <div class="col-12 pb-3">
+    <p class="text-uppercase small fw-semibold text-azure mb-1">[[+preTitolo:default=`Modulo di iscrizione`]]</p>
+    <h1 class="h3 mb-1 text-primary">[[+titolo:default=`Modulo di iscrizione`]]</h1>
+    [[+sottotitolo:notempty=`<p class="h4 text-azure mb-2">[[+sottotitolo]]</p>`]]
+    [[+dataLuogo:notempty=`<p class="mb-0"><strong>[[+dataLuogo]]</strong></p>`]]
+  </div>
+
+  [[!+fi.error_message:notempty=`
+  <div class="col-12">
+    <div class="alert alert-danger" role="alert" tabindex="-1" id="fi-errori">
+      <strong>Non è stato possibile inviare l'iscrizione.</strong>
+      [[!+fi.error_message]] Se qui sotto trovi dei campi segnalati, correggili e invia di nuovo.
+    </div>
+  </div>`]]
+
+  <form action="[[~[[*id]]]]" method="post" class="content-left text-brown col-12" enctype="multipart/form-data" novalidate id="ecm-form">
+    <input type="hidden" name="nospam:blank" />
+
+    <p class="small mb-4">I campi contrassegnati con <span class="text-danger">*</span> sono obbligatori.</p>
+
+    <fieldset class="mb-5">
+      <legend class="h5 text-primary">Dati anagrafici</legend>
+      <div class="row g-4">
+
+        <div class="col-12 col-md-6">
+          <label class="form-label" for="name">Nome <span class="text-danger" aria-hidden="true">*</span></label>
+          <input class="form-control form-control-lg" id="name" name="name" type="text" autocomplete="given-name"
+                 value="[[!+fi.name]]" required aria-required="true" aria-describedby="err-name">
+          <span class="invalid-feedback d-block" id="err-name" role="alert">[[!+fi.error.name]]</span>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label" for="surname">Cognome <span class="text-danger" aria-hidden="true">*</span></label>
+          <input class="form-control form-control-lg" id="surname" name="surname" type="text" autocomplete="family-name"
+                 value="[[!+fi.surname]]" required aria-required="true" aria-describedby="err-surname">
+          <span class="invalid-feedback d-block" id="err-surname" role="alert">[[!+fi.error.surname]]</span>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label" for="birthdate">Data di nascita <span class="text-danger" aria-hidden="true">*</span></label>
+          <input class="form-control form-control-lg" id="birthdate" name="birthdate" type="date"
+                 min="1920-01-01" max="[[+dataMax]]"
+                 value="[[!+fi.birthdate]]" required aria-required="true" aria-describedby="err-birthdate">
+          <span class="invalid-feedback d-block" id="err-birthdate" role="alert">[[!+fi.error.birthdate]]</span>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label" for="birthcity">Luogo di nascita <span class="text-danger" aria-hidden="true">*</span></label>
+          <input class="form-control form-control-lg" id="birthcity" name="birthcity" type="text"
+                 value="[[!+fi.birthcity]]" required aria-required="true" aria-describedby="err-birthcity">
+          <span class="invalid-feedback d-block" id="err-birthcity" role="alert">[[!+fi.error.birthcity]]</span>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label" for="birthprov">Provincia di nascita <span class="text-danger" aria-hidden="true">*</span></label>
+          <select class="form-select form-select-lg" id="birthprov" name="birthprov" required aria-required="true" aria-describedby="err-birthprov">
+            [[$ecmOptProvince? &selProvincia=`[[!+fi.birthprov]]`]]
+          </select>
+          <span class="invalid-feedback d-block" id="err-birthprov" role="alert">[[!+fi.error.birthprov]]</span>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label" for="birthstate">Nazione di nascita <span class="text-danger" aria-hidden="true">*</span></label>
+          <select class="form-select form-select-lg" id="birthstate" name="birthstate" required aria-required="true" aria-describedby="err-birthstate">
+            [[$ecmOptNazioni? &selNazione=`[[!+fi.birthstate:default=`Italia`]]`]]
+          </select>
+          <span class="invalid-feedback d-block" id="err-birthstate" role="alert">[[!+fi.error.birthstate]]</span>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label" for="fiscalcode">Codice fiscale <span class="text-danger" aria-hidden="true">*</span></label>
+          <input class="form-control form-control-lg text-uppercase" id="fiscalcode" name="fiscalcode" type="text"
+                 inputmode="latin" maxlength="16" autocomplete="off" spellcheck="false"
+                 value="[[!+fi.fiscalcode]]" required aria-required="true" aria-describedby="err-fiscalcode hint-fiscalcode">
+          <span class="form-text" id="hint-fiscalcode">16 caratteri. Necessario per l'attribuzione dei crediti ECM.</span>
+          <span class="invalid-feedback d-block" id="err-fiscalcode" role="alert">[[!+fi.error.fiscalcode]]</span>
+        </div>
+
+      </div>
+    </fieldset>
+
+    <fieldset class="mb-5">
+      <legend class="h5 text-primary">Residenza e recapiti</legend>
+      <div class="row g-4">
+
+        <div class="col-12">
+          <label class="form-label" for="address">Indirizzo <span class="text-danger" aria-hidden="true">*</span></label>
+          <input class="form-control form-control-lg" id="address" name="address" type="text" autocomplete="street-address"
+                 value="[[!+fi.address]]" required aria-required="true" aria-describedby="err-address">
+          <span class="invalid-feedback d-block" id="err-address" role="alert">[[!+fi.error.address]]</span>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <label class="form-label" for="cap">CAP <span class="text-danger" aria-hidden="true">*</span></label>
+          <input class="form-control form-control-lg" id="cap" name="cap" type="text" inputmode="numeric"
+                 pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code"
+                 value="[[!+fi.cap]]" required aria-required="true" aria-describedby="err-cap">
+          <span class="invalid-feedback d-block" id="err-cap" role="alert">[[!+fi.error.cap]]</span>
+        </div>
+
+        <div class="col-12 col-md-8">
+          <label class="form-label" for="city">Città <span class="text-danger" aria-hidden="true">*</span></label>
+          <input class="form-control form-control-lg" id="city" name="city" type="text" autocomplete="address-level2"
+                 value="[[!+fi.city]]" required aria-required="true" aria-describedby="err-city">
+          <span class="invalid-feedback d-block" id="err-city" role="alert">[[!+fi.error.city]]</span>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label" for="province">Provincia <span class="text-danger" aria-hidden="true">*</span></label>
+          <select class="form-select form-select-lg" id="province" name="province" required aria-required="true" aria-describedby="err-province">
+            [[$ecmOptProvince? &selProvincia=`[[!+fi.province]]`]]
+          </select>
+          <span class="invalid-feedback d-block" id="err-province" role="alert">[[!+fi.error.province]]</span>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label" for="state">Nazione <span class="text-danger" aria-hidden="true">*</span></label>
+          <select class="form-select form-select-lg" id="state" name="state" required aria-required="true" aria-describedby="err-state">
+            [[$ecmOptNazioni? &selNazione=`[[!+fi.state:default=`Italia`]]`]]
+          </select>
+          <span class="invalid-feedback d-block" id="err-state" role="alert">[[!+fi.error.state]]</span>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label" for="tel1">Telefono <span class="text-danger" aria-hidden="true">*</span></label>
+          <input class="form-control form-control-lg" id="tel1" name="tel1" type="tel" autocomplete="tel"
+                 value="[[!+fi.tel1]]" required aria-required="true" aria-describedby="err-tel1">
+          <span class="invalid-feedback d-block" id="err-tel1" role="alert">[[!+fi.error.tel1]]</span>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label" for="email">Email <span class="text-danger" aria-hidden="true">*</span></label>
+          <input class="form-control form-control-lg" id="email" name="email" type="email" autocomplete="email"
+                 value="[[!+fi.email]]" required aria-required="true" aria-describedby="err-email hint-email">
+          <span class="form-text" id="hint-email">Qui riceverai la ricevuta della tua richiesta.</span>
+          <span class="invalid-feedback d-block" id="err-email" role="alert">[[!+fi.error.email]]</span>
+        </div>
+
+      </div>
+    </fieldset>
+
+    <fieldset class="mb-5">
+      <legend class="h5 text-primary">Dati per i crediti ECM</legend>
+      <div class="row g-4">
+
+        <div class="col-12">
+          <label class="form-label" for="ecm_prof_id">Professione <span class="text-danger" aria-hidden="true">*</span></label>
+          <select class="form-select form-select-lg" id="ecm_prof_id" name="ecm_prof_id" required aria-required="true" aria-describedby="err-ecm_prof_id">
+            [[$ecmOptProfessioni? &selProfessione=`[[!+fi.ecm_prof_id]]`]]
+          </select>
+          <span class="invalid-feedback d-block" id="err-ecm_prof_id" role="alert">[[!+fi.error.ecm_prof_id]]</span>
+        </div>
+
+        <div class="col-12" id="wrap-specializzazione">
+          <label class="form-label" for="ecm_disc_id">Disciplina / specializzazione <span class="text-danger" aria-hidden="true">*</span></label>
+          <select class="form-select form-select-lg" id="ecm_disc_id" name="ecm_disc_id" aria-describedby="err-ecm_disc_id">
+            [[$ecmOptSpecializzazioni? &selSpecializzazione=`[[!+fi.ecm_disc_id]]`]]
+          </select>
+          <span class="invalid-feedback d-block" id="err-ecm_disc_id" role="alert">[[!+fi.error.ecm_disc_id]]</span>
+        </div>
+
+        <div class="col-12">
+          <fieldset aria-describedby="err-status">
+            <legend class="form-label mb-2">Ai fini ECM dichiaro di essere <span class="text-danger" aria-hidden="true">*</span></legend>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="status" id="status-D" value="D" required aria-required="true" [[!+fi.status:FormItIsChecked=`D`]]>
+              <label class="form-check-label" for="status-D">Dipendente</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="status" id="status-L" value="L" [[!+fi.status:FormItIsChecked=`L`]]>
+              <label class="form-check-label" for="status-L">Libero professionista</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="status" id="status-C" value="C" [[!+fi.status:FormItIsChecked=`C`]]>
+              <label class="form-check-label" for="status-C">Convenzionato</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="status" id="status-P" value="P" [[!+fi.status:FormItIsChecked=`P`]]>
+              <label class="form-check-label" for="status-P">Privo di occupazione</label>
+            </div>
+            <span class="invalid-feedback d-block" id="err-status" role="alert">[[!+fi.error.status]]</span>
+          </fieldset>
+        </div>
+
+        <div class="col-12 col-md-8" id="wrap-ente">
+          <label class="form-label" for="org_id">Ente di appartenenza <span class="text-danger" aria-hidden="true">*</span></label>
+          <input class="form-control form-control-lg" id="org_id" name="org_id" type="text"
+                 value="[[!+fi.org_id]]" aria-describedby="err-org_id">
+          <span class="invalid-feedback d-block" id="err-org_id" role="alert">[[!+fi.error.org_id]]</span>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <label class="form-label" for="reclutato">Partecipante reclutato <span class="text-danger" aria-hidden="true">*</span></label>
+          <select class="form-select form-select-lg" id="reclutato" name="reclutato" required aria-required="true" aria-describedby="err-reclutato hint-reclutato">
+            <option value="">Seleziona</option>
+            <option value="No"[[!+fi.reclutato:is=`No`:then=` selected`]]>No</option>
+            <option value="Si"[[!+fi.reclutato:is=`Si`:then=` selected`]]>Sì</option>
+          </select>
+          <span class="invalid-feedback d-block" id="err-reclutato" role="alert">[[!+fi.error.reclutato]]</span>
+        </div>
+
+        <div class="col-12 col-md-8" id="wrap-reclutatore">
+          <label class="form-label" for="org_reclutatore">Ente reclutatore <span class="text-danger" aria-hidden="true">*</span></label>
+          <input class="form-control form-control-lg" id="org_reclutatore" name="org_reclutatore" type="text"
+                 value="[[!+fi.org_reclutatore]]" aria-describedby="err-org_reclutatore">
+          <span class="invalid-feedback d-block" id="err-org_reclutatore" role="alert">[[!+fi.error.org_reclutatore]]</span>
+        </div>
+
+        <div class="col-12">
+          <p class="small mb-0" id="hint-reclutato">Si considera reclutato il professionista sanitario che, per la partecipazione ad eventi formativi, beneficia di vantaggi economici e non economici, diretti e indiretti, da parte di imprese commerciali operanti in ambito sanitario. Il professionista sanitario non può assolvere a più di un terzo del proprio obbligo formativo mediante reclutamento.</p>
+        </div>
+
+      </div>
+    </fieldset>
+
+    [[+bloccoFatturazione]]
+
+    <fieldset class="mb-4">
+      <legend class="h5 text-primary">Note e consensi</legend>
+      <div class="row g-4">
+
+        <div class="col-12">
+          <label class="form-label" for="note">Vuoi lasciarci un messaggio?</label>
+          <textarea class="form-control" id="note" name="note" rows="4">[[!+fi.note]]</textarea>
+        </div>
+
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" id="privacy" name="privacy" type="checkbox" value="accetto"
+                   required aria-required="true" aria-describedby="err-privacy" [[!+fi.privacy:FormItIsChecked=`accetto`]]>
+            <label class="form-check-label small" for="privacy">
+              Ho letto l'<a class="text-azure text-decoration-underline" href="[[+informativa:default=`/assets/doc/KOS-Care_GDPR_Informativa.pdf`]]" target="_blank" rel="noopener">informativa sul trattamento dei miei dati personali</a> (si apre in una nuova finestra) ai sensi dell'art. 13 del Regolamento UE 2016/679 <span class="text-danger" aria-hidden="true">*</span>
+            </label>
+            <span class="invalid-feedback d-block" id="err-privacy" role="alert">[[!+fi.error.privacy]]</span>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" id="consenso" name="consenso" type="checkbox" value="accetto" [[!+fi.consenso:FormItIsChecked=`accetto`]]>
+            <label class="form-check-label small" for="consenso">
+              Autorizzo l'invio via email di sondaggi di opinione e gradimento, newsletter e inviti a eventi formativi organizzati dal Titolare.
+            </label>
+          </div>
+        </div>
+
+      </div>
+    </fieldset>
+
+    <div class="row g-4 mb-3">
+      <div class="col-12">
+        [[!recaptchav3_render]]
+        [[!+fi.error.recaptchav3_error:notempty=`<span class="invalid-feedback d-block" role="alert">La verifica di sicurezza non è andata a buon fine. Premi di nuovo "Invia l'iscrizione": i dati che hai compilato sono conservati.</span>`]]
+        [[!+fi.error.spam:notempty=`<span class="invalid-feedback d-block" role="alert">[[!+fi.error.spam]]</span>`]]
+      </div>
+    </div>
+
+    <button type="submit" class="mt-4 btn btn-primary btn-lg">Invia l'iscrizione</button>
+  </form>
+</div>
+
+[[$ecmFormScript]]

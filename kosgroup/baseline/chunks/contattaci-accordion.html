@@ -1,0 +1,383 @@
+<style>
+.contatti-accordion {
+    max-width: 900px;
+    margin: 0 auto 50px;
+}
+.contatti-accordion-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+.contatti-accordion-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.contatti-accordion-header {
+    display: flex;
+    align-items: center;
+    padding: 18px 24px;
+    background: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.contatti-accordion-header:hover {
+    background: #f8f9fa;
+}
+.contatti-accordion-header.active {
+    background: #1a3a5c;
+}
+.contatti-accordion-header.active .accordion-title h3,
+.contatti-accordion-header.active .accordion-title span,
+.contatti-accordion-header.active .accordion-arrow {
+    color: #fff;
+}
+.contatti-accordion-header.active .accordion-arrow svg {
+    fill: #fff;
+}
+.contatti-accordion-header.active .accordion-arrow {
+    transform: rotate(180deg);
+}
+.accordion-title {
+    flex: 1;
+}
+.accordion-title h3 {
+    margin: 0 0 4px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a3a5c;
+}
+.accordion-title span {
+    font-size: 0.9rem;
+    color: #666;
+}
+.accordion-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+.accordion-arrow svg {
+    width: 16px;
+    height: 16px;
+    fill: #1a3a5c;
+    transition: fill 0.3s ease;
+}
+.contatti-accordion-content {
+    display: none;
+    padding: 24px;
+    background: #f8f9fa;
+    border-top: 1px solid #e0e0e0;
+}
+.contatti-accordion-content.show {
+    display: block;
+}
+.contatti-accordion-content p {
+    margin: 0 0 15px;
+    color: #555;
+}
+.contatti-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.contatti-links a {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 18px;
+    background: #fff;
+    border: 1px solid #1a3a5c;
+    border-radius: 25px;
+    color: #1a3a5c;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+.contatti-links a:hover {
+    background: #1a3a5c;
+    color: #fff;
+}
+.contatti-links a svg {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+}
+.contatti-email {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    padding: 12px 18px;
+    background: #e8f4f8;
+    border-radius: 8px;
+    color: #1a3a5c;
+}
+.contatti-email svg {
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+.contatti-email a {
+    color: #1a3a5c;
+    font-weight: 600;
+    text-decoration: none;
+}
+.contatti-email a:hover {
+    text-decoration: underline;
+}
+.contatti-phone {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    padding: 12px 18px;
+    background: #e8f8e8;
+    border-radius: 8px;
+    color: #2e7d32;
+}
+.contatti-phone svg {
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+.contatti-phone a {
+    color: #2e7d32;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+.contatti-note {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: #888;
+    font-style: italic;
+}
+@media (max-width: 768px) {
+    .contatti-accordion-header { padding: 15px 18px; }
+    .accordion-title h3 { font-size: 1rem; }
+    .contatti-links { flex-direction: column; }
+    .contatti-links a { justify-content: center; }
+}
+</style>
+
+<!-- ACCORDION -->
+<div class="contatti-accordion px-1">
+
+<!-- 1. INFORMAZIONI E PRENOTAZIONI -->
+<div class="contatti-accordion-item" id="prenotazioni">
+    <div class="contatti-accordion-header active" data-track-category="Contatti" data-track-action="Click Accordion" data-track-label="Informazioni e prenotazioni" onclick="toggleAccordion(this)">
+        <div class="accordion-title">
+            <h3>Informazioni e prenotazioni</h3>
+            <span>Prenota un appuntamento o richiedi informazioni sui nostri servizi</span>
+        </div>
+        <span class="accordion-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"></path></svg></span>
+    </div>
+    <div class="contatti-accordion-content show">
+        <p>Per prenotare visite specialistiche ed esami diagnostici puoi utilizzare i servizi online oppure contattare direttamente la struttura di tuo interesse. Il personale sarà a disposizione anche per fornirti informazioni sui servizi disponibili e guidarti nel percorso più adatto alle tue esigenze.</p>
+        <div class="contatti-links">
+            <a href="/it/prenota-online">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                Prenota online
+            </a>
+            <a href="https://kos.zerocoda.it/" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                Salta coda
+            </a>
+            <a href="/it/strutture">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                Trova la tua struttura
+            </a>
+        </div>
+    </div>
+</div>
+
+    <!-- 2. REFERTI -->
+    <div class="contatti-accordion-item" id="referti">
+        <div class="contatti-accordion-header" 
+             data-track-category="Contatti" 
+             data-track-action="Click Accordion" 
+             data-track-label="Referti e risultati esami"
+             onclick="toggleAccordion(this)">
+            <div class="accordion-title">
+                <h3>Referti e risultati esami</h3>
+                <span>Ritira i tuoi referti online</span>
+            </div>
+            <span class="accordion-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg></span>
+        </div>
+        <div class="contatti-accordion-content">
+            <p>Accedi al servizio di ritiro referti online in modo semplice e veloce.</p>
+            <div class="contatti-links">
+                <a href="/it/ritiro-referti">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    Ritiro referti
+                </a>
+                <a href="https://app.tuotempo.com/mop/index.php?dbName=tt_kosgroup_portale#contactus" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg>
+                    Richiedi assistenza
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. ANZIANI -->
+    <div class="contatti-accordion-item" id="anziani">
+        <div class="contatti-accordion-header" 
+             data-track-category="Contatti" 
+             data-track-action="Click Accordion" 
+             data-track-label="Residenze per anziani e cure domiciliari"
+             onclick="toggleAccordion(this)">
+            <div class="accordion-title">
+                <h3>Residenze per anziani e cure domiciliari</h3>
+                <span>Informazioni su Anni Azzurri e assistenza a domicilio</span>
+            </div>
+            <span class="accordion-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg></span>
+        </div>
+        <div class="contatti-accordion-content">
+            <p>Scopri le residenze per anziani Anni Azzurri e i servizi di cure e assistenza domiciliare.</p>
+            <div class="contatti-links">
+                <a href="https://anniazzurri.it" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Residenze per anziani
+                </a>
+                <a href="https://anniazzurri.it/cure-e-assistenza-domiciliare" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    Cure e assistenza domiciliare
+                </a>
+            </div>
+            <div class="contatti-phone">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>Numero Verde: <a href="tel:800131851">800 131 851</a></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. LAVORO -->
+    <div class="contatti-accordion-item" id="lavoro">
+        <div class="contatti-accordion-header" 
+             data-track-category="Contatti" 
+             data-track-action="Click Accordion" 
+             data-track-label="Lavora con noi"
+             onclick="toggleAccordion(this)">
+            <div class="accordion-title">
+                <h3>Lavora con noi</h3>
+                <span>Opportunità di carriera e candidature</span>
+            </div>
+            <span class="accordion-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg></span>
+        </div>
+        <div class="contatti-accordion-content">
+            <p>Entra a far parte del Gruppo KOS: scopri le posizioni aperte e invia la tua candidatura.</p>
+            <div class="contatti-links">
+                <a href="/it/lavorare-in-kos/perche-lavorare-in-kos">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    Perché lavorare in KOS
+                </a>
+                <a href="/it/lavorare-in-kos/posizioni-aperte">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    Posizioni aperte
+                </a>
+                <a href="https://lavoraconnoi.kosgroup.com/job-seekers.php" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                    Candidatura spontanea
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. RECLAMI -->
+    <div class="contatti-accordion-item" id="reclami">
+        <div class="contatti-accordion-header" 
+             data-track-category="Contatti" 
+             data-track-action="Click Accordion" 
+             data-track-label="Reclami e segnalazioni"
+             onclick="toggleAccordion(this)">
+            <div class="accordion-title">
+                <h3>Reclami e segnalazioni</h3>
+                <span>Segnala un disservizio o un problema</span>
+            </div>
+            <span class="accordion-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg></span>
+        </div>
+        <div class="contatti-accordion-content">
+            <p>Per segnalazioni o reclami relativi ai servizi ricevuti, ti invitiamo a contattare direttamente la struttura di riferimento. Trovi tutti i recapiti nella sezione <a href="/it/strutture" style="color: #1a3a5c; font-weight: 600;">Le nostre strutture</a>.</p>
+        </div>
+    </div>
+
+    <!-- 6. FORNITORI -->
+    <div class="contatti-accordion-item" id="fornitori">
+        <div class="contatti-accordion-header" 
+             data-track-category="Contatti" 
+             data-track-action="Click Accordion" 
+             data-track-label="Fornitori e fatturazione"
+             onclick="toggleAccordion(this)">
+            <div class="accordion-title">
+                <h3>Fornitori</h3>
+                <span>Collaborazioni commerciali</span>
+            </div>
+            <span class="accordion-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg></span>
+        </div>
+        <div class="contatti-accordion-content">
+            <p>Per avviare una collaborazione o registrarsi come fornitore del Gruppo, è necessario utilizzare il Portale Fornitori.</p>
+            <div class="contatti-links">
+                <a href="https://procurement.kosgroup.com/" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                    Iscriviti al portale fornitori
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- 8. STAMPA -->
+    <div class="contatti-accordion-item" id="stampa">
+        <div class="contatti-accordion-header" 
+             data-track-category="Contatti" 
+             data-track-action="Click Accordion" 
+             data-track-label="Stampa e media"
+             onclick="toggleAccordion(this)">
+            <div class="accordion-title">
+                <h3>Stampa e media</h3>
+                <span>Richieste da parte di giornalisti e media</span>
+            </div>
+            <span class="accordion-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg></span>
+        </div>
+        <div class="contatti-accordion-content">
+            <p>Per richieste di interviste, informazioni stampa e comunicati.</p>
+            <div class="contatti-email">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>Ufficio stampa: <a href="mailto:ufficiostampa@kosgroup.com">ufficiostampa@kosgroup.com</a></span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+function toggleAccordion(header) {
+    var content = header.nextElementSibling;
+    var isActive = header.classList.contains('active');
+    
+    var allHeaders = document.querySelectorAll('.contatti-accordion-header.active');
+    for (var i = 0; i < allHeaders.length; i++) {
+        if (allHeaders[i] !== header) {
+            allHeaders[i].classList.remove('active');
+            allHeaders[i].nextElementSibling.classList.remove('show');
+        }
+    }
+    
+    if (isActive) {
+        header.classList.remove('active');
+        content.classList.remove('show');
+    } else {
+        header.classList.add('active');
+        content.classList.add('show');
+        setTimeout(function() {
+            header.parentElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var hash = window.location.hash;
+    if (hash) {
+        var targetHeader = document.querySelector(hash + ' .contatti-accordion-header');
+        if (targetHeader) {
+            toggleAccordion(targetHeader);
+        }
+    }
+});
+</script>

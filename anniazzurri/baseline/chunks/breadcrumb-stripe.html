@@ -1,0 +1,11 @@
+<div stripe-breadcrumb="">
+  <nav aria-label="breadcrumb" class="container">
+      [[BreadCrumb?
+&containerTpl=`@INLINE <ol class="breadcrumb">[[+crumbs]]</ol>`
+&homeCrumbTpl=`@INLINE <li class="breadcrumb-item"><a href="[[+link]]" class="text-gray text-decoration-none">[[+pagetitle]]</a></li>`
+&linkCrumbTpl=`@INLINE <li class="breadcrumb-item"><a href="[[+link]]" class="text-gray text-decoration-none">[[+pagetitle]]</a></li>`
+&currentCrumbTpl=`@INLINE <li class="breadcrumb-item active" aria-current="page">[[*menutitle:isempty=`[[*pagetitle]]`]]</li>`
+&exclude=`2,4,48,54,55,68,78,85,93,97,98,100,109,156`
+]]
+  </nav>
+</div>

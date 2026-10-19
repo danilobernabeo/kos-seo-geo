@@ -1,0 +1,29 @@
+{
+    "id": 6,
+    "name": "come_raggiungerci",
+    "caption": "Come raggiungerci",
+    "description": "",
+    "category": "Base",
+    "type": "textarea",
+    "elements": null,
+    "default_text": "            <section id=\"blocco-mappa\" class=\"bg-dark\">\n                <div class=\"container px-4 px-lg-3\">\n                    <div class=\"row\">\n                        <div class=\"titolo-sezione titolo-con-sep\">\n                            <h3>Come raggiungerci</h3>\n                        </div>\n                    </div>\n                    <div class=\"row flex-column-reverse flex-md-row\">\n                        <div id=\"mappa-indicazioni\" class=\"col-12 col-md-8\">\n                            <div id=\"mappa-indicazioni-auto\">\n                                <span>In automobile</span>\n                                <p>Situata a meno di dieci chilometri dal Centro Storico di Roma, prendete prima viale Vaticano e poi proseguite per l’Aurelia. Proseguite poi per Via di Villa Troili e Via degli Aldobrandeschi in direzione di Via dei Bevilacqua.</p>\n                            </div>\n                            <div id=\"mappa-indicazioni-mezzi-pubblici\">\n                                <span>Mezzi pubblici</span>\n                                <p>\n                                    <ul class=\"lista-mezzi\">\n                                        <li><img src=\"assets/img/icona-mezzi.png\" width=\"24\" height=\"24\" /> Bus 246, 246P</li>                                    \n                                        <li><img src=\"assets/img/icona-mezzi.png\" width=\"24\" height=\"24\" /> Treno Regionale 12514 Civitavecchia</li>\n                                    </ul>\n                                </p>\n                            </div>\n                        </div>\n                        <div id=\"mappa-map\" class=\"col-12 col-md-4\">\n                            <img src=\"assets/img/mappa.jpg\" alt=\"mappa\"/>\n                        </div>\n                    </div>\n                </div>\n            </section>",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "inputHeight": "140",
+        "textareaGrow": "false",
+        "textareaResizable": "false"
+    },
+    "output_properties": [],
+    "templates": [
+        2,
+        4,
+        6,
+        13,
+        14,
+        15,
+        16,
+        18,
+        20
+    ]
+}

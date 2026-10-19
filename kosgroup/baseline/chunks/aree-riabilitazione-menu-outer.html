@@ -1,0 +1,74 @@
+<div class="box-dettaglio-content">
+    <!-- Aggiunta barra di ricerca -->
+    <div class="row mb-4">
+        <div class="col-12 d-flex align-items-center mb-4">
+        	<label for="searchInput" class="me-2 mb-0">Cerca:</label>
+            <input class="form-control" 
+                   type="text" 
+                   id="searchInput" 
+                   name="searchInput" 
+                   placeholder="Cerca un'area di intervento" 
+                   title="Cerca">
+        </div>
+    </div>
+    <!-- Aggiunto div per nessun risultato -->
+    <div id="noResults" class="col-12 text-center" style="display: none;">
+        <p>Nessuna corrispondenza trovata</p>
+    </div>
+    <div class="row box-dettagli-cards">
+        [[+wf.wrapper]]
+    </div>
+</div>
+<!-- Script di ricerca migliorato -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Collega l'evento keyup all'input di ricerca
+    var searchInput = document.getElementById("searchInput");
+    if (searchInput) {
+        searchInput.addEventListener("keyup", quickSearch);
+    }
+    
+    // Definizione della funzione quickSearch con controlli di sicurezza
+    function quickSearch() {
+        var input = document.getElementById("searchInput");
+        var noResults = document.getElementById("noResults");
+        
+        // Verifica che gli elementi esistano prima di procedere
+        if (!input || !noResults) {
+            console.log("Elementi di ricerca non trovati");
+            return; // Esci dalla funzione se gli elementi non esistono
+        }
+        
+        var filter = input.value.toUpperCase();
+        var items = document.getElementsByClassName("search-item");
+        var visibleItems = 0;
+        
+        // Verifica che items sia una collezione valida
+        if (items && items.length > 0) {
+            for (var i = 0; i < items.length; i++) {
+                var item = items[i];
+                if (item) {
+                    var txtValue = item.textContent || item.innerText;
+                    
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        item.style.display = "";
+                        visibleItems++;
+                    } else {
+                        item.style.display = "none";
+                    }
+                }
+            }
+        }
+        
+        // Mostra/nascondi il messaggio "nessun risultato" solo se l'elemento esiste
+        if (noResults) {
+            noResults.style.display = visibleItems === 0 ? "block" : "none";
+        }
+    }
+    
+    // Esegui una ricerca iniziale (se c'è già un valore nell'input)
+    if (searchInput && searchInput.value.trim() !== "") {
+        quickSearch();
+    }
+});
+</script>

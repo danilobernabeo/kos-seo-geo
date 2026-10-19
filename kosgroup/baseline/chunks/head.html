@@ -1,0 +1,110 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>[[*longtitle:default=`[[*pagetitle]]`]]</title>
+  <meta name="description" content="[[*description:htmlent]]">
+  [[*noindex:is=`1`:then=`<meta name="robots" content="noindex, nofollow">`]]
+
+[[$GTM_head]]
+
+  <link rel="alternate" hreflang="it" href="[[~[[*id]]? &scheme=`full`]]" />
+  <link rel="alternate" hreflang="en" href="[[~990? &scheme=`full`]]" />
+  <link rel="alternate" hreflang="x-default" href="[[~1? &scheme=`full`]]" />
+
+  [[!Canonical]]
+  <base href="[[!++site_url]]">
+
+  <!-- Bootstrap CSS -->
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/css/all.min.css" rel="stylesheet" />
+  <link href="/assets/css/fontawesome.css" rel="stylesheet" />
+  <link href="/assets/css/default.css" rel="stylesheet" />
+  <link href="/assets/css/nice-select.css" rel="stylesheet" />
+  <link href="/assets/css/aos.css" rel="stylesheet">
+  <link href="/assets/css/swiper.min.css" rel="stylesheet" />
+  <link href="/assets/css/photoswipe.css" rel="stylesheet">
+  <link href="/assets/css/style.css" rel="stylesheet" />
+  <link href="/assets/css/custom.css?v=20260921b" rel="stylesheet" />
+
+  <script src="/assets/js/scroll-anchors.js" defer></script>
+
+  <link rel="icon" type="image/png" href="/assets/img/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
+  <link rel="shortcut icon" href="/assets/img/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="KOS Group" />
+  <link rel="manifest" href="/assets/img/site.webmanifest" />
+
+[[*id:is=`1`:or:is=`3`:or:is=`4`:or:is=`983`:then=`
+<link rel="stylesheet" type="text/css" href="https://assets.sitescdn.net/answers-search-bar/v1.6/answers.css"/>
+<script src="https://assets.sitescdn.net/answers-search-bar/v1.6/answerstemplates.compiled.min.js" defer></script>
+<script>
+  // Funzione per determinare la configurazione in base alla pagina corrente
+  function getSearchBarConfig() {
+    var config = {
+      container: ".search-form",
+      name: "search-bar",
+      redirectUrl: "[[!++site_url]]it/risultati",
+      // submitIcon: "magnifying_glass",
+      customIconUrl: "[[!++site_url]]assets/img/search-ico.svg",
+      placeholderText: "Cerca una specialità o una struttura"
+    };
+
+    // Esempio di logica: se l'URL contiene "/servizi-e-cure" oppure "/strutture"
+    var currentPath = window.location.pathname;
+    
+    if (currentPath.indexOf("/servizi-e-cure") !== -1) {
+      // Configurazione per il vertical "servizi"
+      config.verticalKey = "servizi"; // (sostituisci con il vertical key corretto)
+      config.placeholderText = "Cerca una specialità";
+      config.queryPrompt = {
+        query: "Cerca una specialità"
+      };
+    } else if (currentPath.indexOf("/strutture") !== -1) {
+      // Configurazione per il vertical "strutture"
+      config.url = "/Strutture.html";
+      config.verticalKey = "strutture"; // (sostituisci con il vertical key corretto)
+      config.placeholderText = "Cerca una struttura";
+      config.queryPrompt = {
+        query: "Cerca una struttura"
+      };
+    } else {
+      // Configurazione per la ricerca universale (già abilitata di default)
+      config.queryPrompt = {
+        query: "Cerca"
+      };
+    }
+
+    return config;
+  }
+
+  function initAnswers() {
+    ANSWERS.init({
+      apiKey: "db3887930e1b19bc3ce1da86a637388a",
+      experienceKey: "kos-care-search",
+      experienceVersion: "PRODUCTION",
+      locale: "it",
+      businessId: "2183129",
+      templateBundle: TemplateBundle.default,
+      onReady: function() {
+        // Aggiungo la search bar con la configurazione dinamica
+        ANSWERS.addComponent("SearchBar", getSearchBarConfig());
+      },
+    });
+  }
+</script>
+<script src="https://assets.sitescdn.net/answers-search-bar/v1.6/answers.min.js" onload="initAnswers()" defer></script>
+`]]
+
+  <meta property="og:site_name" content="KOS Group">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[[*longtitle:default=`[[*pagetitle]]`:htmlent]]">
+  <meta property="og:description" content="[[*description:htmlent]]">
+  <meta property="og:url" content="[[~[[*id]]? &scheme=`full`]]">
+  <meta property="og:image" content="https://kosgroup.com/[[*infoImage:default=`assets/img/kos-condivisione-social.jpg`:replace=`/assets/==assets/`:replace=` ==%20`]]">
+  <meta property="og:image:alt" content="[[*pagetitle:htmlent]]">
+  <meta name="twitter:card" content="summary_large_image">
+
+</head>

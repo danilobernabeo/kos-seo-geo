@@ -1,0 +1,66 @@
+<!-- Chunk contactLandingForm_VDP_TDD: form di richiamata della landing "Terapia del dolore" (Villa dei Pini).
+     Generato da consegna/definitiva/_build/build_definitiva.py: non modificarlo a mano.
+     Va richiamato nel contenuto della risorsa, subito dopo la chiamata FormIt.
+     Nessun tag MODX nei commenti: MODX li elaborerebbe comunque. -->
+<form action="[[~[[*id]]? &scheme=`full`]]#richiamata" aria-labelledby="tdd-form-titolo" class="tdd-form" id="tdd-form-richiamata" method="post" novalidate="">
+<input name="nospam:blank" type="hidden"/>
+
+
+
+<input name="v" type="hidden" value="[[!+fi.v]]"/>
+<input name="utm_source" type="hidden" value="[[!+fi.utm_source]]"/>
+<input name="utm_medium" type="hidden" value="[[!+fi.utm_medium]]"/>
+<input name="utm_campaign" type="hidden" value="[[!+fi.utm_campaign]]"/>
+<input name="utm_content" type="hidden" value="[[!+fi.utm_content]]"/><input name="provenienza" type="hidden" value="[[!+fi.provenienza]]"/>
+<p class="small tdd-form__nota-obbligatori">I campi contrassegnati con * sono obbligatori.</p>
+<div aria-live="polite" class="tdd-form__riepilogo" id="tdd-form-riepilogo">[[!+fi.validation_error_message]]</div>
+<div class="row g-4 mb-3">
+<div class="col-12 col-md-6">
+<label class="form-label text-white" for="tdd-name">Nome*</label>
+<input aria-describedby="tdd-name-err" autocomplete="given-name" class="form-control form-control-lg[[!+fi.error.name:notempty=` is-invalid`]]" id="tdd-name" name="name" required="" type="text" value="[[!+fi.name]]"[[!+fi.error.name:notempty=` aria-invalid="true"`]] />
+<div class="invalid-feedback" id="tdd-name-err">[[!+fi.error.name]]</div>
+</div>
+<div class="col-12 col-md-6">
+<label class="form-label text-white" for="tdd-surname">Cognome*</label>
+<input aria-describedby="tdd-surname-err" autocomplete="family-name" class="form-control form-control-lg[[!+fi.error.surname:notempty=` is-invalid`]]" id="tdd-surname" name="surname" required="" type="text" value="[[!+fi.surname]]"[[!+fi.error.surname:notempty=` aria-invalid="true"`]] />
+<div class="invalid-feedback" id="tdd-surname-err">[[!+fi.error.surname]]</div>
+</div>
+<div class="col-12">
+<label class="form-label text-white" for="tdd-phone">Telefono*</label>
+<input aria-describedby="tdd-phone-hint tdd-phone-err" autocomplete="tel" class="form-control form-control-lg[[!+fi.error.cellulare:notempty=` is-invalid`]]" id="tdd-phone" name="cellulare" required="" type="tel" value="[[!+fi.cellulare]]"[[!+fi.error.cellulare:notempty=` aria-invalid="true"`]] />
+<div class="form-text tdd-form__hint" id="tdd-phone-hint">Cellulare o fisso. Esempio: 333 1234567</div>
+<div class="invalid-feedback" id="tdd-phone-err">[[!+fi.error.cellulare]]</div>
+</div>
+<div class="col-12">
+<fieldset class="tdd-form__fascia">
+<legend class="form-label text-white">Fascia oraria preferita <span class="tdd-form__facoltativo">(facoltativo)</span></legend>
+<div class="form-check">
+<input class="form-check-input" id="tdd-fascia-mattina" name="fascia" type="radio" value="Mattina" [[!+fi.fascia:FormItIsChecked=`Mattina`]] />
+<label class="form-check-label text-white" for="tdd-fascia-mattina">Mattina</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="tdd-fascia-pomeriggio" name="fascia" type="radio" value="Pomeriggio" [[!+fi.fascia:FormItIsChecked=`Pomeriggio`]] />
+<label class="form-check-label text-white" for="tdd-fascia-pomeriggio">Pomeriggio</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="tdd-fascia-indifferente" name="fascia" type="radio" value="Indifferente" [[!+fi.fascia:FormItIsChecked=`Indifferente`]] />
+<label class="form-check-label text-white" for="tdd-fascia-indifferente">Indifferente</label>
+</div>
+</fieldset>
+</div>
+<div class="col-12">
+<div class="form-check">
+<input aria-describedby="tdd-privacy-err" class="form-check-input[[!+fi.error.privacy:notempty=` is-invalid`]]" id="tdd-privacy" name="privacy" required="" type="checkbox" value="accetto"[[!+fi.error.privacy:notempty=` aria-invalid="true"`]] [[!+fi.privacy:FormItIsChecked=`accetto`]] />
+<label class="form-check-label small text-white" for="tdd-privacy">Ho letto l'<a class="text-white text-decoration-underline" href="https://kosgroup.com/assets/doc/kos-care-gdpr-informativa.pdf" rel="noopener" target="_blank">Informativa sul trattamento dei miei dati personali<span class="sr-only"> (PDF, si apre in una nuova scheda)</span></a> ed acconsento alla loro elaborazione nelle formule espresse.*</label>
+<div class="invalid-feedback" id="tdd-privacy-err">[[!+fi.error.privacy]]</div>
+</div>
+</div>
+</div>
+
+              [[!recaptchav3_render]]
+              <div class="tdd-form__riepilogo" role="alert">[[!+fi.error.recaptchav3_error]]</div>
+              <div class="tdd-form__invio">
+<button class="btn btn-primary" name="submit" type="submit">Richiedi di essere richiamato</button>
+<p class="small mt-3 mb-0">Gli operatori del Numero Unico ti ricontatteranno nel più breve tempo possibile, di norma entro 24<span class="tdd-trattino">–</span>48 ore.</p>
+</div>
+</form>

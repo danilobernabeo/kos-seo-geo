@@ -1,0 +1,20 @@
+            <section id="menu-inner-nav" class="container-fluid mb-0 mb-lg-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <small>[[pdoField? &id=`12` &field=`pagetitle`]]</small>
+                            <div class="filtri-cat-articoli-btns">
+                                [[pdoMenu?
+                                    &parents=`12`
+                                    &level=`1`
+                                    &tpl=`@INLINE <a class="[[+id:is=`[[*id]]`:then=`fisso btn btn-outline-dark`:else=`btn btn-outline-primary`]]" href="[[+link]]">[[+menutitle]]</a>`
+                                    &tplOuter=`@INLINE <span>[[+wrapper]]</span>`
+                                    &sortby=`menuindex`
+                                    &sortdir=`ASC`
+                                    &showHidden=`0`
+                                ]]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>

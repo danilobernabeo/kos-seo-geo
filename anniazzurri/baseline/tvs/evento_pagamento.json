@@ -1,0 +1,23 @@
+{
+    "id": 25,
+    "name": "evento_pagamento",
+    "caption": "",
+    "description": "",
+    "category": "KOSAcademy",
+    "type": "checkbox",
+    "elements": "Evento a pagamento==1",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "displayAsSwitch": "false",
+        "columns": "1",
+        "columnDirection": "vertical",
+        "columnWidth": "medium",
+        "wrapColumnText": "false"
+    },
+    "output_properties": [],
+    "templates": [
+        61
+    ]
+}

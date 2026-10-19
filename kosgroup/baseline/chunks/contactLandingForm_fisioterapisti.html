@@ -1,0 +1,107 @@
+<div class="row mt-5">
+  <form id="[[*alias]]" action="[[~[[*id]]]]" method="post" class="content-left text-brown col-12" enctype="multipart/form-data">
+    <input type="hidden" name="nospam:blank" />
+
+    <div class="mb-3 row g-4">
+
+      <div class="col-12 col-md-6">
+        <label class="form-label text-white" for="name">Nome*</label>
+        <input class="form-control form-control-lg" id="name" name="name" type="text" value="[[!+fi.name]]" autocomplete="given-name" required />
+        [[!+fi.error.name:notempty=`<span class="error text-warning small">[[!+fi.error.name]]</span>`]]
+      </div>
+
+      <div class="col-12 col-md-6">
+        <label class="form-label text-white" for="surname">Cognome*</label>
+        <input class="form-control form-control-lg" id="surname" name="surname" type="text" value="[[!+fi.surname]]" autocomplete="family-name" required />
+        [[!+fi.error.surname:notempty=`<span class="error text-warning small">[[!+fi.error.surname]]</span>`]]
+      </div>
+
+      <div class="col-12 col-md-12">
+        <label class="form-label text-white" for="email">Email*</label>
+        <input class="form-control form-control-lg" id="email" name="email" type="email" value="[[!+fi.email]]" autocomplete="email" required />
+        [[!+fi.error.email:notempty=`<span class="error text-warning small">[[!+fi.error.email]]</span>`]]
+      </div>
+
+      <div class="col-12 col-md-12">
+        <label class="form-label text-white" for="cellulare">Cellulare*</label>
+        <input class="form-control form-control-lg" id="cellulare" name="cellulare" type="tel"
+               value="[[!+fi.cellulare]]"
+               pattern="[0-9\s\-+()]{9,20}"
+               title="Inserisci un numero di telefono valido con almeno 9 caratteri."
+               autocomplete="tel" required />
+        [[!+fi.error.cellulare:notempty=`<span class="error text-warning small">[[!+fi.error.cellulare]]</span>`]]
+      </div>
+
+      <div class="col-12 col-md-12 mb-4">
+        <label class="form-label text-white" for="uploadcv">Carica il tuo CV*</label>
+        <input class="form-control form-control-lg" id="uploadcv" name="uploadcv" type="file"
+       accept=".pdf,.doc,.docx,.odt,.rtf,.jpg,.jpeg,.png,.heic,.webp" required />
+<div class="form-text text-white-50 small">Formati accettati: PDF, Word, ODT, RTF, immagini - max 10 MB</div>
+        [[!+fi.error.uploadcv:notempty=`<span class="error text-warning small">[[!+fi.error.uploadcv]]</span>`]]
+      </div>
+
+    </div>
+
+    <div class="row mb-4 mt-2">
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" id="titolo" name="titolo" type="checkbox" value="confermo" required />
+          <label class="form-check-label small text-white" for="titolo">Dichiaro di essere iscritto all'Albo dei Fisioterapisti*</label>
+          [[!+fi.error.titolo:notempty=`<span class="error text-warning small d-block">[[!+fi.error.titolo]]</span>`]]
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-4 mt-2">
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" id="residenza" name="residenza" type="checkbox" value="confermo" required />
+          <label class="form-check-label small text-white" for="residenza">Dichiaro di avere residenza o domicilio nella regione Marche*</label>
+          [[!+fi.error.residenza:notempty=`<span class="error text-warning small d-block">[[!+fi.error.residenza]]</span>`]]
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-2 mt-2">
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" id="privacy" name="privacy" type="checkbox" value="accetto" required />
+          <label class="form-check-label small text-white" for="privacy">Ho letto l'<a class="text-azure text-decoration-underline" href="/assets/doc/kos-care-gdpr-informativa.pdf" target="_blank" rel="noopener">Informativa sul trattamento dei miei dati personali</a> ed acconsento alla loro elaborazione nelle formule espresse*</label>
+          [[!+fi.error.privacy:notempty=`<span class="error text-warning small d-block">[[!+fi.error.privacy]]</span>`]]
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <div class="col-sm-12 col-md-offset-1">
+          [[!recaptchav3_render]]
+          [[!+fi.error.recaptchav3_error:notempty=`<span class="error text-warning small">[[!+fi.error.recaptchav3_error]]</span>`]]
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 mb-5">
+        <div class="d-flex justify-content-center py-5">
+          <button name="submit" type="submit" class="btn btn-primary">CANDIDATI ORA</button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<script>
+(function () {
+  var form = document.getElementById('[[*alias]]');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    var btn = form.querySelector('button[type="submit"]');
+    if (!btn) return;
+    if (btn.disabled) { e.preventDefault(); return; }
+    btn.disabled = true;
+    btn.textContent = 'INVIO IN CORSO...';
+  });
+})();
+</script>

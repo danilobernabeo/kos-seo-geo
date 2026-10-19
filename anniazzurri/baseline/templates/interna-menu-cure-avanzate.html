@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="it">
+
+[[$head-cure-avanzate]]
+
+<body class="le-nostre-soluzioni-page">
+[[$GTM_body]]
+
+[[$menu-sticky]]
+
+[[$menu-navbar]]
+
+[[$menu-side-navbar]]
+<main id="main-content" tabindex="-1">
+
+[[$breadcrumb-stripe]]
+
+  <div heading="" class="bg-cover-center position-relative" style="background-image: url('/assets/img/cure-avanzate.jpg')" stripe-one-col-media-component="">
+    <div class="overlay"></div>
+    <div class="container position-relative">
+      <div class="row content-container align-items-center">
+        <div class="col-10 col-md-8 col-lg-6 text-white">
+          <h1 class="mb-2">[[*pagetitle]]</h1>
+          <h2 class="h5 font-weight-normal">[[*introtext:isempty=`Reparti altamente specializzati per offrire la migliore cura e assistenza a patologie e problematiche complesse`]]</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-4 py-lg-5 position-relative">
+    <div id="content-anchor"></div>
+    <div class="row">
+      <div class="col-12 col-lg-4 pb-3">
+        <div stripe-internal-menu="">
+          <div class="card bg-ice px-2 px-lg-4 border-0">
+            <div role="button" tabindex="0" class="mx-n2 mx-lg-n4 d-lg-none accordion text-primary bg-ice" data-bs-toggle="collapse" data-bs-target="#list-group" aria-expanded="true">
+              <div class="fs-2 icon-flag">
+                <i class="h-100 d-flex align-items-center justify-content-center bi bi-chevron-up"></i>
+              </div>
+              <div class="accordion-header d-flex align-items-center flex-grow-1 bg-blue-sky text-uppercase h-100 ps-3">Contenuto sezione</div>
+            </div>
+            <div id="list-group" class="d-lg-block collapse show py-3">
+              <!-- <div class="card-header xactive mb-3">
+                <span class="fs-6 d-flex align-items-center"><i class="text-primary ki ki-internal-menu pe-3"></i><a href="[[~3]]#content-anchor" class="text-decoration-none">Le nostre soluzioni</a></span>
+              </div> -->
+          [[!Wayfinder?
+            &startId=`[[*parent]]`
+            &rowTpl=`menu-interna-row`
+            &outerTpl=`menu-interna-outer`
+            &hereTpl=`menu-interna-here`
+          ]]
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-8 pt-3 pt-lg-0">
+<div class="row">
+<div class="col-12">
+        [[*content]]
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+[[$footer]]
+
+[[$footer-script]]
+
+</body>
+
+</html>

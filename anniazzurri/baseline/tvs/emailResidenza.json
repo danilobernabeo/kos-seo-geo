@@ -1,0 +1,41 @@
+{
+    "id": 13,
+    "name": "emailResidenza",
+    "caption": "Email residenza",
+    "description": "",
+    "category": "",
+    "type": "text",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        2,
+        29,
+        34,
+        35,
+        38,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        47,
+        48,
+        49,
+        50,
+        52,
+        53,
+        54,
+        56,
+        58
+    ]
+}

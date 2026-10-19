@@ -1,0 +1,28 @@
+{
+    "id": 5,
+    "name": "citazione",
+    "caption": "Citazione",
+    "description": "",
+    "category": "Contenuti",
+    "type": "textarea",
+    "elements": "",
+    "default_text": "&nbsp;",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "inputHeight": "140",
+        "textareaGrow": "false",
+        "textareaResizable": "false"
+    },
+    "output_properties": [],
+    "templates": [
+        2,
+        4,
+        6,
+        13,
+        14,
+        16,
+        18,
+        20
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "id": 23,
+    "name": "soloStruttura",
+    "caption": "Da pubblicare:",
+    "description": "",
+    "category": "Pubblicazione",
+    "type": "listbox",
+    "elements": "Ovunque==0||Solo nella struttura==1",
+    "default_text": "0",
+    "display": "text",
+    "input_properties": {
+        "allowBlank": "true",
+        "title": "",
+        "typeAhead": "0"
+    },
+    "output_properties": [],
+    "templates": [
+        22
+    ]
+}

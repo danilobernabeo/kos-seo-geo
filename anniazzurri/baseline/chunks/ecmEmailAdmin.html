@@ -1,0 +1,56 @@
+[[+avvisoDestinatario:notempty=`
+<p style="border:2px solid #c08417;background:#fcf4e4;padding:12px;margin-bottom:16px">
+  <strong>Destinatario non configurato.</strong><br>[[+avvisoDestinatario]]
+</p>`]]
+
+<h2>Nuova iscrizione: [[+nomeEvento]]</h2>
+
+<p><strong>[[+surname]] [[+name]]</strong> - [[+email]] - [[+tel1]]</p>
+
+<h3>Dati anagrafici</h3>
+<table border="0" cellpadding="6" cellspacing="0" style="border-collapse:collapse">
+  <tr><td><strong>Cognome</strong></td><td>[[+surname]]</td></tr>
+  <tr><td><strong>Nome</strong></td><td>[[+name]]</td></tr>
+  <tr><td><strong>Nato/a il</strong></td><td>[[+birthdate]]</td></tr>
+  <tr><td><strong>Luogo di nascita</strong></td><td>[[+birthcity]] ([[+birthprov]]) - [[+birthstate]]</td></tr>
+  <tr><td><strong>Codice fiscale</strong></td><td>[[+fiscalcode]]</td></tr>
+</table>
+
+<h3>Residenza e recapiti</h3>
+<table border="0" cellpadding="6" cellspacing="0" style="border-collapse:collapse">
+  <tr><td><strong>Indirizzo</strong></td><td>[[+address]]</td></tr>
+  <tr><td><strong>Comune</strong></td><td>[[+cap]] [[+city]] ([[+province]]) - [[+state]]</td></tr>
+  <tr><td><strong>Telefono</strong></td><td>[[+tel1]]</td></tr>
+  <tr><td><strong>Email</strong></td><td>[[+email]]</td></tr>
+</table>
+
+<h3>Dati ECM</h3>
+<table border="0" cellpadding="6" cellspacing="0" style="border-collapse:collapse">
+  <tr><td><strong>Professione</strong></td><td>[[+ecm_prof_label]] <em>(id [[+ecm_prof_id]])</em></td></tr>
+  <tr><td><strong>Disciplina</strong></td><td>[[+ecm_disc_label]] <em>(id [[+ecm_disc_id]])</em></td></tr>
+  <tr><td><strong>Stato occupazionale</strong></td><td>[[+status_label]]</td></tr>
+  <tr><td><strong>Ente</strong></td><td>[[+org_id]]</td></tr>
+  <tr><td><strong>Reclutato</strong></td><td>[[+reclutato]]</td></tr>
+  <tr><td><strong>Ente reclutatore</strong></td><td>[[+org_reclutatore]]</td></tr>
+</table>
+
+[[+richiesta_fattura:notempty=`
+<h3>Pagamento e fatturazione</h3>
+<table border="0" cellpadding="6" cellspacing="0" style="border-collapse:collapse">
+  <tr><td><strong>Ricevuta allegata</strong></td><td>[[+allegato_nome]]</td></tr>
+  <tr><td><strong>Richiesta fattura</strong></td><td>[[+richiesta_fattura]]</td></tr>
+  <tr><td><strong>Intestatario</strong></td><td>[[+fintestatario:is=`self`:then=`il partecipante`:else=`altro soggetto`]]</td></tr>
+  <tr><td><strong>Ragione sociale</strong></td><td>[[+fnominativo]]</td></tr>
+  <tr><td><strong>Indirizzo</strong></td><td>[[+findirizzo]] - [[+fcap]] [[+fcomune]] ([[+fprovincia]])</td></tr>
+  <tr><td><strong>Codice fiscale</strong></td><td>[[+fcodice_fiscale]]</td></tr>
+  <tr><td><strong>Partita IVA</strong></td><td>[[+fpartita_iva]][[+fself_piva]]</td></tr>
+  <tr><td><strong>Destinatario SDI / PEC</strong></td><td>[[+fsid]][[+fself_sid]]</td></tr>
+</table>`]]
+
+<h3>Consensi</h3>
+<p>
+  Informativa privacy: [[+privacy:is=`accetto`:then=`presa visione`:else=`<strong>NON accettata</strong>`]]<br>
+  Comunicazioni promozionali: [[+consenso:is=`accetto`:then=`autorizzate`:else=`non autorizzate`]]
+</p>
+
+[[+note:notempty=`<h3>Note del partecipante</h3><p>[[+note]]</p>`]]

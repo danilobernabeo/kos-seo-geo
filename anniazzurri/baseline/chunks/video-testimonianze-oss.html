@@ -1,0 +1,71 @@
+<!-- ═══════════════════════════════════════════════════════════
+     CHUNK MODX: video_testimonianze
+     Posizionare dopo i 3 blocchi (offriamo/richiede/candidarsi)
+     e prima del form.
+     ═══════════════════════════════════════════════════════════ -->
+
+<style>
+  .video-section {
+    background: #ffffff;
+    xpadding: clamp(40px, 6vw, 72px) clamp(16px, 4vw, 60px);
+    text-align: center;
+  }
+
+  .video-section .video-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #003b77;
+    margin-bottom: 10px;
+  }
+
+  .video-section .video-title {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: 700;
+    color: #0a1f44;
+    margin: 0 auto 28px;
+    max-width: 640px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .video-wrapper {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.13);
+  }
+
+  /* aspect ratio 16:9 */
+  .video-wrapper::before {
+    content: '';
+    display: block;
+    padding-top: 56.25%;
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
+
+<section class="video-section pt-0 pb-5 px-3 px-md-5">
+  <span class="video-eyebrow">La parola ai nostri operatori</span>
+  <h2 class="h4 text-azure xvideo-title">Lavora come OSS in [[*regione]]: ascolta chi ci lavora già</h2>
+  <div class="video-wrapper">
+    <iframe
+      src="https://www.youtube.com/embed/Hm_m8hfwb5U"
+      title="Testimonianze OSS Anni Azzurri [[*regione]]"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>

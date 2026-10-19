@@ -1,0 +1,20 @@
+{
+    "id": 67,
+    "name": "noindex",
+    "caption": "",
+    "description": "Se spuntata aggiunge i parametri noindex, nofollow nel meta name=\"robots\" nell'head del template",
+    "category": "SEO",
+    "type": "checkbox",
+    "elements": "Nascondi dai motori di ricerca==1",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "displayAsSwitch": "false",
+        "columns": "1"
+    },
+    "output_properties": [],
+    "templates": [
+        6
+    ]
+}

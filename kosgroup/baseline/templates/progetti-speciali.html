@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it">
+
+[[$head-informativo]]
+
+<body>
+
+[[$GTM_body]]
+
+    <a href="[[~[[*id]]]]#main-content" class="skip-link">Vai al contenuto principale</a>
+    <div class="main__area" id="main-content" tabindex="-1">
+
+    [[$menu]]
+
+    [[*content]]
+
+    [[$footer]]
+
+    </div>
+
+<button id="backToTop" title="Torna su">↑</button>
+
+[[$scripts]]
+
+<!-- JavaScript per Splide -->
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Rimuoviamo eventuali classi o elementi Splide predefiniti che potrebbero causare problemi
+  document.querySelectorAll('.splide__arrow svg').forEach(svg => {
+    svg.parentNode.removeChild(svg);
+  });
+  
+  const splide = new Splide('.splide', {
+    type: 'slide',
+    perPage: 1,
+    perMove: 1,
+    gap: '1rem',
+    pagination: true,
+    arrows: true,
+    autoplay: false,
+    interval: 5000,
+    pauseOnHover: true,
+    pauseOnFocus: true,
+    rewind: true,
+  }).mount();
+  
+  // Per memorizzare le URL originali degli iframe
+  const iframeSrcs = {};
+  
+  // Tracciamo tutti gli iframe di YouTube
+  document.querySelectorAll('.splide__slide iframe').forEach((iframe, index) => {
+    iframeSrcs[index] = iframe.src;
+  });
+  
+  // Aggiungi l'event listener per l'evento 'moved'
+  splide.on('moved', function() {
+    // Trova la slide attiva
+    const activeIndex = splide.index;
+    
+    // Interrompi la riproduzione di tutti i video tranne quello attivo
+    document.querySelectorAll('.splide__slide iframe').forEach((iframe, index) => {
+      if (index !== activeIndex) {
+        // Reimposta la src per interrompere la riproduzione
+        iframe.src = iframeSrcs[index];
+      }
+    });
+  });
+  
+  // Interrompe anche i video quando si naviga via dalla pagina
+  window.addEventListener('beforeunload', function() {
+    document.querySelectorAll('.splide__slide iframe').forEach(iframe => {
+      iframe.src = '';
+    });
+  });
+});
+</script>
+
+</body>
+
+</html>

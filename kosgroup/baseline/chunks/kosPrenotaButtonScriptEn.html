@@ -1,0 +1,31 @@
+<script>
+/**
+ * KOS - Bottone Accedi al Portale
+ * Prepara href con kos_referrer al caricamento
+ * GA4 aggiunge _gl automaticamente al click (nativo)
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    
+    console.log('???? Inizializzazione bottoni portale...');
+    
+    var buttons = document.querySelectorAll('.kos-booking-btn');
+    console.log('???? Trovati', buttons.length, 'bottoni');
+    
+    buttons.forEach(function(btn, index) {
+        
+        // URL base portale
+        var baseUrl = 'https://app.tuotempo.com/mop/index.php?dbName=tt_kosgroup_portale&lang=en';
+        
+        // Aggiungi kos_referrer
+        var currentPath = window.location.pathname;
+        var finalUrl = baseUrl + '&kos_referrer=' + encodeURIComponent(currentPath);
+        
+        // IMPOSTA href (GA4 lo decorerà automaticamente con _gl al click)
+        btn.setAttribute('href', finalUrl);
+        
+        console.log('✅ Bottone', index + 1, 'configurato:', finalUrl);
+    });
+    
+    console.log('✅ Configurazione completata - GA4 aggiungerà _gl al click');
+});
+</script>

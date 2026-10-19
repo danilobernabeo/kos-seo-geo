@@ -1,0 +1,9 @@
+# Baseline anniazzurri.it
+
+Istantanea degli elementi del cloud di produzione (c0072) presa il 19/10/2026 con `scripts/export-elements.php`, prima di qualsiasi modifica del progetto. Sola consultazione.
+
+Valori segreti lato server sostituiti con un segnaposto (restano invariati sul sito):
+- `snippets/countContact.php`: chiave di cifratura.
+
+Le chiavi pubbliche lato browser (Google Maps, Yext, reCAPTCHA site key) sono lasciate: compaiono già nel sorgente delle pagine.
+`site_url` in `settings.json` vale `http://localhost/` perché l'export gira da riga di comando.

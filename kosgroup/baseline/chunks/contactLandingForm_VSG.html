@@ -1,0 +1,139 @@
+[[!FormIt? 
+  &hooks=`recaptchav3,spam,FormItSaveForm,email,redirect` 
+  &formEncrypt=`1` 
+  &emailTpl=`contactLandingFormEmail_VSG` 
+  &validate=`name:required,surname:required,email:required:email,cellulare:required:regex:^[0-9\s\-+()]{9,20}$,privacy:required` 
+  &validationErrorMessage=`Si sono verificati alcuni errori.` 
+  &placeholderPrefix=`fi.` 
+  &emailSubject=`Richiesta di contatto - [[+surname]]` 
+  &emailTo=`[[+email]]` 
+  &emailBCC=`danilo.bernabeo@gmail.com,villasangiuseppe@kosgroup.com,matteo.clausi@kosgroup.com` 
+  &emailFrom=`villasangiuseppe@kosgroup.com` 
+  &emailFromName=`Villa San Giuseppe` 
+  &redirectTo=`855` 
+]]
+
+<div class="row mt-4">
+  <form id="[[*pagetitle]]" action="[[~[[*id]]]]" method="post" class="content-left text-brown col-12">
+    <input type="hidden" name="nospam:blank" />
+  
+    <div class="mb-3 row g-4">
+  
+       <div class="col-12 col-md-6">
+        <label class="form-label text-white" for="name">Nome*</label>
+        <input class="form-control form-control-lg" id="name" name="name" type="text" required />
+       </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label text-white" for="surname">Cognome*</label>
+            <input class="form-control form-control-lg" id="surname" name="surname" type="text" required />
+        </div>
+
+        <div class="col-12 col-md-12">
+            <label class="form-label text-white" for="email">Email*</label>
+            <input class="form-control form-control-lg" id="email" name="email"  type="email" required />
+            [[!+fi.error.email:notempty=`<span class="error">[[!+fi.error.email]]</span>`]]
+        </div>
+
+        <div class="col-12 col-md-12">
+            <label class="form-label text-white" for="cellulare">Cellulare*</label>
+            <input class="form-control form-control-lg" id="cellulare" name="cellulare" 
+                   type="text" 
+                   pattern="[0-9\s\-+()]{9,20}" 
+                   title="Inserisci un numero di telefono valido con almeno 9 caratteri." 
+                   required />
+            <div class="invalid-feedback" id="phone-feedback">Inserisci un numero di telefono valido con almeno 9 caratteri.</div>
+            [[!+fi.error.cellulare:notempty=`<span class="error">[[!+fi.error.cellulare]]</span>`]]
+        </div>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const phoneInput = document.getElementById('cellulare');
+            const phoneFeedback = document.getElementById('phone-feedback');
+            const phonePattern = /^[0-9\s\-+()]*$/;
+            const form = phoneInput.closest('form');
+            
+            // Rimuovi caratteri non validi mentre l'utente digita
+            phoneInput.addEventListener('input', function() {
+                const value = this.value;
+                
+                if (!phonePattern.test(value)) {
+                    this.value = value.slice(0, -1);
+                }
+                
+                // Validazione lunghezza
+                if (this.value.length > 0) {
+                    if (this.value.length < 9) {
+                        this.classList.add('is-invalid');
+                        this.classList.remove('is-valid');
+                        phoneFeedback.textContent = "Inserisci almeno 9 caratteri";
+                    } else {
+                        this.classList.add('is-valid');
+                        this.classList.remove('is-invalid');
+                    }
+                } else {
+                    this.classList.remove('is-valid', 'is-invalid');
+                }
+            });
+            
+            // Validazione al cambio di focus
+            phoneInput.addEventListener('blur', function() {
+                if (this.value.length > 0 && this.value.length < 9) {
+                    this.classList.add('is-invalid');
+                    phoneFeedback.textContent = "Inserisci almeno 9 caratteri";
+                }
+            });
+            
+            // IMPORTANTE: Controlla la validità del form all'invio
+            form.addEventListener('submit', function(e) {
+                // Verifica lunghezza telefono
+                if (phoneInput.value.length < 9) {
+                    e.preventDefault(); // Blocca l'invio del form
+                    phoneInput.classList.add('is-invalid');
+                    phoneFeedback.textContent = "Inserisci almeno 9 caratteri";
+                    phoneInput.focus(); // Sposta il focus sul campo telefono
+                    
+                    // Scorrimento al campo con errore (opzionale)
+                    phoneInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    return false;
+                }
+            });
+        });
+        </script>
+
+        <div class="col-12 col-md-12 mb-4">
+            <label class="form-label text-white" for="messaggio">Vuoi dirci qualcosa?</label>
+            <textarea class="form-control" id="messaggio" name="messaggio" rows="5" placeholder="Scrivi qui il tuo messaggio..."></textarea>
+        </div>
+
+    </div>
+
+    <div class="row mb-2 mt-2">
+     <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" id="privacy" name="privacy" type="checkbox" value="accetto" required />
+                <label class="form-check-label small text-white" for="privacy">Ho letto l'<a class="text-azure text-decoration-underline" href="/assets/doc/kos-care-gdpr-informativa.pdf" target="_blank">Informativa sul trattamento dei miei dati personali</a> ed acconsento alla loro elaborazione nelle formule espresse.</label>
+                [[!+fi.error.privacy:notempty=`<span class="error">[[!+fi.error.privacy]]</span>`]]
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            <div class="col-sm-12 col-md-offset-1">
+                [[!recaptchav3_render]]
+                [[!+fi.error.recaptchav3_error]]
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 mb-5">
+            <div class="d-flex justify-content-center py-5">
+              <button name="submit" type="submit" class="btn btn-primary">Invia la tua richiesta</button>
+            </div>
+        </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,363 @@
+<style>
+  /* Utility compatibili con Bootstrap */
+  .program-table .time { white-space: nowrap; width: 7rem; }
+  .program-table .session-row { background-color: #f8f9fa; }
+  .program-table .break-row { background-color: #e9ecef; font-style: italic; }
+  .program-table .roundtable-highlight { background:#fff3cd; border-left:4px solid #ce1531; }
+  .program-table .roundtable-highlight .badge-rt {
+    display: inline-block; padding: .25rem .5rem; border-radius: 999px;
+    background:#ce1531; color:#fff; font-weight:700; font-size:.75rem; letter-spacing:.02em;
+  }
+
+  /* Affiliazioni: spazio tra i blocchi e coerenza visiva con la tabella del programma */
+  .affiliations-table td { padding-top: .5rem; padding-bottom: 1rem; }
+
+  /* Riga rossa sotto i titoli */
+  .section-title{
+    position: relative;
+    padding-bottom: .5rem;
+    margin-bottom: 1rem;
+  }
+  .section-title::after{
+    content: "";
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 100%;
+    height: 3px;
+    background: #ce1531;     /* rosso brand */
+    border-radius: 2px;
+  }
+
+.table > :not(:first-child) {
+  border-top: 0px !important;
+}
+</style>
+
+<div class="align-btn-group mt-4">
+  <h2 class="h3 section-title" style="color:#ce1531;">Programma</h2>
+
+  <table class="table program-table">
+    <caption class="visually-hidden">Programma del convegno</caption>
+    <tbody>
+      <tr>
+        <td class="time">8:30 – 9:00</td>
+        <td>Registrazione dei partecipanti</td>
+      </tr>
+      <tr>
+        <td class="time">9:00 – 9:30</td>
+        <td><strong class="text-primary">Saluto di benvenuto e presentazione degli ospiti istituzionali</strong> a cura di <em>Dott. Giuseppe Motta</em> - Direttore Generale Anni Azzurri Gruppo KOS.</td>
+      </tr>
+      <tr>
+        <td class="time">&nbsp;</td>
+        <td><strong class="text-primary">Saluti istituzionali</strong>:<ul style="list-style-type: none; padding-inline-start: 0px;"><li><strong>Dott.ssa Elena Lucchini</strong> - Assessore alla Famiglia, Solidarietà Sociale, Disabilità e Pari Opportunità della Regione Lombardia</li>
+<li><strong>Dott. Emanuele Monti</strong> - Presidente Commissione Sostenibilità sociale, casa e famiglia - Regione Lombardia</li>
+<li><strong>Dott. Marco Barbieri</strong> - Segretario Generale Confcommercio Imprese per l'Italia</li>
+<li><strong>Dott. Giuseppe Vailati Venturi</strong> - Amministratore Delegato Gruppo KOS</li>
+</ul></td>
+      </tr>
+      <tr>
+        <td class="time">&nbsp;</td>
+        <td><strong class="text-primary">Apertura dei lavori</strong> a cura di <em>Dott. Pierluigi Vecchio</em> - Direttore Generale FNOMCeO - Federazione Nazionale degli Ordini dei Medici Chirurghi e degli Odontoiatri</td>
+      </tr>
+
+      <!-- I SESSIONE -->
+      <tr class="session-row">
+        <td colspan="2">
+          <strong style="color:#ce1531;">I SESSIONE – "L'APPROCCIO INTEGRATO NELLA DEMENZA"</strong><br>
+          Moderatori: <em>Angelo Giovanni Mazzali – Giampiero Mazzaglia – Chiara Monti</em>
+        </td>
+      </tr>
+      <tr>
+        <td class="time">9:30 – 9:50</td>
+        <td><strong class="text-primary">Il ruolo del medico nella gestione della persona con demenza</strong><br><em>Roberto Monaco</em></td>
+      </tr>
+      <tr>
+        <td class="time">9:50 – 10:10</td>
+        <td><strong class="text-primary">Il ruolo dell'infermiere nella gestione integrata della demenza</strong><br><em>Barbara Mangiacavalli</em></td>
+      </tr>
+      <tr>
+        <td class="time">10:10 – 10:30</td>
+        <td><strong class="text-primary">Approccio multidisciplinare nella presa in carico della persona con demenza: la persona al centro, la squadra intorno</strong><br><em>Giuseppe Bellelli</em></td>
+      </tr>
+      <tr>
+        <td class="time">10:30 – 10:50</td>
+        <td><strong class="text-primary">La fragilità come chiave di lettura della demenza</strong><br><em>Lorenzo Palleschi</em></td>
+      </tr>
+      <tr>
+        <td class="time">10:50 – 11:10</td>
+        <td><strong class="text-primary">La Carta di Firenze contro l'ageismo</strong><br><em>Andrea Ungar</em></td>
+      </tr>
+      <tr>
+        <td class="time">11:10 – 11:20</td>
+        <td><strong class="text-primary">Discussione e spazio per le domande</strong></td>
+      </tr>
+      <tr xclass="break-row">
+        <td class="time">11:20 – 11:40</td>
+        <td><em><strong>Coffee Break</strong></em></td>
+      </tr>
+
+      <!-- II SESSIONE -->
+      <tr class="session-row">
+        <td colspan="2">
+          <strong style="color:#ce1531;">II SESSIONE – "LA PRESA IN CARICO DELLA PERSONA CON DEMENZA IN RSA"</strong><br>
+          Moderatori: <em>Enzo Castenetto – Guido Giacopelli – Francesco Miele</em>
+        </td>
+      </tr>
+      <tr>
+        <td class="time">11:40 – 12:00</td>
+        <td><strong class="text-primary">Adattamento del setting assistenziali e terapie non farmacologiche nella demenza</strong><br><em>Andrea Fabbo</em></td>
+      </tr>
+      <tr>
+        <td class="time">12:00 – 12:20</td>
+        <td><strong class="text-primary">Intelligenza artificiale e gestione clinica dei disturbi cognitivi</strong><br><em>Babette Dijk</em></td>
+      </tr>
+      <tr>
+        <td class="time">12:20 – 12:40</td>
+        <td><strong class="text-primary">Il modello Anni Azzurri KOS nella gestione delle persone con demenza in RSA</strong><br><em>Chiara Carla Monti</em></td>
+      </tr>
+      <tr>
+        <td class="time">12:40 – 13:00</td>
+        <td><strong class="text-primary">I pazienti con demenza dall'ospedale al territorio</strong><br><em>Mario Bo</em></td>
+      </tr>
+      <tr>
+        <td class="time">13:00 – 13:20</td>
+        <td><strong class="text-primary">Il percorso di prevenzione delle fratture nelle persone con demenza in RSA</strong><br><em>Laura Tafaro</em></td>
+      </tr>
+      <tr>
+        <td class="time">13:20 – 13:30</td>
+        <td><strong>Discussione e spazio per le domande</strong></td>
+      </tr>
+      <tr xclass="break-row">
+        <td class="time">13:30 – 14:30</td>
+        <td><em><strong>Light Lunch</strong></em></td>
+      </tr>
+
+      <tr>
+        <td class="time">14:30 – 15:45</td>
+        <td><strong class="text-primary">Apertura lavori pomeridiani</strong> a cura di <em>Dott. Giuseppe Motta</em> - Direttore Generale Anni Azzurri Gruppo KOS.</td>
+      </tr>
+      <tr>
+
+      <!-- TAVOLA ROTONDA -->
+      <tr class="roundtable-highlight">
+        <td class="time">14:30 – 15:45</td>
+        <td>
+          <span class="badge-rt">TAVOLA ROTONDA</span>
+          <strong> LA DEMENZA: NUOVI PROGRESSI E PROSPETTIVE FUTURE (PREVENZIONE, DIAGNOSI E TERAPIA)</strong><br>
+          Moderatori: <em>Vanna Avoledo - Cesare Peccarisi - Lavinia Toussan</em>
+          <ul class="mb-0 mt-2">
+            <li><em>Giuseppe Bellelli</em></li>
+            <li><em>Gabriella Bottini</em></li>
+            <li><em>Antonino Maria Cotroneo</em></li>
+            <li><em>Antonio De Tanti</em></li>
+            <li><em>Alessandro Padovani</em></li>
+          </ul>
+        </td>
+      </tr>
+
+      <!-- III SESSIONE -->
+      <tr class="session-row">
+        <td colspan="2">
+          <strong style="color:#ce1531;">III SESSIONE – "L'IMPORTANZA DELLA RETE E L'UMANIZZAZIONE DELLE CURE"</strong><br>
+          Moderatori: <em>Babette Dijk – Monica Pennesi</em>
+        </td>
+      </tr>
+      <tr>
+        <td class="time">15:45 – 16:00</td>
+        <td><strong class="text-primary">L'importanza della rete: associazioni, RSA e territorio per una cura condivisa della demenza</strong><br><em>Manuela Berardinelli</em></td>
+      </tr>
+      <tr>
+        <td class="time">16:00 – 16:15</td>
+        <td><strong class="text-primary">Umanizzare la cura: il volontario come ponte tra la persona con demenza e la comunità</strong><br><em>Francesco Colombo</em></td>
+      </tr>
+      <tr>
+        <td class="time">16:15 – 16:30</td>
+        <td><strong class="text-primary">Demenze e comunità: la rete come strumento di cura autentica</strong><br><em>Katia Pinto</em></td>
+      </tr>
+      <tr>
+        <td class="time">16:30 – 16:40</td>
+        <td><strong class="text-primary">Discussione e spazio per le domande</strong></td>
+      </tr>
+      <tr>
+        <td class="time">16:40 – 16:50</td>
+        <td><strong class="text-primary">Considerazioni conclusive e chiusura dei lavori</strong> a cura di <em>Dott.ssa Chiara Carla Monti</em></td>
+      </tr>
+      <tr>
+        <td class="time">16:50 – 17:00</td>
+        <td><strong>Verifica apprendimento e gradimento ECM</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Sezione affiliazioni (una colonna, stesso stile) -->
+<div class="mt-5">
+  <h3 class="section-title" style="color:#ce1531;">Affiliazioni</h3>
+  <p class="mb-2"><strong>Interverranno al convegno, in ordine alfabetico.</strong></p>
+  <table class="table program-table affiliations-table">
+    <tbody>
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Vanna Avoledo</strong><br>
+        <em>Neurologa - Consigliere Ordine dei Medici Milano</em><br>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Prof. Giuseppe Bellelli</strong><br>
+        <em>Professore Ordinario in Geriatria e Medicina Interna</em><br>
+        <em>Direttore della Scuola di Specializzazione in Geriatria all’Università di Milano-Bicocca</em><br>
+        <em>Direttore dell’Unità di Geriatria per Acuti, Fondazione IRCCS Ospedale S. Gerardo, Monza</em><br>
+        <em>Presidente eletto della Società Italiana di Gerontologia e Geriatria - SIGG</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Manuela Berardinelli</strong><br>
+        <em>Presidente Associazione Alzheimer Uniti Italia</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Prof. Mario Bo</strong><br>
+        <em>Professore Associato e Direttore SC Geriatria U, A.O.U. Città della Salute e della Scienza di Torino</em><br>
+        <em>Direttore Scuola di Specializzazione in Geriatria Università di Torino</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Prof.ssa Gabriella Bottini</strong><br>
+        <em>Università di Pavia Dipartimento del sistema nervoso centrale e del comportamento ASST GOM Niguarda, Milano Centro di Neuropsicologia Cognitiva (CDCD)</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Enzo Castenetto</strong><br>
+        <em>Coordinatore Medico Regionale Piemonte Gruppo KOS</em><br>
+        <em>Responsabile Nuclei Vegetativi e NAC Residenza Anni Azzurri Volpiano (TO)</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Francesco Colombo</strong><br>
+        <em>Presidente Nazionale Associazione Volontari Ospedalieri - AVO</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Antonino Maria Cotroneo</strong><br>
+        <em>Direttore SC Geriatria Ospedale Maria Vittoria di Torino</em><br>
+        <em>Vice Presidente Nazionale Associazione Geriatri Extraospedalieri - AGE</em><br>
+        <em>Presidente Associazione Italiana Psicogeriatria - AIP Piemonte e Valle d'Aosta</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Antonio De Tanti</strong><br>
+        <em>Direttore Medico Scientifico del Gruppo KOS</em><br>
+        <em>Direttore di Struttura Centro Cardinal Ferrari, Fontanellato (PR)</em><br>
+        <em>Presidente Società Italiana di Riabilitazione Neurologica - SIRN</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Babette Dijk</strong><br>
+        <em>Responsabile FF SSA Geriatria ASL 4 Liguria</em><br>
+        <em>Coordinatore Centro Disturbi Cognitivi Demenze</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Andrea Fabbo</strong><br>
+        <em>Geriatria, Direttore Sanitario ASL Asti</em><br>
+        <em>Vicepresidente Nazionale Società Italiana Geriatria Ospedale e Territorio - SIGOT</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Cecilia Gallo</strong><br>
+        <em>Coordinatore Medico Regionale Liguria ed Emilia-Romagna RSA Gruppo KOS</em><br>
+        <em>Direttore Sanitario Strutture RP Castagnola Chiavari – Casteldonnino Favale di Malvaro (GE) e Minerva Rapallo</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Guido Giacopelli</strong><br>
+        <em>Coordinatore Medico Regionale Lombardia e Veneto</em><br>
+        <em>Direttore Sanitario Residenza Anni Azzurri Melograno (MI)</em><br>
+        <em>Responsabile Sanitario Cure Domiciliari Gruppo KOS</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Barbara Mangiacavalli</strong><br>
+        <em>Presidente della Federazione Nazionale delle Professioni Infermieristiche - FNOPI</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Prof. Giampiero Mazzaglia</strong><br>
+        <em>Center for Public Health Research (CESP) – Bicocca Research Center in Health Services (BReCHS)</em><br>
+        <em>Professore Associato di Sanità Pubblica, Scuola di Medicina e Chirurgia, Università degli Studi di Milano-Bicocca</em><br>
+        <em>Vice-coordinatore del Dottorato in Sanità Pubblica</em><br>
+        <em>Dirigente Medico – ASST Brianza</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Angelo Giovanni Mazzali</strong><br>
+        <em>Tesoriere Presidente Federazione Nazionale ordine Fisioterapisti - FNOFI</em><br>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Prof. Francesco Miele</strong><br>
+        <em>Professore Associato Università di Trieste</em><br>
+        <em>Sociologo, esperto di tecnologie legate all'invecchiamento e in particolare alle demenze</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Roberto Monaco</strong><br>
+        <em>Segretario Generale Federazione Nazionale degli Ordini dei Medici Chirurghi e degli Odontoiatri - FNOMCeO</em><br>
+        <em>Presidente Nazionale Consorzio Gestione Anagrafica Professioni Sanitarie - Co.Ge.A.P.S.</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Chiara Monti</strong><br>
+        <em>Direttore Medico Divisione Residenze Socio-Assistenziali - Anni Azzurri, Gruppo KOS</em><br>
+        <em>Coordinatore Processi Clinico Assistenziali – Gruppo KOS</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Prof. Alessandro Padovani</strong><br>
+        <em>Direttore – Clinica Neurologica, Università degli Studi di Brescia</em><br>
+        <em>Past President Società Italiana di Neurologia - SIN</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Lorenzo Palleschi</strong><br>
+        <em>Direttore – Dipartimento Internistico con area Onco-Ematologica e UOC di Geriatria della AOSGA di Roma</em><br>
+        <em>Presidente Nazionale Società Italiana Geriatria Ospedale e Territorio - SIGOT</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott. Cesare Peccarisi</strong><br>
+        <em>Neurologo</em><br>
+        <em>Responsabile Comunicazione Scientifica Società Italiana di Neurologia - SIN</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Monica Pennesi</strong><br>
+        <em>Coordinatore Medico Regionale Marche</em><br>
+        <em>Direttore di Struttura e Sanitaria Residenza Anni Azzurri Santa Maria in Chienti (MC), Gruppo KOS</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Katia Pinto</strong><br>
+        <em>Presidente Federazione Alzheimer Italia</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Prof.ssa Laura Tafaro</strong><br>
+        <em>Ricercatore Università Sapienza di Roma, A.O.U. Sant'Andrea</em><br>
+        <em>Coordinatore SIOMMMS Lazio</em><br>
+        <em>Past President Società Italiana di Gerontologia e Geriatria - SIGG Lazio</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Dott.ssa Lavinia Toussan</strong><br>
+        <em>Coordinatore Medico Regionale Lazio e Toscana</em><br>
+        <em>Direttore Sanitario Residenza Anni Azzurri Parco di Veio (RM), Gruppo KOS</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Prof. Andrea Ungar</strong><br>
+        <em>Professore Ordinario di Medicina Interna-Geriatria Università di Firenze</em><br>
+        <em>Direttore Geriatria per l’Alta Intensità e Cardiologia Geriatrica, AOU Careggi</em>
+      </td></tr>
+    </tbody>
+  </table>
+</div>

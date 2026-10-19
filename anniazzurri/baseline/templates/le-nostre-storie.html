@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="it">
+
+[[$head-storia]]
+
+<body class="news-content-page storia-page">
+[[$GTM_body]]
+[[$menu-sticky]]
+[[$menu-navbar]]
+[[$menu-side-navbar]]
+<main id="main-content" tabindex="-1">
+[[$breadcrumb-stripe]]
+<script>
+
+  (function () {
+    var tocco = false;
+    var righe = document.querySelectorAll('[stripe-breadcrumb] .breadcrumb');
+    function inFondo() {
+      if (tocco) return;
+      Array.prototype.forEach.call(righe, function (o) { o.scrollLeft = o.scrollWidth; });
+    }
+    Array.prototype.forEach.call(righe, function (o) {
+      o.addEventListener('pointerdown', function () { tocco = true; }, { once: true });
+      o.addEventListener('keydown', function () { tocco = true; }, { once: true });
+    });
+    inFondo();
+    window.addEventListener('load', inFondo);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(inFondo);
+  })();
+</script>
+
+  <div stripe-fascia>
+    <img class="fascia-rubrica"
+         src="/assets/img/le-nostre-storie/rubrica-le-nostre-storie-980x380.jpg"
+         alt="Le nostre storie — Residenza Anni Azzurri, Favaro Veneto"
+         width="980" height="380">
+  </div>
+
+  <div stripe-text class="container py-4 py-md-5">
+    <div class="row justify-content-center">
+      <div class="col-12 colonna-storia">
+        <h1 class="h2 text-primary titolo-storia">[[*pagetitle]]</h1>
+        <!-- Il sommario va in evidenza: nel caso senza fotografia e senza
+             citazioni e' l'unico elemento visivo della pagina. -->
+        <p class="sommario">[[*introtext]]</p>
+      </div>
+    </div>
+  </div>
+
+  <div stripe-share class="border-top border-bottom">
+    <div class="container py-3">
+      <div class="row">
+        <div class="col-auto me-auto">
+          <span class="small text-brown">[[*publishedon:strtotime:date=`%d %B %Y`]]</span>
+        </div>
+
+        <div class="col-auto">
+          <ul class="list-group list-group-horizontal">
+            <li class="py-0 px-2 border-0 list-group-item">
+              <button type="button" class="facebook-share condividi" aria-label="Condividi questa storia su Facebook">
+                <img src="/assets/img/news-facebook.png" alt="">
+              </button>
+            </li>
+            <li class="py-0 px-2 border-0 list-group-item">
+              <button type="button" class="twitter-share condividi" aria-label="Condividi questa storia su X">
+                <img src="/assets/img/news-twitter.png" alt="">
+              </button>
+            </li>
+            <li class="py-0 px-2 border-0 list-group-item">
+              <button type="button" class="whatsapp-share condividi" aria-label="Condividi questa storia su WhatsApp">
+                <img src="/assets/img/news-whatsapp.png" alt="">
+              </button>
+            </li>
+            <li class="py-0 ps-2 pe-0 border-0 list-group-item">
+              <button type="button" class="email-share condividi" aria-label="Condividi questa storia via email">
+                <img src="/assets/img/news-mail.png" alt="">
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div stripe-article class="container py-4 py-md-5">
+    <div class="row justify-content-center">
+      <div class="col-12 colonna-storia testo-storia text-brown">
+      [[*content]]
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-12 colonna-larga">
+        <nav class="nav-storie" aria-label="Altre storie della rubrica">
+          <div class="row">
+            [[!getResources?
+                &parents=`[[*parent]]`
+                &depth=`1`
+                &limit=`1`
+                &tpl=`storia-precedente`
+                &includeTVs=`storiaMini`
+                &showHidden=`1`
+                &wrapIfEmpty=`0`
+                &where=`{"publishedon:<":"[[*publishedon:strtotime]]"}`
+                &sortby=`{"publishedon":"DESC"}`
+            ]]
+            [[!getResources?
+                &parents=`[[*parent]]`
+                &depth=`1`
+                &limit=`1`
+                &tpl=`storia-successiva`
+                &includeTVs=`storiaMini`
+                &showHidden=`1`
+                &wrapIfEmpty=`0`
+                &where=`{"publishedon:>":"[[*publishedon:strtotime]]"}`
+                &sortby=`{"publishedon":"ASC"}`
+            ]]
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <a href="[[~[[*parent]]]]" class="mt-lg-5 mt-4 btn btn-outline-primary">Torna a Le nostre storie</a>
+    </div>
+  </div>
+
+</main>
+[[$footer]]
+[[$footer-script]]
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+    "id": 29,
+    "name": "seguiciYoutube",
+    "caption": "Canale youtube",
+    "description": "",
+    "category": "Social",
+    "type": "text",
+    "elements": null,
+    "default_text": "https://www.youtube.com/@KOSGroupIT",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        2,
+        4,
+        6,
+        13,
+        14,
+        16,
+        18,
+        20
+    ]
+}

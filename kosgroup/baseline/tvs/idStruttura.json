@@ -1,0 +1,23 @@
+{
+    "id": 52,
+    "name": "idStruttura",
+    "caption": "id struttura",
+    "description": "",
+    "category": "Strutture",
+    "type": "text",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        7,
+        10
+    ]
+}

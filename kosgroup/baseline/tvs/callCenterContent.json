@@ -1,0 +1,21 @@
+{
+    "id": 58,
+    "name": "callCenterContent",
+    "caption": "callCenterContent",
+    "description": "",
+    "category": "Landing",
+    "type": "textarea",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "inputHeight": "200",
+        "textareaGrow": "true",
+        "textareaResizable": "true"
+    },
+    "output_properties": [],
+    "templates": [
+        15
+    ]
+}

@@ -1,0 +1,69 @@
+<!-- =================== BOX STRUTTURE START ===================== -->
+<section id="strutture-correlate" data-aos="fade-up">
+  <div class="container">
+      <div class="row">
+          <div class="titolo-sezione titolo-con-sep">
+              <h3>Le nostre strutture a cui rivolgersi</h3>
+          </div>
+      </div>
+      <!-- Aggiunta barra di ricerca -->
+      <div class="row mb-4">
+          <div class="col-12 d-flex align-items-center">
+              <label for="struttureInput" class="me-2 mb-0">Cerca:</label>
+              <input class="form-control" 
+                     type="text" 
+                     id="struttureInput" 
+                     name="struttureInput" 
+                     onkeyup="cercaStrutture()" 
+                     placeholder="Cerca una struttura per nome o indirizzo" 
+                     title="Cerca una struttura">
+          </div>
+      </div>
+      <!-- Aggiunto div per nessun risultato -->
+      <div id="noResults" class="col-12 text-center" style="display: none;">
+          <p>Nessuna corrispondenza trovata</p>
+      </div>
+      <div class="row">    
+          <div class="col-12 col-lg-9">
+              <div class="strutture-box">
+                  <div class="results row" id="struttureGrid">
+                      [[+wrapper]]
+                  </div>
+              </div>
+          </div>
+      </div> 
+  </div>
+  <!-- Aggiunto script di ricerca aggiornato -->
+  <script>
+      function cercaStrutture() {
+          var input = document.getElementById("struttureInput");
+          var filter = input.value.toUpperCase();
+          var cards = document.getElementsByClassName("struttura-card");
+          var noResults = document.getElementById("noResults");
+          var visibleCards = 0;
+          
+          for (var i = 0; i < cards.length; i++) {
+              var card = cards[i];
+              var title = card.getElementsByTagName("h4")[0];
+              var address = card.getElementsByTagName("p")[0];
+              var txtValue = title.textContent || title.innerText;
+              var addressValue = address.textContent || address.innerText;
+              
+              if (txtValue.toUpperCase().indexOf(filter) > -1 || addressValue.toUpperCase().indexOf(filter) > -1) {
+                  card.style.display = "";
+                  visibleCards++;
+              } else {
+                  card.style.display = "none";
+              }
+          }
+          
+          // Mostra/nascondi il messaggio "nessun risultato"
+          if (visibleCards === 0) {
+              noResults.style.display = "block";
+          } else {
+              noResults.style.display = "none";
+          }
+      }
+  </script>
+</section>
+<!-- =================== BOX STRUTTURE END ===================== -->

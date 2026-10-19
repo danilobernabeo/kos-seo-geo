@@ -1,0 +1,17 @@
+[[!migxLoopCollection?
+    &packageName=`modx`
+    &classname=`modResource`
+    &where=`{"parent":280}`
+    &tvFilters=`sedeLavoro=[[*menutitle]]`
+    &prepareTVs=`1`
+    &includeTVs=`ruolo,infoImage`
+    &tpl=`@INLINE
+    <div class="col-12 col-md-6 equipe-persona">
+        <img class="equipe-foto" src="[[+tv.infoImage:default=`/assets/img/medico-thumb.svg`]]" alt="[[+pagetitle]]">
+        <div class="equipe-info">
+            <span class="equipe-ruolo">[[+tv.ruolo]]</span>
+            <span class="equipe-nome"><a href="[[+uri]]">[[+pagetitle]]</a></span>
+        </div>
+    </div>`
+    &wrapperTpl=`@INLINE <div class="row">[[+output]]</div>`
+]]

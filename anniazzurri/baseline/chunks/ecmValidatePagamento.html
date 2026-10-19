@@ -1,0 +1,20 @@
+<!-- Regole applicate solo quando la TV evento_pagamento vale 1.
+     Vengono accese dallo stesso flag che fa comparire i campi, quindi
+     non possono restare indietro rispetto al form. -->
+
+allegato:required:ecmValidatori=^allegato:5:pdf,jpg,jpeg,png^,
+richiesta_fattura:required,
+
+fintestatario:ecmRichiestoSe=^richiesta_fattura=Si|Indica a chi intestare la fattura.^,
+
+fself_piva:ecmRichiestoSe=^fintestatario=self^:ecmValidatori=^partitaIva^,
+fself_sid:ecmRichiestoSe=^fintestatario=self^:ecmValidatori=^destinatarioSdi^,
+
+fnominativo:ecmRichiestoSe=^fintestatario=other^:stripTags,
+findirizzo:ecmRichiestoSe=^fintestatario=other^:stripTags,
+fcap:ecmRichiestoSe=^fintestatario=other^:ecmValidatori=^cap^,
+fcomune:ecmRichiestoSe=^fintestatario=other^:stripTags,
+fprovincia:ecmRichiestoSe=^fintestatario=other^,
+fcodice_fiscale:ecmRichiestoSe=^fintestatario=other^:ecmValidatori=^codiceFiscale^,
+fpartita_iva:ecmRichiestoSe=^fintestatario=other^:ecmValidatori=^partitaIva^,
+fsid:ecmRichiestoSe=^fintestatario=other^:ecmValidatori=^destinatarioSdi^

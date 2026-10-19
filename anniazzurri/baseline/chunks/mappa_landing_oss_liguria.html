@@ -1,0 +1,123 @@
+<!-- ═══════════════════════════════════════════════════════════
+     CHUNK MODX: mappa_oss_liguria
+     
+     Istruzioni:
+     1. Questo file va incollato nel chunk MODX
+     2. Il file mappa-oss-engine.js va caricato sul server
+        (es. /assets/js/mappa-oss-engine.js)
+     3. Nel <head> del template aggiungere:
+          <script src="https://maps.googleapis.com/maps/api/js?key=LA_CHIAVE"></script>
+          <script src="/assets/js/mappa-oss-engine.js"></script>
+     ═══════════════════════════════════════════════════════════ -->
+
+<style>
+  /* ── Sezione mappa — sfondo bianco ────────────────────────── */
+  .map-section {
+    --ms-blue:        #0a1f44;
+    --ms-blue-mid:    #0d2d6b;
+    --ms-blue-glow:   #003b77;
+    --ms-blue-light:  #e8f0fe;
+    --ms-gold:        #f5a623;
+    --ms-gray:        #6b7280;
+    --ms-gray-light:  #f3f4f6;
+    --ms-border:      #e5e7eb;
+    --ms-radius:      12px;
+    --ms-shadow:      0 4px 20px rgba(0,0,0,0.10);
+    box-sizing: border-box;
+    background: #ffffff;
+    padding: clamp(40px, 6vw, 80px) clamp(16px, 4vw, 60px);
+    position: relative;
+    overflow: hidden;
+    color: var(--ms-blue);
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  .map-section *, .map-section *::before, .map-section *::after { box-sizing: border-box; }
+
+  /* ── header ────────────────────────────────────────────────── */
+  .map-section .map-header { text-align:center; margin-bottom:28px; position:relative; z-index:1; }
+  .map-section .map-header h2 { font-size:clamp(1.4rem,3vw,2rem); font-weight:700; letter-spacing:-0.02em; color:var(--ms-blue); margin-bottom:8px; line-height:1.2; }
+  .map-section .map-header p  { font-size:0.95rem; color:var(--ms-gray); margin:0; }
+
+  /* ── province pills ────────────────────────────────────────── */
+  .map-section .province-filter { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-bottom:20px; position:relative; z-index:1; min-height:32px; }
+  .map-section .prov-pill { padding:5px 14px; border-radius:99px; border:1px solid var(--ms-border); background:#fff; color:var(--ms-gray); font-size:0.78rem; font-weight:700; letter-spacing:0.06em; cursor:pointer; transition:all 0.18s ease; line-height:1; }
+  .map-section .prov-pill:hover  { background:var(--ms-gray-light); color:var(--ms-blue); border-color:#d1d5db; }
+  .map-section .prov-pill.active { background:var(--ms-blue-glow); border-color:var(--ms-blue-glow); color:#fff; }
+
+  /* ── layout ────────────────────────────────────────────────── */
+  .map-section .map-layout { display:grid; grid-template-columns:1fr 320px; gap:16px; position:relative; z-index:1; height:540px; }
+  @media (max-width:900px) { .map-section .map-layout { grid-template-columns:1fr; height:auto; } }
+
+  /* ── mappa ─────────────────────────────────────────────────── */
+  .map-section #map { border-radius:var(--ms-radius); overflow:hidden; box-shadow:var(--ms-shadow); border:1px solid var(--ms-border); min-height:400px; height:100%; background:#e8eaed; }
+  @media (max-width:900px) { .map-section #map { height:360px; } }
+  .map-section .map-error { display:flex; align-items:center; justify-content:center; height:100%; color:var(--ms-gray); font-size:0.85rem; text-align:center; padding:24px; line-height:1.6; }
+
+  /* ── sidebar ───────────────────────────────────────────────── */
+  .map-section .residences-list { display:flex; flex-direction:column; gap:8px; overflow-y:auto; max-height:540px; padding-right:4px; scrollbar-width:thin; scrollbar-color:#d1d5db transparent; }
+  .map-section .residences-list::-webkit-scrollbar       { width:5px; }
+  .map-section .residences-list::-webkit-scrollbar-track { background:transparent; }
+  .map-section .residences-list::-webkit-scrollbar-thumb { background:#d1d5db; border-radius:4px; }
+  @media (max-width:900px) { .map-section .residences-list { max-height:260px; flex-direction:row; flex-wrap:nowrap; overflow-x:auto; overflow-y:hidden; padding-right:0; padding-bottom:4px; } }
+
+  /* ── card ──────────────────────────────────────────────────── */
+  .map-section .res-card { background:#fff; border:1px solid var(--ms-border); border-radius:10px; padding:12px 14px; cursor:pointer; transition:all 0.2s ease; flex-shrink:0; }
+  .map-section .res-card:hover  { background:var(--ms-gray-light); border-color:#d1d5db; transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,0.07); }
+  .map-section .res-card.active { background:var(--ms-blue-light); border-color:var(--ms-blue-glow); box-shadow:0 0 0 2px rgba(59,130,246,0.25); }
+  @media (max-width:900px) { .map-section .res-card { min-width:210px; } }
+  .map-section .res-card-name    { font-size:.82rem; font-weight:700; color:var(--ms-blue); margin-bottom:4px; line-height:1.3; }
+  .map-section .res-card-address { font-size:.74rem; color:var(--ms-gray); line-height:1.4; margin-bottom:6px; }
+  .map-section .res-card-prov    { display:inline-block; font-size:.68rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:2px 8px; border-radius:4px; background:var(--ms-gray-light); color:var(--ms-gray); }
+  .map-section .res-card-cta     { display:inline-block; margin-top:8px; font-size:.72rem; font-weight:700; color:var(--ms-blue-glow); text-transform:uppercase; letter-spacing:.06em; text-decoration:none; }
+  .map-section .res-card-cta:hover { text-decoration:underline; }
+
+  /* ── count badge ───────────────────────────────────────────── */
+  .map-section .count-badge { text-align:center; font-size:0.78rem; color:#9ca3af; margin-top:12px; letter-spacing:0.04em; position:relative; z-index:1; }
+
+  /* ── InfoWindow Google Maps (globali — iniettate nel body) ─── */
+  .gm-style .gm-style-iw-c       { background:#0d2d6b !important; border-radius:10px !important; box-shadow:0 8px 24px rgba(0,0,0,.5) !important; padding:0 !important; border:1px solid rgba(255,255,255,.15) !important; max-width:260px !important; }
+  .gm-style .gm-style-iw-d        { overflow:hidden !important; padding:0 !important; max-height:none !important; }
+  .gm-style .gm-style-iw-t::after { background:#0d2d6b !important; }
+  .gm-style .gm-ui-hover-effect > span { background-color:rgba(255,255,255,.6) !important; }
+  .popup-inner     { padding:14px 36px 16px 16px; min-width:190px; font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif; }
+  .popup-inner h4  { font-size:.88rem; font-weight:700; margin:0 0 6px; line-height:1.3; color:#fff; }
+  .popup-inner p   { font-size:.77rem; color:rgba(255,255,255,.65); line-height:1.4; margin:0; }
+  .popup-cta       { display:inline-block; margin-top:10px; padding:6px 14px; background:#f5a623; color:#0a1f44 !important; font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; border-radius:6px; text-decoration:none !important; }
+  .popup-cta:hover { opacity:.9; }
+</style>
+
+<section class="map-section">
+  <div class="map-header">
+    <h2>Scopri le Residenze che cercano Operatori Socio Sanitari (OSS)</h2>
+    <p>Seleziona la provincia più vicina a te</p>
+  </div>
+  <div class="province-filter" id="provinceFilter"></div>
+  <div class="map-layout">
+    <div id="map"></div>
+    <div class="residences-list" id="residencesList"></div>
+  </div>
+  <p class="count-badge" id="countBadge"></p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CONFIGURAZIONE DATI — Liguria
+     Note: province corrette nei due indirizzi con () vuote:
+     - Genova (GE) e Carasco (GE)
+     ═══════════════════════════════════════════════════════════ -->
+<script>
+var MAPPA_OSS = {
+  formUrl: "[[*alias]]#contatti",
+  center:  { lat: 44.3, lng: 8.8 },
+  zoom:    9,
+  markers: [
+    { name:"Residenza Anni Azzurri Sestri Ponente", address:"Via Angelo Siffredi 81 - 16153 Genova (GE)",              lat:"44.4216405", lng:"8.8571866" },
+    { name:"Residenza Anni Azzurri Sacra Famiglia", address:"V. Carlo Linneo 2 - 16159 Rivarolo (GE)",                 lat:"44.4407995", lng:"8.8975712" },
+    { name:"Residenza Anni Azzurri Casa Serena",    address:"Via Disma Montanaro 90 - 16042 Carasco (GE)",             lat:"44.3498553", lng:"9.3448389" },
+    { name:"Residenza Anni Azzurri Castagnola",     address:"V. Col. E. Franceschi 87 - 16043 Chiavari (GE)",          lat:"44.32552",   lng:"9.31958"   },
+    { name:"Residenza Anni Azzurri Casteldonino",   address:"V. Piano di Castello 1 - 16040 Favale Di Malvaro (GE)",   lat:"44.45659",   lng:"9.256182"  },
+    { name:"Residenza Anni Azzurri Minerva",        address:"C.so Cristoforo Colombo 5 - 16035 Rapallo (GE)",          lat:"44.34734",   lng:"9.2269"    },
+    { name:"Residenza Anni Azzurri Le Grange",      address:"V. Castello 6 - 18015 Riva Ligure (IM)",                  lat:"43.837261",  lng:"7.872461"  },
+    { name:"Residenza Anni Azzurri B. Franchiolo",  address:"Dev. Aurelia Bis S. Martino 6 - 18038 Sanremo (IM)",      lat:"43.8289884", lng:"7.797129"  }
+  ]
+};
+</script>

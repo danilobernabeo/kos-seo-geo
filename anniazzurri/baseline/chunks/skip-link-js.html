@@ -1,0 +1,15 @@
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var skipLink = document.querySelector('.skip-link');
+    if (skipLink) {
+        skipLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            var target = document.getElementById('main-content');
+            if (target) {
+                target.focus();
+                target.scrollIntoView();
+            }
+        });
+    }
+});
+</script>

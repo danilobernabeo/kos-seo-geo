@@ -1,0 +1,357 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>[[*longtitle:default=`[[*pagetitle]]`]]</title>
+  <meta name="description" content="[[*description]]">
+
+
+<!-- AGGIUNGI TEMPORANEAMENTE nel <head> PRIMA di GTM -->
+<script>
+// Versione di test con debug avanzato
+(function() {
+    'use strict';
+    
+    console.log('>> AVVIO TEST KOS TRACKING');
+    
+    // Backup del dataLayer originale per test
+    window._originalDataLayer = window.dataLayer ? [...window.dataLayer] : [];
+    
+
+// =====================================================
+// KOS BOOKING FUNNEL TRACKING - OPZIONE C
+// Focus: Conversioni + Abbandoni + Punti Critici  
+// Eventi tracciati: 8 eventi strategici
+// =====================================================
+
+(function() {
+    'use strict';
+    
+    // CONFIGURAZIONE CENTRALE
+    const TRACKING_CONFIG = {
+        debug: true, // Imposta false in produzione
+        sessionStorageKey: 'kos_booking_session_id',
+        eventPrefix: 'kos_',
+        
+        // EVENTI DA TRACCIARE (Opzione C)
+        trackedEvents: [
+            // CONVERSIONI (3)
+            'SearchAvailabilities',
+            'InsertReservation', 
+            
+            // ABBANDONI (3) 
+            'BackToCriteria',
+            'BackToAvailabilities',
+            'CancelReservationPatient',
+            
+            // PUNTI CRITICI (2)
+            'InterestedAppointment',
+            'LoginDuringReservation'
+        ]
+    };
+
+    // UTILITY FUNCTIONS
+    function debugLog(message, data = null) {
+        if (TRACKING_CONFIG.debug) {
+            console.log(`[KOS Tracking] ${message}`, data || '');
+        }
+    }
+
+    function getBookingSessionId() {
+        let sessionId = sessionStorage.getItem(TRACKING_CONFIG.sessionStorageKey);
+        if (!sessionId) {
+            sessionId = 'kos_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            sessionStorage.setItem(TRACKING_CONFIG.sessionStorageKey, sessionId);
+            debugLog('Nuovo Session ID generato:', sessionId);
+        }
+        return sessionId;
+    }
+
+    function getCurrentTimestamp() {
+        return new Date().toISOString();
+    }
+
+    function getCurrentUrl() {
+        return window.location.href;
+    }
+
+    function getCurrentPage() {
+        return window.location.pathname;
+    }
+
+    // FUNZIONE TRACKING PRINCIPALE
+    function trackBookingEvent(eventType, originalData = {}) {
+        const sessionId = getBookingSessionId();
+        const timestamp = getCurrentTimestamp();
+        
+        // MAPPING EVENTI SPECIFICI
+        const eventMapping = {
+            // CONVERSIONI
+            'SearchAvailabilities': {
+                event: 'kos_search_availabilities',
+                event_category: 'booking_funnel',
+                event_action: 'search_started',
+                funnel_step: 'search_intent',
+                value: 1
+            },
+            
+            'InsertReservation': {
+                event: 'kos_booking_completed', 
+                event_category: 'booking_funnel',
+                event_action: 'conversion',
+                funnel_step: 'booking_success',
+                value: 10 // Valore conversione
+            },
+            
+            // ❌ ABBANDONI
+            'BackToCriteria': {
+                event: 'kos_funnel_abandonment',
+                event_category: 'booking_funnel', 
+                event_action: 'back_to_criteria',
+                funnel_step: 'abandonment_search',
+                abandonment_point: 'availabilities_page'
+            },
+            
+            'BackToAvailabilities': {
+                event: 'kos_funnel_abandonment',
+                event_category: 'booking_funnel',
+                event_action: 'back_to_availabilities', 
+                funnel_step: 'abandonment_summary',
+                abandonment_point: 'booking_summary_page'
+            },
+            
+            'CancelReservationPatient': {
+                event: 'kos_booking_cancelled',
+                event_category: 'booking_funnel',
+                event_action: 'post_booking_cancel',
+                funnel_step: 'cancellation',
+                cancellation_type: 'patient_initiated'
+            },
+            
+            // PUNTI CRITICI  
+            'InterestedAppointment': {
+                event: 'kos_appointment_interest',
+                event_category: 'booking_funnel',
+                event_action: 'slot_selection',
+                funnel_step: 'high_engagement',
+                engagement_level: 'high'
+            },
+            
+            'LoginDuringReservation': {
+                event: 'kos_login_friction',
+                event_category: 'booking_funnel', 
+                event_action: 'login_required',
+                funnel_step: 'authentication_friction',
+                friction_point: 'login_gate'
+            }
+        };
+
+        const mappedEvent = eventMapping[eventType];
+        if (!mappedEvent) {
+            debugLog(`Evento ${eventType} non mappato - saltato`);
+            return;
+        }
+
+        // COSTRUZIONE PAYLOAD GA4
+        const ga4Payload = {
+            ...mappedEvent,
+            
+            // DATI SESSIONE
+            booking_session_id: sessionId,
+            timestamp: timestamp,
+            page_url: getCurrentUrl(),
+            page_path: getCurrentPage(),
+            
+            // DATI BOOKING SPECIFICI (dal sistema KOS)
+            ...extractBookingData(originalData),
+            
+            // PARAMETRI FUNNEL
+            user_agent: navigator.userAgent,
+            referrer: document.referrer || 'direct'
+        };
+
+        // INVIO A GA4
+        pushToDataLayer(ga4Payload);
+        
+        debugLog(`✅ Evento tracciato: ${eventType}`, ga4Payload);
+    }
+
+    // ESTRAZIONE DATI BOOKING 
+    function extractBookingData(data) {
+        const bookingData = {};
+        
+        // Mapping campi dalla documentazione KOS
+        const fieldMapping = {
+            'activities': 'booking_service',
+            'insurances': 'booking_insurance', 
+            'areas': 'booking_area',
+            'resources': 'booking_resource',
+            'dates': 'booking_date',
+            'typology': 'booking_typology',
+            'activity': 'booking_activity',
+            'insurance': 'booking_insurance_single',
+            'area': 'booking_area_single',
+            'resource': 'booking_resource_single'
+        };
+
+        // Estrai solo campi rilevanti
+        Object.keys(fieldMapping).forEach(kosField => {
+            if (data[kosField]) {
+                bookingData[fieldMapping[kosField]] = data[kosField];
+            }
+        });
+
+        return bookingData;
+    }
+
+    // PUSH TO DATALAYER
+    function pushToDataLayer(payload) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(payload);
+        
+        debugLog('DataLayer push:', payload);
+    }
+
+    // LISTENER PRINCIPALE
+    function initializeEventListener() {
+        // Listener per eventi del dataLayer KOS esistenti
+        const originalPush = window.dataLayer?.push || function() {};
+        
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push = function() {
+            // Processa l'evento originale
+            originalPush.apply(this, arguments);
+            
+            // Analizza per eventi KOS
+            Array.from(arguments).forEach(data => {
+                if (data && typeof data === 'object') {
+                    const eventCategory = data.event_category;
+                    
+                    if (eventCategory && TRACKING_CONFIG.trackedEvents.includes(eventCategory)) {
+                        debugLog(`Evento KOS intercettato: ${eventCategory}`, data);
+                        trackBookingEvent(eventCategory, data);
+                    }
+                }
+            });
+        };
+        
+        debugLog('✅ Event listener inizializzato');
+    }
+
+    // FUNZIONE PUBBLICA PER TRACKING MANUALE
+    window.kosTrackBookingEvent = function(eventType, data = {}) {
+        trackBookingEvent(eventType, data);
+    };
+
+    // FUNZIONE PUBBLICA PER DEBUG
+    window.kosGetBookingSession = function() {
+        return {
+            sessionId: getBookingSessionId(),
+            trackedEvents: TRACKING_CONFIG.trackedEvents,
+            currentUrl: getCurrentUrl(),
+            timestamp: getCurrentTimestamp()
+        };
+    };
+
+    // INIZIALIZZAZIONE
+    function initialize() {
+        debugLog('>> Inizializzazione KOS Booking Funnel Tracking - Opzione C');
+        debugLog('>> Eventi tracciati:', TRACKING_CONFIG.trackedEvents);
+        
+        initializeEventListener();
+        
+        // Track dell'inizializzazione (se non già presente)
+        if (!sessionStorage.getItem('kos_booking_initialized')) {
+            pushToDataLayer({
+                event: 'kos_tracking_initialized',
+                event_category: 'system',
+                event_action: 'tracking_setup',
+                tracking_version: 'opzione_c',
+                booking_session_id: getBookingSessionId(),
+                timestamp: getCurrentTimestamp()
+            });
+            
+            sessionStorage.setItem('kos_booking_initialized', 'true');
+        }
+        
+        debugLog('✅ Tracking inizializzato con successo');
+    }
+
+    // AVVIO AUTOMATICO
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initialize);
+    } else {
+        initialize();
+    }
+
+})();
+
+
+// =====================================================
+// GUIDA IMPLEMENTAZIONE GTM
+// =====================================================
+
+/*
+STEP SUCCESSIVI PER GTM:
+
+1️⃣ TRIGGER DA CREARE:
+   - kos_search_availabilities
+   - kos_booking_completed  
+   - kos_funnel_abandonment
+   - kos_booking_cancelled
+   - kos_appointment_interest
+   - kos_login_friction
+
+2️⃣ VARIABILI DA CREARE:
+   - booking_session_id
+   - funnel_step
+   - abandonment_point (per abbandoni)
+   - engagement_level 
+   - booking_service
+   - booking_insurance
+
+3️⃣ TAG GA4 DA CONFIGURARE:
+   - Tag per ogni evento con parametri specifici
+   - Conversioni per kos_booking_completed
+   - Audience per abandonment tracking
+
+4️⃣ OBIETTIVI GA4:
+   - Conversione: kos_booking_completed
+   - Micro-conversioni: kos_appointment_interest
+   - Analisi abbandoni: kos_funnel_abandonment
+
+TESTING:
+   - Usa console.log per debug
+   - Verifica con kosGetBookingSession()
+   - Controlla dataLayer in GTM Preview
+*/
+
+})();
+
+</script>
+
+[[$GTM_head]]
+
+  [[!Canonical]]
+  <base href="[[!++site_url]]">
+
+  <!-- Bootstrap CSS -->
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/css/all.min.css" rel="stylesheet" />
+  <link href="/assets/css/fontawesome.css" rel="stylesheet" />
+  <link href="/assets/css/default.css" rel="stylesheet" />
+  <link href="/assets/css/nice-select.css" rel="stylesheet" />
+  <link href="/assets/css/aos.css" rel="stylesheet">
+  <link href="/assets/css/swiper.min.css" rel="stylesheet" />
+  <link href="/assets/css/photoswipe.css" rel="stylesheet">
+  <link href="/assets/css/style.css" rel="stylesheet" />
+  <link href="/assets/css/custom.css?v=20260628b" rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="/assets/img/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
+  <link rel="shortcut icon" href="/assets/img/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="KOS Group" />
+  <link rel="manifest" href="/assets/img/site.webmanifest" />
+
+</head>

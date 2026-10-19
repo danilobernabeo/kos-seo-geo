@@ -1,0 +1,41 @@
+{
+    "id": 18,
+    "name": "newsArticle",
+    "caption": "Tipo articolo",
+    "description": "",
+    "category": "",
+    "type": "text",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        2,
+        22,
+        29,
+        34,
+        35,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        47,
+        48,
+        49,
+        50,
+        52,
+        53,
+        54,
+        56,
+        58
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "id": 69,
+    "name": "headerNewsImg",
+    "caption": "Immagine alternativa news in evidenza",
+    "description": "",
+    "category": "Gestione News e Media",
+    "type": "image",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": [],
+    "templates": [
+        6,
+        14,
+        20
+    ]
+}

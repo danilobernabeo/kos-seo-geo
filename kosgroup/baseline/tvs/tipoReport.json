@@ -1,0 +1,22 @@
+{
+    "id": 54,
+    "name": "tipoReport",
+    "caption": "Campagna",
+    "description": "",
+    "category": "",
+    "type": "text",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        17
+    ]
+}

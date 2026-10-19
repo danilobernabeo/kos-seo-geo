@@ -1,0 +1,21 @@
+{
+    "id": 33,
+    "name": "evento_segreteria",
+    "caption": "",
+    "description": "",
+    "category": "KOSAcademy",
+    "type": "textarea",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "inputHeight": "140",
+        "textareaGrow": "false",
+        "textareaResizable": "false"
+    },
+    "output_properties": [],
+    "templates": [
+        61
+    ]
+}

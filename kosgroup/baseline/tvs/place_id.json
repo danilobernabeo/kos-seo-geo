@@ -1,0 +1,22 @@
+{
+    "id": 71,
+    "name": "place_id",
+    "caption": "place_id Google Maps",
+    "description": "",
+    "category": "",
+    "type": "text",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        2
+    ]
+}

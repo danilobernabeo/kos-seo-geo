@@ -1,0 +1,378 @@
+<script>
+window.addEventListener('load', function() {
+    // Verifica delle dipendenze
+    if (typeof jQuery === 'undefined') {
+        console.error('jQuery non è caricato!');
+        return;
+    }
+
+    if (typeof strutture === 'undefined') {
+        console.error('Il file strutture.js non è caricato!');
+        return;
+    }
+
+    (function ($) {
+        "use strict";
+
+        const itemsPerPage = 6;
+        let currentPage = 1;
+        let paginatedResults = [];
+
+        function init() {
+            if ($('.risultati').length > 0) {
+                console.log('Inizializzazione sistema filtri strutture');
+                loadData();
+                populateFilters();
+                updateFilterCounts();
+                addFilterListeners();
+                applyURLFilters();
+                addMobileSearchListener();
+                updateStructureInfo();
+                initializeMobileHandlers();
+            }
+        }
+
+        function initializeMobileHandlers() {
+            // Apertura filtri mobile
+            $('.apri-filtri-mobile img').on('click', function () {
+                $('#strutture-filtri').addClass('active');
+            });
+
+            // Chiusura filtri mobile
+            $('.chiudi-filtri-mobile, .filtri-torna, .filtri-mobile-btns .btn-primary').on('click', function (e) {
+                e.preventDefault();
+                $('#strutture-filtri').removeClass('active');
+            });
+
+            // Reset filtri
+            $('.filtri-mobile-btns .btn-secondary').on('click', function (e) {
+                e.preventDefault();
+                $('#region-filters input[type="checkbox"], #structures-filters input[type="checkbox"], #services-filters input[type="checkbox"]').prop('checked', false);
+                $('#mobile-search').val('');
+                filterResults();
+                updateFilterCounts();
+            });
+        }
+
+        function loadData() {
+            filterResults();
+        }
+
+        function populateFilters() {
+            const regionsSet = new Set();
+            const structuresSet = new Set();
+            const servicesSet = new Set();
+
+            strutture.forEach(function (item) {
+                if (item.regione) {
+                    regionsSet.add(item.regione);
+                }
+                if (item.struttura && Array.isArray(item.struttura)) {
+                    item.struttura.forEach(function (structure) {
+                        structuresSet.add(structure);
+                    });
+                }
+                if (item.servizi && Array.isArray(item.servizi)) {
+                    item.servizi.forEach(function (service) {
+                        servicesSet.add(service);
+                    });
+                }
+            });
+
+            populateFilterOptions('#region-filters', Array.from(regionsSet).sort());
+            populateFilterOptions('#structures-filters', Array.from(structuresSet).sort());
+            populateFilterOptions('#services-filters', Array.from(servicesSet).sort());
+        }
+
+        function populateFilterOptions(filterContainerSelector, optionsArray) {
+            const container = $(filterContainerSelector);
+            container.empty();
+
+            optionsArray.forEach(function (option) {
+                const optionElement = `
+                    <div class="single-item position-relative">
+                        <label>
+                            <input type="checkbox" value="${option}">
+                            <span class="checkbox-label">${option}</span>
+                        </label>
+                    </div>
+                `;
+                container.append(optionElement);
+            });
+        }
+
+        function applyURLFilters() {
+            const urlParams = new URLSearchParams(window.location.search);
+
+            if (urlParams.has('region')) {
+                const regions = urlParams.get('region').split(',');
+                regions.forEach(region => {
+                    $(`#region-filters input[value="${region}"]`).prop('checked', true);
+                });
+                updateDependentCounters(regions);
+            }
+
+            if (urlParams.has('structure')) {
+                const structures = urlParams.get('structure').split(',');
+                structures.forEach(structure => {
+                    $(`#structures-filters input[value="${structure}"]`).prop('checked', true);
+                });
+            }
+
+            if (urlParams.has('service')) {
+                const services = urlParams.get('service').split(',');
+                services.forEach(service => {
+                    $(`#services-filters input[value="${service}"]`).prop('checked', true);
+                });
+            }
+
+            filterResults();
+        }
+
+        function updateStructureInfo() {
+            const totalStructures = strutture.length;
+            const uniqueRegions = new Set(strutture.map(item => item.regione)).size;
+            $('#info-strutture').text(`${totalStructures} strutture in ${uniqueRegions} regioni. Scoprile.`);
+        }
+
+        function addMobileSearchListener() {
+            let searchTimeout;
+            $('#mobile-search').on('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => filterResults(), 300);
+            });
+        }
+
+        function filterResults() {
+            const searchText = $('#mobile-search').val().toLowerCase();
+            const selectedRegions = getSelectedFilters('region-filters');
+            const selectedStructures = getSelectedFilters('structures-filters');
+            const selectedServices = getSelectedFilters('services-filters');
+
+            paginatedResults = strutture.filter(function (item) {
+                const matchRegion = selectedRegions.length === 0 || selectedRegions.includes(item.regione);
+                const matchStructure = selectedStructures.length === 0 || 
+                                     item.struttura.some(structure => selectedStructures.includes(structure));
+                const matchService = selectedServices.length === 0 || 
+                                   item.servizi.some(service => selectedServices.includes(service));
+                const matchName = item.nome.toLowerCase().includes(searchText);
+
+                return matchRegion && matchStructure && matchService && matchName;
+            });
+
+            currentPage = 1;
+            displayPaginatedResults();
+            updateDependentCounters(selectedRegions);
+            updateURLState();
+        }
+
+        function updateDependentCounters(selectedRegions) {
+            let filteredStrutture = strutture;
+            if (selectedRegions && selectedRegions.length > 0) {
+                filteredStrutture = strutture.filter(item => selectedRegions.includes(item.regione));
+            }
+
+            const structureCount = new Map();
+            const serviceCount = new Map();
+
+            $('#structures-filters input[type="checkbox"]').each(function() {
+                structureCount.set($(this).val(), 0);
+            });
+            $('#services-filters input[type="checkbox"]').each(function() {
+                serviceCount.set($(this).val(), 0);
+            });
+
+            filteredStrutture.forEach(item => {
+                if (item.struttura && Array.isArray(item.struttura)) {
+                    item.struttura.forEach(structure => {
+                        structureCount.set(structure, (structureCount.get(structure) || 0) + 1);
+                    });
+                }
+                if (item.servizi && Array.isArray(item.servizi)) {
+                    item.servizi.forEach(service => {
+                        serviceCount.set(service, (serviceCount.get(service) || 0) + 1);
+                    });
+                }
+            });
+
+            updateFilterOptionCounts('#structures-filters', structureCount);
+            updateFilterOptionCounts('#services-filters', serviceCount);
+        }
+
+        function updateFilterOptionCounts(filterContainerSelector, countMap) {
+            $(filterContainerSelector).find('.single-item').each(function() {
+                const checkbox = $(this).find('input[type="checkbox"]');
+                const label = $(this).find('.checkbox-label');
+                const value = checkbox.val();
+                const count = countMap.get(value) || 0;
+                
+                label.text(`${value} (${count})`);
+                checkbox.prop('disabled', count === 0);
+                $(this).toggleClass('disabled', count === 0);
+            });
+        }
+
+        function updateFilterCounts() {
+            const regionCount = new Map();
+            const structureCount = new Map();
+            const serviceCount = new Map();
+
+            strutture.forEach(item => {
+                if (item.regione) {
+                    regionCount.set(item.regione, (regionCount.get(item.regione) || 0) + 1);
+                }
+                if (item.struttura) {
+                    item.struttura.forEach(structure => {
+                        structureCount.set(structure, (structureCount.get(structure) || 0) + 1);
+                    });
+                }
+                if (item.servizi) {
+                    item.servizi.forEach(service => {
+                        serviceCount.set(service, (serviceCount.get(service) || 0) + 1);
+                    });
+                }
+            });
+
+            updateFilterOptionCounts('#region-filters', regionCount);
+            updateFilterOptionCounts('#structures-filters', structureCount);
+            updateFilterOptionCounts('#services-filters', serviceCount);
+        }
+
+        function addFilterListeners() {
+            $('#region-filters').on('change', 'input[type="checkbox"]', function() {
+                const selectedRegions = getSelectedFilters('region-filters');
+                updateDependentCounters(selectedRegions);
+                filterResults();
+            });
+
+            $('#structures-filters, #services-filters').on('change', 'input[type="checkbox"]', filterResults);
+
+            $('.region__search input').on('input', function() {
+                const containerId = $(this).closest('[id]').attr('id');
+                const filterContainerId = {
+                    'region': '#region-filters',
+                    'struttura': '#structures-filters',
+                    'service': '#services-filters'
+                }[containerId];
+                
+                if (filterContainerId) {
+                    filterSelectOptions(this, filterContainerId);
+                }
+            });
+        }
+
+        function filterSelectOptions(searchInput, filterContainer) {
+            const searchText = $(searchInput).val().toLowerCase();
+            $(filterContainer).find('.single-item').each(function () {
+                const itemText = $(this).find('.checkbox-label').text().toLowerCase();
+                $(this).toggle(itemText.includes(searchText));
+            });
+        }
+
+        function getSelectedFilters(filterId) {
+            const selectedFilters = [];
+            $('#' + filterId + ' input[type="checkbox"]:checked').each(function () {
+                selectedFilters.push($(this).val());
+            });
+            return selectedFilters;
+        }
+
+        function displayPaginatedResults() {
+            const totalPages = Math.ceil(paginatedResults.length / itemsPerPage);
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const paginatedItems = paginatedResults.slice(startIndex, endIndex);
+
+            displayResults(paginatedItems);
+            createPagination(totalPages);
+        }
+
+        function createPagination(totalPages) {
+            const paginationContainer = $('.service__pagination .pagination');
+            paginationContainer.empty();
+
+            if (totalPages > 1) {
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageItem = $(`<li class="page-item ${i === currentPage ? 'active' : ''}">
+                        <a class="page-link" href="#">${i}</a></li>`);
+                    pageItem.on('click', function (e) {
+                        e.preventDefault();
+                        currentPage = i;
+                        displayPaginatedResults();
+                    });
+                    paginationContainer.append(pageItem);
+                }
+            }
+        }
+
+        function displayResults(results) {
+            const container = $('#results-container');
+            container.empty();
+
+            if (results.length === 0) {
+                container.html('<div class="col-12"><p class="text-center">Nessuna struttura trovata</p></div>');
+                return;
+            }
+
+            results.forEach(function (item) {
+                const card = `
+                    <div class="col-12 col-md-6 col-lg-4 struttura-card">
+                        <div class="struttura-img">
+                            <img src="${item.immagine}" alt="struttura ${item.nome}" 
+                                 onerror="this.src='/assets/img/strutture/default.jpg'">
+                        </div>
+                        <div class="struttura-content mb-3 mb-md-4">
+                            <h4>${item.nome}</h4>
+                            <p>${item.indirizzo}</p>
+                        </div>
+                        <div class="struttura-features-container flex-wrap">
+                            <div class="struttura-features d-flex justify-content-end flex-wrap">
+                                ${item.servizi.slice(0, 2).map(service => 
+                                    `<span class="tag">${service.trim()}</span>`).join('')}
+                            </div>
+                            ${item.servizi.length > 2 ? `
+                                <div class="struttura-features-nascoste collapse" id="moretags${item.riferimento}">
+                                    ${item.servizi.slice(2).map(service => 
+                                        `<span class="tag">${service.trim()}</span>`).join('')}
+                                </div>
+                                <a data-bs-toggle="collapse" href="#moretags${item.riferimento}" 
+                                   role="button" aria-expanded="false" 
+                                   aria-controls="moretags${item.riferimento}" 
+                                   class="struttura-features-more text-white d-flex align-items-center 
+                                          justify-content-center rounded-0 p-0">
+                                    <span class="plus-icon"><i class="fal fa-plus"></i></span>
+                                    <span class="minus-icon"><i class="fal fa-minus"></i></span>
+                                </a>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+                container.append(card);
+            });
+        }
+
+        function updateURLState() {
+            const regions = getSelectedFilters('region-filters');
+            const structures = getSelectedFilters('structures-filters');
+            const services = getSelectedFilters('services-filters');
+            
+            const url = new URL(window.location);
+            
+            if (regions.length) url.searchParams.set('region', regions.join(','));
+            else url.searchParams.delete('region');
+            
+            if (structures.length) url.searchParams.set('structure', structures.join(','));
+            else url.searchParams.delete('structure');
+            
+            if (services.length) url.searchParams.set('service', services.join(','));
+            else url.searchParams.delete('service');
+            
+            window.history.pushState({}, '', url);
+        }
+
+        // Inizializza il sistema
+        init();
+
+    })(jQuery);
+});
+</script>

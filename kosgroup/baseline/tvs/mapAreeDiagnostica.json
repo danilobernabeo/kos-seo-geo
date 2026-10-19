@@ -1,0 +1,22 @@
+{
+    "id": 23,
+    "name": "mapAreeDiagnostica",
+    "caption": "Mappatura Area di intervento Diagnostica",
+    "description": "",
+    "category": "Mappature",
+    "type": "text",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        4
+    ]
+}

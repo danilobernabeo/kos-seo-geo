@@ -1,0 +1,13 @@
+{
+    "site_url": "http://localhost/",
+    "site_start": "1",
+    "error_page": "1",
+    "friendly_urls": "1",
+    "use_alias_path": "0",
+    "container_suffix": "/",
+    "cache_resource": "1",
+    "cache_default": "1",
+    "link_tag_scheme": "-1",
+    "cultureKey": "it",
+    "manager_language": null
+}

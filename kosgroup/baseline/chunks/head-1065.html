@@ -1,0 +1,212 @@
+  <!-- Schema: MedicalClinic -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "name": "Centro Cardinal Ferrari KOS",
+    "url": "https://kosgroup.com/it/centri/centro-cardinal-ferrari",
+    "telephone": "+390521820211",
+    "email": "cardinalferrari@kosgroup.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via IV Novembre 21",
+      "addressLocality": "Fontanellato",
+      "addressRegion": "PR",
+      "postalCode": "43012",
+      "addressCountry": "IT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "44.8796",
+      "longitude": "10.1506"
+    },
+    "medicalSpecialty": ["Radiology", "Cardiology"],
+    "availableService": [
+      {
+        "@type": "MedicalTest",
+        "name": "Cardio TAC",
+        "alternateName": "TC Coronarica",
+        "description": "Tomografia computerizzata delle arterie coronarie con mezzo di contrasto per la diagnosi di stenosi, occlusioni e placche aterosclerotiche."
+      },
+      { "@type": "MedicalTest", "name": "TC Torace" },
+      { "@type": "MedicalTest", "name": "TC Cranio/Encefalo" },
+      { "@type": "MedicalTest", "name": "TC Addome Superiore" },
+      { "@type": "MedicalTest", "name": "TC Rachide Cervicale" },
+      { "@type": "MedicalTest", "name": "TC Rachide Dorsale" }
+    ],
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Gruppo KOS",
+      "url": "https://kosgroup.com"
+    }
+  }
+  </script>
+
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quanto costa la Cardio TAC al Centro Cardinal Ferrari?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Il costo della Cardio TAC varia in base alla tipologia di prestazione. Per informazioni aggiornate sulle tariffe puoi prenotare online direttamente da questa pagina oppure contattarci al numero 0521 820211."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Come si prenota una TAC al Centro Cardinal Ferrari di Fontanellato?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Puoi prenotare online 24/7 direttamente da questa pagina selezionando la prestazione desiderata, chiamare lo 0521 820211 oppure utilizzare l'app MyKOS."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "La TAC coronarica richiede una preparazione particolare?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sì, l'esame prevede generalmente un digiuno di alcune ore e può richiedere la sospensione temporanea di alcuni farmaci. Il personale del centro ti fornirà indicazioni dettagliate al momento della prenotazione."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "È possibile prenotare una TAC urgente?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sì, per prenotazioni urgenti ti invitiamo a contattare direttamente il centro al numero 0521 820211 o a verificare la prima disponibilità tramite il widget di prenotazione online presente in questa pagina."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "La TAC è disponibile in convenzione SSN o solo in privato?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Per informazioni sulle modalità di accesso convenzionato o privato ti invitiamo a contattare il centro al numero 0521 820211 oppure a scrivere a cardinalferrari@kosgroup.com."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Dove si trova il Centro Cardinal Ferrari a Fontanellato?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Il Centro Cardinal Ferrari KOS si trova in Via IV Novembre 21 a Fontanellato (PR), facilmente raggiungibile dalla provincia di Parma e con ampi parcheggi disponibili."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Stile custom sezione TAC list -->
+<style>
+
+  /* --- Lista prestazioni TC a 2 colonne --- */
+  .tac-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .6rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 767px) {
+    .tac-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .tac-item {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .6rem;
+    padding: .75rem 1.1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 3rem;
+    transition: box-shadow .2s ease, border-color .2s ease;
+  }
+
+  .tac-item:hover {
+    box-shadow: 0 3px 12px rgba(32,145,176,.13);
+    border-color: rgba(32,145,176,.45);
+  }
+
+  .tac-item__name {
+    font-size: .92rem;
+    font-weight: 600;
+    color: #333;
+    flex: 1;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .tac-item__cta {
+    white-space: nowrap;
+    font-size: .82rem;
+    padding: .4rem 1rem;
+    flex-shrink: 0;
+    margin: 0;
+  }
+
+  /* --- Card benefit --- */
+  .benefit-card {
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1.75rem 1.5rem;
+    height: 100%;
+    box-shadow: 0 2px 14px rgba(0,0,0,.07);
+  }
+
+  .benefit-card__icon {
+    font-size: 2rem;
+    margin-bottom: .75rem;
+    display: block;
+  }
+
+  .benefit-card__title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: rgba(32,145,176,1);
+    margin-bottom: .5rem;
+  }
+
+#blocco-mappa .row {
+  align-items: stretch;
+}
+
+#mappa-map {
+  padding: 0;
+  min-height: 300px;
+}
+
+#mappa-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  border: 0;
+  display: block;
+  border-radius: 0;
+}
+
+#intro-pagina-content .btn-primary {
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  box-shadow: none !important;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+#intro-pagina-content .btn-primary:hover {
+  border: 2px solid transparent;
+  box-shadow: none !important;
+}
+
+#intro-pagina-content .col {
+  align-items: center !important;
+}
+
+</style>

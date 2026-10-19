@@ -1,0 +1,279 @@
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form id="[[*description]]" action="[[~[[*id]]]]" method="post" class="form-horizontal form-bordered">
+                                <input type="hidden" name="nospam:blank" /> 
+                                <section class="panel">
+                                    <header class="panel-heading">
+                                        <h4 class="panel-title">Modulo di registrazione</h4> (<span class="required">*</span> indica un campo obbligatorio)
+                                    </header>
+                                    <div class="panel-body">
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Nome <span class="required">*</span></label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="name" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Cognome <span class="required">*</span></label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="surname" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Luogo di nascita <span class="required">*</span></label>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" name="birthcity" required>
+                                                </div>                                          
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Provincia <span class="required">*</span></label>
+                                                <div class="col-md-4">
+                                                    <select id="birthprov" name="birthprov" class="form-control populate" title="Questo campo è obbligatorio" data-plugin-selectTwo data-plugin-options='{ "maxHeight": 225, "placeholder": "Seleziona la provincia", "allowClear": true }' required>
+                                                        <option value="">Seleziona la provincia</option>
+                                                        [[$registrationProv]]                               
+                                                    </select>
+                                                    <label class="error" for="birthprov"></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Nazione <span class="required">*</span></label>
+                                                <div class="col-md-4">
+                                                    <select id="birthstate" name="birthstate" class="form-control populate" title="Questo campo è obbligatorio" data-plugin-selectTwo data-plugin-options='{ "maxHeight": 225, "placeholder": "Seleziona la nazione", "allowClear": true }' required>
+                                                        <option value="">Seleziona la nazione</option>
+                                                        [[$registrationNaz]]                               
+                                                    </select>
+                                                    <label class="error" for="birthstate"></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Data di nascita  (<em>gg/mm/aaaa</em>) <span class="required">*</span></label>
+                                                <div class="col-md-6">
+                                                    <div class="input-group">
+                                                        <input type="text" data-plugin-datepicker data-date-format="dd/mm/yyyy" class="form-control" name="birthdate" required>
+                                                    </div>
+                                                </div>
+                                            </div>                                          
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Indirizzo <span class="required">*</span></label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="address" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Citt&agrave; <span class="required">*</span></label>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" name="city" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">CAP <span class="required">*</span></label>
+                                                <div class="col-md-2">
+                                                    <input type="text" class="form-control" name="cap" required>
+                                                </div>                                          
+                                            </div>                                          
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Provincia <span class="required">*</span></label>
+                                                <div class="col-md-4">
+                                                    <select id="province" name="province" class="form-control populate" title="Questo campo è obbligatorio" data-plugin-selectTwo data-plugin-options='{ "maxHeight": 225, "placeholder": "Seleziona la provincia", "allowClear": true }' required>
+                                                    <option value="">Seleziona la provincia</option>                                                    
+                                                    [[$registrationProv]]                                       
+                                                    </select>
+                                                    <label class="error" for="province"></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Nazione <span class="required">*</span></label>
+                                                <div class="col-md-4">
+                                                    <select id="state" name="state" class="form-control populate" title="Questo campo è obbligatorio" data-plugin-selectTwo data-plugin-options='{ "maxHeight": 225, "placeholder": "Seleziona la nazione", "allowClear": true }' required>
+                                                        <option value="">Seleziona la nazione</option>
+                                                        [[$registrationNaz]]                               
+                                                    </select>
+                                                    <label class="error" for="state"></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Telefono <span class="required">*</span></label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="tel1" required>
+                                                </div>
+                                            </div>                                          
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">email <span class="required">*</span></label>
+                                                <div class="col-md-6">
+                                                    <input type="email" class="form-control" name="email" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Codice Fiscale  <span class="required">*</span></label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="fiscalcode" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <span class="panel-title">Informazioni aggiuntive per crediti ECM</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Professione <span class="required">*</span></label>
+                                                <div class="col-md-6">
+                                                    <select id="ecm_prof_id" name="ecm_prof_id" class="form-control populate" title="Per favore seleziona una professione" data-plugin-selectTwo data-plugin-options='{ "maxHeight": 225, "placeholder": "Seleziona una professione", "allowClear": true }' required>
+                                                        <option value="">Seleziona una professione</option>
+                                                        <option value="1">Medico chirurgo</option>
+                                                        <option value="2">Odontoiatra</option>
+                                                        <option value="3">Farmacista</option>
+                                                        <option value="4">Veterinario</option>
+                                                        <option value="5">Psicologo</option>
+                                                        <option value="6">Biologo</option>
+                                                        <option value="7">Chimico</option>
+                                                        <option value="8">Fisico</option>
+                                                        <option value="9">Assistente sanitario</option>
+                                                        <option value="10">Dietista</option>
+                                                        <option value="11">Educatore professionale</option>
+                                                        <option value="12">Fisioterapista</option>
+                                                        <option value="13">Igienista dentale</option>
+                                                        <option value="14">Infermiere</option>
+                                                        <option value="15">Infermiere pediatrico</option>
+                                                        <option value="16">Logopedista</option>
+                                                        <option value="17">Ortottista-assistente di oftalmologia</option>
+                                                        <option value="18">Ostetrica-o</option>
+                                                        <option value="19">Podologo</option>
+                                                        <option value="20">Tecnico audiometrista</option>
+                                                        <option value="21">Tecnico audioprotesista</option>
+                                                        <option value="22">Tecnico della fisiopatologia cardiocircolatoria e perfusione cardiovascolare</option>
+                                                        <option value="23">Tecnico della prevenzione nell'ambiente e nei luoghi di lavoro</option>
+                                                        <option value="24">Tecnico della riabilitazione psichiatrica</option>
+                                                        <option value="25">Tecnico di neurofisiopatologia</option>
+                                                        <option value="26">Tecnico ortopedico</option>
+                                                        <option value="27">Tecnico sanitario di radiologia medica</option>
+                                                        <option value="28">Tecnico sanitario laboratorio biomedico</option>
+                                                        <option value="29">Terapista della neuro e psicomotricità dell'età evolutiva</option>
+                                                        <option value="30">Terapista occupazionale</option>
+                                                        <option value="1000">Assistente sociale</option>
+                                                        <option value="0">Altro</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group" id="specdiv">
+                                                <label class="col-md-3 control-label">Specializzazione <span class="required">*</span></label>
+                                                <div class="col-md-6">
+                                                    <select id="ecm_disc_id" name="ecm_disc_id" class="form-control populate" title="Per favore seleziona una specializzazione" data-plugin-selectTwo data-plugin-options='{ "maxHeight": 225, "placeholder": "Seleziona una specializzazione", "allowClear": true }' >
+                                                    </select>
+                                                </div>
+                                            </div>                                      
+
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    Ai fini ECM dichiaro di essere:
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Stato occupazionale</label>
+                                                <div class="col-md-6">
+                                                    <div class="radio-custom radio-primary">
+                                                        <input type="radio" name="status" id="D" value="D">
+                                                        <label for="D">Dipendente</label>
+                                                    </div>
+                                                    <div class="mb-sm">
+                                                        <input type="text" class="form-control" name="org_id" placeholder="Ente">
+                                                    </div>                                              
+                                                    <div class="radio-custom radio-primary">
+                                                        <input type="radio" name="status" id="L" value="L">
+                                                        <label for="L">Libero Professionista</label>
+                                                    </div>                                             
+                                                    <div class="radio-custom radio-primary">
+                                                        <input type="radio" name="status" id="C" value="C">
+                                                        <label for="C">Convenzionato</label>
+                                                    </div>
+                                                    <div class="radio-custom radio-primary">
+                                                        <input type="radio" name="status" id="P" value="P">
+                                                        <label for="P">Privo di occupazione</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <label class="col-md-3 control-label">Partecipante reclutato <span class="required">*</span></label>
+                                                    <div class="col-md-4">
+                                                        <select id="reclutato" name="reclutato" class="form-control" title="Questo campo è obbligatorio" data-plugin-options='{ "placeholder": "Seleziona"}' required>
+                                                            <option value="">Seleziona</option>
+                                                            <option value="Si">Si</option>
+                                                            <option value="No">No</option>                            
+                                                        </select>
+                                                        <label class="error" for="reclutato"></label>
+                                                    </div>
+                                                </div>
+                                                <div class="row" id="recdiv">
+                                                    <label class="col-md-3 control-label">Ente reclutatore <span class="required">*</span></label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" id="org_reclutatore" name="org_reclutatore">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3 control-label">&nbsp;</div>
+                                                    <div class="col-md-6 pt-sm">Si considera reclutato il professionista sanitario che, per la partecipazione ad eventi formativi, beneficia di vantaggi economici e non economici, diretti ed indiretti, da parte di imprese commerciali operanti in ambito sanitario. Il professionista sanitario non può assolvere a più di un terzo del proprio obbligo formativo mediante reclutamento.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Note</label>
+                                                <div class="col-md-6">
+                                                    <textarea class="form-control" name="note" rows="3" cols="60" rows="6"></textarea>
+                                                </div>
+                                            </div>                                  
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <label class="col-md-3 control-label">Privacy <span class="required">*</span></label>
+                                                    <div class="col-md-6">
+                                                        <div class="checkbox-custom chekbox-primary">
+                                                            <input id="privacy" name="privacy" type="checkbox" value="accetto" required>
+                                                            <label for="privacy">Dichiaro di aver preso visione dell'informativa ai sensi dell’art. 13 Regolamento UE n. 2016/679 riguardanti il trattamento dei miei dati personali <a href="assets/files/formazione/informativa-convegni-Kos-Care.pdf" target="_blank">disponibile a questo link</a>.</label>
+                                                        </div>
+                                                    <label class="error" for="privacy"></label>                                                     
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-3 control-label">&nbsp;</label>
+                                                    <div class="col-md-6">
+                                                        <div class="checkbox-custom chekbox-primary">
+                                                            <input id="consenso" name="consenso" type="checkbox" value="accetto" >
+                                                            <label for="consenso">Autorizzo l'invio a mezzo e-mail di sondaggi di opinione e di gradimento, newsletter e/o inviti ad eventi formativi di cui è parte, o che organizza il Titolare.</label>
+                                                        </div>
+                                                    <label class="error" for="privacy"></label>                                                     
+                                                    </div>
+                                                </div>
+                                            </div>                             
+                                    
+                                    </div>
+                                    <footer class="panel-footer">
+                                        <div class="row">
+                                            <div class="col-sm-9 col-sm-offset-3">
+                                                <button class="btn btn-primary">Invia</button>
+                                                <button class="btn btn-default" type="reset">Annulla</button>
+                                            </div>
+                                        </div>
+                                    </footer>
+                                </section>
+                                </form>
+                            </div>
+                        </div>

@@ -1,0 +1,381 @@
+<!-- =================== PAROLA AI NOSTRI ESPERTI START ===================== -->
+
+<!-- lite-youtube (self-hosted) -->
+<link rel="stylesheet" href="/assets/css/lite-yt-embed.css">
+<script src="/assets/js/lite-yt-embed.js"></script>
+
+<style>
+/* Stili minimi per lite-youtube dentro le card esistenti */
+#parola-esperti .news-media lite-youtube {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+}
+
+#parola-esperti .news-media.news-video {
+    cursor: pointer;
+    position: relative;
+}
+
+#parola-esperti .video-speaker {
+    margin: 0;
+    color: #6c757d;
+}
+
+/* Nascondi l'icona play del tema (lite-youtube ha già la sua) */
+#parola-esperti .news-media.news-video::after {
+    display: none !important;
+}
+
+/* Nascondi eventuali pallini generati automaticamente */
+#parola-esperti .swiper-pagination,
+#blocco-video-esperti .swiper-pagination {
+    display: none !important;
+}
+
+/* Titolo cliccabile */
+#parola-esperti .news-contenuto-tesuale h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    cursor: pointer;
+}
+
+#parola-esperti .news-contenuto-tesuale h3:hover {
+    text-decoration: none;
+    opacity: 0.75;
+}
+
+/* ===== LIGHTBOX ===== */
+#ve-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(0, 0, 0, 0.85);
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+#ve-lightbox.active {
+    display: flex;
+}
+
+#ve-lightbox-inner {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+}
+
+#ve-lightbox-ratio {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+}
+
+#ve-lightbox-ratio iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 4px;
+}
+
+#ve-lightbox-close {
+    position: absolute;
+    top: -44px;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: border-color .2s;
+}
+
+#ve-lightbox-close:hover {
+    border-color: #fff;
+}
+
+#ve-lightbox-close svg {
+    width: 16px;
+    height: 16px;
+    stroke: #fff;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+}
+</style>
+
+<!-- Lightbox overlay (verrà spostato nel body via JS) -->
+<div id="ve-lightbox">
+    <div id="ve-lightbox-inner">
+        <button id="ve-lightbox-close" aria-label="Chiudi video">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="2" y1="2" x2="14" y2="14"/>
+                <line x1="14" y1="2" x2="2" y2="14"/>
+            </svg>
+        </button>
+        <div id="ve-lightbox-ratio">
+            <!-- iframe YouTube iniettato via JS -->
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid container-md" id="parola-esperti">
+    <div class="row">
+        <div class="col-12">                                    
+            <div class="titolo-sezione">
+                <h2>Parola ai nostri esperti</h2>
+                <p style="margin-top: -10px;">Video-pillole di approfondimento su salute, prevenzione e benessere, a cura dei professionisti di Villa San Giuseppe.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 articoli-box">
+            <div id="blocco-video-esperti" class="swiper">
+                <div class="swiper-wrapper">
+                    
+                    <!-- VIDEO 1: Aterosclerosi -->
+                    <div class="articolo-tassello swiper-slide">
+                        <div class="news-singola">
+                            <div class="news-media news-video">
+                                <lite-youtube videoid="V_KG_gOlR18" playlabel="Riproduci video: Aterosclerosi: che cos'è e quali sono i sintomi?"></lite-youtube>
+                            </div>
+                            <div class="news-contenuto-tesuale">
+                                <div class="news-cats"><span>CARDIOLOGIA</span></div>
+                                <h3>Aterosclerosi: che cos'è e quali sono i sintomi?</h3>
+                                <p class="video-speaker"><small>Dott. Gabriele Abate - Cardiologo</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- VIDEO 2: Check up cardiologico -->
+                    <div class="articolo-tassello swiper-slide">
+                        <div class="news-singola">
+                            <div class="news-media news-video">
+                                <lite-youtube videoid="9WwkBVvave8" playlabel="Riproduci video: Quando fare il Check up cardiologico?"></lite-youtube>
+                            </div>
+                            <div class="news-contenuto-tesuale">
+                                <div class="news-cats"><span>CARDIOLOGIA</span></div>
+                                <h3>Quando fare il Check up cardiologico?</h3>
+                                <p class="video-speaker"><small>Dott. Gabriele Abate - Cardiologo</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- VIDEO 3: Check up spalla -->
+                    <div class="articolo-tassello swiper-slide">
+                        <div class="news-singola">
+                            <div class="news-media news-video">
+                                <lite-youtube videoid="pQZJCJawyak" playlabel="Riproduci video: Check up della spalla: come funziona?"></lite-youtube>
+                            </div>
+                            <div class="news-contenuto-tesuale">
+                                <div class="news-cats"><span>ORTOPEDIA</span></div>
+                                <h3>Check up della spalla: come funziona?</h3>
+                                <p class="video-speaker"><small>Dott. Luciano Suardi - Fisiatra</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- VIDEO 4 -->
+                    <div class="articolo-tassello swiper-slide">
+                        <div class="news-singola">
+                            <div class="news-media news-video">
+                                <lite-youtube videoid="PV-c8U038_U" playlabel="Riproduci video: Check up urologico: come funziona?"></lite-youtube>
+                            </div>
+                            <div class="news-contenuto-tesuale">
+                                <div class="news-cats"><span>UROLOGIA</span></div>
+                                <h3>Check up urologico: come funziona?</h3>
+                                <p class="video-speaker"><small>Dott. Roberto Fortis - Urologo</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- VIDEO 5 -->
+                    <div class="articolo-tassello swiper-slide">
+                        <div class="news-singola">
+                            <div class="news-media news-video">
+                                <lite-youtube videoid="aPDL6LbJPg8" playlabel="Riproduci video: Che cos'è l'ipertensione arteriosa?"></lite-youtube>
+                            </div>
+                            <div class="news-contenuto-tesuale">
+                                <div class="news-cats"><span>CARDIOLOGIA</span></div>
+                                <h3>Che cos'è l'ipertensione arteriosa e come viene diagnosticata?</h3>
+                                <p class="video-speaker"><small>Dott. Gabriele Abate - Cardiologo</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- VIDEO 6 -->
+                    <div class="articolo-tassello swiper-slide">
+                        <div class="news-singola">
+                            <div class="news-media news-video">
+                                <lite-youtube videoid="glujFMexyBU" playlabel="Riproduci video: Ipertrofia prostatica benigna: che cos'è e come si manifesta?"></lite-youtube>
+                            </div>
+                            <div class="news-contenuto-tesuale">
+                                <div class="news-cats"><span>UROLOGIA</span></div>
+                                <h3>Ipertrofia prostatica benigna: che cos'è e come si manifesta?</h3>
+                                <p class="video-speaker"><small>Dott. Roberto Fortis - Urologo</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- VIDEO 7 -->
+                    <div class="articolo-tassello swiper-slide">
+                        <div class="news-singola">
+                            <div class="news-media news-video">
+                                <lite-youtube videoid="7gvLfEBidWk" playlabel="Riproduci video: Dolore alla spalla? Potrebbe essere una patologia degenerativa"></lite-youtube>
+                            </div>
+                            <div class="news-contenuto-tesuale">
+                                <div class="news-cats"><span>ORTOPEDIA</span></div>
+                                <h3>Dolore alla spalla? Potrebbe essere una patologia degenerativa</h3>
+                                <p class="video-speaker"><small>Dott. Luciano Suardi - Fisiatra</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- VIDEO 8 -->
+                    <div class="articolo-tassello swiper-slide">
+                        <div class="news-singola">
+                            <div class="news-media news-video">
+                                <lite-youtube videoid="ToCFIBKZJ5E" playlabel="Riproduci video: Cosa si intende per &quot;spalla congelata?&quot;"></lite-youtube>
+                            </div>
+                            <div class="news-contenuto-tesuale">
+                                <div class="news-cats"><span>ORTOPEDIA</span></div>
+                                <h3>Cosa si intende per "spalla congelata?"</h3>
+                                <p class="video-speaker"><small>Dott. Luciano Suardi - Fisiatra</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- VIDEO 9 -->
+                    <div class="articolo-tassello swiper-slide">
+                        <div class="news-singola">
+                            <div class="news-media news-video">
+                                <lite-youtube videoid="PSKhYfwIzys" playlabel="Riproduci video: Come viene diagnosticato il tumore alla prostata?"></lite-youtube>
+                            </div>
+                            <div class="news-contenuto-tesuale">
+                                <div class="news-cats"><span>UROLOGIA</span></div>
+                                <h3>Come viene diagnosticato il tumore alla prostata?</h3>
+                                <p class="video-speaker"><small>Dott. Roberto Fortis - Urologo</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div><!-- swiper-wrapper -->
+                
+                <div class="swiper-controls">
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Video precedente">
+                        <img src="/assets/img/angle_left.svg" alt="Scorri a sinistra">
+                    </div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Video successivo">
+                        <img src="/assets/img/angle_right.svg" alt="Scorri a destra">
+                    </div>
+                </div>
+            </div><!-- swiper -->
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    var container = document.getElementById('blocco-video-esperti');
+    if (!container) return;
+
+    // --- Sposta il lightbox nel body per evitare stacking context ---
+    var lightbox = document.getElementById('ve-lightbox');
+    document.body.appendChild(lightbox);
+
+    var lightboxRatio = document.getElementById('ve-lightbox-ratio');
+    var closeBtn      = document.getElementById('ve-lightbox-close');
+
+    function openLightbox(videoId) {
+        lightboxRatio.innerHTML = '<iframe '
+            + 'src="https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0" '
+            + 'allow="autoplay; fullscreen" '
+            + 'allowfullscreen></iframe>';
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightboxRatio.innerHTML = '';
+        document.body.style.overflow = '';
+
+        // Resetta tutti i lite-youtube eventualmente attivati
+        document.querySelectorAll('#parola-esperti lite-youtube.lyt-activated').forEach(function (lyt) {
+            var iframe = lyt.querySelector('iframe');
+            if (iframe) iframe.remove();
+            lyt.classList.remove('lyt-activated');
+        });
+    }
+
+    // Click sulla miniatura → apri lightbox (capture phase per precedere lite-youtube)
+    document.querySelectorAll('#parola-esperti .news-media.news-video').forEach(function (wrap) {
+        wrap.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            var lyt     = this.querySelector('lite-youtube');
+            var videoId = lyt ? lyt.getAttribute('videoid') : null;
+            if (videoId) openLightbox(videoId);
+        }, true);
+    });
+
+    // Click sul titolo → stessa azione della miniatura
+    document.querySelectorAll('#parola-esperti .news-contenuto-tesuale h3').forEach(function (h3) {
+        h3.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            var lyt     = this.closest('.swiper-slide').querySelector('lite-youtube');
+            var videoId = lyt ? lyt.getAttribute('videoid') : null;
+            if (videoId) openLightbox(videoId);
+        }, true);
+    });
+
+    // Chiudi con il bottone X
+    closeBtn.addEventListener('click', closeLightbox);
+
+    // Chiudi cliccando sull'overlay fuori dal video
+    lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    // Chiudi con ESC
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeLightbox();
+    });
+
+    // --- Inizializza Swiper ---
+    if (typeof Swiper !== 'undefined') {
+        new Swiper('#blocco-video-esperti', {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            grabCursor: true,
+            watchSlidesProgress: true,
+            breakpoints: {
+                576: { slidesPerView: 1.2 },
+                768: { slidesPerView: 1.5 },
+                992: { slidesPerView: 2 },
+                1200: { slidesPerView: 2 }
+            },
+            navigation: {
+                nextEl: '#blocco-video-esperti .swiper-button-next',
+                prevEl: '#blocco-video-esperti .swiper-button-prev'
+            }
+        });
+    }
+
+});
+</script>
+
+<!-- =================== PAROLA AI NOSTRI ESPERTI END ===================== -->

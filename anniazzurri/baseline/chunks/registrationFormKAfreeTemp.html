@@ -1,0 +1,219 @@
+<div class="row mt-5">
+    <div class="col-12 pb-3">
+        <h5 class="mb-1 text-primary">Form di registrazione</h5>
+        <h6 class="text-azure">* indica un campo obbligatorio.</h6>
+    </div>
+
+    <form  id="[[*description]]" action="[[~[[*id]]]]" method="post" class="content-left text-brown col-12">
+    <input type="hidden" name="nospam:blank" />
+    
+    <div class="mb-3 row g-4">
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="name">Nome *</label>
+            <input class="form-control form-control-lg" id="name" name="name" type="text" required />
+        </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="surname">Cognome *</label>
+            <input class="form-control form-control-lg" id="surname" name="surname" type="text" required />
+        </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="birthcity">Luogo di nascita *</label>
+            <input class="form-control form-control-lg" id="birthcity" name="birthcity"  type="text" required />
+        </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="birthprov">Provincia *</label>
+            <select aria-label="Provincia di nascita" class="form-select form-select-lg" id="birthprov" name="birthprov" required>
+                <option value="">Seleziona</option>
+                [[$registrationProv]]
+            </select>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="birthstate">Nazione *</label>
+            <select aria-label="Nazione di nascita" class="form-select form-select-lg" id="birthstate" name="birthstate" required>
+                <option value="">Seleziona</option>
+                [[$registrationNaz]]
+            </select>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="birthdate">Data di nascita *</label>
+            <input type="date" class="form-control form-control-lg" id="birthdate" name="birthdate"  type="text" required />
+        </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="address">Indirizzo *</label>
+            <input class="form-control form-control-lg" id="address" name="address" type="text" required />
+        </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="city">Citt&agrave; *</label>
+            <input class="form-control form-control-lg" id="city" name="city" type="text" required />
+        </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="cap">CAP *</label>
+            <input class="form-control form-control-lg" id="cap" name="cap" type="text" required />
+        </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="province">Provincia *</label>
+            <select aria-label="Provincia di residenza" class="form-select form-select-lg" id="province" name="province" required>
+                <option value="">Seleziona</option>
+                [[$registrationProv]]
+            </select>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="state">Nazione *</label>
+            <select aria-label="Nazione di residenza" class="form-select form-select-lg" id="state" name="state" required>
+                <option value="">Seleziona</option>
+                [[$registrationNaz]]
+            </select>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="tel1">Telefono *</label>
+            <input class="form-control form-control-lg" id="tel1" name="tel1" type="text" required />
+        </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="email">Email *</label>
+            <input class="form-control form-control-lg" id="email" name="email"  type="email" required />
+        </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label" for="fiscalcode">Codice Fiscale *</label>
+            <input class="form-control form-control-lg" style="text-transform: uppercase;" id="fiscalcode" name="fiscalcode" type="text" maxlength="16" required />
+        </div>
+
+        <div class="col-12">
+            <h4 class="text-azure">Informazioni aggiuntive per crediti ECM.</h4>
+        </div>
+
+        <div class="col-12">
+            <label class="form-label" for="ecm_prof_id">Professione *</label>
+            <select aria-label="Professione" class="form-select form-select-lg" id="ecm_prof_id" name="ecm_prof_id" required>
+                <option value="">Seleziona una professione</option>
+                <option value="1">Medico chirurgo</option>
+                <option value="2">Odontoiatra</option>
+                <option value="3">Farmacista</option>
+                <option value="4">Veterinario</option>
+                <option value="5">Psicologo</option>
+                <option value="6">Biologo</option>
+                <option value="7">Chimico</option>
+                <option value="8">Fisico</option>
+                <option value="9">Assistente sanitario</option>
+                <option value="10">Dietista</option>
+                <option value="11">Educatore professionale</option>
+                <option value="12">Fisioterapista</option>
+                <option value="13">Igienista dentale</option>
+                <option value="14">Infermiere</option>
+                <option value="15">Infermiere pediatrico</option>
+                <option value="16">Logopedista</option>
+                <option value="17">Ortottista-assistente di oftalmologia</option>
+                <option value="18">Ostetrica-o</option>
+                <option value="19">Podologo</option>
+                <option value="20">Tecnico audiometrista</option>
+                <option value="21">Tecnico audioprotesista</option>
+                <option value="22">Tecnico della fisiopatologia cardiocircolatoria e perfusione cardiovascolare</option>
+                <option value="23">Tecnico della prevenzione nell'ambiente e nei luoghi di lavoro</option>
+                <option value="24">Tecnico della riabilitazione psichiatrica</option>
+                <option value="25">Tecnico di neurofisiopatologia</option>
+                <option value="26">Tecnico ortopedico</option>
+                <option value="27">Tecnico sanitario di radiologia medica</option>
+                <option value="28">Tecnico sanitario laboratorio biomedico</option>
+                <option value="29">Terapista della neuro e psicomotricità dell'età evolutiva</option>
+                <option value="30">Terapista occupazionale</option>
+                <option value="1000">Assistente sociale</option>
+                <option value="0">Altro</option>
+            </select>
+        </div>
+
+        <div class="col-12" id="specdiv">
+            <label class="form-label" for="ecm_disc_id">Specializzazione *</label>
+            <select aria-label="Specializzazione" class="form-select form-select-lg" id="ecm_disc_id" name="ecm_disc_id" required>
+            </select>
+        </div>
+
+        <div class="col-12">
+            <h4 class="text-azure">Ai fini ECM dichiaro di essere:</h4>
+        </div>
+
+        <div class="col-12">
+            <div class="form-check">
+                <input type="radio" name="status" id="D" value="D">
+                <label for="D">Dipendente</label>
+                <input class="form-control form-control-lg mt-2" id="org_id" name="org_id" placeholder="Ente"  type="text" />
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-check">
+                <input type="radio" name="status" id="L" value="L">
+                <label for="L">Libero Professionista</label>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-check">
+                <input type="radio" name="status" id="C" value="C">
+                <label for="C">Convenzionato</label>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-check">
+                <input type="radio" name="status" id="P" value="P">
+                <label for="P">Privo di occupazione</label>
+            </div>
+        </div>
+
+        <div class="col-12" id="specdiv">
+            <label class="form-label" for="reclutato">Partecipante reclutato *</label>
+            <select aria-label="Partecipante reclutato" class="form-select form-select-lg" id="reclutato" name="reclutato" required>
+                <option value="">Seleziona</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>  
+            </select>
+        </div>
+
+        <div class="col-12 col-md-6" id="recdiv">
+            <label class="form-label" for="org_reclutatore">Ente reclutatore</label>
+            <input class="form-control form-control-lg" id="org_reclutatore" name="org_reclutatore" type="text" required />
+        </div>
+
+        <div class="col-12">
+            <p class="small">Si considera reclutato il professionista sanitario che, per la partecipazione ad eventi formativi, beneficia di vantaggi economici e non economici, diretti ed indiretti, da parte di imprese commerciali operanti in ambito sanitario. Il professionista sanitario non può assolvere a più di un terzo del proprio obbligo formativo mediante reclutamento.</p>
+        </div>
+
+       <div class="col-12">
+        <label class="form-label" for="note">Note</label>
+        <textarea class="form-control" id="note" name="note" rows="4"></textarea>
+    </div>
+</div>
+
+    <div class="row mb-2 mt-2">
+       <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" id="privacy" name="privacy" type="checkbox" value="accetto" required />
+                <label class="form-check-label small" for="privacy">Ho letto l'<a class="text-azure text-decoration-underline" href="assets/doc/kos-care-gdpr-informativa.pdf" target="_blank">Informativa sul trattamento dei miei dati personali</a> ed acconsento alla loro elaborazione nelle formule espresse:</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" id="consenso" name="consenso" type="checkbox" value="accetto" />
+                <label class="form-check-label small" for="consenso">Autorizzo l'invio a mezzo e-mail di sondaggi di opinione e di gradimento, newsletter e/o inviti ad eventi formativi di cui è parte, o che organizza il Titolare.</label>
+            </div>
+            <button class="mt-lg-5 mt-4 btn btn-primary">INVIA</button>
+        </div>
+    </div>
+    </form>
+
+</div>

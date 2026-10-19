@@ -1,0 +1,22 @@
+{
+    "id": 24,
+    "name": "idStruttura",
+    "caption": "Pubblica solo nelle strutture:",
+    "description": "Seleziona le residenze nella cui pagina questa news deve comparire.",
+    "category": "Pubblicazione",
+    "type": "listbox-multiple",
+    "elements": "@SELECT `pagetitle`,`id` FROM `[[+PREFIX]]site_content` WHERE `published`=1 AND `deleted`=0 AND `template`=2 ORDER BY `pagetitle` ASC",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "stackItems": "true",
+        "preserveSelectionOrder": "false",
+        "title": "",
+        "typeAhead": "0"
+    },
+    "output_properties": [],
+    "templates": [
+        22
+    ]
+}

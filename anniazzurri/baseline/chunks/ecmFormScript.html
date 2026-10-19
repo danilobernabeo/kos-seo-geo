@@ -1,0 +1,293 @@
+<script>
+(function () {
+  'use strict';
+  var form = document.getElementById('ecm-form');
+  if (!form) return;
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  /* ------------------------------------------------------------------
+     Mostra/nasconde un blocco e allinea l'obbligatorietà dei suoi campi.
+     Nascondere con l'attributo hidden lo toglie anche dall'albero di
+     accessibilità e dall'ordine di tabulazione; togliere required evita
+     che il browser blocchi l'invio su un campo invisibile.
+  ------------------------------------------------------------------ */
+  function toggle(wrap, show, campiObbligatori, spostaFocus) {
+    if (!wrap) return;
+    wrap.hidden = !show;
+    var campi = wrap.querySelectorAll('input, select, textarea');
+    for (var i = 0; i < campi.length; i++) {
+      var c = campi[i];
+      var obb = show && campiObbligatori.indexOf(c.name) !== -1;
+      c.required = obb;
+      if (obb) { c.setAttribute('aria-required', 'true'); }
+      else { c.removeAttribute('aria-required'); }
+      if (!show) {
+        if (c.type === 'checkbox' || c.type === 'radio') { c.checked = false; }
+        else if (c.tagName === 'SELECT') { c.selectedIndex = 0; }
+        else if (c.type !== 'file') { c.value = ''; }
+        else { c.value = ''; }
+      }
+    }
+    if (show && spostaFocus) {
+      var primo = wrap.querySelector('input:not([type=hidden]), select, textarea');
+      if (primo) primo.focus();
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     Professione -> disciplina/specializzazione.
+     Le opzioni sono già tutte in pagina, raggruppate per professione:
+     il filtro è locale, senza richieste di rete. Senza JavaScript
+     l'utente vede l'elenco completo raggruppato, quindi utilizzabile.
+  ------------------------------------------------------------------ */
+  var selProf = $('ecm_prof_id');
+  var selDisc = $('ecm_disc_id');
+  var wrapDisc = $('wrap-specializzazione');
+
+  if (selProf && selDisc && wrapDisc) {
+    var elencoCompleto = selDisc.cloneNode(true);
+    var vuota = selDisc.querySelector('option[value=""]');
+    var placeholder = vuota ? vuota.outerHTML : '<option value=""></option>';
+
+    function aggiornaDiscipline(spostaFocus) {
+      var prof = selProf.value;
+      var voluto = selDisc.value;
+      var gruppo = elencoCompleto.querySelector('optgroup[data-prof="' + prof + '"]');
+
+      if (!gruppo) {
+        /* Professione senza disciplina codificata (Altro, Assistente sociale)
+           oppure nessuna professione scelta: campo fuori dal form. */
+        selDisc.innerHTML = placeholder;
+        toggle(wrapDisc, false, [], false);
+        return;
+      }
+
+      var opzioni = gruppo.querySelectorAll('option');
+      selDisc.innerHTML = (opzioni.length > 1 ? placeholder : '') + gruppo.innerHTML;
+
+      if (opzioni.length === 1) {
+        /* Una sola disciplina possibile: la impostiamo noi invece di
+           chiedere all'utente di sceglierla da un elenco di uno. */
+        selDisc.value = opzioni[0].value;
+        wrapDisc.hidden = true;
+        selDisc.required = false;
+        selDisc.removeAttribute('aria-required');
+        return;
+      }
+
+      wrapDisc.hidden = false;
+      selDisc.required = true;
+      selDisc.setAttribute('aria-required', 'true');
+      selDisc.value = voluto;
+      if (!selDisc.value) selDisc.selectedIndex = 0;
+      if (spostaFocus) selDisc.focus();
+    }
+
+    selProf.addEventListener('change', function () { aggiornaDiscipline(true); });
+    aggiornaDiscipline(false);
+  }
+
+  /* Stato occupazionale: l'ente serve solo ai dipendenti. */
+  var wrapEnte = $('wrap-ente');
+  var radioStatus = form.querySelectorAll('input[name="status"]');
+  function aggiornaEnte(spostaFocus) {
+    var dip = $('status-D');
+    toggle(wrapEnte, !!(dip && dip.checked), ['org_id'], spostaFocus);
+  }
+  for (var i = 0; i < radioStatus.length; i++) {
+    radioStatus[i].addEventListener('change', function () { aggiornaEnte(true); });
+  }
+  aggiornaEnte(false);
+
+  /* Partecipante reclutato -> ente reclutatore. */
+  var selRecl = $('reclutato');
+  var wrapRecl = $('wrap-reclutatore');
+  if (selRecl && wrapRecl) {
+    function aggiornaReclutatore(spostaFocus) {
+      toggle(wrapRecl, selRecl.value === 'Si', ['org_reclutatore'], spostaFocus);
+    }
+    selRecl.addEventListener('change', function () { aggiornaReclutatore(true); });
+    aggiornaReclutatore(false);
+  }
+
+  /* Fatturazione: presente solo negli eventi a pagamento. */
+  var selFatt = $('richiesta_fattura');
+  var wrapFatt = $('wrap-fatturazione');
+  var wrapSelf = $('wrap-fself');
+  var wrapOther = $('wrap-fother');
+  var radioInt = form.querySelectorAll('input[name="fintestatario"]');
+
+  if (selFatt && wrapFatt) {
+    function aggiornaIntestatario(spostaFocus) {
+      var other = $('fother');
+      var altro = !!(other && other.checked);
+      var self = $('fself');
+      var stesso = !!(self && self.checked);
+      toggle(wrapSelf, stesso, ['fself_piva', 'fself_sid'], spostaFocus && stesso);
+      toggle(wrapOther, altro,
+        ['fnominativo', 'findirizzo', 'fcap', 'fcomune', 'fprovincia',
+         'fcodice_fiscale', 'fpartita_iva', 'fsid'], spostaFocus && altro);
+    }
+
+    function aggiornaFatturazione(spostaFocus) {
+      var vuole = selFatt.value === 'Si';
+      wrapFatt.hidden = !vuole;
+      for (var j = 0; j < radioInt.length; j++) {
+        radioInt[j].required = vuole;
+        if (!vuole) radioInt[j].checked = false;
+      }
+      if (!vuole) {
+        toggle(wrapSelf, false, [], false);
+        toggle(wrapOther, false, [], false);
+      } else {
+        aggiornaIntestatario(false);
+        if (spostaFocus && radioInt.length) radioInt[0].focus();
+      }
+    }
+
+    for (var k = 0; k < radioInt.length; k++) {
+      radioInt[k].addEventListener('change', function () { aggiornaIntestatario(true); });
+    }
+    selFatt.addEventListener('change', function () { aggiornaFatturazione(true); });
+    aggiornaFatturazione(false);
+  }
+
+  /* ------------------------------------------------------------------
+     Validazione lato client: messaggi in italiano nello stesso punto in
+     cui compaiono quelli del server, focus sul primo campo da correggere.
+     La validazione vera resta comunque quella del server.
+  ------------------------------------------------------------------ */
+  var messaggi = {
+    valueMissing: 'Questo campo è obbligatorio.',
+    typeMismatch: 'Il formato non è corretto.',
+    patternMismatch: 'Il formato non è corretto.',
+    tooShort: 'Il valore inserito è troppo corto.',
+    tooLong: 'Il valore inserito è troppo lungo.',
+    rangeOverflow: 'La data non è valida.',
+    rangeUnderflow: 'La data non è valida.'
+  };
+
+  function contenitoreErrore(campo) {
+    var rif = (campo.getAttribute('aria-describedby') || '').split(' ');
+    for (var i = 0; i < rif.length; i++) {
+      if (rif[i].indexOf('err-') === 0) return $(rif[i]);
+    }
+    return $('err-' + campo.name);
+  }
+
+  function mostraErrore(campo, testo) {
+    var box = contenitoreErrore(campo);
+    if (box) box.textContent = testo;
+    campo.classList.toggle('is-invalid', !!testo);
+    if (testo) campo.setAttribute('aria-invalid', 'true');
+    else campo.removeAttribute('aria-invalid');
+  }
+
+  function verifica(campo) {
+    if (campo.disabled || campo.type === 'hidden' || campo.closest('[hidden]')) {
+      mostraErrore(campo, '');
+      return true;
+    }
+    if (campo.validity.valid) { mostraErrore(campo, ''); return true; }
+    for (var chiave in messaggi) {
+      if (campo.validity[chiave]) { mostraErrore(campo, messaggi[chiave]); return false; }
+    }
+    mostraErrore(campo, 'Il valore inserito non è valido.');
+    return false;
+  }
+
+  var campi = form.querySelectorAll('input, select, textarea');
+  for (var c = 0; c < campi.length; c++) {
+    campi[c].addEventListener('blur', function () { if (this.classList.contains('is-invalid')) verifica(this); });
+    campi[c].addEventListener('change', function () { if (this.classList.contains('is-invalid')) verifica(this); });
+  }
+
+  /* ------------------------------------------------------------------
+     reCAPTCHA v3: token rigenerato al momento dell'invio.
+
+     L'extra genera il token al caricamento della pagina, ma Google lo
+     considera valido due minuti. Su un modulo di venti campi la prima
+     iscrizione viene quasi sempre respinta con timeout-or-duplicate, e
+     l'utente non ha modo di capire che gli basta ripremere Invia.
+     Qui il token viene chiesto quando serve, con la stessa action del
+     campo nascosto per non incorrere in action-mismatch.
+  ------------------------------------------------------------------ */
+  var campoToken = form.querySelector('[name="recaptcha-token"]');
+  var campoAction = form.querySelector('[name="recaptcha-action"]');
+  var tokenPronto = false;
+
+  function chiaveRecaptcha() {
+    var s = document.querySelector('script[src*="recaptcha/api.js"]');
+    if (!s) return null;
+    var m = s.src.match(/[?&]render=([^&]+)/);
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+
+  function rigeneraToken(invia) {
+    var chiave = chiaveRecaptcha();
+    var azione = campoAction ? campoAction.value : 'submit';
+    var bottone = form.querySelector('button[type="submit"]');
+    var concluso = false;
+
+    function prosegui() {
+      if (concluso) return;
+      concluso = true;
+      tokenPronto = true;
+      invia();
+    }
+
+    if (!chiave || typeof grecaptcha === 'undefined') {
+      prosegui();   // niente reCAPTCHA in pagina: decide il server
+      return;
+    }
+
+    if (bottone) {
+      bottone.disabled = true;
+      bottone.setAttribute('aria-busy', 'true');
+    }
+
+    // Se Google non risponde entro cinque secondi si invia comunque:
+    // meglio un rifiuto dal server che un modulo che non parte più.
+    var scadenza = window.setTimeout(prosegui, 5000);
+
+    try {
+      grecaptcha.ready(function () {
+        grecaptcha.execute(chiave, { action: azione }).then(function (token) {
+          if (campoToken) campoToken.value = token;
+          window.clearTimeout(scadenza);
+          prosegui();
+        }, function () {
+          window.clearTimeout(scadenza);
+          prosegui();
+        });
+      });
+    } catch (err) {
+      window.clearTimeout(scadenza);
+      prosegui();
+    }
+  }
+
+  form.addEventListener('submit', function (e) {
+    var primo = null;
+    var lista = form.querySelectorAll('input, select, textarea');
+    for (var i = 0; i < lista.length; i++) {
+      if (!verifica(lista[i]) && !primo) primo = lista[i];
+    }
+    if (primo) {
+      e.preventDefault();
+      primo.focus();
+      primo.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      return;
+    }
+    if (campoToken && !tokenPronto) {
+      e.preventDefault();
+      rigeneraToken(function () { form.submit(); });
+    }
+  });
+
+  /* Dopo un rifiuto del server porta subito l'utente sul riepilogo errori. */
+  var riepilogo = $('fi-errori');
+  if (riepilogo) riepilogo.focus();
+})();
+</script>

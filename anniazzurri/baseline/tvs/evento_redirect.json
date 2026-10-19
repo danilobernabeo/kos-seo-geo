@@ -1,0 +1,21 @@
+{
+    "id": 29,
+    "name": "evento_redirect",
+    "caption": "",
+    "description": "",
+    "category": "KOSAcademy",
+    "type": "number",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minValue": "",
+        "maxValue": "",
+        "allowDecimals": "0"
+    },
+    "output_properties": [],
+    "templates": [
+        61
+    ]
+}

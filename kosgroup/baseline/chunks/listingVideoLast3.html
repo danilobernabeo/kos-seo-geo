@@ -1,0 +1,33 @@
+                <section class="dark-section">
+
+                    <div class="row box-news">
+                    
+                        [[!pdoResources?
+                            &parents=`34`
+                            &limit=`3`
+                            &sortby=`publishedon`
+                            &sortdir=`DESC`
+                            &prepareSnippet=`prepareNews`
+                            &select=`modResource.*,parent`
+                            &tpl=`@INLINE
+                            <div class="news-singola col-12 col-md-4">                                    
+                                <a href="[[+uri]]" aria-label="[[+pagetitle]]">
+                                    <div class="news-media news-video">
+                                        <img src="[[+tv.infoImage]]" alt="">
+                                    </div>
+                                </a>
+                                <div class="news-cats">
+                                    <span>[[!pdoField? &field=`pagetitle` &id=`[[+parent:default=`34`]]`]]</span>
+                                </div>
+                                <h3><a href="[[+uri]]">[[+pagetitle]]</a></h3>
+                                <p>[[+introtext]]</p>
+                            </div>
+                            `
+                            &includeContent=`1`
+                            &includeTVs=`infoImage`
+                            &processTVs=`1`
+                        ]]
+
+                    </div>
+
+                </section>

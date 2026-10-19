@@ -1,0 +1,25 @@
+{
+    "id": 18,
+    "name": "immagine-specializzazioni",
+    "caption": "Immagine",
+    "description": "",
+    "category": "Contenuti",
+    "type": "image",
+    "elements": null,
+    "default_text": "",
+    "display": "image",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": {
+        "alttext": "[[*pagetitle]]",
+        "id": "",
+        "class": "",
+        "style": "",
+        "attributes": ""
+    },
+    "templates": [
+        3,
+        5
+    ]
+}

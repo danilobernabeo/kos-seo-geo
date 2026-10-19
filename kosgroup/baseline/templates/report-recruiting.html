@@ -1,0 +1,135 @@
+<!doctype html>
+<html class="fixed">
+	<head>
+
+		<!-- Basic -->
+		<meta charset="UTF-8">
+
+		<title>Recruiting | Gruppo KOS</title>
+		<meta name="description" content="Campagna recruiting KOS Group">
+		<meta name="robots" content="noindex,nofollow">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<!-- Web Fonts  -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="/vendor/animate/animate.css">
+
+		<link rel="stylesheet" href="/vendor/font-awesome/css/fontawesome-all.min.css" />
+		<link rel="stylesheet" href="/vendor/magnific-popup/magnific-popup.css" />
+		<link rel="stylesheet" href="/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" />
+
+		<!-- Specific Page Vendor CSS -->
+		<link rel="stylesheet" href="/vendor/select2/css/select2.css" />
+		<link rel="stylesheet" href="/vendor/select2-bootstrap-theme/select2-bootstrap.min.css" />
+		<link rel="stylesheet" href="/vendor/datatables/media/css/dataTables.bootstrap4.css" />
+
+    	<script type="text/javascript">
+        function tableToCSV() {
+ 
+            // Variable to store the final csv data
+            var csv_data = [];
+ 
+            // Get each row data
+            var rows = document.getElementsByTagName('tr');
+            for (var i = 0; i < rows.length; i++) {
+ 
+                // Get each column data
+                var cols = rows[i].querySelectorAll('td,th');
+ 
+                // Stores each csv row data
+                var csvrow = [];
+                for (var j = 0; j < cols.length-1; j++) {
+ 
+                    // Get the text data of each cell
+                    // of a row and push it to csvrow
+                    csvrow.push(cols[j].innerHTML);
+                }
+ 
+                // Combine each column value with comma
+                csv_data.push(csvrow.join(";"));
+            }
+ 
+            // Combine each row data with new line character
+            csv_data = csv_data.join('\n');
+ 
+            // Call this function to download csv file 
+            downloadCSVFile(csv_data);
+ 
+        }
+ 
+        function downloadCSVFile(csv_data) {
+ 
+            // Create CSV file object and feed
+            // our csv_data into it
+            CSVFile = new Blob([csv_data], {
+                type: "text/csv"
+            });
+ 
+            // Create to temporary link to initiate
+            // download process
+            var temp_link = document.createElement('a');
+ 
+            // Download csv file
+            temp_link.download = "OSS.csv";
+            var url = window.URL.createObjectURL(CSVFile);
+            temp_link.href = url;
+ 
+            // This link should not be displayed
+            temp_link.style.display = "none";
+            document.body.appendChild(temp_link);
+ 
+            // Automatically click the link to
+            // trigger download
+            temp_link.click();
+            document.body.removeChild(temp_link);
+        }
+    </script>
+
+	</head>
+	<body>
+		<section class="body">
+
+				<section role="main" class="content-body">
+
+					<!-- start: page -->
+						<div class="row">
+							<div class="col">
+								<section class="card">
+												[[*content]]
+								</section>
+							</div>
+						</div>
+					<!-- end: page -->
+				</section>
+		</section>
+
+		<!-- Vendor -->
+		<script  src="/vendor/jquery/jquery.js"></script>
+		<script  src="/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+		<script  src="/vendor/popper/umd/popper.min.js"></script>
+		<script  src="/vendor/bootstrap/js/bootstrap.js"></script>
+		<script  src="/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+		<script  src="/vendor/common/common.js"></script>
+		<script  src="/vendor/nanoscroller/nanoscroller.js"></script>
+		<script  src="/vendor/magnific-popup/jquery.magnific-popup.js"></script>
+		<script  src="/vendor/jquery-placeholder/jquery-placeholder.js"></script>
+		
+		<!-- Specific Page Vendor -->
+		<script  src="/vendor/select2/js/select2.js"></script>
+		<script  src="/vendor/datatables/media/js/jquery.dataTablesOss.js"></script>
+		<script  src="/vendor/datatables/media/js/dataTables.bootstrap4.min.js"></script>
+		<script  src="/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/dataTables.buttons.min.js"></script>
+		<script  src="/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.bootstrap4.min.js"></script>
+		<script  src="/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.html5.min.js"></script>
+		<script  src="/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.print.min.js"></script>
+		<script  src="/vendor/datatables/extras/TableTools/JSZip-2.5.0/jszip.min.js"></script>
+		<script  src="/vendor/datatables/extras/TableTools/pdfmake-0.1.32/pdfmake.min.js"></script>
+		<script  src="/vendor/datatables/extras/TableTools/pdfmake-0.1.32/vfs_fonts.js"></script>
+
+	</body>
+</html>

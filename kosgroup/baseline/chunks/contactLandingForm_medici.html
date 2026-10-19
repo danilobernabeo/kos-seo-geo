@@ -1,0 +1,60 @@
+<div class="row mt-5">
+
+  <form  id="[[*pagetitle]]" action="[[~[[*id]]]]" method="post" class="content-left text-brown col-12" enctype="multipart/form-data">
+  <input type="hidden" name="nospam:blank" />
+  
+    <div class="mb-3 row g-4">
+  
+       <div class="col-12 col-md-6">
+        <label class="form-label text-white" for="name">Nome*</label>
+        <input class="form-control form-control-lg" id="name" name="name" type="text" required />
+       </div>
+
+        <div class="col-12 col-md-6">
+            <label class="form-label text-white" for="surname">Cognome*</label>
+            <input class="form-control form-control-lg" id="surname" name="surname" type="text" required />
+        </div>
+
+        <div class="col-12 col-md-12">
+            <label class="form-label text-white" for="email">Email*</label>
+            <input class="form-control form-control-lg" id="email" name="email"  type="email" required />
+        </div>
+
+        <div class="col-12 col-md-12">
+            <label class="form-label text-white" for="cellulare">Cellulare*</label>
+            <input class="form-control form-control-lg" id="cellulare" name="cellulare"  type="text" required />
+        </div>
+
+        <div class="col-12 col-md-12 mb-4">
+            <label class="form-label text-white" for="uploadcv">Carica il tuo CV*</label>
+            <input class="form-control form-control-lg" id="uploadcv" name="uploadcv"  type="file" required />
+        </div>
+
+    </div>
+    
+    <div class="row mb-4 mt-2">
+     <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" id="titolo" name="titolo" type="checkbox" value="confermo" required />
+                <label class="form-check-label small text-white" for="titolo">Dichiaro di essere iscritto all'Ordine dei Medici Chirurghi e degli Odontoiatri della provincia di Benevento</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-2 mt-2">
+     <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" id="privacy" name="privacy" type="checkbox" value="accetto" required />
+                <label class="form-check-label small text-white" for="privacy">Ho letto l'<a class="text-azure text-decoration-underline" href="/assets/doc/kos-care-gdpr-informativa.pdf" target="_blank">Informativa sul trattamento dei miei dati personali</a> ed acconsento alla loro elaborazione nelle formule espresse.</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 mb-5">
+            <div class="d-flex justify-content-center py-5">
+            <button class="btn btn-primary" xstyle="background:#f28041;">CANDIDATI ORA</button></form>
+            </div>
+        </div>
+    </div>
+</div>

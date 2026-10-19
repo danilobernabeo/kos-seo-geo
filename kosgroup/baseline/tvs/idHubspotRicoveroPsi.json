@@ -1,0 +1,30 @@
+{
+    "id": 66,
+    "name": "idHubspotRicoveroPsi",
+    "caption": "form HubSpot richiesta ricovero psichiatria",
+    "description": "",
+    "category": "HubSpot",
+    "type": "text",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        2,
+        4,
+        6,
+        13,
+        14,
+        15,
+        16,
+        18,
+        20
+    ]
+}

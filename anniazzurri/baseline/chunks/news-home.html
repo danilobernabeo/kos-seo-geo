@@ -1,0 +1,19 @@
+<div carousel-news class="container py-5">
+  <div class="row">
+    <div class="col-12 text-primary pb-4"><h2 class="h3 font-weight-600">Le nostre news</h2></div>
+    <div class="col-12 d-md-none">
+      <div class="carousel">
+
+        [[getResources? &parents=`8` &limit=`3` &tpl=`news-home-mobile` &includeContent=`1` &includeTVs=`1` &sortby=`{"publishedon":"DESC"}`]]
+
+      </div>
+    </div>
+  </div>
+
+  <div card-news class="row row-cols-3 d-none d-md-flex">
+    
+    [[getResources? &parents=`8` &limit=`3` &tpl=`news-home-desktop` &includeContent=`1` &includeTVs=`1` &sortby=`{"publishedon":"DESC"}`]]
+
+  </div>
+
+</div>

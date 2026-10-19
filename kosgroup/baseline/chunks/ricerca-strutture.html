@@ -1,0 +1,145 @@
+<section id="strutture-ricerca-filtri">
+    <div class="container">
+        <div class="row" data-aos="fade-up">
+            <div class="titolo-sezione titolo-con-sep">
+                <h3>Le nostre strutture con servizi di <span>[[*introtext]]</span></h3>
+                <p id="info-strutture">58 strutture in 8 regioni. Scoprile.</p>
+            </div>
+        </div>
+
+<div class="row align-items-start">
+    <div class="col-12 d-flex d-lg-none" id="filtri-mobile">
+        <form action="#">
+            <input type="text" id="mobile-search" placeholder="Cerca struttura">
+            <button type="button"><i class="far fa-search"></i></button>
+        </form>
+        <div class="apri-filtri-mobile">
+            <img src="/assets/img/filter-ico.svg" alt="">
+            <span>3</span>
+        </div>
+    </div>
+
+
+            <!-- Sidebar Filtri -->
+            <div class="col-12 col-lg-3 sticky-sidebar sidebar-left">
+                <div class="sidebar__inner">
+                    <div id="strutture-filtri">
+                        <div class="chiudi-filtri-mobile d-flex d-lg-none">
+                            <img src="/assets/img/close_filter.svg" alt="">
+                        </div>
+                        <div class="filtri-torna">
+                            <a href="#"><img src="/assets/img/arrow-sx.svg" alt=""> <span>Torna alla ricerca</span></a>
+                        </div>
+
+                        <div class="filtri-container">
+                            <!-- Filtro per Regione -->
+                            <div class="filtro-select">
+                                <span>Regione</span>
+                                <button type="button" class="d-flex align-items-center justify-content-between bg-white"
+                                        data-bs-toggle="collapse" data-bs-target="#region" 
+                                        aria-expanded="false" aria-controls="region">Seleziona regione 
+                                    <img src="/assets/img/up-down.svg" alt="up down icon">
+                                </button>
+                                <div class="select-dropdown-container collapse" id="region">
+                                    <div class="select-dropdown">
+                                        <div class="select-dropdown-title">
+                                            <p class="dropdown-title text-uppercase">Regione</p>
+                                            <div class="search-bar region__search">
+                                                <span class="search-icon d-inline-block flex-shrink-0">
+                                                    <img src="/assets/img/region-search-ico.svg" alt="">
+                                                </span>
+                                                <input type="search" title="search bar" class="w-100" placeholder="Cerca regione">
+                                            </div>
+                                        </div>
+                                        <div class="search-item-wrap d-flex flex-column filter-options" id="region-filters">
+                                            <!-- Le opzioni per Regione saranno popolate dinamicamente -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- fine select regione -->
+
+                            <!-- Filtro per Struttura -->
+                            <div class="filtro-select">
+                                <span>Struttura</span>
+                                <button type="button" class="d-flex align-items-center justify-content-between bg-white" 
+                                        data-bs-toggle="collapse" data-bs-target="#struttura" 
+                                        aria-expanded="false" aria-controls="struttura">Seleziona Struttura 
+                                    <img src="/assets/img/up-down.svg" alt="up down icon">
+                                </button>
+                                <div class="select-dropdown-container collapse" id="struttura">
+                                    <div class="select-dropdown">
+                                        <div class="select-dropdown-title">
+                                            <p class="dropdown-title text-uppercase">Struttura</p>
+                                            <div class="search-bar region__search">
+                                                <span class="search-icon d-inline-block flex-shrink-0">
+                                                    <img src="/assets/img/region-search-ico.svg" alt="">
+                                                </span>
+                                                <input type="search" title="search bar" class="w-100" placeholder="Cerca struttura">
+                                            </div>
+                                        </div>
+                                        <div class="search-item-wrap d-flex flex-column filter-options" id="structures-filters">
+                                            <!-- Le opzioni per Struttura saranno popolate dinamicamente -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- fine select struttura -->
+
+                            <!-- Filtro per Servizi Sanitari -->
+                            <div class="filtro-select">
+                                <span>Servizi sanitari</span>
+                                <button type="button" class="d-flex align-items-center justify-content-between bg-white" 
+                                        data-bs-toggle="collapse" data-bs-target="#service" 
+                                        aria-expanded="false" aria-controls="service">Seleziona servizi sanitari 
+                                    <img src="/assets/img/up-down.svg" alt="up down icon">
+                                </button>
+                                <div class="select-dropdown-container collapse" id="service">
+                                    <div class="select-dropdown">
+                                        <div class="select-dropdown-title">
+                                            <p class="dropdown-title text-uppercase">SERVIZI SANITARI PIÙ CERCATI</p>
+                                            <div class="search-bar region__search">
+                                                <span class="search-icon d-inline-block flex-shrink-0">
+                                                    <img src="/assets/img/region-search-ico.svg" alt="">
+                                                </span>
+                                                <input type="search" title="search bar" class="w-100" placeholder="Cerca servizio">
+                                            </div>
+                                        </div>
+                                        <div class="search-item-wrap d-flex flex-column filter-options" id="services-filters">
+                                            <!-- Le opzioni per Servizi Sanitari saranno popolate dinamicamente -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- fine select servizi sanitari -->
+                        </div><!-- fine FILTRI CONTAINER-->
+
+                        <div class="filtri-mobile-btns d-flex d-lg-none">
+                            <a href="#" class="btn btn-secondary">Ripristina filtri</a>
+                            <a href="#" class="btn btn-primary">Mostra risultati</a>
+                        </div>    
+                    </div>
+                    <!-- fine FILTRI -->
+                </div>
+            </div>        
+            <!-- FINE SIDEBAR FILTRI --> 
+
+            <!-- Contenitore Risultati -->
+            <div class="col-12 col-lg-9">
+                <div class="risultati strutture-box">
+                    <div class="results row" id="results-container"></div>
+                </div>
+
+                <!-- Navigazione Paginazione -->
+                <nav aria-label="Page navigation example" class="service__pagination">
+                    <ul class="pagination"></ul>
+                </nav>
+
+            </div> 
+            <!-- FINE CONTENITORE RISULTATI --> 
+
+        </div>
+        <!-- FINE Filtri + risultati + aree intervento --> 
+
+    </div>            
+</section>

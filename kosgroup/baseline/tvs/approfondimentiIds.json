@@ -1,0 +1,24 @@
+{
+    "id": 61,
+    "name": "approfondimentiIds",
+    "caption": "3 ID separati da virgola per gli approfondimenti",
+    "description": "",
+    "category": "Gestione News e Media",
+    "type": "text",
+    "elements": null,
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "minLength": "",
+        "maxLength": "",
+        "regex": "",
+        "regexText": ""
+    },
+    "output_properties": [],
+    "templates": [
+        6,
+        14,
+        20
+    ]
+}

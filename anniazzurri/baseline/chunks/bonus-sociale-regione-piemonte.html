@@ -1,0 +1,52 @@
+  <style>
+  .loghi-fse__cell{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .75rem 6%;
+  }
+  .loghi-fse__cell img{ height: 50px; width: auto; display: block; }   /* xs (impilati) + 2x2 */
+
+  /* >=992px: 4 in fila, colonne proporzionali alla forma del logo (aspect-ratio) */
+  @media (min-width: 992px){
+    .loghi-fse{ display: flex; flex-wrap: nowrap; }
+    .loghi-fse > [class*="col-"]{ width: auto; max-width: none; }
+    .loghi-fse > [class*="col-"]:nth-child(1){ flex: 2.55 1 0; }   /* coesione     */
+    .loghi-fse > [class*="col-"]:nth-child(2){ flex: 4.58 1 0; }   /* cofinanziato (largo) */
+    .loghi-fse > [class*="col-"]:nth-child(3){ flex: 1.35 1 0; }   /* stemma (più padding) */
+    .loghi-fse > [class*="col-"]:nth-child(4){ flex: 3.29 1 0; }   /* regione      */
+    .loghi-fse__cell{ padding: .5rem 9%; }
+    .loghi-fse__cell img{ height: 44px; }
+  }
+  @media (min-width: 1200px){ .loghi-fse__cell img{ height: 55px; } }
+
+  /* filetto verticale tra i loghi: SOLO da >=576px (in colonna singola niente filetto) */
+  @media (min-width: 576px){
+    .loghi-fse > [class*="col-"]:nth-child(odd)  .loghi-fse__cell{ border-left: 0; }
+    .loghi-fse > [class*="col-"]:nth-child(even) .loghi-fse__cell{ border-left: 1px solid #dee2e6; }
+  }
+  @media (min-width: 992px){
+    .loghi-fse > [class*="col-"]:nth-child(odd)  .loghi-fse__cell,
+    .loghi-fse > [class*="col-"]:nth-child(even) .loghi-fse__cell{ border-left: 1px solid #dee2e6; }
+    .loghi-fse > [class*="col-"]:first-child .loghi-fse__cell{ border-left: 0; }
+  }
+  </style>
+
+  <div class="row">
+  <div class="col-12">
+  <p>Questa residenza aderisce alla <a href="https://anniazzurri.it/aiuti-economici#misura-protezione-sociale" title="Misura Protezione Sociale Regione Piemonte"><b>Misura
+  "Protezione Sociale"</b></a> della Regione Piemonte, finanziata nell'ambito del Programma Regionale FSE+ 2021-2027 e cofinanziata dall'Unione Europea.</p>
+  <p>La misura sostiene l'adozione del Piano di Assistenza Personalizzata (PAP), finalizzato a migliorare la qualità dell'assistenza e il benessere degli
+  ospiti.</p>
+  </div>
+  </div>
+
+  <div class="row loghi-fse align-items-stretch gx-0  mt-2 mb-5">
+  <div class="col-12 col-sm-6"><div class="loghi-fse__cell"><img src="assets/img/logo-coesione-italia.png" alt="Logo Coesione Italia" /></div></div>
+  <div class="col-12 col-sm-6"><div class="loghi-fse__cell"><img src="assets/img/logo-cofinaziato-unione-europea.png" alt="Cofinanziato dall'Unione Europea"
+  /></div></div>
+  <div class="col-12 col-sm-6"><div class="loghi-fse__cell"><img src="assets/img/stemma-repubblica-italiana.png" alt="Stemma della Repubblica Italiana"
+  /></div></div>
+  <div class="col-12 col-sm-6"><div class="loghi-fse__cell"><img src="assets/img/logo-regione-piemonte.png" alt="Logo Regione Piemonte" /></div></div>
+  </div>
