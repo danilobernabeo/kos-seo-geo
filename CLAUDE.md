@@ -7,7 +7,10 @@ Progetto: ottimizzazione SEO/GEO di kosgroup.com e anniazzurri.it e migrazione d
 - MODX 3.2.4 (namespace `MODX\Revolution\...`), PHP 8.3, MariaDB 10.2.54 (CTE ricorsive sì, `JSON_ARRAYAGG` no), prefisso tabelle `modx_`.
 - Hosting MODX Cloud, un cloud di produzione e uno di sviluppo per sito. Shell BusyBox: niente `gawk`, usare `awk` POSIX. Configurazione nginx solo tramite le regole web del pannello.
 - Cloud: kosgroup.com = utente `c0095`; anniazzurri.it = utente `c0072`. Webroot `/www`, log in `/log` (access.log non attivo).
-- Snippet installati: pdoTools, getResources, Wayfinder, BreadCrumb, MIGX, Tagger, FormIt, GoogleSitemap, ImportX, Canonical.
+- Componenti installati (PHP 8.3.9 CLI, git, rsync, zip, tar disponibili su entrambi i cloud):
+  - comuni: pdoTools, getResources, Wayfinder, BreadCrumb, FormIt, GoogleSitemap, Canonical, FirstChildRedirect, Orphans, QuickEmail, reCaptchaV2, TinyMCE RTE;
+  - solo kosgroup.com: MIGX, Tagger, ImportX;
+  - solo anniazzurri.it: CKEditor, EMO (offusca le email via JavaScript: gli indirizzi non sono leggibili dai crawler AI che non eseguono JS; da considerare per la scheda contatti lato server, voce 21 audit Anni Azzurri, e per il dato strutturato, dove l'email va scritta in chiaro).
 
 ## Convenzioni del dato strutturato (vincolanti)
 
