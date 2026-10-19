@@ -57,6 +57,8 @@ cp /www/assets/img/apple-touch-icon.png /www/apple-touch-icon.png
 cp /www/assets/img/apple-touch-icon.png /www/apple-touch-icon-precomposed.png
 ```
 
+**Fatto il 19 ottobre** in produzione, verificato: 200 su tutti gli URL, tipi `image/x-icon` e `image/png`.
+
 Da valutare a parte (sprint 2): 24 chunk head di AA senza dichiarazione delle icone.
 
 ## Collaudo
