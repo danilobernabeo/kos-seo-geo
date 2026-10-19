@@ -9,8 +9,9 @@
  *   ... --forza   installa anche se l'elemento sul sito è cambiato rispetto alla baseline
  *
  * Per ogni elemento:
- *   - se esiste, confronta il contenuto attuale con la baseline del repository: se è diverso
- *     qualcuno l'ha modificato dopo l'istantanea → si ferma (salvo --forza);
+ *   - se esiste, confronta il contenuto attuale con la baseline del repository e con l'ultima
+ *     versione installata da questo script (registro ~/backup-kos-seo-geo/installati.json):
+ *     se è diverso da entrambe qualcuno l'ha modificato a mano → si ferma (salvo --forza);
  *   - salva il contenuto attuale in ~/backup-kos-seo-geo/<data>/ prima di sovrascriverlo;
  *   - crea l'elemento se non esiste.
  * Alla fine svuota la cache e scrive ~/backup-kos-seo-geo/<data>/ripristino.json: per tornare indietro
@@ -59,6 +60,10 @@ $stamp  = date('Ymd-His');
 // Backup fuori dalla cartella dell'archivio, che viene sostituita a ogni installazione.
 $bkRoot = rtrim((string) (getenv('HOME') ?: $base), '/') . '/backup-kos-seo-geo';
 $bkDir  = $bkRoot . '/' . $stamp;
+// Registro di ciò che questo script ha installato (impronta del contenuto per elemento):
+// un elemento uguale all'ultima versione installata da noi non è una modifica di terzi.
+$regFile  = $bkRoot . '/installati.json';
+$registro = is_file($regFile) ? (json_decode((string) file_get_contents($regFile), true) ?: []) : [];
 $ripristino = ['nome' => 'ripristino ' . $stamp, 'settings' => [], 'elements' => []];
 $errori = 0;
 echo ($scrivi ? "== APPLICAZIONE" : "== PROVA (nessuna scrittura; aggiungere --scrivi)") . " — " . ($m['nome'] ?? $manifest) . "\n";
@@ -106,7 +111,8 @@ foreach ($m['elements'] ?? [] as $e) {
         if ($att === $nuovo && !isset($e['disabled'])) { echo "  = $etichetta già aggiornato\n"; continue; }
         if (!empty($e['baseline'])) {
             $bl = $norm($leggi($e['baseline']), $e['type']);
-            if ($att !== $bl && $att !== $nuovo) {
+            $nostra = ($registro[$e['type'] . ':' . $e['name']] ?? null) === sha1($att);
+            if ($att !== $bl && $att !== $nuovo && !$nostra) {
                 echo "  ! $etichetta: sul sito è diverso dalla baseline (modificato dopo l'istantanea)" . ($forza ? " — procedo per --forza\n" : " — FERMO. Integrare la modifica nel repository o usare --forza\n");
                 if (!$forza) { $errori++; continue; }
             }
@@ -131,10 +137,13 @@ foreach ($m['elements'] ?? [] as $e) {
         $obj->setContent($nuovo);
         if (isset($e['disabled'])) $obj->set('disabled', (bool) $e['disabled']);
         if (!$obj->save()) { echo "    ! salvataggio fallito\n"; $errori++; }
+        else $registro[$e['type'] . ':' . $e['name']] = sha1($nuovo);
     }
 }
 
 if ($scrivi) {
+    if (!is_dir($bkRoot)) mkdir($bkRoot, 0775, true);
+    file_put_contents($regFile, json_encode($registro, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
     if (!is_dir($bkDir)) mkdir($bkDir, 0775, true);
     file_put_contents($bkDir . '/ripristino.json', json_encode($ripristino, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
     $modx->cacheManager->refresh();
