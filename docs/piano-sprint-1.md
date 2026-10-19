@@ -38,7 +38,7 @@ Legenda: **[2 siti]** = si fa una volta e vale per entrambi; **[KOS]** = kosgrou
 Interventi comuni (stessa piattaforma MODX Cloud, stessa logica):
 10. **[2 siti] Accesso dei crawler AI (6 KOS / 19 AA)**: verifica fatta il 18 ottobre (test user agent e log): nessun blocco di GPTBot e Bingbot. Da completare: ClaudeBot e PerplexityBot sugli intervalli IP pubblicati; nota di chiusura con le evidenze per Cerved/ProWeb (l'audit AA stesso segnala GPTBot e ClaudeBot come possibile falso negativo con codice 200).
 11. **[2 siti] robots.txt**: rimozione del Crawl-delay per Bingbot (19 KOS), verifica dello stesso su AA; nessun blocco su PDF fino alla deindicizzazione.
-12. **[2 siti] llms.txt (18 KOS)**: stessa struttura per i due siti (chi siamo, sezioni principali, strutture, contatti); contenuto da validare con KOS. Su AA non è voce d'audit ma è nel perimetro (B1).
+12. **[2 siti] llms.txt (18 KOS)** — pubblicato il 19/10 su entrambi i siti con charset UTF-8 (regola web); bozze generate da `scripts/llms/genera-llms.py`, sintesi da validare con KOS: stessa struttura per i due siti (chi siamo, sezioni principali, strutture, contatti); contenuto da validare con KOS. Su AA non è voce d'audit ma è nel perimetro (B1).
 13. **[2 siti] Cache delle risorse statiche (3 KOS; 14 AA)**: stessa regola web sui due cloud. Per AA anticipa una voce dello sprint 4: consentito, non penalizzato.
 14. **[2 siti] favicon.ico e apple-touch-icon** nella radice: ~56.000 richieste 404 su AA nelle ultime 200.000 righe di log; verificare anche KOS.
 15. **[2 siti] Convenzione degli identificativi**: scheda di una pagina per l'agenzia (forme canoniche fissate il 15 ottobre: `https://kosgroup.com/#organization`, `https://anniazzurri.it/#organization`, entità sotto `/it` su KOS).

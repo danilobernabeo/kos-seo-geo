@@ -21,6 +21,20 @@ Formato llmstxt.org: titolo, sintesi, sezioni di link. Generato da `scripts/llms
 della mappatura kosgroup, della query residenze AA e dell'export Yext. **Le due sintesi iniziali e il numero
 di residenze vanno validati con KOS prima della pubblicazione.** Da rigenerare quando cambiano le strutture.
 
+### Stato (19 ottobre)
+
+- llms.txt pubblicato in produzione su entrambi i siti (bozza; sintesi da validare con KOS).
+- Regola web aggiunta su entrambi i cloud per dichiarare il charset (verificato `text/plain; charset=utf-8`):
+
+```nginx
+location = /llms.txt {
+    charset utf-8;
+}
+location = /robots.txt {
+    charset utf-8;
+}
+```
+
 ## favicon e apple-touch-icon
 
 Browser e crawler chiedono `/favicon.ico` e `/apple-touch-icon.png` nella radice anche se la pagina dichiara
