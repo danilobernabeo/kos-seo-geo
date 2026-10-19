@@ -1,0 +1,21 @@
+{
+  "nome": "AA-8 dato strutturato unico + AA-7 canonical paginazione news",
+  "settings": [
+    {"key": "aa.canonical_base", "value": "https://anniazzurri.it"},
+    {"key": "aa.breadcrumb_exclude", "value": "2,4,48,54,55,68,78,85,93,97,98,100,109,156"},
+    {"key": "aa.org_sameAs", "value": "https://www.facebook.com/ResidenzeAnniAzzurri,https://www.instagram.com/anniazzurri.perte,https://www.youtube.com/user/ResidenzeAnniAzzurri"}
+  ],
+  "elements": [
+    {"type": "snippet", "name": "aaSchema", "file": "anniazzurri/elements/snippets/aaSchema.php",
+     "description": "Dato strutturato JSON-LD unico del sito (@graph) e box autore"},
+    {"type": "chunk", "name": "breadcrumb-stripe", "file": "anniazzurri/elements/chunks/breadcrumb-stripe.html", "baseline": "anniazzurri/baseline/chunks/breadcrumb-stripe.html"},
+    {"type": "chunk", "name": "footer-script", "file": "anniazzurri/elements/chunks/footer-script.html", "baseline": "anniazzurri/baseline/chunks/footer-script.html"},
+    {"type": "chunk", "name": "footer-script-regione", "file": "anniazzurri/elements/chunks/footer-script-regione.html", "baseline": "anniazzurri/baseline/chunks/footer-script-regione.html"},
+    {"type": "chunk", "name": "footer-script-provincia", "file": "anniazzurri/elements/chunks/footer-script-provincia.html", "baseline": "anniazzurri/baseline/chunks/footer-script-provincia.html"},
+    {"type": "chunk", "name": "footer-script-form-registrazione", "file": "anniazzurri/elements/chunks/footer-script-form-registrazione.html", "baseline": "anniazzurri/baseline/chunks/footer-script-form-registrazione.html"},
+    {"type": "chunk", "name": "schema-525", "file": "anniazzurri/elements/chunks/schema-525.html", "baseline": "anniazzurri/baseline/chunks/schema-525.html"},
+    {"type": "chunk", "name": "schema-lrsa-volpiano", "file": "anniazzurri/elements/chunks/schema-lrsa-volpiano.html", "baseline": "anniazzurri/baseline/chunks/schema-lrsa-volpiano.html"},
+    {"type": "chunk", "name": "schema-assunzione-assistenti-infermieristici", "file": "anniazzurri/elements/chunks/schema-assunzione-assistenti-infermieristici.html", "baseline": "anniazzurri/baseline/chunks/schema-assunzione-assistenti-infermieristici.html"},
+    {"type": "plugin", "name": "PaginationCanonical", "file": "anniazzurri/elements/plugins/PaginationCanonical.php", "baseline": "anniazzurri/baseline/plugins/PaginationCanonical.php", "disabled": false}
+  ]
+}

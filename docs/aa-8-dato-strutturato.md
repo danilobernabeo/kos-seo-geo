@@ -23,33 +23,30 @@ struttura (voci 2, 5, 11, 21, sprint 3).
 
 ## Installazione (prima sullo stage)
 
-1. **Impostazioni di sistema**, namespace `aa` (Sistema → Impostazioni → Crea nuova):
+Con lo script `scripts/deploy/installa-elementi.php` e il manifest `anniazzurri/deploy/aa-8.json`
+(impostazioni `aa.*`, snippet `aaSchema`, chunk `breadcrumb-stripe`, `footer-script*`, `schema-*`,
+plugin `PaginationCanonical` riattivato). Lo script:
+- prima prova senza scrivere, poi applica con `--scrivi`;
+- si ferma se un elemento sul sito è cambiato rispetto alla baseline (modifica fatta dopo l'istantanea);
+- salva gli elementi sostituiti e un manifest di ripristino in `backup/<data>/`;
+- svuota la cache.
 
-   | Chiave | Valore |
-   |---|---|
-   | `aa.canonical_base` | `https://anniazzurri.it` |
-   | `aa.breadcrumb_exclude` | `2,4,48,54,55,68,78,85,93,97,98,100,109,156` |
-   | `aa.org_sameAs` | `https://www.facebook.com/ResidenzeAnniAzzurri,https://www.instagram.com/anniazzurri.perte,https://www.youtube.com/user/ResidenzeAnniAzzurri` |
-   | `aa.org_phone` | `+39 800 131 851` (numero verde, da confermare) |
+Da PowerShell, nella cartella del repository:
 
-   Il canale YouTube `@KOSGroupIT` è di KOS S.p.A.: non va nel `sameAs` di KOS Care.
-   Tutte le altre impostazioni hanno un valore predefinito nello snippet (vedi intestazione del file).
+```powershell
+git pull
+git archive -o $env:TEMPa8.tar HEAD anniazzurri/elements anniazzurri/baseline anniazzurri/deploy scripts/deploy
+scp $env:TEMP\aa8.tar aa-stage:~/
+ssh aa-stage "rm -rf ~/kos-seo-geo && mkdir -p ~/kos-seo-geo && tar xf ~/aa8.tar -C ~/kos-seo-geo && cd ~/kos-seo-geo && php scripts/deploy/installa-elementi.php /www anniazzurri/deploy/aa-8.json"
+ssh aa-stage "cd ~/kos-seo-geo && php scripts/deploy/installa-elementi.php /www anniazzurri/deploy/aa-8.json --scrivi"
+```
 
-2. **Snippet** `aaSchema`: elemento statico da `anniazzurri/elements/snippets/aaSchema.php`
-   (oppure incollare il codice senza `<?php`).
+Ripristino: `php scripts/deploy/installa-elementi.php /www backup/<data>/ripristino.json --scrivi`
+(dalla stessa cartella; attenzione a non cancellarla con `rm -rf` prima di aver salvato il backup).
 
-3. **Chunk** (versioni in `anniazzurri/elements/chunks/`):
-   - `footer-script`, `footer-script-regione`, `footer-script-provincia`, `footer-script-form-registrazione`:
-     i tre `<script type="application/ld+json">` sostituiti da `[[aaSchema]]`;
-   - `breadcrumb-stripe`: `&exclude=` letto da `[[++aa.breadcrumb_exclude]]`;
-   - `schema-525`, `schema-lrsa-volpiano`, `schema-assunzione-assistenti-infermieristici`: tolta la
-     BreadcrumbList (stesso `@id` di quella di `aaSchema`), `provider` e `hiringOrganization`
-     collegati all'Organization con `@id`.
-
-   Tre template non usano i `footer-script` (`BaseTemplate`, `convegnoAA`, `recruiting`): da verificare
-   se hanno pagine pubblicate; se sì, aggiungere `[[aaSchema]]`.
-
-4. Svuotare la cache.
+Ancora da impostare a mano, dopo conferma: `aa.org_phone` (+39 800 131 851).
+Tre template non usano i `footer-script` (`BaseTemplate`, `convegnoAA`, `recruiting`): da verificare
+se hanno pagine pubblicate; se sì, aggiungere `[[aaSchema]]`.
 
 ## Collaudo
 

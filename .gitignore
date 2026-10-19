@@ -22,3 +22,6 @@ Thumbs.db
 .idea/
 .vscode/
 node_modules/
+
+# backup creati dagli script di installazione
+backup/
