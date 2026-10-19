@@ -58,3 +58,13 @@ $u = "https://anniazzurri.it/residenza-anni-azzurri-vico-mercati"
 ```
 
 Poi Schema Markup Validator e Rich Results Test (briciole), e confronto a occhio briciole visibili / JSON-LD.
+
+## Rilascio in produzione
+
+1. Snapshot del cloud di produzione dal pannello MODX Cloud.
+2. Stessi comandi dello stage con `aa-prod`: prima la prova (deve dire "Nessun problema": se un elemento
+   è cambiato dopo la baseline lo script si ferma), poi `--scrivi`.
+3. Verifiche dagli URL pubblici: numero di blocchi JSON-LD (1; 2 sullo Sportello sociale; 3 su lrsa-volpiano),
+   briciole visibili e JSON-LD su Vico Mercati, Rich Results Test e validator.schema.org da URL su home,
+   una regione, una provincia, una residenza, un articolo, lo Sportello sociale.
+4. Ripristino se serve: `php scripts/deploy/installa-elementi.php /www ~/backup-kos-seo-geo/<data>/ripristino.json --scrivi`.
