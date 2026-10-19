@@ -44,3 +44,30 @@ printf 'Password per lo stage: '; stty -echo; read -r P; stty echo; echo; printf
 - `robots.txt` e `llms.txt` di produzione non vanno copiati sugli stage.
 - Quando arrivano i domini `stage.*`, aggiornare `site_url`/contesti dello stage e verificare che la
   protezione valga anche sul nuovo host.
+
+## Convivenza tra stage e produzione
+
+- **Lo stage collauda codice, non contenuti.** Template, chunk, snippet, plugin, impostazioni e regole web
+  si provano sullo stage; contenuti (news, approfondimenti, landing, pagine) si gestiscono solo in produzione.
+- **Mai copiare il database dello stage in produzione.** In produzione arrivano solo gli elementi modificati,
+  dal repository.
+- **Riallineamento dello stage** (snapshot di produzione → cloud di sviluppo) quando un collaudo ha bisogno di
+  dati recenti. Prima salvare `/www/core/.htpasswd` in `/home/htpasswd.bak` e rimetterlo dopo; le Web Rules
+  non fanno parte dello snapshot.
+
+### Lavoro in produzione durante il progetto
+
+- **Contenuti**: si pubblica normalmente. Non serve riallineare lo stage.
+- **Nuove landing e pagine**: usare i template esistenti (così ricevono `[[aaSchema]]` dal footer) e non
+  scrivere a mano Organization, WebSite o BreadcrumbList. Dato strutturato specifico della pagina (FAQ,
+  JobPosting) ammesso nei chunk `schema-*`, con l'ente richiamato per `@id` (`https://anniazzurri.it/#organization`).
+- **Elementi sotto il progetto** (elenco in `docs/elementi-sotto-progetto.md`): nessuna modifica dal manager
+  di produzione; si passa dal repository. Se una modifica urgente è inevitabile, riportarla subito nel repository.
+- **Regole web e impostazioni di sistema**: ogni modifica fatta in produzione va riportata nel file del
+  repository (`<sito>/files/web-rules/web-rules.conf`), che resta la fonte da cui si incolla.
+
+### Controllo prima di ogni rilascio
+
+Prima di sostituire in produzione un elemento, confrontare la versione di produzione con la baseline: se è
+cambiata dopo il 19 ottobre, integrare la modifica nel repository prima del rilascio
+(`scripts/export-elements.php` sul cloud di produzione e confronto con `<sito>/baseline/`).
