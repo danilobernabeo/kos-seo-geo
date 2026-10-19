@@ -43,7 +43,8 @@ ssh aa-stage "cd ~/kos-seo-geo && php scripts/deploy/installa-elementi.php /www 
 
 Ripristino: `cd ~/kos-seo-geo && php scripts/deploy/installa-elementi.php /www ~/backup-kos-seo-geo/<data>/ripristino.json --scrivi`
 
-Ancora da impostare a mano, dopo conferma: `aa.org_phone` (+39 800 131 851).
+`aa.org_phone` = `800 131 851` (numero verde: senza +39, che dall'Italia non funziona; confermato da Danilo).
+Lo Sportello sociale (risorsa 525) usa la head `head-sportello-sociale`, che non includeva `schema-525`: aggiunta l'inclusione, come nella head generica.
 Tre template non usano i `footer-script` (`BaseTemplate`, `convegnoAA`, `recruiting`): da verificare
 se hanno pagine pubblicate; se sì, aggiungere `[[aaSchema]]`.
 

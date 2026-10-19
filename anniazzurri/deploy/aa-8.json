@@ -12,6 +12,10 @@
     {
       "key": "aa.org_sameAs",
       "value": "https://www.facebook.com/ResidenzeAnniAzzurri,https://www.instagram.com/anniazzurri.perte,https://www.youtube.com/user/ResidenzeAnniAzzurri"
+    },
+    {
+      "key": "aa.org_phone",
+      "value": "800 131 851"
     }
   ],
   "elements": [
@@ -68,6 +72,12 @@
       "name": "schema-assunzione-assistenti-infermieristici",
       "file": "anniazzurri/elements/chunks/schema-assunzione-assistenti-infermieristici.html",
       "baseline": "anniazzurri/baseline/chunks/schema-assunzione-assistenti-infermieristici.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-sportello-sociale",
+      "file": "anniazzurri/elements/chunks/head-sportello-sociale.html",
+      "baseline": "anniazzurri/baseline/chunks/head-sportello-sociale.html"
     },
     {
       "type": "plugin",

@@ -11,6 +11,7 @@ Aggiornare l'elenco a ogni intervento.
 | `footer-script`, `footer-script-regione`, `footer-script-provincia`, `footer-script-form-registrazione` | chunk | AA-8 | in collaudo |
 | `breadcrumb-stripe` | chunk | AA-8 | in collaudo |
 | `schema-525`, `schema-lrsa-volpiano`, `schema-assunzione-assistenti-infermieristici` | chunk | AA-8 | in collaudo |
+| `head-sportello-sociale` | chunk | AA-8 (collegamento `schema-525`) | in collaudo |
 | `PaginationCanonical` | plugin | AA-7 / paginazione news | aggiornato, disattivato |
 | `heading-home2` | chunk | AA-18 (H1) | da fare |
 | chunk `head*` (link CSS/JS con `?v=`) | chunk | AA-14 | da fare |
