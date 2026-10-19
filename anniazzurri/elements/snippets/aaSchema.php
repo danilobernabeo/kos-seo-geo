@@ -191,6 +191,10 @@ $org = function () use ($cfg, $csv, $ORG_ID, $PARENT_ID, $CANON, $pulisci) {
         'vatID'              => $cfg('org_vat',   'IT01148190547'),
         'url'                => $cfg('org_url',   $CANON . '/'),
         'logo'               => $logo,
+        // image: foto rappresentativa (aa.org_image) o, in mancanza, il logo per riferimento.
+        'image'              => ($img = $cfg('org_image', ''))
+                                    ? (preg_match('#^https?://#i', $img) ? $img : $CANON . '/' . ltrim($img, '/'))
+                                    : ($logo ? ['@id' => $logo['@id']] : null),
         'telephone'          => $cfg('org_phone', ''),
         'sameAs'             => $social,
         'parentOrganization' => $parent,
