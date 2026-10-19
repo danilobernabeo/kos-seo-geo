@@ -26,8 +26,8 @@ NE=len(E)
 # ---------- Da correggere su Yext ----------
 Y_ROWS=[
 # marchio, id, struttura, campo, valore attuale Yext, problema, azione, priorità
-("KOS","54 entità (foglio \"Link CTA\")","Quasi tutte le strutture KOS","Secondary CTA > Link","URL su 7ydxba3m.modx.dev (ambiente di sviluppo), es. https://7ydxba3m.modx.dev/it/centri/casa-villa-maura","Il pulsante porta all'ambiente di sviluppo, non al sito","Sostituire con l'URL della scheda su kosgroup.com o svuotare il campo","Alta"),
-("KOS","Temporary 1","Poliambulatorio Villa Pineta","Primary CTA > Link","https://7ydxba3m.modx.dev/it/centri/poliambulatorio-villa-pineta","Come sopra","Come sopra","Alta"),
+("KOS","54 entità (foglio \"Link CTA\")","Quasi tutte le strutture KOS","Secondary CTA > Link","URL su 7ydxba3m.modx.dev (ambiente di sviluppo), es. https://7ydxba3m.modx.dev/it/centri/casa-villa-maura","Il campo \"URL del sito web\" è corretto; il problema è solo nel campo CTA secondario (senza etichetta, tipo Altro), che punta all'ambiente di sviluppo. Probabilmente residuo di un import; non risulta usato da Google, ma non deve passare in RetailTune","Svuotare il campo (o sostituirlo con l'URL di produzione del foglio Link CTA). In alternativa: escluderlo dall'import RetailTune","Bassa"),
+("KOS","Temporary 1","Poliambulatorio Villa Pineta","Primary CTA > Link","https://7ydxba3m.modx.dev/it/centri/poliambulatorio-villa-pineta","Come sopra, sul CTA principale (etichetta \"Poliambulatorio Villa Pineta\"); URL del sito web corretto","Come sopra","Bassa"),
 ("KOS","VPI00_VPM + Villalba","Poliambulatorio Villalba","Entità","Due entità con lo stesso sito web /it/centri/poliambulatorio-villalba","Doppione: RetailTune importerebbe due punti","Tenerne una (il sito usa \"Villalba\") e chiudere l'altra; sulla superstite: nome \"Poliambulatorio Villalba\", email poliambulatorio.villalba@kosgroup.com, tipologia Poliambulatori","Alta"),
 ("KOS","1009","Punto Prelievi Delta","Sito web, email, tipologia","Sito web vuoto, email vuota, tipologia vuota","Senza sito web l'entità non si abbina alla scheda","Sito web https://kosgroup.com/it/centri/punto-prelievi-delta; email delta@kosgroup.com; tipologia Punti prelievo","Alta"),
 ("KOS","KCA00_TU1","Corte Carcare","Tipologia","Comunità terapeutiche psichiatriche","Diversa dal sito","Comunità terapeutiche riabilitative per minori","Media"),
@@ -115,7 +115,7 @@ L=[("Anomalie Yext da correggere prima della migrazione a RetailTune",B),
 ("Fogli",B),
 ("Da correggere su Yext — interventi sulle entità, per priorità (Alta: blocca l'abbinamento o mostra un dato errato).",N),
 ("Decisioni — scelte da confermare prima dell'import, con la proposta.",N),
-("Link CTA — 55 link di pulsanti che puntano all'ambiente di sviluppo, con il link corretto proposto.",N),
+("Link CTA — 55 link dei campi CTA (non dell'URL del sito web, che è corretto) che puntano all'ambiente di sviluppo, con il link di produzione.",N),
 ("Email direttori AA — "+str(NE)+" residenze con indirizzo diverso tra sito e Yext: indicare quello corretto.",N),
 ("Sul sito — correzioni a cura di Danilo Bernabeo, per conoscenza.",N),
 ("",N),
