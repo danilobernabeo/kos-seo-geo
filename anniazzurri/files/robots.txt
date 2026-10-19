@@ -1,4 +1,5 @@
 User-agent: *
-Allow: /
+Disallow: /*?query=
+Disallow: /*&query=
 
 Sitemap: https://anniazzurri.it/sitemap.xml

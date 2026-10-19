@@ -10,8 +10,8 @@ Sono file statici serviti direttamente da nginx: non passano da MODX.
 - **kosgroup.com**: Crawl-delay già rimosso da Danilo. Le regole `Disallow: *?query=*` non iniziavano con `/`:
   lo standard (RFC 9309) e Google richiedono che il percorso inizi con `/`. Riscritte come `/*?query=` e
   `/*&query=` (parametro primo o successivo); idem per `formId`. Il `*` finale è implicito.
-- **anniazzurri.it**: già corretto (tutto consentito, sitemap dichiarata). Nessuna modifica: il file nel
-  repository serve da riferimento.
+- **anniazzurri.it**: allineato a kosgroup.com. La ricerca Yext del sito (`yext-scripts`, `redirectUrl` → `/cerca`)
+  genera pagine di risultati con `?query=`: escluse come su kosgroup. Tolto `Allow: /`, superfluo.
 - Nessun gruppo dedicato ai crawler AI: con un gruppo specifico un bot ignora le regole di `User-agent: *`;
   il gruppo generale li ammette già tutti.
 
