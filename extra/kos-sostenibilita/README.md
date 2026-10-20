@@ -64,8 +64,9 @@ Classificazione delle strutture confermata dal Bilancio 2025: 144 = 110 RSA (57 
 cure psichiatriche e assistenza non residenziale + 1 acuti (Sanatrix); 91 in Italia; 15 centri ambulatoriali a parte;
 13.722 posti letto.
 
-- Dipendenti Germania 2025: totale 4.738, ma donne 3.695 + uomini 1.037 = 4.732 (gruppo 11.770 contro 11.764).
-  Pubblicato il totale del documento; i 6 mancanti potrebbero essere dipendenti di genere «altro».
+- Dipendenti Germania 2025: chiarito dal Bilancio 2025, i 6 di differenza sono 2 «altro» e 4 «non segnalato».
+- Bilancio 2025, pag. 74: la tabella «per tipologia contrattuale e genere al 31 dicembre 2025» riporta i numeri
+  del 2024 (totale 11.714 invece di 11.770). Da segnalare a KOS: non tocca la pagina del sito.
 
 - Pagina 54: `[[!ShowEditStatus? … &date_format`%B %Y`]]` senza `=` (formato della data ignorato); non toccato
   perché cambierebbe la data mostrata e `%B` dipende da `strftime`, deprecata in PHP 8.
