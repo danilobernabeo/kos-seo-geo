@@ -69,3 +69,13 @@ Ripristino: il comando esatto è stampato alla fine dell'installazione
   (`assets/...` senza `/`). Il contenuto è passato da TinyMCE. Difetti preesistenti: l'installazione sostituisce
   solo i tre box, che sono bilanciati, e non li peggiora.
 - Contrasto colori e icone ritagliate da screenshot: vedi § 10 delle istruzioni originali.
+
+## Rilasci
+
+| Data | Ambiente | Esito | Ripristino |
+|---|---|---|---|
+| 20/10/2026 | stage (c0044) | dati provvisori, poi ripristinata e reinstallata con i dati confermati | `~/backup-kos-seo-geo/20261020-071502-sostenibilita/ripristino.json` |
+| 20/10/2026 | produzione (c0095) | installata, ripristino provato a vuoto | `~/backup-kos-seo-geo/20261020-073409-sostenibilita/ripristino.json` |
+
+La baseline del progetto (`kosgroup/baseline/chunks/grafico-dipendenti.html`, `employee-chart.html`) è stata
+aggiornata al contenuto pubblicato, così gli strumenti del progetto non segnalano questi chunk come modificati a mano.
