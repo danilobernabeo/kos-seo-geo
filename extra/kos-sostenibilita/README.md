@@ -60,6 +60,9 @@ Ripristino: il comando esatto è stampato alla fine dell'installazione
 
 ## Da segnalare a KOS (non bloccanti)
 
+- Dipendenti Germania 2025: totale 4.738, ma donne 3.695 + uomini 1.037 = 4.732 (gruppo 11.770 contro 11.764).
+  Pubblicato il totale del documento; i 6 mancanti potrebbero essere dipendenti di genere «altro».
+
 - Pagina 54: in fondo al contenuto c'è un `>` in più (`</div>>`), visibile come carattere sulla pagina, e
   l'ultima `section` non è chiusa.
 - Pagina 980: la `section` dei grafici si chiude con un `div` ancora aperto; immagini con percorsi relativi

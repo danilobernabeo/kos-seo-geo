@@ -5,7 +5,7 @@
     "strutture: RSA come dato congiunto 110 (Italia 57 + Germania 53); 144 = 91 Italia (57 RSA + 33 + 1 ospedale) + 53 Germania, ambulatori esclusi": true,
     "attività 2025: +9.700 questionari": true,
     "dipendenti 2021-2024 verificati sui Bilanci di Sostenibilità 2021, 2023 e 2024": true,
-    "dipendenti Germania 2025: totale 4738 contro donne + uomini 4732 (gruppo 11770 contro 11764)": false
+    "dipendenti Germania 2025: totale 4738 tenuto come da documento, anche se donne + uomini fa 4732 (segnalato a KOS)": true
   },
   "chartDipendenti": [
     {
