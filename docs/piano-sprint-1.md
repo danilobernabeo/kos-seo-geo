@@ -60,7 +60,7 @@ Interventi del singolo sito:
 
 21. Collaudo sugli ambienti di prova: validatore schema.org e Rich Results Test, controllo di robots.txt, llms.txt, intestazioni di cache, redirect.
 22. Rilascio in produzione (fuori orario di punta, backup prima), svuotamento cache MODX.
-23. Nota di consegna dello sprint 1 per Cerved/ProWeb: interventi per voce d'audit, URL da verificare, evidenze (log bot). **Scritta il 20/10** (scheda condivisa «Nota di consegna dello sprint 1», copia in `docs/docx/nota-di-consegna-sprint-1.docx`); attende solo la conferma di KOS sul testo di llms.txt.
+23. Nota di consegna dello sprint 1 per Cerved/ProWeb: interventi per voce d'audit, URL da verificare, evidenze (log bot). **Scritta il 20/10** (scheda condivisa «Nota di consegna dello sprint 1», copia in `docs/docx/nota-di-consegna-sprint-1.docx`); resta da approvare il testo di llms.txt.
 
 ## Fuori piano, a consuntivo (in attesa di approvazione di KOS)
 
