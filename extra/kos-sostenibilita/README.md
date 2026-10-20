@@ -63,11 +63,9 @@ Ripristino: il comando esatto è stampato alla fine dell'installazione
 - Dipendenti Germania 2025: totale 4.738, ma donne 3.695 + uomini 1.037 = 4.732 (gruppo 11.770 contro 11.764).
   Pubblicato il totale del documento; i 6 mancanti potrebbero essere dipendenti di genere «altro».
 
-- Pagina 54: in fondo al contenuto c'è un `>` in più (`</div>>`), visibile come carattere sulla pagina, e
-  l'ultima `section` non è chiusa.
-- Pagina 980: la `section` dei grafici si chiude con un `div` ancora aperto; immagini con percorsi relativi
-  (`assets/...` senza `/`). Il contenuto è passato da TinyMCE. Difetti preesistenti: l'installazione sostituisce
-  solo i tre box, che sono bilanciati, e non li peggiora.
+- Classificazione delle strutture: ambulatori da 28 a 15, centri psichiatrici e di riabilitazione (20 + 15) uniti in 33.
+- Pagina 54: `[[!ShowEditStatus? … &date_format`%B %Y`]]` senza `=` (formato della data ignorato); non toccato
+  perché cambierebbe la data mostrata e `%B` dipende da `strftime`, deprecata in PHP 8.
 - Contrasto colori e icone ritagliate da screenshot: vedi § 10 delle istruzioni originali.
 
 ## Rilasci
@@ -76,6 +74,7 @@ Ripristino: il comando esatto è stampato alla fine dell'installazione
 |---|---|---|---|
 | 20/10/2026 | stage (c0044) | dati provvisori, poi ripristinata e reinstallata con i dati confermati | `~/backup-kos-seo-geo/20261020-071502-sostenibilita/ripristino.json` |
 | 20/10/2026 | produzione (c0095) | installata, ripristino provato a vuoto | `~/backup-kos-seo-geo/20261020-073409-sostenibilita/ripristino.json` |
+| 20/10/2026 | stage e produzione | correzione dei difetti HTML preesistenti delle pagine 54 e 980 (`correggi-html.php`) | `php correggi-html.php /www --ripristina --scrivi` |
 
 La baseline del progetto (`kosgroup/baseline/chunks/grafico-dipendenti.html`, `employee-chart.html`) è stata
 aggiornata al contenuto pubblicato, così gli strumenti del progetto non segnalano questi chunk come modificati a mano.
