@@ -15,6 +15,7 @@ Aggiornare l'elenco a ogni intervento.
 | `PaginationCanonical` | plugin | AA-7 / paginazione news | aggiornato, disattivato |
 | `heading-home2` | chunk | AA-18 (H1) | in produzione (20/10) |
 | `AssetVersion` (shared) | plugin (nuovo) | AA-14 (`?v=` automatico su CSS/JS) | in produzione (20/10) |
+| `convegnoAA` | template | AA-18 (H1 galleria), canonical, `[[aaSchema]]` | in collaudo |
 | Web Rules | configurazione | AA-14 e redirect | `anniazzurri/files/web-rules/web-rules.conf` |
 
 ## kosgroup.com

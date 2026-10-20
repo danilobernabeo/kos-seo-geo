@@ -1,0 +1,7 @@
+{
+  "nome": "AA-18 H1 della galleria del convegno 2025 (+ canonical e dato strutturato sul template convegnoAA)",
+  "settings": [],
+  "elements": [
+    {"type": "template", "name": "convegnoAA", "file": "anniazzurri/elements/templates/convegnoAA.html", "baseline": "anniazzurri/baseline/templates/convegnoAA.html"}
+  ]
+}
