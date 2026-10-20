@@ -1,5 +1,9 @@
 <?php
 $currentPageId = $modx->resource->get('id');
+
+// Schema dei link uguale a [[~id]] (impostazione link_tag_scheme, oggi "abs": /it/...)
+$scheme = $modx->getOption('link_tag_scheme');
+
 // Ottieni le risorse figlie dell'ID 280 che hanno idSedeLavoro uguale al currentPageId
 $resources = $modx->getCollection('modResource', array(
     'parent' => 280,
@@ -11,6 +15,8 @@ $resources = $modx->getCollection('modResource', array(
 $prefissiCognomi = array('de', 'del', 'della', 'dello', 'dei', 'degli', 'delle', 'da', 'dal', 'dalla', 'dallo', 'dai', 'dagli', 'dalle', 'di', 'lo', 'la', 'li', 'san', 'santa', 'santo');
 
 // Funzione per estrarre correttamente il cognome
+// (protetta: anche getMedici la definisce, e due definizioni nella stessa pagina darebbero errore)
+if (!function_exists('estraiCognome')) {
 function estraiCognome($nome, $prefissiCognomi) {
     $parole = explode(' ', strtolower($nome));
     $numParole = count($parole);
@@ -29,6 +35,7 @@ function estraiCognome($nome, $prefissiCognomi) {
     
     // Altrimenti prendiamo solo l'ultima parola
     return $parole[$numParole - 1];
+}
 }
 
 // Converti la collection in array per poterla ordinare
@@ -70,18 +77,19 @@ foreach($resourceArray as $item) {
     $ruolo = $resource->getTVValue('ruolo');
     $infoImage = $resource->getTVValue('infoImage');
     
-    // Usa l'immagine predefinita se infoImage è vuota
-    $imageSrc = !empty($infoImage) ? $infoImage : '/assets/img/medico-thumb.svg';
+    // Usa l'immagine predefinita se infoImage è vuota; percorso sempre assoluto (/assets/...)
+    $imageSrc = !empty($infoImage) ? '/' . ltrim($infoImage, '/') : '/assets/img/medico-thumb.svg';
     $pagetitle = $resource->get('pagetitle');
+    $link = $modx->makeUrl($resource->get('id'), '', '', $scheme);
     
     $output .= '
     <div class="col-12 col-md-6 equipe-persona">
-        <a href="' . $modx->makeUrl($resource->get('id')) . '" title="' . htmlspecialchars($pagetitle) . '">
+        <a href="' . $link . '" title="' . htmlspecialchars($pagetitle) . '">
             <img class="equipe-foto" src="' . $imageSrc . '" alt="' . htmlspecialchars($pagetitle) . '">
         </a>
         <div class="equipe-info">
             <span class="equipe-ruolo">
-                <a href="' . $modx->makeUrl($resource->get('id')) . '" title="' . htmlspecialchars($pagetitle) . '">' . htmlspecialchars($pagetitle) . '</a>
+                <a href="' . $link . '" title="' . htmlspecialchars($pagetitle) . '">' . htmlspecialchars($pagetitle) . '</a>
             </span>
             <span class="equipe-nome">' . htmlspecialchars($ruolo) . '</span>
         </div>                                       

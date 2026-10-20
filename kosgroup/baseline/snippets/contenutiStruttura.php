@@ -23,21 +23,11 @@ if (!$tv) {
 $tvid = $tv->get('id');
 if ($debug) $debugInfo[] = "ID della TV: $tvid";
 
-// Crea una query per recuperare solo risorse che hanno la TV idStruttura correlata alla struttura corrente
+// Risorse che hanno la TV idStruttura con l'ID della struttura corrente
+// (valori come "218" oppure "216,228,234": FIND_IN_SET riconosce solo l'ID intero)
 $c = $modx->newQuery('modTemplateVarResource');
-$c->where(array(
-    'tmplvarid' => $tvid,
-));
-
-// Costruisci condizioni più flessibili per trovare l'ID nelle varie forme possibili
-$valueConditions = array(
-    'value' => $id,
-    'OR:value:LIKE' => '%,' . $id . ',%',
-    'OR:value:LIKE' => $id . ',%',
-    'OR:value:LIKE' => '%,' . $id,
-    'OR:value:LIKE' => '%' . $id . '%', // Più permissivo
-);
-$c->where($valueConditions);
+$c->where(array('tmplvarid' => $tvid));
+$c->where('FIND_IN_SET(' . (int) $id . ', REPLACE(`modTemplateVarResource`.`value`, " ", "")) > 0');
 
 // Ottieni gli ID delle risorse con la TV impostata
 $tvResources = $modx->getCollection('modTemplateVarResource', $c);
@@ -99,16 +89,16 @@ if (empty($resources)) {
 
 // Prepara l'output
 $output = '<section class="blocchi-con-news aos-init aos-animate mb-5" data-aos="fade-up" role="region" aria-label="Ultime news">
-	<div class="container">
-		<div class="row">
-			<div class="col-12">                                    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">                                    
                             <div class="titolo-sezione">
                                 <h2>Le ultime news da <span>[[*pagetitle]]</span></h2>
                                 <a class="btn btn-secondary" href="[[~5]]" title="News e media">Vai a news &amp; media</a>
                             </div>
-			</div>
-		</div>
-		<div class="row box-news">';
+            </div>
+        </div>
+        <div class="row box-news">';
 
 // Itera sui risultati
 foreach ($resources as $resource) {
@@ -155,26 +145,26 @@ foreach ($resources as $resource) {
     $output .= '
     <div class="news-singola col-12 col-md-4 mb-5">                                    
         <div class="news-media news-img">
-            <a href="' . $resource->get('uri') . '" title="' . $resource->get('pagetitle') . '">
-                <img src="' . $infoImage . '" alt="' . $resource->get('pagetitle') . '">
+            <a href="/' . $resource->get('uri') . '" title="' . $resource->get('pagetitle') . '">
+                <img src="/' . ltrim($infoImage, '/') . '" alt="' . $resource->get('pagetitle') . '">
             </a>
         </div>
         <div class="news-cats">
             <span>' . $categoryTitle . '</span>
         </div>
-        <h3><a href="' . $resource->get('uri') . '" title="' . $resource->get('pagetitle') . '">' . $resource->get('pagetitle') . '</a></h3>
+        <h3><a href="/' . $resource->get('uri') . '" title="' . $resource->get('pagetitle') . '">' . $resource->get('pagetitle') . '</a></h3>
         <p>' . $resource->get('introtext') . '</p>
         <div class="news-meta">
             <div class="news-data">' . $formattedDate . '</div>
-            <a class="news-cta btn-link btn-link-u ' . $ctaClass . '" href="' . $resource->get('uri') . '" title="' . $resource->get('pagetitle') . '">
+            <a class="news-cta btn-link btn-link-u ' . $ctaClass . '" href="/' . $resource->get('uri') . '" title="' . $resource->get('pagetitle') . '">
                 ' . $ctaText . '<img src="/assets/img/arrow-dx.svg" alt="">
             </a>
         </div>
     </div>';
 }
 
-$output .= '		</div>
-	</div>
+$output .= '        </div>
+    </div>
 </section>
 ';
 

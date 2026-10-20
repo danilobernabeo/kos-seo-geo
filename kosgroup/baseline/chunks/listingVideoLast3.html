@@ -11,7 +11,7 @@
                             &select=`modResource.*,parent`
                             &tpl=`@INLINE
                             <div class="news-singola col-12 col-md-4">                                    
-                                <a href="[[+uri]]" aria-label="[[+pagetitle]]">
+                                <a href="/[[+uri]]" aria-label="[[+pagetitle]]">
                                     <div class="news-media news-video">
                                         <img src="[[+tv.infoImage]]" alt="">
                                     </div>
@@ -19,7 +19,7 @@
                                 <div class="news-cats">
                                     <span>[[!pdoField? &field=`pagetitle` &id=`[[+parent:default=`34`]]`]]</span>
                                 </div>
-                                <h3><a href="[[+uri]]">[[+pagetitle]]</a></h3>
+                                <h3><a href="/[[+uri]]">[[+pagetitle]]</a></h3>
                                 <p>[[+introtext]]</p>
                             </div>
                             `

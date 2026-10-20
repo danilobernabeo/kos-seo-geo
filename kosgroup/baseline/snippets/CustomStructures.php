@@ -16,7 +16,7 @@ foreach ($level1 as $resource) {
     // Aggiungi il titolo di primo livello
     $output .= '
     <div class="col box-dettaglio-txt col-12 mt-3">
-        <h3><a href="' . $resource->get('uri') . '">' . $title . '</a></h3>
+        <h3><a href="/' . $resource->get('uri') . '">' . $title . '</a></h3>
     </div>';
     
     // Cerca le strutture correlate (figlie di id 167)
@@ -50,7 +50,7 @@ foreach ($level1 as $resource) {
             $childTitle = $child->get('menutitle') ? $child->get('menutitle') : $child->get('pagetitle');
             
             $output .= '
-                <li><a href="' . $child->get('uri') . '">' . $childTitle . '</a></li>';
+                <li><a href="/' . $child->get('uri') . '">' . $childTitle . '</a></li>';
         }
         
         $output .= '

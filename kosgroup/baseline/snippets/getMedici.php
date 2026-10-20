@@ -1,4 +1,7 @@
 <?php
+// Schema dei link uguale a [[~id]] (impostazione link_tag_scheme, oggi "abs": /it/...)
+$scheme = $modx->getOption('link_tag_scheme');
+
 // Ottieni le risorse figlie dell'ID 280
 $resources = $modx->getCollection('modResource', array(
     'parent' => 280,
@@ -10,6 +13,8 @@ $resources = $modx->getCollection('modResource', array(
 $prefissiCognomi = array('de', 'del', 'della', 'dello', 'dei', 'degli', 'delle', 'da', 'dal', 'dalla', 'dallo', 'dai', 'dagli', 'dalle', 'di', 'lo', 'la', 'li', 'san', 'santa', 'santo');
 
 // Funzione per estrarre correttamente il cognome
+// (protetta: anche getMediciStrutturaOrdered la definisce, e due definizioni nella stessa pagina darebbero errore)
+if (!function_exists('estraiCognome')) {
 function estraiCognome($nome, $prefissiCognomi) {
     $parole = explode(' ', strtolower($nome));
     $numParole = count($parole);
@@ -28,6 +33,7 @@ function estraiCognome($nome, $prefissiCognomi) {
     
     // Altrimenti prendiamo solo l'ultima parola
     return $parole[$numParole - 1];
+}
 }
 
 // Converti la collection in array per poterla ordinare
@@ -80,7 +86,7 @@ foreach($resourceArray as $item) {
     echo '<div class="col-12 col-md-6 equipe-persona searchable">';
     echo '<img class="equipe-foto" src="/assets/img/medico-thumb.svg" alt="' . htmlspecialchars($name) . '">';
     echo '<div class="equipe-info">';
-    echo '<span class="equipe-ruolo"><a href="' . $modx->makeUrl($resource->get('id')) . '">' . htmlspecialchars($name) . '</a></span>';
+    echo '<span class="equipe-ruolo"><a href="' . $modx->makeUrl($resource->get('id'), '', '', $scheme) . '">' . htmlspecialchars($name) . '</a></span>';
     echo '<span class="equipe-nome">' . htmlspecialchars($notes) . '</span>';
     
     // Gestione sedi di lavoro multiple
@@ -97,7 +103,7 @@ foreach($resourceArray as $item) {
                 $parent = $sedeResource->get('parent');
                 if($parent == 167 || $sedeResource->get('id') == 167) {
                     $sedeName = $sedeResource->get('pagetitle');
-                    echo '<span class="equipe-ruolo mb-1"><a href="' . $modx->makeUrl($sedeId) . '">' . htmlspecialchars($sedeName) . '</a></span>';
+                    echo '<span class="equipe-ruolo mb-1"><a href="' . $modx->makeUrl($sedeId, '', '', $scheme) . '">' . htmlspecialchars($sedeName) . '</a></span>';
                 }
             }
         }

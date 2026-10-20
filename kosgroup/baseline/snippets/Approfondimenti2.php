@@ -97,8 +97,8 @@ if (empty($mainImage)) {
 $output .= '
             <div id="articolo-grande" class="news-singola col-12 col-md-8">
                 <div class="news-media news-img">
-                    <img class="d-none d-md-block" src="' . $mainImage . '" alt="' . htmlspecialchars($mainTitle) . '">
-                    <img class="d-block d-md-none" src="' . $mainImage . '" alt="' . htmlspecialchars($mainTitle) . '">
+                    <img class="d-none d-md-block" src="/' . ltrim($mainImage, '/') . '" alt="' . htmlspecialchars($mainTitle) . '">
+                    <img class="d-block d-md-none" src="/' . ltrim($mainImage, '/') . '" alt="' . htmlspecialchars($mainTitle) . '">
                 </div>
                 <div class="articolo-grande-txt">
                     <div class="news-cats">
@@ -108,7 +108,7 @@ $output .= '
                     <p>' . htmlspecialchars($mainIntrotext) . '</p>
                     <div class="news-meta">
                         <div class="news-data">' . $mainFormattedDate . '</div>
-                        <a class="news-cta btn-link btn-link-u leggi" href="' . $mainUri . '">Leggi l\'articolo<img src="/assets/img/arrow-dx.svg" alt=""></a>
+                        <a class="news-cta btn-link btn-link-u leggi" href="/' . $mainUri . '">Leggi l\'articolo<img src="/assets/img/arrow-dx.svg" alt=""></a>
                     </div>
                 </div>
             </div>';
@@ -166,18 +166,18 @@ for ($i = 1; $i < 3; $i++) { // Solo 2 articoli (indici 1 e 2)
     $output .= '
                 <div class="news-singola mb-4">
                     <div class="news-media news-img">
-                        <a href="' . $uri . '" title="' . htmlspecialchars($title) . '">
-                            <img src="' . $sidebarImage . '" alt="' . htmlspecialchars($title) . '">
+                        <a href="/' . $uri . '" title="' . htmlspecialchars($title) . '">
+                            <img src="/' . ltrim($sidebarImage, '/') . '" alt="' . htmlspecialchars($title) . '">
                         </a>
                     </div>                                 
                     <div class="news-cats">
                         <span>' . htmlspecialchars($categoryTitle) . '</span>
                     </div>
-                    <h3><a href="' . $uri . '" title="' . htmlspecialchars($title) . '">' . htmlspecialchars($title) . '</a></h3>
+                    <h3><a href="/' . $uri . '" title="' . htmlspecialchars($title) . '">' . htmlspecialchars($title) . '</a></h3>
                     <p>' . htmlspecialchars($introtext) . '</p>
                     <div class="news-meta">
                         <div class="news-data">' . $formattedDate . '</div>
-                        <a class="news-cta btn-link btn-link-u leggi" href="' . $uri . '">Leggi l\'articolo<img src="/assets/img/arrow-dx.svg" alt=""></a>
+                        <a class="news-cta btn-link btn-link-u leggi" href="/' . $uri . '">Leggi l\'articolo<img src="/assets/img/arrow-dx.svg" alt=""></a>
                     </div>
                 </div>';
 }

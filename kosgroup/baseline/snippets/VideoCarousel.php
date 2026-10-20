@@ -56,7 +56,7 @@ $output = '<div class="container-fluid container-md">
         <div class="col-12">                                    
             <div class="titolo-sezione">
                 <h2>Gli ultimi video in evidenza</h2>
-                <a class="btn btn-secondary" href="it/news-e-media/video">Vedi tutti i video</a>
+                <a class="btn btn-secondary" href="/it/news-e-media/video">Vedi tutti i video</a>
             </div>
         </div>
     </div>
@@ -124,9 +124,9 @@ for ($i = 0; $i < $totalVideos; $i++) {
     $output .= '
                     <div class="articolo-tassello swiper-slide ' . $slideClass . '" style="width: 622.5px; margin-right: 36px;" role="group" aria-label="' . $slideNumber . ' / ' . $totalVideos . '">
                         <div class="news-singola">
-                            <a href="' . $uri . '" aria-label="' . htmlspecialchars($title) . ' (video)">
+                            <a href="/' . $uri . '" aria-label="' . htmlspecialchars($title) . ' (video)">
                                 <div class="news-media news-video">
-                                    <img src="' . $videoImage . '" alt="' . htmlspecialchars($title) . '">
+                                    <img src="/' . ltrim($videoImage, '/') . '" alt="' . htmlspecialchars($title) . '">
                                 </div>
                             </a>
                             <div class="news-contenuto-tesuale">

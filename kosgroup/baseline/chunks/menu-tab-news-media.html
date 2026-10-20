@@ -2,7 +2,7 @@
     <div class="container col-12">
         <small>[[pdoField? &id=`5` &field=`pagetitle`]]</small>
         <div class="filtri-cat-articoli-btns">
-            [[pdoMenu?
+            [[pdoMenu? &scheme=`abs`
                 &parents=`5`
                 &level=`1`
                 &tpl=`@INLINE <a class="[[+id:is=`[[*id]]`:then=`fisso btn btn-outline-dark`:else=`btn btn-outline-primary`]]" href="[[+link]]">[[+menutitle]]</a>`

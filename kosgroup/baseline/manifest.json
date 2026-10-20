@@ -1,5 +1,5 @@
 {
-    "exported_at": "2026-10-19T08:39:50-05:00",
+    "exported_at": "2026-10-20T02:49:05-05:00",
     "site_url": "http://localhost/",
     "elements": [
         {
@@ -3233,10 +3233,6 @@
                 },
                 {
                     "event": "OnDocFormSave",
-                    "priority": 0
-                },
-                {
-                    "event": "OnPageNotFound",
                     "priority": 0
                 },
                 {

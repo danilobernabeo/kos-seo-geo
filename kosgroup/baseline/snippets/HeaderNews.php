@@ -38,7 +38,8 @@ if (!$newsResource) {
 // Dati della news
 $title     = $newsResource->get('pagetitle');
 $introtext = $newsResource->get('introtext');
-$url       = $modx->makeUrl($newsResource->get('id'));
+// Link nello stesso formato di [[~id]] (impostazione link_tag_scheme, oggi "abs": /it/...)
+$url       = $modx->makeUrl($newsResource->get('id'), '', '', $modx->getOption('link_tag_scheme'));
 
 // publishedon può arrivare come timestamp o come stringa datetime: gestiamo entrambi
 $publishedOn   = $newsResource->get('publishedon');
@@ -52,6 +53,11 @@ if ($headerImage === '') {
 }
 if ($headerImage === '') {
     $headerImage = $placeholder;
+}
+
+// Percorso assoluto (/assets/...), salvo URL esterni
+if (!preg_match('#^https?://#i', $headerImage)) {
+    $headerImage = '/' . ltrim($headerImage, '/');
 }
 
 $img = $e($headerImage);

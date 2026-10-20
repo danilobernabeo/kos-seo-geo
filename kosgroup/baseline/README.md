@@ -1,6 +1,6 @@
 # Baseline kosgroup.com
 
-Istantanea degli elementi del cloud di produzione (c0095) presa il 19/10/2026 con `scripts/export-elements.php`, prima di qualsiasi modifica del progetto. Sola consultazione.
+Istantanea degli elementi del cloud di produzione (c0095) presa il 19/10/2026, aggiornata il 20/10/2026 (modifiche di ottimizzazione fatte fuori dal progetto) con `scripts/export-elements.php`, prima di qualsiasi modifica del progetto. Sola consultazione.
 
 Valori segreti lato server sostituiti con un segnaposto (restano invariati sul sito):
 - `snippets/syncYoutubeVideos.php`: chiave YouTube Data API;

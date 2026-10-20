@@ -14,7 +14,7 @@ foreach ($level1 as $resource) {
     // Aggiungi il titolo di primo livello
     $output .= '
     <div class="col box-dettaglio-txt col-12 mt-3">
-        <h3><a href="' . $resource->get('uri') . '">' . $resource->get('pagetitle') . '</a></h3>
+        <h3><a href="/' . $resource->get('uri') . '">' . $resource->get('pagetitle') . '</a></h3>
     </div>';
     
     // Cerca i figli di questa risorsa
@@ -32,7 +32,7 @@ foreach ($level1 as $resource) {
         
         foreach ($children as $child) {
             $output .= '
-                <li><a href="' . $child->get('uri') . '">' . $child->get('pagetitle') . '</a></li>';
+                <li><a href="/' . $child->get('uri') . '">' . $child->get('pagetitle') . '</a></li>';
         }
         
         $output .= '
