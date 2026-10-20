@@ -1,23 +1,83 @@
 {
   "_nota": "Dati iniziali delle TV (pagina IT 54). 'conferme' deve essere tutto true prima del rilascio in produzione: lo script si ferma altrimenti (sullo stage si usa --dati-provvisori).",
   "conferme": {
-    "ricavi 2024 e 2025 ufficiali (oggi 812 e 846 sono valori di prova)": false,
-    "RSA in Italia 57 e in Germania 53 (57 + 33 + 15 + 1 = 106, ma il globo dice 91 strutture in Italia)": false,
-    "Attività: badge 2025 con +7500 questionari (il numero è quello del 2023)": false,
-    "Dipendenti Germania 2025: totale 4738 contro donne + uomini 4732": false
+    "ricavi 2020-2025 dal documento di aggiornamento del 20/10 (633, 661, 702, 752, 799, 816 milioni)": true,
+    "strutture: RSA come dato congiunto 110 (Italia 57 + Germania 53); 144 = 91 Italia (57 RSA + 33 + 1 ospedale) + 53 Germania, ambulatori esclusi": true,
+    "attività 2025: +9.700 questionari": true,
+    "dipendenti 2021-2024 verificati sui Bilanci di Sostenibilità 2021, 2023 e 2024": true,
+    "dipendenti Germania 2025: totale 4738 contro donne + uomini 4732 (gruppo 11770 contro 11764)": false
   },
   "chartDipendenti": [
-    {"anno": "2021", "totale_ita": "7100", "donne_ita": "5632", "uomini_ita": "1468", "totale_ger": "3941", "donne_ger": "3140", "uomini_ger": "801"},
-    {"anno": "2022", "totale_ita": "7210", "donne_ita": "5694", "uomini_ita": "1516", "totale_ger": "4131", "donne_ger": "3297", "uomini_ger": "834"},
-    {"anno": "2023", "totale_ita": "7402", "donne_ita": "5875", "uomini_ita": "1527", "totale_ger": "4429", "donne_ger": "3538", "uomini_ger": "891"},
-    {"anno": "2024", "totale_ita": "7145", "donne_ita": "5661", "uomini_ita": "1484", "totale_ger": "4569", "donne_ger": "3661", "uomini_ger": "908"},
-    {"anno": "2025", "totale_ita": "7032", "donne_ita": "5566", "uomini_ita": "1466", "totale_ger": "4738", "donne_ger": "3695", "uomini_ger": "1037"}
+    {
+      "anno": "2021",
+      "totale_ita": "7100",
+      "donne_ita": "5632",
+      "uomini_ita": "1468",
+      "totale_ger": "3941",
+      "donne_ger": "3140",
+      "uomini_ger": "801"
+    },
+    {
+      "anno": "2022",
+      "totale_ita": "7210",
+      "donne_ita": "5694",
+      "uomini_ita": "1516",
+      "totale_ger": "4131",
+      "donne_ger": "3297",
+      "uomini_ger": "834"
+    },
+    {
+      "anno": "2023",
+      "totale_ita": "7402",
+      "donne_ita": "5875",
+      "uomini_ita": "1527",
+      "totale_ger": "4429",
+      "donne_ger": "3538",
+      "uomini_ger": "891"
+    },
+    {
+      "anno": "2024",
+      "totale_ita": "7145",
+      "donne_ita": "5661",
+      "uomini_ita": "1484",
+      "totale_ger": "4569",
+      "donne_ger": "3661",
+      "uomini_ger": "908"
+    },
+    {
+      "anno": "2025",
+      "totale_ita": "7032",
+      "donne_ita": "5566",
+      "uomini_ita": "1466",
+      "totale_ger": "4738",
+      "donne_ger": "3695",
+      "uomini_ger": "1037"
+    }
   ],
   "chartRicavi": [
-    {"anno": "2021", "valore": "687"},
-    {"anno": "2022", "valore": "717"},
-    {"anno": "2023", "valore": "780"},
-    {"anno": "2024", "valore": "812"},
-    {"anno": "2025", "valore": "846"}
+    {
+      "anno": "2020",
+      "valore": "633"
+    },
+    {
+      "anno": "2021",
+      "valore": "661"
+    },
+    {
+      "anno": "2022",
+      "valore": "702"
+    },
+    {
+      "anno": "2023",
+      "valore": "752"
+    },
+    {
+      "anno": "2024",
+      "valore": "799"
+    },
+    {
+      "anno": "2025",
+      "valore": "816"
+    }
   ]
 }

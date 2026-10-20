@@ -171,8 +171,13 @@
     var end = parseInt(el.textContent.replace(/\D/g, ""), 10);
     if (!end || reduce) return;
     // stesso formato del markup: "7500" resta senza separatore, "13.700" lo mantiene
-    var grouped = /[.,\s\u00A0]/.test(el.textContent.trim());
-    var nf = new Intl.NumberFormat(locale, { useGrouping: grouped }), dur = 1200, t0 = null;
+    // stesso separatore del markup ("9.700", "9,700"): Intl in italiano non separa le cifre sotto 10.000
+    // e il numero finale dell'animazione sarebbe diverso da quello scritto nella pagina
+    var sepMatch = el.textContent.trim().match(/[.,\s\u00A0]/);
+    var nf = { format: function (v) {
+      var s = String(v);
+      return sepMatch ? s.replace(/\B(?=(\d{3})+(?!\d))/g, sepMatch[0]) : s;
+    } }, dur = 1200, t0 = null;
     // lo screen reader legge sempre il valore finale, mai i numeri intermedi del conteggio
     var sr = document.createElement("span");
     sr.className = "kos-sr-only";
