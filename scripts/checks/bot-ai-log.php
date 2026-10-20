@@ -115,6 +115,9 @@ $tipi = [
     'indice di cartella'      => '/directory index of .* is forbidden/',
     'file mancante (404)'     => '/open\(\) ".*" failed|No such file/',
     'tempo scaduto'           => '/timed out/',
+    // messaggi tecnici di nginx, non risposte d'errore al client
+    'richiesta registrata (syslog non raggiungibile)' => '/send\(\) to syslog failed while logging request/',
+    'cache sessioni SSL piena (handshake prosegue)'   => '/could not allocate new session in SSL session shared cache/',
 ];
 
 echo "\n== ESITO PER BOT (righe del log degli errori dagli IP ufficiali)\n";
@@ -146,7 +149,7 @@ foreach ($elenchi as $bot => $reti) {
     printf("  %-55s %d IP, %d righe\n", $bot, count($ips), array_sum($conta));
     foreach ($conta as $tipo => $n) {
         if ($n) {
-            printf("      %-26s %6d   es. %s\n", $tipo, $n, $esempi[$tipo]);
+            printf("      %-48s %6d   es. %s\n", $tipo, $n, $esempi[$tipo]);
         }
     }
 }
