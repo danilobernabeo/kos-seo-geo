@@ -16,6 +16,10 @@
     {
       "key": "aa.org_phone",
       "value": "800 131 851"
+    },
+    {
+      "key": "aa.org_logo",
+      "value": "/assets/img/logo/anni-azzurri-kos-logo-1200.png"
     }
   ],
   "elements": [
