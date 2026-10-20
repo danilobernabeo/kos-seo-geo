@@ -1,0 +1,91 @@
+{
+  "risorse": [
+    {
+      "id": 54,
+      "file": "/paas/c0044/backup-kos-seo-geo/20261020-050947-sostenibilita/risorsa-54.html"
+    },
+    {
+      "id": 980,
+      "file": "/paas/c0044/backup-kos-seo-geo/20261020-050947-sostenibilita/risorsa-980.html"
+    }
+  ],
+  "tv": [
+    "chartDipendenti",
+    "chartRicavi"
+  ],
+  "chunk_modificati": [
+    {
+      "name": "grafico-dipendenti",
+      "file": "/paas/c0044/backup-kos-seo-geo/20261020-050947-sostenibilita/chunks/grafico-dipendenti.html"
+    },
+    {
+      "name": "employee-chart",
+      "file": "/paas/c0044/backup-kos-seo-geo/20261020-050947-sostenibilita/chunks/employee-chart.html"
+    }
+  ],
+  "elementi_creati": [
+    {
+      "type": "snippet",
+      "name": "kosChartDipendenti"
+    },
+    {
+      "type": "snippet",
+      "name": "kosChartRicavi"
+    },
+    {
+      "type": "snippet",
+      "name": "kosSostenibilitaRisorse"
+    },
+    {
+      "type": "chunk",
+      "name": "kosDipendenti_it"
+    },
+    {
+      "type": "chunk",
+      "name": "kosDipendenti_en"
+    },
+    {
+      "type": "chunk",
+      "name": "kosStrutture_it"
+    },
+    {
+      "type": "chunk",
+      "name": "kosStrutture_en"
+    },
+    {
+      "type": "chunk",
+      "name": "kosAttivita_it"
+    },
+    {
+      "type": "chunk",
+      "name": "kosAttivita_en"
+    },
+    {
+      "type": "chunk",
+      "name": "kosRicavi_it"
+    },
+    {
+      "type": "chunk",
+      "name": "kosRicavi_en"
+    }
+  ],
+  "categoria_creata": true,
+  "file_creati": [
+    "assets/css/kos-strutture.css",
+    "assets/css/kos-chart.css",
+    "assets/css/kos-ricavi.css",
+    "assets/js/kos-ricavi.js",
+    "assets/js/kos-chart.js",
+    "assets/img/grafici/strutture-globo.png",
+    "assets/img/grafici/icone/ambulatori.png",
+    "assets/img/grafici/icone/regioni.png",
+    "assets/img/grafici/icone/rsa.png",
+    "assets/img/grafici/icone/letto.png",
+    "assets/img/grafici/icone/ospedale.png",
+    "assets/img/grafici/icone/questionari.png",
+    "assets/img/grafici/icone/riabilitazione.png"
+  ],
+  "cartelle_create": [
+    "assets/img/grafici/icone"
+  ]
+}

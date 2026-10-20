@@ -120,6 +120,11 @@ if ($fileRip !== null) {
     $r = json_decode((string) @file_get_contents($fileRip), true);
     if (!is_array($r)) { fwrite(STDERR, "Manifest di ripristino non leggibile: $fileRip\n"); exit(1); }
     echo ($scrivi ? "== RIPRISTINO" : "== PROVA DI RIPRISTINO (aggiungere --scrivi)") . " da $fileRip\n";
+    $voci = count($r['risorse']) + count($r['tv']) + count($r['chunk_modificati']) + count($r['elementi_creati']) + count($r['file_creati']);
+    if (!$voci) { echo "  ! il manifest non contiene nulla da ripristinare — FERMO\n"; exit(2); }
+    foreach (array_merge($r['risorse'], $r['chunk_modificati']) as $x) {
+        if (!is_file($x['file'])) { echo "  ! backup mancante: {$x['file']} — FERMO\n"; exit(2); }
+    }
     foreach ($r['risorse'] as $x) {
         echo "  ~ risorsa {$x['id']}: contenuto originale\n";
         if ($scrivi && ($o = $modx->getObject(modResource::class, $x['id']))) { $o->set('content', file_get_contents($x['file'])); $o->save(); }
@@ -224,7 +229,10 @@ if (!$scrivi) { echo "\n== Prova riuscita. Rilanciare con --scrivi" . ($daConfer
 
 /* ---------- scrittura ---------- */
 mkdir($bk, 0775, true);
-$salvaRip = fn() => file_put_contents("$bk/ripristino.json", json_encode($rip, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+// closure con $rip per riferimento: una arrow function lo copierebbe vuoto al momento della creazione
+$salvaRip = function () use (&$rip, $bk) {
+    file_put_contents("$bk/ripristino.json", json_encode($rip, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+};
 echo "\n-- Scrittura (backup in $bk)\n";
 
 foreach ($copie as $rel => $src) {
