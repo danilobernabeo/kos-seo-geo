@@ -57,7 +57,7 @@ $PARENT_ID= $cfg('parent_org_id', 'https://kosgroup.com/#organization');
 $LANG     = $cfg('lang',      'it-IT');
 $SLASH    = (int) $cfg('trailing_slash', 0);   // gli URL del sito sono piatti, senza slash finale
 $FRAG_PAT = $cfg('frag_patologia', '#condition');
-$FRAG_STR = $cfg('frag_struttura', '#struttura');   // in decisione: #struttura o #localbusiness
+$FRAG_STR = $cfg('frag_struttura', '#localbusiness');   // convenzione del 20/10/2026 (audit AA, slide 29-30)
 
 $csv = function ($v) {
     return array_values(array_filter(array_map('trim', explode(',', (string) $v)), 'strlen'));

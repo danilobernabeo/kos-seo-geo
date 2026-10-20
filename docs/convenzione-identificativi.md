@@ -26,12 +26,12 @@ Gli identificativi:
 | Ente kosgroup.com | `Organization` | `{base}/#organization` | `https://kosgroup.com/#organization` (KOS S.p.A.) — alla radice, non sotto `/it` |
 | Sito | `WebSite` | `{base}/#website` | `https://anniazzurri.it/#website` |
 | Briciole | `BreadcrumbList` | `{URL}#breadcrumb` | `https://anniazzurri.it/residenza-anni-azzurri-mestre#breadcrumb` |
-| Struttura / residenza | `LocalBusiness` e sottotipi | `{URL scheda}#localbusiness` *(in decisione)* | `https://anniazzurri.it/residenza-anni-azzurri-navigli#localbusiness` |
+| Struttura / residenza | `LocalBusiness` e sottotipi | `{URL scheda}#localbusiness` | `https://anniazzurri.it/residenza-anni-azzurri-navigli#localbusiness` |
 | Medico | `Physician` | `{URL scheda}#medico` | `https://kosgroup.com/it/.../nome-cognome#medico` |
 | Articolo | `Article` | `{URL}#article` | `https://anniazzurri.it/come-vivono-gli-anziani-in-rsa#article` |
 | Autore | `Person` | `{URL pagina autore}#person` | `https://anniazzurri.it/autori/antonella-schiavino#person` |
 
-**Strutture:** l'audit Anni Azzurri (slide 29-30) indica `URL#localbusiness`. La prima versione di questa convenzione usava `#struttura`. Decisione in corso: la proposta è `#localbusiness` per entrambi i siti, per allinearsi alle indicazioni su cui avviene la verifica.
+**Strutture: `#localbusiness`** (deciso il 20 ottobre 2026, per entrambi i siti), come indicato dall'audit Anni Azzurri (slide 29-30). Il frammento è solo un identificativo: né schema.org né Google prescrivono una forma, contano la stabilità e l'uso coerente in tutte le pagine. Il nome resta corretto anche quando il tipo è più specifico: le residenze si descrivono con `@type` `["NursingHome", "LocalBusiness"]`, le cliniche e gli ambulatori con il sottotipo medico (`MedicalClinic`, `Hospital`...), così tutte sono riconosciute come attività locali da Google, che chiede il sottotipo più specifico di `LocalBusiness` e ammette più tipi in un array.
 
 ## Relazioni
 

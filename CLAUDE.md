@@ -18,7 +18,7 @@ Progetto: ottimizzazione SEO/GEO di kosgroup.com e anniazzurri.it e migrazione d
 - `@id` = URL canonico della pagina + frammento fisso, generato da un'unica funzione:
   - ente: `https://anniazzurri.it/#organization` (KOS Care S.r.l.), `https://kosgroup.com/#organization` (KOS S.p.A., radice senza `/it`);
   - sito: `{base}/#website`; briciole: `{URL}#breadcrumb`; articolo `#article`; persona `#person`; medico `#medico`;
-  - strutture: frammento in decisione tra `#localbusiness` (indicato dall'audit Anni Azzurri, slide 29-30) e `#struttura`: verificare `docs/convenzione-identificativi.md` prima di scrivere codice.
+  - strutture: `{URL scheda}#localbusiness` (deciso il 20/10/2026); residenze con `@type` `["NursingHome", "LocalBusiness"]`, strutture sanitarie con il sottotipo medico più specifico.
 - Mai `sameAs` tra KOS Care e kosgroup.com: il legame è `parentOrganization`.
 - Un solo `@graph` JSON-LD per pagina, emesso lato server. Niente dato strutturato scritto a mano nei chunk.
 
