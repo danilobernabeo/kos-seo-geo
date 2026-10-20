@@ -1,0 +1,38 @@
+<div class="box-infografica col-12 col-lg-5" data-aos="fade-up">
+    <div class="box-infog-content box-infog-bordered">
+        <div class="box-infog-titolo">
+            Our employees
+        </div>
+
+        <div class="box-infog-grafico kos-chart" data-kos-chart="dip">
+
+            <!-- Tabs: same Bootstrap markup/style, no data-bs-toggle (handled by kos-chart.js) -->
+            <ul class="nav nav-pills nav-grafico" role="tablist" aria-label="Geographic area">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" type="button" role="tab" aria-selected="true" aria-controls="kos-chart-dip-panel" data-kos-series="tutti">All</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" type="button" role="tab" aria-selected="false" aria-controls="kos-chart-dip-panel" data-kos-series="ita" tabindex="-1">ITA</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" type="button" role="tab" aria-selected="false" aria-controls="kos-chart-dip-panel" data-kos-series="ger" tabindex="-1">GER</button>
+              </li>
+            </ul>
+
+            <div class="kos-chart__plot" id="kos-chart-dip-panel" role="tabpanel">
+                <div class="kos-chart__grid" aria-hidden="true"></div>
+                <div class="kos-chart__cols"></div>
+            </div>
+
+            <ul class="kos-chart__legend">
+                <li style="--dot: var(--c-women)">Female employees</li>
+                <li style="--dot: var(--c-men)">Male employees</li>
+            </ul>
+
+            <table class="kos-sr-only"></table>
+
+            <script type="application/json">[[kosChartDipendenti? &resource=`54`]]</script>
+        </div>
+
+    </div>
+</div>

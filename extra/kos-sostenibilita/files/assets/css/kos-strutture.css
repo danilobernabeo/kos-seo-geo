@@ -1,0 +1,75 @@
+/* KOS – "Le nostre strutture": lista KPI + globo
+   Proporzioni ricavate dalle immagini originali (lista 410px, globo 579px):
+   tutto scala con la larghezza del contenitore, come facevano le immagini. */
+
+/* ---------- Lista KPI ---------- */
+.kos-kpi-wrap { container-type: inline-size; }
+.kos-kpi {
+  list-style: none; margin: 0;
+  padding: 6.83cqw 4cqw 7.07cqw 5.85cqw;   /* 28 / 16 / 29 / 24 px su 410 */
+  background: #fbfcfc; color: #1a2031;
+}
+.kos-kpi__item { display: flex; align-items: center; gap: 6.1cqw; }
+.kos-kpi__item + .kos-kpi__item { margin-top: 10.9cqw; }
+.kos-kpi__icon { flex: none; display: block; width: 17.56cqw; height: auto; }
+.kos-kpi__text { min-width: 0; position: relative; top: 1.2cqw; }  /* leggero abbassamento come nell originale, senza alterare il passo delle righe */
+.kos-kpi__value {
+  display: block; font-size: 9.2cqw; line-height: 1; font-weight: 400;
+  letter-spacing: -.01em; font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.kos-kpi__label {
+  display: block; margin-top: .75cqw; font-size: 4.4cqw; line-height: 1.2;
+  text-transform: uppercase; letter-spacing: .01em;
+}
+
+/* Fallback browser senza container queries */
+@supports not (container-type: inline-size) {
+  .kos-kpi { padding: 28px 16px 29px 24px; }
+  .kos-kpi__item { gap: 25px; }
+  .kos-kpi__item + .kos-kpi__item { margin-top: 45px; }
+  .kos-kpi__icon { width: 72px; }
+  .kos-kpi__value { font-size: 38px; }
+  .kos-kpi__text { top: 5px; }
+  .kos-kpi__label { margin-top: 3px; font-size: 18px; }
+}
+
+/* Ingresso animato (solo con JS attivo e senza reduced motion) */
+.kos-kpi.is-ready .kos-kpi__item { opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; transition-delay: var(--d, 0ms); }
+.kos-kpi.is-visible .kos-kpi__item { opacity: 1; transform: none; }
+
+/* ---------- Globo ---------- */
+.kos-globo { position: relative; max-width: 579px; container-type: inline-size; }
+.kos-globo__img { display: block; width: 100%; height: auto; }
+.kos-globo__label {
+  position: absolute; left: var(--x); top: var(--y); transform: translateY(-50%);
+  margin: 0; white-space: nowrap;
+  font-size: 1rem; font-size: 3.2cqw;
+  line-height: 1; letter-spacing: .01em; text-transform: uppercase; color: #1a2031;
+}
+.kos-globo__num { font-variant-numeric: tabular-nums; }
+
+/* Testo solo per screen reader (definito anche in kos-chart.css: qui per rendere il file autonomo) */
+.kos-sr-only {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- Variante "Attività del gruppo": icona in riquadro bianco grande ---------- */
+.kos-kpi--att { background: none; padding: 0; }
+.kos-kpi--att .kos-kpi__item { gap: 4.4cqw; }
+.kos-kpi__icon-box {
+  flex: none; display: grid; place-items: center;
+  width: max(80px, 29cqw); aspect-ratio: 1;
+  background: #fff; border-radius: max(8px, 1.5cqw);
+}
+.kos-kpi--att .kos-kpi__icon { width: 45.3%; }
+.kos-kpi--att .kos-kpi__text { top: 0; }
+.kos-kpi--att .kos-kpi__value { font-size: max(1.75rem, 8.5cqw); }
+.kos-kpi--att .kos-kpi__label { margin-top: 2.6cqw; font-size: max(.72rem, 2.85cqw); white-space: normal; }
+@supports not (container-type: inline-size) {
+  .kos-kpi--att .kos-kpi__item { gap: 20px; }
+  .kos-kpi__icon-box { width: 130px; border-radius: 8px; }
+  .kos-kpi--att .kos-kpi__value { font-size: 38px; }
+  .kos-kpi--att .kos-kpi__label { margin-top: 12px; font-size: 13px; }
+}

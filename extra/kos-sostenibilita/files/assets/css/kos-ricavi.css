@@ -1,0 +1,67 @@
+/* KOS – Grafico "Ricavi" (area) – scala con il contenitore come gli altri grafici */
+.kos-area {
+  --c-area:  #58a7c0;   /* colore pieno dell'area (campionato dall'originale) */
+  --c-grid:  #e7ecf1;
+  --c-text:  #1a2031;
+  --c-ring:  #3aa0b9;   /* cerchio della nota */
+  --c-border:#e1e7ea;
+  --dur: 1200ms;
+  container-type: inline-size;
+  color: var(--c-text);
+}
+.kos-area__plot {
+  position: relative;
+  height: clamp(220px, 62vw, 380px);                 /* fallback */
+  height: var(--plot-h, clamp(220px, 60cqw, 460px));
+  margin: 0 0 var(--years-gap, 56px) 52px;
+}
+.kos-area__grid { position: absolute; inset: 0; pointer-events: none; }
+.kos-area__gridline { position: absolute; left: 0; right: 0; border-top: 1px solid var(--c-grid); }
+.kos-area__gridline span {
+  position: absolute; right: calc(100% + 12px); top: -.6em; line-height: 1;
+  font-size: clamp(.72rem, 3.2cqw, 1rem); white-space: nowrap;
+}
+.kos-area__svg {
+  position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible;
+  clip-path: inset(0 0 0 0);
+}
+.kos-area__dot {
+  position: absolute; width: 16px; height: 16px; margin: -8px 0 0 -8px;
+  border-radius: 50%; background: #fff; border: 1.5px solid var(--c-text);
+  box-sizing: border-box;
+}
+.kos-area__value {
+  position: absolute; transform: translate(-50%, calc(-100% - 14px));
+  font-size: clamp(.72rem, 3.2cqw, 1rem); line-height: 1; white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.kos-area__year {
+  position: absolute; top: calc(100% + 22px); transform: translateX(-50%);
+  font-size: clamp(.75rem, 3.2cqw, 1rem); line-height: 1;
+}
+.kos-area__note {
+  display: inline-flex; align-items: center; gap: 12px; margin: 0;
+  padding: 10px 16px; border: 1px solid var(--c-border); border-radius: 10px;
+  font-size: clamp(.78rem, 3.2cqw, .95rem); line-height: 1.35;
+}
+.kos-area__note::before {
+  content: ""; flex: none; width: 16px; height: 16px; border-radius: 50%;
+  border: 3px solid var(--c-ring); box-sizing: border-box;
+}
+.kos-sr-only {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+@container (max-width: 380px) {
+  .kos-area__plot { margin-left: 40px; --years-gap: 44px; }
+  .kos-area__dot { width: 12px; height: 12px; margin: -6px 0 0 -6px; }
+  .kos-area__value { transform: translate(-50%, calc(-100% - 10px)); }
+}
+
+/* Animazione: l'area si "srotola" da sinistra, punti ed etichette compaiono in sequenza */
+.kos-area.is-ready .kos-area__svg { clip-path: inset(0 100% 0 0); transition: clip-path var(--dur) cubic-bezier(.4,0,.2,1); }
+.kos-area.is-ready .kos-area__dot,
+.kos-area.is-ready .kos-area__value { opacity: 0; transition: opacity .4s ease; transition-delay: var(--d, 0ms); }
+.kos-area.is-visible .kos-area__svg { clip-path: inset(0 0 0 0); }
+.kos-area.is-visible .kos-area__dot,
+.kos-area.is-visible .kos-area__value { opacity: 1; }
