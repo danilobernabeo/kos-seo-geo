@@ -33,3 +33,4 @@ Progetto: ottimizzazione SEO/GEO di kosgroup.com e anniazzurri.it e migrazione d
 - Le briciole visibili (snippet `BreadCrumb`) e il `BreadcrumbList` JSON-LD devono avere sempre lo stesso percorso: stesse esclusioni (`aa.breadcrumb_exclude`), `pagetitle` per i livelli intermedi, `menutitle` o `pagetitle` per la pagina corrente.
 - Ogni intervento si riferisce a una voce degli audit dell'agenzia (KosGroup settembre 2026, Anni Azzurri aprile 2026): citarla nel commit, es. `AA-8 BreadcrumbList completo`.
 - Il piano degli sprint è in `docs/piano-sprint-1.md`; le scadenze sono vincolate da una penale: segnalare subito ciò che rischia di slittare.
+- Ogni documento prodotto ha anche la versione docx in `docs/docx/` (stesso nome del file o della scheda): i Claude Docs si esportano dalla scheda (export docx, A4), i Markdown di `docs/` con `scripts/docs/md-in-docx.sh`. Rigenerare il docx a ogni modifica del documento e includerlo nello stesso commit.
