@@ -36,7 +36,7 @@ Legenda: **[2 siti]** = si fa una volta e vale per entrambi; **[KOS]** = kosgrou
 ## Fase 2 — 19-30 ottobre in parallelo: sprint 1
 
 Interventi comuni (stessa piattaforma MODX Cloud, stessa logica):
-10. **[2 siti] Accesso dei crawler AI (6 KOS / 19 AA)**: verifica fatta il 18 ottobre (test user agent e log): nessun blocco di GPTBot e Bingbot. Da completare: ClaudeBot e PerplexityBot sugli intervalli IP pubblicati; nota di chiusura con le evidenze per Cerved/ProWeb (l'audit AA stesso segnala GPTBot e ClaudeBot come possibile falso negativo con codice 200).
+10. **[2 siti] Accesso dei crawler AI (6 KOS / 19 AA)** — CHIUSA il 20/10: nessun blocco. robots.txt con il solo gruppo `*`; 18/18 richieste 200 con gli user agent di 9 bot, stessa pagina del browser (`scripts/checks/verifica-bot-ai.ps1`); nessuna sfida o ban di whackabot, limite o accesso negato sugli IP ufficiali di OpenAI, Anthropic e Perplexity nell'intero log degli errori (`scripts/checks/bot-ai-log.php`). Da chiedere all'agenzia strumento e IP del test; da segnalare a MODX Cloud syslog e cache SSL. Storico: verifica fatta il 18 ottobre (test user agent e log): nessun blocco di GPTBot e Bingbot. Da completare: ClaudeBot e PerplexityBot sugli intervalli IP pubblicati; nota di chiusura con le evidenze per Cerved/ProWeb (l'audit AA stesso segnala GPTBot e ClaudeBot come possibile falso negativo con codice 200).
 11. **[2 siti] robots.txt**: rimozione del Crawl-delay per Bingbot (19 KOS), verifica dello stesso su AA; nessun blocco su PDF fino alla deindicizzazione.
 12. **[2 siti] llms.txt (18 KOS)** — pubblicato il 19/10 su entrambi i siti con charset UTF-8 (regola web); bozze generate da `scripts/llms/genera-llms.py`, sintesi da validare con KOS: stessa struttura per i due siti (chi siamo, sezioni principali, strutture, contatti); contenuto da validare con KOS. Su AA non è voce d'audit ma è nel perimetro (B1).
 13. **[2 siti] Cache delle risorse statiche (3 KOS; 14 AA)** — 19/10 in produzione: immagini 180 giorni, font 365 giorni (regole web in `<sito>/files/web-rules/`), verificato. 19/10 plugin `AssetVersion` (shared) collaudato sui due stage: `?v=<data del file>` automatico su tutti i CSS/JS locali, senza modificare i chunk. **FATTO il 20/10 in produzione**: plugin installato sui due siti, CSS/JS a 180 giorni (verificato `max-age=15552000`). Fatto insieme: AA La Margherita 302→301, Villalba 404→301 (`/rsa-nelle-marche`).: stessa regola web sui due cloud. Per AA anticipa una voce dello sprint 4: consentito, non penalizzato.
@@ -60,7 +60,7 @@ Interventi del singolo sito:
 
 21. Collaudo sugli ambienti di prova: validatore schema.org e Rich Results Test, controllo di robots.txt, llms.txt, intestazioni di cache, redirect.
 22. Rilascio in produzione (fuori orario di punta, backup prima), svuotamento cache MODX.
-23. Nota di consegna dello sprint 1 per Cerved/ProWeb: interventi per voce d'audit, URL da verificare, evidenze (log bot).
+23. Nota di consegna dello sprint 1 per Cerved/ProWeb: interventi per voce d'audit, URL da verificare, evidenze (log bot). **Scritta il 20/10** (scheda condivisa «Nota di consegna dello sprint 1», copia in `docs/docx/nota-di-consegna-sprint-1.docx`); attende solo la conferma di KOS sul testo di llms.txt.
 
 ## Fuori piano, a consuntivo (in attesa di approvazione di KOS)
 
