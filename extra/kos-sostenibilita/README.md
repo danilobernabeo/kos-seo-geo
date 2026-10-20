@@ -60,10 +60,13 @@ Ripristino: il comando esatto è stampato alla fine dell'installazione
 
 ## Da segnalare a KOS (non bloccanti)
 
+Classificazione delle strutture confermata dal Bilancio 2025: 144 = 110 RSA (57 Italia + 53 Germania) + 33 riabilitazione,
+cure psichiatriche e assistenza non residenziale + 1 acuti (Sanatrix); 91 in Italia; 15 centri ambulatoriali a parte;
+13.722 posti letto.
+
 - Dipendenti Germania 2025: totale 4.738, ma donne 3.695 + uomini 1.037 = 4.732 (gruppo 11.770 contro 11.764).
   Pubblicato il totale del documento; i 6 mancanti potrebbero essere dipendenti di genere «altro».
 
-- Classificazione delle strutture: ambulatori da 28 a 15, centri psichiatrici e di riabilitazione (20 + 15) uniti in 33.
 - Pagina 54: `[[!ShowEditStatus? … &date_format`%B %Y`]]` senza `=` (formato della data ignorato); non toccato
   perché cambierebbe la data mostrata e `%B` dipende da `strftime`, deprecata in PHP 8.
 - Contrasto colori e icone ritagliate da screenshot: vedi § 10 delle istruzioni originali.
