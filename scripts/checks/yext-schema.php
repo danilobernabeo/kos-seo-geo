@@ -128,6 +128,7 @@ foreach ($righe as $k => $r) {
     // Identità
     $id = (string) ($s['@id'] ?? '');
     if ($id === '') $segnala($r, 'id-assente', 'manca @id');
+    elseif (!preg_match('#^https?://#', $id)) $segnala($r, 'id-relativo', "@id «{$id}» non è un URL: i lettori lo risolvono in modi diversi (il Rich Results Test lo mostra come http://example-test.site/{$id}); convenzione: {URL scheda}#localbusiness");
     elseif (!str_starts_with($norm($id), $norm($base))) $segnala($r, 'id-estraneo', "@id fuori dal sito: $id (convenzione: {URL scheda}#localbusiness)");
     if ($id !== '') { if (isset($idVisti[$id])) $segnala($r, 'id-duplicato', "@id già usato da {$idVisti[$id]}"); else $idVisti[$id] = $r['url']; }
 
@@ -141,6 +142,7 @@ foreach ($righe as $k => $r) {
 
     // Legami
     if (empty($s['parentOrganization']) && empty($s['branchOf'])) $segnala($r, 'nessun-legame-ente', "nessun parentOrganization verso l'ente del sito ({$base}/#organization)");
+    foreach ($lista($s['brand'] ?? null) as $b) { $bn = trim((string) ($b['name'] ?? '')); if ($bn === '' || $bn === '0') $segnala($r, 'brand-non-valido', "brand con nome «{$bn}»"); }
     foreach ($lista($s['sameAs'] ?? null) as $u) if (preg_match('#(location\.com|yext|yextpages)#i', (string) $u)) $segnala($r, 'sameas-yext', "sameAs verso una pagina Yext: $u");
 
     // URL e nome
@@ -171,6 +173,8 @@ foreach ($righe as $k => $r) {
     else {
         $fasce = array_unique(array_map(fn($o) => ($o['opens'] ?? '') . '-' . ($o['closes'] ?? ''), $ore));
         $giorni = array_unique(array_merge(...array_map(fn($o) => $lista($o['dayOfWeek'] ?? null), $ore)));
+        $senzaOre = array_filter($ore, fn($o) => !isset($o['opens']) && !isset($o['closes']));
+        if ($senzaOre) $segnala($r, 'giorni-senza-orario', count($senzaOre) . ' giorni senza opens/closes (giorno di chiusura non dichiarato in modo valido)');
         if (count($giorni) === 7 && count($fasce) === 1) $segnala($r, 'orari-uguali-7-giorni', 'stesso orario tutti i giorni, domenica compresa (' . reset($fasce) . '): da verificare');
     }
 

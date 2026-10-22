@@ -1,0 +1,37 @@
+Dato strutturato Yext Knowledge Tags su kosgroup.com — 22/10/2026 08:36
+Pagine esaminate: 61; con almeno un problema: 61; JSON-LD archiviati: 59
+
+Problemi per tipo (occorrenze):
+  id-estraneo                   59
+  nessun-legame-ente            59
+  paese-assente                 59
+  sameas-yext                   50
+  immagine-su-cdn-yext          32
+  specialita-come-tipo          27
+  orari-uguali-7-giorni         20
+  url-diverso                    3
+  entita-non-trovata             2
+  id-duplicato                   1
+
+@type usati da Yext:
+  MedicalBusiness+MedicalOrganization+MedicalClinic    10
+  MedicalBusiness+MedicalOrganization+LocalBusiness+Pediatric    10
+  MedicalBusiness+MedicalOrganization          7
+  Psychiatric                                  5
+  MedicalClinic                                5
+  MedicalBusiness+MedicalOrganization+Pediatric+LocalBusiness     4
+  Pediatric                                    2
+  MedicalBusiness+MedicalOrganization+Dentist     2
+  MedicalClinic+Psychiatric                    2
+  Psychiatric+MedicalBusiness+MedicalOrganization     1
+  Psychiatric+MedicalClinic                    1
+  MedicalBusiness+MedicalOrganization+MedicalClinic+Physician     1
+  MedicalClinic+MedicalBusiness+MedicalOrganization     1
+  MedicalBusiness+MedicalOrganization+LocalBusiness     1
+  Dentist                                      1
+  Dentist+MedicalBusiness+MedicalOrganization     1
+  MedicalBusiness+MedicalOrganization+Physician     1
+  LocalBusiness+MedicalBusiness+MedicalOrganization     1
+  MedicalBusiness+MedicalOrganization+Podiatric+Obstetric     1
+  Hospital+MedicalBusiness+MedicalOrganization+Dentist     1
+  Hospital+MedicalBusiness+MedicalOrganization     1
