@@ -12,15 +12,15 @@ Progetto: ottimizzazione SEO/GEO di kosgroup.com e anniazzurri.it e migrazione d
   - solo kosgroup.com: MIGX, Tagger, ImportX;
   - solo anniazzurri.it: CKEditor, EMO (offusca le email via JavaScript: gli indirizzi non sono leggibili dai crawler AI che non eseguono JS; da considerare per la scheda contatti lato server, voce 21 audit Anni Azzurri, e per il dato strutturato, dove l'email va scritta in chiaro).
 
-## Regole dagli interventi su prestazioni e link (8-22/10/2026, fuori progetto)
+## Regole dagli interventi su prestazioni e link (8-22/10/2026)
 
-Dettaglio in `docs/riferimenti/handoff-ttfb-20261022.md`. Valgono per ogni elemento che il progetto tocca:
+Interventi fatti da Danilo in un'altra chat, ora conclusa (dettaglio in `docs/riferimenti/handoff-ttfb-20261022.md`). Dal 22/10 ogni ulteriore modifica su questi temi (TTFB, regole web, link, sitemap, head KOS, Cloud Edge) si guida da questo progetto. Valgono per ogni elemento che il progetto tocca:
 
 - Link interni sempre assoluti (`/...`): `link_tag_scheme` = abs su entrambi i siti; ogni chiamata Wayfinder/pdoMenu/pdoCrumbs con `&scheme=`abs``; placeholder `href="/[[+uri]]"`; negli snippet `makeUrl` con `link_tag_scheme`.
 - Nessun plugin o snippet che risponda 200 a URL inesistenti (OnPageNotFound). kosgroup.com: regola nginx che dà 404 agli URL annidati `/(it|en)/.../(it|en)`.
 - Niente nuove chiamate non in cache `[[!...]]` negli head e nei menu (pesano sul TTFB): JSON-LD e dati di risorsa in cache.
 - anniazzurri.it: sitemap (pdoSitemap) e `noindex, follow` governati dalla casella «Ricercabile»; nuovi head con la stessa riga `[[*searchable:is=`0`:then=...]]`.
-- kosgroup.com: gli head (13 chunk) vanno consolidati in un punto solo (hreflang, noindex, Canonical, CSS); interventi SEO sugli head dentro il consolidamento, coordinato con Danilo.
+- kosgroup.com: gli head (13 chunk) vanno consolidati in un punto solo (hreflang, noindex, Canonical, CSS); interventi SEO sugli head dentro il consolidamento, gestito da questo progetto insieme alla voce 24 (JSON-LD delle landing).
 - Possibile Cloud Edge (Cloudflare) davanti ai siti: prima di attivarlo rivedere header, redirect e accesso dei crawler AI (KOS-6, AA-19).
 - Prima di UPDATE massivi sul database: tabella di backup `..._bak_AAAAMMGG`.
 
