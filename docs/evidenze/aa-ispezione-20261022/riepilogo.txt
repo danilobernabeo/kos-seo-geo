@@ -1,0 +1,222 @@
+Ispezione AA-1 / AA-6 su https://anniazzurri.it — 22/10/2026 14:46
+Pagine: 100 (max 3 per template)
+
+template                                pag H1≠1  H2dup  Guarda  sfondi  img-alt
+(0)                                       3      0      0       0      10        6
+albero-dei-ricordi-speciale               1      0      0       0       0        7
+centro-diurno                             3      0      0       0       3        3
+contatti                                  3      0      1       0       2        3
+convegnoAA                                1      0      0       0      61        0
+fkt-ad-landing                            1      0      0       0       2        4
+formIscrizione                            1      0      0       0       0        1
+home                                      1      0      0       0      15        1
+interna-alzheimer                         1      0      0       0       4        1
+interna-argento-vivo                      1      0      0       0       7        1
+interna-articolo                          3      0      0       0       1        4
+interna-cure-avanzate                     1      0      0       0       1        1
+interna-cure-e-assistenza-domiciliari-    3      0      0       0      15        0
+interna-equipe                            1      0      0       0       1        1
+interna-homecare-academy                  1      0      0       0       1        1
+interna-il-nostro-approccio               3      0      0       0       3        3
+interna-menu                              3      0      0       0      29        3
+interna-menu-chi-accogliamo               3      0      0       0      43        3
+interna-menu-chi-siamo                    3      0      0       0       3        6
+interna-menu-cure-avanzate                3      0      0       0      15        3
+interna-menu-faq                          3      0      0       0       3        3
+interna-menu-form-registrazione           3      0      0       0       7        3
+interna-menu-patologie                    3      0      0       0       6        3
+interna-menu-soluzioni                    3      0      0       0      12        3
+interna-menu-sos-famiglia                 3      0      0       0       3        3
+interna-menu-tariffe-e-convenzioni        3      0      0       0       3        3
+interna-prevenzione-covid                 1      0      0       0       1        1
+interna-speaker-per-un-giorno             1      0      0       0       0       37
+interna-sportello-sociale                 1      0      0       0       1        1
+landing-assistenza-domiciliare-v2         2      0      0       0       6        4
+news                                      1      0      0       0       1        2
+oss-landing                               3      0      0       0       8       12
+provincia                                 3      0      0       0      10        3
+regione                                   3      0      0       0      32        3
+residenze                                 1      0      0       0       1        1
+rsa                                       3      0      0       0       9       27
+rsa-landing                               3      0      0       0       3       14
+rsa-landing-borgomanero                   1      0      0       0       4       27
+rsa-landing-carmagnola                    1      0      0       0       4       21
+rsa-landing-idice                         1      0      0       0       1        5
+rsa-landing-il-giardino                   1      0      0       0       1        5
+rsa-landing-il-poggione-2                 2      0      0       0       8       78
+rsa-landing-minerva                       3      0      1       0      17       13
+rsa-landing-sant-anna                     1      0      0       0       1        5
+rsa-landing-sestri                        1      0      0       0       1        5
+rsa-landing-tonengo                       1      0      0       0       4        5
+rsa-landing-villa-dei-ciliegi             1      0      0       0       1        5
+wellmakers-landing                        3      0      0       0       3        0
+yext-search                               1      1      0       0       0        1
+
+H2 più ripetuti tra le pagine del campione (testo: pagine):
+   65  vuoi essere sempre aggiornato sulla vita in residenza?
+   17  comfort alberghieri guarda meno guarda di più
+   17  tariffe guarda meno guarda di più
+   17  documenti informativi
+   16  gli ospiti che accogliamo guarda meno guarda di più
+   16  servizi sanitari guarda meno guarda di più
+   16  percorsi di socializzazione e stimolazione guarda meno guarda di più
+    6  domande frequenti
+    6  le nostre residenze
+    5  un grande gruppo, una risposta vicino a te
+    4  il processo di selezione
+    4  attività proposte
+    4  giornata tipo
+    4  gli ospiti che accogliamo
+    4  come accedere
+    3  quando sceglierlo?
+    3  come accedere?
+    3  lombardia guarda meno guarda di più
+    3  marche guarda meno guarda di più
+    3  programma
+    3  tariffe del centro diurno
+    2  cos'è l'rsa aperta?
+    2  a chi è rivolta rsa aperta?
+    2  quali sono le prestazioni offerte?
+    2  come si accede?
+
+Origini delle immagini di sfondo di contenuto, per template:
+  (0)
+      chunk heading-home | chunk heading-home2
+      chunk heading-regione | chunk heading-cure-e-assistenza-domiciliari
+      chunk heading-chi-siamo | chunk header-209 | chunk header-210 | chunk news-top (+2)
+  centro-diurno
+      chunk heading-rsa | chunk rsa-elenco-row | chunk centri-diurni-elenco-row | chunk heading-rsa-landing (+2)
+  contatti
+      chunk heading-chi-siamo | chunk header-209 | chunk header-210 | chunk news-top (+2)
+  convegnoAA
+      chunk heading-regione | chunk heading-cure-e-assistenza-domiciliari
+  fkt-ad-landing
+      chunk heading-regione | chunk heading-cure-e-assistenza-domiciliari
+  home
+      chunk heading-home2
+      chunk heading-home | chunk heading-home2
+      chunk heading-chi-siamo | chunk header-209 | chunk header-210 | chunk news-top (+2)
+      chunk heading-regione | chunk heading-cure-e-assistenza-domiciliari
+  interna-alzheimer
+      template interna-alzheimer
+      chunk heading-regione | chunk heading-cure-e-assistenza-domiciliari
+  interna-argento-vivo
+      template interna-argento-vivo
+      chunk heading-rsa | chunk rsa-elenco-row | chunk centri-diurni-elenco-row | chunk heading-rsa-landing (+2)
+      chunk campagna-oss-veneto
+  interna-articolo
+      chunk heading-chi-siamo | chunk header-209 | chunk header-210 | chunk news-top (+2)
+  interna-cure-avanzate
+      template interna-cure-avanzate | template interna-menu-cure-avanzate
+  interna-cure-e-assistenza-domiciliari-new
+      chunk heading-rsa | chunk rsa-elenco-row | chunk centri-diurni-elenco-row | chunk heading-rsa-landing (+2)
+  interna-equipe
+      template interna-equipe
+  interna-homecare-academy
+      chunk heading-interna-homecare-academy
+  interna-il-nostro-approccio
+      chunk heading-interna-il-nostro-approccio
+  interna-menu
+      chunk heading-interna-menu
+      chunk heading-rsa | chunk rsa-elenco-row | chunk centri-diurni-elenco-row | chunk heading-rsa-landing (+2)
+      chunk heading-regione | chunk heading-cure-e-assistenza-domiciliari
+  interna-menu-chi-accogliamo
+      chunk heading-chi-accogliamo
+      chunk heading-rsa | chunk rsa-elenco-row | chunk centri-diurni-elenco-row | chunk heading-rsa-landing (+2)
+      chunk campagna-ip-marene
+      chunk strutture-soggiorni-estivi-piemonte
+      chunk campagna-oss-emilia-romagna | chunk campagna-ip-emi
+      chunk campagna-oss-veneto
+      chunk campagna-oss-toscana
+  interna-menu-chi-siamo
+      chunk heading-chi-siamo | chunk header-209 | chunk header-210 | chunk news-top (+2)
+  interna-menu-cure-avanzate
+      template interna-cure-avanzate | template interna-menu-cure-avanzate
+      chunk heading-rsa | chunk rsa-elenco-row | chunk centri-diurni-elenco-row | chunk heading-rsa-landing (+2)
+      chunk campagna-oss-veneto
+      chunk strutture-soggiorni-estivi-piemonte
+      chunk campagna-ip-marene
+  interna-menu-faq
+      chunk heading-interna-menu-faq
+  interna-menu-form-registrazione
+      chunk heading-regione | chunk heading-cure-e-assistenza-domiciliari
+      chunk heading-chi-siamo | chunk header-209 | chunk header-210 | chunk news-top (+2)
+  interna-menu-patologie
+      chunk heading-interna-patologie
+      chunk heading-chi-siamo | chunk header-209 | chunk header-210 | chunk news-top (+2)
+  interna-menu-soluzioni
+      chunk heading-interna-menu
+      chunk 25
+      chunk heading-regione | chunk heading-cure-e-assistenza-domiciliari
+  interna-menu-sos-famiglia
+      chunk heading-sos-famiglia
+  interna-menu-tariffe-e-convenzioni
+      chunk heading-interna-menu-tariffe-e-convenzioni
+  interna-prevenzione-covid
+      template interna-prevenzione-covid
+  interna-sportello-sociale
+      chunk heading-interna-sportello-sociale
+  landing-assistenza-domiciliare-v2
+      chunk heading-chi-siamo | chunk header-209 | chunk header-210 | chunk news-top (+2)
+  news
+      chunk heading-chi-siamo | chunk header-209 | chunk header-210 | chunk news-top (+2)
+  oss-landing
+      chunk heading-regione | chunk heading-cure-e-assistenza-domiciliari
+      chunk campagna-oss-toscana
+  provincia
+      chunk heading-regione | chunk heading-cure-e-assistenza-domiciliari
+      chunk campagna-oss-toscana
+      chunk campagna-oss-veneto
+      chunk heading-rsa | chunk rsa-elenco-row | chunk centri-diurni-elenco-row | chunk heading-rsa-landing (+2)
+  regione
+      chunk heading-regione | chunk heading-cure-e-assistenza-domiciliari
+      chunk heading-rsa | chunk rsa-elenco-row | chunk centri-diurni-elenco-row | chunk heading-rsa-landing (+2)
+      chunk strutture-soggiorni-estivi-piemonte | chunk campagna-oss-piemonte
+      chunk strutture-soggiorni-estivi-piemonte
+      chunk campagna-ip-marene
+      chunk campagna-assunzione-colf-badanti
+  residenze
+      template residenze
+  rsa
+      chunk heading-rsa | chunk rsa-elenco-row | chunk centri-diurni-elenco-row | chunk heading-rsa-landing (+2)
+      chunk gal-residenza-anni-azzurri-villa-pineta
+      chunk campagna-oss-veneto
+      chunk gal-residenza-anni-azzurri-rezzato | chunk gal-residenza-anni-azzurri-villa-clarice
+      chunk gal-residenza-anni-azzurri-rezzato
+  rsa-landing
+      chunk heading-rsa | chunk rsa-elenco-row | chunk centri-diurni-elenco-row | chunk heading-rsa-landing (+2)
+      chunk campagna-oss-toscana
+  rsa-landing-borgomanero
+      chunk heading-rsa | chunk rsa-elenco-row | chunk centri-diurni-elenco-row | chunk heading-rsa-landing (+2)
+      chunk gal-residenza-anni-azzurri-borgomanero | chunk gal-lrsa-borgomanero
+  rsa-landing-carmagnola
+      chunk strutture-soggiorni-estivi-piemonte | chunk campagna-oss-piemonte
+      chunk gal-residenza-anni-azzurri-carmagnola | chunk gal-lrsa-carmagnola
+  rsa-landing-idice
+      chunk campagna-oss-emilia-romagna | chunk campagna-ip-emi
+  rsa-landing-il-giardino
+      chunk heading-rsa | chunk rsa-elenco-row | chunk centri-diurni-elenco-row | chunk heading-rsa-landing (+2)
+  rsa-landing-il-poggione-2
+      chunk heading-rsa | chunk rsa-elenco-row | chunk centri-diurni-elenco-row | chunk heading-rsa-landing (+2)
+      chunk gal-residenza-anni-azzurri-il-poggione | chunk gal-lrsa-il-poggione-2
+      chunk gal-lrsa-centro-diurno-la-maremma
+  rsa-landing-minerva
+      chunk campagna-oss-veneto
+      chunk heading-rsa | chunk rsa-elenco-row | chunk centri-diurni-elenco-row | chunk heading-rsa-landing (+2)
+      chunk strutture-soggiorni-estivi-piemonte | chunk campagna-oss-piemonte
+      chunk strutture-soggiorni-estivi-piemonte
+      chunk campagna-ip-marene
+      chunk campagna-assunzione-colf-badanti
+      chunk campagna-oss-liguria
+      chunk gal-residenza-anni-azzurri-minerva | chunk gal-lrsa-minerva
+  rsa-landing-sant-anna
+      chunk heading-rsa | chunk rsa-elenco-row | chunk centri-diurni-elenco-row | chunk heading-rsa-landing (+2)
+  rsa-landing-sestri
+      chunk heading-rsa | chunk rsa-elenco-row | chunk centri-diurni-elenco-row | chunk heading-rsa-landing (+2)
+  rsa-landing-tonengo
+      chunk strutture-soggiorni-estivi-piemonte
+      chunk gal-residenza-anni-azzurri-tonengo | chunk gal-lrsa-tonengo
+  rsa-landing-villa-dei-ciliegi
+      chunk campagna-oss-emilia-romagna | chunk campagna-ip-emi
+  wellmakers-landing
+      chunk heading-wellmakers-landing
