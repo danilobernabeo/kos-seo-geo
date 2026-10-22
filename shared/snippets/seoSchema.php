@@ -185,7 +185,15 @@ $pulisci = function ($a) use (&$pulisci) {
  * Emesso per intero su ogni pagina: è anche il valore di author sui contenuti
  * della redazione, quindi deve essere risolvibile senza seguire altri @id.
  */
-$org = function () use ($cfg, $csv, $ORG_ID, $PARENT_ID, $CANON, $pulisci, $P) {
+$org = function ($lingua = '') use ($cfg, $csv, $ORG_ID, $PARENT_ID, $CANON, $pulisci, $P) {
+    // Nome dell'ente nella lingua della pagina (kosgroup.com: «Gruppo KOS» in italiano,
+    // «KOS Group» in inglese); l'altra forma va in alternateName. Stesso @id: l'entità è una.
+    $nome = $cfg('org_name', 'Anni Azzurri');
+    $altro = $cfg('org_alternate', '');
+    if ($lingua !== '' && strpos($lingua, 'it') !== 0 && ($nomeEn = $cfg('org_name_en', ''))) {
+        $altro = $nome;
+        $nome = $nomeEn;
+    }
 
     // Logo con @id proprio, URL assoluto (il footer storico aveva una doppia barra).
     $logo = null;
@@ -206,13 +214,13 @@ $org = function () use ($cfg, $csv, $ORG_ID, $PARENT_ID, $CANON, $pulisci, $P) {
     // Su kosgroup.com la controllante (CIR S.p.A.) non ha un @id nostro: parent_org_id vuoto,
     // nodo descritto per nome. parent_org_name = "-" toglie il collegamento.
     $parent = null;
-    $nome = $cfg('parent_org_name', 'KOS S.p.A.');
-    if ($nome !== '-') {
+    $nomeP = $cfg('parent_org_name', 'KOS S.p.A.');
+    if ($nomeP !== '-') {
         $parent = array_filter([
             '@id'       => $PARENT_ID === '-' ? null : $PARENT_ID,
             '@type'     => 'Organization',
-            'name'      => $nome,
-            'legalName' => $cfg('parent_org_legal', $nome),
+            'name'      => $nomeP,
+            'legalName' => $cfg('parent_org_legal', $nomeP),
             'vatID'     => $cfg('parent_org_vat', $P === 'aa' ? 'IT10674520159' : ''),
             'url'       => $cfg('parent_org_url', $P === 'aa' ? 'https://kosgroup.com/it' : ''),
         ]);
@@ -223,8 +231,8 @@ $org = function () use ($cfg, $csv, $ORG_ID, $PARENT_ID, $CANON, $pulisci, $P) {
     return $pulisci([
         '@type'              => 'Organization',
         '@id'                => $ORG_ID,
-        'name'               => $cfg('org_name',  'Anni Azzurri'),
-        'alternateName'      => $cfg('org_alternate', ''),
+        'name'               => $nome,
+        'alternateName'      => $altro,
         'legalName'          => $cfg('org_legal', 'KOS Care S.r.l.'),
         'vatID'              => $cfg('org_vat',   'IT01148190547'),
         'taxID'              => $cfg('org_taxid', ''),
@@ -629,7 +637,7 @@ if ($type === 'profile') {
         $io,
         $nodoBriciole($res, $paginaCorrente),
         $sito($LANG),
-        $org(),
+        $org($LANG),
     ];
     return $json($grafo);
 }
@@ -653,7 +661,7 @@ if ($type === 'page') {
         'breadcrumb'  => $br ? ['@id' => $paginaCorrente . '#breadcrumb'] : null,
         'dateModified'=> $data($res->get('editedon') ?: $res->get('publishedon')),
     ]);
-    return $json([$pagina, $br, $sito($LANG), $org()]);
+    return $json([$pagina, $br, $sito($LANG), $org($LANG)]);
 }
 
 /* ---------------------------------------------------------------- articolo */
@@ -703,6 +711,6 @@ if ($revisore) $grafo[] = $revisore;
 
 $grafo[] = $nodoBr;
 $grafo[] = $sito($LANG);
-$grafo[] = $org();
+$grafo[] = $org($LANG);
 
 return $json($grafo);

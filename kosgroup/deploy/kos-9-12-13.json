@@ -67,6 +67,11 @@
       "area": "kos"
     },
     {
+      "key": "kos.org_name_en",
+      "value": "KOS Group",
+      "area": "kos"
+    },
+    {
       "key": "kos.org_legal",
       "value": "KOS S.p.A.",
       "area": "kos"
