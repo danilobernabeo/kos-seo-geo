@@ -94,7 +94,7 @@ foreach ($csv($cfg('lingue', '')) as $voce) {
  *   «Chi siamo»); i livelli nascosti dal menu ma pubblicati restano e sono cliccabili;
  * - breadcrumb_home: etichetta della home (vuoto = pagetitle della home);
  * - breadcrumb_templates: template che mostrano le briciole; la BreadcrumbList esce solo lì e sulle
- *   pagine che le richiamano nel contenuto (myBreadcrumb). Vuoto = tutte le pagine (anniazzurri.it). */
+ *   pagine che le richiamano nel contenuto (myBreadcrumb o chunk breadcrumb). Vuoto = tutte le pagine (anniazzurri.it). */
 $BC_TITOLO   = $cfg('breadcrumb_titolo', 'pagetitle');
 $BC_SOLO_PUB = (int) $cfg('breadcrumb_solo_pubblicate', 0);
 $BC_HOME     = (string) $cfg('breadcrumb_home', '');
@@ -452,7 +452,9 @@ $mostraBriciole = function ($res) use ($BC_TPL) {
     $tpl = $res->getOne('Template');
     if ($tpl && in_array($tpl->get('templatename'), $BC_TPL, true)) return true;
     $c = (string) $res->get('content');
-    return stripos($c, 'myBreadcrumb') !== false || stripos($c, 'type=`briciole`') !== false;
+    // Nel contenuto: snippet myBreadcrumb, chunk [[$breadcrumb]] (es. news, pagine generica-en) o chiamata diretta.
+    return stripos($c, 'myBreadcrumb') !== false || stripos($c, 'type=`briciole`') !== false
+        || preg_match('/\[\[\$breadcrumb(?![\w.-])/i', $c) === 1;
 };
 
 /* Nodo BreadcrumbList, o null se la pagina non mostra briciole o ha meno di due livelli. */
