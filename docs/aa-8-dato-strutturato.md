@@ -18,7 +18,7 @@ Le briciole seguono le stesse regole dello snippet `BreadCrumb` (albero MODX, es
 `aa.breadcrumb_exclude`, pagetitle per i livelli intermedi, menutitle o pagetitle per la pagina corrente).
 Esempio verificato con MODX simulato su Vico Mercati: identico a quello della slide 35 dell'audit.
 
-Il nodo delle residenze (LocalBusiness/NursingHome) non è in questo rilascio: arriva con le schede
+Il nodo delle residenze (LocalBusiness, tipo da definire) non è in questo rilascio: arriva con le schede
 struttura (voci 2, 5, 11, 21, sprint 3).
 
 ## Installazione (prima sullo stage)

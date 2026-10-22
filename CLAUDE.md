@@ -18,7 +18,7 @@ Progetto: ottimizzazione SEO/GEO di kosgroup.com e anniazzurri.it e migrazione d
 - `@id` = URL canonico della pagina + frammento fisso, generato da un'unica funzione:
   - ente: `https://anniazzurri.it/#organization` (KOS Care S.r.l.), `https://kosgroup.com/#organization` (KOS S.p.A., radice senza `/it`);
   - sito: `{base}/#website`; briciole: `{URL}#breadcrumb`; articolo `#article`; persona `#person`; medico `#medico`;
-  - strutture: `{URL scheda}#localbusiness` (deciso il 20/10/2026); residenze con `@type` `["NursingHome", "LocalBusiness"]`, strutture sanitarie con il sottotipo medico più specifico.
+  - strutture: `{URL scheda}#localbusiness` (deciso il 20/10/2026); residenze: `@type` da decidere con l'agenzia prima dello sprint 3 (schema.org non ha un tipo «casa di riposo»: `NursingHome` NON esiste; proposta `["MedicalOrganization", "LocalBusiness"]`); strutture sanitarie con il sottotipo medico più specifico (`MedicalClinic`, `Hospital`...); medici KOS `IndividualPhysician` con `practicesAt` verso `#localbusiness`.
 - Mai `sameAs` tra KOS Care e kosgroup.com: il legame è `parentOrganization`.
 - Un solo `@graph` JSON-LD per pagina, emesso lato server. Niente dato strutturato scritto a mano nei chunk.
 

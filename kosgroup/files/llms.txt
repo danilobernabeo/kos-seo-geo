@@ -69,7 +69,7 @@ Questo file elenca le pagine principali di kosgroup.com per aiutare i sistemi di
 - [Centro Ambulatoriale Santo Stefano Pesaro](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-pesaro): ambulatorio di riabilitazione, Pesaro (PU)
 - [Centro Ambulatoriale Santo Stefano Porto Potenza Picena](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-porto-potenza-picena): ambulatorio di riabilitazione, Porto Potenza Picena (MC)
 - [Centro Ambulatoriale Santo Stefano San Benedetto del Tronto](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-san-benedetto-del-tronto): ambulatorio di riabilitazione, San Benedetto del Tronto (AP)
-- [Centro Ambulatoriale Santo Stefano San Severino](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-san-severino): ambulatorio di riabilitazione, San Severino Marche (Taccoli (MC)
+- [Centro Ambulatoriale Santo Stefano San Severino](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-san-severino): ambulatorio di riabilitazione, San Severino Marche, Taccoli (MC)
 - [Centro Ambulatoriale Santo Stefano Tolentino](https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-tolentino): ambulatorio di riabilitazione, Tolentino (MC)
 - [Centro Santo Stefano Cagli](https://kosgroup.com/it/centri/centro-santo-stefano-cagli): centro di riabilitazione, Cagli (PU)
 - [Centro Santo Stefano Macerata Feltria](https://kosgroup.com/it/centri/centro-santo-stefano-macerata-feltria): centro di riabilitazione, Macerata Feltria (PU)

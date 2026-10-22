@@ -31,7 +31,7 @@ Gli identificativi:
 | Articolo | `Article` | `{URL}#article` | `https://anniazzurri.it/come-vivono-gli-anziani-in-rsa#article` |
 | Autore | `Person` | `{URL pagina autore}#person` | `https://anniazzurri.it/autori/antonella-schiavino#person` |
 
-**Strutture: `#localbusiness`** (deciso il 20 ottobre 2026, per entrambi i siti), come indicato dall'audit Anni Azzurri (slide 29-30). Il frammento è solo un identificativo: né schema.org né Google prescrivono una forma, contano la stabilità e l'uso coerente in tutte le pagine. Il nome resta corretto anche quando il tipo è più specifico: le residenze si descrivono con `@type` `["NursingHome", "LocalBusiness"]`, le cliniche e gli ambulatori con il sottotipo medico (`MedicalClinic`, `Hospital`...), così tutte sono riconosciute come attività locali da Google, che chiede il sottotipo più specifico di `LocalBusiness` e ammette più tipi in un array.
+**Strutture: `#localbusiness`** (deciso il 20 ottobre 2026, per entrambi i siti), come indicato dall'audit Anni Azzurri (slide 29-30). Il frammento è solo un identificativo: né schema.org né Google prescrivono una forma, contano la stabilità e l'uso coerente in tutte le pagine. Il nome resta corretto qualunque sia il tipo. Tipo delle residenze da decidere con l'agenzia prima dello sprint 3: schema.org non ha un tipo «casa di riposo» (`NursingHome` non esiste, verificato su schema.org 30.1 il 22 ottobre 2026); proposta `["MedicalOrganization", "LocalBusiness"]`, che Google riconosce come attività locale. Cliniche e ambulatori con il sottotipo sanitario più specifico (`MedicalClinic`, `Hospital`...). Medici: `IndividualPhysician` con `practicesAt` verso il `#localbusiness` della struttura.
 
 ## Relazioni
 

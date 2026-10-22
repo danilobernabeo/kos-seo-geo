@@ -66,6 +66,7 @@ for reg in sorted(byreg):
     for k in sorted(byreg[reg], key=lambda x: x['Nome (pagetitle)']):
         tip = ', '.join(SING.get(t.strip(), t.strip().lower()) for t in re.split(r'[|,]', k['Tipologie'] or '') if t.strip())
         loc = bello(k['Città'] or '')
+        loc = re.sub(r'\s*\(([^)]*)$', r', \1', loc)  # parentesi non chiusa nel dato (es. «San Severino Marche (Taccoli»)
         sig = k['Sigla da indirizzo'] or k['Sigla da provincia'] or ''
         out.append(f"- [{k['Nome (pagetitle)']}]({k['URL canonico']}): {tip}{', ' if tip else ''}{loc}{f' ({sig})' if sig else ''}")
     out.append('')
