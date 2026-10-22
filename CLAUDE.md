@@ -35,3 +35,14 @@ Progetto: ottimizzazione SEO/GEO di kosgroup.com e anniazzurri.it e migrazione d
 - Il piano degli sprint è in `docs/piano-sprint-1.md`; le scadenze sono vincolate da una penale: segnalare subito ciò che rischia di slittare.
 - Le proposte fuori piano (a consuntivo, es. pagina 404 completa, paginazione news AA) non compaiono nella documentazione condivisa con KOS o l'agenzia: restano nel piano interno e si documentano per il referente di Danilo solo dopo l'implementazione.
 - Ogni documento prodotto ha anche la versione docx in `docs/docx/` (stesso nome del file o della scheda): i Claude Docs si esportano dalla scheda (export docx, A4), i Markdown di `docs/` con `scripts/docs/md-in-docx.sh`. Rigenerare il docx a ogni modifica del documento e includerlo nello stesso commit.
+
+## Lavori extra (fuori dal progetto SEO/GEO)
+
+Altri lavori sui due siti (es. pagina Sostenibilità, ricerca nelle news, sincronizzazione video YouTube) si fanno in chat separate ma in questo repository e sugli stessi stage, con queste regole:
+
+- Una cartella per lavoro in `extra/<nome>/` con il suo README (scopo, elementi toccati, rilasci, ripristino). Commit con prefisso `Extra <nome>:`, senza codici d'audit; i lavori extra non compaiono nella documentazione del progetto.
+- Installazione solo con script ripetibili (prova, `--scrivi`, backup, ripristino), come `extra/kos-sostenibilita/installa.php`: dopo ogni riallineamento dello stage dalla produzione si rilanciano.
+- Prima di toccare un elemento, controllare `docs/elementi-sotto-progetto.md` e i README degli altri lavori in `extra/`: un elemento ha un solo lavoro proprietario alla volta. Se serve modificarne uno del progetto, si coordina qui.
+- Le regole del dato strutturato valgono anche per gli extra: un solo `@graph` per pagina, emesso dalla libreria comune (nuovi tipi, es. `VideoObject`, si aggiungono lì, non in chunk scritti a mano).
+- Precedenza al progetto (penale): niente rilasci extra in produzione il giorno prima di una consegna di sprint e durante le settimane di verifica di Cerved/ProWeb sugli elementi verificati.
+- Segreti (chiavi API, token) mai nel codice: impostazioni di sistema MODX.
