@@ -7,7 +7,7 @@
     "container_suffix": "/",
     "cache_resource": "1",
     "cache_default": "1",
-    "link_tag_scheme": "-1",
+    "link_tag_scheme": "abs",
     "cultureKey": "it",
     "manager_language": null
 }

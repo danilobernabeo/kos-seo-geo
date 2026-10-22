@@ -1,6 +1,6 @@
 # Baseline anniazzurri.it
 
-Istantanea degli elementi del cloud di produzione (c0072) presa il 19/10/2026, aggiornata il 20/10/2026 (modifiche di ottimizzazione fatte fuori dal progetto) con `scripts/export-elements.php`, prima di qualsiasi modifica del progetto. Sola consultazione.
+Istantanea degli elementi del cloud di produzione (c0072) presa il 19/10/2026, aggiornata il 20/10/2026 (modifiche di ottimizzazione fatte fuori dal progetto) e il 22/10/2026 (riallineamento dello stage prima dello sprint 2: link assoluti, `link_tag_scheme` = abs, noindex per le pagine non ricercabili, fatti in produzione il 21/10) con `scripts/export-elements.php`, prima di qualsiasi modifica del progetto. Sola consultazione.
 
 Valori segreti lato server sostituiti con un segnaposto (restano invariati sul sito):
 - `snippets/countContact.php`: chiave di cifratura.

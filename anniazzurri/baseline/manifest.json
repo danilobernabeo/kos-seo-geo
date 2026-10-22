@@ -1,5 +1,5 @@
 {
-    "exported_at": "2026-10-20T02:49:04-05:00",
+    "exported_at": "2026-10-22T14:24:09-05:00",
     "site_url": "http://localhost/",
     "elements": [
         {
@@ -7972,6 +7972,25 @@
         },
         {
             "type": "plugins",
+            "id": 11,
+            "name": "AssetVersion",
+            "file": "plugins/AssetVersion.php",
+            "category": "",
+            "description": "Aggiunge ?v=<data file> ai CSS e JS locali (cache lunga senza file vecchi)",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null,
+            "disabled": false,
+            "events": [
+                {
+                    "event": "OnWebPagePrerender",
+                    "priority": 0
+                }
+            ]
+        },
+        {
+            "type": "plugins",
             "id": 2,
             "name": "CKEditor",
             "file": "plugins/CKEditor.php",
@@ -10630,6 +10649,18 @@
                     "area_trans": ""
                 }
             }
+        },
+        {
+            "type": "snippets",
+            "id": 139,
+            "name": "aaSchema",
+            "file": "snippets/aaSchema.php",
+            "category": "",
+            "description": "Dato strutturato JSON-LD unico del sito (@graph) e box autore",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
         },
         {
             "type": "snippets",

@@ -6,9 +6,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>[[*pagetitle]] - [[++site_name]]</title>	
+		<title>[[*pagetitle]] - [[++site_name]]</title>
+  [[*searchable:is=`0`:then=`<meta name="robots" content="noindex, follow">`]]	
 		<meta name="description" content="[[*description]]">
 		<meta name="keywords" content="[[*keywords]]">
+		[[!Canonical]]
 
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="[[++assets_url]]convegno2025/img/favicon.ico" type="image/x-icon" />
@@ -80,6 +82,12 @@
 
 			<div role="main" class="main calc-height initial-height" id="main">
 
+				<!-- Titolo e presentazione della pagina (voce AA-18): la galleria da sola non ha testo leggibile -->
+				<div class="container pt-5 pb-4">
+					<h1 class="h2 mb-2">[[*longtitle:default=`[[*pagetitle]]`]]</h1>
+					[[*introtext:notempty=`<p class="lead mb-0">[[*introtext]]</p>`]]
+				</div>
+
 				<div class="container-fluid p-0">
 
 					[[!photoGalleryAA2025]]
@@ -113,5 +121,6 @@
 		<!-- Theme Initialization Files -->
 		<script src="[[++assets_url]]convegno2025/js/theme.init.js"></script>
 
+		[[aaSchema]]
 	</body>
 </html>

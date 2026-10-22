@@ -93,6 +93,13 @@ if ($titoloEvento === '') {
 if ($informativa === '') {
     $informativa = '/assets/doc/KOS-Care_GDPR_Informativa.pdf';
 }
+/* Percorso assoluto dal root del sito ("/assets/doc/...") se la TV contiene un
+   percorso relativo ("assets/doc/..."): un link relativo dipende da <base href>
+   e i crawler che lo ignorano costruiscono URL annidati inesistenti.
+   Gli URL completi (http/https o //) restano come sono. */
+if (!preg_match('#^([a-z][a-z0-9+.-]*:|//)#i', $informativa)) {
+    $informativa = '/' . ltrim($informativa, '/');
+}
 
 /* ---------------------------------------------------------------------
    Destinatari della notifica.
