@@ -1,0 +1,24 @@
+{
+    "id": 72,
+    "name": "chartDipendenti",
+    "caption": "Grafico \"I nostri dipendenti\"",
+    "description": "",
+    "category": "Sostenibilità",
+    "type": "migx",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "configs": "",
+        "formtabs": "[{\"caption\":\"Dati anno\",\"fields\":[{\"field\":\"anno\",\"caption\":\"Anno\",\"inputTVtype\":\"number\"},{\"field\":\"totale_ita\",\"caption\":\"ITA – Totale dipendenti\",\"inputTVtype\":\"number\"},{\"field\":\"donne_ita\",\"caption\":\"ITA – Donne\",\"inputTVtype\":\"number\"},{\"field\":\"uomini_ita\",\"caption\":\"ITA – Uomini\",\"inputTVtype\":\"number\"},{\"field\":\"totale_ger\",\"caption\":\"GER – Totale dipendenti\",\"inputTVtype\":\"number\"},{\"field\":\"donne_ger\",\"caption\":\"GER – Donne\",\"inputTVtype\":\"number\"},{\"field\":\"uomini_ger\",\"caption\":\"GER – Uomini\",\"inputTVtype\":\"number\"}]}]",
+        "columns": "[{\"header\":\"Anno\",\"dataIndex\":\"anno\",\"width\":60},{\"header\":\"ITA tot.\",\"dataIndex\":\"totale_ita\",\"width\":80},{\"header\":\"ITA donne\",\"dataIndex\":\"donne_ita\",\"width\":80},{\"header\":\"ITA uomini\",\"dataIndex\":\"uomini_ita\",\"width\":80},{\"header\":\"GER tot.\",\"dataIndex\":\"totale_ger\",\"width\":80},{\"header\":\"GER donne\",\"dataIndex\":\"donne_ger\",\"width\":80},{\"header\":\"GER uomini\",\"dataIndex\":\"uomini_ger\",\"width\":80}]",
+        "btntext": "",
+        "previewurl": "",
+        "jsonvarkey": "",
+        "autoResourceFolders": "false"
+    },
+    "output_properties": null,
+    "templates": [
+        6
+    ]
+}

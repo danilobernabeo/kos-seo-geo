@@ -1,0 +1,24 @@
+{
+    "id": 73,
+    "name": "chartRicavi",
+    "caption": "Grafico \"I ricavi\"",
+    "description": "",
+    "category": "Sostenibilità",
+    "type": "migx",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "configs": "",
+        "formtabs": "[{\"caption\":\"Ricavi anno\",\"fields\":[{\"field\":\"anno\",\"caption\":\"Anno\",\"inputTVtype\":\"number\"},{\"field\":\"valore\",\"caption\":\"Ricavi (milioni di euro, es. 780 oppure 812,5)\"}]}]",
+        "columns": "[{\"header\":\"Anno\",\"dataIndex\":\"anno\",\"width\":80},{\"header\":\"Ricavi (M EUR)\",\"dataIndex\":\"valore\",\"width\":140}]",
+        "btntext": "",
+        "previewurl": "",
+        "jsonvarkey": "",
+        "autoResourceFolders": "false"
+    },
+    "output_properties": null,
+    "templates": [
+        6
+    ]
+}

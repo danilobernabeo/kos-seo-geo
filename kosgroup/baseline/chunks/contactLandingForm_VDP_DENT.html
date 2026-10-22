@@ -1,0 +1,67 @@
+<!-- Chunk contactLandingForm_VDP_DENT: form di richiamata. Generato da scripts/build/build.py: non modificarlo a mano.
+     Va richiamato nel contenuto della risorsa, subito dopo la chiamata FormIt. Nessun tag MODX nei commenti. -->
+<form action="[[~[[*id]]? &scheme=`full`]]#richiamata" aria-labelledby="cd-form-titolo" class="cd-form" id="cd-form-richiamata" method="post" novalidate="">
+
+<input name="nospam:blank" type="hidden"/>
+
+
+
+
+<input name="v" type="hidden" value="[[!+fi.v]]"/>
+<input name="utm_source" type="hidden" value="[[!+fi.utm_source]]"/>
+<input name="utm_medium" type="hidden" value="[[!+fi.utm_medium]]"/>
+<input name="utm_campaign" type="hidden" value="[[!+fi.utm_campaign]]"/>
+<input name="utm_content" type="hidden" value="[[!+fi.utm_content]]"/><input name="provenienza" type="hidden" value="[[!+fi.provenienza]]"/>
+<p class="small cd-form__nota-obbligatori">I campi contrassegnati con * sono obbligatori.</p>
+<div aria-live="polite" class="cd-form__riepilogo" id="cd-form-riepilogo">[[!+fi.validation_error_message]]</div>
+<div class="row g-4 mb-3">
+<div class="col-12 col-md-6">
+<label class="form-label text-white" for="cd-name">Nome*</label>
+<input aria-describedby="cd-name-err" autocomplete="given-name" class="form-control form-control-lg[[!+fi.error.name:notempty=` is-invalid`]]" id="cd-name" name="name" required="" type="text" value="[[!+fi.name]]"[[!+fi.error.name:notempty=` aria-invalid="true"`]] />
+<div class="invalid-feedback" id="cd-name-err">[[!+fi.error.name]]</div>
+</div>
+<div class="col-12 col-md-6">
+<label class="form-label text-white" for="cd-surname">Cognome*</label>
+<input aria-describedby="cd-surname-err" autocomplete="family-name" class="form-control form-control-lg[[!+fi.error.surname:notempty=` is-invalid`]]" id="cd-surname" name="surname" required="" type="text" value="[[!+fi.surname]]"[[!+fi.error.surname:notempty=` aria-invalid="true"`]] />
+<div class="invalid-feedback" id="cd-surname-err">[[!+fi.error.surname]]</div>
+</div>
+<div class="col-12">
+<label class="form-label text-white" for="cd-phone">Telefono*</label>
+<input aria-describedby="cd-phone-hint cd-phone-err" autocomplete="tel" class="form-control form-control-lg[[!+fi.error.cellulare:notempty=` is-invalid`]]" id="cd-phone" name="cellulare" required="" type="tel" value="[[!+fi.cellulare]]"[[!+fi.error.cellulare:notempty=` aria-invalid="true"`]] />
+<div class="form-text cd-form__hint" id="cd-phone-hint">Cellulare o fisso. Esempio: 333 1234567</div>
+<div class="invalid-feedback" id="cd-phone-err">[[!+fi.error.cellulare]]</div>
+</div>
+<div class="col-12">
+<fieldset class="cd-form__fascia">
+<legend class="form-label text-white">Fascia oraria preferita <span class="cd-form__facoltativo">(facoltativo)</span></legend>
+<div class="form-check">
+<input class="form-check-input" id="cd-fascia-mattina" name="fascia" type="radio" value="Mattina" [[!+fi.fascia:FormItIsChecked=`Mattina`]] />
+<label class="form-check-label text-white" for="cd-fascia-mattina">Mattina</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="cd-fascia-pomeriggio" name="fascia" type="radio" value="Pomeriggio" [[!+fi.fascia:FormItIsChecked=`Pomeriggio`]] />
+<label class="form-check-label text-white" for="cd-fascia-pomeriggio">Pomeriggio</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="cd-fascia-indifferente" name="fascia" type="radio" value="Indifferente" [[!+fi.fascia:FormItIsChecked=`Indifferente`]] />
+<label class="form-check-label text-white" for="cd-fascia-indifferente">Indifferente</label>
+</div>
+</fieldset>
+</div>
+<div class="col-12">
+<div class="form-check">
+<input aria-describedby="cd-privacy-err" class="form-check-input[[!+fi.error.privacy:notempty=` is-invalid`]]" id="cd-privacy" name="privacy" required="" type="checkbox" value="accetto"[[!+fi.error.privacy:notempty=` aria-invalid="true"`]] [[!+fi.privacy:FormItIsChecked=`accetto`]] />
+<label class="form-check-label small text-white" for="cd-privacy">Ho letto l'<a class="text-white text-decoration-underline" href="/assets/doc/kos-care-gdpr-informativa.pdf" rel="noopener" target="_blank">Informativa sul trattamento dei miei dati personali<span class="sr-only"> (PDF, si apre in una nuova scheda)</span></a> ed acconsento alla loro elaborazione nelle formule espresse.*</label>
+<div class="invalid-feedback" id="cd-privacy-err">[[!+fi.error.privacy]]</div>
+</div>
+</div>
+</div>
+
+              [[!recaptchav3_render]]
+              <div class="cd-form__riepilogo" role="alert">[[!+fi.error.recaptchav3_error]]</div>
+              <div class="cd-form__invio">
+
+<button class="btn btn-primary" name="submit" type="submit">Chiedi di essere richiamato</button>
+<p class="small mt-3 mb-0">Gli operatori ti ricontatteranno nel più breve tempo possibile, di norma entro 24<span class="cd-trattino">–</span>48 ore.</p>
+</div>
+</form>

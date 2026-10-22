@@ -1,0 +1,15 @@
+<!-- Chunk dell'email al centro prenotazioni (emailTpl di FormIt). Generato dalla build da src/chunk/chunk-email.html. -->
+<html>
+<body style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color: #1A2031;">
+<p><strong>Richiesta di richiamata – Clinica Dentale KOS – Clinica Dentale KOS Villa dei Pini</strong></p>
+<table cellpadding="6" cellspacing="0" border="0" style="border-collapse: collapse; font-size: 15px;">
+  <tr><td style="color: #555;">Nome</td><td><strong>[[+name]]</strong></td></tr>
+  <tr><td style="color: #555;">Cognome</td><td><strong>[[+surname]]</strong></td></tr>
+  <tr><td style="color: #555;">Telefono</td><td><strong>[[+cellulare]]</strong></td></tr>
+  <tr><td style="color: #555;">Fascia oraria preferita</td><td>[[+fascia:default=`non indicata`]]</td></tr>
+  <tr><td style="color: #555;">Provenienza</td><td>[[+provenienza:default=`Diretto / altro`]]</td></tr>
+  <tr><td style="color: #555;">Data e ora</td><td>[[+data_invio:default=`now`:strtotime:date=`%d/%m/%Y %H:%M`]]</td></tr>
+</table>
+<p style="font-size: 13px; color: #555;">Richiesta inviata dal modulo della pagina https://kosgroup.com/it/landing/clinica-dentale-civitanova</p>
+</body>
+</html>

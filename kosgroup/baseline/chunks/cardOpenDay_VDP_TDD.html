@@ -1,0 +1,142 @@
+<style>
+/* Card Open Day (fino al 7 novembre 2026), dalla card della landing Terapia del dolore.
+   Card bianca con bordo, raggio e fascia azzurra dei contatti in fondo: si distingue dai banner promozionali.
+   Sotto 768px locandina sopra e testo sotto; da 768px locandina a sinistra (40%) e testo a destra.
+   Margine sotto uguale a quello del riquadro Fidia sopra (32px, 68px da 992px). Icone SVG inline (Bootstrap Icons 1.11.3). */
+.kos-openday {
+    margin-bottom: 32px;
+    padding: 24px;
+    border: 1px solid var(--grigio-300);
+    border-radius: var(--bs-border-radius-xl, 1rem);
+    background-color: #fff;
+    color: var(--blu);
+}
+.kos-openday .kos-openday__griglia {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+}
+.kos-openday .kos-openday__immagine img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--grigio-300);
+    border-radius: var(--bs-border-radius-lg, 8px);
+}
+.kos-openday .kos-openday__etichetta {
+    margin-bottom: 4px;
+    color: var(--azzurro);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+.kos-openday .kos-openday__titolo {
+    margin-bottom: 12px;
+    color: var(--blu);
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 500;
+    letter-spacing: -0.288px;
+}
+.kos-openday .kos-openday__testo > p {
+    margin-bottom: 16px;
+}
+.kos-openday .kos-openday__testo > p.kos-openday__etichetta {
+    margin-bottom: 4px;
+}
+.kos-openday .kos-openday__dettagli {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.kos-openday .kos-openday__dettagli li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
+.kos-openday .kos-openday__dettagli li:last-child {
+    margin-bottom: 0;
+}
+.kos-openday .kos-openday__icona {
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    color: var(--azzurro);
+}
+.kos-openday .kos-openday__testo > p.kos-openday__avviso {
+    margin: 16px 0 0;
+    padding: 8px 12px;
+    border-left: 3px solid var(--azzurro);
+    background-color: var(--grigio-100);
+}
+.kos-openday .kos-openday__contatti {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin: 20px -24px -24px;
+    padding: 16px 24px;
+    border-top: 1px solid var(--grigio-300);
+    border-radius: 0 0 var(--bs-border-radius-xl, 1rem) var(--bs-border-radius-xl, 1rem);
+    background-color: #E9F6F6;
+}
+.kos-openday .kos-openday__contatti p {
+    margin: 0;
+}
+.kos-openday .kos-openday__contatti a {
+    color: var(--azzurro);
+    font-weight: 700;
+    text-decoration: underline;
+}
+.kos-openday .kos-openday__contatti a:hover {
+    text-decoration: none;
+}
+.kos-openday .kos-openday__email {
+    overflow-wrap: anywhere;
+}
+@media (min-width: 768px) {
+    .kos-openday .kos-openday__griglia {
+        grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+        gap: 24px;
+        align-items: start;
+    }
+}
+@media (min-width: 992px) {
+    .kos-openday {
+        margin-bottom: 68px;
+        padding: 32px;
+    }
+    .kos-openday .kos-openday__contatti {
+        margin: 24px -32px -32px;
+        padding: 20px 32px;
+    }
+}
+</style>
+<section class="kos-openday" aria-labelledby="kos-openday-titolo">
+    <div class="kos-openday__griglia">
+        <picture class="kos-openday__immagine">
+            <source type="image/webp" srcset="/assets/img/landing/terapia-del-dolore-civitanova/open-day-540.webp 540w, /assets/img/landing/terapia-del-dolore-civitanova/open-day-1080.webp 1080w" sizes="(min-width:1400px) 303px, (min-width:1250px) 288px, (min-width:1200px) calc(26.67vw - 46px), (min-width:992px) 211px, (min-width:768px) 249px, (min-width:576px) 466px, calc(100vw - 74px)">
+            <img src="/assets/img/landing/terapia-del-dolore-civitanova/open-day-540.jpg" srcset="/assets/img/landing/terapia-del-dolore-civitanova/open-day-540.jpg 540w, /assets/img/landing/terapia-del-dolore-civitanova/open-day-1080.jpg 1080w" sizes="(min-width:1400px) 303px, (min-width:1250px) 288px, (min-width:1200px) calc(26.67vw - 46px), (min-width:992px) 211px, (min-width:768px) 249px, (min-width:576px) 466px, calc(100vw - 74px)" width="1080" height="1080" loading="lazy" decoding="async" alt="Locandina Open Day informativo sul dolore cronico: sabato 7 novembre, ore 11:00, Aula Serafini, Villa dei Pini, Civitanova Marche">
+        </picture>
+        <div class="kos-openday__testo">
+            <p class="kos-openday__etichetta">Open Day informativo</p>
+            <h3 class="kos-openday__titolo" id="kos-openday-titolo">Open Day sul dolore cronico</h3>
+            <p>Un incontro per conoscere gli specialisti, i servizi e i percorsi di cura dedicati a chi convive con un dolore persistente o complesso.</p>
+            <ul class="kos-openday__dettagli">
+                <li><svg class="kos-openday__icona" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/><path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/></svg><span><time datetime="2026-11-07T11:00">Sabato 7 novembre 2026</time></span></li>
+                <li><svg class="kos-openday__icona" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/></svg><span>Ore 11:00</span></li>
+                <li><svg class="kos-openday__icona" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/><path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg><span>Aula Serafini – Villa dei Pini</span></li>
+            </ul>
+            <p class="kos-openday__avviso"><strong>Partecipazione gratuita, prenotazione obbligatoria</strong></p>
+        </div>
+    </div>
+    <div class="kos-openday__contatti">
+        <svg class="kos-openday__icona" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/></svg>
+        <p><strong>Per prenotare o ricevere informazioni:</strong><br>
+        <a href="tel:+3907331930310">0733&nbsp;1930310</a><br>
+        <a class="kos-openday__email" href="mailto:info@casadicuravilladeipini.it">info@casadicuravilladeipini.it</a></p>
+    </div>
+</section>

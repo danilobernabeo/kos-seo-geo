@@ -1,5 +1,5 @@
 {
-    "exported_at": "2026-10-20T02:49:05-05:00",
+    "exported_at": "2026-10-22T07:23:55-05:00",
     "site_url": "http://localhost/",
     "elements": [
         {
@@ -532,6 +532,18 @@
         },
         {
             "type": "chunks",
+            "id": 265,
+            "name": "cardOpenDay_VDP_TDD",
+            "file": "chunks/cardOpenDay_VDP_TDD.html",
+            "category": "",
+            "description": "",
+            "static": false,
+            "static_file": "",
+            "source": 1,
+            "properties": []
+        },
+        {
+            "type": "chunks",
             "id": 83,
             "name": "checkup-banner-small",
             "file": "chunks/checkup-banner-small.html",
@@ -643,6 +655,18 @@
             "id": 246,
             "name": "contactLandingFormEmail_VDP",
             "file": "chunks/contactLandingFormEmail_VDP.html",
+            "category": "",
+            "description": "",
+            "static": false,
+            "static_file": "",
+            "source": 1,
+            "properties": []
+        },
+        {
+            "type": "chunks",
+            "id": 267,
+            "name": "contactLandingFormEmail_VDP_DENT",
+            "file": "chunks/contactLandingFormEmail_VDP_DENT.html",
             "category": "",
             "description": "",
             "static": false,
@@ -800,6 +824,18 @@
             "name": "contactLandingForm_VDP",
             "file": "chunks/contactLandingForm_VDP.html",
             "category": "Landing",
+            "description": "",
+            "static": false,
+            "static_file": "",
+            "source": 1,
+            "properties": []
+        },
+        {
+            "type": "chunks",
+            "id": 266,
+            "name": "contactLandingForm_VDP_DENT",
+            "file": "chunks/contactLandingForm_VDP_DENT.html",
+            "category": "",
             "description": "",
             "static": false,
             "static_file": "",
@@ -1612,6 +1648,54 @@
         },
         {
             "type": "chunks",
+            "id": 262,
+            "name": "kosAttivita_en",
+            "file": "chunks/kosAttivita_en.html",
+            "category": "Sostenibilità",
+            "description": "Chunk",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
+            "type": "chunks",
+            "id": 261,
+            "name": "kosAttivita_it",
+            "file": "chunks/kosAttivita_it.html",
+            "category": "Sostenibilità",
+            "description": "Chunk",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
+            "type": "chunks",
+            "id": 258,
+            "name": "kosDipendenti_en",
+            "file": "chunks/kosDipendenti_en.html",
+            "category": "Sostenibilità",
+            "description": "Chunk",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
+            "type": "chunks",
+            "id": 257,
+            "name": "kosDipendenti_it",
+            "file": "chunks/kosDipendenti_it.html",
+            "category": "Sostenibilità",
+            "description": "Chunk",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
+            "type": "chunks",
             "id": 173,
             "name": "kosPrenotaButton",
             "file": "chunks/kosPrenotaButton.html",
@@ -1669,6 +1753,54 @@
             "static_file": "",
             "source": 1,
             "properties": []
+        },
+        {
+            "type": "chunks",
+            "id": 264,
+            "name": "kosRicavi_en",
+            "file": "chunks/kosRicavi_en.html",
+            "category": "Sostenibilità",
+            "description": "Chunk",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
+            "type": "chunks",
+            "id": 263,
+            "name": "kosRicavi_it",
+            "file": "chunks/kosRicavi_it.html",
+            "category": "Sostenibilità",
+            "description": "Chunk",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
+            "type": "chunks",
+            "id": 260,
+            "name": "kosStrutture_en",
+            "file": "chunks/kosStrutture_en.html",
+            "category": "Sostenibilità",
+            "description": "Chunk",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
+            "type": "chunks",
+            "id": 259,
+            "name": "kosStrutture_it",
+            "file": "chunks/kosStrutture_it.html",
+            "category": "Sostenibilità",
+            "description": "Chunk",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
         },
         {
             "type": "chunks",
@@ -3053,6 +3185,25 @@
             "events": [
                 {
                     "event": "OnBeforeDocFormSave",
+                    "priority": 0
+                }
+            ]
+        },
+        {
+            "type": "plugins",
+            "id": 13,
+            "name": "AssetVersion",
+            "file": "plugins/AssetVersion.php",
+            "category": "",
+            "description": "Aggiunge ?v=<data file> ai CSS e JS locali (cache lunga senza file vecchi)",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null,
+            "disabled": false,
+            "events": [
+                {
+                    "event": "OnWebPagePrerender",
                     "priority": 0
                 }
             ]
@@ -7529,6 +7680,42 @@
         },
         {
             "type": "snippets",
+            "id": 173,
+            "name": "kosChartDipendenti",
+            "file": "snippets/kosChartDipendenti.php",
+            "category": "Sostenibilità",
+            "description": "",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
+            "type": "snippets",
+            "id": 174,
+            "name": "kosChartRicavi",
+            "file": "snippets/kosChartRicavi.php",
+            "category": "Sostenibilità",
+            "description": "",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
+            "type": "snippets",
+            "id": 175,
+            "name": "kosSostenibilitaRisorse",
+            "file": "snippets/kosSostenibilitaRisorse.php",
+            "category": "Sostenibilità",
+            "description": "",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
+            "type": "snippets",
             "id": 134,
             "name": "listKOS2025Images",
             "file": "snippets/listKOS2025Images.php",
@@ -7753,6 +7940,18 @@
             "static": false,
             "static_file": "",
             "source": 0,
+            "properties": []
+        },
+        {
+            "type": "snippets",
+            "id": 176,
+            "name": "mostraFino",
+            "file": "snippets/mostraFino.php",
+            "category": "",
+            "description": "",
+            "static": false,
+            "static_file": "",
+            "source": 1,
             "properties": []
         },
         {
@@ -12485,6 +12684,20 @@
             "name": "callCenterTimeRanges",
             "file": "tvs/callCenterTimeRanges.json",
             "category": "Landing"
+        },
+        {
+            "type": "tvs",
+            "id": 72,
+            "name": "chartDipendenti",
+            "file": "tvs/chartDipendenti.json",
+            "category": "Sostenibilità"
+        },
+        {
+            "type": "tvs",
+            "id": 73,
+            "name": "chartRicavi",
+            "file": "tvs/chartRicavi.json",
+            "category": "Sostenibilità"
         },
         {
             "type": "tvs",
