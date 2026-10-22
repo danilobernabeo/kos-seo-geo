@@ -3,6 +3,8 @@
 Avvio 19 ottobre 2026. Consegna sprint 1: venerdì 30 ottobre; verifica Cerved/ProWeb 2-6 novembre.
 Scadenza RetailTune: specifiche dei widget, tipologie e attributi entro venerdì 23 ottobre (percorso critico della linea C: import preliminare entro 6 novembre, widget di test entro 16 novembre).
 
+**Aggiornamento 22 ottobre:** la firma dei contratti arriva entro la settimana, avvio ufficiale non prima del 26 ottobre. Decisione di Danilo: le date di consegna degli sprint delle linee A e B restano dove possibile; il cronoprogramma dell'integrazione RetailTune (linea C) si rifà alla firma. Lo sprint 2 parte subito sullo stage (prima KOS 9 e 12-13, poi AA 1 e 6, KOS 2); in produzione dopo la firma. Prima di toccare title e description: export di Search Console degli ultimi 16 mesi per entrambi i siti.
+
 Legenda: **[2 siti]** = si fa una volta e vale per entrambi; **[KOS]** = kosgroup.com; **[AA]** = anniazzurri.it; tra parentesi la voce dell'audit (KosGroup / Anni Azzurri).
 
 ## Fase 0 — Lunedì 19: avvio e richieste (bloccano il resto)
