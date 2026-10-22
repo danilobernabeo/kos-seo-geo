@@ -1,0 +1,204 @@
+{
+  "nome": "KOS-9 ente in homepage, KOS-12 e KOS-13 briciole visibili e BreadcrumbList (libreria comune seoSchema)",
+  "settings": [
+    {
+      "key": "kos.canonical_base",
+      "value": "https://kosgroup.com",
+      "area": "kos"
+    },
+    {
+      "key": "kos.trailing_slash",
+      "value": "2",
+      "area": "kos"
+    },
+    {
+      "key": "kos.lingue",
+      "value": "253:it-IT:1,385:en-GB:990",
+      "area": "kos"
+    },
+    {
+      "key": "kos.breadcrumb_titolo",
+      "value": "menutitle",
+      "area": "kos"
+    },
+    {
+      "key": "kos.breadcrumb_solo_pubblicate",
+      "value": "1",
+      "area": "kos"
+    },
+    {
+      "key": "kos.breadcrumb_home",
+      "value": "Home",
+      "area": "kos"
+    },
+    {
+      "key": "kos.breadcrumb_exclude",
+      "value": "-",
+      "area": "kos"
+    },
+    {
+      "key": "kos.breadcrumb_templates",
+      "value": "informativo,medici,video,tecnologie,convenzioni,strutture,strutture-VDP,specializzazioni,cure",
+      "area": "kos"
+    },
+    {
+      "key": "kos.tpl_article",
+      "value": "-",
+      "area": "kos"
+    },
+    {
+      "key": "kos.tpl_profile",
+      "value": "-",
+      "area": "kos"
+    },
+    {
+      "key": "kos.tpl_collection",
+      "value": "news-media",
+      "area": "kos"
+    },
+    {
+      "key": "kos.org_name",
+      "value": "Gruppo KOS",
+      "area": "kos"
+    },
+    {
+      "key": "kos.org_alternate",
+      "value": "KOS Group",
+      "area": "kos"
+    },
+    {
+      "key": "kos.org_legal",
+      "value": "KOS S.p.A.",
+      "area": "kos"
+    },
+    {
+      "key": "kos.org_vat",
+      "value": "IT10674520159",
+      "area": "kos"
+    },
+    {
+      "key": "kos.org_taxid",
+      "value": "02058910874",
+      "area": "kos"
+    },
+    {
+      "key": "kos.org_url",
+      "value": "https://kosgroup.com/it",
+      "area": "kos"
+    },
+    {
+      "key": "kos.website_url",
+      "value": "https://kosgroup.com/it",
+      "area": "kos"
+    },
+    {
+      "key": "kos.org_logo",
+      "value": "/assets/img/logo/kos-group-logo-512.png",
+      "area": "kos"
+    },
+    {
+      "key": "kos.org_sameAs",
+      "value": "https://www.linkedin.com/company/kos,https://www.youtube.com/@KOSGroupIT",
+      "area": "kos"
+    },
+    {
+      "key": "kos.org_phone",
+      "value": "",
+      "area": "kos"
+    },
+    {
+      "key": "kos.org_street",
+      "value": "Via Durini, 9",
+      "area": "kos"
+    },
+    {
+      "key": "kos.org_zip",
+      "value": "20122",
+      "area": "kos"
+    },
+    {
+      "key": "kos.org_city",
+      "value": "Milano",
+      "area": "kos"
+    },
+    {
+      "key": "kos.parent_org_id",
+      "value": "-",
+      "area": "kos"
+    },
+    {
+      "key": "kos.parent_org_name",
+      "value": "CIR S.p.A.",
+      "area": "kos"
+    },
+    {
+      "key": "kos.parent_org_url",
+      "value": "https://www.cirgroup.it",
+      "area": "kos"
+    },
+    {
+      "key": "kos.sub_org_ids",
+      "value": "https://anniazzurri.it/#organization",
+      "area": "kos"
+    }
+  ],
+  "elements": [
+    {
+      "type": "snippet",
+      "name": "kosSchema",
+      "file": "shared/snippets/seoSchema.php",
+      "properties": {
+        "prefisso": "kos"
+      },
+      "description": "Dato strutturato e briciole (libreria comune seoSchema, prefisso kos)"
+    },
+    {
+      "type": "snippet",
+      "name": "myBreadcrumb",
+      "file": "kosgroup/elements/snippets/myBreadcrumb.php",
+      "baseline": "kosgroup/baseline/snippets/myBreadcrumb.php"
+    },
+    {
+      "type": "chunk",
+      "name": "breadcrumb",
+      "file": "kosgroup/elements/chunks/breadcrumb.html",
+      "baseline": "kosgroup/baseline/chunks/breadcrumb.html"
+    },
+    {
+      "type": "chunk",
+      "name": "scripts",
+      "file": "kosgroup/elements/chunks/scripts.html",
+      "baseline": "kosgroup/baseline/chunks/scripts.html"
+    },
+    {
+      "type": "chunk",
+      "name": "scripts-formazione",
+      "file": "kosgroup/elements/chunks/scripts-formazione.html",
+      "baseline": "kosgroup/baseline/chunks/scripts-formazione.html"
+    },
+    {
+      "type": "template",
+      "name": "strutture",
+      "file": "kosgroup/elements/templates/strutture.html",
+      "baseline": "kosgroup/baseline/templates/strutture.html"
+    },
+    {
+      "type": "template",
+      "name": "strutture-VDP",
+      "file": "kosgroup/elements/templates/strutture-VDP.html",
+      "baseline": "kosgroup/baseline/templates/strutture-VDP.html"
+    },
+    {
+      "type": "template",
+      "name": "specializzazioni",
+      "file": "kosgroup/elements/templates/specializzazioni.html",
+      "baseline": "kosgroup/baseline/templates/specializzazioni.html"
+    },
+    {
+      "type": "template",
+      "name": "cure",
+      "file": "kosgroup/elements/templates/cure.html",
+      "baseline": "kosgroup/baseline/templates/cure.html"
+    }
+  ]
+}

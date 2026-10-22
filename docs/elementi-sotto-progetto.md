@@ -24,3 +24,10 @@ Aggiornare l'elenco a ogni intervento.
 |---|---|---|---|
 | `AssetVersion` (shared) | plugin (nuovo) | KOS-3 (`?v=` automatico su CSS/JS) | in produzione (20/10) |
 | Web Rules | configurazione | KOS-3 e redirect | `kosgroup/files/web-rules/web-rules.conf` |
+| `kosSchema` (shared `seoSchema`) | snippet (nuovo) | KOS-9, KOS-12, KOS-13 | sviluppo (22/10) |
+| `myBreadcrumb` | snippet | KOS-12, KOS-13 (delega a `kosSchema`) | sviluppo (22/10) |
+| `breadcrumb` | chunk | KOS-12, KOS-13 | sviluppo (22/10) |
+| `scripts`, `scripts-formazione` | chunk | KOS-9, KOS-13 (`[[kosSchema]]`) | sviluppo (22/10) |
+| `strutture`, `strutture-VDP`, `specializzazioni`, `cure` | template | KOS-12 (briciole visibili) | sviluppo (22/10) |
+| impostazioni `kos.*` | impostazioni di sistema | KOS-9, KOS-12, KOS-13 | sviluppo (22/10) |
+| `grafico-dipendenti`, `employee-chart` | chunk | lavoro extra Sostenibilità | in produzione (20/10), vedi `extra/kos-sostenibilita` |

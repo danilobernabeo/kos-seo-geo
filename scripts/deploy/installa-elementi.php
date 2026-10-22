@@ -106,9 +106,16 @@ foreach ($m['elements'] ?? [] as $e) {
     }
     $nuovo = $norm($leggi($e['file']), $e['type']);
 
+    // Proprietà predefinite (es. &prefisso della libreria comune): si confrontano a parte.
+    $propOk = true;
+    if ($obj && isset($e['properties'])) {
+        $att = [];
+        foreach ((array) $obj->getProperties() as $k => $v) $att[$k] = is_array($v) ? ($v['value'] ?? '') : $v;
+        foreach ($e['properties'] as $k => $v) if ((string) ($att[$k] ?? '') !== (string) $v) $propOk = false;
+    }
     if ($obj) {
         $att = $norm((string) $obj->getContent(), $e['type']);
-        if ($att === $nuovo && !isset($e['disabled'])) {
+        if ($att === $nuovo && !isset($e['disabled']) && $propOk) {
             echo "  = $etichetta già aggiornato\n";
             $registro[$e['type'] . ':' . $e['name']] = sha1($nuovo);
             continue;
@@ -140,6 +147,7 @@ foreach ($m['elements'] ?? [] as $e) {
     if ($scrivi) {
         $obj->setContent($nuovo);
         if (isset($e['disabled'])) $obj->set('disabled', (bool) $e['disabled']);
+        if (isset($e['properties'])) $obj->setProperties($e['properties'], true);
         if (!$obj->save()) { echo "    ! salvataggio fallito\n"; $errori++; }
         else $registro[$e['type'] . ':' . $e['name']] = sha1($nuovo);
     }
