@@ -153,10 +153,14 @@ Collaudo per i pacchetti di dato strutturato:
    briciole si vedono ma manca la `BreadcrumbList`, `scripts/checks/kos-briciole-origine.php` dice da dove
    escono.
 2. **Controllo nel browser** (lo stage chiede la password): aspetto delle pagine toccate dal pacchetto e home in
-   una finestra anonima senza accettare i cookie.
+   una finestra anonima. Sullo stage il banner Cookiebot non compare (dominio diverso da quello registrato):
+   il controllo «senza consenso» si fa in produzione, subito dopo il rilascio.
 3. **Validatori** — lo stage è protetto, quindi si usa la modalità «codice»: `Ctrl+U` sulla pagina, copiare il
    sorgente e incollarlo in [validator.schema.org](https://validator.schema.org) e nella scheda *Code* di
    [Rich Results Test](https://search.google.com/test/rich-results).
+4. **Script di terzi** — il Rich Results Test esegue il JavaScript, quindi vede anche il JSON-LD inserito da
+   script esterni (es. Yext Knowledge Tags sulle schede struttura). Se trova più elementi di quelli attesi,
+   confrontare con il numero di blocchi arrivati dal server (controllo da PowerShell, punto 1).
 
 ## Dopo il riallineamento
 
