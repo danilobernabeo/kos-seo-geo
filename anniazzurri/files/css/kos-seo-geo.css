@@ -17,6 +17,9 @@
   border-radius: inherit;
   z-index: 0;
 }
+/* L'<img> eredita gli angoli arrotondati dal <picture>, che a sua volta li eredita dal contenitore
+   (senza questa riga il <picture> ha raggio 0 e l'immagine esce dagli angoli arrotondati) */
+picture:has(> img.kos-sfondo) { border-radius: inherit; }
 
 /* Immagini dentro i caroselli (gallerie): il <picture> non deve cambiare l'impaginazione dell'<img>;
    gli attributi width/height servono solo alle proporzioni, la larghezza resta automatica come prima
