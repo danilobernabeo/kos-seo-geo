@@ -717,9 +717,33 @@
     },
     {
       "type": "chunk",
+      "name": "residenze-ricovero-post-dimissioni-ospedaliere",
+      "file": "anniazzurri/elements/chunks/residenze-ricovero-post-dimissioni-ospedaliere.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-ricovero-post-dimissioni-ospedaliere.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-ricovero-residenziale-temporaneo",
+      "file": "anniazzurri/elements/chunks/residenze-ricovero-residenziale-temporaneo.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-ricovero-residenziale-temporaneo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-ricovero-temporaneo",
+      "file": "anniazzurri/elements/chunks/residenze-ricovero-temporaneo.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-ricovero-temporaneo.html"
+    },
+    {
+      "type": "chunk",
       "name": "residenze-stato-vegetativo",
       "file": "anniazzurri/elements/chunks/residenze-stato-vegetativo.html",
       "baseline": "anniazzurri/baseline/chunks/residenze-stato-vegetativo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-tutte-le-regioni",
+      "file": "anniazzurri/elements/chunks/residenze-tutte-le-regioni.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-tutte-le-regioni.html"
     },
     {
       "type": "chunk",

@@ -112,6 +112,20 @@ def converti(nome, testo):
         return f'<{tag}{resto if resto.startswith(" ") else " " + resto.lstrip()}>{chiamata}'
 
     out = TAG.sub(sost, testo)
+
+    # Foto delle regioni salvate in PNG (schede «Lombardia», «Piemonte»...): <img> → snippet, servite in WebP
+    def sost_regione(m):
+        attr = (m.group(1) + m.group(3)).strip()
+        src = m.group(2)
+        reg = re.search(r'/assets/img/([a-z-]+?)(-m)?\.png$', src).group(1)
+        nome_reg = {'emilia-romagna': 'Emilia-Romagna'}.get(reg, reg.capitalize())
+        cls = re.search(r'class="([^"]*)"', attr)
+        note.append(f'foto regione {src}')
+        return (f'[[immagine? &src=`{src}` &alt=`RSA Anni Azzurri in {nome_reg}`'
+                + (f' &class=`{cls.group(1)}`' if cls else '')
+                + f" &sizes=`{'100vw' if m.group(2).endswith('-m.png') else '(min-width: 768px) 33vw, 100vw'}`]]")
+    out = re.sub(r'<img\b([^>]*?)\bsrc="(/assets/img/(?:lombardia|piemonte|liguria|marche|emilia-romagna|veneto|toscana|lazio)(?:-m)?\.png)"([^>]*?)/?>',
+                 sost_regione, out)
     if nome.startswith('gal-'):
         def sost_img(m):
             src = m.group(2)
@@ -135,7 +149,8 @@ def main():
             if not os.path.exists(p):
                 p = os.path.join(BASE, cartella, f)
             testo = open(p, encoding='utf-8', newline='').read()
-            if not TAG.search(testo) or '[[immagine?' in testo:
+            regioni = re.search(r'src="/assets/img/(?:lombardia|piemonte|liguria|marche|emilia-romagna|veneto|toscana|lazio)(?:-m)?\.png"', testo)
+            if not (TAG.search(testo) or regioni) or ('[[immagine?' in testo and not regioni):
                 continue
             nome = os.path.splitext(f)[0]
             nuovo, note = converti(nome, testo)

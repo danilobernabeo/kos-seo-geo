@@ -177,6 +177,9 @@ class Immagini
                     $dopo = $base;
                     $r['nota'] = 'qualità ridotta non conveniente';
                 }
+            } elseif ($im->getImageColors() > 4096) {
+                // foto salvata in PNG: la tavolozza a 256 colori creerebbe bande nei cieli e nelle sfumature
+                $r['nota'] = 'foto in PNG: nelle pagine va servita in WebP con lo snippet immagine';
             } else {
                 $t8 = $tmp . '.png8.png';
                 $this->scrivi($im, $t8, 'png8');
