@@ -31,6 +31,33 @@ DECL = re.compile(r'background(?:-image)?\s*:\s*url\([^)]*\)[^;"]*;?\s*', re.I)
 IMG = re.compile(r'<img\b([^>]*?)\bsrc="([^"]+)"([^>]*?)/?>', re.I)
 
 
+# Testi alternativi scritti guardando le immagini (anniazzurri/dati/alt-immagini.tsv): prevalgono sulle regole
+_ALT_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', SITO, 'dati', 'alt-immagini.tsv')
+ALT_MANUALI = {}
+if os.path.exists(_ALT_FILE):
+    for _r in open(_ALT_FILE, encoding='utf-8'):
+        if _r.strip() and not _r.startswith('#') and '\t' in _r:
+            _p, _a = _r.rstrip('\n').split('\t', 1)
+            ALT_MANUALI['/' + _p.lstrip('/')] = _a
+
+
+def applica_alt(testo):
+    """Sostituisce l'alt delle chiamate [[immagine]] con quello scritto a mano, se esiste per quel percorso."""
+    def s(m):
+        src = '/' + m.group(1).lstrip('/')
+        return m.group(0) if src not in ALT_MANUALI else f'[[immagine? &src=`{m.group(1)}` &alt=`{ALT_MANUALI[src]}`'
+    testo = re.sub(r'\[\[immagine\? &src=`([^`]+)` &alt=`[^`]*`', s, testo)
+
+    def s_img(m):                                       # stessa immagine come <img> semplice (versioni mobile)
+        tag = m.group(0)
+        src = re.search(r'\ssrc="([^"]+)"', tag)
+        if not src or ('/' + src.group(1).lstrip('/')) not in ALT_MANUALI:
+            return tag
+        alt = ALT_MANUALI['/' + src.group(1).lstrip('/')].replace('"', '&quot;')
+        return re.sub(r'\salt="[^"]*"', f' alt="{alt}"', tag, count=1) if re.search(r'\salt="', tag) else tag[:-1].rstrip('/').rstrip() + f' alt="{alt}">'
+    return re.sub(r'<img\b[^>]*>', s_img, testo)
+
+
 def nome_da_file(url):
     n = os.path.splitext(os.path.basename(url))[0]
     n = re.sub(r'[-_]+', ' ', n).strip()
@@ -145,7 +172,7 @@ def converti(nome, testo):
             return (f'[[immagine? &src=`{src}` &alt=`[[*pagetitle]], foto {numero(src)}`'
                     + (f' &class=`{cls.group(1)}`' if cls else '') + ' &sizes=`naturale`]]')
         out = IMG.sub(sost_img, out)
-    return out, note
+    return applica_alt(out), note
 
 
 def main():
@@ -157,6 +184,13 @@ def main():
             if not os.path.exists(p):
                 p = os.path.join(BASE, cartella, f)
             testo = open(p, encoding='utf-8', newline='').read()
+            if '[[immagine?' in testo and not PROVA:      # elementi già convertiti: aggiorna solo i testi alternativi
+                nuovo_alt = applica_alt(testo)
+                if nuovo_alt != testo:
+                    with open(os.path.join(OUT, cartella, f), 'w', encoding='utf-8', newline='') as w:
+                        w.write(nuovo_alt)
+                    print(f'{cartella[:-1]} {os.path.splitext(f)[0]}: testi alternativi aggiornati')
+                    testo = nuovo_alt
             regioni = re.search(r'src="/assets/img/(?:lombardia|piemonte|liguria|marche|emilia-romagna|veneto|toscana|lazio)(?:-m)?\.png"', testo)
             if not (TAG.search(testo) or regioni) or ('[[immagine?' in testo and not regioni):
                 continue
