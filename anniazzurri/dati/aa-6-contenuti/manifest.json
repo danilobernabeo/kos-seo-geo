@@ -1,5 +1,5 @@
 {
- "nome": "AA-6 titoli nei contenuti",
+ "nome": "AA-1 AA-6 sfondi e titoli nei contenuti",
  "campo": "content",
  "risorse": [
   {
@@ -13,6 +13,51 @@
    },
    "sha1_prima": "9f412a5405e9e10d452ee1f2a6ebc7faaa09ec00",
    "file": "367.html"
+  },
+  {
+   "id": 150,
+   "pagetitle": "Malattia di Alzheimer",
+   "regole": {
+    "AA1": 3
+   },
+   "sha1_prima": "037ce4b12cc04a69928f24cdd9a70c2e5c7de2af",
+   "file": "150.html"
+  },
+  {
+   "id": 161,
+   "pagetitle": "L'aspetto economico",
+   "regole": {
+    "R1": 10
+   },
+   "sha1_prima": "fa9906df4ff29daa29b0ccc921b376b106764eff",
+   "file": "161.html"
+  },
+  {
+   "id": 481,
+   "pagetitle": "Lavoro Operatore Socio Sanitario (OSS) | Assunzioni Anni Azzurri",
+   "regole": {
+    "AA1": 2
+   },
+   "sha1_prima": "eed32257c561cdaa789de817a78f0f8dfde57469",
+   "file": "481.html"
+  },
+  {
+   "id": 461,
+   "pagetitle": "Assunzione Colf Badanti",
+   "regole": {
+    "AA1": 2
+   },
+   "sha1_prima": "021e3f6053dfccdfe004b70b7c1d82083b115117",
+   "file": "461.html"
+  },
+  {
+   "id": 29,
+   "pagetitle": "Centri diurni",
+   "regole": {
+    "AA1": 3
+   },
+   "sha1_prima": "576010ab53fa9236cd13f4bf083495c11a455839",
+   "file": "29.html"
   },
   {
    "id": 185,
@@ -61,6 +106,87 @@
    "file": "184.html"
   },
   {
+   "id": 157,
+   "pagetitle": "Conoscere le Residenze Socio Assistenziali",
+   "regole": {
+    "R1": 18
+   },
+   "sha1_prima": "b4d08ae4e66d624e740e081088811297c7100704",
+   "file": "157.html"
+  },
+  {
+   "id": 494,
+   "pagetitle": "Convegno Anni Azzurri sulla gestione della persona con demenza",
+   "regole": {
+    "AA1": 3
+   },
+   "sha1_prima": "6f57d363445336a9dd736b6855459ac5dc0f6dfb",
+   "file": "494.html"
+  },
+  {
+   "id": 27,
+   "pagetitle": "Cure intermedie",
+   "regole": {
+    "AA1": 3
+   },
+   "sha1_prima": "497a9237d4e27ac46d8656e4cee3058aeb596e03",
+   "file": "27.html"
+  },
+  {
+   "id": 443,
+   "pagetitle": "Assunzione Fisioterapisti Assistenza Domiciliare",
+   "regole": {
+    "AA1": 2
+   },
+   "sha1_prima": "98979afdcaf70e4057f8098cf27aafac5afb7fa3",
+   "file": "443.html"
+  },
+  {
+   "id": 267,
+   "pagetitle": "Grazie per aver inviato la tua candidatura",
+   "regole": {
+    "AA1": 2
+   },
+   "sha1_prima": "400127868aa786891d1e8bddb2f6163218cfb6a1",
+   "file": "267.html"
+  },
+  {
+   "id": 204,
+   "pagetitle": "Grazie per averci contattato",
+   "regole": {
+    "AA1": 2
+   },
+   "sha1_prima": "ae9504e4915257a4b40f52f9e85f6ae86c270e5e",
+   "file": "204.html"
+  },
+  {
+   "id": 1,
+   "pagetitle": "Anni Azzurri",
+   "regole": {
+    "AA1": 10
+   },
+   "sha1_prima": "baeee3bfdef189eeda97ec2bad6c60598389e116",
+   "file": "1.html"
+  },
+  {
+   "id": 135,
+   "pagetitle": "home_en",
+   "regole": {
+    "AA1": 10
+   },
+   "sha1_prima": "b1dfb882eb02ddccc8819e87740fd51f8ee0c75e",
+   "file": "135.html"
+  },
+  {
+   "id": 31,
+   "pagetitle": "Hospice",
+   "regole": {
+    "AA1": 3
+   },
+   "sha1_prima": "acef31f2d580dbc620c3337da205257b1106895a",
+   "file": "31.html"
+  },
+  {
    "id": 155,
    "pagetitle": "Hospice Beati Coniugi Martin",
    "regole": {
@@ -81,6 +207,468 @@
    "file": "233.html"
   },
   {
+   "id": 113,
+   "pagetitle": "Il Gruppo KOS",
+   "regole": {
+    "AA1": 3
+   },
+   "sha1_prima": "631b2572f066f121df445f0f21d335938a00d9b0",
+   "file": "113.html"
+  },
+  {
+   "id": 158,
+   "pagetitle": "Il mondo Anni Azzurri",
+   "regole": {
+    "R1": 12
+   },
+   "sha1_prima": "193799a7fb5ed83568cb08333daab17aeda7bf4a",
+   "file": "158.html"
+  },
+  {
+   "id": 159,
+   "pagetitle": "L'ingresso in RSA",
+   "regole": {
+    "R1": 10
+   },
+   "sha1_prima": "566b5d9be98d0b4439e95cb2ac962b1e0f888678",
+   "file": "159.html"
+  },
+  {
+   "id": 374,
+   "pagetitle": "Assunzione Infermieri Conero",
+   "regole": {
+    "AA1": 2
+   },
+   "sha1_prima": "7fb32688e46d91c92fcbed2af920a487ebb50e65",
+   "file": "374.html"
+  },
+  {
+   "id": 397,
+   "pagetitle": "Assunzione Infermieri Emilia Romagna",
+   "regole": {
+    "AA1": 2
+   },
+   "sha1_prima": "7fb32688e46d91c92fcbed2af920a487ebb50e65",
+   "file": "397.html"
+  },
+  {
+   "id": 429,
+   "pagetitle": "Assunzione Infermieri La Corte",
+   "regole": {
+    "AA1": 2
+   },
+   "sha1_prima": "7fb32688e46d91c92fcbed2af920a487ebb50e65",
+   "file": "429.html"
+  },
+  {
+   "id": 360,
+   "pagetitle": "Residenza Parco di Veio",
+   "regole": {
+    "AA1": 2
+   },
+   "sha1_prima": "df7208a542163fa314104346e803e031a15960ea",
+   "file": "360.html"
+  },
+  {
+   "id": 373,
+   "pagetitle": "Assunzione Infermieri Residenza il Poggione 2",
+   "regole": {
+    "AA1": 2
+   },
+   "sha1_prima": "7fb32688e46d91c92fcbed2af920a487ebb50e65",
+   "file": "373.html"
+  },
+  {
+   "id": 160,
+   "pagetitle": "La vita in Residenza",
+   "regole": {
+    "R1": 10
+   },
+   "sha1_prima": "8183c45402647b6ebb804275f024e2287c901742",
+   "file": "160.html"
+  },
+  {
+   "id": 453,
+   "pagetitle": "Assistenza Alzheimer e Demenza a Domicilio - Fisioterapia, Infermieristica e Supporto Caregiver | Anni Azzurri a Casa",
+   "regole": {
+    "R4": 2,
+    "AA1": 1
+   },
+   "sha1_prima": "16a6484b1ffc481f7efb61735f6105517d8ecfad",
+   "file": "453.html"
+  },
+  {
+   "id": 124,
+   "pagetitle": "Lavora con noi",
+   "regole": {
+    "R1": 2,
+    "AA1": 2
+   },
+   "sha1_prima": "cd07ec30113bc6e50546f0ef4204104e4bb7fb9c",
+   "file": "124.html"
+  },
+  {
+   "id": 23,
+   "pagetitle": "Tutte le soluzioni",
+   "regole": {
+    "AA1": 3
+   },
+   "sha1_prima": "0dc03d2ca9650e746eac11a47f3a0afcc81ae41e",
+   "file": "23.html"
+  },
+  {
+   "id": 162,
+   "pagetitle": "Le pratiche burocratiche",
+   "regole": {
+    "R1": 16
+   },
+   "sha1_prima": "1453bb99898a328557688ff7545d444a9c8cf397",
+   "file": "162.html"
+  },
+  {
+   "id": 364,
+   "pagetitle": "Scopri i nuovi alloggi protetti della RSA San Sisto 2 a Bergamo",
+   "regole": {
+    "R1": 6,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "9a044cd7f15b43e03bbf6c7721db3715a42329d4",
+   "file": "364.html"
+  },
+  {
+   "id": 445,
+   "pagetitle": "Residenza Anni Azzurri Beato Angelico",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "0545041fba63b37dc59093d996d2cfc8d39c3fa7",
+   "file": "445.html"
+  },
+  {
+   "id": 291,
+   "pagetitle": "Residenza Anni Azzurri Biarella",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "5b82b6d97ecdbe562e0b7425cba797f5b3f93302",
+   "file": "291.html"
+  },
+  {
+   "id": 239,
+   "pagetitle": "Residenza Anni Azzurri Borgomanero",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "3a6f00f399cf19ebd8879ca1d5db3134373fbaf7",
+   "file": "239.html"
+  },
+  {
+   "id": 246,
+   "pagetitle": "Residenza Anni Azzurri Campi Bisenzio",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "e32b03ea89d952b150247f94debbaa1df2d465a5",
+   "file": "246.html"
+  },
+  {
+   "id": 249,
+   "pagetitle": "Residenza Anni Azzurri Carmagnola",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "54124281a09a8ba8276e13ab8c8f8198cf8bc546",
+   "file": "249.html"
+  },
+  {
+   "id": 356,
+   "pagetitle": "RSA in Emilia-Romagna",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R4": 2
+   },
+   "sha1_prima": "d78345d22ba3d6f83043062d2f458c5f6c2bdb97",
+   "file": "356.html"
+  },
+  {
+   "id": 297,
+   "pagetitle": "Residenza Anni Azzurri Idice",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "7a293f9ffd28b2270584a587faea54b1c281c233",
+   "file": "297.html"
+  },
+  {
+   "id": 340,
+   "pagetitle": "Residenza Anni Azzurri Il Giardino",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "3dbf6ecde56c4dbab678b4126e143cc4b1f8ccc7",
+   "file": "340.html"
+  },
+  {
+   "id": 416,
+   "pagetitle": "Residenza Anni Azzurri Il Poggione 2",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "3022656662e211095f6bd30b30435ebaab2ba5fb",
+   "file": "416.html"
+  },
+  {
+   "id": 298,
+   "pagetitle": "Residenza Anni Azzurri La Corte",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "7675490c5356d744ce4d85cfc2902338ee45aef2",
+   "file": "298.html"
+  },
+  {
+   "id": 354,
+   "pagetitle": "RSA in Lombardia",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R4": 2
+   },
+   "sha1_prima": "190e1d5a0222bbbf01853f623bd158519c0928f0",
+   "file": "354.html"
+  },
+  {
+   "id": 348,
+   "pagetitle": "Residenza Anni Azzurri Mestre",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "f2868eddc981906651d1bea0049c55cb284d8639",
+   "file": "348.html"
+  },
+  {
+   "id": 407,
+   "pagetitle": "Residenza Anni Azzurri Minerva",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "40e50deff666f2c652d0c15975d530cee35167c3",
+   "file": "407.html"
+  },
+  {
+   "id": 252,
+   "pagetitle": "Residenza Anni Azzurri Montanaro",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "fa3a3ebf6d2901143bcda2819ddaf1e21a554f8b",
+   "file": "252.html"
+  },
+  {
+   "id": 230,
+   "pagetitle": "Residenza Anni Azzurri Parco Sempione",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "63126fc3538645ca74507ba7d90401ddc8a804dd",
+   "file": "230.html"
+  },
+  {
+   "id": 201,
+   "pagetitle": "Rsa Anni Azzurri Polo Geriatrico Riabilitativo Milano",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "f9b9c34f27ca762348924feaf8c1b9333f10e6d8",
+   "file": "201.html"
+  },
+  {
+   "id": 351,
+   "pagetitle": "RSA in Piemonte",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R4": 2
+   },
+   "sha1_prima": "f4d659b747c71205b350d11654b76bf90cbd43d2",
+   "file": "351.html"
+  },
+  {
+   "id": 202,
+   "pagetitle": "Residenza Anni Azzurri San Faustino",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "3a3dc0578d697e080d02ed4af710d899dd553c04",
+   "file": "202.html"
+  },
+  {
+   "id": 228,
+   "pagetitle": "Residenza Anni Azzurri San Luca",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "4976f3255f29928b1ee6eadad7ef13f424817cca",
+   "file": "228.html"
+  },
+  {
+   "id": 335,
+   "pagetitle": "Residenza Anni Azzurri San Sisto 2",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "b482b770b2a83997e8a27c3cc9d1470df34e4e6a",
+   "file": "335.html"
+  },
+  {
+   "id": 349,
+   "pagetitle": "Residenza Anni Azzurri Sant'Anna",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "c51f36bfa7ebfc94899c05903e4684581a74d9db",
+   "file": "349.html"
+  },
+  {
+   "id": 229,
+   "pagetitle": "Residenza Anni Azzurri Sant'Ambrogio",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "63115901f37ae0926f0360a8514e2466ec101fde",
+   "file": "229.html"
+  },
+  {
+   "id": 293,
+   "pagetitle": "Residenza Anni Azzurri Santena",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "74f48652aaf654d4e73dd648bf68d58f2262fede",
+   "file": "293.html"
+  },
+  {
+   "id": 212,
+   "pagetitle": "Residenza Anni Azzurri Sestri Ponente",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "48c448afba09d8f09456cc836f6fe093ccc4a52b",
+   "file": "212.html"
+  },
+  {
+   "id": 251,
+   "pagetitle": "Residenza per Anziani e Casa di Riposo a Tonengo d'Asti",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "23be1d89dc9f658b43766beb856a730069327745",
+   "file": "251.html"
+  },
+  {
+   "id": 353,
+   "pagetitle": "RSA in Veneto",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R4": 2
+   },
+   "sha1_prima": "a42bf481bba8893de02fd2740f24d3338298d56f",
+   "file": "353.html"
+  },
+  {
+   "id": 350,
+   "pagetitle": "Residenza Anni Azzurri Villa dei Ciliegi",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "544cb7b4508a1d47b741639b23e1387242c3c8d0",
+   "file": "350.html"
+  },
+  {
+   "id": 294,
+   "pagetitle": "Residenza Anni Azzurri Villa San Vincenzo",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "188c01493dd4481ec9dbe75612db45c754e513c9",
+   "file": "294.html"
+  },
+  {
    "id": 489,
    "pagetitle": "Residenza Anni Azzurri Melograno",
    "regole": {
@@ -92,13 +680,150 @@
    "file": "489.html"
   },
   {
+   "id": 270,
+   "pagetitle": "oss-emilia-romagna",
+   "regole": {
+    "AA1": 2
+   },
+   "sha1_prima": "c32edcb38ae50527be6e6f42f71c5d0481a3c459",
+   "file": "270.html"
+  },
+  {
+   "id": 286,
+   "pagetitle": "oss-liguria",
+   "regole": {
+    "AA1": 2
+   },
+   "sha1_prima": "6e5588f69df64879b0543cc817ef881c6619454e",
+   "file": "286.html"
+  },
+  {
+   "id": 266,
+   "pagetitle": "oss-lombardia",
+   "regole": {
+    "AA1": 2
+   },
+   "sha1_prima": "f444a1cdecc4f68f4c38fbb3c2c72893c973933a",
+   "file": "266.html"
+  },
+  {
+   "id": 268,
+   "pagetitle": "oss-piemonte",
+   "regole": {
+    "AA1": 2
+   },
+   "sha1_prima": "ffdc483f839964e3be128e42b64f4d95480d8c01",
+   "file": "268.html"
+  },
+  {
+   "id": 405,
+   "pagetitle": "oss-toscana",
+   "regole": {
+    "AA1": 2
+   },
+   "sha1_prima": "d3a15c6a8a3c1844c445b43b02ae4ccfa5cf5bdd",
+   "file": "405.html"
+  },
+  {
+   "id": 269,
+   "pagetitle": "oss-veneto",
+   "regole": {
+    "AA1": 2
+   },
+   "sha1_prima": "d11f824608118b7ab656d8bfb61995aff2df9886",
+   "file": "269.html"
+  },
+  {
+   "id": 136,
+   "pagetitle": "Patologie Cardiologiche",
+   "regole": {
+    "AA1": 1
+   },
+   "sha1_prima": "0e80883545057a873b999ca8c68c677898b47cca",
+   "file": "136.html"
+  },
+  {
+   "id": 137,
+   "pagetitle": "Patologie Metaboliche/Endocrine",
+   "regole": {
+    "AA1": 1
+   },
+   "sha1_prima": "038d4ee8358c8f95364f0657b97f1aa36f8ec699",
+   "file": "137.html"
+  },
+  {
+   "id": 138,
+   "pagetitle": "Patologie Neurologiche",
+   "regole": {
+    "AA1": 1
+   },
+   "sha1_prima": "3a64857dbe0dacb26948092049fb45cb4b0d9e4d",
+   "file": "138.html"
+  },
+  {
+   "id": 139,
+   "pagetitle": "Patologie Ortopediche",
+   "regole": {
+    "AA1": 1
+   },
+   "sha1_prima": "e7048e9a4648cfcb460a2a9389c1fc1bd006bafa",
+   "file": "139.html"
+  },
+  {
+   "id": 140,
+   "pagetitle": "Patologie Psichiatriche",
+   "regole": {
+    "AA1": 1
+   },
+   "sha1_prima": "b04d76b5a10e02c0ca9f1b6298c096d7d2c7d9f5",
+   "file": "140.html"
+  },
+  {
+   "id": 142,
+   "pagetitle": "Patologie Respiratorie",
+   "regole": {
+    "AA1": 1
+   },
+   "sha1_prima": "297309654895344b462f4b94779bdfeedd317a24",
+   "file": "142.html"
+  },
+  {
+   "id": 141,
+   "pagetitle": "Patologie Tumorali",
+   "regole": {
+    "AA1": 1
+   },
+   "sha1_prima": "080eded0fa769deb03a279f7dd8500d1908e8a4c",
+   "file": "141.html"
+  },
+  {
+   "id": 210,
+   "pagetitle": "Assistenza e Cure Domiciliari in regime privato",
+   "regole": {
+    "R4": 2,
+    "AA1": 1
+   },
+   "sha1_prima": "c104e0c02580588200209a9cb8fc284b656ec67c",
+   "file": "210.html"
+  },
+  {
    "id": 226,
    "pagetitle": "Prossime aperture",
    "regole": {
-    "R2": 1
+    "R2": 1,
+    "AA1": 1
    },
    "sha1_prima": "6aef82a8226d5613ee72153a2caf792dc8e450f5",
    "file": "226.html"
+  },
+  {
+   "id": 112,
+   "pagetitle": "Qualità e sicurezza",
+   "regole": {
+    "AA1": 3
+   },
+   "sha1_prima": "8b23fb4e15e033c4fa1b5cad8733c643662142a3",
+   "file": "112.html"
   },
   {
    "id": 328,
@@ -728,6 +1453,33 @@
    "file": "60.html"
   },
   {
+   "id": 28,
+   "pagetitle": "Riabilitazione motoria",
+   "regole": {
+    "AA1": 3
+   },
+   "sha1_prima": "62907eb0972f48d10956a438fb7918e25784b9c2",
+   "file": "28.html"
+  },
+  {
+   "id": 26,
+   "pagetitle": "Ricovero post dimissioni",
+   "regole": {
+    "AA1": 3
+   },
+   "sha1_prima": "0020698c4bedc4bbc654d5606c249b11e590d9f9",
+   "file": "26.html"
+  },
+  {
+   "id": 24,
+   "pagetitle": "Ricovero residenziale",
+   "regole": {
+    "AA1": 3
+   },
+   "sha1_prima": "265916da8eb17db0e605f094052e9b3e76c51fc0",
+   "file": "24.html"
+  },
+  {
    "id": 15,
    "pagetitle": "Le RSA Anni Azzurri in Emilia-Romagna",
    "regole": {
@@ -773,6 +1525,30 @@
    "file": "16.html"
   },
   {
+   "id": 199,
+   "pagetitle": "Residenza Anni Azzurri Melograno",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "1086f9a054d0ed4d4c7f886663f857bd9cbb4db7",
+   "file": "199.html"
+  },
+  {
+   "id": 203,
+   "pagetitle": "Residenza Anni Azzurri Navigli",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "45dd69f028ce505ed74f4b2c394ae17bac7cebb2",
+   "file": "203.html"
+  },
+  {
    "id": 18,
    "pagetitle": "Le RSA nel Lazio",
    "regole": {
@@ -799,6 +1575,17 @@
    },
    "sha1_prima": "164dd51c5006ee4f4c43a6ef7e15f3fe0a049472",
    "file": "362.html"
+  },
+  {
+   "id": 263,
+   "pagetitle": "Soggiorni estivi per anziani in Piemonte",
+   "regole": {
+    "R1": 12,
+    "R2": 1,
+    "R4": 2
+   },
+   "sha1_prima": "fb2b246a404a153277e43dafb556828fe72604ba",
+   "file": "263.html"
   }
  ]
 }

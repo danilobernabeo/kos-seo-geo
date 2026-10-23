@@ -58,7 +58,15 @@ def alt_per(nome, url, contesto_dopo, tag_attr):
         return re.sub(r'\s+', ' ', m.group(1)).strip()
     if '[[*' in url:
         return '[[*pagetitle]]'
-    return nome_da_file(url)
+    if re.search(r'residenza-|centro-diurno', url, re.I):   # nome del file parlante (es. terrazza-residenza-...)
+        return nome_da_file(url)
+    # riquadro con titolo: il titolo vicino descrive l'immagine; altrimenti immagine decorativa (alt vuoto)
+    m = re.search(r'<(h[1-4])\b[^>]*>(.*?)</\1>', contesto_dopo[:600], re.S)
+    if m:
+        t = re.sub(r'<[^>]+>|&nbsp;|\s+', ' ', m.group(2)).strip()
+        if len(t) > 3 and '[[' not in t:
+            return t
+    return ''
 
 
 def sizes_per(classi, nome, tag_attr):
