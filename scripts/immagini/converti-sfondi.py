@@ -39,7 +39,7 @@ def nome_da_file(url):
 
 
 def alt_per(nome, url, contesto_dopo, tag_attr):
-    m = re.search(r'<img\b[^>]*src="' + re.escape(url) + r'"[^>]*\balt="([^"]+)"', contesto_dopo)
+    m = re.search(r'<img\b[^>]*?src="' + re.escape(url) + r'"[^>]*?\balt="([^"]+)"', contesto_dopo)   # primo alt (come il browser)
     if m:                                             # stessa immagine già presente come <img> con alt
         return m.group(1)
     if nome.startswith('heading-home'):               # slide: titolo della slide

@@ -93,6 +93,18 @@ def regole_contenuto(tpl, t):
     t, a = cambia_tag(t, r'<(h3) class="([^"]*)"([^>]*)>(\s*Vuoi essere ricontattato\?\s*)</h3>', 'p', 'h3')
     t, b = cambia_tag(t, r'<(h4) class="([^"]*text-azure[^"]*)"([^>]*)>(\s*Lasciaci i tuoi dati.*?)</h4>', 'p', 'h4')
     n['R4'] = a + b
+    # Pulizia dei testi alternativi: attributo alt ripetuto nello stesso <img> (vale il primo) e refuso «assite»
+    def un_alt(m):
+        tag = m.group(0)
+        alts = re.findall(r'\salt="[^"]*"', tag)
+        for doppio in alts[1:]:
+            tag = tag.replace(doppio, '', 1)
+        return tag
+    t2 = re.sub(r'<img\b[^>]*>', un_alt, t)
+    t2 = re.sub(r'(alt="[^"]*?)\bassite\b', r'\1assiste', t2)
+    if t2 != t:
+        n['ALT'] = 1
+        t = t2
     nuovo, note = sfondi.converti(f'contenuto-{tpl}', t)
     if nuovo != t:
         t = nuovo

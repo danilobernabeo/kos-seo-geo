@@ -54,6 +54,7 @@
    "id": 29,
    "pagetitle": "Centri diurni",
    "regole": {
+    "ALT": 1,
     "AA1": 3
    },
    "sha1_prima": "576010ab53fa9236cd13f4bf083495c11a455839",
@@ -163,6 +164,7 @@
    "id": 1,
    "pagetitle": "Anni Azzurri",
    "regole": {
+    "ALT": 1,
     "AA1": 10
    },
    "sha1_prima": "baeee3bfdef189eeda97ec2bad6c60598389e116",
