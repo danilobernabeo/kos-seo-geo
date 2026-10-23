@@ -1,0 +1,3 @@
+node_modules/
+collaudo-*/
+package-lock.json
