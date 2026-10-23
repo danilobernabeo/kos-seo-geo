@@ -1,0 +1,31 @@
+{
+  "nome": "AA-1 AA-17 libreria immagini: libreria comune, snippet immagine, plugin ImmaginiCaricamento, regole CSS",
+  "elements": [
+    {
+      "type": "snippet",
+      "name": "immagine",
+      "file": "shared/snippets/immagine.php",
+      "description": "Markup <picture> con WebP, srcset, width/height e alt (libreria kosseogeo/Immagini)"
+    },
+    {
+      "type": "plugin",
+      "name": "ImmaginiCaricamento",
+      "file": "shared/plugins/ImmaginiCaricamento.php",
+      "description": "Ottimizza le immagini caricate e crea le varianti WebP",
+      "events": [
+        "OnFileManagerUpload"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "file": "shared/lib/Immagini.php",
+      "dest": "core/components/kosseogeo/Immagini.php"
+    },
+    {
+      "file": "anniazzurri/files/dist/css/custom.css",
+      "dest": "dist/css/custom.css",
+      "baseline": "anniazzurri/baseline/files/dist/css/custom.css"
+    }
+  ]
+}

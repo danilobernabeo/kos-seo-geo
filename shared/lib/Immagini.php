@@ -1,0 +1,260 @@
+<?php
+/**
+ * Libreria comune per le immagini (AA-1, AA-17; utilizzabile anche su kosgroup.com).
+ *
+ * Installata in core/components/kosseogeo/Immagini.php (cartella non raggiungibile dal web) e usata da:
+ *   - snippet `immagine`: markup <picture> con WebP, ripiego nel formato originale, srcset, width/height e alt;
+ *   - plugin `ImmaginiCaricamento` (OnFileManagerUpload): ottimizza le immagini appena caricate e ne crea le varianti;
+ *   - script `scripts/immagini/ottimizza-immagini.php`: conversione delle immagini già presenti, con backup e ripristino.
+ *
+ * Gli originali non si sovrascrivono mai senza copia di backup (tranne le immagini appena caricate dal plugin).
+ * Le varianti stanno in assets/cache-img/<percorso sotto assets/>/<nome>-<larghezza>.<jpg|png|webp>.
+ * Richiede Imagick con supporto WebP; senza, il markup ricade su un semplice <img> e nulla viene scritto.
+ */
+declare(strict_types=1);
+
+namespace KosSeoGeo;
+
+class Immagini
+{
+    public const ESTENSIONI = ['jpg', 'jpeg', 'png'];
+
+    private string $root;
+    private array $o;
+    private ?bool $ok = null;
+
+    public function __construct(string $webroot, array $opzioni = [])
+    {
+        $this->root = rtrim($webroot, '/') . '/';
+        $this->o = $opzioni + [
+            'cache'     => 'assets/cache-img',          // relativo alla radice del sito
+            'larghezze' => [480, 800, 1200, 1600, 2400],
+            'max_lato'  => 2400,                        // lato massimo dell'originale ottimizzato
+            'q_jpg'     => 82,
+            'q_webp'    => 80,
+        ];
+        sort($this->o['larghezze']);
+    }
+
+    /** Imagick presente e capace di scrivere WebP. */
+    public function disponibile(): bool
+    {
+        if ($this->ok === null) {
+            $this->ok = class_exists(\Imagick::class) && in_array('WEBP', \Imagick::queryFormats('WEBP'), true);
+        }
+        return $this->ok;
+    }
+
+    /**
+     * Percorso sul disco di un'immagine del sito a partire da URL assoluto, percorso "/assets/..." o "assets/...".
+     * Null se fuori dalla radice, inesistente o di un formato non gestito.
+     */
+    public function percorso(string $src): ?string
+    {
+        $src = trim(html_entity_decode($src, ENT_QUOTES, 'UTF-8'));
+        if (preg_match('#^(https?:)?//#i', $src)) {
+            $src = (string) parse_url($src, PHP_URL_PATH);
+        }
+        $src = rawurldecode((string) preg_replace('/[?#].*$/', '', $src));
+        $rel = ltrim($src, '/');
+        if ($rel === '' || str_contains($rel, '..') || str_contains($rel, "\0")) return null;
+        if (!in_array(strtolower(pathinfo($rel, PATHINFO_EXTENSION)), self::ESTENSIONI, true)) return null;
+        $file = $this->root . $rel;
+        $reale = realpath($file);
+        if ($reale === false || !str_starts_with($reale, realpath($this->root) . '/') || !is_file($reale)) return null;
+        return $reale;
+    }
+
+    /** URL a partire dalla radice del sito ("/assets/..."), con i segmenti codificati. */
+    public function url(string $file): string
+    {
+        $rel = substr($file, strlen(rtrim((string) realpath($this->root), '/')));
+        return implode('/', array_map('rawurlencode', explode('/', $rel)));
+    }
+
+    /** Apre un'immagine raddrizzata (orientamento EXIF) e in sRGB. Le immagini animate non si toccano. */
+    private function apri(string $file): \Imagick
+    {
+        $im = new \Imagick($file);
+        if ($im->getNumberImages() > 1) throw new \RuntimeException('immagine animata o multipagina');
+        switch ($im->getImageOrientation()) {
+            case \Imagick::ORIENTATION_BOTTOMRIGHT: $im->rotateImage('#000', 180); break;
+            case \Imagick::ORIENTATION_RIGHTTOP:    $im->rotateImage('#000', 90);  break;
+            case \Imagick::ORIENTATION_LEFTBOTTOM:  $im->rotateImage('#000', -90); break;
+        }
+        $im->setImageOrientation(\Imagick::ORIENTATION_TOPLEFT);
+        if ($im->getImageColorspace() === \Imagick::COLORSPACE_CMYK) {
+            $im->transformImageColorspace(\Imagick::COLORSPACE_SRGB);
+        }
+        return $im;
+    }
+
+    /** Imposta formato e compressione e scrive su $dest. */
+    private function scrivi(\Imagick $im, string $dest, string $formato): void
+    {
+        $im = clone $im;
+        $im->stripImage();
+        switch ($formato) {
+            case 'webp':
+                $im->setImageFormat('webp');
+                $im->setImageCompressionQuality($this->o['q_webp']);
+                $im->setOption('webp:method', '6');
+                break;
+            case 'png':
+                $im->setImageFormat('png');
+                $im->setOption('png:compression-level', '9');
+                break;
+            default:
+                $im->setImageFormat('jpeg');
+                $im->setImageCompressionQuality($this->o['q_jpg']);
+                $im->setInterlaceScheme(\Imagick::INTERLACE_PLANE);   // JPEG progressivo
+                $im->setSamplingFactors(['2x2', '1x1', '1x1']);
+        }
+        $tmp = $dest . '.tmp-' . getmypid();
+        if (!is_dir(dirname($dest))) mkdir(dirname($dest), 0775, true);
+        $im->writeImage($tmp);
+        $im->clear();
+        if (!rename($tmp, $dest)) { @unlink($tmp); throw new \RuntimeException("scrittura fallita: $dest"); }
+        @chmod($dest, 0644);
+    }
+
+    /**
+     * Ottimizza l'originale nello stesso file e con lo stesso URL: lo riduce se supera $maxLato e lo ricomprime.
+     * Lo sostituisce solo se il risultato è più leggero almeno del 10% o se è stato ridotto.
+     * $backup: cartella in cui copiare l'originale (stesso percorso relativo) prima di sostituirlo; null = nessuna copia.
+     * $applica false = prova: calcola il risultato in un file temporaneo e lo scarta.
+     */
+    public function ottimizza(string $file, ?string $backup, bool $applica, ?int $maxLato = null): array
+    {
+        $maxLato = $maxLato ?: (int) $this->o['max_lato'];
+        $prima = filesize($file);
+        $r = ['file' => $file, 'prima' => $prima, 'dopo' => $prima, 'azione' => 'invariato', 'lati' => '', 'nota' => ''];
+        try {
+            $im = $this->apri($file);
+        } catch (\Throwable $e) {
+            return ['azione' => 'saltato', 'nota' => $e->getMessage()] + $r;
+        }
+        $w = $im->getImageWidth(); $h = $im->getImageHeight();
+        $r['lati'] = "{$w}x{$h}";
+        $ridotto = false;
+        if (max($w, $h) > $maxLato) {
+            $w > $h ? $im->resizeImage($maxLato, 0, \Imagick::FILTER_LANCZOS, 1) : $im->resizeImage(0, $maxLato, \Imagick::FILTER_LANCZOS, 1);
+            $ridotto = true;
+            $r['lati'] .= ' → ' . $im->getImageWidth() . 'x' . $im->getImageHeight();
+        }
+        $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+        $tmp = sys_get_temp_dir() . '/kosseogeo-' . getmypid() . '-' . md5($file) . '.' . $ext;
+        $this->scrivi($im, $tmp, $ext === 'png' ? 'png' : 'jpg');
+        $im->clear();
+        $dopo = filesize($tmp);
+        if (!$ridotto && $dopo > $prima * 0.9) {
+            @unlink($tmp);
+            return ['nota' => 'già ottimizzata'] + $r;
+        }
+        $r['dopo'] = $dopo;
+        $r['azione'] = $ridotto ? 'ridotta' : 'ricompressa';
+        if (!$applica) { @unlink($tmp); return $r; }
+        if ($backup !== null) {
+            $copia = rtrim($backup, '/') . substr($file, strlen(rtrim((string) realpath($this->root), '/')));
+            if (!is_dir(dirname($copia))) mkdir(dirname($copia), 0775, true);
+            if (!is_file($copia) && !copy($file, $copia)) { @unlink($tmp); throw new \RuntimeException("backup fallito: $copia"); }
+            $r['backup'] = $copia;
+        }
+        if (!rename($tmp, $file) && !(copy($tmp, $file) && unlink($tmp))) throw new \RuntimeException("sostituzione fallita: $file");
+        @chmod($file, 0644);
+        return $r;
+    }
+
+    /** Cartella e radice del nome delle varianti di un originale. */
+    private function baseVariante(string $file): string
+    {
+        $rel = substr($file, strlen(rtrim((string) realpath($this->root), '/')) + 1);
+        $rel = preg_replace('#^assets/#', '', $rel);   // assets/img/x.jpg → assets/cache-img/img/x-800.webp
+        return $this->root . trim($this->o['cache'], '/') . '/' . preg_replace('/\.[^.\/]+$/', '', $rel);
+    }
+
+    /**
+     * Varianti per lo srcset: ogni larghezza configurata minore di quella dell'originale, più l'originale stesso
+     * (limitato a max_lato), ciascuna nel formato originale e in WebP. Rigenera solo quelle mancanti o più vecchie
+     * dell'originale. $genera false = restituisce solo quelle già esistenti.
+     * @return array<int, array{w:int,h:int,orig:string,webp:string}> in ordine di larghezza crescente
+     */
+    public function varianti(string $file, bool $genera = true): array
+    {
+        $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'png' ? 'png' : 'jpg';
+        $base = $this->baseVariante($file);
+        $mtime = filemtime($file);
+        $dim = @getimagesize($file);
+        if (!$dim) return [];
+        [$W, $H] = $dim;
+        // getimagesize ignora l'orientamento EXIF: per le foto ruotate si scambiano i lati
+        if (function_exists('exif_read_data') && $ext === 'jpg') {
+            $exif = @exif_read_data($file);
+            if (in_array((int) ($exif['Orientation'] ?? 1), [5, 6, 7, 8], true)) [$W, $H] = [$H, $W];
+        }
+        $top = min($W, (int) $this->o['max_lato']);
+        $larghezze = array_values(array_filter($this->o['larghezze'], fn($l) => $l < $top));
+        $larghezze[] = $top;
+        $out = []; $im = null;
+        foreach ($larghezze as $l) {
+            $h = (int) round($H * $l / $W);
+            $v = ['w' => $l, 'h' => $h, 'orig' => "$base-$l.$ext", 'webp' => "$base-$l.webp"];
+            $manca = !is_file($v['orig']) || filemtime($v['orig']) < $mtime || !is_file($v['webp']) || filemtime($v['webp']) < $mtime;
+            if ($manca) {
+                if (!$genera || !$this->disponibile()) continue;
+                try {
+                    $im ??= $this->apri($file);
+                    $c = clone $im;
+                    if ($l < $c->getImageWidth()) $c->resizeImage($l, 0, \Imagick::FILTER_LANCZOS, 1);
+                    $v['h'] = $c->getImageHeight();
+                    $this->scrivi($c, $v['orig'], $ext);
+                    $this->scrivi($c, $v['webp'], 'webp');
+                    $c->clear();
+                } catch (\Throwable $e) {
+                    continue;
+                }
+            }
+            $out[] = $v;
+        }
+        $im?->clear();
+        return $out;
+    }
+
+    /**
+     * Markup <picture> per un'immagine del sito.
+     * Opzioni: alt, sizes (default 100vw), class (sull'<img>), classe_picture, attributi (stringa aggiunta all'<img>),
+     * priorita (true: immagine principale sopra la piega → fetchpriority high, niente lazy), genera (default true).
+     */
+    public function picture(string $src, array $o = []): string
+    {
+        $e = fn($s) => htmlspecialchars((string) $s, ENT_QUOTES, 'UTF-8');
+        $alt = $e($o['alt'] ?? '');
+        $cls = !empty($o['class']) ? ' class="' . $e($o['class']) . '"' : '';
+        $extra = !empty($o['attributi']) ? ' ' . trim((string) $o['attributi']) : '';
+        $carico = !empty($o['priorita']) ? ' fetchpriority="high" decoding="async"' : ' loading="lazy" decoding="async"';
+        $file = $this->percorso($src);
+        if ($file === null) {
+            // immagine esterna o mancante: <img> semplice con percorso assoluto
+            $u = preg_match('#^(https?:)?//|^/#i', $src) ? $src : '/' . ltrim($src, '/');
+            return '<img src="' . $e($u) . '" alt="' . $alt . '"' . $cls . $carico . $extra . '>';
+        }
+        $v = $this->varianti($file, $o['genera'] ?? true);
+        if (!$v) {
+            $dim = @getimagesize($file);
+            $wh = $dim ? ' width="' . $dim[0] . '" height="' . $dim[1] . '"' : '';
+            return '<img src="' . $e($this->url($file)) . '" alt="' . $alt . '"' . $wh . $cls . $carico . $extra . '>';
+        }
+        $sizes = $e($o['sizes'] ?? '100vw');
+        $set = fn(string $k) => implode(', ', array_map(fn($x) => $this->url($x[$k]) . ' ' . $x['w'] . 'w', $v));
+        $grande = end($v);
+        // ripiego: la variante più vicina a 1200 px
+        $rip = $v[0];
+        foreach ($v as $x) if ($x['w'] <= 1200) $rip = $x;
+        $pc = !empty($o['classe_picture']) ? ' class="' . $e($o['classe_picture']) . '"' : '';
+        return '<picture' . $pc . '>'
+            . '<source type="image/webp" srcset="' . $e($set('webp')) . '" sizes="' . $sizes . '">'
+            . '<img src="' . $e($this->url($rip['orig'])) . '" srcset="' . $e($set('orig')) . '" sizes="' . $sizes . '"'
+            . ' width="' . $grande['w'] . '" height="' . $grande['h'] . '" alt="' . $alt . '"' . $cls . $carico . $extra . '>'
+            . '</picture>';
+    }
+}

@@ -1,0 +1,804 @@
+{
+ "nome": "AA-6 titoli nei contenuti",
+ "campo": "content",
+ "risorse": [
+  {
+   "id": 367,
+   "pagetitle": "Nuovi alloggi protetti",
+   "regole": {
+    "R1": 6,
+    "R2": 1,
+    "R3": 1,
+    "R4": 2
+   },
+   "sha1_prima": "9f412a5405e9e10d452ee1f2a6ebc7faaa09ec00",
+   "file": "367.html"
+  },
+  {
+   "id": 185,
+   "pagetitle": "Centro Diurno Alzheimer San Giuseppe",
+   "regole": {
+    "R2": 1
+   },
+   "sha1_prima": "6e14a245d38cd03f04cd2583cc2c1e6fb4d2fc25",
+   "file": "185.html"
+  },
+  {
+   "id": 182,
+   "pagetitle": "Centro Diurno Anni Azzurri La Limonaia",
+   "regole": {
+    "R2": 1
+   },
+   "sha1_prima": "bd878396d8276165fce859d0ce67dbdbe42591d8",
+   "file": "182.html"
+  },
+  {
+   "id": 183,
+   "pagetitle": "Centro Diurno Anni Azzurri Maremma",
+   "regole": {
+    "R2": 1
+   },
+   "sha1_prima": "2bed8e96407bca6b2cd40f5910546b1d10328d10",
+   "file": "183.html"
+  },
+  {
+   "id": 451,
+   "pagetitle": "Centro Diurno Integrato Anni Azzurri Biancospino",
+   "regole": {
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "af064598882a544f069b49e71e45ebe12181357b",
+   "file": "451.html"
+  },
+  {
+   "id": 184,
+   "pagetitle": "Centro Diurno Integrato Anni Azzurri San Rocco",
+   "regole": {
+    "R2": 1
+   },
+   "sha1_prima": "2843f9ad00669ca11e93ee9e9452b1f253ea87cd",
+   "file": "184.html"
+  },
+  {
+   "id": 155,
+   "pagetitle": "Hospice Beati Coniugi Martin",
+   "regole": {
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "6dd4c8d7cfc55aba206edfcd1691e90561535ea3",
+   "file": "155.html"
+  },
+  {
+   "id": 233,
+   "pagetitle": "Hospice San Giorgio a Colonica",
+   "regole": {
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "2a5102c8bf1e36b00fc0f24d916de1c2c3378eff",
+   "file": "233.html"
+  },
+  {
+   "id": 489,
+   "pagetitle": "Residenza Anni Azzurri Melograno",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "7404b6aae50f44479c465204c31db6c2d27d12bc",
+   "file": "489.html"
+  },
+  {
+   "id": 226,
+   "pagetitle": "Prossime aperture",
+   "regole": {
+    "R2": 1
+   },
+   "sha1_prima": "6aef82a8226d5613ee72153a2caf792dc8e450f5",
+   "file": "226.html"
+  },
+  {
+   "id": 328,
+   "pagetitle": "Residenza Anni Azzurri Abitare il Tempo",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "f70d29fecf749ed18bb7b43bce5f19d8b24f4906",
+   "file": "328.html"
+  },
+  {
+   "id": 76,
+   "pagetitle": "Residenza Anni Azzurri B. Franchiolo",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "d746a2a254ca93f7044ce3fe63e7a021fe7c03b0",
+   "file": "76.html"
+  },
+  {
+   "id": 94,
+   "pagetitle": "Residenza Anni Azzurri Beato Angelico",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "9c4d7f8bf127ea0b90950e1d7cb556a388f07ffa",
+   "file": "94.html"
+  },
+  {
+   "id": 231,
+   "pagetitle": "Residenza Anni Azzurri Borgomanero",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "943197603601c33b55ade5fbe778226db1d63893",
+   "file": "231.html"
+  },
+  {
+   "id": 217,
+   "pagetitle": "Residenza Anni Azzurri Campi Bisenzio",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "6948302f92902117aac5064348f0b0404eb8d969",
+   "file": "217.html"
+  },
+  {
+   "id": 57,
+   "pagetitle": "Residenza Anni Azzurri Carmagnola",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "0a4bad5d19d4eb1faddf5d7d334e87661a97bca1",
+   "file": "57.html"
+  },
+  {
+   "id": 327,
+   "pagetitle": "Residenza Anni Azzurri Casa Argento",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "3e7bb81e6455d9e605d5736973443ed92b19ff5c",
+   "file": "327.html"
+  },
+  {
+   "id": 71,
+   "pagetitle": "Residenza Anni Azzurri Casa Serena",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "5bf570218382390e8102001768eae8b06c332a78",
+   "file": "71.html"
+  },
+  {
+   "id": 72,
+   "pagetitle": "Residenza Anni Azzurri Castagnola",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "606856017257810aff5baa9a1a949aef83dd1883",
+   "file": "72.html"
+  },
+  {
+   "id": 73,
+   "pagetitle": "Residenza Anni Azzurri Casteldonino",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "4fd4f5c49891a26c17a841bf91d4dd6733d858bf",
+   "file": "73.html"
+  },
+  {
+   "id": 56,
+   "pagetitle": "Residenza Anni Azzurri Cit Turin",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "acc4b0853a1c675c433140e5fce4a2e10d514afc",
+   "file": "56.html"
+  },
+  {
+   "id": 101,
+   "pagetitle": "Residenza Anni Azzurri Conero",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "a5f7d30dd1f4c81808ebe30602619e2261995a9b",
+   "file": "101.html"
+  },
+  {
+   "id": 326,
+   "pagetitle": "Residenza Anni Azzurri Dorica",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "24e110538198ed98d30e21b6f4ef3a44464d318c",
+   "file": "326.html"
+  },
+  {
+   "id": 88,
+   "pagetitle": "Residenza Anni Azzurri Ducale 1",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "ed1749adfca0f4489e4675c5641415d3e4b3c12e",
+   "file": "88.html"
+  },
+  {
+   "id": 89,
+   "pagetitle": "Residenza Anni Azzurri Ducale 2-3",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "1e5a940a53c9cb3e01c691ff5897c4487a0cb9be",
+   "file": "89.html"
+  },
+  {
+   "id": 86,
+   "pagetitle": "Residenza Anni Azzurri Idice",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "9e2ee26a4aaa52bd8372188bdaeb2926c0814538",
+   "file": "86.html"
+  },
+  {
+   "id": 91,
+   "pagetitle": "Residenza Anni Azzurri Il Giardino",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "baaae0e3b0673eb7b40cb921f599c023d20738fe",
+   "file": "91.html"
+  },
+  {
+   "id": 95,
+   "pagetitle": "Residenza Anni Azzurri Il Poggione",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "6711c1c182351418e2ac43e46cfdf6796af5252b",
+   "file": "95.html"
+  },
+  {
+   "id": 62,
+   "pagetitle": "Residenza Anni Azzurri La Corte",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "70e65a73efd173706e72474417e861e676cc083e",
+   "file": "62.html"
+  },
+  {
+   "id": 77,
+   "pagetitle": "Residenza Anni Azzurri Le Grange",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "5d6ec038f440eae9381fa1f9a1fa30dd16e995ae",
+   "file": "77.html"
+  },
+  {
+   "id": 35,
+   "pagetitle": "Residenza Anni Azzurri Melograno",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "2eaf6a91a990d5cf0aa4191bdd35a5edb7ffc880",
+   "file": "35.html"
+  },
+  {
+   "id": 81,
+   "pagetitle": "Residenza Anni Azzurri Mestre",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "9775abee90e51ab2f7b011f51ee8043a725df320",
+   "file": "81.html"
+  },
+  {
+   "id": 75,
+   "pagetitle": "Residenza Anni Azzurri Minerva",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "700bb2be827130e3343efc72c459ec4276e4d93b",
+   "file": "75.html"
+  },
+  {
+   "id": 34,
+   "pagetitle": "Residenza Anni Azzurri Mirasole",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "0b33c59864822f97302946ed7e07d909cd37515e",
+   "file": "34.html"
+  },
+  {
+   "id": 58,
+   "pagetitle": "Residenza Anni Azzurri Montanaro",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "0d4ad46db45db6cfddc9e109bbe0f44f05275cf9",
+   "file": "58.html"
+  },
+  {
+   "id": 19,
+   "pagetitle": "Residenza Anni Azzurri Navigli",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "2c2ca7d361d2f03a9fc66b2ddb6b7d2d53fd8a5b",
+   "file": "19.html"
+  },
+  {
+   "id": 63,
+   "pagetitle": "Residenza Anni Azzurri Palladio",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "17032071534f8730b81df044a134e51087245109",
+   "file": "63.html"
+  },
+  {
+   "id": 110,
+   "pagetitle": "Residenza Anni Azzurri Parco di Veio",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "1915ff0f29ed32a2c8ec0d8116e15d8cf65ec99a",
+   "file": "110.html"
+  },
+  {
+   "id": 20,
+   "pagetitle": "Residenza Anni Azzurri Parco Sempione",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "b842ddb863477e262bf7ee650ea274095dca169b",
+   "file": "20.html"
+  },
+  {
+   "id": 42,
+   "pagetitle": "Residenza Anni Azzurri Polo Geriatrico Riabilitativo Cinisello",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "65ce560889df7e61dee7d38e7d58613b5f213415",
+   "file": "42.html"
+  },
+  {
+   "id": 45,
+   "pagetitle": "Residenza Anni Azzurri Polo Geriatrico Riabilitativo Milano",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "3e2b1add1cec2ec08ac93b75b9eb35cdec1c8fdd",
+   "file": "45.html"
+  },
+  {
+   "id": 82,
+   "pagetitle": "Residenza Anni Azzurri Quarto d'Altino",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "cd2c54363367a27ac6384c103d814d3738bf30dd",
+   "file": "82.html"
+  },
+  {
+   "id": 37,
+   "pagetitle": "Residenza Anni Azzurri Rezzato",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "b04c5ff324f5d35a800692ca1b6527b8de663bee",
+   "file": "37.html"
+  },
+  {
+   "id": 70,
+   "pagetitle": "Residenza Anni Azzurri Sacra Famiglia",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "7c5be0acf5afc02432364cd73bd3d5c1137db466",
+   "file": "70.html"
+  },
+  {
+   "id": 21,
+   "pagetitle": "Residenza Anni Azzurri San Faustino",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "114e62c25921f1e58e8f89d5c0e36bc6733e76c4",
+   "file": "21.html"
+  },
+  {
+   "id": 104,
+   "pagetitle": "Residenza Anni Azzurri San Giuseppe",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "c9d2f9c57a9da3ae430c7d2b8824aa303e537830",
+   "file": "104.html"
+  },
+  {
+   "id": 64,
+   "pagetitle": "Residenza Anni Azzurri San Lorenzo",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "6a7f65e0f7ab31480b030581ff4f72d5115b711f",
+   "file": "64.html"
+  },
+  {
+   "id": 22,
+   "pagetitle": "Residenza Anni Azzurri San Luca",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "b769fa2f58ddef54c009b74171bd65aaf8dab0d8",
+   "file": "22.html"
+  },
+  {
+   "id": 33,
+   "pagetitle": "Residenza Anni Azzurri San Martino",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "349714a82dc239a88f2d40cb0dd2e4080c384bd5",
+   "file": "33.html"
+  },
+  {
+   "id": 43,
+   "pagetitle": "Residenza Anni Azzurri San Rocco",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "753c9eae49a6de0a884bc99ba1434b5dca774d81",
+   "file": "43.html"
+  },
+  {
+   "id": 38,
+   "pagetitle": "Residenza Anni Azzurri San Sisto",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "91202f66c239cf1f7c11b5b78ea8b7da8a84b438",
+   "file": "38.html"
+  },
+  {
+   "id": 333,
+   "pagetitle": "Residenza Anni Azzurri San Sisto 2",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "548bea95ccaefc172b28182efd3666aa77188c4c",
+   "file": "333.html"
+  },
+  {
+   "id": 80,
+   "pagetitle": "Residenza Anni Azzurri Sant'Anna",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "d0cc32a322ef03ad5803cb4a78ac287afbfcf332",
+   "file": "80.html"
+  },
+  {
+   "id": 107,
+   "pagetitle": "Residenza Anni Azzurri Santa Maria in Chienti",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "0abce2f5bf796537834accef54a4375cad2174d1",
+   "file": "107.html"
+  },
+  {
+   "id": 32,
+   "pagetitle": "Residenza Anni Azzurri Sant'Ambrogio",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "25b7bac74d38c8b184e4f7a069137d2105cbe0cd",
+   "file": "32.html"
+  },
+  {
+   "id": 59,
+   "pagetitle": "Residenza Anni Azzurri Santena",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "7c08278f8ffe665922cebf31c3fd19d9fdb5a5b3",
+   "file": "59.html"
+  },
+  {
+   "id": 69,
+   "pagetitle": "Residenza Anni Azzurri Sestri Ponente",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "85ba8890bf4b337ceea93bc5867534106ca74ec6",
+   "file": "69.html"
+  },
+  {
+   "id": 66,
+   "pagetitle": "Residenza Anni Azzurri Tonengo d'Asti",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "1017b847eb27685ed11c99997d60b74d706bee8f",
+   "file": "66.html"
+  },
+  {
+   "id": 105,
+   "pagetitle": "Residenza Anni Azzurri Valdaso",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "1e8771be98ef889828afb606431a3e3578094368",
+   "file": "105.html"
+  },
+  {
+   "id": 39,
+   "pagetitle": "Residenza Anni Azzurri Vico Mercati",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "b99cf0d4011caada465ac75930604f2affce512e",
+   "file": "39.html"
+  },
+  {
+   "id": 40,
+   "pagetitle": "Residenza Anni Azzurri Villa Clarice",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "6bb14f417da4fce215290d571cbf675851a930de",
+   "file": "40.html"
+  },
+  {
+   "id": 87,
+   "pagetitle": "Residenza Anni Azzurri Villa dei Ciliegi",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "62d7b40efde064424022240a40780504dc327bd3",
+   "file": "87.html"
+  },
+  {
+   "id": 90,
+   "pagetitle": "Residenza Anni Azzurri Villa Pineta",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "841be7873a7a01ab144447f24bae788b21f68b61",
+   "file": "90.html"
+  },
+  {
+   "id": 41,
+   "pagetitle": "Residenza Anni Azzurri Villa Reale",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "4ae37587d0bdc5622ca5e588e0558a4fa7eff507",
+   "file": "41.html"
+  },
+  {
+   "id": 65,
+   "pagetitle": "Residenza Anni Azzurri Villa San Vincenzo",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "12d19fc2e9146353443fd4d570d0263f9c0b5330",
+   "file": "65.html"
+  },
+  {
+   "id": 44,
+   "pagetitle": "Residenza Anni Azzurri Villaggio San Francesco",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "2b6e98a775159d0451774dd702ea895074a28577",
+   "file": "44.html"
+  },
+  {
+   "id": 60,
+   "pagetitle": "Residenza Anni Azzurri Volpiano",
+   "regole": {
+    "R1": 10,
+    "R2": 1,
+    "R3": 1
+   },
+   "sha1_prima": "e3ae1e133d0d6a89b8563189b5c6d8b47d2ff019",
+   "file": "60.html"
+  },
+  {
+   "id": 15,
+   "pagetitle": "Le RSA Anni Azzurri in Emilia-Romagna",
+   "regole": {
+    "R2": 1
+   },
+   "sha1_prima": "d49cb91b8abc2a559f39fcf533ff4ac4c4f0f8a2",
+   "file": "15.html"
+  },
+  {
+   "id": 13,
+   "pagetitle": "Le RSA Anni Azzurri in Liguria",
+   "regole": {
+    "R2": 1
+   },
+   "sha1_prima": "fbc7ecbaef70acf0846c4c81751aa1ce2d855070",
+   "file": "13.html"
+  },
+  {
+   "id": 11,
+   "pagetitle": "Le RSA in Lombardia",
+   "regole": {
+    "R2": 1
+   },
+   "sha1_prima": "e73e40b70abe85a7f881a953fb6edbc2ea4eb7e1",
+   "file": "11.html"
+  },
+  {
+   "id": 12,
+   "pagetitle": "Le RSA Anni Azzurri in Piemonte",
+   "regole": {
+    "R2": 1
+   },
+   "sha1_prima": "b1d2b8c0383eb59b43443d369e3d3c9a759aabe2",
+   "file": "12.html"
+  },
+  {
+   "id": 16,
+   "pagetitle": "RSA Anni Azzurri in Toscana",
+   "regole": {
+    "R2": 1
+   },
+   "sha1_prima": "a37dcab25dd1972efe722a3096d0ea28e61cd664",
+   "file": "16.html"
+  },
+  {
+   "id": 18,
+   "pagetitle": "Le RSA nel Lazio",
+   "regole": {
+    "R2": 1
+   },
+   "sha1_prima": "29bffa9fd6a61ca2427a1ec0ec7b99b652e43b3d",
+   "file": "18.html"
+  },
+  {
+   "id": 17,
+   "pagetitle": "Le RSA Anni Azzurri nelle Marche",
+   "regole": {
+    "R2": 1
+   },
+   "sha1_prima": "8129bcda0f3e5f7c51ae693aa1e00dfc670198e4",
+   "file": "17.html"
+  },
+  {
+   "id": 362,
+   "pagetitle": "Servizi personalizzati per ogni ospite",
+   "regole": {
+    "R1": 8,
+    "R2": 1
+   },
+   "sha1_prima": "164dd51c5006ee4f4c43a6ef7e15f3fe0a049472",
+   "file": "362.html"
+  }
+ ]
+}

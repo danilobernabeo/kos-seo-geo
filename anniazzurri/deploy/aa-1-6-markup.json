@@ -1,0 +1,893 @@
+{
+  "nome": "AA-1 AA-6 AA-17 markup: immagini di sfondo → <picture> con lo snippet immagine; titoli degli accordion, intro, form, gallerie, video, footer",
+  "elements": [
+    {
+      "type": "chunk",
+      "name": "25",
+      "file": "anniazzurri/elements/chunks/25.html",
+      "baseline": "anniazzurri/baseline/chunks/25.html"
+    },
+    {
+      "type": "chunk",
+      "name": "banner-soggiorni-estivi-biarella",
+      "file": "anniazzurri/elements/chunks/banner-soggiorni-estivi-biarella.html",
+      "baseline": "anniazzurri/baseline/chunks/banner-soggiorni-estivi-biarella.html"
+    },
+    {
+      "type": "chunk",
+      "name": "banner-soggiorni-estivi-tonengo",
+      "file": "anniazzurri/elements/chunks/banner-soggiorni-estivi-tonengo.html",
+      "baseline": "anniazzurri/baseline/chunks/banner-soggiorni-estivi-tonengo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "banner-soggiorni-estivi-volpiano",
+      "file": "anniazzurri/elements/chunks/banner-soggiorni-estivi-volpiano.html",
+      "baseline": "anniazzurri/baseline/chunks/banner-soggiorni-estivi-volpiano.html"
+    },
+    {
+      "type": "chunk",
+      "name": "banner2-soggiorni-estivi-biarella",
+      "file": "anniazzurri/elements/chunks/banner2-soggiorni-estivi-biarella.html",
+      "baseline": "anniazzurri/baseline/chunks/banner2-soggiorni-estivi-biarella.html"
+    },
+    {
+      "type": "chunk",
+      "name": "banner2-soggiorni-estivi-tonengo",
+      "file": "anniazzurri/elements/chunks/banner2-soggiorni-estivi-tonengo.html",
+      "baseline": "anniazzurri/baseline/chunks/banner2-soggiorni-estivi-tonengo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "campagna-assunzione-colf-badanti",
+      "file": "anniazzurri/elements/chunks/campagna-assunzione-colf-badanti.html",
+      "baseline": "anniazzurri/baseline/chunks/campagna-assunzione-colf-badanti.html"
+    },
+    {
+      "type": "chunk",
+      "name": "campagna-ip-emi",
+      "file": "anniazzurri/elements/chunks/campagna-ip-emi.html",
+      "baseline": "anniazzurri/baseline/chunks/campagna-ip-emi.html"
+    },
+    {
+      "type": "chunk",
+      "name": "campagna-ip-marene",
+      "file": "anniazzurri/elements/chunks/campagna-ip-marene.html",
+      "baseline": "anniazzurri/baseline/chunks/campagna-ip-marene.html"
+    },
+    {
+      "type": "chunk",
+      "name": "campagna-oss-emilia-romagna",
+      "file": "anniazzurri/elements/chunks/campagna-oss-emilia-romagna.html",
+      "baseline": "anniazzurri/baseline/chunks/campagna-oss-emilia-romagna.html"
+    },
+    {
+      "type": "chunk",
+      "name": "campagna-oss-liguria",
+      "file": "anniazzurri/elements/chunks/campagna-oss-liguria.html",
+      "baseline": "anniazzurri/baseline/chunks/campagna-oss-liguria.html"
+    },
+    {
+      "type": "chunk",
+      "name": "campagna-oss-piemonte",
+      "file": "anniazzurri/elements/chunks/campagna-oss-piemonte.html",
+      "baseline": "anniazzurri/baseline/chunks/campagna-oss-piemonte.html"
+    },
+    {
+      "type": "chunk",
+      "name": "campagna-oss-toscana",
+      "file": "anniazzurri/elements/chunks/campagna-oss-toscana.html",
+      "baseline": "anniazzurri/baseline/chunks/campagna-oss-toscana.html"
+    },
+    {
+      "type": "chunk",
+      "name": "campagna-oss-veneto",
+      "file": "anniazzurri/elements/chunks/campagna-oss-veneto.html",
+      "baseline": "anniazzurri/baseline/chunks/campagna-oss-veneto.html"
+    },
+    {
+      "type": "chunk",
+      "name": "centri-diurni-elenco-row",
+      "file": "anniazzurri/elements/chunks/centri-diurni-elenco-row.html",
+      "baseline": "anniazzurri/baseline/chunks/centri-diurni-elenco-row.html"
+    },
+    {
+      "type": "chunk",
+      "name": "faq-landing-assistenza-domiciliare",
+      "file": "anniazzurri/elements/chunks/faq-landing-assistenza-domiciliare.html",
+      "baseline": "anniazzurri/baseline/chunks/faq-landing-assistenza-domiciliare.html"
+    },
+    {
+      "type": "chunk",
+      "name": "faq-lrsa-volpiano",
+      "file": "anniazzurri/elements/chunks/faq-lrsa-volpiano.html",
+      "baseline": "anniazzurri/baseline/chunks/faq-lrsa-volpiano.html"
+    },
+    {
+      "type": "chunk",
+      "name": "faq-rsa-in-emilia-romagna",
+      "file": "anniazzurri/elements/chunks/faq-rsa-in-emilia-romagna.html",
+      "baseline": "anniazzurri/baseline/chunks/faq-rsa-in-emilia-romagna.html"
+    },
+    {
+      "type": "chunk",
+      "name": "faq-rsa-in-liguria",
+      "file": "anniazzurri/elements/chunks/faq-rsa-in-liguria.html",
+      "baseline": "anniazzurri/baseline/chunks/faq-rsa-in-liguria.html"
+    },
+    {
+      "type": "chunk",
+      "name": "faq-rsa-in-lombardia",
+      "file": "anniazzurri/elements/chunks/faq-rsa-in-lombardia.html",
+      "baseline": "anniazzurri/baseline/chunks/faq-rsa-in-lombardia.html"
+    },
+    {
+      "type": "chunk",
+      "name": "faq-rsa-in-piemonte",
+      "file": "anniazzurri/elements/chunks/faq-rsa-in-piemonte.html",
+      "baseline": "anniazzurri/baseline/chunks/faq-rsa-in-piemonte.html"
+    },
+    {
+      "type": "chunk",
+      "name": "faq-rsa-in-toscana",
+      "file": "anniazzurri/elements/chunks/faq-rsa-in-toscana.html",
+      "baseline": "anniazzurri/baseline/chunks/faq-rsa-in-toscana.html"
+    },
+    {
+      "type": "chunk",
+      "name": "faq-rsa-in-veneto",
+      "file": "anniazzurri/elements/chunks/faq-rsa-in-veneto.html",
+      "baseline": "anniazzurri/baseline/chunks/faq-rsa-in-veneto.html"
+    },
+    {
+      "type": "chunk",
+      "name": "faq-rsa-nel-lazio",
+      "file": "anniazzurri/elements/chunks/faq-rsa-nel-lazio.html",
+      "baseline": "anniazzurri/baseline/chunks/faq-rsa-nel-lazio.html"
+    },
+    {
+      "type": "chunk",
+      "name": "faq-rsa-nelle-marche",
+      "file": "anniazzurri/elements/chunks/faq-rsa-nelle-marche.html",
+      "baseline": "anniazzurri/baseline/chunks/faq-rsa-nelle-marche.html"
+    },
+    {
+      "type": "chunk",
+      "name": "footer",
+      "file": "anniazzurri/elements/chunks/footer.html",
+      "baseline": "anniazzurri/baseline/chunks/footer.html"
+    },
+    {
+      "type": "chunk",
+      "name": "form-contatti-hs",
+      "file": "anniazzurri/elements/chunks/form-contatti-hs.html",
+      "baseline": "anniazzurri/baseline/chunks/form-contatti-hs.html"
+    },
+    {
+      "type": "chunk",
+      "name": "form-rsa",
+      "file": "anniazzurri/elements/chunks/form-rsa.html",
+      "baseline": "anniazzurri/baseline/chunks/form-rsa.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-ap-residenza-anni-azzurri-san-sisto-2",
+      "file": "anniazzurri/elements/chunks/gal-ap-residenza-anni-azzurri-san-sisto-2.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-ap-residenza-anni-azzurri-san-sisto-2.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-apre-il-centro-diurno-la-maremma",
+      "file": "anniazzurri/elements/chunks/gal-apre-il-centro-diurno-la-maremma.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-apre-il-centro-diurno-la-maremma.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-lrsa-biarella",
+      "file": "anniazzurri/elements/chunks/gal-lrsa-biarella.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-lrsa-biarella.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-lrsa-borgomanero",
+      "file": "anniazzurri/elements/chunks/gal-lrsa-borgomanero.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-lrsa-borgomanero.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-lrsa-carmagnola",
+      "file": "anniazzurri/elements/chunks/gal-lrsa-carmagnola.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-lrsa-carmagnola.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-lrsa-centro-diurno-la-maremma",
+      "file": "anniazzurri/elements/chunks/gal-lrsa-centro-diurno-la-maremma.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-lrsa-centro-diurno-la-maremma.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-lrsa-il-poggione-2",
+      "file": "anniazzurri/elements/chunks/gal-lrsa-il-poggione-2.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-lrsa-il-poggione-2.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-lrsa-minerva",
+      "file": "anniazzurri/elements/chunks/gal-lrsa-minerva.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-lrsa-minerva.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-lrsa-parco-sempione",
+      "file": "anniazzurri/elements/chunks/gal-lrsa-parco-sempione.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-lrsa-parco-sempione.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-lrsa-pgr-milano",
+      "file": "anniazzurri/elements/chunks/gal-lrsa-pgr-milano.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-lrsa-pgr-milano.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-lrsa-san-faustino",
+      "file": "anniazzurri/elements/chunks/gal-lrsa-san-faustino.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-lrsa-san-faustino.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-lrsa-san-luca",
+      "file": "anniazzurri/elements/chunks/gal-lrsa-san-luca.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-lrsa-san-luca.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-lrsa-tonengo",
+      "file": "anniazzurri/elements/chunks/gal-lrsa-tonengo.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-lrsa-tonengo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-lrsa-villa-san-vincenzo",
+      "file": "anniazzurri/elements/chunks/gal-lrsa-villa-san-vincenzo.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-lrsa-villa-san-vincenzo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-lrsa-villalba",
+      "file": "anniazzurri/elements/chunks/gal-lrsa-villalba.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-lrsa-villalba.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-b-franchiolo",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-b-franchiolo.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-b-franchiolo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-biarella",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-biarella.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-biarella.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-borgomanero",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-borgomanero.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-borgomanero.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-campi-bisenzio",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-campi-bisenzio.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-campi-bisenzio.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-carmagnola",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-carmagnola.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-carmagnola.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-castagnola",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-castagnola.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-castagnola.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-casteldonino",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-casteldonino.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-casteldonino.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-cit-turin",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-cit-turin.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-cit-turin.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-ducale-2-3",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-ducale-2-3.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-ducale-2-3.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-idice",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-idice.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-idice.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-il-poggione",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-il-poggione.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-il-poggione.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-le-grange",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-le-grange.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-le-grange.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-minerva",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-minerva.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-minerva.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-navigli",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-navigli.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-navigli.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-palladio",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-palladio.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-palladio.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-parco-di-veio",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-parco-di-veio.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-parco-di-veio.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-parco-sempione",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-parco-sempione.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-parco-sempione.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-pgr-cinisello",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-pgr-cinisello.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-pgr-cinisello.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-pgr-milano",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-pgr-milano.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-pgr-milano.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-rezzato",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-rezzato.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-rezzato.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-san-faustino",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-san-faustino.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-san-faustino.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-san-luca",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-san-luca.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-san-luca.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-san-martino",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-san-martino.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-san-martino.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-san-sisto-2",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-san-sisto-2.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-san-sisto-2.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-san-sisto",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-san-sisto.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-san-sisto.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-santa-maria-in-chienti",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-santa-maria-in-chienti.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-santa-maria-in-chienti.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-santambrogio",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-santambrogio.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-santambrogio.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-sestri-ponente",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-sestri-ponente.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-sestri-ponente.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-tonengo",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-tonengo.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-tonengo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-valdaso",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-valdaso.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-valdaso.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-villa-clarice",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-villa-clarice.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-villa-clarice.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-villa-pineta",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-villa-pineta.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-villa-pineta.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-villa-san-vincenzo",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-villa-san-vincenzo.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-villa-san-vincenzo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-villaggio-san-francesco",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-villaggio-san-francesco.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-villaggio-san-francesco.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-villalba",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-villalba.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-villalba.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-rsa-navigli",
+      "file": "anniazzurri/elements/chunks/gal-rsa-navigli.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-rsa-navigli.html"
+    },
+    {
+      "type": "chunk",
+      "name": "gal-rsa-sestri-ponente",
+      "file": "anniazzurri/elements/chunks/gal-rsa-sestri-ponente.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-rsa-sestri-ponente.html"
+    },
+    {
+      "type": "chunk",
+      "name": "header-209",
+      "file": "anniazzurri/elements/chunks/header-209.html",
+      "baseline": "anniazzurri/baseline/chunks/header-209.html"
+    },
+    {
+      "type": "chunk",
+      "name": "header-210",
+      "file": "anniazzurri/elements/chunks/header-210.html",
+      "baseline": "anniazzurri/baseline/chunks/header-210.html"
+    },
+    {
+      "type": "chunk",
+      "name": "header-453",
+      "file": "anniazzurri/elements/chunks/header-453.html",
+      "baseline": "anniazzurri/baseline/chunks/header-453.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-chi-accogliamo",
+      "file": "anniazzurri/elements/chunks/heading-chi-accogliamo.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-chi-accogliamo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-chi-siamo",
+      "file": "anniazzurri/elements/chunks/heading-chi-siamo.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-chi-siamo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-cure-e-assistenza-domiciliari",
+      "file": "anniazzurri/elements/chunks/heading-cure-e-assistenza-domiciliari.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-cure-e-assistenza-domiciliari.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-home",
+      "file": "anniazzurri/elements/chunks/heading-home.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-home.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-home2",
+      "file": "anniazzurri/elements/chunks/heading-home2.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-home2.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-interna-assistenza-domiciliare",
+      "file": "anniazzurri/elements/chunks/heading-interna-assistenza-domiciliare.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-interna-assistenza-domiciliare.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-interna-homecare-academy",
+      "file": "anniazzurri/elements/chunks/heading-interna-homecare-academy.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-interna-homecare-academy.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-interna-il-nostro-approccio",
+      "file": "anniazzurri/elements/chunks/heading-interna-il-nostro-approccio.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-interna-il-nostro-approccio.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-interna-menu-cure-domiciliari-in-convenz",
+      "file": "anniazzurri/elements/chunks/heading-interna-menu-cure-domiciliari-in-convenz.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-interna-menu-cure-domiciliari-in-convenz.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-interna-menu-cure-domiciliari",
+      "file": "anniazzurri/elements/chunks/heading-interna-menu-cure-domiciliari.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-interna-menu-cure-domiciliari.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-interna-menu-faq",
+      "file": "anniazzurri/elements/chunks/heading-interna-menu-faq.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-interna-menu-faq.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-interna-menu-tariffe-e-convenzioni",
+      "file": "anniazzurri/elements/chunks/heading-interna-menu-tariffe-e-convenzioni.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-interna-menu-tariffe-e-convenzioni.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-interna-menu",
+      "file": "anniazzurri/elements/chunks/heading-interna-menu.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-interna-menu.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-interna-patologie",
+      "file": "anniazzurri/elements/chunks/heading-interna-patologie.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-interna-patologie.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-interna-sportello-sociale",
+      "file": "anniazzurri/elements/chunks/heading-interna-sportello-sociale.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-interna-sportello-sociale.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-regione",
+      "file": "anniazzurri/elements/chunks/heading-regione.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-regione.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-rsa-landing",
+      "file": "anniazzurri/elements/chunks/heading-rsa-landing.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-rsa-landing.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-rsa",
+      "file": "anniazzurri/elements/chunks/heading-rsa.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-rsa.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-sos-famiglia",
+      "file": "anniazzurri/elements/chunks/heading-sos-famiglia.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-sos-famiglia.html"
+    },
+    {
+      "type": "chunk",
+      "name": "heading-wellmakers-landing",
+      "file": "anniazzurri/elements/chunks/heading-wellmakers-landing.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-wellmakers-landing.html"
+    },
+    {
+      "type": "chunk",
+      "name": "news-top",
+      "file": "anniazzurri/elements/chunks/news-top.html",
+      "baseline": "anniazzurri/baseline/chunks/news-top.html"
+    },
+    {
+      "type": "chunk",
+      "name": "pdo-lombardia-row",
+      "file": "anniazzurri/elements/chunks/pdo-lombardia-row.html",
+      "baseline": "anniazzurri/baseline/chunks/pdo-lombardia-row.html"
+    },
+    {
+      "type": "chunk",
+      "name": "podcast-spreaker-casa-anni-azzurri",
+      "file": "anniazzurri/elements/chunks/podcast-spreaker-casa-anni-azzurri.html",
+      "baseline": "anniazzurri/baseline/chunks/podcast-spreaker-casa-anni-azzurri.html"
+    },
+    {
+      "type": "chunk",
+      "name": "prestazioni-assistenza-domiciliare",
+      "file": "anniazzurri/elements/chunks/prestazioni-assistenza-domiciliare.html",
+      "baseline": "anniazzurri/baseline/chunks/prestazioni-assistenza-domiciliare.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-cure-avanzate-centro-dialisi",
+      "file": "anniazzurri/elements/chunks/residenze-cure-avanzate-centro-dialisi.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-cure-avanzate-centro-dialisi.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-cure-avanzate-nac",
+      "file": "anniazzurri/elements/chunks/residenze-cure-avanzate-nac.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-cure-avanzate-nac.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-cure-avanzate-nucleo-alzheimer-protetto",
+      "file": "anniazzurri/elements/chunks/residenze-cure-avanzate-nucleo-alzheimer-protetto.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-cure-avanzate-nucleo-alzheimer-protetto.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-cure-avanzate-nucleo-demenza-protetto",
+      "file": "anniazzurri/elements/chunks/residenze-cure-avanzate-nucleo-demenza-protetto.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-cure-avanzate-nucleo-demenza-protetto.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-cure-avanzate-nucleo-disabili",
+      "file": "anniazzurri/elements/chunks/residenze-cure-avanzate-nucleo-disabili.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-cure-avanzate-nucleo-disabili.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-cure-avanzate-nucleo-stati-vegetativi",
+      "file": "anniazzurri/elements/chunks/residenze-cure-avanzate-nucleo-stati-vegetativi.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-cure-avanzate-nucleo-stati-vegetativi.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-cure-avanzate-uor",
+      "file": "anniazzurri/elements/chunks/residenze-cure-avanzate-uor.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-cure-avanzate-uor.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-cure-intermedie",
+      "file": "anniazzurri/elements/chunks/residenze-cure-intermedie.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-cure-intermedie.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-demenze",
+      "file": "anniazzurri/elements/chunks/residenze-demenze.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-demenze.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-disabili",
+      "file": "anniazzurri/elements/chunks/residenze-disabili.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-disabili.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-fratture-recenti",
+      "file": "anniazzurri/elements/chunks/residenze-fratture-recenti.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-fratture-recenti.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-patologie-psichiatriche",
+      "file": "anniazzurri/elements/chunks/residenze-patologie-psichiatriche.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-patologie-psichiatriche.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-stato-vegetativo",
+      "file": "anniazzurri/elements/chunks/residenze-stato-vegetativo.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-stato-vegetativo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "rsa-elenco-row",
+      "file": "anniazzurri/elements/chunks/rsa-elenco-row.html",
+      "baseline": "anniazzurri/baseline/chunks/rsa-elenco-row.html"
+    },
+    {
+      "type": "chunk",
+      "name": "rsa-regione-elenco-row",
+      "file": "anniazzurri/elements/chunks/rsa-regione-elenco-row.html",
+      "baseline": "anniazzurri/baseline/chunks/rsa-regione-elenco-row.html"
+    },
+    {
+      "type": "chunk",
+      "name": "strutture-soggiorni-estivi-piemonte",
+      "file": "anniazzurri/elements/chunks/strutture-soggiorni-estivi-piemonte.html",
+      "baseline": "anniazzurri/baseline/chunks/strutture-soggiorni-estivi-piemonte.html"
+    },
+    {
+      "type": "chunk",
+      "name": "video-centro-diurno-anni-azzurri-la-maremma",
+      "file": "anniazzurri/elements/chunks/video-centro-diurno-anni-azzurri-la-maremma.html",
+      "baseline": "anniazzurri/baseline/chunks/video-centro-diurno-anni-azzurri-la-maremma.html"
+    },
+    {
+      "type": "chunk",
+      "name": "video-residenza-anni-azzurri-castagnola",
+      "file": "anniazzurri/elements/chunks/video-residenza-anni-azzurri-castagnola.html",
+      "baseline": "anniazzurri/baseline/chunks/video-residenza-anni-azzurri-castagnola.html"
+    },
+    {
+      "type": "chunk",
+      "name": "video-residenza-anni-azzurri-il-poggione",
+      "file": "anniazzurri/elements/chunks/video-residenza-anni-azzurri-il-poggione.html",
+      "baseline": "anniazzurri/baseline/chunks/video-residenza-anni-azzurri-il-poggione.html"
+    },
+    {
+      "type": "chunk",
+      "name": "video-residenza-anni-azzurri-mirasole",
+      "file": "anniazzurri/elements/chunks/video-residenza-anni-azzurri-mirasole.html",
+      "baseline": "anniazzurri/baseline/chunks/video-residenza-anni-azzurri-mirasole.html"
+    },
+    {
+      "type": "chunk",
+      "name": "video-residenza-anni-azzurri-navigli",
+      "file": "anniazzurri/elements/chunks/video-residenza-anni-azzurri-navigli.html",
+      "baseline": "anniazzurri/baseline/chunks/video-residenza-anni-azzurri-navigli.html"
+    },
+    {
+      "type": "chunk",
+      "name": "video-residenza-anni-azzurri-palladio",
+      "file": "anniazzurri/elements/chunks/video-residenza-anni-azzurri-palladio.html",
+      "baseline": "anniazzurri/baseline/chunks/video-residenza-anni-azzurri-palladio.html"
+    },
+    {
+      "type": "chunk",
+      "name": "video-residenza-anni-azzurri-pgr-cinisello",
+      "file": "anniazzurri/elements/chunks/video-residenza-anni-azzurri-pgr-cinisello.html",
+      "baseline": "anniazzurri/baseline/chunks/video-residenza-anni-azzurri-pgr-cinisello.html"
+    },
+    {
+      "type": "chunk",
+      "name": "video-residenza-anni-azzurri-pgr-milano",
+      "file": "anniazzurri/elements/chunks/video-residenza-anni-azzurri-pgr-milano.html",
+      "baseline": "anniazzurri/baseline/chunks/video-residenza-anni-azzurri-pgr-milano.html"
+    },
+    {
+      "type": "chunk",
+      "name": "video-residenza-anni-azzurri-rezzato",
+      "file": "anniazzurri/elements/chunks/video-residenza-anni-azzurri-rezzato.html",
+      "baseline": "anniazzurri/baseline/chunks/video-residenza-anni-azzurri-rezzato.html"
+    },
+    {
+      "type": "chunk",
+      "name": "video-residenza-anni-azzurri-san-sisto",
+      "file": "anniazzurri/elements/chunks/video-residenza-anni-azzurri-san-sisto.html",
+      "baseline": "anniazzurri/baseline/chunks/video-residenza-anni-azzurri-san-sisto.html"
+    },
+    {
+      "type": "chunk",
+      "name": "video-residenza-anni-azzurri-sestri-ponente",
+      "file": "anniazzurri/elements/chunks/video-residenza-anni-azzurri-sestri-ponente.html",
+      "baseline": "anniazzurri/baseline/chunks/video-residenza-anni-azzurri-sestri-ponente.html"
+    },
+    {
+      "type": "chunk",
+      "name": "video-residenza-anni-azzurri-vico-mercati",
+      "file": "anniazzurri/elements/chunks/video-residenza-anni-azzurri-vico-mercati.html",
+      "baseline": "anniazzurri/baseline/chunks/video-residenza-anni-azzurri-vico-mercati.html"
+    },
+    {
+      "type": "chunk",
+      "name": "video-residenza-anni-azzurri-villa-clarice",
+      "file": "anniazzurri/elements/chunks/video-residenza-anni-azzurri-villa-clarice.html",
+      "baseline": "anniazzurri/baseline/chunks/video-residenza-anni-azzurri-villa-clarice.html"
+    },
+    {
+      "type": "chunk",
+      "name": "video-residenza-anni-azzurri-villa-dei-ciliegi",
+      "file": "anniazzurri/elements/chunks/video-residenza-anni-azzurri-villa-dei-ciliegi.html",
+      "baseline": "anniazzurri/baseline/chunks/video-residenza-anni-azzurri-villa-dei-ciliegi.html"
+    },
+    {
+      "type": "chunk",
+      "name": "video-residenza-anni-azzurri-villa-pineta",
+      "file": "anniazzurri/elements/chunks/video-residenza-anni-azzurri-villa-pineta.html",
+      "baseline": "anniazzurri/baseline/chunks/video-residenza-anni-azzurri-villa-pineta.html"
+    },
+    {
+      "type": "chunk",
+      "name": "video-residenza-anni-azzurri-villa-reale",
+      "file": "anniazzurri/elements/chunks/video-residenza-anni-azzurri-villa-reale.html",
+      "baseline": "anniazzurri/baseline/chunks/video-residenza-anni-azzurri-villa-reale.html"
+    },
+    {
+      "type": "chunk",
+      "name": "video-residenza-anni-azzurri-volpiano",
+      "file": "anniazzurri/elements/chunks/video-residenza-anni-azzurri-volpiano.html",
+      "baseline": "anniazzurri/baseline/chunks/video-residenza-anni-azzurri-volpiano.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-alzheimer",
+      "file": "anniazzurri/elements/templates/interna-alzheimer.html",
+      "baseline": "anniazzurri/baseline/templates/interna-alzheimer.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-argento-vivo",
+      "file": "anniazzurri/elements/templates/interna-argento-vivo.html",
+      "baseline": "anniazzurri/baseline/templates/interna-argento-vivo.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-cure-avanzate",
+      "file": "anniazzurri/elements/templates/interna-cure-avanzate.html",
+      "baseline": "anniazzurri/baseline/templates/interna-cure-avanzate.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-equipe",
+      "file": "anniazzurri/elements/templates/interna-equipe.html",
+      "baseline": "anniazzurri/baseline/templates/interna-equipe.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-menu-cure-avanzate",
+      "file": "anniazzurri/elements/templates/interna-menu-cure-avanzate.html",
+      "baseline": "anniazzurri/baseline/templates/interna-menu-cure-avanzate.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-menu-form-registrazione",
+      "file": "anniazzurri/elements/templates/interna-menu-form-registrazione.html",
+      "baseline": "anniazzurri/baseline/templates/interna-menu-form-registrazione.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-prevenzione-covid",
+      "file": "anniazzurri/elements/templates/interna-prevenzione-covid.html",
+      "baseline": "anniazzurri/baseline/templates/interna-prevenzione-covid.html"
+    },
+    {
+      "type": "template",
+      "name": "residenze",
+      "file": "anniazzurri/elements/templates/residenze.html",
+      "baseline": "anniazzurri/baseline/templates/residenze.html"
+    }
+  ]
+}

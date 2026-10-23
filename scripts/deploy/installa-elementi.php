@@ -14,6 +14,8 @@
  *     se è diverso da entrambe qualcuno l'ha modificato a mano → si ferma (salvo --forza);
  *   - salva il contenuto attuale in ~/backup-kos-seo-geo/<data>/ prima di sovrascriverlo;
  *   - crea l'elemento se non esiste.
+ * File (librerie PHP, fogli di stile): chiave "files" con "file" (nel repository), "dest" (relativo a /www),
+ * "baseline" facoltativa; il file attuale va nel backup prima di essere sostituito.
  * Alla fine svuota la cache e scrive ~/backup-kos-seo-geo/<data>/ripristino.json: per tornare indietro
  *   php scripts/deploy/installa-elementi.php /www ~/backup-kos-seo-geo/<data>/ripristino.json --scrivi
  */
@@ -64,7 +66,7 @@ $bkDir  = $bkRoot . '/' . $stamp;
 // un elemento uguale all'ultima versione installata da noi non è una modifica di terzi.
 $regFile  = $bkRoot . '/installati.json';
 $registro = is_file($regFile) ? (json_decode((string) file_get_contents($regFile), true) ?: []) : [];
-$ripristino = ['nome' => 'ripristino ' . $stamp, 'settings' => [], 'elements' => []];
+$ripristino = ['nome' => 'ripristino ' . $stamp, 'settings' => [], 'elements' => [], 'files' => []];
 $errori = 0;
 echo ($scrivi ? "== APPLICAZIONE" : "== PROVA (nessuna scrittura; aggiungere --scrivi)") . " — " . ($m['nome'] ?? $manifest) . "\n";
 
@@ -164,6 +166,38 @@ foreach ($m['elements'] ?? [] as $e) {
                 if (!$c->save()) { echo "    ! collegamento evento fallito\n"; $errori++; }
             }
         }
+    }
+}
+
+/* ---------- file (librerie, fogli di stile): "files": [{"file": "shared/lib/X.php", "dest": "core/components/x/X.php"}] ---------- */
+foreach ($m['files'] ?? [] as $f) {
+    $dest = $webroot . '/' . ltrim((string) $f['dest'], '/');
+    if (str_contains((string) $f['dest'], '..')) { echo "  ! destinazione non valida: {$f['dest']}\n"; $errori++; continue; }
+    $chiave = 'file:' . ltrim((string) $f['dest'], '/');
+    if (!empty($f['elimina'])) {                       // usato dal manifest di ripristino
+        echo "  - file {$f['dest']}" . (is_file($dest) ? '' : ' (già assente)') . "\n";
+        if ($scrivi && is_file($dest)) { unlink($dest); unset($registro[$chiave]); }
+        continue;
+    }
+    $nuovo = $leggi($f['file']);
+    $att = is_file($dest) ? (string) file_get_contents($dest) : null;
+    if ($att === $nuovo) { echo "  = file {$f['dest']} già aggiornato\n"; $registro[$chiave] = sha1($nuovo); continue; }
+    if ($att !== null && !empty($f['baseline'])) {
+        $bl = $leggi($f['baseline']);
+        $nostra = ($registro[$chiave] ?? null) === sha1($att);
+        if ($att !== $bl && !$nostra) {
+            echo "  ! file {$f['dest']}: sul sito è diverso dalla baseline" . ($forza ? " — procedo per --forza\n" : " — FERMO. Integrare la modifica nel repository o usare --forza\n");
+            if (!$forza) { $errori++; continue; }
+        }
+    }
+    echo "  " . ($att === null ? '+' : '~') . " file {$f['dest']}" . ($att === null ? ' (nuovo)' : '') . "\n";
+    $copia = $bkDir . '/files/' . ltrim((string) $f['dest'], '/');
+    $ripristino['files'][] = $att === null ? ['dest' => $f['dest'], 'elimina' => true] : ['dest' => $f['dest'], 'file' => $copia];
+    if ($scrivi) {
+        if ($att !== null) { if (!is_dir(dirname($copia))) mkdir(dirname($copia), 0775, true); file_put_contents($copia, $att); }
+        if (!is_dir(dirname($dest))) mkdir(dirname($dest), 0775, true);
+        if (file_put_contents($dest, $nuovo) === false) { echo "    ! scrittura fallita\n"; $errori++; }
+        else { @chmod($dest, 0644); $registro[$chiave] = sha1($nuovo); }
     }
 }
 
