@@ -96,13 +96,17 @@ class Immagini
         $im->stripImage();
         if ($formato === 'png8') {                     // PNG a tavolozza (256 colori): grafiche, mappe, icone
             $im->quantizeImage(256, \Imagick::COLORSPACE_SRGB, 0, false, false);
-            $formato = 'png';
+            $im->setImageFormat('png8');               // scrittura come PNG indicizzato (non truecolor)
+            $im->setOption('png:compression-level', '9');
+            $formato = 'png8-fatto';
         }
         switch ($formato) {
             case 'webp':
                 $im->setImageFormat('webp');
                 $im->setImageCompressionQuality($this->o['q_webp']);
                 $im->setOption('webp:method', '6');
+                break;
+            case 'png8-fatto':
                 break;
             case 'png':
                 $im->setImageFormat('png');
@@ -158,12 +162,20 @@ class Immagini
         $obiettivo = $obiettivoKb ? $obiettivoKb * 1024 : null;
         if ($obiettivo && $dopo > $obiettivo) {
             if (!$png) {
+                // qualità più bassa solo se raggiunge l'obiettivo o fa risparmiare almeno un quarto del peso
+                $base = $dopo;
                 foreach ([76, 70] as $q) {
                     $this->scrivi($im, $tmp, 'jpg', $q);
                     clearstatcache();
                     $dopo = filesize($tmp);
                     $r['nota'] = "qualità $q";
                     if ($dopo <= $obiettivo) break;
+                }
+                if ($dopo > $obiettivo && $dopo > $prima * 0.75) {
+                    $this->scrivi($im, $tmp, 'jpg');
+                    clearstatcache();
+                    $dopo = $base;
+                    $r['nota'] = 'qualità ridotta non conveniente';
                 }
             } else {
                 $t8 = $tmp . '.png8.png';
@@ -185,7 +197,7 @@ class Immagini
             }
         }
         $im->clear();
-        $soglia = ($obiettivo && $prima > $obiettivo) ? 0.97 : 0.9;
+        $soglia = ($obiettivo && $prima > $obiettivo && $dopo <= $obiettivo) ? 0.97 : 0.9;
         if (!$ridotto && $dopo > $prima * $soglia) {
             @unlink($tmp);
             return ['nota' => trim('già ottimizzata ' . ($r['nota'] ? "({$r['nota']})" : ''))] + $r;
