@@ -159,6 +159,24 @@ def converti(nome, testo):
         return (f'[[immagine? &src=`{src}` &alt=`RSA Anni Azzurri in {nome_reg}`'
                 + (f' &class=`{cls.group(1)}`' if cls else '')
                 + f" &sizes=`{'100vw' if m.group(2).endswith('-m.png') else '(min-width: 768px) 33vw, 100vw'}`]]")
+    # Immagini delle news (TV newsImage) negli elenchi e negli articoli: <img> → snippet, servite in WebP con srcset
+    def sost_news(m):
+        attr = m.group(1) + m.group(3)
+        alt = re.search(r'\balt="([^"]*)"', attr)
+        cls = re.search(r'\bclass="([^"]*)"', attr)
+        elenco = 'card-img' in (cls.group(1) if cls else '')
+        prima = not elenco and not any('news-principale' in x for x in note)
+        note.append('news-principale' if not elenco else f'news {m.group(2)}')
+        return (f'[[immagine? &src=`{m.group(2)}` &alt=`{alt.group(1) if alt else ""}`'
+                + (f' &class=`{cls.group(1)}`' if cls else '')
+                + (" &sizes=`(min-width: 992px) 33vw, (min-width: 768px) 50vw, 100vw`" if elenco
+                   else " &sizes=`(min-width: 1400px) 1296px, (min-width: 1200px) 1116px, (min-width: 992px) 936px, 100vw`") + (' &priorita=`1`' if prima else '') + ']]')
+    out = re.sub(r'<img\b([^>]*?)\bsrc="(\[\[[+*](?:tv\.)?newsImage\]\])"([^>]*?)/?>', sost_news, out)
+    # Immagine dell'articolo ripetuta per desktop (d-none d-md-block) e mobile (d-md-none) con lo stesso file: una sola
+    out = re.sub(r'\[\[immagine\? &src=`(\[\[\*newsImage\]\])`([^\n]*?)&class=`d-none d-md-block ([^`]*)`([^\n]*?)\]\]\s*\n\s*'
+                 r'\[\[immagine\? &src=`\[\[\*newsImage\]\]`[^\n]*?&class=`d-md-none [^`]*`[^\n]*?\]\]',
+                 r'[[immagine? &src=`\1`\2&class=`\3`\4]]', out)
+
     out = re.sub(r'<img\b([^>]*?)\bsrc="(/assets/img/(?:lombardia|piemonte|liguria|marche|emilia-romagna|veneto|toscana|lazio)(?:-m)?\.png)"([^>]*?)/?>',
                  sost_regione, out)
     if nome.startswith('gal-'):
@@ -192,7 +210,8 @@ def main():
                     print(f'{cartella[:-1]} {os.path.splitext(f)[0]}: testi alternativi aggiornati')
                     testo = nuovo_alt
             regioni = re.search(r'src="/assets/img/(?:lombardia|piemonte|liguria|marche|emilia-romagna|veneto|toscana|lazio)(?:-m)?\.png"', testo)
-            if not (TAG.search(testo) or regioni) or ('[[immagine?' in testo and not regioni):
+            news = re.search(r'<img\b[^>]*src="\[\[[+*](?:tv\.)?newsImage\]\]"', testo)
+            if not (TAG.search(testo) or regioni or news) or ('[[immagine?' in testo and not (regioni or news)):
                 continue
             nome = os.path.splitext(f)[0]
             nuovo, note = converti(nome, testo)

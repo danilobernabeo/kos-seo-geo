@@ -1,5 +1,5 @@
 {
-  "nome": "AA-1 AA-6 AA-17 markup: immagini di sfondo → <picture> con lo snippet immagine; titoli degli accordion, intro, form, gallerie, video, footer",
+  "nome": "AA-1 AA-6 AA-17 markup: immagini di sfondo → <picture> con lo snippet immagine; titoli degli accordion, intro, form, gallerie, video, footer; immagini delle news",
   "elements": [
     {
       "type": "chunk",
@@ -1338,6 +1338,48 @@
       "name": "servizi-soggiorni-estivi-piemonte",
       "file": "anniazzurri/elements/chunks/servizi-soggiorni-estivi-piemonte.html",
       "baseline": "anniazzurri/baseline/chunks/servizi-soggiorni-estivi-piemonte.html"
+    },
+    {
+      "type": "chunk",
+      "name": "news-home-desktop",
+      "file": "anniazzurri/elements/chunks/news-home-desktop.html",
+      "baseline": "anniazzurri/baseline/chunks/news-home-desktop.html"
+    },
+    {
+      "type": "chunk",
+      "name": "news-home-mobile",
+      "file": "anniazzurri/elements/chunks/news-home-mobile.html",
+      "baseline": "anniazzurri/baseline/chunks/news-home-mobile.html"
+    },
+    {
+      "type": "chunk",
+      "name": "news-list-item",
+      "file": "anniazzurri/elements/chunks/news-list-item.html",
+      "baseline": "anniazzurri/baseline/chunks/news-list-item.html"
+    },
+    {
+      "type": "chunk",
+      "name": "pdoListItem",
+      "file": "anniazzurri/elements/chunks/pdoListItem.html",
+      "baseline": "anniazzurri/baseline/chunks/pdoListItem.html"
+    },
+    {
+      "type": "template",
+      "name": "albero-dei-ricordi",
+      "file": "anniazzurri/elements/templates/albero-dei-ricordi.html",
+      "baseline": "anniazzurri/baseline/templates/albero-dei-ricordi.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-articolo",
+      "file": "anniazzurri/elements/templates/interna-articolo.html",
+      "baseline": "anniazzurri/baseline/templates/interna-articolo.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-speaker-per-un-giorno",
+      "file": "anniazzurri/elements/templates/interna-speaker-per-un-giorno.html",
+      "baseline": "anniazzurri/baseline/templates/interna-speaker-per-un-giorno.html"
     }
   ]
 }

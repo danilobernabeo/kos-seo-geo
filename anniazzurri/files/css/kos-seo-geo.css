@@ -34,3 +34,8 @@ p.h1, p.h2, p.h3, p.h4, p.h5 { margin-top: 0; margin-bottom: .5rem; }
    stesso aspetto della vecchia intestazione della scheda */
 h3.card-header { font-size: inherit; font-weight: inherit; line-height: inherit; font-family: inherit;
   color: inherit; letter-spacing: inherit; margin-top: 0; margin-bottom: 0; }
+
+/* Immagini delle news (snippet `immagine`): il <picture> non cambia l'impaginazione della card; con gli attributi
+   width/height l'altezza segue la larghezza (Bootstrap dà alla card-img-top solo width: 100%) */
+.card > picture, .card a > picture { display: contents; }
+img.card-img-top[height] { height: auto; }
