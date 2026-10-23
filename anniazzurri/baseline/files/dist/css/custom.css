@@ -1,0 +1,264 @@
+footer[stripe-footer] [stripe-social] img {
+  width: 90px !important;
+}
+@media (max-width: 991.98px) {
+  footer[stripe-footer] [stripe-social] img {
+    width: 70px !important;
+  }
+}
+
+/* file: style.css */
+.service-icon2 {
+  width: 32px;      /* scegli la larghezza che ti serve */
+  height: auto;     /* mantiene il rapporto d’aspetto */
+}
+
+/* Skip link accessibilità */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: #1A2031;
+    color: #ffffff;
+    padding: 8px 16px;
+    z-index: 9999;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+}
+.skip-link:focus {
+    top: 0;
+}
+
+/* heading-order fix: mantiene dimensione ex-h5 su card news */
+h3.card-title {
+    font-size: 22.5px;
+    line-height: 27px;
+}
+
+#videobg {
+  height: 100dvh;
+  width: 100dvw;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+<!-- CSS per nascondere il testo agli utenti vedenti ma non ai lettori di schermo -->
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    border: 0; white-space: nowrap;
+  }
+
+/* Box virgolettato con icona SVG in background */
+.quote-box-large {
+    position: relative;
+    font-style: italic;
+}
+
+.quote-box::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    width: 80px;
+    height: 80px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z'/%3E%3Cpath d='M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.1;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.quote-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Versione alternativa con virgolette più grandi */
+.quote-box-large::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 10px;
+    width: 100px;
+    height: 100px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000000'%3E%3Cpath d='M6.5 10c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35l.539-.222.474-.197-.485-1.938-.597.144c-.191.048-.424.104-.689.171-.271.05-.56.187-.882.312-.318.142-.686.238-1.028.466-.344.218-.741.4-1.091.692-.339.301-.748.562-1.05.945-.33.358-.656.734-.909 1.162-.293.408-.492.856-.702 1.299-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539l.025.168.026-.006A4.5 4.5 0 1 0 6.5 10zm11 0c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35l.539-.222.474-.197-.485-1.938-.597.144c-.191.048-.424.104-.689.171-.271.05-.56.187-.882.312-.318.142-.686.238-1.028.466-.344.218-.741.4-1.091.692-.339.301-.748.562-1.05.945-.33.358-.656.734-.909 1.162-.293.408-.492.856-.702 1.299-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539l.025.168.026-.006A4.5 4.5 0 1 0 17.5 10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.08;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Versione con virgolette più semplici */
+.quote-box-simple::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='10' y='80' font-family='Georgia, serif' font-size='80' fill='%23000000'%3E%22%3C/text%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.12;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* News portante — titolo più grande */
+[stripe-main-article] h3.card-title {
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+/* =====================================================================
+   ANNI AZZURRI A CASA — Regole per la pagina istituzionale Cure Domiciliari
+   Da incollare in coda a /dist/css/custom.css
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1) BOTTONE "CONTATTI" NEL MENU
+   Aspetto = .btn .btn-primary del sito. Qui solo: icona allineata,
+   spazio tra cornetta e testo, distanza dall'hamburger e, su schermi
+   molto stretti, collasso a sola icona così non si sovrappone.
+   --------------------------------------------------------------------- */
+.menu-contatti-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5em;                 /* spazio tra cornetta e testo */
+  line-height: 1;
+  white-space: nowrap;
+  margin-right: .6rem;       /* distanza dall'hamburger */
+}
+.menu-contatti-btn i {
+  font-size: 1rem;
+  line-height: 1;
+}
+@media (max-width: 400px) {
+  .menu-contatti-btn span { display: none; }   /* solo icona */
+  .menu-contatti-btn { margin-right: .4rem; }
+}
+
+/* =====================================================================
+   ANNI AZZURRI A CASA — Regole per la pagina istituzionale Cure Domiciliari
+   Da incollare in coda a /dist/css/custom.css
+   ===================================================================== */
+
+/* NB: il bottone "Contatti" nel menu NON è più qui: è stato spostato nel
+   chunk dedicato "contatti-menu-button" (stile + script), così compare solo
+   su questa pagina e non viene iniettato su tutte le landing dal global app.js. */
+
+/* ---------------------------------------------------------------------
+   1) TITOLI DEGLI ACCORDION (Copertura + FAQ)
+   Di default app.css porta .accordion-button-text a 2rem (troppo
+   grande). La riduzione del sito è scoped a ".region-page [stripe-faq]",
+   che qui non si applica: la replichiamo agganciandoci agli id dei due
+   accordion, così non dipende da classi/attributi sul template.
+   --------------------------------------------------------------------- */
+#copertura-acc .accordion-button-text,
+#faq-cure-domiciliari .accordion-button-text {
+  font-size: calc(0.797rem + 0.564vw);
+  font-weight: 400;
+}
+@media (min-width: 1200px) {
+  #copertura-acc .accordion-button-text,
+  #faq-cure-domiciliari .accordion-button-text {
+    font-size: 1.22rem;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   2) RECENSIONI ("Dicono di noi")
+   Le frecce di Flickity sono bianche di default (invisibili su bg-ice):
+   le coloriamo col blu brand, come fa la home per la sua sezione quote.
+   --------------------------------------------------------------------- */
+.reviews-stripe .flickity-prev-next-button {
+  color: #314883;
+}
+.reviews-stripe .flickity-page-dots {
+  bottom: -6px;
+}
+.reviews-stripe .flickity-page-dots .dot:not(.is-selected) {
+  background-color: #314883;
+  opacity: .35;
+}
+.reviews-stripe .flickity-page-dots .dot.is-selected {
+  background-color: #314883;
+}
+
+/* ---------------------------------------------------------------------
+   3) CONVENZIONI — etichetta del toggle "Vedi tutti / Nascondi"
+   Bootstrap aggiunge/toglie .collapsed sul bottone trigger: sfruttiamo
+   quello per alternare i due testi, senza JS aggiuntivo.
+   --------------------------------------------------------------------- */
+.toggle-convenzioni .txt-less { display: none; }
+.toggle-convenzioni .txt-more { display: inline; }
+.toggle-convenzioni:not(.collapsed) .txt-more { display: none; }
+.toggle-convenzioni:not(.collapsed) .txt-less { display: inline; }
+
+/* ---------------------------------------------------------------------
+   4) BOX "Per informazioni e richieste di attivazione del servizio"
+   (chunk contactBox-cure-domiciliari-privato)
+   Email e telefono hanno font-size: 1.2rem FISSO inline → su mobile
+   l'email esce dal layout. Lo rendiamo proporzionale alla risoluzione
+   come il titolo .h4 (cap a 1.2rem su desktop) e lasciamo andare a capo
+   l'email. !important per battere lo style inline; min-width:0 perché il
+   contenitore è un flex item e altrimenti non si restringe.
+   --------------------------------------------------------------------- */
+.card-text .content-right {
+  font-size: calc(0.75rem + 0.6vw) !important;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+@media (min-width: 1200px) {
+  .card-text .content-right { font-size: 1.2rem !important; }
+}
+
+/* ============================================================
+   HERO CON <picture> — art direction desktop/mobile
+   Usato solo dalle pagine con classe .hero-picture
+   ============================================================ */
+
+.hero-picture .hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-picture .hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.hero-picture .overlay,
+.hero-picture .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-picture .content-container {
+  min-height: 35vh;
+}
+
+@media (max-width: 991px) {
+  .hero-picture .hero-media img {
+    object-position: center center;
+  }
+  .hero-picture .content-container {
+    min-height: 55vh;
+  }
+}
