@@ -90,10 +90,14 @@ class Immagini
     }
 
     /** Imposta formato e compressione e scrive su $dest. */
-    private function scrivi(\Imagick $im, string $dest, string $formato): void
+    private function scrivi(\Imagick $im, string $dest, string $formato, ?int $qualita = null): void
     {
         $im = clone $im;
         $im->stripImage();
+        if ($formato === 'png8') {                     // PNG a tavolozza (256 colori): grafiche, mappe, icone
+            $im->quantizeImage(256, \Imagick::COLORSPACE_SRGB, 0, false, false);
+            $formato = 'png';
+        }
         switch ($formato) {
             case 'webp':
                 $im->setImageFormat('webp');
@@ -106,7 +110,7 @@ class Immagini
                 break;
             default:
                 $im->setImageFormat('jpeg');
-                $im->setImageCompressionQuality($this->o['q_jpg']);
+                $im->setImageCompressionQuality($qualita ?? $this->o['q_jpg']);
                 $im->setInterlaceScheme(\Imagick::INTERLACE_PLANE);   // JPEG progressivo
                 $im->setSamplingFactors(['2x2', '1x1', '1x1']);
         }
@@ -120,11 +124,14 @@ class Immagini
 
     /**
      * Ottimizza l'originale nello stesso file e con lo stesso URL: lo riduce se supera $maxLato e lo ricomprime.
-     * Lo sostituisce solo se il risultato è più leggero almeno del 10% o se è stato ridotto.
+     * Con $obiettivoKb (es. 200, soglia dell'audit) e risultato ancora più pesante: JPG con qualità 76 e poi 70;
+     * PNG convertito a tavolozza di 256 colori se la differenza visiva resta trascurabile (errore RMS < 2%).
+     * Lo sostituisce solo se il risultato è più leggero almeno del 10% (3% se serve a scendere sotto l'obiettivo)
+     * o se è stato ridotto.
      * $backup: cartella in cui copiare l'originale (stesso percorso relativo) prima di sostituirlo; null = nessuna copia.
      * $applica false = prova: calcola il risultato in un file temporaneo e lo scarta.
      */
-    public function ottimizza(string $file, ?string $backup, bool $applica, ?int $maxLato = null): array
+    public function ottimizza(string $file, ?string $backup, bool $applica, ?int $maxLato = null, ?int $obiettivoKb = null): array
     {
         $maxLato = $maxLato ?: (int) $this->o['max_lato'];
         $prima = filesize($file);
@@ -143,13 +150,45 @@ class Immagini
             $r['lati'] .= ' → ' . $im->getImageWidth() . 'x' . $im->getImageHeight();
         }
         $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+        $png = $ext === 'png';
         $tmp = sys_get_temp_dir() . '/kosseogeo-' . getmypid() . '-' . md5($file) . '.' . $ext;
-        $this->scrivi($im, $tmp, $ext === 'png' ? 'png' : 'jpg');
-        $im->clear();
+        $this->scrivi($im, $tmp, $png ? 'png' : 'jpg');
+        clearstatcache();
         $dopo = filesize($tmp);
-        if (!$ridotto && $dopo > $prima * 0.9) {
+        $obiettivo = $obiettivoKb ? $obiettivoKb * 1024 : null;
+        if ($obiettivo && $dopo > $obiettivo) {
+            if (!$png) {
+                foreach ([76, 70] as $q) {
+                    $this->scrivi($im, $tmp, 'jpg', $q);
+                    clearstatcache();
+                    $dopo = filesize($tmp);
+                    $r['nota'] = "qualità $q";
+                    if ($dopo <= $obiettivo) break;
+                }
+            } else {
+                $t8 = $tmp . '.png8.png';
+                $this->scrivi($im, $t8, 'png8');
+                clearstatcache();
+                $q8 = new \Imagick($t8);
+                $rif = clone $im; $rif->stripImage();
+                [, $errore] = $rif->compareImages($q8, \Imagick::METRIC_ROOTMEANSQUAREDERROR);
+                $q8->clear(); $rif->clear();
+                if ($errore < 0.02 && filesize($t8) < $dopo) {
+                    rename($t8, $tmp);
+                    clearstatcache();
+                    $dopo = filesize($tmp);
+                    $r['nota'] = sprintf('256 colori, differenza %.1f%%', $errore * 100);
+                } else {
+                    @unlink($t8);
+                    $r['nota'] = sprintf('256 colori scartati (differenza %.1f%%)', $errore * 100);
+                }
+            }
+        }
+        $im->clear();
+        $soglia = ($obiettivo && $prima > $obiettivo) ? 0.97 : 0.9;
+        if (!$ridotto && $dopo > $prima * $soglia) {
             @unlink($tmp);
-            return ['nota' => 'già ottimizzata'] + $r;
+            return ['nota' => trim('già ottimizzata ' . ($r['nota'] ? "({$r['nota']})" : ''))] + $r;
         }
         $r['dopo'] = $dopo;
         $r['azione'] = $ridotto ? 'ridotta' : 'ricompressa';

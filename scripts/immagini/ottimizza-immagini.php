@@ -15,6 +15,8 @@
  * Opzioni:
  *   --soglia=KB     tratta solo le immagini più pesanti di KB (default 0 con l'elenco, 200 con la cartella)
  *   --max=PX        lato massimo dell'originale (default 2400)
+ *   --obiettivo=KB  peso da raggiungere (es. 200, soglia dell'audit): JPG con qualità più bassa (76, poi 70),
+ *                   PNG a 256 colori se la differenza visiva è trascurabile
  *   --varianti      genera anche le varianti WebP e le larghezze per lo srcset (snippet `immagine`)
  *   --solo-varianti non tocca gli originali, genera solo le varianti
  *
@@ -93,7 +95,7 @@ foreach ($voci as $v) {
     $rel = substr($file, strlen((string) realpath($webroot)));
     try {
         if (!$soloVar) {
-            $r = $I->ottimizza($file, $scrivi ? $bk : null, $scrivi, $v['max']);
+            $r = $I->ottimizza($file, $scrivi ? $bk : null, $scrivi, $v['max'], isset($opz['obiettivo']) ? (int) $opz['obiettivo'] : null);
             printf("  %-11s %6d → %6d KB  %-22s %s%s\n", $r['azione'], $r['prima'] / 1024, $r['dopo'] / 1024, $r['lati'], $rel, $r['nota'] ? " ({$r['nota']})" : '');
             $tot['prima'] += $r['prima']; $tot['dopo'] += $r['dopo']; $tot['n']++;
             if ($scrivi && isset($r['backup'])) $manifest['file'][] = ['rel' => $rel, 'prima' => $r['prima'], 'dopo' => $r['dopo']];
