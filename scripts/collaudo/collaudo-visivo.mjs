@@ -57,7 +57,8 @@ const [utente, password] = (process.env.AUTH || '').split(/:(.*)/s);
 const credenziali = utente ? { username: utente, password: password || '' } : undefined;
 
 const FERMA = `*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}
-  html{scroll-behavior:auto!important}`;
+  html{scroll-behavior:auto!important}
+  #CybotCookiebotDialog,#CybotCookiebotDialogBodyUnderlay,#CookiebotWidget{display:none!important}`;   // banner dei cookie solo in produzione
 
 function nomeFile(p, w, tipo) {
   const base = (p === '/' ? 'home' : p.replace(/^\/|\/$/g, '').replace(/[^\w-]+/g, '_')).slice(0, 80);
