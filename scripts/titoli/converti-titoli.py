@@ -23,10 +23,19 @@ Regole (stessa resa grafica: le classi Bootstrap .h2/.h3/.h4/.h5 riproducono l'a
   R6  newsletter nel footer: h2 → paragrafo.
 """
 import hashlib
+import importlib.util
 import json
 import os
 import re
 import sys
+
+# AA-1: la stessa conversione degli sfondi dei chunk si applica anche ai contenuti delle risorse
+_spec = importlib.util.spec_from_file_location('converti_sfondi', os.path.join(os.path.dirname(__file__), '..', 'immagini', 'converti-sfondi.py'))
+sfondi = importlib.util.module_from_spec(_spec)
+_argv, sys.argv = sys.argv, [sys.argv[0]]
+_spec.loader.exec_module(sfondi)
+sys.argv = _argv
+TPL_INTRO = ('rsa', 'centro-diurno', 'regione', 'provincia')
 
 SITO = 'anniazzurri'
 BASE = os.path.join(SITO, 'baseline', 'chunks')
@@ -73,7 +82,7 @@ def regole_contenuto(tpl, t):
     t, n['R1'] = r1(t)
     # R2: frase introduttiva = primo titolo del contenuto, h2 o h3, più lungo di 60 caratteri (una frase, non un titolo)
     primo = re.search(r'<(h[23]) class="([^"]*)"([^>]*)>(.*?)</\1>', t, re.S)
-    if primo and not re.search(r'<h[1-6]\b', t[:primo.start()]):
+    if primo and tpl.startswith(TPL_INTRO) and not re.search(r'<h[1-6]\b', t[:primo.start()]):
         testo = re.sub(r'<[^>]+>|\[\[[^\]]*\]\]|\s+', ' ', primo.group(4)).strip()
         if len(testo) > 60 or (tpl == 'rsa' and primo.group(1) == 'h3'):   # residenza: l'h3 sotto l'H1 è sempre il sottotitolo
             livello = primo.group(1)
@@ -84,6 +93,10 @@ def regole_contenuto(tpl, t):
     t, a = cambia_tag(t, r'<(h3) class="([^"]*)"([^>]*)>(\s*Vuoi essere ricontattato\?\s*)</h3>', 'p', 'h3')
     t, b = cambia_tag(t, r'<(h4) class="([^"]*text-azure[^"]*)"([^>]*)>(\s*Lasciaci i tuoi dati.*?)</h4>', 'p', 'h4')
     n['R4'] = a + b
+    nuovo, note = sfondi.converti(f'contenuto-{tpl}', t)
+    if nuovo != t:
+        t = nuovo
+        n['AA1'] = len(note)
     return t, {k: v for k, v in n.items() if v}
 
 
@@ -130,7 +143,7 @@ def main():
             os.makedirs(DATI, exist_ok=True)
             open(os.path.join(DATI, f"{r['id']}.html"), 'w', encoding='utf-8', newline='').write(nuovo)
     if not PROVA:
-        json.dump({'nome': 'AA-6 titoli nei contenuti', 'campo': 'content', 'risorse': manifest},
+        json.dump({'nome': 'AA-1 AA-6 sfondi e titoli nei contenuti', 'campo': 'content', 'risorse': manifest},
                   open(os.path.join(DATI, 'manifest.json'), 'w', encoding='utf-8', newline=''), ensure_ascii=False, indent=1)
     print(f'== {len(manifest)} contenuti; totale sostituzioni: ' + ', '.join(f'{k}×{v}' for k, v in sorted(tot.items())))
 
