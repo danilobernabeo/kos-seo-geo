@@ -912,6 +912,12 @@
       "name": "residenze",
       "file": "anniazzurri/elements/templates/residenze.html",
       "baseline": "anniazzurri/baseline/templates/residenze.html"
+    },
+    {
+      "type": "snippet",
+      "name": "photoGalleryAA2025",
+      "file": "anniazzurri/elements/snippets/photoGalleryAA2025.php",
+      "baseline": "anniazzurri/baseline/snippets/photoGalleryAA2025.php"
     }
   ]
 }

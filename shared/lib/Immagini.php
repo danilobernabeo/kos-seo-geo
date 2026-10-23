@@ -277,7 +277,8 @@ class Immagini
     /**
      * Markup <picture> per un'immagine del sito.
      * Opzioni: alt, sizes (default 100vw), class (sull'<img>), classe_picture, attributi (stringa aggiunta all'<img>),
-     * priorita (true: immagine principale sopra la piega → fetchpriority high, niente lazy), genera (default true).
+     * priorita (true: immagine principale sopra la piega → fetchpriority high, niente lazy), genera (default true),
+     * src_mobile (immagine diversa sui telefoni, art direction) e media_mobile (default (max-width: 767.98px)).
      */
     public function picture(string $src, array $o = []): string
     {
@@ -305,7 +306,16 @@ class Immagini
         $rip = $v[0];
         foreach ($v as $x) if ($x['w'] <= 1200) $rip = $x;
         $pc = !empty($o['classe_picture']) ? ' class="' . $e($o['classe_picture']) . '"' : '';
-        return '<picture' . $pc . '>'
+        // Art direction: immagine diversa sui telefoni (es. TV imgHeaderMobile), con le sue varianti
+        $mobile = '';
+        $fm = !empty($o['src_mobile']) ? $this->percorso((string) $o['src_mobile']) : null;
+        if ($fm !== null && $fm !== $file && ($vm = $this->varianti($fm, $o['genera'] ?? true))) {
+            $media = $e($o['media_mobile'] ?? '(max-width: 767.98px)');
+            $setm = fn(string $k) => implode(', ', array_map(fn($x) => $this->url($x[$k]) . ' ' . $x['w'] . 'w', $vm));
+            $mobile = '<source media="' . $media . '" type="image/webp" srcset="' . $e($setm('webp')) . '" sizes="100vw">'
+                . '<source media="' . $media . '" srcset="' . $e($setm('orig')) . '" sizes="100vw">';
+        }
+        return '<picture' . $pc . '>' . $mobile
             . '<source type="image/webp" srcset="' . $e($set('webp')) . '" sizes="' . $sizes . '">'
             . '<img src="' . $e($this->url($rip['orig'])) . '" srcset="' . $e($set('orig')) . '" sizes="' . $sizes . '"'
             . ' width="' . $grande['w'] . '" height="' . $grande['h'] . '" alt="' . $alt . '"' . $cls . $carico . $extra . '>'
