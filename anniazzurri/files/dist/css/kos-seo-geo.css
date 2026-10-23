@@ -22,7 +22,7 @@
    gli attributi width/height servono solo alle proporzioni, la larghezza resta automatica come prima
    (il carosello fissa l'altezza: con la larghezza dell'attributo l'immagine verrebbe deformata) */
 .carousel-cell > picture { display: contents; }
-.carousel-cell img[width] { width: auto; }
+.carousel-cell img[width]:not(.kos-sfondo) { width: auto; }   /* non le immagini-sfondo delle slide */
 
 /* AA-6: «Guarda meno / Guarda di più» degli accordion scritto dal CSS, fuori dal testo dell'H2 */
 .accordion-button-helper [data-testo]::after { content: attr(data-testo); }
