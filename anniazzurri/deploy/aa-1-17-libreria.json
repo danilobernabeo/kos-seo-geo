@@ -26,6 +26,10 @@
       "file": "anniazzurri/files/dist/css/custom.css",
       "dest": "dist/css/custom.css",
       "baseline": "anniazzurri/baseline/files/dist/css/custom.css"
+    },
+    {
+      "file": "anniazzurri/files/dist/css/kos-seo-geo.css",
+      "dest": "dist/css/kos-seo-geo.css"
     }
   ]
 }

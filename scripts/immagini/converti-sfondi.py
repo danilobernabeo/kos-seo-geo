@@ -143,7 +143,7 @@ def converti(nome, testo):
             cls = re.search(r'class="([^"]*)"', attr)
             note.append(f'img {src}')
             return (f'[[immagine? &src=`{src}` &alt=`[[*pagetitle]], foto {numero(src)}`'
-                    + (f' &class=`{cls.group(1)}`' if cls else '') + ' &sizes=`100vw`]]')
+                    + (f' &class=`{cls.group(1)}`' if cls else '') + ' &sizes=`naturale`]]')
         out = IMG.sub(sost_img, out)
     return out, note
 

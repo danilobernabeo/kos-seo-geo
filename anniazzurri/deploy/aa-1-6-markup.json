@@ -918,6 +918,30 @@
       "name": "photoGalleryAA2025",
       "file": "anniazzurri/elements/snippets/photoGalleryAA2025.php",
       "baseline": "anniazzurri/baseline/snippets/photoGalleryAA2025.php"
+    },
+    {
+      "type": "chunk",
+      "name": "head-landing",
+      "file": "anniazzurri/elements/chunks/head-landing.html",
+      "baseline": "anniazzurri/baseline/chunks/head-landing.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-oss-landing",
+      "file": "anniazzurri/elements/chunks/head-oss-landing.html",
+      "baseline": "anniazzurri/baseline/chunks/head-oss-landing.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-assistenza-domiciliare",
+      "file": "anniazzurri/elements/chunks/head-assistenza-domiciliare.html",
+      "baseline": "anniazzurri/baseline/chunks/head-assistenza-domiciliare.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-sos-famiglia",
+      "file": "anniazzurri/elements/chunks/head-sos-famiglia.html",
+      "baseline": "anniazzurri/baseline/chunks/head-sos-famiglia.html"
     }
   ]
 }

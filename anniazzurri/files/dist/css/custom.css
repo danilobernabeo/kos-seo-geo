@@ -265,7 +265,8 @@ h3.card-title {
 
 /* ==========================================================================
    kos-seo-geo — AA-1 immagini di sfondo → <img>, AA-6 titoli (ottobre 2026)
-   Blocco aggiunto in fondo a /dist/css/custom.css dal pacchetto aa-1-6-17.
+   Blocco aggiunto in fondo a /dist/css/custom.css e copiato in /dist/css/kos-seo-geo.css
+   (head delle landing, che non caricano custom.css). Sorgente: anniazzurri/files/css/kos-seo-geo.css.
    ========================================================================== */
 
 /* AA-1: immagine che sostituisce lo sfondo CSS. L'elemento contenitore ha position-relative;
@@ -281,6 +282,9 @@ h3.card-title {
   border-radius: inherit;
   z-index: 0;
 }
+
+/* Immagini dentro i caroselli (gallerie): il <picture> non deve cambiare l'impaginazione dell'<img> */
+.carousel-cell > picture { display: contents; }
 
 /* AA-6: «Guarda meno / Guarda di più» degli accordion scritto dal CSS, fuori dal testo dell'H2 */
 .accordion-button-helper [data-testo]::after { content: attr(data-testo); }

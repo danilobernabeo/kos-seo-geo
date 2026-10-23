@@ -299,7 +299,11 @@ class Immagini
             $wh = $dim ? ' width="' . $dim[0] . '" height="' . $dim[1] . '"' : '';
             return '<img src="' . $e($this->url($file)) . '" alt="' . $alt . '"' . $wh . $cls . $carico . $extra . '>';
         }
-        $sizes = $e($o['sizes'] ?? '100vw');
+        // «naturale»: stessa larghezza intrinseca di un <img> semplice (al massimo quella del file), per le immagini
+        // mostrate alla loro dimensione (gallerie, caroselli) e non a tutta larghezza
+        $sizes = ($o['sizes'] ?? '100vw') === 'naturale'
+            ? '(max-width: ' . end($v)['w'] . 'px) 100vw, ' . end($v)['w'] . 'px'
+            : $e($o['sizes'] ?? '100vw');
         $set = fn(string $k) => implode(', ', array_map(fn($x) => $this->url($x[$k]) . ' ' . $x['w'] . 'w', $v));
         $grande = end($v);
         // ripiego: la variante più vicina a 1200 px
