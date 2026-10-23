@@ -21,6 +21,9 @@ Regole (stessa resa grafica: le classi Bootstrap .h2/.h3/.h4/.h5 riproducono l'a
   R5  gallerie, video e podcast della residenza: titolo h3 → h2 con classe h3; titolo della finestra della galleria
       (h5.modal-title) → paragrafo.
   R6  newsletter nel footer: h2 → paragrafo.
+  R7  intestazioni delle sottosezioni → H3 con l'aspetto invariato (CSS h3.card-header): «Servizi», «Chi accogliamo»,
+      «Équipe assistenziale» (chunk servizi-*, testo non più tutto maiuscolo nel codice) e «In automobile»,
+      «Mezzi pubblici» (contenuti, sotto «Come raggiungerci»).
 """
 import hashlib
 import importlib.util
@@ -72,6 +75,11 @@ def regole_chunk(nome, t):
         t, a = cambia_tag(t, r'<(h3) class="([^"]*text-primary[^"]*)"([^>]*)>(.*?)</h3>', 'h2', 'h3', conta=1)
         t, b = cambia_tag(t, r'<(h5) class="([^"]*modal-title[^"]*)"([^>]*)>(.*?)</h5>', 'p', 'h5')
         n['R5'] = a + b
+    if nome.startswith('servizi-'):                   # R7: intestazioni delle schede di Servizi sanitari → H3
+        etichette = {'SERVIZI': 'Servizi', 'CHI ACCOGLIAMO': 'Chi accogliamo',
+                     'ÈQUIPE ASSISTENZIALE': 'Équipe assistenziale', '&Eacute;QUIPE ASSISTENZIALE': 'Équipe assistenziale'}
+        t, n['R7'] = re.subn(r'<div class="card-header">\s*(' + '|'.join(map(re.escape, etichette)) + r')\s*</div>',
+                             lambda m: f'<h3 class="card-header text-uppercase">{etichette[m.group(1)]}</h3>', t)
     if nome == 'footer':
         t, n['R6'] = cambia_tag(t, r'<(h2) class="([^"]*)"([^>]*)>(\s*Vuoi essere sempre aggiornato.*?)</h2>', 'p')
     return t, {k: v for k, v in n.items() if v}
@@ -93,6 +101,9 @@ def regole_contenuto(tpl, t):
     t, a = cambia_tag(t, r'<(h3) class="([^"]*)"([^>]*)>(\s*Vuoi essere ricontattato\?\s*)</h3>', 'p', 'h3')
     t, b = cambia_tag(t, r'<(h4) class="([^"]*text-azure[^"]*)"([^>]*)>(\s*Lasciaci i tuoi dati.*?)</h4>', 'p', 'h4')
     n['R4'] = a + b
+    # R7: «In automobile» e «Mezzi pubblici» sotto «Come raggiungerci» → H3
+    t, n['R7'] = re.subn(r'<div class="card-header text-uppercase">(<i[^>]*></i>)?(<span>(?:In automobile|Mezzi pubblici)</span>)</div>',
+                         r'<h3 class="card-header text-uppercase">\1\2</h3>', t)
     # Pulizia dei testi alternativi: attributo alt ripetuto nello stesso <img> (vale il primo) e refuso «assite»
     def un_alt(m):
         tag = m.group(0)

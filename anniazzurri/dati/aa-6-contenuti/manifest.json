@@ -9,7 +9,8 @@
     "R1": 6,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "9f412a5405e9e10d452ee1f2a6ebc7faaa09ec00",
    "file": "367.html"
@@ -64,7 +65,8 @@
    "id": 185,
    "pagetitle": "Centro Diurno Alzheimer San Giuseppe",
    "regole": {
-    "R2": 1
+    "R2": 1,
+    "R7": 2
    },
    "sha1_prima": "6e14a245d38cd03f04cd2583cc2c1e6fb4d2fc25",
    "file": "185.html"
@@ -73,7 +75,8 @@
    "id": 182,
    "pagetitle": "Centro Diurno Anni Azzurri La Limonaia",
    "regole": {
-    "R2": 1
+    "R2": 1,
+    "R7": 2
    },
    "sha1_prima": "bd878396d8276165fce859d0ce67dbdbe42591d8",
    "file": "182.html"
@@ -82,7 +85,8 @@
    "id": 183,
    "pagetitle": "Centro Diurno Anni Azzurri Maremma",
    "regole": {
-    "R2": 1
+    "R2": 1,
+    "R7": 2
    },
    "sha1_prima": "2bed8e96407bca6b2cd40f5910546b1d10328d10",
    "file": "183.html"
@@ -92,7 +96,8 @@
    "pagetitle": "Centro Diurno Integrato Anni Azzurri Biancospino",
    "regole": {
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "af064598882a544f069b49e71e45ebe12181357b",
    "file": "451.html"
@@ -101,7 +106,8 @@
    "id": 184,
    "pagetitle": "Centro Diurno Integrato Anni Azzurri San Rocco",
    "regole": {
-    "R2": 1
+    "R2": 1,
+    "R7": 2
    },
    "sha1_prima": "2843f9ad00669ca11e93ee9e9452b1f253ea87cd",
    "file": "184.html"
@@ -193,7 +199,8 @@
    "pagetitle": "Hospice Beati Coniugi Martin",
    "regole": {
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "6dd4c8d7cfc55aba206edfcd1691e90561535ea3",
    "file": "155.html"
@@ -203,7 +210,8 @@
    "pagetitle": "Hospice San Giorgio a Colonica",
    "regole": {
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "2a5102c8bf1e36b00fc0f24d916de1c2c3378eff",
    "file": "233.html"
@@ -334,7 +342,8 @@
     "R1": 6,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "9a044cd7f15b43e03bbf6c7721db3715a42329d4",
    "file": "364.html"
@@ -346,7 +355,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "0545041fba63b37dc59093d996d2cfc8d39c3fa7",
    "file": "445.html"
@@ -358,7 +368,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "5b82b6d97ecdbe562e0b7425cba797f5b3f93302",
    "file": "291.html"
@@ -370,7 +381,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "3a6f00f399cf19ebd8879ca1d5db3134373fbaf7",
    "file": "239.html"
@@ -382,7 +394,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "e32b03ea89d952b150247f94debbaa1df2d465a5",
    "file": "246.html"
@@ -394,7 +407,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "54124281a09a8ba8276e13ab8c8f8198cf8bc546",
    "file": "249.html"
@@ -417,7 +431,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "7a293f9ffd28b2270584a587faea54b1c281c233",
    "file": "297.html"
@@ -429,7 +444,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "3dbf6ecde56c4dbab678b4126e143cc4b1f8ccc7",
    "file": "340.html"
@@ -441,7 +457,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "3022656662e211095f6bd30b30435ebaab2ba5fb",
    "file": "416.html"
@@ -453,7 +470,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "7675490c5356d744ce4d85cfc2902338ee45aef2",
    "file": "298.html"
@@ -476,7 +494,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "f2868eddc981906651d1bea0049c55cb284d8639",
    "file": "348.html"
@@ -488,7 +507,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "40e50deff666f2c652d0c15975d530cee35167c3",
    "file": "407.html"
@@ -500,7 +520,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "fa3a3ebf6d2901143bcda2819ddaf1e21a554f8b",
    "file": "252.html"
@@ -512,7 +533,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "63126fc3538645ca74507ba7d90401ddc8a804dd",
    "file": "230.html"
@@ -524,7 +546,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "f9b9c34f27ca762348924feaf8c1b9333f10e6d8",
    "file": "201.html"
@@ -547,7 +570,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "3a3dc0578d697e080d02ed4af710d899dd553c04",
    "file": "202.html"
@@ -559,7 +583,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "4976f3255f29928b1ee6eadad7ef13f424817cca",
    "file": "228.html"
@@ -571,7 +596,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "b482b770b2a83997e8a27c3cc9d1470df34e4e6a",
    "file": "335.html"
@@ -583,7 +609,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "c51f36bfa7ebfc94899c05903e4684581a74d9db",
    "file": "349.html"
@@ -595,7 +622,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "63115901f37ae0926f0360a8514e2466ec101fde",
    "file": "229.html"
@@ -607,7 +635,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "74f48652aaf654d4e73dd648bf68d58f2262fede",
    "file": "293.html"
@@ -619,7 +648,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "48c448afba09d8f09456cc836f6fe093ccc4a52b",
    "file": "212.html"
@@ -630,7 +660,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "23be1d89dc9f658b43766beb856a730069327745",
    "file": "251.html"
@@ -653,7 +684,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "544cb7b4508a1d47b741639b23e1387242c3c8d0",
    "file": "350.html"
@@ -665,7 +697,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "188c01493dd4481ec9dbe75612db45c754e513c9",
    "file": "294.html"
@@ -676,7 +709,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "7404b6aae50f44479c465204c31db6c2d27d12bc",
    "file": "489.html"
@@ -833,7 +867,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "f70d29fecf749ed18bb7b43bce5f19d8b24f4906",
    "file": "328.html"
@@ -844,7 +879,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "d746a2a254ca93f7044ce3fe63e7a021fe7c03b0",
    "file": "76.html"
@@ -855,7 +891,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "9c4d7f8bf127ea0b90950e1d7cb556a388f07ffa",
    "file": "94.html"
@@ -866,7 +903,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "943197603601c33b55ade5fbe778226db1d63893",
    "file": "231.html"
@@ -877,7 +915,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "6948302f92902117aac5064348f0b0404eb8d969",
    "file": "217.html"
@@ -888,7 +927,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "0a4bad5d19d4eb1faddf5d7d334e87661a97bca1",
    "file": "57.html"
@@ -899,7 +939,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "3e7bb81e6455d9e605d5736973443ed92b19ff5c",
    "file": "327.html"
@@ -910,7 +951,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "5bf570218382390e8102001768eae8b06c332a78",
    "file": "71.html"
@@ -921,7 +963,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "606856017257810aff5baa9a1a949aef83dd1883",
    "file": "72.html"
@@ -932,7 +975,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "4fd4f5c49891a26c17a841bf91d4dd6733d858bf",
    "file": "73.html"
@@ -943,7 +987,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "acc4b0853a1c675c433140e5fce4a2e10d514afc",
    "file": "56.html"
@@ -954,7 +999,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "a5f7d30dd1f4c81808ebe30602619e2261995a9b",
    "file": "101.html"
@@ -965,7 +1011,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "24e110538198ed98d30e21b6f4ef3a44464d318c",
    "file": "326.html"
@@ -976,7 +1023,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "ed1749adfca0f4489e4675c5641415d3e4b3c12e",
    "file": "88.html"
@@ -987,7 +1035,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "1e5a940a53c9cb3e01c691ff5897c4487a0cb9be",
    "file": "89.html"
@@ -998,7 +1047,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "9e2ee26a4aaa52bd8372188bdaeb2926c0814538",
    "file": "86.html"
@@ -1009,7 +1059,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "baaae0e3b0673eb7b40cb921f599c023d20738fe",
    "file": "91.html"
@@ -1020,7 +1071,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "6711c1c182351418e2ac43e46cfdf6796af5252b",
    "file": "95.html"
@@ -1031,7 +1083,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "70e65a73efd173706e72474417e861e676cc083e",
    "file": "62.html"
@@ -1042,7 +1095,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "5d6ec038f440eae9381fa1f9a1fa30dd16e995ae",
    "file": "77.html"
@@ -1053,7 +1107,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "2eaf6a91a990d5cf0aa4191bdd35a5edb7ffc880",
    "file": "35.html"
@@ -1064,7 +1119,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "9775abee90e51ab2f7b011f51ee8043a725df320",
    "file": "81.html"
@@ -1075,7 +1131,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "700bb2be827130e3343efc72c459ec4276e4d93b",
    "file": "75.html"
@@ -1086,7 +1143,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "0b33c59864822f97302946ed7e07d909cd37515e",
    "file": "34.html"
@@ -1097,7 +1155,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "0d4ad46db45db6cfddc9e109bbe0f44f05275cf9",
    "file": "58.html"
@@ -1108,7 +1167,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "2c2ca7d361d2f03a9fc66b2ddb6b7d2d53fd8a5b",
    "file": "19.html"
@@ -1119,7 +1179,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "17032071534f8730b81df044a134e51087245109",
    "file": "63.html"
@@ -1130,7 +1191,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "1915ff0f29ed32a2c8ec0d8116e15d8cf65ec99a",
    "file": "110.html"
@@ -1141,7 +1203,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "b842ddb863477e262bf7ee650ea274095dca169b",
    "file": "20.html"
@@ -1152,7 +1215,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "65ce560889df7e61dee7d38e7d58613b5f213415",
    "file": "42.html"
@@ -1163,7 +1227,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "3e2b1add1cec2ec08ac93b75b9eb35cdec1c8fdd",
    "file": "45.html"
@@ -1174,7 +1239,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "cd2c54363367a27ac6384c103d814d3738bf30dd",
    "file": "82.html"
@@ -1185,7 +1251,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "b04c5ff324f5d35a800692ca1b6527b8de663bee",
    "file": "37.html"
@@ -1196,7 +1263,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "7c5be0acf5afc02432364cd73bd3d5c1137db466",
    "file": "70.html"
@@ -1207,7 +1275,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "114e62c25921f1e58e8f89d5c0e36bc6733e76c4",
    "file": "21.html"
@@ -1218,7 +1287,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "c9d2f9c57a9da3ae430c7d2b8824aa303e537830",
    "file": "104.html"
@@ -1229,7 +1299,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "6a7f65e0f7ab31480b030581ff4f72d5115b711f",
    "file": "64.html"
@@ -1240,7 +1311,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "b769fa2f58ddef54c009b74171bd65aaf8dab0d8",
    "file": "22.html"
@@ -1251,7 +1323,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "349714a82dc239a88f2d40cb0dd2e4080c384bd5",
    "file": "33.html"
@@ -1262,7 +1335,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "753c9eae49a6de0a884bc99ba1434b5dca774d81",
    "file": "43.html"
@@ -1273,7 +1347,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "91202f66c239cf1f7c11b5b78ea8b7da8a84b438",
    "file": "38.html"
@@ -1284,7 +1359,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "548bea95ccaefc172b28182efd3666aa77188c4c",
    "file": "333.html"
@@ -1295,7 +1371,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "d0cc32a322ef03ad5803cb4a78ac287afbfcf332",
    "file": "80.html"
@@ -1306,7 +1383,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "0abce2f5bf796537834accef54a4375cad2174d1",
    "file": "107.html"
@@ -1317,7 +1395,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "25b7bac74d38c8b184e4f7a069137d2105cbe0cd",
    "file": "32.html"
@@ -1328,7 +1407,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "7c08278f8ffe665922cebf31c3fd19d9fdb5a5b3",
    "file": "59.html"
@@ -1339,7 +1419,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "85ba8890bf4b337ceea93bc5867534106ca74ec6",
    "file": "69.html"
@@ -1350,7 +1431,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "1017b847eb27685ed11c99997d60b74d706bee8f",
    "file": "66.html"
@@ -1361,7 +1443,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "1e8771be98ef889828afb606431a3e3578094368",
    "file": "105.html"
@@ -1372,7 +1455,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "b99cf0d4011caada465ac75930604f2affce512e",
    "file": "39.html"
@@ -1383,7 +1467,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "6bb14f417da4fce215290d571cbf675851a930de",
    "file": "40.html"
@@ -1394,7 +1479,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "62d7b40efde064424022240a40780504dc327bd3",
    "file": "87.html"
@@ -1405,7 +1491,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "841be7873a7a01ab144447f24bae788b21f68b61",
    "file": "90.html"
@@ -1416,7 +1503,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "4ae37587d0bdc5622ca5e588e0558a4fa7eff507",
    "file": "41.html"
@@ -1427,7 +1515,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "12d19fc2e9146353443fd4d570d0263f9c0b5330",
    "file": "65.html"
@@ -1438,7 +1527,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "2b6e98a775159d0451774dd702ea895074a28577",
    "file": "44.html"
@@ -1449,7 +1539,8 @@
    "regole": {
     "R1": 10,
     "R2": 1,
-    "R3": 1
+    "R3": 1,
+    "R7": 2
    },
    "sha1_prima": "e3ae1e133d0d6a89b8563189b5c6d8b47d2ff019",
    "file": "60.html"
@@ -1533,7 +1624,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "1086f9a054d0ed4d4c7f886663f857bd9cbb4db7",
    "file": "199.html"
@@ -1545,7 +1637,8 @@
     "R1": 10,
     "R2": 1,
     "R3": 1,
-    "R4": 2
+    "R4": 2,
+    "R7": 2
    },
    "sha1_prima": "45dd69f028ce505ed74f4b2c394ae17bac7cebb2",
    "file": "203.html"

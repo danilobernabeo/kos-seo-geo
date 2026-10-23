@@ -942,6 +942,402 @@
       "name": "head-sos-famiglia",
       "file": "anniazzurri/elements/chunks/head-sos-famiglia.html",
       "baseline": "anniazzurri/baseline/chunks/head-sos-famiglia.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-melograno-argento-vivo",
+      "file": "anniazzurri/elements/chunks/servizi-melograno-argento-vivo.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-melograno-argento-vivo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-abitare-il-tempo",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-abitare-il-tempo.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-abitare-il-tempo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-b-franchiolo",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-b-franchiolo.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-b-franchiolo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-beato-angelico",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-beato-angelico.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-beato-angelico.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-biarella",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-biarella.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-biarella.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-borgomanero",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-borgomanero.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-borgomanero.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-campi-bisenzio",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-campi-bisenzio.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-campi-bisenzio.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-carmagnola",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-carmagnola.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-carmagnola.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-casa-argento",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-casa-argento.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-casa-argento.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-casa-serena",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-casa-serena.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-casa-serena.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-castagnola",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-castagnola.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-castagnola.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-casteldonino",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-casteldonino.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-casteldonino.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-cit-turin",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-cit-turin.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-cit-turin.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-conero",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-conero.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-conero.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-dorica",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-dorica.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-dorica.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-ducale-1",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-ducale-1.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-ducale-1.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-ducale-2-3",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-ducale-2-3.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-ducale-2-3.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-idice",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-idice.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-idice.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-il-giardino",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-il-giardino.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-il-giardino.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-il-poggione",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-il-poggione.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-il-poggione.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-la-corte",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-la-corte.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-la-corte.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-la-margherita",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-la-margherita.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-la-margherita.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-le-grange",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-le-grange.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-le-grange.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-melograno",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-melograno.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-melograno.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-mestre",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-mestre.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-mestre.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-minerva",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-minerva.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-minerva.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-mirasole",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-mirasole.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-mirasole.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-montanaro",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-montanaro.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-montanaro.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-navigli",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-navigli.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-navigli.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-palladio",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-palladio.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-palladio.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-parco-di-veio",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-parco-di-veio.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-parco-di-veio.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-parco-sempione",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-parco-sempione.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-parco-sempione.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-pgr-cinisello",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-pgr-cinisello.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-pgr-cinisello.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-pgr-milano",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-pgr-milano.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-pgr-milano.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-quarto-d-altino",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-quarto-d-altino.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-quarto-d-altino.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-rezzato",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-rezzato.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-rezzato.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-sacra-famiglia",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-sacra-famiglia.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-sacra-famiglia.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-san-faustino",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-san-faustino.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-san-faustino.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-san-giuseppe",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-san-giuseppe.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-san-giuseppe.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-san-lorenzo",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-san-lorenzo.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-san-lorenzo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-san-luca",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-san-luca.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-san-luca.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-san-martino",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-san-martino.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-san-martino.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-san-rocco",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-san-rocco.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-san-rocco.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-san-sisto-2",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-san-sisto-2.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-san-sisto-2.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-san-sisto",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-san-sisto.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-san-sisto.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-sant-anna",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-sant-anna.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-sant-anna.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-santambrogio",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-santambrogio.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-santambrogio.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-santena",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-santena.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-santena.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-sestri-ponente",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-sestri-ponente.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-sestri-ponente.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-tonengo",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-tonengo.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-tonengo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-valdaso",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-valdaso.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-valdaso.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-vico-mercati",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-vico-mercati.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-vico-mercati.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-villa-clarice",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-villa-clarice.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-villa-clarice.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-villa-dei-ciliegi",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-villa-dei-ciliegi.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-villa-dei-ciliegi.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-villa-olga",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-villa-olga.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-villa-olga.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-villa-pineta",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-villa-pineta.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-villa-pineta.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-villa-reale",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-villa-reale.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-villa-reale.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-villa-san-vincenzo",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-villa-san-vincenzo.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-villa-san-vincenzo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-villalba",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-villalba.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-villalba.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-residenza-anni-azzurri-volpiano",
+      "file": "anniazzurri/elements/chunks/servizi-residenza-anni-azzurri-volpiano.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-residenza-anni-azzurri-volpiano.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-rsa-emilia-romagna",
+      "file": "anniazzurri/elements/chunks/servizi-rsa-emilia-romagna.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-rsa-emilia-romagna.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-rsa-lombardia",
+      "file": "anniazzurri/elements/chunks/servizi-rsa-lombardia.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-rsa-lombardia.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-rsa-piemonte",
+      "file": "anniazzurri/elements/chunks/servizi-rsa-piemonte.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-rsa-piemonte.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-rsa-veneto",
+      "file": "anniazzurri/elements/chunks/servizi-rsa-veneto.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-rsa-veneto.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-sanitari",
+      "file": "anniazzurri/elements/chunks/servizi-sanitari.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-sanitari.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-soggiorni-estivi-piemonte",
+      "file": "anniazzurri/elements/chunks/servizi-soggiorni-estivi-piemonte.html",
+      "baseline": "anniazzurri/baseline/chunks/servizi-soggiorni-estivi-piemonte.html"
     }
   ]
 }
