@@ -181,11 +181,12 @@ foreach ($m['files'] ?? [] as $f) {
     }
     $nuovo = $leggi($f['file']);
     $att = is_file($dest) ? (string) file_get_contents($dest) : null;
-    if ($att === $nuovo) { echo "  = file {$f['dest']} già aggiornato\n"; $registro[$chiave] = sha1($nuovo); continue; }
+    $nl = static fn(?string $x) => $x === null ? null : rtrim(str_replace("\r\n", "\n", $x));   // fine riga Windows/Unix
+    if ($nl($att) === $nl($nuovo)) { echo "  = file {$f['dest']} già aggiornato\n"; $registro[$chiave] = sha1($nuovo); continue; }
     if ($att !== null && !empty($f['baseline'])) {
         $bl = $leggi($f['baseline']);
         $nostra = ($registro[$chiave] ?? null) === sha1($att);
-        if ($att !== $bl && !$nostra) {
+        if ($nl($att) !== $nl($bl) && !$nostra) {
             echo "  ! file {$f['dest']}: sul sito è diverso dalla baseline" . ($forza ? " — procedo per --forza\n" : " — FERMO. Integrare la modifica nel repository o usare --forza\n");
             if (!$forza) { $errori++; continue; }
         }
