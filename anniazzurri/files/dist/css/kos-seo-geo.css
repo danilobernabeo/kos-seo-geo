@@ -30,8 +30,11 @@ picture:has(> img.kos-sfondo) { border-radius: inherit; }
 /* AA-6: «Guarda meno / Guarda di più» degli accordion scritto dal CSS, fuori dal testo dell'H2 */
 .accordion-button-helper [data-testo]::after { content: attr(data-testo); }
 
-/* AA-6: titoli diventati paragrafi o cambiati di livello: stessa spaziatura dei titoli */
-p.h1, p.h2, p.h3, p.h4, p.h5 { margin-top: 0; margin-bottom: .5rem; }
+/* AA-6: titoli diventati paragrafi. Le classi .h1-.h5 del tema (app.css) danno già al paragrafo margini, interlinea,
+   peso e dimensione dei titoli; resta da correggere il footer, dove app.css rimpicciolisce tutti i paragrafi
+   (footer[stripe-footer] p { font-size: .75rem }, più specifica di .h3): frase della newsletter, prima un h2.h3 */
+footer[stripe-footer] p.h3 { font-size: calc(0.875rem + 1.5vw); }
+@media (min-width: 1200px) { footer[stripe-footer] p.h3 { font-size: 2rem; } }
 
 /* AA-6: intestazioni delle sottosezioni diventate H3 (Servizi, Chi accogliamo, Équipe, In automobile, Mezzi pubblici):
    stesso aspetto della vecchia intestazione della scheda */
