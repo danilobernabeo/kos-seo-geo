@@ -120,6 +120,12 @@ def regole_contenuto(tpl, t):
     if nuovo != t:
         t = nuovo
         n['AA1'] = len(note)
+    # Pagine senza template con il proprio <head> (es. home-en): se usano le immagini-sfondo e non caricano custom.css,
+    # serve il foglio kos-seo-geo.css (come gli head delle landing), altrimenti .kos-sfondo non ha regole
+    if 'kos-sfondo' in t and re.search(r'</head>', t, re.I) and not re.search(r'/dist/css/(custom|kos-seo-geo)\.css', t):
+        t, n['CSS'] = re.subn(r'(<link\b[^>]*href="/dist/css/app\.css[^"]*"[^>]*>)',
+                              lambda m: m.group(1) + ('\r\n' if '\r\n' in t else '\n')
+                              + '  <link rel="stylesheet" href="/dist/css/kos-seo-geo.css">', t, count=1)
     return t, {k: v for k, v in n.items() if v}
 
 
