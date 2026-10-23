@@ -1,0 +1,10 @@
+# Testi alternativi in inglese per le pagine in inglese (<html lang="en">, es. home-en): percorso <TAB> alt.
+# Prevalgono su alt-immagini.tsv nelle chiamate [[immagine]] di quelle pagine (scripts/titoli/converti-titoli.py).
+/assets/img/home-slide-2.jpg	Caregiver assisting residents during a writing activity at the table
+/assets/img/header-home.jpg	Smiling resident, entrance of the Villa Clarice nursing home and an Anni Azzurri caregiver
+/assets/img/grid-rsa.jpg	Anni Azzurri Parco Sempione nursing home, brick building and flowering garden
+/assets/img/home-grid.jpg	Portrait of a smiling elderly woman
+/assets/img/grid-help.jpg	Caregiver walking with a resident in the nursing home garden
+/assets/img/grid-team-mobile.jpg	Smiling caregiver in uniform
+/assets/img/grid-play.jpg	Nurse measuring a resident's blood pressure
+/assets/img/team.png	Two smiling healthcare workers embracing

@@ -39,6 +39,13 @@ _argv, sys.argv = sys.argv, [sys.argv[0]]
 _spec.loader.exec_module(sfondi)
 sys.argv = _argv
 TPL_INTRO = ('rsa', 'centro-diurno', 'regione', 'provincia')
+_ALT_EN_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'anniazzurri', 'dati', 'alt-immagini-en.tsv')
+ALT_EN = {}
+if os.path.exists(_ALT_EN_FILE):
+    for _r in open(_ALT_EN_FILE, encoding='utf-8'):
+        if _r.strip() and not _r.startswith('#') and '\t' in _r:
+            _p, _a = _r.rstrip('\n').split('\t', 1)
+            ALT_EN['/' + _p.lstrip('/')] = _a
 
 SITO = 'anniazzurri'
 BASE = os.path.join(SITO, 'baseline', 'chunks')
@@ -120,6 +127,11 @@ def regole_contenuto(tpl, t):
     if nuovo != t:
         t = nuovo
         n['AA1'] = len(note)
+    # Pagine in inglese: alt in inglese (anniazzurri/dati/alt-immagini-en.tsv) nelle chiamate [[immagine]]
+    if re.search(r'<html\b[^>]*\blang="en', t, re.I) and ALT_EN:
+        t, n['ALT_EN'] = re.subn(r'(\[\[immagine\? &src=`([^`]*)` &alt=`)[^`]*`',
+                                 lambda m: m.group(1) + ALT_EN.get('/' + m.group(2).lstrip('/'), '').replace('`', "'") + '`'
+                                 if ('/' + m.group(2).lstrip('/')) in ALT_EN else m.group(0), t)
     # Pagine senza template con il proprio <head> (es. home-en): se usano le immagini-sfondo e non caricano custom.css,
     # serve il foglio kos-seo-geo.css (come gli head delle landing), altrimenti .kos-sfondo non ha regole
     if 'kos-sfondo' in t and re.search(r'</head>', t, re.I) and not re.search(r'/dist/css/(custom|kos-seo-geo)\.css', t):
