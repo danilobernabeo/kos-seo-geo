@@ -1,0 +1,69 @@
+{
+ "nome": "Alt Text immagini nel testo delle news",
+ "campo": "content",
+ "risorse": [
+  {
+   "id": 536,
+   "pagetitle": "Alla Fondazione Marazza la Residenza Anni Azzurri Borgomanero presenta “L’altro sono io”, un corso gratuito per i familiari caregiver",
+   "regole": {
+    "ALT": 2
+   },
+   "sha1_prima": "548115e273f227b4df4e71f6481cec2e1a2641ed",
+   "file": "536.html"
+  },
+  {
+   "id": 463,
+   "pagetitle": "Anni Azzurri: un week end da ballare e ricordare",
+   "regole": {
+    "ALT": 14
+   },
+   "sha1_prima": "10c7740cbc322737a3dd6137ca3b62459fc04463",
+   "file": "463.html"
+  },
+  {
+   "id": 538,
+   "pagetitle": "“La Corrida” accende Mestre:  una festa senza barriere tra sorrisi e comunità",
+   "regole": {
+    "ALT": 1
+   },
+   "sha1_prima": "7d2ddf033d3c1082d55edaf4959de7f9d542bb41",
+   "file": "538.html"
+  },
+  {
+   "id": 480,
+   "pagetitle": "La Radio “On The Road” fa tappa a Bagnolo",
+   "regole": {
+    "ALT": 5
+   },
+   "sha1_prima": "e101c14aada1cc57afa75a53cccd33328edcec4d",
+   "file": "480.html"
+  },
+  {
+   "id": 219,
+   "pagetitle": "La valenza terapeutica del bello e dell’arte",
+   "regole": {
+    "ALT": 2
+   },
+   "sha1_prima": "2ce68f6bb331fd682785422a4c1a23ef03fd4cc8",
+   "file": "219.html"
+  },
+  {
+   "id": 174,
+   "pagetitle": "Pet Therapy nelle RSA, quando gli animali aiutano gli anziani a stare meglio",
+   "regole": {
+    "ALT": 5
+   },
+   "sha1_prima": "0580d74c5316bd0f179d174bdc825f437af6b565",
+   "file": "174.html"
+  },
+  {
+   "id": 464,
+   "pagetitle": "Anni Azzurri: weekend di anniversari per le residenze Melograno e San Sisto",
+   "regole": {
+    "ALT": 8
+   },
+   "sha1_prima": "c816b1b21384892f29f618b7abad99b5987bca67",
+   "file": "464.html"
+  }
+ ]
+}
