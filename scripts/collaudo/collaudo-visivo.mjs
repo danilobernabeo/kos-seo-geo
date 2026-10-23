@@ -86,8 +86,10 @@ async function apri(browser, base, p, w, conCredenziali) {
   });
   let stato = 0;
   try {
-    const r = await page.goto(base + p, { waitUntil: 'networkidle', timeout: 60000 });
+    // «load» e poi rete ferma al massimo 10 s: alcune pagine (mappe, reCAPTCHA, video) non smettono mai di caricare
+    const r = await page.goto(base + p, { waitUntil: 'load', timeout: 60000 });
     stato = r ? r.status() : 0;
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
   } catch (e) {
     log.js.push('caricamento: ' + String(e.message || e).split('\n')[0]);
   }
@@ -128,9 +130,13 @@ async function controlli(page) {
       if (/\.webp(\?|$)/i.test(i.currentSrc || '')) webp++;
       const fit = getComputedStyle(i).objectFit;
       if (fit === 'cover' || fit === 'contain' || !i.naturalWidth) continue;
-      const r = i.getBoundingClientRect();
-      const a = r.width / r.height, n = i.naturalWidth / i.naturalHeight;
-      if (Math.abs(a / n - 1) > 0.04) deformate.push(`${src} (mostrata ${Math.round(r.width)}×${Math.round(r.height)}, file ${i.naturalWidth}×${i.naturalHeight})`);
+      // dimensioni del contenuto, senza padding e bordi (es. icone con pb-2)
+      const r = i.getBoundingClientRect(), cs = getComputedStyle(i), px = v => parseFloat(v) || 0;
+      const cw = r.width - px(cs.paddingLeft) - px(cs.paddingRight) - px(cs.borderLeftWidth) - px(cs.borderRightWidth);
+      const ch = r.height - px(cs.paddingTop) - px(cs.paddingBottom) - px(cs.borderTopWidth) - px(cs.borderBottomWidth);
+      if (cw < 3 || ch < 3) continue;
+      const a = cw / ch, n = i.naturalWidth / i.naturalHeight;
+      if (Math.abs(a / n - 1) > 0.04) deformate.push(`${src} (mostrata ${Math.round(cw)}×${Math.round(ch)}, file ${i.naturalWidth}×${i.naturalHeight})`);
     }
     const sw = document.documentElement.scrollWidth, vw = window.innerWidth;
     let largo = '';
@@ -159,7 +165,13 @@ function confronta(fa, fb, fd) {
   const A = taglia(a), B = taglia(b), D = new PNG({ width: w, height: h });
   const n = pixelmatch(A.data, B.data, D.data, w, h, { threshold: 0.15, alpha: 0.25 });
   fs.writeFileSync(fd, PNG.sync.write(D));
-  return { diff: +(100 * n / (w * h)).toFixed(2), altezze: [a.height, b.height] };
+  // prima riga diversa: dice dove comincia la differenza (sotto quella riga tutto può essere solo spostato)
+  let prima = -1;
+  for (let y = 0; y < h && prima < 0; y++) for (let x = 0; x < w; x++) {
+    const o = (y * w + x) * 4;
+    if (D.data[o] > 200 && D.data[o + 1] < 80 && D.data[o + 2] < 80) { prima = y; break; }
+  }
+  return { diff: +(100 * n / (w * h)).toFixed(2), altezze: [a.height, b.height], primaDiff: prima };
 }
 
 const browser = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {});
@@ -181,6 +193,15 @@ for (const p of pagine) {
     if (PROD) {
       const q = await apri(browser, PROD, p, w, false);
       r.statoProd = q.stato;
+      // gli stessi controlli in produzione: ciò che c'è già là non è un effetto delle modifiche
+      const cp = await controlli(q.page).catch(() => ({}));
+      const gia = (a, b) => (a || []).filter(x => (b || []).some(y => y.split(' (')[0] === x.split(' (')[0]));
+      r.giaInProd = {
+        js: gia(r.js, q.log.js), deformate: gia(r.deformate, cp.deformate), senzaAlt: gia(r.senzaAlt, cp.senzaAlt),
+        rotte: gia(r.rotte, cp.rotte), scorrimento: r.scorrimento && cp.scorrimento ? r.scorrimento : '',
+      };
+      for (const k of ['js', 'deformate', 'senzaAlt', 'rotte']) r[k] = (r[k] || []).filter(x => !r.giaInProd[k].includes(x));
+      if (r.giaInProd.scorrimento) r.scorrimento = '';
       const fp = path.join(OUT, 'img', nomeFile(p, w, 'prod'));
       await q.page.screenshot({ path: fp, fullPage: true }).catch(() => {});
       await q.ctx.close();
@@ -200,7 +221,14 @@ for (const p of pagine) {
     if (r.h1 !== 1) r.problemi.push(`${r.h1} H1`);
     if (r.senzaAlt?.length) r.problemi.push(`${r.senzaAlt.length} immagini senza alt`);
     if (r.altezze && Math.abs(r.altezze[0] - r.altezze[1]) > 40) r.problemi.push(`altezza della pagina ${r.altezze[0]} → ${r.altezze[1]} px`);
-    if (r.diff > SOGLIA) r.problemi.push(`${r.diff}% di pixel diversi dalla produzione`);
+    if (r.diff > SOGLIA) r.problemi.push(`${r.diff}% di pixel diversi dalla produzione${r.primaDiff >= 0 ? ` (da y=${r.primaDiff} px)` : ''}`);
+    if (r.giaInProd) {
+      const g = r.giaInProd, t = [];
+      if (g.js.length) t.push(`${g.js.length} errori JS`); if (g.deformate.length) t.push(`${g.deformate.length} deformate`);
+      if (g.senzaAlt.length) t.push(`${g.senzaAlt.length} senza alt`); if (g.rotte.length) t.push(`${g.rotte.length} rotte`);
+      if (g.scorrimento) t.push('scorrimento orizzontale');
+      r.giaTesto = t.join(', ');
+    }
     r.peso = (r.stato !== 200 || r.js?.length || r.rotte?.length || r.deformate?.length || r.scorrimento ? 100 : 0)
       + (r.risorse?.length ? 50 : 0) + Math.min(r.diff || 0, 40) + (r.altezze ? Math.min(Math.abs(r.altezze[0] - r.altezze[1]) / 50, 20) : 0);
     risultati.push(r);
@@ -222,8 +250,8 @@ details{margin-bottom:10px}</style></head><body>
 <h1>Collaudo visivo — ${e(STAGE)}${PROD ? ' rispetto a ' + e(PROD) : ''}</h1>
 <p>${pagine.length} pagine × ${LARGHEZZE.join(', ')} px; ${risultati.filter(r => r.problemi.length).length} combinazioni con segnalazioni.
 Le immagini sono cliccabili (dimensione piena). In rosso, nella terza colonna, i pixel diversi dalla produzione.</p>
-<table><tr><th>Pagina</th><th>px</th><th>Segnalazioni</th><th>Immagini (WebP)</th></tr>
-${ordinati.map((r, i) => `<tr><td><a href="#r${i}">${e(r.pagina)}</a></td><td>${r.larghezza}</td><td class="${r.problemi.length ? 'ko' : 'ok'}">${e(r.problemi.join('; ') || 'ok')}</td><td>${r.immagini ?? ''} (${r.webp ?? ''})</td></tr>`).join('')}</table>
+<table><tr><th>Pagina</th><th>px</th><th>Segnalazioni (solo stage)</th><th>Già in produzione</th><th>Immagini (WebP)</th></tr>
+${ordinati.map((r, i) => `<tr><td><a href="#r${i}">${e(r.pagina)}</a></td><td>${r.larghezza}</td><td class="${r.problemi.length ? 'ko' : 'ok'}">${e(r.problemi.join('; ') || 'ok')}</td><td>${e(r.giaTesto || '')}</td><td>${r.immagini ?? ''} (${r.webp ?? ''})</td></tr>`).join('')}</table>
 ${ordinati.map((r, i) => `<details id="r${i}" ${r.peso >= 20 ? 'open' : ''}><summary><h2 style="display:inline">${e(r.pagina)} — ${r.larghezza}px</h2>
 <span class="${r.problemi.length ? 'ko' : 'ok'}"> ${e(r.problemi.join('; ') || 'ok')}</span></summary>
 <p><a href="${e(STAGE + r.pagina)}">stage</a>${PROD ? ` · <a href="${e(PROD + r.pagina)}">produzione</a>` : ''} · «${e(r.titolo)}»</p>
@@ -232,7 +260,8 @@ ${ordinati.map((r, i) => `<details id="r${i}" ${r.peso >= 20 ? 'open' : ''}><sum
 ${r.img.diff ? `<figure><a href="${r.img.diff}"><img src="${r.img.diff}" loading="lazy" alt=""></a><figcaption>differenze ${r.diff}%</figcaption></figure>` : ''}</div>
 ${lista('Errori JavaScript', r.js)}${lista('Errori della console', r.console)}${lista('Risorse non trovate', r.risorse)}
 ${lista('Immagini rotte', r.rotte)}${lista('Immagini deformate', r.deformate)}${lista('Immagini senza alt', r.senzaAlt)}
-${r.scorrimento ? `<p><b>Scorrimento orizzontale:</b> ${e(r.scorrimento)}</p>` : ''}</details>`).join('\n')}
+${r.scorrimento ? `<p><b>Scorrimento orizzontale:</b> ${e(r.scorrimento)}</p>` : ''}
+${r.giaInProd ? lista('Già in produzione — errori JavaScript', r.giaInProd.js) + lista('Già in produzione — immagini deformate', r.giaInProd.deformate) + lista('Già in produzione — immagini senza alt', r.giaInProd.senzaAlt) + lista('Già in produzione — immagini rotte', r.giaInProd.rotte) + (r.giaInProd.scorrimento ? `<p><b>Già in produzione — scorrimento orizzontale:</b> ${e(r.giaInProd.scorrimento)}</p>` : '') : ''}</details>`).join('\n')}
 </body></html>`;
 fs.writeFileSync(path.join(OUT, 'rapporto.html'), html);
 console.log(`\nRapporto: ${path.join(OUT, 'rapporto.html')}`);
