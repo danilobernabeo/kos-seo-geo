@@ -43,3 +43,11 @@
   </div>
 
   <hr>
+<script>/* kos-seo-geo: rimisura i caroselli delle foto quando sono caricate (AA-1) */
+window.addEventListener('load', function () {
+  document.querySelectorAll('.photo-carousel').forEach(function (el) {
+    var f = window.Flickity && Flickity.data(el);
+    if (f) f.resize();
+  });
+});
+</script>

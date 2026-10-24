@@ -215,6 +215,17 @@ def main():
                     # flickity.pkgd): prima del caricamento l'<img> con width:auto vale 0 px e il carosello resta chiuso
                     nuovo_alt = re.sub(r"data-flickity='\{(?![^']*imagesLoaded)([^']*?)\s*\}'",
                                        lambda m: "data-flickity='{" + m.group(1).rstrip() + ', "imagesLoaded": true }\'', nuovo_alt)
+                    # rete di sicurezza: a pagina caricata (foto comprese) il carosello si rimisura comunque; serve se
+                    # app.js avvia Flickity con opzioni proprie o se l'avvio precede l'arrivo delle foto
+                    if 'kos-seo-geo: rimisura' not in nuovo_alt:
+                        nuovo_alt = nuovo_alt.rstrip('\r\n') + (
+                            "\n<script>/* kos-seo-geo: rimisura i caroselli delle foto quando sono caricate (AA-1) */\n"
+                            "window.addEventListener('load', function () {\n"
+                            "  document.querySelectorAll('.photo-carousel').forEach(function (el) {\n"
+                            "    var f = window.Flickity && Flickity.data(el);\n"
+                            "    if (f) f.resize();\n"
+                            "  });\n"
+                            "});\n</script>\n")
                 if nuovo_alt != testo:
                     with open(os.path.join(OUT, cartella, f), 'w', encoding='utf-8', newline='') as w:
                         w.write(nuovo_alt)
