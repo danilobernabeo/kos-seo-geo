@@ -1,0 +1,11 @@
+{
+  "nome": "Modulo di iscrizione ai convegni: script del footer senza mappa (prima: Google Maps caricato senza mappa, script /dist/maps/<alias>.js inesistente ed errore JavaScript)",
+  "elements": [
+    {
+      "type": "template",
+      "name": "formIscrizione",
+      "file": "anniazzurri/elements/templates/formIscrizione.html",
+      "baseline": "anniazzurri/baseline/templates/formIscrizione.html"
+    }
+  ]
+}
