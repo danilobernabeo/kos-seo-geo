@@ -146,6 +146,13 @@ description con `:htmlent` ovunque; og completi anche sulle landing (prima assen
 og:description con ripiego su `introtext` (o `ruolo`) dove la description manca; `scroll-anchors.js` con `defer` anche
 in inglese; `custom.css` senza versione scritta a mano.
 
+Tempo di risposta sullo stage (24/10, 54 pagine, mediana di 5 misure a cache calda, `collaudo-visivo.mjs --tempi`),
+misurato con l'head vecchio (ripristinato per la prova) e con il nuovo: stage/produzione 1,60 con il vecchio e 1,61 con il
+nuovo, differenza sulla stessa pagina dello stage −2 ms in mediana. L'head unico non cambia il tempo di risposta; lo
+stage è più lento della produzione (circa +90 ms) perché è un cloud di sviluppo: un file statico risponde uguale sui due.
+Da approfondire per KOS-2: le pagine inglesi rispondono circa 100 ms più lente delle italiane anche in produzione
+(mediana 210 contro 120 ms).
+
 Controllo: `scripts/checks/kos-head-controllo.py` (campione da `risorse-per-template.php --campione`).
 
 ## Collaudo
