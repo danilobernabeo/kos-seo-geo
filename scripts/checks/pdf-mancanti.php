@@ -55,15 +55,15 @@ function dove(PDO $db, string $p, string $rel): array {
     $cart = basename(dirname($rel));
     $vari = [];
     foreach ([$nome, rawurlencode($nome), str_replace(' ', '%20', $nome), htmlspecialchars($nome)] as $v) $vari[] = "$cart/$v";
-    $vari = array_unique($vari);
+    $vari = array_unique($vari);   // LIKE BINARY: maiuscole comprese, come i nomi dei file sul server
     $out = [];
     foreach ($vari as $v) {
         $like = '%' . $v . '%';
         foreach ([
-            ["SELECT id, pagetitle FROM {$p}site_content WHERE deleted = 0 AND content LIKE ?", 'risorsa'],
-            ["SELECT id, name FROM {$p}site_htmlsnippets WHERE snippet LIKE ?", 'chunk'],
-            ["SELECT id, templatename FROM {$p}site_templates WHERE content LIKE ?", 'template'],
-            ["SELECT contentid, tmplvarid FROM {$p}site_tmplvar_contentvalues WHERE value LIKE ?", 'TV della risorsa'],
+            ["SELECT id, pagetitle FROM {$p}site_content WHERE deleted = 0 AND content LIKE BINARY ?", 'risorsa'],
+            ["SELECT id, name FROM {$p}site_htmlsnippets WHERE snippet LIKE BINARY ?", 'chunk'],
+            ["SELECT id, templatename FROM {$p}site_templates WHERE content LIKE BINARY ?", 'template'],
+            ["SELECT contentid, tmplvarid FROM {$p}site_tmplvar_contentvalues WHERE value LIKE BINARY ?", 'TV della risorsa'],
         ] as [$sql, $tipo]) {
             $st = $db->prepare($sql);
             $st->execute([$like]);
