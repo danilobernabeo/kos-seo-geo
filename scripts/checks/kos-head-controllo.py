@@ -108,7 +108,10 @@ def main():
     auth = os.environ.get('AUTH', '')
     base = o.base.rstrip('/')
     percorsi = []
-    for r in open(o.pagine, encoding='utf-8-sig'):
+    grezzo = open(o.pagine, 'rb').read()
+    # il redirect «>» di Windows PowerShell 5 scrive in UTF-16 con BOM; PowerShell 7 e gli altri in UTF-8
+    testo_pagine = grezzo.decode('utf-16') if grezzo[:2] in (b'\xff\xfe', b'\xfe\xff') else grezzo.decode('utf-8-sig')
+    for r in testo_pagine.splitlines():
         r = r.split('#', 1)[0].strip()
         if r:
             percorsi.append(r if r.startswith('/') else '/' + r)
