@@ -81,6 +81,16 @@ Interventi del singolo sito:
 | Search Console dei due siti | esportazione collettiva già attiva da marzo 2025 verso il progetto dell'agenzia (`import-gsc`, `europe-west6`, una sola esportazione per proprietà): chiesto l'accesso in lettura ai due dataset per una copia giornaliera pianificata in `europe-west3` (`searchconsole_aa`, `searchconsole_kos`). Lo storico via API (`scripts/gsc/storico-search-console.py`) non serve, resta come ripiego |
 | Tabelle di corrispondenza | `kos_lookup` (campagne, aree, URL) |
 
+## Rilascio dello sprint 2 (deciso il 24/10)
+
+Danilo vuole chiudere le lavorazioni presto per dedicarsi a RetailTune e alla dismissione di Yext. Finestre possibili:
+prima della consegna dello sprint 1 (entro il 29/10, così Cerved/ProWeb verificano lo stato finale) oppure dopo la
+verifica dello sprint 1 (9-11/11). **Da evitare 30/10-6/11** (verifica dello sprint 1): i pacchetti dello sprint 2
+toccano elementi consegnati con lo sprint 1 (footer, `head-sportello-sociale`, `convegnoAA`, `heading-home2`). Prima del
+rilascio: esportazione fresca dei contenuti e rigenerazione dei pacchetti; dopo: collaudo visivo e validatori sulle
+voci dello sprint 1. Il dato CrUX di novembre rifletterà il rilascio in proporzione ai giorni (evidenza piena a dicembre).
+Analisi del consolidamento degli head KOS: `docs/kos-head-consolidamento.md`.
+
 ## Da verificare lunedì 26 ottobre (emerso dal collaudo del 24/10)
 
 - **[AA] Pagina `/melograno-argento-vivo` (risorsa 489)**: copia della scheda Melograno (risorsa 35) con in più un box sul servizio Argento Vivo; pubblicata e ricercabile, stesso title e H1 della scheda, nessun link interno. Danilo chiede ai responsabili se era una pagina da pubblicare (box da portare nella scheda vera) o una prova abbandonata. Se prova: non pubblicata o eliminata, 301 verso `/residenza-anni-azzurri-melograno` nelle regole web (`location = /melograno-argento-vivo`), chunk `melograno-argento-vivo` e `comfort-melograno-argento-vivo` inutilizzati. Controllare anche se la residenza compare due volte negli elenchi per regione e provincia. Foto del direttore mancante già sistemata il 24/10 (copia di `dir-residenza-anni-azzurri-melograno.jpg`).
