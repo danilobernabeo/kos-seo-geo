@@ -15,6 +15,11 @@
  *   --solo-stage                    niente confronto con la produzione (solo controlli)
  *   --soglia=0.5                    % di pixel diversi oltre la quale la pagina si segnala come «cambiata»
  *   --uscita=collaudo-<data>        cartella del rapporto (default con data e ora)
+ *   --tempi=5                       misura anche il tempo di risposta (TTFB): per ogni pagina una richiesta di
+ *                                   riscaldamento e N misure alternate stage/produzione, mediana in ms (0 = no)
+ *   --solo-tempi                    solo la misura dei tempi, senza browser
+ * L'elenco delle pagine accetta commenti in fondo alla riga («/it/strutture  # 3 generica»), anche in UTF-16 (output
+ * di Windows PowerShell 5): va bene il file di risorse-per-template.php --campione.
  *
  * Controlli sullo stage, per ogni pagina e larghezza:
  *   - stato HTTP, errori JavaScript e della console, risorse dello stesso sito non trovate (4xx/5xx);
@@ -51,8 +56,11 @@ const stamp = ora.toISOString().slice(0, 16).replace(/[-:T]/g, '').replace(/^(\d
 const OUT = path.resolve(String(opz.uscita || `collaudo-${stamp}`));
 fs.mkdirSync(path.join(OUT, 'img'), { recursive: true });
 
-const pagine = fs.readFileSync(String(opz.pagine), 'utf8').split(/\r?\n/).map(s => s.trim())
-  .filter(s => s && !s.startsWith('#'));
+const grezzo = fs.readFileSync(String(opz.pagine));
+const testoPagine = grezzo[0] === 0xff && grezzo[1] === 0xfe ? grezzo.toString('utf16le') : grezzo.toString('utf8');
+const pagine = testoPagine.replace(/^\uFEFF/, '').split(/\r?\n/).map(s => s.split('#')[0].trim()).filter(Boolean)
+  .map(s => s.startsWith('/') ? s : '/' + s);
+const TEMPI = Number(opz.tempi ?? 0);
 const [utente, password] = (process.env.AUTH || '').split(/:(.*)/s);
 const credenziali = utente ? { username: utente, password: password || '' } : undefined;
 
@@ -174,6 +182,53 @@ function confronta(fa, fb, fd) {
   return { diff: +(100 * n / (w * h)).toFixed(2), altezze: [a.height, b.height], primaDiff: prima };
 }
 
+// ---- tempo di risposta (TTFB): fetch di Node, si ferma alla ricezione delle intestazioni ----
+async function ttfb(url, conCredenziali) {
+  const h = { 'User-Agent': 'Mozilla/5.0 collaudo-kos-seo-geo', 'Accept': 'text/html' };
+  if (conCredenziali && credenziali) h.Authorization = 'Basic ' + Buffer.from(`${utente}:${password || ''}`).toString('base64');
+  const t0 = performance.now();
+  try {
+    const r = await fetch(url, { headers: h, redirect: 'manual' });
+    const t = performance.now() - t0;
+    await r.arrayBuffer().catch(() => {});
+    return { ms: t, stato: r.status };
+  } catch (e) { return { ms: NaN, stato: 0 }; }
+}
+const mediana = a => { const b = a.filter(Number.isFinite).sort((x, y) => x - y); return b.length ? Math.round(b[Math.floor((b.length - 1) / 2)]) : null; };
+const tempi = [];
+if (TEMPI > 0) {
+  console.log(`Tempo di risposta: ${pagine.length} pagine, ${TEMPI} misure per sito dopo una di riscaldamento`);
+  for (const p of pagine) {
+    const s = [], q = [];
+    await ttfb(STAGE + p, true); if (PROD) await ttfb(PROD + p, false);         // riscaldamento (cache di MODX)
+    let statoS = 0, statoP = 0;
+    for (let i = 0; i < TEMPI; i++) {
+      const a = await ttfb(STAGE + p, true); s.push(a.ms); statoS = a.stato;
+      if (PROD) { const b = await ttfb(PROD + p, false); q.push(b.ms); statoP = b.stato; }
+    }
+    const t = { pagina: p, stage: mediana(s), prod: PROD ? mediana(q) : null, statoS, statoP };
+    tempi.push(t);
+    console.log(`  ${p}  stage ${t.stage} ms${PROD ? `, produzione ${t.prod} ms` : ''}${statoS !== 200 ? ` (stato ${statoS})` : ''}`);
+  }
+  fs.writeFileSync(path.join(OUT, 'tempi.json'), JSON.stringify(tempi, null, 1));
+}
+if (opz['solo-tempi'] !== undefined) {
+  const e = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  fs.writeFileSync(path.join(OUT, 'rapporto.html'), `<!doctype html><html lang="it"><head><meta charset="utf-8"><title>Tempi ${e(stamp)}</title></head><body style="font-family:system-ui,sans-serif">${tabellaTempi(e)}</body></html>`);
+  console.log(`\nRapporto: ${path.join(OUT, 'rapporto.html')}`);
+  process.exit(0);
+}
+function tabellaTempi(e) {
+  if (!tempi.length) return '';
+  const ms = v => v == null ? '' : v + ' ms';
+  return `<h2>Tempo di risposta (TTFB, mediana di ${TEMPI} misure a cache calda)</h2>
+<p>Misurato dal PC: comprende la rete. Stage e produzione sono cloud diversi: il confronto utile è la stessa pagina prima e
+dopo il rilascio sullo stesso cloud; qui serve a scoprire pagine anomale.</p>
+<table><tr><th>Pagina</th><th>Stage</th>${PROD ? '<th>Produzione</th>' : ''}</tr>
+${tempi.map(t => `<tr><td>${e(t.pagina)}</td><td>${ms(t.stage)}${t.statoS !== 200 ? ' (' + t.statoS + ')' : ''}</td>${PROD ? `<td>${ms(t.prod)}${t.statoP !== 200 ? ' (' + t.statoP + ')' : ''}</td>` : ''}</tr>`).join('')}
+<tr><th>Mediana</th><th>${ms(mediana(tempi.map(t => t.stage)))}</th>${PROD ? `<th>${ms(mediana(tempi.map(t => t.prod)))}</th>` : ''}</tr></table>`;
+}
+
 const browser = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {});
 const risultati = [];
 let k = 0;
@@ -250,6 +305,8 @@ details{margin-bottom:10px}</style></head><body>
 <h1>Collaudo visivo — ${e(STAGE)}${PROD ? ' rispetto a ' + e(PROD) : ''}</h1>
 <p>${pagine.length} pagine × ${LARGHEZZE.join(', ')} px; ${risultati.filter(r => r.problemi.length).length} combinazioni con segnalazioni.
 Le immagini sono cliccabili (dimensione piena). In rosso, nella terza colonna, i pixel diversi dalla produzione.</p>
+${tabellaTempi(e)}
+<h2>Pagine</h2>
 <table><tr><th>Pagina</th><th>px</th><th>Segnalazioni (solo stage)</th><th>Già in produzione</th><th>Immagini (WebP)</th></tr>
 ${ordinati.map((r, i) => `<tr><td><a href="#r${i}">${e(r.pagina)}</a></td><td>${r.larghezza}</td><td class="${r.problemi.length ? 'ko' : 'ok'}">${e(r.problemi.join('; ') || 'ok')}</td><td>${e(r.giaTesto || '')}</td><td>${r.immagini ?? ''} (${r.webp ?? ''})</td></tr>`).join('')}</table>
 ${ordinati.map((r, i) => `<details id="r${i}" ${r.peso >= 20 ? 'open' : ''}><summary><h2 style="display:inline">${e(r.pagina)} — ${r.larghezza}px</h2>

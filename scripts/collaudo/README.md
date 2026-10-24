@@ -17,3 +17,7 @@ Uso (PowerShell):
 Rapporto in `collaudo-<data>/rapporto.html`: tabella delle segnalazioni ordinata per gravità, poi per ogni pagina e
 larghezza produzione, stage e differenze affiancate. La password non va scritta nei file: solo nella variabile `AUTH`
 della sessione di PowerShell.
+
+Tempo di risposta (TTFB) nello stesso giro: `--tempi=5` (mediana di 5 misure a cache calda per sito, tabella in testa al
+rapporto e `tempi.json`); solo i tempi, senza browser: `--tempi=5 --solo-tempi`. L'elenco delle pagine può essere
+l'output di `php scripts/checks/risorse-per-template.php /www --campione` (commenti in fondo alla riga, UTF-16 accettato).
