@@ -211,6 +211,10 @@ def main():
                 nuovo_alt = applica_alt(testo)
                 if f.startswith('gal-'):
                     nuovo_alt = re.sub(r'&sizes=`naturale`\]\]', '&sizes=`naturale` &differita=`0`]]', nuovo_alt)
+                    # Flickity rimisura la cella quando le sue immagini sono caricate (imagesLoaded è nel pacchetto
+                    # flickity.pkgd): prima del caricamento l'<img> con width:auto vale 0 px e il carosello resta chiuso
+                    nuovo_alt = re.sub(r"data-flickity='\{(?![^']*imagesLoaded)([^']*?)\s*\}'",
+                                       lambda m: "data-flickity='{" + m.group(1).rstrip() + ', "imagesLoaded": true }\'', nuovo_alt)
                 if nuovo_alt != testo:
                     with open(os.path.join(OUT, cartella, f), 'w', encoding='utf-8', newline='') as w:
                         w.write(nuovo_alt)
