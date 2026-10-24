@@ -71,6 +71,89 @@ def cambia_tag(t, pattern, nuovo_tag, classe_extra=None, conta=0):
     return re.subn(pattern, s, t, count=conta, flags=re.S)
 
 
+# ---------------------------------------------------------------------------------------------------------------
+# Alt Text (audit AA slide 25): icone decorative, foto dei direttori e degli speaker
+ICONE_DECORATIVE = re.compile(r'/assets/img/(?:icon-(?:italy|residenze|letto|collaboratori|earth|group|scale)\.png|(?:italy|facilites|bed|germany|india)\.svg)')
+
+
+def _speaker_dal_chunk():
+    """Nome e residenza degli speaker dal chunk speaker-list (card con sottotitolo e nome), per file."""
+    f = os.path.join(BASE, 'speaker-list.html')
+    m = {}
+    if os.path.exists(f):
+        t = open(f, encoding='utf-8').read()
+        for c in re.finditer(r'speaker/([\w-]+)\.jpg".*?card-subtitle[^>]*>([^<]+)<.*?card-title[^>]*>([^<]+)<', t, re.S):
+            m[c.group(1)] = (c.group(3).strip(), c.group(2).strip())
+    return m
+
+
+SPEAKER = _speaker_dal_chunk()
+# speaker presenti solo nell'elenco statico (senza nome nel codice): nome e residenza dal nome del file
+_RESIDENZA_FILE = {'lacorte': 'La Corte', 'santambrogio': "Sant'Ambrogio", 'santena': 'Santena', 'quartodaltino': "Quarto d'Altino",
+                   'santamariainchienti': 'S.Maria in Chienti', 'sempione': 'Parco Sempione', 'villalba': 'Villalba',
+                   'sanluca': 'San Luca', 'mestre': 'Mestre', 'santanna': "Sant'Anna", 'casteldonino': 'Casteldonino'}
+for _f in ('speakerListStatic.html',):
+    _p = os.path.join(BASE, _f)
+    if os.path.exists(_p):
+        for _k in re.findall(r'img/speaker/([\w-]+)\.jpg', open(_p, encoding='utf-8').read()):
+            _nome, _, _res = _k.partition('-')
+            if _k not in SPEAKER and _res in _RESIDENZA_FILE:
+                SPEAKER[_k] = (_nome.capitalize(), 'RSA ' + _RESIDENZA_FILE[_res])
+
+
+def _con_alt(tag, alt):
+    alt = alt.replace('"', '&quot;')
+    if re.search(r'\salt="[^"]*"', tag):
+        return re.sub(r'\salt="[^"]*"', f' alt="{alt}"', tag, count=1)
+    return re.sub(r'^<img\b', f'<img alt="{alt}"', tag, count=1)
+
+
+def alt_persone_icone(t):
+    n = 0
+
+    def icona(m):
+        nonlocal n
+        tag = m.group(0)
+        src = re.search(r'\bsrc="([^"]*)"', tag)
+        if not src or not ICONE_DECORATIVE.search('/' + src.group(1).lstrip('./').lstrip('/')):
+            return tag
+        if re.search(r'\salt=""', tag):
+            return tag
+        n += 1
+        return _con_alt(tag, '')                       # icona accanto a un numero o a un testo: decorativa
+    t = re.sub(r'<img\b[^>]*>', icona, t)
+
+    def direttore(m):
+        nonlocal n
+        tag, dopo = m.group(0), t2[m.end():m.end() + 900]
+        nome = re.search(r'font-sign[^>]*>\s*([^<]+?)\s*<', dopo)
+        ruolo = re.search(r'font-sign[^>]*>[^<]*</p>\s*<p[^>]*>\s*([^<]+?)\s*<', dopo)
+        if not nome:
+            return tag
+        alt = f"{nome.group(1)}, {(ruolo.group(1) if ruolo else 'direttore').lower()} della [[*pagetitle]]"
+        if f'alt="{alt}"' in tag:
+            return tag
+        n += 1
+        return _con_alt(tag, alt)
+    t2 = t
+    t = re.sub(r'<img\b[^>]*quote-avatar[^>]*>', direttore, t)
+
+    def speaker(m):
+        nonlocal n
+        tag = m.group(0)
+        chiave = re.search(r'speaker/([\w-]+)\.jpg', tag).group(1)
+        if chiave not in SPEAKER:
+            return tag
+        nome, residenza = SPEAKER[chiave]
+        alt = f'{nome}, speaker per un giorno della {residenza}'
+        if f'alt="{alt}"' in tag:
+            return tag
+        n += 1
+        return _con_alt(tag, alt)
+    t = re.sub(r'<img\b[^>]*speaker/[\w-]+\.jpg[^>]*>', speaker, t)
+    return t, n
+
+
 def regole_chunk(nome, t):
     n = {}
     t, n['R1'] = r1(t)
@@ -87,6 +170,7 @@ def regole_chunk(nome, t):
                      'ÈQUIPE ASSISTENZIALE': 'Équipe assistenziale', '&Eacute;QUIPE ASSISTENZIALE': 'Équipe assistenziale'}
         t, n['R7'] = re.subn(r'<div class="card-header">\s*(' + '|'.join(map(re.escape, etichette)) + r')\s*</div>',
                              lambda m: f'<h3 class="card-header text-uppercase">{etichette[m.group(1)]}</h3>', t)
+    t, n['ALT2'] = alt_persone_icone(t)
     if nome == 'footer':
         t, n['R6'] = cambia_tag(t, r'<(h2) class="([^"]*)"([^>]*)>(\s*Vuoi essere sempre aggiornato.*?)</h2>', 'p')
     return t, {k: v for k, v in n.items() if v}
@@ -118,6 +202,7 @@ def regole_contenuto(tpl, t):
         for doppio in alts[1:]:
             tag = tag.replace(doppio, '', 1)
         return tag
+    t, n['ALT2'] = alt_persone_icone(t)
     t2 = re.sub(r'<img\b[^>]*>', un_alt, t)
     t2 = re.sub(r'(alt="[^"]*?)\bassite\b', r'\1assiste', t2)
     if t2 != t:

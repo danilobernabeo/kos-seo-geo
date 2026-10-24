@@ -1,5 +1,5 @@
 {
-  "nome": "AA-1 AA-6 AA-17 markup: immagini di sfondo → <picture> con lo snippet immagine; titoli degli accordion, intro, form, gallerie, video, footer; immagini delle news",
+  "nome": "AA-1 AA-6 AA-17 markup: immagini di sfondo → <picture> con lo snippet immagine; titoli degli accordion, intro, form, gallerie, video, footer; immagini delle news; alt di icone, direttori e speaker",
   "elements": [
     {
       "type": "chunk",
@@ -1380,6 +1380,36 @@
       "name": "interna-speaker-per-un-giorno",
       "file": "anniazzurri/elements/templates/interna-speaker-per-un-giorno.html",
       "baseline": "anniazzurri/baseline/templates/interna-speaker-per-un-giorno.html"
+    },
+    {
+      "type": "chunk",
+      "name": "footer-ap-landing",
+      "file": "anniazzurri/elements/chunks/footer-ap-landing.html",
+      "baseline": "anniazzurri/baseline/chunks/footer-ap-landing.html"
+    },
+    {
+      "type": "chunk",
+      "name": "footer-rsa-landing",
+      "file": "anniazzurri/elements/chunks/footer-rsa-landing.html",
+      "baseline": "anniazzurri/baseline/chunks/footer-rsa-landing.html"
+    },
+    {
+      "type": "chunk",
+      "name": "numeri-landing",
+      "file": "anniazzurri/elements/chunks/numeri-landing.html",
+      "baseline": "anniazzurri/baseline/chunks/numeri-landing.html"
+    },
+    {
+      "type": "chunk",
+      "name": "speaker-list",
+      "file": "anniazzurri/elements/chunks/speaker-list.html",
+      "baseline": "anniazzurri/baseline/chunks/speaker-list.html"
+    },
+    {
+      "type": "chunk",
+      "name": "speakerListStatic",
+      "file": "anniazzurri/elements/chunks/speakerListStatic.html",
+      "baseline": "anniazzurri/baseline/chunks/speakerListStatic.html"
     }
   ]
 }
