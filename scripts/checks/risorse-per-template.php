@@ -27,6 +27,13 @@ $sql = "SELECT t.id, t.templatename, t.content,
         GROUP BY t.id, t.templatename, t.content ORDER BY pubblicate DESC, t.templatename";
 if ($campione) {
     $righe = [];
+    // percorso pubblico dal router di MODX (contesto, base_url, prefisso lingua), non dal solo campo uri
+    $url = function (int $id) use ($modx): string {
+        $r = $modx->getObject(\MODX\Revolution\modResource::class, $id);
+        $u = $r ? (string) $modx->makeUrl($id, $r->get('context_key'), '', 'full') : '';
+        $path = (string) parse_url($u, PHP_URL_PATH);
+        return $path !== '' ? $path : '/';
+    };
     $q = $modx->pdo->query("SELECT c.id, c.uri, t.templatename FROM {$p}site_content c JOIN {$p}site_templates t ON t.id = c.template
                             WHERE c.published = 1 AND c.deleted = 0 AND c.class_key NOT LIKE '%WebLink' AND c.class_key NOT LIKE '%SymLink'
                             ORDER BY t.templatename, c.id");
@@ -34,7 +41,7 @@ if ($campione) {
     foreach ($q->fetchAll(PDO::FETCH_ASSOC) as $r) {
         $forza = in_array((int) $r['id'], [1, 30, 31, 32, 33, 34, 990], true);
         if (!$forza && ($conta[$r['templatename']] = ($conta[$r['templatename']] ?? 0) + 1) > $campione) continue;
-        $righe[$r['id']] = sprintf("/%s  # %d %s", $r['uri'], $r['id'], $r['templatename']);
+        $righe[$r['id']] = sprintf("%s  # %d %s", $url((int) $r['id']), $r['id'], $r['templatename']);
     }
     $tv = $modx->pdo->query("SELECT v.contentid, c.uri, t.templatename, v.value FROM {$p}site_tmplvar_contentvalues v
                              JOIN {$p}site_tmplvars tv ON tv.id = v.tmplvarid AND tv.name = 'translationId'
@@ -43,10 +50,10 @@ if ($campione) {
     $uri = $modx->pdo->prepare("SELECT c.uri, t.templatename FROM {$p}site_content c JOIN {$p}site_templates t ON t.id = c.template
                                 WHERE c.id = ? AND c.published = 1 AND c.deleted = 0");
     foreach ($tv->fetchAll(PDO::FETCH_ASSOC) as $r) {
-        $righe[$r['contentid']] = sprintf("/%s  # %d %s", $r['uri'], $r['contentid'], $r['templatename']);
+        $righe[$r['contentid']] = sprintf("%s  # %d %s", $url((int) $r['contentid']), $r['contentid'], $r['templatename']);
         $altra = (int) preg_replace('/\D/', '', (string) $r['value']);
         $uri->execute([$altra]);
-        if ($x = $uri->fetch(PDO::FETCH_ASSOC)) $righe[$altra] = sprintf("/%s  # %d %s", $x['uri'], $altra, $x['templatename']);
+        if ($x = $uri->fetch(PDO::FETCH_ASSOC)) $righe[$altra] = sprintf("%s  # %d %s", $url($altra), $altra, $x['templatename']);
     }
     echo "# campione per kos-head-controllo.py, " . date('d/m/Y H:i') . "\n" . implode("\n", $righe) . "\n";
     exit(0);

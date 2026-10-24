@@ -121,7 +121,7 @@ def main():
         stato, testo = apri(base + percorso, auth)
         msg = []
         if stato != 200:
-            print(f'\n{percorso}\n  ERRORE risposta {stato} {testo[:80] if stato == 0 else ""}')
+            print(f'\n{percorso}\n  ERRORE risposta {stato} da {base + percorso} {testo[:80] if stato == 0 else ""}')
             errori += 1
             continue
         h = testo.split('</head>', 1)[0]
