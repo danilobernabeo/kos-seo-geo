@@ -190,6 +190,11 @@ def converti(nome, testo):
             return (f'[[immagine? &src=`{src}` &alt=`[[*pagetitle]], foto {numero(src)}`'
                     + (f' &class=`{cls.group(1)}`' if cls else '') + ' &sizes=`naturale`]]')
         out = IMG.sub(sost_img, out)
+        # Immagini dei caroselli senza caricamento differito: Flickity (adaptiveHeight) misura le celle all'avvio e con
+        # loading="lazy" troverebbe 0 px, lasciando chiuso il carosello delle foto su telefoni e tablet
+        out, k = re.subn(r'&sizes=`naturale`\]\]', '&sizes=`naturale` &differita=`0`]]', out)
+        if k:
+            note.append(f'carosello senza lazy ×{k}')
     return applica_alt(out), note
 
 
@@ -202,12 +207,14 @@ def main():
             if not os.path.exists(p):
                 p = os.path.join(BASE, cartella, f)
             testo = open(p, encoding='utf-8', newline='').read()
-            if '[[immagine?' in testo and not PROVA:      # elementi già convertiti: aggiorna solo i testi alternativi
+            if '[[immagine?' in testo and not PROVA:      # elementi già convertiti: aggiorna alt e opzioni dei caroselli
                 nuovo_alt = applica_alt(testo)
+                if f.startswith('gal-'):
+                    nuovo_alt = re.sub(r'&sizes=`naturale`\]\]', '&sizes=`naturale` &differita=`0`]]', nuovo_alt)
                 if nuovo_alt != testo:
                     with open(os.path.join(OUT, cartella, f), 'w', encoding='utf-8', newline='') as w:
                         w.write(nuovo_alt)
-                    print(f'{cartella[:-1]} {os.path.splitext(f)[0]}: testi alternativi aggiornati')
+                    print(f'{cartella[:-1]} {os.path.splitext(f)[0]}: alt o caroselli aggiornati')
                     testo = nuovo_alt
             regioni = re.search(r'src="/assets/img/(?:lombardia|piemonte|liguria|marche|emilia-romagna|veneto|toscana|lazio)(?:-m)?\.png"', testo)
             news = re.search(r'<img\b[^>]*src="\[\[[+*](?:tv\.)?newsImage\]\]"', testo)

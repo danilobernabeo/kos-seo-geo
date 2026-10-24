@@ -13,6 +13,7 @@
  * &class       classi dell'<img>; &classePicture classi del <picture>
  * &attributi   attributi aggiuntivi dell'<img> (es. style="...")
  * &priorita    1 = immagine principale sopra la piega: fetchpriority="high", niente lazy
+ * &differita   0 = niente loading="lazy" (immagini dei caroselli, che devono essere caricate per essere misurate)
  * &srcMobile   immagine diversa sui telefoni (art direction, es. TV imgHeaderMobile); vuoto = stessa immagine
  */
 $lib = MODX_CORE_PATH . 'components/kosseogeo/Immagini.php';
@@ -39,5 +40,6 @@ return $img->picture($src, [
     'classe_picture' => $classePicture ?? '',
     'attributi'      => $attributi ?? '',
     'priorita'       => !empty($priorita),
+    'differita'      => !isset($differita) || $differita === '' || (bool) $differita,
     'src_mobile'     => trim((string) ($srcMobile ?? '')),
 ]);

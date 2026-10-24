@@ -277,7 +277,8 @@ class Immagini
     /**
      * Markup <picture> per un'immagine del sito.
      * Opzioni: alt, sizes (default 100vw), class (sull'<img>), classe_picture, attributi (stringa aggiunta all'<img>),
-     * priorita (true: immagine principale sopra la piega → fetchpriority high, niente lazy), genera (default true),
+     * priorita (true: immagine principale sopra la piega → fetchpriority high, niente lazy), differita (default true;
+     * false = senza loading="lazy", per i caroselli), genera (default true),
      * src_mobile (immagine diversa sui telefoni, art direction) e media_mobile (default (max-width: 767.98px)).
      */
     public function picture(string $src, array $o = []): string
@@ -286,7 +287,10 @@ class Immagini
         $alt = $e($o['alt'] ?? '');
         $cls = !empty($o['class']) ? ' class="' . $e($o['class']) . '"' : '';
         $extra = !empty($o['attributi']) ? ' ' . trim((string) $o['attributi']) : '';
-        $carico = !empty($o['priorita']) ? ' fetchpriority="high" decoding="async"' : ' loading="lazy" decoding="async"';
+        // differita = false: niente loading="lazy" senza alzare la priorità. Serve nei caroselli (Flickity con
+        // adaptiveHeight misura le celle all'avvio: un'immagine non ancora caricata vale 0 px e il carosello resta chiuso)
+        $carico = !empty($o['priorita']) ? ' fetchpriority="high" decoding="async"'
+            : (($o['differita'] ?? true) ? ' loading="lazy" decoding="async"' : ' decoding="async"');
         $file = $this->percorso($src);
         if ($file === null) {
             // immagine esterna o mancante: <img> semplice con percorso assoluto
