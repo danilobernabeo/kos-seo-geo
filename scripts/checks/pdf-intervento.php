@@ -2,7 +2,7 @@
 /**
  * AA-3 / KOS-8 — PDF: link rotti nel sito e regole di redirect proposte. SOLA LETTURA (scrive solo file in ~).
  *
- * Uso:  php scripts/checks/pdf-intervento.php /www [~/pdf-mancanti-<data>.csv]
+ * Uso:  php scripts/checks/pdf-intervento.php /www [~/pdf-mancanti-<data>.csv] [--base=https://anniazzurri.it]
  *
  * 1. Link rotti NEL SITO (indipendente dal log): tutti i link a PDF locali scritti nei contenuti delle risorse
  *    pubblicate, nei chunk, nei template e nelle TV; per ognuno verifica che il file esista (maiuscole comprese,
@@ -19,7 +19,7 @@
 declare(strict_types=1);
 
 $webroot = rtrim($argv[1] ?? '', '/');
-$csvIn   = $argv[2] ?? '';
+$csvIn   = (isset($argv[2]) && !str_starts_with($argv[2], '--')) ? $argv[2] : '';
 if ($webroot === '' || !is_file("$webroot/config.core.php")) { fwrite(STDERR, "Uso: php pdf-intervento.php /www [pdf-mancanti.csv]\n"); exit(1); }
 require "$webroot/config.core.php";
 require MODX_CORE_PATH . 'vendor/autoload.php';
@@ -29,7 +29,12 @@ $modx->initialize('mgr');
 $modx->connect();
 $db = $modx->pdo;
 $p  = $modx->getOption('table_prefix', null, 'modx_');
-$host = preg_replace('/^www\./', '', (string) parse_url((string) $modx->getOption('site_url'), PHP_URL_HOST));
+// dominio canonico: da riga di comando site_url può valere «localhost»; si usa la base canonica del dato strutturato
+$base = '';
+foreach ($argv as $a) if (str_starts_with($a, '--base=')) $base = substr($a, 7);
+if ($base === '') $base = (string) ($modx->getOption('aa.canonical_base') ?: $modx->getOption('kos.canonical_base') ?: $modx->getOption('site_url'));
+$host = preg_replace('/^www\./', '', (string) parse_url($base, PHP_URL_HOST));
+if ($host === '' || $host === 'localhost') { fwrite(STDERR, "Dominio non determinabile: passare --base=https://anniazzurri.it\n"); exit(1); }
 $home = rtrim((string) (getenv('HOME') ?: '.'), '/');
 $stamp = date('Ymd-His');
 
