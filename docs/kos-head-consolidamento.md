@@ -122,9 +122,9 @@ diventano richiami di una riga al chunk `head` con i parametri, così il rilasci
 | Chunk richiamato dai template | Richiamo |
 |---|---|
 | `head` | (il chunk unico) |
-| `head-informativo` | `[[$head? &ogType=`article` &ogDescrizione=`introtext`]]` |
-| `head-medici`, `head-specializzazioni` | `[[$head? &ogDescrizione=`ruolo`]]` |
-| `head-video` | `[[$head? &ogType=`video.other` &ogDescrizione=`introtext`]]` |
+| `head-informativo` | `[[$head? &ogType=`article`]]` |
+| `head-medici`, `head-specializzazioni` | `[[$head? &ogDescrizione=`[[*ruolo]]`]]` |
+| `head-video` | `[[$head? &ogType=`video.other`]]` |
 | `head-strutture` | `[[$head? &ogLegacy=`assets/img/header/[[*alias]].jpg\|assets/img/strutture/[[*alias]]/` &extra=`head-extra-strutture`]]` |
 | `head-landing` | `[[$head? &extra=`head-extra-landing`]]` |
 | `head-paginazione` | `[[$head? &canonical=`0` &ogTv=`-`]]` (nessun canonical, immagine og predefinita) |

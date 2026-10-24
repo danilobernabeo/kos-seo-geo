@@ -34,11 +34,20 @@ if ($campione) {
         $path = (string) parse_url($u, PHP_URL_PATH);
         return $path !== '' ? $path : '/';
     };
+    // solo i template che richiamano un head del consolidamento (esclusi comunicati, report, galleria, form-iscrizione)
+    $consolidati = ['head', 'head-informativo', 'head-medici', 'head-specializzazioni', 'head-video', 'head-strutture',
+                    'head-landing', 'head-paginazione', 'head-en'];
+    $ok = [];
+    foreach ($modx->pdo->query("SELECT templatename, content FROM {$p}site_templates")->fetchAll(PDO::FETCH_ASSOC) as $t) {
+        preg_match_all('/\[\[\$(head[\w-]*)/', (string) $t['content'], $m);
+        if (array_intersect($m[1], $consolidati)) $ok[$t['templatename']] = true;
+    }
     $q = $modx->pdo->query("SELECT c.id, c.uri, t.templatename FROM {$p}site_content c JOIN {$p}site_templates t ON t.id = c.template
                             WHERE c.published = 1 AND c.deleted = 0 AND c.class_key NOT LIKE '%WebLink' AND c.class_key NOT LIKE '%SymLink'
                             ORDER BY t.templatename, c.id");
     $conta = [];
     foreach ($q->fetchAll(PDO::FETCH_ASSOC) as $r) {
+        if (!isset($ok[$r['templatename']])) continue;
         $forza = in_array((int) $r['id'], [1, 30, 31, 32, 33, 34, 990], true);
         if (!$forza && ($conta[$r['templatename']] = ($conta[$r['templatename']] ?? 0) + 1) > $campione) continue;
         $righe[$r['id']] = sprintf("%s  # %d %s", $url((int) $r['id']), $r['id'], $r['templatename']);
@@ -50,6 +59,7 @@ if ($campione) {
     $uri = $modx->pdo->prepare("SELECT c.uri, t.templatename FROM {$p}site_content c JOIN {$p}site_templates t ON t.id = c.template
                                 WHERE c.id = ? AND c.published = 1 AND c.deleted = 0");
     foreach ($tv->fetchAll(PDO::FETCH_ASSOC) as $r) {
+        if (!isset($ok[$r['templatename']])) continue;
         $righe[$r['contentid']] = sprintf("%s  # %d %s", $url((int) $r['contentid']), $r['contentid'], $r['templatename']);
         $altra = (int) preg_replace('/\D/', '', (string) $r['value']);
         $uri->execute([$altra]);

@@ -2,8 +2,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Head unico di kosgroup.com (consolidamento 2026: KOS-2, voce 24). Parametri dei chunk head-* che lo richiamano:
-       &lingua (it|en), &ogType (website|article|video.other), &ogDescrizione (campo di ripiego della descrizione og:
-       introtext, ruolo...), &ogTv (TV dell'immagine, default infoImage), &ogLegacy (percorsi di ripiego per ogImage),
+       &lingua (it|en), &ogType (website|article|video.other), &ogDescrizione (testo di ripiego della descrizione og quando
+       description è vuota, es. `[[*ruolo]]`; default introtext), &ogTv (TV dell'immagine, default infoImage), &ogLegacy (percorsi di ripiego per ogImage),
        &canonical (0 = nessun canonical: elenchi paginati), &extra (chunk con gli extra del template).
        Tutto in cache: nessuna chiamata [[!...]]. -->
 
@@ -45,7 +45,7 @@
   <meta property="og:locale" content="[[+lingua:is=`en`:then=`en_GB`:else=`it_IT`]]">
   <meta property="og:type" content="[[+ogType:default=`website`]]">
   <meta property="og:title" content="[[*longtitle:default=`[[*pagetitle]]`:htmlent]]">
-  <meta property="og:description" content="[[*description:default=`[[*[[+ogDescrizione:default=`introtext`]]]]`:striptags:htmlent]]">
+  <meta property="og:description" content="[[*description:default=`[[+ogDescrizione:default=`[[*introtext]]`]]`:striptags:htmlent]]">
   <meta property="og:url" content="[[~[[*id]]? &scheme=`full`]]">
   [[ogImage? &tvs=`[[+ogTv:default=`infoImage`]]` &legacy=`[[+ogLegacy]]` &default=`assets/img/kos-condivisione-social.jpg` &meta=`1`]]
   <meta property="og:image:alt" content="[[*pagetitle:htmlent]]">

@@ -74,6 +74,8 @@ def apri(url, auth, metodo='GET'):
         req.add_header('Authorization', 'Basic ' + base64.b64encode(auth.encode()).decode())
     try:
         with urllib.request.urlopen(req, timeout=30) as r:
+            if metodo == 'GET' and 'html' not in r.headers.get('Content-Type', 'text/html'):
+                return -1, r.headers.get('Content-Type', '')        # non HTML (es. redirect a un PDF)
             return r.status, r.read().decode('utf-8', 'replace') if metodo == 'GET' else ''
     except urllib.error.HTTPError as e:
         return e.code, ''
@@ -120,6 +122,10 @@ def main():
     for percorso in percorsi:
         stato, testo = apri(base + percorso, auth)
         msg = []
+        if stato == -1:
+            print(f'\n{percorso}\n  AVVISO non è una pagina HTML ({testo}): saltata')
+            avvisi += 1
+            continue
         if stato != 200:
             print(f'\n{percorso}\n  ERRORE risposta {stato} da {base + percorso} {testo[:80] if stato == 0 else ""}')
             errori += 1
@@ -146,8 +152,13 @@ def main():
             E(f'{len(can)} canonical')
         elif not can:
             W('nessun canonical (corretto solo sulle pagine elenco paginate 30-34)')
-        elif not can[0].startswith(CANONICO):
-            E(f'canonical non nella forma {CANONICO}...: {can[0]}')
+        else:
+            # sullo stage il Canonical usa site_url (host dello stage): si accetta quell'host, il percorso deve coincidere
+            cu = urllib.parse.urlsplit(can[0])
+            if f'{cu.scheme}://{cu.netloc}/' not in (CANONICO, base + '/'):
+                E(f'canonical con host inatteso: {can[0]}')
+            elif cu.path.rstrip('/') != urllib.parse.urlsplit(base + percorso).path.rstrip('/'):
+                W(f'canonical verso un altro percorso: {can[0]}')
 
         alt = c['hreflang']
         if alt:
@@ -167,7 +178,7 @@ def main():
         if og['image'] and og['image'][0]:
             u = og['image'][0]
             if u not in immagini:
-                immagini[u] = apri(u, '', 'HEAD')[0]
+                immagini[u] = apri(u, auth if u.startswith(base) else '', 'HEAD')[0]
             if immagini[u] != 200:
                 E(f'og:image risponde {immagini[u]}: {u}')
         if og['locale'] and og['locale'][0] not in ('it_IT', 'en_GB'):
@@ -182,8 +193,10 @@ def main():
             s2, t2 = apri(o.confronta.rstrip('/') + percorso, '')
             if s2 == 200:
                 c2 = campi(analizza(t2.split('</head>', 1)[0] + '</head>'))
+                percorso_di = lambda l: [urllib.parse.urlsplit(x).path for x in l]
                 for k in ['title', 'description', 'canonical', 'og:title', 'og:description']:
-                    if c[k] != c2[k]:
+                    a1, a2 = (percorso_di(c[k]), percorso_di(c2[k])) if k == 'canonical' else (c[k], c2[k])
+                    if a1 != a2:
                         W(f'{k} diverso dalla produzione:\n        prod:  {c2[k]}\n        stage: {c[k]}')
             else:
                 W(f'confronto: la produzione risponde {s2}')
@@ -199,7 +212,8 @@ def main():
     for perc, c in risultati.items():
         for u in c['canonical'][:1]:
             per_url[urllib.parse.urlsplit(u).path.rstrip('/')] = perc
-    print('\n== Reciprocità hreflang')
+    con = sum(1 for c in risultati.values() if c['hreflang'])
+    print(f'\n== Reciprocità hreflang ({con} pagine con hreflang su {len(risultati)})')
     for perc, c in risultati.items():
         alt = c['hreflang']
         if not alt:
