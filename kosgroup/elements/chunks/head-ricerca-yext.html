@@ -1,0 +1,60 @@
+<!-- Barra di ricerca Yext Answers (pagine 1, 3, 4, 983; risultati in /it/risultati).
+     Da sostituire con la dismissione di Yext (linea C). Richiamata in cache dal chunk head. -->
+<link rel="stylesheet" type="text/css" href="https://assets.sitescdn.net/answers-search-bar/v1.6/answers.css"/>
+<script src="https://assets.sitescdn.net/answers-search-bar/v1.6/answerstemplates.compiled.min.js" defer></script>
+<script>
+  // Funzione per determinare la configurazione in base alla pagina corrente
+  function getSearchBarConfig() {
+    var config = {
+      container: ".search-form",
+      name: "search-bar",
+      redirectUrl: "[[++site_url]]it/risultati",
+      // submitIcon: "magnifying_glass",
+      customIconUrl: "[[++site_url]]assets/img/search-ico.svg",
+      placeholderText: "Cerca una specialità o una struttura"
+    };
+
+    // Esempio di logica: se l'URL contiene "/servizi-e-cure" oppure "/strutture"
+    var currentPath = window.location.pathname;
+    
+    if (currentPath.indexOf("/servizi-e-cure") !== -1) {
+      // Configurazione per il vertical "servizi"
+      config.verticalKey = "servizi"; // (sostituisci con il vertical key corretto)
+      config.placeholderText = "Cerca una specialità";
+      config.queryPrompt = {
+        query: "Cerca una specialità"
+      };
+    } else if (currentPath.indexOf("/strutture") !== -1) {
+      // Configurazione per il vertical "strutture"
+      config.url = "/Strutture.html";
+      config.verticalKey = "strutture"; // (sostituisci con il vertical key corretto)
+      config.placeholderText = "Cerca una struttura";
+      config.queryPrompt = {
+        query: "Cerca una struttura"
+      };
+    } else {
+      // Configurazione per la ricerca universale (già abilitata di default)
+      config.queryPrompt = {
+        query: "Cerca"
+      };
+    }
+
+    return config;
+  }
+
+  function initAnswers() {
+    ANSWERS.init({
+      apiKey: "db3887930e1b19bc3ce1da86a637388a",
+      experienceKey: "kos-care-search",
+      experienceVersion: "PRODUCTION",
+      locale: "it",
+      businessId: "2183129",
+      templateBundle: TemplateBundle.default,
+      onReady: function() {
+        // Aggiungo la search bar con la configurazione dinamica
+        ANSWERS.addComponent("SearchBar", getSearchBarConfig());
+      },
+    });
+  }
+</script>
+<script src="https://assets.sitescdn.net/answers-search-bar/v1.6/answers.min.js" onload="initAnswers()" defer></script>

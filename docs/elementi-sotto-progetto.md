@@ -38,5 +38,8 @@ Aggiornare l'elenco a ogni intervento.
 | impostazioni `kos.*` | impostazioni di sistema | KOS-9, KOS-12, KOS-13 | in produzione (22/10) |
 | `documenti`, `documenti-vm-ria`, `documenti-vm-psi`, `documenti-vdp-medica`, `documenti-vdp-chirurgica`, `documenti-vdp-diagnostica` | chunk | KOS-2 (cache di `docList`) | sviluppo (24/10), pacchetto `kos-2-8-documenti` |
 | `listLda` | snippet | KOS-8 (link ai PDF) | sviluppo (24/10), pacchetto `kos-2-8-documenti` |
-| 13 head (`head`, `head-strutture`, `head-medici`…) | chunk | consolidamento head, voce 24, og:image con `ogImage` comune | da fare (dopo il 30/10) |
+| `head` (unico, con parametri) e i richiami `head-informativo`, `head-medici`, `head-specializzazioni`, `head-video`, `head-strutture`, `head-landing`, `head-paginazione`, `head-en` | chunk | KOS-2, voce 24 (consolidamento head) | sviluppo (24/10), pacchetto `kos-head` |
+| `head-ricerca-yext`, `head-extra-strutture`, `head-extra-landing` | chunk (nuovi) | KOS-2, voce 24 | sviluppo (24/10), pacchetto `kos-head` |
+| `kosHreflang` | snippet (nuovo) | KOS-2 (hreflang corretti) | sviluppo (24/10), pacchetto `kos-head` |
+| `ogImage` (shared, sostituisce quello KOS) | snippet | og:image con dimensioni | sviluppo (24/10), pacchetto `kos-head` |
 | `grafico-dipendenti`, `employee-chart` | chunk | lavoro extra Sostenibilità | in produzione (20/10), vedi `extra/kos-sostenibilita` |

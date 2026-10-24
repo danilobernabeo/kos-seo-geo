@@ -1,0 +1,85 @@
+{
+  "nome": "KOS-2 voce 24 head unico di kosgroup.com: chunk head con parametri, richiami head-*, hreflang corretti (kosHreflang), Canonical e site_url in cache, og:image con ogImage comune",
+  "elements": [
+    {
+      "type": "snippet",
+      "name": "ogImage",
+      "file": "shared/snippets/ogImage.php",
+      "baseline": "kosgroup/baseline/snippets/ogImage.php"
+    },
+    {
+      "type": "snippet",
+      "name": "kosHreflang",
+      "file": "kosgroup/elements/snippets/kosHreflang.php"
+    },
+    {
+      "type": "chunk",
+      "name": "head-ricerca-yext",
+      "file": "kosgroup/elements/chunks/head-ricerca-yext.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-extra-strutture",
+      "file": "kosgroup/elements/chunks/head-extra-strutture.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-extra-landing",
+      "file": "kosgroup/elements/chunks/head-extra-landing.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head",
+      "file": "kosgroup/elements/chunks/head.html",
+      "baseline": "kosgroup/baseline/chunks/head.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-informativo",
+      "file": "kosgroup/elements/chunks/head-informativo.html",
+      "baseline": "kosgroup/baseline/chunks/head-informativo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-medici",
+      "file": "kosgroup/elements/chunks/head-medici.html",
+      "baseline": "kosgroup/baseline/chunks/head-medici.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-specializzazioni",
+      "file": "kosgroup/elements/chunks/head-specializzazioni.html",
+      "baseline": "kosgroup/baseline/chunks/head-specializzazioni.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-video",
+      "file": "kosgroup/elements/chunks/head-video.html",
+      "baseline": "kosgroup/baseline/chunks/head-video.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-strutture",
+      "file": "kosgroup/elements/chunks/head-strutture.html",
+      "baseline": "kosgroup/baseline/chunks/head-strutture.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-landing",
+      "file": "kosgroup/elements/chunks/head-landing.html",
+      "baseline": "kosgroup/baseline/chunks/head-landing.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-paginazione",
+      "file": "kosgroup/elements/chunks/head-paginazione.html",
+      "baseline": "kosgroup/baseline/chunks/head-paginazione.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-en",
+      "file": "kosgroup/elements/chunks/head-en.html",
+      "baseline": "kosgroup/baseline/chunks/head-en.html"
+    }
+  ]
+}

@@ -114,6 +114,40 @@ Restano separati, perché sono applicazioni diverse: `head-formazione` (modulo d
 correggono solo canonical in cache e hreflang) e i 4 template con head interno (prima si verifica se hanno pagine
 pubblicate).
 
+## Implementazione (24/10, sullo stage)
+
+Pacchetto `kosgroup/deploy/kos-head.json` (14 elementi). **I template non cambiano**: i chunk `head-*` che richiamano
+diventano richiami di una riga al chunk `head` con i parametri, così il rilascio e il ripristino toccano solo i chunk.
+
+| Chunk richiamato dai template | Richiamo |
+|---|---|
+| `head` | (il chunk unico) |
+| `head-informativo` | `[[$head? &ogType=`article` &ogDescrizione=`introtext`]]` |
+| `head-medici`, `head-specializzazioni` | `[[$head? &ogDescrizione=`ruolo`]]` |
+| `head-video` | `[[$head? &ogType=`video.other` &ogDescrizione=`introtext`]]` |
+| `head-strutture` | `[[$head? &ogLegacy=`assets/img/header/[[*alias]].jpg\|assets/img/strutture/[[*alias]]/` &extra=`head-extra-strutture`]]` |
+| `head-landing` | `[[$head? &extra=`head-extra-landing`]]` |
+| `head-paginazione` | `[[$head? &canonical=`0` &ogTv=`-`]]` (nessun canonical, immagine og predefinita) |
+| `head-en` | `[[$head? &lingua=`en`]]` |
+
+Nuovi elementi:
+- `kosHreflang` (snippet in cache): scrive la terna it/en/x-default solo se la traduzione esiste ed è pubblicata (TV
+  `translationId` su uno dei due lati; home 1 ↔ 990 sempre), altrimenti nulla;
+- `head-ricerca-yext`: la barra Yext Answers delle pagine 1, 3, 4, 983, con `site_url` in cache (si toglie in un punto
+  solo quando c'è il sostituto);
+- `head-extra-strutture` (Knowledge Tags Yext finché resta Yext, CSS di lite-youtube su 190 e 227) e
+  `head-extra-landing` (icone Bootstrap, JSON-LD `head-<id>` finché la voce 24 non li sostituisce);
+- `ogImage` comune ai due siti al posto di quello KOS: compatibile, con `&meta` dà og:image, larghezza, altezza e tipo
+  letti dal file.
+
+Cambiamenti visibili rispetto a oggi, tutti voluti: hreflang solo dove c'è la traduzione (prima su tutte le pagine verso
+la home inglese) e ora anche su medici, specializzazioni e video; robots dalla TV `noindex` su tutti i template;
+description con `:htmlent` ovunque; og completi anche sulle landing (prima assenti) e con le dimensioni dell'immagine;
+og:description con ripiego su `introtext` (o `ruolo`) dove la description manca; `scroll-anchors.js` con `defer` anche
+in inglese; `custom.css` senza versione scritta a mano.
+
+Controllo: `scripts/checks/kos-head-controllo.py` (campione da `risorse-per-template.php --campione`).
+
 ## Collaudo
 
 - confronto stage/produzione con `scripts/collaudo/` (pagine tipo di ogni template, 4 larghezze);
