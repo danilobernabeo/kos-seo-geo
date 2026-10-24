@@ -83,10 +83,11 @@ Interventi del singolo sito:
 
 ## Rilascio dello sprint 2 (deciso il 24/10)
 
-Danilo vuole chiudere le lavorazioni presto per dedicarsi a RetailTune e alla dismissione di Yext. Finestre possibili:
-prima della consegna dello sprint 1 (entro il 29/10, così Cerved/ProWeb verificano lo stato finale) oppure dopo la
-verifica dello sprint 1 (9-11/11). **Da evitare 30/10-6/11** (verifica dello sprint 1): i pacchetti dello sprint 2
-toccano elementi consegnati con lo sprint 1 (footer, `head-sportello-sociale`, `convegnoAA`, `heading-home2`). Prima del
+Danilo vuole chiudere le lavorazioni presto per dedicarsi a RetailTune e alla dismissione di Yext. **Aggiornamento
+24/10: l'agenzia sposta la prima verifica (sprint 1) alla settimana 9-14 novembre.** Finestra di rilascio dello sprint 2:
+dal 26/10 al 6/11, cioè prima che inizi la verifica, così Cerved/ProWeb controllano lo stato finale. **Da evitare 9-14/11**:
+i pacchetti dello sprint 2 toccano elementi consegnati con lo sprint 1 (footer, `head-sportello-sociale`, `convegnoAA`,
+`heading-home2`), e la consegna dello sprint 2 del 13/11 cade nella stessa settimana: tutto va pubblicato prima. Prima del
 rilascio: esportazione fresca dei contenuti e rigenerazione dei pacchetti; dopo: collaudo visivo e validatori sulle
 voci dello sprint 1. Il dato CrUX di novembre rifletterà il rilascio in proporzione ai giorni (evidenza piena a dicembre).
 Analisi del consolidamento degli head KOS: `docs/kos-head-consolidamento.md`.
