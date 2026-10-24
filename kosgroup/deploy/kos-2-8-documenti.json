@@ -1,0 +1,47 @@
+{
+  "nome": "KOS-2 KOS-8 documenti delle schede: cache di docList (invalidata dalla cartella), link codificati e controlli in listLda",
+  "elements": [
+    {
+      "type": "chunk",
+      "name": "documenti",
+      "file": "kosgroup/elements/chunks/documenti.html",
+      "baseline": "kosgroup/baseline/chunks/documenti.html"
+    },
+    {
+      "type": "chunk",
+      "name": "documenti-vm-ria",
+      "file": "kosgroup/elements/chunks/documenti-vm-ria.html",
+      "baseline": "kosgroup/baseline/chunks/documenti-vm-ria.html"
+    },
+    {
+      "type": "chunk",
+      "name": "documenti-vm-psi",
+      "file": "kosgroup/elements/chunks/documenti-vm-psi.html",
+      "baseline": "kosgroup/baseline/chunks/documenti-vm-psi.html"
+    },
+    {
+      "type": "chunk",
+      "name": "documenti-vdp-medica",
+      "file": "kosgroup/elements/chunks/documenti-vdp-medica.html",
+      "baseline": "kosgroup/baseline/chunks/documenti-vdp-medica.html"
+    },
+    {
+      "type": "chunk",
+      "name": "documenti-vdp-chirurgica",
+      "file": "kosgroup/elements/chunks/documenti-vdp-chirurgica.html",
+      "baseline": "kosgroup/baseline/chunks/documenti-vdp-chirurgica.html"
+    },
+    {
+      "type": "chunk",
+      "name": "documenti-vdp-diagnostica",
+      "file": "kosgroup/elements/chunks/documenti-vdp-diagnostica.html",
+      "baseline": "kosgroup/baseline/chunks/documenti-vdp-diagnostica.html"
+    },
+    {
+      "type": "snippet",
+      "name": "listLda",
+      "file": "kosgroup/elements/snippets/listLda.php",
+      "baseline": "kosgroup/baseline/snippets/listLda.php"
+    }
+  ]
+}
