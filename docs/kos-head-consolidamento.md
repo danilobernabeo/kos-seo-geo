@@ -26,6 +26,30 @@ insieme alla voce 24 (JSON-LD delle schede e delle landing) e alla rimozione del
 Le parti comuni (charset, viewport, title, description, GTM, 10 fogli di stile, icone, og) sono ripetute in 11 chunk
 con piccole varianti nate nel tempo, non per scelta.
 
+### Pagine per template (produzione, 24/10, `scripts/checks/risorse-per-template.php`)
+
+| Template | Pubblicate | Head |
+|---|---|---|
+| informativo | 379 | head-informativo |
+| medici | 150 | head-medici |
+| generica | 64 | head, head-paginazione (30-34) |
+| strutture + strutture-VDP | 64 | head-strutture |
+| convenzioni | 60 | head |
+| cure | 55 | head |
+| specializzazioni | 42 | head-specializzazioni |
+| tecnologie | 23 | head-informativo |
+| landing | 22 | head-landing |
+| video | 21 | head-video |
+| generica-en | 19 | head-en |
+| progetti-speciali, news-media | 2 + 1 | head-informativo, head-paginazione |
+| report-recruiting, KOS 2025 Gallery | 2 + 1 | head nel template |
+| comunicati | 50 (non ricercabili) | nessuno: lo snippet `comunicatoRedirect` rimanda con 301 al PDF |
+| form-iscrizione, strutture-test, AccessibilityDashboard, BaseTemplate | 0 | non in uso |
+
+Il consolidamento copre 13 template e 902 pagine pubblicate. `head-formazione` e `head-strutture-test` non servono
+pagine pubblicate: il tracciamento di prova non è attivo (si possono archiviare con i template inutilizzati, d'accordo
+con KOS). I 3 template con head interno e pagine pubblicate (2 report, 1 galleria) si allineano a parte, con poco lavoro.
+
 ## Problemi
 
 **Tempo di risposta (KOS-2, parte applicativa).**
@@ -102,6 +126,5 @@ pubblicate).
 
 1. hreflang: le pagine inglesi oltre alla home sono mantenute? La regola proposta dichiara la traduzione solo dove
    esiste; da confermare con l'agenzia SEO, come indicato nel passaggio di consegne.
-2. Template `strutture-test`, `AccessibilityDashboard`, `BaseTemplate`, `KOS_2025_Gallery`, `report-recruiting`: quali
-   risorse pubblicate li usano?
+2. ~~Template di test e con head interno: quali pagine li usano?~~ Risolto il 24/10 (tabella sopra).
 3. Barra di ricerca Yext Answers: con cosa la sostituiamo e quando (linea C)?
