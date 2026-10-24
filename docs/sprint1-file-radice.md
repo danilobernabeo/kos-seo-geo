@@ -24,6 +24,7 @@ di residenze vanno validati con KOS prima della pubblicazione.** Da rigenerare q
 ### Stato (19 ottobre)
 
 - llms.txt pubblicato in produzione su entrambi i siti (bozza; sintesi da validare con KOS).
+- 24 ottobre: kosgroup.com, corretta in produzione la località malformata di San Severino («San Severino Marche, Taccoli (MC)»); copia precedente in `~/llms.txt.bak-20261024` sul cloud di produzione.
 - Regola web aggiunta su entrambi i cloud per dichiarare il charset (verificato `text/plain; charset=utf-8`):
 
 ```nginx
