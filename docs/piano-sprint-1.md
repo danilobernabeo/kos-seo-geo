@@ -75,8 +75,8 @@ Interventi del singolo sito:
 
 | Fonte | Stato |
 |---|---|
-| GA4 kosgroup.com | attivo dal 30/12/2025 (`analytics_333083624`), giornaliero; contiene anche traffico degli ambienti `*.modx.dev` (da escludere) |
-| GA4 anniazzurri.it | collegamento creato il 24/10 (giornaliero); dati dal giorno successivo |
+| GA4 kosgroup.com | attivo dal 30/12/2025 (`analytics_333083624`), giornaliero; contiene anche traffico degli ambienti `*.modx.dev` (da escludere). Esportazione dei dati utente disattivata il 24/10 (non usata da nessuna vista; minimizzazione): le tabelle `pseudonymous_users_*` 30/12/2025-23/10/2026 restano, da decidere se cancellarle |
+| GA4 anniazzurri.it | collegamento creato il 24/10: solo eventi, giornaliero, senza dati utente; dati dal giorno successivo |
 | Google Ads | attivo (`google_ads_kos`, account 8545219698) |
 | Search Console dei due siti | esportazione collettiva già attiva da marzo 2025 verso il progetto dell'agenzia (`import-gsc`, `europe-west6`, una sola esportazione per proprietà): chiesto l'accesso in lettura ai due dataset per una copia giornaliera pianificata in `europe-west3` (`searchconsole_aa`, `searchconsole_kos`). Lo storico via API (`scripts/gsc/storico-search-console.py`) non serve, resta come ripiego |
 | Tabelle di corrispondenza | `kos_lookup` (campagne, aree, URL) |
