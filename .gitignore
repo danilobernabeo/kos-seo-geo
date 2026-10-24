@@ -26,3 +26,7 @@ node_modules/
 # backup creati dagli script di installazione
 backup/
 __pycache__/
+
+# credenziali OAuth Google
+client_secret*.json
+token*.json
