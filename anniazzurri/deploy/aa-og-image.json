@@ -1,0 +1,173 @@
+{
+  "nome": "og:image con lo snippet comune ogImage e immagine di condivisione di ripiego (fuori perimetro, segnalazione dell'agenzia)",
+  "elements": [
+    {
+      "type": "snippet",
+      "name": "ogImage",
+      "file": "shared/snippets/ogImage.php",
+      "description": "og:image: immagine della pagina se esiste, altrimenti quella di condivisione del sito; dimensioni lette dal file"
+    },
+    {
+      "type": "chunk",
+      "name": "head-albero-ricordi",
+      "file": "anniazzurri/elements/chunks/head-albero-ricordi.html",
+      "baseline": "anniazzurri/baseline/chunks/head-albero-ricordi.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-assistenza-domiciliare",
+      "file": "anniazzurri/elements/chunks/head-assistenza-domiciliare.html",
+      "baseline": "anniazzurri/baseline/chunks/head-assistenza-domiciliare.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-centro-diurno",
+      "file": "anniazzurri/elements/chunks/head-centro-diurno.html",
+      "baseline": "anniazzurri/baseline/chunks/head-centro-diurno.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-chi-accogliamo",
+      "file": "anniazzurri/elements/chunks/head-chi-accogliamo.html",
+      "baseline": "anniazzurri/baseline/chunks/head-chi-accogliamo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-chi-siamo",
+      "file": "anniazzurri/elements/chunks/head-chi-siamo.html",
+      "baseline": "anniazzurri/baseline/chunks/head-chi-siamo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-contatti",
+      "file": "anniazzurri/elements/chunks/head-contatti.html",
+      "baseline": "anniazzurri/baseline/chunks/head-contatti.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-cure-avanzate",
+      "file": "anniazzurri/elements/chunks/head-cure-avanzate.html",
+      "baseline": "anniazzurri/baseline/chunks/head-cure-avanzate.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-cure-e-assistenza-domiciliari",
+      "file": "anniazzurri/elements/chunks/head-cure-e-assistenza-domiciliari.html",
+      "baseline": "anniazzurri/baseline/chunks/head-cure-e-assistenza-domiciliari.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-faq",
+      "file": "anniazzurri/elements/chunks/head-faq.html",
+      "baseline": "anniazzurri/baseline/chunks/head-faq.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-form-registrazione",
+      "file": "anniazzurri/elements/chunks/head-form-registrazione.html",
+      "baseline": "anniazzurri/baseline/chunks/head-form-registrazione.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-home",
+      "file": "anniazzurri/elements/chunks/head-home.html",
+      "baseline": "anniazzurri/baseline/chunks/head-home.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-home2",
+      "file": "anniazzurri/elements/chunks/head-home2.html",
+      "baseline": "anniazzurri/baseline/chunks/head-home2.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-il-nostro-approccio",
+      "file": "anniazzurri/elements/chunks/head-il-nostro-approccio.html",
+      "baseline": "anniazzurri/baseline/chunks/head-il-nostro-approccio.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-interna-menu",
+      "file": "anniazzurri/elements/chunks/head-interna-menu.html",
+      "baseline": "anniazzurri/baseline/chunks/head-interna-menu.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-landing",
+      "file": "anniazzurri/elements/chunks/head-landing.html",
+      "baseline": "anniazzurri/baseline/chunks/head-landing.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-news",
+      "file": "anniazzurri/elements/chunks/head-news.html",
+      "baseline": "anniazzurri/baseline/chunks/head-news.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-oss-landing",
+      "file": "anniazzurri/elements/chunks/head-oss-landing.html",
+      "baseline": "anniazzurri/baseline/chunks/head-oss-landing.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-patologie",
+      "file": "anniazzurri/elements/chunks/head-patologie.html",
+      "baseline": "anniazzurri/baseline/chunks/head-patologie.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-regione",
+      "file": "anniazzurri/elements/chunks/head-regione.html",
+      "baseline": "anniazzurri/baseline/chunks/head-regione.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-rsa",
+      "file": "anniazzurri/elements/chunks/head-rsa.html",
+      "baseline": "anniazzurri/baseline/chunks/head-rsa.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-soluzioni",
+      "file": "anniazzurri/elements/chunks/head-soluzioni.html",
+      "baseline": "anniazzurri/baseline/chunks/head-soluzioni.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-sos-famiglia",
+      "file": "anniazzurri/elements/chunks/head-sos-famiglia.html",
+      "baseline": "anniazzurri/baseline/chunks/head-sos-famiglia.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-sportello-sociale",
+      "file": "anniazzurri/elements/chunks/head-sportello-sociale.html",
+      "baseline": "anniazzurri/baseline/chunks/head-sportello-sociale.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-storia",
+      "file": "anniazzurri/elements/chunks/head-storia.html",
+      "baseline": "anniazzurri/baseline/chunks/head-storia.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-tariffe-e-convenzioni",
+      "file": "anniazzurri/elements/chunks/head-tariffe-e-convenzioni.html",
+      "baseline": "anniazzurri/baseline/chunks/head-tariffe-e-convenzioni.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head",
+      "file": "anniazzurri/elements/chunks/head.html",
+      "baseline": "anniazzurri/baseline/chunks/head.html"
+    },
+    {
+      "type": "template",
+      "name": "convegnoAA",
+      "file": "anniazzurri/elements/templates/convegnoAA.html",
+      "baseline": "anniazzurri/baseline/templates/convegnoAA.html"
+    }
+  ]
+}
