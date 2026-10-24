@@ -1,0 +1,20 @@
+# Collaudo rapido: residenze, landing e pagine con galleria o foto dei direttori
+/
+/home-en
+/speaker-per-un-giorno
+/residenza-anni-azzurri-abitare-il-tempo
+/residenza-anni-azzurri-santa-maria-in-chienti
+/residenza-anni-azzurri-parco-sempione
+/centro-diurno-alzheimer-san-giuseppe
+/centro-diurno-anni-azzurri-la-maremma
+/lrsa-borgomanero
+/lrsa-carmagnola
+/lrsa-ap-san-sisto-2
+/lrsa-idice
+/lrsa-il-giardino
+/lrsa-il-poggione-2
+/lrsa-mestre
+/lrsa-sant-anna
+/lrsa-sestri-ponente
+/lrsa-tonengo
+/lrsa-villa-dei-ciliegi
