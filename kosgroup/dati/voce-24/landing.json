@@ -1,0 +1,40 @@
+{
+  "nome": "KOS voce 24: struttura e servizi delle 5 landing con JSON-LD scritto a mano (head-1065, -1108, -1114, -1118, -1133)",
+  "risorse": [
+    {
+      "id": 1065,
+      "tv": {
+        "lnd.struttura": "@uri:it/centri/centro-cardinal-ferrari",
+        "lnd.servizi": "MedicalTest|Cardio TAC|Tomografia computerizzata delle arterie coronarie con mezzo di contrasto per la diagnosi di stenosi, occlusioni e placche aterosclerotiche.\nMedicalTest|TC Torace\nMedicalTest|TC Cranio/Encefalo\nMedicalTest|TC Addome Superiore\nMedicalTest|TC Rachide Cervicale\nMedicalTest|TC Rachide Dorsale"
+      }
+    },
+    {
+      "id": 1108,
+      "tv": {
+        "lnd.struttura": "@uri:it/centri/villa-san-giuseppe",
+        "lnd.servizi": "MedicalTherapy|Ambulatorio Cardio-Metabolico|Percorso clinico multidisciplinare della durata di 4 mesi per la gestione del peso e la salute cardiovascolare. Include valutazione cardiologica con ECG e ecocardiocolor doppler, ecografia addominale, consulenza nutrizionale, bioimpedenziometria e aggiornamenti periodici del piano terapeutico.\nMedicalTest|Prima Visita Cardiometabolica|Prima visita dell'ambulatorio cardio-metabolico, prenotabile online senza lista d'attesa."
+      }
+    },
+    {
+      "id": 1114,
+      "tv": {
+        "lnd.struttura": "@uri:it/centri/ospedale-san-pancrazio",
+        "lnd.servizi": "MedicalTherapy|Ambulatorio Cardio-Metabolico|Percorso clinico multidisciplinare della durata di 4 mesi per la gestione del peso e la salute cardiovascolare. Include valutazione cardiologica con ECG e ecocardiocolor doppler, consulenza nutrizionale e bioimpedenziometria, piano terapeutico personalizzato e controlli periodici."
+      }
+    },
+    {
+      "id": 1118,
+      "tv": {
+        "lnd.struttura": "@uri:it/centri/myolab",
+        "lnd.servizi": "MedicalTherapy|Ambulatorio Cardio-Metabolico|Percorso clinico multidisciplinare della durata di 3 mesi per la gestione del peso e la salute cardiovascolare. Include valutazione cardiologica con ECG e ecocardiocolor doppler, consulenza nutrizionale, bioimpedenziometria, piano terapeutico personalizzato e controlli periodici.\nMedicalTest|Prima Visita Cardiometabolica|Prima visita dell'ambulatorio cardio-metabolico, prenotabile online senza lista d'attesa."
+      }
+    },
+    {
+      "id": 1133,
+      "tv": {
+        "lnd.struttura": "@uri:it/centri/villa-sant-alessandro",
+        "lnd.servizi": "MedicalTest|Test ADHD adulti|Valutazione neuropsicologica per la diagnosi di ADHD negli adulti con strumenti standardizzati per la popolazione adulta italiana.\nMedicalTest|Test Neurodivergenze|Valutazione clinica per lo spettro autistico negli adulti, inclusi colloqui strutturati e strumenti diagnostici validati.\nMedicalTest|Valutazione neuropsicologica di funzioni cognitive|Misurazione delle funzioni cognitive — memoria, attenzione, velocità di elaborazione, funzioni esecutive — con produzione di referto clinico completo."
+      }
+    }
+  ]
+}

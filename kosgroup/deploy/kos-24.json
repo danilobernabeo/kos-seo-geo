@@ -1,0 +1,247 @@
+{
+  "nome": "KOS voce 24 (preparazione, nessun effetto visibile): TV anagrafiche str.* e lnd.*, libreria comune con il nodo struttura #localbusiness, spento (kos.struttura_attiva = 0)",
+  "settings": [
+    {
+      "key": "kos.tpl_struttura",
+      "value": "strutture,strutture-VDP",
+      "area": "kos"
+    },
+    {
+      "key": "kos.tpl_landing",
+      "value": "landing",
+      "area": "kos"
+    },
+    {
+      "key": "kos.struttura_attiva",
+      "value": "0",
+      "area": "kos"
+    }
+  ],
+  "tvs": [
+    {
+      "name": "str.nome",
+      "caption": "Nome ufficiale",
+      "description": "Nome della struttura come nel profilo Google e in Yext/RetailTune (il pagetitle non cambia). Vuoto = pagetitle.",
+      "type": "text",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 1
+    },
+    {
+      "name": "str.via",
+      "caption": "Indirizzo (via e civico)",
+      "description": "Es. Via IV Novembre 21",
+      "type": "text",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 2
+    },
+    {
+      "name": "str.cap",
+      "caption": "CAP",
+      "description": "5 cifre",
+      "type": "text",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 3
+    },
+    {
+      "name": "str.citta",
+      "caption": "Comune",
+      "description": "Es. Fontanellato",
+      "type": "text",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 4
+    },
+    {
+      "name": "str.provincia",
+      "caption": "Provincia (sigla)",
+      "description": "2 lettere maiuscole, es. PR",
+      "type": "text",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 5
+    },
+    {
+      "name": "str.telefono",
+      "caption": "Telefono principale",
+      "description": "Formato internazionale senza spazi, es. +390521820211",
+      "type": "text",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 6
+    },
+    {
+      "name": "str.email",
+      "caption": "Email principale",
+      "description": "Indirizzo pubblico della struttura",
+      "type": "text",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 7
+    },
+    {
+      "name": "str.lat",
+      "caption": "Latitudine",
+      "description": "Gradi decimali con punto, es. 44.8796",
+      "type": "text",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 8
+    },
+    {
+      "name": "str.lng",
+      "caption": "Longitudine",
+      "description": "Gradi decimali con punto, es. 10.1506",
+      "type": "text",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 9
+    },
+    {
+      "name": "str.orari",
+      "caption": "Orari",
+      "description": "Una riga per fascia: giorni e orari, es. «Mo-Fr 08:00-13:00,14:00-18:00» o «Sa 08:00-12:00» (giorni Mo Tu We Th Fr Sa Su). Giorni non elencati = chiuso. Aperto sempre: «Mo-Su 00:00-23:59».",
+      "type": "textarea",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 10
+    },
+    {
+      "name": "str.orari_speciali",
+      "caption": "Orari speciali",
+      "description": "Una riga per data o periodo: «2026-12-25 chiuso», «2026-12-24 08:00-12:00», «2026-08-10/2026-08-21 chiuso».",
+      "type": "textarea",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 11
+    },
+    {
+      "name": "str.place_id",
+      "caption": "Google place_id",
+      "description": "Identificativo del profilo Google della struttura (es. ChIJ...): genera il collegamento alla scheda Maps.",
+      "type": "text",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 12
+    },
+    {
+      "name": "str.tipo",
+      "caption": "Tipo schema.org",
+      "description": "Tipo dell'entità, separati da virgola (es. MedicalClinic; Hospital; DiagnosticLab; Dentist), secondo la tabella approvata. Vuoto = MedicalClinic.",
+      "type": "text",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 13
+    },
+    {
+      "name": "str.specialita",
+      "caption": "Specialità (schema.org)",
+      "description": "Valori di MedicalSpecialty separati da virgola, es. Psychiatric, Physiotherapy, Cardiovascular.",
+      "type": "text",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 14
+    },
+    {
+      "name": "str.marchio",
+      "caption": "Marchio",
+      "description": "Marchio del gruppo con cui la struttura si presenta, es. Santo Stefano Riabilitazione, Neomesia. Vuoto = nessuno.",
+      "type": "text",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 15
+    },
+    {
+      "name": "str.sameAs",
+      "caption": "Profili ufficiali",
+      "description": "Un URL per riga: profili ufficiali della struttura (es. pagina Facebook propria). Mai directory di terzi (location.com).",
+      "type": "textarea",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 16
+    },
+    {
+      "name": "lnd.struttura",
+      "caption": "Struttura della landing",
+      "description": "Id della risorsa della scheda struttura a cui si riferisce la landing: la pagina rimanda al suo #localbusiness.",
+      "type": "text",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "landing"
+      ],
+      "rank": 1
+    },
+    {
+      "name": "lnd.servizi",
+      "caption": "Servizi della landing (dato strutturato)",
+      "description": "Una riga per servizio: «Tipo|Nome|Descrizione», Tipo = MedicalTest, MedicalProcedure o MedicalTherapy. Es. «MedicalTest|Cardio TAC|Tomografia delle coronarie...».",
+      "type": "textarea",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "landing"
+      ],
+      "rank": 2
+    }
+  ],
+  "elements": [
+    {
+      "type": "snippet",
+      "name": "kosSchema",
+      "file": "shared/snippets/seoSchema.php",
+      "properties": {
+        "prefisso": "kos"
+      },
+      "description": "Dato strutturato e briciole (libreria comune seoSchema, prefisso kos)"
+    }
+  ]
+}

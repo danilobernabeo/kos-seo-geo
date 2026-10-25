@@ -14,6 +14,10 @@
  *     se è diverso da entrambe qualcuno l'ha modificato a mano → si ferma (salvo --forza);
  *   - salva il contenuto attuale in ~/backup-kos-seo-geo/<data>/ prima di sovrascriverlo;
  *   - crea l'elemento se non esiste.
+ * TV: chiave "tvs" con name, caption, description, type (text, textarea, number...), category, templates (nomi),
+ * eventuali elements, default_text, input_properties. Una TV nuova si crea e si collega ai template; di una TV
+ * esistente si aggiornano solo i campi diversi e si aggiungono i collegamenti mancanti (mai tolti). Il ripristino
+ * elimina le TV create, dopo averne salvato i valori in <backup>/tv-<nome>.json.
  * File (librerie PHP, fogli di stile): chiave "files" con "file" (nel repository), "dest" (relativo a /www),
  * "baseline" facoltativa; il file attuale va nel backup prima di essere sostituito.
  * Alla fine svuota la cache e scrive ~/backup-kos-seo-geo/<data>/ripristino.json: per tornare indietro
@@ -66,7 +70,7 @@ $bkDir  = $bkRoot . '/' . $stamp;
 // un elemento uguale all'ultima versione installata da noi non è una modifica di terzi.
 $regFile  = $bkRoot . '/installati.json';
 $registro = is_file($regFile) ? (json_decode((string) file_get_contents($regFile), true) ?: []) : [];
-$ripristino = ['nome' => 'ripristino ' . $stamp, 'settings' => [], 'elements' => [], 'files' => []];
+$ripristino = ['nome' => 'ripristino ' . $stamp, 'settings' => [], 'tvs' => [], 'elements' => [], 'files' => []];
 $errori = 0;
 echo ($scrivi ? "== APPLICAZIONE" : "== PROVA (nessuna scrittura; aggiungere --scrivi)") . " — " . ($m['nome'] ?? $manifest) . "\n";
 
@@ -92,6 +96,70 @@ foreach ($m['settings'] ?? [] as $s) {
         }
         $obj->set('value', (string) $s['value']);
         if (!$obj->save()) { echo "    ! salvataggio fallito\n"; $errori++; }
+    }
+}
+
+/* ---------- TV ---------- */
+$CLS_TV  = \MODX\Revolution\modTemplateVar::class;
+$CLS_TVT = \MODX\Revolution\modTemplateVarTemplate::class;
+$CLS_TVR = \MODX\Revolution\modTemplateVarResource::class;
+$CAMPI_TV = ['caption', 'description', 'type', 'elements', 'default_text'];
+foreach ($m['tvs'] ?? [] as $t) {
+    $tv = $modx->getObject($CLS_TV, ['name' => $t['name']]);
+    if (!empty($t['elimina'])) {                       // usato dal manifest di ripristino
+        $n = $tv ? $modx->getCount($CLS_TVR, ['tmplvarid' => $tv->get('id')]) : 0;
+        echo "  - TV {$t['name']}" . ($tv ? " ($n valori salvati nel backup)" : ' (già assente)') . "\n";
+        if ($scrivi && $tv) {
+            $valori = [];
+            foreach ($modx->getIterator($CLS_TVR, ['tmplvarid' => $tv->get('id')]) as $v) $valori[(int) $v->get('contentid')] = $v->get('value');
+            if (!is_dir($bkDir)) mkdir($bkDir, 0775, true);
+            file_put_contents("$bkDir/tv-{$t['name']}.json", json_encode($valori, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+            $tv->remove();
+        }
+        continue;
+    }
+    if (!empty($t['ripristina']) && $tv) {             // ripristino dei campi di una TV che esisteva già
+        echo "  ~ TV {$t['name']}: campi originali\n";
+        if ($scrivi) { foreach ($t['ripristina'] as $k => $v) $tv->set($k, $v); $tv->save(); }
+        continue;
+    }
+    $catId = 0;
+    if (!empty($t['category'])) {
+        $cat = $modx->getObject(\MODX\Revolution\modCategory::class, ['category' => $t['category']]);
+        if (!$cat && $scrivi) { $cat = $modx->newObject(\MODX\Revolution\modCategory::class); $cat->set('category', $t['category']); $cat->save(); }
+        $catId = $cat ? (int) $cat->get('id') : 0;
+    }
+    if (!$tv) {
+        echo "  + TV {$t['name']} (nuova: {$t['type']}, " . implode(', ', $t['templates'] ?? []) . ")\n";
+        $ripristino['tvs'][] = ['name' => $t['name'], 'elimina' => true];
+        if ($scrivi) {
+            $tv = $modx->newObject($CLS_TV);
+            $tv->fromArray(['name' => $t['name'], 'category' => $catId, 'display' => 'default', 'rank' => (int) ($t['rank'] ?? 0)]
+                + array_intersect_key($t + array_fill_keys($CAMPI_TV, ''), array_flip($CAMPI_TV)));
+            $tv->set('input_properties', $t['input_properties'] ?? ['allowBlank' => 'true']);
+            if (!$tv->save()) { echo "    ! salvataggio fallito\n"; $errori++; continue; }
+        }
+    } else {
+        $diversi = [];
+        foreach ($CAMPI_TV as $k) if (array_key_exists($k, $t) && (string) $tv->get($k) !== (string) $t[$k]) $diversi[$k] = $tv->get($k);
+        if ($diversi) {
+            echo "  ~ TV {$t['name']}: " . implode(', ', array_keys($diversi)) . "\n";
+            $ripristino['tvs'][] = ['name' => $t['name'], 'ripristina' => $diversi];
+            if ($scrivi) { foreach ($diversi as $k => $_) $tv->set($k, $t[$k]); $tv->save(); }
+        } else {
+            echo "  = TV {$t['name']} già presente\n";
+        }
+    }
+    foreach ($t['templates'] ?? [] as $nomeTpl) {
+        $tpl = $modx->getObject(\MODX\Revolution\modTemplate::class, ['templatename' => $nomeTpl]);
+        if (!$tpl) { echo "    ! template $nomeTpl non trovato\n"; $errori++; continue; }
+        if ($tv && $tv->get('id') && $modx->getObject($CLS_TVT, ['tmplvarid' => $tv->get('id'), 'templateid' => $tpl->get('id')])) continue;
+        echo "    + collegata al template $nomeTpl\n";
+        if ($scrivi && $tv) {
+            $l = $modx->newObject($CLS_TVT);
+            $l->fromArray(['tmplvarid' => $tv->get('id'), 'templateid' => $tpl->get('id'), 'rank' => (int) ($t['rank'] ?? 0)], '', true, true);
+            $l->save();
+        }
     }
 }
 

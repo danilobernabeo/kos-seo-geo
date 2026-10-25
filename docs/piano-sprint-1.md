@@ -91,6 +91,10 @@ i pacchetti dello sprint 2 toccano elementi consegnati con lo sprint 1 (footer, 
 rilascio: esportazione fresca dei contenuti e rigenerazione dei pacchetti; dopo: collaudo visivo e validatori sulle
 voci dello sprint 1. Il dato CrUX di novembre rifletterà il rilascio in proporzione ai giorni (evidenza piena a dicembre).
 Analisi del consolidamento degli head KOS: `docs/kos-head-consolidamento.md`.
+**Deciso il 25/10:** gli head KOS (pronti sullo stage, controllo 0 errori, tempo di risposta invariato) escono nella
+finestra da soli; la voce 24 (nodo `#localbusiness`, rimozione dello script Yext e dei JSON-LD delle landing) dopo l'import
+delle TV anagrafiche dall'export Yext corretto, previo confronto a tre sito/Yext/profili Google (export Google a cura di
+Danilo). Pacchetti `kos-24` (preparazione, spento) e `kos-24-attivazione`; dettaglio in `docs/kos-24.md`.
 
 ## Da verificare lunedì 26 ottobre (emerso dal collaudo del 24/10)
 

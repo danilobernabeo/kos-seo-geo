@@ -1,0 +1,24 @@
+{
+  "nome": "KOS voce 24 (attivazione): nodo #localbusiness acceso, tolti lo script Yext Knowledge Tags dalle schede e i JSON-LD scritti a mano delle landing",
+  "settings": [
+    {
+      "key": "kos.struttura_attiva",
+      "value": "1",
+      "area": "kos"
+    }
+  ],
+  "elements": [
+    {
+      "type": "chunk",
+      "name": "head-extra-strutture",
+      "file": "kosgroup/elements/voce-24-attivazione/head-extra-strutture.html",
+      "baseline": "kosgroup/elements/chunks/head-extra-strutture.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-extra-landing",
+      "file": "kosgroup/elements/voce-24-attivazione/head-extra-landing.html",
+      "baseline": "kosgroup/elements/chunks/head-extra-landing.html"
+    }
+  ]
+}

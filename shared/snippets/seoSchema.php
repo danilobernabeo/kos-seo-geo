@@ -20,6 +20,13 @@
  *   &author    id risorsa autore; se omesso lo legge dalla TV aut.ref
  *   &pretty    1 = JSON indentato (solo per debug)
  *
+ * STRUTTURE (voce 24 KosGroup; anniazzurri.it dallo sprint 3)
+ *   Sulle pagine dei template <prefisso>.tpl_struttura la pagina ha come mainEntity il nodo
+ *   {URL scheda}#localbusiness, costruito dalle TV anagrafiche str.* (importate da Yext/RetailTune);
+ *   sulle landing (<prefisso>.tpl_landing) la pagina è «about» la struttura indicata in lnd.struttura,
+ *   con i servizi della landing (lnd.servizi). Acceso solo con <prefisso>.struttura_attiva = 1: va
+ *   attivato nello stesso rilascio in cui si toglie lo script Yext che descrive la stessa struttura.
+ *
  * REGOLE
  *   - Briciole visibili e BreadcrumbList escono dalla STESSA funzione: stesso percorso.
  *   - TV aut.ref vuota = contenuto della redazione = author è l'Organization.
@@ -491,6 +498,133 @@ $riferimenti = function ($csv, $frammento) use ($url) {
     return $out;
 };
 
+/* --- nodo struttura (#localbusiness) ----------------------------------------
+ * Dati dalle TV str.* della scheda; nessun dato inventato: un campo vuoto non esce.
+ * Tipi e specialità solo da elenchi noti di schema.org (un valore sconosciuto si scarta:
+ * l'errore di Yext era usare le specialità come tipo).
+ */
+$STR_TPL = $csv($cfg('tpl_struttura', ''));
+$LND_TPL = $csv($cfg('tpl_landing', ''));
+$STR_ON  = (int) $cfg('struttura_attiva', 0);
+$TIPI_STRUTTURA = ['MedicalClinic', 'Hospital', 'DiagnosticLab', 'Dentist', 'Physiotherapy', 'MedicalOrganization',
+    'MedicalBusiness', 'LocalBusiness', 'Pharmacy', 'Optician'];
+$SPECIALITA = ['Anesthesia', 'Cardiovascular', 'CommunityHealth', 'Dentistry', 'Dermatology', 'DietNutrition',
+    'Emergency', 'Endocrine', 'Gastroenterologic', 'Genetic', 'Geriatric', 'Gynecologic', 'Hematologic', 'Infectious',
+    'LaboratoryScience', 'Midwifery', 'Musculoskeletal', 'Neurologic', 'Nursing', 'Obstetric', 'Oncologic',
+    'Optometric', 'Otolaryngologic', 'Pathology', 'Pediatric', 'PharmacySpecialty', 'Physiotherapy', 'PlasticSurgery',
+    'Podiatric', 'PrimaryCare', 'Psychiatric', 'PublicHealth', 'Pulmonary', 'Radiography', 'Renal',
+    'RespiratoryTherapy', 'Rheumatologic', 'SpeechPathology', 'Surgical', 'Toxicologic', 'Urologic'];
+$GIORNI = ['Mo' => 'Monday', 'Tu' => 'Tuesday', 'We' => 'Wednesday', 'Th' => 'Thursday', 'Fr' => 'Friday',
+    'Sa' => 'Saturday', 'Su' => 'Sunday'];
+
+/** "Mo-Fr 08:00-13:00,14:00-18:00" → OpeningHoursSpecification (una per fascia). */
+$orari = function ($testo) use ($righe, $GIORNI) {
+    $out = [];
+    $chiavi = array_keys($GIORNI);
+    foreach ($righe($testo) as $r) {
+        if (!preg_match('/^([A-Za-z,\- ]+?)\s+(\d{1,2}:\d{2}\s*-\s*\d{1,2}:\d{2}(?:\s*,\s*\d{1,2}:\d{2}\s*-\s*\d{1,2}:\d{2})*)$/', $r, $m)) continue;
+        $giorni = [];
+        foreach (preg_split('/\s*,\s*/', trim($m[1])) as $g) {
+            $g = preg_split('/\s*-\s*/', $g);
+            $a = array_search(ucfirst(strtolower($g[0])), $chiavi, true);
+            $b = isset($g[1]) ? array_search(ucfirst(strtolower($g[1])), $chiavi, true) : $a;
+            if ($a === false || $b === false || $b < $a) continue;
+            for ($i = $a; $i <= $b; $i++) $giorni[] = 'https://schema.org/' . $GIORNI[$chiavi[$i]];
+        }
+        if (!$giorni) continue;
+        foreach (preg_split('/\s*,\s*/', $m[2]) as $fascia) {
+            [$da, $a2] = array_map(fn($x) => sprintf('%05s', trim($x)), explode('-', $fascia));
+            $out[] = ['@type' => 'OpeningHoursSpecification', 'dayOfWeek' => array_values(array_unique($giorni)),
+                      'opens' => $da, 'closes' => $a2];
+        }
+    }
+    return $out;
+};
+/** "2026-12-25 chiuso" | "2026-12-24 08:00-12:00" | "2026-08-10/2026-08-21 chiuso". Chiuso = opens e closes 00:00. */
+$orariSpeciali = function ($testo) use ($righe) {
+    $out = [];
+    foreach ($righe($testo) as $r) {
+        if (!preg_match('#^(\d{4}-\d{2}-\d{2})(?:/(\d{4}-\d{2}-\d{2}))?\s+(chiuso|closed|(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2}))$#i', $r, $m)) continue;
+        $chiuso = !isset($m[4]) || $m[4] === '';
+        $out[] = ['@type' => 'OpeningHoursSpecification', 'validFrom' => $m[1], 'validThrough' => ($m[2] ?? '') ?: $m[1],
+                  'opens' => $chiuso ? '00:00' : sprintf('%05s', $m[4]), 'closes' => $chiuso ? '00:00' : sprintf('%05s', $m[5])];
+    }
+    return $out;
+};
+/** Prima immagine esistente tra TV e percorsi di ripiego (stessa regola dello snippet ogImage). */
+$immagineStruttura = function ($r) use ($tv, $immagine, $cfg) {
+    $cand = [$tv($r, 'infoImage')];
+    foreach (explode('|', (string) $cfg('struttura_immagini', 'assets/img/header/{alias}.jpg|assets/img/strutture/{alias}/')) as $p) {
+        $cand[] = str_replace('{alias}', (string) $r->get('alias'), trim($p));
+    }
+    foreach ($cand as $c) {
+        $c = ltrim(trim((string) $c), '/');
+        if ($c === '' || preg_match('#^https?://#i', $c)) continue;
+        $f = MODX_BASE_PATH . $c;
+        if (substr($c, -1) === '/') {
+            $file = is_dir($f) ? (glob($f . '*.{jpg,jpeg,png,webp,JPG,JPEG,PNG}', GLOB_BRACE) ?: []) : [];
+            sort($file);
+            if ($file) return $immagine($c . basename($file[0]));
+        } elseif (is_file($f)) {
+            return $immagine($c);
+        }
+    }
+    return null;
+};
+/** Servizi della landing: «Tipo|Nome|Descrizione» per riga. */
+$servizi = function ($testo) use ($righe) {
+    $out = [];
+    foreach ($righe($testo) as $r) {
+        $p = array_map('trim', explode('|', $r, 3));
+        if (count($p) < 2 || !in_array($p[0], ['MedicalTest', 'MedicalProcedure', 'MedicalTherapy', 'Service'], true)) continue;
+        $out[] = array_filter(['@type' => $p[0], 'name' => $p[1], 'description' => $p[2] ?? '']);
+    }
+    return $out;
+};
+$nodoStruttura = function ($r, $extraServizi = []) use (
+    $url, $tv, $righe, $testo, $csv, $pulisci, $orari, $orariSpeciali, $immagineStruttura,
+    $TIPI_STRUTTURA, $SPECIALITA, $FRAG_STR, $ORG_ID
+) {
+    $pagina = $url($r->get('id'));
+    if ($pagina === '') return null;
+    $tipi = array_values(array_intersect($csv($tv($r, 'str.tipo')), $TIPI_STRUTTURA)) ?: ['MedicalClinic'];
+    $via = $tv($r, 'str.via');
+    $lat = str_replace(',', '.', (string) $tv($r, 'str.lat'));
+    $lng = str_replace(',', '.', (string) $tv($r, 'str.lng'));
+    $place = $tv($r, 'str.place_id');
+    $nome = $tv($r, 'str.nome') ?: $r->get('pagetitle');
+    $marchio = $tv($r, 'str.marchio');
+    return $pulisci([
+        '@type'       => count($tipi) === 1 ? $tipi[0] : $tipi,
+        '@id'         => $pagina . $FRAG_STR,
+        'name'        => $nome,
+        'url'         => $pagina,
+        'description' => $testo($r->get('description') ?: $r->get('introtext')),
+        'image'       => $immagineStruttura($r),
+        'telephone'   => $tv($r, 'str.telefono'),
+        'email'       => $tv($r, 'str.email'),
+        'address'     => $via === '' ? null : [
+            '@type'           => 'PostalAddress',
+            'streetAddress'   => $via,
+            'postalCode'      => $tv($r, 'str.cap'),
+            'addressLocality' => $tv($r, 'str.citta'),
+            'addressRegion'   => strtoupper((string) $tv($r, 'str.provincia')),
+            'addressCountry'  => 'IT',
+        ],
+        'geo'         => (is_numeric($lat) && is_numeric($lng))
+                            ? ['@type' => 'GeoCoordinates', 'latitude' => (float) $lat, 'longitude' => (float) $lng] : null,
+        'hasMap'      => $place ? 'https://www.google.com/maps/search/?api=1&query=' . rawurlencode($nome)
+                            . '&query_place_id=' . rawurlencode($place) : null,
+        'openingHoursSpecification'        => $orari($tv($r, 'str.orari')),
+        'specialOpeningHoursSpecification' => $orariSpeciali($tv($r, 'str.orari_speciali')),
+        'medicalSpecialty' => array_values(array_intersect($csv($tv($r, 'str.specialita')), $SPECIALITA)),
+        'brand'       => $marchio ? ['@type' => 'Brand', 'name' => $marchio] : null,
+        'availableService' => $extraServizi,
+        'sameAs'      => array_values(array_filter($righe($tv($r, 'str.sameAs')), fn($u) => preg_match('#^https://#', $u))),
+        'parentOrganization' => ['@id' => $ORG_ID],
+    ]);
+};
+
 /* =============================================================================
  * ESECUZIONE
  * ========================================================================== */
@@ -651,6 +785,19 @@ if ($type === 'page') {
     $home = ((int) $res->get('id') === $L['home']);
     $br = $nodoBriciole($res, $paginaCorrente);
 
+    // Scheda struttura: la pagina descrive la struttura. Landing: la pagina parla di una struttura.
+    $struttura = null; $rel = null;
+    if ($STR_ON && in_array($nomeTpl, $STR_TPL, true)) {
+        $struttura = $nodoStruttura($res);
+        $rel = 'mainEntity';
+    } elseif ($STR_ON && in_array($nomeTpl, $LND_TPL, true) && ($sid = (int) $tv($res, 'lnd.struttura'))) {
+        $sr = $modx->getObject($CLS_RES, $sid);
+        if ($sr && $sr->get('published') && !$sr->get('deleted')) {
+            $struttura = $nodoStruttura($sr, $servizi($tv($res, 'lnd.servizi')));
+            $rel = 'about';
+        }
+    }
+
     $pagina = $pulisci([
         '@type'       => in_array($nomeTpl, $TPL_COLLEZIONE, true) ? 'CollectionPage' : 'WebPage',
         '@id'         => $paginaCorrente . '#webpage',
@@ -659,11 +806,13 @@ if ($type === 'page') {
         'description' => $res->get('description'),
         'inLanguage'  => $LANG,
         'isPartOf'    => ['@id' => $SITE_ID],
-        'about'       => $home ? ['@id' => $ORG_ID] : null,
+        'about'       => $home ? ['@id' => $ORG_ID] : (($struttura && $rel === 'about') ? ['@id' => $struttura['@id']] : null),
+        'mainEntity'  => ($struttura && $rel === 'mainEntity') ? ['@id' => $struttura['@id']] : null,
         'breadcrumb'  => $br ? ['@id' => $paginaCorrente . '#breadcrumb'] : null,
         'dateModified'=> $data($res->get('editedon') ?: $res->get('publishedon')),
     ]);
-    return $json([$pagina, $br, $sito($LANG), $org($LANG)]);
+    // Il nodo struttura per intero, anche sulle landing: i crawler AI raramente seguono un @id.
+    return $json([$pagina, $struttura, $br, $sito($LANG), $org($LANG)]);
 }
 
 /* ---------------------------------------------------------------- articolo */

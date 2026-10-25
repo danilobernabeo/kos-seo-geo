@@ -1,7 +1,8 @@
 # kosgroup.com — consolidamento degli head (analisi, 24 ottobre 2026)
 
-Analisi in sola lettura della baseline del 22/10. Il consolidamento si sviluppa e si collauda sullo stage; si rilascia
-insieme alla voce 24 (JSON-LD delle schede e delle landing) e alla rimozione dello script Yext delle schede.
+Analisi in sola lettura della baseline del 22/10. Il consolidamento si sviluppa e si collauda sullo stage. **Deciso il
+25/10: si rilascia da solo** nella finestra 26/10–6/11; la voce 24 (JSON-LD delle schede e delle landing, rimozione dello
+script Yext) segue dopo l'import dei dati anagrafici corretti (`docs/kos-24.md`).
 
 ## Stato attuale
 
