@@ -642,7 +642,8 @@ $prenotazione = function ($r) use ($modx, $tv, $PREN_PORTALE, $PREN_TV, $PREN_RE
         foreach ($st->fetchAll(PDO::FETCH_ASSOC) as $p) {
             $branche[(string) $p['typology']][] = [
                 '@type'       => 'Offer',
-                'itemOffered' => ['@type' => 'Service', 'name' => trim((string) $p['title']), 'category' => (string) $p['typology']],
+                'itemOffered' => ['@type' => 'Service', 'name' => trim((string) $p['title'])],
+                // la branca è il nome dell'OfferCatalog che contiene l'offerta: niente `category` ripetuta
                 'url'         => $link(['activityid' => $p['activity_id'], 'areaid' => $area]),
             ];
         }

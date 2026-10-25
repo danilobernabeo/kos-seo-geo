@@ -244,4 +244,12 @@ dato strutturato (assistenti AI, motori). Impostazioni `kos.prenotazione_portale
 
 Validatori (25/10 sera): Villa dei Pini Civitanova con prenotazione attiva, 30 branche e 273 prestazioni prenotabili nel
 catalogo, 0 errori e 0 avvisi; link sede + prestazione senza medico verificato da Danilo (TuoTempo si apre sulla
-prestazione). Deciso di tenere il catalogo completo (Villa dei Pini è il caso più ampio, circa 60-70 KB di JSON-LD).
+prestazione). Deciso di tenere il catalogo completo.
+Caso più ampio: Poliambulatorio Santo Stefano (Porto Potenza Picena), 314 prestazioni in 18 branche, 0 errori e 0
+avvisi. Villa Sant'Alessandro (Roma, MedicalClinic, 8 branche): 0 errori e 0 avvisi. In tutti i casi «Attività locali»
+valida nel Rich Results Test con il solo `priceRange` facoltativo.
+Alleggerimento (25/10): tolto `category` dal `Service` di ogni offerta, perché ripeteva il nome del sotto-catalogo
+(la branca) che la contiene; circa il 15% in meno sul peso del catalogo, nessuna informazione persa.
+Dati di TuoTempo da segnalare a KOS (il dato strutturato li riporta come sono, come la barra di prenotazione):
+«VALUTAZIONE STRUMENTALE E CLINICA DELLA DEGLUTIZIONE» nella branca CARDIOLOGIA (Santo Stefano); «RICETTA» come
+prestazione in VISITE SPECIALISTICHE (Villa Sant'Alessandro).
