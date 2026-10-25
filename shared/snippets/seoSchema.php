@@ -679,10 +679,6 @@ if (!$LINGUE && (int) $res->get('id') === $START) $paginaCorrente = $CANON . '/'
  * .bc-attivo sulla pagina corrente), in un <nav> con etichetta per i lettori di schermo.
  * Link a percorso assoluto (/it/...), come link_tag_scheme = abs. */
 if ($type === 'briciole') {
-    // Una volta sola per pagina: se il template le mostra già, un secondo richiamo (myBreadcrumb o chunk breadcrumb
-    // nel contenuto, rimasto dalle pagine di prima) non le ripete.
-    if ($modx->getPlaceholder('seoSchema.briciole')) return '';
-    $modx->setPlaceholder('seoSchema.briciole', 1);
     $l = $briciole($res);
     if (count($l) < 2) return '';
     $e = function ($s) { return htmlspecialchars((string) $s, ENT_QUOTES, 'UTF-8'); };
