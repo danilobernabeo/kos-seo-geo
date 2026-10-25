@@ -136,7 +136,7 @@
     "str.citta": "Riolo Terme",
     "str.provincia": "RA",
     "str.telefono": "+390546978911",
-    "str.email": "villaazzurra@kosgroup.com,ufficioricoveri@villaazzurra.com",
+    "str.email": "villaazzurra@kosgroup.com",
     "str.lat": "44.2798035",
     "str.lng": "11.7274129",
     "str.orari": "Mo-Su 08:00-18:30",
@@ -677,7 +677,7 @@
    "uri": "it/centri/centro-ambulatoriale-santo-stefano-tolentino",
    "tv": {
     "str.nome": "Centro Ambulatoriale Santo Stefano Tolentino",
-    "str.via": "Viale  XXX Giugno 84",
+    "str.via": "Viale XXX Giugno 84",
     "str.cap": "62029",
     "str.citta": "Tolentino",
     "str.provincia": "MC",

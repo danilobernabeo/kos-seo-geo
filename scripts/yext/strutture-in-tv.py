@@ -125,7 +125,9 @@ def main():
             N('entità segnata come chiusa in Yext: non importata')
             continue
 
-        via = g(y, 'Indirizzo > Riga 1')
+        via = re.sub(r'\s+', ' ', g(y, 'Indirizzo > Riga 1'))
+        if re.match(r'^\d', via):
+            N(f'indirizzo con il civico in testa: «{via}» (forma attesa «Via ..., numero»)')
         for pat, rep in ABBREV:
             nuova = re.sub(pat, rep, via)
             if nuova != via:
@@ -143,6 +145,9 @@ def main():
         email = g(y, 'E-mail').lower()
         if not email:
             N('email assente')
+        elif ',' in email:
+            N(f'più email nel campo principale ({email}): importata solo la prima')
+            email = email.split(',')[0].strip()
 
         giorni = []
         for it, cod in GIORNI:
@@ -151,6 +156,12 @@ def main():
                 N(f'orario di {it.lower()} non interpretabile: «{g(y, "Orari > " + it)}»')
                 f = ''
             giorni.append((cod, f))
+        strani = [f'{cod} {f}' for cod, f in giorni if any(int(t) % 5 and t != '59' for t in re.findall(r'\d{2}:(\d{2})', f))]
+        if strani:
+            N(f'orario insolito ({"; ".join(strani)}): probabile errore di battitura')
+        slug = lambda x: re.sub(r'[^a-z0-9]+', '-', x.lower()).strip('-')
+        if slug(nome) != uri.rsplit('/', 1)[-1]:
+            N(f'nome Yext «{nome}» diverso dall\'indirizzo della scheda (/{uri}): verificare il nome ufficiale (str.nome)')
         orari = righe_orari(giorni)
         if not orari:
             N('orari assenti')

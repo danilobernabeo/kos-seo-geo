@@ -86,12 +86,15 @@ In Yext la via è abbreviata («V.», «V.le», «P.za»): nel dato strutturato 
   - email assente
 - **Clinica Dentale Villalba (100) → /it/centri/clinica-dentale-villalba**
   - email assente
+  - orario insolito (Th 08:09-19:00): probabile errore di battitura
 - **Corte Carcare (KCA00_TU1) → /it/centri/corte-carcare**
   - stesso orario sette giorni su sette (09:00-19:00): da confermare con KOS (apertura, visite o accettazione?)
 - **Corte Orero (KCA00_TU2) → /it/centri/corte-orero**
   - stesso orario sette giorni su sette (08:00-20:00): da confermare con KOS (apertura, visite o accettazione?)
 - **Fidia (FID00_FIS) → /it/centri/fidia**
   - place_id di Google assente (profilo Google non collegato?)
+- **Laboratorio Analisi Gamma (2067293087438676369) → /it/centri/punto-prelievi-gamma**
+  - nome Yext «Laboratorio Analisi Gamma» diverso dall'indirizzo della scheda (/it/centri/punto-prelievi-gamma): verificare il nome ufficiale (str.nome)
 - **Myolab (JES00_JES) → /it/centri/myolab**
   - place_id di Google assente (profilo Google non collegato?)
 - **Ospedale San Pancrazio (KCA00_OSP) → /it/centri/ospedale-san-pancrazio**
@@ -103,9 +106,12 @@ In Yext la via è abbreviata («V.», «V.le», «P.za»): nel dato strutturato 
   - tipologia di struttura assente: tipo predefinito (MedicalClinic)
 - **Punto Prelievi Biemme (VPI00_DLB) → /it/centri/punto-prelievi-biemme**
   - place_id di Google assente (profilo Google non collegato?)
+- **Punto Prelievi Selemar (PDUrbino) → /it/centri/punto-prelievi-selemar**
+  - indirizzo con il civico in testa: «2, Via Bocca Trabaria Sud» (forma attesa «Via ..., numero»)
 - **Villa Adria (KCA00_OVA) → /it/centri/villa-adria**
   - stesso orario sette giorni su sette (08:00-20:00): da confermare con KOS (apertura, visite o accettazione?)
 - **Villa Azzurra (KCA00_OVZ) → /it/centri/villa-azzurra**
+  - più email nel campo principale (villaazzurra@kosgroup.com,ufficioricoveri@villaazzurra.com): importata solo la prima
   - stesso orario sette giorni su sette (08:00-18:30): da confermare con KOS (apertura, visite o accettazione?)
 - **Villa Fastiggi (104) → /it/centri/villa-fastiggi**
   - email assente
@@ -125,10 +131,15 @@ In Yext la via è abbreviata («V.», «V.le», «P.za»): nel dato strutturato 
 - **Villa Sant'Alessandro (KCA00_OSA) → /it/centri/villa-sant-alessandro**
   - stesso orario sette giorni su sette (08:00-20:00): da confermare con KOS (apertura, visite o accettazione?)
 - **Villa dei Pini (KCA00_OVP) → /it/centri/villa-dei-pini-firenze**
+  - nome Yext «Villa dei Pini» diverso dall'indirizzo della scheda (/it/centri/villa-dei-pini-firenze): verificare il nome ufficiale (str.nome)
   - stesso orario sette giorni su sette (00:00-23:59): da confermare con KOS (apertura, visite o accettazione?)
   - place_id di Google assente (profilo Google non collegato?)
+- **Villa dei Pini Civitanova Marche (VPI00_VPS) → /it/centri/villa-dei-pini-civitanova**
+  - nome Yext «Villa dei Pini Civitanova Marche» diverso dall'indirizzo della scheda (/it/centri/villa-dei-pini-civitanova): verificare il nome ufficiale (str.nome)
 - **Villalba (Villalba) → /it/centri/poliambulatorio-villalba**
+  - indirizzo con il civico in testa: «37, Via Jacopo Robusti» (forma attesa «Via ..., numero»)
   - email assente
+  - nome Yext «Villalba» diverso dall'indirizzo della scheda (/it/centri/poliambulatorio-villalba): verificare il nome ufficiale (str.nome)
   - tipologia di struttura assente: tipo predefinito (MedicalClinic)
 - **Ville di Nozzano (KCA00_OV1) → /it/centri/ville-di-nozzano**
   - stesso orario sette giorni su sette (09:00-18:30): da confermare con KOS (apertura, visite o accettazione?)
