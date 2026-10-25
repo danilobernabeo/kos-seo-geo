@@ -610,8 +610,55 @@ $serviziSito = function ($r) use ($modx, $CLS_RES, $tv, $csv, $url, $TV_SERVIZI)
     }
     return [$voci, array_values(array_unique($spec))];
 };
+/* Prenotazione online dal portale TuoTempo (kosgroup.com). La TV <prefisso>.prenotazione_tv (default istanza) contiene
+ * l'areaid TuoTempo della sede: compilata = prenotazione attiva (è la stessa che accende la barra di prenotazione).
+ *   - azione «Prenota online» della struttura: portale filtrato sulla sede;
+ *   - catalogo «Prestazioni prenotabili online» (hasOfferCatalog), diviso per branca, con il link diretto
+ *     sede + prestazione; stesse regole della barra: sede non nascosta, prestazione non nascosta o prenotabile in
+ *     differita, almeno un medico (tabelle kos_strutture, kos_prestazioni, kos_medici_prestazioni).
+ * Ogni link porta kos_referrer = <prefisso>.prenotazione_referrer (default dato-strutturato) per il funnel.
+ * Le tabelle si aggiornano dalla sincronizzazione TuoTempo; il JSON-LD è nella cache della pagina e si rinnova con lei. */
+$PREN_PORTALE = (string) $cfg('prenotazione_portale', '');
+$PREN_TV      = (string) $cfg('prenotazione_tv', 'istanza');
+$PREN_REF     = (string) $cfg('prenotazione_referrer', 'dato-strutturato');
+$prenotazione = function ($r) use ($modx, $tv, $PREN_PORTALE, $PREN_TV, $PREN_REF) {
+    $area = trim((string) $tv($r, $PREN_TV));
+    if ($PREN_PORTALE === '' || $area === '') return [null, null];
+    $link = function (array $q) use ($PREN_PORTALE, $PREN_REF) {
+        return $PREN_PORTALE . (strpos($PREN_PORTALE, '?') === false ? '?' : '&')
+             . http_build_query($q + ['kos_referrer' => $PREN_REF], '', '&', PHP_QUERY_RFC3986);
+    };
+    $catalogo = null;
+    try {
+        $st = $modx->prepare("SELECT 1 FROM kos_strutture WHERE areaid = ? AND is_hidden = 0 LIMIT 1");
+        $st->execute([$area]);
+        if (!$st->fetchColumn()) return [null, null];   // sede nascosta: la barra non la mostra, il dato neppure
+        $st = $modx->prepare("SELECT p.activity_id, p.title, p.typology FROM kos_prestazioni p
+                              WHERE p.areaid = ? AND (p.is_hidden = 0 OR p.mop_bookability = 2)
+                                AND EXISTS (SELECT 1 FROM kos_medici_prestazioni mp WHERE mp.activity_id = p.activity_id AND mp.areaid = p.areaid)
+                              ORDER BY p.typology, p.title");
+        $st->execute([$area]);
+        $branche = [];
+        foreach ($st->fetchAll(PDO::FETCH_ASSOC) as $p) {
+            $branche[(string) $p['typology']][] = [
+                '@type'       => 'Offer',
+                'itemOffered' => ['@type' => 'Service', 'name' => trim((string) $p['title']), 'category' => (string) $p['typology']],
+                'url'         => $link(['activityid' => $p['activity_id'], 'areaid' => $area]),
+            ];
+        }
+        if ($branche) {
+            $catalogo = ['@type' => 'OfferCatalog', 'name' => 'Prestazioni prenotabili online', 'itemListElement' => []];
+            foreach ($branche as $b => $offerte) {
+                $catalogo['itemListElement'][] = ['@type' => 'OfferCatalog', 'name' => $b, 'itemListElement' => $offerte];
+            }
+        }
+    } catch (\Throwable $e) {
+        // tabelle della prenotazione assenti (es. anniazzurri.it): solo il link della sede
+    }
+    return [$link(['areaid' => $area]), $catalogo];
+};
 $nodoStruttura = function ($r, $extraServizi = []) use (
-    $url, $tv, $servizi, $serviziSito, $righe, $testo, $csv, $pulisci, $orari, $orariSpeciali, $immagineStruttura,
+    $url, $tv, $servizi, $serviziSito, $prenotazione, $righe, $testo, $csv, $pulisci, $orari, $orariSpeciali, $immagineStruttura,
     $TIPI_STRUTTURA, $SPECIALITA, $FRAG_STR, $ORG_ID
 ) {
     $pagina = $url($r->get('id'));
@@ -632,7 +679,9 @@ $nodoStruttura = function ($r, $extraServizi = []) use (
     $place = $tv($r, 'str.place_id');
     $nome = $tv($r, 'str.nome') ?: $r->get('pagetitle');
     $marchio = $tv($r, 'str.marchio');
-    $prenota = (string) $tv($r, 'str.prenotazione');
+    // Prenotazione: portale TuoTempo della sede se attiva (TV istanza), altrimenti il link di str.prenotazione (Yext)
+    [$prenotaSede, $catalogo] = $prenotazione($r);
+    $prenota = $prenotaSede ?: (string) $tv($r, 'str.prenotazione');
     // Servizi della scheda (str.servizi) più quelli della landing, senza doppioni. Ogni voce va nella proprietà che
     // schema.org prevede per il tipo: availableService (MedicalClinic, Hospital), availableTest (DiagnosticLab);
     // le condizioni trattate e ciò che il tipo non ammette vanno in knowsAbout (valido per ogni organizzazione).
@@ -673,6 +722,7 @@ $nodoStruttura = function ($r, $extraServizi = []) use (
         'specialOpeningHoursSpecification' => $orariSpeciali($tv($r, 'str.orari_speciali')),
         'medicalSpecialty' => array_values(array_intersect(array_unique(array_merge($csv($tv($r, 'str.specialita')), $specSito)), $SPECIALITA)),
         'brand'       => $marchio ? ['@type' => 'Brand', 'name' => $marchio] : null,
+        'hasOfferCatalog'  => $catalogo,
         'availableService' => $offerti,
         'availableTest'    => $test,
         'knowsAbout'       => $sa,

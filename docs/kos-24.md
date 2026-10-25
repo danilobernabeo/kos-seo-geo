@@ -226,3 +226,18 @@ Validatori sui servizi dal sito (25/10, stage): Centro Cardinal Ferrari (16 tera
 Civitanova (Hospital, 21 prestazioni ed esami con URL, 13 specialità, prenotazione) e Casa Cima (3 terapie in
 `availableService`, 3 condizioni trattate in `knowsAbout`, con URL) con 0 errori e 0 avvisi su
 schema.org; «Attività locali» valida nel Rich Results Test, con il solo campo facoltativo `priceRange` mancante.
+
+### Prenotazione online da TuoTempo (25/10 sera)
+
+Dove la scheda ha la TV `istanza` compilata (areaid TuoTempo della sede: è la stessa che accende la barra di
+prenotazione), il nodo struttura ha:
+- l'azione «Prenota online» verso il portale TuoTempo filtrato sulla sede (al posto della pagina generica
+  `/it/prenota-online` che arriva da Yext; senza `istanza` resta il link di Yext);
+- `hasOfferCatalog` «Prestazioni prenotabili online», diviso per branca (sotto-cataloghi senza link: il portale non si
+  apre sulla sola branca), con una `Offer` per prestazione e il link diretto sede + prestazione. Stesse regole della
+  barra: sede non nascosta, prestazione non nascosta o prenotabile in differita, almeno un medico (tabelle
+  `kos_strutture`, `kos_prestazioni`, `kos_medici_prestazioni`). Caso più lungo indicato da Danilo: Risonanza
+  magnetica con 54 prestazioni.
+Tutti i link portano `kos_referrer=dato-strutturato`, per distinguere nel funnel di prenotazione le visite arrivate dal
+dato strutturato (assistenti AI, motori). Impostazioni `kos.prenotazione_portale`, `kos.prenotazione_referrer`,
+`kos.prenotazione_tv` (default `istanza`). Il catalogo si aggiorna con la cache della pagina.
