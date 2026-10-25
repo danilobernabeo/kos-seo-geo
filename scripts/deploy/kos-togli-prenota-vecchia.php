@@ -1,7 +1,8 @@
 <?php
 /**
- * KOS — toglie dal contenuto delle pagine la vecchia barra di prenotazione online. Decisione di Danilo del 25/10:
- * via ovunque; dove si attiva la prenotazione si inserisce la barra nuova (barraPrenotazione*).
+ * KOS — toglie la vecchia barra di prenotazione online dal contenuto delle SCHEDE STRUTTURA (template
+ * kos.tpl_struttura, default strutture e strutture-VDP). Decisione di Danilo del 25/10: pagine dei servizi e landing
+ * restano come sono; dove si attiva la prenotazione si inserisce la barra nuova (barraPrenotazione*).
  *
  * Richiami tolti (solo questi, nel campo content delle risorse):
  *   [[*istanza:notempty=`[[$prenotaOnline]]`]]   e le varianti con i chunk prenotaOnline-car, prenotaOnlineTelevisita
@@ -50,9 +51,12 @@ $RE = [
 ];
 $tvIst = $db->query("SELECT id FROM {$p}site_tmplvars WHERE name = 'istanza'")->fetchColumn();
 $ist = $db->prepare("SELECT value FROM {$p}site_tmplvar_contentvalues WHERE tmplvarid = ? AND contentid = ?");
-$q = $db->query("SELECT c.id, c.pagetitle, c.uri, c.published, c.content, t.templatename FROM {$p}site_content c
-                 LEFT JOIN {$p}site_templates t ON t.id = c.template WHERE c.deleted = 0 AND c.content LIKE '%prenotaOnline%'
-                 ORDER BY t.templatename, c.uri");
+// Solo le schede struttura (decisione del 25/10): pagine dei servizi e landing restano come sono.
+$tpl = array_filter(array_map('trim', explode(',', (string) ($modx->getOption('kos.tpl_struttura') ?: 'strutture,strutture-VDP'))));
+$q = $db->prepare("SELECT c.id, c.pagetitle, c.uri, c.published, c.content, t.templatename FROM {$p}site_content c
+                   JOIN {$p}site_templates t ON t.id = c.template WHERE c.deleted = 0 AND c.content LIKE '%prenotaOnline%'
+                   AND t.templatename IN (" . implode(',', array_fill(0, count($tpl), '?')) . ") ORDER BY t.templatename, c.uri");
+$q->execute(array_values($tpl));
 $modifiche = [];
 echo ($scrivi ? "== APPLICAZIONE" : "== PROVA (nessuna scrittura; aggiungere --scrivi)") . " — vecchia barra di prenotazione tolta dal contenuto\n";
 while ($r = $q->fetch(PDO::FETCH_ASSOC)) {
