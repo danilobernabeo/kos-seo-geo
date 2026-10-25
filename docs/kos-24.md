@@ -98,3 +98,12 @@ Non entrano: le due entità di Poliambulatorio Villalba sulla stessa scheda e Vi
 sette giorni su sette, 9 email assenti, 4 place_id mancanti, il marchio «0» di Casa Varazze, 34 indirizzi abbreviati («V.», «V.le»)
 che lo script scrive per esteso. L'export conferma anche che i profili Google sono collegati all'organizzazione Google
 di Yext («GMB Organization»): al passaggio a RetailTune la proprietà dei profili va trasferita a un account di KOS.
+
+### Prova sullo stage (25/10)
+
+TV scritte su 57 schede (808 valori). Controllo di tutte le 64 pagine dei template delle schede: 57 schede con nodo
+completo (indirizzo, telefono, coordinate, orari). Senza dati Yext: Poliambulatorio Villalba (due entità Yext),
+Villa Margherita Vicenza riabilitazione e psichiatria (l'entità Yext punta a `/it/villa-margherita`), Poliambulatorio
+Parco di Veio (l'entità punta ad anniazzurri.it), Santo Stefano Casorate e Santo Stefano Mede (nessuna entità Yext).
+Correzione emersa: il nodo esce solo se la scheda ha l'indirizzo (`str.via`), così le schede senza dati e le pagine di
+servizio con lo stesso template (Ritiro referti) restano una semplice `WebPage`.

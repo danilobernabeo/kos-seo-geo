@@ -499,7 +499,8 @@ $riferimenti = function ($csv, $frammento) use ($url) {
 };
 
 /* --- nodo struttura (#localbusiness) ----------------------------------------
- * Dati dalle TV str.* della scheda; nessun dato inventato: un campo vuoto non esce.
+ * Dati dalle TV str.* della scheda; nessun dato inventato: un campo vuoto non esce, e senza indirizzo (str.via)
+ * il nodo non esce affatto.
  * Tipi e specialità solo da elenchi noti di schema.org (un valore sconosciuto si scarta:
  * l'errore di Yext era usare le specialità come tipo).
  */
@@ -587,6 +588,9 @@ $nodoStruttura = function ($r, $extraServizi = []) use (
 ) {
     $pagina = $url($r->get('id'));
     if ($pagina === '') return null;
+    // Senza indirizzo non è un'attività locale descrivibile (Google richiede l'indirizzo): niente nodo, la pagina
+    // resta una WebPage. Vale anche per le pagine di servizio con il template delle schede (es. Ritiro referti).
+    if ($tv($r, 'str.via') === '' || $tv($r, 'str.via') === null) return null;
     $tipi = array_values(array_intersect($csv($tv($r, 'str.tipo')), $TIPI_STRUTTURA)) ?: ['MedicalClinic'];
     $via = $tv($r, 'str.via');
     $lat = str_replace(',', '.', (string) $tv($r, 'str.lat'));
