@@ -241,3 +241,7 @@ prenotazione), il nodo struttura ha:
 Tutti i link portano `kos_referrer=dato-strutturato`, per distinguere nel funnel di prenotazione le visite arrivate dal
 dato strutturato (assistenti AI, motori). Impostazioni `kos.prenotazione_portale`, `kos.prenotazione_referrer`,
 `kos.prenotazione_tv` (default `istanza`). Il catalogo si aggiorna con la cache della pagina.
+
+Validatori (25/10 sera): Villa dei Pini Civitanova con prenotazione attiva, 30 branche e 273 prestazioni prenotabili nel
+catalogo, 0 errori e 0 avvisi; link sede + prestazione senza medico verificato da Danilo (TuoTempo si apre sulla
+prestazione). Deciso di tenere il catalogo completo (Villa dei Pini è il caso più ampio, circa 60-70 KB di JSON-LD).
