@@ -17,12 +17,18 @@
  *   - presente solo sul servizio  → il servizio si aggiunge alla scheda, nella TV in cui quella pagina compare più
  *     spesso sulle altre schede, tra quelle del template della scheda (es. gli ambulatori sono quasi sempre in
  *     mapAreeRiabilitazione); se non compare mai, TV predefinita per sezione. Se la TV non è collegata al template della scheda, l'aggiunta si segnala e si salta.
+ *   --escludi=villa-rosa-diagnostica,centro-cardinal-ferrari>disturbi-della-personalita
+ *     salta una scheda intera (ultimo pezzo del suo indirizzo) o una sola coppia scheda>servizio: per le associazioni
+ *     sospette, da far verificare a KOS prima di completarle.
  * Solo schede e servizi pubblicati. I valori restano liste di id separati da virgola, in coda a quelli esistenti.
  */
 declare(strict_types=1);
 if (PHP_SAPI !== 'cli') { fwrite(STDERR, "Solo da riga di comando.\n"); exit(1); }
 $webroot = rtrim($argv[1] ?? '', '/');
 $scrivi  = in_array('--scrivi', $argv, true);
+$escludi = [];
+foreach ($argv as $a) if (str_starts_with($a, '--escludi=')) $escludi = array_filter(array_map('trim', explode(',', substr($a, 10))));
+$ultimo = fn(string $uri) => basename(rtrim($uri, '/'));
 if ($webroot === '' || !is_file("$webroot/config.core.php")) { fwrite(STDERR, "Uso: php kos-mappatura-inversa.php /www [--scrivi]\n"); exit(1); }
 require "$webroot/config.core.php";
 require MODX_CORE_PATH . 'vendor/autoload.php';
@@ -94,15 +100,21 @@ $aggServizio = [];   // pid => [sid...]
 $aggScheda = [];     // sid => [tv => [pid...]]
 $csv = [['Struttura', 'Scheda', 'Servizio', 'Pagina del servizio', 'Aggiunta', 'Dove']];
 $saltate = [];
+$escluse = 0;
+$saltaCoppia = function (array $s, array $x) use ($escludi, $ultimo, &$escluse): bool {
+    $a = $ultimo($s['uri']);
+    if (in_array($a, $escludi, true) || in_array($a . '>' . $ultimo($x['uri']), $escludi, true)) { $escluse++; return true; }
+    return false;
+};
 foreach ($schede as $sid => $s) {
     foreach (array_keys($A[$sid] ?? []) as $pid) {
-        if (isset($B[$sid][$pid])) continue;
+        if (isset($B[$sid][$pid]) || $saltaCoppia($s, $servizi[$pid])) continue;
         $aggServizio[$pid][] = $sid;
         $csv[] = [$s['pagetitle'], '/' . $s['uri'], $servizi[$pid]['pagetitle'], '/' . $servizi[$pid]['uri'],
                   'struttura aggiunta alla pagina del servizio', 'mapServiziStrutture'];
     }
     foreach (array_keys($B[$sid] ?? []) as $pid) {
-        if (isset($A[$sid][$pid])) continue;
+        if (isset($A[$sid][$pid]) || $saltaCoppia($s, $servizi[$pid])) continue;
         // TV più usata per quella pagina tra quelle collegate al template della scheda, altrimenti la predefinita
         $cand = array_filter($uso[$pid] ?? [], fn($n, $tv) => !empty($tvTpl[$tv][(int) $s['template']]), ARRAY_FILTER_USE_BOTH);
         arsort($cand);
@@ -126,6 +138,7 @@ foreach ($aggScheda as $sid => $x) foreach ($x as $tv => $l) {
     echo "    {$schede[$sid]['pagetitle']} — $tv: + " . implode(', ', array_map(fn($pid) => $servizi[$pid]['pagetitle'], $l)) . "\n";
 }
 foreach ($saltate as $s) echo "  ! $s\n";
+if ($escludi) echo "  escluse su richiesta (--escludi): $escluse associazioni\n";
 
 $stamp = date('Ymd-His');
 $home = rtrim((string) (getenv('HOME') ?: '.'), '/');
