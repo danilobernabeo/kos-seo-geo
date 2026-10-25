@@ -269,7 +269,7 @@
     {
       "name": "srv.schema",
       "caption": "Tipo schema.org del servizio",
-      "description": "«Tipo|Specialità»: Tipo = MedicalTherapy (terapia), MedicalTest (esame), MedicalProcedure (prestazione, visita specialistica), MedicalCondition (condizione trattata) o «-» per non dichiararlo; Specialità = valori di MedicalSpecialty separati da virgola (es. MedicalTherapy|Physiotherapy,Neurologic). Vuoto = dal ramo del sito.",
+      "description": "«Tipo|Specialità», es. MedicalTherapy|Physiotherapy,Neurologic. Tipo: MedicalTherapy, MedicalTest, MedicalProcedure, MedicalCondition o «-» (non dichiarare). Vuoto = dal ramo del sito.",
       "type": "text",
       "category": "Scheda struttura (dato strutturato)",
       "templates": [
