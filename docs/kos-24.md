@@ -223,5 +223,6 @@ associazioni; l'import da Yext di specialità e servizi è disattivato (opzione 
 confermate da KOS aggiornano il dato strutturato da sole.
 
 Validatori sui servizi dal sito (25/10, stage): Centro Cardinal Ferrari (16 terapie con URL) e Villa dei Pini
-Civitanova (Hospital, 21 prestazioni ed esami con URL, 13 specialità, prenotazione) con 0 errori e 0 avvisi su
+Civitanova (Hospital, 21 prestazioni ed esami con URL, 13 specialità, prenotazione) e Casa Cima (3 terapie in
+`availableService`, 3 condizioni trattate in `knowsAbout`, con URL) con 0 errori e 0 avvisi su
 schema.org; «Attività locali» valida nel Rich Results Test, con il solo campo facoltativo `priceRange` mancante.
