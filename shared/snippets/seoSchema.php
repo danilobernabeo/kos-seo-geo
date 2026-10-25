@@ -592,6 +592,12 @@ $nodoStruttura = function ($r, $extraServizi = []) use (
     // resta una WebPage. Vale anche per le pagine di servizio con il template delle schede (es. Ritiro referti).
     if ($tv($r, 'str.via') === '' || $tv($r, 'str.via') === null) return null;
     $tipi = array_values(array_intersect($csv($tv($r, 'str.tipo')), $TIPI_STRUTTURA)) ?: ['MedicalClinic'];
+    // Indirizzo, coordinate, orari e mappa sono proprietà dei luoghi e delle attività locali: un tipo che non lo è
+    // (DiagnosticLab e MedicalOrganization sono solo organizzazioni) si affianca a MedicalBusiness, altrimenti il
+    // validatore li segnala come proprietà sconosciute e Google non riconosce l'attività locale.
+    if (!array_intersect($tipi, ['MedicalClinic', 'Hospital', 'Dentist', 'Physiotherapy', 'MedicalBusiness', 'LocalBusiness', 'Pharmacy', 'Optician'])) {
+        $tipi[] = 'MedicalBusiness';
+    }
     $via = $tv($r, 'str.via');
     $lat = str_replace(',', '.', (string) $tv($r, 'str.lat'));
     $lng = str_replace(',', '.', (string) $tv($r, 'str.lng'));

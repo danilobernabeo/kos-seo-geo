@@ -107,3 +107,8 @@ Villa Margherita Vicenza riabilitazione e psichiatria (l'entità Yext punta a `/
 Parco di Veio (l'entità punta ad anniazzurri.it), Santo Stefano Casorate e Santo Stefano Mede (nessuna entità Yext).
 Correzione emersa: il nodo esce solo se la scheda ha l'indirizzo (`str.via`), così le schede senza dati e le pagine di
 servizio con lo stesso template (Ritiro referti) restano una semplice `WebPage`.
+
+Validatori (25/10): Centro Ambulatoriale Santo Stefano Jesi 0 errori e 0 avvisi su schema.org, «Attività locali» valida nel
+Rich Results Test. Punto Prelievi Gamma: 11 avvisi, perché `DiagnosticLab` è solo un'organizzazione e non ammette
+indirizzo geografico, orari e mappa. Corretto nella libreria: un tipo che non è un'attività locale si affianca a
+`MedicalBusiness` (`["DiagnosticLab", "MedicalBusiness"]`).
