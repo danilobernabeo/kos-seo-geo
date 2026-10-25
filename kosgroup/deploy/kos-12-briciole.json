@@ -1,0 +1,12 @@
+{
+  "nome": "KOS-12 correzione: briciole una volta sola per pagina (libreria comune kosSchema; le parti della voce 24 restano spente senza le impostazioni kos.tpl_struttura e kos.struttura_attiva)",
+  "elements": [
+    {
+      "type": "snippet",
+      "name": "kosSchema",
+      "file": "shared/snippets/seoSchema.php",
+      "properties": {"prefisso": "kos"},
+      "description": "Dato strutturato e briciole (libreria comune seoSchema, prefisso kos)"
+    }
+  ]
+}
