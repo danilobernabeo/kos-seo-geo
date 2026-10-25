@@ -19,7 +19,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
-    "str.sameAs": "https://www.facebook.com/CasaVillaMauraNeomesia"
+    "str.sameAs": "https://www.facebook.com/CasaVillaMauraNeomesia",
+    "str.prenotazione": ""
    }
   },
   {
@@ -40,7 +41,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Myolab",
-    "str.sameAs": "https://www.facebook.com/Myolab"
+    "str.sameAs": "https://www.facebook.com/Myolab",
+    "str.prenotazione": "https://myolab.it/prenota-online"
    }
   },
   {
@@ -61,7 +63,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/CentroAmbulatorialeJesiSantoStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/CentroAmbulatorialeJesiSantoStefanoRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -82,7 +85,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/CentroAmbSBenedettoSStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/CentroAmbSBenedettoSStefanoRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -103,7 +107,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
-    "str.sameAs": "https://www.facebook.com/CasaMiogliaNeomesia"
+    "str.sameAs": "https://www.facebook.com/CasaMiogliaNeomesia",
+    "str.prenotazione": ""
    }
   },
   {
@@ -124,7 +129,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/VillaAdriaSantoStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/VillaAdriaSantoStefanoRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -145,7 +151,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
-    "str.sameAs": "https://www.facebook.com/VillaAzzurraNeomesia"
+    "str.sameAs": "https://www.facebook.com/VillaAzzurraNeomesia",
+    "str.prenotazione": ""
    }
   },
   {
@@ -166,7 +173,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
-    "str.sameAs": "https://www.facebook.com/VillaJolandaNeomesia"
+    "str.sameAs": "https://www.facebook.com/VillaJolandaNeomesia",
+    "str.prenotazione": ""
    }
   },
   {
@@ -187,7 +195,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
-    "str.sameAs": "https://www.facebook.com/VillaRosaNeomesia"
+    "str.sameAs": "https://www.facebook.com/VillaRosaNeomesia",
+    "str.prenotazione": ""
    }
   },
   {
@@ -208,7 +217,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
-    "str.sameAs": "https://www.facebook.com/VillediNozzanoNeomesia"
+    "str.sameAs": "https://www.facebook.com/VillediNozzanoNeomesia",
+    "str.prenotazione": ""
    }
   },
   {
@@ -229,7 +239,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/CentroCardinalFerrariSantoStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/CentroCardinalFerrariSantoStefanoRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -250,7 +261,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/CARPesaroSantoStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/CARPesaroSantoStefanoRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -271,7 +283,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/CARPortoPotenzaPicenaSantoStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/CARPortoPotenzaPicenaSantoStefanoRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -292,7 +305,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": ""
+    "str.sameAs": "",
+    "str.prenotazione": ""
    }
   },
   {
@@ -313,7 +327,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "",
     "str.marchio": "Polo Diagnostico",
-    "str.sameAs": "https://www.facebook.com/PoloDiagnosticoIstitutoS.Stefano"
+    "str.sameAs": "https://www.facebook.com/PoloDiagnosticoIstitutoS.Stefano",
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
    }
   },
   {
@@ -334,7 +349,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/IstitutoRiabilitazioneSStefanoPortoPotenzaPicena"
+    "str.sameAs": "https://www.facebook.com/IstitutoRiabilitazioneSStefanoPortoPotenzaPicena",
+    "str.prenotazione": ""
    }
   },
   {
@@ -355,7 +371,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
-    "str.sameAs": "https://www.facebook.com/CasaCimaNeomesiaMilano"
+    "str.sameAs": "https://www.facebook.com/CasaCimaNeomesiaMilano",
+    "str.prenotazione": ""
    }
   },
   {
@@ -376,7 +393,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
-    "str.sameAs": "https://www.facebook.com/CasaCimaNeomesiaPero"
+    "str.sameAs": "https://www.facebook.com/CasaCimaNeomesiaPero",
+    "str.prenotazione": ""
    }
   },
   {
@@ -397,7 +415,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
-    "str.sameAs": "https://www.facebook.com/VillaSantAlessandroNeomesia"
+    "str.sameAs": "https://www.facebook.com/VillaSantAlessandroNeomesia",
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
    }
   },
   {
@@ -418,7 +437,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/CentroAmbulatorialeAscoliPiceno"
+    "str.sameAs": "https://www.facebook.com/CentroAmbulatorialeAscoliPiceno",
+    "str.prenotazione": ""
    }
   },
   {
@@ -439,7 +459,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/CARFabrianoSantoStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/CARFabrianoSantoStefanoRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -460,7 +481,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/CagliSantoStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/CagliSantoStefanoRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -481,7 +503,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
-    "str.sameAs": "https://www.facebook.com/CasaSampeyreNeomesia"
+    "str.sameAs": "https://www.facebook.com/CasaSampeyreNeomesia",
+    "str.prenotazione": ""
    }
   },
   {
@@ -502,7 +525,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Psychiatric",
     "str.marchio": "",
-    "str.sameAs": "https://www.facebook.com/CasaVarazzeNeomesia"
+    "str.sameAs": "https://www.facebook.com/CasaVarazzeNeomesia",
+    "str.prenotazione": ""
    }
   },
   {
@@ -523,7 +547,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/CARFilottranoSantoStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/CARFilottranoSantoStefanoRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -544,7 +569,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/VillaSanGiuseppeSantoStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/VillaSanGiuseppeSantoStefanoRiabilitazione",
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
    }
   },
   {
@@ -565,7 +591,8 @@
     "str.tipo": "Hospital",
     "str.specialita": "",
     "str.marchio": "Villa dei Pini",
-    "str.sameAs": "https://www.facebook.com/CCVilladeiPini"
+    "str.sameAs": "https://www.facebook.com/CCVilladeiPini",
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
    }
   },
   {
@@ -586,7 +613,8 @@
     "str.tipo": "DiagnosticLab",
     "str.specialita": "LaboratoryScience",
     "str.marchio": "Polo Diagnostico",
-    "str.sameAs": "https://www.facebook.com/PoloDiagnosticoBiemmeVillalba"
+    "str.sameAs": "https://www.facebook.com/PoloDiagnosticoBiemmeVillalba",
+    "str.prenotazione": ""
    }
   },
   {
@@ -607,7 +635,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/CentroAmbCivitanovaMarcheSStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/CentroAmbCivitanovaMarcheSStefanoRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -628,7 +657,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Fidia",
-    "str.sameAs": "https://www.facebook.com/FidiaRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/FidiaRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -649,7 +679,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/CARCamerinoSantoStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/CARCamerinoSantoStefanoRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -670,7 +701,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/CentroAmbSanSeverinoSantoStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/CentroAmbSanSeverinoSantoStefanoRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -691,7 +723,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/CARTolentinoSantoStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/CARTolentinoSantoStefanoRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -712,7 +745,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/CentroResidenzialeSantoStefanoFoligno"
+    "str.sameAs": "https://www.facebook.com/CentroResidenzialeSantoStefanoFoligno",
+    "str.prenotazione": ""
    }
   },
   {
@@ -733,7 +767,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/CentrodiMacerataFeltriaSantoStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/CentrodiMacerataFeltriaSantoStefanoRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -754,7 +789,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
-    "str.sameAs": "https://www.facebook.com/CorteCarcareNeomesia"
+    "str.sameAs": "https://www.facebook.com/CorteCarcareNeomesia",
+    "str.prenotazione": ""
    }
   },
   {
@@ -775,7 +811,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
-    "str.sameAs": "https://www.facebook.com/CasaSanremoNeomesia"
+    "str.sameAs": "https://www.facebook.com/CasaSanremoNeomesia",
+    "str.prenotazione": ""
    }
   },
   {
@@ -796,7 +833,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
-    "str.sameAs": "https://www.facebook.com/CorteOreroNeomesia"
+    "str.sameAs": "https://www.facebook.com/CorteOreroNeomesia",
+    "str.prenotazione": ""
    }
   },
   {
@@ -817,7 +855,8 @@
     "str.tipo": "DiagnosticLab",
     "str.specialita": "LaboratoryScience",
     "str.marchio": "Polo Diagnostico",
-    "str.sameAs": "https://www.facebook.com/PoloDiagnosticoSalusVillalba"
+    "str.sameAs": "https://www.facebook.com/PoloDiagnosticoSalusVillalba",
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
    }
   },
   {
@@ -838,7 +877,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/VillaMargheritaBeneventoSantoStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/VillaMargheritaBeneventoSantoStefanoRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -859,7 +899,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
-    "str.sameAs": ""
+    "str.sameAs": "",
+    "str.prenotazione": ""
    }
   },
   {
@@ -880,7 +921,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/CARMatelicaSantoStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/CARMatelicaSantoStefanoRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -901,7 +943,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
-    "str.sameAs": "https://www.facebook.com/CARMacerataSantoStefanoRiabilitazione"
+    "str.sameAs": "https://www.facebook.com/CARMacerataSantoStefanoRiabilitazione",
+    "str.prenotazione": ""
    }
   },
   {
@@ -922,7 +965,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Psychiatric",
     "str.marchio": "",
-    "str.sameAs": "https://www.facebook.com/CasadiCuraVillaArmoniaNuova"
+    "str.sameAs": "https://www.facebook.com/CasadiCuraVillaArmoniaNuova",
+    "str.prenotazione": ""
    }
   },
   {
@@ -943,7 +987,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "",
-    "str.sameAs": ""
+    "str.sameAs": "",
+    "str.prenotazione": ""
    }
   },
   {
@@ -964,7 +1009,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "",
     "str.marchio": "",
-    "str.sameAs": "https://www.facebook.com/VillaPinetaPoliambulatorioModena"
+    "str.sameAs": "https://www.facebook.com/VillaPinetaPoliambulatorioModena",
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
    }
   },
   {
@@ -985,7 +1031,8 @@
     "str.tipo": "DiagnosticLab",
     "str.specialita": "LaboratoryScience",
     "str.marchio": "",
-    "str.sameAs": "https://www.facebook.com/PoloDiagnosticoGamma"
+    "str.sameAs": "https://www.facebook.com/PoloDiagnosticoGamma",
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
    }
   },
   {
@@ -1006,7 +1053,8 @@
     "str.tipo": "DiagnosticLab",
     "str.specialita": "LaboratoryScience",
     "str.marchio": "",
-    "str.sameAs": ""
+    "str.sameAs": "",
+    "str.prenotazione": ""
    }
   },
   {
@@ -1027,7 +1075,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "",
-    "str.sameAs": ""
+    "str.sameAs": "",
+    "str.prenotazione": ""
    }
   },
   {
@@ -1048,7 +1097,8 @@
     "str.tipo": "Dentist",
     "str.specialita": "Dentistry",
     "str.marchio": "",
-    "str.sameAs": ""
+    "str.sameAs": "",
+    "str.prenotazione": ""
    }
   },
   {
@@ -1069,7 +1119,8 @@
     "str.tipo": "Dentist",
     "str.specialita": "Dentistry",
     "str.marchio": "",
-    "str.sameAs": ""
+    "str.sameAs": "",
+    "str.prenotazione": ""
    }
   },
   {
@@ -1090,7 +1141,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "",
     "str.marchio": "",
-    "str.sameAs": ""
+    "str.sameAs": "",
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
    }
   },
   {
@@ -1111,7 +1163,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "",
     "str.marchio": "",
-    "str.sameAs": ""
+    "str.sameAs": "",
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
    }
   },
   {
@@ -1132,7 +1185,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "Physiotherapy",
     "str.marchio": "",
-    "str.sameAs": ""
+    "str.sameAs": "",
+    "str.prenotazione": ""
    }
   },
   {
@@ -1153,7 +1207,8 @@
     "str.tipo": "MedicalClinic",
     "str.specialita": "",
     "str.marchio": "",
-    "str.sameAs": ""
+    "str.sameAs": "",
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
    }
   },
   {
@@ -1174,7 +1229,8 @@
     "str.tipo": "DiagnosticLab",
     "str.specialita": "LaboratoryScience",
     "str.marchio": "",
-    "str.sameAs": ""
+    "str.sameAs": "",
+    "str.prenotazione": ""
    }
   },
   {
@@ -1195,7 +1251,8 @@
     "str.tipo": "",
     "str.specialita": "",
     "str.marchio": "Polo Diagnostico",
-    "str.sameAs": ""
+    "str.sameAs": "",
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
    }
   }
  ]

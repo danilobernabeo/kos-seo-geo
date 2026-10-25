@@ -53,6 +53,7 @@ Nomi uguali sui due siti, così la stessa libreria serve anche le residenze di a
 | `str.specialita` | valori di `MedicalSpecialty` | `medicalSpecialty` |
 | `str.marchio` | Santo Stefano Riabilitazione, Neomesia... | `brand` |
 | `str.sameAs` | profili ufficiali, uno per riga (mai directory di terzi) | `sameAs` |
+| `str.prenotazione` | URL https della prenotazione online della struttura | `potentialAction` → `ReserveAction` |
 | `lnd.struttura` | id della scheda struttura (landing) | `about` |
 | `lnd.servizi` | `Tipo\|Nome\|Descrizione` per riga (landing) | `availableService` |
 
@@ -75,8 +76,8 @@ Vengono sostituiti dalla libreria. I servizi elencati sono già trascritti nella
 
 ## Pacchetti e rilascio
 
-1. **Preparazione** (`kosgroup/deploy/kos-24.json`, nessun effetto visibile): impostazioni dei template, 18 TV
-   nuove (16 `str.*`, 2 `lnd.*`), libreria aggiornata, interruttore spento. Sullo stage subito; in produzione con gli head o prima
+1. **Preparazione** (`kosgroup/deploy/kos-24.json`, nessun effetto visibile): impostazioni dei template, 19 TV
+   nuove (17 `str.*`, 2 `lnd.*`), libreria aggiornata, interruttore spento. Sullo stage subito; in produzione con gli head o prima
    dell'import.
 2. **Dati:** import delle TV `str.*` dall'export Yext corretto, dopo il confronto con i profili Google; TV delle
    landing con `scripts/deploy/imposta-tv.php /www kosgroup/dati/voce-24/landing.json` (prova, poi `--scrivi`;
@@ -112,3 +113,10 @@ Validatori (25/10): Centro Ambulatoriale Santo Stefano Jesi 0 errori e 0 avvisi 
 Rich Results Test. Punto Prelievi Gamma: 11 avvisi, perché `DiagnosticLab` è solo un'organizzazione e non ammette
 indirizzo geografico, orari e mappa. Corretto nella libreria: un tipo che non è un'attività locale si affianca a
 `MedicalBusiness` (`["DiagnosticLab", "MedicalBusiness"]`).
+
+**Miglioria decisa il 25/10 (dentro la voce 24): prenotazione online.** TV `str.prenotazione`, importata dall'«URL di
+prenotazione» di Yext (12 schede su 16; esclusi i link non https, come quello della Clinica Dentale Porto Potenza
+Picena verso il vecchio dominio `clinicadentale.sstefano.it`). Nel nodo diventa `potentialAction` → `ReserveAction`:
+Google non lo usa per i risultati avanzati, ma è un'indicazione utile agli assistenti AI su dove si prenota. Quasi
+tutte le schede rimandano alla pagina generica `/it/prenota-online`: meglio il link di prenotazione della singola
+struttura (TuoTempo), da chiedere a KOS.

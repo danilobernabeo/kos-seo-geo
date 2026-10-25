@@ -80,10 +80,12 @@ In Yext la via è abbreviata («V.», «V.le», «P.za»): nel dato strutturato 
 - **Centro Medico Riabilitativo (108) → /it/centri/centro-medico-riabilitativo**
   - seconda riga dell'indirizzo non importata: «Via Amilcare Pizzi»
   - email assente
+  - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
 - **Centro Venerabile Marcucci (106) → /it/centri/centro-venerabile-marcucci**
   - email assente
 - **Clinica Dentale Porto Potenza Picena (101) → /it/centri/clinica-dentale-porto-potenza-picena**
   - email assente
+  - URL di prenotazione non sicuro o di un dominio storico: «http://clinicadentale.sstefano.it/richiesta-di-prenotazione» (non importato)
 - **Clinica Dentale Villalba (100) → /it/centri/clinica-dentale-villalba**
   - email assente
   - orario insolito (Th 08:09-19:00): probabile errore di battitura
@@ -95,17 +97,28 @@ In Yext la via è abbreviata («V.», «V.le», «P.za»): nel dato strutturato 
   - place_id di Google assente (profilo Google non collegato?)
 - **Laboratorio Analisi Gamma (2067293087438676369) → /it/centri/punto-prelievi-gamma**
   - nome Yext «Laboratorio Analisi Gamma» diverso dall'indirizzo della scheda (/it/centri/punto-prelievi-gamma): verificare il nome ufficiale (str.nome)
+  - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
 - **Myolab (JES00_JES) → /it/centri/myolab**
   - place_id di Google assente (profilo Google non collegato?)
 - **Ospedale San Pancrazio (KCA00_OSP) → /it/centri/ospedale-san-pancrazio**
   - stesso orario sette giorni su sette (08:00-20:30): da confermare con KOS (apertura, visite o accettazione?)
 - **Poliambulatorio San Martino (107) → /it/centri/poliambulatorio-san-martino**
   - email assente
+  - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
+- **Poliambulatorio Santo Stefano (KCA00_APO) → /it/centri/poliambulatorio-santo-stefano**
+  - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
 - **Poliambulatorio Valdaso (1162064197903061649) → /it/centri/poliambulatorio-valdaso**
   - email assente
   - tipologia di struttura assente: tipo predefinito (MedicalClinic)
+  - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
+- **Poliambulatorio Villa Pineta (Temporary 1) → /it/centri/poliambulatorio-villa-pineta**
+  - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
+- **Poliambulatorio Villalba (VPI00_VPM) → /it/centri/poliambulatorio-villalba**
+  - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
 - **Punto Prelievi Biemme (VPI00_DLB) → /it/centri/punto-prelievi-biemme**
   - place_id di Google assente (profilo Google non collegato?)
+- **Punto Prelievi Salus Villalba (VPI00_DLS) → /it/centri/punto-prelievi-salus-villalba**
+  - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
 - **Punto Prelievi Selemar (PDUrbino) → /it/centri/punto-prelievi-selemar**
   - indirizzo con il civico in testa: «2, Via Bocca Trabaria Sud» (forma attesa «Via ..., numero»)
 - **Villa Adria (KCA00_OVA) → /it/centri/villa-adria**
@@ -128,18 +141,24 @@ In Yext la via è abbreviata («V.», «V.le», «P.za»): nel dato strutturato 
   - stesso orario sette giorni su sette (08:00-20:00): da confermare con KOS (apertura, visite o accettazione?)
 - **Villa Rosa Diagnostica (105) → /it/centri/villa-rosa-diagnostica**
   - email assente
+  - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
+- **Villa San Giuseppe (KCA00_ORE) → /it/centri/villa-san-giuseppe**
+  - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
 - **Villa Sant'Alessandro (KCA00_OSA) → /it/centri/villa-sant-alessandro**
   - stesso orario sette giorni su sette (08:00-20:00): da confermare con KOS (apertura, visite o accettazione?)
+  - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
 - **Villa dei Pini (KCA00_OVP) → /it/centri/villa-dei-pini-firenze**
   - nome Yext «Villa dei Pini» diverso dall'indirizzo della scheda (/it/centri/villa-dei-pini-firenze): verificare il nome ufficiale (str.nome)
   - stesso orario sette giorni su sette (00:00-23:59): da confermare con KOS (apertura, visite o accettazione?)
   - place_id di Google assente (profilo Google non collegato?)
 - **Villa dei Pini Civitanova Marche (VPI00_VPS) → /it/centri/villa-dei-pini-civitanova**
   - nome Yext «Villa dei Pini Civitanova Marche» diverso dall'indirizzo della scheda (/it/centri/villa-dei-pini-civitanova): verificare il nome ufficiale (str.nome)
+  - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
 - **Villalba (Villalba) → /it/centri/poliambulatorio-villalba**
   - indirizzo con il civico in testa: «37, Via Jacopo Robusti» (forma attesa «Via ..., numero»)
   - email assente
   - nome Yext «Villalba» diverso dall'indirizzo della scheda (/it/centri/poliambulatorio-villalba): verificare il nome ufficiale (str.nome)
   - tipologia di struttura assente: tipo predefinito (MedicalClinic)
+  - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
 - **Ville di Nozzano (KCA00_OV1) → /it/centri/ville-di-nozzano**
   - stesso orario sette giorni su sette (09:00-18:30): da confermare con KOS (apertura, visite o accettazione?)

@@ -604,6 +604,7 @@ $nodoStruttura = function ($r, $extraServizi = []) use (
     $place = $tv($r, 'str.place_id');
     $nome = $tv($r, 'str.nome') ?: $r->get('pagetitle');
     $marchio = $tv($r, 'str.marchio');
+    $prenota = (string) $tv($r, 'str.prenotazione');
     return $pulisci([
         '@type'       => count($tipi) === 1 ? $tipi[0] : $tipi,
         '@id'         => $pagina . $FRAG_STR,
@@ -630,6 +631,13 @@ $nodoStruttura = function ($r, $extraServizi = []) use (
         'medicalSpecialty' => array_values(array_intersect($csv($tv($r, 'str.specialita')), $SPECIALITA)),
         'brand'       => $marchio ? ['@type' => 'Brand', 'name' => $marchio] : null,
         'availableService' => $extraServizi,
+        // Prenotazione online: azione dichiarata, utile agli assistenti AI che rimandano a «dove si prenota».
+        'potentialAction' => preg_match('#^https://#', $prenota) ? [
+            '@type'  => 'ReserveAction',
+            'name'   => 'Prenota online',
+            'target' => ['@type' => 'EntryPoint', 'urlTemplate' => $prenota,
+                         'actionPlatform' => ['https://schema.org/DesktopWebPlatform', 'https://schema.org/MobileWebPlatform']],
+        ] : null,
         'sameAs'      => array_values(array_filter($righe($tv($r, 'str.sameAs')), fn($u) => preg_match('#^https://#', $u))),
         'parentOrganization' => ['@id' => $ORG_ID],
     ]);

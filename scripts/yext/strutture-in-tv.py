@@ -198,6 +198,12 @@ def main():
         if marchio in ('0', '-') or '/' in marchio:
             N(f'marchio «{marchio}» non valido: non importato')
             marchio = ''
+        pren = g(y, 'URL di prenotazione > URL')
+        if pren and not pren.startswith('https://'):
+            N(f'URL di prenotazione non sicuro o di un dominio storico: «{pren}» (non importato)')
+            pren = ''
+        elif pren.rstrip('/').endswith('/it/prenota-online'):
+            N('prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura')
         fbu = g(y, 'Nome utente di Facebook')
         same = f'https://www.facebook.com/{fbu}' if fbu and fb[fbu] == 1 else ''
 
@@ -207,7 +213,7 @@ def main():
             'str.telefono': ('+39' + tel) if tel else '', 'str.email': email,
             'str.lat': lat, 'str.lng': lng, 'str.orari': '\n'.join(orari), 'str.orari_speciali': '\n'.join(speciali),
             'str.place_id': place, 'str.tipo': tipo, 'str.specialita': ', '.join(spec),
-            'str.marchio': marchio, 'str.sameAs': same,
+            'str.marchio': marchio, 'str.sameAs': same, 'str.prenotazione': pren,
         }})
 
     doppi = {u: ids for u, ids in per_uri.items() if len(ids) > 1}

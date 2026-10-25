@@ -206,6 +206,18 @@
       "rank": 16
     },
     {
+      "name": "str.prenotazione",
+      "caption": "Prenotazione online",
+      "description": "URL https della prenotazione online di questa struttura (meglio la pagina della struttura che quella generica): diventa l'azione di prenotazione (ReserveAction) nel dato strutturato.",
+      "type": "text",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 17
+    },
+    {
       "name": "lnd.struttura",
       "caption": "Struttura della landing",
       "description": "Id della risorsa della scheda struttura a cui si riferisce la landing: la pagina rimanda al suo #localbusiness.",
