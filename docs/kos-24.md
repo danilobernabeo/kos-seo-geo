@@ -75,8 +75,8 @@ Vengono sostituiti dalla libreria. I servizi elencati sono già trascritti nella
 
 ## Pacchetti e rilascio
 
-1. **Preparazione** (`kosgroup/deploy/kos-24.json`, nessun effetto visibile): impostazioni dei template, 15 TV
-   nuove, libreria aggiornata, interruttore spento. Sullo stage subito; in produzione con gli head o prima
+1. **Preparazione** (`kosgroup/deploy/kos-24.json`, nessun effetto visibile): impostazioni dei template, 18 TV
+   nuove (16 `str.*`, 2 `lnd.*`), libreria aggiornata, interruttore spento. Sullo stage subito; in produzione con gli head o prima
    dell'import.
 2. **Dati:** import delle TV `str.*` dall'export Yext corretto, dopo il confronto con i profili Google; TV delle
    landing con `scripts/deploy/imposta-tv.php /www kosgroup/dati/voce-24/landing.json` (prova, poi `--scrivi`;

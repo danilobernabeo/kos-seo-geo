@@ -43,6 +43,6 @@ Aggiornare l'elenco a ogni intervento.
 | `kosHreflang` | snippet (nuovo) | KOS-2 (hreflang corretti) | stage (24/10, controllo 0 errori), pacchetto `kos-head` |
 | `ogImage` (shared, sostituisce quello KOS) | snippet | og:image con dimensioni | stage (24/10, controllo 0 errori), pacchetto `kos-head` |
 | `kosSchema` (shared `seoSchema`): nodo struttura `#localbusiness`, landing | snippet | voce 24 | sviluppo (25/10), pacchetto `kos-24` (spento) |
-| TV `str.*` (14) e `lnd.*` (2), categoria «Scheda struttura (dato strutturato)» | TV (nuove) | voce 24 | sviluppo (25/10), pacchetto `kos-24` |
+| TV `str.*` (16) e `lnd.*` (2), categoria «Scheda struttura (dato strutturato)» | TV (nuove) | voce 24 | sviluppo (25/10), pacchetto `kos-24` |
 | `head-extra-strutture`, `head-extra-landing` (senza Yext e JSON-LD scritti a mano) | chunk | voce 24 | sviluppo (25/10), pacchetto `kos-24-attivazione` |
 | `grafico-dipendenti`, `employee-chart` | chunk | lavoro extra Sostenibilità | in produzione (20/10), vedi `extra/kos-sostenibilita` |
