@@ -187,3 +187,19 @@ RetailTune. Dati: `kosgroup/dati/voce-24/servizi-e-cure.json`. Da correggere in 
 | TAC | Radiography | servizio (esame) |
 | TC Cone Beam | Radiography, Dentistry | servizio (esame) |
 | Urologia-Andrologia | Urologic | solo specialità |
+
+## Confronto sito ↔ Yext delle associazioni struttura-servizi (25/10, per la validazione di KOS)
+
+Le associazioni tra strutture e pagine di «Servizi e cure» sono state riviste a inizio 2025 con il rifacimento del sito
+e stanno in due punti gestiti a mano: le TV `map*` della scheda e `mapServiziStrutture` della pagina del servizio.
+Estratte dalla produzione con `scripts/checks/kos-mappatura-servizi.php` e confrontate con i filtri «Servizi e Cure» di
+Yext con `scripts/yext/confronto-servizi.py`: `kosgroup/dati/voce-24/confronto-servizi-2026-10-25.xlsx`, una riga per
+struttura e servizio, con «Esito KOS» da compilare.
+
+733 associazioni su 61 strutture: 256 coerenti nelle tre fonti, 232 trattamenti (sul sito, che Yext non ha tra i
+filtri), 31 solo sul sito, 37 in Yext ma sul sito in una sola direzione, 172 sul sito in una sola direzione e assenti in
+Yext, 5 solo in Yext (Poliambulatorio Valdaso, Villa Fastiggi).
+
+Proposta: le associazioni confermate da KOS diventano la fonte unica, tenuta sulla scheda struttura (la pagina del
+servizio la legge al contrario); i servizi del dato strutturato puntano alle pagine del sito (`url` del servizio) e Yext,
+poi RetailTune, si allineano al sito. Fino alla validazione, l'import da Yext dei servizi resta in sospeso sullo stage.
