@@ -1,5 +1,5 @@
 {
-  "nome": "KOS voce 24 (preparazione, nessun effetto visibile): TV anagrafiche str.* e lnd.*, libreria comune con il nodo struttura #localbusiness, spento (kos.struttura_attiva = 0)",
+  "nome": "KOS voce 24 (preparazione, nessun effetto visibile): TV anagrafiche str.* e lnd.*, libreria comune con il nodo struttura #localbusiness, spento (kos.struttura_attiva assente = 0; la accende solo kos-24-attivazione)",
   "settings": [
     {
       "key": "kos.tpl_struttura",
@@ -9,11 +9,6 @@
     {
       "key": "kos.tpl_landing",
       "value": "landing",
-      "area": "kos"
-    },
-    {
-      "key": "kos.struttura_attiva",
-      "value": "0",
       "area": "kos"
     }
   ],
