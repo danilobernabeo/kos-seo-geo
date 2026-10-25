@@ -10,6 +10,11 @@
       "key": "kos.tpl_landing",
       "value": "landing",
       "area": "kos"
+    },
+    {
+      "key": "kos.struttura_tv_servizi",
+      "value": "mapAreeRiabilitazione,mapAreePsichiatria,mapAreeMedica,mapAreeChirurgica,mapAreeDiagnostica,mapInterventiRiabilitazione,mapInterventiPsichiatria,mapInterventiDiagnostica",
+      "area": "kos"
     }
   ],
   "tvs": [
@@ -250,6 +255,18 @@
         "landing"
       ],
       "rank": 2
+    },
+    {
+      "name": "srv.schema",
+      "caption": "Tipo schema.org del servizio",
+      "description": "«Tipo|Specialità»: Tipo = MedicalTherapy (terapia), MedicalTest (esame), MedicalProcedure (prestazione, visita specialistica), MedicalCondition (condizione trattata) o «-» per non dichiararlo; Specialità = valori di MedicalSpecialty separati da virgola (es. MedicalTherapy|Physiotherapy,Neurologic). Vuoto = dal ramo del sito.",
+      "type": "text",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "cure",
+        "specializzazioni"
+      ],
+      "rank": 30
     }
   ],
   "elements": [

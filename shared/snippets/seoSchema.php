@@ -582,8 +582,36 @@ $servizi = function ($testo) use ($righe) {
     }
     return $out;
 };
+/* Servizi dal sito: le pagine di «Servizi e cure» indicate nelle TV di mappatura della scheda (impostazione
+ * <prefisso>.struttura_tv_servizi). Tipo e specialità dalla TV srv.schema della pagina del servizio
+ * («MedicalTherapy|Physiotherapy,Neurologic»); se vuota, dal ramo del sito (trattamenti → terapia,
+ * psichiatria → condizione trattata, altrimenti prestazione). Ogni voce porta l'URL della sua pagina. */
+$TV_SERVIZI = $csv($cfg('struttura_tv_servizi', ''));
+$serviziSito = function ($r) use ($modx, $CLS_RES, $tv, $csv, $url, $TV_SERVIZI) {
+    $voci = []; $spec = [];
+    if (!$TV_SERVIZI) return [$voci, $spec];
+    $visti = [];
+    foreach ($TV_SERVIZI as $nome) {
+        foreach (array_filter(array_map('intval', preg_split('/[^\d]+/', (string) $tv($r, $nome)))) as $id) {
+            if (isset($visti[$id])) continue;
+            $visti[$id] = true;
+            $s = $modx->getObject($CLS_RES, $id);
+            if (!$s || !$s->get('published') || $s->get('deleted')) continue;
+            $u = (string) $s->get('uri');
+            $def = strpos($u, '/trattamenti/') !== false ? 'MedicalTherapy'
+                 : (strpos($u, '/psichiatria/') !== false ? 'MedicalCondition'
+                 : (strpos($u, '/riabilitazione/') !== false ? 'MedicalTherapy' : 'MedicalProcedure'));
+            $p = array_map('trim', explode('|', (string) $tv($s, 'srv.schema'), 2));
+            if (($p[0] ?? '') === '-') continue;   // pagina da non dichiarare
+            $tipo = in_array($p[0] ?? '', ['MedicalTherapy', 'MedicalTest', 'MedicalProcedure', 'MedicalCondition'], true) ? $p[0] : $def;
+            $spec = array_merge($spec, $csv($p[1] ?? ''));
+            $voci[] = ['@type' => $tipo, 'name' => $s->get('pagetitle'), 'url' => $url($id)];
+        }
+    }
+    return [$voci, array_values(array_unique($spec))];
+};
 $nodoStruttura = function ($r, $extraServizi = []) use (
-    $url, $tv, $servizi, $righe, $testo, $csv, $pulisci, $orari, $orariSpeciali, $immagineStruttura,
+    $url, $tv, $servizi, $serviziSito, $righe, $testo, $csv, $pulisci, $orari, $orariSpeciali, $immagineStruttura,
     $TIPI_STRUTTURA, $SPECIALITA, $FRAG_STR, $ORG_ID
 ) {
     $pagina = $url($r->get('id'));
@@ -608,14 +636,17 @@ $nodoStruttura = function ($r, $extraServizi = []) use (
     // Servizi della scheda (str.servizi) più quelli della landing, senza doppioni. Ogni voce va nella proprietà che
     // schema.org prevede per il tipo: availableService (MedicalClinic, Hospital), availableTest (DiagnosticLab);
     // le condizioni trattate e ciò che il tipo non ammette vanno in knowsAbout (valido per ogni organizzazione).
+    // Fonte dei servizi: le associazioni della scheda sul sito (decisione del 25/10); str.servizi (filtri Yext) solo
+    // se la scheda non ne ha.
+    [$dalSito, $specSito] = $serviziSito($r);
     $voci = [];
-    foreach (array_merge($servizi($tv($r, 'str.servizi')), $extraServizi) as $v) $voci[mb_strtolower($v['name'])] = $v;
+    foreach (array_merge($dalSito ?: $servizi($tv($r, 'str.servizi')), $extraServizi) as $v) $voci[mb_strtolower($v['name'])] = $v;
     $offerti = []; $test = []; $sa = [];
     $conServizi = (bool) array_intersect($tipi, ['MedicalClinic', 'Hospital']);
     foreach ($voci as $v) {
         if ($v['@type'] !== 'MedicalCondition' && $conServizi) $offerti[] = $v;
         elseif ($v['@type'] === 'MedicalTest' && in_array('DiagnosticLab', $tipi, true)) $test[] = $v;
-        else $sa[] = ['@type' => $v['@type'], 'name' => $v['name']];
+        else $sa[] = array_filter(['@type' => $v['@type'], 'name' => $v['name'], 'url' => $v['url'] ?? null]);
     }
     return $pulisci([
         '@type'       => count($tipi) === 1 ? $tipi[0] : $tipi,
@@ -640,7 +671,7 @@ $nodoStruttura = function ($r, $extraServizi = []) use (
                             . '&query_place_id=' . rawurlencode($place) : null,
         'openingHoursSpecification'        => $orari($tv($r, 'str.orari')),
         'specialOpeningHoursSpecification' => $orariSpeciali($tv($r, 'str.orari_speciali')),
-        'medicalSpecialty' => array_values(array_intersect($csv($tv($r, 'str.specialita')), $SPECIALITA)),
+        'medicalSpecialty' => array_values(array_intersect(array_unique(array_merge($csv($tv($r, 'str.specialita')), $specSito)), $SPECIALITA)),
         'brand'       => $marchio ? ['@type' => 'Brand', 'name' => $marchio] : null,
         'availableService' => $offerti,
         'availableTest'    => $test,

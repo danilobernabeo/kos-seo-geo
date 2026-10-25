@@ -210,3 +210,14 @@ offre). Decisione: la fonte è la scheda struttura, curata nel rifacimento del 2
 scheda si completano sulla pagina del servizio (`kos-mappatura-inversa.php --solo-servizi`); le 107 solo sulla pagina
 del servizio diventano domande per KOS (stato «Da verificare» nell'Excel). La mappatura inversa completa scritta sullo
 stage nel pomeriggio va annullata con il suo file di ripristino.
+
+### Servizi dal sito (25/10)
+
+La libreria legge i servizi della struttura dalle TV di mappatura della scheda (impostazione `kos.struttura_tv_servizi`:
+mapAree*, mapInterventi*) e li dichiara con nome e URL della pagina del sito: terapie ed esami in `availableService`
+(MedicalClinic, Hospital) o `availableTest` (DiagnosticLab), condizioni trattate in `knowsAbout`. Tipo e specialità di
+ogni pagina di «Servizi e cure» stanno nella TV `srv.schema` della pagina stessa (93 pagine, proposta in
+`kosgroup/dati/voce-24/servizi-schema.json`, dalla tabella Servizi e Cure più i casi propri del sito); le specialità si
+sommano a quelle della tipologia. La TV `str.servizi` (filtri Yext) resta solo come ripiego per le schede senza
+associazioni; l'import da Yext di specialità e servizi è disattivato (opzione `--servizi-yext`). Le associazioni
+confermate da KOS aggiornano il dato strutturato da sole.

@@ -1,0 +1,563 @@
+{
+ "nome": "Voce 24: tipo schema.org e specialità delle pagine di «Servizi e cure» (TV srv.schema), PROPOSTA da approvare con le tabelle dei tipi",
+ "risorse": [
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/ambulatorio-cardio-metabolico",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Cardiovascular,DietNutrition,Endocrine"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/cardiodiagnostica",
+   "tv": {
+    "srv.schema": "MedicalTest|Cardiovascular"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/cardiologia",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Cardiovascular"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/chirurgia-generale",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Surgical"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/chirurgia-vascolare",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Surgical,Cardiovascular"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/dermatologia",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Dermatology"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/diagnostica-ecografica",
+   "tv": {
+    "srv.schema": "MedicalTest|Radiography"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/dietologia",
+   "tv": {
+    "srv.schema": "MedicalProcedure|DietNutrition"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/elettroencefalografia",
+   "tv": {
+    "srv.schema": "MedicalTest|Neurologic"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/elettromiografia",
+   "tv": {
+    "srv.schema": "MedicalTest|Neurologic"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/endocrinologia",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Endocrine"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/fisiatria",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Physiotherapy"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/flebologia",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Cardiovascular"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/gastroenterologia",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Gastroenterologic"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/ginecologia",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Gynecologic"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/laboratorio-analisi",
+   "tv": {
+    "srv.schema": "MedicalProcedure|LaboratoryScience"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/maxillofacciale",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Surgical"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/medicina-dello-sport",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Musculoskeletal"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/moc",
+   "tv": {
+    "srv.schema": "MedicalTest|Radiography"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/nefrologia",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Renal"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/neurochirurgia",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Surgical,Neurologic"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/neurologia",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Neurologic"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/oculistica",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Optometric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/odontoiatria",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Dentistry"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/oncologia",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Oncologic"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/ortopedia",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Musculoskeletal"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/otorinolaringoiatria",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Otolaryngologic"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/pneumologia",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Pulmonary"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/podologia",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Podiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/psicologia",
+   "tv": {
+    "srv.schema": "MedicalTherapy|"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/radiologia-convenzionale",
+   "tv": {
+    "srv.schema": "MedicalTest|Radiography"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/reumatologia",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Rheumatologic"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/risonanza-magnetica",
+   "tv": {
+    "srv.schema": "MedicalTest|Radiography"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/senologia-mammografia",
+   "tv": {
+    "srv.schema": "MedicalTest|Radiography"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/servizio-anestesia",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Anesthesia"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/tac",
+   "tv": {
+    "srv.schema": "MedicalTest|Radiography"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/tc-cone-beam",
+   "tv": {
+    "srv.schema": "MedicalTest|Radiography,Dentistry"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/urologia-andrologia",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Urologic"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/dipendenze",
+   "tv": {
+    "srv.schema": "MedicalCondition|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/disturbi-d-ansia",
+   "tv": {
+    "srv.schema": "MedicalCondition|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/disturbi-del-sonno",
+   "tv": {
+    "srv.schema": "MedicalCondition|Psychiatric,Neurologic"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/disturbi-dell-umore-e-depressione",
+   "tv": {
+    "srv.schema": "MedicalCondition|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/disturbi-della-personalita",
+   "tv": {
+    "srv.schema": "MedicalCondition|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/disturbi-neurosviluppo-adhd",
+   "tv": {
+    "srv.schema": "MedicalCondition|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/disturbi-nutrizione-e-alimentazione",
+   "tv": {
+    "srv.schema": "MedicalCondition|Psychiatric,DietNutrition"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/disturbo-ossessivo-compulsivo",
+   "tv": {
+    "srv.schema": "MedicalCondition|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/disturbo-post-traumatico-da-stress",
+   "tv": {
+    "srv.schema": "MedicalCondition|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/patologie-psicogeriatriche",
+   "tv": {
+    "srv.schema": "MedicalProcedure|Psychiatric,Geriatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/psicosi",
+   "tv": {
+    "srv.schema": "MedicalCondition|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/schizofrenia",
+   "tv": {
+    "srv.schema": "MedicalCondition|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/cognitive-remediation-therapy",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/emdr",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/farmacologico",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/mindfulness",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/psicoeducazione-e-problem-solving",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/psicoterapeutico-approccio-cognitivo-comportamentale",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/psicoterapeutico-approccio-psicoanalitico",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/psicoterapeutico-approccio-sistemico-relazionale",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/psicoterapeutico-centrato-sul-transfert",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/psicoterapeutico-dbt",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/psicoterapeutico-interpersonale",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/riabilitazione-delle-funzioni-neurocognitive",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/riabilitazione-psichiatrica",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/riabilitazione-psiconutrizionale",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/social-skills-training",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/terapia-familiare",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/terapia-occupazionale",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/training-metacognitivo",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Psychiatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/assistenza-stati-vegetativi-persistenti",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Neurologic"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/parkinson-e-disordini-del-movimento",
+   "tv": {
+    "srv.schema": "MedicalCondition|Neurologic"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/riabilitazione-cardiologica",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy,Cardiovascular"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/riabilitazione-estensiva-e-generale-geriatrica",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy,Geriatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/riabilitazione-gravi-cerebrolesioni",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy,Neurologic"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/riabilitazione-in-eta-evolutiva",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy,Pediatric"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/riabilitazione-metabolica",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy,Endocrine"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/riabilitazione-mielolesioni",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy,Neurologic"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/riabilitazione-neurologica",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy,Neurologic"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/riabilitazione-ortopedica",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy,Musculoskeletal"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/riabilitazione-pneumologica",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy,Pulmonary"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/riabilitazione-urologica-e-del-pavimento-pelvico",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy,Urologic"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/trattamenti/coinvolgimento-dei-familiari",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/trattamenti/diagnosi-e-trattamento-spasticita",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/trattamenti/gestione-del-dolore",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/trattamenti/percorsi-ludico-creativi",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/trattamenti/raggiungimento-e-mantenimento-stabilita-internistica",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/trattamenti/recupero-delle-abilita-di-vita-quotidiana",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/trattamenti/reinserimento-sociale",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/trattamenti/rieducazione-dei-disturbi-della-competenza-comunicativa",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/trattamenti/rieducazione-dei-disturbi-di-deglutizione",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/trattamenti/rieducazione-delle-menomazioni-respiratorie",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/trattamenti/rieducazione-delle-menomazioni-vescico-sfinteriche",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/trattamenti/supporto-psicologico-al-paziente",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy"
+   }
+  },
+  {
+   "uri": "it/servizi-e-cure/riabilitazione/trattamenti/trattamenti-avanzati-e-stimolazione-cerebrale-profonda",
+   "tv": {
+    "srv.schema": "MedicalTherapy|Physiotherapy"
+   }
+  }
+ ]
+}

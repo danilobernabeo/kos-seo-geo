@@ -103,6 +103,8 @@ def main():
     a.add_argument('export')
     a.add_argument('--sito', default='kosgroup.com')
     a.add_argument('--uscita', default='kosgroup/dati/voce-24')
+    a.add_argument('--servizi-yext', action='store_true',
+                   help='anche specialità e servizi dai filtri «Servizi e Cure» di Yext (dal 25/10 la fonte è il sito)')
     o = a.parse_args()
     warnings.filterwarnings('ignore')
     import openpyxl
@@ -200,7 +202,7 @@ def main():
             N('tipologia di struttura assente: tipo predefinito (MedicalClinic)')
 
         servizi = []
-        for v in [x.strip() for x in g(y, 'Servizi e Cure').split(',') if x.strip()]:
+        for v in [x.strip() for x in g(y, 'Servizi e Cure').split(',') if x.strip()] if o.servizi_yext else []:
             if v in refusi:
                 N(f'voce dei filtri scritta male: «{v}» → «{refusi[v]}»')
             m = mappa.get(v)
@@ -230,7 +232,7 @@ def main():
             'str.lat': lat, 'str.lng': lng, 'str.orari': '\n'.join(orari), 'str.orari_speciali': '\n'.join(speciali),
             'str.place_id': place, 'str.tipo': tipo, 'str.specialita': ', '.join(spec),
             'str.marchio': marchio, 'str.sameAs': same, 'str.prenotazione': pren,
-            'str.servizi': '\n'.join(servizi),
+            **({'str.servizi': '\n'.join(servizi)} if o.servizi_yext else {}),
         }})
 
     doppi = {u: ids for u, ids in per_uri.items() if len(ids) > 1}
