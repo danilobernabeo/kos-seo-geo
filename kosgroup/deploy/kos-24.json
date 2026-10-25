@@ -218,6 +218,18 @@
       "rank": 17
     },
     {
+      "name": "str.servizi",
+      "caption": "Servizi e condizioni trattate (dato strutturato)",
+      "description": "Una riga per voce: «Tipo|Nome», Tipo = MedicalTherapy, MedicalTest, MedicalProcedure (servizi) o MedicalCondition (condizioni trattate). Importata dai filtri «Servizi e Cure» di Yext.",
+      "type": "textarea",
+      "category": "Scheda struttura (dato strutturato)",
+      "templates": [
+        "strutture",
+        "strutture-VDP"
+      ],
+      "rank": 18
+    },
+    {
       "name": "lnd.struttura",
       "caption": "Struttura della landing",
       "description": "Id della risorsa della scheda struttura a cui si riferisce la landing: la pagina rimanda al suo #localbusiness.",

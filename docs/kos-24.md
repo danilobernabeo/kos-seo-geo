@@ -54,6 +54,7 @@ Nomi uguali sui due siti, così la stessa libreria serve anche le residenze di a
 | `str.marchio` | Santo Stefano Riabilitazione, Neomesia... | `brand` |
 | `str.sameAs` | profili ufficiali, uno per riga (mai directory di terzi) | `sameAs` |
 | `str.prenotazione` | URL https della prenotazione online della struttura | `potentialAction` → `ReserveAction` |
+| `str.servizi` | `Tipo\|Nome` per riga, dai filtri «Servizi e Cure» di Yext | `availableService`, `availableTest`, `knowsAbout` |
 | `lnd.struttura` | id della scheda struttura (landing) | `about` |
 | `lnd.servizi` | `Tipo\|Nome\|Descrizione` per riga (landing) | `availableService` |
 
@@ -76,8 +77,8 @@ Vengono sostituiti dalla libreria. I servizi elencati sono già trascritti nella
 
 ## Pacchetti e rilascio
 
-1. **Preparazione** (`kosgroup/deploy/kos-24.json`, nessun effetto visibile): impostazioni dei template, 19 TV
-   nuove (17 `str.*`, 2 `lnd.*`), libreria aggiornata, interruttore spento. Sullo stage subito; in produzione con gli head o prima
+1. **Preparazione** (`kosgroup/deploy/kos-24.json`, nessun effetto visibile): impostazioni dei template, 20 TV
+   nuove (18 `str.*`, 2 `lnd.*`), libreria aggiornata, interruttore spento. Sullo stage subito; in produzione con gli head o prima
    dell'import.
 2. **Dati:** import delle TV `str.*` dall'export Yext corretto, dopo il confronto con i profili Google; TV delle
    landing con `scripts/deploy/imposta-tv.php /www kosgroup/dati/voce-24/landing.json` (prova, poi `--scrivi`;
@@ -120,3 +121,69 @@ Picena verso il vecchio dominio `clinicadentale.sstefano.it`). Nel nodo diventa 
 Google non lo usa per i risultati avanzati, ma è un'indicazione utile agli assistenti AI su dove si prenota. Quasi
 tutte le schede rimandano alla pagina generica `/it/prenota-online`: meglio il link di prenotazione della singola
 struttura (TuoTempo), da chiedere a KOS.
+
+## Servizi e Cure: specialità e servizi (PROPOSTA del 25/10, da approvare con la tabella dei tipi)
+
+I filtri della mappa Yext («Servizi e Cure», 53 voci su 58 strutture KOS) completano il nodo struttura. Ogni voce dà
+una o più specialità schema.org (`medicalSpecialty`) e, se è un servizio o una condizione, una riga della TV
+`str.servizi`. Nel nodo i servizi vanno in `availableService` (MedicalClinic, Hospital) o `availableTest`
+(DiagnosticLab); le condizioni trattate, e ciò che il tipo non ammette, in `knowsAbout`. Esempio: Villa dei Pini
+Civitanova passa da nessuna specialità a 14, con 7 esami. La stessa tabella può servire agli attributi dei filtri in
+RetailTune. Dati: `kosgroup/dati/voce-24/servizi-e-cure.json`. Da correggere in Yext due voci scritte male:
+«Endrocrinologia» e «Gastroentereologia».
+
+| Voce Yext | Specialità schema.org | Nel nodo |
+|---|---|---|
+| Assistenza stati vegetativi persistenti | Neurologic | servizio (terapia) |
+| Cardiodiagnostica | Cardiovascular | servizio (esame) |
+| Cardiologia | Cardiovascular | solo specialità |
+| Chirurgia generale | Surgical | solo specialità |
+| Dermatologia | Dermatology | solo specialità |
+| Diagnostica ecografica | Radiography | servizio (esame) |
+| Dipendenze | Psychiatric | condizione trattata |
+| Disturbi d'ansia | Psychiatric | condizione trattata |
+| Disturbi del sonno | Psychiatric, Neurologic | condizione trattata |
+| Disturbi dell'umore e depressione | Psychiatric | condizione trattata |
+| Disturbi della nutrizione e dell'alimentazione (DNA) | Psychiatric, DietNutrition | condizione trattata |
+| Disturbi della personalità | Psychiatric | condizione trattata |
+| Disturbo ossessivo compulsivo | Psychiatric | condizione trattata |
+| Disturbo post traumatico da stress | Psychiatric | condizione trattata |
+| Elettroencefalografia | Neurologic | servizio (esame) |
+| Elettromiografia | Neurologic | servizio (esame) |
+| Endrocrinologia | Endocrine | solo specialità |
+| Flebologia | Cardiovascular | solo specialità |
+| Gastroentereologia | Gastroenterologic | solo specialità |
+| Ginecologia | Gynecologic | solo specialità |
+| Laboratorio analisi | LaboratoryScience | solo specialità |
+| MOC | Radiography | servizio (esame) |
+| Maxillofacciale | Surgical | solo specialità |
+| Medicina dello Sport | Musculoskeletal | solo specialità |
+| Nefrologia | Renal | solo specialità |
+| Neurochirurgia | Surgical, Neurologic | solo specialità |
+| Neurologia | Neurologic | solo specialità |
+| Oculistica | Optometric | solo specialità |
+| Oncologia | Oncologic | solo specialità |
+| Ortopedia | Musculoskeletal | solo specialità |
+| Otorinolaringoiatria | Otolaryngologic | solo specialità |
+| Pneumologia | Pulmonary | solo specialità |
+| Podologia | Podiatric | solo specialità |
+| Psicogeriatria | Psychiatric, Geriatric | solo specialità |
+| Psicosi | Psychiatric | condizione trattata |
+| Radiologia convenzionale | Radiography | servizio (esame) |
+| Reumatologia | Rheumatologic | solo specialità |
+| Riabilitazione cardiologica | Physiotherapy, Cardiovascular | servizio (terapia) |
+| Riabilitazione gravi cerebrolesioni | Physiotherapy, Neurologic | servizio (terapia) |
+| Riabilitazione in età evolutiva | Physiotherapy, Pediatric | servizio (terapia) |
+| Riabilitazione metabolica | Physiotherapy, Endocrine | servizio (terapia) |
+| Riabilitazione mielolesioni | Physiotherapy, Neurologic | servizio (terapia) |
+| Riabilitazione neurologica | Physiotherapy, Neurologic | servizio (terapia) |
+| Riabilitazione ortopedica | Physiotherapy, Musculoskeletal | servizio (terapia) |
+| Riabilitazione pneumologica | Physiotherapy, Pulmonary | servizio (terapia) |
+| Riabilitazione urologica e del pavimento pelvico | Physiotherapy, Urologic | servizio (terapia) |
+| Risonanza magnetica | Radiography | servizio (esame) |
+| Schizofrenia | Psychiatric | condizione trattata |
+| Senologia - Mammografia | Radiography | servizio (esame) |
+| Servizio anestesia | Anesthesia | solo specialità |
+| TAC | Radiography | servizio (esame) |
+| TC Cone Beam | Radiography, Dentistry | servizio (esame) |
+| Urologia-Andrologia | Urologic | solo specialità |

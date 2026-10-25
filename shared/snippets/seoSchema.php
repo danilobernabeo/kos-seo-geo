@@ -577,13 +577,13 @@ $servizi = function ($testo) use ($righe) {
     $out = [];
     foreach ($righe($testo) as $r) {
         $p = array_map('trim', explode('|', $r, 3));
-        if (count($p) < 2 || !in_array($p[0], ['MedicalTest', 'MedicalProcedure', 'MedicalTherapy', 'Service'], true)) continue;
+        if (count($p) < 2 || !in_array($p[0], ['MedicalTest', 'MedicalProcedure', 'MedicalTherapy', 'MedicalCondition'], true)) continue;
         $out[] = array_filter(['@type' => $p[0], 'name' => $p[1], 'description' => $p[2] ?? '']);
     }
     return $out;
 };
 $nodoStruttura = function ($r, $extraServizi = []) use (
-    $url, $tv, $righe, $testo, $csv, $pulisci, $orari, $orariSpeciali, $immagineStruttura,
+    $url, $tv, $servizi, $righe, $testo, $csv, $pulisci, $orari, $orariSpeciali, $immagineStruttura,
     $TIPI_STRUTTURA, $SPECIALITA, $FRAG_STR, $ORG_ID
 ) {
     $pagina = $url($r->get('id'));
@@ -605,6 +605,18 @@ $nodoStruttura = function ($r, $extraServizi = []) use (
     $nome = $tv($r, 'str.nome') ?: $r->get('pagetitle');
     $marchio = $tv($r, 'str.marchio');
     $prenota = (string) $tv($r, 'str.prenotazione');
+    // Servizi della scheda (str.servizi) più quelli della landing, senza doppioni. Ogni voce va nella proprietà che
+    // schema.org prevede per il tipo: availableService (MedicalClinic, Hospital), availableTest (DiagnosticLab);
+    // le condizioni trattate e ciò che il tipo non ammette vanno in knowsAbout (valido per ogni organizzazione).
+    $voci = [];
+    foreach (array_merge($servizi($tv($r, 'str.servizi')), $extraServizi) as $v) $voci[mb_strtolower($v['name'])] = $v;
+    $offerti = []; $test = []; $sa = [];
+    $conServizi = (bool) array_intersect($tipi, ['MedicalClinic', 'Hospital']);
+    foreach ($voci as $v) {
+        if ($v['@type'] !== 'MedicalCondition' && $conServizi) $offerti[] = $v;
+        elseif ($v['@type'] === 'MedicalTest' && in_array('DiagnosticLab', $tipi, true)) $test[] = $v;
+        else $sa[] = ['@type' => $v['@type'], 'name' => $v['name']];
+    }
     return $pulisci([
         '@type'       => count($tipi) === 1 ? $tipi[0] : $tipi,
         '@id'         => $pagina . $FRAG_STR,
@@ -630,7 +642,9 @@ $nodoStruttura = function ($r, $extraServizi = []) use (
         'specialOpeningHoursSpecification' => $orariSpeciali($tv($r, 'str.orari_speciali')),
         'medicalSpecialty' => array_values(array_intersect($csv($tv($r, 'str.specialita')), $SPECIALITA)),
         'brand'       => $marchio ? ['@type' => 'Brand', 'name' => $marchio] : null,
-        'availableService' => $extraServizi,
+        'availableService' => $offerti,
+        'availableTest'    => $test,
+        'knowsAbout'       => $sa,
         // Prenotazione online: azione dichiarata, utile agli assistenti AI che rimandano a «dove si prenota».
         'potentialAction' => preg_match('#^https://#', $prenota) ? [
             '@type'  => 'ReserveAction',

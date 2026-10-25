@@ -11,13 +11,34 @@ Il file JSON si applica con `scripts/deploy/imposta-tv.php` (prova, poi `--scriv
 
 | Tipo | Specialità | Schede |
 |---|---|---|
-| MedicalClinic | Physiotherapy | 27 |
-| MedicalClinic | Psychiatric | 16 |
-| MedicalClinic | — | 5 |
+| MedicalClinic | Psychiatric | 9 |
+| MedicalClinic | Physiotherapy, Cardiovascular, Pediatric, Neurologic, Musculoskeletal, Pulmonary | 9 |
 | DiagnosticLab | LaboratoryScience | 5 |
-| Dentist | Dentistry | 2 |
-| Hospital | — | 1 |
-| (predefinito) | — | 1 |
+| MedicalClinic | Physiotherapy, Neurologic, Musculoskeletal | 3 |
+| MedicalClinic | Psychiatric, DietNutrition | 3 |
+| MedicalClinic | Physiotherapy, Cardiovascular, Neurologic, Musculoskeletal, Pulmonary | 3 |
+| MedicalClinic | Physiotherapy, Pediatric | 2 |
+| MedicalClinic | Physiotherapy, Neurologic, Musculoskeletal, Pulmonary | 2 |
+| Dentist | Dentistry, Radiography | 2 |
+| MedicalClinic | Physiotherapy, Cardiovascular, Surgical, Radiography, Neurologic, Gastroenterologic, Gynecologic, Musculoskeletal, Otolaryngologic, Pulmonary, Podiatric, Rheumatologic, Urologic | 1 |
+| MedicalClinic | Psychiatric, Geriatric | 1 |
+| MedicalClinic | Psychiatric, DietNutrition, Geriatric | 1 |
+| MedicalClinic | Physiotherapy, Cardiovascular, Dermatology, Psychiatric, Neurologic, Optometric, Otolaryngologic, Radiography | 1 |
+| MedicalClinic | Physiotherapy, Cardiovascular, Musculoskeletal, Urologic | 1 |
+| MedicalClinic | Dermatology, Radiography, Neurologic, Endocrine, Musculoskeletal | 1 |
+| MedicalClinic | Psychiatric, Neurologic, Geriatric | 1 |
+| MedicalClinic | Physiotherapy, Pediatric, Neurologic, Musculoskeletal, Pulmonary | 1 |
+| MedicalClinic | Physiotherapy, Radiography, Neurologic, Musculoskeletal | 1 |
+| Hospital | Cardiovascular, Surgical, Dermatology, Radiography, Neurologic, Gastroenterologic, Optometric, Oncologic, Musculoskeletal, Otolaryngologic, Podiatric, Rheumatologic, Anesthesia, Urologic | 1 |
+| MedicalClinic | Physiotherapy, Musculoskeletal, Pulmonary | 1 |
+| MedicalClinic | Physiotherapy | 1 |
+| MedicalClinic | Psychiatric, Neurologic, DietNutrition, Geriatric | 1 |
+| MedicalClinic | Physiotherapy, Cardiovascular, Endocrine, Neurologic, Musculoskeletal, Pulmonary | 1 |
+| MedicalClinic | Cardiovascular, Musculoskeletal, Otolaryngologic, Pulmonary | 1 |
+| MedicalClinic | Dermatology, Radiography, Neurologic, Dentistry | 1 |
+| MedicalClinic | Cardiovascular, Dermatology, Radiography, Endocrine, Renal, Neurologic, Urologic | 1 |
+| MedicalClinic | Cardiovascular, Radiography, Endocrine, Gynecologic, Neurologic, Musculoskeletal, Otolaryngologic, Podiatric | 1 |
+| (predefinito) | Cardiovascular, Radiography, Neurologic, Musculoskeletal | 1 |
 
 ## Indirizzi abbreviati scritti per esteso (34)
 
@@ -80,6 +101,7 @@ In Yext la via è abbreviata («V.», «V.le», «P.za»): nel dato strutturato 
 - **Centro Medico Riabilitativo (108) → /it/centri/centro-medico-riabilitativo**
   - seconda riga dell'indirizzo non importata: «Via Amilcare Pizzi»
   - email assente
+  - voce dei filtri scritta male: «Endrocrinologia» → «Endocrinologia»
   - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
 - **Centro Venerabile Marcucci (106) → /it/centri/centro-venerabile-marcucci**
   - email assente
@@ -100,12 +122,15 @@ In Yext la via è abbreviata («V.», «V.le», «P.za»): nel dato strutturato 
   - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
 - **Myolab (JES00_JES) → /it/centri/myolab**
   - place_id di Google assente (profilo Google non collegato?)
+  - voce dei filtri scritta male: «Gastroentereologia» → «Gastroenterologia»
 - **Ospedale San Pancrazio (KCA00_OSP) → /it/centri/ospedale-san-pancrazio**
   - stesso orario sette giorni su sette (08:00-20:30): da confermare con KOS (apertura, visite o accettazione?)
 - **Poliambulatorio San Martino (107) → /it/centri/poliambulatorio-san-martino**
   - email assente
+  - voce dei filtri scritta male: «Endrocrinologia» → «Endocrinologia»
   - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
 - **Poliambulatorio Santo Stefano (KCA00_APO) → /it/centri/poliambulatorio-santo-stefano**
+  - voce dei filtri scritta male: «Endrocrinologia» → «Endocrinologia»
   - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
 - **Poliambulatorio Valdaso (1162064197903061649) → /it/centri/poliambulatorio-valdaso**
   - email assente
@@ -114,6 +139,8 @@ In Yext la via è abbreviata («V.», «V.le», «P.za»): nel dato strutturato 
 - **Poliambulatorio Villa Pineta (Temporary 1) → /it/centri/poliambulatorio-villa-pineta**
   - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
 - **Poliambulatorio Villalba (VPI00_VPM) → /it/centri/poliambulatorio-villalba**
+  - voce dei filtri scritta male: «Endrocrinologia» → «Endocrinologia»
+  - voce dei filtri scritta male: «Gastroentereologia» → «Gastroenterologia»
   - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
 - **Punto Prelievi Biemme (VPI00_DLB) → /it/centri/punto-prelievi-biemme**
   - place_id di Google assente (profilo Google non collegato?)
@@ -153,6 +180,7 @@ In Yext la via è abbreviata («V.», «V.le», «P.za»): nel dato strutturato 
   - place_id di Google assente (profilo Google non collegato?)
 - **Villa dei Pini Civitanova Marche (VPI00_VPS) → /it/centri/villa-dei-pini-civitanova**
   - nome Yext «Villa dei Pini Civitanova Marche» diverso dall'indirizzo della scheda (/it/centri/villa-dei-pini-civitanova): verificare il nome ufficiale (str.nome)
+  - voce dei filtri scritta male: «Gastroentereologia» → «Gastroenterologia»
   - prenotazione verso la pagina generica /it/prenota-online: meglio il link di prenotazione della struttura
 - **Villalba (Villalba) → /it/centri/poliambulatorio-villalba**
   - indirizzo con il civico in testa: «37, Via Jacopo Robusti» (forma attesa «Via ..., numero»)

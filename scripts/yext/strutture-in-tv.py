@@ -19,6 +19,8 @@ Regole (da docs/kos-24.md):
   - tipo e specialità schema.org dalla «Tipologia di Struttura» secondo la tabella PROPOSTA qui sotto, da far approvare
     a KOS e all'agenzia (eventualmente rivista sulle categorie dei profili Google): fino ad allora resta una proposta;
   - marchio da «Marche» (valori non validi come «0» scartati e segnalati);
+  - «Servizi e Cure» (i filtri della mappa Yext) → altre specialità e voci str.servizi («Tipo|Nome») secondo la tabella
+    kosgroup/dati/voce-24/servizi-e-cure.json (PROPOSTA, da approvare con quella dei tipi); voci sconosciute segnalate;
   - sameAs: solo la pagina Facebook propria della struttura (nome utente usato da una sola entità), mai i profili del
     gruppo (LinkedIn, YouTube) né le pagine location.com di Yext.
 """
@@ -112,6 +114,9 @@ def main():
     data = data.group(1) if data else dt.date.today().isoformat()
 
     mie = [y for y in Y if re.match(rf'https?://(www\.)?{re.escape(o.sito)}/', g(y, 'URL del sito web > URL'))]
+    mappa = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'kosgroup', 'dati',
+                                        'voce-24', 'servizi-e-cure.json'), encoding='utf-8'))['voci']
+    refusi = {'Endrocrinologia': 'Endocrinologia', 'Gastroentereologia': 'Gastroenterologia'}
     fb = collections.Counter(g(y, 'Nome utente di Facebook') for y in Y if g(y, 'Nome utente di Facebook'))
     per_uri = collections.defaultdict(list)
     risorse, note, estese = [], collections.defaultdict(list), []
@@ -194,6 +199,17 @@ def main():
         if not tip:
             N('tipologia di struttura assente: tipo predefinito (MedicalClinic)')
 
+        servizi = []
+        for v in [x.strip() for x in g(y, 'Servizi e Cure').split(',') if x.strip()]:
+            if v in refusi:
+                N(f'voce dei filtri scritta male: «{v}» → «{refusi[v]}»')
+            m = mappa.get(v)
+            if not m:
+                N(f'voce dei filtri «{v}» senza corrispondenza nella tabella servizi-e-cure')
+                continue
+            spec += [x for x in m['specialita'] if x not in spec]
+            if m['tipo']:
+                servizi.append(f"{m['tipo']}|{refusi.get(v, v)}")
         marchio = g(y, 'Marche')
         if marchio in ('0', '-') or '/' in marchio:
             N(f'marchio «{marchio}» non valido: non importato')
@@ -214,6 +230,7 @@ def main():
             'str.lat': lat, 'str.lng': lng, 'str.orari': '\n'.join(orari), 'str.orari_speciali': '\n'.join(speciali),
             'str.place_id': place, 'str.tipo': tipo, 'str.specialita': ', '.join(spec),
             'str.marchio': marchio, 'str.sameAs': same, 'str.prenotazione': pren,
+            'str.servizi': '\n'.join(servizi),
         }})
 
     doppi = {u: ids for u, ids in per_uri.items() if len(ids) > 1}

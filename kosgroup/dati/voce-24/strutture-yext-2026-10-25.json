@@ -20,7 +20,8 @@
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
     "str.sameAs": "https://www.facebook.com/CasaVillaMauraNeomesia",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalCondition|Disturbi d'ansia\nMedicalCondition|Disturbi della personalità\nMedicalCondition|Disturbi dell'umore e depressione\nMedicalCondition|Psicosi\nMedicalCondition|Schizofrenia"
    }
   },
   {
@@ -39,10 +40,11 @@
     "str.orari_speciali": "",
     "str.place_id": "",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Cardiovascular, Surgical, Radiography, Neurologic, Gastroenterologic, Gynecologic, Musculoskeletal, Otolaryngologic, Pulmonary, Podiatric, Rheumatologic, Urologic",
     "str.marchio": "Myolab",
     "str.sameAs": "https://www.facebook.com/Myolab",
-    "str.prenotazione": "https://myolab.it/prenota-online"
+    "str.prenotazione": "https://myolab.it/prenota-online",
+    "str.servizi": "MedicalTest|Diagnostica ecografica\nMedicalTest|Elettromiografia\nMedicalTest|Senologia - Mammografia"
    }
   },
   {
@@ -61,10 +63,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJHeXuSeCZLRMR69KKq6Z_PX0",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Pediatric",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/CentroAmbulatorialeJesiSantoStefanoRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione in età evolutiva"
    }
   },
   {
@@ -83,10 +86,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJ7dGtdEr1MRMRFJB0Mijs8SY",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Cardiovascular, Pediatric, Neurologic, Musculoskeletal, Pulmonary",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/CentroAmbSBenedettoSStefanoRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione cardiologica\nMedicalTherapy|Riabilitazione in età evolutiva\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione pneumologica"
    }
   },
   {
@@ -108,7 +112,8 @@
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
     "str.sameAs": "https://www.facebook.com/CasaMiogliaNeomesia",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalCondition|Disturbi d'ansia\nMedicalCondition|Disturbi della personalità\nMedicalCondition|Schizofrenia"
    }
   },
   {
@@ -127,10 +132,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJr1G8sLp4LRMRKgqPBOWpj04",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Neurologic, Musculoskeletal",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/VillaAdriaSantoStefanoRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione gravi cerebrolesioni\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Assistenza stati vegetativi persistenti"
    }
   },
   {
@@ -152,7 +158,8 @@
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
     "str.sameAs": "https://www.facebook.com/VillaAzzurraNeomesia",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalCondition|Dipendenze\nMedicalCondition|Disturbi d'ansia\nMedicalCondition|Disturbi della personalità\nMedicalCondition|Disturbi dell'umore e depressione\nMedicalCondition|Psicosi"
    }
   },
   {
@@ -171,10 +178,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJU1nFWpi9LRMRYNinBftj0Ro",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Psychiatric",
+    "str.specialita": "Psychiatric, Geriatric",
     "str.marchio": "Neomesia",
     "str.sameAs": "https://www.facebook.com/VillaJolandaNeomesia",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalCondition|Dipendenze\nMedicalCondition|Disturbi della personalità\nMedicalCondition|Disturbi dell'umore e depressione\nMedicalCondition|Psicosi\nMedicalCondition|Schizofrenia"
    }
   },
   {
@@ -193,10 +201,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJb51KBWTvf0cRF6TS7ak_dY0",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Psychiatric",
+    "str.specialita": "Psychiatric, DietNutrition",
     "str.marchio": "Neomesia",
     "str.sameAs": "https://www.facebook.com/VillaRosaNeomesia",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalCondition|Dipendenze\nMedicalCondition|Disturbi d'ansia\nMedicalCondition|Disturbi della nutrizione e dell'alimentazione (DNA)\nMedicalCondition|Disturbi della personalità\nMedicalCondition|Disturbo ossessivo compulsivo\nMedicalCondition|Psicosi"
    }
   },
   {
@@ -215,10 +224,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJy8g0Alyb1RIR1o_oZ7L5Rzs",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Psychiatric",
+    "str.specialita": "Psychiatric, DietNutrition, Geriatric",
     "str.marchio": "Neomesia",
     "str.sameAs": "https://www.facebook.com/VillediNozzanoNeomesia",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalCondition|Disturbi d'ansia\nMedicalCondition|Disturbi della nutrizione e dell'alimentazione (DNA)\nMedicalCondition|Disturbi della personalità\nMedicalCondition|Disturbi dell'umore e depressione\nMedicalCondition|Disturbo ossessivo compulsivo\nMedicalCondition|Psicosi"
    }
   },
   {
@@ -237,10 +247,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJL93t4iBdgEcRS9gMXZZbeAk",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Cardiovascular, Dermatology, Psychiatric, Neurologic, Optometric, Otolaryngologic, Radiography",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/CentroCardinalFerrariSantoStefanoRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalCondition|Disturbi della personalità\nMedicalTest|Elettroencefalografia\nMedicalTest|Elettromiografia\nMedicalTest|Radiologia convenzionale\nMedicalTherapy|Riabilitazione gravi cerebrolesioni\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Assistenza stati vegetativi persistenti"
    }
   },
   {
@@ -259,10 +270,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJYbAAW7YeLRMRl4LAzPgUkI0",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Pediatric",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/CARPesaroSantoStefanoRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione in età evolutiva"
    }
   },
   {
@@ -281,10 +293,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJqUipphdxMhMR2rUYryv3OL0",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Cardiovascular, Pediatric, Neurologic, Musculoskeletal, Pulmonary",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/CARPortoPotenzaPicenaSantoStefanoRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione cardiologica\nMedicalTherapy|Riabilitazione in età evolutiva\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione pneumologica"
    }
   },
   {
@@ -303,10 +316,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJbaqLb9cWgkcRcVT5TEQvpw4",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Cardiovascular, Musculoskeletal, Urologic",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione cardiologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione urologica e del pavimento pelvico"
    }
   },
   {
@@ -325,10 +339,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJgWgFn2JxMhMRbDqHTVjoZ5Y",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "",
+    "str.specialita": "Dermatology, Radiography, Neurologic, Endocrine, Musculoskeletal",
     "str.marchio": "Polo Diagnostico",
     "str.sameAs": "https://www.facebook.com/PoloDiagnosticoIstitutoS.Stefano",
-    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online",
+    "str.servizi": "MedicalTest|Diagnostica ecografica\nMedicalTest|Elettromiografia\nMedicalTest|Risonanza magnetica"
    }
   },
   {
@@ -347,10 +362,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJowJ2LKNxMhMR0LQIw08Jmx4",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Neurologic, Musculoskeletal, Pulmonary",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/IstitutoRiabilitazioneSStefanoPortoPotenzaPicena",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione gravi cerebrolesioni\nMedicalTherapy|Riabilitazione mielolesioni\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione pneumologica\nMedicalTherapy|Assistenza stati vegetativi persistenti"
    }
   },
   {
@@ -372,7 +388,8 @@
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
     "str.sameAs": "https://www.facebook.com/CasaCimaNeomesiaMilano",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalCondition|Disturbi d'ansia\nMedicalCondition|Disturbi della personalità\nMedicalCondition|Schizofrenia"
    }
   },
   {
@@ -394,7 +411,8 @@
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
     "str.sameAs": "https://www.facebook.com/CasaCimaNeomesiaPero",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalCondition|Disturbi d'ansia\nMedicalCondition|Disturbi della personalità\nMedicalCondition|Schizofrenia"
    }
   },
   {
@@ -413,10 +431,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJ4QKDPkRlLxMROyXRQfAXjhQ",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Psychiatric",
+    "str.specialita": "Psychiatric, Neurologic, Geriatric",
     "str.marchio": "Neomesia",
     "str.sameAs": "https://www.facebook.com/VillaSantAlessandroNeomesia",
-    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online",
+    "str.servizi": "MedicalCondition|Dipendenze\nMedicalCondition|Disturbi d'ansia\nMedicalCondition|Disturbi del sonno\nMedicalCondition|Disturbi della personalità\nMedicalCondition|Disturbi dell'umore e depressione\nMedicalCondition|Disturbo ossessivo compulsivo\nMedicalCondition|Psicosi\nMedicalCondition|Schizofrenia"
    }
   },
   {
@@ -435,10 +454,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJZ4oyepv9MRMRI_zh8LRG6Xs",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Cardiovascular, Neurologic, Musculoskeletal, Pulmonary",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/CentroAmbulatorialeAscoliPiceno",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione cardiologica\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione pneumologica"
    }
   },
   {
@@ -457,10 +477,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJCet2k3LJLRMR-Yp8BcFqplA",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Pediatric, Neurologic, Musculoskeletal, Pulmonary",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/CARFabrianoSantoStefanoRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione in età evolutiva\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione pneumologica"
    }
   },
   {
@@ -479,10 +500,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJpao2ySZQLBMRO2qAb0QFRKE",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Radiography, Neurologic, Musculoskeletal",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/CagliSantoStefanoRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTest|Diagnostica ecografica\nMedicalTest|Elettromiografia\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica"
    }
   },
   {
@@ -504,7 +526,8 @@
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
     "str.sameAs": "https://www.facebook.com/CasaSampeyreNeomesia",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalCondition|Dipendenze\nMedicalCondition|Disturbi d'ansia\nMedicalCondition|Disturbi della personalità\nMedicalCondition|Disturbi dell'umore e depressione\nMedicalCondition|Schizofrenia"
    }
   },
   {
@@ -526,7 +549,8 @@
     "str.specialita": "Psychiatric",
     "str.marchio": "",
     "str.sameAs": "https://www.facebook.com/CasaVarazzeNeomesia",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalCondition|Disturbi d'ansia\nMedicalCondition|Disturbi della personalità\nMedicalCondition|Disturbi dell'umore e depressione\nMedicalCondition|Psicosi"
    }
   },
   {
@@ -545,10 +569,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJe8ZYFqaRLRMR9bhZMw8p2i4",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Cardiovascular, Pediatric, Neurologic, Musculoskeletal, Pulmonary",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/CARFilottranoSantoStefanoRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione cardiologica\nMedicalTherapy|Riabilitazione in età evolutiva\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione pneumologica"
    }
   },
   {
@@ -567,10 +592,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJcUtg1PehhkcRxdo0knUUzrs",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Neurologic, Musculoskeletal",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/VillaSanGiuseppeSantoStefanoRiabilitazione",
-    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online",
+    "str.servizi": "MedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica"
    }
   },
   {
@@ -589,10 +615,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJZamI43pyMhMRpg9eQjtZsCw",
     "str.tipo": "Hospital",
-    "str.specialita": "",
+    "str.specialita": "Cardiovascular, Surgical, Dermatology, Radiography, Neurologic, Gastroenterologic, Optometric, Oncologic, Musculoskeletal, Otolaryngologic, Podiatric, Rheumatologic, Anesthesia, Urologic",
     "str.marchio": "Villa dei Pini",
     "str.sameAs": "https://www.facebook.com/CCVilladeiPini",
-    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online",
+    "str.servizi": "MedicalTest|Cardiodiagnostica\nMedicalTest|Diagnostica ecografica\nMedicalTest|Elettroencefalografia\nMedicalTest|MOC\nMedicalTest|Radiologia convenzionale\nMedicalTest|Risonanza magnetica\nMedicalTest|Senologia - Mammografia"
    }
   },
   {
@@ -614,7 +641,8 @@
     "str.specialita": "LaboratoryScience",
     "str.marchio": "Polo Diagnostico",
     "str.sameAs": "https://www.facebook.com/PoloDiagnosticoBiemmeVillalba",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": ""
    }
   },
   {
@@ -633,10 +661,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJp2JD4YFtMhMRD0rJe3EP7go",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Cardiovascular, Pediatric, Neurologic, Musculoskeletal, Pulmonary",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/CentroAmbCivitanovaMarcheSStefanoRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione cardiologica\nMedicalTherapy|Riabilitazione in età evolutiva\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione pneumologica"
    }
   },
   {
@@ -655,10 +684,11 @@
     "str.orari_speciali": "",
     "str.place_id": "",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Musculoskeletal, Pulmonary",
     "str.marchio": "Fidia",
     "str.sameAs": "https://www.facebook.com/FidiaRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione pneumologica"
    }
   },
   {
@@ -677,10 +707,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJsy_Fq-zbLRMRmhYcYG_66eA",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Cardiovascular, Pediatric, Neurologic, Musculoskeletal, Pulmonary",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/CARCamerinoSantoStefanoRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione cardiologica\nMedicalTherapy|Riabilitazione in età evolutiva\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione pneumologica"
    }
   },
   {
@@ -699,10 +730,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJB7O0-SnpLRMRalacqhTgZOQ",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Cardiovascular, Pediatric, Neurologic, Musculoskeletal, Pulmonary",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/CentroAmbSanSeverinoSantoStefanoRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione cardiologica\nMedicalTherapy|Riabilitazione in età evolutiva\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione pneumologica"
    }
   },
   {
@@ -721,10 +753,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJ_S2hnd3uLRMRZNnObT7DtnQ",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Cardiovascular, Pediatric, Neurologic, Musculoskeletal, Pulmonary",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/CARTolentinoSantoStefanoRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione cardiologica\nMedicalTherapy|Riabilitazione in età evolutiva\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione pneumologica"
    }
   },
   {
@@ -746,7 +779,8 @@
     "str.specialita": "Physiotherapy",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/CentroResidenzialeSantoStefanoFoligno",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": ""
    }
   },
   {
@@ -765,10 +799,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJNxnV_QTzLBMRCbuX_MACSwQ",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Neurologic, Musculoskeletal, Pulmonary",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/CentrodiMacerataFeltriaSantoStefanoRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione pneumologica"
    }
   },
   {
@@ -790,7 +825,8 @@
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
     "str.sameAs": "https://www.facebook.com/CorteCarcareNeomesia",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalCondition|Disturbi d'ansia\nMedicalCondition|Disturbi della personalità\nMedicalCondition|Disturbi dell'umore e depressione\nMedicalCondition|Psicosi\nMedicalCondition|Schizofrenia"
    }
   },
   {
@@ -812,7 +848,8 @@
     "str.specialita": "Psychiatric",
     "str.marchio": "Neomesia",
     "str.sameAs": "https://www.facebook.com/CasaSanremoNeomesia",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalCondition|Disturbi d'ansia\nMedicalCondition|Disturbi della personalità\nMedicalCondition|Schizofrenia"
    }
   },
   {
@@ -831,10 +868,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJq_XfsEuh1BIRw-kb7VnBOPQ",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Psychiatric",
+    "str.specialita": "Psychiatric, DietNutrition",
     "str.marchio": "Neomesia",
     "str.sameAs": "https://www.facebook.com/CorteOreroNeomesia",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalCondition|Disturbi d'ansia\nMedicalCondition|Disturbi della nutrizione e dell'alimentazione (DNA)\nMedicalCondition|Disturbi della personalità\nMedicalCondition|Disturbi dell'umore e depressione\nMedicalCondition|Psicosi\nMedicalCondition|Schizofrenia"
    }
   },
   {
@@ -856,7 +894,8 @@
     "str.specialita": "LaboratoryScience",
     "str.marchio": "Polo Diagnostico",
     "str.sameAs": "https://www.facebook.com/PoloDiagnosticoSalusVillalba",
-    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online",
+    "str.servizi": ""
    }
   },
   {
@@ -875,10 +914,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJR8MnbnEwOhMRm24bAR1ldBA",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Cardiovascular, Neurologic, Musculoskeletal, Pulmonary",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/VillaMargheritaBeneventoSantoStefanoRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione cardiologica\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione pneumologica"
    }
   },
   {
@@ -897,10 +937,11 @@
     "str.orari_speciali": "",
     "str.place_id": "",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Psychiatric",
+    "str.specialita": "Psychiatric, Neurologic, DietNutrition, Geriatric",
     "str.marchio": "Neomesia",
     "str.sameAs": "",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalCondition|Dipendenze\nMedicalCondition|Disturbi d'ansia\nMedicalCondition|Disturbi del sonno\nMedicalCondition|Disturbi della nutrizione e dell'alimentazione (DNA)\nMedicalCondition|Disturbi della personalità\nMedicalCondition|Disturbi dell'umore e depressione\nMedicalCondition|Disturbo ossessivo compulsivo\nMedicalCondition|Disturbo post traumatico da stress\nMedicalCondition|Psicosi\nMedicalCondition|Schizofrenia"
    }
   },
   {
@@ -919,10 +960,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJ2WBkRffFLRMR0DLbmkWK9Lo",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Cardiovascular, Pediatric, Neurologic, Musculoskeletal, Pulmonary",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/CARMatelicaSantoStefanoRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione cardiologica\nMedicalTherapy|Riabilitazione in età evolutiva\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione pneumologica"
    }
   },
   {
@@ -941,10 +983,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJN9cVp0jzLRMRW_F-zmyGbmM",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Cardiovascular, Pediatric, Neurologic, Musculoskeletal, Pulmonary",
     "str.marchio": "Santo Stefano Riabilitazione",
     "str.sameAs": "https://www.facebook.com/CARMacerataSantoStefanoRiabilitazione",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione cardiologica\nMedicalTherapy|Riabilitazione in età evolutiva\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione pneumologica"
    }
   },
   {
@@ -963,10 +1006,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJhzsXUoFfLxMRRv-wnTEkP10",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Psychiatric",
+    "str.specialita": "Psychiatric, DietNutrition",
     "str.marchio": "",
     "str.sameAs": "https://www.facebook.com/CasadiCuraVillaArmoniaNuova",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalCondition|Dipendenze\nMedicalCondition|Disturbi d'ansia\nMedicalCondition|Disturbi della nutrizione e dell'alimentazione (DNA)\nMedicalCondition|Disturbi della personalità\nMedicalCondition|Disturbi dell'umore e depressione\nMedicalCondition|Psicosi\nMedicalCondition|Schizofrenia"
    }
   },
   {
@@ -985,10 +1029,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJY8OWXEK7KhMRWg8gF_EwqpQ",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Cardiovascular, Endocrine, Neurologic, Musculoskeletal, Pulmonary",
     "str.marchio": "",
     "str.sameAs": "",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione cardiologica\nMedicalTherapy|Riabilitazione metabolica\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione pneumologica"
    }
   },
   {
@@ -1007,10 +1052,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJ1V7954Lvf0cR43appJDl5PI",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "",
+    "str.specialita": "Cardiovascular, Musculoskeletal, Otolaryngologic, Pulmonary",
     "str.marchio": "",
     "str.sameAs": "https://www.facebook.com/VillaPinetaPoliambulatorioModena",
-    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online",
+    "str.servizi": ""
    }
   },
   {
@@ -1032,7 +1078,8 @@
     "str.specialita": "LaboratoryScience",
     "str.marchio": "",
     "str.sameAs": "https://www.facebook.com/PoloDiagnosticoGamma",
-    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online",
+    "str.servizi": ""
    }
   },
   {
@@ -1054,7 +1101,8 @@
     "str.specialita": "LaboratoryScience",
     "str.marchio": "",
     "str.sameAs": "",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": ""
    }
   },
   {
@@ -1073,10 +1121,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJKWN_nw4dLRMR4_Gx_f6RtG4",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Cardiovascular, Neurologic, Musculoskeletal, Pulmonary",
     "str.marchio": "",
     "str.sameAs": "",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione cardiologica\nMedicalTherapy|Riabilitazione gravi cerebrolesioni\nMedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica\nMedicalTherapy|Riabilitazione pneumologica\nMedicalTherapy|Assistenza stati vegetativi persistenti"
    }
   },
   {
@@ -1095,10 +1144,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJRxGDqpLzLRMRcIg7Iuh9JGw",
     "str.tipo": "Dentist",
-    "str.specialita": "Dentistry",
+    "str.specialita": "Dentistry, Radiography",
     "str.marchio": "",
     "str.sameAs": "",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTest|TC Cone Beam"
    }
   },
   {
@@ -1117,10 +1167,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJtcEr_pNxMhMRw84gxtWg6tc",
     "str.tipo": "Dentist",
-    "str.specialita": "Dentistry",
+    "str.specialita": "Dentistry, Radiography",
     "str.marchio": "",
     "str.sameAs": "",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTest|TC Cone Beam"
    }
   },
   {
@@ -1139,10 +1190,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJiSDCmVLvf0cRGSJVxwDpr0U",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "",
+    "str.specialita": "Dermatology, Radiography, Neurologic, Dentistry",
     "str.marchio": "",
     "str.sameAs": "",
-    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online",
+    "str.servizi": "MedicalTest|Diagnostica ecografica\nMedicalTest|Elettromiografia\nMedicalTest|Radiologia convenzionale\nMedicalTest|Risonanza magnetica\nMedicalTest|TAC\nMedicalTest|TC Cone Beam"
    }
   },
   {
@@ -1161,10 +1213,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJO0nbwG_rhkcRtX73aeLAxoE",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "",
+    "str.specialita": "Cardiovascular, Dermatology, Radiography, Endocrine, Renal, Neurologic, Urologic",
     "str.marchio": "",
     "str.sameAs": "",
-    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online",
+    "str.servizi": "MedicalTest|Diagnostica ecografica"
    }
   },
   {
@@ -1183,10 +1236,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJNe9n2yL9MRMR6KoCAU2CBRU",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "Physiotherapy",
+    "str.specialita": "Physiotherapy, Neurologic, Musculoskeletal",
     "str.marchio": "",
     "str.sameAs": "",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": "MedicalTherapy|Riabilitazione neurologica\nMedicalTherapy|Riabilitazione ortopedica"
    }
   },
   {
@@ -1205,10 +1259,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJHfCyNBq5hkcRf6Wonnfg8DY",
     "str.tipo": "MedicalClinic",
-    "str.specialita": "",
+    "str.specialita": "Cardiovascular, Radiography, Endocrine, Gynecologic, Neurologic, Musculoskeletal, Otolaryngologic, Podiatric",
     "str.marchio": "",
     "str.sameAs": "",
-    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online",
+    "str.servizi": "MedicalTest|Diagnostica ecografica\nMedicalTest|Radiologia convenzionale"
    }
   },
   {
@@ -1230,7 +1285,8 @@
     "str.specialita": "LaboratoryScience",
     "str.marchio": "",
     "str.sameAs": "",
-    "str.prenotazione": ""
+    "str.prenotazione": "",
+    "str.servizi": ""
    }
   },
   {
@@ -1249,10 +1305,11 @@
     "str.orari_speciali": "",
     "str.place_id": "ChIJ_ZF5osgbMhMR69YGEEc-uEU",
     "str.tipo": "",
-    "str.specialita": "",
+    "str.specialita": "Cardiovascular, Radiography, Neurologic, Musculoskeletal",
     "str.marchio": "Polo Diagnostico",
     "str.sameAs": "",
-    "str.prenotazione": "https://kosgroup.com/it/prenota-online"
+    "str.prenotazione": "https://kosgroup.com/it/prenota-online",
+    "str.servizi": "MedicalTest|Diagnostica ecografica"
    }
   }
  ]

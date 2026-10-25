@@ -1,0 +1,349 @@
+{
+ "nota": "Servizi e Cure (Yext, filtri della mappa) → specialità schema.org (MedicalSpecialty) e tipo di voce: MedicalTherapy/MedicalTest = servizio offerto, MedicalCondition = condizione trattata, null = solo specialità. PROPOSTA del 25/10/2026, da approvare con la tabella dei tipi.",
+ "voci": {
+  "Assistenza stati vegetativi persistenti": {
+   "specialita": [
+    "Neurologic"
+   ],
+   "tipo": "MedicalTherapy"
+  },
+  "Cardiodiagnostica": {
+   "specialita": [
+    "Cardiovascular"
+   ],
+   "tipo": "MedicalTest"
+  },
+  "Cardiologia": {
+   "specialita": [
+    "Cardiovascular"
+   ],
+   "tipo": null
+  },
+  "Chirurgia generale": {
+   "specialita": [
+    "Surgical"
+   ],
+   "tipo": null
+  },
+  "Dermatologia": {
+   "specialita": [
+    "Dermatology"
+   ],
+   "tipo": null
+  },
+  "Diagnostica ecografica": {
+   "specialita": [
+    "Radiography"
+   ],
+   "tipo": "MedicalTest"
+  },
+  "Dipendenze": {
+   "specialita": [
+    "Psychiatric"
+   ],
+   "tipo": "MedicalCondition"
+  },
+  "Disturbi d'ansia": {
+   "specialita": [
+    "Psychiatric"
+   ],
+   "tipo": "MedicalCondition"
+  },
+  "Disturbi del sonno": {
+   "specialita": [
+    "Psychiatric",
+    "Neurologic"
+   ],
+   "tipo": "MedicalCondition"
+  },
+  "Disturbi dell'umore e depressione": {
+   "specialita": [
+    "Psychiatric"
+   ],
+   "tipo": "MedicalCondition"
+  },
+  "Disturbi della nutrizione e dell'alimentazione (DNA)": {
+   "specialita": [
+    "Psychiatric",
+    "DietNutrition"
+   ],
+   "tipo": "MedicalCondition"
+  },
+  "Disturbi della personalità": {
+   "specialita": [
+    "Psychiatric"
+   ],
+   "tipo": "MedicalCondition"
+  },
+  "Disturbo ossessivo compulsivo": {
+   "specialita": [
+    "Psychiatric"
+   ],
+   "tipo": "MedicalCondition"
+  },
+  "Disturbo post traumatico da stress": {
+   "specialita": [
+    "Psychiatric"
+   ],
+   "tipo": "MedicalCondition"
+  },
+  "Elettroencefalografia": {
+   "specialita": [
+    "Neurologic"
+   ],
+   "tipo": "MedicalTest"
+  },
+  "Elettromiografia": {
+   "specialita": [
+    "Neurologic"
+   ],
+   "tipo": "MedicalTest"
+  },
+  "Endrocrinologia": {
+   "specialita": [
+    "Endocrine"
+   ],
+   "tipo": null
+  },
+  "Endocrinologia": {
+   "specialita": [
+    "Endocrine"
+   ],
+   "tipo": null
+  },
+  "Flebologia": {
+   "specialita": [
+    "Cardiovascular"
+   ],
+   "tipo": null
+  },
+  "Gastroentereologia": {
+   "specialita": [
+    "Gastroenterologic"
+   ],
+   "tipo": null
+  },
+  "Gastroenterologia": {
+   "specialita": [
+    "Gastroenterologic"
+   ],
+   "tipo": null
+  },
+  "Ginecologia": {
+   "specialita": [
+    "Gynecologic"
+   ],
+   "tipo": null
+  },
+  "Laboratorio analisi": {
+   "specialita": [
+    "LaboratoryScience"
+   ],
+   "tipo": null
+  },
+  "MOC": {
+   "specialita": [
+    "Radiography"
+   ],
+   "tipo": "MedicalTest"
+  },
+  "Maxillofacciale": {
+   "specialita": [
+    "Surgical"
+   ],
+   "tipo": null
+  },
+  "Medicina dello Sport": {
+   "specialita": [
+    "Musculoskeletal"
+   ],
+   "tipo": null
+  },
+  "Nefrologia": {
+   "specialita": [
+    "Renal"
+   ],
+   "tipo": null
+  },
+  "Neurochirurgia": {
+   "specialita": [
+    "Surgical",
+    "Neurologic"
+   ],
+   "tipo": null
+  },
+  "Neurologia": {
+   "specialita": [
+    "Neurologic"
+   ],
+   "tipo": null
+  },
+  "Oculistica": {
+   "specialita": [
+    "Optometric"
+   ],
+   "tipo": null
+  },
+  "Oncologia": {
+   "specialita": [
+    "Oncologic"
+   ],
+   "tipo": null
+  },
+  "Ortopedia": {
+   "specialita": [
+    "Musculoskeletal"
+   ],
+   "tipo": null
+  },
+  "Otorinolaringoiatria": {
+   "specialita": [
+    "Otolaryngologic"
+   ],
+   "tipo": null
+  },
+  "Pneumologia": {
+   "specialita": [
+    "Pulmonary"
+   ],
+   "tipo": null
+  },
+  "Podologia": {
+   "specialita": [
+    "Podiatric"
+   ],
+   "tipo": null
+  },
+  "Psicogeriatria": {
+   "specialita": [
+    "Psychiatric",
+    "Geriatric"
+   ],
+   "tipo": null
+  },
+  "Psicosi": {
+   "specialita": [
+    "Psychiatric"
+   ],
+   "tipo": "MedicalCondition"
+  },
+  "Radiologia convenzionale": {
+   "specialita": [
+    "Radiography"
+   ],
+   "tipo": "MedicalTest"
+  },
+  "Reumatologia": {
+   "specialita": [
+    "Rheumatologic"
+   ],
+   "tipo": null
+  },
+  "Riabilitazione cardiologica": {
+   "specialita": [
+    "Physiotherapy",
+    "Cardiovascular"
+   ],
+   "tipo": "MedicalTherapy"
+  },
+  "Riabilitazione gravi cerebrolesioni": {
+   "specialita": [
+    "Physiotherapy",
+    "Neurologic"
+   ],
+   "tipo": "MedicalTherapy"
+  },
+  "Riabilitazione in età evolutiva": {
+   "specialita": [
+    "Physiotherapy",
+    "Pediatric"
+   ],
+   "tipo": "MedicalTherapy"
+  },
+  "Riabilitazione metabolica": {
+   "specialita": [
+    "Physiotherapy",
+    "Endocrine"
+   ],
+   "tipo": "MedicalTherapy"
+  },
+  "Riabilitazione mielolesioni": {
+   "specialita": [
+    "Physiotherapy",
+    "Neurologic"
+   ],
+   "tipo": "MedicalTherapy"
+  },
+  "Riabilitazione neurologica": {
+   "specialita": [
+    "Physiotherapy",
+    "Neurologic"
+   ],
+   "tipo": "MedicalTherapy"
+  },
+  "Riabilitazione ortopedica": {
+   "specialita": [
+    "Physiotherapy",
+    "Musculoskeletal"
+   ],
+   "tipo": "MedicalTherapy"
+  },
+  "Riabilitazione pneumologica": {
+   "specialita": [
+    "Physiotherapy",
+    "Pulmonary"
+   ],
+   "tipo": "MedicalTherapy"
+  },
+  "Riabilitazione urologica e del pavimento pelvico": {
+   "specialita": [
+    "Physiotherapy",
+    "Urologic"
+   ],
+   "tipo": "MedicalTherapy"
+  },
+  "Risonanza magnetica": {
+   "specialita": [
+    "Radiography"
+   ],
+   "tipo": "MedicalTest"
+  },
+  "Schizofrenia": {
+   "specialita": [
+    "Psychiatric"
+   ],
+   "tipo": "MedicalCondition"
+  },
+  "Senologia - Mammografia": {
+   "specialita": [
+    "Radiography"
+   ],
+   "tipo": "MedicalTest"
+  },
+  "Servizio anestesia": {
+   "specialita": [
+    "Anesthesia"
+   ],
+   "tipo": null
+  },
+  "TAC": {
+   "specialita": [
+    "Radiography"
+   ],
+   "tipo": "MedicalTest"
+  },
+  "TC Cone Beam": {
+   "specialita": [
+    "Radiography",
+    "Dentistry"
+   ],
+   "tipo": "MedicalTest"
+  },
+  "Urologia-Andrologia": {
+   "specialita": [
+    "Urologic"
+   ],
+   "tipo": null
+  }
+ }
+}
