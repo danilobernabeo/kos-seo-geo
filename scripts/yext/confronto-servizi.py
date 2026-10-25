@@ -98,11 +98,17 @@ def main():
                 stato, prop = 'Trattamento', 'Confermare (i trattamenti non sono tra i filtri di Yext)'
             elif a_ and b_:
                 stato, prop = 'Solo sul sito', ('Aggiungere in Yext' if ent else 'Creare l\'entità in Yext')
-            elif c_:
-                stato, prop = 'Sito incompleto', 'Completare l\'associazione sul sito (scheda e pagina servizio)'
+            elif a_:
+                # sulla scheda (fonte, curata nel rifacimento 2025) ma non sulla pagina del servizio
+                tr = 'trattamenti' in x['uri']
+                stato = 'Sulla scheda'
+                prop = 'Confermata dalla scheda: si completa la pagina del servizio' + (
+                    '' if tr or c_ else (' e si aggiunge in Yext' if ent else ''))
             else:
-                stato, prop = 'Sito incoerente', 'Decidere se l\'associazione vale: correggere ' + (
-                    'la pagina del servizio' if a_ else 'la scheda') + ('' if not ent else ' e allineare Yext')
+                # solo sulla pagina del servizio (in gran parte copiate dai filtri Yext): da verificare
+                stato = 'Da verificare'
+                prop = 'La struttura offre questo servizio? Presente solo sulla pagina del servizio' + (
+                    ' e nei filtri Yext' if c_ else '')
             righe.append(base + [x['pagetitle'], sezione(x['uri']), 'https://kosgroup.com/' + x['uri'].strip('/'),
                                  'sì' if a_ else '', 'sì' if b_ else '', 'sì' if c_ else '', stato, prop, '', ''])
         for v in extra:
@@ -125,7 +131,7 @@ def main():
     for i, w in enumerate(larg, 1):
         c.column_dimensions[get_column_letter(i)].width = w
     giallo = PatternFill('solid', fgColor='FFF2CC')
-    colori = {'Coerente': 'E2EFDA', 'Trattamento': 'EDEDED', 'Solo sul sito': 'DDEBF7', 'Solo in Yext': 'FCE4D6', 'Sito incompleto': 'FCE4D6',
+    colori = {'Coerente': 'E2EFDA', 'Trattamento': 'EDEDED', 'Sulla scheda': 'E2EFDA', 'Da verificare': 'F8CBAD', 'Solo sul sito': 'DDEBF7', 'Solo in Yext': 'FCE4D6', 'Sito incompleto': 'FCE4D6',
               'Sito incoerente': 'F8CBAD'}
     for row in c.iter_rows(min_row=1, max_row=c.max_row):
         for cell in row:
@@ -142,14 +148,14 @@ def main():
     dv.add(f'L2:L{c.max_row}')
 
     r = wb.create_sheet('Riepilogo')
-    r.append(['Struttura', 'Associazioni', 'Coerente', 'Trattamento', 'Solo sul sito', 'Sito incompleto',
-              'Sito incoerente', 'Solo in Yext', 'Con esito KOS'])
+    r.append(['Struttura', 'Associazioni', 'Coerente', 'Trattamento', 'Solo sul sito', 'Sulla scheda',
+              'Da verificare', 'Solo in Yext', 'Con esito KOS'])
     strutture = list(dict.fromkeys(x[0] for x in righe))
     n = c.max_row
     for i, s in enumerate(strutture, 2):
         r.cell(i, 1, s)
         r.cell(i, 2, f'=COUNTIF(Confronto!$A$2:$A${n},A{i})')
-        for j, st in enumerate(['Coerente', 'Trattamento', 'Solo sul sito', 'Sito incompleto', 'Sito incoerente', 'Solo in Yext'], 3):
+        for j, st in enumerate(['Coerente', 'Trattamento', 'Solo sul sito', 'Sulla scheda', 'Da verificare', 'Solo in Yext'], 3):
             r.cell(i, j, f'=COUNTIFS(Confronto!$A$2:$A${n},$A{i},Confronto!$J$2:$J${n},"{st}")')
         r.cell(i, 9, f'=COUNTIFS(Confronto!$A$2:$A${n},$A{i},Confronto!$L$2:$L${n},"<>")')
     t = len(strutture) + 2
@@ -179,8 +185,8 @@ def main():
         ('Coerente — presente in tutte e tre le fonti.', False),
         ('Trattamento — trattamento associato sul sito in entrambe le direzioni; Yext non ha i trattamenti tra i filtri.', False),
         ('Solo sul sito — associazione presente sul sito (in entrambe le direzioni) ma non in Yext.', False),
-        ('Sito incompleto — presente in Yext, ma sul sito solo in una direzione.', False),
-        ('Sito incoerente — sul sito in una sola direzione e assente in Yext.', False),
+        ('Sulla scheda — indicata dalla scheda della struttura (fonte) ma non dalla pagina del servizio: si completa.', False),
+        ('Da verificare — indicata solo dalla pagina del servizio (spesso copiata dai filtri Yext): KOS conferma o no.', False),
         ('Solo in Yext — voce di Yext senza pagina del sito associata alla struttura.', False),
         ('', False),
         ('Cosa compilare', True),

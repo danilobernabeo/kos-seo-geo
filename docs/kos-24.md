@@ -203,3 +203,10 @@ Yext, 5 solo in Yext (Poliambulatorio Valdaso, Villa Fastiggi).
 Proposta: le associazioni confermate da KOS diventano la fonte unica, tenuta sulla scheda struttura (la pagina del
 servizio la legge al contrario); i servizi del dato strutturato puntano alle pagine del sito (`url` del servizio) e Yext,
 poi RetailTune, si allineano al sito. Fino alla validazione, l'import da Yext dei servizi resta in sospeso sullo stage.
+
+**Aggiornamento 25/10 sera.** Le associazioni presenti solo sulla pagina del servizio risultano in gran parte copiate
+dai filtri Yext (tutte le 37 «servizio + Yext» senza la scheda; es. Dermatologia su Centro Cardinal Ferrari, che non la
+offre). Decisione: la fonte è la scheda struttura, curata nel rifacimento del 2025. Le 102 associazioni solo sulla
+scheda si completano sulla pagina del servizio (`kos-mappatura-inversa.php --solo-servizi`); le 107 solo sulla pagina
+del servizio diventano domande per KOS (stato «Da verificare» nell'Excel). La mappatura inversa completa scritta sullo
+stage nel pomeriggio va annullata con il suo file di ripristino.
