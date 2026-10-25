@@ -21,12 +21,16 @@
  *     salta una scheda intera (ultimo pezzo del suo indirizzo) o una sola coppia scheda:servizio («>» va bene solo se
  *     l'argomento è tra virgolette, altrimenti la shell lo prende per una redirezione): per le associazioni
  *     sospette, da far verificare a KOS prima di completarle.
+ *   --solo-servizi  solo la prima direzione (scheda → pagina del servizio): decisione del 25/10, la scheda è la fonte;
+ *     le associazioni presenti solo sulla pagina del servizio (in gran parte copiate dai filtri Yext) restano da
+ *     verificare con KOS e non vengono aggiunte alle schede.
  * Solo schede e servizi pubblicati. I valori restano liste di id separati da virgola, in coda a quelli esistenti.
  */
 declare(strict_types=1);
 if (PHP_SAPI !== 'cli') { fwrite(STDERR, "Solo da riga di comando.\n"); exit(1); }
 $webroot = rtrim($argv[1] ?? '', '/');
 $scrivi  = in_array('--scrivi', $argv, true);
+$soloServizi = in_array('--solo-servizi', $argv, true);
 $escludi = [];
 foreach ($argv as $a) if (str_starts_with($a, '--escludi=')) $escludi = array_filter(array_map('trim', explode(',', substr($a, 10))));
 $ultimo = fn(string $uri) => basename(rtrim($uri, '/'));
@@ -115,7 +119,7 @@ foreach ($schede as $sid => $s) {
         $csv[] = [$s['pagetitle'], '/' . $s['uri'], $servizi[$pid]['pagetitle'], '/' . $servizi[$pid]['uri'],
                   'struttura aggiunta alla pagina del servizio', 'mapServiziStrutture'];
     }
-    foreach (array_keys($B[$sid] ?? []) as $pid) {
+    foreach ($soloServizi ? [] : array_keys($B[$sid] ?? []) as $pid) {
         if (isset($A[$sid][$pid]) || $saltaCoppia($s, $servizi[$pid])) continue;
         // TV più usata per quella pagina tra quelle collegate al template della scheda, altrimenti la predefinita
         $cand = array_filter($uso[$pid] ?? [], fn($n, $tv) => !empty($tvTpl[$tv][(int) $s['template']]), ARRAY_FILTER_USE_BOTH);
