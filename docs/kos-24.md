@@ -94,7 +94,7 @@ landing con `about` verso la scheda corretta e FAQ visibili nel testo.
 `scripts/yext/strutture-in-tv.py <export.xlsx>` produce `kosgroup/dati/voce-24/strutture-yext-<data>.json`, da applicare
 con `imposta-tv.php`, e `report-yext-<data>.md`. Export del 25/10: 60 entità su kosgroup.com, 57 schede importabili.
 Non entrano: le due entità di Poliambulatorio Villalba sulla stessa scheda e Villa Margherita Vicenza, che punta a
-`/it/villa-margherita`. Il report elenca quello che va corretto in Yext entro il 30/10: 19 schede con lo stesso orario
-sette giorni su sette, 9 email assenti, 4 place_id mancanti, marchi non validi, 34 indirizzi abbreviati («V.», «V.le»)
+`/it/villa-margherita`. Il report elenca quello che va corretto in Yext entro il 30/10: 20 schede con lo stesso orario
+sette giorni su sette, 9 email assenti, 4 place_id mancanti, il marchio «0» di Casa Varazze, 34 indirizzi abbreviati («V.», «V.le»)
 che lo script scrive per esteso. L'export conferma anche che i profili Google sono collegati all'organizzazione Google
 di Yext («GMB Organization»): al passaggio a RetailTune la proprietà dei profili va trasferita a un account di KOS.
