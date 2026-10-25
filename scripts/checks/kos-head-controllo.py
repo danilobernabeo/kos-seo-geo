@@ -196,6 +196,14 @@ def main():
                 g = json.loads(b)
                 for n in g.get('@graph', [g]):
                     t = n.get('@type')
+                    if str(n.get('@id', '')).endswith('#localbusiness'):
+                        manca = [k for k in ('address', 'telephone', 'geo', 'openingHoursSpecification', 'image') if k not in n]
+                        if manca:
+                            W('struttura senza ' + ', '.join(manca))
+                        if o.jsonld:
+                            ind = n.get('address', {})
+                            msg.append(f"INFO   struttura: {n.get('name')} | {ind.get('streetAddress', '')}, {ind.get('postalCode', '')} "
+                                       f"{ind.get('addressLocality', '')} | {n.get('telephone', '')} | {len(n.get('openingHoursSpecification', []))} fasce")
                     tipi.append((','.join(t) if isinstance(t, list) else str(t)) + (' ' + n['@id'].split('#')[-1] if '#' in str(n.get('@id', '')) else ''))
             except Exception as e:
                 E(f'JSON-LD non valido: {e}')
