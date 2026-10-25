@@ -253,3 +253,7 @@ Alleggerimento (25/10): tolto `category` dal `Service` di ogni offerta, perché 
 Dati di TuoTempo da segnalare a KOS (il dato strutturato li riporta come sono, come la barra di prenotazione):
 «VALUTAZIONE STRUMENTALE E CLINICA DELLA DEGLUTIZIONE» nella branca CARDIOLOGIA (Santo Stefano); «RICETTA» come
 prestazione in VISITE SPECIALISTICHE (Villa Sant'Alessandro).
+
+Da discutere (26/10): usare le branche prenotabili di TuoTempo come fonte aggiuntiva di `availableService`
+(tabella branca → pagina «Servizi e cure»), presentando le nuove associazioni a KOS come proposte, come le 107 «Da
+verificare». Da segnalare a KOS: schede senza foto della struttura (es. Ville di Nozzano usa la testata 900×400).
