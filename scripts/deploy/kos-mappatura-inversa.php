@@ -17,8 +17,9 @@
  *   - presente solo sul servizio  → il servizio si aggiunge alla scheda, nella TV in cui quella pagina compare più
  *     spesso sulle altre schede, tra quelle del template della scheda (es. gli ambulatori sono quasi sempre in
  *     mapAreeRiabilitazione); se non compare mai, TV predefinita per sezione. Se la TV non è collegata al template della scheda, l'aggiunta si segnala e si salta.
- *   --escludi=villa-rosa-diagnostica,centro-cardinal-ferrari>disturbi-della-personalita
- *     salta una scheda intera (ultimo pezzo del suo indirizzo) o una sola coppia scheda>servizio: per le associazioni
+ *   --escludi=villa-rosa-diagnostica,centro-cardinal-ferrari:disturbi-della-personalita
+ *     salta una scheda intera (ultimo pezzo del suo indirizzo) o una sola coppia scheda:servizio («>» va bene solo se
+ *     l'argomento è tra virgolette, altrimenti la shell lo prende per una redirezione): per le associazioni
  *     sospette, da far verificare a KOS prima di completarle.
  * Solo schede e servizi pubblicati. I valori restano liste di id separati da virgola, in coda a quelli esistenti.
  */
@@ -103,7 +104,8 @@ $saltate = [];
 $escluse = 0;
 $saltaCoppia = function (array $s, array $x) use ($escludi, $ultimo, &$escluse): bool {
     $a = $ultimo($s['uri']);
-    if (in_array($a, $escludi, true) || in_array($a . '>' . $ultimo($x['uri']), $escludi, true)) { $escluse++; return true; }
+    $coppia = $a . ':' . $ultimo($x['uri']);
+    if (in_array($a, $escludi, true) || in_array($coppia, $escludi, true) || in_array(str_replace(':', '>', $coppia), $escludi, true)) { $escluse++; return true; }
     return false;
 };
 foreach ($schede as $sid => $s) {
