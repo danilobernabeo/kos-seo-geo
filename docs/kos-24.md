@@ -221,3 +221,7 @@ ogni pagina di «Servizi e cure» stanno nella TV `srv.schema` della pagina stes
 sommano a quelle della tipologia. La TV `str.servizi` (filtri Yext) resta solo come ripiego per le schede senza
 associazioni; l'import da Yext di specialità e servizi è disattivato (opzione `--servizi-yext`). Le associazioni
 confermate da KOS aggiornano il dato strutturato da sole.
+
+Validatori sui servizi dal sito (25/10, stage): Centro Cardinal Ferrari (16 terapie con URL) e Villa dei Pini
+Civitanova (Hospital, 21 prestazioni ed esami con URL, 13 specialità, prenotazione) con 0 errori e 0 avvisi su
+schema.org; «Attività locali» valida nel Rich Results Test, con il solo campo facoltativo `priceRange` mancante.
