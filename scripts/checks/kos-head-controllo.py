@@ -22,6 +22,7 @@ Esito: ERRORE (da correggere prima del rilascio), AVVISO (da guardare). Codice d
 """
 import argparse
 import base64
+import json
 import html.parser
 import os
 import re
@@ -106,6 +107,7 @@ def main():
     a.add_argument('--base', required=True, help='sito da controllare (stage)')
     a.add_argument('--pagine', required=True)
     a.add_argument('--confronta', help='sito di confronto (produzione)')
+    a.add_argument('--jsonld', action='store_true', help='mostra i nodi del @graph di ogni pagina')
     o = a.parse_args()
     auth = os.environ.get('AUTH', '')
     base = o.base.rstrip('/')
@@ -184,6 +186,23 @@ def main():
         if og['locale'] and og['locale'][0] not in ('it_IT', 'en_GB'):
             E(f'og:locale {og["locale"][0]}')
 
+        # dato strutturato (pagina intera): un solo @graph, niente script Yext, tipi del grafo
+        blocchi = re.findall(r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>', testo, re.S | re.I)
+        if len(blocchi) != 1:
+            E(f'{len(blocchi)} blocchi JSON-LD (atteso 1, il @graph della libreria)')
+        tipi = []
+        for b in blocchi:
+            try:
+                g = json.loads(b)
+                for n in g.get('@graph', [g]):
+                    t = n.get('@type')
+                    tipi.append((','.join(t) if isinstance(t, list) else str(t)) + (' ' + n['@id'].split('#')[-1] if '#' in str(n.get('@id', '')) else ''))
+            except Exception as e:
+                E(f'JSON-LD non valido: {e}')
+        if o.jsonld and tipi:
+            msg.append('INFO   grafo: ' + ' | '.join(tipi))
+        if 'knowledgetags.yextapis.com' in testo:
+            W('script Yext Knowledge Tags presente (dato strutturato Yext)')
         if '[[' in h or ']]' in h:
             E('tag MODX non risolto nell\'head: ' + re.search(r'.{0,40}(\[\[|\]\]).{0,40}', h).group(0).strip())
         if re.search(r'custom\.css\?v=20\d{6}', h):
@@ -203,7 +222,7 @@ def main():
 
         errori += sum(m.startswith('ERRORE') for m in msg)
         avvisi += sum(m.startswith('AVVISO') for m in msg)
-        print(f'\n{percorso}  ({c["title"][:60]})' + ('' if msg else '  ok'))
+        print(f'\n{percorso}  ({c["title"][:60]})' + ('' if any(not m.startswith('INFO') for m in msg) else '  ok'))
         for m in msg:
             print('  ' + m)
 

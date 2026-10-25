@@ -6,6 +6,7 @@
  *      php scripts/checks/risorse-per-template.php /www --campione[=N] > pagine.txt
  *      campione per il controllo degli head (kos-head-controllo.py): le prime N pagine pubblicate di ogni template
  *      (default 2), le pagine 30-34 e le coppie italiano/inglese dichiarate con translationId
+ *      ... --campione --ids=1065,1108   solo le risorse indicate (es. le landing della voce 24)
  */
 declare(strict_types=1);
 $webroot = rtrim($argv[1] ?? '', '/');
@@ -25,6 +26,8 @@ $sql = "SELECT t.id, t.templatename, t.content,
         SUM(c.deleted = 0) totale
         FROM {$p}site_templates t LEFT JOIN {$p}site_content c ON c.template = t.id
         GROUP BY t.id, t.templatename, t.content ORDER BY pubblicate DESC, t.templatename";
+$soloIds = [];
+foreach ($argv as $a) if (preg_match('/^--ids=([\d,]+)$/', $a, $m)) $soloIds = array_map('intval', explode(',', $m[1]));
 if ($campione) {
     $righe = [];
     // percorso pubblico dal router di MODX (contesto, base_url, prefisso lingua), non dal solo campo uri
@@ -47,6 +50,7 @@ if ($campione) {
                             ORDER BY t.templatename, c.id");
     $conta = [];
     foreach ($q->fetchAll(PDO::FETCH_ASSOC) as $r) {
+        if ($soloIds) { if (in_array((int) $r['id'], $soloIds, true)) $righe[$r['id']] = sprintf("%s  # %d %s", $url((int) $r['id']), $r['id'], $r['templatename']); continue; }
         if (!isset($ok[$r['templatename']])) continue;
         $forza = in_array((int) $r['id'], [1, 30, 31, 32, 33, 34, 990], true);
         if (!$forza && ($conta[$r['templatename']] = ($conta[$r['templatename']] ?? 0) + 1) > $campione) continue;
@@ -58,7 +62,7 @@ if ($campione) {
                              JOIN {$p}site_templates t ON t.id = c.template WHERE v.value <> ''");
     $uri = $modx->pdo->prepare("SELECT c.uri, t.templatename FROM {$p}site_content c JOIN {$p}site_templates t ON t.id = c.template
                                 WHERE c.id = ? AND c.published = 1 AND c.deleted = 0");
-    foreach ($tv->fetchAll(PDO::FETCH_ASSOC) as $r) {
+    foreach ($soloIds ? [] : $tv->fetchAll(PDO::FETCH_ASSOC) as $r) {
         if (!isset($ok[$r['templatename']])) continue;
         $righe[$r['contentid']] = sprintf("%s  # %d %s", $url((int) $r['contentid']), $r['contentid'], $r['templatename']);
         $altra = (int) preg_replace('/\D/', '', (string) $r['value']);
