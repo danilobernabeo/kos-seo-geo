@@ -88,3 +88,13 @@ Vengono sostituiti dalla libreria. I servizi elencati sono già trascritti nella
 Collaudo: un solo `@graph` per pagina e nessun JSON-LD Yext; `#localbusiness` su tutte le schede pubblicate, con
 indirizzo, telefono e coordinate; Rich Results Test e validatore schema.org su un campione per tipo di struttura;
 landing con `about` verso la scheda corretta e FAQ visibili nel testo.
+
+## Import dall'export Yext (prova del 25/10)
+
+`scripts/yext/strutture-in-tv.py <export.xlsx>` produce `kosgroup/dati/voce-24/strutture-yext-<data>.json`, da applicare
+con `imposta-tv.php`, e `report-yext-<data>.md`. Export del 25/10: 60 entità su kosgroup.com, 57 schede importabili.
+Non entrano: le due entità di Poliambulatorio Villalba sulla stessa scheda e Villa Margherita Vicenza, che punta a
+`/it/villa-margherita`. Il report elenca quello che va corretto in Yext entro il 30/10: 19 schede con lo stesso orario
+sette giorni su sette, 9 email assenti, 4 place_id mancanti, marchi non validi, 34 indirizzi abbreviati («V.», «V.le»)
+che lo script scrive per esteso. L'export conferma anche che i profili Google sono collegati all'organizzazione Google
+di Yext («GMB Organization»): al passaggio a RetailTune la proprietà dei profili va trasferita a un account di KOS.
