@@ -1,0 +1,53 @@
+# KOS-2 (Core Web Vitals mobile, LCP): immagini locali pesanti dalla misura del 26/10 (misura-lcp.mjs, 65 pagine).
+# Criterio: JPG/PNG da 150 KB in su, più gli elementi LCP. Formato: percorso[;lato massimo].
+# Lato massimo: 1920 per lo sfondo a motivo bg-pattern (oggi 2733 px), 1080 per le versioni mobile; altrimenti default 2400.
+/assets/img/img-counter.jpg    # 968 KB, 1080 px, 2 pag. del campione
+/assets/img/sfondo-tit-img-cda.png    # 859 KB, 1366 px, 2 pag. del campione
+/assets/img/sfondo-tit-img-collegio.png    # 847 KB, 1366 px, 2 pag. del campione
+/assets/img/img-sep.jpg    # 790 KB, 1366 px, 2 pag. del campione
+/assets/img/video-kos-academy.jpg    # 706 KB, 1220 px, 2 pag. del campione
+/assets/img/img-sep-1.jpg    # 619 KB, 2049 px, 4 pag. del campione
+/assets/img/team-management-benedetto.jpg    # 612 KB, 743 px, 2 pag. del campione
+/assets/img/della-thumb-eventi.jpg    # 505 KB, 1215 px, 1 pag. del campione
+/assets/img/ricerca-scientifica.jpg    # 502 KB, 2049 px, 2 pag. del campione
+/assets/img/sfondo-tit-img.png    # 441 KB, 1366 px, 2 pag. del campione
+/assets/img/team-management-motta.jpg    # 432 KB, 743 px, 2 pag. del campione
+/assets/img/img-faq.jpg    # 419 KB, 521 px, 2 pag. del campione
+/assets/img/home-img.jpg    # 404 KB, 1362 px, 3 pag. del campione, LCP
+/assets/img/img-competenze-1.jpg    # 403 KB, 902 px, 2 pag. del campione
+/assets/img/servizi-main-bg-2.jpg    # 400 KB, 4096 px, 2 pag. del campione
+/assets/img/img-sep-mb.jpg;1080    # 390 KB, 540 px, 2 pag. del campione
+/assets/img/servizi-main-bg-2-mobile.jpg;1080    # 359 KB, 2724 px, 2 pag. del campione, LCP
+/assets/img/sdgs-img3.jpg    # 329 KB, 453 px, 2 pag. del campione
+/assets/img/img-faq-2.jpg    # 313 KB, 519 px, 2 pag. del campione
+/assets/img/img-banner.png    # 296 KB, 565 px, 28 pag. del campione
+/assets/img/home-img-1.jpg    # 275 KB, 540 px, 2 pag. del campione, LCP
+/assets/img/img-competenze-2.jpg    # 259 KB, 902 px, 2 pag. del campione
+/assets/img/img-competenze-mb-2.jpg;1080    # 236 KB, 540 px, 2 pag. del campione
+/assets/img/chi-siamo/2009-banner.jpg    # 224 KB, 2049 px, 2 pag. del campione
+/assets/img/chi-siamo/2003-banner.jpg    # 219 KB, 2049 px, 2 pag. del campione
+/assets/img/bg-pattern.jpg;1920    # 218 KB, ? px, 40 pag. del campione, LCP
+/assets/img/strutture/villa-dei-pini-civitanova/01.jpg    # 212 KB, 1200 px, 1 pag. del campione, LCP
+/assets/img/img-faq-mb.jpg;1080    # 211 KB, 540 px, 2 pag. del campione
+/assets/img/strutture/clinica-dentale-villalba.jpg    # 209 KB, 500 px, 1 pag. del campione
+/assets/img/sdgs-img2.jpg    # 207 KB, 283 px, 2 pag. del campione
+/assets/img/img-faq-2-mb.jpg;1080    # 184 KB, 540 px, 2 pag. del campione
+/assets/img/img-competenze-mb-1.jpg;1080    # 175 KB, 540 px, 2 pag. del campione
+/assets/img/chi-siamo/oggi-banner.jpg    # 171 KB, 2049 px, 2 pag. del campione
+/assets/img/img-sep-1-mb.jpg;1080    # 162 KB, 540 px, 4 pag. del campione
+/assets/img/img-sep-2.jpg    # 161 KB, 2049 px, 2 pag. del campione
+/assets/img/chi-siamo/2006-banner.jpg    # 155 KB, 2049 px, 2 pag. del campione
+/assets/img/approfondimenti/psichiatra.jpg    # 82 KB, 900 px, 1 pag. del campione, LCP
+/assets/img/progetti-speciali/grafica-locandina-oss-2025.jpg    # 79 KB, 1900 px, 1 pag. del campione, LCP
+/assets/img/progetti-speciali/banner-settimana-del-cervello-2025-mobile-v2.jpg    # 72 KB, 540 px, 1 pag. del campione, LCP
+/assets/img/header/casa-mioglia-mobile.jpg;1080    # 58 KB, 400 px, 1 pag. del campione, LCP
+/assets/img/header/casa-cima-mobile.jpg;1080    # 49 KB, 400 px, 1 pag. del campione, LCP
+/assets/img/specializzazioni/chirurgia-generale.jpg    # 40 KB, 900 px, 1 pag. del campione, LCP
+/assets/img/servizi-e-cure/riabilitazione-mielolesioni.jpg    # 32 KB, 900 px, 1 pag. del campione, LCP
+/assets/img/banner-landing-sant-alessandro-mb.jpg;1080    # 32 KB, 540 px, 1 pag. del campione, LCP
+/assets/img/chi-siamo/cura-delle-persone-banner-mobile.jpg;1080    # 32 KB, 540 px, 2 pag. del campione, LCP
+/assets/img/header/cardiologia.jpg    # 24 KB, 900 px, 1 pag. del campione, LCP
+/assets/img/header/riabilitazione-gravi-cerebrolesioni-mobile.jpg;1080    # 22 KB, 400 px, 1 pag. del campione, LCP
+/assets/img/tecnologie/amadeo.jpg    # 22 KB, 377 px, 2 pag. del campione, LCP
+/assets/img/tecnologie/anymov.jpg    # 22 KB, 377 px, 2 pag. del campione, LCP
+/assets/img/hero-bg-home-2-mb.jpg;1080    # 18 KB, 540 px, 3 pag. del campione, LCP

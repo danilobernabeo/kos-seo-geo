@@ -10,7 +10,7 @@
  *
  * Origine delle immagini:
  *   elenco.txt   una immagine per riga (URL o percorso /assets/...); facoltativo «;<lato massimo>» per la singola riga
- *                (es. icone dei virtual tour: /assets/virtual-tour/x/assets/avatar_icon.png;256). Righe con # ignorate.
+ *                (es. icone dei virtual tour: /assets/virtual-tour/x/assets/avatar_icon.png;256). Righe con # ignorate, anche in fondo alla riga.
  *   cartella     percorso relativo alla radice (es. assets/img/rsa): tutti i JPG/PNG, sottocartelle comprese.
  * Opzioni:
  *   --soglia=KB     tratta solo le immagini più pesanti di KB (default 0 con l'elenco, 200 con la cartella)
@@ -61,7 +61,7 @@ $origine = $pos[1] ?? '';
 $voci = [];
 if (is_file($origine)) {
     foreach (file($origine, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $riga) {
-        $riga = trim($riga);
+        $riga = trim((string) preg_replace('/\s+#.*$/', '', $riga));   // commento in fondo alla riga
         if ($riga === '' || $riga[0] === '#') continue;
         [$u, $max] = array_pad(explode(';', $riga, 2), 2, null);
         $voci[] = ['src' => trim($u), 'max' => $max !== null && trim($max) !== '' ? (int) $max : null];
