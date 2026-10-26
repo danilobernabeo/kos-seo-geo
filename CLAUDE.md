@@ -58,3 +58,19 @@ Altri lavori sui due siti (es. pagina Sostenibilità, ricerca nelle news, sincro
 - Le regole del dato strutturato valgono anche per gli extra: un solo `@graph` per pagina, emesso dalla libreria comune (nuovi tipi, es. `VideoObject`, si aggiungono lì, non in chunk scritti a mano).
 - Precedenza al progetto (penale): niente rilasci extra in produzione il giorno prima di una consegna di sprint e durante le settimane di verifica di Cerved/ProWeb sugli elementi verificati.
 - Segreti (chiavi API, token) mai nel codice: impostazioni di sistema MODX.
+
+## Comandi per Danilo (PowerShell → ssh/scp)
+
+Danilo lancia i comandi da PowerShell su Windows; Claude li prepara pronti da incollare, uno per blocco.
+
+- Repository locale: `$R = "C:\Users\danil\progetti\kos-seo-geo\repo"`; sempre `git -C $R ...` (un `git archive`
+  lanciato da un'altra cartella produce un tar vuoto). Prima di dare i comandi, fare `git push` dei commit:
+  Danilo scarica con `git -C $R pull`.
+- Alias SSH: `aa-stage`, `kos-stage`, `kos-prod`, `aa-prod` (vedi `docs/ambienti-di-prova.md`).
+- Schema di rilascio: `git -C $R archive -o $env:TEMP\<nome>.tar HEAD <cartelle>` → `scp` → `Start-Sleep 15` →
+  `ssh <alias> "rm -rf ~/<dir> && mkdir -p ~/<dir> && tar xf ~/<nome>.tar -C ~/<dir> && cd ~/<dir> && php ... /www"`.
+  Prima la prova, poi lo stesso comando con `--scrivi`; prima lo stage, poi la produzione.
+- Insidie del passaggio PowerShell → ssh: le virgolette doppie dentro un comando remoto vanno evitate (vengono
+  tolte); `--scrivi` va prima di un eventuale `| tail`; in caso di «Connection reset» si riprova dopo un minuto.
+- La shell remota è BusyBox (`ash`): niente `gawk`, niente sintassi bash.
+- Password dello stage (Basic Auth, utente `kos`) solo da `$env:AUTH`, mai in file del repository.
