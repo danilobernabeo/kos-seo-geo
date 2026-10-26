@@ -102,6 +102,13 @@ attesi: description vuota su 2 landing, script Yext sulle 3 schede del campione 
 aggiornato: AA libreria e og:image 26/10 sera; AA-17, varianti, markup e modulo di iscrizione 27/10; contenuti AA (dopo
 esportazione fresca), alt news, regole web AA, `kos-2-8-documenti` (prima sullo stage) e preparazione `kos-24` 28/10;
 29/10 nessun rilascio (consegna sprint 1 il 30/10); voce 24 attivazione 2-6/11.
+**26/10 sera:** AA libreria immagini (`aa-1-17-libreria`) e og:image (`aa-og-image`) **in produzione**; verificati og:image
+della pagina News (prima vuota, ora immagine di ripiego 1200×630), di una residenza (foto con dimensioni) e il CSS
+`kos-seo-geo.css` (200). Misura LCP mobile KOS (65 pagine, `scripts/collaudo/misura-lcp.mjs`): TTFB mediano 396 ms, LCP
+oltre 2,5 s su 64 pagine per le immagini (sfondo `bg-pattern.jpg` 218 KB e 2733 px elemento LCP su 31 pagine, immagini
+fuori schermo senza caricamento differito, testate sovradimensionate; banner Cookiebot elemento LCP su 11 pagine).
+Proposta KOS-2: ottimizzazione dei soli file (50 immagini, 14,4 MB, `kosgroup/dati/kos-2-immagini-pesanti.txt`) con
+`ottimizza-immagini.php`; conversione a `<picture>` (73 chunk, 5 template) dopo la verifica di novembre.
 
 ## Da verificare lunedì 26 ottobre (emerso dal collaudo del 24/10)
 

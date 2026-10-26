@@ -17,12 +17,12 @@ Aggiornare l'elenco a ogni intervento.
 | `AssetVersion` (shared) | plugin (nuovo) | AA-14 (`?v=` automatico su CSS/JS) | in produzione (20/10) |
 | `convegnoAA` | template | AA-18 (H1 galleria), canonical, `[[aaSchema]]` | in collaudo |
 | Web Rules | configurazione | AA-14 e redirect | `anniazzurri/files/web-rules/web-rules.conf` |
-| `immagine` (shared) | snippet (nuovo) | AA-1, AA-17 | stage (24/10), pacchetto `aa-1-17-libreria` |
-| `ImmaginiCaricamento` (shared) | plugin (nuovo, OnFileManagerUpload) | AA-17 | stage (24/10), pacchetto `aa-1-17-libreria` |
-| `core/components/kosseogeo/Immagini.php`, `/dist/css/custom.css`, `/dist/css/kos-seo-geo.css` | file | AA-1, AA-6, AA-17 | stage (24/10), pacchetto `aa-1-17-libreria` |
+| `immagine` (shared) | snippet (nuovo) | AA-1, AA-17 | **produzione (26/10)**, pacchetto `aa-1-17-libreria` |
+| `ImmaginiCaricamento` (shared) | plugin (nuovo, OnFileManagerUpload) | AA-17 | **produzione (26/10)**, pacchetto `aa-1-17-libreria` |
+| `core/components/kosseogeo/Immagini.php`, `/dist/css/custom.css`, `/dist/css/kos-seo-geo.css` | file | AA-1, AA-6, AA-17 | **produzione (26/10)**, pacchetto `aa-1-17-libreria` |
 | chunk e template di sfondi, titoli, gallerie (`gal-*`), `servizi-*`, news, head delle landing, `photoGalleryAA2025` | 235 elementi | AA-1, AA-6, Alt Text | stage (24/10), pacchetto `aa-1-6-markup` |
 | contenuti di residenze, centri diurni, regioni, province, landing, home (152 risorse) e 7 news | campo content | AA-1, AA-6, Alt Text | stage (24/10), `anniazzurri/dati/aa-6-contenuti`, `alt-news-contenuti` |
-| `ogImage` (shared) e 26 head `head*`, template `convegnoAA` | snippet (nuovo), chunk, template | og:image (fuori perimetro) | stage (24/10), pacchetto `aa-og-image` |
+| `ogImage` (shared) e 26 head `head*`, template `convegnoAA` | snippet (nuovo), chunk, template | og:image (fuori perimetro) | **produzione (26/10)**, pacchetto `aa-og-image` |
 
 ## kosgroup.com
 
