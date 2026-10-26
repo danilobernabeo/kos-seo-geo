@@ -13,7 +13,7 @@
 /assets/img/sfondo-tit-img.png    # 441 KB, 1366 px, 2 pag. del campione
 /assets/img/team-management-motta.jpg    # 432 KB, 743 px, 2 pag. del campione
 /assets/img/img-faq.jpg    # 419 KB, 521 px, 2 pag. del campione
-/assets/img/home-img.jpg    # 404 KB, 1362 px, 3 pag. del campione, LCP
+/assets/img/home-img.jpg;1440    # lato massimo 1440 (oggi 1362x1799, mostrata a 721 px su mobile); 404 KB, 1362 px, 3 pag. del campione, LCP
 /assets/img/img-competenze-1.jpg    # 403 KB, 902 px, 2 pag. del campione
 /assets/img/servizi-main-bg-2.jpg    # 400 KB, 4096 px, 2 pag. del campione
 /assets/img/img-sep-mb.jpg;1080    # 390 KB, 540 px, 2 pag. del campione
