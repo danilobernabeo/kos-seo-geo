@@ -112,7 +112,7 @@ Proposta KOS-2: ottimizzazione dei soli file (50 immagini, 14,4 MB, `kosgroup/da
 (14,1 → 5,8 MB, −59%; backup `immagini-20261026-144615`); collaudo visivo stage/produzione a 390 e 1366 px su 65 pagine:
 tutte le pagine con immagini sostituite sotto lo 0,5% di pixel diversi (home, storia, management, governance, strutture,
 lavorare in KOS, Villa dei Pini); le 12 combinazioni segnalate dipendono da contenuti diversi tra stage e produzione
-(privacy aggiornata in produzione, carosello e mappa). Produzione: 27-28/10, poi nuova misura LCP per il «dopo».
+(privacy più lunga in produzione, probabilmente per la dichiarazione dei cookie di Cookiebot che compare solo sul dominio autorizzato; carosello e mappa). Produzione: 27-28/10, poi nuova misura LCP per il «dopo».
 
 ## Da verificare lunedì 26 ottobre (emerso dal collaudo del 24/10)
 
