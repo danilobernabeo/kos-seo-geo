@@ -23,7 +23,7 @@ del progetto.
 | `files/assets/` | testate desktop e mobile, immagine di condivisione, slide della home, locandina: da copiare in `/www/assets/` (tutti nuovi) |
 | `elementi/contenuto-evento.html` | campo content della pagina evento |
 | `elementi/segreteria-evento.html` | TV `segreteria` (colonna laterale: pulsante di iscrizione, segreteria, provider ECM, patrocinio) |
-| `elementi/chunks/programma-convegno-parkinson-realta-prospettive.html` | scheda informativa, programma e faculty |
+| `elementi/chunks/programma-convegno-parkinson-realta-prospettive.html` | scheda informativa, programma e faculty; toglie anche, solo su questa pagina, la velatura scura che il template mette sulla testata |
 | `installa.php` | installazione con prova, pubblicazione separata e ripristino |
 | `slide-home.html` | slide del carosello della home (da inserire a mano nel chunk del progetto, vedi sotto) |
 
@@ -72,9 +72,9 @@ Dopo il rilascio:
 - pagina evento: testata desktop e mobile, «Scarica la locandina», pulsante «Iscrizioni online», `og:image`
   (`/assets/img/convegno-parkinson-realta-prospettive.jpg`) nel sorgente.
 
-Immagini o documenti di `files/` cambiati dopo l'installazione: `php installa.php /www --aggiorna-file`, poi con
-`--scrivi`. Sostituisce solo i file diversi, salva i precedenti nel backup, svuota la cache (le varianti
-dello snippet `immagine` si rigenerano da sole) e stampa il comando di ripristino. Pagine, TV e chunk non cambiano.
+Immagini o documenti di `files/`, o il chunk del programma, cambiati dopo l'installazione: `php installa.php /www --aggiorna-file`,
+poi con `--scrivi`. Sostituisce solo i file e il chunk diversi, salva i precedenti nel backup, svuota la cache (le varianti
+dello snippet `immagine` si rigenerano da sole) e stampa il comando di ripristino. Pagine e TV non cambiano.
 
 Ripristino: il comando esatto è stampato alla fine dell'installazione
 (`php installa.php /www --ripristina ~/backup-kos-seo-geo/<data>-convegno-parkinson/ripristino.json --scrivi`):

@@ -11,7 +11,7 @@
  *   php installa.php /www --scrivi             installa le pagine NON pubblicate (anteprima dal manager)
  *   php installa.php /www --scrivi --pubblica  installa e pubblica (stage, o produzione ad approvazione)
  *   php installa.php /www --pubblica --scrivi  con le pagine già installate: le pubblica e basta
- *   php installa.php /www --aggiorna-file [--scrivi]  sostituisce i file di files/ cambiati (backup e ripristino)
+ *   php installa.php /www --aggiorna-file [--scrivi]  sostituisce i file di files/ e il chunk del programma, se cambiati (backup e ripristino)
  *   php installa.php /www --ripristina ~/backup-kos-seo-geo/<data>-convegno-parkinson/ripristino.json [--scrivi]
  *
  * Cosa fa (con manifest di ripristino):
@@ -119,11 +119,15 @@ if ($fileRip !== null) {
         echo "  - chunk $n\n";
         if ($scrivi && ($o = $modx->getObject(modChunk::class, ['name' => $n]))) $o->remove();
     }
+    foreach ($r['chunk_sostituiti'] ?? [] as $x) {
+        echo "  ~ chunk {$x['name']}: versione precedente\n";
+        if ($scrivi && ($o = $modx->getObject(modChunk::class, ['name' => $x['name']]))) { $o->setContent(file_get_contents($x['backup'])); $o->save(); }
+    }
     foreach ($r['file_sostituiti'] ?? [] as $x) {
         echo "  ~ file /{$x['file']}: versione precedente\n";
         if ($scrivi) copy($x['backup'], "$webroot/{$x['file']}");
     }
-    foreach ($r['file_creati'] as $f) {
+    foreach ($r['file_creati'] ?? [] as $f) {
         echo "  - file /$f\n";
         if ($scrivi) @unlink("$webroot/$f");
     }
@@ -148,7 +152,12 @@ if (in_array('--aggiorna-file', $argv, true)) {
         elseif (md5_file($dest) === md5_file($f->getPathname())) echo "  = /$rel invariato\n";
         else { echo "  ~ /$rel (sostituito, il precedente va nel backup)\n"; $daFare[$rel] = [$f->getPathname(), true]; }
     }
-    if (!$daFare) { echo "== Niente da aggiornare.\n"; exit(0); }
+    // il chunk del programma è solo di questa pagina: si aggiorna con i file (es. CSS della testata)
+    $chunkObj = $modx->getObject(modChunk::class, ['name' => $CHUNK]);
+    $chunkTesto = $leggi("elementi/chunks/$CHUNK.html");
+    $aggChunk = $chunkObj && trim(str_replace("\r\n", "\n", (string) $chunkObj->getContent())) !== $chunkTesto;
+    echo $chunkObj ? ($aggChunk ? "  ~ chunk $CHUNK (sostituito, il precedente va nel backup)\n" : "  = chunk $CHUNK invariato\n") : "  ! chunk $CHUNK non trovato\n";
+    if (!$daFare && !$aggChunk) { echo "== Niente da aggiornare.\n"; exit(0); }
     if (!$scrivi) { echo "== Prova riuscita. Rilanciare con --aggiorna-file --scrivi.\n"; exit(0); }
     $bk = rtrim((string) (getenv('HOME') ?: $DIR), '/') . '/backup-kos-seo-geo/' . date('Ymd-His') . '-' . 'convegno-parkinson' . '-file';
     $rip = ['file_creati' => [], 'file_sostituiti' => []];
@@ -162,6 +171,15 @@ if (in_array('--aggiorna-file', $argv, true)) {
         copy($src, "$webroot/$rel");
         @mkdir($bk, 0775, true);
         file_put_contents("$bk/ripristino.json", json_encode($rip, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+    }
+    if ($aggChunk) {
+        @mkdir($bk, 0775, true);
+        file_put_contents("$bk/chunk-$CHUNK.html", (string) $chunkObj->getContent());
+        $chunkObj->setContent($chunkTesto);
+        $chunkObj->save();
+        $rip['chunk_sostituiti'] = [['name' => $CHUNK, 'backup' => "$bk/chunk-$CHUNK.html"]];
+        file_put_contents("$bk/ripristino.json", json_encode($rip, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+        echo "  ~ chunk $CHUNK aggiornato\n";
     }
     $modx->cacheManager->refresh();      // le varianti di immagine si rigenerano (file più recente delle varianti)
     echo "== File aggiornati, cache svuotata. Ripristino: php installa.php /www --ripristina $bk/ripristino.json --scrivi\n";
