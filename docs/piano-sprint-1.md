@@ -108,7 +108,11 @@ della pagina News (prima vuota, ora immagine di ripiego 1200×630), di una resid
 oltre 2,5 s su 64 pagine per le immagini (sfondo `bg-pattern.jpg` 218 KB e 2733 px elemento LCP su 31 pagine, immagini
 fuori schermo senza caricamento differito, testate sovradimensionate; banner Cookiebot elemento LCP su 11 pagine).
 Proposta KOS-2: ottimizzazione dei soli file (50 immagini, 14,4 MB, `kosgroup/dati/kos-2-immagini-pesanti.txt`) con
-`ottimizza-immagini.php`; conversione a `<picture>` (73 chunk, 5 template) dopo la verifica di novembre.
+`ottimizza-immagini.php`; conversione a `<picture>` (73 chunk, 5 template) dopo la verifica di novembre. Sullo stage il 26/10
+(14,1 → 5,8 MB, −59%; backup `immagini-20261026-144615`); collaudo visivo stage/produzione a 390 e 1366 px su 65 pagine:
+tutte le pagine con immagini sostituite sotto lo 0,5% di pixel diversi (home, storia, management, governance, strutture,
+lavorare in KOS, Villa dei Pini); le 12 combinazioni segnalate dipendono da contenuti diversi tra stage e produzione
+(privacy aggiornata in produzione, carosello e mappa). Produzione: 27-28/10, poi nuova misura LCP per il «dopo».
 
 ## Da verificare lunedì 26 ottobre (emerso dal collaudo del 24/10)
 
