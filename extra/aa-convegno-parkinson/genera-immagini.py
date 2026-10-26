@@ -122,6 +122,15 @@ img = sfondo_esteso(foto, 1200, 630, 0.32, -110, -10)          # foto 998x666
 metti(img, blocco, 560, 590, 150)
 salva(img, f"{ALIAS}.jpg")
 
+# Card del calendario /convegni-e-webinar 980x551 (come il-mantello-del-custode-header-top.jpg),
+# scritta nella cartella del lavoro aa-calendario-convegni, che la installa
+img = sfondo_esteso(foto, 980, 551, 0.27, -95, -8)            # foto 842x562
+metti(img, blocco, 455, 480, 135)
+card = DIR.parent / "aa-calendario-convegni" / "files" / "assets" / "img"
+card.mkdir(parents=True, exist_ok=True)
+img.save(card / f"{ALIAS}-card.jpg", "JPEG", quality=82, optimize=True, progressive=True)
+print(f"../aa-calendario-convegni/files/assets/img/{ALIAS}-card.jpg  980x551")
+
 # Carosello della home 1900x900: testo HTML bianco a sinistra (x 306-1060), fascia visibile y 153-747
 img = sfondo_esteso(foto.transpose(Image.FLIP_LEFT_RIGHT), 1900, 900, 0.36, 760, 70)   # testa a destra, come la foto fornita
 img = sfumatura_blu(img, 0.78)
