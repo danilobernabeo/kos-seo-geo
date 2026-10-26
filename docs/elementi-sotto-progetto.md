@@ -38,10 +38,10 @@ Aggiornare l'elenco a ogni intervento.
 | impostazioni `kos.*` | impostazioni di sistema | KOS-9, KOS-12, KOS-13 | in produzione (22/10) |
 | `documenti`, `documenti-vm-ria`, `documenti-vm-psi`, `documenti-vdp-medica`, `documenti-vdp-chirurgica`, `documenti-vdp-diagnostica` | chunk | KOS-2 (cache di `docList`) | sviluppo (24/10), pacchetto `kos-2-8-documenti` |
 | `listLda` | snippet | KOS-8 (link ai PDF) | sviluppo (24/10), pacchetto `kos-2-8-documenti` |
-| `head` (unico, con parametri) e i richiami `head-informativo`, `head-medici`, `head-specializzazioni`, `head-video`, `head-strutture`, `head-landing`, `head-paginazione`, `head-en` | chunk | KOS-2, voce 24 (consolidamento head) | stage (24/10, controllo 0 errori), pacchetto `kos-head` |
-| `head-ricerca-yext`, `head-extra-strutture`, `head-extra-landing` | chunk (nuovi) | KOS-2, voce 24 | stage (24/10, controllo 0 errori), pacchetto `kos-head` |
-| `kosHreflang` | snippet (nuovo) | KOS-2 (hreflang corretti) | stage (24/10, controllo 0 errori), pacchetto `kos-head` |
-| `ogImage` (shared, sostituisce quello KOS) | snippet | og:image con dimensioni | stage (24/10, controllo 0 errori), pacchetto `kos-head` |
+| `head` (unico, con parametri) e i richiami `head-informativo`, `head-medici`, `head-specializzazioni`, `head-video`, `head-strutture`, `head-landing`, `head-paginazione`, `head-en` | chunk | KOS-2, voce 24 (consolidamento head) | **produzione (26/10, controllo 0 errori su 65 pagine)**, pacchetto `kos-head` |
+| `head-ricerca-yext`, `head-extra-strutture`, `head-extra-landing` | chunk (nuovi) | KOS-2, voce 24 | **produzione (26/10, controllo 0 errori su 65 pagine)**, pacchetto `kos-head` |
+| `kosHreflang` | snippet (nuovo) | KOS-2 (hreflang corretti) | **produzione (26/10, controllo 0 errori su 65 pagine)**, pacchetto `kos-head` |
+| `ogImage` (shared, sostituisce quello KOS) | snippet | og:image con dimensioni | **produzione (26/10, controllo 0 errori su 65 pagine)**, pacchetto `kos-head` |
 | `kosSchema` (shared `seoSchema`): nodo struttura `#localbusiness`, landing | snippet | voce 24 | sviluppo (25/10), pacchetto `kos-24` (spento) |
 | TV `str.*` (18), `lnd.*` (2) e `srv.schema`, categoria «Scheda struttura (dato strutturato)» | TV (nuove) | voce 24 | sviluppo (25/10), pacchetto `kos-24` |
 | `head-extra-strutture`, `head-extra-landing` (senza Yext e JSON-LD scritti a mano) | chunk | voce 24 | sviluppo (25/10), pacchetto `kos-24-attivazione` |

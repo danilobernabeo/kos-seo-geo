@@ -97,6 +97,11 @@ Analisi del consolidamento degli head KOS: `docs/kos-head-consolidamento.md`.
 finestra da soli; la voce 24 (nodo `#localbusiness`, rimozione dello script Yext e dei JSON-LD delle landing) dopo l'import
 delle TV anagrafiche dall'export Yext corretto, previo confronto a tre sito/Yext/profili Google (export Google a cura di
 Danilo). Pacchetti `kos-24` (preparazione, spento) e `kos-24-attivazione`; dettaglio in `docs/kos-24.md`.
+**26/10:** head KOS **in produzione** (`kos-head`, 14 elementi; controllo in produzione su 65 pagine: 0 errori, 7 avvisi
+attesi: description vuota su 2 landing, script Yext sulle 3 schede del campione fino alla voce 24). Calendario
+aggiornato: AA libreria e og:image 26/10 sera; AA-17, varianti, markup e modulo di iscrizione 27/10; contenuti AA (dopo
+esportazione fresca), alt news, regole web AA, `kos-2-8-documenti` (prima sullo stage) e preparazione `kos-24` 28/10;
+29/10 nessun rilascio (consegna sprint 1 il 30/10); voce 24 attivazione 2-6/11.
 
 ## Da verificare lunedì 26 ottobre (emerso dal collaudo del 24/10)
 
