@@ -1,0 +1,14 @@
+{
+    "il-mantello-del-custode": {
+        "evento_data": "2026-11-11 00:00:00",
+        "evento_luogo": "Hospice Beati Coniugi Martin, Milano",
+        "evento_immagine": "/assets/img/il-mantello-del-custode-header-top.jpg",
+        "introtext": "Dare voce alle scelte - Dare senso alla cura"
+    },
+    "convegno-parkinson-realta-prospettive": {
+        "evento_data": "2026-12-12 00:00:00",
+        "evento_luogo": "Sala Pertini, Cinisello Balsamo (MI)",
+        "evento_immagine": "/assets/img/convegno-parkinson-realta-prospettive-card.jpg",
+        "introtext": "Realtà e prospettive"
+    }
+}
