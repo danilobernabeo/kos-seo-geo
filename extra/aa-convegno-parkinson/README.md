@@ -25,6 +25,7 @@ del progetto.
 | `elementi/segreteria-evento.html` | TV `segreteria` (colonna laterale: pulsante di iscrizione, segreteria, provider ECM, patrocinio) |
 | `elementi/chunks/programma-convegno-parkinson-realta-prospettive.html` | scheda informativa, programma e faculty; toglie anche, solo su questa pagina, la velatura scura che il template mette sulla testata |
 | `installa.php` | installazione con prova, pubblicazione separata e ripristino |
+| `mantello-senza-velatura.php` | toglie la velatura scura anche dalla testata del Mantello (chunk `programma-560`) |
 | `slide-home.html` | slide del carosello della home (da inserire a mano nel chunk del progetto, vedi sotto) |
 
 Le immagini seguono la locandina: foto specchiata (testa a sinistra) e filo virato dal rosa della foto fornita
@@ -79,6 +80,21 @@ dello snippet `immagine` si rigenerano da sole) e stampa il comando di ripristin
 Ripristino: il comando esatto è stampato alla fine dell'installazione
 (`php installa.php /www --ripristina ~/backup-kos-seo-geo/<data>-convegno-parkinson/ripristino.json --scrivi`):
 rimuove le due pagine (con le TV), il chunk e i file copiati. Le iscrizioni già salvate da FormIt restano.
+
+## Testata del Mantello senza velatura
+
+Il template delle pagine evento mette sulla testata una velatura scura da sinistra. Il Parkinson la toglie con una
+regola CSS nel suo chunk del programma; `mantello-senza-velatura.php` aggiunge la stessa regola al chunk
+`programma-560`, che compare solo nella pagina del Mantello. Il template, elemento del progetto, non cambia.
+
+```powershell
+ssh aa-stage "cd ~/parkinson/extra/aa-convegno-parkinson && php mantello-senza-velatura.php /www"
+ssh aa-stage "cd ~/parkinson/extra/aa-convegno-parkinson && php mantello-senza-velatura.php /www --scrivi"
+```
+
+Si ferma se il chunk non ha esattamente uno `</style>`. Se la regola c'è già non fa niente. Il ripristino dal
+backup è stampato alla fine. Dopo il rilascio in produzione va aggiornata la copia
+`anniazzurri/baseline/chunks/programma-560.html`, perché gli strumenti del progetto non lo segnalino come modificato a mano.
 
 ## Carosello della home
 
