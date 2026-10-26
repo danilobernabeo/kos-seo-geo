@@ -12,7 +12,7 @@ Uso:  python3 genera-immagini.py          (servono Pillow, numpy, pdftoppm)
 """
 import pathlib, shutil, subprocess, tempfile
 import numpy as np
-from PIL import Image, ImageFilter
+from PIL import Image, ImageChops, ImageFilter
 
 Image.MAX_IMAGE_PIXELS = None
 DIR = pathlib.Path(__file__).resolve().parent
@@ -75,6 +75,10 @@ def sfondo_esteso(foto, W, H, scala, x, y):
     sf = max(8, int(min(fw, fh) * 0.12))
     m.paste(255, (sf, sf, fw - sf, fh - sf))
     m = m.filter(ImageFilter.GaussianBlur(sf / 2))
+    # il filo resta sempre pieno: la sfumatura dei bordi lo schiariva dove arriva vicino al margine della foto
+    sat = np.asarray(f.convert("HSV"))[..., 1]
+    filo = Image.fromarray(((sat > 70) * 255).astype(np.uint8), "L").filter(ImageFilter.MaxFilter(5)).filter(ImageFilter.GaussianBlur(1.5))
+    m = ImageChops.lighter(m, filo)
     tela.paste(f, (x, y), m)
     return tela
 

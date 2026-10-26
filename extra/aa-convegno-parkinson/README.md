@@ -72,6 +72,10 @@ Dopo il rilascio:
 - pagina evento: testata desktop e mobile, «Scarica la locandina», pulsante «Iscrizioni online», `og:image`
   (`/assets/img/convegno-parkinson-realta-prospettive.jpg`) nel sorgente.
 
+Immagini o documenti di `files/` cambiati dopo l'installazione: `php installa.php /www --aggiorna-file`, poi con
+`--scrivi`. Sostituisce solo i file diversi, salva i precedenti nel backup, svuota la cache (le varianti
+dello snippet `immagine` si rigenerano da sole) e stampa il comando di ripristino. Pagine, TV e chunk non cambiano.
+
 Ripristino: il comando esatto è stampato alla fine dell'installazione
 (`php installa.php /www --ripristina ~/backup-kos-seo-geo/<data>-convegno-parkinson/ripristino.json --scrivi`):
 rimuove le due pagine (con le TV), il chunk e i file copiati. Le iscrizioni già salvate da FormIt restano.

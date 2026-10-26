@@ -77,6 +77,10 @@ Dopo il rilascio, su `/convegni-e-webinar`:
 Prova della scadenza: sullo stage si mette nel Mantello una `evento_data` di ieri. La sua card sparisce, e se non
 resta nessun convegno compare il testo «Al momento non ci sono convegni in programma…».
 
+Immagini o documenti di `files/` cambiati dopo l'installazione: `php installa.php /www --aggiorna-file`, poi con
+`--scrivi`. Sostituisce solo i file diversi, salva i precedenti nel backup, svuota la cache (le varianti
+dello snippet `immagine` si rigenerano da sole) e stampa il comando di ripristino. Pagine, TV e chunk non cambiano.
+
 Ripristino: il comando esatto è stampato alla fine dell'installazione
 (`php installa.php /www --ripristina ~/backup-kos-seo-geo/<data>-calendario-convegni/ripristino.json --scrivi`):
 rimette il contenuto originale della pagina e il riassunto del Mantello, poi toglie TV (con i valori), snippet,

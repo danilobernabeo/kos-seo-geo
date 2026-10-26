@@ -9,6 +9,7 @@
  * Uso (in SSH sul cloud, dalla cartella estratta dall'archivio):
  *   php installa.php /www                 prova: controlla tutto e mostra cosa cambierebbe, non scrive
  *   php installa.php /www --scrivi        installa
+ *   php installa.php /www --aggiorna-file [--scrivi]  sostituisce i file di files/ cambiati (backup e ripristino)
  *   php installa.php /www --ripristina ~/backup-kos-seo-geo/<data>-calendario-convegni/ripristino.json [--scrivi]
  *   php installa.php --test               prova la sostituzione del blocco su baseline/convegni-e-webinar.html (senza MODX)
  *
@@ -113,18 +114,18 @@ if ($fileRip !== null) {
     $r = json_decode((string) @file_get_contents($fileRip), true);
     if (!is_array($r)) { fwrite(STDERR, "Manifest di ripristino non leggibile: $fileRip\n"); exit(1); }
     echo ($scrivi ? "== RIPRISTINO" : "== PROVA DI RIPRISTINO (aggiungere --scrivi)") . " da $fileRip\n";
-    foreach ($r['contenuti'] as $x) {
+    foreach ($r['contenuti'] ?? [] as $x) {
         if (!is_file($x['file'])) { echo "  ! backup mancante: {$x['file']} — FERMO\n"; exit(2); }
     }
-    foreach ($r['contenuti'] as $x) {
+    foreach ($r['contenuti'] ?? [] as $x) {
         echo "  ~ risorsa {$x['id']}: contenuto originale\n";
         if ($scrivi && ($o = $modx->getObject(modResource::class, $x['id']))) { $o->set('content', file_get_contents($x['file'])); $o->save(); }
     }
-    foreach ($r['riassunti'] as $id => $vecchio) {
+    foreach ($r['riassunti'] ?? [] as $id => $vecchio) {
         echo "  ~ risorsa $id: riassunto «{$vecchio}»\n";
         if ($scrivi && ($o = $modx->getObject(modResource::class, (int) $id))) { $o->set('introtext', $vecchio); $o->save(); }
     }
-    foreach ($r['tv'] as $nome) {
+    foreach ($r['tv'] ?? [] as $nome) {
         echo "  - TV $nome (con valori e collegamenti)\n";
         if ($scrivi && ($tv = $modx->getObject(modTemplateVar::class, ['name' => $nome]))) {
             foreach ([modTemplateVarResource::class, modTemplateVarTemplate::class] as $cl) {
@@ -134,16 +135,53 @@ if ($fileRip !== null) {
             $tv->remove();
         }
     }
-    foreach ($r['elementi'] as $x) {
+    foreach ($r['elementi'] ?? [] as $x) {
         echo "  - {$x['type']} {$x['name']}\n";
         $cl = $x['type'] === 'snippet' ? modSnippet::class : modChunk::class;
         if ($scrivi && ($o = $modx->getObject($cl, ['name' => $x['name']]))) $o->remove();
+    }
+    foreach ($r['file_sostituiti'] ?? [] as $x) {
+        echo "  ~ file /{$x['file']}: versione precedente\n";
+        if ($scrivi) copy($x['backup'], "$webroot/{$x['file']}");
     }
     foreach ($r['file_creati'] as $f) {
         echo "  - file /$f\n";
         if ($scrivi) @unlink("$webroot/$f");
     }
     if ($scrivi) { $modx->cacheManager->refresh(); echo "== Cache svuotata.\n"; }
+    exit(0);
+}
+
+/* ---------- solo file: sostituisce immagini e documenti cambiati (con backup) ---------- */
+
+if (in_array('--aggiorna-file', $argv, true)) {
+    echo ($scrivi ? "== AGGIORNAMENTO FILE" : "== PROVA AGGIORNAMENTO FILE (aggiungere --scrivi)") . "\n";
+    $sorg = "$DIR/files";
+    $daFare = [];
+    foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($sorg, FilesystemIterator::SKIP_DOTS)) as $f) {
+        $rel = str_replace('\\', '/', substr($f->getPathname(), strlen($sorg) + 1));
+        $dest = "$webroot/$rel";
+        if (!is_file($dest)) { echo "  + /$rel (nuovo)\n"; $daFare[$rel] = [$f->getPathname(), false]; }
+        elseif (md5_file($dest) === md5_file($f->getPathname())) echo "  = /$rel invariato\n";
+        else { echo "  ~ /$rel (sostituito, il precedente va nel backup)\n"; $daFare[$rel] = [$f->getPathname(), true]; }
+    }
+    if (!$daFare) { echo "== Niente da aggiornare.\n"; exit(0); }
+    if (!$scrivi) { echo "== Prova riuscita. Rilanciare con --aggiorna-file --scrivi.\n"; exit(0); }
+    $bk = rtrim((string) (getenv('HOME') ?: $DIR), '/') . '/backup-kos-seo-geo/' . date('Ymd-His') . '-' . 'calendario-convegni' . '-file';
+    $rip = ['file_creati' => [], 'file_sostituiti' => []];
+    foreach ($daFare as $rel => [$src, $esiste]) {
+        if (!is_dir(dirname("$webroot/$rel"))) { echo "  ! cartella /" . dirname($rel) . " mancante — saltato\n"; continue; }
+        if ($esiste) {
+            @mkdir(dirname("$bk/file/$rel"), 0775, true);
+            copy("$webroot/$rel", "$bk/file/$rel");
+            $rip['file_sostituiti'][] = ['file' => $rel, 'backup' => "$bk/file/$rel"];
+        } else $rip['file_creati'][] = $rel;
+        copy($src, "$webroot/$rel");
+        @mkdir($bk, 0775, true);
+        file_put_contents("$bk/ripristino.json", json_encode($rip, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+    }
+    $modx->cacheManager->refresh();      // le varianti di immagine si rigenerano (file più recente delle varianti)
+    echo "== File aggiornati, cache svuotata. Ripristino: php installa.php /www --ripristina $bk/ripristino.json --scrivi\n";
     exit(0);
 }
 
