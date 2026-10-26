@@ -127,6 +127,21 @@ img = sfondo_esteso(foto.transpose(Image.FLIP_LEFT_RIGHT), 1900, 900, 0.36, 760,
 img = sfumatura_blu(img, 0.78)
 salva(img, f"banner-news-{ALIAS}.jpg")
 
+# Logo del Comune (patrocinio) per la colonna laterale: stessa altezza di logo-kos-academy.png (200 px, a 2x),
+# fondo trasparente; stemma e scritta presi dalla locandina
+with tempfile.TemporaryDirectory() as t:
+    subprocess.run(["pdftoppm", "-r", "600", "-f", "1", "-l", "1", "-png", str(DIR / LOCANDINA), f"{t}/p"], check=True)
+    pag = Image.open(next(pathlib.Path(t).glob("p*.png"))).convert("RGB")
+W, H = pag.size
+a = np.asarray(pag.crop((int(W * 0.05), int(H * 0.86) + 260, int(W * 0.05) + 1180, int(H * 0.86) + 1030))).astype(np.float32)
+alpha = np.clip((255 - a.min(axis=2)) / 255 * 1.15, 0, 1)[..., None]
+col = np.where(alpha > 0.01, (a - 255 * (1 - alpha)) / np.maximum(alpha, 0.01), 0)
+logo = Image.fromarray(np.dstack([np.clip(col, 0, 255), alpha * 255]).astype(np.uint8), "RGBA")
+logo = logo.crop(logo.getbbox())
+logo = logo.resize((round(logo.width * 200 / logo.height), 200), Image.LANCZOS).quantize(256, method=Image.Quantize.FASTOCTREE)
+logo.save(OUT / "logo-comune-cinisello-balsamo.png", optimize=True)
+print(f"files/assets/img/logo-comune-cinisello-balsamo.png  {logo.width}x{logo.height}")
+
 doc = DIR / "files" / "assets" / "doc"
 doc.mkdir(parents=True, exist_ok=True)
 shutil.copyfile(DIR / LOCANDINA, doc / f"{ALIAS}-locandina.pdf")
