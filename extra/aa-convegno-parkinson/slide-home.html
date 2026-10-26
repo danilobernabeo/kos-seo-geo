@@ -1,0 +1,42 @@
+<!--
+  Slide del carosello della home per il convegno «La malattia di Parkinson».
+  Va nel chunk heading-home2 (elemento statico del progetto, anniazzurri/elements/chunks/heading-home2.html),
+  subito dopo la slide del Mantello del custode. Si inserisce solo quando la pagina è pubblicata,
+  sul ramo da cui si rilascia: vedi README, «Carosello della home».
+
+  Variante A: markup del repository (snippet immagine, pacchetto aa-1-6-markup, oggi sullo stage).
+-->
+          <div class="carousel-cell w-100 xh-100 p-0">
+            <div class="h-100 bg-cover-center position-relative d-flex align-items-center" stripe-one-col-media-component>[[immagine? &src=`/assets/img/banner-news-convegno-parkinson-realta-prospettive.jpg` &alt=`Profilo di una testa in carta con un filo rosso aggrovigliato, immagine del convegno La malattia di Parkinson` &class=`kos-sfondo` &sizes=`100vw`]]
+              <div class="overlay"></div>
+              <div class="container position-relative">
+                <div class="row content-container align-items-center">
+                  <div class="col-12 col-md-8 col-lg-7 text-white">
+                    <p class="font-weight-bold mb-4">Convegno Anni Azzurri</p>
+                    <h2 id="click">La malattia di Parkinson</h2>
+<p class="fs-5 lh-sm">Realtà e prospettive<br>12 dicembre 2026 - Cinisello Balsamo (MI)</p>
+                    <a href="/convegno-parkinson-realta-prospettive" class="btn btn-azure text-white">Per programma e iscrizioni</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+<!--
+  Variante B: markup oggi in produzione (sfondo CSS), se il convegno si pubblica prima del rilascio di aa-1-6-markup.
+-->
+          <div class="carousel-cell w-100 xh-100 p-0">
+            <div class="h-100 bg-cover-center position-relative d-flex align-items-center" style="background-image: url('/assets/img/banner-news-convegno-parkinson-realta-prospettive.jpg')" stripe-one-col-media-component>
+              <div class="overlay"></div>
+              <div class="container position-relative">
+                <div class="row content-container align-items-center">
+                  <div class="col-12 col-md-8 col-lg-7 text-white">
+                    <p class="font-weight-bold mb-4">Convegno Anni Azzurri</p>
+                    <h2 id="click">La malattia di Parkinson</h2>
+<p class="fs-5 lh-sm">Realtà e prospettive<br>12 dicembre 2026 - Cinisello Balsamo (MI)</p>
+                    <a href="/convegno-parkinson-realta-prospettive" class="btn btn-azure text-white">Per programma e iscrizioni</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
