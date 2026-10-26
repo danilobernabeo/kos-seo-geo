@@ -112,7 +112,13 @@ Proposta KOS-2: ottimizzazione dei soli file (50 immagini, 14,4 MB, `kosgroup/da
 (14,1 → 5,8 MB, −59%; backup `immagini-20261026-144615`); collaudo visivo stage/produzione a 390 e 1366 px su 65 pagine:
 tutte le pagine con immagini sostituite sotto lo 0,5% di pixel diversi (home, storia, management, governance, strutture,
 lavorare in KOS, Villa dei Pini); le 12 combinazioni segnalate dipendono da contenuti diversi tra stage e produzione
-(privacy più lunga in produzione, probabilmente per la dichiarazione dei cookie di Cookiebot che compare solo sul dominio autorizzato; carosello e mappa). Produzione: 27-28/10, poi nuova misura LCP per il «dopo».
+(privacy più lunga in produzione, probabilmente per la dichiarazione dei cookie di Cookiebot che compare solo sul dominio autorizzato; carosello e mappa). **In produzione il 26/10 sera.** Misura del «dopo»
+(stesse 65 pagine, 1 caricamento per pagina, indicativa): LCP mediano mobile 7,8 → 4,3 s (−45%), immagini non WebP
+scaricate 73,8 → 37,6 MB; es. «La nostra storia» 16,9 → 8,9 s, home 13,2 → 6,7 s, governance 7-9 → 3,5 s, Prenota
+online 5,2 → 2,6 s. Restano lenti: Villa dei Pini Civitanova (21 s: 99 immagini della galleria fuori schermo senza
+caricamento differito, foto 01.jpg 210 KB), le pagine con il banner Cookiebot come elemento LCP (11), Settimana del
+Cervello. Leve successive: caricamento differito delle immagini fuori schermo e conversione a `<picture>`; studio di
+Cookiebot (precaricamento dello script).
 
 ## Da verificare lunedì 26 ottobre (emerso dal collaudo del 24/10)
 
