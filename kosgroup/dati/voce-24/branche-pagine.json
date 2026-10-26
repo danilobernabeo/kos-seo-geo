@@ -1,0 +1,770 @@
+{
+ "nome": "Voce 24: branche prenotabili TuoTempo → pagine «Servizi e cure», PROPOSTA",
+ "fonte": "tuotempo/branche-sedi-2026-10-26.tsv",
+ "branche": [
+  {
+   "branca": "ALLERGOLOGIA",
+   "stato": "manca",
+   "pagine": [],
+   "nota": "",
+   "sedi": [
+    "Poliambulatorio Villalba",
+    "Villa San Giuseppe"
+   ]
+  },
+  {
+   "branca": "ANGIOLOGIA",
+   "stato": "manca",
+   "pagine": [],
+   "nota": "vicine: Chirurgia vascolare, Flebologia",
+   "sedi": [
+    "Villa San Giuseppe"
+   ]
+  },
+  {
+   "branca": "CARDIOLOGIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/cardiologia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Cardinal Ferrari",
+    "Centro Medico Riabilitativo",
+    "Myolab",
+    "Poliambulatorio Santo Stefano",
+    "Poliambulatorio Valdaso",
+    "Poliambulatorio Villa Pineta",
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini",
+    "Villa Pineta",
+    "Villa San Giuseppe",
+    "Villa Sant'Alessandro"
+   ]
+  },
+  {
+   "branca": "CENTRO CEFALEE/NEUROLOGIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/neurologia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Poliambulatorio Santo Stefano",
+    "Villa Rosa"
+   ]
+  },
+  {
+   "branca": "CHIRURGIA GENERALE",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/chirurgia-generale"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Medico Riabilitativo",
+    "Myolab",
+    "Poliambulatorio San Martino",
+    "Poliambulatorio Valdaso",
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini",
+    "Villa Pineta",
+    "Villa San Giuseppe"
+   ]
+  },
+  {
+   "branca": "CHIRURGIA VASCOLARE",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/chirurgia-vascolare"
+   ],
+   "nota": "",
+   "sedi": [
+    "Villa Pineta"
+   ]
+  },
+  {
+   "branca": "DENSITOMETRIA OSSEA (MOC)",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/moc"
+   ],
+   "nota": "",
+   "sedi": [
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini"
+   ]
+  },
+  {
+   "branca": "DERMATOLOGIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/dermatologia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Poliambulatorio San Martino",
+    "Poliambulatorio Santo Stefano",
+    "Poliambulatorio Valdaso",
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini",
+    "Villa Pineta",
+    "Villa San Giuseppe"
+   ]
+  },
+  {
+   "branca": "DIETOLOGIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/dietologia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Medico Riabilitativo",
+    "Myolab",
+    "Poliambulatorio San Martino",
+    "Poliambulatorio Valdaso",
+    "Poliambulatorio Villa Pineta",
+    "Villa Dei Pini",
+    "Villa Margherita",
+    "Villa Sant'Alessandro"
+   ]
+  },
+  {
+   "branca": "ECOCOLORDOPPLER",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/diagnostica-ecografica"
+   ],
+   "nota": "",
+   "sedi": [
+    "Myolab",
+    "Poliambulatorio Santo Stefano",
+    "Poliambulatorio Valdaso",
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini",
+    "Villa Pineta",
+    "Villa Rosa",
+    "Villa San Giuseppe"
+   ]
+  },
+  {
+   "branca": "ECOGRAFIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/diagnostica-ecografica"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Cardinal Ferrari",
+    "Centro Medico Riabilitativo",
+    "Centro Santo Stefano",
+    "Myolab",
+    "Poliambulatorio Santo Stefano",
+    "Poliambulatorio Valdaso",
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini",
+    "Villa Rosa",
+    "Villa San Giuseppe"
+   ]
+  },
+  {
+   "branca": "ELETTROENCEFALOGRAFIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/elettroencefalografia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Cardinal Ferrari",
+    "Poliambulatorio Santo Stefano"
+   ]
+  },
+  {
+   "branca": "ELETTROMIOGRAFIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/elettromiografia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Myolab",
+    "Poliambulatorio Santo Stefano",
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini",
+    "Villa Margherita",
+    "Villa Rosa",
+    "Villa San Giuseppe"
+   ]
+  },
+  {
+   "branca": "ENDOCRINOLOGIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/endocrinologia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Poliambulatorio San Martino",
+    "Poliambulatorio Santo Stefano",
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini"
+   ]
+  },
+  {
+   "branca": "FISIATRIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/fisiatria"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Medico Riabilitativo",
+    "Myolab",
+    "Poliambulatorio Santo Stefano",
+    "Villa Pineta"
+   ]
+  },
+  {
+   "branca": "FISIOTERAPIA - OSTEOPATIA",
+   "stato": "manca",
+   "pagine": [],
+   "nota": "",
+   "sedi": [
+    "Poliambulatorio San Martino"
+   ]
+  },
+  {
+   "branca": "FLEBOLOGIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/flebologia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Villa Dei Pini"
+   ]
+  },
+  {
+   "branca": "GASTROENTEROLOGIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/gastroenterologia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Myolab",
+    "Poliambulatorio Valdaso",
+    "Villa Dei Pini"
+   ]
+  },
+  {
+   "branca": "GERIATRIA",
+   "stato": "manca",
+   "pagine": [],
+   "nota": "esistono solo Psicogeriatria e la riabilitazione geriatrica",
+   "sedi": [
+    "Centro Medico Riabilitativo",
+    "Poliambulatorio San Martino",
+    "Villa San Giuseppe"
+   ]
+  },
+  {
+   "branca": "GINECOLOGIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/ginecologia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Medico Riabilitativo",
+    "Myolab",
+    "Poliambulatorio San Martino",
+    "Poliambulatorio Villalba"
+   ]
+  },
+  {
+   "branca": "HOMECARE ACADEMY",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/homecare-academy"
+   ],
+   "nota": "non è una branca medica",
+   "sedi": [
+    "Centro Medico Riabilitativo",
+    "Poliambulatorio Villalba"
+   ]
+  },
+  {
+   "branca": "LAB. ANALISI",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/laboratorio-analisi"
+   ],
+   "nota": "",
+   "sedi": [
+    "Punto Prelievi Gamma",
+    "Punto Prelievi Salus",
+    "Villa Dei Pini"
+   ]
+  },
+  {
+   "branca": "LOGOPEDIA",
+   "stato": "parziale",
+   "pagine": [
+    "it/servizi-e-cure/riabilitazione/trattamenti/rieducazione-dei-disturbi-della-competenza-comunicativa",
+    "it/servizi-e-cure/riabilitazione/trattamenti/rieducazione-dei-disturbi-di-deglutizione"
+   ],
+   "nota": "trattamenti di riabilitazione, non ambulatorio",
+   "sedi": [
+    "Centro Medico Riabilitativo",
+    "Poliambulatorio Valdaso"
+   ]
+  },
+  {
+   "branca": "MEDICINA ESTETICA",
+   "stato": "manca",
+   "pagine": [],
+   "nota": "",
+   "sedi": [
+    "Centro Medico Riabilitativo"
+   ]
+  },
+  {
+   "branca": "MEDICINA GENERALE",
+   "stato": "manca",
+   "pagine": [],
+   "nota": "",
+   "sedi": [
+    "Villa Pineta"
+   ]
+  },
+  {
+   "branca": "NEFROLOGIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/nefrologia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Villa Dei Pini"
+   ]
+  },
+  {
+   "branca": "NEUROCHIRURGIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/neurochirurgia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Cardinal Ferrari"
+   ]
+  },
+  {
+   "branca": "NEUROLOGIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/neurologia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Medico Riabilitativo",
+    "Poliambulatorio San Martino",
+    "Poliambulatorio Santo Stefano",
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini",
+    "Villa Margherita",
+    "Villa San Giuseppe"
+   ]
+  },
+  {
+   "branca": "NEUROPSICOLOGIA",
+   "stato": "manca",
+   "pagine": [],
+   "nota": "vicina: Riabilitazione delle funzioni neurocognitive",
+   "sedi": [
+    "Centro Cardinal Ferrari",
+    "Villa Sant'Alessandro"
+   ]
+  },
+  {
+   "branca": "OCULISTICA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/oculistica"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Cardinal Ferrari",
+    "Poliambulatorio San Martino",
+    "Poliambulatorio Santo Stefano",
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini",
+    "Villa Pineta"
+   ]
+  },
+  {
+   "branca": "ODONTOIATRIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/odontoiatria"
+   ],
+   "nota": "",
+   "sedi": [
+    "Poliambulatorio Santo Stefano"
+   ]
+  },
+  {
+   "branca": "ODONTOSTOMATOLOGIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/odontoiatria"
+   ],
+   "nota": "",
+   "sedi": [
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini"
+   ]
+  },
+  {
+   "branca": "OMEOPATIA",
+   "stato": "manca",
+   "pagine": [],
+   "nota": "",
+   "sedi": [
+    "Poliambulatorio San Martino"
+   ]
+  },
+  {
+   "branca": "ONCOLOGIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/oncologia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Villa Dei Pini"
+   ]
+  },
+  {
+   "branca": "ONDE D'URTO",
+   "stato": "manca",
+   "pagine": [],
+   "nota": "",
+   "sedi": [
+    "Centro Medico Riabilitativo"
+   ]
+  },
+  {
+   "branca": "ORTOPEDIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/ortopedia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Medico Riabilitativo",
+    "Myolab",
+    "Poliambulatorio San Martino",
+    "Poliambulatorio Santo Stefano",
+    "Poliambulatorio Valdaso",
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini",
+    "Villa Pineta",
+    "Villa San Giuseppe"
+   ]
+  },
+  {
+   "branca": "OSTEOPATIA",
+   "stato": "manca",
+   "pagine": [],
+   "nota": "",
+   "sedi": [
+    "Myolab"
+   ]
+  },
+  {
+   "branca": "OTORINOLARINGOIATRIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/otorinolaringoiatria"
+   ],
+   "nota": "",
+   "sedi": [
+    "Myolab",
+    "Poliambulatorio San Martino",
+    "Poliambulatorio Valdaso",
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini",
+    "Villa San Giuseppe"
+   ]
+  },
+  {
+   "branca": "OZONOTERAPIA",
+   "stato": "manca",
+   "pagine": [],
+   "nota": "",
+   "sedi": [
+    "Centro Medico Riabilitativo",
+    "Poliambulatorio Santo Stefano"
+   ]
+  },
+  {
+   "branca": "PEDIATRIA",
+   "stato": "manca",
+   "pagine": [],
+   "nota": "",
+   "sedi": [
+    "Poliambulatorio Valdaso"
+   ]
+  },
+  {
+   "branca": "PNEUMOLOGIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/pneumologia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Myolab",
+    "Poliambulatorio Villa Pineta",
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini",
+    "Villa Pineta",
+    "Villa San Giuseppe"
+   ]
+  },
+  {
+   "branca": "PODOLOGIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/podologia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Medico Riabilitativo",
+    "Myolab",
+    "Poliambulatorio San Martino"
+   ]
+  },
+  {
+   "branca": "PSICHIATRIA",
+   "stato": "sezione",
+   "pagine": [
+    "it/servizi-e-cure/psichiatria"
+   ],
+   "nota": "pagina di sezione, da verificare",
+   "sedi": [
+    "Poliambulatorio San Martino",
+    "Villa Pineta",
+    "Villa Rosa",
+    "Villa Sant'Alessandro",
+    "Ville Di Nozzano"
+   ]
+  },
+  {
+   "branca": "PSICOLOGIA / PSICOTERAPIA / RIABILITAZ. PSICHIATRICA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/psicologia",
+    "it/servizi-e-cure/psichiatria/trattamenti/riabilitazione-psichiatrica"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Medico Riabilitativo",
+    "Myolab",
+    "Poliambulatorio San Martino",
+    "Poliambulatorio Valdaso",
+    "Villa Rosa",
+    "Villa Sant'Alessandro",
+    "Ville Di Nozzano"
+   ]
+  },
+  {
+   "branca": "RADIOGRAFIE (RX)",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/radiologia-convenzionale"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Cardinal Ferrari",
+    "Centro Santo Stefano",
+    "Poliambulatorio Santo Stefano",
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini",
+    "Villa Rosa"
+   ]
+  },
+  {
+   "branca": "RADIOLOGIA ODONTOIATRICA",
+   "stato": "parziale",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/tc-cone-beam"
+   ],
+   "nota": "la pagina copre solo la TC cone beam, non l'ortopanoramica",
+   "sedi": [
+    "Centro Santo Stefano",
+    "Poliambulatorio Santo Stefano",
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini",
+    "Villa Rosa"
+   ]
+  },
+  {
+   "branca": "RECUPERO E RIABILITAZIONE FUNZIONALE",
+   "stato": "sezione",
+   "pagine": [
+    "it/servizi-e-cure/riabilitazione"
+   ],
+   "nota": "pagina di sezione, da verificare",
+   "sedi": [
+    "Villa San Giuseppe"
+   ]
+  },
+  {
+   "branca": "REUMATOLOGIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/reumatologia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Medico Riabilitativo",
+    "Myolab",
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini",
+    "Villa San Giuseppe"
+   ]
+  },
+  {
+   "branca": "RISONANZA MAGNETICA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/risonanza-magnetica"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Santo Stefano",
+    "Poliambulatorio Santo Stefano",
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini",
+    "Villa Rosa"
+   ]
+  },
+  {
+   "branca": "SCIENZE INFERMIERISTICHE",
+   "stato": "manca",
+   "pagine": [],
+   "nota": "",
+   "sedi": [
+    "Centro Medico Riabilitativo"
+   ]
+  },
+  {
+   "branca": "SENOLOGIA-MAMMOGRAFIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/senologia-mammografia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Myolab",
+    "Poliambulatorio Villalba",
+    "Villa Dei Pini",
+    "Villa Pineta"
+   ]
+  },
+  {
+   "branca": "SERVIZI COVID-19",
+   "stato": "non serve",
+   "pagine": [],
+   "nota": "probabilmente da chiudere in TuoTempo",
+   "sedi": [
+    "Punto Prelievi Gamma",
+    "Villa Dei Pini"
+   ]
+  },
+  {
+   "branca": "SERVIZIO DI STIMOLAZIONE MAGNETICA TRANSCRANICA",
+   "stato": "manca",
+   "pagine": [],
+   "nota": "la pagina sulla stimolazione cerebrale profonda è un'altra cosa",
+   "sedi": [
+    "Villa Rosa"
+   ]
+  },
+  {
+   "branca": "TAC",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/tac"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Cardinal Ferrari",
+    "Poliambulatorio Santo Stefano",
+    "Villa Dei Pini"
+   ]
+  },
+  {
+   "branca": "TELEPSICHIATRIA E TELEPSICOLOGIA",
+   "stato": "non serve",
+   "pagine": [],
+   "nota": "modalità a distanza di Psichiatria e Psicologia",
+   "sedi": [
+    "Villa Sant'Alessandro"
+   ]
+  },
+  {
+   "branca": "TERAPIA DEL DOLORE",
+   "stato": "parziale",
+   "pagine": [
+    "it/servizi-e-cure/riabilitazione/trattamenti/gestione-del-dolore"
+   ],
+   "nota": "trattamento di riabilitazione, non ambulatorio",
+   "sedi": [
+    "Villa Dei Pini",
+    "Villa San Giuseppe"
+   ]
+  },
+  {
+   "branca": "TERAPIA FISICA",
+   "stato": "manca",
+   "pagine": [],
+   "nota": "",
+   "sedi": [
+    "Poliambulatorio San Martino",
+    "Poliambulatorio Valdaso",
+    "Villa Margherita"
+   ]
+  },
+  {
+   "branca": "UROLOGIA",
+   "stato": "pagina",
+   "pagine": [
+    "it/servizi-e-cure/ambulatori-e-medicina-specialistica/urologia-andrologia"
+   ],
+   "nota": "",
+   "sedi": [
+    "Centro Medico Riabilitativo",
+    "Myolab",
+    "Poliambulatorio San Martino",
+    "Poliambulatorio Valdaso",
+    "Villa Dei Pini",
+    "Villa San Giuseppe"
+   ]
+  },
+  {
+   "branca": "VISITE SPECIALISTICHE",
+   "stato": "non serve",
+   "pagine": [],
+   "nota": "contenitore generico",
+   "sedi": [
+    "Villa Dei Pini",
+    "Villa Sant'Alessandro"
+   ]
+  }
+ ]
+}
