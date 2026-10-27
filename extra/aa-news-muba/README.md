@@ -35,6 +35,10 @@ con quei parametri. Lo script si ferma se l'alias è già usato da un'altra riso
 | `anteprima/costruisci.py` | anteprima locale senza MODX (Bootstrap 5.1.3 al posto del CSS del sito) |
 | `installa.php` | installazione con prova, pubblicazione separata, aggiornamento e ripristino |
 
+Title e description seguono le regole del progetto (AA-20): `longtitle` «Anziani e bambini creano il Natale con
+MUBA» (43 caratteri; il title è longtitle + « | Anni Azzurri», 58), `description` di 153 caratteri (massimo 155).
+Il `pagetitle` lungo resta come titolo visibile della news. `--aggiorna` riallinea anche longtitle e description.
+
 La news nasce con il campo «Editor visuale» spento (`richtext` = 0), così l'editor del manager non riscrive i pulsanti
 della galleria e dei video.
 
@@ -118,6 +122,7 @@ Ripristino: il comando è stampato alla fine di ogni scrittura
 |---|---|---|---|
 | 27/10/2026 | stage (c0025) | installata **non pubblicata** (news 592, template 66 con le 11 TV di `interna-articolo`), foto e testata segnaposto | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261027-095552-news-muba/ripristino.json --scrivi` |
 | 27/10/2026 | stage (c0025) | `--aggiorna`: mosaico e visore con 24 foto in 3 residenze (news pubblicata sullo stage) | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261027-123458-news-muba-agg/ripristino.json --scrivi` |
+| 27/10/2026 | stage (c0025) | `--aggiorna`: testata di prova (Foto generica 3, TV `newsImage`), testi delle foto corretti (operatrici); verificata con Chrome da 360 a 1920 px | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261027-124644-news-muba-agg/ripristino.json --scrivi` |
 
 Aperto dopo il primo rilascio: TV `newsArticle` («Tipo articolo», etichetta sopra il titolo nelle card delle news)
 vuota; nella news più recente vale «Approfondimenti». Valore da decidere, poi si aggiunge a `$TV_NEWS` di

@@ -7,7 +7,8 @@
  *   php installa.php /www --scrivi            installa: news NON pubblicata (anteprima dal manager)
  *   php installa.php /www --scrivi --pubblica installa e pubblica (stage, o produzione ad approvazione)
  *   php installa.php /www --pubblica --scrivi con la news già installata: la pubblica e basta
- *   php installa.php /www --aggiorna [--scrivi]  riallinea file, template, snippet, contenuto e TV ($TV_NEWS) della news
+ *   php installa.php /www --aggiorna [--scrivi]  riallinea file, template, snippet, contenuto, riassunto, longtitle,
+ *                                             description e TV ($TV_NEWS) della news
  *                                             alla versione del pacchetto (backup di tutto ciò che cambia)
  *   php installa.php /www --ripristina ~/backup-kos-seo-geo/<data>-news-muba/ripristino.json [--scrivi]
  *
@@ -30,9 +31,9 @@ $PARENT = 8;                                                     // News
 $ALIAS = 'il-natale-prende-nuova-forma-anni-azzurri-muba';   // fisso: è la destinazione del QR code del totem (bit.ly/3TQ9ymn)
 $NEWS = [
     'pagetitle'   => 'Creiamo insieme le forme del nostro Natale: il progetto Anni Azzurri e MUBA',
-    'longtitle'   => '',
+    'longtitle'   => 'Anziani e bambini creano il Natale con MUBA',   // max 50: il title è longtitle + « | Anni Azzurri» (AA-20)
     'description' => 'Anni Azzurri con MUBA e REMIDA Milano: anziani e bambini creano decorazioni natalizie con materiali '
-                   . 'di recupero. Le foto dei laboratori e tre videotutorial.',
+                   . 'di recupero. Foto dei laboratori e tre videotutorial.',   // max 155
     'introtext'   => 'Carta, cartone e altri materiali di recupero si trasformano in decorazioni natalizie grazie alla '
                    . 'creatività di anziani e bambini.',
 ];
@@ -99,9 +100,11 @@ if ($fileRip !== null) {
         if ($scrivi && ($o = $modx->getObject(modResource::class, $id))) $o->remove();
     }
     foreach ($r['risorse_modificate'] ?? [] as $x) {
-        echo "  ~ risorsa {$x['id']}: contenuto e riassunto precedenti\n";
+        echo "  ~ risorsa {$x['id']}: contenuto, riassunto, longtitle e description precedenti\n";
         if ($scrivi && ($o = $modx->getObject(modResource::class, $x['id']))) {
-            $o->set('content', file_get_contents($x['content'])); $o->set('introtext', $x['introtext']); $o->save();
+            $o->set('content', file_get_contents($x['content'])); $o->set('introtext', $x['introtext']);
+            foreach (['longtitle', 'description'] as $c) if (array_key_exists($c, $x)) $o->set($c, $x[$c]);
+            $o->save();
         }
     }
     foreach ($r['tv_modificate'] ?? [] as $x) {
@@ -162,8 +165,11 @@ if ($aggiorna) {
     }
     foreach ($elementi as $x) echo "  ~ {$x[0]} {$x[1]}\n";
     $contenuto = $leggi('elementi/contenuto.html');
-    $cambiaNews = $norm((string) $news->get('content')) !== $contenuto || (string) $news->get('introtext') !== $NEWS['introtext'];
-    if ($cambiaNews) echo "  ~ news {$news->get('id')}: contenuto e riassunto dal pacchetto (le modifiche fatte dal manager si perdono, restano nel backup)\n";
+    $CAMPI = ['introtext', 'longtitle', 'description'];   // il pagetitle resta quello scelto in redazione
+    $campiDiversi = array_values(array_filter($CAMPI, fn($c) => (string) $news->get($c) !== $NEWS[$c]));
+    $cambiaNews = $norm((string) $news->get('content')) !== $contenuto || $campiDiversi;
+    if ($cambiaNews) echo "  ~ news {$news->get('id')}: contenuto" . ($campiDiversi ? ' e ' . implode(', ', $campiDiversi) : '') . " dal pacchetto (le modifiche fatte dal manager si perdono, restano nel backup)\n";
+    foreach ($campiDiversi as $c) if ($c !== 'introtext') echo "      $c: «{$news->get($c)}» → «{$NEWS[$c]}» (" . mb_strlen($NEWS[$c]) . " caratteri)\n";
     $tvCambiate = [];
     foreach ($TV_NEWS as $n => $v) {
         $prima = (string) $news->getTVValue($n);
@@ -194,9 +200,10 @@ if ($aggiorna) {
     }
     if ($cambiaNews) {
         file_put_contents("$bk/news-{$news->get('id')}.html", (string) $news->get('content'));
-        $rip['risorse_modificate'][] = ['id' => (int) $news->get('id'), 'content' => "$bk/news-{$news->get('id')}.html", 'introtext' => (string) $news->get('introtext')];
+        $rip['risorse_modificate'][] = ['id' => (int) $news->get('id'), 'content' => "$bk/news-{$news->get('id')}.html",
+            'introtext' => (string) $news->get('introtext'), 'longtitle' => (string) $news->get('longtitle'), 'description' => (string) $news->get('description')];
         $news->set('content', $contenuto);
-        $news->set('introtext', $NEWS['introtext']);
+        foreach ($CAMPI as $c) $news->set($c, $NEWS[$c]);
         $news->save();
         $salva($bk, $rip);
     }
