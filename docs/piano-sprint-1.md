@@ -119,6 +119,13 @@ online 5,2 → 2,6 s. Restano lenti: Villa dei Pini Civitanova (21 s: 99 immagin
 caricamento differito, foto 01.jpg 210 KB), le pagine con il banner Cookiebot come elemento LCP (11), Settimana del
 Cervello. Leve successive: caricamento differito delle immagini fuori schermo e conversione a `<picture>`; studio di
 Cookiebot (precaricamento dello script).
+**27/10 mattina, AA in produzione:** AA-17 (101 immagini dell'audit, 51,4 → 13,2 MB, −74%), varianti WebP (1.613
+immagini, 4.442 larghezze), markup `aa-1-6-markup` (235 elementi), modulo di iscrizione, contenuti (152 risorse) e alt
+delle news. Ispezione in produzione (101 pagine, 50 template): 0 sfondi di contenuto, 0 titoli «Guarda di più/meno», un
+H1 per pagina salvo la pagina dei risultati Yext (`/cerca`, template `yext-search`, sostituita con la nuova ricerca);
+H2 ripetuti dentro la stessa pagina solo su una landing Minerva. Restano immagini senza alt nelle landing RSA e OSS
+(da verificare con la voce Alt Text). Ricevuti i contenuti anticipati da mercoledì: la prova li ha trovati tutti
+invariati dopo l'esportazione (nessun FERMO).
 
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
 
