@@ -23,6 +23,8 @@
 .news-muba-page .muba-articolo a { color: var(--muba-blu); text-decoration: underline; }
 .news-muba-page .muba-articolo a:hover { text-decoration-thickness: 2px; }
 .news-muba-page [stripe-share] { border-color: rgba(255, 255, 255, .7) !important; }
+/* icone di condivisione: niente fondo bianco delle list-group-item di Bootstrap */
+.news-muba-page [stripe-share] .list-group-item { background-color: transparent; }
 .news-muba-page .btn-outline-primary { color: var(--muba-blu); border-color: var(--muba-blu); }
 .news-muba-page .btn-outline-primary:hover { background: var(--muba-blu); color: #fff; }
 

@@ -35,7 +35,8 @@ della galleria e dei video.
 
 ## Da completare prima della pubblicazione
 
-- **Testata** (TV `newsImage`): arriva dall'agenzia. Oggi c'è `testata-segnaposto.jpg`. La testata è anche
+- **Testata** (TV `newsImage`): arriva dall'agenzia, **980 × 551 px** come le altre news (16:9, mostrata al massimo a
+  980 px di larghezza). Oggi c'è `testata-segnaposto.jpg`, nello stesso formato. La testata è anche
   l'immagine dell'elenco delle news e della condivisione social.
 - **Foto della galleria**: 24 ricevute, da selezionare (proposta 9 o 13: 1 grande + 8 o 12 in griglia). Vanno in
   `files/assets/news-muba/foto/`, con le righe corrispondenti in `contenuto.html` (`data-foto-jpg`, `data-foto-dida`,
@@ -82,4 +83,8 @@ Ripristino: il comando è stampato alla fine di ogni scrittura
 
 | Data | Ambiente | Esito | Ripristino |
 |---|---|---|---|
-| | | | |
+| 27/10/2026 | stage (c0025) | installata **non pubblicata** (news 592, template 66 con le 11 TV di `interna-articolo`), foto e testata segnaposto | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261027-095552-news-muba/ripristino.json --scrivi` |
+
+Aperto dopo il primo rilascio: TV `newsArticle` («Tipo articolo», etichetta sopra il titolo nelle card delle news)
+vuota; nella news più recente vale «Approfondimenti». Valore da decidere, poi si aggiunge a `$TV_NEWS` di
+`installa.php`. `soloStruttura` vuota va bene: il valore predefinito è 0, «Ovunque».
