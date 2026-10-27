@@ -268,3 +268,6 @@ proprietà per i dispositivi di una struttura: `knowsAbout` dichiara la competen
 della pagina della tecnologia (`MedicalWebPage` con `about` → `MedicalDevice` e le strutture che la usano) è rimandato
 insieme alla proposta delle pagine delle condizioni come entità mediche. Associazioni da far confermare a KOS insieme alle
 altre.
+Validatori (27/10 sera, stage): Istituto Santo Stefano con 13 `MedicalDevice` in `knowsAbout`, 0 errori e 0 avvisi su
+schema.org, «Attività locali» valida nel Rich Results Test. Il primo tentativo era partito da un archivio senza il commit
+(impostazione assente): verificare sempre `git log` dopo il `pull`, prima dell'`archive`.
