@@ -120,6 +120,28 @@ caricamento differito, foto 01.jpg 210 KB), le pagine con il banner Cookiebot co
 Cervello. Leve successive: caricamento differito delle immagini fuori schermo e conversione a `<picture>`; studio di
 Cookiebot (precaricamento dello script).
 
+## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
+
+Analisi nella chat «Sostituzione barra di ricerca Yext» (26/10): Yext Answers su entrambi i siti (KOS circa 2.150
+ricerche al mese, AA 53); scelta tra **Meilisearch** e **Vertex AI Search** con una prova comparativa sulle query reali
+dei CSV a 12 mesi. Il lavoro resta nel progetto (cartella `docs/ricerca/` e script nel repository); la prova si svolge
+nella chat dedicata. Integrazioni decise il 27/10: terza variante Meilisearch con embedding Google in regione EU (per le
+frasi di AA); chiave Meilisearch limitata agli indici della prova e con scadenza, progetto Google Cloud dedicato da
+cancellare a fine prova; strutture indicizzate dalle TV della voce 24 dopo l'import (non da `strutture.txt`, non
+aggiornato); query ripulite da email, numeri e frasi personali prima dell'invio ai servizi esterni. La prova non tocca i
+siti: può svolgersi anche durante la verifica dell'agenzia.
+
+| Quando | Attività | Da Danilo |
+|---|---|---|
+| 29-30/10 | Preparazione senza credenziali: set di query ripulito con risultati attesi, comuni → coordinate, sinonimi, esportazione dei contenuti in sola lettura | — |
+| 2/11 | Creazione degli account (Meilisearch quel giorno: prova gratuita di 14 giorni) | Account Meilisearch (Parigi o Francoforte), progetto Google Cloud dedicato |
+| 3-6/11 | Indicizzazione dopo l'import della voce 24, primo giro automatico, pagina di confronto affiancato | 30 minuti di giudizio |
+| 9-13/11 | Messa a punto alla pari, secondo giro, giudizio umano sulle frasi AA | Un'ora di giudizio |
+| 16/11 | Rapporto e decisione (scade la prova Meilisearch) | Decisione |
+
+Sviluppo dal 17-18/11 (5-8 settimane): metà gennaio senza margine rispetto alla scadenza Yext di fine gennaio. Da
+chiedere subito a Yext il costo di una proroga di 1-2 mesi per la sola ricerca, da usare solo se serve.
+
 ## Da verificare lunedì 26 ottobre (emerso dal collaudo del 24/10)
 
 - **[AA] Pagina `/melograno-argento-vivo` (risorsa 489)**: copia della scheda Melograno (risorsa 35) con in più un box sul servizio Argento Vivo; pubblicata e ricercabile, stesso title e H1 della scheda, nessun link interno. Danilo chiede ai responsabili se era una pagina da pubblicare (box da portare nella scheda vera) o una prova abbandonata. Se prova: non pubblicata o eliminata, 301 verso `/residenza-anni-azzurri-melograno` nelle regole web (`location = /melograno-argento-vivo`), chunk `melograno-argento-vivo` e `comfort-melograno-argento-vivo` inutilizzati. Controllare anche se la residenza compare due volte negli elenchi per regione e provincia. Foto del direttore mancante già sistemata il 24/10 (copia di `dir-residenza-anni-azzurri-melograno.jpg`).
