@@ -17,6 +17,11 @@
       "area": "kos"
     },
     {
+      "key": "kos.struttura_tv_tecnologie",
+      "value": "mapTecnologie",
+      "area": "kos"
+    },
+    {
       "key": "kos.prenotazione_portale",
       "value": "https://app.tuotempo.com/mop/index.php?dbName=tt_kosgroup_portale",
       "area": "kos"

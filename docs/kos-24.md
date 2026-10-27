@@ -257,3 +257,14 @@ prestazione in VISITE SPECIALISTICHE (Villa Sant'Alessandro).
 Da discutere (26/10): usare le branche prenotabili di TuoTempo come fonte aggiuntiva di `availableService`
 (tabella branca → pagina «Servizi e cure»), presentando le nuove associazioni a KOS come proposte, come le 107 «Da
 verificare». Da segnalare a KOS: schede senza foto della struttura (es. Ville di Nozzano usa la testata 900×400).
+
+### Tecnologie della struttura (27/10)
+
+Le pagine di «Tecnologia e innovazione» associate alla scheda (TV `mapTecnologie`: 21 tecnologie, 38 associazioni su 9
+schede, coerenti al 97% con le associazioni dal lato della tecnologia) entrano nel nodo della struttura in `knowsAbout`
+come `MedicalDevice`, con nome, URL della pagina e `@id` `{URL della tecnologia}#device` (impostazioni
+`kos.struttura_tv_tecnologie` = `mapTecnologie`, `kos.frag_dispositivo`, default `#device`). schema.org non ha una
+proprietà per i dispositivi di una struttura: `knowsAbout` dichiara la competenza, come per le condizioni trattate. Il nodo
+della pagina della tecnologia (`MedicalWebPage` con `about` → `MedicalDevice` e le strutture che la usano) è rimandato
+insieme alla proposta delle pagine delle condizioni come entità mediche. Associazioni da far confermare a KOS insieme alle
+altre.

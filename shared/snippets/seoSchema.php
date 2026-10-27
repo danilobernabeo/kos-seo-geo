@@ -610,6 +610,27 @@ $serviziSito = function ($r) use ($modx, $CLS_RES, $tv, $csv, $url, $TV_SERVIZI)
     }
     return [$voci, array_values(array_unique($spec))];
 };
+/* Tecnologie della struttura: le pagine indicate nelle TV <prefisso>.struttura_tv_tecnologie della scheda (kosgroup.com:
+ * mapTecnologie, pagine di «Tecnologia e innovazione»). schema.org non ha una proprietà «dispositivo della struttura»:
+ * vanno in knowsAbout come MedicalDevice, con @id {URL della pagina}<frag_dispositivo> (default #device) per collegarle
+ * al nodo della pagina della tecnologia quando sarà emesso. Nome dal longtitle senza il suffisso «| …» (su kosgroup.com
+ * il longtitle è il title completo), altrimenti dal pagetitle. */
+$TV_TECNOLOGIE = $csv($cfg('struttura_tv_tecnologie', ''));
+$FRAG_DEV = $cfg('frag_dispositivo', '#device');
+$tecnologie = function ($r) use ($modx, $CLS_RES, $tv, $url, $TV_TECNOLOGIE, $FRAG_DEV) {
+    $out = []; $visti = [];
+    foreach ($TV_TECNOLOGIE as $nome) {
+        foreach (array_filter(array_map('intval', preg_split('/[^\d]+/', (string) $tv($r, $nome)))) as $id) {
+            if (isset($visti[$id])) continue;
+            $visti[$id] = true;
+            $s = $modx->getObject($CLS_RES, $id);
+            if (!$s || !$s->get('published') || $s->get('deleted')) continue;
+            $u = $url($id);
+            $out[] = ['@type' => 'MedicalDevice', '@id' => $u . $FRAG_DEV, 'name' => trim((string) preg_replace('/\s+\|[^|]*$/u', '', (string) ($s->get('longtitle') ?: $s->get('pagetitle')))), 'url' => $u];
+        }
+    }
+    return $out;
+};
 /* Prenotazione online dal portale TuoTempo (kosgroup.com). La TV <prefisso>.prenotazione_tv (default istanza) contiene
  * l'areaid TuoTempo della sede: compilata = prenotazione attiva (è la stessa che accende la barra di prenotazione).
  *   - azione «Prenota online» della struttura: portale filtrato sulla sede;
@@ -659,7 +680,7 @@ $prenotazione = function ($r) use ($modx, $tv, $PREN_PORTALE, $PREN_TV, $PREN_RE
     return [$link(['areaid' => $area]), $catalogo];
 };
 $nodoStruttura = function ($r, $extraServizi = []) use (
-    $url, $tv, $servizi, $serviziSito, $prenotazione, $righe, $testo, $csv, $pulisci, $orari, $orariSpeciali, $immagineStruttura,
+    $url, $tv, $servizi, $serviziSito, $tecnologie, $prenotazione, $righe, $testo, $csv, $pulisci, $orari, $orariSpeciali, $immagineStruttura,
     $TIPI_STRUTTURA, $SPECIALITA, $FRAG_STR, $ORG_ID
 ) {
     $pagina = $url($r->get('id'));
@@ -726,7 +747,7 @@ $nodoStruttura = function ($r, $extraServizi = []) use (
         'hasOfferCatalog'  => $catalogo,
         'availableService' => $offerti,
         'availableTest'    => $test,
-        'knowsAbout'       => $sa,
+        'knowsAbout'       => array_merge($sa, $tecnologie($r)),
         // Prenotazione online: azione dichiarata, utile agli assistenti AI che rimandano a «dove si prenota».
         'potentialAction' => preg_match('#^https://#', $prenota) ? [
             '@type'  => 'ReserveAction',
