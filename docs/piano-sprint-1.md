@@ -66,6 +66,25 @@ Interventi del singolo sito:
 
 ## Fuori piano, a consuntivo (in attesa di approvazione di KOS)
 
+- **[AA] Ottimizzazione dei profili Google (documento PWC «Local Ottimizzazioni e Linee Guida», 27/10).** Fuori dal
+  perimetro delle linee A e B (Local non a perimetro), nessun effetto sulla penale. Analisi: su 30 domande a ChatGPT
+  (Milano, Torino, Genova) Anni Azzurri compare in 4, Korian in 24; su Google Maps nessuna struttura AA nei primi 3 in 9
+  ricerche (Korian 6), su Bing 2 su 9. Valutazione del 27/10:
+  - **da evitare:** parole chiave nei nomi dei profili (vietato dalle regole Google, rischio di sospensione in blocco su
+    60 sedi, in alcune proposte sparisce il marchio, contrario alla decisione di luglio di nomi coerenti tra profilo, H1 e
+    dato strutturato; «RSA» solo dove la struttura è accreditata); modifiche su tutti i profili insieme; modifiche fatte
+    direttamente su Google finché Yext sincronizza (si fanno in Yext);
+  - **fattibile:** test della categoria principale «Casa di riposo» su 3-5 residenze di una città per 4-6 settimane, con
+    «Casa di cura» secondaria dove ci sono non autosufficienti; categorie secondarie vere; nuove descrizioni dopo
+    revisione (niente affermazioni sanitarie, «RSA» solo se accreditata); indirizzi, duplicati e reparti separati (dal
+    confronto Google/Yext del 26/10); Bing Places rivendicati e sincronizzati;
+  - **da rimandare o rivedere:** misura su ChatGPT da rifare con domande vere e ripetute (metodo della strategia AEO; i
+    dati attuali come «prima»); programma recensioni con RetailTune (privacy sanitaria); nessuna modifica ai profili nelle
+    due settimane del passaggio Yext → RetailTune; pagine provincia AA (AA-10, sprint 3) come risposta del sito alle
+    ricerche per città.
+  - Tempi proposti: novembre test di categoria e correzioni (in Yext, con le correzioni di KOS); dicembre misura,
+    descrizioni e categorie secondarie; da gennaio recensioni e misura AEO periodica.
+
 - **[AA] Paginazione delle news** (proposta del 19 ottobre, da quotare). Oggi la pagina News (risorsa 8, template `news`) non ha paginazione: `?page=2` restituisce la stessa pagina, e l'elenco mostra le ultime 256 notizie in un'unica pagina (limite alzato a mano da Danilo man mano che crescono). Motivi: peso e tempi della pagina, manutenzione del limite, scansione. Stima indicativa mezza giornata, collaudo compreso. Nel frattempo, a costo zero: `&limit=`0`` (tutte) per non dover più alzare il numero. Intervento: elenco con `pdoPage` (es. 12 per pagina), link di paginazione HTML veri (`/news/?page=N`, leggibili dai crawler anche se si aggiunge un "carica altri"), canonical di ogni pagina su se stessa e titolo con numero di pagina (plugin `PaginationCanonical` già riscritto nel repository, oggi disattivato), pagine oltre l'ultima in 404, esclusioni `soloStruttura` mantenute. Non avviare prima dell'approvazione.
 - **[2 siti] Pagina 404 secondo le buone pratiche** (proposta del 19 ottobre; mail al referente a cura di Danilo; stima indicativa una giornata per i due siti, collaudo compreso). Parte dalla pagina minima del punto 17 bis. Contenuto: status 404 diretto senza redirect, layout del sito, messaggio chiaro e campo di ricerca; link utili per sito (KOS: aree di cura e ricerca strutture; AA: regioni, province, "trova la residenza"); suggerimenti calcolati dall'alias richiesto (snippet in `shared/`); `noindex`, nessun canonical né dato strutturato, esclusa da sitemap e ricerca interna; registro dei 404 (plugin `OnPageNotFound` con URL, referrer e conteggio, oppure evento GA4) per trovare link rotti e redirect da creare. Su anniazzurri.it oggi la pagina d'errore è la home (status corretto, esperienza no). Non avviare prima dell'approvazione.
 - **[AA, dopo il progetto: dal 1° gennaio 2027, da decidere] Immagini delle news per schermi ad alta densità** (proposta del 24 ottobre). Oggi la foto della news si prepara a 980×551 (misura di visualizzazione della testata dell'articolo): sugli schermi Retina è meno nitida del possibile. Intervento: foto caricate al doppio (1960×1102, JPG di qualità alta, senza ricompressione esterna); nel template dell'articolo (`interna-articolo`, `albero-dei-ricordi`, `interna-speaker-per-un-giorno`) larghezza massima di visualizzazione fissata a 980 px e `sizes` coerente, così la pagina resta identica e il browser sceglie la variante 2x dal `srcset` (la libreria genera già le varianti fino alla larghezza del file). Da valutare anche per le card dell'elenco e per `og:image` (1200×630 consigliato dai social). Stima indicativa mezza giornata, collaudo compreso; le foto già pubblicate restano a 980 senza effetti negativi. Non avviare prima dell'approvazione.
