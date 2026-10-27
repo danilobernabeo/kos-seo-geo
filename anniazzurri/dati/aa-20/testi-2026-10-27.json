@@ -1,0 +1,902 @@
+{
+ "agenzia": [
+  {
+   "id": "11",
+   "url": "https://anniazzurri.it/rsa-in-lombardia",
+   "title": "RSA e Case di Riposo in Lombardia | Anni Azzurri",
+   "description": "Scopri le RSA e Case di Riposo in Lombardia: assistenza, servizi e strutture di qualità. Anni Azzurri ti aiuta a trovare la RSA più adatta."
+  },
+  {
+   "id": "17",
+   "url": "https://anniazzurri.it/rsa-nelle-marche",
+   "title": "RSA e Case di Riposo nelle Marche | Anni Azzurri",
+   "description": "Accoglienza e assistenza residenziale su misura. Strutture sanitarie e servizi dedicati alle diverse esigenze degli anziani. Scopri le residenze."
+  },
+  {
+   "id": "13",
+   "url": "https://anniazzurri.it/rsa-in-liguria",
+   "title": "RSA e Case di Riposo in Liguria | Anni Azzurri",
+   "description": "Scopri le RSA Anni Azzurri in Liguria: residenze per anziani nelle province di Genova e Imperia, radicate sul territorio e dedicate al benessere."
+  },
+  {
+   "id": "16",
+   "url": "https://anniazzurri.it/rsa-in-toscana",
+   "title": "RSA e Case di Riposo in Toscana | Anni Azzurri",
+   "description": "Scopri le RSA Anni Azzurri in Toscana: residenze assistenziali per anziani nelle province di Grosseto e Firenze. Trova la struttura più adatta."
+  },
+  {
+   "id": "12",
+   "url": "https://anniazzurri.it/rsa-in-piemonte",
+   "title": "RSA e Case di Riposo in Piemonte | Anni Azzurri",
+   "description": "Scopri le RSA Anni Azzurri in Piemonte: residenze per anziani vicino a Torino, Cuneo, Asti, Vercelli e Novara. Scopri tutte le strutture."
+  },
+  {
+   "id": "46",
+   "url": "https://anniazzurri.it/rsa-a-milano-e-provincia",
+   "title": "RSA a Milano e provincia | Anni Azzurri",
+   "description": "Scopri le RSA e Case di Riposo a Milano e provincia: assistenza, servizi e strutture di qualità. Trova la RSA Anni Azzurri più adatta."
+  },
+  {
+   "id": "14",
+   "url": "https://anniazzurri.it/rsa-in-veneto",
+   "title": "RSA e Case di Riposo in Veneto | Anni Azzurri",
+   "description": "Scopri le RSA Anni Azzurri in Veneto: residenze per anziani vicino a Venezia e Rovigo con assistenza per ogni livello di autosufficienza."
+  },
+  {
+   "id": "51",
+   "url": "https://anniazzurri.it/rsa-in-provincia-di-torino",
+   "title": "RSA e Case di Riposo a Torino e provincia | Anni Azzurri",
+   "description": "Scopri le RSA Anni Azzurri a Torino: assistenza continua per anziani autosufficienti e non in un ambiente sicuro e familiare. Contattaci."
+  },
+  {
+   "id": "18",
+   "url": "https://anniazzurri.it/rsa-nel-lazio",
+   "title": "RSA e Case di Riposo nel Lazio | Anni Azzurri",
+   "description": "Scopri le RSA nel Lazio con Anni Azzurri: servizi di qualità, assistenza dedicata e strutture accoglienti per anziani. Scopri di più."
+  },
+  {
+   "id": "15",
+   "url": "https://anniazzurri.it/rsa-in-emilia-romagna",
+   "title": "RSA e Case di Riposo in Emilia-Romagna | Anni Azzurri",
+   "description": "Scopri le RSA Anni Azzurri in Emilia-Romagna: residenze per anziani nelle province di Bologna, Modena e Reggio Emilia."
+  },
+  {
+   "id": "99",
+   "url": "https://anniazzurri.it/rsa-in-provincia-di-macerata",
+   "title": "RSA e Case di Riposo a Macerata e provincia | Anni Azzurri",
+   "description": "Le RSA Anni Azzurri a Macerata offrono assistenza H24 in un ambiente sicuro e familiare. Scopri le residenze in città e provincia."
+  },
+  {
+   "id": "83",
+   "url": "https://anniazzurri.it/rsa-in-provincia-di-bologna",
+   "title": "RSA e Case di Riposo a Bologna e provincia | Anni Azzurri",
+   "description": "Scopri le RSA Anni Azzurri a Bologna: assistenza medica, riabilitazione e attività dedicate al benessere degli ospiti. Trova la struttura ideale."
+  },
+  {
+   "id": "49",
+   "url": "https://anniazzurri.it/rsa-in-provincia-di-brescia",
+   "title": "RSA e Case di Riposo a Brescia e provincia | Anni Azzurri",
+   "description": "RSA Anni Azzurri a Brescia: assistenza sanitaria, riabilitazione e stimolazione cognitiva in residenze accoglienti. Scopri le strutture."
+  },
+  {
+   "id": "53",
+   "url": "https://anniazzurri.it/rsa-in-provincia-di-novara",
+   "title": "RSA e Case di Riposo a Novara e provincia | Anni Azzurri",
+   "description": "Scopri le RSA Anni Azzurri a Novara: assistenza sanitaria, supporto psicologico e attività ricreative in un ambiente accogliente e sicuro."
+  },
+  {
+   "id": "47",
+   "url": "https://anniazzurri.it/rsa-in-provincia-di-monza-e-brianza",
+   "title": "RSA e Case di Riposo a Monza e Brianza | Anni Azzurri",
+   "description": "Le RSA Anni Azzurri a Monza e Brianza offrono assistenza H24, servizi personalizzati e ambienti confortevoli. Scopri le strutture."
+  },
+  {
+   "id": "79",
+   "url": "https://anniazzurri.it/rsa-in-provincia-di-venezia",
+   "title": "RSA e Case di Riposo a Venezia e provincia | Anni Azzurri",
+   "description": "Scopri le RSA Anni Azzurri a Venezia: assistenza H24, team medico e nucleo protetto Alzheimer. Contattaci per maggiori informazioni."
+  },
+  {
+   "id": "92",
+   "url": "https://anniazzurri.it/rsa-in-provincia-di-firenze",
+   "title": "RSA e Case di Riposo a Firenze e provincia | Anni Azzurri",
+   "description": "Le RSA Anni Azzurri a Firenze garantiscono assistenza continua, ricoveri temporanei e attività dedicate al benessere degli ospiti."
+  },
+  {
+   "id": "52",
+   "url": "https://anniazzurri.it/rsa-in-provincia-di-cuneo",
+   "title": "RSA e Case di Riposo a Cuneo e provincia | Anni Azzurri",
+   "description": "Le RSA Anni Azzurri a Cuneo offrono assistenza H24, riabilitazione e stimolazione cognitiva. Scopri le nostre residenze."
+  },
+  {
+   "id": "84",
+   "url": "https://anniazzurri.it/rsa-in-provincia-di-modena",
+   "title": "RSA e Case di Riposo a Modena e provincia | Anni Azzurri",
+   "description": "RSA Anni Azzurri a Modena: assistenza H24, servizi personalizzati, pet therapy, musicoterapia e fisioterapia. Scopri le strutture."
+  },
+  {
+   "id": "67",
+   "url": "https://anniazzurri.it/rsa-in-provincia-di-genova",
+   "title": "RSA e Case di Riposo a Genova e provincia | Anni Azzurri",
+   "description": "Scopri le RSA Anni Azzurri a Genova e provincia: assistenza qualificata per anziani in strutture sicure e accoglienti. Trova la residenza ideale."
+  },
+  {
+   "id": "50",
+   "url": "https://anniazzurri.it/rsa-in-provincia-di-bergamo",
+   "title": "RSA e Case di Riposo a Bergamo e provincia | Anni Azzurri",
+   "description": "Cerchi una RSA a Bergamo? Le residenze Anni Azzurri offrono assistenza medica qualificata e ambienti confortevoli. Scopri le strutture."
+  },
+  {
+   "id": "96",
+   "url": "https://anniazzurri.it/rsa-in-provincia-di-ancona",
+   "title": "RSA e Case di Riposo ad Ancona e provincia | Anni Azzurri",
+   "description": "Le RSA Anni Azzurri ad Ancona offrono assistenza personalizzata, personale specializzato e servizi dedicati. Trova la residenza più adatta."
+  },
+  {
+   "id": "105",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-valdaso",
+   "title": "Valdaso RSA Casa di Riposo a Campofilone (FM) | Anni Azzurri",
+   "description": "Un luogo sereno per anziani: scopri la Residenza Anni Azzurri Valdaso, con assistenza 24h, servizi dedicati e personale qualificato."
+  },
+  {
+   "id": "43",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-san-rocco",
+   "title": "San Rocco RSA Casa di Riposo a Segrate (MI) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri San Rocco a Milano: cura, assistenza e servizi per anziani autosufficienti e non. Contattaci."
+  },
+  {
+   "id": "38",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-san-sisto",
+   "title": "San Sisto Residenza per Anziani (BG) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri San Sisto a Bergamo in Via Colognola ai Colli, 8: assistenza 24h e ambienti accoglienti."
+  },
+  {
+   "id": "41",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-villa-reale",
+   "title": "Villa Reale RSA Casa di Riposo (MB) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Villa Reale a Monza: assistenza 24/7, comfort e personale qualificato. Informati sui servizi."
+  },
+  {
+   "id": "110",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-parco-di-veio",
+   "title": "Parco di Veio RSA Casa di Riposo (RM) | Anni Azzurri",
+   "description": "Nel cuore della natura, scopri la Residenza Anni Azzurri Parco di Veio: assistenza, cura e servizi dedicati agli anziani."
+  },
+  {
+   "id": "34",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-mirasole",
+   "title": "Mirasole RSA Casa Riposo a Noverasco - Opera (MI) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Mirasole: un parco attrezzato, assistenza sanitaria e attività pensate per un soggiorno sereno."
+  },
+  {
+   "id": "33",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-san-martino",
+   "title": "San Martino RSA Casa di Riposo a Bollate (MI) | Anni Azzurri",
+   "description": "A Bollate, scopri la Residenza Anni Azzurri San Martino: assistenza e servizi per anziani autosufficienti e non autosufficienti."
+  },
+  {
+   "id": "37",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-rezzato",
+   "title": "Rezzato RSA Casa di Riposo a Rezzato (BS) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Rezzato: cura, assistenza e un ambiente accogliente nel cuore della Lombardia. Informati ora."
+  },
+  {
+   "id": "42",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-pgr-cinisello",
+   "title": "Polo Geriatrico Riabilitativo Cinisello Balsamo | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri PGR Cinisello: assistenza e servizi per anziani autosufficienti e non autosufficienti. Contattaci."
+  },
+  {
+   "id": "56",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-cit-turin",
+   "title": "Cit Turin RSA Casa di Riposo (TO) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Cit Turin: una struttura moderna, confortevole e attenta alle esigenze assistenziali degli ospiti."
+  },
+  {
+   "id": "95",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-il-poggione",
+   "title": "Il Poggione RSA Casa di Riposo (GR) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Il Poggione: ambienti eleganti, servizi di alto livello e assistenza dedicata al benessere degli anziani."
+  },
+  {
+   "id": "20",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-parco-sempione",
+   "title": "Parco Sempione RSA Casa di Riposo (MI) | Anni Azzurri",
+   "description": "A Milano, scopri la Residenza Anni Azzurri Parco Sempione: comfort, assistenza e servizi pensati per anziani non autosufficienti."
+  },
+  {
+   "id": "21",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-san-faustino",
+   "title": "San Faustino RSA Casa di Riposo (MI) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri San Faustino: una struttura moderna a Milano per anziani autosufficienti e non. Informati sui servizi."
+  },
+  {
+   "id": "40",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-villa-clarice",
+   "title": "Villa Clarice RSA Casa di Riposo a Cermenate (CO) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Villa Clarice: assistenza specializzata per persone non autosufficienti, con servizi e personale qualificato."
+  },
+  {
+   "id": "35",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-melograno",
+   "title": "Melograno RSA Casa Riposo a Cassina Dè Pecchi (MI) | Anni Azzurri",
+   "description": "Un luogo di cura a Milano: scopri la Residenza Anni Azzurri Melograno, con assistenza e servizi dedicati al benessere degli anziani."
+  },
+  {
+   "id": "39",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-vico-mercati",
+   "title": "Vico Mercati RSA Casa di Riposo a Vimercate (MB) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Vico Mercati: ambienti moderni, assistenza 24h e servizi pensati per il comfort degli anziani."
+  },
+  {
+   "id": "91",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-il-giardino",
+   "title": "Il Giardino RSA Casa di Riposo a Bagnolo in Piano (RE) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Il Giardino: riabilitazione, assistenza Alzheimer e ampi spazi verdi in un contesto sereno."
+  },
+  {
+   "id": "44",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-villaggio-san-francesco",
+   "title": "Villaggio San Francesco RSA a Villanuova sul Clisi (BS) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Villaggio San Francesco: un ambiente accogliente con assistenza e servizi dedicati agli anziani."
+  },
+  {
+   "id": "62",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-la-corte",
+   "title": "La Corte RSA Casa di Riposo a Marene (CN) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri La Corte a Marene: cura, assistenza e servizi di qualità per anziani autosufficienti e non."
+  },
+  {
+   "id": "22",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-san-luca",
+   "title": "San Luca RSA Casa di Riposo (MI) | Anni Azzurri",
+   "description": "Nel cuore di Milano, scopri la Residenza Anni Azzurri San Luca: assistenza sanitaria, riabilitazione e un clima familiare."
+  },
+  {
+   "id": "60",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-volpiano",
+   "title": "Volpiano RSA Casa di Riposo a Volpiano (TO) | Anni Azzurri",
+   "description": "Immersa nel verde, la Residenza Anni Azzurri Volpiano offre assistenza 24h, servizi qualificati e ambienti sereni per anziani."
+  },
+  {
+   "id": "81",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-mestre",
+   "title": "Mestre RSA Casa di Riposo a Favaro Veneto (VE) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Mestre: un ambiente accogliente, con personale qualificato e servizi dedicati agli anziani."
+  },
+  {
+   "id": "217",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-campi-bisenzio",
+   "title": "Campi Bisenzio RSA a Campi Bisenzio (FI) | Anni Azzurri",
+   "description": "A Campi Bisenzio, scopri la Residenza Anni Azzurri: ambienti moderni, comfort e servizi sanitari specializzati per gli ospiti."
+  },
+  {
+   "id": "94",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-beato-angelico",
+   "title": "Beato Angelico RSA a Borgo San Lorenzo (FI) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Campi Bisenzio: ambienti moderni, comfort e servizi sanitari specializzati per gli ospiti."
+  },
+  {
+   "id": "77",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-le-grange",
+   "title": "Le Grange RSA Casa di Riposo a Riva Ligure (IM) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Le Grange a Riva Ligure: cura, assistenza e servizi dedicati agli anziani in provincia di Imperia."
+  },
+  {
+   "id": "326",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-dorica",
+   "title": "Dorica RSA Casa di Riposo (AN) | Anni Azzurri",
+   "description": "Scegli un soggiorno sereno con Anni Azzurri: assistenza medica e infermieristica 24/7, riabilitazione personalizzata e consulenza gratuita."
+  },
+  {
+   "id": "231",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-borgomanero",
+   "title": "Borgomanero RSA Casa di Riposo a Borgomanero (NO) | Anni Azzurri",
+   "description": "Scopri la RSA Anni Azzurri: ospitalità, assistenza sanitaria e servizi dedicati ad anziani con diversi bisogni assistenziali."
+  },
+  {
+   "id": "32",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-santambrogio",
+   "title": "Sant'Ambrogio RSA Casa di Riposo a Milano (MI) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Sant'Ambrogio a Milano: assistenza 24h, servizi di qualità e personale qualificato per gli ospiti."
+  },
+  {
+   "id": "45",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-pgr-milano",
+   "title": "Residenza Polo Geriatrico Riabilitativo Milano | Anni Azzurri",
+   "description": "Scopri il Polo Geriatrico Riabilitativo Anni Azzurri Milano: cura, assistenza specialistica e servizi dedicati agli anziani."
+  },
+  {
+   "id": "107",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-santa-maria-in-chienti",
+   "title": "Santa Maria in Chienti RSA a Montecosaro (MC) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Santa Maria in Chienti: una struttura moderna, integrata nel territorio e attenta alla cura degli ospiti."
+  },
+  {
+   "id": "333",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-san-sisto-2",
+   "title": "San Sisto RSA Casa di Riposo Via Colognola (BG) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri San Sisto a Bergamo: assistenza 24h, ambienti accoglienti e servizi pensati per gli anziani."
+  },
+  {
+   "id": "19",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-navigli",
+   "title": "Navigli RSA Casa di Riposo a Milano (MI) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Navigli a Milano: camere spaziose, assistenza qualificata e una posizione comoda in città."
+  },
+  {
+   "id": "63",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-palladio",
+   "title": "Palladio RSA Casa di Riposo a Dormelletto (NO) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Palladio: soggiorni immersi nel verde, vista sul Lago Maggiore e servizi assistenziali dedicati."
+  },
+  {
+   "id": "89",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-ducale-2-3",
+   "title": "Ducale 2-3 RSA Casa di Riposo a Modena (MO) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Ducale a Modena: ospitalità, assistenza e ambienti progettati per comfort e benessere degli ospiti."
+  },
+  {
+   "id": "80",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-sant-anna",
+   "title": "Sant'Anna RSA Casa di Riposo a Villadose (RO) | Anni Azzurri",
+   "description": "Nel Polesine, scopri la Residenza Anni Azzurri Sant'Anna: assistenza specializzata, animazione e un ambiente sereno per gli ospiti."
+  },
+  {
+   "id": "86",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-idice",
+   "title": "Idice RSA Casa di Riposo a Castenaso (BO) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Idice: tecnologia, accoglienza personalizzata e servizi di qualità nella campagna bolognese."
+  },
+  {
+   "id": "57",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-carmagnola",
+   "title": "Carmagnola RSA Casa di Riposo a Carmagnola (TO) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Carmagnola: cura, assistenza e ambienti accoglienti vicino a un parco attrezzato per gli ospiti."
+  },
+  {
+   "id": "328",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-abitare-il-tempo",
+   "title": "Abitare il Tempo RSA Casa di Riposo a Loreto (AN) | Anni Azzurri",
+   "description": "Comfort e innovazione in un contesto verde: scopri l'accoglienza Anni Azzurri per anziani, disabili e pazienti psichiatrici."
+  },
+  {
+   "id": "87",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-villa-dei-ciliegi",
+   "title": "Villa dei Ciliegi RSA Casa di Riposo a Valsamoggia (BO) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Villa dei Ciliegi: un luogo tranquillo, con servizi di qualità e ambienti pensati per il relax."
+  },
+  {
+   "id": "69",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-sestri-ponente",
+   "title": "Sestri Ponente RSA Casa di Riposo (GE) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Sestri Ponente: assistenza, animazione e servizi sanitari in un ambiente accogliente e rispettoso."
+  },
+  {
+   "id": "90",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-villa-pineta",
+   "title": "Villa Pineta RSA a Pavullo nel Frignano (MO) | Anni Azzurri",
+   "description": "Nel verde di Pavullo, scopri la Residenza Anni Azzurri Villa Pineta: cura, assistenza e servizi qualificati per anziani."
+  },
+  {
+   "id": "104",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-san-giuseppe",
+   "title": "San Giuseppe RSA a San Benedetto del Tronto (AP) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri San Giuseppe: assistenza 24h, servizi di qualità e personale qualificato in un ambiente sereno."
+  },
+  {
+   "id": "76",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-b-franchiolo",
+   "title": "B. Franchiolo RSA Casa di Riposo a Sanremo (IM) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri B. Franchiolo: ospitalità e assistenza per anziani autosufficienti e non, a pochi passi da Sanremo."
+  },
+  {
+   "id": "75",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-minerva",
+   "title": "Minerva RSA Casa di Riposo a Rapallo (GE) | Anni Azzurri",
+   "description": "Nel cuore di Rapallo, scopri la Residenza Anni Azzurri: clima familiare, contesto marittimo e servizi per diverse esigenze assistenziali."
+  },
+  {
+   "id": "59",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-santena",
+   "title": "Santena RSA Casa di Riposo a Santena (TO) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Santena: un ambiente di cura vicino a Torino, con servizi per anziani autosufficienti e non."
+  },
+  {
+   "id": "82",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-quarto-d-altino",
+   "title": "Quarto d'Altino RSA a Quarto d'Altino (VE) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Quarto d'Altino: assistenza 24h, servizi di qualità e personale qualificato in un ambiente accogliente."
+  },
+  {
+   "id": "70",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-sacra-famiglia",
+   "title": "Sacra Famiglia RSA Casa di Riposo a Rivarolo (GE) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Sacra Famiglia: una struttura storica immersa nel verde, con ospitalità e servizi assistenziali."
+  },
+  {
+   "id": "64",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-san-lorenzo",
+   "title": "San Lorenzo RSA Casa di Riposo a Gattinara (VC) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri San Lorenzo in Valsesia: comfort, piani personalizzati e attenzione alle abitudini degli ospiti."
+  },
+  {
+   "id": "58",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-montanaro",
+   "title": "Montanaro RSA Casa di Riposo a Montanaro (TO) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Montanaro vicino a Chivasso: cura, assistenza e strutture moderne per il benessere degli anziani."
+  },
+  {
+   "id": "72",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-castagnola",
+   "title": "Castagnola RSA Casa di Riposo a Chiavari (GE) | Anni Azzurri",
+   "description": "Sulla costa ligure, scopri la Residenza Anni Azzurri Castagnola: assistenza sanitaria, ambiente sereno e attività per gli ospiti."
+  },
+  {
+   "id": "101",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-conero",
+   "title": "Conero RSA Casa di Riposo (AN) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Conero: clima familiare, assistenza specialistica, riabilitazione psicomotoria e socialità."
+  },
+  {
+   "id": "65",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-villa-san-vincenzo",
+   "title": "Villa San Vincenzo RSA Casa di Riposo a Scarnafigi (CN) | Anni Azzurri",
+   "description": "Scopri Villa San Vincenzo Anni Azzurri: un luogo di cura per anziani, con assistenza e servizi per persone non autosufficienti."
+  },
+  {
+   "id": "71",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-casa-serena",
+   "title": "Casa Serena RSA Casa di Riposo a Carasco (GE) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Casa Serena: giardini curati, atmosfera familiare e assistenza qualificata 24 ore su 24."
+  },
+  {
+   "id": "88",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-ducale-1",
+   "title": "Ducale 1 RSA Casa di Riposo (MO) | Anni Azzurri",
+   "description": "Scopri la Residenza Anni Azzurri Ducale a Modena: camere spaziose, servizi di qualità e assistenza vicino al centro città."
+  },
+  {
+   "id": "327",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-casa-argento",
+   "title": "Casa Argento RSA Casa di Riposo a Fossombrone (PU) | Anni Azzurri",
+   "description": "Scopri l'accoglienza Anni Azzurri: assistenza personalizzata, cura del benessere fisico e mentale e consulenza dedicata."
+  },
+  {
+   "id": "66",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-tonengo",
+   "title": "Tonengo d'Asti RSA Casa di Riposo a Tonengo d'Asti (AT) | Anni Azzurri",
+   "description": "Tra le colline, scopri la Residenza Anni Azzurri Tonengo d'Asti: assistenza personalizzata, servizi sanitari e tranquillità."
+  },
+  {
+   "id": "73",
+   "url": "https://anniazzurri.it/residenza-anni-azzurri-casteldonino",
+   "title": "Casteldonino RSA Casa di Riposo a Favale di Malvaro (GE) | Anni Azzurri",
+   "description": "Nell'entroterra di Chiavari, scopri la Residenza Anni Azzurri Casteldonino: cura, ambiente familiare e soggiorni dedicati."
+  },
+  {
+   "id": "130",
+   "url": "https://anniazzurri.it/quanto-costa-una-rsa",
+   "title": "Quanto Costa una RSA? Prezzi e Rette | Anni Azzurri",
+   "description": "Scopri quanto costa una RSA in Italia: Anni Azzurri offre servizi di qualità a prezzi competitivi. Visita il nostro sito per maggiori informazioni!"
+  },
+  {
+   "id": "314",
+   "url": "https://anniazzurri.it/quanto-costa-una-casa-di-riposo",
+   "title": "Quanto Costa una Casa di Riposo? Prezzi e Rette | Anni Azzurri",
+   "description": "Scopri in questo articolo quali sono i costi di una casa di riposo: come calcolarli, cosa considerare e come gestirli."
+  },
+  {
+   "id": "499",
+   "url": "https://anniazzurri.it/accesso-in-rsa-chi-puo-richiederlo-e-come-funziona",
+   "title": "Come Accedere a una RSA: Guida e Requisiti | Anni Azzurri",
+   "description": "Chi può entrare in RSA? Scopri come funziona l’accesso, i requisiti e le modalità per richiedere il ricovero in una Residenza Sanitaria Assistenziale."
+  },
+  {
+   "id": "440",
+   "url": "https://anniazzurri.it/forum-sanità-a-rapallo-kos-protagonista-del-confronto-sul-futuro-del-servizio-sanitario-nazionale",
+   "title": "Forum Sanità: KOS e il futuro dell’assistenza | Anni Azzurri",
+   "description": "Sanità territoriale, PNRR e SSN al centro del Forum. KOS presenta “Nonni per tutti” e conferma l’impegno in nuovi modelli di cura."
+  },
+  {
+   "id": "457",
+   "url": "https://anniazzurri.it/cure-domiciliari-o-rsa-quale-la-scelta-giusta-per-il-tuo-caro",
+   "title": "Cure domiciliari o RSA: guida alla scelta giusta | Anni Azzurri",
+   "description": "Scopri costi, livello di cura, coinvolgimento familiare e il supporto di Anni Azzurri per scegliere con serenità."
+  },
+  {
+   "id": "435",
+   "url": "https://anniazzurri.it/frequenza-cardiaca-negli-anziani-quali-sono-i-valori-ottimali",
+   "title": "Battiti cardiaci negli anziani: valori normali | Anni Azzurri",
+   "description": "Quanto deve essere il battito cardiaco di un anziano? Scopri quali sono i valori ottimali in base all'età."
+  },
+  {
+   "id": "434",
+   "url": "https://anniazzurri.it/3-esercizi-di-stimolazione-cognitiva-per-anziani",
+   "title": "3 esercizi cognitivi per gli anziani | Anni Azzurri",
+   "description": "Scopri 3 esercizi utili per stimolare la memoria e le abilità cognitive negli anziani, da fare comodamente anche a casa."
+  },
+  {
+   "id": "411",
+   "url": "https://anniazzurri.it/forum-non-autosufficienza-2024-anni-azzurri-protagonista",
+   "title": "Forum Non Autosufficienza 2024 | Anni Azzurri",
+   "description": "Anni Azzurri partecipa al Forum della Non Autosufficienza con due workshop per operatori sanitari e caregiver, dedicati ad ascolto e qualità."
+  },
+  {
+   "id": NaN,
+   "url": "https://www.quotalo.it/guide/case-di-riposo-di-lusso",
+   "title": "",
+   "description": ""
+  }
+ ],
+ "proposte": {
+  "295": {
+   "title": "2 ottobre: festa dei nonni e degli educatori | Anni Azzurri",
+   "description": "Il 2 ottobre si celebrano nonni ed educatori professionali: una giornata per lo scambio tra generazioni e contro la solitudine."
+  },
+  "352": {
+   "title": null,
+   "description": "Cosa significa essere OSS? Lo raccontano gli operatori socio-sanitari di RSA, psichiatria e riabilitazione del Gruppo KOS."
+  },
+  "296": {
+   "title": "I 30 anni della RSA Mirasole con Bobby Solo | Anni Azzurri",
+   "description": null
+  },
+  "336": {
+   "title": "Villa Clarice: i volontari della Protezione Civile | Anni Azzurri",
+   "description": "A Villa Clarice un pomeriggio con la Protezione Civile di Rovello Porro per informare gli ospiti e rafforzare il senso di comunità."
+  },
+  "283": {
+   "title": "«Mens sana in corpore sano» per il personale | Anni Azzurri",
+   "description": null
+  },
+  "526": {
+   "title": "Biovitae alla RSA Navigli: sanificazione con luce | Anni Azzurri",
+   "description": null
+  },
+  "367": {
+   "title": null,
+   "description": "Nuovi alloggi protetti Anni Azzurri a Bergamo, in via Colognola ai Colli 9: appartamenti per anziani con servizi e assistenza."
+  },
+  "192": {
+   "title": "Alzheimer: come stare vicino a chi ne soffre | Anni Azzurri",
+   "description": null
+  },
+  "334": {
+   "title": "RSA Navigli: la presidente del Comitato Ospiti | Anni Azzurri",
+   "description": null
+  },
+  "302": {
+   "title": "La Cartella Clinica Elettronica di Anni Azzurri | Anni Azzurri",
+   "description": null
+  },
+  "396": {
+   "title": null,
+   "description": "Alla Residenza Anni Azzurri Santena un sistema di monitoraggio notturno con intelligenza artificiale aiuta a prevenire le cadute."
+  },
+  "423": {
+   "title": "Lo Sportello Sociale per famiglie e caregiver | Anni Azzurri",
+   "description": null
+  },
+  "338": {
+   "title": "Prima pietra della nuova Casa Residenza Anziani | Anni Azzurri",
+   "description": null
+  },
+  "306": {
+   "title": "Il nuovo video istituzionale di Anni Azzurri | Anni Azzurri",
+   "description": "Un omaggio alla dignità delle persone anziane e alla professionalità degli operatori: uno sguardo autentico sulla vita in residenza."
+  },
+  "363": {
+   "title": "Sei incontri formativi gratuiti per i caregiver | Anni Azzurri",
+   "description": "Sei incontri gratuiti di Anni Azzurri per i caregiver, da luglio a dicembre 2024, con il patrocinio del Comune di Cinisello Balsamo."
+  },
+  "359": {
+   "title": "Bergamo: apre la nuova Residenza San Sisto 2 | Anni Azzurri",
+   "description": "San Sisto 2 offre degenza post ospedaliera, fisioterapia, logopedia, podologia e assistenza psicologica, oltre ai servizi medici."
+  },
+  "496": {
+   "title": null,
+   "description": "Un anno di monitoraggio intelligente con Ancelia alla RSA Santena: più sicurezza, interventi tempestivi e fiducia dei familiari."
+  },
+  "259": {
+   "title": "Anziani e bambini insieme per una mattinata | Anni Azzurri",
+   "description": "Una mattinata di incontro tra bambini e ospiti della residenza: uno scambio tra generazioni che porta benessere a entrambi."
+  },
+  "468": {
+   "title": null,
+   "description": "Quando un genitore anziano rifiuta l'assistenza servono empatia e gradualità: come affrontare il rifiuto e aiutarlo nel modo giusto."
+  },
+  "450": {
+   "title": "Appartamenti per anziani autosufficienti | Anni Azzurri",
+   "description": null
+  },
+  "161": {
+   "title": null,
+   "description": "Rette, contributi e costi delle RSA Anni Azzurri: le risposte alle domande più frequenti sull'aspetto economico del ricovero."
+  },
+  "346": {
+   "title": null,
+   "description": "L'ingresso in RSA è un passo delicato: Anni Azzurri offre televisite psicologiche e psichiatriche per il benessere mentale."
+  },
+  "498": {
+   "title": "Bollini RosaArgento 2025-2026: 7 RSA premiate | Anni Azzurri",
+   "description": "Sette RSA premiate nel concorso Best Practice di Fondazione Onda per progetti non farmacologici dedicati al decadimento cognitivo."
+  },
+  "344": {
+   "title": "Le normative per le case di riposo per anziani | Anni Azzurri",
+   "description": "Le case di riposo seguono normative specifiche nei diversi ambiti dell'assistenza agli anziani: ecco quali sono e cosa prevedono."
+  },
+  "183": {
+   "title": null,
+   "description": "Centro diurno per anziani e persone con disabilità: assistenza infermieristica, terapie non farmacologiche e attività educative."
+  },
+  "208": {
+   "title": null,
+   "description": "Con l'Associazione Clown 2.0 di Bologna un progetto a Idice per stimolare funzioni cognitive e motorie e il benessere degli ospiti."
+  },
+  "494": {
+   "title": "Convegno 2025: modelli innovativi per la demenza | Anni Azzurri",
+   "description": "Oltre 400 professionisti al Convegno Anni Azzurri 2025 sulla gestione della demenza: modelli integrati, ricerca e nuove prospettive."
+  },
+  "299": {
+   "title": "Corso di ecografia internistica per i medici RSA | Anni Azzurri",
+   "description": null
+  },
+  "311": {
+   "title": null,
+   "description": "Cosa portare in casa di riposo il primo giorno: il necessario per far sentire a proprio agio chi entra e cosa non dimenticare."
+  },
+  "523": {
+   "title": "Declino motorio negli anziani: cause e rimedi | Anni Azzurri",
+   "description": "Perché negli anziani diminuiscono forza, equilibrio e mobilità, quali segnali osservare e come contrastare il declino motorio."
+  },
+  "290": {
+   "title": "Demenza: una priorità di salute pubblica | Anni Azzurri",
+   "description": null
+  },
+  "497": {
+   "title": "Disfagia: i risultati del protocollo WeanCare | Anni Azzurri",
+   "description": "La disfagia rende difficile deglutire cibi e liquidi in sicurezza: i risultati dello studio con il protocollo WeanCare-Dysphameal®."
+  },
+  "372": {
+   "title": "Farmacia automatizzata e sicurezza degli ospiti | Anni Azzurri",
+   "description": "Nella Giornata mondiale della sicurezza del paziente, la farmacia automatizzata come modello per la sicurezza delle cure in RSA."
+  },
+  "378": {
+   "title": "Festa dei nonni 2024: gli ospiti ricordano i nonni | Anni Azzurri",
+   "description": null
+  },
+  "193": {
+   "title": "Fisioterapia per anziani: esercizi e benefici | Anni Azzurri",
+   "description": "Come la fisioterapia migliora mobilità, umore e autonomia negli anziani: esercizi mirati, frequenza corretta e programmi su misura."
+  },
+  "419": {
+   "title": "Forum Non Autosufficienza 2024: Anni Azzurri | Anni Azzurri",
+   "description": "Ospiti e caregiver al centro: survey periodiche, nuove piattaforme tecnologiche e comitati di rappresentanza degli ospiti."
+  },
+  "448": {
+   "title": "Fragilità ossea e ictus: incontro a Cinisello | Anni Azzurri",
+   "description": null
+  },
+  "324": {
+   "title": "Giorno della Memoria: intervista a Guido Hassan | Anni Azzurri",
+   "description": "L'antisemitismo raccontato dall'esperienza personale nel libro di Guido Hassan, con la prefazione della senatrice Liliana Segre."
+  },
+  "365": {
+   "title": "Gli ospiti della RSA San Rocco si «laureano» | Anni Azzurri",
+   "description": "Da novembre 2023 a giugno 2024 lezioni di arte, benessere, letteratura, scienze e storia di Milano per gli ospiti della RSA San Rocco."
+  },
+  "368": {
+   "title": "Giornata mondiale dei nonni nelle residenze | Anni Azzurri",
+   "description": null
+  },
+  "347": {
+   "title": "Studenti dell'Horizon College alla RSA di Sanremo | Anni Azzurri",
+   "description": "Una ventina di studenti dell'Horizon College in visita alla Residenza Anni Azzurri B. Franchiolo di Sanremo con il personale."
+  },
+  "417": {
+   "title": "Grosseto: nasce la Residenza Il Poggione 2 | Anni Azzurri",
+   "description": "Il Poggione 2 offre servizi socio-assistenziali e socio-sanitari a persone autosufficienti e non autosufficienti, anche con demenza."
+  },
+  "432": {
+   "title": "RSA KOS: firmato il premio di risultato | Anni Azzurri",
+   "description": null
+  },
+  "155": {
+   "title": null,
+   "description": "L'Hospice Beati Coniugi Martin è un servizio pubblico e gratuito di cure palliative, con tutti i servizi previsti dai livelli assistenziali."
+  },
+  "243": {
+   "title": null,
+   "description": "Il Gruppo KOS adotta il CCNL Confcommercio Salute, Sanità e Cura per investire sul proprio personale e valorizzarne la professionalità."
+  },
+  "158": {
+   "title": "Domande frequenti: chi siamo | Anni Azzurri",
+   "description": "Chi siamo, dove sono le residenze e quali servizi offre Anni Azzurri: le risposte alle domande più frequenti sul nostro gruppo."
+  },
+  "318": {
+   "title": null,
+   "description": "Il PAI è il progetto di cura e assistenza personalizzato per ogni ospite della RSA: cos'è, come si costruisce e perché è importante."
+  },
+  "357": {
+   "title": "Milano Dancing City al Polo Geriatrico | Anni Azzurri",
+   "description": "I racconti degli ospiti della RSA, tra amori e conflitti, hanno ispirato la performance di danza di Milano Dancing City."
+  },
+  "460": {
+   "title": "Centro Orchidea: residenza per disabili adulti | Anni Azzurri",
+   "description": null
+  },
+  "159": {
+   "title": null,
+   "description": "Come si entra in una RSA Anni Azzurri: domanda, documenti, visita e accoglienza. Le risposte alle domande più frequenti sull'ingresso."
+  },
+  "477": {
+   "title": "Giornata Alzheimer 2025 nelle residenze | Anni Azzurri",
+   "description": null
+  },
+  "500": {
+   "title": "«KOS è Natale»: la canzone del Gruppo KOS | Anni Azzurri",
+   "description": null
+  },
+  "399": {
+   "title": null,
+   "description": "Studi, congressi delle società scientifiche e pubblicazioni: l'impegno di Anni Azzurri nella ricerca e nell'innovazione."
+  },
+  "289": {
+   "title": "Cartella Clinica Elettronica: la survey 2023 | Anni Azzurri",
+   "description": null
+  },
+  "491": {
+   "title": "«La cura delle parole»: gentilezza in RSA | Anni Azzurri",
+   "description": "Dieci parole chiave e altrettante linee guida per formare gli operatori a una cultura della relazione nelle residenze Anni Azzurri."
+  },
+  "358": {
+   "title": "Il Polo Geriatrico Riabilitativo festeggia 20 anni | Anni Azzurri",
+   "description": "Vent'anni del Polo Geriatrico Riabilitativo di Milano, festeggiati con la cantante Giovanna Nocetti e i suoi brani più celebri."
+  },
+  "476": {
+   "title": null,
+   "description": "La RSA Vico Mercati è la prima residenza Anni Azzurri certificata BREEAM In-Use per gestione delle risorse e qualità della vita."
+  },
+  "265": {
+   "title": "Riabilitazione respiratoria per anziani | Anni Azzurri",
+   "description": "Terapie mediche e tecniche di riabilitazione respiratoria insieme per migliorare la qualità della vita delle persone anziane."
+  },
+  "169": {
+   "title": "RSA San Giuseppe e il community building | Anni Azzurri",
+   "description": "La RSA San Giuseppe guida un progetto di community building per creare una rete attiva con le associazioni del territorio."
+  },
+  "300": {
+   "title": "Premio SIGOT 2023 per il contributo scientifico | Anni Azzurri",
+   "description": null
+  },
+  "160": {
+   "title": null,
+   "description": "Giornata tipo, visite, attività e servizi: come si vive in una residenza Anni Azzurri. Le risposte alle domande più frequenti."
+  },
+  "418": {
+   "title": null,
+   "description": "Alla Residenza Anni Azzurri Valdaso di Campofilone (FM) la mostra fotografica «I Pianeti sotto le nubi» di Maichol Ciarletta."
+  },
+  "162": {
+   "title": null,
+   "description": "Documenti, domande e pratiche per l'ingresso in RSA: le risposte di Anni Azzurri alle domande più frequenti sulla burocrazia."
+  },
+  "479": {
+   "title": "Festa dei Nonni: gli eventi nelle residenze | Anni Azzurri",
+   "description": null
+  },
+  "271": {
+   "title": "Le RSA delle Marche e «Il nostro week è…» | Anni Azzurri",
+   "description": "A giugno le Residenze Anni Azzurri delle Marche propongono fine settimana di iniziative e attività con ospiti e familiari."
+  },
+  "309": {
+   "title": null,
+   "description": "Badante o casa di riposo? Pro, contro e costi delle due soluzioni per chi deve assistere un familiare anziano."
+  },
+  "431": {
+   "title": "Nonni per tutti: dalle storie alle favole | Anni Azzurri",
+   "description": "Con la scrittrice Barbara Ferraro i ricordi degli ospiti diventano fiabe per bambini, raccontate da loro anche in un podcast."
+  },
+  "175": {
+   "title": null,
+   "description": "Le RSA Anni Azzurri con Nucleo Disabili accolgono persone giovani o adulte che hanno bisogno di sostegno e riabilitazione intensiva."
+  },
+  "371": {
+   "title": "Centro Medico Riabilitativo di Cinisello: open day | Anni Azzurri",
+   "description": null
+  },
+  "144": {
+   "title": null,
+   "description": "Le RSA Anni Azzurri accolgono ospiti con demenza senile e Alzheimer: assistenza specializzata nelle residenze in tutta Italia."
+  },
+  "145": {
+   "title": null,
+   "description": "Assistenza infermieristica e cure riabilitative per una migliore qualità di vita: le residenze specializzate per ospiti disabili."
+  },
+  "120": {
+   "title": null,
+   "description": "Il ricovero di un familiare è una decisione delicata: come affrontarla insieme e presentare la RSA come una scelta utile per tutti."
+  },
+  "303": {
+   "title": "Paro, il robot terapeutico contro la demenza | Anni Azzurri",
+   "description": "Paro è una foca robot interattiva: muove testa e zampe ed emette suoni, aiutando le persone con demenza nella relazione."
+  },
+  "428": {
+   "title": "KOS e H.A.R.G.: un progetto per la disfagia | Anni Azzurri",
+   "description": "Gruppo KOS e H.A.R.G. insieme per pasti più sicuri e nutrienti per chi soffre di disfagia, a beneficio della qualità della vita."
+  },
+  "170": {
+   "title": "Per 42 anni poliziotto: il libro di Vincenzo Raffa | Anni Azzurri",
+   "description": "Un ospite della RSA Villa dei Ciliegi di Valsamoggia racconta in un'autobiografia i suoi 42 anni da poliziotto a Bologna."
+  },
+  "389": {
+   "title": "Pelle secca delle gambe negli anziani | Anni Azzurri",
+   "description": null
+  },
+  "514": {
+   "title": "Radio Anni Azzurri On The Road a Sanremo | Anni Azzurri",
+   "description": "Musica, interviste e racconti degli ospiti: Radio Anni Azzurri On The Road arriva alla residenza di Sanremo per Sanremo in Residenza."
+  },
+  "366": {
+   "title": "Residenza Dorica: nasce il comitato mensa | Anni Azzurri",
+   "description": "Un comitato mensa per migliorare la qualità del servizio con le proposte di ospiti e familiari della Residenza Dorica."
+  },
+  "413": {
+   "title": "Bollini RosaArgento a 32 residenze Anni Azzurri | Anni Azzurri",
+   "description": "32 Residenze Anni Azzurri ricevono il Bollino RosaArgento per l'attenzione alla salute, al benessere e alla dignità degli ospiti."
+  },
+  "25": {
+   "title": null,
+   "description": "Il ricovero temporaneo in RSA dà sollievo a chi assiste l'anziano a casa: quando sceglierlo, come accedere e le residenze Anni Azzurri."
+  },
+  "439": {
+   "title": "RSA Aperta: prestazioni gratuite in Lombardia | Anni Azzurri",
+   "description": null
+  },
+  "421": {
+   "title": null,
+   "description": "RSA Aperta di Anni Azzurri: assistenza gratuita per anziani fragili, supporto ai caregiver e interventi personalizzati a casa."
+  },
+  "507": {
+   "title": "Sanremo in Residenza 2026: musica e relazioni | Anni Azzurri",
+   "description": null
+  },
+  "513": {
+   "title": "Sanremo in Residenza: vince Borgomanero | Anni Azzurri",
+   "description": "Numeri da record per la seconda edizione di Sanremo in Residenza: il primo posto va alla Residenza Anni Azzurri di Borgomanero."
+  },
+  "505": {
+   "title": "SPID-CIE DAY nelle RSA del Piemonte | Anni Azzurri",
+   "description": "Giornate gratuite per creare o rinnovare SPID e CIE nelle RSA del Piemonte, aperte a cittadini, caregiver e lavoratori."
+  },
+  "171": {
+   "title": "Tabù: la sessualità degli anziani in RSA | Anni Azzurri",
+   "description": null
+  },
+  "408": {
+   "title": "Un assistente virtuale per le domande degli utenti | Anni Azzurri",
+   "description": "Il chatbot di Anni Azzurri risponde 24 ore su 24 alle domande frequenti e aiuta a prenotare servizi e contattare il customer care."
+  },
+  "512": {
+   "title": "Laboratorio floreale al Polo Geriatrico di Milano | Anni Azzurri",
+   "description": "Al Polo Geriatrico Riabilitativo di Milano un laboratorio floreale coinvolge gli ospiti in un'esperienza di creatività e relazione."
+  },
+  "337": {
+   "title": "Un pranzo speciale alla Residenza Sestri Ponente | Anni Azzurri",
+   "description": null
+  },
+  "424": {
+   "title": "Una poltrona per due: scambio tra le RSA | Anni Azzurri",
+   "description": "I professionisti delle RSA Anni Azzurri si scambiano esperienze, idee e soluzioni operative per migliorare il servizio agli ospiti."
+  },
+  "323": {
+   "title": "«Anni Azzurri per te»: incontri per caregiver | Anni Azzurri",
+   "description": "Cinque incontri a Borgomanero con gli esperti della RSA e gli assistenti sociali del CISS: informazioni e consigli per i caregiver."
+  },
+  "258": {
+   "title": null,
+   "description": "L'archeoterapia porta persone con disabilità fisiche, cognitive e psichiche a contatto con storia, archeologia e arte."
+  }
+ }
+}
