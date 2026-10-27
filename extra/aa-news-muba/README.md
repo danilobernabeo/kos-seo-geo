@@ -123,6 +123,7 @@ Ripristino: il comando è stampato alla fine di ogni scrittura
 | 27/10/2026 | stage (c0025) | installata **non pubblicata** (news 592, template 66 con le 11 TV di `interna-articolo`), foto e testata segnaposto | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261027-095552-news-muba/ripristino.json --scrivi` |
 | 27/10/2026 | stage (c0025) | `--aggiorna`: mosaico e visore con 24 foto in 3 residenze (news pubblicata sullo stage) | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261027-123458-news-muba-agg/ripristino.json --scrivi` |
 | 27/10/2026 | stage (c0025) | `--aggiorna`: testata di prova (Foto generica 3, TV `newsImage`), testi delle foto corretti (operatrici); verificata con Chrome da 360 a 1920 px | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261027-124644-news-muba-agg/ripristino.json --scrivi` |
+| 27/10/2026 | stage (c0025) | `--aggiorna`: longtitle (43 caratteri) e description (153) nei limiti AA-20 | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261027-142704-news-muba-agg/ripristino.json --scrivi` |
 
 Aperto dopo il primo rilascio: TV `newsArticle` («Tipo articolo», etichetta sopra il titolo nelle card delle news)
 vuota; nella news più recente vale «Approfondimenti». Valore da decidere, poi si aggiunge a `$TV_NEWS` di
