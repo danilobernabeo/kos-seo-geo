@@ -127,7 +127,9 @@ H2 ripetuti dentro la stessa pagina solo su una landing Minerva. Restano immagin
 (da verificare con la voce Alt Text). Ricevuti i contenuti anticipati da mercoledì: la prova li ha trovati tutti
 invariati dopo l'esportazione (nessun FERMO). Backup e ripristino: contenuti tabella `modx_site_content_bak_20261027_0210`,
 `~/backup-kos-seo-geo/20261027-021007-contenuti`; alt delle news tabella `modx_site_content_bak_20261027_0221`,
-`~/backup-kos-seo-geo/20261027-022144-contenuti` (`aggiorna-contenuti.php /www --ripristina <cartella> --scrivi`).
+`~/backup-kos-seo-geo/20261027-022144-contenuti` (`aggiorna-contenuti.php /www --ripristina <cartella> --scrivi`). Regole web AA in produzione il 27/10 (`aa-icone-apple.conf`,
+`aa-3-pdf-redirect.conf` con 97 redirect dei PDF): verificati 301 del PDF rinominato di Villa Pineta, 200 dell'icona
+Apple con misura e della home.
 
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
 
