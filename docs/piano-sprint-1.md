@@ -153,6 +153,20 @@ chunk, `listLda`; regole web `kos-8-cartelle-documenti.conf`): collaudo sullo st
 (Villa dei Pini Civitanova 5, storico liste d'attesa Villa San Giuseppe 20, Villa Margherita Benevento 10), cartella di
 Villa Sant'Alessandro da 403 a 301 verso la scheda.
 
+## Title, description e H1 (AA-20, KOS 21-23, sprint 2) — deciso il 27/10
+
+Fonte dei testi: i fogli dell'agenzia. AA: `202607_PWC_AnniAzzurri_Ottimizzazioni_Meta_Tag_v2_Ant.xlsx` (88 URL con
+title e description suggeriti; H1 suggeriti non applicati, decisione di luglio). Incongruenze e migliorie si segnalano e
+si discutono, non si applicano di nostra iniziativa. Per le voci degli audit senza testo proposto (AA: circa 100 pagine,
+soprattutto articoli, segnalate nell'audit di aprile ma fuori dagli 88 URL; KOS: 78 title, 301 description, 20 H1 del
+dettaglio di settembre, che non contiene testi suggeriti) prepariamo noi una **proposta da validare** con regole
+semplici (accorciare il testo esistente, aggiungere il nome della pagina o della struttura dove manca, distinguere i
+duplicati), da mandare all'agenzia con una data di validazione. Prima: stato attuale degli URL degli audit
+(`scripts/checks/meta-stato.php`, elenchi in `anniazzurri/dati/aa-20/` e `kosgroup/dati/kos-21-23/`) per separare le voci
+già risolte (evidenza per la nota di consegna) e quelle che dipendono dal template (suffissi doppi), da correggere senza
+toccare i testi; dati di Search Console degli ultimi 16 mesi in BigQuery (`searchconsole_aa`, `searchconsole_kos`,
+scaricati il 27/10 con `scripts/gsc/storico-search-console.py`) come riscontro per le segnalazioni.
+
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
 
 Analisi nella chat «Sostituzione barra di ricerca Yext» (26/10): Yext Answers su entrambi i siti (KOS circa 2.150
