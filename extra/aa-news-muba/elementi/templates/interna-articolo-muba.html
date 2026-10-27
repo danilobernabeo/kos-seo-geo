@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it">
+
+[[$head-news]]
+
+<body class="news-content-page news-muba-page">
+[[$GTM_body]]
+[[newsMubaRisorse]]
+
+[[$menu-sticky]]
+
+[[$menu-navbar]]
+
+[[$menu-side-navbar]]
+<main id="main-content" tabindex="-1">
+
+  <!-- Cerchi del totem MUBA (solo decorazione, sotto al testo); albero, stella e raggi sono sfondi in news-muba.css -->
+  <div class="muba-fondo" aria-hidden="true">
+    <span class="muba-cerchio muba-cerchio-1"></span>
+    <span class="muba-cerchio muba-cerchio-2"></span>
+    <span class="muba-cerchio muba-cerchio-3"></span>
+    <span class="muba-cerchio muba-cerchio-4"></span>
+  </div>
+
+[[$breadcrumb-stripe]]
+
+  <div stripe-text class="container py-4 position-relative">
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        <h1 class="h2 text-primary">[[*pagetitle]]</h1>
+        <p class="h5 text-azure">[[*introtext]]</p>
+      </div>
+    </div>
+  </div>
+
+  <div stripe-share class="border-top border-bottom position-relative">
+    <div class="container py-3">
+      <div class="row">
+        <div class="col-auto me-auto">
+          <span class="small text-brown">[[*publishedon:strtotime:date=`%d %B %Y`]]</span>
+        </div>
+        <div class="col-auto">
+          <ul class="list-group list-group-horizontal">
+            <li class="py-0 px-2 border-0 list-group-item"><img class="facebook-share" src="/assets/img/news-facebook.png" alt="condividi su facebook"></li>
+            <li class="py-0 px-2 border-0 list-group-item"><img class="twitter-share" src="/assets/img/news-twitter.png" alt="condividi su twitter"></li>
+            <li class="py-0 px-2 border-0 list-group-item"><img class="whatsapp-share" src="/assets/img/news-whatsapp.png" alt="condividi su whatsapp"></li>
+            <li class="py-0 ps-2 pe-0 border-0 list-group-item"><img class="email-share" src="/assets/img/news-mail.png" alt="condividi via email"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div stripe-article="" class="container py-4 py-md-5 position-relative">
+    <div class="row">
+      <div class="col-12 mb-5">
+        [[newsMubaImmagine? &src=`[[*newsImage]]` &alt=`[[*pagetitle]]` &class=`img-fluid rounded-5` &sizes=`(min-width: 1400px) 1296px, (min-width: 1200px) 1116px, (min-width: 992px) 936px, 100vw` &priorita=`1`]]
+      </div>
+      <div class="col-12 text-brown muba-articolo">
+      [[*content]]
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <a href="[[~8]]" class="mt-lg-5 mt-4 btn btn-outline-primary">Torna alle notizie</a>
+    </div>
+
+  </div>
+
+[[!getResources?
+    &parents=`8`
+    &limit=`6`
+    &where=`[[!newsByStruttura]]`
+    &tpl=`news-list-item`
+    &tplWrapper=`news-struttura-wrapper`
+    &wrapIfEmpty=`0`
+    &includeContent=`1`
+    &includeTVs=`infoImage`
+    &sortby=`{"publishedon":"DESC"}`
+]]
+
+</main>
+
+  <!-- Finestra delle fotografie della gallery (aperta da news-muba.js) -->
+  <div class="modal fade muba-modale" id="muba-modale-foto" aria-labelledby="muba-modale-titolo" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="muba-modale-titolo">Il progetto in immagini</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+        </div>
+        <div class="modal-body" aria-live="polite">
+          <figure class="mb-0">
+            <picture><source data-modale-webp type="image/webp"><img data-modale-img alt="" class="img-fluid rounded-5"></picture>
+            <figcaption class="small mt-2" data-modale-dida></figcaption>
+          </figure>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary" data-modale-prec><span aria-hidden="true">&larr;</span> Precedente</button>
+          <span class="muba-contatore" data-modale-contatore></span>
+          <button type="button" class="btn btn-outline-primary" data-modale-succ>Successiva <span aria-hidden="true">&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+[[$footer]]
+
+[[$footer-script]]
+
+<script async src="https://widget.spreaker.com/widgets.js"></script>
+</body>
+
+</html>

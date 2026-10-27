@@ -1,0 +1,105 @@
+/* =====================================================================
+   NEWS ANNI AZZURRI E MUBA — grafica del totem «Un Natale alla portata di tutti»
+   Solo sul template interna-articolo-muba (classe news-muba-page sul body).
+   Colori dal totem: fondo #99dde3, sagome bianche semitrasparenti, blu #224382.
+   Testo blu scuro su azzurro: contrasto 6,3:1 (titoli) e oltre 7:1 (testo).
+   ===================================================================== */
+
+/* variabili sul body: servono anche alla finestra della galleria, che sta fuori da <main> */
+.news-muba-page { --muba-blu: #224382; --muba-testo: #1d3366; }
+.news-muba-page main { position: relative; overflow: hidden; background: #99dde3; }
+
+/* Tutto il contenuto sopra le decorazioni */
+.news-muba-page main > *:not(.muba-fondo):not(.modal) { position: relative; z-index: 1; }
+
+/* ---------- colori del testo ---------- */
+.news-muba-page .text-primary,
+.news-muba-page .text-azure,
+.news-muba-page .muba-articolo h2,
+.news-muba-page .muba-articolo h3 { color: var(--muba-blu) !important; }
+.news-muba-page .text-brown { color: var(--muba-testo) !important; }
+.news-muba-page .muba-articolo h2 { font-weight: 700; margin-top: 2.5rem; }
+.news-muba-page .muba-articolo h3 { font-size: 1.25rem; font-weight: 700; margin-top: 1rem; }
+.news-muba-page .muba-articolo a { color: var(--muba-blu); text-decoration: underline; }
+.news-muba-page .muba-articolo a:hover { text-decoration-thickness: 2px; }
+.news-muba-page [stripe-share] { border-color: rgba(255, 255, 255, .7) !important; }
+.news-muba-page .btn-outline-primary { color: var(--muba-blu); border-color: var(--muba-blu); }
+.news-muba-page .btn-outline-primary:hover { background: var(--muba-blu); color: #fff; }
+
+/* ---------- cerchi semitrasparenti (dietro a tutto) ---------- */
+.muba-fondo { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.muba-cerchio { position: absolute; border-radius: 50%; background: rgba(255, 255, 255, .3); }
+.muba-cerchio-1 { width: min(56vw, 760px); aspect-ratio: 1; left: -14vw; top: -8rem; }
+.muba-cerchio-2 { width: min(34vw, 420px); aspect-ratio: 1; right: -8vw; top: 55rem; }
+.muba-cerchio-3 { width: 170px; aspect-ratio: 1; left: 3vw; top: 105rem; }
+.muba-cerchio-4 { width: min(30vw, 340px); aspect-ratio: 1; right: 6vw; bottom: 24rem; }
+
+/* ---------- blocchi di testo: righe di lettura comode, sagome a destra ---------- */
+.muba-testo > * { max-width: 46rem; }
+.muba-testo .muba-evidenza { font-weight: 700; color: var(--muba-blu); }
+
+@media (min-width: 992px) {
+  .muba-articolo > .muba-testo:first-child {
+    /* albero, stella e raggi nella disposizione del totem */
+    background: url("/assets/news-muba/albero-stella.svg") no-repeat right 2rem top 0 / 250px auto;
+    min-height: 400px;
+  }
+  .muba-testo-raggi {
+    background: url("/assets/news-muba/raggi.svg") no-repeat right 5rem center / 130px auto;
+  }
+}
+
+/* ---------- partner ---------- */
+.muba-partner { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem 1rem; margin-top: 1.5rem; }
+.muba-partner span { font-size: .875rem; font-weight: 600; color: var(--muba-blu); }
+.muba-partner img { height: 52px; width: auto; display: block; }
+.news-muba-page .muba-articolo .muba-partner a { text-decoration: none; }
+
+/* ---------- onda bianca da bordo a bordo ---------- */
+.muba-onda {
+  width: 100vw;
+  margin: 2.5rem 0 1rem calc(50% - 50vw);
+  height: clamp(48px, 7vw, 110px);
+  background: url("/assets/news-muba/onda.svg") no-repeat center / 100% 100%;
+}
+.muba-onda-giu { transform: scaleX(-1); }
+
+/* ---------- galleria ---------- */
+.muba-galleria { margin-top: 1.5rem; }
+.muba-galleria-apertura { margin: 0 0 1.5rem; }
+.muba-galleria-apri {
+  display: block; width: 100%; padding: 0; border: 0; background: none;
+  border-radius: 1rem; cursor: zoom-in;
+}
+.muba-galleria-apri img { display: block; width: 100%; height: auto; transition: transform .2s ease; }
+.muba-galleria-apri:hover img { transform: scale(1.02); }
+.muba-galleria-apri:focus-visible { outline: 3px solid var(--muba-blu); outline-offset: 3px; }
+.muba-modale .modal-content { border: 0; border-radius: 1rem; }
+.muba-modale figcaption { color: var(--muba-testo); }
+.muba-contatore { font-size: .875rem; color: var(--muba-testo); }
+.muba-modale .modal-title { color: var(--muba-blu); font-weight: 700; }
+.muba-modale .modal-footer { justify-content: space-between; }
+
+/* ---------- videotutorial: anteprima senza YouTube finché non si preme play ---------- */
+.muba-video-elenco { margin-top: .5rem; }
+.muba-video { position: relative; aspect-ratio: 16 / 9; border-radius: 1rem; overflow: hidden; background: var(--muba-blu); }
+.muba-video-play {
+  position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; cursor: pointer;
+  background: var(--muba-blu); display: flex; align-items: center; justify-content: center;
+}
+.muba-video-icona { height: 58%; width: auto; opacity: .9; }
+.muba-video-pulsante {
+  position: absolute; right: 1rem; bottom: 1rem; width: 56px; height: 56px; border-radius: 50%;
+  background: #fff; box-shadow: 0 2px 10px rgba(0, 0, 0, .2); transition: transform .15s ease;
+}
+.muba-video-pulsante::after {
+  content: ""; position: absolute; left: 22px; top: 17px;
+  border-style: solid; border-width: 11px 0 11px 18px; border-color: transparent transparent transparent var(--muba-blu);
+}
+.muba-video-play:hover .muba-video-pulsante { transform: scale(1.08); }
+.muba-video-play:focus-visible { outline: 3px solid #fff; outline-offset: -6px; }
+.muba-video-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .muba-galleria-apri img, .muba-video-pulsante { transition: none; }
+}
