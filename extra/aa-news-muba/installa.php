@@ -12,7 +12,7 @@
  *   php installa.php /www --ripristina ~/backup-kos-seo-geo/<data>-news-muba/ripristino.json [--scrivi]
  *
  * Cosa installa:
- *   - file in /www/assets/news-muba/ (CSS, JS, sagome SVG dal totem, logo MUBA, foto e testata segnaposto);
+ *   - file in /www/assets/news-muba/ (CSS, JS, sagome SVG dal totem, logo MUBA, foto della galleria, testata segnaposto);
  *   - template interna-articolo-muba (copia di interna-articolo con fondo azzurro, sagome, galleria e video),
  *     con le stesse TV di interna-articolo;
  *   - snippet newsMubaRisorse (CSS e JS solo su questa pagina) e newsMubaImmagine (testata con ripiego);

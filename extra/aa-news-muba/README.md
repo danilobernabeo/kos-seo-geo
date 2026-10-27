@@ -6,7 +6,8 @@ quello classico delle news (template `interna-articolo`), con la grafica del tot
 - fondo azzurro `#99dde3` su tutta la pagina;
 - cerchi bianchi semitrasparenti e, accanto al testo, le sagome vettoriali (albero, stella, raggi, onda), estratte
   dal PDF Illustrator del totem senza le foto delle decorazioni;
-- galleria fotografica che si apre in una finestra sopra la pagina, come nell'albero dei ricordi;
+- galleria: mosaico di 5 foto con la griglia della home (versione ridotta, come nelle pagine interne, sotto i
+  1200 px) e visore a tutto schermo con tutte le foto, divise per residenza;
 - tre videotutorial con anteprima e pulsante play: il video si apre in una finestra sopra la pagina, uno alla volta;
   YouTube (`youtube-nocookie.com`) si carica solo al clic e si ferma alla chiusura della finestra.
 
@@ -23,11 +24,14 @@ con quei parametri. Lo script si ferma se l'alias è già usato da un'altra riso
 
 | Percorso | Cosa |
 |---|---|
-| `elementi/templates/interna-articolo-muba.html` | copia di `interna-articolo` (versione del repository) con: classe `news-muba-page` sul body, cerchi decorativi, testo a tutta larghezza (le righe sono limitate dal CSS), finestra della galleria, testata con ripiego |
+| `elementi/templates/interna-articolo-muba.html` | copia di `interna-articolo` (versione del repository) con: classe `news-muba-page` sul body, cerchi decorativi, testo a tutta larghezza (le righe sono limitate dal CSS), visore della galleria e finestra dei video, testata con ripiego |
 | `elementi/snippets/newsMubaRisorse.php` | registra CSS e JS solo su questa pagina (il chunk `head-news`, comune a tutte le news, non si tocca) |
 | `elementi/snippets/newsMubaImmagine.php` | testata: usa lo snippet `immagine` del progetto se c'è, altrimenti un `<img>` semplice (produzione prima del rilascio della libreria immagini) |
 | `elementi/contenuto.html` | contenuto della news, dal docx; link a MUBA e alle residenze di Milano (`/rsa-a-milano-e-provincia`) |
-| `files/assets/news-muba/` | `news-muba.css`, `news-muba.js`, sagome SVG (`albero-stella`, `raggi`, `onda`), icone dei video (`albero`, `stella`, `sfera`), `logo-muba.svg`, testata e 9 foto **segnaposto** |
+| `files/assets/news-muba/` | `news-muba.css`, `news-muba.js`, sagome SVG (`albero-stella`, `raggi`, `onda`), icone dei video (`albero`, `stella`, `sfera`), `logo-muba.svg`, testata **segnaposto**, `foto/` (generata da `prepara-foto.py`) |
+| `foto.json` | gruppi (residenze, con nome e link), foto grande e iniziali del mosaico, foto fuori dal sorteggio, testi alternativi |
+| `prepara-foto.py` | da `foto-sorgenti/` alle immagini di `foto/` e al blocco della galleria in `contenuto.html` (vedi sotto) |
+| `foto-sorgenti/` | originali, una cartella per residenza; **fuori da git** (`.gitignore`): pesanti e con la posizione GPS |
 | `anteprima/costruisci.py` | anteprima locale senza MODX (Bootstrap 5.1.3 al posto del CSS del sito) |
 | `installa.php` | installazione con prova, pubblicazione separata, aggiornamento e ripristino |
 
@@ -39,14 +43,31 @@ della galleria e dei video.
 - **Testata** (TV `newsImage`): arriva dall'agenzia, **980 × 551 px** come le altre news (16:9, mostrata al massimo a
   980 px di larghezza). Oggi c'è `testata-segnaposto.jpg`, nello stesso formato. La testata è anche
   l'immagine dell'elenco delle news e della condivisione social.
-- **Foto della galleria**: 24 ricevute, da selezionare (proposta 9 o 13: 1 grande + 8 o 12 in griglia). Vanno in
-  `files/assets/news-muba/foto/` già ridimensionate (circa 1600 px sul lato lungo: è anche la versione che si apre
-  nella finestra). In `contenuto.html` una riga per foto, nell'ordine di visualizzazione: **la prima è la foto
-  grande**, le altre riempiono la griglia da sinistra a destra; la finestra segue lo stesso ordine. In ogni riga
-  cambiano `data-foto-jpg`, `data-foto-dida`, `&src` e `&alt`. Le foto passano da `newsMubaImmagine`: dove c'è lo
-  snippet `immagine` (stage) escono srcset e WebP, altrimenti (produzione prima della libreria immagini) un `<img>`
-  semplice. Le miniature sono ritagliate a 3:2, nella finestra la foto è intera. Prima: **liberatorie** per ospiti
-  e bambini riconoscibili.
+- **Foto della galleria**: oggi 24 (Navigli 7, San Luca 7, San Rocco 7 più 3 ingrandimenti scattati lì); ne
+  arriveranno fino a circa 52 da 5 residenze. Liberatorie presenti. San Luca è a 1200 × 1600: se ci sono gli
+  originali dal telefono, meglio quelli. Testi alternativi scritti da noi in `foto.json`: da rileggere.
+
+## Galleria: come si aggiornano le foto
+
+1. Originali in `foto-sorgenti/<cartella>/`, così come arrivano (rotazione, misure e metadati li sistema lo script).
+2. Una residenza nuova: si aggiunge in `foto.json` → `gruppi` (etichetta del pulsante, nome, luogo, link, slug,
+   cartelle). L'ordine dei gruppi è quello dell'elenco.
+3. Testi alternativi in `foto.json` → `alt`, con il nome del file come chiave (lo script avvisa di quelli mancanti).
+4. `python prepara-foto.py` (serve Pillow). Prepara solo le foto nuove o cambiate (`--forza` le rifà tutte), toglie
+   quelle che non servono più e riscrive il blocco fra `<!-- galleria:inizio -->` e `<!-- galleria:fine -->` in
+   `contenuto.html`. Quel blocco non si modifica a mano.
+5. Commit, archivio e `installa.php --aggiorna` come sotto.
+
+Regole del mosaico: la foto grande è fissa (`mosaico.grande`, orizzontale); le altre quattro caselle (due
+orizzontali, due verticali; da smartphone e tablet solo le verticali) partono dalle `iniziali` e a ogni visita
+pescano a caso tra le foto del formato giusto, preferendo residenze diverse. Le foto di `fuori_mosaico` (gli
+ingrandimenti, troppo simili alla foto grande) restano solo nel visore. Dentro una residenza l'ordine è quello di
+scatto, se tutte le foto hanno la data; altrimenti quello dei nomi dei file.
+
+Per ogni foto lo script scrive in `foto/`: `-1600.jpg` e `-1600.webp` (visore), `-800.webp` (mosaico e smartphone),
+`-q.webp` (miniatura quadrata). Niente snippet `immagine` per la galleria: con 52 foto genererebbe centinaia di
+varianti in una sola richiesta, al primo rinnovo della cache.
+
 - **REMIDA Milano**: senza link, finché non c'è una pagina ufficiale da collegare.
 
 ## Rilascio
@@ -81,8 +102,11 @@ Ripristino: il comando è stampato alla fine di ogni scrittura
 
 - Fondo azzurro su tutta la pagina, sagome a destra del primo blocco di testo e dei videotutorial (da 992 px in su),
   onde fra le sezioni; su smartphone restano cerchi e onde.
-- Galleria: clic su una foto, frecce e tasti sinistra/destra, contatore, Esc; il focus torna sulla foto.
-  Sullo stage le foto escono come `<picture>` con srcset e WebP (varianti in `assets/cache-img/news-muba/foto/`).
+- Mosaico: griglia della home da 1200 px, sotto foto grande + due verticali + frase; ricaricando cambiano le
+  caselle piccole (mai due volte la stessa foto, mai la grande).
+- Visore: clic su una casella (si apre su quella foto) o su «Vedi tutte» (dalla prima); frecce, tasti
+  sinistra/destra, scorrimento con il dito, miniature; pulsanti per residenza da 768 px, menu sotto; contatore e
+  link alla residenza; Esc chiude e il focus torna dove si era.
 - Video: niente richieste a YouTube prima del clic (pannello Rete del browser); al clic si apre la finestra e parte
   il video; chiudendo (X, Esc, clic fuori) l'audio si ferma e il focus torna sul pulsante; aprendo un altro video
   parte solo quello.

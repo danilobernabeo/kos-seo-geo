@@ -81,25 +81,27 @@
 
 </main>
 
-  <!-- Finestra delle fotografie della gallery (aperta da news-muba.js) -->
-  <div class="modal fade muba-modale" id="muba-modale-foto" aria-labelledby="muba-modale-titolo" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+  <!-- Visore della galleria (aperto da news-muba.js con i dati di #muba-galleria-dati nel contenuto) -->
+  <div class="modal fade muba-visore" id="muba-visore" aria-labelledby="muba-visore-titolo" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title h5" id="muba-modale-titolo">Il progetto in immagini</h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+        <div class="muba-visore-testa">
+          <h2 class="muba-visore-titolo" id="muba-visore-titolo">Il progetto in immagini</h2>
+          <div class="muba-visore-filtri" role="group" aria-label="Foto per residenza" data-visore-filtri></div>
+          <label class="visually-hidden" for="muba-visore-menu">Foto per residenza</label>
+          <select class="form-select form-select-sm muba-visore-menu" id="muba-visore-menu" data-visore-menu></select>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Chiudi"></button>
         </div>
-        <div class="modal-body" aria-live="polite">
-          <figure class="mb-0">
-            <picture><source data-modale-webp type="image/webp"><img data-modale-img alt="" class="img-fluid rounded-5"></picture>
-            <figcaption class="small mt-2" data-modale-dida></figcaption>
-          </figure>
+        <div class="muba-visore-scena" data-visore-scena>
+          <button type="button" class="muba-visore-freccia muba-visore-prec" data-visore-prec aria-label="Foto precedente"><span aria-hidden="true">&lsaquo;</span></button>
+          <picture><source type="image/webp" data-visore-webp><img data-visore-img alt=""></picture>
+          <button type="button" class="muba-visore-freccia muba-visore-succ" data-visore-succ aria-label="Foto successiva"><span aria-hidden="true">&rsaquo;</span></button>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-primary" data-modale-prec><span aria-hidden="true">&larr;</span> Precedente</button>
-          <span class="muba-contatore" data-modale-contatore></span>
-          <button type="button" class="btn btn-outline-primary" data-modale-succ>Successiva <span aria-hidden="true">&rarr;</span></button>
+        <div class="muba-visore-info" aria-live="polite">
+          <p class="muba-visore-dida" data-visore-dida></p>
+          <p class="muba-visore-dove"><span data-visore-contatore></span> · <a data-visore-residenza href="#"></a></p>
         </div>
+        <div class="muba-visore-striscia" data-visore-striscia></div>
       </div>
     </div>
   </div>

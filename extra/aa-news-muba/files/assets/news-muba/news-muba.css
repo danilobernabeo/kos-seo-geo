@@ -5,7 +5,7 @@
    Testo blu scuro su azzurro: contrasto 6,3:1 (titoli) e oltre 7:1 (testo).
    ===================================================================== */
 
-/* variabili sul body: servono anche alla finestra della galleria, che sta fuori da <main> */
+/* variabili sul body: servono anche alle finestre, che stanno fuori da <main> */
 .news-muba-page { --muba-blu: #224382; --muba-testo: #1d3366; }
 .news-muba-page main { position: relative; overflow: hidden; background: #99dde3; }
 
@@ -66,25 +66,114 @@
 }
 .muba-onda-giu { transform: scaleX(-1); }
 
-/* ---------- galleria ---------- */
-.muba-galleria { margin-top: 1.5rem; }
-.muba-galleria-apertura { margin: 0 0 1.5rem; }
-.muba-galleria-apri {
-  display: block; width: 100%; padding: 0; border: 0; background: none;
-  border-radius: 1rem; cursor: zoom-in;
-}
-.muba-galleria-apri picture { display: block; }   /* lo snippet immagine scrive <picture> */
-.muba-galleria-apri img { display: block; width: 100%; height: auto; transition: transform .2s ease; }
-/* miniature tutte uguali anche con foto verticali o di formati diversi; nella finestra la foto è intera */
-.muba-galleria .row .muba-galleria-apri { overflow: hidden; }
-.muba-galleria .row .muba-galleria-apri img { aspect-ratio: 3 / 2; object-fit: cover; }
-.muba-galleria-apri:hover img { transform: scale(1.02); }
-.muba-galleria-apri:focus-visible { outline: 3px solid var(--muba-blu); outline-offset: 3px; }
+/* ---------- finestre (video): angoli come le card del sito ---------- */
 .muba-modale .modal-content { border: 0; border-radius: 1rem; }
-.muba-modale figcaption { color: var(--muba-testo); }
-.muba-contatore { font-size: .875rem; color: var(--muba-testo); }
 .muba-modale .modal-title { color: var(--muba-blu); font-weight: 700; }
-.muba-modale .modal-footer { justify-content: space-between; }
+
+/* ---------- mosaico: stessa griglia della home (6 x 4, 30 px) da 1200 px; sotto, versione ridotta
+   come nelle pagine interne: foto grande, due verticali, frase con pulsante ---------- */
+.muba-mosaico {
+  display: grid; gap: 16px; margin-top: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas: "g g" "v1 v2" "i i";
+}
+.muba-tessera-grande { grid-area: g; aspect-ratio: 3 / 2; }
+.muba-tessera-verticale-1 { grid-area: v1; aspect-ratio: 3 / 4; }
+.muba-tessera-verticale-2 { grid-area: v2; aspect-ratio: 3 / 4; }
+.muba-mosaico-invito { grid-area: i; }
+.muba-tessera-orizzontale-1, .muba-tessera-orizzontale-2 { display: none !important; }
+@media (min-width: 768px) { .muba-mosaico { gap: 24px; } }
+@media (min-width: 1200px) {
+  .muba-mosaico {
+    grid-template-areas: none; gap: 30px; aspect-ratio: 1293 / 1242;
+    grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+  .muba-mosaico .muba-tessera { aspect-ratio: auto; }
+  .muba-tessera-grande { grid-area: 1 / 1 / 3 / 5; }
+  .muba-tessera-orizzontale-1 { display: block !important; grid-area: 1 / 5 / 2 / 7; }
+  .muba-tessera-verticale-1 { grid-area: 2 / 5 / 4 / 7; }
+  .muba-tessera-verticale-2 { grid-area: 3 / 4 / 4 / 5; }
+  .muba-tessera-orizzontale-2 { display: block !important; grid-area: 3 / 1 / 5 / 4; }
+  .muba-mosaico-invito { grid-area: 4 / 4 / 5 / 7; padding-left: 1.5rem; }
+}
+.muba-tessera {
+  position: relative; display: block; width: 100%; padding: 0; border: 0; overflow: hidden;
+  border-radius: 12px; background: rgba(255, 255, 255, .35); cursor: zoom-in;
+}
+.muba-tessera picture { display: block; width: 100%; height: 100%; }
+.muba-tessera img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
+.muba-tessera[data-formato="v"] img { object-position: 50% 30%; }   /* nelle verticali volti e mani stanno in alto */
+.muba-tessera:hover img { transform: scale(1.03); }
+.muba-tessera:focus-visible { outline: 3px solid var(--muba-blu); outline-offset: 3px; }
+.muba-tessera-nome {
+  position: absolute; left: .6rem; bottom: .6rem; padding: .15rem .65rem; border-radius: 1rem;
+  background: rgba(34, 67, 130, .9); color: #fff; font-size: .75rem; font-weight: 600; pointer-events: none;
+}
+.muba-mosaico-invito { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1rem; }
+.news-muba-page .muba-mosaico-frase {
+  margin: 0; color: var(--muba-blu); font-weight: 700; line-height: 1.25; font-size: clamp(1.35rem, 1rem + 1vw, 1.75rem);
+}
+.muba-btn { background: var(--muba-blu); color: #fff; border-radius: 2rem; padding: .6rem 1.4rem; font-weight: 600; }
+.muba-btn:hover, .muba-btn:focus { background: #172f5e; color: #fff; }
+
+/* ---------- visore a tutto schermo ---------- */
+.muba-visore { --visore-fondo: #0e1a30; --visore-accento: #99dde3; }
+.muba-visore .modal-content { background: var(--visore-fondo); color: #fff; border: 0; border-radius: 0; }
+.muba-visore-testa { display: flex; align-items: center; gap: .75rem 1rem; padding: .75rem 1rem; }
+.news-muba-page .muba-visore-titolo { margin: 0; font-size: 1rem; font-weight: 700; color: #fff; white-space: nowrap; }
+.muba-visore-filtri { display: none; flex-wrap: wrap; justify-content: center; gap: .5rem; margin: 0 auto; }
+.muba-visore-filtri button {
+  border: 1px solid rgba(255, 255, 255, .5); background: transparent; color: #fff;
+  border-radius: 2rem; padding: .3rem .9rem; font-size: .875rem;
+}
+.muba-visore-filtri button:hover { border-color: #fff; }
+.muba-visore-filtri button[aria-pressed="true"] { background: var(--visore-accento); border-color: var(--visore-accento); color: var(--visore-fondo); font-weight: 600; }
+.muba-visore-menu { width: auto; max-width: 13rem; margin-left: auto; }
+.muba-visore .btn-close { flex: 0 0 auto; }
+@media (max-width: 575.98px) { .news-muba-page .muba-visore-titolo { display: none; } }
+@media (min-width: 768px) {
+  .muba-visore-filtri { display: flex; }
+  .muba-visore-menu { display: none; }
+}
+.muba-visore-scena { position: relative; flex: 1 1 auto; min-height: 0; touch-action: pan-y; user-select: none; }
+.muba-visore-scena picture { position: absolute; inset: .25rem 0; display: flex; align-items: center; justify-content: center; }
+.muba-visore-scena img { max-width: 100%; max-height: 100%; width: auto; height: auto; border-radius: 6px; transition: opacity .2s ease; }
+.muba-visore-scena img.muba-carica { opacity: .3; }
+.muba-visore-freccia {
+  position: absolute; top: 50%; z-index: 2; transform: translateY(-50%);
+  width: 44px; height: 44px; border: 0; border-radius: 50%; padding: 0 0 .2rem;
+  background: rgba(255, 255, 255, .85); color: var(--visore-fondo); font-size: 2rem; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+.muba-visore-prec { left: .5rem; }
+.muba-visore-succ { right: .5rem; }
+@media (min-width: 768px) {
+  .muba-visore-scena picture { inset: .25rem 4.5rem; }
+  .muba-visore-freccia { width: 52px; height: 52px; }
+  .muba-visore-prec { left: 1rem; }
+  .muba-visore-succ { right: 1rem; }
+}
+.muba-visore-info { padding: .5rem 1rem 0; text-align: center; font-size: .875rem; }
+.muba-visore-info p { margin: 0 0 .2rem; }
+.muba-visore-dida { color: #fff; }
+.muba-visore-dove { color: rgba(255, 255, 255, .75); }
+.muba-visore-dove a { color: var(--visore-accento); }
+.muba-visore-striscia {
+  display: flex; gap: 6px; overflow-x: auto; padding: .5rem 1rem 1rem; scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, .35) transparent;
+}
+.muba-visore-striscia button {
+  flex: 0 0 auto; width: 52px; height: 52px; padding: 0; border: 0; border-radius: 6px; overflow: hidden;
+  background: #1d2b47; opacity: .55; transition: opacity .15s ease;
+}
+.muba-visore-striscia button:hover { opacity: .85; }
+.muba-visore-striscia button[aria-current="true"] { opacity: 1; outline: 3px solid var(--visore-accento); outline-offset: -3px; }
+/* miniature centrate quando ci stanno tutte, scorrevoli quando sono di più */
+.muba-visore-striscia button:first-child { margin-left: auto; }
+.muba-visore-striscia button:last-child { margin-right: auto; }
+.muba-visore-striscia img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (min-width: 768px) { .muba-visore-striscia button { width: 68px; height: 68px; } }
+.muba-visore button:focus-visible, .muba-visore a:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
 
 /* ---------- videotutorial: anteprima senza YouTube finché non si preme play ---------- */
 .muba-video-elenco { margin-top: .5rem; }
@@ -113,5 +202,5 @@
 .muba-video-contenitore { border-radius: .75rem; overflow: hidden; background: #000; }
 
 @media (prefers-reduced-motion: reduce) {
-  .muba-galleria-apri img, .muba-video-pulsante { transition: none; }
+  .muba-tessera img, .muba-video-pulsante, .muba-visore-scena img { transition: none; }
 }

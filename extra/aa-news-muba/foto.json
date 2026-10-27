@@ -1,0 +1,41 @@
+{
+  "_nota": "Galleria della news. prepara-foto.py legge foto-sorgenti/<cartella>/, prepara le immagini in files/assets/news-muba/foto/ e riscrive il blocco della galleria in elementi/contenuto.html. Ordine dei gruppi = ordine qui sotto; dentro un gruppo, ordine di scatto (data EXIF) se tutte le foto ce l'hanno, altrimenti ordine dei nomi. Testi alternativi: chiave = nome del file sorgente.",
+  "gruppi": [
+    {"etichetta": "Navigli",   "nome": "Residenza Anni Azzurri Navigli",   "luogo": "Milano",       "url": "https://anniazzurri.it/residenza-anni-azzurri-navigli",   "slug": "navigli",   "cartelle": ["RSA Navigli"]},
+    {"etichetta": "San Luca",  "nome": "Residenza Anni Azzurri San Luca",  "luogo": "Milano",       "url": "https://anniazzurri.it/residenza-anni-azzurri-san-luca",  "slug": "san-luca",  "cartelle": ["RSA San Luca"]},
+    {"etichetta": "San Rocco", "nome": "Residenza Anni Azzurri San Rocco", "luogo": "Segrate (MI)", "url": "https://anniazzurri.it/residenza-anni-azzurri-san-rocco", "slug": "san-rocco", "cartelle": ["RSA San Rocco", "Generiche"]}
+  ],
+  "_nota_generiche": "Le generiche sono ingrandimenti scattati a San Rocco (stessa fotocamera, stesso giorno): stanno nel gruppo San Rocco, in ordine di scatto, e restano fuori dal sorteggio del mosaico.",
+  "fuori_mosaico": ["Foto generica.JPG", "Foto generica 2.JPG", "Foto generica 3.JPG"],
+  "mosaico": {
+    "grande": "RSA San Rocco 5.JPG",
+    "iniziali": {"orizzontale-1": "RSA San Rocco 4.JPG", "verticale-1": "RSA San Luca 4.jpeg", "verticale-2": "RSA Navigli 2.jpg", "orizzontale-2": "RSA San Rocco 3.JPG"},
+    "invito": ""
+  },
+  "alt": {
+    "Foto generica.JPG": "Il tavolo del laboratorio coperto di riviste e cartoncini colorati",
+    "Foto generica 2.JPG": "Mani che ritagliano con le forbici una pagina di rivista",
+    "Foto generica 3.JPG": "Mani al lavoro tra riviste, colla e ritagli",
+    "RSA Navigli.jpg": "Un'ospite incolla le strisce di carta colorata per la stella",
+    "RSA Navigli 1.jpg": "Un'ospite al tavolo, con le decorazioni di carta appese sullo sfondo",
+    "RSA Navigli 2.jpg": "Un'ospite sorridente mostra la sua sfera di carta",
+    "RSA Navigli 3.jpg": "Un'ospite mostra la sfera di carta rossa e verde",
+    "RSA Navigli 4.jpg": "Un'ospite solleva la sfera di carta appena realizzata",
+    "RSA Navigli 5.jpg": "Un'operatrice KOS lavora al tavolo insieme agli ospiti",
+    "RSA Navigli 6.jpg": "Ospiti e operatrici al lavoro sulle stelle di carta",
+    "RSA San Luca.jpeg": "Ospiti della residenza al MUBA, con un accompagnatore",
+    "RSA San Luca 1.jpeg": "Un'ospite sorridente mostra la stella di cartoncino",
+    "RSA San Luca 2.jpeg": "Un ospite mostra la sua stella rossa e gialla",
+    "RSA San Luca 3.jpeg": "Un'ospite con la stella rossa appena completata",
+    "RSA San Luca 4.jpeg": "Un'ospite sorridente con la sua stella di carta",
+    "RSA San Luca 5.jpeg": "Mani che assemblano le punte di una stella di cartoncino",
+    "RSA San Luca 6.jpeg": "Strisce di cartoncino colorato incollate per formare una stella",
+    "RSA San Rocco.JPG": "Una giovane partecipante affianca un'ospite nel ritaglio delle riviste",
+    "RSA San Rocco 1.JPG": "Un'ospite sfoglia e ritaglia una rivista",
+    "RSA San Rocco 2.JPG": "Un'ospite ritaglia immagini dalle riviste insieme agli altri partecipanti",
+    "RSA San Rocco 3.JPG": "Il lungo tavolo del laboratorio con ospiti e accompagnatori al lavoro",
+    "RSA San Rocco 4.JPG": "Un ospite sorridente al tavolo del laboratorio",
+    "RSA San Rocco 5.JPG": "Ospiti e giovani partecipanti al lavoro tra riviste, colla e cartoncini",
+    "RSA San Rocco 6.JPG": "Un'ospite segue il laboratorio dalla sua carrozzina"
+  }
+}
