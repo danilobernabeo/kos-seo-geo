@@ -137,7 +137,14 @@ scaricate 73,8 → 37,6 MB; es. «La nostra storia» 16,9 → 8,9 s, home 13,2 �
 online 5,2 → 2,6 s. Restano lenti: Villa dei Pini Civitanova (21 s: 99 immagini della galleria fuori schermo senza
 caricamento differito, foto 01.jpg 210 KB), le pagine con il banner Cookiebot come elemento LCP (11), Settimana del
 Cervello. Leve successive: caricamento differito delle immagini fuori schermo e conversione a `<picture>`; studio di
-Cookiebot (precaricamento dello script).
+Cookiebot (precaricamento dello script). **Misura completa del 27/10 sera** (3 caricamenti per pagina, mediana): LCP mediano
+4,4 s, nessuna pagina peggiorata; 595 caricamenti di immagini fuori schermo senza caricamento differito (circa 13,5 MB, un
+terzo dei byte di immagini); `bg-pattern.jpg` (26 KB) ancora elemento LCP su 31 pagine perché sfondo CSS scoperto tardi;
+rimasti fuori dal primo giro `sfondo-tit-img-cda.png` 859 KB, `sfondo-tit-img-collegio.png` 847 KB, `sfondo-tit-img.png`
+441 KB, `home-img.jpg` 298 KB (LCP di `/it/strutture` e `/it/servizi-e-cure`), banner `chi-siamo/*-banner.jpg` da 2049 px.
+Piano KOS-2: **A** secondo giro di ottimizzazione di questi file (28/10); **B** `loading="lazy"` sulle immagini fuori
+schermo (gallerie delle strutture, footer, icone) e preload di `bg-pattern` negli head, collaudo sullo stage e produzione
+dal 2/11; **C** `<picture>`/WebP con lo snippet comune `immagine` nello sprint 2.
 **27/10 mattina, AA in produzione:** AA-17 (101 immagini dell'audit, 51,4 → 13,2 MB, −74%), varianti WebP (1.613
 immagini, 4.442 larghezze), markup `aa-1-6-markup` (235 elementi), modulo di iscrizione, contenuti (152 risorse) e alt
 delle news. Ispezione in produzione (101 pagine, 50 template): 0 sfondi di contenuto, 0 titoli «Guarda di più/meno», un
