@@ -167,6 +167,17 @@ già risolte (evidenza per la nota di consegna) e quelle che dipendono dal templ
 toccare i testi; dati di Search Console degli ultimi 16 mesi in BigQuery (`searchconsole_aa`, `searchconsole_kos`,
 scaricati il 27/10 con `scripts/gsc/storico-search-console.py`) come riscontro per le segnalazioni.
 
+**Template AA-20 in produzione il 27/10 sera** (pacchetto `aa-20-title`, snippet comune `titoloPagina` in 26 head e
+nel template `convegnoAA`, impostazione `seo.titolo_marchio`): longtitle se compilato, mai un longtitle che è il nome di
+una cartella (sulle landing indica la cartella di foto e documenti, quindi `head-landing` lo ignora sempre); marchio
+« | Anni Azzurri» una volta sola e non aggiunto se già nel testo; «- MODX Revolution» tolto dalla galleria del convegno.
+Anteprima prima del rilascio (`scripts/checks/aa-20-titoli-anteprima.php`): 89 title cambiati su 521 pagine, nessuno
+peggiorato; stage e produzione con lo stesso esito. Ripristino: `installa-elementi.php /www
+~/backup-kos-seo-geo/20261027-151018/ripristino.json --scrivi`. Da decidere nell'import dei testi (fuori dall'audit):
+longtitle «Servizi e cure» su `/la-nostra-equipe`, title di `/ladi`, pagetitle `oss-toscana`, « | KOS» nel longtitle
+della news del premio AGIRE. L'import dei testi nei campi longtitle e description deve escludere le landing e i
+longtitle che sono nomi di cartella.
+
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
 
 Analisi nella chat «Sostituzione barra di ricerca Yext» (26/10): Yext Answers su entrambi i siti (KOS circa 2.150

@@ -23,7 +23,7 @@ Aggiornare l'elenco a ogni intervento.
 | chunk e template di sfondi, titoli, gallerie (`gal-*`), `servizi-*`, news, head delle landing, `photoGalleryAA2025` | 235 elementi | AA-1, AA-6, Alt Text | **produzione (27/10)**, pacchetto `aa-1-6-markup` |
 | contenuti di residenze, centri diurni, regioni, province, landing, home (152 risorse) e 7 news | campo content | AA-1, AA-6, Alt Text | **produzione (27/10)**, `anniazzurri/dati/aa-6-contenuti`, `alt-news-contenuti` |
 | `ogImage` (shared) e 26 head `head*`, template `convegnoAA` | snippet (nuovo), chunk, template | og:image (fuori perimetro) | **produzione (26/10)**, pacchetto `aa-og-image` |
-| `titoloPagina` (shared) e gli stessi 26 head `head*` + template `convegnoAA`, impostazione `seo.titolo_marchio` | snippet (nuovo), chunk, template | AA-20 (`<title>`: longtitle, marchio una volta sola) | in collaudo, pacchetto `aa-20-title` |
+| `titoloPagina` (shared) e gli stessi 26 head `head*` + template `convegnoAA`, impostazione `seo.titolo_marchio` | snippet (nuovo), chunk, template | AA-20 (`<title>`: longtitle, marchio una volta sola) | **produzione (27/10)**, pacchetto `aa-20-title` |
 
 ## kosgroup.com
 
