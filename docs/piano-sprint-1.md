@@ -125,7 +125,9 @@ delle news. Ispezione in produzione (101 pagine, 50 template): 0 sfondi di conte
 H1 per pagina salvo la pagina dei risultati Yext (`/cerca`, template `yext-search`, sostituita con la nuova ricerca);
 H2 ripetuti dentro la stessa pagina solo su una landing Minerva. Restano immagini senza alt nelle landing RSA e OSS
 (da verificare con la voce Alt Text). Ricevuti i contenuti anticipati da mercoledì: la prova li ha trovati tutti
-invariati dopo l'esportazione (nessun FERMO).
+invariati dopo l'esportazione (nessun FERMO). Backup e ripristino: contenuti tabella `modx_site_content_bak_20261027_0210`,
+`~/backup-kos-seo-geo/20261027-021007-contenuti`; alt delle news tabella `modx_site_content_bak_20261027_0221`,
+`~/backup-kos-seo-geo/20261027-022144-contenuti` (`aggiorna-contenuti.php /www --ripristina <cartella> --scrivi`).
 
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
 
