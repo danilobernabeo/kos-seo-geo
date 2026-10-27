@@ -40,8 +40,13 @@ della galleria e dei video.
   980 px di larghezza). Oggi c'è `testata-segnaposto.jpg`, nello stesso formato. La testata è anche
   l'immagine dell'elenco delle news e della condivisione social.
 - **Foto della galleria**: 24 ricevute, da selezionare (proposta 9 o 13: 1 grande + 8 o 12 in griglia). Vanno in
-  `files/assets/news-muba/foto/`, con le righe corrispondenti in `contenuto.html` (`data-foto-jpg`, `data-foto-dida`,
-  `src`, `alt`, `width`, `height`). Prima: **liberatorie** per ospiti e bambini riconoscibili.
+  `files/assets/news-muba/foto/` già ridimensionate (circa 1600 px sul lato lungo: è anche la versione che si apre
+  nella finestra). In `contenuto.html` una riga per foto, nell'ordine di visualizzazione: **la prima è la foto
+  grande**, le altre riempiono la griglia da sinistra a destra; la finestra segue lo stesso ordine. In ogni riga
+  cambiano `data-foto-jpg`, `data-foto-dida`, `&src` e `&alt`. Le foto passano da `newsMubaImmagine`: dove c'è lo
+  snippet `immagine` (stage) escono srcset e WebP, altrimenti (produzione prima della libreria immagini) un `<img>`
+  semplice. Le miniature sono ritagliate a 3:2, nella finestra la foto è intera. Prima: **liberatorie** per ospiti
+  e bambini riconoscibili.
 - **REMIDA Milano**: senza link, finché non c'è una pagina ufficiale da collegare.
 
 ## Rilascio
@@ -77,6 +82,7 @@ Ripristino: il comando è stampato alla fine di ogni scrittura
 - Fondo azzurro su tutta la pagina, sagome a destra del primo blocco di testo e dei videotutorial (da 992 px in su),
   onde fra le sezioni; su smartphone restano cerchi e onde.
 - Galleria: clic su una foto, frecce e tasti sinistra/destra, contatore, Esc; il focus torna sulla foto.
+  Sullo stage le foto escono come `<picture>` con srcset e WebP (varianti in `assets/cache-img/news-muba/foto/`).
 - Video: niente richieste a YouTube prima del clic (pannello Rete del browser); al clic si apre la finestra e parte
   il video; chiudendo (X, Esc, clic fuori) l'audio si ferma e il focus torna sul pulsante; aprendo un altro video
   parte solo quello.

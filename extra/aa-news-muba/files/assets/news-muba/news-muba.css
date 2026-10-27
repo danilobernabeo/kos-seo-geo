@@ -73,7 +73,11 @@
   display: block; width: 100%; padding: 0; border: 0; background: none;
   border-radius: 1rem; cursor: zoom-in;
 }
+.muba-galleria-apri picture { display: block; }   /* lo snippet immagine scrive <picture> */
 .muba-galleria-apri img { display: block; width: 100%; height: auto; transition: transform .2s ease; }
+/* miniature tutte uguali anche con foto verticali o di formati diversi; nella finestra la foto è intera */
+.muba-galleria .row .muba-galleria-apri { overflow: hidden; }
+.muba-galleria .row .muba-galleria-apri img { aspect-ratio: 3 / 2; object-fit: cover; }
 .muba-galleria-apri:hover img { transform: scale(1.02); }
 .muba-galleria-apri:focus-visible { outline: 3px solid var(--muba-blu); outline-offset: 3px; }
 .muba-modale .modal-content { border: 0; border-radius: 1rem; }
