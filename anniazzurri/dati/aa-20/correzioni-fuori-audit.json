@@ -1,0 +1,11 @@
+{
+  "nota": "AA-20, correzioni di pagine fuori dall'audit emerse dall'anteprima del template (27/10), approvate da Danilo il 27/10. Si applicano con lo script di import dei testi AA-20; id dello stage, da confermare per uri in produzione.",
+  "pagine": [
+    {"id": 129, "uri": "la-nostra-equipe", "campo": "longtitle", "attuale": "Servizi e cure", "nuovo": ""},
+    {"id": 405, "uri": "oss-toscana", "campo": "pagetitle", "attuale": "oss-toscana", "nuovo": "Lavoro OSS in Toscana"},
+    {"id": 529, "uri": "kos-premiata-al-convegno-agire-2026-con-il-progetto-pannolone-intelligente", "campo": "longtitle", "attuale": "Pannolone Intelligente: Anni Azzurri vince il premio AGIRE 2026 | KOS", "nuovo": "Pannolone Intelligente: Anni Azzurri vince il premio AGIRE 2026"}
+  ],
+  "invariate": [
+    {"id": 453, "uri": "ladi", "nota": "si tiene il longtitle «Assistenza e Cure Domiciliari in regime privato» (title di 61 caratteri invece di 118)"}
+  ]
+}
