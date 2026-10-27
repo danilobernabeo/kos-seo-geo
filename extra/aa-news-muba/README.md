@@ -28,7 +28,7 @@ con quei parametri. Lo script si ferma se l'alias è già usato da un'altra riso
 | `elementi/snippets/newsMubaRisorse.php` | registra CSS e JS solo su questa pagina (il chunk `head-news`, comune a tutte le news, non si tocca) |
 | `elementi/snippets/newsMubaImmagine.php` | testata: usa lo snippet `immagine` del progetto se c'è, altrimenti un `<img>` semplice (produzione prima del rilascio della libreria immagini) |
 | `elementi/contenuto.html` | contenuto della news, dal docx; link a MUBA e alle residenze di Milano (`/rsa-a-milano-e-provincia`) |
-| `files/assets/news-muba/` | `news-muba.css`, `news-muba.js`, sagome SVG (`albero-stella`, `raggi`, `onda`), icone dei video (`albero`, `stella`, `sfera`), `logo-muba.svg`, testata **segnaposto**, `foto/` (generata da `prepara-foto.py`) |
+| `files/assets/news-muba/` | `news-muba.css`, `news-muba.js`, sagome SVG (`albero-stella`, `raggi`, `onda`), icone dei video (`albero`, `stella`, `sfera`), `logo-muba.svg`, testata di prova (`testata-prova.jpg`) e segnaposto, `foto/` (generata da `prepara-foto.py`) |
 | `foto.json` | gruppi (residenze, con nome e link), foto grande e iniziali del mosaico, foto fuori dal sorteggio, testi alternativi |
 | `prepara-foto.py` | da `foto-sorgenti/` alle immagini di `foto/` e al blocco della galleria in `contenuto.html` (vedi sotto) |
 | `foto-sorgenti/` | originali, una cartella per residenza; **fuori da git** (`.gitignore`): pesanti e con la posizione GPS |
@@ -41,11 +41,11 @@ della galleria e dei video.
 ## Da completare prima della pubblicazione
 
 - **Testata** (TV `newsImage`): arriva dall'agenzia, **980 × 551 px** come le altre news (16:9, mostrata al massimo a
-  980 px di larghezza). Oggi c'è `testata-segnaposto.jpg`, nello stesso formato. La testata è anche
+  980 px di larghezza). Oggi c'è `testata-prova.jpg` (ritaglio di «Foto generica 3»), nello stesso formato; `--aggiorna` riallinea anche la TV. La testata è anche
   l'immagine dell'elenco delle news e della condivisione social.
 - **Foto della galleria**: oggi 24 (Navigli 7, San Luca 7, San Rocco 7 più 3 ingrandimenti scattati lì); ne
   arriveranno fino a circa 52 da 5 residenze. Liberatorie presenti. San Luca è a 1200 × 1600: se ci sono gli
-  originali dal telefono, meglio quelli. Testi alternativi scritti da noi in `foto.json`: da rileggere.
+  originali dal telefono, meglio quelli. Testi alternativi in `foto.json`; al tavolo con gli ospiti ci sono solo operatrici della residenza.
 
 ## Galleria: come si aggiornano le foto
 
@@ -117,6 +117,7 @@ Ripristino: il comando è stampato alla fine di ogni scrittura
 | Data | Ambiente | Esito | Ripristino |
 |---|---|---|---|
 | 27/10/2026 | stage (c0025) | installata **non pubblicata** (news 592, template 66 con le 11 TV di `interna-articolo`), foto e testata segnaposto | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261027-095552-news-muba/ripristino.json --scrivi` |
+| 27/10/2026 | stage (c0025) | `--aggiorna`: mosaico e visore con 24 foto in 3 residenze (news pubblicata sullo stage) | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261027-123458-news-muba-agg/ripristino.json --scrivi` |
 
 Aperto dopo il primo rilascio: TV `newsArticle` («Tipo articolo», etichetta sopra il titolo nelle card delle news)
 vuota; nella news più recente vale «Approfondimenti». Valore da decidere, poi si aggiunge a `$TV_NEWS` di

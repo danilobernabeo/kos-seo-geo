@@ -32,7 +32,7 @@ t = t.replace('[[newsMubaRisorse]]', '')
 t = re.sub(r'\[\[\$GTM_body\]\]|\[\[\$menu-sticky\]\]|\[\[\$menu-side-navbar\]\]', '', t)
 t = t.replace('[[$menu-navbar]]', '<div class="anteprima-barra"><div class="container">Anni Azzurri · KOS group (intestazione del sito)</div></div>')
 t = t.replace('[[$breadcrumb-stripe]]', '<div class="container pt-3 small" style="color:#1d3366">Anni Azzurri / News / Creiamo insieme le forme del nostro Natale</div>')
-t = re.sub(r'\[\[newsMubaImmagine\?.*?&priorita=`1`\]\]', '<img src="/assets/news-muba/testata-segnaposto.jpg" alt="" class="img-fluid rounded-5" width="980" height="551">', t)
+t = re.sub(r'\[\[newsMubaImmagine\?.*?&priorita=`1`\]\]', '<img src="/assets/news-muba/testata-prova.jpg" alt="" class="img-fluid rounded-5" width="980" height="551">', t)
 t = t.replace('[[*content]]', contenuto)
 # foto della galleria: in anteprima un <img> semplice, come il ripiego di newsMubaImmagine senza lo snippet immagine
 t = re.sub(r'\[\[newsMubaImmagine\? &src=`([^`]+)` &alt=`([^`]*)` &class=`([^`]*)`[^\]]*\]\]',

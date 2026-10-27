@@ -7,7 +7,7 @@
  *   php installa.php /www --scrivi            installa: news NON pubblicata (anteprima dal manager)
  *   php installa.php /www --scrivi --pubblica installa e pubblica (stage, o produzione ad approvazione)
  *   php installa.php /www --pubblica --scrivi con la news già installata: la pubblica e basta
- *   php installa.php /www --aggiorna [--scrivi]  riallinea file, template, snippet e contenuto della news
+ *   php installa.php /www --aggiorna [--scrivi]  riallinea file, template, snippet, contenuto e TV ($TV_NEWS) della news
  *                                             alla versione del pacchetto (backup di tutto ciò che cambia)
  *   php installa.php /www --ripristina ~/backup-kos-seo-geo/<data>-news-muba/ripristino.json [--scrivi]
  *
@@ -36,7 +36,7 @@ $NEWS = [
     'introtext'   => 'Carta, cartone e altri materiali di recupero si trasformano in decorazioni natalizie grazie alla '
                    . 'creatività di anziani e bambini.',
 ];
-$TV_NEWS = ['newsImage' => '/assets/news-muba/testata-segnaposto.jpg'];
+$TV_NEWS = ['newsImage' => '/assets/news-muba/testata-prova.jpg'];   // prova con «Foto generica 3», in attesa della testata dell'agenzia
 
 $leggi = function (string $rel) use ($DIR): string {
     $p = "$DIR/$rel";
@@ -104,6 +104,10 @@ if ($fileRip !== null) {
             $o->set('content', file_get_contents($x['content'])); $o->set('introtext', $x['introtext']); $o->save();
         }
     }
+    foreach ($r['tv_modificate'] ?? [] as $x) {
+        echo "  ~ risorsa {$x['id']}: TV {$x['tv']} = " . ($x['valore'] === '' ? '(vuota)' : $x['valore']) . "\n";
+        if ($scrivi && ($o = $modx->getObject(modResource::class, $x['id']))) $o->setTVValue($x['tv'], $x['valore']);
+    }
     foreach ($r['template_creati'] ?? [] as $n) {
         echo "  - template $n (con i collegamenti alle TV)\n";
         if ($scrivi && ($t = $modx->getObject(modTemplate::class, ['templatename' => $n]))) {
@@ -160,10 +164,15 @@ if ($aggiorna) {
     $contenuto = $leggi('elementi/contenuto.html');
     $cambiaNews = $norm((string) $news->get('content')) !== $contenuto || (string) $news->get('introtext') !== $NEWS['introtext'];
     if ($cambiaNews) echo "  ~ news {$news->get('id')}: contenuto e riassunto dal pacchetto (le modifiche fatte dal manager si perdono, restano nel backup)\n";
-    if (!$file && !$elementi && !$cambiaNews) { echo "== Tutto già allineato.\n"; exit(0); }
+    $tvCambiate = [];
+    foreach ($TV_NEWS as $n => $v) {
+        $prima = (string) $news->getTVValue($n);
+        if ($prima !== $v) { $tvCambiate[$n] = $prima; echo "  ~ TV $n: " . ($prima === '' ? '(vuota)' : $prima) . " → $v\n"; }
+    }
+    if (!$file && !$elementi && !$cambiaNews && !$tvCambiate) { echo "== Tutto già allineato.\n"; exit(0); }
     if (!$scrivi) { echo "== Prova riuscita. Rilanciare con --aggiorna --scrivi.\n"; exit(0); }
     $bk = $bkDir('-agg'); mkdir($bk, 0775, true);
-    $rip = ['file_creati' => [], 'file_sostituiti' => [], 'cartelle_create' => [], 'elementi_modificati' => [], 'risorse_modificate' => []];
+    $rip = ['file_creati' => [], 'file_sostituiti' => [], 'cartelle_create' => [], 'elementi_modificati' => [], 'risorse_modificate' => [], 'tv_modificate' => []];
     foreach ($file as $rel => [$src, $stato]) {
         if ($stato === 'diverso') {
             @mkdir(dirname("$bk/file/$rel"), 0775, true);
@@ -189,6 +198,11 @@ if ($aggiorna) {
         $news->set('content', $contenuto);
         $news->set('introtext', $NEWS['introtext']);
         $news->save();
+        $salva($bk, $rip);
+    }
+    foreach ($tvCambiate as $n => $prima) {
+        $rip['tv_modificate'][] = ['id' => (int) $news->get('id'), 'tv' => $n, 'valore' => $prima];
+        $news->setTVValue($n, $TV_NEWS[$n]);
         $salva($bk, $rip);
     }
     $modx->cacheManager->refresh();
