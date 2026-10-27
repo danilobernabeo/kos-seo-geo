@@ -129,7 +129,10 @@ invariati dopo l'esportazione (nessun FERMO). Backup e ripristino: contenuti tab
 `~/backup-kos-seo-geo/20261027-021007-contenuti`; alt delle news tabella `modx_site_content_bak_20261027_0221`,
 `~/backup-kos-seo-geo/20261027-022144-contenuti` (`aggiorna-contenuti.php /www --ripristina <cartella> --scrivi`). Regole web AA in produzione il 27/10 (`aa-icone-apple.conf`,
 `aa-3-pdf-redirect.conf` con 97 redirect dei PDF): verificati 301 del PDF rinominato di Villa Pineta, 200 dell'icona
-Apple con misura e della home.
+Apple con misura e della home. **KOS-2/KOS-8 documenti in produzione il 27/10** (`kos-2-8-documenti`: cache di `docList` nei 6
+chunk, `listLda`; regole web `kos-8-cartelle-documenti.conf`): collaudo sullo stage con gli stessi PDF della produzione
+(Villa dei Pini Civitanova 5, storico liste d'attesa Villa San Giuseppe 20, Villa Margherita Benevento 10), cartella di
+Villa Sant'Alessandro da 403 a 301 verso la scheda.
 
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
 
