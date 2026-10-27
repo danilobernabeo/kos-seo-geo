@@ -65,21 +65,50 @@
   /* ---------------------------------------------------------------
      VIDEOTUTORIAL
      Anteprima senza contenuti di terze parti; YouTube (dominio
-     youtube-nocookie) si carica solo al clic sul pulsante play.
+     youtube-nocookie) si carica solo al clic sul pulsante play, in una
+     sola finestra: un video alla volta. Alla chiusura l'iframe viene
+     tolto, così il video si ferma davvero.
+     Senza la finestra o senza Bootstrap il video si apre nella pagina.
      --------------------------------------------------------------- */
+  var finestraVideo = document.getElementById('muba-modale-video');
+  var contenitore = finestraVideo && finestraVideo.querySelector('[data-video-contenitore]');
+  var titoloVideo = finestraVideo && finestraVideo.querySelector('[data-video-titolo]');
+  var istanzaVideo = (contenitore && window.bootstrap && window.bootstrap.Modal)
+    ? new window.bootstrap.Modal(finestraVideo) : null;
+  var origineVideo = null;
+
+  var creaIframe = function (id, titolo) {
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+    f.title = titolo;
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    f.allowFullscreen = true;
+    f.className = 'muba-video-frame';
+    return f;
+  };
+
+  if (istanzaVideo) {
+    finestraVideo.addEventListener('hidden.bs.modal', function () {
+      contenitore.innerHTML = '';                 // ferma il video
+      if (origineVideo) origineVideo.focus();
+    });
+  }
+
   Array.prototype.forEach.call(document.querySelectorAll('[data-muba-video]'), function (box) {
     var btn = box.querySelector('.muba-video-play');
     var id = box.getAttribute('data-muba-video');
     if (!btn || !/^[\w-]{6,20}$/.test(id)) return;
+    var titolo = box.getAttribute('data-titolo') || 'Videotutorial';
     btn.addEventListener('click', function () {
-      var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
-      f.title = box.getAttribute('data-titolo') || 'Videotutorial';
-      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-      f.allowFullscreen = true;
-      f.className = 'muba-video-frame';
-      btn.replaceWith(f);
-      f.focus();
+      if (istanzaVideo) {
+        origineVideo = btn;
+        titoloVideo.textContent = titolo;
+        contenitore.innerHTML = '';
+        contenitore.appendChild(creaIframe(id, titolo));
+        istanzaVideo.show();
+      } else {
+        btn.replaceWith(creaIframe(id, titolo));
+      }
     });
   });
 })();

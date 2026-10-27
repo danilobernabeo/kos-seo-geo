@@ -7,7 +7,8 @@ quello classico delle news (template `interna-articolo`), con la grafica del tot
 - cerchi bianchi semitrasparenti e, accanto al testo, le sagome vettoriali (albero, stella, raggi, onda), estratte
   dal PDF Illustrator del totem senza le foto delle decorazioni;
 - galleria fotografica che si apre in una finestra sopra la pagina, come nell'albero dei ricordi;
-- tre videotutorial con anteprima e pulsante play: YouTube (`youtube-nocookie.com`) si carica solo al clic.
+- tre videotutorial con anteprima e pulsante play: il video si apre in una finestra sopra la pagina, uno alla volta;
+  YouTube (`youtube-nocookie.com`) si carica solo al clic e si ferma alla chiusura della finestra.
 
 Non è una voce d'audit e non compare nella documentazione del progetto.
 
@@ -76,7 +77,9 @@ Ripristino: il comando è stampato alla fine di ogni scrittura
 - Fondo azzurro su tutta la pagina, sagome a destra del primo blocco di testo e dei videotutorial (da 992 px in su),
   onde fra le sezioni; su smartphone restano cerchi e onde.
 - Galleria: clic su una foto, frecce e tasti sinistra/destra, contatore, Esc; il focus torna sulla foto.
-- Video: niente richieste a YouTube prima del clic (pannello Rete del browser); al clic parte il video.
+- Video: niente richieste a YouTube prima del clic (pannello Rete del browser); al clic si apre la finestra e parte
+  il video; chiudendo (X, Esc, clic fuori) l'audio si ferma e il focus torna sul pulsante; aprendo un altro video
+  parte solo quello.
 - Elenco delle news e condivisione: la news compare con la testata.
 
 ## Rilasci

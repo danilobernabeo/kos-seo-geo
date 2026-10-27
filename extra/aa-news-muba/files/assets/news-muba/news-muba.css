@@ -101,6 +101,12 @@
 .muba-video-play:hover .muba-video-pulsante { transform: scale(1.08); }
 .muba-video-play:focus-visible { outline: 3px solid #fff; outline-offset: -6px; }
 .muba-video-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+/* finestra larga ma mai più alta dello schermo (portatili con poca altezza) */
+@media (min-width: 576px) {
+  .muba-modale-video .modal-dialog { max-width: min(1140px, calc((100vh - 9rem) * 16 / 9 + 2rem)); }
+}
+.muba-modale-video .modal-body { padding: 0 1rem 1rem; }
+.muba-video-contenitore { border-radius: .75rem; overflow: hidden; background: #000; }
 
 @media (prefers-reduced-motion: reduce) {
   .muba-galleria-apri img, .muba-video-pulsante { transition: none; }

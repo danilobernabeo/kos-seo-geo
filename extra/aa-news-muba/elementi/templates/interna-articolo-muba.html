@@ -104,6 +104,21 @@
     </div>
   </div>
 
+  <!-- Finestra dei videotutorial (aperta da news-muba.js): un video alla volta, YouTube si carica solo al clic -->
+  <div class="modal fade muba-modale muba-modale-video" id="muba-modale-video" aria-labelledby="muba-video-titolo" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="muba-video-titolo" data-video-titolo>Videotutorial</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+        </div>
+        <div class="modal-body">
+          <div class="ratio ratio-16x9 muba-video-contenitore" data-video-contenitore></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 [[$footer]]
 
 [[$footer-script]]
