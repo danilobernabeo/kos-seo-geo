@@ -42,7 +42,7 @@ $NEWS = [
     'introtext'   => 'Carta, cartone e altri materiali di recupero si trasformano in decorazioni natalizie grazie alla '
                    . 'creatività di anziani e bambini.',
 ];
-$TV_NEWS = ['newsImage' => '/assets/news-muba/testata-prova.jpg'];   // prova con «Foto generica 3», in attesa della testata dell'agenzia
+$TV_NEWS = ['newsImage' => '/assets/news-muba/testata-prova.jpg', 'newsArticle' => 'News'];   // prova con «Foto generica 3», in attesa della testata dell'agenzia
 
 $leggi = function (string $rel) use ($DIR): string {
     $p = "$DIR/$rel";
@@ -287,8 +287,9 @@ echo "  + template $TEMPLATE (categoria di $TEMPLATE_MODELLO), TV: " . implode('
 foreach ($SNIPPET as $n) echo "  + snippet $n\n";
 echo "  + news /$ALIAS: «{$NEWS['pagetitle']}»\n";
 if ($sorella) {
-    printf("    impostazioni come la news più recente %d «%s»: searchable %d, hidemenu %d, cacheable %d\n",
-        $sorella->get('id'), mb_substr((string) $sorella->get('pagetitle'), 0, 60), $sorella->get('searchable'), $sorella->get('hidemenu'), $sorella->get('cacheable'));
+    printf("    news di confronto %d «%s»: searchable %d, hidemenu %d, cacheable %d → qui: searchable %d, hidemenu %d, cacheable 1\n",
+        $sorella->get('id'), mb_substr((string) $sorella->get('pagetitle'), 0, 60), $sorella->get('searchable'), $sorella->get('hidemenu'), $sorella->get('cacheable'),
+        $nascosta ? 0 : $sorella->get('searchable'), $nascosta ? 1 : $sorella->get('hidemenu'));
     foreach (array_keys($tvModello) as $n) {
         $v = (string) $sorella->getTVValue($n);
         echo "    TV $n sulla news di confronto: " . ($v === '' ? '(vuota)' : mb_substr($v, 0, 80)) . (isset($TV_NEWS[$n]) ? "  → qui: {$TV_NEWS[$n]}" : '  → qui: vuota') . "\n";
@@ -301,7 +302,7 @@ foreach ($file as $rel => [, $stato]) {
     else echo "  " . ($stato === 'nuovo' ? '+' : '=') . " /$rel\n";
 }
 if ($errori) { echo "\n== $errori problemi: niente è stato scritto.\n"; exit(2); }
-if (!$scrivi) { echo "\n== Prova riuscita. Rilanciare con --scrivi" . ($pubblica ? ' --pubblica' : '') . ".\n"; exit(0); }
+if (!$scrivi) { echo "\n== Prova riuscita. Rilanciare con --scrivi" . ($pubblica ? ' --pubblica' : '') . ($nascosta ? ' --nascosta' : '') . ".\n"; exit(0); }
 
 /* ---------- scrittura ---------- */
 

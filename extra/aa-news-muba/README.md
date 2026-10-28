@@ -106,6 +106,9 @@ lancio: `php installa.php /www --scrivi --pubblica --nascosta`. La news è pubbl
 funziona, ma è fuori da menu ed elenchi delle news («Nascondi dai menu»), fuori dalla sitemap e in `noindex`
 («Ricercabile» spenta). Al lancio: `php installa.php /www --mostra --scrivi` (riaccende le due caselle e porta la data
 di pubblicazione ad adesso, così la news va in cima all'elenco); `--nascosta --scrivi` la rinasconde.
+Dal manager si ottiene lo stesso con tre campi: «Ricercabile» acceso (via il noindex, dentro la sitemap), «Nascondi dai
+menu» spento (gli elenchi delle news, getResources, escludono le risorse nascoste) e data di pubblicazione aggiornata
+(gli elenchi sono ordinati per data). Solo «Ricercabile» non basta: la news resterebbe fuori da home e `/news/`.
 
 Ripristino: il comando è stampato alla fine di ogni scrittura
 (`php installa.php /www --ripristina ~/backup-kos-seo-geo/<data>-news-muba/ripristino.json --scrivi`).
@@ -116,7 +119,7 @@ Ripristino: il comando è stampato alla fine di ogni scrittura
   onde fra le sezioni; su smartphone restano cerchi e onde.
 - Mosaico: griglia della home da 1200 px, sotto foto grande + due verticali + frase; ricaricando cambiano le
   caselle piccole (mai due volte la stessa foto, mai la grande).
-- Visore: clic su una casella (si apre su quella foto) o su «Vedi tutte» (dalla prima); frecce, tasti
+- Visore: clic su una casella (si apre su quella foto) o su «Guarda tutte» (dalla prima); frecce, tasti
   sinistra/destra, scorrimento con il dito, miniature; pulsanti per residenza da 992 px, menu sotto; contatore e
   link alla residenza; Esc chiude e il focus torna dove si era.
 - Video: niente richieste a YouTube prima del clic (pannello Rete del browser); al clic si apre la finestra e parte
@@ -133,7 +136,7 @@ Ripristino: il comando è stampato alla fine di ogni scrittura
 | 27/10/2026 | stage (c0025) | `--aggiorna`: testata di prova (Foto generica 3, TV `newsImage`), testi delle foto corretti (operatrici); verificata con Chrome da 360 a 1920 px | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261027-124644-news-muba-agg/ripristino.json --scrivi` |
 | 27/10/2026 | stage (c0025) | `--aggiorna`: longtitle (43 caratteri) e description (153) nei limiti AA-20 | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261027-142704-news-muba-agg/ripristino.json --scrivi` |
 | 28/10/2026 | stage (c0025) | `--aggiorna`: 21 foto di San Faustino e PGR Milano (45 in tutto), didascalia con due link, frase «Cinque residenze»; verificato con Chrome da 390 a 1920 px | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261028-111309-news-muba-agg/ripristino.json --scrivi` |
+| 28/10/2026 | produzione (c0072) | installata e pubblicata **nascosta** (news 589, template 66 con 11 TV, 191 file): fuori da menu, elenchi e sitemap, `noindex, follow`; verificato sul sito pubblico (indirizzo del QR anche con i parametri utm, 180 file delle foto, assente da home, `/news/` e sitemap). Al lancio: `--mostra --scrivi` | `php installa.php /www --ripristina /paas/c0072/backup-kos-seo-geo/20261028-112111-news-muba/ripristino.json --scrivi` |
 
-Aperto dopo il primo rilascio: TV `newsArticle` («Tipo articolo», etichetta sopra il titolo nelle card delle news)
-vuota; nella news più recente vale «Approfondimenti». Valore da decidere, poi si aggiunge a `$TV_NEWS` di
-`installa.php`. `soloStruttura` vuota va bene: il valore predefinito è 0, «Ovunque».
+TV `newsArticle` («Tipo articolo», etichetta sopra il titolo nelle card delle news): «News» (deciso il 28/10),
+in `$TV_NEWS` di `installa.php`; `--aggiorna` la riallinea. `soloStruttura` vuota va bene: il valore predefinito è 0, «Ovunque».

@@ -154,7 +154,7 @@ for pos, formato, sizes in TESSERE:
 parole = {1: 'Una', 2: 'Due', 3: 'Tre', 4: 'Quattro', 5: 'Cinque', 6: 'Sei', 7: 'Sette'}
 invito = CONF['mosaico'].get('invito') or f"{parole.get(len(gruppi), len(gruppi))} residenze, un solo laboratorio"
 righe.append(f'<div class="muba-mosaico-invito"><p class="muba-mosaico-frase">{e(invito)}</p>'
-             f'<button type="button" class="btn muba-btn" data-visore-apri>Vedi tutte le {len(foto)} foto</button></div>')
+             f'<button type="button" class="btn muba-btn" data-visore-apri>Guarda tutte le {len(foto)} foto</button></div>')
 
 dati = {
     'base': URL,
