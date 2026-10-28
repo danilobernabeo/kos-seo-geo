@@ -144,7 +144,11 @@ rimasti fuori dal primo giro `sfondo-tit-img-cda.png` 859 KB, `sfondo-tit-img-co
 441 KB, `home-img.jpg` 298 KB (LCP di `/it/strutture` e `/it/servizi-e-cure`), banner `chi-siamo/*-banner.jpg` da 2049 px.
 Piano KOS-2: **A** secondo giro di ottimizzazione di questi file (28/10); **B** `loading="lazy"` sulle immagini fuori
 schermo (gallerie delle strutture, footer, icone) e preload di `bg-pattern` negli head, collaudo sullo stage e produzione
-dal 2/11; **C** `<picture>`/WebP con lo snippet comune `immagine` nello sprint 2.
+dal 2/11; **C** `<picture>`/WebP con lo snippet comune `immagine` nello sprint 2. **A in produzione il 28/10** (`kosgroup/dati/kos-2-immagini-giro-2.txt`,
+`--obiettivo=100`): 29 file, 4,1 → 3,3 MB (−19%; `home-img.jpg` 297 → 188 KB a 818×1080, `intro-pagina-imgs-*` 110 → 18 KB);
+corretto in `Immagini.php` il caso di una riduzione più pesante dell'originale (banner da 2049 px: originale tenuto).
+Collaudo visivo stage/produzione a 390 e 1366 px: pagine con le immagini cambiate sotto lo 0,15%. Backup
+`/paas/c0095/backup-kos-seo-geo/immagini-20261028-050407` (ripristino con `ottimizza-immagini.php /www --ripristina <cartella> --scrivi`).
 **27/10 mattina, AA in produzione:** AA-17 (101 immagini dell'audit, 51,4 → 13,2 MB, −74%), varianti WebP (1.613
 immagini, 4.442 larghezze), markup `aa-1-6-markup` (235 elementi), modulo di iscrizione, contenuti (152 risorse) e alt
 delle news. Ispezione in produzione (101 pagine, 50 template): 0 sfondi di contenuto, 0 titoli «Guarda di più/meno», un
