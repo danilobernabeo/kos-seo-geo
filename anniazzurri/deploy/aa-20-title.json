@@ -1,5 +1,5 @@
 {
-  "nome": "AA-20 <title> dallo snippet comune titoloPagina: longtitle se compilato (mai un alias), marchio « | Anni Azzurri» una sola volta; convegnoAA senza «MODX Revolution»",
+  "nome": "AA-20 <title> dallo snippet comune titoloPagina: longtitle se compilato (mai un alias), marchio « | Anni Azzurri» una sola volta; convegnoAA senza «MODX Revolution»; description e og:title con il filtro :esc (virgolette nel testo, 28/10)",
   "settings": [
     {
       "key": "seo.titolo_marchio",

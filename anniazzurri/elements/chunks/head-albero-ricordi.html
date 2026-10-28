@@ -4,16 +4,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>[[titoloPagina]]</title>
   [[*searchable:is=`0`:then=`<meta name="robots" content="noindex, follow">`]]
-  <meta name="description" content="[[*description]]">
+  <meta name="description" content="[[*description:esc]]">
   [[!Canonical]]
   <base href="[[!++site_url]]">
   [[$GTM_head]]
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="[[*pagetitle]]">
-    <meta property="og:description" content="[[*description]]">
+    <meta property="og:title" content="[[*pagetitle:esc]]">
+    <meta property="og:description" content="[[*description:esc]]">
     [[ogImage? &legacy=`assets/albero-dei-ricordi/og-albero-dei-ricordi.jpg` &default=`assets/img/anni-azzurri-condivisione-social.jpg` &meta=`1`]]
-    <meta property="og:image:alt" content="[[*pagetitle]]">
+    <meta property="og:image:alt" content="[[*pagetitle:esc]]">
     <meta property="og:url" content="[[~[[*id]]? &scheme=`full`]]">
 
     <meta property="og:site_name" content="Anni Azzurri">
@@ -21,8 +21,8 @@
     <meta property="article:published_time" content="[[*publishedon:strtotime:date=`%Y-%m-%dT%H:%M:%S+0000`]]">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="[[*pagetitle]]">
-    <meta name="twitter:description" content="[[*description]]">
+    <meta name="twitter:title" content="[[*pagetitle:esc]]">
+    <meta name="twitter:description" content="[[*description:esc]]">
     <meta name="twitter:image" content="[[!++site_url]]assets/albero-dei-ricordi/og-albero-dei-ricordi.jpg">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/dist/assets/apple-touch-icon.png">
