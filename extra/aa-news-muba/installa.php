@@ -10,6 +10,11 @@
  *   php installa.php /www --aggiorna [--scrivi]  riallinea file, template, snippet, contenuto, riassunto, longtitle,
  *                                             description e TV ($TV_NEWS) della news
  *                                             alla versione del pacchetto (backup di tutto ciò che cambia)
+ *   php installa.php /www --scrivi --pubblica --nascosta   installa e pubblica nascosta: fuori da menu ed elenchi
+ *                                             delle news («Nascondi dai menu»), noindex e fuori dalla sitemap («Ricercabile» spenta);
+ *                                             l'indirizzo funziona, per farla vedere prima del lancio
+ *   php installa.php /www --mostra [--scrivi]   lancio: la news nascosta compare in elenchi e sitemap, data di
+ *                                             pubblicazione = adesso (in cima alle news); --nascosta [--scrivi] la rinasconde
  *   php installa.php /www --ripristina ~/backup-kos-seo-geo/<data>-news-muba/ripristino.json [--scrivi]
  *
  * Cosa installa:
@@ -50,6 +55,8 @@ $webroot = rtrim($argv[1] ?? '', '/');
 $scrivi = in_array('--scrivi', $argv, true);
 $pubblica = in_array('--pubblica', $argv, true);
 $aggiorna = in_array('--aggiorna', $argv, true);
+$nascosta = in_array('--nascosta', $argv, true);
+$mostra = in_array('--mostra', $argv, true);
 $iRip = array_search('--ripristina', $argv, true);
 $fileRip = $iRip !== false ? ($argv[$iRip + 1] ?? '') : null;
 if ($webroot === '' || !is_file("$webroot/config.core.php")) {
@@ -217,6 +224,26 @@ if ($aggiorna) {
     exit(0);
 }
 
+/* ---------- visibilità di una news già installata: --mostra (lancio) o --nascosta ---------- */
+
+if ($news && ($mostra || $nascosta) && !$pubblica) {
+    $nuovi = $mostra
+        ? ['hidemenu' => 0, 'searchable' => 1, 'published' => 1, 'publishedon' => time()]
+        : ['hidemenu' => 1, 'searchable' => 0];
+    echo ($scrivi ? "== " : "== PROVA (aggiungere --scrivi): ") . ($mostra ? 'lancio' : 'news nascosta') . " — {$news->get('id')} /{$news->get('uri')}\n";
+    foreach ($nuovi as $c => $v) {
+        $prima = $news->get($c);
+        $fmt = fn($x) => $c === 'publishedon' ? date('d/m/Y H:i', (int) (is_numeric($x) ? $x : strtotime((string) $x))) : (string) (int) $x;
+        echo "  ~ $c: {$fmt($prima)} → {$fmt($v)}\n";
+    }
+    if (!$scrivi) exit(0);
+    foreach ($nuovi as $c => $v) $news->set($c, $v);
+    $news->save();
+    $modx->cacheManager->refresh();
+    echo "== Fatto, cache svuotata." . ($mostra ? '' : ' Per il lancio: --mostra --scrivi.') . "\n";
+    exit(0);
+}
+
 /* ---------- solo pubblicazione ---------- */
 
 if ($news) {
@@ -234,7 +261,7 @@ if ($news) {
 /* ---------- installazione: controlli ---------- */
 
 echo ($scrivi ? "== APPLICAZIONE" : "== PROVA (nessuna scrittura; aggiungere --scrivi)")
-   . " — news MUBA" . ($pubblica ? ', pubblicata' : ', NON pubblicata') . "\n";
+   . " — news MUBA" . ($pubblica ? ', pubblicata' : ', NON pubblicata') . ($nascosta ? ', NASCOSTA (fuori da menu, elenchi e sitemap; noindex)' : '') . "\n";
 
 $genitore = $modx->getObject(modResource::class, $PARENT);
 $modello = $modx->getObject(modTemplate::class, ['templatename' => $TEMPLATE_MODELLO]);
@@ -319,8 +346,8 @@ echo "  + template $TEMPLATE ({$t->get('id')}) con " . count($tvModello) . " TV\
 $o = $modx->newObject(modResource::class);
 $o->fromArray(array_merge([
     'parent' => $PARENT, 'template' => (int) $t->get('id'), 'alias' => $ALIAS, 'context_key' => 'web',
-    'published' => $pubblica ? 1 : 0, 'searchable' => $sorella ? (int) $sorella->get('searchable') : 1,
-    'hidemenu' => $sorella ? (int) $sorella->get('hidemenu') : 0, 'cacheable' => 1, 'richtext' => 0,
+    'published' => $pubblica ? 1 : 0, 'searchable' => $nascosta ? 0 : ($sorella ? (int) $sorella->get('searchable') : 1),
+    'hidemenu' => $nascosta ? 1 : ($sorella ? (int) $sorella->get('hidemenu') : 0), 'cacheable' => 1, 'richtext' => 0,
     'content' => $leggi('elementi/contenuto.html'), 'createdon' => time(), 'createdby' => 1,
 ], $NEWS, $pubblica ? ['publishedon' => time(), 'publishedby' => 1] : []));
 if (!$o->save()) { echo "  ! news non salvata\n"; $errori++; }
@@ -329,7 +356,7 @@ else {
     $rip['risorse_create'][] = (int) $o->get('id');
     $salva($bk, $rip);
     foreach ($TV_NEWS as $n => $v) $o->setTVValue($n, $v);
-    echo "  + news {$o->get('id')} /{$o->get('uri')}" . ($pubblica ? '' : ' (non pubblicata)') . "\n";
+    echo "  + news {$o->get('id')} /{$o->get('uri')}" . ($pubblica ? '' : ' (non pubblicata)') . ($nascosta ? ' (nascosta: per il lancio --mostra --scrivi)' : '') . "\n";
 }
 
 $modx->cacheManager->refresh();

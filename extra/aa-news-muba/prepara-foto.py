@@ -27,6 +27,7 @@ URL = '/assets/news-muba/foto/'
 CONTENUTO = DIR / 'elementi' / 'contenuto.html'
 FORZA = '--forza' in sys.argv
 ESTENSIONI = {'.jpg', '.jpeg', '.png', '.webp'}
+ESCLUSE = set(CONF.get('escluse', []))   # scatti quasi identici a un altro: restano in foto-sorgenti, non vanno sul sito
 SRGB = ImageCms.createProfile('sRGB')
 
 
@@ -74,7 +75,7 @@ for gi, g in enumerate(CONF['gruppi']):
         d = SORG / c
         if not d.is_dir():
             sys.exit(f'Cartella mancante: {d}')
-        file += [p for p in d.iterdir() if p.suffix.lower() in ESTENSIONI]
+        file += [p for p in d.iterdir() if p.suffix.lower() in ESTENSIONI and p.name not in ESCLUSE]
     date = {p: data_scatto(p) for p in file}
     if all(date.values()):
         file.sort(key=lambda p: date[p])
@@ -157,7 +158,9 @@ righe.append(f'<div class="muba-mosaico-invito"><p class="muba-mosaico-frase">{e
 
 dati = {
     'base': URL,
-    'gruppi': [{'e': g['etichetta'], 'n': g['nome'], 'l': g['luogo'], 'u': g['url']} for g in gruppi],
+    # 'c': collegamenti della didascalia, uno per struttura (un gruppo può riunire più strutture)
+    'gruppi': [{'e': g['etichetta'], 'n': g['nome'], 'l': g['luogo'],
+                'c': [{'n': x['nome'], 'u': x['url']} for x in g['collegamenti']]} for g in gruppi],
     'foto': [{'s': f['slug'], 'g': f['g'], 'w': f['w'], 'h': f['h'], 'w8': f['w8'],
               'a': CONF['alt'].get(f['p'].name) or f"Laboratorio al MUBA con la {gruppi[f['g']]['nome']}",
               'm': 0 if (f['p'].name in fuori or f['p'].name == CONF['mosaico']['grande']) else 1} for f in foto],

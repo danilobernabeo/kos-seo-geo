@@ -124,8 +124,15 @@
       vImg.alt = f.a;
       dida.textContent = f.a;
       contatore.textContent = (pos + 1) + ' di ' + lista.length;
-      residenza.textContent = g.n + ', ' + g.l;
-      residenza.href = g.u;
+      // un collegamento per struttura: «Residenza X, Milano» oppure «Residenza X e Polo Y, Milano»
+      residenza.textContent = '';
+      g.c.forEach(function (c, n) {
+        if (n) residenza.appendChild(document.createTextNode(n === g.c.length - 1 ? ' e ' : ', '));
+        var a = document.createElement('a');
+        a.href = c.u; a.textContent = c.n;
+        residenza.appendChild(a);
+      });
+      residenza.appendChild(document.createTextNode(', ' + g.l));
       Array.prototype.forEach.call(striscia.children, function (b, n) {
         if (n === pos) {
           b.setAttribute('aria-current', 'true');

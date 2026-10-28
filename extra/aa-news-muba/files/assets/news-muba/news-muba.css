@@ -131,7 +131,8 @@
 .muba-visore-menu { width: auto; max-width: 13rem; margin-left: auto; }
 .muba-visore .btn-close { flex: 0 0 auto; }
 @media (max-width: 575.98px) { .news-muba-page .muba-visore-titolo { display: none; } }
-@media (min-width: 768px) {
+/* pulsanti dei gruppi da 992 px (misurato: con 5 pulsanti sotto quella larghezza vanno su due righe), menu sotto */
+@media (min-width: 992px) {
   .muba-visore-filtri { display: flex; }
   .muba-visore-menu { display: none; }
 }

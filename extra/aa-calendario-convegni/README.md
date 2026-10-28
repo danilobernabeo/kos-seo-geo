@@ -90,4 +90,4 @@ chunk e immagine.
 
 | Data | Ambiente | Esito | Ripristino |
 |---|---|---|---|
-| | | | |
+| 28/10/2026 | produzione (c0072) | installato: blocco del Mantello sostituito da `[[!aaCalendarioConvegni]]` nella risorsa 116, TV `evento_data`/`evento_luogo`/`evento_immagine` sul template 30, Mantello (560) e Parkinson (587) compilati; snippet `immagine` presente, card con varianti | `php installa.php /www --ripristina /paas/c0072/backup-kos-seo-geo/20261028-102919-calendario-convegni/ripristino.json --scrivi` |

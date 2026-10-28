@@ -47,15 +47,20 @@ della galleria e dei video.
 - **Testata** (TV `newsImage`): arriva dall'agenzia, **980 × 551 px** come le altre news (16:9, mostrata al massimo a
   980 px di larghezza). Oggi c'è `testata-prova.jpg` (ritaglio di «Foto generica 3»), nello stesso formato; `--aggiorna` riallinea anche la TV. La testata è anche
   l'immagine dell'elenco delle news e della condivisione social.
-- **Foto della galleria**: oggi 24 (Navigli 7, San Luca 7, San Rocco 7 più 3 ingrandimenti scattati lì); ne
-  arriveranno fino a circa 52 da 5 residenze. Liberatorie presenti. San Luca è a 1200 × 1600: se ci sono gli
-  originali dal telefono, meglio quelli. Testi alternativi in `foto.json`; al tavolo con gli ospiti ci sono solo operatrici della residenza.
+- **Foto della galleria**: oggi 45 in 4 gruppi: Navigli 7, San Luca 7, San Rocco 10 (7 più 3 ingrandimenti scattati
+  lì), San Faustino e PGR Milano 21 (evento unico con gli ospiti delle due strutture insieme, non distinguibili: un
+  gruppo solo, con il link a entrambe le pagine; 3 scatti quasi doppi esclusi in `escluse`). Ne arriveranno altre.
+  Liberatorie presenti. San Luca è a 1200 × 1600: se ci sono gli originali dal telefono, meglio quelli. Testi
+  alternativi in `foto.json`; nel primo gruppo di foto al tavolo ci sono solo operatrici della residenza; nelle foto
+  di San Faustino e PGR alcune persone indossano la maglietta del MUBA: i testi dicono «operatore/operatrice».
 
 ## Galleria: come si aggiornano le foto
 
 1. Originali in `foto-sorgenti/<cartella>/`, così come arrivano (rotazione, misure e metadati li sistema lo script).
-2. Una residenza nuova: si aggiunge in `foto.json` → `gruppi` (etichetta del pulsante, nome, luogo, link, slug,
-   cartelle). L'ordine dei gruppi è quello dell'elenco.
+2. Una residenza nuova: si aggiunge in `foto.json` → `gruppi` (etichetta del pulsante, nome, luogo, slug, cartelle,
+   `collegamenti`: uno per struttura, con nome e indirizzo). L'ordine dei gruppi è quello dell'elenco. La frase del
+   mosaico (`mosaico.invito`) va aggiornata a mano: conta le residenze, non i gruppi. Scatti doppi: nome del file in
+   `escluse`. Con più di 5 pulsanti va rimisurato il punto (oggi 992 px) da cui i pulsanti sostituiscono il menu.
 3. Testi alternativi in `foto.json` → `alt`, con il nome del file come chiave (lo script avvisa di quelli mancanti).
 4. `python prepara-foto.py` (serve Pillow). Prepara solo le foto nuove o cambiate (`--forza` le rifà tutte), toglie
    quelle che non servono più e riscrive il blocco fra `<!-- galleria:inizio -->` e `<!-- galleria:fine -->` in
@@ -96,8 +101,11 @@ commit e archivio e si lancia `php installa.php /www --aggiorna`, poi con `--scr
 snippet, contenuto e riassunto della news, con backup e comando di ripristino. Le modifiche fatte dal manager al
 contenuto si perdono: restano nel backup.
 
-**Produzione**: gli stessi comandi sul cloud di produzione, ad approvazione. In alternativa prima `--scrivi`, per
-vedere la news non pubblicata in anteprima dal manager, poi `--pubblica --scrivi`.
+**Produzione**: gli stessi comandi sul cloud di produzione (`aa-prod`), ad approvazione. Per farla vedere prima del
+lancio: `php installa.php /www --scrivi --pubblica --nascosta`. La news è pubblicata e l'indirizzo del QR code
+funziona, ma è fuori da menu ed elenchi delle news («Nascondi dai menu»), fuori dalla sitemap e in `noindex`
+(«Ricercabile» spenta). Al lancio: `php installa.php /www --mostra --scrivi` (riaccende le due caselle e porta la data
+di pubblicazione ad adesso, così la news va in cima all'elenco); `--nascosta --scrivi` la rinasconde.
 
 Ripristino: il comando è stampato alla fine di ogni scrittura
 (`php installa.php /www --ripristina ~/backup-kos-seo-geo/<data>-news-muba/ripristino.json --scrivi`).
@@ -109,7 +117,7 @@ Ripristino: il comando è stampato alla fine di ogni scrittura
 - Mosaico: griglia della home da 1200 px, sotto foto grande + due verticali + frase; ricaricando cambiano le
   caselle piccole (mai due volte la stessa foto, mai la grande).
 - Visore: clic su una casella (si apre su quella foto) o su «Vedi tutte» (dalla prima); frecce, tasti
-  sinistra/destra, scorrimento con il dito, miniature; pulsanti per residenza da 768 px, menu sotto; contatore e
+  sinistra/destra, scorrimento con il dito, miniature; pulsanti per residenza da 992 px, menu sotto; contatore e
   link alla residenza; Esc chiude e il focus torna dove si era.
 - Video: niente richieste a YouTube prima del clic (pannello Rete del browser); al clic si apre la finestra e parte
   il video; chiudendo (X, Esc, clic fuori) l'audio si ferma e il focus torna sul pulsante; aprendo un altro video

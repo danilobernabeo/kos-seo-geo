@@ -112,4 +112,4 @@ la sua slide si toglie con lo stesso vincolo.
 
 | Data | Ambiente | Esito | Ripristino |
 |---|---|---|---|
-| | | | |
+| entro il 28/10/2026 | produzione (c0072) | pagine pubblicate: evento 587, iscrizione 588; verificato il 28/10 sul sito pubblico: file uguali al repository, testata senza velatura, programma senza affiliazioni. Anche `programma-560` (Mantello) è già senza velatura | da recuperare in `~/backup-kos-seo-geo` della produzione |

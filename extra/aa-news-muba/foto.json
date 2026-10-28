@@ -1,16 +1,88 @@
 {
   "_nota": "Galleria della news. prepara-foto.py legge foto-sorgenti/<cartella>/, prepara le immagini in files/assets/news-muba/foto/ e riscrive il blocco della galleria in elementi/contenuto.html. Ordine dei gruppi = ordine qui sotto; dentro un gruppo, ordine di scatto (data EXIF) se tutte le foto ce l'hanno, altrimenti ordine dei nomi. Testi alternativi: chiave = nome del file sorgente.",
   "gruppi": [
-    {"etichetta": "Navigli",   "nome": "Residenza Anni Azzurri Navigli",   "luogo": "Milano",       "url": "https://anniazzurri.it/residenza-anni-azzurri-navigli",   "slug": "navigli",   "cartelle": ["RSA Navigli"]},
-    {"etichetta": "San Luca",  "nome": "Residenza Anni Azzurri San Luca",  "luogo": "Milano",       "url": "https://anniazzurri.it/residenza-anni-azzurri-san-luca",  "slug": "san-luca",  "cartelle": ["RSA San Luca"]},
-    {"etichetta": "San Rocco", "nome": "Residenza Anni Azzurri San Rocco", "luogo": "Segrate (MI)", "url": "https://anniazzurri.it/residenza-anni-azzurri-san-rocco", "slug": "san-rocco", "cartelle": ["RSA San Rocco", "Generiche"]}
+    {
+      "etichetta": "Navigli",
+      "nome": "Residenza Anni Azzurri Navigli",
+      "luogo": "Milano",
+      "slug": "navigli",
+      "cartelle": [
+        "RSA Navigli"
+      ],
+      "collegamenti": [
+        {
+          "nome": "Residenza Anni Azzurri Navigli",
+          "url": "https://anniazzurri.it/residenza-anni-azzurri-navigli"
+        }
+      ]
+    },
+    {
+      "etichetta": "San Luca",
+      "nome": "Residenza Anni Azzurri San Luca",
+      "luogo": "Milano",
+      "slug": "san-luca",
+      "cartelle": [
+        "RSA San Luca"
+      ],
+      "collegamenti": [
+        {
+          "nome": "Residenza Anni Azzurri San Luca",
+          "url": "https://anniazzurri.it/residenza-anni-azzurri-san-luca"
+        }
+      ]
+    },
+    {
+      "etichetta": "San Rocco",
+      "nome": "Residenza Anni Azzurri San Rocco",
+      "luogo": "Segrate (MI)",
+      "slug": "san-rocco",
+      "cartelle": [
+        "RSA San Rocco",
+        "Generiche"
+      ],
+      "collegamenti": [
+        {
+          "nome": "Residenza Anni Azzurri San Rocco",
+          "url": "https://anniazzurri.it/residenza-anni-azzurri-san-rocco"
+        }
+      ]
+    },
+    {
+      "etichetta": "San Faustino e PGR Milano",
+      "nome": "Residenza Anni Azzurri San Faustino e Polo Geriatrico Riabilitativo Milano",
+      "luogo": "Milano",
+      "slug": "san-faustino-pgr-milano",
+      "cartelle": [
+        "San Faustino e PGR"
+      ],
+      "collegamenti": [
+        {
+          "nome": "Residenza Anni Azzurri San Faustino",
+          "url": "https://anniazzurri.it/residenza-anni-azzurri-san-faustino"
+        },
+        {
+          "nome": "Polo Geriatrico Riabilitativo Milano",
+          "url": "https://anniazzurri.it/residenza-anni-azzurri-pgr-milano"
+        }
+      ],
+      "_nota": "evento unico con gli ospiti delle due strutture insieme: non si distinguono, quindi un solo gruppo"
+    }
   ],
   "_nota_generiche": "Le generiche sono ingrandimenti scattati a San Rocco (stessa fotocamera, stesso giorno): stanno nel gruppo San Rocco, in ordine di scatto, e restano fuori dal sorteggio del mosaico.",
-  "fuori_mosaico": ["Foto generica.JPG", "Foto generica 2.JPG", "Foto generica 3.JPG"],
+  "fuori_mosaico": [
+    "Foto generica.JPG",
+    "Foto generica 2.JPG",
+    "Foto generica 3.JPG"
+  ],
   "mosaico": {
     "grande": "RSA San Rocco 5.JPG",
-    "iniziali": {"orizzontale-1": "RSA San Rocco 4.JPG", "verticale-1": "RSA San Luca 4.jpeg", "verticale-2": "RSA Navigli 2.jpg", "orizzontale-2": "RSA San Rocco 3.JPG"},
-    "invito": ""
+    "iniziali": {
+      "orizzontale-1": "RSA San Rocco 4.JPG",
+      "verticale-1": "RSA San Luca 4.jpeg",
+      "verticale-2": "RSA Navigli 2.jpg",
+      "orizzontale-2": "RSA San Rocco 3.JPG"
+    },
+    "invito": "Cinque residenze, un solo laboratorio"
   },
   "alt": {
     "Foto generica.JPG": "Il tavolo del laboratorio coperto di riviste e cartoncini colorati",
@@ -36,6 +108,33 @@
     "RSA San Rocco 3.JPG": "Il lungo tavolo del laboratorio con ospiti e operatrici al lavoro",
     "RSA San Rocco 4.JPG": "Un ospite sorridente al tavolo del laboratorio",
     "RSA San Rocco 5.JPG": "Ospiti e operatrici al lavoro tra riviste, colla e cartoncini",
-    "RSA San Rocco 6.JPG": "Un'ospite segue il laboratorio dalla sua carrozzina"
-  }
+    "RSA San Rocco 6.JPG": "Un'ospite segue il laboratorio dalla sua carrozzina",
+    "XC4A8869.JPG": "La sala del MUBA con gli ospiti ai lunghi tavoli del laboratorio",
+    "XC4A8874.JPG": "Due ospiti al lavoro con le strisce di carta colorata",
+    "XC4A8882.JPG": "Un operatore aiuta un'ospite a montare la decorazione di carta",
+    "XC4A8886.JPG": "Un ospite incolla le strisce di carta con l'aiuto di un'operatrice",
+    "XC4A8890.JPG": "Ospiti al tavolo tra cartoncini colorati e sfere di carta",
+    "XC4A8898.JPG": "Operatori e ospiti chini sul tavolo del laboratorio",
+    "XC4A8902.JPG": "Il lungo tavolo con gli ospiti al lavoro tra riviste e sfere di carta",
+    "XC4A8907.JPG": "Un'ospite sorridente mostra la sua sfera di carta rossa, bianca e verde",
+    "XC4A8919.JPG": "Un'ospite mostra la decorazione appena realizzata",
+    "XC4A8926.JPG": "Un ospite incolla le strisce di cartoncino della sfera",
+    "XC4A8934.JPG": "Un ospite mostra la sua stella di carta gialla",
+    "XC4A8936.JPG": "Ospiti ai tavoli tra stelle e sfere di carta",
+    "XC4A8939.JPG": "Il tavolo del laboratorio con ospiti, riviste e decorazioni",
+    "XC4A8940.JPG": "Sfere e stelle di carta finite sul tavolo, tra riviste e ritagli",
+    "XC4A8950.JPG": "Un ospite ritaglia la carta con l'aiuto di un operatore",
+    "XC4A8952.JPG": "Un ospite incolla le strisce colorate sul tavolo",
+    "XC4A8955.JPG": "Un ospite sorridente solleva il suo albero di carta",
+    "XC4A8959.JPG": "Ospiti al lavoro fianco a fianco con gli operatori",
+    "XC4A8972.JPG": "Un ospite accanto alle decorazioni di carta appese",
+    "XC4A8976.JPG": "Un'ospite appende la sua stella insieme a un'operatrice",
+    "XC4A8988.JPG": "La sala del laboratorio con ospiti e operatori al lavoro"
+  },
+  "escluse": [
+    "XC4A8875.JPG",
+    "XC4A8951.JPG",
+    "XC4A8990.JPG"
+  ],
+  "_nota_escluse": "Scatti quasi identici al precedente (1-3 secondi dopo): restano negli originali, non vanno sul sito. Per rimetterne uno, toglierlo da qui."
 }
