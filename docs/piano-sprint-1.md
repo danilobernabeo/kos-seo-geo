@@ -164,6 +164,16 @@ chunk, `listLda`; regole web `kos-8-cartelle-documenti.conf`): collaudo sullo st
 (Villa dei Pini Civitanova 5, storico liste d'attesa Villa San Giuseppe 20, Villa Margherita Benevento 10), cartella di
 Villa Sant'Alessandro da 403 a 301 verso la scheda.
 
+## Verifica dello sprint 1 prima della consegna (deciso il 28/10)
+
+Per evitare che il controllo di Cerved/ProWeb (9-14/11) trovi mancanze: (1) script di verifica ripetibile
+(`scripts/collaudo/verifica-sprint-1.mjs`, lanciato dal PC di Danilo sulla produzione dei due siti) con un controllo per voce
+dello sprint 1 su tutte le pagine della sitemap dove possibile, esito superato/non superato con comando e output come
+evidenza per la nota di consegna; (2) revisione indipendente: un agente che riceve solo gli audit dell'agenzia e l'output
+dello script (non il piano né le nostre conclusioni) e segnala cosa l'agenzia verificherebbe e dove le evidenze non bastano.
+Calendario: 29/10 script e revisione; 30/10 correzioni piccole o note esplicite nella consegna; 6/11 seconda esecuzione
+prima della verifica.
+
 ## Title, description e H1 (AA-20, KOS 21-23, sprint 2) — deciso il 27/10
 
 Fonte dei testi: i fogli dell'agenzia. AA: `202607_PWC_AnniAzzurri_Ottimizzazioni_Meta_Tag_v2_Ant.xlsx` (88 URL con
