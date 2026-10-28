@@ -131,10 +131,15 @@
 .muba-visore-menu { width: auto; max-width: 13rem; margin-left: auto; }
 .muba-visore .btn-close { flex: 0 0 auto; }
 @media (max-width: 575.98px) { .news-muba-page .muba-visore-titolo { display: none; } }
-/* pulsanti dei gruppi da 992 px (misurato: con 5 pulsanti sotto quella larghezza vanno su due righe), menu sotto */
+/* pulsanti dei gruppi da 992 px, menu sotto. Misurato sullo stage con i font del sito: i 5 pulsanti occupano
+   circa 780 px, il titolo 206; fra 992 e 1199 px insieme non stanno su una riga, quindi lì il titolo si nasconde
+   (il pulsante attivo dice già cosa si guarda). */
 @media (min-width: 992px) {
   .muba-visore-filtri { display: flex; }
   .muba-visore-menu { display: none; }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .news-muba-page .muba-visore-titolo { display: none; }
 }
 .muba-visore-scena { position: relative; flex: 1 1 auto; min-height: 0; touch-action: pan-y; user-select: none; }
 .muba-visore-scena picture { position: absolute; inset: .25rem 0; display: flex; align-items: center; justify-content: center; }

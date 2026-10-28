@@ -60,7 +60,7 @@ della galleria e dei video.
 2. Una residenza nuova: si aggiunge in `foto.json` → `gruppi` (etichetta del pulsante, nome, luogo, slug, cartelle,
    `collegamenti`: uno per struttura, con nome e indirizzo). L'ordine dei gruppi è quello dell'elenco. La frase del
    mosaico (`mosaico.invito`) va aggiornata a mano: conta le residenze, non i gruppi. Scatti doppi: nome del file in
-   `escluse`. Con più di 5 pulsanti va rimisurato il punto (oggi 992 px) da cui i pulsanti sostituiscono il menu.
+   `escluse`. Con più di 5 pulsanti va rimisurato sullo stage il punto (oggi 992 px, con il titolo del visore nascosto fino a 1199) da cui i pulsanti sostituiscono il menu.
 3. Testi alternativi in `foto.json` → `alt`, con il nome del file come chiave (lo script avvisa di quelli mancanti).
 4. `python prepara-foto.py` (serve Pillow). Prepara solo le foto nuove o cambiate (`--forza` le rifà tutte), toglie
    quelle che non servono più e riscrive il blocco fra `<!-- galleria:inizio -->` e `<!-- galleria:fine -->` in
@@ -132,6 +132,7 @@ Ripristino: il comando è stampato alla fine di ogni scrittura
 | 27/10/2026 | stage (c0025) | `--aggiorna`: mosaico e visore con 24 foto in 3 residenze (news pubblicata sullo stage) | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261027-123458-news-muba-agg/ripristino.json --scrivi` |
 | 27/10/2026 | stage (c0025) | `--aggiorna`: testata di prova (Foto generica 3, TV `newsImage`), testi delle foto corretti (operatrici); verificata con Chrome da 360 a 1920 px | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261027-124644-news-muba-agg/ripristino.json --scrivi` |
 | 27/10/2026 | stage (c0025) | `--aggiorna`: longtitle (43 caratteri) e description (153) nei limiti AA-20 | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261027-142704-news-muba-agg/ripristino.json --scrivi` |
+| 28/10/2026 | stage (c0025) | `--aggiorna`: 21 foto di San Faustino e PGR Milano (45 in tutto), didascalia con due link, frase «Cinque residenze»; verificato con Chrome da 390 a 1920 px | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261028-111309-news-muba-agg/ripristino.json --scrivi` |
 
 Aperto dopo il primo rilascio: TV `newsArticle` («Tipo articolo», etichetta sopra il titolo nelle card delle news)
 vuota; nella news più recente vale «Approfondimenti». Valore da decidere, poi si aggiunge a `$TV_NEWS` di
