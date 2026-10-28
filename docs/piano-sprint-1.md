@@ -189,6 +189,17 @@ longtitle «Servizi e cure» su `/la-nostra-equipe`, title di `/ladi`, pagetitle
 della news del premio AGIRE. L'import dei testi nei campi longtitle e description deve escludere le landing e i
 longtitle che sono nomi di cartella.
 
+**Testi AA-20 in produzione il 28/10** (giro 1, `scripts/deploy/aggiorna-campi.php`, `anniazzurri/dati/aa-20/campi-giro-1.json`):
+90 pagine, 83 title dell'agenzia nel longtitle (senza « | Anni Azzurri», aggiunto da `titoloPagina`) e 80 description;
+non applicati i 6 title di residenza oltre 65 caratteri (in attesa di una versione più corta dall'agenzia), Villa Olga e la
+riga esterna quotalo.it; applicate le 3 correzioni fuori audit approvate il 27/10. Backup: tabella
+`modx_site_content_bak_20261028_0526` e `~/backup-kos-seo-geo/20261028-052604-campi` (`aggiorna-campi.php /www --ripristina
+<cartella> --scrivi`). Con lo stesso rilascio gli head AA hanno `:esc` su description, og:description e og:title: le virgolette
+dritte nel testo chiudevano l'attributo `content` (es. news del premio AGIRE); backup `~/backup-kos-seo-geo/20261028-052652`.
+Restano: proposte da validare (circa 90 pagine), i 6 title lunghi, la verifica dell'accreditamento RSA delle residenze con «RSA»
+nel title, e in `aaSchema` il `name` della pagina da un longtitle-alias (`/sportello-sociale`), da correggere con la regola
+di `titoloPagina` al prossimo rilascio dello snippet.
+
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
 
 Analisi nella chat «Sostituzione barra di ricerca Yext» (26/10): Yext Answers su entrambi i siti (KOS circa 2.150
