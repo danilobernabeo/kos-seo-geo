@@ -79,7 +79,8 @@ Vengono sostituiti dalla libreria. I servizi elencati sono già trascritti nella
 
 1. **Preparazione** (`kosgroup/deploy/kos-24.json`, nessun effetto visibile): impostazioni dei template, 20 TV
    nuove (18 `str.*`, 2 `lnd.*`), libreria aggiornata, interruttore spento. Sullo stage subito; in produzione con gli head o prima
-   dell'import.
+   dell'import. **In produzione il 28/10** (con le tecnologie): scheda di prova invariata, un solo JSON-LD
+   nostro e nessun `#localbusiness`; il JSON-LD Yext resta fino all'attivazione.
 2. **Dati:** import delle TV `str.*` dall'export Yext corretto, dopo il confronto con i profili Google; TV delle
    landing con `scripts/deploy/imposta-tv.php /www kosgroup/dati/voce-24/landing.json` (prova, poi `--scrivi`;
    backup e ripristino automatici).

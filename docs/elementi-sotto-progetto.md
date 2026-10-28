@@ -43,7 +43,7 @@ Aggiornare l'elenco a ogni intervento.
 | `head-ricerca-yext`, `head-extra-strutture`, `head-extra-landing` | chunk (nuovi) | KOS-2, voce 24 | **produzione (26/10, controllo 0 errori su 65 pagine)**, pacchetto `kos-head` |
 | `kosHreflang` | snippet (nuovo) | KOS-2 (hreflang corretti) | **produzione (26/10, controllo 0 errori su 65 pagine)**, pacchetto `kos-head` |
 | `ogImage` (shared, sostituisce quello KOS) | snippet | og:image con dimensioni | **produzione (26/10, controllo 0 errori su 65 pagine)**, pacchetto `kos-head` |
-| `kosSchema` (shared `seoSchema`): nodo struttura `#localbusiness`, landing | snippet | voce 24 | sviluppo (25/10), pacchetto `kos-24` (spento) |
-| TV `str.*` (18), `lnd.*` (2) e `srv.schema`, categoria «Scheda struttura (dato strutturato)» | TV (nuove) | voce 24 | sviluppo (25/10), pacchetto `kos-24` |
+| `kosSchema` (shared `seoSchema`): nodo struttura `#localbusiness`, landing | snippet | voce 24 | **produzione (28/10), spento** (`kos.struttura_attiva` assente), pacchetto `kos-24` |
+| TV `str.*` (18), `lnd.*` (2) e `srv.schema`, categoria «Scheda struttura (dato strutturato)» | TV (nuove) | voce 24 | **produzione (28/10)**, vuote fino all'import, pacchetto `kos-24` |
 | `head-extra-strutture`, `head-extra-landing` (senza Yext e JSON-LD scritti a mano) | chunk | voce 24 | sviluppo (25/10), pacchetto `kos-24-attivazione` |
 | `grafico-dipendenti`, `employee-chart` | chunk | lavoro extra Sostenibilità | in produzione (20/10), vedi `extra/kos-sostenibilita` |
