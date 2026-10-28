@@ -205,6 +205,11 @@ class Immagini
             @unlink($tmp);
             return ['nota' => trim('già ottimizzata ' . ($r['nota'] ? "({$r['nota']})" : ''))] + $r;
         }
+        if ($ridotto && $dopo >= $prima) {
+            // ridotta ma più pesante dell'originale (originale già molto compresso): si tiene l'originale
+            @unlink($tmp);
+            return ['nota' => trim('ridotta ma più pesante (' . round($dopo / 1024) . ' KB): originale tenuto ' . ($r['nota'] ? "({$r['nota']})" : ''))] + $r;
+        }
         $r['dopo'] = $dopo;
         $r['azione'] = $ridotto ? 'ridotta' : 'ricompressa';
         if (!$applica) { @unlink($tmp); return $r; }

@@ -1,11 +1,12 @@
 # KOS-2 (LCP mobile) secondo giro, 28/10: immagini locali da 100 KB in su dalla misura completa del 27/10 sera
 # (misura-lcp.mjs, 65 pagine, 3 caricamenti). Da lanciare con --obiettivo=100: qualità JPG 76 o 70 solo se
 # raggiunge l'obiettivo o fa risparmiare almeno un quarto; PNG a 256 colori solo se la differenza è sotto il 2%.
+# Una riduzione che produce un file più pesante dell'originale viene scartata (Immagini.php, 28/10).
 # Formato: percorso[;lato massimo]. Pesi e larghezze: file / necessaria su mobile (0 = nascosta su mobile).
 # Esclusi: sfondo-tit-img*.png (foto in PNG da 441-859 KB: 256 colori darebbero bande; vanno serviti in WebP, passo C).
 
 # Elementi LCP
-/assets/img/home-img.jpg                                  # 298 KB, 1090 / 721, LCP di /it/strutture, /it/servizi-e-cure, /en/services-and-care
+/assets/img/home-img.jpg;1080                             # 298 KB, 1090x1440 (verticale: 1080 di lato = 818 px di larghezza) / 721, LCP di /it/strutture, /it/servizi-e-cure, /en/services-and-care
 /assets/img/strutture/villa-dei-pini-civitanova/01.jpg    # 212 KB, 1200 / 679, LCP
 /assets/img/servizi-main-bg-2-mobile.jpg;1080             # 120 KB, 1080 / 721, LCP
 
