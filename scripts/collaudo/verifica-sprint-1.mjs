@@ -56,7 +56,9 @@ const BOT = {
 // token di robots.txt da controllare (anche quelli senza richieste proprie)
 const TOKEN_ROBOTS = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-User', 'Claude-SearchBot', 'anthropic-ai',
   'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Googlebot', 'Bingbot', 'Applebot', 'Applebot-Extended', 'CCBot',
-  'meta-externalagent', 'Amazonbot', 'DuckAssistBot', 'MistralAI-User'];
+  'meta-externalagent', 'meta-externalfetcher', 'meta-webindexer', 'Amazonbot', 'Amzn-SearchBot', 'Amzn-User',
+  'DuckAssistBot', 'MistralAI-User', 'MistralAI-Index', 'MistralAI-Training', 'YouBot', 'Google-Agent', 'GoogleOther',
+  'Google-CloudVertexBot', 'Google-NotebookLM', 'AI2Bot', 'Diffbot', 'Timpibot', 'webzio', 'ImagesiftBot', 'Kagibot'];
 
 const SITI = {
   kos: {
