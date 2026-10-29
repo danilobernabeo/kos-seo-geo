@@ -49,7 +49,7 @@ Interventi fatti da Danilo in un'altra chat, ora conclusa (dettaglio in `docs/ri
 - Ogni intervento si riferisce a una voce degli audit dell'agenzia (KosGroup settembre 2026, Anni Azzurri aprile 2026): citarla nel commit, es. `AA-8 BreadcrumbList completo`.
 - Il piano degli sprint è in `docs/piano-sprint-1.md`; le scadenze sono vincolate da una penale: segnalare subito ciò che rischia di slittare.
 - Le proposte fuori piano (a consuntivo, es. pagina 404 completa, paginazione news AA) non compaiono nella documentazione condivisa con KOS o l'agenzia: restano nel piano interno e si documentano per il referente di Danilo solo dopo l'implementazione.
-- Ogni documento prodotto ha anche la versione docx in `docs/docx/` (stesso nome del file o della scheda): i Claude Docs si esportano dalla scheda (export docx, A4), i Markdown di `docs/` con `scripts/docs/md-in-docx.sh`. Rigenerare il docx a ogni modifica del documento e includerlo nello stesso commit.
+- Ogni documento prodotto ha anche la versione docx in `docs/docx/` (stesso nome del file o della scheda): i Claude Docs si esportano dalla scheda (export docx, A4), i Markdown di `docs/` con `scripts/docs/md-in-docx.sh`. Rigenerare il docx a ogni modifica del documento e includerlo nello stesso commit. I documenti destinati a KOS o a Cerved/ProWeb si impaginano nel formato del calendario degli sprint con `scripts/docs/impagina-kos.js` (dall'export Markdown della scheda).
 
 ## Lavori extra (fuori dal progetto SEO/GEO)
 
