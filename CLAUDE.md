@@ -30,7 +30,10 @@ Interventi fatti da Danilo in un'altra chat, ora conclusa (dettaglio in `docs/ri
 - `@id` = URL canonico della pagina + frammento fisso, generato da un'unica funzione:
   - ente: `https://anniazzurri.it/#organization` (KOS Care S.r.l.), `https://kosgroup.com/#organization` (KOS S.p.A., radice senza `/it`);
   - sito: `{base}/#website`; briciole: `{URL}#breadcrumb`; articolo `#article`; persona `#person`; medico `#medico`;
-  - strutture: `{URL scheda}#localbusiness` (deciso il 20/10/2026); residenze: `@type` da decidere con l'agenzia prima dello sprint 3 (schema.org non ha un tipo «casa di riposo»: `NursingHome` NON esiste; proposta `["MedicalOrganization", "LocalBusiness"]`); strutture sanitarie con il sottotipo medico più specifico (`MedicalClinic`, `Hospital`...); medici KOS `IndividualPhysician` con `practicesAt` verso `#localbusiness`.
+  - strutture: `{URL scheda}#localbusiness` (deciso il 20/10/2026); residenze `["MedicalBusiness", "MedicalOrganization"]` con `medicalSpecialty` `Geriatric` (deciso il 29/10; `NursingHome` NON esiste su schema.org), residenze solo socio-assistenziali `LocalBusiness` finché la verifica dell'accreditamento non è chiusa; strutture sanitarie con il sottotipo medico più specifico (`MedicalClinic`, `Hospital`...), e un tipo che non è attività locale (es. `DiagnosticLab`) affiancato a `MedicalBusiness`; nodo struttura solo se c'è l'indirizzo;
+  - servizi senza sede propria (RSA Aperta, assistenza domiciliare): `Service` con `provider` verso il `#localbusiness` che li eroga e `areaServed`, nessun nodo struttura né scheda Google;
+  - professionisti KOS: medici `IndividualPhysician`, altri professionisti sanitari `Person` con `jobTitle`, sempre con `practicesAt` verso `#localbusiness`; abbinamento alle risorse TuoTempo con un identificativo del gestionale, mai con il codice fiscale.
+- Le scelte di modellazione le decide il progetto (schema.org, Google); quando la forma differisce dall'esempio dell'audit, la nota di consegna lo motiva in una riga con la fonte.
 - Mai `sameAs` tra KOS Care e kosgroup.com: il legame è `parentOrganization`.
 - Un solo `@graph` JSON-LD per pagina, emesso lato server. Niente dato strutturato scritto a mano nei chunk.
 

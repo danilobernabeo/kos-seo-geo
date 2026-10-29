@@ -262,7 +262,7 @@ chiedere subito a Yext il costo di una proroga di 1-2 mesi per la sola ricerca, 
 ## Indicazioni dalla strategia AEO/GEO (22 ottobre, `claude/strategia-aeo-geo.md`)
 
 Dentro il perimetro, da applicare negli sprint:
-- **Tipo delle residenze**: `NursingHome` non esiste su schema.org (verificato su 30.1); convenzione corretta il 22/10. Decidere con l'agenzia prima dello sprint 3 (proposta `["MedicalOrganization", "LocalBusiness"]`).
+- **Tipo delle residenze**: `NursingHome` non esiste su schema.org (verificato su 30.1). **Deciso il 29/10** (vedi sotto): `["MedicalBusiness", "MedicalOrganization"]` con `Geriatric`.
 - **Medici KOS (voce 11, sprint 3)**: `IndividualPhysician` con `practicesAt` verso il `#localbusiness` della struttura.
 - **Collaudo di ogni sprint**: controllare anche la pagina servita senza consenso Cookiebot (testi, contatti, dato strutturato presenti); un solo `@graph` valido, H1, canonical, sitemap su un campione per template (estendere `verifica-rilascio-*.ps1`).
 - **Title e description AA (voce 20, sprint 2)**: prima dell'import, controllare in Search Console la ripartizione delle query tra «RSA», «casa di riposo», «residenza per anziani» e usare i termini più cercati; testi generati o importati sempre rivisti.
@@ -271,6 +271,50 @@ Dentro il perimetro, da applicare negli sprint:
 - **FAQ**: il risultato FAQ di Google non è più mostrato (maggio 2026): FAQ come testo visibile, markup facoltativo.
 
 Fuori perimetro, da proporre (non nei documenti condivisi): baseline di misura entro fine novembre (Search Console, Bing AI Performance, canale AI in GA4, set di prompt ripetuti), IndexNow alla pubblicazione, domanda «come ci ha conosciuto?» nei moduli, profili Google dopo RetailTune (vedi analisi del documento PWC Local del 22/10: niente parole chiave nei nomi; test di categoria su un campione; programma recensioni).
+
+## Decisioni dall'analisi multi-sede (29/10, chat «Grafo dati strutturati KOS»)
+
+La gestione strategica resta in questo progetto; la chat «Grafo dati strutturati KOS» è operativa per lo stadio 7
+(schede Google) e la sua specifica rimanda a `docs/kos-24.md` e alle convenzioni del `CLAUDE.md` per il dato
+strutturato, senza ridefinirlo. Le scelte di modellazione le decide il progetto in base a schema.org e Google; quando la
+forma differisce dall'esempio dell'audit, la nota di consegna lo motiva in una riga con la fonte.
+
+Decise, nel perimetro:
+1. **Valore del grafo** (posizione verso KOS e agenzia): il dato strutturato non serve a comparire nelle risposte AI di
+   Google (guida Google del 16/09/2026); serve ai risultati arricchiti e al pannello informativo (documentato), alla
+   coerenza tra sito, schede Google e directory e alla qualità dei dati (verificabile da noi). Plausibile ma non
+   dimostrato per gli altri motori AI; da non promettere: presenza in AI Overview «grazie allo schema», percentuali di
+   traffico AI, punteggi di visibilità AI.
+2. **Residenze AA (sprint 3)**: `["MedicalBusiness", "MedicalOrganization"]` con `medicalSpecialty` `Geriatric`;
+   residenze solo socio-assistenziali `LocalBusiness`. L'accreditamento si verifica dalle carte dei servizi
+   (`scripts/checks/aa-carte-servizi.php`, 29/10). Nota di consegna: l'audit (slide 30) chiede un LocalBusiness, e
+   `MedicalBusiness` lo è.
+3. **Servizi senza sede propria** (RSA Aperta, assistenza domiciliare, AA sprint 3): `Service` con `provider` verso
+   il `#localbusiness` che li eroga e `areaServed`; nessun nodo struttura, nessuna scheda Google.
+4. **Niente indirizzo, niente nodo struttura**: già nella libreria (25/10), ora scritto nelle convenzioni.
+5. **Professionisti KOS (voce 11, sprint 3)**: medici `IndividualPhysician`, altri professionisti `Person` con
+   `jobTitle`, `practicesAt` verso `#localbusiness`. Nota di consegna: l'esempio dell'audit (slide 27) usa `Physician`
+   con `worksFor` e `#physician`; `IndividualPhysician` ne è il sottotipo per il singolo medico. Abbinamento alle
+   risorse TuoTempo con il codice del gestionale interno (campo Consumerid di TuoTempo), non con il codice fiscale;
+   widget di prenotazione per medico sulle pagine abbinate. Confronto pagine/risorse del 29/10 in
+   `kosgroup/dati/medici/` (77 abbinate, 13 da confermare, 74 senza risorsa, circa 170 risorse senza pagina).
+
+Decise, da fare con interventi già previsti:
+6. **UTM sul link delle schede Google**: da proporre a KOS e applicare al cambio di alimentazione delle schede dopo
+   Yext (non prima: oggi le schede le scrive Yext).
+7. **Stato di indicizzazione delle pagine struttura** in Search Console: nel controllo del 6/11, dopo l'import della
+   voce 24.
+8. **Test della categoria «Casa di riposo»** (piano PWC): le linee guida Google sulle catene chiedono la stessa
+   categoria per le sedi con lo stesso servizio; proposta: cambiare un sottogruppo omogeneo intero (es. tutte le
+   residenze non accreditate) invece di 3-5 residenze a campione. Decisione di Danilo con PWC.
+
+Rimandate: registro delle modifiche alle schede Google e specifica dello stadio 7 (quando è deciso chi alimenta le
+schede dopo Yext); Villa Margherita Vicenza come un nodo con `department` o due nodi collegati (con la voce 24).
+Non adottate: `branchCode` (finché non c'è un codice sede stabile in un archivio unico).
+
+Fuori perimetro, da proporre a consuntivo (non nei documenti condivisi): controllo mensile a campione dell'esattezza di
+nome, indirizzo e telefono delle sedi nelle risposte dei motori AI; censimento delle directory sanitarie (micuro,
+qsalute, elenchi regionali) e controllo della voce Wikidata del gruppo.
 
 ## Preparazione per lo sprint 2 (da avviare nella settimana del 26)
 - Script di import dei dati anagrafici dall'export Yext corretto nelle TV dei due siti (import 2-6 novembre), con report delle differenze su KOS.
