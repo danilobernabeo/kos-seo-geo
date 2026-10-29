@@ -37,12 +37,12 @@ $ALIAS = 'il-natale-prende-nuova-forma-anni-azzurri-muba';   // fisso: è la des
 $NEWS = [
     'pagetitle'   => 'Creiamo insieme le forme del nostro Natale: il progetto Anni Azzurri e MUBA',
     'longtitle'   => 'Anziani e bambini creano il Natale con MUBA',   // max 50: il title è longtitle + « | Anni Azzurri» (AA-20)
-    'description' => 'Anni Azzurri con MUBA e REMIDA Milano: anziani e bambini creano decorazioni natalizie con materiali '
-                   . 'di recupero. Foto dei laboratori e tre videotutorial.',   // max 155
+    'description' => 'Oltre 50 ospiti di 7 Residenze Anni Azzurri al MUBA con REMIDA Milano: decorazioni natalizie con '
+                   . 'materiali di recupero, foto e tre videotutorial.',   // max 155
     'introtext'   => 'Carta, cartone e altri materiali di recupero si trasformano in decorazioni natalizie grazie alla '
-                   . 'creatività di anziani e bambini.',
+                   . 'creatività degli ospiti delle Residenze Anni Azzurri e delle bambine e dei bambini del MUBA.',
 ];
-$TV_NEWS = ['newsImage' => '/assets/news-muba/testata-prova.jpg', 'newsArticle' => 'News'];   // prova con «Foto generica 3», in attesa della testata dell'agenzia
+$TV_NEWS = ['newsImage' => '/assets/news-muba/testata.jpg', 'newsArticle' => 'News'];   // testata dell'agenzia, 980 × 551 come le altre news
 
 $leggi = function (string $rel) use ($DIR): string {
     $p = "$DIR/$rel";

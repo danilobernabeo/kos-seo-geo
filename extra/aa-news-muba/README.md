@@ -29,7 +29,7 @@ con quei parametri. Lo script si ferma se l'alias è già usato da un'altra riso
 | `elementi/snippets/newsMubaRisorse.php` | registra CSS e JS solo su questa pagina (il chunk `head-news`, comune a tutte le news, non si tocca) |
 | `elementi/snippets/newsMubaImmagine.php` | testata: usa lo snippet `immagine` del progetto se c'è, altrimenti un `<img>` semplice (produzione prima del rilascio della libreria immagini) |
 | `elementi/contenuto.html` | contenuto della news, dal docx; link a MUBA e alle residenze di Milano (`/rsa-a-milano-e-provincia`) |
-| `files/assets/news-muba/` | `news-muba.css`, `news-muba.js`, sagome SVG (`albero-stella`, `raggi`, `onda`), anteprime dei video (`video-albero`, `video-stella`, `video-pallina`, WebP 1280 × 720), `logo-muba.svg`, testata di prova (`testata-prova.jpg`) e segnaposto, `foto/` (generata da `prepara-foto.py`) |
+| `files/assets/news-muba/` | `news-muba.css`, `news-muba.js`, sagome SVG (`albero-stella`, `raggi`, `onda`), anteprime dei video (`video-albero`, `video-stella`, `video-pallina`, WebP 1280 × 720), `logo-muba.svg`, testata dell'agenzia (`testata.jpg`, 980 × 551, senza metadati), testata di prova e segnaposto (non più usate), `foto/` (generata da `prepara-foto.py`) |
 | `foto.json` | gruppi (residenze, con nome e link), foto grande e iniziali del mosaico, foto fuori dal sorteggio, testi alternativi |
 | `prepara-foto.py` | da `foto-sorgenti/` alle immagini di `foto/` e al blocco della galleria in `contenuto.html` (vedi sotto) |
 | `foto-sorgenti/` | originali, una cartella per residenza; **fuori da git** (`.gitignore`): pesanti e con la posizione GPS |
@@ -46,9 +46,9 @@ della galleria e dei video.
 
 ## Da completare prima della pubblicazione
 
-- **Testata** (TV `newsImage`): arriva dall'agenzia, **980 × 551 px** come le altre news (16:9, mostrata al massimo a
-  980 px di larghezza). Oggi c'è `testata-prova.jpg` (ritaglio di «Foto generica 3»), nello stesso formato; `--aggiorna` riallinea anche la TV. La testata è anche
-  l'immagine dell'elenco delle news e della condivisione social.
+- **Testata** (TV `newsImage`): `testata.jpg`, dell'agenzia (29/10), **980 × 551 px** come le altre news; originale
+  in `foto-sorgenti/Testata/`, fuori da git. `--aggiorna` riallinea anche la TV. La testata è anche l'immagine
+  dell'elenco delle news e della condivisione social.
 - **Foto della galleria**: oggi 45 in 4 gruppi: Navigli 7, San Luca 7, San Rocco 10 (7 più 3 ingrandimenti scattati
   lì), San Faustino e PGR Milano 21 (evento unico con gli ospiti delle due strutture insieme, non distinguibili: un
   gruppo solo, con il link a entrambe le pagine; 3 scatti quasi doppi esclusi in `escluse`). Ne arriveranno altre.
@@ -61,7 +61,7 @@ della galleria e dei video.
 1. Originali in `foto-sorgenti/<cartella>/`, così come arrivano (rotazione, misure e metadati li sistema lo script).
 2. Una residenza nuova: si aggiunge in `foto.json` → `gruppi` (etichetta del pulsante, nome, luogo, slug, cartelle,
    `collegamenti`: uno per struttura, con nome e indirizzo). L'ordine dei gruppi è quello dell'elenco. La frase del
-   mosaico (`mosaico.invito`) va aggiornata a mano: conta le residenze, non i gruppi. Scatti doppi: nome del file in
+   mosaico (`mosaico.invito`, oggi «Oltre 50 ospiti, un solo laboratorio», dal testo del 29/10) si cambia a mano. Scatti doppi: nome del file in
    `escluse`. Con più di 5 pulsanti va rimisurato sullo stage il punto (oggi 992 px, con il titolo del visore nascosto fino a 1199) da cui i pulsanti sostituiscono il menu.
 3. Testi alternativi in `foto.json` → `alt`, con il nome del file come chiave (lo script avvisa di quelli mancanti).
 4. `python prepara-foto.py` (serve Pillow). Prepara solo le foto nuove o cambiate (`--forza` le rifà tutte), toglie
@@ -140,6 +140,7 @@ Ripristino: il comando è stampato alla fine di ogni scrittura
 | 28/10/2026 | stage (c0025) | `--aggiorna`: 21 foto di San Faustino e PGR Milano (45 in tutto), didascalia con due link, frase «Cinque residenze»; verificato con Chrome da 390 a 1920 px | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261028-111309-news-muba-agg/ripristino.json --scrivi` |
 | 28/10/2026 | produzione (c0072) | installata e pubblicata **nascosta** (news 589, template 66 con 11 TV, 191 file): fuori da menu, elenchi e sitemap, `noindex, follow`; verificato sul sito pubblico (indirizzo del QR anche con i parametri utm, 180 file delle foto, assente da home, `/news/` e sitemap). Al lancio: `--mostra --scrivi` | `php installa.php /www --ripristina /paas/c0072/backup-kos-seo-geo/20261028-112111-news-muba/ripristino.json --scrivi` |
 | 28/10/2026 | produzione (c0072) | `--aggiorna`: TV `newsArticle` = «News», pulsante «Guarda tutte le 45 foto»; news sempre nascosta (verificato: `noindex`, assente da home e `/news/`) | `php installa.php /www --ripristina /paas/c0072/backup-kos-seo-geo/20261028-113949-news-muba-agg/ripristino.json --scrivi` |
+| 29/10/2026 | stage (c0025) | `--aggiorna`: anteprime dei video in stile totem con cornice blu, decorazioni appese tolte | (percorso non annotato) |
 
 TV `newsArticle` («Tipo articolo», etichetta sopra il titolo nelle card delle news): «News» (deciso il 28/10),
 in `$TV_NEWS` di `installa.php`; `--aggiorna` la riallinea. `soloStruttura` vuota va bene: il valore predefinito è 0, «Ovunque».
