@@ -4,7 +4,7 @@
    già caricato dal sito, niente jQuery.
 
    Senza questo file la pagina resta completa: il mosaico si vede (non si
-   apre il visore) e ogni video ha il collegamento a YouTube.
+   apre il visore) e ogni video ha il pulsante «Guarda il videotutorial» e il collegamento a YouTube.
    ===================================================================== */
 (function () {
   'use strict';
@@ -234,16 +234,22 @@
     var id = box.getAttribute('data-muba-video');
     if (!btn || !/^[\w-]{6,20}$/.test(id)) return;
     var titolo = box.getAttribute('data-titolo') || 'Videotutorial';
-    btn.addEventListener('click', function () {
+    var apri = function (origine) {
       if (istanzaVideo) {
-        origineVideo = btn;
+        origineVideo = origine;
         titoloVideo.textContent = titolo;
         contenitore.innerHTML = '';
         contenitore.appendChild(creaIframe(id, titolo));
         istanzaVideo.show();
-      } else {
+      } else if (btn.isConnected) {
         btn.replaceWith(creaIframe(id, titolo));
+        box.scrollIntoView({ block: 'center' });
       }
+    };
+    btn.addEventListener('click', function () { apri(btn); });
+    // pulsante «Guarda il videotutorial» sotto il video: stessa finestra
+    Array.prototype.forEach.call(document.querySelectorAll('[data-muba-video-apri="' + id + '"]'), function (cta) {
+      cta.addEventListener('click', function () { apri(cta); });
     });
   });
 })();
