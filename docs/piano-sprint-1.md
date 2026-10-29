@@ -286,9 +286,12 @@ Decise, nel perimetro:
    dimostrato per gli altri motori AI; da non promettere: presenza in AI Overview «grazie allo schema», percentuali di
    traffico AI, punteggi di visibilità AI.
 2. **Residenze AA (sprint 3)**: `["MedicalBusiness", "MedicalOrganization"]` con `medicalSpecialty` `Geriatric`;
-   residenze solo socio-assistenziali `LocalBusiness`. L'accreditamento si verifica dalle carte dei servizi
-   (`scripts/checks/aa-carte-servizi.php`, 29/10). Nota di consegna: l'audit (slide 30) chiede un LocalBusiness, e
-   `MedicalBusiness` lo è.
+   `LocalBusiness` solo per unità socio-assistenziali pure (alloggi protetti, casa di riposo). Verifica del 29/10
+   sulle carte dei servizi (`scripts/checks/aa-carte-servizi.php`, tabella in
+   `anniazzurri/dati/accreditamento-residenze-2026-10-29.xlsx`): tutte le 55 residenze sono autorizzate come unità
+   socio-sanitarie (RSA, CRA, Residenza Protetta), quindi il tipo è lo stesso per tutte; l'accreditamento (30 sì,
+   6 parziale, 2 in corso, 1 no, 16 non esplicito nella carta) non cambia il tipo. Nota di consegna: l'audit
+   (slide 30) chiede un LocalBusiness, e `MedicalBusiness` lo è.
 3. **Servizi senza sede propria** (RSA Aperta, assistenza domiciliare, AA sprint 3): `Service` con `provider` verso
    il `#localbusiness` che li eroga e `areaServed`; nessun nodo struttura, nessuna scheda Google.
 4. **Niente indirizzo, niente nodo struttura**: già nella libreria (25/10), ora scritto nelle convenzioni.
