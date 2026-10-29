@@ -8,7 +8,8 @@ quello classico delle news (template `interna-articolo`), con la grafica del tot
   dal PDF Illustrator del totem senza le foto delle decorazioni;
 - galleria: mosaico di 5 foto con la griglia della home (versione ridotta, come nelle pagine interne, sotto i
   1200 px) e visore a tutto schermo con tutte le foto, divise per residenza;
-- tre videotutorial con anteprima e pulsante play: il video si apre in una finestra sopra la pagina, uno alla volta;
+- tre videotutorial con anteprima e pulsante play (l'anteprima riprende la parte bassa del totem: la decorazione
+  fotografica appesa al filo, palla bianca e palline, in una cornice blu scura): il video si apre in una finestra sopra la pagina, uno alla volta;
   YouTube (`youtube-nocookie.com`) si carica solo al clic e si ferma alla chiusura della finestra.
 
 Non è una voce d'audit e non compare nella documentazione del progetto.
@@ -28,11 +29,12 @@ con quei parametri. Lo script si ferma se l'alias è già usato da un'altra riso
 | `elementi/snippets/newsMubaRisorse.php` | registra CSS e JS solo su questa pagina (il chunk `head-news`, comune a tutte le news, non si tocca) |
 | `elementi/snippets/newsMubaImmagine.php` | testata: usa lo snippet `immagine` del progetto se c'è, altrimenti un `<img>` semplice (produzione prima del rilascio della libreria immagini) |
 | `elementi/contenuto.html` | contenuto della news, dal docx; link a MUBA e alle residenze di Milano (`/rsa-a-milano-e-provincia`) |
-| `files/assets/news-muba/` | `news-muba.css`, `news-muba.js`, sagome SVG (`albero-stella`, `raggi`, `onda`), icone dei video (`albero`, `stella`, `sfera`), `logo-muba.svg`, testata di prova (`testata-prova.jpg`) e segnaposto, `foto/` (generata da `prepara-foto.py`) |
+| `files/assets/news-muba/` | `news-muba.css`, `news-muba.js`, sagome SVG (`albero-stella`, `raggi`, `onda`), anteprime dei video (`video-albero`, `video-stella`, `video-pallina`, WebP 1280 × 720), `logo-muba.svg`, testata di prova (`testata-prova.jpg`) e segnaposto, `foto/` (generata da `prepara-foto.py`) |
 | `foto.json` | gruppi (residenze, con nome e link), foto grande e iniziali del mosaico, foto fuori dal sorteggio, testi alternativi |
 | `prepara-foto.py` | da `foto-sorgenti/` alle immagini di `foto/` e al blocco della galleria in `contenuto.html` (vedi sotto) |
 | `foto-sorgenti/` | originali, una cartella per residenza; **fuori da git** (`.gitignore`): pesanti e con la posizione GPS |
 | `anteprima/costruisci.py` | anteprima locale senza MODX (Bootstrap 5.1.3 al posto del CSS del sito) |
+| `anteprima/anteprime-video.py` | rigenera le tre anteprime dei video dal PDF Illustrator del totem (decorazioni scontornate; posizione e tipo delle palline in `VAR`) |
 | `installa.php` | installazione con prova, pubblicazione separata, aggiornamento e ripristino |
 
 Title e description seguono le regole del progetto (AA-20): `longtitle` «Anziani e bambini creano il Natale con
@@ -137,6 +139,7 @@ Ripristino: il comando è stampato alla fine di ogni scrittura
 | 27/10/2026 | stage (c0025) | `--aggiorna`: longtitle (43 caratteri) e description (153) nei limiti AA-20 | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261027-142704-news-muba-agg/ripristino.json --scrivi` |
 | 28/10/2026 | stage (c0025) | `--aggiorna`: 21 foto di San Faustino e PGR Milano (45 in tutto), didascalia con due link, frase «Cinque residenze»; verificato con Chrome da 390 a 1920 px | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261028-111309-news-muba-agg/ripristino.json --scrivi` |
 | 28/10/2026 | produzione (c0072) | installata e pubblicata **nascosta** (news 589, template 66 con 11 TV, 191 file): fuori da menu, elenchi e sitemap, `noindex, follow`; verificato sul sito pubblico (indirizzo del QR anche con i parametri utm, 180 file delle foto, assente da home, `/news/` e sitemap). Al lancio: `--mostra --scrivi` | `php installa.php /www --ripristina /paas/c0072/backup-kos-seo-geo/20261028-112111-news-muba/ripristino.json --scrivi` |
+| 28/10/2026 | produzione (c0072) | `--aggiorna`: TV `newsArticle` = «News», pulsante «Guarda tutte le 45 foto»; news sempre nascosta (verificato: `noindex`, assente da home e `/news/`) | `php installa.php /www --ripristina /paas/c0072/backup-kos-seo-geo/20261028-113949-news-muba-agg/ripristino.json --scrivi` |
 
 TV `newsArticle` («Tipo articolo», etichetta sopra il titolo nelle card delle news): «News» (deciso il 28/10),
 in `$TV_NEWS` di `installa.php`; `--aggiorna` la riallinea. `soloStruttura` vuota va bene: il valore predefinito è 0, «Ovunque».

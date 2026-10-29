@@ -184,21 +184,23 @@
 /* ---------- videotutorial: anteprima senza YouTube finché non si preme play ---------- */
 .muba-video-elenco { margin-top: .5rem; }
 .muba-video { position: relative; aspect-ratio: 16 / 9; border-radius: 1rem; overflow: hidden; background: var(--muba-blu); }
+/* anteprima: immagine composta come la parte bassa del totem (filo, palla bianca, palline: vedi
+   anteprima/anteprime-video.py), dentro una cornice blu scura che la stacca dal fondo celeste della pagina */
 .muba-video-play {
-  position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; cursor: pointer;
-  background: var(--muba-blu); display: flex; align-items: center; justify-content: center;
+  position: absolute; inset: 6px; width: auto; height: auto; padding: 0; border: 0; cursor: pointer; overflow: hidden;
+  border-radius: calc(1rem - 6px); background: #99dde3;
 }
-.muba-video-icona { height: 58%; width: auto; opacity: .9; }
+.muba-video-icona { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .muba-video-pulsante {
-  position: absolute; right: 1rem; bottom: 1rem; width: 56px; height: 56px; border-radius: 50%;
-  background: #fff; box-shadow: 0 2px 10px rgba(0, 0, 0, .2); transition: transform .15s ease;
+  position: absolute; z-index: 2; right: 1rem; bottom: 1rem; width: 56px; height: 56px; border-radius: 50%;
+  background: var(--muba-blu); box-shadow: 0 2px 10px rgba(0, 0, 0, .25); transition: transform .15s ease;
 }
 .muba-video-pulsante::after {
   content: ""; position: absolute; left: 22px; top: 17px;
-  border-style: solid; border-width: 11px 0 11px 18px; border-color: transparent transparent transparent var(--muba-blu);
+  border-style: solid; border-width: 11px 0 11px 18px; border-color: transparent transparent transparent #fff;
 }
 .muba-video-play:hover .muba-video-pulsante { transform: scale(1.08); }
-.muba-video-play:focus-visible { outline: 3px solid #fff; outline-offset: -6px; }
+.muba-video-play:focus-visible { outline: 3px solid var(--muba-blu); outline-offset: -6px; }
 .muba-video-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 /* finestra larga ma mai più alta dello schermo (portatili con poca altezza) */
 @media (min-width: 576px) {
