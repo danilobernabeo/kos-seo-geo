@@ -94,7 +94,8 @@ REG = {'Le RSA in Lombardia': ('Lombardia', 'rsa-in-lombardia'), 'Le RSA Anni Az
 res = [r for r in R if r['templatename'] == 'rsa' and r['alias'].startswith('residenza-anni-azzurri') and r['published'] == '1']
 o = ['# Anni Azzurri', '',
      '> Anni Azzurri è la rete di residenze sanitarie assistenziali (RSA) per anziani del gruppo KOS, gestita da KOS Care S.r.l. '
-     f'Conta {len(res)} residenze in {len(REG)} regioni italiane, oltre a centri diurni, un hospice e servizi di assistenza domiciliare.', '',
+     # stessi numeri della home del sito («+50 Residenze», «8 Regioni»): il numero delle pagine non coincide con quello delle residenze
+     f'Conta oltre 50 residenze in {len(REG)} regioni italiane, oltre a centri diurni, hospice e servizi di assistenza domiciliare.', '',
      'Questo file elenca le pagine principali di anniazzurri.it per aiutare i sistemi di intelligenza artificiale a trovare '
      'informazioni aggiornate. La pagina di ogni residenza riporta indirizzo, contatti, servizi, tipologie di ospiti accolti e modalità di accesso.', '',
      '## Trovare una residenza', '',

@@ -1,6 +1,6 @@
 # Anni Azzurri
 
-> Anni Azzurri è la rete di residenze sanitarie assistenziali (RSA) per anziani del gruppo KOS, gestita da KOS Care S.r.l. Conta 57 residenze in 8 regioni italiane, oltre a centri diurni, un hospice e servizi di assistenza domiciliare.
+> Anni Azzurri è la rete di residenze sanitarie assistenziali (RSA) per anziani del gruppo KOS, gestita da KOS Care S.r.l. Conta oltre 50 residenze in 8 regioni italiane, oltre a centri diurni, hospice e servizi di assistenza domiciliare.
 
 Questo file elenca le pagine principali di anniazzurri.it per aiutare i sistemi di intelligenza artificiale a trovare informazioni aggiornate. La pagina di ogni residenza riporta indirizzo, contatti, servizi, tipologie di ospiti accolti e modalità di accesso.
 
