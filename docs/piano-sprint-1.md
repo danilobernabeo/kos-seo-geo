@@ -288,15 +288,15 @@ Decise, nel perimetro:
 2. **Residenze AA (sprint 3)**: `["MedicalBusiness", "MedicalOrganization"]` con `medicalSpecialty` `Geriatric`;
    `LocalBusiness` solo per unità socio-assistenziali pure (alloggi protetti, casa di riposo). Verifica del 29/10
    sulle carte dei servizi (`scripts/checks/aa-carte-servizi.php`, tabella in
-   `anniazzurri/dati/accreditamento-residenze-2026-10-29.xlsx`): tutte le 55 residenze sono autorizzate come unità
-   socio-sanitarie (RSA, CRA, Residenza Protetta), quindi il tipo è lo stesso per tutte; l'accreditamento (30 sì,
-   6 parziale, 2 in corso, 1 no, 16 non esplicito nella carta) non cambia il tipo. Nota di consegna: l'audit
+   `anniazzurri/dati/accreditamento-residenze-2026-10-29.xlsx`): tutte le 57 residenze aperte sono autorizzate come unità
+   socio-sanitarie (RSA, CRA, Residenza Protetta), quindi il tipo è lo stesso per tutte; l'accreditamento (31 sì,
+   7 parziale, 2 in corso, 1 no, 16 non esplicito nella carta, su 57 pagine) non cambia il tipo. Nota di consegna: l'audit
    (slide 30) chiede un LocalBusiness, e `MedicalBusiness` lo è.
 3. **Servizi senza sede propria** (RSA Aperta, assistenza domiciliare, AA sprint 3): `Service` con `provider` verso
    il `#localbusiness` che li eroga e `areaServed`; nessun nodo struttura, nessuna scheda Google.
 4. **Niente indirizzo, niente nodo struttura**: già nella libreria (25/10), ora scritto nelle convenzioni.
-5. **Professionisti KOS (voce 11, sprint 3)**: medici `IndividualPhysician`, altri professionisti `Person` con
-   `jobTitle`, `practicesAt` verso `#localbusiness`. Nota di consegna: l'esempio dell'audit (slide 27) usa `Physician`
+5. **Professionisti KOS (voce 11, sprint 3)**: medici `IndividualPhysician` con `practicesAt`, altri professionisti `Person` con
+   `jobTitle` e `worksFor` verso `#localbusiness` (corretto dopo la revisione del 29/10: `practicesAt` vale solo per i medici). Nota di consegna: l'esempio dell'audit (slide 27) usa `Physician`
    con `worksFor` e `#physician`; `IndividualPhysician` ne è il sottotipo per il singolo medico. Abbinamento alle
    risorse TuoTempo con il codice del gestionale interno (campo Consumerid di TuoTempo), non con il codice fiscale;
    widget di prenotazione per medico sulle pagine abbinate. Confronto pagine/risorse del 29/10 in
@@ -307,9 +307,10 @@ Decise, da fare con interventi già previsti:
    Yext (non prima: oggi le schede le scrive Yext).
 7. **Stato di indicizzazione delle pagine struttura** in Search Console: nel controllo del 6/11, dopo l'import della
    voce 24.
-8. **Test della categoria «Casa di riposo»** (piano PWC): le linee guida Google sulle catene chiedono la stessa
-   categoria per le sedi con lo stesso servizio; proposta: cambiare un sottogruppo omogeneo intero (es. tutte le
-   residenze non accreditate) invece di 3-5 residenze a campione. Decisione di Danilo con PWC.
+8. **Categorie Google delle residenze** (deciso il 29/10, sostituisce il test PWC su un campione): stessa
+   categoria per tutte le residenze aperte, «Casa di riposo» principale come i concorrenti, aggiuntive solo per servizi
+   reali, via «Geriatra» e «Servizio di salute mentale»; da validare con PWC sui codici delle categorie, dopo la finestra
+   di passaggio Yext → RetailTune e a passi. Dettaglio e misura in `docs/specifica-grafo-kos.md`.
 
 Rimandate: registro delle modifiche alle schede Google e specifica dello stadio 7 (quando è deciso chi alimenta le
 schede dopo Yext); Villa Margherita Vicenza come un nodo con `department` o due nodi collegati (con la voce 24).
