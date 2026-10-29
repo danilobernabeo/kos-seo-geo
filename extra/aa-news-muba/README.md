@@ -49,7 +49,7 @@ della galleria e dei video.
 - **Testata** (TV `newsImage`): `testata.jpg`, dell'agenzia (29/10), **980 × 551 px** come le altre news; originale
   in `foto-sorgenti/Testata/`, fuori da git. `--aggiorna` riallinea anche la TV. La testata è anche l'immagine
   dell'elenco delle news e della condivisione social.
-- **Foto della galleria**: oggi 45 in 4 gruppi: Navigli 7, San Luca 7, San Rocco 10 (7 più 3 ingrandimenti scattati
+- **Foto della galleria**: oggi 53 in 4 gruppi: Navigli 15 (7 più 8 da WhatsApp del 29/10, 1200 × 1600), San Luca 7, San Rocco 10 (7 più 3 ingrandimenti scattati
   lì), San Faustino e PGR Milano 21 (evento unico con gli ospiti delle due strutture insieme, non distinguibili: un
   gruppo solo, con il link a entrambe le pagine; 3 scatti quasi doppi esclusi in `escluse`). Ne arriveranno altre.
   Liberatorie presenti. San Luca è a 1200 × 1600: se ci sono gli originali dal telefono, meglio quelli. Testi
