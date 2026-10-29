@@ -1,0 +1,11 @@
+# AA-8 correzioni del 29/10: pagine toccate (briciole visibili, /news/, Sportello, nomi)
+/cure-e-assistenza-domiciliare
+/rsa-aperta
+/assistenza-e-cure-domiciliari-in-regime-privato
+/assistenza-e-cure-domiciliari-gratuite-con-il-servizio-sanitario
+/albero-dei-ricordi
+/galleria-fotografica-convegno-anni-azzurri-2025
+/news/
+/sportello-sociale-orientamento-per-assistenza-anziani
+/giorno-della-memoria-intervista-a-guido-hassan
+/residenza-anni-azzurri-vico-mercati
