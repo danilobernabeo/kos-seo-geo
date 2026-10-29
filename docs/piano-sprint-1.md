@@ -187,7 +187,7 @@ le pagine interne dei domini storici, il refuso «casadicuravillalpini.it» dell
 tempi ripetuti; da fare a mano Bing Webmaster Tools (controllo scansione) e schermate di Rich Results Test e PageSpeed.
 Correzioni in produzione il 29/10 (deroga alla regola del giorno prima della consegna, decisa da Danilo: modifiche piccole e
 collaudate): pacchetti `aa-8-correzioni` (aaSchema, briciole visibili su 3 template, Sportello nel grafo) e `aa-20-title`
-(titoli senza tag HTML). Seconda esecuzione: tutte le voci superate. Restano: blocco LocalBusiness di Yext nel DOM renderizzato
+(titoli senza tag HTML); backup in produzione `~/backup-kos-seo-geo/20261029-050825` (`aa-20-title`) e `20261029-050826` (`aa-8-correzioni`), ripristino con `installa-elementi.php /www <cartella>/ripristino.json --scrivi`, prima il secondo. Seconda esecuzione: tutte le voci superate. Restano: blocco LocalBusiness di Yext nel DOM renderizzato
 delle schede struttura (KOS 24 e AA sprint 3; il Rich Results Test su Vico Mercati rileva un solo Breadcrumb), H1 doppi delle
 pagine dei convegni AA (lavori extra) e di un evento KOS, due blocchi JSON-LD in un approfondimento KOS. Nota di consegna
 aggiornata. Terza esecuzione il 6/11.
