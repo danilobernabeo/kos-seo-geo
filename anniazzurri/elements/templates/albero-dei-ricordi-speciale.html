@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+[[$head-albero-ricordi]]
+<body class="news-content-page albero-ricordi-page">
+[[$GTM_body]]
+[[$menu-sticky]]
+[[$menu-navbar]]
+[[$menu-side-navbar]]
+<main id="main-content" tabindex="-1">
+[[$breadcrumb-stripe]]
+
+  <!-- Niente involucro container-fluid/row/col: nella home serve al
+       carosello, qui no. La fascia e' gia' a tutta larghezza dentro
+       <main>, e il .container interno allinea il titolo esattamente con
+       il resto della pagina.
+       Due tentativi scartati, entrambi misurati: con row g-0 il titolo
+       finiva 14px a SINISTRA del testo, perche' g-0 azzera
+       --bs-gutter-x che EREDITA nel .container interno annullandone il
+       padding; con container-fluid senza px-0 finiva 14px a DESTRA,
+       perche' se ne somma il padding. -->
+  <div class="hero-albero position-relative d-flex align-items-center">
+
+          <picture class="hero-albero-immagine">
+            <source media="(min-width: 768px)"
+                    srcset="/assets/albero-dei-ricordi/hero-albero-desktop-1920x720.jpg?v=20260921m">
+            <img src="/assets/albero-dei-ricordi/hero-albero-mobile-1080x1000.jpg?v=20260921m" alt="">
+          </picture>
+
+          <div class="hero-albero-velo"></div>
+
+          <div class="container position-relative">
+            <div class="row hero-albero-corpo align-items-center">
+              <div class="col-12 col-md-8 col-lg-6">
+                <h1 class="hero-albero-titolo">L&rsquo;albero dei ricordi</h1>
+                <p class="h5 hero-albero-occhiello mb-4">[[*introtext]]</p>
+              </div>
+            </div>
+          </div>
+
+  </div>
+
+  <div stripe-share class="border-top border-bottom" data-condividi-url="[[++site_url]]albero-dei-ricordi">
+    <div class="container py-3">
+      <div class="row">
+        <div class="col-auto me-auto">
+          <span class="small text-brown">[[*publishedon:strtotime:date=`%d %B %Y`]]</span>
+        </div>
+        <div class="col-auto">
+          <ul class="list-group list-group-horizontal">
+        <li class="py-0 px-2 border-0 list-group-item"><button type="button" class="share-btn" data-condividi="facebook" aria-label="Condividi su Facebook"><img src="/assets/img/news-facebook.png" alt=""></button></li>
+        <li class="py-0 px-2 border-0 list-group-item"><button type="button" class="share-btn" data-condividi="twitter" aria-label="Condividi su Twitter"><img src="/assets/img/news-twitter.png" alt=""></button></li>
+        <li class="py-0 px-2 border-0 list-group-item"><button type="button" class="share-btn" data-condividi="whatsapp" aria-label="Condividi su WhatsApp"><img src="/assets/img/news-whatsapp.png" alt=""></button></li>
+        <li class="py-0 ps-2 pe-0 border-0 list-group-item"><button type="button" class="share-btn" data-condividi="email" aria-label="Condividi via email"><img src="/assets/img/news-mail.png" alt=""></button></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+[[*content]]
+</main>
+[[$footer]]
+[[$footer-script]]
+<script src="/assets/albero-dei-ricordi/albero-dei-ricordi.js?v=20260921m"></script>
+</body>
+</html>

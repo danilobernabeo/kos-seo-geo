@@ -1,0 +1,34 @@
+{
+  "nome": "AA-8 correzioni dalla verifica del 29/10: @id e briciole con la forma di makeUrl (/news/), nomi senza tag HTML né longtitle-alias, Service e FAQ dello Sportello sociale nel @graph unico, briciole visibili su cure domiciliari, albero dei ricordi e galleria del convegno",
+  "elements": [
+    {
+      "type": "snippet",
+      "name": "aaSchema",
+      "file": "anniazzurri/elements/snippets/aaSchema.php"
+    },
+    {
+      "type": "chunk",
+      "name": "head-sportello-sociale",
+      "file": "anniazzurri/elements/chunks/head-sportello-sociale.html",
+      "baseline": "anniazzurri/baseline/chunks/head-sportello-sociale.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-cure-e-assistenza-domiciliari-new",
+      "file": "anniazzurri/elements/templates/interna-cure-e-assistenza-domiciliari-new.html",
+      "baseline": "anniazzurri/baseline/templates/interna-cure-e-assistenza-domiciliari-new.html"
+    },
+    {
+      "type": "template",
+      "name": "albero-dei-ricordi-speciale",
+      "file": "anniazzurri/elements/templates/albero-dei-ricordi-speciale.html",
+      "baseline": "anniazzurri/baseline/templates/albero-dei-ricordi-speciale.html"
+    },
+    {
+      "type": "template",
+      "name": "convegnoAA",
+      "file": "anniazzurri/elements/templates/convegnoAA.html",
+      "baseline": "anniazzurri/baseline/templates/convegnoAA.html"
+    }
+  ]
+}

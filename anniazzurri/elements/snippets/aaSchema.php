@@ -83,7 +83,24 @@ $url = function ($id) use ($modx, $SLASH, $CANON) {
     // la sostituiamo sempre, altrimenti gli @id degli articoli divergono da quello
     // dell'organizzazione e nel grafo nascono due siti distinti.
     $u = preg_replace('#^https?://[^/]+#i', $CANON, $u);
-    return $SLASH ? rtrim($u, '/') . '/' : rtrim($u, '/');
+    // Senza aa.trailing_slash si tiene la forma di makeUrl: le pagine normali non hanno la barra finale, i
+    // contenitori (es. /news/) sì, esattamente come il canonical; toglierla darebbe un URL che risponde 301.
+    return $SLASH ? rtrim($u, '/') . '/' : $u;
+};
+
+/** Testo semplice per i nomi (niente tag HTML né entità, spazi normalizzati). */
+$nomeTesto = function ($s) {
+    $s = html_entity_decode(strip_tags((string) $s), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    return trim((string) preg_replace('/\s+/u', ' ', $s));
+};
+
+/** Titolo della pagina per name/headline: longtitle (mai un alias di cartella, senza « | Anni Azzurri»), altrimenti pagetitle. */
+$titoloNodo = function ($r) use ($nomeTesto, $cfg) {
+    $lt = $nomeTesto($r->get('longtitle'));
+    if (preg_match('/^[a-z0-9]+(?:-[a-z0-9]+)*$/', $lt)) $lt = '';
+    $marchio = preg_quote((string) $cfg('org_name', 'Anni Azzurri'), '/');
+    $lt = trim((string) preg_replace('/\s*[|\x{2013}\x{2014}-]\s*' . $marchio . '\s*$/iu', '', $lt));
+    return $lt !== '' ? $lt : $nomeTesto($r->get('pagetitle'));
 };
 
 /** Righe non vuote da una textarea. */
@@ -322,7 +339,7 @@ $persona = function ($idAutore) use (
  * - URL assoluti nella forma canonica.
  * Sulla home non si emette nessuna BreadcrumbList.
  */
-$briciole = function ($res) use ($modx, $url, $CLS_RES, $START, $ESCLUDI, $CANON) {
+$briciole = function ($res) use ($modx, $url, $CLS_RES, $START, $ESCLUDI, $CANON, $nomeTesto) {
     $id = (int) $res->get('id');
     if ($id === $START) return [];
 
@@ -337,12 +354,12 @@ $briciole = function ($res) use ($modx, $url, $CLS_RES, $START, $ESCLUDI, $CANON
 
     $voci = [];
     if ($home = $modx->getObject($CLS_RES, $START)) {
-        $voci[] = ['name' => $home->get('pagetitle'), 'item' => $CANON . '/'];
+        $voci[] = ['name' => $nomeTesto($home->get('pagetitle')), 'item' => $CANON . '/'];
     }
     foreach ($catena as $r) {
         $corrente = ((int) $r->get('id') === $id);
         $voci[] = [
-            'name' => $corrente ? ($r->get('menutitle') ?: $r->get('pagetitle')) : $r->get('pagetitle'),
+            'name' => $nomeTesto($corrente ? ($r->get('menutitle') ?: $r->get('pagetitle')) : $r->get('pagetitle')),
             'item' => $url($r->get('id')),
         ];
     }
@@ -411,9 +428,22 @@ if ($type === 'auto') {
     $type = in_array($nomeTpl, $TPL_ARTICOLO, true) ? 'article'
           : (in_array($nomeTpl, $TPL_PROFILO, true) ? 'profile' : 'page');
 }
-$json = function ($grafo) use ($flags) {
+/* Nodi propri di una pagina (es. Service e FAQPage dello Sportello sociale) dal chunk statico schema-<id>, se esiste:
+ * entrano nello stesso @graph invece di un secondo blocco JSON-LD (regola: un solo @graph per pagina). */
+$nodiPagina = [];
+$CLS_CHUNK = class_exists('\MODX\Revolution\modChunk') ? \MODX\Revolution\modChunk::class : 'modChunk';
+if ($ch = $modx->getObject($CLS_CHUNK, ['name' => 'schema-' . (int) $res->get('id')])) {
+    $raw = preg_replace('#^\s*<script[^>]*>|</script>\s*$#i', '', trim((string) $ch->get('snippet')));
+    $dec = json_decode((string) $raw, true);
+    if (is_array($dec)) {
+        $lista = isset($dec['@graph']) ? $dec['@graph'] : (isset($dec['@type']) ? [$dec] : $dec);
+        foreach ((array) $lista as $nodo) if (is_array($nodo)) { unset($nodo['@context']); $nodiPagina[] = $nodo; }
+    }
+}
+$json = function ($grafo) use ($flags, $nodiPagina) {
+    $grafo = array_merge(array_values(array_filter($grafo)), $nodiPagina);
     return '<script type="application/ld+json">'
-         . json_encode(['@context' => 'https://schema.org', '@graph' => array_values(array_filter($grafo))], $flags)
+         . json_encode(['@context' => 'https://schema.org', '@graph' => $grafo], $flags)
          . '</script>';
 };
 
@@ -506,7 +536,7 @@ if ($type === 'profile') {
             '@type'      => 'ProfilePage',
             '@id'        => $paginaCorrente . '#webpage',
             'url'        => $paginaCorrente,
-            'name'       => $res->get('longtitle') ?: $res->get('pagetitle'),
+            'name'       => $titoloNodo($res),
             'inLanguage' => $LANG,
             'mainEntity' => ['@id' => $paginaCorrente . '#person'],
             'hasPart'    => $firmati,
@@ -532,7 +562,7 @@ if ($type === 'page') {
         '@type'       => in_array($nomeTpl, $TPL_COLLEZIONE, true) ? 'CollectionPage' : 'WebPage',
         '@id'         => $paginaCorrente . '#webpage',
         'url'         => $paginaCorrente,
-        'name'        => $res->get('longtitle') ?: $res->get('pagetitle'),
+        'name'        => $titoloNodo($res),
         'description' => $res->get('description'),
         'inLanguage'  => $LANG,
         'isPartOf'    => ['@id' => $SITE_ID],
@@ -553,7 +583,7 @@ $articolo = [
     '@id'              => $paginaCorrente . '#article',
     'isPartOf'         => ['@id' => $paginaCorrente . '#webpage'],
     'mainEntityOfPage' => ['@id' => $paginaCorrente . '#webpage'],
-    'headline'         => $res->get('longtitle') ?: $res->get('pagetitle'),
+    'headline'         => $titoloNodo($res),
     'description'      => $res->get('description') ?: $res->get('introtext'),
     'image'            => $immagine($tv($res, 'art.immagine')),
     'datePublished'    => $data($res->get('publishedon')),
@@ -571,7 +601,7 @@ $pagina = [
     '@type'      => $sanitario ? 'MedicalWebPage' : 'WebPage',
     '@id'        => $paginaCorrente . '#webpage',
     'url'        => $paginaCorrente,
-    'name'       => $res->get('longtitle') ?: $res->get('pagetitle'),
+    'name'       => $titoloNodo($res),
     'inLanguage' => $LANG,
     'isPartOf'   => ['@id' => $SITE_ID],
 ];
