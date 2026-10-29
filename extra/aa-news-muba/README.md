@@ -143,6 +143,7 @@ Ripristino: il comando è stampato alla fine di ogni scrittura
 | 29/10/2026 | produzione (c0072) | `--aggiorna`: testi del Word 29/10, introtext e description (145), frase del mosaico, testata dell'agenzia, anteprime dei video con cornice blu; news sempre nascosta (verificato: `noindex`, assente da home e `/news/`; da 390 a 1920 px) | `php installa.php /www --ripristina /paas/c0072/backup-kos-seo-geo/20261029-073135-news-muba-agg/ripristino.json --scrivi` |
 | 29/10/2026 | stage (c0025) | `--aggiorna`: anteprime dei video in stile totem con cornice blu, decorazioni appese tolte | (percorso non annotato) |
 | 29/10/2026 | stage (c0025) | `--aggiorna`: testi del Word 29/10 (7 residenze, oltre 50 ospiti), introtext e description (145), frase del mosaico «Oltre 50 ospiti», testata dell'agenzia (`testata.jpg`); verificato con Chrome da 390 a 1280 px | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261029-072504-news-muba-agg/ripristino.json --scrivi` |
+| 29/10/2026 | stage (c0025) | `--aggiorna`: 8 foto in più di RSA Navigli (53 in tutto, Navigli 15); verificato con Chrome (32 file, filtro e visore) | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261029-120920-news-muba-agg/ripristino.json --scrivi` |
 
 TV `newsArticle` («Tipo articolo», etichetta sopra il titolo nelle card delle news): «News» (deciso il 28/10),
 in `$TV_NEWS` di `installa.php`; `--aggiorna` la riallinea. `soloStruttura` vuota va bene: il valore predefinito è 0, «Ovunque».
