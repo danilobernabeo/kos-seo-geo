@@ -95,7 +95,7 @@ res = [r for r in R if r['templatename'] == 'rsa' and r['alias'].startswith('res
 o = ['# Anni Azzurri', '',
      '> Anni Azzurri è la rete di residenze sanitarie assistenziali (RSA) per anziani del gruppo KOS, gestita da KOS Care S.r.l. '
      # stessi numeri della home del sito («+50 Residenze», «8 Regioni»): il numero delle pagine non coincide con quello delle residenze
-     f'Conta oltre 50 residenze in {len(REG)} regioni italiane, oltre a centri diurni, hospice e servizi di assistenza domiciliare.', '',
+     f'Conta più di 50 residenze in {len(REG)} regioni italiane, oltre a centri diurni, hospice e servizi di assistenza domiciliare.', '',
      'Questo file elenca le pagine principali di anniazzurri.it per aiutare i sistemi di intelligenza artificiale a trovare '
      'informazioni aggiornate. La pagina di ogni residenza riporta indirizzo, contatti, servizi, tipologie di ospiti accolti e modalità di accesso.', '',
      '## Trovare una residenza', '',
