@@ -8,6 +8,7 @@
  *   node verifica-sprint-1.mjs                       # entrambi i siti, tutte le pagine delle sitemap
  *   node verifica-sprint-1.mjs --sito=aa --limite=50 # prova veloce
  * Opzioni: --sito=kos|aa|entrambi  --limite=N (pagine per sito)  --pausa=600 (ms tra le richieste)  --uscita=<cartella>
+ *          --ripetizioni-bot=3  --senza-rendering (salta il controllo del DOM renderizzato con Playwright)
  *
  * Voci controllate (sprint 1):
  *   KOS-3 / AA-14  cache delle risorse statiche (Cache-Control per tipo di file, ?v= su CSS e JS locali di tutte le pagine)
@@ -52,7 +53,11 @@ const BOT = {
   'Perplexity-User': 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Perplexity-User/1.0; +https://perplexity.ai/perplexity-user)',
   'Googlebot': 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
   'Bingbot': 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/116.0.1938.76 Safari/537.36',
+  'Gemini-Deep-Research': 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Gemini-Deep-Research; +https://gemini.google/overview/deep-research/) Chrome/135.0.0.0 Safari/537.36',
+  'Google-CloudVertexBot': 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Google-CloudVertexBot; +https://cloud.google.com/enterprise-search) Chrome/135.0.0.0 Safari/537.36',
 };
+const RIPETIZIONI_BOT = Number(opz['ripetizioni-bot'] ?? 3);   // richieste per bot e pagina: tempi e stabilità (timeout)
+const LENTO_MS = 5000;
 // token di robots.txt da controllare (anche quelli senza richieste proprie)
 const TOKEN_ROBOTS = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-User', 'Claude-SearchBot', 'anthropic-ai',
   'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Googlebot', 'Bingbot', 'Applebot', 'Applebot-Extended', 'CCBot',
@@ -189,16 +194,21 @@ async function controllaBot(s) {
     const rif = await chiedi(s.base + p);
     const titoloRif = (/<title>([\s\S]*?)<\/title>/i.exec(rif.corpo) || [])[1] || '';
     for (const [nome, ua] of Object.entries(BOT)) {
-      await attendi(Math.max(0, 1500 - PAUSA));
-      const r = await chiedi(s.base + p, { ua });
-      const tit = (/<title>([\s\S]*?)<\/title>/i.exec(r.corpo) || [])[1] || '';
+      const tempi = []; let r, okTutte = true;
+      for (let i = 0; i < RIPETIZIONI_BOT; i++) {
+        await attendi(Math.max(0, 1500 - PAUSA));
+        r = await chiedi(s.base + p, { ua });
+        tempi.push(r.ms);
+        const tit = (/<title>([\s\S]*?)<\/title>/i.exec(r.corpo) || [])[1] || '';
+        if (!(r.status === 200 && tit === titoloRif && Math.abs(r.corpo.length - rif.corpo.length) < rif.corpo.length * 0.05) || r.ms > LENTO_MS) okTutte = false;
+      }
       const ld = (r.corpo.match(/application\/ld\+json/g) || []).length;
-      const ok = r.status === 200 && tit === titoloRif && Math.abs(r.corpo.length - rif.corpo.length) < rif.corpo.length * 0.05;
-      if (!ok) ko++;
-      elenco.push(`${ok ? 'OK' : 'KO'}  ${nome.padEnd(17)} ${p.padEnd(45)} ${r.status}  ${r.corpo.length} byte (browser ${rif.corpo.length})  JSON-LD ${ld}`);
+      if (!okTutte) ko++;
+      tempi.sort((a, b) => a - b);
+      elenco.push(`${okTutte ? 'OK' : 'KO'}  ${nome.padEnd(21)} ${p.padEnd(40)} ${r.status}  ${r.corpo.length} byte (browser ${rif.corpo.length})  JSON-LD ${ld}  tempi ${tempi.join('/')} ms`);
     }
   }
-  esito(s.nome, s.botVoce, `${Object.keys(BOT).length} user agent su ${s.paginePerBot.length} pagine: 200 e stessa pagina del browser`,
+  esito(s.nome, s.botVoce, `${Object.keys(BOT).length} user agent su ${s.paginePerBot.length} pagine, ${RIPETIZIONI_BOT} richieste ciascuno: 200, stessa pagina del browser, risposta sotto ${LENTO_MS / 1000} s`,
     ko === 0, ko ? `${ko} risposte diverse` : '', [], elenco);
 }
 
@@ -221,6 +231,22 @@ async function controllaDomini(s) {
   }
   esito(s.nome, 'KOS-4', `redirect dei ${s.domini.length} domini storici: un solo 301 verso kosgroup.com, poi 200`, ko === 0,
     ko ? `${ko} varianti non conformi su ${elenco.length}` : `${elenco.length} varianti`, [], elenco);
+  // pagine interne (i backlink puntano spesso lì): un 301 verso kosgroup.com, poi 200
+  const interne = []; let koI = 0;
+  for (const d of s.domini) for (const pth of ['/chi-siamo', '/contatti', '/index.php?id=2']) {
+    const v = `https://${d}${pth}`; const r1 = await chiedi(v);
+    let ok = false, riga = `${v} → ${r1.status}`;
+    if ([301, 308].includes(r1.status) && r1.location) {
+      const dest = assoluto(r1.location, v); const r2 = await chiedi(dest);
+      riga += ` ${dest} → ${r2.status}`; ok = r2.status === 200 && dest.startsWith(SITI.kos.base + '/');
+    }
+    if (!ok) koI++; interne.push(`${ok ? 'OK' : 'KO'}  ${riga}`);
+  }
+  esito(s.nome, 'KOS-4', 'pagine interne dei domini storici: 301 verso kosgroup.com, poi 200', koI === 0, `${koI} su ${interne.length}`, [], interne, 'ATTENZIONE');
+  // l'audit (slide 53) scrive «casadicuravillalpini.it»: il dominio reale è casadicuravillapini.it
+  const ref = await chiedi('https://casadicuravillalpini.it/');
+  esito(s.nome, 'KOS-4', 'refuso dell\'audit «casadicuravillalpini.it» (informativo)', null,
+    ref.status ? `risponde ${ref.status}${ref.location ? ' → ' + ref.location : ''}` : `non risponde (${ref.errore || 'nessun DNS'}): il dominio storico è casadicuravillapini.it`);
 }
 
 async function controllaLlms(s) {
@@ -242,7 +268,9 @@ async function controllaLlms(s) {
     if (!ok) { ko++; elenco.push(`${x.status}  ${u}${x.location ? ' → ' + x.location : ''}`); }
   }
   esito(s.nome, 'KOS-18', `link di llms.txt: 200 diretto (${link.length} link)`, ko === 0, ko ? `${ko} link con redirect o errore` : '', [], elenco, 'ATTENZIONE');
-  // stesso controllo informativo su AA
+  const w = await chiedi('https://www.kosgroup.com/llms.txt');
+  esito(s.nome, 'KOS-18', 'variante www di llms.txt: 301 verso https://kosgroup.com/llms.txt', [301, 308].includes(w.status) && assoluto(w.location || '', 'https://www.kosgroup.com/') === s.base + '/llms.txt',
+    `${w.status}${w.location ? ' → ' + w.location : ''}`, [], [], 'ATTENZIONE');
 }
 
 async function controllaCache(s, pagineHtml) {
@@ -327,14 +355,24 @@ async function controllaPagine(s, sm) {
 
   // canonical (voce AA-7 su AA, informativa su KOS)
   const voceCan = s === SITI.aa ? 'AA-7' : 'Igiene';
-  const canKo = [], canDiverso = [];
+  const canKo = [], canDiverso = [], conBarra = [];
   for (const a of ok200) {
     if (a.can.length !== 1) { canKo.push(`${a.url}: ${a.can.length} canonical`); continue; }
     const c = a.can[0];
     if (!c.startsWith(s.base + '/') && c !== s.base) { canKo.push(`${a.url}: canonical non assoluto o non nella forma del sito (${c})`); continue; }
-    if (/^https:\/\/www\./.test(c) || (c !== s.base + '/' && /\/$/.test(c) && s === SITI.aa)) canKo.push(`${a.url}: forma non canonica (${c})`);
+    if (/^https:\/\/www\./.test(c)) canKo.push(`${a.url}: forma non canonica (${c})`);
     else if (normUrl(c) !== normUrl(a.url)) canDiverso.push(`${a.url} → canonical ${c}`);
+    else if (c !== s.base + '/' && /\/$/.test(c)) conBarra.push(c);
   }
+  // contenitori con la barra finale (es. /news/): la forma senza barra deve rispondere 301 verso il canonical
+  const barraKo = [];
+  for (const c of conBarra) {
+    const r = await chiedi(c.replace(/\/$/, ''));
+    const dest = r.location ? assoluto(r.location, c) : '';
+    if (!([301, 308].includes(r.status) && dest === c)) barraKo.push(`${c.replace(/\/$/, '')} → ${r.status} ${dest}`);
+  }
+  if (conBarra.length) esito(s.nome, voceCan, `pagine con la barra finale (${conBarra.length}): la forma senza barra risponde 301 verso il canonical`,
+    barraKo.length === 0, barraKo.length ? `${barraKo.length} duplicati` : conBarra.join(', '), [], barraKo);
   esito(s.nome, voceCan, 'un solo canonical per pagina, assoluto, https, senza www', canKo.length === 0,
     `${canKo.length} pagine non conformi su ${ok200.length}`, [], canKo);
   esito(s.nome, voceCan, 'canonical uguale all\'URL della sitemap', canDiverso.length === 0, `${canDiverso.length} pagine`, [], canDiverso, 'ATTENZIONE');
@@ -389,7 +427,7 @@ function controllaDatoAA(s, ok200) {
     const can = a.can[0] || a.url;
     const br = nodi(a.grafi).find(n => n['@type'] === 'BreadcrumbList');
     if (isHome) { if (br) brKo.push(`${a.url}: BreadcrumbList sulla home`); continue; }
-    if (!br) { brKo.push(`${a.url}: BreadcrumbList assente`); continue; }
+    if (!br) { if ((a.crumbs || []).length >= 2) brKo.push(`${a.url}: BreadcrumbList assente (briciole visibili: ${a.crumbs.join(' › ')})`); continue; }
     if (br['@id'] !== senzaFrammento(can) + '#breadcrumb') brKo.push(`${a.url}: @id ${br['@id']} (atteso ${senzaFrammento(can)}#breadcrumb)`);
     const voci = [].concat(br.itemListElement || []).sort((x, y) => x.position - y.position);
     if (voci.some((v, i) => v.position !== i + 1)) brKo.push(`${a.url}: posizioni non consecutive`);
@@ -414,6 +452,56 @@ async function controllaCanonicalJs(s, pagineHtml) {
   const inline = pagineHtml.filter(p => /<script\b(?![^>]*\bsrc=)[^>]*>[^<]*canonical/i.test(p.corpo)).map(p => p.url);
   esito(s.nome, 'AA-7', `nessuno script locale crea canonical lato client (${js.size} file JS e script inline)`, !trovati.length && !inline.length,
     [...trovati, ...inline].join(', '), [], [...trovati.map(u => `file: ${u}`), ...inline.map(u => `inline: ${u}`)], 'ATTENZIONE');
+}
+
+/* ---------- DOM renderizzato (come Google e il Rich Results Test, dopo JavaScript) ---------- */
+async function controllaRenderizzato(s, pagine) {
+  let chromium;
+  try { ({ chromium } = await import('playwright')); }
+  catch { try { ({ chromium } = (await import('node:module')).createRequire(import.meta.url)('playwright')); } catch {} }
+  if (!chromium) { esito(s.nome, 'Rendering', 'DOM renderizzato', null, 'Playwright non disponibile: lanciare dalla cartella scripts/collaudo'); return;
+  }
+  let browser;
+  try { browser = await chromium.launch(); }
+  catch (e) { esito(s.nome, 'Rendering', 'DOM renderizzato', null, `browser non avviabile: ${String(e.message || e).split('\n')[0]}`); return; }
+  const ctx = await browser.newContext({ userAgent: UA_BROWSER, viewport: { width: 1366, height: 900 } });
+  const elenco = []; let ko = 0;
+  for (const u of pagine) {
+    const pg = await ctx.newPage();
+    try {
+      await pg.goto(u, { waitUntil: 'networkidle', timeout: 60000 });
+      await pg.waitForTimeout(4000);
+      const r = await pg.evaluate(() => ({
+        can: [...document.querySelectorAll('link[rel="canonical"]')].map(l => l.href),
+        ld: [...document.querySelectorAll('script[type="application/ld+json"]')].length,
+        h1: [...document.querySelectorAll('h1')].map(h => h.textContent.trim().replace(/\s+/g, ' ')).filter(Boolean),
+        robots: (document.querySelector('meta[name="robots"]') || {}).content || '',
+      }));
+      const ok = r.can.length === 1 && r.ld === 1 && r.h1.length === 1 && !/noindex/i.test(r.robots);
+      if (!ok) ko++;
+      elenco.push(`${ok ? 'OK' : 'KO'}  ${u}  canonical ${r.can.length}  JSON-LD ${r.ld}  H1 ${r.h1.length}${r.robots ? '  robots ' + r.robots : ''}${r.can.length > 1 ? '\n      ' + r.can.join(' | ') : ''}`);
+    } catch (e) { ko++; elenco.push(`KO  ${u}  ${String(e.message || e).split('\n')[0]}`); }
+    await pg.close();
+    await attendi(PAUSA);
+  }
+  await browser.close();
+  esito(s.nome, s === SITI.aa ? 'AA-7 / AA-8' : 'Rendering', `DOM renderizzato (dopo JavaScript) su ${pagine.length} pagine campione: 1 canonical, 1 JSON-LD, 1 H1`,
+    ko === 0, ko ? `${ko} pagine` : '', [], elenco);
+}
+function campione(s, sm) {
+  // una pagina per forma di URL (primo livello del percorso) più le pagine dell'audit, al massimo 25
+  const fissi = s === SITI.aa
+    ? ['/', '/news/', '/residenza-anni-azzurri-vico-mercati', '/residenza-anni-azzurri-navigli', '/rsa-in-lombardia', '/rsa-a-milano-e-provincia',
+       '/come-vivono-gli-anziani-in-rsa', '/sportello-sociale-orientamento-per-assistenza-anziani', '/galleria-fotografica-convegno-anni-azzurri-2025',
+       '/cure-e-assistenza-domiciliare', '/residenze', '/il-mondo-anni-azzurri']
+    : ['/it', '/en', '/it/centri/casa-cima', '/it/centri/villa-rosa', '/it/chi-siamo/qualita-delle-cure/medici/stefano-albanelli',
+       '/it/servizi-e-cure/riabilitazione/riabilitazione-mielolesioni', '/it/news-e-media/approfondimenti/come-bere-piu-acqua-durante-la-giornata',
+       '/it/lavorare-in-kos/posizioni-aperte', '/it/strutture', '/it/prenota-online'];
+  const scelti = new Set(fissi.map(p => s.base + p));
+  const perForma = new Map();
+  for (const u of sm.pagine) { const k = new URL(u).pathname.split('/').slice(0, 3).join('/'); if (!perForma.has(k)) perForma.set(k, u); }
+  for (const u of perForma.values()) { if (scelti.size >= 25) break; scelti.add(u); }
+  return [...scelti];
 }
 
 /* ---------- rapporto ---------- */
@@ -454,6 +542,7 @@ for (const k of scelti) {
   await controllaCache(s, html);
   if (k === 'aa') await controllaCanonicalJs(s, html);
   await controllaBot(s);
+  if (!opz['senza-rendering']) await controllaRenderizzato(s, campione(s, sm));
   salva();
 }
 salva();
