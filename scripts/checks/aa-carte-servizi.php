@@ -54,9 +54,11 @@ foreach (glob("$base/*", GLOB_ONLYDIR) as $dir) {
     foreach ($carte as $f) {
         $kb = (int) round(filesize($f) / 1024); $tot += $kb;
         $grezzo = $estrai($f);
+        // alcuni PDF producono byte non UTF-8: con /u preg_replace restituirebbe null
+        if (!mb_check_encoding($grezzo, 'UTF-8')) $grezzo = mb_convert_encoding($grezzo, 'UTF-8', 'UTF-8');
         file_put_contents("$testi/{$alias}__" . preg_replace('/[^A-Za-z0-9._-]+/', '_', basename($f, '.pdf')) . '.txt', $grezzo);
-        $t = preg_replace('/\s+/u', ' ', $grezzo);
-        preg_match_all('/[^.]{0,160}(accreditat|a contratto|contrattualizzat|convenzionat|autorizzat)[^.]{0,160}/iu', $t, $m);
+        $t = preg_replace('/\s+/u', ' ', $grezzo) ?? preg_replace('/\s+/', ' ', $grezzo) ?? '';
+        if (!preg_match_all('/[^.]{0,160}(accreditat|a contratto|contrattualizzat|convenzionat|autorizzat)[^.]{0,160}/iu', $t, $m)) $m = [[]];
         $frasi = implode(' || ', array_slice(array_unique($m[0]), 0, 6));
         fputcsv($csv, [$alias, $res ? $res->get('uri') : '(nessuna pagina)', $res ? (int) $res->get('published') : '', basename($f), $kb, mb_strlen($t), $frasi], ';');
         echo '  ' . str_pad($alias, 50) . ' ' . basename($f) . ' — ' . mb_strlen($t) . " caratteri\n";
