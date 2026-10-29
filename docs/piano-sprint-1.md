@@ -180,6 +180,18 @@ dello script (non il piano né le nostre conclusioni) e segnala cosa l'agenzia v
 Calendario: 29/10 script e revisione; 30/10 correzioni piccole o note esplicite nella consegna; 6/11 seconda esecuzione
 prima della verifica.
 
+**Esito del 29/10.** Prima esecuzione (mattina, 1.310 pagine): KOS tutto superato; AA con 4 controlli non superati
+(`/news/` con `@id` senza barra, Sportello con due blocchi, 6 pagine con `BreadcrumbList` senza briciole visibili, tag HTML nel
+nome di Guido Hassan). Revisione indipendente (agente con i soli audit ed Excel): aggiunti al controllo il DOM renderizzato,
+le pagine interne dei domini storici, il refuso «casadicuravillalpini.it» dell'audit, `llms.txt` su www, i bot dell'Excel AA con
+tempi ripetuti; da fare a mano Bing Webmaster Tools (controllo scansione) e schermate di Rich Results Test e PageSpeed.
+Correzioni in produzione il 29/10 (deroga alla regola del giorno prima della consegna, decisa da Danilo: modifiche piccole e
+collaudate): pacchetti `aa-8-correzioni` (aaSchema, briciole visibili su 3 template, Sportello nel grafo) e `aa-20-title`
+(titoli senza tag HTML). Seconda esecuzione: tutte le voci superate. Restano: blocco LocalBusiness di Yext nel DOM renderizzato
+delle schede struttura (KOS 24 e AA sprint 3; il Rich Results Test su Vico Mercati rileva un solo Breadcrumb), H1 doppi delle
+pagine dei convegni AA (lavori extra) e di un evento KOS, due blocchi JSON-LD in un approfondimento KOS. Nota di consegna
+aggiornata. Terza esecuzione il 6/11.
+
 ## Title, description e H1 (AA-20, KOS 21-23, sprint 2) — deciso il 27/10
 
 Fonte dei testi: i fogli dell'agenzia. AA: `202607_PWC_AnniAzzurri_Ottimizzazioni_Meta_Tag_v2_Ant.xlsx` (88 URL con

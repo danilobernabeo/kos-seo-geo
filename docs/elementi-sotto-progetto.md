@@ -22,7 +22,7 @@ Aggiornare l'elenco a ogni intervento.
 | `core/components/kosseogeo/Immagini.php`, `/dist/css/custom.css`, `/dist/css/kos-seo-geo.css` | file | AA-1, AA-6, AA-17 | **produzione (26/10)**, pacchetto `aa-1-17-libreria` |
 | chunk e template di sfondi, titoli, gallerie (`gal-*`), `servizi-*`, news, head delle landing, `photoGalleryAA2025` | 235 elementi | AA-1, AA-6, Alt Text | **produzione (27/10)**, pacchetto `aa-1-6-markup` |
 | contenuti di residenze, centri diurni, regioni, province, landing, home (152 risorse) e 7 news | campo content | AA-1, AA-6, Alt Text | **produzione (27/10)**, `anniazzurri/dati/aa-6-contenuti`, `alt-news-contenuti` |
-| `aaSchema`, `head-sportello-sociale`, template `interna-cure-e-assistenza-domiciliari-new`, `albero-dei-ricordi-speciale`, `convegnoAA` | snippet, chunk, template | AA-8 (correzioni dalla verifica del 29/10: `/news/`, nomi, Sportello nel grafo, briciole visibili) | sviluppo (29/10), pacchetto `aa-8-correzioni` |
+| `aaSchema`, `head-sportello-sociale`, template `interna-cure-e-assistenza-domiciliari-new`, `albero-dei-ricordi-speciale`, `convegnoAA` | snippet, chunk, template | AA-8 (correzioni dalla verifica del 29/10: `/news/`, nomi, Sportello nel grafo, briciole visibili) | **produzione (29/10)**, pacchetto `aa-8-correzioni` |
 | `ogImage` (shared) e 26 head `head*`, template `convegnoAA` | snippet (nuovo), chunk, template | og:image (fuori perimetro) | **produzione (26/10)**, pacchetto `aa-og-image` |
 | `titoloPagina` (shared) e gli stessi 26 head `head*` + template `convegnoAA`, impostazione `seo.titolo_marchio` | snippet (nuovo), chunk, template | AA-20 (`<title>`: longtitle, marchio una volta sola; `:esc` su description e og:title) | **produzione (27/10, `:esc` 28/10)**, pacchetto `aa-20-title` |
 
