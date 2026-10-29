@@ -29,7 +29,8 @@ if (!$res) return '';
 $opz = function ($k, $def = '') use ($modx, $scriptProperties) {
     return (string) $modx->getOption($k, $scriptProperties, $def);
 };
-$spazi = function ($s) { return trim((string) preg_replace('/\s+/u', ' ', (string) $s)); };
+// testo semplice: niente tag HTML (es. un titolo di libro in <i>…</i> nel pagetitle), spazi normalizzati
+$spazi = function ($s) { return trim((string) preg_replace('/\s+/u', ' ', strip_tags((string) $s))); };
 
 $usaLong = $opz('longtitle', '1') !== '0';
 $long    = $spazi($res->get('longtitle'));
