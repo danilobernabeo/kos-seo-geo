@@ -1,6 +1,6 @@
 # Piano della settimana 2-6 novembre: sprint 2 chiuso, sprint 3 avanti, RetailTune pronto
 
-Documento interno (Danilo e Claude), 30 ottobre 2026. Non va condiviso con KOS né con l'agenzia.
+Documento interno (Danilo e Claude), 30 ottobre 2026, aggiornato la sera stessa (weekend, invii anticipati a RetailTune). Non va condiviso con KOS né con l'agenzia.
 
 ## Obiettivo
 
@@ -8,7 +8,8 @@ Venerdì 6/11 alle 13:00 l'ultimo rilascio in produzione. Entro venerdì sera:
 - **sprint 2 chiuso**: tutte le voci in produzione, verifica completa superata, nota di consegna pronta (consegna formale
   il 13/11);
 - **sprint 3**: in produzione tutto ciò che non dipende da dati altrui; il resto collaudato sullo stage e pronto a uscire;
-- **RetailTune**: pacchetto consegnato prima del kickoff del 5/11 e import dei dati anagrafici fatto.
+- **RetailTune**: il 5/11 è una data di partenza concordata tra KOS e RetailTune, senza orario. Tutto ciò che si può mandare prima
+  va mandato prima: prima parte lunedì 2/11, seconda parte (sedi) appena c'è l'export Yext corretto.
 
 Dal 9/11 il tempo di Danilo va a RetailTune: in quella settimana nessun rilascio in produzione sugli elementi dello
 sprint 1 (verifica di Cerved/ProWeb 9-14/11).
@@ -20,7 +21,7 @@ sprint 1 (verifica di Cerved/ProWeb 9-14/11).
 | 2-6/11 | Ultima finestra di rilascio per lo sprint 2 e per tutto ciò che tocca elementi dello sprint 1 (`aaSchema`, footer AA, head AA) |
 | 3/11 sera | Proposta delle categorie GBP all'agenzia, per avere un riscontro alla call |
 | 4/11 14:00 | Call breve con l'agenzia |
-| 5/11 | Kickoff ufficiale RetailTune |
+| 5/11 | Partenza ufficiale RetailTune (data, nessun orario) |
 | 9-14/11 | Verifica sprint 1: niente rilasci su elementi dello sprint 1; i campi delle pagine KOS (title, description) si possono ancora toccare |
 | 13/11 | Consegna formale sprint 2 |
 | 16-20/11 | Verifica sprint 2 |
@@ -47,7 +48,11 @@ sprint 1 (verifica di Cerved/ProWeb 9-14/11).
 | AA 2, 5, 11, 21 · Schede (linea C) | — | TV anagrafiche AA, import, nodo struttura, scheda contatti dal server |
 | RetailTune | Specifiche del 23/10 non inviate | Pacchetto completo (sotto) |
 
-## Il pacchetto per RetailTune (consegna mercoledì 4/11 sera)
+## Il pacchetto per RetailTune, in due invii
+
+**Primo invio, lunedì 2/11** (non dipende dall'export Yext): punti 2, 4, 5, 6, 7 e la proposta del punto 3, segnalata come
+in attesa del riscontro dell'agenzia. **Secondo invio, mercoledì 4/11 o giovedì 5/11**: il punto 1 dall'export corretto e il
+punto 3 definitivo.
 
 1. **Sedi**: elenco dall'export Yext corretto, una riga per sede, con codice sede (quello attuale, invariato), marchio,
    società, URL canonico della scheda, tipologia, dati anagrafici. Le sedi da non importare (chiuse, uffici) indicate a parte.
@@ -65,54 +70,62 @@ sprint 1 (verifica di Cerved/ProWeb 9-14/11).
 
 Legenda: **D** = Danilo, **C** = Claude. Le stime di Danilo sono in ore effettive.
 
-### Lunedì 2/11 — preparazione
+### Sabato 31/10 e domenica 1/11 — qualche ora per partire prima
+
+Nessun rilascio in produzione nel weekend: solo preparazione e, se serve, stage.
 
 | Quando | Chi | Attività |
 |---|---|---|
-| 8:30-9:30 | C | Stato di partenza in produzione: PDF KOS 8 e AA 3 (classificazione, `X-Robots-Tag`, titoli), alt mancanti, misura del tempo di risposta. Elenco aggiornato delle cose da fare |
-| 8:30-9:00 | D | Invito a KOS per la call sulle correzioni Yext (martedì mattina, 1 ora); account Meilisearch e progetto Google Cloud per la prova della ricerca (15 minuti) |
+| Sabato, 3-4 ore | C | Stato di partenza in produzione (PDF KOS 8 e AA 3, alt mancanti, tempo di risposta); bozza del primo invio a RetailTune (tipologie, attributi, specifiche dei widget, corrispondenza dei campi, domande aperte); bozza delle categorie GBP |
+| Sabato | D | Revisione delle bozze RetailTune e categorie, a blocchi man mano che sono pronte |
+| Domenica, 3-4 ore | C | Elenco delle domande per la call KOS (foglio dei punti aperti + errori attivi delle schede); proposta dei testi KOS 21-23; proposta AA 20 fuori audit |
+| Domenica | D | Verifiche sugli errori attivi delle schede (punto 4 rimasto dal 30/10); validazione AA 20 fuori audit con C |
+
+### Lunedì 2/11 — inviti, primo invio a RetailTune, primi pacchetti
+
+| Quando | Chi | Attività |
+|---|---|---|
+| 8:30-9:00 | D | Invito a KOS per la call sulle correzioni Yext (proposta: martedì 9:00, 1 ora; se le due persone non possono, il primo orario utile entro mercoledì mattina e, nell'attesa, il foglio dei punti aperti con le risposte predefinite e la scadenza); account Meilisearch e progetto Google Cloud (15 minuti) |
 | 9:00-10:00 | D | Stage su `stage.anniazzurri.it` e `stage.kosgroup.com`; filtri GTM per hostname |
-| 9:30-12:30 | C | Domande per la call KOS: foglio `punti-aperti-kos-yext-2026-10-29.xlsx` + errori attivi delle schede (specifica, sezione 5) in un solo elenco, ordinato per impatto, con la risposta predefinita |
-| 10:00-11:00 | D | Verifiche sugli errori attivi delle schede (punto 4 rimasto dal 30/10), così vanno nella call |
-| 9:30-13:00 | C | Proposta delle categorie GBP per l'agenzia (residenze, poi gruppi KOS), per codice, con la motivazione e i concorrenti |
-| 14:00-17:00 | C | KOS 21-23: proposta dei testi (title, description, H1) con le regole del piano; AA 20: proposta per le circa 90 pagine fuori audit |
-| 14:00-15:30 | D | Revisione della proposta delle categorie |
-| 15:30-17:30 | D | Validazione AA 20 fuori audit (con C, a blocchi) |
-| 17:00-18:30 | C | Estensione dello script di verifica alle voci dello sprint 2 e 3 (PDF, title, Article, alt) |
-
-### Martedì 3/11 — call KOS, invio all'agenzia, primi rilasci
-
-| Quando | Chi | Attività |
-|---|---|---|
-| 9:00-10:00 | D | **Call KOS**: Danilo chiede, KOS risponde; le risposte vanno nel foglio durante la call |
-| 10:00-12:00 | D | Correzioni in Yext dalle risposte (o assegnate a KOS con scadenza mercoledì 12:00) |
-| 9:00-12:00 | C | Pacchetti AA 20 giro 2 e, se servono, PDF (KOS 8, AA 3) sullo stage; KOS-2 B (caricamento differito) sullo stage |
+| 9:00-12:00 | C | Ritocchi alle bozze del weekend; pacchetti AA 20 giro 2 e PDF (se servono) sullo stage; KOS-2 B sullo stage |
+| 10:00-12:00 | D | Revisione finale e **primo invio a RetailTune** |
 | 12:00-13:00 | D | Collaudo sullo stage dei pacchetti della mattina |
 | 14:00-15:00 | D | Rilascio in produzione: AA 20 giro 2, PDF, KOS-2 B |
-| 14:00-16:00 | C | Mail all'agenzia: proposta categorie GBP + proposta KOS 21-23 + 6 title lunghi AA, con validazione richiesta entro giovedì 5/11 12:00 |
-| 16:00-16:30 | D | Revisione e **invio della mail all'agenzia** |
-| 14:00-18:30 | C | Pacchetto RetailTune: tipologie, specifiche dei widget, corrispondenza dei campi, domande aperte |
-| 16:30-18:30 | D | KOS 11 (parte tecnica): decisioni sulle pagine dei medici da esporre subito |
+| 14:00-17:00 | C | Mail all'agenzia (categorie GBP + KOS 21-23 + 6 title lunghi AA) pronta; estensione dello script di verifica alle voci dello sprint 2 e 3 |
+| 15:00-18:00 | D | Revisione della mail all'agenzia; KOS 11 (parte tecnica): decisioni sulle pagine dei medici da esporre subito |
+
+### Martedì 3/11 — call KOS, invio all'agenzia
+
+| Quando | Chi | Attività |
+|---|---|---|
+| 9:00-10:00 | D | **Call KOS** (se confermata): Danilo chiede, KOS risponde; le risposte vanno nel foglio durante la call |
+| 10:00-12:00 | D | Correzioni in Yext dalle risposte (o assegnate a KOS con scadenza mercoledì 12:00) |
+| 9:00-12:00 | C | KOS 10 (Article con autore ed editore) sullo stage; alt mancanti (KOS 7, AA 9): proposte |
+| 12:00-13:00 | D | **Invio della mail all'agenzia** (categorie GBP, testi KOS 21-23, 6 title lunghi AA; validazione entro giovedì 5/11 12:00) |
+| 14:00-17:00 | C | Dati dell'export Yext attuale nel formato del secondo invio, così il giorno dell'export corretto basta rilanciare; AA 4 misura della stabilità visiva |
+| 14:00-16:00 | D | Validazione degli alt; collaudo di KOS 10 sullo stage |
+| 16:00-17:00 | D | Rilascio in produzione: KOS 10, alt |
+| 17:00-18:30 | D | Margine; risposte di RetailTune al primo invio |
 
 ### Mercoledì 4/11 — sprint 3, call agenzia, pacchetto RetailTune
 
 | Quando | Chi | Attività |
 |---|---|---|
-| 9:00-12:00 | C | KOS 10 (Article con autore ed editore) e alt mancanti (KOS 7, AA 9) sullo stage; AA 4 misura e correzione della stabilità visiva |
-| 9:00-11:00 | D | Proposte degli alt da validare; controllo che le correzioni Yext siano fatte (scadenza 12:00) |
+| 9:00-12:00 | C | AA 4 correzione della stabilità visiva sullo stage; TV anagrafiche AA sullo stage |
+| 9:00-11:00 | D | Controllo che le correzioni Yext siano fatte (scadenza 12:00); collaudo di AA 4 sullo stage |
 | 11:00-12:00 | D | Preparazione della call con l'agenzia (riscontro sulle categorie, finestra di verifica, testi KOS) |
 | 12:00-13:00 | D | **Export Yext corretto** (se le correzioni sono chiuse) |
 | 14:00-14:30 | D | **Call con l'agenzia** |
 | 13:00-17:00 | C | Dall'export: report delle differenze sulle TV KOS e confronto a tre (sito, Yext, Google); elenco sedi per RetailTune |
-| 14:30-16:00 | D | Correzioni alle categorie dalla call; collaudo di KOS 10 e alt sullo stage |
-| 16:00-17:00 | D | Rilascio in produzione: KOS 10, alt, AA 4 |
-| 17:00-18:30 | C+D | **Invio del pacchetto a RetailTune** |
+| 14:30-16:00 | D | Correzioni alle categorie dalla call |
+| 16:00-17:00 | D | Rilascio in produzione: AA 4 |
+| 17:00-18:30 | C+D | **Secondo invio a RetailTune** (sedi e categorie definitive), se l'export è arrivato; altrimenti giovedì |
 
-### Giovedì 5/11 — kickoff RetailTune, import dei dati
+### Giovedì 5/11 — partenza RetailTune, import dei dati
 
 | Quando | Chi | Attività |
 |---|---|---|
-| mattina | D | **Kickoff RetailTune** |
+| mattina | D | Partenza RetailTune: risposte e richieste del fornitore; secondo invio se non è partito mercoledì |
 | 9:00-12:00 | C | Import delle TV anagrafiche sullo stage (KOS `str.*`, AA nuove TV); KOS 24 attivazione sullo stage; AA 2, 5, 11, 21 e AA 10 sullo stage |
 | 12:00-13:00 | D | Controllo delle validazioni dell'agenzia (KOS 21-23, title AA lunghi) |
 | 14:00-16:00 | D | Collaudo sullo stage: schede KOS e AA, pagine provincia, confronto prima/dopo |
@@ -134,10 +147,11 @@ Legenda: **D** = Danilo, **C** = Claude. Le stime di Danilo sono in ore effettiv
 
 | Rischio | Effetto | Recupero |
 |---|---|---|
+| Le due persone di KOS non disponibili martedì | Correzioni Yext più tardi | Primo orario utile entro mercoledì mattina; nell'attesa il foglio con le risposte predefinite e la scadenza: senza risposta si applica il predefinito |
 | Correzioni Yext non chiuse mercoledì | Import, KOS 24, schede AA e pagine provincia slittano | Linea C, fuori penale: KOS 24 e schede dal 16/11. AA 10 è sprint 3: uscita entro il 27/11 |
 | Agenzia non valida i testi KOS 21-23 entro giovedì | KOS 21-23 non escono il 5/11 | Rilascio 9-12/11: tocca solo campi delle pagine KOS, nessun elemento dello sprint 1 |
 | Rilascio che svuota la cache e lascia pagine senza JSON-LD (come San Lorenzo il 30/10) | KO nella verifica | Controllo dopo ogni rilascio; fino all'automatismo, verifica completa venerdì dopo le 13:00 |
-| Kickoff RetailTune con richieste nuove | Tempo di Danilo sottratto agli sprint | Le richieste nuove vanno nella settimana del 9/11 |
+| Partenza RetailTune con richieste nuove | Tempo di Danilo sottratto agli sprint | Le richieste nuove vanno nella settimana del 9/11 |
 | KOS 11 (medici) senza dati da IT/TuoTempo | Solo parte tecnica | Dati entro il 20/11, uscita entro il 27/11 |
 
 ## Fuori da questa settimana
