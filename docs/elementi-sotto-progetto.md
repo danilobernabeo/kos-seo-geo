@@ -25,6 +25,7 @@ Aggiornare l'elenco a ogni intervento.
 | `aaSchema`, `head-sportello-sociale`, template `interna-cure-e-assistenza-domiciliari-new`, `albero-dei-ricordi-speciale`, `convegnoAA` | snippet, chunk, template | AA-8 (correzioni dalla verifica del 29/10: `/news/`, nomi, Sportello nel grafo, briciole visibili) | **produzione (29/10)**, pacchetto `aa-8-correzioni` |
 | `ogImage` (shared) e 26 head `head*`, template `convegnoAA` | snippet (nuovo), chunk, template | og:image (fuori perimetro) | **produzione (26/10)**, pacchetto `aa-og-image` |
 | `titoloPagina` (shared) e gli stessi 26 head `head*` + template `convegnoAA`, impostazione `seo.titolo_marchio` | snippet (nuovo), chunk, template | AA-20 (`<title>`: longtitle, marchio una volta sola; `:esc` su description e og:title) | **produzione (27/10, `:esc` 28/10)**, pacchetto `aa-20-title` |
+| template `interna-menu-form-registrazione` | template | AA-18 (pulizia: H1 e introtext commentati tolti dalla testata degli eventi) | **produzione (30/10)**, pacchetto `aa-18-commenti`, ripristino `php scripts/deploy/installa-elementi.php /www /paas/c0072/backup-kos-seo-geo/20261030-052126/ripristino.json --scrivi` |
 
 ## kosgroup.com
 
