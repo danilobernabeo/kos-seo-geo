@@ -326,3 +326,13 @@ qsalute, elenchi regionali) e controllo della voce Wikidata del gruppo.
 - **[AA] Title e description (20) e H2 (6), sprint 2**: fonte dei testi `202607_PWC_AnniAzzurri_Ottimizzazioni_Meta_Tag_v2_Ant.xlsx` (stato al 7/7/2026): 88 URL (22 regioni e province, 58 residenze, 8 pagine editoriali) con title, H1 e description attuali e suggeriti. Decisione di luglio: H1 suggeriti non applicati (nomi coerenti con GBP; H1 solo dove mancavano, fatto nello sprint 1); title e description importati con script. Da verificare prima: che sia la versione validata richiesta nel calendario, 6 title suggeriti oltre 65 caratteri, pagine cambiate dopo luglio; le pagine dell'audit fuori dagli 88 URL (title/description lunghi, mancanti, duplicati) vanno coperte a parte. Su alcuni articoli il title attuale ripete «| Anni Azzurri | Anni Azzurri»: probabile suffisso aggiunto dal template a un longtitle che lo contiene già, da correggere nel template.
 - **Segreti scritti nel codice** (emersi dalla baseline del 19 ottobre, sostituiti con segnaposto nel repository): chiave YouTube Data API in `syncYoutubeVideos` e token Arca24 in `arca24Import` (KOS), chiave di cifratura in `countContact` (AA). Quando questi snippet diventano statici, i valori vanno spostati in impostazioni di sistema; valutare con KOS la rigenerazione della chiave YouTube.
 - Attività già registrate per lo sprint 2: cache di `docList`, codifica URL in `listLda`, redirect cartelle documenti (KOS); immagini e PDF mancanti (AA).
+
+## Stage sui domini di terzo livello (30/10, da fare da Danilo nei prossimi giorni)
+
+`stage.anniazzurri.it` e `stage.kosgroup.com` sono attivi. Danilo li associa ai cloud di sviluppo come dominio principale al posto
+di `tcm7b0i8.modx.dev` e `b0k2gmat.modx.dev`. Prima del cambio: certificato Let's Encrypt emesso; dopo: senza password 401 con
+`X-Robots-Tag` (le regole di protezione valgono per ogni host). Il dominio di terzo livello non evita i filtri in GTM, li rende
+necessari: Cookiebot può accettare i sottodomini e il cookie `_ga` su `.anniazzurri.it` / `.kosgroup.com` è condiviso con la
+produzione. Proposta: ID di misurazione GA4 da una tabella di ricerca su `{{Page Hostname}}` (stage → proprietà di test o vuoto)
+e un solo attivatore di eccezione «Stage» sui tag di conversione (Ads, Meta). Dopo il cambio, Claude aggiorna
+`docs/ambienti-di-prova.md` e gli esempi degli script di collaudo (`--stage`, `--base`).
