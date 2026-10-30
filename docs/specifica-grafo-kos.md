@@ -1,7 +1,7 @@
 # Specifica del grafo e delle schede Google (stadio 7)
 
-Danilo Bernabeo · 29 ottobre 2026 · versione 2, dopo la revisione indipendente · documento interno, non va condiviso
-così com'è con KOS o con l'agenzia
+Danilo Bernabeo · 30 ottobre 2026 · versione 3, con il controllo delle schede e delle fonti Google del 29/10 · documento
+interno, non va condiviso così com'è con KOS o con l'agenzia
 
 Questa specifica guida il lavoro sulle schede Google Business Profile di KOS e Anni Azzurri (138 schede, stadio 7) e
 tiene allineati tre oggetti che descrivono la stessa sede: la scheda Google, la pagina del sito e il dato
@@ -19,6 +19,21 @@ ai risultati arricchiti e al pannello informativo (documentato da Google), e all
 directory, che verifichiamo noi. Per le ricerche «vicino a me» decide la scheda Google: per questo la scheda corretta,
 alimentata dallo stesso archivio del grafo, è la parte che conta di più. Da non promettere: presenza nelle risposte
 AI «grazie allo schema», percentuali di traffico AI, punteggi di visibilità.
+
+## 1bis. Le tre fasi
+
+Il lavoro sulle schede si divide in tre fasi. La migrazione sposta i dati e non cambia nulla: le migliorie vengono
+dopo, una alla volta, così ogni effetto si attribuisce a un solo cambiamento e si limitano le nuove verifiche che
+Google chiede dopo alcune modifiche.
+
+| Fase | Quando | Cosa |
+| --- | --- | --- |
+| 1. Adesso | Prima della migrazione | Baseline delle misure (§5, «Misura»); avvio del trasferimento della proprietà dei profili (§5, «Account»); correzione degli errori attivi (§5, «Errori attivi») con lo strumento che oggi alimenta le schede, cioè Yext |
+| 2. Migrazione | Passaggio Yext → RetailTune | I dati passano senza modifiche: codici sede, nomi, categorie e siti restano come sono; nessuna modifica ai profili nelle due settimane del passaggio |
+| 3. Dopo, a passi | 1-2 settimane tra un passo e l'altro | Siti e UTM; categorie delle residenze; categorie delle strutture psichiatriche e delle altre strutture KOS; descrizioni; telefoni; duplicati e schede da chiudere decisi da KOS |
+
+Prima di mandare a KOS l'elenco degli errori attivi, Danilo verifica di persona la proprietà delle schede e la
+baseline (decisione del 30/10).
 
 ## 2. Entità e relazioni
 
@@ -64,8 +79,9 @@ Gli identificativi già pubblicati non cambiano: sono basati sugli indirizzi del
 RetailTune, e restano gli stessi con la migrazione. Si aggiungono, in una nuova versione della convenzione da
 consegnare con lo sprint che li usa:
 
-1. `#department` per i reparti nella stessa sede. Il nome del reparto è «{nome della sede} {nome del reparto}», come
-   chiede Google per i reparti.
+1. `#department` per i reparti nella stessa sede. Il nome del reparto è «{nome della sede} {nome del reparto}»: è una
+   convenzione del progetto, compatibile con Google, che chiede solo che il nome del reparto sia diverso da quello
+   della sede (esempi: «Centro ottico Walmart», «Reparto di dermatologia del Massachusetts General Hospital»).
 2. Le società del gruppo, con la partita IVA come frammento (§2). È l'unico caso in cui il frammento non è fisso per
    tipo: un'unica pagina descrive più società.
 
@@ -87,7 +103,7 @@ aggiunto a `scripts/collaudo/` (oggi `verifica-sprint-1.mjs` controlla solo gli 
 
 | Uscita | Come | Chi |
 | --- | --- | --- |
-| Scheda Google | Sincronizzazione di RetailTune: nome, indirizzo, telefono, sito, categorie, orari e orari speciali, attributi, foto, descrizione, link di prenotazione; RetailTune gestisce anche le risposte alle recensioni | RetailTune, su dati validati da KOS |
+| Scheda Google | Sincronizzazione di RetailTune: nome, indirizzo, telefono, sito, categorie, orari e orari speciali, attributi, foto, descrizione; RetailTune gestisce anche le risposte alle recensioni. I link delle attività locali (prenotazione, appuntamenti) non sono disponibili via API né via foglio di lavoro: se RetailTune non li gestisce, si curano a mano scheda per scheda (punto aperto 9) | RetailTune, su dati validati da KOS |
 | Pagina del sito | Import nelle TV `str.*` di MODX (elenco in `docs/kos-24.md`, più `str.codice` e `str.societa`): una volta prima della migrazione dall'export Yext corretto, poi dall'API di RetailTune con un'importazione notturna | Progetto (canale e responsabile: punto aperto 7) |
 | Dato strutturato | Letto dalle stesse TV della pagina, quindi pagina e markup non possono divergere | Progetto (libreria comune) |
 
@@ -105,11 +121,14 @@ Regole:
 - **Nome ufficiale.** Il nome della sede è `str.nome` (RetailTune → TV); la scheda Google usa lo stesso, carattere per
   carattere.
 - **Codice sede.** Ogni sede ha un codice stabile, lo stesso in RetailTune, nella scheda Google («Codice negozio») e
-  nella TV `str.codice`. Negli export del 26/10 ci sono 92 codici `KCA00_…`, 18 numerici, 18 liberi («Temporary 1»,
-  «Villalba», «BGOMAN», «RAACampiBisenzio»…) e 10 vuoti. Vanno normalizzati una sola volta, con il codice che usa
-  RetailTune (punto aperto 3), con un caricamento massivo dal pannello di Google Business Profile in una data fissata con
-  RetailTune, fuori dalla finestra di passaggio, registrato nel registro con origine «migrazione». È l'unica eccezione
-  alla regola «nessuna modifica a mano su Google».
+  nella TV `str.codice`. Negli export del 26/10 ci sono 91 codici `KCA00_…`, 18 numerici, 19 liberi (tra cui «KCA08202»,
+  «Temporary 1», «Villalba», «BGOMAN», «RAACampiBisenzio») e 10 vuoti. **I codici non si toccano** finché RetailTune non
+  conferma per iscritto come abbina le schede: per codice sede o per ID del profilo Google. Il caricamento con foglio
+  di lavoro non cambia il codice di una sede esistente: ne crea una duplicata. Se un cambio serve, si fa scheda per
+  scheda (Altro → Impostazioni del profilo → Impostazioni avanzate → Codice negozio) o via API, prima su una sola
+  scheda con un'esportazione di controllo, poi sulle altre, registrando ogni modifica con origine «migrazione». Se
+  RetailTune abbina per ID del profilo, la normalizzazione non serve: nella TV `str.codice` va il codice che usa
+  RetailTune.
 - **Confronto a tre** (sito, RetailTune, export Google) dopo ogni importazione e ogni trimestre; le differenze si
   correggono in RetailTune. Prima del confronto i valori si normalizzano: telefono in formato internazionale
   (+39…) senza spazi; abbreviazioni dell'indirizzo sciolte («V.», «V.le», «P.zza»); URL senza parametri e senza barra
@@ -126,7 +145,30 @@ Sei gruppi di sedi (export del 26/10 in `kosgroup/dati/voce-24/gbp/`): Anni Azzu
 Extra Yext (26), Poliambulatori (14), Psichiatria (9), Riabilitazione (14). Danilo indica KOS come proprietario;
 `docs/kos-24.md` riporta però che i profili sono collegati all'organizzazione Google di Yext, e nell'account di Danilo
 il gruppo Anni Azzurri non compare. Il trasferimento della proprietà di tutti i gruppi a un account KOS va verificato
-nel pannello **prima** che Yext venga dismesso (punto aperto 2): senza, si perde l'accesso alle schede.
+nel pannello **prima** che Yext venga dismesso (punto aperto 2): senza, si perde l'accesso alle schede. Vincoli di
+Google: trasferisce la proprietà principale solo il proprietario principale, e solo a chi è già proprietario o
+gestore; un nuovo utente aspetta 7 giorni prima di poterla ricevere; per i gruppi di sedi il percorso è Impostazioni
+gruppo → Gestisci utenti. Come si porta una sede fuori dall'organizzazione di un'agenzia non è documentato: va chiesto
+a Yext. Il calendario della dismissione di Yext deve lasciare almeno una o due settimane per i trasferimenti.
+
+### Errori attivi (fase 1)
+
+Schede che oggi portano le persone nel posto sbagliato o dichiarano cose non vere. Si correggono subito via Yext, che
+alimenta le schede fino alla migrazione. Controllo del 29/10 (pagine aperte senza seguire i reindirizzamenti).
+
+| Scheda | Errore | Correzione proposta |
+| --- | --- | --- |
+| Beata Corte (Serrapetrona) | Il sito reindirizza alla pagina di Corte Orero, in Liguria | Sito = pagina di Beata Corte, se esiste; altrimenti chiarire con KOS |
+| Residenza Anni Azzurri Villa Olga | Il sito reindirizza (301) alla residenza Idice | Decisione di KOS: chiusura o pagina propria |
+| Residenze La Margherita e Villalba | Chiuse, schede pubblicate | Segnare come chiuse definitivamente (Modifica profilo → Orario; reversibile), dopo aver esportato le recensioni |
+| Villamare Neomesia | Struttura trasferita a Ville di Nozzano; stessa località e telefono; sito che reindirizza a Ville di Nozzano | Unire alla scheda di Ville di Nozzano (le recensioni si sommano) o chiudere |
+| Istituto Neuroscienze Neomesia | Sospesa; sito che reindirizza alla pagina delle notizie; categoria principale «Medico» | Prima il motivo della sospensione, poi sito e categoria |
+| Fisioclinics; Punto prelievi Centro Ambulatoriale Civitanova Marche | Il sito reindirizza a pagine che non sono la struttura (prenotazioni, una notizia) | Sito = pagina della struttura su kosgroup.com |
+| 10 strutture psichiatriche (Casa Cima, Casa Mioglia, Casa Pero, Casa Sampeyre, Casa Sanfré, Casa Sanremo, Casa Varazze, Casa Villa Maura, Corte Orero, Corte Carcare) | Categoria principale «Psichiatra», da professionista | Categoria della struttura, scelta per codice (punto aperto 4); è il cambio con più effetto, va misurato |
+| Villa Sant'Alessandro | Descrizione di un'altra struttura (Istituto Neuroscienze Neomesia) | Descrizione propria |
+| 11 descrizioni promozionali («le migliori cure palliative», «leader nel territorio», «eccellenza», «all'avanguardia») e 12 con espressioni da valutare («garantisce», «unico», «innovativo») | Contrarie alle regole di Google sulle descrizioni e alla L. 145/2018 | Riscrittura informativa, massimo 750 caratteri, niente URL né promozioni |
+| «Di proprietà di donne» (Borgomanero, Idice, Laboratorio Analisi Gamma, Punto Prelievi Selemar); «LGBTQ+ friendly» e «Luogo sicuro per transgender» (Beata Corte) | Attributi di identità: sono dichiarazioni pubbliche dell'azienda | Conferma di KOS, altrimenti si tolgono |
+| CSOx, Polo Diagnostico Villa dei Pini, Punto prelievi Civitanova | Orari speciali del 2020 e del 2023 | Eliminare (Modifica profilo → Orario → Orari speciali) |
 
 ### Schede da sistemare prima della migrazione
 
@@ -140,10 +182,9 @@ Dagli export del 26/10. La decisione su ciascuna spetta a KOS; quella indicata �
 | Villalba (codice «Villalba») e Poliambulatorio Villalba | Due schede, stesso URL | Una sola scheda (richiesta di unione dei duplicati a Google, non cancellazione) |
 | Poliambulatorio Centro Cardinal Ferrari e Centro Cardinal Ferrari | Due schede, stesso URL | Una sola, salvo che il poliambulatorio abbia ingresso e orari propri: allora pagina propria e URL proprio |
 | Polo Diagnostico Villa dei Pini e Villa dei Pini Civitanova Marche | Due schede, stesso URL | Come sopra |
-| Anni Azzurri a Casa Monza e Anni Azzurri a Casa Milano | Due schede con area servita per lo stesso servizio, stesso URL | Una sola scheda con area servita (Monza e Milano), indirizzo nascosto |
+| Anni Azzurri a Casa Monza e Anni Azzurri a Casa Milano | Due schede con area servita per lo stesso servizio, stesso URL; nomi con descrizione del servizio e città | Una sola scheda con area servita (Monza e Milano), indirizzo nascosto, nome reale del servizio (`str.nome`) |
 | Residenze Anni Azzurri (ufficio aziendale), KOS Servizi S.c.ar.l. | Schede di uffici, non di sedi per il pubblico | Tenerle solo se l'ufficio riceve il pubblico; sito con l'URL canonico, non `http://www.` |
-| Istituto Neuroscienze Neomesia | Sospesa, sito su neomesia.com | Capire con KOS il motivo della sospensione prima di qualsiasi modifica |
-| Villamare Neomesia, Fisioclinics, Punto prelievi Centro Ambulatoriale Civitanova Marche, CSOx Centro Stress Ossidativo, Clinica Dentale Villa dei Pini | Sito su domini storici o esterni (neomesia.com, polodiagnostico.it, centrostressossidativo.it, laclinicadentale.com) | Nuovo sito = pagina corrispondente su kosgroup.com, da aggiornare **prima** dei reindirizzamenti dei domini storici (le linee guida vietano URL che reindirizzano) |
+| CSOx Centro Stress Ossidativo, Clinica Dentale Villa dei Pini | Sito su domini esterni (http://www.centrostressossidativo.it, laclinicadentale.com senza canonical); i reindirizzamenti dei domini storici sono già attivi (Neomesia, Fisioclinics e punto prelievi sono tra gli errori attivi) | Sito = pagina della struttura su kosgroup.com, o la forma https definitiva |
 | Casa Sanfré | Sito vuoto | Pagina su kosgroup.com, se esiste; altrimenti punto aperto |
 | Hospice San Giorgio a Colonica, Hospice Beati Coniugi Martin | Categoria principale «Casa di riposo» e «Ospedale» | Categoria coerente con l'hospice (punto aperto 4) |
 | Centro Santo Stefano Cagli | Non pubblicata | Completare la verifica |
@@ -154,11 +195,24 @@ Dagli export del 26/10. La decisione su ciascuna spetta a KOS; quella indicata �
 | --- | --- | --- |
 | Nome | Il nome ufficiale (`str.nome`), senza parole chiave aggiunte («RSA», città, servizi) | [Linee guida per la rappresentazione](https://support.google.com/business/answer/3038177) |
 | Telefono | Solo numeri ufficiali della sede, gli stessi del sito e della carta dei servizi; niente numeri di tracciamento | Linee guida; regola del progetto |
-| Sito | L'URL canonico della pagina della sede; nella scheda RetailTune aggiunge `utm_source=google&utm_medium=organic&utm_campaign=gbp` | Proposta a KOS del 29/10 |
+| Sito | L'URL canonico della pagina della sede, che risponde 200 senza reindirizzamenti; nella scheda RetailTune aggiunge `utm_source=google&utm_medium=organic&utm_campaign=gbp` | Proposta a KOS del 29/10 |
+| Link appuntamenti | La pagina di prenotazione della struttura, che risponde senza reindirizzamenti, senza parametri di sessione | Regola del progetto; oggi 9 schede hanno link che reindirizzano (polodiagnostico.it, myolab.it, clinicadentale.sstefano.it), uno è scritto due volte (Punto Prelievi Salus Villalba), uno ha un parametro di sessione di GA (Villalba) |
 | Indirizzo | Uguale a quello della pagina e del markup | Archivio |
 
 Con `utm_medium=organic` il traffico dalle schede resta dentro «Organic Search» in GA4, distinguibile per campagna: è
 una scelta voluta, da confermare con KOS insieme agli UTM.
+
+Telefoni, casi da decidere con KOS (non correzioni d'ufficio):
+
+- **Numero Unico (CUP)** come principale su 9 schede (Macerata, Civitanova Marche, Porto Potenza Picena, Pesaro). Google
+  chiede un numero che contatti la singola sede e, se possibile, locale. Alternativa: numero diretto della sede come
+  principale, se esiste e risponde, e Numero Unico come aggiuntivo (fino a due numeri oltre al principale).
+- **Cellulari** come principale su 3 schede (servizio domiciliare di Monza, Neomesia, punto prelievi di Civitanova):
+  ammessi, da confermare come numeri ufficiali.
+- **Numero verde 800** come secondo numero su 49 residenze e principale della scheda dell'ufficio: va bene come
+  aggiuntivo.
+- **Numeri condivisi** tra due schede (Campi Bisenzio e Hospice San Giorgio; PGR Milano e Hospice Beati Coniugi Martin;
+  le due Cardinal Ferrari; Villamare e Ville di Nozzano): da chiarire se sono centralini comuni dello stesso complesso.
 
 Verifica: il nome di ogni scheda è uguale a `str.nome`; ogni campo «Sito» punta a `kosgroup.com` o `anniazzurri.it`, a una
 pagina che risponde 200 con canonical uguale all'URL senza parametri.
@@ -210,10 +264,11 @@ Quando e come:
 
 - Dopo la finestra di passaggio da Yext a RetailTune, durante la quale non si modificano i profili
   (`docs/piano-sprint-1.md`).
-- A passi distanziati di 1-2 settimane, per non cambiare tutto insieme su 138 schede (molte modifiche simultanee possono
-  portare a revisioni o sospensioni): prima i codici sede, poi i siti e gli UTM, poi le categorie.
+- A passi distanziati di 1-2 settimane: ogni modifica passa una revisione di Google e una nuova categoria può richiedere
+  una nuova verifica dell'attività; a passi si limitano le verifiche e ogni effetto si attribuisce a un solo
+  cambiamento. Prima i siti e gli UTM, poi le categorie.
 - Misura: posizione nelle ricerche «RSA <città>» e «casa di riposo <città>» per 10 residenze, prima del cambio e dopo 4-6
-  settimane. Il termine di confronto sono i concorrenti nelle stesse ricerche, non le strutture KOS (che in quelle
+  settimane (vedi anche «Misura» sotto). Il termine di confronto sono i concorrenti nelle stesse ricerche, non le strutture KOS (che in quelle
   ricerche non compaiono). Tornare indietro sulla categoria è possibile, ma la storia del posizionamento non si
   recupera: per questo la misura va preparata prima del cambio.
 
@@ -228,9 +283,30 @@ almeno:
 
 - categorie per professionisti su strutture: «Pediatra» (13), «Psicologo» (11), «Logopedista» (10) nei Centri
   ambulatoriali; «Fisiatra», «Fisioterapista» nella Riabilitazione; «Psichiatra» in Psichiatria ed Extra Yext;
-- categorie estranee: «Sala biliardi» su 2 Centri ambulatoriali, «Automazione e robotica» in Extra Yext.
+- categorie estranee: «Sala biliardi» su 2 Centri ambulatoriali, «Automazione e robotica» in Extra Yext, «Banca del
+  sangue» su un punto prelievi, «Centro anziani» su un centro ambulatoriale, «Ospedale» come principale di un
+  poliambulatorio (Villa Pineta Modena);
+- altre categorie da professionista: «Audiologo», «Chirurgo orale e maxillo-facciale»; nelle residenze, Sestri Ponente
+  («Pediatra», «Psicologo»), Conero («Fisiatra»), Dorica («Clinica per la salute mentale», «Casa di riposo» come
+  aggiuntiva);
+- cliniche dentali: principale = categoria della struttura (clinica o studio dentistico); «Dentista», «Endodontista»,
+  «Ortodontista» solo se corrispondono a specialità erogate;
+- strutture psichiatriche: «Psichiatra» è la principale di 10 strutture (tra gli errori attivi).
 
 Verifica: come per le residenze, gruppo per gruppo.
+
+### Misura
+
+La baseline si prende in fase 1, prima di qualsiasi correzione, altrimenti si perde il «prima»:
+
+- **Rendimento delle schede**: visualizzazioni, chiamate, indicazioni, clic sul sito, per tutti i profili insieme
+  (Gestione dei profili → Azioni → Approfondimenti), ogni mese.
+- **Search Console, rendimento dell'AI generativa**: impressioni nelle AI Overview e nella modalità AI per pagina,
+  ogni mese (il report non compare se le impressioni sono poche).
+- **Posizioni**: «RSA <città>», «casa di riposo <città>» e le ricerche equivalenti per le strutture psichiatriche, su un
+  campione, prima di ogni passo e 4-6 settimane dopo, confrontate con i concorrenti nelle stesse ricerche.
+- **Esattezza dei dati di sede nelle risposte degli assistenti AI**: campione di sedi confrontato con l'archivio (controllo
+  interno).
 
 ### Reparti, servizi e professionisti
 
@@ -246,9 +322,12 @@ Verifica: come per le residenze, gruppo per gruppo.
 | Regola | Dove vale | Verifica |
 | --- | --- | --- |
 | Solo numeri di telefono ufficiali della sede | Scheda, pagina, markup, risposte | Confronto a tre |
-| Comunicazione sanitaria solo informativa, senza elementi promozionali o suggestivi (L. 145/2018, art. 1 c. 525; Codice deontologico artt. 55-56) | Descrizione della scheda, post, pagine | Revisione dei testi prima della pubblicazione |
+| Comunicazione sanitaria solo informativa, senza elementi promozionali o suggestivi (L. 145/2018, art. 1 c. 525; Codice deontologico artt. 55-56) | Descrizione della scheda, post, pagine | Revisione dei testi prima della pubblicazione. La L. 34/2026 sulle false recensioni (Capo IV) riguarda ristorazione e turismo e non nomina strutture sanitarie; da ricontrollare con le linee guida AGCM |
 | Nelle risposte alle recensioni mai dati sanitari, mai confermare che l'autore è un paziente, mai citare cure | Risposte (gestite da RetailTune) | Campione mensile di 20 risposte |
 | Richiesta di recensione uguale per tutti, senza incentivi né filtri sui soddisfatti | Processi di KOS | Istruzioni scritte al personale |
+| Nessuna richiesta attiva di recensioni nelle strutture psichiatriche (decisione del 29/10), individuate per tipologia e non per categoria Google: 16 strutture (Villa Jolanda, Villa dei Pini Firenze, Beata Corte, Villa Rosa, Corte Carcare, Villa Armonia, Ville di Nozzano, Villa Azzurra, Corte Orero, Casa Cima, Casa Villa Maura, Casa Sanfré, Casa Mioglia, Casa Sanremo, Casa Varazze, Casa Pero); 4 da confermare con la direzione sanitaria (Villa Sant'Alessandro, Istituto Neuroscienze Neomesia, Casa Sampeyre, Villa Margherita Vicenza) | Processi di KOS | Istruzioni scritte |
+| Foto: consenso scritto per ogni volto (ospiti, pazienti, personale), nessun dettaglio sanitario riconoscibile, foto che rappresentano la realtà | Schede, sito | Revisione prima del caricamento |
+| Descrizioni: massimo 750 caratteri, niente URL, promozioni, prezzi; post senza contenuti su farmaci | Schede | Revisione dei testi |
 | Il markup descrive solo ciò che è scritto nella pagina | Sito | Rich Results Test sul codice |
 | Nessuna modifica a mano su Google (eccezione: codici sede, §4) | Schede | Ogni trimestre: differenze tra export Google e dati RetailTune; ogni differenza senza riga nel registro è una modifica a mano. La colonna «Aggiornamenti Google» dell'export segnala anche le modifiche proposte da Google |
 
@@ -283,20 +362,27 @@ accanto agli export: `kosgroup/dati/voce-24/gbp/registro.csv`.
 | Archivio RetailTune e sincronizzazione delle schede | In avvio (contratto in firma) |
 | Categorie delle residenze | Decise il 29/10, da validare con PWC sui codici |
 | UTM | Proposti a KOS il 29/10 |
-| Categorie KOS, codici sede, schede da sistemare, registro | Previsti con la migrazione, a passi |
+| Errori attivi | Fase 1, dopo la verifica di Danilo |
+| Categorie KOS, schede da sistemare, registro | Fase 3, a passi |
+| Codici sede | Intoccabili fino alla risposta di RetailTune |
 
 ## 9. Punti aperti
 
 1. **Tabella struttura → società** che gestisce ciascuna struttura (la sta chiedendo Danilo).
 2. **Proprietà dei profili**: trasferimento di tutti i gruppi da Yext a un account KOS, verificato nel pannello prima
    della dismissione di Yext.
-3. **Codice sede di RetailTune**: quale usano per agganciare le schede, e data del caricamento massivo.
+3. **Abbinamento delle schede in RetailTune**: per codice sede o per ID del profilo Google, con conferma scritta (anche da
+   Yext finché sincronizza).
 4. **Codici delle categorie** da RetailTune: le due «Casa di riposo», le due «Servizio di assistenza domiciliare»,
    «Casa di cura», «Centro anziani», «Assistenza agli anziani», hospice; quale usa Korian.
 5. **Schede dei singoli medici**: KOS le vuole?
 6. **Schede da sistemare** (tabella del §5): decisione di KOS su ciascuna.
 7. **Importazione notturna da RetailTune**: canale (API), chi la gestisce, dove gira.
 8. **Validazione delle categorie con PWC** e conferma degli UTM con KOS.
+9. **Link delle attività locali**: quali campi gestisce RetailTune (sito, link appuntamenti); i link non gestibili via
+   API si curano a mano.
+10. **Telefoni**: Numero Unico, cellulari, numeri condivisi (§5).
+11. **Errori attivi**: verifica di Danilo (proprietà e baseline per prime), poi invio a KOS.
 
 ## 10. Riferimenti
 
@@ -308,6 +394,9 @@ accanto agli export: `kosgroup/dati/voce-24/gbp/registro.csv`.
   `kosgroup/dati/voce-24/gbp/` (export delle schede), `anniazzurri/dati/accreditamento-residenze-2026-10-29.xlsx`.
 - Revisione indipendente del 29/10 (modello Fable 5.1, senza il contesto della discussione): 25 rilievi, tutti
   recepiti in questa versione salvo dove indicato nel §11.
+
+Controllo delle schede e delle fonti Google del 29/10 (documento «Scostamenti della specifica», riservato, fuori da
+git): 8 correzioni e 13 lacune, recepite in questa versione.
 
 ## 11. Rilievi della revisione non recepiti o recepiti in parte
 
