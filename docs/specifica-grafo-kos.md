@@ -33,7 +33,8 @@ Google chiede dopo alcune modifiche.
 | 3. Dopo, a passi | 1-2 settimane tra un passo e l'altro | Siti e UTM; categorie delle residenze; categorie delle strutture psichiatriche e delle altre strutture KOS; descrizioni; telefoni; duplicati e schede da chiudere decisi da KOS |
 
 Prima di mandare a KOS l'elenco degli errori attivi, Danilo verifica di persona la proprietà delle schede e la
-baseline (decisione del 30/10).
+baseline (decisione del 30/10). Proprietà verificata il 30/10 (account KOS su tutti i gruppi); baseline in
+`docs/baseline-schede-20261030.md`.
 
 ## 2. Entità e relazioni
 
@@ -369,8 +370,8 @@ accanto agli export: `kosgroup/dati/voce-24/gbp/registro.csv`.
 ## 9. Punti aperti
 
 1. **Tabella struttura → società** che gestisce ciascuna struttura (la sta chiedendo Danilo).
-2. **Proprietà dei profili**: trasferimento di tutti i gruppi da Yext a un account KOS, verificato nel pannello prima
-   della dismissione di Yext.
+2. **Proprietà dei profili**: verificato da Danilo il 30/10, tutti i gruppi hanno come proprietario principale un account
+   KOS. Resta da togliere l'accesso di Yext alla dismissione e da dare a RetailTune il ruolo di gestore.
 3. **Abbinamento delle schede in RetailTune**: per codice sede o per ID del profilo Google, con conferma scritta (anche da
    Yext finché sincronizza).
 4. **Codici delle categorie** da RetailTune: le due «Casa di riposo», le due «Servizio di assistenza domiciliare»,
