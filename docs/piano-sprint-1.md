@@ -190,7 +190,7 @@ collaudate): pacchetti `aa-8-correzioni` (aaSchema, briciole visibili su 3 templ
 (titoli senza tag HTML); backup in produzione `~/backup-kos-seo-geo/20261029-050825` (`aa-20-title`) e `20261029-050826` (`aa-8-correzioni`), ripristino con `installa-elementi.php /www <cartella>/ripristino.json --scrivi`, prima il secondo. Seconda esecuzione: tutte le voci superate. Restano: blocco LocalBusiness di Yext nel DOM renderizzato
 delle schede struttura (KOS 24 e AA sprint 3; il Rich Results Test su Vico Mercati rileva un solo Breadcrumb), H1 doppi delle
 pagine dei convegni AA (lavori extra) e di un evento KOS, due blocchi JSON-LD in un approfondimento KOS. Nota di consegna
-aggiornata. Terza esecuzione il 6/11.
+aggiornata. Esecuzione del 30/10 (9:35, prima dell'invio): stessi residui; nuovo KO su Residenza San Lorenzo (risorsa 64) senza JSON-LD: cache della pagina scritta alle 03:06:49, due secondi dopo lo svuotamento della cache del rilascio extra aa-news-muba, con l'uscita di `aaSchema` vuota (snippet corretto se eseguito: `scripts/checks/aa-schema-risorsa.php`). Cancellato il file di cache della risorsa, pagina verificata con un solo `@graph` e briciole uguali a quelle visibili. Da fare: controllo delle pagine in cache senza JSON-LD alla fine di ogni installer che svuota la cache. Terza esecuzione il 6/11.
 
 ## Title, description e H1 (AA-20, KOS 21-23, sprint 2) — deciso il 27/10
 
