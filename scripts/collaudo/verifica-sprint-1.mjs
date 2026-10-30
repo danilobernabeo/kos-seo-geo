@@ -312,8 +312,10 @@ async function controllaCache(s, pagineHtml) {
 function analizzaPagina(s, url, r) {
   const h = r.corpo;
   const head = (/<head\b[\s\S]*?<\/head>/i.exec(h) || [''])[0];
-  const can = [...h.matchAll(/<link\b[^>]*rel=["']canonical["'][^>]*>/gi)].map(m => entita((/href=["']([^"']+)["']/i.exec(m[0]) || [])[1] || ''));
-  const h1 = [...h.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)].map(m => testo(m[1]));
+  // commenti HTML esclusi: un <h1> o un canonical commentati non esistono per Google (es. convegni AA, 30/10)
+  const hv = h.replace(/<!--[\s\S]*?-->/g, '');
+  const can = [...hv.matchAll(/<link\b[^>]*rel=["']canonical["'][^>]*>/gi)].map(m => entita((/href=["']([^"']+)["']/i.exec(m[0]) || [])[1] || ''));
+  const h1 = [...hv.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)].map(m => testo(m[1]));
   const robots = (/<meta\b[^>]*name=["']robots["'][^>]*content=["']([^"']*)["']/i.exec(head) || [])[1] || '';
   const ld = [...h.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].map(m => m[1]);
   const locali = [...h.matchAll(/<(?:link|script)\b[^>]*(?:href|src)="([^"]+\.(?:css|js)(?:\?[^"]*)?)"/gi)]
