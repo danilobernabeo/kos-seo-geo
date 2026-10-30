@@ -85,7 +85,7 @@ Interventi del singolo sito:
   - Tempi proposti: novembre test di categoria e correzioni (in Yext, con le correzioni di KOS); dicembre misura,
     descrizioni e categorie secondarie; da gennaio recensioni e misura AEO periodica.
 
-- **[KOS] Marchio « | KOS» aggiunto dal template** (proposta del 29/10, da quotare o da includere in KOS 21-23). Oggi
+- **[KOS] Marchio « | KOS» aggiunto dal template** (proposta del 29/10; **30/10 Danilo: si fa, nel pacchetto degli head KOS con l'import dei title di KOS 21-23, con valutazione a parte; a fine progetto Danilo decide se rientra nel perimetro o va a consuntivo**). Oggi
   il title di kosgroup.com è il longtitle così com'è, con « | KOS» scritto a mano in ogni pagina (dimenticato o doppio
   in alcune, e `seoSchema` deve toglierlo per ricavare i nomi). Intervento: lo snippet comune `titoloPagina` già in uso su
   anniazzurri.it negli head KOS consolidati (`seo.titolo_marchio` = «KOS»), più la pulizia dei longtitle esistenti con
