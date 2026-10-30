@@ -147,9 +147,10 @@ for pos, formato, sizes in TESSERE:
     if formato and (formato == 'v') != vert:
         sys.exit(f'«{nome}» non è {"verticale" if formato == "v" else "orizzontale"}: non va nella casella {pos}')
     alt = CONF['alt'].get(nome) or f"Laboratorio al MUBA con la {g['nome']}"
+    em = g.get('etichetta_mosaico') or g['etichetta']   # targhetta sulle foto del mosaico (nel visore resta l'etichetta corta)
     righe.append(f'<button type="button" class="muba-tessera muba-tessera-{pos}" data-tessera="{pos}" data-indice="{i}" '
-                 f'data-formato="{"v" if vert else "o"}" aria-label="{e(alt)} ({e(g["etichetta"])}): apri la galleria">{picture(f, sizes)}'
-                 f'<span class="muba-tessera-nome" aria-hidden="true">{e(g["etichetta"])}</span></button>')
+                 f'data-formato="{"v" if vert else "o"}" aria-label="{e(alt)} ({e(em)}): apri la galleria">{picture(f, sizes)}'
+                 f'<span class="muba-tessera-nome" aria-hidden="true">{e(em)}</span></button>')
 
 parole = {1: 'Una', 2: 'Due', 3: 'Tre', 4: 'Quattro', 5: 'Cinque', 6: 'Sei', 7: 'Sette'}
 invito = CONF['mosaico'].get('invito') or f"{parole.get(len(gruppi), len(gruppi))} residenze, un solo laboratorio"
@@ -159,7 +160,8 @@ righe.append(f'<div class="muba-mosaico-invito"><p class="muba-mosaico-frase">{e
 dati = {
     'base': URL,
     # 'c': collegamenti della didascalia, uno per struttura (un gruppo può riunire più strutture)
-    'gruppi': [{'e': g['etichetta'], 'n': g['nome'], 'l': g['luogo'],
+    # 'm': targhetta del mosaico nella pagina
+    'gruppi': [{'e': g['etichetta'], 'm': g.get('etichetta_mosaico') or g['etichetta'], 'n': g['nome'], 'l': g['luogo'],
                 'c': [{'n': x['nome'], 'u': x['url']} for x in g['collegamenti']]} for g in gruppi],
     'foto': [{'s': f['slug'], 'g': f['g'], 'w': f['w'], 'h': f['h'], 'w8': f['w8'],
               'a': CONF['alt'].get(f['p'].name) or f"Laboratorio al MUBA con la {gruppi[f['g']]['nome']}",

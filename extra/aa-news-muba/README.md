@@ -59,7 +59,7 @@ della galleria e dei video.
 ## Galleria: come si aggiornano le foto
 
 1. Originali in `foto-sorgenti/<cartella>/`, così come arrivano (rotazione, misure e metadati li sistema lo script).
-2. Una residenza nuova: si aggiunge in `foto.json` → `gruppi` (etichetta del pulsante, nome, luogo, slug, cartelle,
+2. Una residenza nuova: si aggiunge in `foto.json` → `gruppi` (etichetta del pulsante del visore, `etichetta_mosaico` per la targhetta blu sulle foto del mosaico — «Residenza …», «Residenze …» se il gruppo riunisce più strutture, deciso il 30/10 —, nome, luogo, slug, cartelle,
    `collegamenti`: uno per struttura, con nome e indirizzo). L'ordine dei gruppi è quello dell'elenco. La frase del
    mosaico (`mosaico.invito`, oggi «Oltre 50 ospiti, un solo laboratorio», dal testo del 29/10) si cambia a mano. Scatti doppi: nome del file in
    `escluse`. Con più di 5 pulsanti va rimisurato sullo stage il punto (oggi 992 px, con il titolo del visore nascosto fino a 1199) da cui i pulsanti sostituiscono il menu.

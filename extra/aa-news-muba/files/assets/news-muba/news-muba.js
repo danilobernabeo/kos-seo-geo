@@ -53,8 +53,9 @@
       img.width = f.w; img.height = f.h;
       t.setAttribute('data-indice', i);
       t.setAttribute('data-formato', verticale(f) ? 'v' : 'o');
-      t.setAttribute('aria-label', f.a + ' (' + gruppi[f.g].e + '): apri la galleria');
-      if (nome) nome.textContent = gruppi[f.g].e;
+      var targa = gruppi[f.g].m || gruppi[f.g].e;   // «Residenza …» sul mosaico, etichetta corta nel visore
+      t.setAttribute('aria-label', f.a + ' (' + targa + '): apri la galleria');
+      if (nome) nome.textContent = targa;
     });
 
     /* ---------- visore ---------- */

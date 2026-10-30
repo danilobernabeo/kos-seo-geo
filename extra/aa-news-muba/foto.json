@@ -1,8 +1,9 @@
 {
-  "_nota": "Galleria della news. prepara-foto.py legge foto-sorgenti/<cartella>/, prepara le immagini in files/assets/news-muba/foto/ e riscrive il blocco della galleria in elementi/contenuto.html. Ordine dei gruppi = ordine qui sotto; dentro un gruppo, ordine di scatto (data EXIF) se tutte le foto ce l'hanno, altrimenti ordine dei nomi. Testi alternativi: chiave = nome del file sorgente.",
+  "_nota": "Galleria della news. etichetta = pulsanti del visore (corta); etichetta_mosaico = targhetta blu sulle foto del mosaico nella pagina. prepara-foto.py legge foto-sorgenti/<cartella>/, prepara le immagini in files/assets/news-muba/foto/ e riscrive il blocco della galleria in elementi/contenuto.html. Ordine dei gruppi = ordine qui sotto; dentro un gruppo, ordine di scatto (data EXIF) se tutte le foto ce l'hanno, altrimenti ordine dei nomi. Testi alternativi: chiave = nome del file sorgente.",
   "gruppi": [
     {
       "etichetta": "Navigli",
+      "etichetta_mosaico": "Residenza Navigli",
       "nome": "Residenza Anni Azzurri Navigli",
       "luogo": "Milano",
       "slug": "navigli",
@@ -18,6 +19,7 @@
     },
     {
       "etichetta": "San Luca",
+      "etichetta_mosaico": "Residenza San Luca",
       "nome": "Residenza Anni Azzurri San Luca",
       "luogo": "Milano",
       "slug": "san-luca",
@@ -33,6 +35,7 @@
     },
     {
       "etichetta": "San Rocco",
+      "etichetta_mosaico": "Residenza San Rocco",
       "nome": "Residenza Anni Azzurri San Rocco",
       "luogo": "Segrate (MI)",
       "slug": "san-rocco",
@@ -49,6 +52,7 @@
     },
     {
       "etichetta": "San Faustino e PGR Milano",
+      "etichetta_mosaico": "Residenze San Faustino e PGR Milano",
       "nome": "Residenza Anni Azzurri San Faustino e Polo Geriatrico Riabilitativo Milano",
       "luogo": "Milano",
       "slug": "san-faustino-pgr-milano",
