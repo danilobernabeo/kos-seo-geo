@@ -1,6 +1,6 @@
 # Nota di consegna dello sprint 1
 
-Oct 20, 2026 · @Danilo Bernabeo
+Oct 30, 2026 · @Danilo Bernabeo
 
 ## Sintesi
 
@@ -91,7 +91,7 @@ Durante lo sprint sono emersi cinque interventi fuori dalle voci d'audit, fatti 
 
 Tutte le verifiche si fanno sugli URL pubblici, senza accessi al CMS. Il dato strutturato va controllato sull'HTML servito dal server, cioè quello che leggono i crawler AI, che non eseguono JavaScript.
 
-Verifica completa del 29 ottobre in produzione, con uno script ripetibile su tutte le pagine delle sitemap (861 kosgroup.com, 449 anniazzurri.it): tutte le voci dello sprint 1 superate. Sulle 449 pagine di anniazzurri.it un solo `@graph`, un solo canonical, almeno un H1 e briciole JSON-LD uguali a quelle visibili; 12 user agent di bot AI e motori, 3 richieste ciascuno su 3 pagine per sito, tutte 200 tra 0,3 e 1,6 secondi. Rapporto della verifica e schermate disponibili su richiesta.
+Verifica completa del 30 ottobre in produzione, con uno script ripetibile su tutte le pagine delle sitemap (861 kosgroup.com, 449 anniazzurri.it): tutte le voci dello sprint 1 superate. Su tutte le pagine dei due siti l'HTML servito ha un solo blocco JSON-LD, un solo canonical e un solo H1; sulle 449 pagine di anniazzurri.it un solo `@graph`, collegato all'ente, e briciole JSON-LD uguali a quelle visibili. 12 user agent di bot AI e motori, 3 richieste ciascuno su 3 pagine per sito: tutte 200, tra 0,3 e 1,7 secondi. Rapporto della verifica e schermate disponibili su richiesta.
 
 Nel DOM renderizzato, cioè dopo JavaScript, le schede delle singole strutture mostrano anche il blocco LocalBusiness iniettato dallo script Yext: è oggetto delle voci sul dato strutturato delle strutture (KOS 24, AA sprint 3), che lo sostituiscono con il dato emesso dal server. Il Rich Results Test su Vico Mercati rileva un solo Breadcrumb, quello completo.
 
