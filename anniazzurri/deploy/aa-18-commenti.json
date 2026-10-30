@@ -1,0 +1,11 @@
+{
+  "nome": "AA-18 pulizia: tolti H1 e introtext commentati dalla testata del template degli eventi (interna-menu-form-registrazione)",
+  "elements": [
+    {
+      "type": "template",
+      "name": "interna-menu-form-registrazione",
+      "file": "anniazzurri/elements/templates/interna-menu-form-registrazione.html",
+      "baseline": "anniazzurri/baseline/templates/interna-menu-form-registrazione.html"
+    }
+  ]
+}
