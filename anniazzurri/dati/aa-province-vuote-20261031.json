@@ -1,0 +1,148 @@
+{
+ "nome": "AA pagine provincia vuote (template 0, contenuto vuoto, risposta 200): non pubblicate finché non hanno contenuto — 31/10/2026",
+ "risorse": [
+  {
+   "uri": "rsa-in-provincia-di-ascoli-piceno",
+   "attesi": {
+    "template": 0,
+    "contenuto_vuoto": true
+   },
+   "campi": {
+    "published": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  },
+  {
+   "uri": "rsa-in-provincia-di-asti",
+   "attesi": {
+    "template": 0,
+    "contenuto_vuoto": true
+   },
+   "campi": {
+    "published": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  },
+  {
+   "uri": "rsa-in-provincia-di-como",
+   "attesi": {
+    "template": 0,
+    "contenuto_vuoto": true
+   },
+   "campi": {
+    "published": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  },
+  {
+   "uri": "rsa-in-provincia-di-fermo",
+   "attesi": {
+    "template": 0,
+    "contenuto_vuoto": true
+   },
+   "campi": {
+    "published": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  },
+  {
+   "uri": "rsa-in-provincia-di-grosseto",
+   "attesi": {
+    "template": 0,
+    "contenuto_vuoto": true
+   },
+   "campi": {
+    "published": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  },
+  {
+   "uri": "rsa-in-provincia-di-imperia",
+   "attesi": {
+    "template": 0,
+    "contenuto_vuoto": true
+   },
+   "campi": {
+    "published": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  },
+  {
+   "uri": "rsa-in-provincia-di-pesaro-urbino",
+   "attesi": {
+    "template": 0,
+    "contenuto_vuoto": true
+   },
+   "campi": {
+    "published": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  },
+  {
+   "uri": "rsa-in-provincia-di-reggio-emilia",
+   "attesi": {
+    "template": 0,
+    "contenuto_vuoto": true
+   },
+   "campi": {
+    "published": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  },
+  {
+   "uri": "rsa-in-provincia-di-roma",
+   "attesi": {
+    "template": 0,
+    "contenuto_vuoto": true
+   },
+   "campi": {
+    "published": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  },
+  {
+   "uri": "rsa-in-provincia-di-rovigo",
+   "attesi": {
+    "template": 0,
+    "contenuto_vuoto": true
+   },
+   "campi": {
+    "published": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  },
+  {
+   "uri": "rsa-in-provincia-di-vercelli",
+   "attesi": {
+    "template": 0,
+    "contenuto_vuoto": true
+   },
+   "campi": {
+    "published": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  }
+ ]
+}

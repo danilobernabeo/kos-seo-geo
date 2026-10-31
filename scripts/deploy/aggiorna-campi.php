@@ -1,6 +1,6 @@
 <?php
 /**
- * aggiorna-campi.php — scrive nel database i campi pagetitle, longtitle, description, introtext di un insieme di
+ * aggiorna-campi.php — scrive nel database i campi pagetitle, longtitle, description, introtext e published di un insieme di
  * risorse preparato nel repository (es. anniazzurri/dati/aa-20/campi-giro-1.json), con controlli e ripristino.
  *
  * Uso (in SSH sul cloud, dalla cartella dell'archivio del repository):
@@ -13,6 +13,8 @@
  *   - già uguale a «dopo»: niente da fare;
  *   - uguale a «prima» (istantanea da cui sono partiti i testi): si sostituisce;
  *   - altrimenti qualcuno l'ha cambiato dopo l'istantanea → FERMO per quella risorsa, salvo --forza.
+ * Risorsa per id o, senza id, per uri (contesto web). Facoltativo "attesi": {"template": 0, "contenuto_vuoto": true}
+ *   → FERMO se la risorsa non è come atteso. published vale "1" o "0".
  * Controlli sulla risorsa: uri uguale a quello atteso; longtitle non scritto se la risorsa (contenuto, template o
  * chunk richiamati) usa [[*longtitle]] per altro (cartelle di foto e documenti delle landing) o se il longtitle
  * attuale è un alias (minuscole, cifre, trattini).
@@ -38,7 +40,8 @@ $modx = \MODX\Revolution\modX::getInstance();
 $modx->initialize('mgr');
 use MODX\Revolution\{modResource, modTemplate, modChunk};
 
-const CAMPI = ['pagetitle', 'longtitle', 'description', 'introtext'];
+const CAMPI = ['pagetitle', 'longtitle', 'description', 'introtext', 'published'];
+$val = fn($res, string $c): string => $c === 'published' ? (string) (int) $res->get($c) : (string) $res->get($c);
 $bkRoot = rtrim((string) (getenv('HOME') ?: '.'), '/') . '/backup-kos-seo-geo';
 $stamp = date('Ymd-His');
 $errori = 0; $fatte = 0;
@@ -54,7 +57,7 @@ if ($ripristina) {
         if (!$res) { echo "  ! risorsa {$r['id']} non trovata\n"; $errori++; continue; }
         $cambia = false;
         foreach ($r['prima'] as $c => $v) {
-            $att = (string) $res->get($c);
+            $att = $val($res, $c);
             if ($att === $v) continue;
             if ($att !== $r['scritto'][$c] && !$forza) {
                 echo "  ! {$r['id']} $c modificato dopo l'aggiornamento — FERMO (--forza per ripristinare comunque)\n"; $errori++; continue 2;
@@ -97,17 +100,25 @@ $usaLongtitle = function (modResource $res) use ($modx, $chunkLong): string {
 
 $daFare = [];
 foreach ($man['risorse'] as $r) {
-    $res = $modx->getObject(modResource::class, (int) $r['id']);
-    if (!$res) { echo "  ! risorsa {$r['id']} non trovata\n"; $errori++; continue; }
+    $res = isset($r['id']) ? $modx->getObject(modResource::class, (int) $r['id'])
+         : $modx->getObject(modResource::class, ['context_key' => 'web', 'deleted' => 0, 'uri:IN' => [trim($r['uri'], '/'), trim($r['uri'], '/') . '/']]);
+    if (!$res) { echo "  ! risorsa " . ($r['id'] ?? $r['uri']) . " non trovata\n"; $errori++; continue; }
+    $r['id'] = (int) $res->get('id');
     $etichetta = "{$r['id']} " . $breve((string) $res->get('pagetitle'));
     $uri = trim((string) $res->get('uri'), '/');
     if (isset($r['uri']) && $uri !== trim($r['uri'], '/')) {
         echo "  ! $etichetta: uri «{$uri}» invece di «{$r['uri']}» — FERMO\n"; $errori++; continue;
     }
+    if (isset($r['attesi']['template']) && (int) $res->get('template') !== (int) $r['attesi']['template']) {
+        echo "  ! $etichetta: template {$res->get('template')} invece di {$r['attesi']['template']} — FERMO\n"; $errori++; continue;
+    }
+    if (!empty($r['attesi']['contenuto_vuoto']) && trim((string) $res->get('content')) !== '') {
+        echo "  ! $etichetta: il contenuto non è vuoto — FERMO\n"; $errori++; continue;
+    }
     $nuovi = []; $fermo = false; $note = [];
     foreach ($r['campi'] as $c => $v) {
         if (!in_array($c, CAMPI, true)) { echo "  ! $etichetta: campo $c non previsto\n"; $fermo = true; break; }
-        $att = (string) $res->get($c);
+        $att = $val($res, $c);
         if ($att === $v['dopo']) continue;
         if ($c === 'longtitle') {
             if (preg_match('/^[a-z0-9]+(?:-[a-z0-9]+)*$/', trim($att))) { echo "  ! $etichetta: il longtitle attuale «{$att}» è un alias (cartella) — FERMO\n"; $fermo = true; break; }
