@@ -1,0 +1,19 @@
+{
+    "id": 80,
+    "name": "str.email",
+    "caption": "Email principale",
+    "description": "Indirizzo pubblico della struttura",
+    "category": "",
+    "type": "text",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": null,
+    "templates": [
+        2,
+        4
+    ]
+}

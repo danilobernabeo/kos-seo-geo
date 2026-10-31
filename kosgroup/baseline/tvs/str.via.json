@@ -1,0 +1,19 @@
+{
+    "id": 75,
+    "name": "str.via",
+    "caption": "Indirizzo (via e civico)",
+    "description": "Es. Via IV Novembre 21",
+    "category": "",
+    "type": "text",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": null,
+    "templates": [
+        2,
+        4
+    ]
+}

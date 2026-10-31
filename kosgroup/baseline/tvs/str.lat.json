@@ -1,0 +1,19 @@
+{
+    "id": 81,
+    "name": "str.lat",
+    "caption": "Latitudine",
+    "description": "Gradi decimali con punto, es. 44.8796",
+    "category": "",
+    "type": "text",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": null,
+    "templates": [
+        2,
+        4
+    ]
+}

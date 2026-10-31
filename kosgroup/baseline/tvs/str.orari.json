@@ -1,0 +1,19 @@
+{
+    "id": 83,
+    "name": "str.orari",
+    "caption": "Orari",
+    "description": "Una riga per fascia: giorni e orari, es. «Mo-Fr 08:00-13:00,14:00-18:00» o «Sa 08:00-12:00» (giorni Mo Tu We Th Fr Sa Su). Giorni non elencati = chiuso. Aperto sempre: «Mo-Su 00:00-23:59».",
+    "category": "",
+    "type": "textarea",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": null,
+    "templates": [
+        2,
+        4
+    ]
+}

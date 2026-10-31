@@ -1,5 +1,5 @@
 {
-    "exported_at": "2026-10-22T14:24:09-05:00",
+    "exported_at": "2026-10-31T15:18:50-05:00",
     "site_url": "http://localhost/",
     "elements": [
         {
@@ -73,6 +73,18 @@
             "static_file": "",
             "source": 0,
             "properties": []
+        },
+        {
+            "type": "chunks",
+            "id": 672,
+            "name": "aaCalendarioConvegniCard",
+            "file": "chunks/aaCalendarioConvegniCard.html",
+            "category": "KOSAcademy",
+            "description": "Calendario dei convegni (extra/aa-calendario-convegni)",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
         },
         {
             "type": "chunks",
@@ -5572,6 +5584,18 @@
         },
         {
             "type": "chunks",
+            "id": 671,
+            "name": "programma-convegno-parkinson-realta-prospettive",
+            "file": "chunks/programma-convegno-parkinson-realta-prospettive.html",
+            "category": "",
+            "description": "Programma del convegno La malattia di Parkinson (extra/aa-convegno-parkinson)",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": []
+        },
+        {
+            "type": "chunks",
             "id": 124,
             "name": "promozione-volpiano",
             "file": "chunks/promozione-volpiano.html",
@@ -8066,6 +8090,25 @@
             "events": [
                 {
                     "event": "OnSiteRefresh",
+                    "priority": 0
+                }
+            ]
+        },
+        {
+            "type": "plugins",
+            "id": 12,
+            "name": "ImmaginiCaricamento",
+            "file": "plugins/ImmaginiCaricamento.php",
+            "category": "",
+            "description": "Ottimizza le immagini caricate e crea le varianti WebP",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null,
+            "disabled": false,
+            "events": [
+                {
+                    "event": "OnFileManagerUpload",
                     "priority": 0
                 }
             ]
@@ -10652,6 +10695,18 @@
         },
         {
             "type": "snippets",
+            "id": 143,
+            "name": "aaCalendarioConvegni",
+            "file": "snippets/aaCalendarioConvegni.php",
+            "category": "KOSAcademy",
+            "description": "Calendario dei convegni (extra/aa-calendario-convegni)",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
+            "type": "snippets",
             "id": 139,
             "name": "aaSchema",
             "file": "snippets/aaSchema.php",
@@ -11447,6 +11502,18 @@
         },
         {
             "type": "snippets",
+            "id": 140,
+            "name": "immagine",
+            "file": "snippets/immagine.php",
+            "category": "",
+            "description": "Markup <picture> con WebP, srcset, width/height e alt (libreria kosseogeo/Immagini)",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
+            "type": "snippets",
             "id": 131,
             "name": "newsByStruttura",
             "file": "snippets/newsByStruttura.php",
@@ -11459,6 +11526,30 @@
         },
         {
             "type": "snippets",
+            "id": 145,
+            "name": "newsMubaImmagine",
+            "file": "snippets/newsMubaImmagine.php",
+            "category": "",
+            "description": "News Anni Azzurri e MUBA (extra/aa-news-muba)",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
+            "type": "snippets",
+            "id": 144,
+            "name": "newsMubaRisorse",
+            "file": "snippets/newsMubaRisorse.php",
+            "category": "",
+            "description": "News Anni Azzurri e MUBA (extra/aa-news-muba)",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
+            "type": "snippets",
             "id": 126,
             "name": "nverdeMenuItem",
             "file": "snippets/nverdeMenuItem.php",
@@ -11468,6 +11559,18 @@
             "static_file": "",
             "source": 1,
             "properties": []
+        },
+        {
+            "type": "snippets",
+            "id": 141,
+            "name": "ogImage",
+            "file": "snippets/ogImage.php",
+            "category": "",
+            "description": "og:image: immagine della pagina se esiste, altrimenti quella di condivisione del sito; dimensioni lette dal file",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
         },
         {
             "type": "snippets",
@@ -16471,6 +16574,18 @@
             "properties": []
         },
         {
+            "type": "snippets",
+            "id": 142,
+            "name": "titoloPagina",
+            "file": "snippets/titoloPagina.php",
+            "category": "",
+            "description": "Testo del <title>: longtitle o pagetitle, marchio aggiunto una volta sola (AA-20)",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
             "type": "templates",
             "id": 1,
             "name": "BaseTemplate",
@@ -16649,6 +16764,18 @@
             "static_file": "",
             "source": 1,
             "properties": []
+        },
+        {
+            "type": "templates",
+            "id": 66,
+            "name": "interna-articolo-muba",
+            "file": "templates/interna-articolo-muba.html",
+            "category": "",
+            "description": "News Anni Azzurri e MUBA: copia di interna-articolo con la grafica del totem (extra/aa-news-muba)",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
         },
         {
             "type": "templates",
@@ -17289,6 +17416,13 @@
         },
         {
             "type": "tvs",
+            "id": 35,
+            "name": "evento_data",
+            "file": "tvs/evento_data.json",
+            "category": "KOSAcademy"
+        },
+        {
+            "type": "tvs",
             "id": 30,
             "name": "evento_data_luogo",
             "file": "tvs/evento_data_luogo.json",
@@ -17296,9 +17430,23 @@
         },
         {
             "type": "tvs",
+            "id": 37,
+            "name": "evento_immagine",
+            "file": "tvs/evento_immagine.json",
+            "category": "KOSAcademy"
+        },
+        {
+            "type": "tvs",
             "id": 28,
             "name": "evento_informativa",
             "file": "tvs/evento_informativa.json",
+            "category": "KOSAcademy"
+        },
+        {
+            "type": "tvs",
+            "id": 36,
+            "name": "evento_luogo",
+            "file": "tvs/evento_luogo.json",
             "category": "KOSAcademy"
         },
         {

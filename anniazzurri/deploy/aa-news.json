@@ -1,0 +1,17 @@
+{
+  "nome": "AA /news/ in cache (chat sulle prestazioni, 31/10): getResources e buildWhereExclude in cache nel template news e nel chunk news-list, senza il testo completo degli articoli, solo la TV newsImage",
+  "elements": [
+    {
+      "type": "template",
+      "name": "news",
+      "file": "anniazzurri/elements/templates/news.html",
+      "baseline": "anniazzurri/baseline/templates/news.html"
+    },
+    {
+      "type": "chunk",
+      "name": "news-list",
+      "file": "anniazzurri/elements/chunks/news-list.html",
+      "baseline": "anniazzurri/baseline/chunks/news-list.html"
+    }
+  ]
+}

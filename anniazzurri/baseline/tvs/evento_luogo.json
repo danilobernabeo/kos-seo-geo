@@ -1,0 +1,18 @@
+{
+    "id": 36,
+    "name": "evento_luogo",
+    "caption": "Luogo (calendario)",
+    "description": "Es. «Sala Pertini, Cinisello Balsamo (MI)»: accanto alla data nella card del calendario.",
+    "category": "KOSAcademy",
+    "type": "text",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": [],
+    "templates": [
+        30
+    ]
+}

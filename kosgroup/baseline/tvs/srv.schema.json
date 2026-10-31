@@ -1,0 +1,19 @@
+{
+    "id": 94,
+    "name": "srv.schema",
+    "caption": "Tipo schema.org del servizio",
+    "description": "«Tipo|Specialità», es. MedicalTherapy|Physiotherapy,Neurologic. Tipo: MedicalTherapy, MedicalTest, MedicalProcedure, MedicalCondition o «-» (non dichiarare). Vuoto = dal ramo del sito.",
+    "category": "",
+    "type": "text",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": null,
+    "templates": [
+        3,
+        5
+    ]
+}

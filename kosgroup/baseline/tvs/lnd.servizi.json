@@ -1,0 +1,18 @@
+{
+    "id": 93,
+    "name": "lnd.servizi",
+    "caption": "Servizi della landing (dato strutturato)",
+    "description": "Una riga per servizio: «Tipo|Nome|Descrizione», Tipo = MedicalTest, MedicalProcedure o MedicalTherapy. Es. «MedicalTest|Cardio TAC|Tomografia delle coronarie...».",
+    "category": "",
+    "type": "textarea",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": null,
+    "templates": [
+        15
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "id": 92,
+    "name": "lnd.struttura",
+    "caption": "Struttura della landing",
+    "description": "Id della risorsa della scheda struttura a cui si riferisce la landing: la pagina rimanda al suo #localbusiness.",
+    "category": "",
+    "type": "text",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": null,
+    "templates": [
+        15
+    ]
+}

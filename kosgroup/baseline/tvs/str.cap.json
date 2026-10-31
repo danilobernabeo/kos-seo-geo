@@ -1,0 +1,19 @@
+{
+    "id": 76,
+    "name": "str.cap",
+    "caption": "CAP",
+    "description": "5 cifre",
+    "category": "",
+    "type": "text",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": null,
+    "templates": [
+        2,
+        4
+    ]
+}

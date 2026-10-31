@@ -1,0 +1,35 @@
+{
+  "nome": "KOS-2 tempo di risposta e link assoluti (chat sulle prestazioni, 31/10): template informativo senza chiamate non in cache, listingNewsLast3 in cache, banner KOSplayer, PDF dei comunicati e dell'ambulatorio cardio-metabolico con barra iniziale; tolto [[*schemaJsonLd]] dal template informativo (TV vuota su tutte le pagine dal 30/10)",
+  "elements": [
+    {
+      "type": "template",
+      "name": "informativo",
+      "file": "kosgroup/elements/templates/informativo.html",
+      "baseline": "kosgroup/baseline/templates/informativo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "listingNewsLast3",
+      "file": "kosgroup/elements/chunks/listingNewsLast3.html",
+      "baseline": "kosgroup/baseline/chunks/listingNewsLast3.html"
+    },
+    {
+      "type": "chunk",
+      "name": "kosplayer-banner",
+      "file": "kosgroup/elements/chunks/kosplayer-banner.html",
+      "baseline": "kosgroup/baseline/chunks/kosplayer-banner.html"
+    },
+    {
+      "type": "chunk",
+      "name": "listingComunicati",
+      "file": "kosgroup/elements/chunks/listingComunicati.html",
+      "baseline": "kosgroup/baseline/chunks/listingComunicati.html"
+    },
+    {
+      "type": "chunk",
+      "name": "documenti-ambulatorio-cardio-metabolico",
+      "file": "kosgroup/elements/chunks/documenti-ambulatorio-cardio-metabolico.html",
+      "baseline": "kosgroup/baseline/chunks/documenti-ambulatorio-cardio-metabolico.html"
+    }
+  ]
+}

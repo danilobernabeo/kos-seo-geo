@@ -1,0 +1,19 @@
+{
+    "id": 74,
+    "name": "str.nome",
+    "caption": "Nome ufficiale",
+    "description": "Nome della struttura come nel profilo Google e in Yext/RetailTune (il pagetitle non cambia). Vuoto = pagetitle.",
+    "category": "Scheda struttura dato strutturato",
+    "type": "text",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": null,
+    "templates": [
+        2,
+        4
+    ]
+}

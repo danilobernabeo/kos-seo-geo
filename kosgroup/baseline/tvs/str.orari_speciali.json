@@ -1,0 +1,19 @@
+{
+    "id": 84,
+    "name": "str.orari_speciali",
+    "caption": "Orari speciali",
+    "description": "Una riga per data o periodo: «2026-12-25 chiuso», «2026-12-24 08:00-12:00», «2026-08-10/2026-08-21 chiuso».",
+    "category": "",
+    "type": "textarea",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": null,
+    "templates": [
+        2,
+        4
+    ]
+}

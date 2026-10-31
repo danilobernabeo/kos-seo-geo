@@ -1,5 +1,5 @@
 {
-    "exported_at": "2026-10-22T07:23:55-05:00",
+    "exported_at": "2026-10-31T15:17:58-05:00",
     "site_url": "http://localhost/",
     "elements": [
         {
@@ -1480,6 +1480,30 @@
         },
         {
             "type": "chunks",
+            "id": 270,
+            "name": "head-extra-landing",
+            "file": "chunks/head-extra-landing.html",
+            "category": "",
+            "description": "Chunk",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
+            "type": "chunks",
+            "id": 269,
+            "name": "head-extra-strutture",
+            "file": "chunks/head-extra-strutture.html",
+            "category": "",
+            "description": "Chunk",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
+            "type": "chunks",
             "id": 132,
             "name": "head-formazione",
             "file": "chunks/head-formazione.html",
@@ -1537,6 +1561,18 @@
             "static_file": "",
             "source": 1,
             "properties": []
+        },
+        {
+            "type": "chunks",
+            "id": 268,
+            "name": "head-ricerca-yext",
+            "file": "chunks/head-ricerca-yext.html",
+            "category": "",
+            "description": "Chunk",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
         },
         {
             "type": "chunks",
@@ -7704,6 +7740,42 @@
         },
         {
             "type": "snippets",
+            "id": 178,
+            "name": "kosHreflang",
+            "file": "snippets/kosHreflang.php",
+            "category": "",
+            "description": "",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": null
+        },
+        {
+            "type": "snippets",
+            "id": 177,
+            "name": "kosSchema",
+            "file": "snippets/kosSchema.php",
+            "category": "",
+            "description": "Dato strutturato e briciole (libreria comune seoSchema, prefisso kos)",
+            "static": false,
+            "static_file": "",
+            "source": 0,
+            "properties": {
+                "prefisso": {
+                    "name": "prefisso",
+                    "desc": "",
+                    "type": "textfield",
+                    "options": [],
+                    "value": "kos",
+                    "lexicon": null,
+                    "area": "",
+                    "desc_trans": "",
+                    "area_trans": ""
+                }
+            }
+        },
+        {
+            "type": "snippets",
             "id": 175,
             "name": "kosSostenibilitaRisorse",
             "file": "snippets/kosSostenibilitaRisorse.php",
@@ -12869,6 +12941,20 @@
         },
         {
             "type": "tvs",
+            "id": 93,
+            "name": "lnd.servizi",
+            "file": "tvs/lnd.servizi.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 92,
+            "name": "lnd.struttura",
+            "file": "tvs/lnd.struttura.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
             "id": 21,
             "name": "mapAreeChirurgica",
             "file": "tvs/mapAreeChirurgica.json",
@@ -13083,6 +13169,139 @@
             "name": "soloStruttura",
             "file": "tvs/soloStruttura.json",
             "category": "Strutture"
+        },
+        {
+            "type": "tvs",
+            "id": 94,
+            "name": "srv.schema",
+            "file": "tvs/srv.schema.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 76,
+            "name": "str.cap",
+            "file": "tvs/str.cap.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 77,
+            "name": "str.citta",
+            "file": "tvs/str.citta.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 80,
+            "name": "str.email",
+            "file": "tvs/str.email.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 81,
+            "name": "str.lat",
+            "file": "tvs/str.lat.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 82,
+            "name": "str.lng",
+            "file": "tvs/str.lng.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 88,
+            "name": "str.marchio",
+            "file": "tvs/str.marchio.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 74,
+            "name": "str.nome",
+            "file": "tvs/str.nome.json",
+            "category": "Scheda struttura dato strutturato"
+        },
+        {
+            "type": "tvs",
+            "id": 83,
+            "name": "str.orari",
+            "file": "tvs/str.orari.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 84,
+            "name": "str.orari_speciali",
+            "file": "tvs/str.orari_speciali.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 85,
+            "name": "str.place_id",
+            "file": "tvs/str.place_id.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 90,
+            "name": "str.prenotazione",
+            "file": "tvs/str.prenotazione.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 78,
+            "name": "str.provincia",
+            "file": "tvs/str.provincia.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 89,
+            "name": "str.sameAs",
+            "file": "tvs/str.sameAs.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 91,
+            "name": "str.servizi",
+            "file": "tvs/str.servizi.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 87,
+            "name": "str.specialita",
+            "file": "tvs/str.specialita.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 79,
+            "name": "str.telefono",
+            "file": "tvs/str.telefono.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 86,
+            "name": "str.tipo",
+            "file": "tvs/str.tipo.json",
+            "category": ""
+        },
+        {
+            "type": "tvs",
+            "id": 75,
+            "name": "str.via",
+            "file": "tvs/str.via.json",
+            "category": ""
         },
         {
             "type": "tvs",

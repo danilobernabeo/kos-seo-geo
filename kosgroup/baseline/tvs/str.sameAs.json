@@ -1,0 +1,19 @@
+{
+    "id": 89,
+    "name": "str.sameAs",
+    "caption": "Profili ufficiali",
+    "description": "Un URL per riga: profili ufficiali della struttura (es. pagina Facebook propria). Mai directory di terzi (location.com).",
+    "category": "",
+    "type": "textarea",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": null,
+    "templates": [
+        2,
+        4
+    ]
+}

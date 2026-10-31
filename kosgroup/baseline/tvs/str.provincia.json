@@ -1,0 +1,19 @@
+{
+    "id": 78,
+    "name": "str.provincia",
+    "caption": "Provincia (sigla)",
+    "description": "2 lettere maiuscole, es. PR",
+    "category": "",
+    "type": "text",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": null,
+    "templates": [
+        2,
+        4
+    ]
+}

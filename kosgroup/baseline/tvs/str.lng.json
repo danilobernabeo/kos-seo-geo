@@ -1,0 +1,19 @@
+{
+    "id": 82,
+    "name": "str.lng",
+    "caption": "Longitudine",
+    "description": "Gradi decimali con punto, es. 10.1506",
+    "category": "",
+    "type": "text",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": null,
+    "templates": [
+        2,
+        4
+    ]
+}

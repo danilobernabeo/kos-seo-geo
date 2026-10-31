@@ -1,0 +1,18 @@
+{
+    "id": 37,
+    "name": "evento_immagine",
+    "caption": "Immagine della card (calendario)",
+    "description": "Immagine 16:9, 980x551 (come le news), con titolo leggibile anche piccola.",
+    "category": "KOSAcademy",
+    "type": "image",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": [],
+    "templates": [
+        30
+    ]
+}

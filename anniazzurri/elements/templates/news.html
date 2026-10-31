@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+
+[[$head-news]]
+
+<body class="news-page">
+[[$GTM_body]]
+
+[[$menu-sticky]]
+
+[[$menu-navbar]]
+
+[[$menu-side-navbar]]
+<main id="main-content" tabindex="-1">
+
+[[$breadcrumb-stripe]]
+
+  <div stripe-text="" class="container py-4">
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        <h1 class="text-primary">News</h1>
+        <h2 class="h5 text-brown">Tutte le notizie e le novità dalle nostre Residenze. I consigli utili, le curiosità e gli eventi, per rimanere sempre aggiornato sul mondo Anni Azzurri.</h2></div>
+    </div>
+  </div>
+
+[[getResources?
+    &parents=`8`
+    &limit=`1`
+    &where=`[[buildWhereExclude]]`
+    &tpl=`news-top`
+    &includeTVs=`1`
+    &includeTVList=`newsImage`
+    &sortby=`{"publishedon":"DESC"}`
+]]
+
+  <hr class="my-5">
+[[*content]]
+
+</main>
+[[$footer]]
+
+[[$footer-script]]
+
+</body>
+
+</html>

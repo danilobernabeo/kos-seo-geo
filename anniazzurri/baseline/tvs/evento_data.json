@@ -1,0 +1,20 @@
+{
+    "id": 35,
+    "name": "evento_data",
+    "caption": "Data del convegno (calendario)",
+    "description": "Ordina il calendario di /convegni-e-webinar; dal giorno dopo il convegno non compare più. Vuota = non in calendario.",
+    "category": "KOSAcademy",
+    "type": "date",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true",
+        "hideTime": "true",
+        "startDay": "1"
+    },
+    "output_properties": [],
+    "templates": [
+        30
+    ]
+}

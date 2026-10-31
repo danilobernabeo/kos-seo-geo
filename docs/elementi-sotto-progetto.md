@@ -26,6 +26,7 @@ Aggiornare l'elenco a ogni intervento.
 | `ogImage` (shared) e 26 head `head*`, template `convegnoAA` | snippet (nuovo), chunk, template | og:image (fuori perimetro) | **produzione (26/10)**, pacchetto `aa-og-image` |
 | `titoloPagina` (shared) e gli stessi 26 head `head*` + template `convegnoAA`, impostazione `seo.titolo_marchio` | snippet (nuovo), chunk, template | AA-20 (`<title>`: longtitle, marchio una volta sola; `:esc` su description e og:title) | **produzione (27/10, `:esc` 28/10)**, pacchetto `aa-20-title` |
 | template `interna-menu-form-registrazione` | template | AA-18 (pulizia: H1 e introtext commentati tolti dalla testata degli eventi) | **produzione (30/10)**, pacchetto `aa-18-commenti`, ripristino `php scripts/deploy/installa-elementi.php /www /paas/c0072/backup-kos-seo-geo/20261030-052126/ripristino.json --scrivi` |
+| template `news`, chunk `news-list` | template, chunk | KOS-2/AA prestazioni (`/news/` in cache, dalla chat sulle prestazioni del 31/10) | sviluppo (31/10), pacchetto `aa-news` |
 
 ## kosgroup.com
 
@@ -49,3 +50,4 @@ Aggiornare l'elenco a ogni intervento.
 | TV `str.*` (18), `lnd.*` (2) e `srv.schema`, categoria «Scheda struttura (dato strutturato)» | TV (nuove) | voce 24 | **produzione (28/10)**, vuote fino all'import, pacchetto `kos-24` |
 | `head-extra-strutture`, `head-extra-landing` (senza Yext e JSON-LD scritti a mano) | chunk | voce 24 | sviluppo (25/10), pacchetto `kos-24-attivazione` |
 | `grafico-dipendenti`, `employee-chart` | chunk | lavoro extra Sostenibilità | in produzione (20/10), vedi `extra/kos-sostenibilita` |
+| template `informativo` (senza chiamate non in cache, senza `[[*schemaJsonLd]]`), chunk `listingNewsLast3`, `kosplayer-banner`, `listingComunicati`, `documenti-ambulatorio-cardio-metabolico` | template, chunk | KOS-2 (tempo di risposta), link assoluti (dalla chat sulle prestazioni del 31/10) | sviluppo (31/10), pacchetto `kos-ttfb-31-10` |

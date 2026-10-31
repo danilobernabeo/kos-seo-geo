@@ -1,0 +1,19 @@
+{
+    "id": 91,
+    "name": "str.servizi",
+    "caption": "Servizi e condizioni trattate (dato strutturato)",
+    "description": "Una riga per voce: «Tipo|Nome», Tipo = MedicalTherapy, MedicalTest, MedicalProcedure (servizi) o MedicalCondition (condizioni trattate). Importata dai filtri «Servizi e Cure» di Yext.",
+    "category": "",
+    "type": "textarea",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": null,
+    "templates": [
+        2,
+        4
+    ]
+}

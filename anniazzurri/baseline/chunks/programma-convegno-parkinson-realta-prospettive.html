@@ -1,0 +1,284 @@
+<style>
+  /* Utility compatibili con Bootstrap */
+  .program-table .time { white-space: nowrap; width: 7rem; }
+  .program-table .session-row { background-color: #f8f9fa; }
+  .program-table .break-row { background-color: #e9ecef; font-style: italic; }
+  .program-table .roundtable-highlight { background:#fff3cd; border-left:4px solid #ce1531; }
+  .program-table .roundtable-highlight .badge-rt {
+    display: inline-block; padding: .25rem .5rem; border-radius: 999px;
+    background:#ce1531; color:#fff; font-weight:700; font-size:.75rem; letter-spacing:.02em;
+  }
+
+  /* Elenchi interni alle celle senza bullet e senza indentazione */
+  .program-table .plain-list { list-style: none; padding-inline-start: 0; margin-bottom: 0; }
+
+  /* Affiliazioni: spazio tra i blocchi e coerenza visiva con la tabella del programma */
+  .affiliations-table td { padding-top: .5rem; padding-bottom: 1rem; }
+
+  /* Riga rossa sotto i titoli */
+  .section-title{
+    position: relative;
+    padding-bottom: .5rem;
+    margin-bottom: 1rem;
+  }
+  .section-title::after{
+    content: "";
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 100%;
+    height: 3px;
+    background: #ce1531;     /* rosso brand */
+    border-radius: 2px;
+  }
+
+  .table > :not(:first-child) {
+    border-top: 0px !important;
+  }
+
+  /* --- Scheda informativa dell'evento --- */
+  .event-facts { margin-bottom: 2.5rem; }
+  .event-facts .fact {
+    height: 100%;
+    padding: 1rem 1.25rem;
+    background: #f8f9fa;
+    border-left: 4px solid #ce1531;
+    border-radius: 0 .25rem .25rem 0;
+  }
+  .event-facts dt {
+    font-size: .8125rem;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: .25rem;
+  }
+  .event-facts dd {
+    margin-bottom: 0;
+    font-size: 1.125rem;
+    line-height: 1.35;
+    color: #212529;
+  }
+  .event-facts .fact-figure {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #ce1531;
+    display: block;
+  }
+  .event-facts .fact-note {
+    display: block;
+    font-size: .875rem;
+    color: #6c757d;
+    margin-top: .125rem;
+  }
+  /* Testata: niente velatura scura della pagina. Serve al testo bianco sulle foto scure;
+     qui il titolo blu è già nell'immagine e la velatura scurirebbe foto e filo */
+  .hero-evento .overlay { background: none !important; }
+</style>
+
+<!-- Scheda informativa: destinatari, crediti, partecipanti -->
+<section class="event-facts mt-4" aria-labelledby="info-evento">
+  <h2 id="info-evento" class="visually-hidden">Informazioni sull'evento</h2>
+
+  <dl class="row row-cols-1 row-cols-md-3 g-3 mb-0">
+    <div class="col">
+      <div class="fact">
+        <dt>Destinatari</dt>
+        <dd>
+        <span class="fact-note">Medico chirurgo (continuità assistenziale, geriatria, medicina fisica e riabilitazione, medicina generale, medicina interna, neurologia), infermiere, fisioterapista, logopedista, terapista occupazionale</span>
+        </dd>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="fact">
+        <dt>Crediti ECM</dt>
+        <dd>
+          <span class="fact-figure">5,2</span>
+          <span class="fact-note">Provider KOS Care (ID n. 3740)</span>
+        </dd>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="fact">
+        <dt>Partecipanti previsti</dt>
+        <dd>
+          <span class="fact-figure">100</span>
+          <span class="fact-note">Partecipazione gratuita</span>
+        </dd>
+      </div>
+    </div>
+  </dl>
+</section>
+
+<p><strong>Obiettivo formativo di processo:</strong> contenuti tecnico-professionali (conoscenze e competenze) specifici di ciascuna professione, di ciascuna specializzazione e di ciascuna attività ultraspecialistica, ivi incluse le malattie rare e la medicina di genere (18).</p>
+<p><strong>Direzione scientifica:</strong> Gerardo Mele - Direttore Dipartimento di Medicina Riabilitativa, Polo Geriatrico Riabilitativo, Cinisello Balsamo (MI).</p>
+
+<div class="align-btn-group mt-4">
+  <h2 class="h3 section-title" style="color:#ce1531;">Programma</h2>
+
+  <table class="table program-table">
+    <caption class="visually-hidden">Programma del convegno</caption>
+    <tbody>
+      <tr>
+        <td class="time">8:30 – 9:00</td>
+        <td>Registrazione dei partecipanti</td>
+      </tr>
+      <tr>
+        <td class="time">9:00 – 9:10</td>
+        <td><strong class="text-primary">Saluto di benvenuto</strong>:
+          <ul class="plain-list">
+            <li>Amministrazione comunale</li>
+            <li><em>Manuela Devasini</em></li>
+          </ul>
+          <strong class="text-primary">Saluto istituzionale</strong>:
+          <ul class="plain-list">
+            <li><em>Dott. F. Lanzeni</em></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="time">9:10 – 9:20</td>
+        <td><strong class="text-primary">Introduzione dei lavori</strong><br><em>G. Mele</em></td>
+      </tr>
+      <tr>
+        <td class="time">9:20 – 9:50</td>
+        <td><strong class="text-primary">Lezione magistrale: la malattia di Parkinson oggi</strong><br><em>Prof. G. Pezzoli</em></td>
+      </tr>
+      <tr>
+        <td class="time">9:50 – 10:10</td>
+        <td><strong class="text-primary">Sintomi motori e non nella malattia di Parkinson</strong><br><em>F. Pacei</em></td>
+      </tr>
+      <tr>
+        <td class="time">10:10 – 10:25</td>
+        <td><strong class="text-primary">La gestione della terapia farmacologica: difficoltà e rimedi</strong><br><em>F. Pacei</em></td>
+      </tr>
+      <tr>
+        <td class="time">10:25 – 10:35</td>
+        <td><strong>Discussione</strong></td>
+      </tr>
+      <tr class="break-row">
+        <td class="time">10:35 – 10:45</td>
+        <td><em><strong>Coffee break</strong></em></td>
+      </tr>
+      <tr>
+        <td class="time">10:45 – 11:00</td>
+        <td><strong class="text-primary">La valutazione funzionale globale</strong><br><em>S. Farina</em></td>
+      </tr>
+      <tr>
+        <td class="time">11:00 – 11:15</td>
+        <td><strong class="text-primary">Il progetto riabilitativo individuale</strong><br><em>M. Huci</em></td>
+      </tr>
+      <tr>
+        <td class="time">11:15 – 11:30</td>
+        <td><strong class="text-primary">Il programma fisiochinesiterapico</strong><br><em>E. Barzaghi</em></td>
+      </tr>
+      <tr>
+        <td class="time">11:30 – 11:50</td>
+        <td><strong class="text-primary">L'approccio funzionale globale alla gestione del processo rieducativo</strong><br><em>T. Nava</em></td>
+      </tr>
+      <tr>
+        <td class="time">11:50 – 12:10</td>
+        <td><strong class="text-primary">I disturbi della voce, del linguaggio e della deglutizione nel paziente parkinsoniano</strong><br><em>M. Vedrodyova, R. Cosi e G. Mele</em></td>
+      </tr>
+      <tr>
+        <td class="time">12:10 – 12:30</td>
+        <td><strong class="text-primary">La gestione domiciliare: percorsi guidati ed educazionali</strong><br><em>N. Bratu, M. Mariani e M. Montanaro</em></td>
+      </tr>
+      <tr>
+        <td class="time">12:30 – 12:45</td>
+        <td><strong class="text-primary">La terapia occupazionale</strong><br><em>D. Franzese</em></td>
+      </tr>
+      <tr>
+        <td class="time">12:45 – 13:20</td>
+        <td><strong>Discussione e conclusione dei lavori</strong></td>
+      </tr>
+      <tr>
+        <td class="time">13:20 – 13:30</td>
+        <td><strong>Questionario ECM</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Faculty (una colonna, stesso stile) -->
+<div class="mt-5">
+  <h3 class="section-title" style="color:#ce1531;">Faculty</h3>
+  <table class="table program-table affiliations-table">
+    <tbody>
+      <tr><td>
+        <strong class="text-primary">Elena Barzaghi</strong><br>
+        <em>Fisioterapista e coordinatrice fisioterapisti, Dipartimento di Medicina Riabilitativa, Polo Geriatrico Riabilitativo, Cinisello Balsamo (MI)</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Nicoleta Violeta Bratu</strong><br>
+        <em>Coordinatrice infermieristica, Dipartimento di Medicina Riabilitativa, Polo Geriatrico Riabilitativo, Cinisello Balsamo (MI)</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Roberta Cosi</strong><br>
+        <em>Logopedista, Istituto Clinico Città Studi (MI)</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Manuela Devasini</strong><br>
+        <em>Direttrice del Polo Geriatrico Riabilitativo, Cinisello Balsamo (MI)</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Simona Farina</strong><br>
+        <em>Medico chirurgo, Dipartimento di Medicina Riabilitativa, Polo Geriatrico Riabilitativo, Cinisello Balsamo (MI)</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Daniele Franzese</strong><br>
+        <em>Terapista occupazionale, Dipartimento di Medicina Riabilitativa, Polo Geriatrico Riabilitativo, Cinisello Balsamo (MI)</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Emanuela Monica Huci</strong><br>
+        <em>Medico, Dipartimento di Medicina Riabilitativa, Polo Geriatrico Riabilitativo, Cinisello Balsamo (MI)</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Felice Lanzeni</strong><br>
+        <em>Direttore sanitario del Polo Geriatrico Riabilitativo, Cinisello Balsamo (MI)</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Marco Mariani</strong><br>
+        <em>Infermiere coordinatore, Dipartimento di Medicina Riabilitativa, Polo Geriatrico Riabilitativo, Cinisello Balsamo (MI)</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Gerardo Mele</strong><br>
+        <em>Direttore del Dipartimento di Medicina Riabilitativa, Polo Geriatrico Riabilitativo, Cinisello Balsamo (MI)</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Monica Montanaro</strong><br>
+        <em>Infermiera, Dipartimento di Medicina Riabilitativa, Polo Geriatrico Riabilitativo, Cinisello Balsamo (MI)</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Tiziana Bruna Nava</strong><br>
+        <em>Fisioterapista e docente presso l'Università degli Studi di Milano - Bicocca</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Federico Pacei</strong><br>
+        <em>Neurologo e responsabile del Centro per i Disturbi Cognitivi e le Demenze (CDCD), Clinica San Carlo, Paderno Dugnano (MI)</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Gianni Pezzoli</strong><br>
+        <em>Presidente della Fondazione Pezzoli (MI)</em>
+      </td></tr>
+
+      <tr><td>
+        <strong class="text-primary">Miriam Vedrodyova</strong><br>
+        <em>Logopedista, Dipartimento di Medicina Riabilitativa, Polo Geriatrico Riabilitativo, Cinisello Balsamo (MI)</em>
+      </td></tr>
+    </tbody>
+  </table>
+</div>

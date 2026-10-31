@@ -1,0 +1,19 @@
+{
+    "id": 87,
+    "name": "str.specialita",
+    "caption": "Specialità (schema.org)",
+    "description": "Valori di MedicalSpecialty separati da virgola, es. Psychiatric, Physiotherapy, Cardiovascular.",
+    "category": "",
+    "type": "text",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": null,
+    "templates": [
+        2,
+        4
+    ]
+}

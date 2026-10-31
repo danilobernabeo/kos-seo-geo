@@ -1,0 +1,19 @@
+{
+    "id": 90,
+    "name": "str.prenotazione",
+    "caption": "Prenotazione online",
+    "description": "URL https della prenotazione online di questa struttura (meglio la pagina della struttura che quella generica): diventa l'azione di prenotazione (ReserveAction) nel dato strutturato.",
+    "category": "",
+    "type": "text",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": null,
+    "templates": [
+        2,
+        4
+    ]
+}

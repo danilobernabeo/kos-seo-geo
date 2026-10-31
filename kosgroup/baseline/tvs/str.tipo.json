@@ -1,0 +1,19 @@
+{
+    "id": 86,
+    "name": "str.tipo",
+    "caption": "Tipo schema.org",
+    "description": "Tipo dell'entità, separati da virgola (es. MedicalClinic; Hospital; DiagnosticLab; Dentist), secondo la tabella approvata. Vuoto = MedicalClinic.",
+    "category": "",
+    "type": "text",
+    "elements": "",
+    "default_text": "",
+    "display": "default",
+    "input_properties": {
+        "allowBlank": "true"
+    },
+    "output_properties": null,
+    "templates": [
+        2,
+        4
+    ]
+}

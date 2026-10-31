@@ -1,0 +1,22 @@
+<div stripe-news="" class="container pb-4 pb-lg-5">
+  <div class="row">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="h3 text-primary mb-0">Altre notizie</h2>
+      </div>
+    </div>
+    <div class="row mt-2 mt-lg-4 gy-md-4 gy-3">
+
+[[getResources?
+    &parents=`8`
+    &limit=`256`
+    &offset=`1`
+    &where=`[[buildWhereExclude]]`
+    &tpl=`news-list-item`
+    &includeTVs=`1`
+    &includeTVList=`newsImage`
+    &sortby=`{"publishedon":"DESC"}`
+]]
+    </div>
+  </div>
+</div>
