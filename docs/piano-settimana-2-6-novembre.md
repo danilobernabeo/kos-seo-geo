@@ -96,13 +96,15 @@ li contiene, un nostro rilascio li sovrascriverebbe (o, con la baseline vecchia,
 | 3 | C | domenica | Pacchetto `kos-ttfb-31-10` con i 5 file pronti dell'altra chat (`template informativo`, `listingNewsLast3`, `kosplayer-banner`, `listingComunicati`, chunk 209), più la rimozione di `[[*schemaJsonLd]]` dal template `informativo` (TV vuota su tutte le pagine dal 30/10). Pacchetto `aa-news` per `/news/` (template `news` e chunk `news-list` in cache), con la verifica di `newsImage` prima del rilascio |
 | 4 | D | lunedì mattina | Riallineamento dei due stage dalla produzione (passi 1-3 della guida) e rilancio degli installer dei lavori extra |
 | 5 | D | lunedì | `kos-ttfb-31-10` e `aa-news`: stage, collaudo, produzione, nella stessa finestra degli altri rilasci di lunedì |
-| 6 | D | dopo ogni rilascio | Script della cartella `monitor`: link relativi, og:image, URL annidati; query `verifica-*.sql` su produzione |
+| 6 | D | dopo ogni rilascio | Script ora nel repository, `scripts/collaudo/monitor/` (31/10): link relativi, og:image, URL annidati; query `verifica-*.sql` su produzione |
 | 7 | D | quando si tocca GTM | Tag Web Vitals (`gtm-web-vitals/`) importato con «Unisci» nella stessa area di lavoro dei filtri per hostname dello stage, o in sequenza, per evitare conflitti di versione |
 
 Regola nuova (già in `CLAUDE.md`, da rispettare negli elementi del progetto): MODX esegue i tag anche dentro i commenti HTML;
 per commentare un tag si usa `[[- ...]]`.
 
-Decisioni aperte dall'altra chat: pagine provincia vuote (vedi sopra: oggi 404; l'altra chat propone di completare le 4 con
+Decisioni aperte dall'altra chat: pagine provincia vuote (vedi sopra: oggi 404; Search Console 14/6/2025-23/10/2026, tabella
+`searchconsole_aa.storico_url_impression`: 0 impressioni per tutte e 11, contro 214.341 delle 14 pagine provincia pubblicate,
+quindi nessun 301 necessario; l'altra chat propone di completare le 4 con
 strutture del gruppo, Roma, Grosseto, Imperia, Reggio Emilia, e 301 alla regione per le altre); paginazione di `/news/`
 (fuori piano); email offuscate con entità HTML su kosgroup (nel dato strutturato restano in chiaro); Cloud Edge rimandato.
 
