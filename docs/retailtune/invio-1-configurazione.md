@@ -63,6 +63,7 @@ pagine: ricerca per indirizzo attiva, contenitore con dimensioni definite dal si
 | `/residenze` | `residenze-per-anziani`, modificabile (con `centri-diurni` e `hospice`) | tutta Italia, modificabile | mappa generale |
 | `/rsa-in-lombardia`, `/rsa-in-piemonte`, `/rsa-in-liguria`, `/rsa-in-emilia-romagna`, `/rsa-in-veneto`, `/rsa-in-toscana` (6) | `residenze-per-anziani`, fissa | elenco delle province della regione, fisso (I7) | sostituisce la mappa attuale |
 | `/rsa-a-milano-e-provincia` e le 13 pagine `/rsa-in-provincia-di-…` (14) | `residenze-per-anziani`, fissa | provincia, fissa | sostituisce la mappa attuale |
+| Nuove pagine provincia (fino a 11, in preparazione: Ascoli Piceno, Asti, Como, Fermo, Grosseto, Imperia, Pesaro e Urbino, Reggio Emilia, Roma, Rovigo, Vercelli) | `residenze-per-anziani`, fissa | provincia, fissa | stessa configurazione delle pagine provincia esistenti |
 | `/centri-diurni` | `centri-diurni`, fissa | tutta Italia | |
 | `/hospice` | `hospice`, fissa | tutta Italia | |
 

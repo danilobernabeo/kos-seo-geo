@@ -71,6 +71,15 @@ punto 3 definitivo.
 - Bozza del primo invio a RetailTune: `docs/retailtune/invio-1-configurazione.md` (decisioni di Danilo segnate [Da decidere]).
 - Bozza per KOS e agenzia sulle schede Google (fasi, nomi, siti e UTM, categorie per gruppo, verificate nel selettore il 31/10): `docs/schede-google-passaggio-retailtune.md`. A KOS lunedì 9:00 (osservazioni entro le 15), all'agenzia lunedì sera o martedì mattina; le categorie escono dalla mail di martedì, che resta con i testi KOS 21-23 e i 6 title AA.
 
+## Segnalato il 31/10: pagine provincia vuote su anniazzurri.it
+
+11 risorse provincia (`rsa-in-provincia-di-` ascoli-piceno, asti, como, fermo, grosseto, imperia, pesaro-urbino,
+reggio-emilia, roma, rovigo, vercelli) rispondono 200 con contenuto vuoto (template 0), fuori dalla sitemap: rilevato nella
+chat sulle prestazioni. Oggi sono pagine vuote raggiungibili (soft 404). Subito: non pubblicate (404) finché non hanno
+contenuto. Poi: pagine vere con template provincia, testo, elenco strutturato (stessa forma di AA-10) e widget RetailTune
+con provincia fissa (già nel primo invio). Non sono una voce d'audit: lavoro interno da valutare a parte, non nei
+documenti condivisi finché Danilo non decide.
+
 ## Programma
 
 Legenda: **D** = Danilo, **C** = Claude. Le stime di Danilo sono in ore effettive.
