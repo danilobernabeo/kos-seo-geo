@@ -32,12 +32,12 @@ sprint 1 (verifica di Cerved/ProWeb 9-14/11).
 | Voce | Stato | Cosa manca |
 |---|---|---|
 | KOS 2 · Tempo di risposta | Head consolidati (26/10), cache di `docList` (27/10) | Misura per la nota; caricamento differito delle immagini fuori schermo (piano KOS-2 B) |
-| KOS 8 · PDF | Link e cartelle corretti (27/10) | Classificazione, titoli, esclusione dall'indice: stato da controllare lunedì |
+| KOS 8 · PDF | Link e cartelle corretti (27/10) | Verificato il 31/10: classificazione, titoli ed esclusione dall'indice non ancora fatti (nessuna regola `X-Robots-Tag`). Classificazione da chiedere a KOS nella call; poi `noindex, nofollow` via regole web, sitemap dei PDF per seguire la deindicizzazione |
 | KOS 9, 12, 13 · Ente e briciole | In produzione (22/10) | Solo evidenza |
 | KOS 21-23 · Title, description, H1 | Stato degli URL estratto (27/10) | Proposta dei testi (78 title, 301 description, 20 H1), validazione dell'agenzia, import; marchio « \| KOS» dal template (valutazione a parte) |
 | KOS 24 · Strutture (linea C) | Libreria e TV in produzione, spente (28/10) | Correzioni Yext, export, import TV, attivazione |
 | AA 1 · Sfondi | In produzione (27/10) | Solo evidenza |
-| AA 3 · PDF | 97 redirect (27/10) | Classificazione, titoli, esclusione dall'indice: stato da controllare lunedì |
+| AA 3 · PDF | 97 redirect (27/10) | Come KOS 8 (verificato il 31/10). L'audit AA chiede `noindex, nofollow` su tutti i PDF |
 | AA 6 · H2 | In produzione (27/10) | Solo evidenza |
 | AA 20 · Title e description | 90 pagine dell'audit (28/10) | 6 title lunghi (agenzia); circa 90 pagine fuori audit, da validare tra Danilo e Claude |
 | KOS 10 · Articoli | — | Article con autore ed editore nella libreria comune |
@@ -65,6 +65,11 @@ punto 3 definitivo.
 6. **Corrispondenza dei campi** RetailTune → TV `str.*` per l'importazione notturna, con `str.codice` e `str.societa`.
 7. **Domande aperte**: abbinamento per codice sede o ID profilo, codici delle categorie, campi dei link di prenotazione, API per
    l'importazione notturna, più tipologie per sede, combinazione dei filtri, ricerca per parole chiave, `storeids` da pagina.
+
+## Fatto il 31/10
+
+- Bozza del primo invio a RetailTune: `docs/retailtune/invio-1-configurazione.md` (decisioni di Danilo segnate [Da decidere]).
+- Bozza per KOS e agenzia sulle schede Google (fasi, nomi, siti e UTM, categorie per gruppo, verificate nel selettore il 31/10): `docs/schede-google-passaggio-retailtune.md`. A KOS lunedì 9:00 (osservazioni entro le 15), all'agenzia lunedì sera o martedì mattina; le categorie escono dalla mail di martedì, che resta con i testi KOS 21-23 e i 6 title AA.
 
 ## Programma
 
