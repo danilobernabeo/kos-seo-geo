@@ -18,7 +18,7 @@ Interventi fatti da Danilo in un'altra chat, ora conclusa (dettaglio in `docs/ri
 
 - Link interni sempre assoluti (`/...`): `link_tag_scheme` = abs su entrambi i siti; ogni chiamata Wayfinder/pdoMenu/pdoCrumbs con `&scheme=`abs``; placeholder `href="/[[+uri]]"`; negli snippet `makeUrl` con `link_tag_scheme`.
 - Nessun plugin o snippet che risponda 200 a URL inesistenti (OnPageNotFound). kosgroup.com: regola nginx che dà 404 agli URL annidati `/(it|en)/.../(it|en)`.
-- Niente nuove chiamate non in cache `[[!...]]` negli head e nei menu (pesano sul TTFB): JSON-LD e dati di risorsa in cache.
+- Niente nuove chiamate non in cache `[[!...]]` negli head e nei menu (pesano sul TTFB): JSON-LD e dati di risorsa in cache. MODX esegue i tag anche dentro i commenti HTML `<!-- -->`: per disattivare un tag si usa `[[- ...]]`.
 - anniazzurri.it: sitemap (pdoSitemap) e `noindex, follow` governati dalla casella «Ricercabile»; nuovi head con la stessa riga `[[*searchable:is=`0`:then=...]]`.
 - kosgroup.com: gli head (13 chunk) vanno consolidati in un punto solo (hreflang, noindex, Canonical, CSS); interventi SEO sugli head dentro il consolidamento, gestito da questo progetto insieme alla voce 24 (JSON-LD delle landing).
 - Possibile Cloud Edge (Cloudflare) davanti ai siti: prima di attivarlo rivedere header, redirect e accesso dei crawler AI (KOS-6, AA-19).

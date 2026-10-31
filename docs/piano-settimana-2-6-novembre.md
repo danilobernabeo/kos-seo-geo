@@ -83,6 +83,29 @@ Controllo: 11 pagine in 404, 450 pagine della sitemap in 200 con un solo JSON-LD
 con provincia fissa (già nel primo invio). Non sono una voce d'audit: lavoro interno da valutare a parte, non nei
 documenti condivisi finché Danilo non decide.
 
+## Allineamento con la chat sulle prestazioni (istruzioni del 31/10)
+
+Fonte: `ISTRUZIONI-ALTRA-CHAT.md` e `handoff-ttfb-kosgroup-anniazzurri.md` nella cartella `monitor` di Danilo. Dal 19 al
+31/10 l'altra chat ha modificato in produzione elementi, impostazioni e regole web dei due siti. Finché il repository non
+li contiene, un nostro rilascio li sovrascriverebbe (o, con la baseline vecchia, `installa-elementi.php` si fermerebbe).
+
+| Passo | Chi | Quando | Cosa |
+|---|---|---|---|
+| 1 | D | domenica | Esportazione degli elementi dalle due produzioni (`docs/guida-riallineamento-stage.md`, passo 4) e copia delle regole web KOS dal pannello; file nella cartella `monitor` |
+| 2 | C | domenica | Confronto con il repository: elementi del progetto cambiati in produzione (es. `breadcrumb`, `ogImage` KOS, head e footer AA) → modifiche integrate in `elements/`; tutti gli altri → nuova baseline; regole web aggiornate nel repository. Registro in `docs/elementi-sotto-progetto.md` |
+| 3 | C | domenica | Pacchetto `kos-ttfb-31-10` con i 5 file pronti dell'altra chat (`template informativo`, `listingNewsLast3`, `kosplayer-banner`, `listingComunicati`, chunk 209), più la rimozione di `[[*schemaJsonLd]]` dal template `informativo` (TV vuota su tutte le pagine dal 30/10). Pacchetto `aa-news` per `/news/` (template `news` e chunk `news-list` in cache), con la verifica di `newsImage` prima del rilascio |
+| 4 | D | lunedì mattina | Riallineamento dei due stage dalla produzione (passi 1-3 della guida) e rilancio degli installer dei lavori extra |
+| 5 | D | lunedì | `kos-ttfb-31-10` e `aa-news`: stage, collaudo, produzione, nella stessa finestra degli altri rilasci di lunedì |
+| 6 | D | dopo ogni rilascio | Script della cartella `monitor`: link relativi, og:image, URL annidati; query `verifica-*.sql` su produzione |
+| 7 | D | quando si tocca GTM | Tag Web Vitals (`gtm-web-vitals/`) importato con «Unisci» nella stessa area di lavoro dei filtri per hostname dello stage, o in sequenza, per evitare conflitti di versione |
+
+Regola nuova (già in `CLAUDE.md`, da rispettare negli elementi del progetto): MODX esegue i tag anche dentro i commenti HTML;
+per commentare un tag si usa `[[- ...]]`.
+
+Decisioni aperte dall'altra chat: pagine provincia vuote (vedi sopra: oggi 404; l'altra chat propone di completare le 4 con
+strutture del gruppo, Roma, Grosseto, Imperia, Reggio Emilia, e 301 alla regione per le altre); paginazione di `/news/`
+(fuori piano); email offuscate con entità HTML su kosgroup (nel dato strutturato restano in chiaro); Cloud Edge rimandato.
+
 ## Programma
 
 Legenda: **D** = Danilo, **C** = Claude. Le stime di Danilo sono in ore effettive.
