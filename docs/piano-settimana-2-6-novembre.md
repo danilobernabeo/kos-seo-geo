@@ -99,6 +99,21 @@ li contiene, un nostro rilascio li sovrascriverebbe (o, con la baseline vecchia,
 | 6 | D | dopo ogni rilascio | Script ora nel repository, `scripts/collaudo/monitor/` (31/10): link relativi, og:image, URL annidati; query `verifica-*.sql` su produzione |
 | 7 | D | quando si tocca GTM | Tag Web Vitals (`gtm-web-vitals/`) importato con «Unisci» nella stessa area di lavoro dei filtri per hostname dello stage, o in sequenza, per evitare conflitti di versione |
 
+**Chiamate non in cache rimaste (censimento del 31/10 sugli export di produzione).** Candidate alla cache (nessuna
+dipendenza da richiesta, sessione o ora del giorno; la cache di MODX è per pagina e si svuota a ogni salvataggio):
+- AA, su tutte o quasi le pagine: `[[!Canonical]]` nei 26 head e in `convegnoAA`; `[[!Wayfinder]]` nei template
+  `interna-menu-*`; `[[!CompanyInfo]]` nel footer; `[[!ContactInfo]]` nei `contactBox`; `[[!newsByStruttura]]` e
+  `[[!getResources]]` in `rsa` e `interna-articolo`; `[[!docList]]` in 3 chunk (come KOS: in cache con `&cacheTtl`).
+- KOS: `[[!contenutiStruttura]]` nei template `strutture`, `strutture-VDP` (ogni scheda struttura; `date()` solo per formattare
+  la data di pubblicazione); `[[!Wayfinder]]` nei chunk `aree-di-intervento-*` e `menu-en`; `[[!pdoResources]]`,
+  `[[!getResources]]`, `[[!pdoField]]`, `[[!pdoMenu]]` negli elenchi; `[[!DisplayResourceTags]]` nel template `video`;
+  `[[!Canonical]]` in `head-formazione`, `head-strutture-test`; `[[!copyYears]]`.
+Da lasciare non in cache: `switchCta*`, `switchCtaHoliday`, `dayLeft`, `currentMonth` (landing AA, dipendono dalla data),
+`nverdeMenuItem` e `getMenuContact` (orari), `prenotaOnline` e `mostraPrestazioniPerBranca` (chiamate esterne in tempo
+reale), `comunicatoRedirect` (reindirizza), FormIt e reCAPTCHA, `WAVEChecker`.
+Proposta: pacchetti `kos-ttfb-2` (voce KOS-2, sprint 2) e `aa-ttfb` (miglioria, gli head AA sono elementi dello sprint 1:
+uscita entro il 6/11 o dopo il 14/11), misura prima e dopo con `scripts/collaudo/monitor/misura-ttfb.ps1`.
+
 Regola nuova (già in `CLAUDE.md`, da rispettare negli elementi del progetto): MODX esegue i tag anche dentro i commenti HTML;
 per commentare un tag si usa `[[- ...]]`.
 
