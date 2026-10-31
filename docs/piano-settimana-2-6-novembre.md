@@ -76,7 +76,10 @@ punto 3 definitivo.
 11 risorse provincia (`rsa-in-provincia-di-` ascoli-piceno, asti, como, fermo, grosseto, imperia, pesaro-urbino,
 reggio-emilia, roma, rovigo, vercelli) rispondono 200 con contenuto vuoto (template 0), fuori dalla sitemap: rilevato nella
 chat sulle prestazioni. Oggi sono pagine vuote raggiungibili (soft 404). Subito: non pubblicate (404) finché non hanno
-contenuto. Poi: pagine vere con template provincia, testo, elenco strutturato (stessa forma di AA-10) e widget RetailTune
+contenuto: **fatto il 31/10** con `aggiorna-campi.php` (campo `published`), stage e produzione; produzione: backup
+`/paas/c0072/backup-kos-seo-geo/20261031-035209-campi` (ripristino `aggiorna-campi.php /www --ripristina <cartella> --scrivi`).
+Controllo: 11 pagine in 404, 450 pagine della sitemap in 200 con un solo JSON-LD, nessun link verso le 11 da home, regioni,
+`/residenze` e `llms.txt`. Poi: pagine vere con template provincia, testo, elenco strutturato (stessa forma di AA-10) e widget RetailTune
 con provincia fissa (già nel primo invio). Non sono una voce d'audit: lavoro interno da valutare a parte, non nei
 documenti condivisi finché Danilo non decide.
 
