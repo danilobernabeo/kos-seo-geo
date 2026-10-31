@@ -11,7 +11,14 @@ const F='Arial', INK='20262B', TEAL='1F5C6E', GREY='6B7278', LINE='B8C7CC', RED=
 let md=fs.readFileSync(process.argv[2]||'nota.md','utf8')
   .replace(/\[Convenzione degli identificativi del dato strutturato\]\([^)]*\)/,'Convenzione degli identificativi del dato strutturato (documento allegato)')
   .replace('| Scheda condivisa |','| Documento allegato |');
-const lines=md.split('\n');
+// righe spezzate a mano nel Markdown: la riga di continuazione si unisce alla precedente (paragrafi e voci di elenco)
+const grezze=md.split('\n'), lines=[]; let inCode=false;
+for(const r of grezze){
+  if(r.startsWith('```')) inCode=!inCode;
+  const prev=lines.length?lines[lines.length-1]:'';
+  const cont=!inCode && r.trim() && !/^(#|\||- |\d+\. |```|&#91;)/.test(r) && prev.trim() && !/^(#|\||```)/.test(prev) && lines.length>=3;
+  if(cont) lines[lines.length-1]=prev.replace(/\s+$/,'')+' '+r.trim(); else lines.push(r);
+}
 // inline parser: **bold**, `code`, [t](u)
 function runs(s,base={}){
   const out=[]; const re=/(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\))/g; let i=0,m;
@@ -59,6 +66,7 @@ while(i<lines.length){
   if(!l.trim()){i++;continue;}
   const isList=/^(\d+\. |- )/.test(l); const wasList=prevList; prevList=isList; const _w=wasList;
   if(l.startsWith('## ')){kids.push(H2(l.slice(3)));i++;continue;}
+  if(l.startsWith('### ')){kids.push(new Paragraph({spacing:{before:200,after:100},children:[new TextRun({text:l.slice(4),font:F,color:TEAL,size:22,bold:true})]}));i++;continue;}
   if(l.startsWith('```')){ i++; const code=[]; while(i<lines.length&&!lines[i].startsWith('```')){code.push(lines[i]);i++;} i++;
     code.forEach((c,k)=>kids.push(new Paragraph({shading:{fill:'F3F6F7',type:ShadingType.CLEAR,color:'auto'},spacing:{after:0,line:240},indent:{left:120,right:120},
       border:k==0?{top:{style:BorderStyle.SINGLE,color:LINE,size:4,space:4}}:(k==code.length-1?{bottom:{style:BorderStyle.SINGLE,color:LINE,size:4,space:4}}:undefined),
