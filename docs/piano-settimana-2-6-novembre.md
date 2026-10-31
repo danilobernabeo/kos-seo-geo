@@ -97,7 +97,8 @@ li contiene, un nostro rilascio li sovrascriverebbe (o, con la baseline vecchia,
 | 4 | D | lunedì mattina | Riallineamento dei due stage dalla produzione (passi 1-3 della guida) e rilancio degli installer dei lavori extra |
 | 5 | D | lunedì | `kos-ttfb-31-10` e `aa-news`: stage, collaudo, produzione, nella stessa finestra degli altri rilasci di lunedì |
 | 6 | D | dopo ogni rilascio | Script ora nel repository, `scripts/collaudo/monitor/` (31/10): link relativi, og:image, URL annidati; query `verifica-*.sql` su produzione |
-| 7 | D | quando si tocca GTM | Tag Web Vitals (`gtm-web-vitals/`) importato con «Unisci» nella stessa area di lavoro dei filtri per hostname dello stage, o in sequenza, per evitare conflitti di versione |
+| 7 | D | **pubblicato il 31/10** (Danilo) | Tag Web Vitals nei due container GTM; attivatori limitati all'hostname di produzione, quindi gli stage restano esclusi. Primi dati in BigQuery (`analytics_333083624`, `analytics_250584060`) dalla tabella giornaliera del giorno dopo; martedì 3/11 C verifica la presenza dell'evento `web_vitals` e lancia la prima analisi (`gtm-web-vitals/web-vitals-bigquery.sql`), da usare come «prima» per i pacchetti di cache del 2-6/11 |
+| 7 bis | D | quando si tocca GTM | Tag Web Vitals (`gtm-web-vitals/`) importato con «Unisci» nella stessa area di lavoro dei filtri per hostname dello stage, o in sequenza, per evitare conflitti di versione |
 
 **Chiamate non in cache rimaste (censimento del 31/10 sugli export di produzione).** Candidate alla cache (nessuna
 dipendenza da richiesta, sessione o ora del giorno; la cache di MODX è per pagina e si svuota a ogni salvataggio):
