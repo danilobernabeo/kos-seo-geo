@@ -1,6 +1,7 @@
 // Impagina un Markdown nel formato dei documenti per KOS e Cerved/ProWeb (come calendario-sprint-linee-a-b.docx):
 // testata «GRUPPO KOS», titolo, sottotitolo linee A e B, firma, intestazione «Documento riservato», numero di pagina,
 // Arial, tabelle con intestazione #1F5C6E. Uso: node scripts/docs/impagina-kos.js <file.md> <uscita.docx> ["Danilo Bernabeo · data"]
+// Sottotitolo diverso con la variabile d'ambiente SOTTOTITOLO (es. documenti della linea C).
 // Argomenti 5 e 6 (facoltativi): immagine PNG al posto del contenuto incorporato della scheda e dimensioni LxA in px.
 // Il Markdown è l’export della scheda (prima riga «# Titolo», terza riga la firma della scheda, che viene sostituita).
 const fs=require('fs');
@@ -50,7 +51,7 @@ const kids=[]; let i=0; let prevList=false;
 const title=lines[0].replace(/^# /,'');
 kids.push(new Paragraph({spacing:{after:80},children:[new TextRun({text:'GRUPPO KOS',font:F,bold:true,color:RED,size:18,characterSpacing:50})]}));
 kids.push(new Paragraph({spacing:{after:60},children:[new TextRun({text:title,font:F,bold:true,color:TEAL,size:40})]}));
-kids.push(new Paragraph({spacing:{after:60},children:[new TextRun({text:'Linee A e B · Ottimizzazione SEO/GEO di kosgroup.com e anniazzurri.it',font:F,color:INK,size:24})]}));
+kids.push(new Paragraph({spacing:{after:60},children:[new TextRun({text:process.env.SOTTOTITOLO||'Linee A e B · Ottimizzazione SEO/GEO di kosgroup.com e anniazzurri.it',font:F,color:INK,size:24})]}));
 kids.push(new Paragraph({border:{bottom:{style:BorderStyle.SINGLE,color:LINE,size:6,space:8}},spacing:{after:240},children:[new TextRun({text:(process.argv[4]||'Danilo Bernabeo · 30 ottobre 2026'),font:F,color:GREY,size:19})]}));
 i=3;
 while(i<lines.length){
