@@ -1,6 +1,6 @@
 # Nota di consegna: gestione dei PDF (KOS-8 / AA-3)
 
-Rilascio del 1/11/2026, prima sugli stage e poi in produzione. Brief: `docs/brief-pdf.md`. Classificazione: `kosgroup/dati/voce-24/classificazione-pdf-20261101-v2.xlsx` (il testo dei PDF e i CSV restano fuori da git).
+Rilascio del 1/11/2026, prima sugli stage e poi in produzione. Brief: `docs/pdf/brief-pdf.md`. Classificazione: `kosgroup/dati/voce-24/classificazione-pdf-20261101-v2.xlsx` (il testo dei PDF e i CSV restano fuori da git).
 
 ## Cosa è stato fatto
 
