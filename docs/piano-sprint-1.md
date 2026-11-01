@@ -252,6 +252,16 @@ Search Console (giu. 2025-ott. 2026, anniazzurri.it): «appartamenti / mini appa
 31.400 impressioni, «senior living» circa 4.600 (339 «senior living bergamo»), «alloggi protetti» circa 5.500, «soluzioni
 abitative» 92. Nessun nodo struttura oggi sulla pagina: con le schede AA (sprint 3) sarà
 `LocalBusiness` (soluzione abitativa non sanitaria, convenzione del progetto).
+**In produzione il 1/11 (16:50)**: title del giro 2 (65) e testi della 367; poi alias della 367 da `alloggi-protetti` a
+`appartamenti-anziani-bergamo` (scelto dai dati di Search Console: l'indirizzo generico «soluzioni-abitative-per-la-terza-eta»
+non è cercato e non dice dove), con foto di testata e cartella dei documenti copiate col nuovo nome (il template `rsa` le
+legge da `[[*alias]]`), chunk `cdsList` aggiornato (pacchetto `aa-senior-living`) e due 301 nelle regole web
+(`anniazzurri/files/web-rules/aa-senior-living.conf`). Verifica dal sito: 65/65 title attesi e un solo JSON-LD; nuova pagina
+200 con title, H1, description, canonical, og:url, og:image e briciole nuove, @id con il nuovo indirizzo; vecchio indirizzo e
+vecchio PDF in 301; carta degli alloggi indicizzabile (nessun X-Robots-Tag). La sitemap (pdoSitemap in cache per un'ora) si
+aggiorna da sola. Da fare tra qualche giorno: togliere dal server `assets/img/rsa/alloggi-protetti.jpg` e la cartella
+`assets/doc/strutture/alloggi-protetti/` (i 301 restano); aggiornare l'eccezione della sezione PDF al nuovo percorso alla
+prossima rigenerazione.
 
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
 
