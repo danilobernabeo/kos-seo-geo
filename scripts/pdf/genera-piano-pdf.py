@@ -177,6 +177,18 @@ def main():
         L.append('    add_header Link $pdf_link;')
         L.append('    try_files $uri $uri/ @modx-rewrite;')
         L.append('}')
+        if sito == 'kos':
+            L.append('')
+            L.append('# --- 3. Curriculum caricati dal modulo di candidatura (dati personali): fuori dai motori, ma raggiungibili ---')
+            L.append('# I file restano aperti (la pagina riservata li apre con il link diretto): solo X-Robots-Tag noindex, nofollow, per ogni tipo di file.')
+            L.append('# Il prefisso ^~ vince sui blocchi con espressione regolare. Con try_files uguale a quello predefinito, l\'elenco della cartella resta 403 come oggi.')
+            L.append('location ^~ /assets/doc/cv/ {')
+            L.append('    if ($redirect_to) { return 301 $redirect_to; }')
+            for hd in header_sicurezza(sito):
+                L.append('    ' + hd)
+            L.append('    add_header X-Robots-Tag "noindex, nofollow" always;')
+            L.append('    try_files $uri $uri/ @modx-rewrite;')
+            L.append('}')
         L.append('# ===== FINE SEZIONE PDF (KOS-8 / AA-3) =====')
         with open(os.path.join(RADICE, cart, 'files', 'web-rules', 'pdf-noindex.conf'), 'w', encoding='utf-8') as fh:
             fh.write('\n'.join(L) + '\n')

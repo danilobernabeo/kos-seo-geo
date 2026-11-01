@@ -36,4 +36,4 @@ Rilascio del 1/11/2026, prima sugli stage e poi in produzione. Brief: `docs/pdf/
 - Ricostruire i 7 PDF con la tabella interna rotta (fuori voce, a consuntivo).
 - Controllo ripetibile per i PDF nuovi (passi 5-6 del brief).
 - Pulizia dei file di lavoro sui cloud: `~/pdfmeta*`, `~/pdf-h1*`, `~/meta-stato-*`, `~/prova-pdf-*`.
-- Verifica della raggiungibilità pubblica di `/assets/doc/cv/` (contiene dati personali).
+- Cartella dei curriculum `/assets/doc/cv/` (dati personali): blocco `noindex, nofollow` in preparazione (sezione PDF, solo KOS), da collaudare su stage e produzione. I file restano raggiungibili con il link diretto (la pagina riservata li apre), l'elenco della cartella resta 403.
