@@ -1,0 +1,770 @@
+{
+ "sito": "aa",
+ "generato": "2026-11-01",
+ "pdf": [
+  {
+   "p": "/assets/doc/cure-domiciliari/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Anni Azzurri"
+  },
+  {
+   "p": "/assets/doc/strutture/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Anni Azzurri"
+  },
+  {
+   "p": "/assets/doc/strutture/alloggi-protetti/Carta degli alloggi.pdf",
+   "t": "Carta degli alloggi – Nuovi alloggi protetti"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-diurno-alzheimer-san-giuseppe/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Centro diurno Alzheimer san giuseppe"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-diurno-anni-azzurri-la-limonaia/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Centro diurno anni azzurri la limonaia"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-diurno-anni-azzurri-la-maremma/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Centro Diurno Anni Azzurri Maremma"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-diurno-integrato-anni-azzurri-biancospino/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Centro diurno integrato anni azzurri biancospino"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-diurno-integrato-anni-azzurri-san-rocco/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Centro diurno integrato anni azzurri san rocco"
+  },
+  {
+   "p": "/assets/doc/strutture/hospice-beati-coniugi-martin/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Hospice Beati Coniugi Martin"
+  },
+  {
+   "p": "/assets/doc/strutture/hospice-san-giorgio-a-colonica/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Hospice san giorgio a colonica"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-abitare-il-tempo/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Abitare il Tempo"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-b-franchiolo/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri B. Franchiolo"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-beato-angelico/Carta dei servizi Centro Diurno Integrato.pdf",
+   "t": "Carta dei servizi Centro Diurno – Anni Azzurri Beato Angelico"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-beato-angelico/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Beato Angelico"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-borgomanero/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Borgomanero"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-campi-bisenzio/Carta dei servizi Hospice San Giorgio a Colonica.pdf",
+   "t": "Carta dei servizi Hospice San Giorgio – Anni Azzurri Campi Bisenzio"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-campi-bisenzio/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Campi Bisenzio"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-carmagnola/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Carmagnola"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-casa-argento/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Casa Argento"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-casa-serena/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Casa Serena"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-castagnola/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Castagnola"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-casteldonino/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Casteldonino"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-cit-turin/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Cit Turin"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-conero/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Conero"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-dorica/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Dorica"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-ducale-1/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Ducale 1"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-ducale-2-3/Carta dei servizi Ducale 2.pdf",
+   "t": "Carta dei servizi Ducale 2 – Residenza Anni Azzurri Ducale 2-3"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-ducale-2-3/Carta dei servizi Ducale 3.pdf",
+   "t": "Carta dei servizi Ducale 3 – Residenza Anni Azzurri Ducale 2-3"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-idice/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Idice"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-il-giardino/Carta dei servizi CSRR Orchidea.pdf",
+   "t": "Carta dei servizi CSRR Orchidea – Anni Azzurri Il Giardino"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-il-giardino/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Il Giardino"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-il-poggione/Carta dei servizi Centro Diurno Integrato.pdf",
+   "t": "Carta dei servizi Centro Diurno – Anni Azzurri Il Poggione"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-il-poggione/Carta dei servizi il Poggione 2.pdf",
+   "t": "Carta dei servizi il Poggione 2 – Anni Azzurri Il Poggione"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-il-poggione/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Il Poggione"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-la-corte/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri La Corte"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-le-grange/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Le Grange"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-melograno/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Residenza Anni Azzurri Melograno"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-melograno/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Melograno"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-mestre/Carta dei servizi Nucleo La Fenice.pdf",
+   "t": "Carta dei servizi Nucleo La Fenice – Anni Azzurri Mestre"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-mestre/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Mestre"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-minerva/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Minerva"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-mirasole/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Residenza Anni Azzurri Mirasole"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-mirasole/Carta dei servizi Unita' Operativa Riabilitazione Generale Geriatrica.pdf",
+   "t": "Carta dei servizi Riabilitazione Geriatrica – Anni Azzurri Mirasole"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-mirasole/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Mirasole"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-montanaro/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Montanaro"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-navigli/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Residenza Anni Azzurri Navigli"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-navigli/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Navigli"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-palladio/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Palladio"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-parco-di-veio/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Parco di Veio"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-parco-sempione/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Anni Azzurri Parco Sempione"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-parco-sempione/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Parco Sempione"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-pgr-cinisello/Carta dei servizi Dipartimento di Medicina Fisica e Riabilitativa.pdf",
+   "t": "Carta dei servizi Medicina Fisica e Riabilitativa – Anni Azzurri PGR Cinisello"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-pgr-cinisello/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Anni Azzurri PGR Cinisello"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-pgr-cinisello/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Anni Azzurri PGR Cinisello"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-pgr-milano/Carta dei servizi Polo Geriatrico Riabilitativo 1.pdf",
+   "t": "Carta dei servizi, nucleo 1 – Anni Azzurri PGR Milano"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-pgr-milano/Carta dei servizi Polo Geriatrico Riabilitativo 2.pdf",
+   "t": "Carta dei servizi, nucleo 2 – Anni Azzurri PGR Milano"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-pgr-milano/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Anni Azzurri PGR Milano"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-quarto-d-altino/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Quarto d'Altino"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-rezzato/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Residenza Anni Azzurri Rezzato"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-rezzato/Carta dei servizi Servizio di Cure Intermedie Residenziali.pdf",
+   "t": "Carta dei servizi Cure Intermedie – Anni Azzurri Rezzato"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-rezzato/Carta dei servizi Unita' Operativa Riabilitazione Generale Geriatrica.pdf",
+   "t": "Carta dei servizi Riabilitazione Geriatrica – Anni Azzurri Rezzato"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-rezzato/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Rezzato"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-sacra-famiglia/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Sacra Famiglia"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-faustino/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Anni Azzurri San Faustino"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-faustino/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri San Faustino"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-giuseppe/Carta dei servizi Centro Diurno Integrato.pdf",
+   "t": "Carta dei servizi Centro Diurno – Anni Azzurri San Giuseppe"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-giuseppe/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri San Giuseppe"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-lorenzo/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri San Lorenzo"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-luca/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Residenza Anni Azzurri San Luca"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-luca/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri San Luca"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-martino/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Residenza Anni Azzurri San Martino"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-martino/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri San Martino"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-rocco/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Residenza Anni Azzurri San Rocco"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-rocco/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri San Rocco"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-sisto-2/Carta degli alloggi.pdf",
+   "t": "Carta degli alloggi – Residenza Anni Azzurri San Sisto 2"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-sisto-2/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Residenza Anni Azzurri San Sisto 2"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-sisto-2/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri San Sisto 2"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-sisto/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Residenza Anni Azzurri San Sisto"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-sisto/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri San Sisto"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-sant-anna/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Sant'Anna"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-santa-maria-in-chienti/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Santa Maria in Chienti"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-santambrogio/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Anni Azzurri Sant'Ambrogio"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-santambrogio/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Sant'Ambrogio"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-santena/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Santena"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-sestri-ponente/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Sestri Ponente"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-tonengo/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Tonengo d'Asti"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-valdaso/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Valdaso"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-vico-mercati/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Anni Azzurri Vico Mercati"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-vico-mercati/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Vico Mercati"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villa-clarice/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Anni Azzurri Villa Clarice"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villa-clarice/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Villa Clarice"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villa-dei-ciliegi/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Villa dei Ciliegi"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villa-pineta/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Villa Pineta"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villa-reale/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Residenza Anni Azzurri Villa Reale"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villa-reale/Carta dei servizi Servizio di Cure Intermedie Residenziali.pdf",
+   "t": "Carta dei servizi Cure Intermedie – Anni Azzurri Villa Reale"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villa-reale/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Villa Reale"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villa-san-vincenzo/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Villa San Vincenzo"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villaggio-san-francesco/Carta dei servizi RSA aperta.pdf",
+   "t": "Carta dei servizi RSA aperta – Anni Azzurri Villaggio San Francesco"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villaggio-san-francesco/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Anni Azzurri Villaggio San Francesco"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-volpiano/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Volpiano"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-abitare-il-tempo/User manual.pdf",
+   "t": "User guide – Residenza Anni Azzurri Abitare il Tempo"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-casa-argento/User manual.pdf",
+   "t": "User guide – Residenza Anni Azzurri Casa Argento"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-castagnola/Guida Poliambulatorio Castagnola.pdf",
+   "t": "Guida Poliambulatorio Castagnola – Anni Azzurri Castagnola"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-conero/User manual.pdf",
+   "t": "User guide – Residenza Anni Azzurri Conero"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-dorica/User manual.pdf",
+   "t": "User guide – Residenza Anni Azzurri Dorica"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-giuseppe/User manual.pdf",
+   "t": "User guide – Residenza Anni Azzurri San Giuseppe"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-santa-maria-in-chienti/User manual.pdf",
+   "t": "User guide – Residenza Anni Azzurri Santa Maria in Chienti"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-valdaso/User manual.pdf",
+   "t": "User guide – Residenza Anni Azzurri Valdaso"
+  },
+  {
+   "p": "/assets/doc/Domanda-di-inserimento-unificata-presso-le-RSA-della-ATS-della-città-metropolitana-di-Milano.pdf",
+   "t": "Domanda unificata di inserimento in RSA – ATS Milano"
+  },
+  {
+   "p": "/assets/doc/Scheda-sanitaria-di-ingresso-presso-le-RSA-della-ATS-della-città-metropolitana-di-Milano.pdf",
+   "t": "Scheda sanitaria di ingresso in RSA – ATS Milano"
+  },
+  {
+   "p": "/assets/doc/domanda-unica-di-inserimento-in-RSA-ATS-Brianza.pdf",
+   "t": "Domanda unica di inserimento in RSA – ATS Brianza"
+  },
+  {
+   "p": "/assets/doc/questionario-di-ammissione-ASL-BG.pdf",
+   "t": "Domanda di ingresso in RSA – ATS Bergamo"
+  },
+  {
+   "p": "/assets/doc/questionario-di-ammissione-UOR-mirasole.pdf",
+   "t": "Questionario di ammissione UOR – Anni Azzurri Mirasole"
+  },
+  {
+   "p": "/assets/doc/questionario-di-ammissione-UOR-polo-geriatrico-riabilitativo.pdf",
+   "t": "Questionario di ammissione UOR – Polo Geriatrico Riabilitativo"
+  },
+  {
+   "p": "/assets/doc/questionario-di-ammissione-UOR-rezzato.pdf",
+   "t": "Questionario di ammissione UOR – Anni Azzurri Rezzato"
+  },
+  {
+   "p": "/assets/doc/questionario-di-ammissione-residenze-anni-azzurri.pdf",
+   "t": "Questionario di ammissione – Residenze Anni Azzurri"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-abitare-il-tempo/Richiesta di ricovero Privato.pdf",
+   "t": "Richiesta di ricovero Privato – Anni Azzurri Abitare il Tempo"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-abitare-il-tempo/Richiesta di ricovero RSA.pdf",
+   "t": "Richiesta di ricovero RSA – Anni Azzurri Abitare il Tempo"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-abitare-il-tempo/Richiesta di ricovero Riabilitazione Estensiva.pdf",
+   "t": "Richiesta di ricovero in riabilitazione – Anni Azzurri Abitare il Tempo"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-abitare-il-tempo/Richiesta di ricovero UCP-UGIR.pdf",
+   "t": "Richiesta di ricovero UCP UGIR – Anni Azzurri Abitare il Tempo"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-casa-argento/Modulo richiesta ricovero.pdf",
+   "t": "Modulo richiesta ricovero – Residenza Anni Azzurri Casa Argento"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-dorica/Modulo richiesta ricovero Privato.pdf",
+   "t": "Modulo richiesta ricovero Privato – Residenza Anni Azzurri Dorica"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-dorica/Modulo richiesta ricovero RP RSA.pdf",
+   "t": "Modulo richiesta ricovero RP RSA – Residenza Anni Azzurri Dorica"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-dorica/Modulo richiesta ricovero ex Riabilitazione Estensiva.pdf",
+   "t": "Richiesta di ricovero in riabilitazione – Anni Azzurri Dorica"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-santa-maria-in-chienti/Modulo ingresso in convenzione.pdf",
+   "t": "Modulo di ingresso in convenzione – Anni Azzurri Santa Maria in Chienti"
+  },
+  {
+   "p": "/assets/doc/pieghevole-home-care-academy.pdf",
+   "t": "Pieghevole Home Care Academy – Anni Azzurri"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-diurno-anni-azzurri-la-maremma/Pieghevole Informativo.pdf",
+   "t": "Pieghevole informativo – Centro Diurno Anni Azzurri Maremma"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-abitare-il-tempo/Pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Abitare il Tempo"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-b-franchiolo/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri B. Franchiolo"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-beato-angelico/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Beato Angelico"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-borgomanero/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Borgomanero"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-campi-bisenzio/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Campi Bisenzio"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-carmagnola/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Carmagnola"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-castagnola/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Castagnola"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-casteldonino/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Casteldonino"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-cit-turin/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Cit Turin"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-ducale-1/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Ducale 1"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-ducale-2-3/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Ducale 2-3"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-idice/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Idice"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-il-poggione/Pieghevole Centro Diurno.pdf",
+   "t": "Pieghevole Centro Diurno – Residenza Anni Azzurri Il Poggione"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-il-poggione/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Il Poggione"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-la-corte/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri La Corte"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-le-grange/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Le Grange"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-melograno/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Melograno"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-mestre/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Mestre"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-minerva/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Minerva"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-mirasole/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Mirasole"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-montanaro/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Montanaro"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-navigli/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Navigli"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-palladio/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Palladio"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-parco-di-veio/Informational leaflet.pdf",
+   "t": "Informational leaflet – Residenza Anni Azzurri Parco di Veio"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-parco-di-veio/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Parco di Veio"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-parco-sempione/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Parco Sempione"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-pgr-cinisello/Pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Anni Azzurri PGR Cinisello"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-pgr-milano/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Anni Azzurri PGR Milano"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-pgr-milano/Pieghevole kosì vicini.pdf",
+   "t": "Pieghevole «Kosì vicini» – Polo Geriatrico Riabilitativo Milano"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-quarto-d-altino/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Quarto d'Altino"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-rezzato/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Rezzato"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-sacra-famiglia/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Sacra Famiglia"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-faustino/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri San Faustino"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-giuseppe/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri San Giuseppe"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-lorenzo/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri San Lorenzo"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-luca/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri San Luca"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-martino/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri San Martino"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-sisto-2/Pieghevole informativo alloggi protetti.pdf",
+   "t": "Pieghevole alloggi protetti – Residenza Anni Azzurri San Sisto 2"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-sisto-2/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri San Sisto 2"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-sisto/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri San Sisto"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-sant-anna/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Sant'Anna"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-santambrogio/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Sant'Ambrogio"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-santena/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Santena"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-sestri-ponente/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Sestri Ponente"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-tonengo/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Tonengo d'Asti"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-valdaso/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Valdaso"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-vico-mercati/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Vico Mercati"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villa-clarice/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Villa Clarice"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villa-pineta/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Villa Pineta"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villa-reale/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Villa Reale"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villa-san-vincenzo/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Anni Azzurri Villa San Vincenzo"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villaggio-san-francesco/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Anni Azzurri Villaggio San Francesco"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-volpiano/Pieghevole informativo.pdf",
+   "t": "Pieghevole informativo – Residenza Anni Azzurri Volpiano"
+  },
+  {
+   "p": "/assets/doc/alzheimer-infografica.pdf",
+   "t": "Alzheimer infografica – Anni Azzurri"
+  },
+  {
+   "p": "/assets/doc/anniazzurri-a-casa-servizio-di-assistenza-domiciliare.pdf",
+   "t": "Anni Azzurri a casa: assistenza domiciliare – Anni Azzurri"
+  },
+  {
+   "p": "/assets/doc/benessere-mentale-in-rsa.pdf",
+   "t": "Benessere mentale in RSA – Anni Azzurri"
+  },
+  {
+   "p": "/assets/doc/consigli-pratici-di-movimentazione.pdf",
+   "t": "Consigli pratici di movimentazione – Anni Azzurri"
+  },
+  {
+   "p": "/assets/doc/cure-domiciliari-anniazzurri.pdf",
+   "t": "Cure domiciliari Anni Azzurri – Anni Azzurri"
+  },
+  {
+   "p": "/assets/doc/le-10-cose-da-verificare-quando-scelgo-una-residenza.pdf",
+   "t": "10 cose da verificare quando scelgo una residenza – Anni Azzurri"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-rocco/Carte dei servizi Centro Diurno Integrato.pdf",
+   "t": "Carta dei servizi Centro Diurno – Anni Azzurri San Rocco"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-santa-maria-in-chienti/Servizi Sanitari.pdf",
+   "t": "Servizi Sanitari – Residenza Anni Azzurri Santa Maria in Chienti"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-santa-maria-in-chienti/Servizi Sociali.pdf",
+   "t": "Servizi Sociali – Residenza Anni Azzurri Santa Maria in Chienti"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-santa-maria-in-chienti/Servizi generali.pdf",
+   "t": "Servizi generali – Residenza Anni Azzurri Santa Maria in Chienti"
+  },
+  {
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-volpiano/Progetto Residenza Assistita.pdf",
+   "t": "Progetto Residenza Assistita – Residenza Anni Azzurri Volpiano"
+  }
+ ]
+}

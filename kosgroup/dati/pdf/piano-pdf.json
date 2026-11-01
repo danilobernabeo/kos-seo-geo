@@ -1,0 +1,998 @@
+{
+ "sito": "kos",
+ "generato": "2026-11-01",
+ "pdf": [
+  {
+   "p": "/assets/doc/strutture/istituto-santo-stefano/Analisi del Movimento Laboratorio L.A.M.PO.pdf",
+   "t": "Analisi del movimento, laboratorio L.A.M.PO. – Istituto Santo Stefano"
+  },
+  {
+   "p": "/assets/doc/strutture/beata-corte/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Beata corte"
+  },
+  {
+   "p": "/assets/doc/strutture/casa-villa-maura/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Casa Villa Maura"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-ascoli-piceno/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Santo Stefano Ascoli Piceno"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-camerino/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Centro Ambulatoriale Santo Stefano Camerino"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-civitanova-marche/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Santo Stefano Civitanova Marche"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-fabriano/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Centro Ambulatoriale Santo Stefano Fabriano"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-filottrano/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Centro Ambulatoriale Santo Stefano Filottrano"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-jesi/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Centro Ambulatoriale Santo Stefano Jesi"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-macerata/carta-dei-serivizi-fisiosport.pdf",
+   "t": "Carta dei serivizi fisiosport – Santo Stefano Macerata"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-macerata/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Centro Ambulatoriale Santo Stefano Macerata"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-matelica/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Centro Ambulatoriale Santo Stefano Matelica"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-porto-potenza-picena/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Santo Stefano Porto Potenza Picena"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-san-benedetto-del-tronto/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Santo Stefano San Benedetto del Tronto"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-san-severino/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Santo Stefano San Severino"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-tolentino/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Centro Ambulatoriale Santo Stefano Tolentino"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-cardinal-ferrari/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Centro Cardinal Ferrari"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-medico-riabilitativo/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Centro Medico Riabilitativo"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-residenziale-santo-stefano-foligno/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Centro Residenziale Santo Stefano Foligno"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-santo-stefano-cagli/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Centro Santo Stefano Cagli"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-santo-stefano-macerata-feltria/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Centro Santo Stefano Macerata Feltria"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-venerabile-marcucci/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Centro Venerabile Marcucci"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-venerabile-marcucci/service-charter.pdf",
+   "t": "Service charter – Centro Venerabile Marcucci"
+  },
+  {
+   "p": "/assets/doc/strutture/clinica-dentale-porto-potenza-picena/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Clinica Dentale Porto Potenza Picena"
+  },
+  {
+   "p": "/assets/doc/strutture/corte-orero/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Corte Orero"
+  },
+  {
+   "p": "/assets/doc/strutture/istituto-santo-stefano/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Istituto Santo Stefano"
+  },
+  {
+   "p": "/assets/doc/strutture/myolab/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Myolab"
+  },
+  {
+   "p": "/assets/doc/strutture/ospedale-san-pancrazio/carta-dei-servizi-alcologia.pdf",
+   "t": "Carta dei servizi alcologia – Ospedale San Pancrazio"
+  },
+  {
+   "p": "/assets/doc/strutture/ospedale-san-pancrazio/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Ospedale San Pancrazio"
+  },
+  {
+   "p": "/assets/doc/strutture/poliambulatorio-parco-di-veio/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Poliambulatorio Parco di Veio"
+  },
+  {
+   "p": "/assets/doc/strutture/poliambulatorio-san-martino/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Poliambulatorio San Martino"
+  },
+  {
+   "p": "/assets/doc/strutture/poliambulatorio-santo-stefano/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Poliambulatorio Santo Stefano"
+  },
+  {
+   "p": "/assets/doc/strutture/poliambulatorio-villalba/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Poliambulatorio Villalba"
+  },
+  {
+   "p": "/assets/doc/strutture/punto-prelievi-biemme/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Punto Prelievi Biemme"
+  },
+  {
+   "p": "/assets/doc/strutture/punto-prelievi-delta/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Punto Prelievi Delta"
+  },
+  {
+   "p": "/assets/doc/strutture/punto-prelievi-gamma/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Laboratorio Analisi Gamma"
+  },
+  {
+   "p": "/assets/doc/strutture/punto-prelievi-salus-villalba/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Punto Prelievi Salus Villalba"
+  },
+  {
+   "p": "/assets/doc/strutture/punto-prelievi-selemar/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Punto Prelievi Selemar"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-adria/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Villa Adria"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-armonia/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Villa Armonia"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-azzurra/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Villa Azzurra"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-dei-pini-civitanova/carta-dei-servizi-rsa-villa-margherita.pdf",
+   "t": "Carta dei servizi RSA villa margherita – Villa dei pini civitanova"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-dei-pini-civitanova/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Villa dei pini civitanova"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-dei-pini-firenze/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Villa dei Pini Firenze"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-fastiggi/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Villa Fastiggi"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-fastiggi/service-charter.pdf",
+   "t": "Service charter – Villa Fastiggi"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-jolanda/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Villa Jolanda"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-benevento/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Villa Margherita Benevento"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-vicenza-psichiatria/carta-dei-servizi-CTRP.pdf",
+   "t": "Carta dei servizi CTRP – Villa Margherita Vicenza"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-vicenza-psichiatria/carta-dei-servizi-psichiatria.pdf",
+   "t": "Carta dei servizi psichiatria – Villa Margherita Vicenza"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Villa Margherita Vicenza"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-pineta/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Villa Pineta"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-rosa/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Villa Rosa"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-san-giuseppe/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Villa San Giuseppe"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-sant-alessandro/carta-dei-servizi-(eng).pdf",
+   "t": "Carta dei servizi (eng) – Villa Sant'Alessandro"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-sant-alessandro/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Villa Sant'Alessandro"
+  },
+  {
+   "p": "/assets/doc/strutture/ville-di-nozzano/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Ville di Nozzano"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/01-comitati-ospiti-aa.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/02-vdp-cuffia-rotatori-spalla-live-surgery-albanelli.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/03-villa-rosa-tms-kos.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/06-comunicato-aa-cra-modena.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/08-vdp-inaugurazione-gastroenterologia.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/09-apertura-san-sisto-2.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/13-aa-kos-incontri-caregiver-cinisello.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/14-kos-psichiatria-ortoterapia-vdp.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/15-ppp-spiaggia.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/16-residenza-dorica-comitato-mensa.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/17-villa-margherita-cefalee.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/18-montecosaro-festa-pet-therapy.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/19-car-50-anni-tolentino.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/20-open-day-cinisello.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/21-vdp-giornata-del-cuore-caritas.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/23-farmacia-automatizzata.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/24-villa-pineta-giornata-respiro-sett-2024.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/26-02-santena-netweek-teia-care-ai-anticaduta.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/27-valdaso-progetto-foto.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2024/28-montecosaro-festa-10-anni.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/01-ppp-visita-squadra-di-calcio.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/02-vdp-presentazione-ds-palazzo.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/03-roma-brain-week-villa-armonia-e-santalessandro.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/04-kos-premio-risultato.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/05-kos-nonni-per-tutti.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/06-kos-fiocchetto-lilla-6-segnali-disturbi-nutrizione.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/07-modena-brain-week-villa-rosa-openday-e-tms.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/08-vdp-convegno-anestesisti.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/09-vm-arcugnano-dance-well-brain-science.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/11-nonni-per-tutti-dormelletto.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/12-ccf-progetto-per-caregiver-e-mostra-fotografica.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/13-villa-pineta-telemedicina-e-teleriabilitazione-a-villa-pineta.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/14-cinisello-open-day-10-maggio-festa-mamma.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/16-cinisello-convegno-fragilita.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/17-vm-arcugnano-presentazione-eventi-musicali.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/18-cinisello-open-day-24-maggio-osteopatia.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/19-ccf-ritorno-alla-guida.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/20-vm-arcugnano-mr-parkinson-arte-e-cura.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/21-bagnolo-in-piano-inaug-csrr.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/22-conero-resi-dance-ex-post.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/23-vdp-inaugurazione-lab-analisi.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/24-valdaso-inaugurazione-poliambulatorio-valdaso.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/25-villa-rosa-modena-tms-aumento-ricoveri-per-dip.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/26-neuroni-in-festival.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/27-villa-pineta-giornata-respiro.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/28-villalba-prevenzione-donna-evento-13nov2025.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/30-kos-convegno-parkinson.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2025/31-ascoli-vm-convegno-sarcopenia.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2026/01-kos-presentazione-stanza-polisensoriale-ppp.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/comunicati/2026/02-poggione-presentazione-centro-diurno.pdf",
+   "tipo": "comunicato"
+  },
+  {
+   "p": "/assets/doc/strutture/beata-corte/regolamento-comunita.pdf",
+   "t": "Regolamento della comunità – Beata Corte"
+  },
+  {
+   "p": "/assets/doc/strutture/ospedale-san-pancrazio/mod308-richiesta-cartella-persona-deceduta.pdf",
+   "t": "Richiesta documentazione sanitaria di persona deceduta – Ospedale San Pancrazio"
+  },
+  {
+   "p": "/assets/doc/strutture/beata-corte/user-manual.pdf",
+   "t": "User guide – Beata corte"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-ascoli-piceno/guida-utente.pdf",
+   "t": "Guida per gli utenti – Santo Stefano Ascoli Piceno"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-ascoli-piceno/user-manual.pdf",
+   "t": "User guide – Centro Ambulatoriale Santo Stefano Ascoli Piceno"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-camerino/guida-utente.pdf",
+   "t": "Guida per gli utenti – Santo Stefano Camerino"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-camerino/user-manual-en.pdf",
+   "t": "User guide – Centro Ambulatoriale Santo Stefano Camerino"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-camerino/user-manual.pdf",
+   "t": "User guide – Centro Ambulatoriale Santo Stefano Camerino"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-civitanova-marche/guida-utente.pdf",
+   "t": "Guida per gli utenti – Santo Stefano Civitanova Marche"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-civitanova-marche/user-manual.pdf",
+   "t": "User guide – Centro Ambulatoriale Santo Stefano Civitanova Marche"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-fabriano/guida-utente.pdf",
+   "t": "Guida per gli utenti – Santo Stefano Fabriano"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-fabriano/user-manual.pdf",
+   "t": "User guide – Centro Ambulatoriale Santo Stefano Fabriano"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-filottrano/guida-utente.pdf",
+   "t": "Guida per gli utenti – Santo Stefano Filottrano"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-filottrano/user-manual.pdf",
+   "t": "User guide – Centro Ambulatoriale Santo Stefano Filottrano"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-jesi/guida-utente-eng.pdf",
+   "t": "User guide – Centro Ambulatoriale Santo Stefano Jesi"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-jesi/guida-utente.pdf",
+   "t": "Guida per gli utenti – Centro Ambulatoriale Santo Stefano Jesi"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-jesi/user-manual.pdf",
+   "t": "User guide – Centro Ambulatoriale Santo Stefano Jesi"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-macerata/guida-utente-eng.pdf",
+   "t": "User guide – Centro Ambulatoriale Santo Stefano Macerata"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-macerata/guida-utente-fisiosport.pdf",
+   "t": "Guida per gli utenti Fisiosport – Santo Stefano Macerata"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-macerata/guida-utente.pdf",
+   "t": "Guida per gli utenti – Santo Stefano Macerata"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-macerata/user-guide-fisiosport.pdf",
+   "t": "User guide Fisiosport – Santo Stefano Macerata"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-macerata/user-manual.pdf",
+   "t": "User guide – Centro Ambulatoriale Santo Stefano Macerata"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-matelica/guida-utente.pdf",
+   "t": "Guida per gli utenti – Santo Stefano Matelica"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-matelica/user-manual.pdf",
+   "t": "User guide – Centro Ambulatoriale Santo Stefano Matelica"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-pesaro/guida-utente.pdf",
+   "t": "Guida per gli utenti – Centro Ambulatoriale Santo Stefano Pesaro"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-pesaro/user-manual.pdf",
+   "t": "User guide – Centro Ambulatoriale Santo Stefano Pesaro"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-porto-potenza-picena/guida-utente.pdf",
+   "t": "Guida per gli utenti – Santo Stefano Porto Potenza Picena"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-porto-potenza-picena/user-manual.pdf",
+   "t": "User guide – Santo Stefano Porto Potenza Picena"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-san-benedetto-del-tronto/guida-utente.pdf",
+   "t": "Guida per gli utenti – Santo Stefano San Benedetto del Tronto"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-san-benedetto-del-tronto/user-manual.pdf",
+   "t": "User guide – Santo Stefano San Benedetto del Tronto"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-san-severino/user-manual.pdf",
+   "t": "User guide – Centro Ambulatoriale Santo Stefano San Severino"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-tolentino/guida-utente.pdf",
+   "t": "Guida per gli utenti – Santo Stefano Tolentino"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-tolentino/user-manual.pdf",
+   "t": "User guide – Centro Ambulatoriale Santo Stefano Tolentino"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-santo-stefano-cagli/user-manual.pdf",
+   "t": "User guide – Centro Santo Stefano Cagli"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-santo-stefano-macerata-feltria/user-manual.pdf",
+   "t": "User guide – Centro Santo Stefano Macerata Feltria"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-venerabile-marcucci/user-manual.pdf",
+   "t": "User guide – Centro Venerabile Marcucci"
+  },
+  {
+   "p": "/assets/doc/strutture/fidia/user-manual.pdf",
+   "t": "User guide – Fidia"
+  },
+  {
+   "p": "/assets/doc/strutture/istituto-santo-stefano/guida-per-pazienti-e-visitatori.pdf",
+   "t": "Guida per pazienti e visitatori – Istituto Santo Stefano"
+  },
+  {
+   "p": "/assets/doc/strutture/myolab/user-manual.pdf",
+   "t": "User guide – Myolab"
+  },
+  {
+   "p": "/assets/doc/strutture/poliambulatorio-valdaso/user-manual.pdf",
+   "t": "User guide – Poliambulatorio Valdaso"
+  },
+  {
+   "p": "/assets/doc/strutture/punto-prelievi-biemme/user-manual.pdf",
+   "t": "User guide – Punto Prelievi Biemme"
+  },
+  {
+   "p": "/assets/doc/strutture/punto-prelievi-delta/user-manual.pdf",
+   "t": "User guide – Punto Prelievi Delta"
+  },
+  {
+   "p": "/assets/doc/strutture/punto-prelievi-gamma/user-manual.pdf",
+   "t": "User guide – Laboratorio Analisi Gamma"
+  },
+  {
+   "p": "/assets/doc/strutture/punto-prelievi-salus-villalba/user-manual.pdf",
+   "t": "User guide – Punto Prelievi Salus Villalba"
+  },
+  {
+   "p": "/assets/doc/strutture/punto-prelievi-selemar/user-manual.pdf",
+   "t": "User guide – Punto Prelievi Selemar"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-adria/user-manual.pdf",
+   "t": "User guide – Villa Adria"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-dei-pini-civitanova/user-manual.pdf",
+   "t": "User guide – Villa dei pini civitanova"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-fastiggi/guida-ai-servizi.pdf",
+   "t": "Guida per gli utenti – Villa Fastiggi"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-jolanda/user-manual.pdf",
+   "t": "User guide – Villa Jolanda"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-san-giuseppe/guida-accesso.pdf",
+   "t": "Guida per gli utenti – Villa San Giuseppe"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-san-giuseppe/guida-pratica-prime-visite-2026-locandina.pdf",
+   "t": "Guida pratica prime visite 2026 locandina – Villa San Giuseppe"
+  },
+  {
+   "p": "/assets/doc/moduli/villa-azzurra/scheda-prenotazione-ricovero.pdf",
+   "t": "Scheda prenotazione ricovero – Villa Azzurra"
+  },
+  {
+   "p": "/assets/doc/moduli/villa-jolanda/scheda-prenotazione-ricovero.pdf",
+   "t": "Scheda prenotazione ricovero – Villa Jolanda"
+  },
+  {
+   "p": "/assets/doc/moduli/villa-rosa/modulo-richiesta-ricovero.pdf",
+   "t": "Modulo richiesta ricovero – Villa Rosa"
+  },
+  {
+   "p": "/assets/doc/moduli/ville-di-nozzano/scheda-prenotazione-ricovero.pdf",
+   "t": "Scheda prenotazione ricovero – Ville di Nozzano"
+  },
+  {
+   "p": "/assets/doc/strutture/beata-corte/richiesta-inserimento-srp-età-evolutiva.pdf",
+   "t": "Richiesta inserimento srp età evolutiva – Beata corte"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-santo-stefano-cagli/modulo-richiesta-ricovero.pdf",
+   "t": "Modulo richiesta ricovero – Centro Santo Stefano Cagli"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-venerabile-marcucci/modulo-trasferimento-riabilitazione-intensiva.pdf",
+   "t": "Modulo trasferimento riabilitazione – Centro Venerabile Marcucci"
+  },
+  {
+   "p": "/assets/doc/strutture/istituto-santo-stefano/modulo-di-trasferimento.pdf",
+   "t": "Modulo di trasferimento – Istituto Santo Stefano"
+  },
+  {
+   "p": "/assets/doc/strutture/ospedale-san-pancrazio/aMod309-richiesta-cartella-clinica.pdf",
+   "t": "Richiesta della cartella clinica – Ospedale San Pancrazio"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-adria/modulo-richiesta-ricovero.pdf",
+   "t": "Modulo richiesta ricovero – Villa Adria"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-azzurra/scheda-prenotazione.pdf",
+   "t": "Scheda prenotazione – Villa Azzurra"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-dei-pini-firenze/modulo-richiesta-cartella-clinica.pdf",
+   "t": "Modulo richiesta cartella clinica – Villa dei Pini Firenze"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-benevento/modulo-ricovero-cardiologia.pdf",
+   "t": "Modulo ricovero cardiologia – Villa Margherita Benevento"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-benevento/modulo-ricovero-neurologia-ortopedia.pdf",
+   "t": "Modulo ricovero neurologia ortopedia – Villa Margherita Benevento"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-benevento/modulo-ricovero-pneumologia.pdf",
+   "t": "Modulo ricovero pneumologia – Villa Margherita Benevento"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-san-giuseppe/modulo-richiesta-ricovero.pdf",
+   "t": "Modulo richiesta ricovero – Villa San Giuseppe"
+  },
+  {
+   "p": "/assets/doc/pieghevole-aurora.pdf",
+   "t": "Pieghevole aurora – KOS"
+  },
+  {
+   "p": "/assets/doc/pieghevole-home-care-academy.pdf",
+   "t": "Pieghevole Home Care Academy – Anni Azzurri"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-cardinal-ferrari/pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Centro Cardinal Ferrari"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-medico-riabilitativo/pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Centro Medico Riabilitativo"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-residenziale-santo-stefano-foligno/pieghevole-informativo-RSA.pdf",
+   "t": "Pieghevole informativo RSA – Centro Residenziale Santo Stefano Foligno"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-residenziale-santo-stefano-foligno/pieghevole-informativo.pdf",
+   "t": "Pieghevole – Centro Residenziale Santo Stefano Foligno"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-venerabile-marcucci/brochure-centro-venerabile-marcucci.pdf",
+   "t": "Brochure centro venerabile marcucci – Centro Venerabile Marcucci"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-venerabile-marcucci/brochure-disfagia.pdf",
+   "t": "Brochure disfagia – Centro Venerabile Marcucci"
+  },
+  {
+   "p": "/assets/doc/strutture/check-up-prevenzione/pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Check-up prevenzione"
+  },
+  {
+   "p": "/assets/doc/strutture/fidia/pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Fidia"
+  },
+  {
+   "p": "/assets/doc/strutture/ospedale-san-pancrazio/percorso-vita-brochure.pdf",
+   "t": "Percorso vita brochure – Ospedale San Pancrazio"
+  },
+  {
+   "p": "/assets/doc/strutture/ospedale-san-pancrazio/pieghevole-ambulatorio-cardio-metabolico.pdf",
+   "t": "Pieghevole ambulatorio cardio metabolico – Ospedale San Pancrazio"
+  },
+  {
+   "p": "/assets/doc/strutture/poliambulatorio-parco-di-veio/pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Poliambulatorio Parco di Veio"
+  },
+  {
+   "p": "/assets/doc/strutture/poliambulatorio-san-martino/pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Poliambulatorio San Martino"
+  },
+  {
+   "p": "/assets/doc/strutture/poliambulatorio-valdaso/pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Poliambulatorio Valdaso"
+  },
+  {
+   "p": "/assets/doc/strutture/poliambulatorio-villalba/leaflet-poliambulatorio-villalba-english.pdf",
+   "t": "Leaflet (English) – Poliambulatorio Villalba"
+  },
+  {
+   "p": "/assets/doc/strutture/poliambulatorio-villalba/pieghevole-poliambulatorio-villalba.pdf",
+   "t": "Pieghevole poliambulatorio villalba – Poliambulatorio Villalba"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-azzurra/pieghevole-punto-prelievi.pdf",
+   "t": "Pieghevole punto prelievi – Villa Azzurra"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-benevento/pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Villa Margherita Benevento"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-vicenza-psichiatria/pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Villa Margherita Vicenza"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Villa Margherita Vicenza"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-pineta/pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Villa Pineta"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-san-giuseppe/guida-pratica-prime-visite-2026-brochure.pdf",
+   "t": "Guida pratica prime visite 2026 brochure – Villa San Giuseppe"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-san-giuseppe/pieghevole-informativo-offerta-ambulatoriale.pdf",
+   "t": "Pieghevole informativo offerta ambulatoriale – Villa San Giuseppe"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-san-giuseppe/pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Villa San Giuseppe"
+  },
+  {
+   "p": "/assets/doc/istruzioni-per-il-primo-accesso-al-dossier-sanitario.pdf",
+   "t": "Istruzioni per il primo accesso al dossier sanitario – KOS"
+  },
+  {
+   "p": "/assets/doc/preparazioni/preparazione-colonscopia.pdf",
+   "t": "Preparazione colonscopia – KOS"
+  },
+  {
+   "p": "/assets/doc/preparazioni/preparazione-gastroscopia.pdf",
+   "t": "Preparazione gastroscopia – KOS"
+  },
+  {
+   "p": "/assets/doc/preparazioni/preparazione-rettoscopia.pdf",
+   "t": "Preparazione rettoscopia – KOS"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-pesaro/laserterapia.pdf",
+   "t": "Laserterapia – Centro Ambulatoriale Santo Stefano Pesaro"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-pesaro/tecarterapia.pdf",
+   "t": "Tecarterapia – Centro Ambulatoriale Santo Stefano Pesaro"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-porto-potenza-picena/colloqui-psicologici.pdf",
+   "t": "Colloqui psicologici – Santo Stefano Porto Potenza Picena"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-cardinal-ferrari/il-percorso-del-paziente-in-struttura.pdf",
+   "t": "Il percorso del paziente in struttura – Centro Cardinal Ferrari"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-cardinal-ferrari/informazioni-utili-per-il-periodo-di-ricovero.pdf",
+   "t": "Informazioni utili per il ricovero – Centro Cardinal Ferrari"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-medico-riabilitativo/medicina-estetica.pdf",
+   "t": "Medicina estetica – Centro Medico Riabilitativo"
+  },
+  {
+   "p": "/assets/doc/strutture/istituto-santo-stefano/patients-and-visitors-guide.pdf",
+   "t": "Guide for patients and visitors – Istituto Santo Stefano"
+  },
+  {
+   "p": "/assets/doc/strutture/ospedale-san-pancrazio/ambulatorio-cardio-metabolico.pdf",
+   "t": "Ambulatorio cardio metabolico – Ospedale San Pancrazio"
+  },
+  {
+   "p": "/assets/doc/strutture/ospedale-san-pancrazio/centro-ambulatoriale-di-riabilitazione-neuromotoria.pdf",
+   "t": "Riabilitazione neuromotoria ambulatoriale – Ospedale San Pancrazio"
+  },
+  {
+   "p": "/assets/doc/strutture/ospedale-san-pancrazio/esercizi-arti-inferiori.pdf",
+   "t": "Esercizi arti inferiori – Ospedale San Pancrazio"
+  },
+  {
+   "p": "/assets/doc/strutture/ospedale-san-pancrazio/esercizi-colonna-vertebrale.pdf",
+   "t": "Esercizi colonna vertebrale – Ospedale San Pancrazio"
+  },
+  {
+   "p": "/assets/doc/strutture/ospedale-san-pancrazio/esercizi-fisioterapia-respiratoria.pdf",
+   "t": "Esercizi fisioterapia respiratoria – Ospedale San Pancrazio"
+  },
+  {
+   "p": "/assets/doc/strutture/ospedale-san-pancrazio/esercizi-riabilitazione-cardiologica.pdf",
+   "t": "Esercizi riabilitazione cardiologica – Ospedale San Pancrazio"
+  },
+  {
+   "p": "/assets/doc/strutture/ospedale-san-pancrazio/il-parco.pdf",
+   "t": "Il parco – Ospedale San Pancrazio"
+  },
+  {
+   "p": "/assets/doc/strutture/ospedale-san-pancrazio/il-team.pdf",
+   "t": "Il team – Ospedale San Pancrazio"
+  },
+  {
+   "p": "/assets/doc/strutture/ospedale-san-pancrazio/riabilitazione-da-dipendenze.pdf",
+   "t": "Riabilitazione da dipendenze – Ospedale San Pancrazio"
+  },
+  {
+   "p": "/assets/doc/strutture/poliambulatorio-villa-pineta/attivita-poliambulatorio-villa-pineta-gaiato.pdf",
+   "t": "Attività, sede di Gaiato – Poliambulatorio Villa Pineta"
+  },
+  {
+   "p": "/assets/doc/strutture/poliambulatorio-villa-pineta/attivita-poliambulatorio-villa-pineta-modena.pdf",
+   "t": "Attività, sede di Modena – Poliambulatorio Villa Pineta"
+  },
+  {
+   "p": "/assets/doc/strutture/santo-stefano-casorate/uo-di-riabilitazione-geriatrica.pdf",
+   "t": "UO di riabilitazione geriatrica – Santo Stefano Casorate"
+  },
+  {
+   "p": "/assets/doc/strutture/santo-stefano-casorate/uo-di-riabilitazione-pneumologica.pdf",
+   "t": "UO di riabilitazione pneumologica – Santo Stefano Casorate"
+  },
+  {
+   "p": "/assets/doc/strutture/santo-stefano-mede/uo-di-riabilitazione-motoria.pdf",
+   "t": "UO di riabilitazione motoria – Santo Stefano Mede"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-armonia/percorsi-di-cura-disturbi-alimentazione.pdf",
+   "t": "Percorsi di cura disturbi alimentazione – Villa Armonia"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-azzurra/la-nostra-équipe-2026.pdf",
+   "t": "La nostra équipe 2026 – Villa Azzurra"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-azzurra/la-terapia-dialettico-comportamentale.pdf",
+   "t": "La terapia dialettico comportamentale – Villa Azzurra"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-dei-pini-civitanova/ambulatorio-cardio-metabolico.pdf",
+   "t": "Ambulatorio cardio metabolico – Villa dei pini civitanova"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-fastiggi/guide-to-services.pdf",
+   "t": "User guide – Villa Fastiggi"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-benevento/ambulatorio-cardio-metabolico.pdf",
+   "t": "Ambulatorio cardio metabolico – Villa Margherita Benevento"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-vicenza-psichiatria/come-arrivare.pdf",
+   "t": "Come arrivare – Villa Margherita Vicenza"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-vicenza-psichiatria/ricovero-intensivo-per-pazienti-con-disturbi-d-ansia-e-umore.pdf",
+   "t": "Ricovero intensivo: disturbi d'ansia e umore – Villa Margherita Vicenza"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-vicenza-psichiatria/ricovero-intensivo-per-pazienti-con-disturbo-della-personalita.pdf",
+   "t": "Ricovero intensivo: disturbo di personalità – Villa Margherita Vicenza"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-vicenza-psichiatria/storia-di-villa-margherita.pdf",
+   "t": "Storia di villa margherita – Villa Margherita Vicenza"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/ambulatorio-di-riabilitazione.pdf",
+   "t": "Ambulatorio di riabilitazione – Villa Margherita Vicenza"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/check-up-alzheimer.pdf",
+   "t": "Check-up Alzheimer – Villa Margherita Vicenza"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/come-arrivare.pdf",
+   "t": "Come arrivare – Villa Margherita Vicenza"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/la-malattia-di-parkinson.pdf",
+   "t": "La malattia di Parkinson – Villa Margherita Vicenza"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/ricovero-neurologia.pdf",
+   "t": "Ricovero neurologia – Villa Margherita Vicenza"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/storia-di-villa-margherita.pdf",
+   "t": "Storia di villa margherita – Villa Margherita Vicenza"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-pineta/attivita-poliambulatorio-villa-pineta-gaiato.pdf",
+   "t": "Attività del poliambulatorio, sede di Gaiato – Villa Pineta"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-san-giuseppe/ambulatorio-cardio-metabolico.pdf",
+   "t": "Ambulatorio cardio metabolico – Villa San Giuseppe"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-san-giuseppe/informazioni-utili-prenotazione-visite-esami.pdf",
+   "t": "Informazioni utili prenotazione visite esami – Villa San Giuseppe"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-sant-alessandro/Percorsi-di-cura-per-le-neurodivergenze.pdf",
+   "t": "Percorsi di cura per le neurodivergenze – Villa Sant'Alessandro"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-sant-alessandro/ambulatorio-cardio-metabolico.pdf",
+   "t": "Ambulatorio cardio metabolico – Villa Sant'Alessandro"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-sant-alessandro/percorsi-ambulatoriali-e-residenziali.pdf",
+   "t": "Percorsi ambulatoriali e residenziali – Villa Sant'Alessandro"
+  },
+  {
+   "p": "/assets/doc/strutture/villa-sant-alessandro/percorsi-di-cura-disturbi-alimentazione.pdf",
+   "t": "Percorsi di cura disturbi alimentazione – Villa Sant'Alessandro"
+  },
+  {
+   "p": "/assets/doc/strutture/ville-di-nozzano/disturbi-dell-umore-e-di-personalita.pdf",
+   "t": "Disturbi dell''umore e di personalità – Ville di Nozzano"
+  }
+ ]
+}
