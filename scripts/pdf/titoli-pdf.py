@@ -259,6 +259,11 @@ def main():
                     x['Note'] = (x['Note'] or '') + ' · Modulo di accesso a un servizio: passato a TIENI (regola del 1/11); modulo in bianco, da verificare a campione'
                     if x['Classe'] != 'Modulo / questionario':
                         x['Classe'] = 'Modulo / questionario'
+        # 0. struttura uscita dal gruppo: i PDF sono già in 301 verso Corte Orero (regole web di produzione), non vengono serviti
+        for x in righe:
+            if x['Percorso'].startswith('/assets/doc/strutture/beata-corte/') and x['Proposta'] == 'TIENI':
+                x['Proposta'] = 'ESCLUDI'
+                x['Note'] = (x['Note'] or '') + ' · Struttura uscita dal gruppo: 301 già in produzione verso Corte Orero, il file non è servito'
         # 2. titoli
         for x in righe:
             x['_titolo_ok'] = ''

@@ -4,11 +4,7 @@
  "pdf": [
   {
    "p": "/assets/doc/strutture/istituto-santo-stefano/Analisi del Movimento Laboratorio L.A.M.PO.pdf",
-   "t": "Analisi del movimento, laboratorio L.A.M.PO. – Istituto Santo Stefano"
-  },
-  {
-   "p": "/assets/doc/strutture/beata-corte/carta-dei-servizi.pdf",
-   "t": "Carta dei servizi – Beata corte"
+   "t": "Analisi del movimento L.A.M.PO. – Istituto Santo Stefano"
   },
   {
    "p": "/assets/doc/strutture/casa-villa-maura/carta-dei-servizi.pdf",
@@ -168,11 +164,11 @@
   },
   {
    "p": "/assets/doc/strutture/villa-dei-pini-civitanova/carta-dei-servizi-rsa-villa-margherita.pdf",
-   "t": "Carta dei servizi RSA villa margherita – Villa dei pini civitanova"
+   "t": "Carta servizi RSA Villa Margherita – Villa dei Pini Civitanova"
   },
   {
    "p": "/assets/doc/strutture/villa-dei-pini-civitanova/carta-dei-servizi.pdf",
-   "t": "Carta dei servizi – Villa dei pini civitanova"
+   "t": "Carta dei servizi – Villa dei Pini Civitanova"
   },
   {
    "p": "/assets/doc/strutture/villa-dei-pini-firenze/carta-dei-servizi.pdf",
@@ -196,15 +192,15 @@
   },
   {
    "p": "/assets/doc/strutture/villa-margherita-vicenza-psichiatria/carta-dei-servizi-CTRP.pdf",
-   "t": "Carta dei servizi CTRP – Villa Margherita Vicenza"
+   "t": "Carta dei servizi CTRP – Villa Margherita Psichiatria"
   },
   {
    "p": "/assets/doc/strutture/villa-margherita-vicenza-psichiatria/carta-dei-servizi-psichiatria.pdf",
-   "t": "Carta dei servizi psichiatria – Villa Margherita Vicenza"
+   "t": "Carta dei servizi psichiatria – Villa Margherita Psichiatria"
   },
   {
    "p": "/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/carta-dei-servizi.pdf",
-   "t": "Carta dei servizi – Villa Margherita Vicenza"
+   "t": "Carta dei servizi – Villa Margherita Riabilitazione"
   },
   {
    "p": "/assets/doc/strutture/villa-pineta/carta-dei-servizi.pdf",
@@ -431,16 +427,8 @@
    "tipo": "comunicato"
   },
   {
-   "p": "/assets/doc/strutture/beata-corte/regolamento-comunita.pdf",
-   "t": "Regolamento della comunità – Beata Corte"
-  },
-  {
    "p": "/assets/doc/strutture/ospedale-san-pancrazio/mod308-richiesta-cartella-persona-deceduta.pdf",
-   "t": "Richiesta documentazione sanitaria di persona deceduta – Ospedale San Pancrazio"
-  },
-  {
-   "p": "/assets/doc/strutture/beata-corte/user-manual.pdf",
-   "t": "User guide – Beata corte"
+   "t": "Richiesta cartella clinica di defunto – Ospedale San Pancrazio"
   },
   {
    "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-ascoli-piceno/guida-utente.pdf",
@@ -460,7 +448,7 @@
   },
   {
    "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-camerino/user-manual.pdf",
-   "t": "User guide – Centro Ambulatoriale Santo Stefano Camerino"
+   "t": "User guide (overview) – Santo Stefano Camerino"
   },
   {
    "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-civitanova-marche/guida-utente.pdf",
@@ -496,7 +484,7 @@
   },
   {
    "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-jesi/user-manual.pdf",
-   "t": "User guide – Centro Ambulatoriale Santo Stefano Jesi"
+   "t": "User guide (overview) – Centro Ambulatoriale Santo Stefano Jesi"
   },
   {
    "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-macerata/guida-utente-eng.pdf",
@@ -516,7 +504,7 @@
   },
   {
    "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-macerata/user-manual.pdf",
-   "t": "User guide – Centro Ambulatoriale Santo Stefano Macerata"
+   "t": "User guide (overview) – Santo Stefano Macerata"
   },
   {
    "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-matelica/guida-utente.pdf",
@@ -616,7 +604,7 @@
   },
   {
    "p": "/assets/doc/strutture/villa-dei-pini-civitanova/user-manual.pdf",
-   "t": "User guide – Villa dei pini civitanova"
+   "t": "User guide – Villa dei Pini Civitanova"
   },
   {
    "p": "/assets/doc/strutture/villa-fastiggi/guida-ai-servizi.pdf",
@@ -649,10 +637,6 @@
   {
    "p": "/assets/doc/moduli/ville-di-nozzano/scheda-prenotazione-ricovero.pdf",
    "t": "Scheda prenotazione ricovero – Ville di Nozzano"
-  },
-  {
-   "p": "/assets/doc/strutture/beata-corte/richiesta-inserimento-srp-età-evolutiva.pdf",
-   "t": "Richiesta inserimento srp età evolutiva – Beata corte"
   },
   {
    "p": "/assets/doc/strutture/centro-santo-stefano-cagli/modulo-richiesta-ricovero.pdf",
@@ -716,7 +700,7 @@
   },
   {
    "p": "/assets/doc/strutture/centro-residenziale-santo-stefano-foligno/pieghevole-informativo-RSA.pdf",
-   "t": "Pieghevole informativo RSA – Centro Residenziale Santo Stefano Foligno"
+   "t": "Pieghevole informativo RSA – Santo Stefano Foligno"
   },
   {
    "p": "/assets/doc/strutture/centro-residenziale-santo-stefano-foligno/pieghevole-informativo.pdf",
@@ -732,7 +716,7 @@
   },
   {
    "p": "/assets/doc/strutture/check-up-prevenzione/pieghevole-informativo.pdf",
-   "t": "Pieghevole informativo – Check-up prevenzione"
+   "t": "Pieghevole informativo – Check up Prevenzione"
   },
   {
    "p": "/assets/doc/strutture/fidia/pieghevole-informativo.pdf",
@@ -776,11 +760,11 @@
   },
   {
    "p": "/assets/doc/strutture/villa-margherita-vicenza-psichiatria/pieghevole-informativo.pdf",
-   "t": "Pieghevole informativo – Villa Margherita Vicenza"
+   "t": "Pieghevole informativo – Villa Margherita Psichiatria"
   },
   {
    "p": "/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/pieghevole-informativo.pdf",
-   "t": "Pieghevole informativo – Villa Margherita Vicenza"
+   "t": "Pieghevole informativo – Villa Margherita Riabilitazione"
   },
   {
    "p": "/assets/doc/strutture/villa-pineta/pieghevole-informativo.pdf",
@@ -848,7 +832,7 @@
   },
   {
    "p": "/assets/doc/strutture/ospedale-san-pancrazio/centro-ambulatoriale-di-riabilitazione-neuromotoria.pdf",
-   "t": "Riabilitazione neuromotoria ambulatoriale – Ospedale San Pancrazio"
+   "t": "Riabilitazione neuromotoria – Ospedale San Pancrazio"
   },
   {
    "p": "/assets/doc/strutture/ospedale-san-pancrazio/esercizi-arti-inferiori.pdf",
@@ -912,7 +896,7 @@
   },
   {
    "p": "/assets/doc/strutture/villa-dei-pini-civitanova/ambulatorio-cardio-metabolico.pdf",
-   "t": "Ambulatorio cardio metabolico – Villa dei pini civitanova"
+   "t": "Ambulatorio cardio metabolico – Villa dei Pini Civitanova"
   },
   {
    "p": "/assets/doc/strutture/villa-fastiggi/guide-to-services.pdf",
@@ -924,43 +908,43 @@
   },
   {
    "p": "/assets/doc/strutture/villa-margherita-vicenza-psichiatria/come-arrivare.pdf",
-   "t": "Come arrivare – Villa Margherita Vicenza"
+   "t": "Come arrivare – Villa Margherita Psichiatria"
   },
   {
    "p": "/assets/doc/strutture/villa-margherita-vicenza-psichiatria/ricovero-intensivo-per-pazienti-con-disturbi-d-ansia-e-umore.pdf",
-   "t": "Ricovero intensivo: disturbi d'ansia e umore – Villa Margherita Vicenza"
+   "t": "Ricovero: disturbi d'ansia e umore – Villa Margherita Psichiatria"
   },
   {
    "p": "/assets/doc/strutture/villa-margherita-vicenza-psichiatria/ricovero-intensivo-per-pazienti-con-disturbo-della-personalita.pdf",
-   "t": "Ricovero intensivo: disturbo di personalità – Villa Margherita Vicenza"
+   "t": "Ricovero: disturbo di personalità – Villa Margherita Psichiatria"
   },
   {
    "p": "/assets/doc/strutture/villa-margherita-vicenza-psichiatria/storia-di-villa-margherita.pdf",
-   "t": "Storia di villa margherita – Villa Margherita Vicenza"
+   "t": "Storia di Villa Margherita – Villa Margherita Psichiatria"
   },
   {
    "p": "/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/ambulatorio-di-riabilitazione.pdf",
-   "t": "Ambulatorio di riabilitazione – Villa Margherita Vicenza"
+   "t": "Ambulatorio di riabilitazione – Villa Margherita Riabilitazione"
   },
   {
    "p": "/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/check-up-alzheimer.pdf",
-   "t": "Check-up Alzheimer – Villa Margherita Vicenza"
+   "t": "Check-up Alzheimer – Villa Margherita Riabilitazione"
   },
   {
    "p": "/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/come-arrivare.pdf",
-   "t": "Come arrivare – Villa Margherita Vicenza"
+   "t": "Come arrivare – Villa Margherita Riabilitazione"
   },
   {
    "p": "/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/la-malattia-di-parkinson.pdf",
-   "t": "La malattia di Parkinson – Villa Margherita Vicenza"
+   "t": "La malattia di Parkinson – Villa Margherita Riabilitazione"
   },
   {
    "p": "/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/ricovero-neurologia.pdf",
-   "t": "Ricovero neurologia – Villa Margherita Vicenza"
+   "t": "Ricovero neurologia – Villa Margherita Riabilitazione"
   },
   {
    "p": "/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/storia-di-villa-margherita.pdf",
-   "t": "Storia di villa margherita – Villa Margherita Vicenza"
+   "t": "Storia di Villa Margherita – Villa Margherita Riabilitazione"
   },
   {
    "p": "/assets/doc/strutture/villa-pineta/attivita-poliambulatorio-villa-pineta-gaiato.pdf",
