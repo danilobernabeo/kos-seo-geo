@@ -154,7 +154,7 @@ dal 2/11; **C** `<picture>`/WebP con lo snippet comune `immagine` nello sprint 2
 `--obiettivo=100`): 29 file, 4,1 → 3,3 MB (−19%; `home-img.jpg` 297 → 188 KB a 818×1080, `intro-pagina-imgs-*` 110 → 18 KB);
 corretto in `Immagini.php` il caso di una riduzione più pesante dell'originale (banner da 2049 px: originale tenuto).
 Collaudo visivo stage/produzione a 390 e 1366 px: pagine con le immagini cambiate sotto lo 0,15%. Backup
-`/paas/c0095/backup-kos-seo-geo/immagini-20261028-050407` (ripristino con `ottimizza-immagini.php /www --ripristina <cartella> --scrivi`).
+`/paas/c0095/backup-kos-seo-geo/immagini-20261028-050407` (ripristino con `ottimizza-immagini.php /www --ripristina <cartella> --scrivi`). **B pronto il 1/11** (pacchetto `kos-2b-lazy`): plugin comune `ImmaginiDifferite` (OnWebPagePrerender) che aggiunge `loading="lazy" decoding="async"` alle immagini dopo la testata e dopo le prime 3 raster (escluse quelle con loading o fetchpriority già scritti, i caroselli, i pixel di tracciamento) e il preload di `bg-pattern.jpg` solo sulle pagine con un elemento di classe `bg-pattern` (la classe sta nei contenuti, non nei template); `galleryStruttura` con la prima foto in `fetchpriority="high"` e le altre lazy; `fetchpriority` sull'immagine di testata di `informativo` e `tecnologie`. Interruttore `kosseogeo.img_differita` = 0. Collaudo con `scripts/collaudo/conta-lazy.mjs` e `confronta-lcp.mjs`.
 **27/10 mattina, AA in produzione:** AA-17 (101 immagini dell'audit, 51,4 → 13,2 MB, −74%), varianti WebP (1.613
 immagini, 4.442 larghezze), markup `aa-1-6-markup` (235 elementi), modulo di iscrizione, contenuti (152 risorse) e alt
 delle news. Ispezione in produzione (101 pagine, 50 template): 0 sfondi di contenuto, 0 titoli «Guarda di più/meno», un

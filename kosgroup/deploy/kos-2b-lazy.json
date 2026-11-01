@@ -1,0 +1,36 @@
+{
+  "nome": "KOS-2 B caricamento differito delle immagini fuori schermo (plugin ImmaginiDifferite, galleria delle strutture) e precaricamento di bg-pattern; fetchpriority sull'immagine di testata di informativo e tecnologie",
+  "settings": [
+    {"key": "kosseogeo.img_differita", "value": "1", "area": "kosseogeo"},
+    {"key": "kosseogeo.img_differita_salta", "value": "3", "area": "kosseogeo"},
+    {"key": "kosseogeo.img_preload", "value": ".bg-pattern=/assets/img/bg-pattern.jpg", "area": "kosseogeo"}
+  ],
+  "elements": [
+    {
+      "type": "plugin",
+      "name": "ImmaginiDifferite",
+      "file": "shared/plugins/ImmaginiDifferite.php",
+      "description": "KOS-2 B: loading=lazy sulle immagini fuori schermo e preload degli sfondi LCP (kosseogeo.img_*)",
+      "events": ["OnWebPagePrerender"],
+      "disabled": false
+    },
+    {
+      "type": "snippet",
+      "name": "galleryStruttura",
+      "file": "kosgroup/elements/snippets/galleryStruttura.php",
+      "baseline": "kosgroup/baseline/snippets/galleryStruttura.php"
+    },
+    {
+      "type": "template",
+      "name": "informativo",
+      "file": "kosgroup/elements/templates/informativo.html",
+      "baseline": "kosgroup/baseline/templates/informativo.html"
+    },
+    {
+      "type": "template",
+      "name": "tecnologie",
+      "file": "kosgroup/elements/templates/tecnologie.html",
+      "baseline": "kosgroup/baseline/templates/tecnologie.html"
+    }
+  ]
+}
