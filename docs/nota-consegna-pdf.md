@@ -9,7 +9,7 @@ Rilascio del 1/11/2026, prima sugli stage e poi in produzione. Brief: `docs/pdf/
 | PDF classificati | 408 | 678 |
 | Da tenere (indicizzabili) | 192 | 245 |
 | Esclusi (`X-Robots-Tag: noindex`) | 216 | 433 |
-| Copie identiche con `Link rel="canonical"` | 24 | 15 |
+| Copie identiche con `Link rel="canonical"` | 25 | 15 |
 | Titoli riscritti nei metadati (Info `/Title` + XMP `dc:title`) | 186 | 242 (di cui 49 comunicati stampa) |
 | Saltati (tabella interna del PDF rotta) | 5 | 2 |
 | Redirect 301 aggiunti | 2 (+1 in attesa) | 6 |
@@ -26,6 +26,7 @@ Rilascio del 1/11/2026, prima sugli stage e poi in produzione. Brief: `docs/pdf/
 
 ## Decisioni e note
 
+- Carta degli alloggi di San Sisto 2: stessa carta di quella di Senior Living (36 pagine, testo uguale salvo «Revisione di giugno 2025» contro «gennaio 2026»). La copia di San Sisto 2 ha `Link rel="canonical"` verso `/assets/doc/strutture/appartamenti-anziani-bergamo/Carta degli alloggi.pdf` (decisione del 1/11, da applicare con la sezione PDF aggiornata). Valutare di sostituire il file di San Sisto 2 con la revisione di gennaio 2026.
 - Cartella dei curriculum `/assets/doc/cv/` (dati personali), solo KOS: blocco `location ^~` con `X-Robots-Tag: noindex, nofollow` e header di sicurezza. I file restano raggiungibili con il link diretto (la pagina riservata li apre), l'elenco della cartella resta 403. Collaudato il 1/11 su stage e produzione: file 200 con `noindex, nofollow` e header di sicurezza, cartella 403.
 - Strutture uscite dal gruppo: Beata Corte è già in 301 verso Corte Orero (regole di produzione), quindi i suoi PDF non sono serviti e figurano ESCLUDI.
 - «Il team», «La nostra équipe», «Organizzazione» e tirocini: invariati, in attesa della conferma di KOS (call del 3/11).

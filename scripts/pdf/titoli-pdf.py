@@ -20,6 +20,10 @@ RADICE = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__))
 ORDINE = {'TIENI': 0, 'ESCLUDI': 1}
 
 # --- parere 1/11 sui moduli di accesso rimasti ESCLUDI «valutare TIENI» -------------------------------------------------
+CANONICAL_MANUALI = {   # percorso come nel foglio (inventario del 1/11) → percorso della copia che fa testo
+    # Carta degli alloggi di San Sisto 2: revisione di giugno 2025, testo uguale a quella di gennaio 2026 (confronto del 1/11, 36 pagine)
+    '/assets/doc/strutture/residenza-anni-azzurri-san-sisto-2/Carta degli alloggi.pdf': '/assets/doc/strutture/alloggi-protetti/Carta degli alloggi.pdf',
+}
 PAGINE_SPOSTATE = {'alloggi-protetti': 'appartamenti-anziani-bergamo'}   # AA-20 (1/11): nuovo indirizzo della risorsa 367
 SUPERATE = {  # intestazioni ASL (oggi ATS) o scansioni del 2014-2017: restano ESCLUDI
     'questionario-di-ammissione-ASL-MI2.pdf': 'intestazione ASL Milano 2 (oggi ATS): modulo superato',
@@ -316,6 +320,10 @@ def main():
             lst.sort(key=lambda x: (-(x['Impressioni'] or 0), len(x['Percorso']), x['Percorso']))
             for x in lst[1:]:
                 x['_canonical'] = lst[0]['Percorso']
+        # 3b. canonical decisi a mano (stesso documento in revisione diversa: md5 diverso, testo uguale tranne la data di revisione)
+        for x in righe:
+            if x['Percorso'] in CANONICAL_MANUALI and x['Proposta'] == 'TIENI':
+                x['_canonical'] = CANONICAL_MANUALI[x['Percorso']]
         # 4. unicità dei titoli
         cont = collections.defaultdict(set)
         for x in righe:
