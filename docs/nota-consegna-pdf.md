@@ -26,6 +26,7 @@ Rilascio del 1/11/2026, prima sugli stage e poi in produzione. Brief: `docs/pdf/
 
 ## Decisioni e note
 
+- Cartella dei curriculum `/assets/doc/cv/` (dati personali), solo KOS: blocco `location ^~` con `X-Robots-Tag: noindex, nofollow` e header di sicurezza. I file restano raggiungibili con il link diretto (la pagina riservata li apre), l'elenco della cartella resta 403. Collaudato il 1/11 su stage e produzione: file 200 con `noindex, nofollow` e header di sicurezza, cartella 403.
 - Strutture uscite dal gruppo: Beata Corte è già in 301 verso Corte Orero (regole di produzione), quindi i suoi PDF non sono serviti e figurano ESCLUDI.
 - «Il team», «La nostra équipe», «Organizzazione» e tirocini: invariati, in attesa della conferma di KOS (call del 3/11).
 - Open Day odontoiatrico del 16/11/2026: da tenere fino all'evento, poi ESCLUDI.
@@ -36,4 +37,3 @@ Rilascio del 1/11/2026, prima sugli stage e poi in produzione. Brief: `docs/pdf/
 - Ricostruire i 7 PDF con la tabella interna rotta (fuori voce, a consuntivo).
 - Controllo ripetibile per i PDF nuovi (passi 5-6 del brief).
 - Pulizia dei file di lavoro sui cloud: `~/pdfmeta*`, `~/pdf-h1*`, `~/meta-stato-*`, `~/prova-pdf-*`.
-- Cartella dei curriculum `/assets/doc/cv/` (dati personali): blocco `noindex, nofollow` in preparazione (sezione PDF, solo KOS), da collaudare su stage e produzione. I file restano raggiungibili con il link diretto (la pagina riservata li apre), l'elenco della cartella resta 403.
