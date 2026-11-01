@@ -30,3 +30,6 @@ __pycache__/
 # credenziali OAuth Google
 client_secret*.json
 token*.json
+
+# esportazioni degli elementi (scripts/export-elements.php): restano in locale, possono contenere segreti
+export-elements*.tgz
