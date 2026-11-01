@@ -148,6 +148,7 @@ DOC_BREVE = {  # (cartella, file) → parte «documento» abbreviata a mano; il 
 }
 ABBREVIAZIONI = [  # nome ufficiale → forma abbreviata, nell'ordine in cui si prova
     (r'^Residenza (Anni Azzurri)', r'\1'), (r'^Centro Ambulatoriale ', ''), (r'Polo Geriatrico Riabilitativo', 'PGR'),
+    (r'^Appartamenti per anziani autosufficienti', 'Appartamenti per anziani'),
     (r'^Centro Diurno Integrato ', 'CDI '), (r'^Centro Residenziale (Santo Stefano)', r'\1'),
     (r'^(Villa Margherita) Vicenza \((Psichiatria|Riabilitazione)\)', r'\1 \2'),
 ]
