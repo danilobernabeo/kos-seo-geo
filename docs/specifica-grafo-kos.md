@@ -72,8 +72,10 @@ di KOS S.p.A. Nel grafo: struttura `parentOrganization` → società; società `
 (`https://anniazzurri.it/#organization`); KOS Care `parentOrganization` → KOS S.p.A. (già in produzione). Le strutture
 di KOS Care puntano direttamente a `https://anniazzurri.it/#organization`, anche su kosgroup.com. Beata Corte è cessata a
 luglio 2026 (scheda e documenti in 301 verso Corte Orero): fuori dal grafo. Sanatrix S.r.l. e KOS Servizi non gestiscono
-strutture dei due siti: fuori dal grafo finché non servono (nessuna pagina le descrive). Da confermare: se il Polo
-Diagnostico Villa dei Pini e gli altri servizi nella sede di Civitanova Marche fanno capo anch'essi a Sanatrix Gestioni.
+strutture dei due siti: fuori dal grafo finché non servono (nessuna pagina le descrive). Poliambulatori, centri
+ambulatoriali e cliniche dentali fanno capo a KOS Care, anche quando sono nella stessa sede di una struttura di un'altra
+società (es. Polo Diagnostico Villa dei Pini a Civitanova Marche: KOS Care; la casa di cura Villa dei Pini: Sanatrix
+Gestioni). Conferma di KOS del 1/11.
 
 Regole delle relazioni:
 
@@ -389,7 +391,7 @@ accanto agli export: `kosgroup/dati/voce-24/gbp/registro.csv`.
 
 ## 9. Punti aperti
 
-1. **Tabella struttura → società**: ricevuta il 1/11 (§2). Resta da confermare la società delle unità nella sede di Villa dei Pini Civitanova (Polo Diagnostico, ambulatori).
+1. **Tabella struttura → società**: ricevuta e completata il 1/11 (§2). Chiuso.
 2. **Proprietà dei profili**: verificato da Danilo il 30/10, tutti i gruppi hanno come proprietario principale un account
    KOS. Resta da togliere l'accesso di Yext alla dismissione e da dare a RetailTune il ruolo di gestore.
 3. **Abbinamento delle schede in RetailTune**: per codice sede o per ID del profilo Google, con conferma scritta (anche da
