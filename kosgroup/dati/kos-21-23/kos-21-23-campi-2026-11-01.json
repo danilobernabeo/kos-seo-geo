@@ -1,0 +1,3613 @@
+{
+ "nome": "KOS-21/22/23: title (longtitle, con « | KOS»), description e H1 (pagetitle) da validare — proposte del 2026-11-01. Valori «prima» dall'istantanea di produzione del 27/10 (meta-stato-20261027.csv), verificata il 1/11. Gli H1 scritti nel contenuto non sono qui (modifica manuale).",
+ "risorse": [
+  {
+   "id": 385,
+   "campi": {
+    "description": {
+     "prima": "KOS Group: professionals dedicated to your health and well-being: psychiatric assistance, rehabilitation and diagnostics, in a system of healthcare facilities.",
+     "dopo": "KOS Group: professionals dedicated to health and well-being, with psychiatric care, rehabilitation and diagnostics in a network of facilities."
+    }
+   }
+  },
+  {
+   "id": 1002,
+   "uri": "en/privacy",
+   "campi": {
+    "description": {
+     "prima": "Read our privacy policy to learn how Kos protects your personal data. Explore our policy in detail.",
+     "dopo": "KOS Group privacy policy: how the personal data of kosgroup.com visitors is collected, processed and protected, and who to contact about it."
+    }
+   }
+  },
+  {
+   "id": 1003,
+   "uri": "en/terms-and-conditions",
+   "campi": {
+    "description": {
+     "prima": "Read the Terms and Conditions for using the KOS Group website. Learn about intellectual property rights, content usage policies, trademarks, external links, and liability disclaimers for kosgroup.com.",
+     "dopo": "Terms and conditions of the KOS Group website: intellectual property, use of content, trademarks, external links and liability for kosgroup.com."
+    }
+   }
+  },
+  {
+   "id": 986,
+   "uri": "en/work-in-kos/kos-academy",
+   "campi": {
+    "description": {
+     "prima": "Explore KOS Academy’s training offer. Browse the course calendar and prepare for a successful professional future!",
+     "dopo": "KOS Academy, the KOS Group training programme: the course calendar and professional development opportunities for those working in or joining KOS."
+    }
+   }
+  },
+  {
+   "id": 1,
+   "campi": {
+    "longtitle": {
+     "prima": "Gruppo KOS - rete di strutture sanitarie per la cura e la tua salute | KOS",
+     "dopo": "RSA, riabilitazione, psichiatria e diagnostica | Gruppo KOS"
+    },
+    "description": {
+     "prima": "KOS group: professionisti dedicati alla salute e al tuo benessere: assistenza psichiatrica, riabilitazione e diagnostica, in un sistema di strutture socio-sanitarie.",
+     "dopo": "Gruppo KOS: riabilitazione, assistenza psichiatrica, diagnostica e residenze per anziani in una rete di strutture sanitarie e socio-sanitarie."
+    }
+   }
+  },
+  {
+   "id": 171,
+   "uri": "it/centri/casa-pero",
+   "campi": {
+    "description": {
+     "prima": "Casa Pero è una Comunità Psichiatrica per adulti con disturbi psicotici, schizofrenici, dell’umore e della personalità, che necessitano di Psicoterapia Residenziale.",
+     "dopo": "Casa Pero è una comunità psichiatrica per adulti con disturbi psicotici, dell’umore e della personalità che necessitano di psicoterapia residenziale."
+    }
+   }
+  },
+  {
+   "id": 173,
+   "uri": "it/centri/casa-sanremo",
+   "campi": {
+    "description": {
+     "prima": "Casa Sanremo è una Comunità Riabilitativa che accoglie ospiti con disturbi psichici, che necessitano di interventi alternativi o successivi al ricovero ospedaliero.",
+     "dopo": "Casa Sanremo è una comunità riabilitativa per persone con disturbi psichici che necessitano di interventi alternativi o successivi al ricovero."
+    }
+   }
+  },
+  {
+   "id": 176,
+   "uri": "it/centri/centro-ambulatoriale-santo-stefano-ascoli-piceno",
+   "campi": {
+    "description": {
+     "prima": "Trova i migliori servizi di riabilitazione al Centro Ambulatoriale Santo Stefano Ascoli Piceno. Scopri come possiamo aiutarti a migliorare la tua salute!",
+     "dopo": "Centro Ambulatoriale Santo Stefano di Ascoli Piceno: servizi di riabilitazione e cura del Gruppo KOS, con percorsi per recuperare salute e autonomia."
+    }
+   }
+  },
+  {
+   "id": 185,
+   "uri": "it/centri/centro-ambulatoriale-santo-stefano-san-benedetto-del-tronto",
+   "campi": {
+    "description": {
+     "prima": "Visita il nostro Centro Ambulatoriale Santo Stefano a San Benedetto del Tronto per servizi di riabilitazione di alta qualità. Scopri di più su Kos oggi!",
+     "dopo": "Centro Ambulatoriale Santo Stefano di San Benedetto del Tronto: i servizi di riabilitazione ambulatoriale del Gruppo KOS sulla costa marchigiana."
+    }
+   }
+  },
+  {
+   "id": 186,
+   "uri": "it/centri/centro-ambulatoriale-santo-stefano-san-severino",
+   "campi": {
+    "description": {
+     "prima": "Visita il Centro Ambulatoriale Santo Stefano San Severino nella frazione di Taccoli, con servizi di riabilitazione e cura presso il KOS. Scopri di più.",
+     "dopo": "Centro Ambulatoriale Santo Stefano di San Severino Marche, nella frazione di Taccoli: servizi di riabilitazione e cura del Gruppo KOS."
+    }
+   }
+  },
+  {
+   "id": 909,
+   "uri": "it/centri/poliambulatorio-valdaso",
+   "campi": {
+    "description": {
+     "prima": "Visita il Poliambulatorio Valdaso a Campofilone. Scopri i servizi sanitari offerti da KOS in Contrada Valdaso, 53/A.",
+     "dopo": "Poliambulatorio Valdaso a Campofilone, in Contrada Valdaso 53/A: i servizi sanitari e le prestazioni ambulatoriali del Gruppo KOS nel Fermano."
+    }
+   }
+  },
+  {
+   "id": 219,
+   "uri": "it/centri/villa-dei-pini-firenze",
+   "campi": {
+    "description": {
+     "prima": "Villa dei Pini è una Clinica Specialistica Psichiatrica accreditata e convenzionata col SSN ed è dotata di 75 posti letto, suddivisi in camere doppie e singole.",
+     "dopo": "Villa dei Pini Firenze è una clinica specialistica psichiatrica accreditata e convenzionata con il SSN, con 75 posti letto in camere doppie e singole."
+    }
+   }
+  },
+  {
+   "id": 220,
+   "uri": "it/centri/villa-fastiggi",
+   "campi": {
+    "description": {
+     "prima": "Scopri i servizi di riabilitazione presso Villa Fastiggi del Gruppo KOS, in Piazza Tarquinio Provini, 2, Pesaro (PU). Esperienza di cura di alta qualità.",
+     "dopo": "Villa Fastiggi a Pesaro, in Piazza Tarquinio Provini 2: servizi di riabilitazione del Gruppo KOS con percorsi di cura personalizzati e di qualità."
+    }
+   }
+  },
+  {
+   "id": 227,
+   "uri": "it/centri/villa-san-giuseppe",
+   "campi": {
+    "description": {
+     "prima": "Centro di riabilitazione Villa San Giuseppe a Anzano Del Parco, CO. Scopri i nostri servizi di qualità per il recupero e il benessere. Contattaci ora.",
+     "dopo": "Villa San Giuseppe ad Anzano del Parco (CO): centro di riabilitazione del Gruppo KOS con servizi dedicati al recupero funzionale e al benessere."
+    }
+   }
+  },
+  {
+   "id": 1112,
+   "uri": "it/centri/villa-san-giuseppe/storico-liste-di-attesa",
+   "campi": {
+    "longtitle": {
+     "prima": "Trasparenza e Governance: Dati societari | KOS",
+     "dopo": "Storico liste di attesa - Villa San Giuseppe | KOS"
+    },
+    "description": {
+     "prima": "Scopri i dati societari di Kos e la sua trasparenza nella governance aziendale. Tutto ciò che devi sapere sulle informazioni societarie.",
+     "dopo": "Storico delle liste di attesa di Villa San Giuseppe, struttura del Gruppo KOS: i dati sui tempi di attesa pubblicati dalla struttura per trasparenza."
+    }
+   }
+  },
+  {
+   "id": 279,
+   "uri": "it/chi-siamo/governance/dati-societari",
+   "campi": {
+    "longtitle": {
+     "prima": "Trasparenza e Governance: Dati societari | KOS",
+     "dopo": "Dati societari: trasparenza e governance | KOS"
+    },
+    "description": {
+     "prima": "Scopri i dati societari di Kos e la sua trasparenza nella governance aziendale. Tutto ciò che devi sapere sulle informazioni societarie.",
+     "dopo": "Dati societari di KOS S.p.A. e delle società del gruppo: informazioni sulla governance e sulla trasparenza aziendale del Gruppo KOS."
+    }
+   }
+  },
+  {
+   "id": 777,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/adel-chehida",
+   "campi": {
+    "description": {
+     "prima": "Adel Chehida, Anestesista, specializzato in Anestesia, Rianimazione e Terapia del Dolore, con esperienza in strutture sanitarie di Parigi, Ginevra e Italia.",
+     "dopo": "Adel Chehida, anestesista a Villa dei Pini di Civitanova Marche (Gruppo KOS): anestesia, rianimazione e terapia del dolore."
+    }
+   }
+  },
+  {
+   "id": 747,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/adolfo-bandettini-di-poggio",
+   "campi": {
+    "description": {
+     "prima": "Adolfo Bandettini di Poggio, psichiatra specializzato in Disturbi dell'Umore (Disturbo Bipolare e Depressione), Disturbi d'Ansia, Disturbi del Comportamento Alimentare.",
+     "dopo": "Adolfo Bandettini di Poggio, psichiatra a Ville di Nozzano (KOS): disturbo bipolare, depressione, ansia e disturbi alimentari."
+    }
+   }
+  },
+  {
+   "id": 829,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/alessandra-cavuto",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Alessandra Cavuto, musicoterapeuta a Villa Margherita Vicenza (Gruppo KOS): Parkinson, disturbi dell'umore, PTSD e disturbi alimentari."
+    }
+   }
+  },
+  {
+   "id": 843,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/alessandra-pastorio",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Alessandra Pastorio, fisiatra a Villa Margherita Vicenza (Gruppo KOS): riabilitazione neurologica dopo ictus e gravi cerebrolesioni."
+    }
+   }
+  },
+  {
+   "id": 748,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/alessandra-ramati",
+   "campi": {
+    "description": {
+     "prima": "Alessandra Ramati, Psichiatra specializzata in Disturbi dell’Umore, Spettro Schizofrenico, Disturbi da Dipendenza, Disturbi d’Ansia, Disturbi correlati allo Stress.",
+     "dopo": "Alessandra Ramati, psichiatra a Casa Villa Maura (Gruppo KOS): disturbi dell'umore, spettro schizofrenico, dipendenze e ansia."
+    }
+   }
+  },
+  {
+   "id": 1097,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/andrea-mastriani",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Andrea Mastriani, fisioterapista al Centro Medico Riabilitativo di Cinisello Balsamo (KOS): terapie fisiche e recupero delle abilità motorie."
+    }
+   }
+  },
+  {
+   "id": 873,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/annalisa-fumagalli",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Annalisa Fumagalli, assistente di medicina estetica al Centro Medico Riabilitativo di Cinisello Balsamo, struttura del Gruppo KOS."
+    }
+   }
+  },
+  {
+   "id": 562,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/antonio-ballarino",
+   "campi": {
+    "description": {
+     "prima": "Scopri i servizi di fisioterapia offerti da Antonio Ballarino del Gruppo KOS. Prenota una consulenza con il medico fisioterapista esperto oggi stesso!",
+     "dopo": "Antonio Ballarino, fisioterapista al Centro Medico Riabilitativo di Cinisello Balsamo (Gruppo KOS), specializzato in terapia manuale."
+    }
+   }
+  },
+  {
+   "id": 739,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/antonio-rencricca",
+   "campi": {
+    "description": {
+     "prima": "Antonio Rencricca, medico specialista otorinolaringoiatria e patologia cervico-facciale. Formazione. Laurea in Medicina e Chirurgia presso Università degli Studi di Perugia.",
+     "dopo": "Antonio Rencricca, otorinolaringoiatra al centro Myolab (Gruppo KOS): patologie dell'orecchio medio in età pediatrica e adulta."
+    }
+   }
+  },
+  {
+   "id": 847,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/antonio-rizzetto",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Antonio Rizzetto coordina i terapisti della riabilitazione a Villa Margherita Vicenza (Gruppo KOS): riabilitazione neurologica e ortopedica."
+    }
+   }
+  },
+  {
+   "id": 869,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/assunta-benincasa",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Assunta Benincasa, otorinolaringoiatra specializzata in foniatria al Centro Medico Riabilitativo di Cinisello Balsamo (Gruppo KOS)."
+    }
+   }
+  },
+  {
+   "id": 900,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/azzurra-moscatelli",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Azzurra Moscatelli, biologa nutrizionista al centro Myolab del Gruppo KOS: valutazione nutrizionale e piani alimentari personalizzati."
+    }
+   }
+  },
+  {
+   "id": 563,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/beatrice-baroni",
+   "campi": {
+    "description": {
+     "prima": "Nutrizionista esperta nel Gruppo KOS. Approccio medico-biologico per il benessere. Scopri come raggiungere i tuoi obiettivi di salute con Beatrice Baroni.",
+     "dopo": "Beatrice Baroni, biologa nutrizionista al Centro Medico Riabilitativo di Cinisello Balsamo (KOS): nutrizione e malattie gastrointestinali."
+    }
+   }
+  },
+  {
+   "id": 1057,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/beatrice-bertinato",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Beatrice Bertinato, fisioterapista a Villa Margherita Vicenza (Gruppo KOS): riabilitazione in area neurologica e ortopedica."
+    }
+   }
+  },
+  {
+   "id": 583,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/carlo-pagannone",
+   "campi": {
+    "description": {
+     "prima": "Scopri i servizi di radiologia tradizionale e diagnostica avanzata offerti da Carlo Pagannone a Kos. Risonanza, Rx e ecografia, specialisti di fiducia.",
+     "dopo": "Carlo Pagannone, radiologo a Villa Rosa Diagnostica di Modena (Gruppo KOS): radiologia, risonanza magnetica ed ecografia."
+    }
+   }
+  },
+  {
+   "id": 721,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/cesare-boria",
+   "campi": {
+    "description": {
+     "prima": "Cesare Boria, medico chirurgo specialista in Cardiologia e Medicina dello Sport. Direttore Sanitario Medicina dello Sport. Formazione. Medicina e Chirurgia.",
+     "dopo": "Cesare Boria, direttore sanitario della Medicina dello Sport di Myolab (KOS): cardiologia, scompenso cardiaco ed ecodoppler."
+    }
+   }
+  },
+  {
+   "id": 727,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/claudio-gambini",
+   "campi": {
+    "description": {
+     "prima": "Claudio Gambini, Medico Chirurgo specialista in Cardiologia e Medicina dello Sport. Esperto in ecocardiografia, test ergometrico, Holter e idoneità medico-sportiva.",
+     "dopo": "Claudio Gambini, cardiologo e medico dello sport al centro Myolab (KOS): ecocardiografia, test ergometrico, Holter e idoneità sportiva."
+    }
+   }
+  },
+  {
+   "id": 772,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/cosimo-argentieri",
+   "campi": {
+    "description": {
+     "prima": "Cosimo Argentieri, Psichiatra e Psicoterapeuta specializzato in Schizofrenia, Autismo in età adulta, Disturbi d'Ansia e problematiche nelle relazioni-famigliari.",
+     "dopo": "Cosimo Argentieri, psichiatra e direttore sanitario nel Gruppo KOS: schizofrenia, autismo in età adulta e disturbi d'ansia."
+    }
+   }
+  },
+  {
+   "id": 824,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/cristina-beretta",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Cristina Beretta, medico fisiatra a Villa Margherita Vicenza (Gruppo KOS): Parkinson, cefalee, mielolesioni e cerebrolesioni."
+    }
+   }
+  },
+  {
+   "id": 1091,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/cristina-landi",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Cristina Landi, neurologa al Centro Medico Riabilitativo di Cinisello Balsamo (KOS): stimolazione cerebrale non invasiva e recupero motorio."
+    }
+   }
+  },
+  {
+   "id": 877,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/daniela-matei",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Daniela Matei, infermiera al Centro Medico Riabilitativo di Cinisello Balsamo (Gruppo KOS): carbossiterapia e assistenza post-operatoria."
+    }
+   }
+  },
+  {
+   "id": 842,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/daniele-panozzo",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Daniele Panozzo, fisioterapista a Villa Margherita Vicenza (KOS): riabilitazione neurologica, ortopedica, cardiorespiratoria e sportiva."
+    }
+   }
+  },
+  {
+   "id": 850,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/daniele-volpe",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Daniele Volpe, geriatra e fisiatra, dirige la Medicina Riabilitativa di Villa Margherita Vicenza (KOS): Parkinson e disordini del movimento."
+    }
+   }
+  },
+  {
+   "id": 879,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/diego-pais",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Diego Pais, infermiere al Centro Medico Riabilitativo di Cinisello Balsamo (Gruppo KOS), con esperienza nell'assistenza pre e post intervento."
+    }
+   }
+  },
+  {
+   "id": 1146,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/diego-spagnolo",
+   "campi": {
+    "description": {
+     "prima": "Scopri i servizi offerti da Diego Spagnolo di Villa dei Pini di Civitanova Marche del Gruppo KOS. Prenota una consulenza cardiologica con il medico oggi stesso!",
+     "dopo": "Diego Spagnolo, cardiologo a Villa dei Pini di Civitanova Marche (KOS): aritmologia, pacemaker e defibrillatori."
+    }
+   }
+  },
+  {
+   "id": 867,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/domenico-corrado-ali",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Domenico Corrado Alì, medico estetico al Centro Medico Riabilitativo di Cinisello Balsamo (Gruppo KOS), con master europeo in medicina estetica."
+    }
+   }
+  },
+  {
+   "id": 1055,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/elena-regau",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Elena Regaù, fisioterapista a Villa Margherita Vicenza (Gruppo KOS): riabilitazione in area neurologica e ortopedica."
+    }
+   }
+  },
+  {
+   "id": 846,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/elena-righetto",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Elena Righetto, coordinatrice infermieristica della Medicina Riabilitativa di Villa Margherita Vicenza (Gruppo KOS)."
+    }
+   }
+  },
+  {
+   "id": 953,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/elisa-falappa",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Elisa Falappa, biologa nutrizionista al centro Myolab (KOS): nutrizione clinica, dieta chetogenica, lipedema e malattie metaboliche."
+    }
+   }
+  },
+  {
+   "id": 775,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/emanuele-pallotti",
+   "campi": {
+    "description": {
+     "prima": "Emanuele Pallotti, tecnico della riabilitazione psichiatrica specializzato in Disturbi d'Ansia, Disturbi dell'Umore, Psicosi e Disturbi dello Spettro Psicotico, Autismo.",
+     "dopo": "Emanuele Pallotti, tecnico della riabilitazione psichiatrica a Villa Sant'Alessandro (KOS): ansia, umore, psicosi e autismo."
+    }
+   }
+  },
+  {
+   "id": 773,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/fabio-conti",
+   "campi": {
+    "description": {
+     "prima": "Fabio Conti, medico psichiatra specializzato nei Disturbi dell'Alimentazione, Doppia Diagnosi, Disturbo Bipolare, Schizofrenia, Disturbi di Personalità e Dipendenze.",
+     "dopo": "Fabio Conti, psichiatra del Gruppo KOS: disturbi dell'alimentazione, doppia diagnosi, disturbo bipolare, schizofrenia e dipendenze."
+    }
+   }
+  },
+  {
+   "id": 1092,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/fabio-lissoni",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Fabio Lissoni, cardiologo al Centro Medico Riabilitativo di Cinisello Balsamo (Gruppo KOS), esperto di sincope e Tilt Test."
+    }
+   }
+  },
+  {
+   "id": 1145,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/federia-sanges",
+   "campi": {
+    "description": {
+     "prima": "Scopri i servizi offerti da Federica Sanges di Villa dei Pini di Civitanova Marche del Gruppo KOS. Prenota una consulenza nutrizionistica con il medico oggi stesso!",
+     "dopo": "Federica Sanges, biologa nutrizionista a Villa dei Pini di Civitanova Marche (KOS): nutrizione clinica e piani alimentari personalizzati."
+    }
+   }
+  },
+  {
+   "id": 1096,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/federica-lenti",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Federica Lenti, fisioterapista al Centro Medico Riabilitativo di Cinisello Balsamo (Gruppo KOS): riabilitazione dell'adulto con disturbi neurologici."
+    }
+   }
+  },
+  {
+   "id": 868,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/ferdinando-ambrosi",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Ferdinando Ambrosi, geriatra al Centro Medico Riabilitativo di Cinisello Balsamo (Gruppo KOS), specializzato anche in fisioterapia."
+    }
+   }
+  },
+  {
+   "id": 834,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/flavia-frighetto",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Flavia Frighetto, logopedista a Villa Margherita Vicenza (Gruppo KOS): riabilitazione di afasia, disartria e disfagia."
+    }
+   }
+  },
+  {
+   "id": 881,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/francesca-passoni",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Francesca Passoni, fisioterapista al Centro Medico Riabilitativo di Cinisello Balsamo (KOS): linfodrenaggio, riabilitazione post-partum e diastasi."
+    }
+   }
+  },
+  {
+   "id": 776,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/francesca-russo",
+   "campi": {
+    "description": {
+     "prima": "Francesca Russo, tecnico della Riabilitazione Psichiatrica specializzata in Disturbi d’Ansia, Disturbo Ossessivo-compulsivo, Disturbi dell’Umore, Disturbi dello Spettro Psicotico.",
+     "dopo": "Francesca Russo, tecnico della riabilitazione psichiatrica a Villa Sant'Alessandro (KOS): ansia, disturbo ossessivo-compulsivo, umore."
+    }
+   }
+  },
+  {
+   "id": 845,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/francesco-perini",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Francesco Perini, direttore della Neurologia di Villa Margherita Vicenza (Gruppo KOS): malattia di Parkinson e cefalee."
+    }
+   }
+  },
+  {
+   "id": 1143,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/gabriele-poloni",
+   "campi": {
+    "description": {
+     "prima": "Scopri i servizi offerti da Gabriele Poloni di Villa dei Pini di Civitanova Marche del Gruppo KOS. Prenota una consulenza oculistica con il medico oggi stesso!",
+     "dopo": "Gabriele Poloni, oculista a Villa dei Pini di Civitanova Marche (KOS): chirurgia della cataratta e oculoplastica."
+    }
+   }
+  },
+  {
+   "id": 1095,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/gerardo-mele",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Gerardo Mele, fisiatra al Centro Medico Riabilitativo di Cinisello Balsamo (KOS): patologie reumatiche e riabilitazione delle gravi lesioni."
+    }
+   }
+  },
+  {
+   "id": 902,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giacomo-zenobi",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Giacomo Zenobi, medico esperto in terapia del dolore da oltre 30 anni: dolore oncologico e cronico. Profilo nel Gruppo KOS."
+    }
+   }
+  },
+  {
+   "id": 1056,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giada-spigarolo",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Giada Spigarolo, fisioterapista a Villa Margherita Vicenza (Gruppo KOS): riabilitazione in area neurologica e ortopedica."
+    }
+   }
+  },
+  {
+   "id": 841,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giampietro-nordera",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Giampietro Nordera, neurologo a Villa Margherita Vicenza (Gruppo KOS), impegnato nella cura e nella ricerca sulla malattia di Parkinson."
+    }
+   }
+  },
+  {
+   "id": 1093,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giorgio-gritti",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Giorgio Gritti, ortopedico al Centro Medico Riabilitativo di Cinisello Balsamo (Gruppo KOS), con esperienza in traumatologia e chirurgia d'urgenza."
+    }
+   }
+  },
+  {
+   "id": 837,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giovanni-gottin",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Giovanni Gottin, fisioterapista a Villa Margherita Vicenza (Gruppo KOS): riabilitazione in area neurologica e ortopedica."
+    }
+   }
+  },
+  {
+   "id": 880,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giovanni-paone",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Giovanni Paone, ecografista al Centro Medico Riabilitativo di Cinisello Balsamo (Gruppo KOS): ecografie e lesioni focali epatiche."
+    }
+   }
+  },
+  {
+   "id": 830,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giuliana-ciampa",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Giuliana Ciampa, fisioterapista a Villa Margherita Vicenza (Gruppo KOS): riabilitazione neurologica, cardiorespiratoria e del pavimento pelvico."
+    }
+   }
+  },
+  {
+   "id": 899,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giulio-milanese",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Giulio Milanese, urologo al centro Myolab del Gruppo KOS: visite urologiche e diagnosi delle patologie dell'apparato urinario."
+    }
+   }
+  },
+  {
+   "id": 742,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giuseppe-sortino",
+   "campi": {
+    "description": {
+     "prima": "Giuseppe Sortino Specialista in Urologia, Giuseppe Sortino. Ruolo. Urologo/Andrologo. Formazione. Laurea in Medicina e Chirurgia presso Università degli Studi di Catania.",
+     "dopo": "Giuseppe Sortino, urologo e andrologo al centro Myolab del Gruppo KOS: urologia, andrologia e urologia oncologica."
+    }
+   }
+  },
+  {
+   "id": 885,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/guido-zanandrea",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Guido Zanandrea, urologo al Centro Medico Riabilitativo di Cinisello Balsamo (Gruppo KOS), specialista in chirurgia e microchirurgia."
+    }
+   }
+  },
+  {
+   "id": 825,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/katia-bernasconi",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Katia Bernasconi, medico fisiatra a Villa Margherita Vicenza (Gruppo KOS): riabilitazione delle patologie neurologiche e ortopediche."
+    }
+   }
+  },
+  {
+   "id": 823,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/leila-bakdounes",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Leila Bakdounes, fisiatra a Villa Margherita Vicenza (Gruppo KOS): riabilitazione neurologica e disordini del movimento."
+    }
+   }
+  },
+  {
+   "id": 840,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/lisa-nalesso",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Lisa Nalesso, dietista a Villa Margherita Vicenza (Gruppo KOS): percorsi nutrizionali per i disturbi del comportamento alimentare."
+    }
+   }
+  },
+  {
+   "id": 1099,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/lisa-ventura",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Lisa Ventura, fisioterapista al Centro Medico Riabilitativo di Cinisello Balsamo (KOS): disturbi linfatici, linfodrenaggio e terapia manuale."
+    }
+   }
+  },
+  {
+   "id": 1059,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/lucia-zenere",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Lucia Zenere, fisioterapista e ricercatrice a Villa Margherita Vicenza (KOS), certificata ParkinsonNet: Parkinson e disordini del movimento."
+    }
+   }
+  },
+  {
+   "id": 600,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/luigi-chiaramonti",
+   "campi": {
+    "description": {
+     "prima": "Luigi Chiaramonti, medico neurologo a Kos con focus su patologie neurologiche e psichiatriche. Specializzato in cefalea, demenze e disturbi del movimento.",
+     "dopo": "Luigi Chiaramonti, neurologo del Gruppo KOS: visite per cefalea, demenze, disturbi del movimento e patologie neurologiche e psichiatriche."
+    }
+   }
+  },
+  {
+   "id": 1094,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/marco-bandi",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Marco Bandi, fisiatra al Centro Medico Riabilitativo di Cinisello Balsamo (Gruppo KOS): visite fisiatriche e percorsi riabilitativi."
+    }
+   }
+  },
+  {
+   "id": 876,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/marco-mariani",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Marco Mariani, infermiere con master in coordinamento delle professioni sanitarie al Centro Medico Riabilitativo di Cinisello Balsamo (KOS)."
+    }
+   }
+  },
+  {
+   "id": 828,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/maria-concetta-campo",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Maria Concetta Campo, psicologa a Villa Margherita Vicenza (KOS): valutazione neuropsicologica e trattamento cognitivo dei disturbi neurocognitivi."
+    }
+   }
+  },
+  {
+   "id": 882,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/maria-maddalena-santonastaso",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Maria Maddalena Santonastaso, fisioterapista al Centro Medico Riabilitativo di Cinisello Balsamo (KOS): metodo Kabat neurologico e ortopedico."
+    }
+   }
+  },
+  {
+   "id": 568,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/matteo-mariani",
+   "campi": {
+    "description": {
+     "prima": "Matteo Mariani, medico fisioterapista nel Gruppo KOS. Scopri i suoi servizi professionali per il tuo benessere fisico. Contatta ora per appuntamento.",
+     "dopo": "Matteo Mariani, fisioterapista al Centro Medico Riabilitativo di Cinisello Balsamo (KOS): terapie fisiche e recupero post infortunio."
+    }
+   }
+  },
+  {
+   "id": 737,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/matteo-pavan",
+   "campi": {
+    "description": {
+     "prima": "Matteo Pavan, Ortopedico e Traumatologo, specializzato in chirurgia del ginocchio e dell'anca. Esperto nel trattamento di patologie articolari e traumatiche.",
+     "dopo": "Matteo Pavan, ortopedico e traumatologo al centro Myolab (Gruppo KOS): chirurgia del ginocchio e dell'anca, lesioni legamentose."
+    }
+   }
+  },
+  {
+   "id": 715,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/maurilio-genovese",
+   "campi": {
+    "description": {
+     "prima": "Maurilio Genovese, Radiologo specializzato in Neuroradiologia, Dirigente medico dal 2024 presso l'AOU di Modena, con interesse in neuroradiologia pediatrica.",
+     "dopo": "Maurilio Genovese, radiologo a Villa Rosa Diagnostica di Modena (Gruppo KOS): neuroradiologia e neuroradiologia pediatrica."
+    }
+   }
+  },
+  {
+   "id": 1079,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/michela-monda",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Michela Monda, terapista occupazionale dell'area neurologica a Villa Margherita Vicenza, centro di riabilitazione del Gruppo KOS."
+    }
+   }
+  },
+  {
+   "id": 901,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/michele-tulli",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Michele Tulli, otorinolaringoiatra al centro Myolab del Gruppo KOS: visite specialistiche di otorinolaringoiatria."
+    }
+   }
+  },
+  {
+   "id": 884,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/miriam-vedrodyova",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Miriam Vedrodyova, logopedista al Centro Medico Riabilitativo di Cinisello Balsamo (KOS): disfonia, deglutizione disfunzionale, terapia miofunzionale."
+    }
+   }
+  },
+  {
+   "id": 1147,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/myroslava-styhar",
+   "campi": {
+    "description": {
+     "prima": "Scopri i servizi offerti da Myroslava Styhar di Villa dei Pini di Civitanova Marche del Gruppo KOS. Prenota una consulenza reumatologica con il medico oggi stesso!",
+     "dopo": "Myroslava Styhar, reumatologa a Villa dei Pini di Civitanova Marche (KOS): malattie reumatiche ed ecografia muscoloscheletrica."
+    }
+   }
+  },
+  {
+   "id": 826,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/nicola-bonetto",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Nicola Bonetto, neurologo a Villa Margherita Vicenza (Gruppo KOS): disturbi del movimento, demenze e neurofisiologia clinica (EMG, EEG)."
+    }
+   }
+  },
+  {
+   "id": 1058,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/nicola-dalla-chiara",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Nicola Dalla Chiara, fisioterapista dell'area neurologica a Villa Margherita Vicenza, centro di riabilitazione del Gruppo KOS."
+    }
+   }
+  },
+  {
+   "id": 736,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/nicola-pace",
+   "campi": {
+    "description": {
+     "prima": "Nicola Pace, Specialista in Ortopedia e Traumatologia, Fisioterapia e Riabilitazione Funzionale, con esperienza in Ortopedia Pediatrica e chirurgia dell'anca, ginocchio e piede.",
+     "dopo": "Nicola Pace, ortopedico e traumatologo al centro Myolab (KOS): ortopedia pediatrica e chirurgia di anca, ginocchio e piede."
+    }
+   }
+  },
+  {
+   "id": 831,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/nicoletta-del-grosso",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Nicoletta Del Grosso Destreri, psicologa a Villa Margherita Vicenza (KOS): malattie neurodegenerative, Parkinson e parkinsonismi."
+    }
+   }
+  },
+  {
+   "id": 731,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/paolo-guidoni",
+   "campi": {
+    "description": {
+     "prima": "Paolo Guidoni, Medico Chirurgo Specialista in Neurologia, con particolare interesse verso il settore della Neurofisiologia. Prenota una consultazione online!",
+     "dopo": "Paolo Guidoni, neurologo del Gruppo KOS con interesse per la neurofisiologia: visite neurologiche ed esami neurofisiologici."
+    }
+   }
+  },
+  {
+   "id": 1077,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/paolo-maria-squadroni",
+   "campi": {
+    "description": {
+     "prima": "Medico Gastroenterologo specializzato in Gastroenterologia e medicina internistica. Scopri cure e trattamenti. Prenota una visita per la tua salute intestinale.",
+     "dopo": "Paolo Maria Squadroni, gastroenterologo a Villa dei Pini di Civitanova Marche (Gruppo KOS): gastroenterologia e medicina interna."
+    }
+   }
+  },
+  {
+   "id": 1080,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/querci-martina",
+   "campi": {
+    "longtitle": {
+     "prima": "Querci Martina | KOS",
+     "dopo": "Martina Querci | KOS"
+    },
+    "description": {
+     "prima": "",
+     "dopo": "Martina Querci, chinesiologa a Villa Margherita Vicenza (Gruppo KOS): attività fisica adattata in area neurologica."
+    }
+   }
+  },
+  {
+   "id": 1141,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/remo-di-matteo",
+   "campi": {
+    "description": {
+     "prima": "Scopri i servizi offerti da Remo Di Matteo di Villa dei Pini di Civitanova Marche del Gruppo KOS. Prenota una consulenza in ortopedia con il medico oggi stesso!",
+     "dopo": "Remo Di Matteo, ortopedico a Villa dei Pini di Civitanova Marche (KOS): protesi di anca, ginocchio e spalla, chirurgia artroscopica."
+    }
+   }
+  },
+  {
+   "id": 870,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/rodolfo-calorio",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Rodolfo Calorio, medico estetico al Centro Medico Riabilitativo di Cinisello Balsamo (Gruppo KOS), specialista in odontostomatologia."
+    }
+   }
+  },
+  {
+   "id": 726,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/rolando-gagliardini",
+   "campi": {
+    "description": {
+     "prima": "Rolando Gagliardini, Pediatra e Pneumo-allergologo pediatra. Formazione. Laurea in Medicina e Chirurgia (Università di Bologna). Specializzazione. Pediatria; Pneumologia.",
+     "dopo": "Rolando Gagliardini, pediatra e pneumologo al centro Myolab (Gruppo KOS): asma, allergie respiratorie e tosse cronica."
+    }
+   }
+  },
+  {
+   "id": 903,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/rolando-gregorio-edoardo-rocchetti",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Rolando Rocchetti, chirurgo al centro Myolab del Gruppo KOS: chirurgia generale, coloproctologica, della tiroide e delle paratiroidi."
+    }
+   }
+  },
+  {
+   "id": 567,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/sara-fantoni",
+   "campi": {
+    "description": {
+     "prima": "Sara Fantoni, medico fisioterapista a Kos. Scopri i servizi offerti da un professionista dedicato al benessere fisico. Contatta per info e appuntamenti.",
+     "dopo": "Sara Fantoni, fisioterapista al Centro Medico Riabilitativo di Cinisello Balsamo (Gruppo KOS): percorsi di fisioterapia e recupero."
+    }
+   }
+  },
+  {
+   "id": 1098,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/sara-tenace",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Sara Tenace, fisioterapista al Centro Medico Riabilitativo di Cinisello Balsamo (KOS): bendaggio funzionale, tecarterapia e onde d'urto."
+    }
+   }
+  },
+  {
+   "id": 827,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/selena-bressan",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Selena Bressan, logopedista a Villa Margherita Vicenza (Gruppo KOS): riabilitazione di afasia, disartria e disfagia."
+    }
+   }
+  },
+  {
+   "id": 839,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/silvia-moretti",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Silvia Moretti, coordinatrice infermieristica della Neurologia di Villa Margherita Vicenza, centro di riabilitazione del Gruppo KOS."
+    }
+   }
+  },
+  {
+   "id": 1144,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/silvia-pranzetti",
+   "campi": {
+    "description": {
+     "prima": "Scopri i servizi offerti da Silvia Pranzetti di Villa dei Pini di Civitanova Marche del Gruppo KOS. Prenota una consulenza di chirurgia con il medico oggi stesso!",
+     "dopo": "Silvia Pranzetti, chirurgo generale a Villa dei Pini di Civitanova Marche (KOS): chirurgia addominale, mini-invasiva e bariatrica."
+    }
+   }
+  },
+  {
+   "id": 1140,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/simona-turtu",
+   "campi": {
+    "description": {
+     "prima": "Scopri i servizi offerti da Simona Turtù di Villa dei Pini di Civitanova Marche del Gruppo KOS. Prenota una consulenza in Dermatologia con il medico oggi stesso!",
+     "dopo": "Simona Turtù, dermatologa a Villa dei Pini di Civitanova Marche (KOS): dermatologia clinica, tricologia e dermatoscopia dei nei."
+    }
+   }
+  },
+  {
+   "id": 832,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/sofia-fortuna",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Sofia Fortuna, fisioterapista dell'area neurologica a Villa Margherita Vicenza (Gruppo KOS), con ricerca sull'analisi del passo nel Parkinson."
+    }
+   }
+  },
+  {
+   "id": 714,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/sonia-ferraresi",
+   "campi": {
+    "description": {
+     "prima": "Sonia Ferraresi, Laureata in Medicina e Chirurgia presso l'Università di Modena e Reggio Emilia e specializzata in Radiodiagnostica. Prenota una consultazione online!",
+     "dopo": "Sonia Ferraresi, radiologa a Villa Rosa Diagnostica di Modena (Gruppo KOS): mammografia, ecografia mammaria e biopsie ecoguidate."
+    }
+   }
+  },
+  {
+   "id": 1100,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/vittorio-valla",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Vittorio Valla, podologo al Centro Medico Riabilitativo di Cinisello Balsamo (Gruppo KOS): visite e trattamenti podologici."
+    }
+   }
+  },
+  {
+   "id": 611,
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/walter-grassi",
+   "campi": {
+    "description": {
+     "prima": "Medico Reumatologo, Walter Grassi: Malattie degenerative e infiammatorie dell'apparato locomotore Malattie autoimmuni, fenomeno di Raynaud Fibromialgia",
+     "dopo": "Walter Grassi, reumatologo al centro Myolab (Gruppo KOS): malattie infiammatorie e autoimmuni, fenomeno di Raynaud, fibromialgia."
+    }
+   }
+  },
+  {
+   "id": 1001,
+   "uri": "it/chi-siamo/qualita-delle-cure/tecnologia-e-innovazione/lampo",
+   "campi": {
+    "description": {
+     "prima": "Scopri LAMPO, il laboratorio specializzato di KOS per migliorare diagnosi, sicurezza e qualità delle cure grazie a processi più rapidi, tracciati e integrati.",
+     "dopo": "LAMPO è il laboratorio specializzato di KOS che migliora diagnosi, sicurezza e qualità delle cure grazie a processi più rapidi, tracciati e integrati."
+    }
+   }
+  },
+  {
+   "id": 654,
+   "uri": "it/convenzioni/aidental",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Aidental: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Aidental con il Gruppo KOS: agevolazioni economiche riservate agli assistiti convenzionati nelle strutture KOS che aderiscono all'accordo."
+    }
+   }
+  },
+  {
+   "id": 655,
+   "uri": "it/convenzioni/all-assistance",
+   "campi": {
+    "description": {
+     "prima": "Convenzione All Assistance: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione All Assistance con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 656,
+   "uri": "it/convenzioni/allianz-health",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Allianz Health: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Allianz Health con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 657,
+   "uri": "it/convenzioni/allianz-partners",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Allianz Partners: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Allianz Partners con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 658,
+   "uri": "it/convenzioni/aon-advisory-solutions",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Aon Advisory & Solutions: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Aon Advisory & Solutions con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 659,
+   "uri": "it/convenzioni/areamedical24",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Areamedical24: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Areamedical24 con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 660,
+   "uri": "it/convenzioni/assirete-group",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Assirete Group: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Assirete Group con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 661,
+   "uri": "it/convenzioni/axa-caring",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Axa Caring: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Axa Caring con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 662,
+   "uri": "it/convenzioni/axa-interpartners-assistance",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Axa Interpartners Assistance: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Axa Interpartners Assistance con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 663,
+   "uri": "it/convenzioni/banco-bpm-assicurazioni",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Banco Bpm Assicurazioni: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Banco Bpm Assicurazioni con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 664,
+   "uri": "it/convenzioni/bifin-salute-semplice",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Bifin-salute Semplice: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Bifin-salute Semplice con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 665,
+   "uri": "it/convenzioni/blue-assistance",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Blue Assistance: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Blue Assistance con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 666,
+   "uri": "it/convenzioni/bupa-insurance",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Bupa Insurance: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Bupa Insurance con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 667,
+   "uri": "it/convenzioni/casagit",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Casagit: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Casagit con il Gruppo KOS: agevolazioni economiche riservate agli assistiti convenzionati nelle strutture KOS che aderiscono all'accordo."
+    }
+   }
+  },
+  {
+   "id": 668,
+   "uri": "it/convenzioni/caspie-servizi-caspie-ets",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Caspie Servizi + Caspie Ets: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Caspie Servizi + Caspie Ets con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 669,
+   "uri": "it/convenzioni/ceb-mutua-controllo-e-benessere",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Ceb Mutua - Controllo e Benessere: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Ceb Mutua - Controllo e Benessere con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 670,
+   "uri": "it/convenzioni/compass",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Compass: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Compass con il Gruppo KOS: agevolazioni economiche riservate agli assistiti convenzionati nelle strutture KOS che aderiscono all'accordo."
+    }
+   }
+  },
+  {
+   "id": 671,
+   "uri": "it/convenzioni/consorzio-musa",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Consorzio Mu.sa: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Consorzio Mu.sa con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 672,
+   "uri": "it/convenzioni/cooperazione-salute",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Cooperazione Salute: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Cooperazione Salute con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 674,
+   "uri": "it/convenzioni/credit-agricole-assicurazioni",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Credit Agricole Assicurazioni: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Credit Agricole Assicurazioni con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 673,
+   "uri": "it/convenzioni/credit-agricole-vita",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Credit Agricole Vita: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Credit Agricole Vita con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 676,
+   "uri": "it/convenzioni/dove-salute",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Dove Salute: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Dove Salute con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 677,
+   "uri": "it/convenzioni/enpap",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Enpap: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Enpap con il Gruppo KOS: agevolazioni economiche riservate agli assistiti convenzionati nelle strutture KOS che aderiscono all'accordo."
+    }
+   }
+  },
+  {
+   "id": 678,
+   "uri": "it/convenzioni/faschim",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Faschim: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Faschim con il Gruppo KOS: agevolazioni economiche riservate agli assistiti convenzionati nelle strutture KOS che aderiscono all'accordo."
+    }
+   }
+  },
+  {
+   "id": 679,
+   "uri": "it/convenzioni/fasdac",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Fasdac: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo KOS. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Fasdac con il Gruppo KOS: agevolazioni economiche riservate agli assistiti convenzionati nelle strutture KOS che aderiscono all'accordo."
+    }
+   }
+  },
+  {
+   "id": 681,
+   "uri": "it/convenzioni/fasdip",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Fasdip: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Fasdip con il Gruppo KOS: agevolazioni economiche riservate agli assistiti convenzionati nelle strutture KOS che aderiscono all'accordo."
+    }
+   }
+  },
+  {
+   "id": 680,
+   "uri": "it/convenzioni/federmanager-como",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Federmanager Como: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Federmanager Como con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 682,
+   "uri": "it/convenzioni/fondo-salute",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Fondo Salute: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Fondo Salute con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 683,
+   "uri": "it/convenzioni/fondo-sanitario-medi-prev",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Fondo Sanitario Medi-prev: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Fondo Sanitario Medi-prev con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 684,
+   "uri": "it/convenzioni/generali-welion",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Generali Welion: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Generali Welion con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 685,
+   "uri": "it/convenzioni/health-assistance",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Health Assistance: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Health Assistance con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 686,
+   "uri": "it/convenzioni/icc-international-care-company",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Icc International Care Company: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Icc International Care Company con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 687,
+   "uri": "it/convenzioni/insieme-salute",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Insieme Salute: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Insieme Salute con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 688,
+   "uri": "it/convenzioni/ipazia-service",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Ipazia Service: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Ipazia Service con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 689,
+   "uri": "it/convenzioni/iss-insalute-servizi",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Iss Insalute Servizi: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Iss Insalute Servizi con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 690,
+   "uri": "it/convenzioni/iws-industria-welfare-salute",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Iws - Industria Welfare Salute: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Iws - Industria Welfare Salute con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 691,
+   "uri": "it/convenzioni/mapfre",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Mapfre: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Mapfre con il Gruppo KOS: agevolazioni economiche riservate agli assistiti convenzionati nelle strutture KOS che aderiscono all'accordo."
+    }
+   }
+  },
+  {
+   "id": 692,
+   "uri": "it/convenzioni/marsh-advisory-my-rete",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Marsh Advisory My Rete: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Marsh Advisory My Rete con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 693,
+   "uri": "it/convenzioni/medi-prev",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Medi-prev: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Medi-prev con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 694,
+   "uri": "it/convenzioni/metasalute",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Metasalute: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Metasalute con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 695,
+   "uri": "it/convenzioni/mia-assicura-card",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Mia Assicura (card): esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Mia Assicura (card) con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 696,
+   "uri": "it/convenzioni/mutua-nuova-sanita",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Mutua Nuova Sanita': esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Mutua Nuova Sanita' con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 697,
+   "uri": "it/convenzioni/myassistance",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Myassistance: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Myassistance con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 698,
+   "uri": "it/convenzioni/network-poste-welfare-servizi",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Network Poste Welfare Servizi: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Network Poste Welfare Servizi con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 699,
+   "uri": "it/convenzioni/nobis-compagnia-di-assicurazioni",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Nobis Compagnia di Assicurazioni: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Nobis Compagnia di Assicurazioni con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 700,
+   "uri": "it/convenzioni/perequo-risarcimenti",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Perequo Risarcimenti: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Perequo Risarcimenti con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 701,
+   "uri": "it/convenzioni/previmedical-rbm",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Previmedical - Rbm: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Previmedical - Rbm con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 702,
+   "uri": "it/convenzioni/progetto-fisiolab",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Progetto Fisiolab: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Progetto Fisiolab con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 703,
+   "uri": "it/convenzioni/pronto-care",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Pronto Care: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Pronto Care con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 704,
+   "uri": "it/convenzioni/saa-sanitrans-international",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Saa Sanitrans International: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Saa Sanitrans International con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 705,
+   "uri": "it/convenzioni/salute-privata",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Salute Privata: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Salute Privata con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 706,
+   "uri": "it/convenzioni/sanidoc",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Sanidoc: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Sanidoc con il Gruppo KOS: agevolazioni economiche riservate agli assistiti convenzionati nelle strutture KOS che aderiscono all'accordo."
+    }
+   }
+  },
+  {
+   "id": 707,
+   "uri": "it/convenzioni/seb-sms-salute-e-benessere",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Seb Sms - Salute e Benessere: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Seb Sms - Salute e Benessere con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 708,
+   "uri": "it/convenzioni/sorriso-e-salute-medical-network",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Sorriso e Salute Medical Network: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Sorriso e Salute Medical Network con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 675,
+   "uri": "it/convenzioni/stelvio-agenzia-assicurativa",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Stelvio Agenzia Assicurativa: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Stelvio Agenzia Assicurativa con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 709,
+   "uri": "it/convenzioni/treccani-reti",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Treccani Reti: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Treccani Reti con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 710,
+   "uri": "it/convenzioni/vera-assicurazioni-vera-protezione",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Vera Assicurazioni - Vera Protezione: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Vera Assicurazioni - Vera Protezione con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 711,
+   "uri": "it/convenzioni/vis-valore-in-sanita",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Vis Valore in Sanita': esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Vis Valore in Sanita' con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 713,
+   "uri": "it/convenzioni/wbenessere-di-cattolica-assicurazioni",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Wbenessere di Cattolica Assicurazioni: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Wbenessere di Cattolica Assicurazioni con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 712,
+   "uri": "it/convenzioni/wsalute-di-alleanza-assicurazioni",
+   "campi": {
+    "description": {
+     "prima": "Convenzione Wsalute di Alleanza Assicurazioni: esplora le agevolazioni economiche esclusive riservate ai clienti convenzionati del Gruppo Kos. Scopri subito tutte le strutture aderenti!",
+     "dopo": "Convenzione Wsalute di Alleanza Assicurazioni con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo."
+    }
+   }
+  },
+  {
+   "id": 37,
+   "uri": "it/lavorare-in-kos/formazione-kos-academy",
+   "campi": {
+    "longtitle": {
+     "prima": "KOS Academy | KOS",
+     "dopo": "KOS Academy: formazione e calendario corsi | KOS"
+    },
+    "description": {
+     "prima": "Scopri la formazione KOS Academy. Esplora il calendario corsi e preparati per un futuro professionale di successo!",
+     "dopo": "KOS Academy, la formazione del Gruppo KOS: il calendario dei corsi e le opportunità di crescita professionale per chi lavora o vuole lavorare in KOS."
+    }
+   }
+  },
+  {
+   "id": 36,
+   "uri": "it/lavorare-in-kos/perche-lavorare-in-kos",
+   "campi": {
+    "longtitle": {
+     "prima": "Perché scegliere di lavorare a Kos: scopri le opportunità e i vantaggi | KOS",
+     "dopo": "Lavorare in KOS: opportunità e vantaggi | KOS"
+    },
+    "description": {
+     "prima": "Scopri i vantaggi di lavorare a Kos. Opportunità straordinarie ti aspettano sull'isola. Entra nel team e trasforma la tua carriera.",
+     "dopo": "Perché lavorare in KOS: opportunità di carriera e vantaggi per i professionisti della sanità e dell'assistenza nelle strutture del Gruppo KOS."
+    }
+   }
+  },
+  {
+   "id": 427,
+   "uri": "it/news-e-media/approfondimenti/a-villa-pineta-nasce-il-centro-di-ricerca-e-innovazione-scientifica",
+   "campi": {
+    "longtitle": {
+     "prima": "Villa Pineta: il nuovo centro di ricerca e innovazione scientifica | KOS",
+     "dopo": "Villa Pineta: nasce il centro di ricerca e innovazione | KOS"
+    }
+   }
+  },
+  {
+   "id": 429,
+   "uri": "it/news-e-media/approfondimenti/a-villa-pineta-un-videodermatoscopio-digitale-per-la-mappatura-dei-nei",
+   "campi": {
+    "longtitle": {
+     "prima": "A Villa Pineta un videodermatoscopio digitale per la mappatura dei nei | KOS",
+     "dopo": "Villa Pineta: videodermatoscopio per la mappatura dei nei | KOS"
+    },
+    "description": {
+     "prima": "Uno strumento all'avanguardia, in dotazione al Poliambulatorio, che aiuta la diagnosi precoce del melanoma",
+     "dopo": "Al Poliambulatorio di Villa Pineta un videodermatoscopio digitale per la mappatura dei nei, strumento avanzato per la diagnosi precoce del melanoma."
+    }
+   }
+  },
+  {
+   "id": 892,
+   "uri": "it/news-e-media/approfondimenti/abbuffate-cosa-sono-come-riconoscerle-e-come-affrontarle",
+   "campi": {
+    "description": {
+     "prima": "Scopri cos'è il disturbo da alimentazione incontrollata, come riconoscere le abbuffate e le opzioni di cura integrate offerte da Villa Sant'Alessandro.",
+     "dopo": "Cos'è il disturbo da alimentazione incontrollata, come riconoscere le abbuffate e quali percorsi di cura integrati offre Villa Sant'Alessandro a Roma."
+    }
+   }
+  },
+  {
+   "id": 430,
+   "uri": "it/news-e-media/approfondimenti/alberghi-e-accessibilit-importante-informarsi-prima-di-prenotare",
+   "campi": {
+    "longtitle": {
+     "prima": "Alberghi e accessibilità, fondamentale informarsi bene prima di prenotare | KOS",
+     "dopo": "Alberghi accessibili: cosa verificare prima di prenotare | KOS"
+    }
+   }
+  },
+  {
+   "id": 1117,
+   "uri": "it/news-e-media/approfondimenti/analisi-del-passo-e-della-corsa-quando-serve-e-cosa-rivela",
+   "campi": {
+    "description": {
+     "prima": "L’analisi del passo e della corsa è utile per valutare la deambulazione, la postura, prevenire infortuni e migliorare le performance. Scopri come funziona presso il Centro di Riabilitazione Myolab, questa analisi viene impiegata come strumento clinico avanzato per valutare la locomozione in modo oggettivo, preciso e personalizzato.",
+     "dopo": "L'analisi del passo e della corsa valuta deambulazione e postura, aiuta a prevenire infortuni e a migliorare le performance: come si fa al Myolab."
+    }
+   }
+  },
+  {
+   "id": 294,
+   "uri": "it/news-e-media/approfondimenti/bpco-e-la-riabilitazione-pneumologica",
+   "campi": {
+    "longtitle": {
+     "prima": "La riabilitazione pneumologica per trattare le malattie respiratorie | KOS",
+     "dopo": "BPCO e riabilitazione pneumologica | KOS"
+    }
+   }
+  },
+  {
+   "id": 1007,
+   "uri": "it/news-e-media/approfondimenti/come-combattere-la-sedentarieta-con-semplici-abitudini-quotidiane",
+   "campi": {
+    "longtitle": {
+     "prima": "Come combattere la sedentarietà con semplici abitudini quotidiane | KOS",
+     "dopo": "Sedentarietà: come combatterla ogni giorno | KOS"
+    },
+    "description": {
+     "prima": "Sedentarietà: come riconoscerla e affrontarla con piccoli cambiamenti nello stile di vita. Scopri strategie efficaci per muoverti di più, ogni giorno.",
+     "dopo": "Sedentarietà: come riconoscerla e affrontarla con piccoli cambiamenti nello stile di vita e strategie semplici per muoversi di più ogni giorno."
+    }
+   }
+  },
+  {
+   "id": 1008,
+   "uri": "it/news-e-media/approfondimenti/come-conservare-e-organizzare-i-farmaci-in-casa",
+   "campi": {
+    "longtitle": {
+     "prima": "Come conservare e organizzare correttamente i farmaci in casa | KOS",
+     "dopo": "Come conservare e organizzare i farmaci in casa | KOS"
+    },
+    "description": {
+     "prima": "Scopri come conservare e organizzare i farmaci in casa in modo sicuro: dove riporli, quali vanno in frigorifero, come ordinarli e come smaltirli correttamente.",
+     "dopo": "Come conservare e organizzare i farmaci in casa in sicurezza: dove riporli, quali tenere in frigorifero, come ordinarli e come smaltirli bene."
+    }
+   }
+  },
+  {
+   "id": 1053,
+   "uri": "it/news-e-media/approfondimenti/come-riacquistare-l-autonomia-dopo-un-intervento-o-un-trauma",
+   "campi": {
+    "longtitle": {
+     "prima": "Come riacquistare l’autonomia dopo un intervento o un trauma | KOS",
+     "dopo": "Riacquistare l’autonomia dopo un intervento o un trauma | KOS"
+    },
+    "description": {
+     "prima": "Come ritrovare l’autonomia dopo una malattia neurologica, un trauma, un intervento chirurgico? Scopri i percorsi riabilitativi e le soluzioni del Gruppo KOS.",
+     "dopo": "Come ritrovare l’autonomia dopo una malattia neurologica, un trauma o un intervento chirurgico: i percorsi riabilitativi del Gruppo KOS."
+    }
+   }
+  },
+  {
+   "id": 236,
+   "uri": "it/news-e-media/approfondimenti/come-richiedere-assistenza-domiciliare-per-anziani",
+   "campi": {
+    "longtitle": {
+     "prima": "Come richiedere assistenza domiciliare per anziani: guida completa | KOS",
+     "dopo": "Assistenza domiciliare per anziani: come richiederla | KOS"
+    }
+   }
+  },
+  {
+   "id": 342,
+   "uri": "it/news-e-media/approfondimenti/con-la-teatro-terapia-i-pazienti-di-villa-jolanda-imparano-a-comunicare-e-a-relazionarsi-in-un-modo-nuovo",
+   "campi": {
+    "longtitle": {
+     "prima": "Con la Teatro terapia i pazienti di Villa Jolanda imparano a comunicare | KOS",
+     "dopo": "Teatro terapia a Villa Jolanda: imparare a comunicare | KOS"
+    },
+    "description": {
+     "prima": "L’obiettivo principale è quello di proporre un’attività espressiva che si vada a innestare in un programma terapeutico caratterizzato da altri tipi di attività.",
+     "dopo": "A Villa Jolanda la teatro terapia è un'attività espressiva inserita nel programma terapeutico, per aiutare i pazienti a comunicare e relazionarsi."
+    }
+   }
+  },
+  {
+   "id": 434,
+   "uri": "it/news-e-media/approfondimenti/consulenze-a-distanza-per-la-valutazione-dello-stato-di-salute-funzionale",
+   "campi": {
+    "longtitle": {
+     "prima": "Consulenze a distanza per la valutazione dello stato di salute funzionale | KOS",
+     "dopo": "Consulenze a distanza sulla salute funzionale | KOS"
+    },
+    "description": {
+     "prima": "Il dr. Gianni Saracini, specialista in medicina fisica e riabilitazione, offre consulenza online nei Centri Ambulatoriali di Civitanova Marche, Porto Potenza e Tolentino.",
+     "dopo": "Il dr. Gianni Saracini, fisiatra esperto di postura, offre consulenze online ai pazienti dei centri di Civitanova Marche, Porto Potenza e Tolentino."
+    }
+   }
+  },
+  {
+   "id": 435,
+   "uri": "it/news-e-media/approfondimenti/convegno-cpr",
+   "campi": {
+    "description": {
+     "prima": "Le innovazioni in chirurgia protesica, l’uso del robot e delle protesi su misura (custom made) e come questi miglioramenti possano impattare positivamente sul paziente.",
+     "dopo": "Convegno del 10 giugno 2023 sulle innovazioni in chirurgia protesica: uso del robot, protesi su misura (custom made) e benefici per il paziente."
+    }
+   }
+  },
+  {
+   "id": 472,
+   "uri": "it/news-e-media/approfondimenti/convegno-disturbi-alimentari",
+   "campi": {
+    "longtitle": {
+     "prima": "Convegno ECM: La pratica clinica nei disturbi dell’alimentazione | KOS",
+     "dopo": "Convegno ECM 2019: disturbi dell’alimentazione e obesità | KOS"
+    }
+   }
+  },
+  {
+   "id": 438,
+   "uri": "it/news-e-media/approfondimenti/corso-per-diventare-operatore-socio-sanitario-oss",
+   "campi": {
+    "description": {
+     "prima": "Corso dal 1 dicembre per contrastare la carenza di personale sanitario, con opportunità di lavoro grazie al tirocinio presso strutture del Gruppo KOS.",
+     "dopo": "Corso per Operatore Socio Sanitario (OSS) contro la carenza di personale sanitario, con tirocinio nelle strutture del Gruppo KOS nelle Marche."
+    }
+   }
+  },
+  {
+   "id": 473,
+   "uri": "it/news-e-media/approfondimenti/cosa-si-intende-per-stile-di-vita",
+   "campi": {
+    "description": {
+     "prima": "Sana alimentazione, un'adeguata attività motoria, capacità di gestire le emozioni e lo stress, una buona qualità del sonno e molto altro. Scopri di più.",
+     "dopo": "KOS e SIET alla sesta Giornata dello Stile di Vita: alimentazione sana, attività motoria, gestione di emozioni e stress e buona qualità del sonno."
+    }
+   }
+  },
+  {
+   "id": 1015,
+   "uri": "it/news-e-media/approfondimenti/dca-in-adolescenza-segnali-precoci-e-come-intervenire",
+   "campi": {
+    "description": {
+     "prima": "Anoressia, bulimia e altri DCA colpiscono sempre più adolescenti. Scopri i segnali da riconoscere e come intervenire con il supporto di professionisti.",
+     "dopo": "Anoressia, bulimia e altri DCA colpiscono sempre più adolescenti: i segnali precoci da riconoscere e come intervenire con l'aiuto di professionisti."
+    }
+   }
+  },
+  {
+   "id": 1090,
+   "uri": "it/news-e-media/approfondimenti/dca-maschili-sintomi-e-vissuti-ancora-poco-riconosciuti",
+   "campi": {
+    "longtitle": {
+     "prima": "DCA negli uomini: sintomi, forme cliniche e percorsi di cura | KOS",
+     "dopo": "DCA negli uomini: sintomi e percorsi di cura | KOS"
+    },
+    "description": {
+     "prima": "Anoressia, bulimia e binge eating non riguardano solo le donne. Scopri come si manifestano i disturbi alimentari negli uomini, perché sono spesso sottodiagnosticati e quali percorsi terapeutici multidisciplinari esistono per una presa in carico precoce.",
+     "dopo": "Anoressia, bulimia e binge eating riguardano anche gli uomini: come si manifestano i DCA maschili, perché sono sottodiagnosticati e come si curano."
+    }
+   }
+  },
+  {
+   "id": 336,
+   "uri": "it/news-e-media/approfondimenti/dca-una-patologia-grave-ma-sottovalutata",
+   "campi": {
+    "description": {
+     "prima": "Perla cura dei DCA sono fondamentali la diagnosi precoce, la corretta presa in carico e percorsi di cura multidisciplinari integrati e personalizzati.",
+     "dopo": "DCA, patologia grave ma sottovalutata: per curarli servono diagnosi precoce, corretta presa in carico e percorsi multidisciplinari personalizzati."
+    }
+   }
+  },
+  {
+   "id": 475,
+   "uri": "it/news-e-media/approfondimenti/dipendenza-da-benzodiazepine",
+   "campi": {
+    "longtitle": {
+     "prima": "Dipendenza da benzodiazepine: approfondimenti e informazioni utili | KOS",
+     "dopo": "Dipendenza da benzodiazepine: cosa sapere | KOS"
+    }
+   }
+  },
+  {
+   "id": 440,
+   "uri": "it/news-e-media/approfondimenti/disturbi-visivi-valutazione-e-strategie-di-trattamento-in-et-evolutiva",
+   "campi": {
+    "longtitle": {
+     "prima": "Disturbi visivi, valutazione e strategie di trattamento in età evolutiva | KOS",
+     "dopo": "Disturbi visivi nei bambini: valutazione e trattamento | KOS"
+    },
+    "description": {
+     "prima": "La presa in carico ha lo scopo di valutare il residuo visivo e rendere il bambino consapevole del proprio potenziale visivo ottimizzandone l’uso funzionale",
+     "dopo": "Disturbi visivi in età evolutiva: la presa in carico valuta il residuo visivo e aiuta il bambino a usare al meglio il proprio potenziale visivo."
+    }
+   }
+  },
+  {
+   "id": 300,
+   "uri": "it/news-e-media/approfondimenti/esdm-il-programma-precoce-per-bambini-con-autismo",
+   "campi": {
+    "longtitle": {
+     "prima": "Autismo e intervento precoce: scopri l'Early Start Denver Model (ESDM) | KOS",
+     "dopo": "Autismo e intervento precoce: l'Early Start Denver Model | KOS"
+    },
+    "description": {
+     "prima": "Scopri l’Early Start Denver Model (ESDM), l’intervento precoce per bambini con autismo che favorisce comunicazione, sviluppo sociale e apprendimento attraverso il gioco e la relazione.",
+     "dopo": "L'Early Start Denver Model (ESDM) è un intervento precoce per bambini con autismo che favorisce comunicazione, socialità e apprendimento col gioco."
+    }
+   }
+  },
+  {
+   "id": 1009,
+   "uri": "it/news-e-media/approfondimenti/esercizi-di-respirazione-per-rilassarsi-5-tecniche-facili",
+   "campi": {
+    "description": {
+     "prima": "Scopri 5 tecniche di respirazione semplici ed efficaci per ridurre ansia e stress, migliorare il sonno, aumentare la concentrazione e ritrovare calma e benessere.",
+     "dopo": "Cinque tecniche di respirazione semplici ed efficaci per ridurre ansia e stress, migliorare sonno e concentrazione e ritrovare calma e benessere."
+    }
+   }
+  },
+  {
+   "id": 488,
+   "uri": "it/news-e-media/approfondimenti/fisiatria",
+   "campi": {
+    "pagetitle": {
+     "prima": "Fisiatria",
+     "dopo": "Fisioterapia e fisiatria al Centro Medico Riabilitativo"
+    }
+   }
+  },
+  {
+   "id": 343,
+   "uri": "it/news-e-media/approfondimenti/gli-esami-del-sangue-potranno-predire-la-depressione",
+   "campi": {
+    "description": {
+     "prima": "Il MDD e il PTSD sono disturbi psichiatrici complessi e debilitanti che compromettono la qualità di vita e possono portare a comportamenti aggressivi.",
+     "dopo": "Depressione maggiore (MDD) e disturbo post-traumatico da stress (PTSD): gli esami del sangue potranno aiutare a predire questi disturbi psichiatrici?"
+    }
+   }
+  },
+  {
+   "id": 306,
+   "uri": "it/news-e-media/approfondimenti/idrokinesiterapia-per-adulti-e-bambini",
+   "campi": {
+    "longtitle": {
+     "prima": "Idrokinesiterapia: riabilitazione in acqua per adulti e bambini | KOS",
+     "dopo": "Idrokinesiterapia: la riabilitazione in acqua | KOS"
+    },
+    "description": {
+     "prima": "L’idrokinesiterapia è una terapia riabilitativa in acqua indicata per adulti e bambini: riduce dolore e carico articolare e favorisce il recupero motorio in ambito neurologico e ortopedico. Scopri i centri KOS dove farla.",
+     "dopo": "L'idrokinesiterapia è riabilitazione in acqua per adulti e bambini: riduce dolore e carico articolare e aiuta il recupero neurologico e ortopedico."
+    }
+   }
+  },
+  {
+   "id": 443,
+   "uri": "it/news-e-media/approfondimenti/il-malato-al-centro-delle-cure",
+   "campi": {
+    "longtitle": {
+     "prima": "Il malato al centro delle cure nella rete Trentino-Alto Adige e Veneto | KOS",
+     "dopo": "Parkinson: il malato al centro delle cure, convegno di Arco | KOS"
+    },
+    "description": {
+     "prima": "08 Marzo 2024. Palazzo del Casinò di Arco. Convegno malattia di Parkinson.",
+     "dopo": "Convegno sulla malattia di Parkinson dell'8 marzo 2024 al Palazzo del Casinò di Arco: il malato al centro delle cure in Trentino-Alto Adige e Veneto."
+    }
+   }
+  },
+  {
+   "id": 405,
+   "uri": "it/news-e-media/approfondimenti/il-ruolo-della-psicomotricit-in-riabilitazione",
+   "campi": {
+    "description": {
+     "prima": "Abati e Colla: “Si parte dalle esperienze senso-percettive per arrivare alla sfera cognitiva, all’azione volontaria, all’autonomia. Dal pratico all’astratto”",
+     "dopo": "La psicomotricità in riabilitazione per Abati e Colla: dalle esperienze senso-percettive alla sfera cognitiva, all'azione volontaria, all'autonomia."
+    }
+   }
+  },
+  {
+   "id": 446,
+   "uri": "it/news-e-media/approfondimenti/il-supporto-psicologico-ai-famigliari-nel-percorso-di-cura-perch-importante",
+   "campi": {
+    "longtitle": {
+     "prima": "Il supporto psicologico ai familiari, i vantaggi dell'alleanza terapeutica | KOS",
+     "dopo": "Supporto psicologico ai familiari e alleanza terapeutica | KOS"
+    },
+    "description": {
+     "prima": "La figura del care giver è centrale, una risorsa per la riabilitazione dei pazienti.",
+     "dopo": "Il supporto psicologico ai familiari nel percorso di cura: il caregiver è una figura centrale e una risorsa per la riabilitazione dei pazienti."
+    }
+   }
+  },
+  {
+   "id": 447,
+   "uri": "it/news-e-media/approfondimenti/il-teatro-come-terapia-per-i-bambini-con-disturbi-del-linguaggio",
+   "campi": {
+    "longtitle": {
+     "prima": "Il Teatro come terapia per i bambini con disturbi del linguaggio | KOS",
+     "dopo": "Teatro terapia per bambini con disturbi del linguaggio | KOS"
+    }
+   }
+  },
+  {
+   "id": 940,
+   "uri": "it/news-e-media/approfondimenti/importanza-della-prevenzione-e-delle-analisi-del-sangue-periodiche",
+   "campi": {
+    "description": {
+     "prima": "Perché farle regolarmente: esami chiave (emocromo, glicemia, colesterolo, renale/epatica), frequenza consigliata e indicazioni per età e fattori di rischio.",
+     "dopo": "Perché fare analisi del sangue periodiche: gli esami chiave (emocromo, glicemia, colesterolo, funzione renale ed epatica) e quando ripeterli."
+    }
+   }
+  },
+  {
+   "id": 482,
+   "uri": "it/news-e-media/approfondimenti/informativa-tirocini-post-lauream-psicologia-2023-villa-dei-pini-firenze",
+   "campi": {
+    "longtitle": {
+     "prima": "Informativa tirocini Post-Lauream Psicologia 2023 Villa Dei Pini Firenze | KOS",
+     "dopo": "Tirocini post-lauream in psicologia, Villa dei Pini Firenze | KOS"
+    },
+    "description": {
+     "prima": "Scopri l'informativa per i tirocini post-laurea in Psicologia 2023 presso Villa Dei Pini Firenze. Tutte le info su Kos!",
+     "dopo": "Informativa 2023 sui tirocini post-lauream in Psicologia presso Villa dei Pini Firenze, struttura del Gruppo KOS: le informazioni per i candidati."
+    }
+   }
+  },
+  {
+   "id": 367,
+   "uri": "it/news-e-media/approfondimenti/la-cardio-tac-esame-risolutivo-nella-prevenzione-cardiovascolare",
+   "campi": {
+    "longtitle": {
+     "prima": "La Cardio TAC: esame risolutivo nella prevenzione cardiovascolare | KOS",
+     "dopo": "Cardio TAC e prevenzione cardiovascolare | KOS"
+    }
+   }
+  },
+  {
+   "id": 311,
+   "uri": "it/news-e-media/approfondimenti/la-musica-e-i-suoi-benefici-nei-percorsi-di-riabilitazione-neurologica",
+   "campi": {
+    "longtitle": {
+     "prima": "La musica e i suoi benefici nei percorsi di riabilitazione neurologica | KOS",
+     "dopo": "Musica e riabilitazione neurologica: i benefici | KOS"
+    }
+   }
+  },
+  {
+   "id": 314,
+   "uri": "it/news-e-media/approfondimenti/laboratorio-di-cucina-stimola-lo-sviluppo-psico-fisico-del-bambino",
+   "campi": {
+    "longtitle": {
+     "prima": "Laboratorio di cucina, stimola lo sviluppo psico-fisico del bambino | KOS",
+     "dopo": "Laboratorio di cucina per lo sviluppo del bambino | KOS"
+    }
+   }
+  },
+  {
+   "id": 491,
+   "uri": "it/news-e-media/approfondimenti/myolab-sempre-piu-smart",
+   "campi": {
+    "description": {
+     "prima": "Il Centro Myolab avvia un sistema di prenotazione on line che consente di fissare, comodamente da qualsiasi luogo, la propria visita in orario e giorno preferito.",
+     "dopo": "Il Centro Myolab attiva la prenotazione online: la visita si fissa comodamente da qualsiasi luogo, scegliendo il giorno e l'orario preferiti."
+    }
+   }
+  },
+  {
+   "id": 487,
+   "uri": "it/news-e-media/approfondimenti/nuovi-servizi-di-cura-e-assistenza-dedicati-ai-pazienti-in-eta-pediatrica",
+   "campi": {
+    "longtitle": {
+     "prima": "Nuovi servizi di cura e assistenza dedicati ai pazienti in età pediatrica | KOS",
+     "dopo": "Polo Diagnostico Villalba: nuovi servizi pediatrici | KOS"
+    },
+    "description": {
+     "prima": "Il Polo Diagnostico Villalba di Macerata amplia la sua offerta dotandosi di nuovi servizi di cura e di assistenza dedicati ai pazienti in età pediatrica.",
+     "dopo": "Il Polo Diagnostico Villalba di Macerata amplia l'offerta con nuovi servizi di cura e assistenza dedicati ai pazienti in età pediatrica."
+    }
+   }
+  },
+  {
+   "id": 317,
+   "uri": "it/news-e-media/approfondimenti/open-day-la-terapia-biostimolante-bemer",
+   "campi": {
+    "longtitle": {
+     "prima": "Open Day, la terapia BEMER per conoscere gli effetti benefici del trattamento | KOS",
+     "dopo": "Open Day terapia BEMER a San Severino Marche | KOS"
+    },
+    "description": {
+     "prima": "Venerdì 23 febbraio al Centro Ambulatoriale Santo Stefano Riabilitazione di San Severino Marche, possono cogliere l'opportunità di un ciclo terapeutico Bemer",
+     "dopo": "Open Day venerdì 23 febbraio al Centro Ambulatoriale Santo Stefano Riabilitazione di San Severino Marche: un ciclo di terapia biostimolante BEMER."
+    }
+   }
+  },
+  {
+   "id": 318,
+   "uri": "it/news-e-media/approfondimenti/parkinson-come-riconoscerlo",
+   "campi": {
+    "description": {
+     "prima": "Il Parkinson può manifestarsi con segnali lievi e progressivi. Scopri quali sono i primi sintomi da riconoscere e quando rivolgersi a uno specialista.",
+     "dopo": "Il Parkinson può esordire con segnali lievi e progressivi: quali sono i primi sintomi da riconoscere e quando rivolgersi a uno specialista."
+    }
+   }
+  },
+  {
+   "id": 320,
+   "uri": "it/news-e-media/approfondimenti/parkinson-le-infusioni-intraduodenale-con-levodopa",
+   "campi": {
+    "description": {
+     "prima": "Il trattamento più efficace per contrastare i sintomi della malattia, Se ne è parlato venerdì 7 giugno alla Casa di Cura Villa Margherita Santo Stefano Riabilitazione",
+     "dopo": "Infusioni intraduodenali di levodopa, trattamento efficace contro i sintomi del Parkinson: se ne è parlato alla Casa di Cura Villa Margherita."
+    }
+   }
+  },
+  {
+   "id": 458,
+   "uri": "it/news-e-media/approfondimenti/pronto-parkinson-per-non-lasciare-soli-i-pazienti-cronici",
+   "campi": {
+    "description": {
+     "prima": "Un servizio di grande utilità in periodo di emergenza, dedicato ai pazienti affetti da malattia di Parkinson seguiti dalla Casa di Cura Villa Margherita",
+     "dopo": "Pronto Parkinson, il servizio della Casa di Cura Villa Margherita per i pazienti con malattia di Parkinson nel periodo di emergenza, è stato sospeso."
+    }
+   }
+  },
+  {
+   "id": 339,
+   "uri": "it/news-e-media/approfondimenti/quanti-benefici-dalla-pet-therapy",
+   "campi": {
+    "longtitle": {
+     "prima": "Pony, cani, asini e cavalli: quanti benefici dalla “pet therapy” | KOS",
+     "dopo": "Pet therapy a Villa Armonia Nuova: i benefici | KOS"
+    }
+   }
+  },
+  {
+   "id": 322,
+   "uri": "it/news-e-media/approfondimenti/recupero-di-coscienza-possibile-il-rientro-a-domicilio",
+   "campi": {
+    "description": {
+     "prima": "De Tanti: “La famiglia va supportata, il team riabilitativo ha il compito di sostenerla nei processi decisionali per trovare la migliore soluzione possibile",
+     "dopo": "Dopo il recupero di coscienza è possibile il rientro a domicilio? Per De Tanti la famiglia va sostenuta dal team riabilitativo nelle scelte da fare."
+    }
+   }
+  },
+  {
+   "id": 324,
+   "uri": "it/news-e-media/approfondimenti/riabilitazione-cardiologica-ridonare-al-paziente-le-migliori-condizioni-cliniche-nel-minor-tempo-possibile",
+   "campi": {
+    "longtitle": {
+     "prima": "Riabilitazione cardiologica, ridonare al paziente le migliori condizioni cliniche | KOS",
+     "dopo": "Riabilitazione cardiologica: obiettivi e benefici | KOS"
+    },
+    "description": {
+     "prima": "Il dispositivo di traduzione vocale-gestuale in tempo reale è utilizzato per le persone la cui capacità comunicativa risulta compromessa",
+     "dopo": "La riabilitazione cardiologica punta a ridonare al paziente le migliori condizioni cliniche possibili nel minor tempo: come funziona il percorso."
+    }
+   }
+  },
+  {
+   "id": 1120,
+   "uri": "it/news-e-media/approfondimenti/riabilitazione-della-spalla-esercizi-tempi-e-recupero",
+   "campi": {
+    "description": {
+     "prima": "La riabilitazione della spalla è fondamentale dopo sovraccarichi funzionali, traumi o interventi. Scopri come funzionano il percorso, gli esercizi e i tempi di recupero.",
+     "dopo": "La riabilitazione della spalla dopo sovraccarichi, traumi o interventi: come funziona il percorso, quali esercizi si fanno e i tempi di recupero."
+    }
+   }
+  },
+  {
+   "id": 1109,
+   "uri": "it/news-e-media/approfondimenti/riabilitazione-dopo-una-frattura-come-funziona",
+   "campi": {
+    "description": {
+     "prima": "Quanto dura la riabilitazione dopo una frattura? Dal femore al bacino, scopri cosa aspettarti dal percorso riabilitativo e come agevolare il recupero.",
+     "dopo": "Quanto dura la riabilitazione dopo una frattura? Dal femore al bacino, cosa aspettarsi dal percorso riabilitativo e come favorire il recupero."
+    }
+   }
+  },
+  {
+   "id": 462,
+   "uri": "it/news-e-media/approfondimenti/robotica-il-gruppo-santo-stefano-studia-i-benefici-dellesoscheletro-hal",
+   "campi": {
+    "longtitle": {
+     "prima": "Un esoscheletro bionico, il robot che aiuta a camminare è realtà | KOS",
+     "dopo": "Esoscheletro HAL: il robot che aiuta a camminare | KOS"
+    },
+    "description": {
+     "prima": "Indossabile sopra gli indumenti, 15 sensori riconoscono l’assetto posturale del paziente",
+     "dopo": "L'esoscheletro bionico HAL, studiato dal Gruppo Santo Stefano, legge i segnali muscolari e nervosi del paziente e aiuta a recuperare il movimento."
+    }
+   }
+  },
+  {
+   "id": 1061,
+   "uri": "it/news-e-media/approfondimenti/sport-e-stress-nei-ragazzi-quando-e-opportuno-chiedere-un-supporto-specialistico",
+   "campi": {
+    "longtitle": {
+     "prima": "Sport e stress nei ragazzi: quando chiedere supporto specialistico | KOS",
+     "dopo": "Sport e stress nei ragazzi: quando chiedere aiuto | KOS"
+    },
+    "description": {
+     "prima": "Lo sport favorisce il benessere psicologico di bambini e adolescenti, ma può diventare fonte di stress e ansia da prestazione. Scopri i segnali da riconoscere e quando è utile rivolgersi a uno specialista nelle strutture del Gruppo KOS.",
+     "dopo": "Lo sport fa bene a bambini e adolescenti, ma può causare stress e ansia da prestazione: i segnali da riconoscere e quando rivolgersi a un esperto."
+    }
+   }
+  },
+  {
+   "id": 238,
+   "uri": "it/news-e-media/approfondimenti/stimolazione-magnetica-transcranica",
+   "campi": {
+    "longtitle": {
+     "prima": "Stimolazione Magnetica Transcranica (TMS), nuovo ambulatorio a Villa Rosa | KOS",
+     "dopo": "Stimolazione magnetica transcranica (TMS) a Villa Rosa | KOS"
+    },
+    "description": {
+     "prima": "Il nuovo centro si focalizzerà sull'applicazione avanzata della TMS come strategia terapeutica non invasiva.",
+     "dopo": "A Villa Rosa di Modena un ambulatorio di stimolazione magnetica transcranica (TMS), terapia non invasiva per disturbi psichiatrici e neurologici."
+    }
+   }
+  },
+  {
+   "id": 1063,
+   "uri": "it/news-e-media/approfondimenti/tecnologia-3d-al-centro-cardinal-ferrari-ausili-su-misura-per-l-autonomia",
+   "campi": {
+    "longtitle": {
+     "prima": "Tecnologia 3D al Centro Cardinal Ferrari: ausili personalizzati per l’autonomia | KOS",
+     "dopo": "Tecnologia 3D al Cardinal Ferrari: ausili su misura | KOS"
+    },
+    "description": {
+     "prima": "La tecnologia di stampa 3D al Centro Cardinal Ferrari permette di realizzare ausili su misura per la riabilitazione, migliorando autonomia, partecipazione e qualità della vita dei pazienti.",
+     "dopo": "Al Centro Cardinal Ferrari la stampa 3D permette di realizzare ausili su misura per la riabilitazione, a favore di autonomia e qualità di vita."
+    }
+   }
+  },
+  {
+   "id": 424,
+   "uri": "it/news-e-media/approfondimenti/test-di-valutazione-del-ragionamento-verbale-dopo-cerebrolesione-acquisita-vrt",
+   "campi": {
+    "longtitle": {
+     "prima": "Test di valutazione del ragionamento verbale dopo cerebrolesione acquisita (VRT) | KOS",
+     "dopo": "Test VRT: ragionamento verbale dopo cerebrolesione | KOS"
+    }
+   }
+  },
+  {
+   "id": 465,
+   "uri": "it/news-e-media/approfondimenti/una-scheda-di-valutazione-per-la-musicoterapia",
+   "campi": {
+    "description": {
+     "prima": "Al Centro Cardinal Ferrari il programma è integrato nei percorsi riabilitativi. Un progetto che compie tre anni e si punta ora a lezioni con artisti famosi",
+     "dopo": "Al Centro Cardinal Ferrari una scheda di valutazione per la musicoterapia, integrata nei percorsi riabilitativi: un progetto che compie tre anni."
+    }
+   }
+  },
+  {
+   "id": 341,
+   "uri": "it/news-e-media/approfondimenti/verso-una-psichiatria-gender-based",
+   "campi": {
+    "description": {
+     "prima": "Negli ultimi anni c'è stato un maggiore riconoscimento delle differenze di genere in medicina, con l'OMS che ha istituito un Dipartimento Gender, Women and Health.",
+     "dopo": "Verso una psichiatria gender-based: il riconoscimento delle differenze di genere in medicina e il Dipartimento Gender, Women and Health dell'OMS."
+    }
+   }
+  },
+  {
+   "id": 949,
+   "uri": "it/news-e-media/approfondimenti/visita-neurogeriatrica-cos-e-e-cosa-aspettarsi",
+   "campi": {
+    "description": {
+     "prima": "È la valutazione integrata per anziani che unisce neurologia e geriatria: quando è indicata, come si svolge, figure coinvolte e servizi a Villa San Giuseppe.",
+     "dopo": "La visita neurogeriatrica unisce neurologia e geriatria: quando è indicata, come si svolge, chi la esegue e i servizi di Villa San Giuseppe."
+    }
+   }
+  },
+  {
+   "id": 486,
+   "uri": "it/news-e-media/approfondimenti/visita-specialistica-reumatologica",
+   "campi": {
+    "description": {
+     "prima": "Guida alla visita reumatologica: cos'è, quando serve, come si svolge, esami utili e indicazioni pratiche per diagnosticare dolori e rigidità articolari.",
+     "dopo": "Guida alla visita reumatologica: cos'è, quando serve, come si svolge e quali esami aiutano a diagnosticare dolori e rigidità articolari."
+    }
+   }
+  },
+  {
+   "id": 105,
+   "uri": "it/news-e-media/eventi-e-convegni/2024/innovazione-in-chirurgia-protesica",
+   "campi": {
+    "longtitle": {
+     "prima": "Innovazioni in chirurgia protesica e impatti positivi sul paziente | KOS",
+     "dopo": "Chirurgia protesica: innovazioni e benefici per il paziente | KOS"
+    }
+   }
+  },
+  {
+   "id": 800,
+   "uri": "it/news-e-media/eventi-e-convegni/2025/anestesia-loco-regionale-e-sicurezza-il-complesso-perfetto",
+   "campi": {
+    "description": {
+     "prima": "Partecipa all'evento \"Anestesia Loco-Regionale e Sicurezza: Il Complesso Perfetto\" nel 2025. Scopri le ultime innovazioni per una pratica anestesiologica più sicura!",
+     "dopo": "Convegno del 29 marzo 2025 all'Istituto di Riabilitazione Santo Stefano di Porto Potenza Picena su anestesia loco-regionale e sicurezza del paziente."
+    }
+   }
+  },
+  {
+   "id": 922,
+   "uri": "it/news-e-media/eventi-e-convegni/2025/compiti-no-stress",
+   "campi": {
+    "description": {
+     "prima": "Scopri “Compiti no Stress”, l'iniziativa del Centro Ambulatoriale Santo Stefano di Fabriano dedicato a rendere lo studio più sereno per ragazzi e famiglie.",
+     "dopo": "Dal 16 al 27 giugno e dal 28 luglio al 9 agosto i laboratori «Compiti no stress» del Centro Ambulatoriale Santo Stefano di Fabriano per lo studio."
+    }
+   }
+  },
+  {
+   "id": 890,
+   "uri": "it/news-e-media/eventi-e-convegni/2025/giornata-di-prevenzione-femminile-al-centro-medico-riabilitativo",
+   "campi": {
+    "longtitle": {
+     "prima": "Prevenzione femminile: visite gratuite a Cinisello | KOS",
+     "dopo": "Giornata di prevenzione femminile del 10 maggio a Cinisello | KOS"
+    },
+    "description": {
+     "prima": "Il 10 maggio al Centro Medico Riabilitativo di Cinisello visite ginecologiche, nutrizionali, cognitive ed estetiche gratuite per la salute femminile.",
+     "dopo": "Il 10 maggio, al Centro Medico Riabilitativo di Cinisello Balsamo, visite ginecologiche, nutrizionali, cognitive ed estetiche gratuite per le donne."
+    },
+    "pagetitle": {
+     "prima": "Giornata di prevenzione femminile al Centro Medico Riabilitativo di Cinisello",
+     "dopo": "Giornata di prevenzione femminile del 10 maggio al Centro Medico Riabilitativo"
+    }
+   }
+  },
+  {
+   "id": 963,
+   "uri": "it/news-e-media/eventi-e-convegni/2025/la-presa-in-carico-riabilitativa-delle-persone-con-malattia-di-parkinson",
+   "campi": {
+    "longtitle": {
+     "prima": "La presa in carico riabilitativa delle persone con malattia di Parkinson secondo le linee di indirizzo nazionali ed internazionali | KOS",
+     "dopo": "Parkinson: presa in carico riabilitativa, convegno ECM 2025 | KOS"
+    },
+    "description": {
+     "prima": "Partecipa al convegno ECM gratuito sulla malattia di Parkinson il 5 dicembre 2025 ad Ancona!",
+     "dopo": "Convegno ECM gratuito del 5 dicembre 2025 al Teatro delle Muse di Ancona sulla presa in carico riabilitativa delle persone con malattia di Parkinson."
+    }
+   }
+  },
+  {
+   "id": 964,
+   "uri": "it/news-e-media/eventi-e-convegni/2025/open-day-nutri-la-tua-vita",
+   "campi": {
+    "description": {
+     "prima": "Il 23 ottobre, al Poliambulatorio Valdaso, mini consulenze nutrizionali gratuite di 15 minuti con le nostre esperte. Prenota e migliora il tuo benessere.",
+     "dopo": "Il 23 ottobre al Poliambulatorio Valdaso mini consulenze nutrizionali gratuite di 15 minuti con le esperte del poliambulatorio, su prenotazione."
+    }
+   }
+  },
+  {
+   "id": 908,
+   "uri": "it/news-e-media/eventi-e-convegni/2025/open-day-osteopatia-e-fisioterapia-al-centro-medico-riabilitativo-di-cinisello",
+   "campi": {
+    "longtitle": {
+     "prima": "Open Day Osteopatia e Fisioterapia a Cinisello | KOS",
+     "dopo": "Open Day del 24 maggio: osteopatia e fisioterapia | KOS"
+    },
+    "description": {
+     "prima": "Il 24 maggio 2025 open day al Centro Medico Riabilitativo di Cinisello: osteopatia, fisioterapia e rieducazione posturale gratis su prenotazione.",
+     "dopo": "Sabato 24 maggio 2025, dalle 10 alle 13, open day al Centro Medico Riabilitativo di Cinisello Balsamo: osteopatia, fisioterapia e postura gratis."
+    },
+    "pagetitle": {
+     "prima": "Open Day Osteopatia e Fisioterapia",
+     "dopo": "Open Day Osteopatia e Fisioterapia al Centro Medico Riabilitativo di Cinisello"
+    }
+   }
+  },
+  {
+   "id": 805,
+   "uri": "it/news-e-media/eventi-e-convegni/2025/settimana-del-cervello-screening-gratuiti-a-villa-rosa-per-il-declino-cognitivo",
+   "campi": {
+    "description": {
+     "prima": "Il 15 marzo Villa Rosa (Modena) offre screening gratuiti e info sulla TMS, tecnica non invasiva per rallentare il declino cognitivo e trattare la depressione.",
+     "dopo": "Il 15 marzo Villa Rosa a Modena offre screening gratuiti e informazioni sulla TMS, tecnica non invasiva contro il declino cognitivo e la depressione."
+    }
+   }
+  },
+  {
+   "id": 989,
+   "uri": "it/news-e-media/eventi-e-convegni/2026/instabilita-di-spalla-e-gomito-dalla-diagnosi-al-trattamento",
+   "campi": {
+    "longtitle": {
+     "prima": "Instabilità di spalla e gomito: dalla diagnosi al trattamento | KOS",
+     "dopo": "Instabilità di spalla e gomito: diagnosi e trattamento | KOS"
+    },
+    "description": {
+     "prima": "Partecipa all'evento \"Anestesia Loco-31 gennaio 2026, Hotel horizon, Instabilità di spalla e gomito: dalla diagnosi al trattamento.",
+     "dopo": "Corso regionale SICSeG del 31 gennaio 2026 all'Hotel Horizon di Montegranaro: instabilità di spalla e gomito, dalla diagnosi al trattamento."
+    }
+   }
+  },
+  {
+   "id": 1073,
+   "uri": "it/news-e-media/eventi-e-convegni/2026/settimana-del-cervello-2026-eventi-gratuiti-per-la-salute-mentale-a-roma",
+   "campi": {
+    "longtitle": {
+     "prima": "Settimana del Cervello 2026 a Roma: eventi a Villa Sant’Alessandro | KOS",
+     "dopo": "Settimana del Cervello 2026 a Villa Sant’Alessandro, Roma | KOS"
+    },
+    "description": {
+     "prima": "Dal 16 al 22 marzo 2026 Villa Sant’Alessandro a Roma partecipa alla Settimana del Cervello con incontri su neuroscienze, ADHD, social network e salute mentale.",
+     "dopo": "Dal 16 al 22 marzo 2026 Villa Sant’Alessandro a Roma partecipa alla Settimana del Cervello: incontri su neuroscienze, ADHD, social e salute mentale."
+    }
+   }
+  },
+  {
+   "id": 494,
+   "uri": "it/news-e-media/news/2024/a-villa-margherita-uno-screening-dedicato-all-alzheimer",
+   "campi": {
+    "description": {
+     "prima": "Una patologia dall’impatto drammatico per chi ne è affetto e per i suoi cari, causando una progressiva perdita della memoria e delle funzioni cognitive.",
+     "dopo": "A Villa Margherita uno screening per l’Alzheimer: un semplice prelievo di sangue permette di identificare chi è a rischio di sviluppare la malattia."
+    }
+   }
+  },
+  {
+   "id": 497,
+   "uri": "it/news-e-media/news/2024/anni-azzurri-promuove-sei-incontri-formativi-gratuiti-per-i-caregiver",
+   "campi": {
+    "longtitle": {
+     "prima": "Anni Azzurri promuove sei incontri formativi gratuiti per i caregiver | KOS",
+     "dopo": "Anni Azzurri: sei incontri gratuiti per i caregiver | KOS"
+    }
+   }
+  },
+  {
+   "id": 501,
+   "uri": "it/news-e-media/news/2024/farmacia-automatizzata-un-modello-innovativo-per-la-sicurezza-degli-ospiti",
+   "campi": {
+    "longtitle": {
+     "prima": "Farmacia automatizzata: un modello innovativo per la sicurezza degli ospiti | KOS",
+     "dopo": "Farmacia automatizzata per la sicurezza degli ospiti | KOS"
+    },
+    "description": {
+     "prima": "Il 17 settembre di ogni anno si celebra il World Patient Safety Day per sensibilizzare l'attenzione sul tema della sicurezza delle cure e della persona assistita.",
+     "dopo": "Farmacia automatizzata per la sicurezza delle cure: il progetto coinvolge 2600 posti letto in 22 strutture in Lombardia. Nel World Patient Safety Day."
+    }
+   }
+  },
+  {
+   "id": 502,
+   "uri": "it/news-e-media/news/2024/forum-non-autosufficienza-2024-anni-azzurri-protagonista",
+   "campi": {
+    "longtitle": {
+     "prima": "Forum sulla non autosufficienza: Gli Azzurri protagonisti nel 2024 | KOS",
+     "dopo": "Forum Non Autosufficienza 2024: Anni Azzurri protagonista | KOS"
+    }
+   }
+  },
+  {
+   "id": 504,
+   "uri": "it/news-e-media/news/2024/intelligenza-artificiale-istituto-santo-stefano-partner-clinico-di-3-progetti",
+   "campi": {
+    "longtitle": {
+     "prima": "Intelligenza Artificiale: Istituto Santo Stefano partner clinico di 3 progetti | KOS",
+     "dopo": "IA: l’Istituto Santo Stefano partner clinico di 3 progetti | KOS"
+    },
+    "description": {
+     "prima": "L'Istituto Santo Stefano di Porto Potenza è partner clinico di 3 progetti legati alla tecnologia e all'Intelligenza Artificiale, finanziati dalla Regione Marche.",
+     "dopo": "L’Istituto Santo Stefano di Porto Potenza Picena è partner clinico di tre progetti di tecnologia e intelligenza artificiale finanziati dalle Marche."
+    }
+   }
+  },
+  {
+   "id": 508,
+   "uri": "it/news-e-media/news/2024/rinnovato-il-reparto-di-gastroenterologia-di-villa-dei-pini",
+   "campi": {
+    "longtitle": {
+     "prima": "Villa dei Pini: un nuovo inizio per il reparto di Gastroenterologia | KOS",
+     "dopo": "Villa dei Pini: rinnovato il reparto di gastroenterologia | KOS"
+    }
+   }
+  },
+  {
+   "id": 911,
+   "uri": "it/news-e-media/news/2025/39-congresso-sigot-lo-studio-kos-dimostra-che-le-attivita-educative-riducono-l-uso-di-psicofarmaci",
+   "campi": {
+    "longtitle": {
+     "prima": "Studio KOS al SIGOT: meno psicofarmaci con l’educazione",
+     "dopo": "Studio KOS al SIGOT: meno psicofarmaci con l’educazione | KOS"
+    },
+    "description": {
+     "prima": "Presentato al 39° Congresso SIGOT lo studio KOS: attività educative in RSA tagliano l’uso di psicofarmaci, migliorando autonomia e qualità di vita degli anziani.",
+     "dopo": "Al 39° Congresso SIGOT lo studio KOS: le attività educative in RSA riducono l’uso di psicofarmaci e migliorano autonomia e qualità di vita."
+    }
+   }
+  },
+  {
+   "id": 950,
+   "uri": "it/news-e-media/news/2025/a-firenze-apre-il-reparto-per-i-disturbi-dell-alimentazione-nei-minori-di-18-anni",
+   "campi": {
+    "description": {
+     "prima": "Villa dei Pini Firenze apre reparto per pazienti con meno di 18 anni con disturbi alimentari: ricovero o day hospital, équipe multidisciplinare e coinvolgimento della famiglia.",
+     "dopo": "Villa dei Pini Firenze apre un reparto per i disturbi alimentari dei minori di 18 anni: ricovero o day hospital, équipe multidisciplinare e famiglia."
+    }
+   }
+  },
+  {
+   "id": 906,
+   "uri": "it/news-e-media/news/2025/a-villa-pineta-kos-introdotta-la-teleriabilitazione-respiratoria",
+   "campi": {
+    "description": {
+     "prima": "Villa Pineta KOS (Modena) avvia la teleriabilitazione respiratoria: fisioterapisti online per pazienti BPCO e altre patologie, continuità di cura a casa.",
+     "dopo": "Villa Pineta KOS, in provincia di Modena, avvia la teleriabilitazione respiratoria: fisioterapisti online per pazienti con BPCO e altre patologie."
+    }
+   }
+  },
+  {
+   "id": 921,
+   "uri": "it/news-e-media/news/2025/anni-azzurri-lancia-il-suo-primo-gioco-in-scatola-per-il-benessere-cognitivo-adatto-a-tutte-le-eta",
+   "campi": {
+    "description": {
+     "prima": "Anni Azzurri lancia Azzurramente, gioco in scatola che stimola memoria, logica e socialità; adatto a giovani, adulti e anziani per mantenere benessere cognitivo.",
+     "dopo": "Anni Azzurri lancia AzzurraMente, gioco in scatola che allena memoria, logica e socialità: per giovani, adulti e anziani, per il benessere cognitivo."
+    }
+   }
+  },
+  {
+   "id": 915,
+   "uri": "it/news-e-media/news/2025/dna-quando-serve-il-ricovero",
+   "campi": {
+    "description": {
+     "prima": "Segnali clinici, criteri ASL e percorsi di KOS: scopri come funziona il ricovero per DCA, équipe multidisciplinare e supporto familiare a Villa Sant’Alessandro.",
+     "dopo": "Disturbi alimentari: segnali clinici, criteri ASL e percorsi di ricovero per i DCA a Villa Sant’Alessandro, con équipe multidisciplinare e famiglia."
+    }
+   }
+  },
+  {
+   "id": 814,
+   "uri": "it/news-e-media/news/2025/fiocchetto-lilla-gli-eventi-del-gruppo-kos",
+   "campi": {
+    "description": {
+     "prima": "Partecipa agli eventi KOS dal 12 al 15 marzo: incontri e laboratori gratuiti per sensibilizzare sui Disturbi Alimentari.",
+     "dopo": "Fiocchetto Lilla 2025: dal 12 al 15 marzo incontri e laboratori gratuiti delle cliniche KOS per sensibilizzare sui disturbi alimentari."
+    }
+   }
+  },
+  {
+   "id": 888,
+   "uri": "it/news-e-media/news/2025/giornata-mondiale-dell-igiene-delle-mani",
+   "campi": {
+    "description": {
+     "prima": "Il 5 maggio 2025 celebra l’igiene delle mani: focus su guanti e come rimuoverli correttamente. Scopri il lavaggio acqua e sapone per ridurre le infezioni.",
+     "dopo": "Il 5 maggio 2025 Giornata Mondiale dell’Igiene delle Mani: il tema dei guanti, come rimuoverli e il lavaggio con acqua e sapone contro le infezioni."
+    }
+   }
+  },
+  {
+   "id": 1010,
+   "uri": "it/news-e-media/news/2025/kos-e-natale-una-canzone-per-raccontare-chi-siamo-ogni-giorno",
+   "campi": {
+    "longtitle": {
+     "prima": "Una canzone di Natale per raccontare cura, persone e comunità | KOS",
+     "dopo": "KOS è Natale: una canzone per raccontare chi siamo | KOS"
+    },
+    "description": {
+     "prima": "Una canzone di Natale cantata dai colleghi per raccontare, attraverso gesti e voci, i valori di cura, vicinanza e umanità che uniscono il Gruppo ogni giorno.",
+     "dopo": "La canzone di Natale del Gruppo KOS, cantata dai colleghi, racconta con gesti e voci i valori di cura, vicinanza e umanità che uniscono il gruppo."
+    }
+   }
+  },
+  {
+   "id": 933,
+   "uri": "it/news-e-media/news/2025/musica-inclusione-e-riabilitazione-al-centro-cardinal-ferrari-con-musica-in-castello",
+   "campi": {
+    "description": {
+     "prima": "L’iniziativa, in collaborazione con Avis Fontanellato, ha trasformato il Centro in uno spazio aperto a tutti in una serata di musica, emozione e condivisione.",
+     "dopo": "La XXII edizione di Musica in Castello al Centro Cardinal Ferrari di Fontanellato, con Avis: una serata di musica, inclusione e riabilitazione."
+    }
+   }
+  },
+  {
+   "id": 952,
+   "uri": "it/news-e-media/news/2025/neuroni-in-festival",
+   "campi": {
+    "longtitle": {
+     "prima": "Neuroni in Festival | KOS",
+     "dopo": "Neuroni in Festival: bilancio della prima edizione | KOS"
+    }
+   }
+  },
+  {
+   "id": 945,
+   "uri": "it/news-e-media/news/2025/neuroni-in-festival-18-19-20-settembre-villa-sant-alessandro-roma",
+   "campi": {
+    "description": {
+     "prima": "18-20 settembre, Villa Sant’Alessandro (Roma): tre giorni dedicati alla salute mentale con talk, eventi, colloqui gratuiti e visite ai percorsi terapeutici.",
+     "dopo": "Dal 18 al 20 settembre a Villa Sant’Alessandro (Roma) tre giorni sulla salute mentale: talk, eventi, colloqui gratuiti e visite ai percorsi di cura."
+    }
+   }
+  },
+  {
+   "id": 809,
+   "uri": "it/news-e-media/news/2025/nuovo-sito-di-gruppo-kos-tutti-i-servizi-in-un-unica-piattaforma",
+   "campi": {
+    "longtitle": {
+     "prima": "Nuovo sito di Gruppo KOS: tutti i servizi in un’unica piattaforma | KOS",
+     "dopo": "È online il nuovo sito del Gruppo KOS | KOS"
+    }
+   }
+  },
+  {
+   "id": 999,
+   "uri": "it/news-e-media/news/2025/quality-day-kos-promuove-la-cultura-della-qualita",
+   "campi": {
+    "description": {
+     "prima": "Scopri il Quality Day del Gruppo KOS: una giornata dedicata all’ascolto di pazienti e caregiver, tra customer satisfaction e miglioramento continuo dei servizi.",
+     "dopo": "Il Quality Day del Gruppo KOS: una giornata di ascolto di pazienti e caregiver, tra customer satisfaction e miglioramento continuo dei servizi."
+    }
+   }
+  },
+  {
+   "id": 912,
+   "uri": "it/news-e-media/news/2025/storie-di-donne-premiati-i-vincitori-della-xx-edizione-del-concorso-letterario",
+   "campi": {
+    "description": {
+     "prima": "Premiati ad Arco i vincitori della 20ª edizione del concorso “Storie di donne”: sono Sara Bicchierini, Fabio Lo Sacco, Ubaldo Busolin. Rivedi la premiazione.",
+     "dopo": "Premiati ad Arco i vincitori della 20ª edizione del concorso letterario Storie di donne: Sara Bicchierini, Fabio Lo Sacco e Ubaldo Busolin."
+    }
+   }
+  },
+  {
+   "id": 932,
+   "uri": "it/news-e-media/news/2025/una-tecnologia-per-ritrovare-autonomia-anche-alla-guida",
+   "campi": {
+    "description": {
+     "prima": "Grazie alla tecnologia avanzata, è possibile allenare e valutare competenze chiave come la coordinazione, l’attenzione, i riflessi e l’orientamento spaziale.",
+     "dopo": "Dopo una grave cerebrolesione la tecnologia aiuta a ritrovare autonomia anche alla guida, allenando coordinazione, attenzione e riflessi."
+    }
+   }
+  },
+  {
+   "id": 996,
+   "uri": "it/news-e-media/news/2025/villalba-promuove-la-prevenzione-incontro-informativo-sul-tumore-al-seno-e-mammografie-gratuite",
+   "campi": {
+    "description": {
+     "prima": "Il 13 novembre a Macerata un incontro su prevenzione e diagnosi precoce del tumore al seno. Dopo l’evento, mammografie gratuite al Poliambulatorio Villalba.",
+     "dopo": "Il 13 novembre a Macerata un incontro sulla prevenzione del tumore al seno e, dopo l’evento, mammografie gratuite al Poliambulatorio Villalba."
+    }
+   }
+  },
+  {
+   "id": 1054,
+   "uri": "it/news-e-media/news/2026/a-villa-azzurra-apre-il-nuovo-punto-prelievi",
+   "campi": {
+    "description": {
+     "prima": "A Villa Azzurra apre il nuovo Punto Prelievi: accesso libero senza prenotazione, orari mattutini e possibilità di prelievo ematico eco-guidato per maggiore comfort e sicurezza.",
+     "dopo": "A Villa Azzurra il nuovo Punto Prelievi: accesso libero senza prenotazione, orari mattutini e prelievo ematico eco-guidato per comfort e sicurezza."
+    }
+   }
+  },
+  {
+   "id": 1150,
+   "uri": "it/news-e-media/news/2026/a-villa-dei-pini-si-rafforza-la-reumatologia",
+   "campi": {
+    "description": {
+     "prima": "Villa dei Pini rafforza la reumatologia con la dott.ssa Styhar: diagnosi precoce di artrosi e artriti, terapie personalizzate e trattamento PRP a Civitanova Marche.",
+     "dopo": "Villa dei Pini a Civitanova Marche rafforza la reumatologia con la dott.ssa Styhar: diagnosi precoce di artrosi e artriti e terapie personalizzate."
+    }
+   }
+  },
+  {
+   "id": 1106,
+   "uri": "it/news-e-media/news/2026/a-villa-dei-pini-una-nuova-terapia-rigenerativa-per-articolazioni-tendini-e-muscoli",
+   "campi": {
+    "description": {
+     "prima": "Terapia con PRP a Civitanova Marche: plasma ricco di piastrine per articolazioni, tendini e muscoli. Trattamento rigenerativo poco invasivo a Villa dei Pini KOS.",
+     "dopo": "Terapia con PRP a Villa dei Pini di Civitanova Marche: plasma ricco di piastrine per articolazioni, tendini e muscoli, un trattamento poco invasivo."
+    }
+   }
+  },
+  {
+   "id": 1123,
+   "uri": "it/news-e-media/news/2026/a-villa-margherita-torna-arte-e-cura",
+   "campi": {
+    "description": {
+     "prima": "La seconda edizione della rassegna artistica e culturale aperta alla cittadinanza conferma il valore dell’arte come occasione di relazione, partecipazione e cura.",
+     "dopo": "A Villa Margherita Vicenza la seconda edizione di «L’Arte è Cura», rassegna aperta alla cittadinanza: l’arte come relazione, partecipazione e cura."
+    }
+   }
+  },
+  {
+   "id": 1072,
+   "uri": "it/news-e-media/news/2026/allistituto-santo-stefano-una-stanza-snoezelen-per-i-pazienti-in-coma",
+   "campi": {
+    "longtitle": {
+     "prima": "Stanza Snoezelen all’Istituto Santo Stefano: stimolazione sensoriale per pazienti in coma | KOS",
+     "dopo": "Stanza Snoezelen per pazienti in coma al Santo Stefano | KOS"
+    },
+    "description": {
+     "prima": "All’Istituto Santo Stefano KOS nasce una stanza Snoezelen dedicata a pazienti in stato vegetativo o di minima coscienza: un ambiente multisensoriale che stimola i sensi e favorisce benessere, relazione e supporto alle famiglie.",
+     "dopo": "All’Istituto Santo Stefano di Porto Potenza Picena una stanza Snoezelen multisensoriale per pazienti in stato vegetativo o di minima coscienza."
+    }
+   }
+  },
+  {
+   "id": 1103,
+   "uri": "it/news-e-media/news/2026/avviata-la-chirurgia-oculistica-a-villa-pini",
+   "campi": {
+    "longtitle": {
+     "prima": "Chirurgia oculistica a Civitanova Marche: nuovo reparto a Villa dei Pini | KOS",
+     "dopo": "Chirurgia oculistica a Villa dei Pini, Civitanova Marche | KOS"
+    },
+    "description": {
+     "prima": "Nuovo reparto di chirurgia oculistica a Villa dei Pini: cataratta, glaucoma, retina e strabismo. Percorso completo dalla diagnosi al follow-up post-operatorio.",
+     "dopo": "Nuovo reparto di chirurgia oculistica a Villa dei Pini di Civitanova Marche: cataratta, glaucoma, retina e strabismo, dalla diagnosi al follow-up."
+    }
+   }
+  },
+  {
+   "id": 1064,
+   "uri": "it/news-e-media/news/2026/cardio-tac-al-centro-cardinal-ferrari-guida-completa-all-esame-cardiologico",
+   "campi": {
+    "longtitle": {
+     "prima": "Cardio TAC al Centro Cardinal Ferrari: cos’è, quando farla e come si svolge | KOS",
+     "dopo": "Cardio TAC al Cardinal Ferrari: cos’è e come si svolge | KOS"
+    },
+    "description": {
+     "prima": "Scopri la Cardio TAC al Centro Cardinal Ferrari: esame non invasivo, tecnologia avanzata e diagnosi cardiologiche accurate con specialisti qualificati.",
+     "dopo": "La Cardio TAC al Centro Cardinal Ferrari: un esame non invasivo con tecnologia avanzata per diagnosi cardiologiche accurate da parte di specialisti."
+    }
+   }
+  },
+  {
+   "id": 1131,
+   "uri": "it/news-e-media/news/2026/congresso-simfer-nelle-marche-tutte-le-competenze-dei-nostri-centri-ambulatoriali",
+   "campi": {
+    "description": {
+     "prima": "I professionisti KOS Santo Stefano al SIMFER Marche 2026 di Fabriano: riabilitazione in età evolutiva, presa in carico precoce e nuove frontiere tecnologiche.",
+     "dopo": "I professionisti di KOS Santo Stefano al Congresso SIMFER Marche 2026 di Fabriano: riabilitazione in età evolutiva, presa in carico e tecnologie."
+    }
+   }
+  },
+  {
+   "id": 1102,
+   "uri": "it/news-e-media/news/2026/controllo-del-peso-e-del-diabete-fondamentali-per-il-successo-degli-interventi-ad-anca-e-ginocchio",
+   "campi": {
+    "longtitle": {
+     "prima": "Protesi anca e ginocchio: peso e diabete sotto controllo per ridurre i rischi | KOS",
+     "dopo": "Protesi anca e ginocchio: peso e diabete sotto controllo | KOS"
+    },
+    "description": {
+     "prima": "Peso corporeo e diabete influenzano direttamente gli esiti delle protesi ortopediche. Villa dei Pini offre percorsi integrati di dimagrimento, riabilitazione e crioterapia per un recupero sicuro ed efficace.",
+     "dopo": "Peso e diabete influenzano gli esiti delle protesi di anca e ginocchio: a Villa dei Pini percorsi di dimagrimento, riabilitazione e crioterapia."
+    }
+   }
+  },
+  {
+   "id": 1132,
+   "uri": "it/news-e-media/news/2026/dai-campus-usa-a-villa-pineta-kos-formazione-e-confronto-internazionale-nella-riabilitazione",
+   "campi": {
+    "description": {
+     "prima": "Da oltre dieci anni Villa Pineta KOS accoglie studenti statunitensi in tirocinio nella riabilitazione respiratoria, in collaborazione con EduGlobal Associates.",
+     "dopo": "Da oltre dieci anni Villa Pineta KOS accoglie in tirocinio studenti statunitensi di EduGlobal Associates nella riabilitazione respiratoria."
+    }
+   }
+  },
+  {
+   "id": 1135,
+   "uri": "it/news-e-media/news/2026/diagnostica-per-immagini-a-modena-i-servizi-del-poliambulatorio-diagnostico-villa-rosa-kos",
+   "campi": {
+    "longtitle": {
+     "prima": "Diagnostica per immagini a Modena: Villa Rosa| KOS",
+     "dopo": "Diagnostica per immagini a Modena: Villa Rosa | KOS"
+    },
+    "description": {
+     "prima": "Il Poliambulatorio Villa Rosa KOS a Modena offre ecografia, risonanza magnetica, TAC Cone Beam, radiologia e elettromiografia, in convenzione SSN e in privato.",
+     "dopo": "Il Poliambulatorio Villa Rosa KOS a Modena offre ecografia, risonanza magnetica, TAC Cone Beam, radiologia ed elettromiografia, con SSN e in privato."
+    }
+   }
+  },
+  {
+   "id": 1136,
+   "uri": "it/news-e-media/news/2026/estate-2026-riapre-la-spiaggia-riabilitativa-e-riceve-la-bandiera-blu",
+   "campi": {
+    "description": {
+     "prima": "Riapre la spiaggia riabilitativa dell'Istituto Santo Stefano di Porto Potenza Picena: attività terapeutiche in acqua e all'aperto, con Bandiera Blu 2026.",
+     "dopo": "Riapre la spiaggia riabilitativa dell’Istituto Santo Stefano di Porto Potenza Picena: attività terapeutiche in acqua e all’aperto, Bandiera Blu 2026."
+    }
+   }
+  },
+  {
+   "id": 1060,
+   "uri": "it/news-e-media/news/2026/gestione-clinica-del-peso-il-modello-kos",
+   "campi": {
+    "longtitle": {
+     "prima": "Gestione clinica del peso: il modello integrato cardio-metabolico | KOS",
+     "dopo": "Gestione clinica del peso: il modello cardio-metabolico | KOS"
+    },
+    "description": {
+     "prima": "Il modello di gestione clinica del peso di KOS integra competenze cardio-metaboliche e multidisciplinari per prevenire obesità e rischio cardiovascolare.",
+     "dopo": "Il modello KOS di gestione clinica del peso integra competenze cardio-metaboliche e multidisciplinari per prevenire obesità e rischio cardiovascolare."
+    }
+   }
+  },
+  {
+   "id": 1071,
+   "uri": "it/news-e-media/news/2026/giornata-del-fiocchetto-lilla-il-contributo-del-gruppo-kos-alla-rete-di-cura",
+   "campi": {
+    "description": {
+     "prima": "Partecipa agli eventi KOS dal 12 al 15 marzo: incontri e laboratori gratuiti per sensibilizzare sui Disturbi Alimentari.",
+     "dopo": "Giornata del Fiocchetto Lilla 2026: gli appuntamenti del Gruppo KOS sui disturbi della nutrizione e dell’alimentazione, a sostegno di chi ne soffre."
+    }
+   }
+  },
+  {
+   "id": 1122,
+   "uri": "it/news-e-media/news/2026/giornata-internazionale-dell-infermiere-chi-e-cosa-fa-e-perche-e-al-centro-della-cura",
+   "campi": {
+    "description": {
+     "prima": "Il 12 maggio si celebra la Giornata Internazionale dell'Infermiere. Scopri il ruolo, le competenze e il percorso formativo di questa figura centrale nella cura.",
+     "dopo": "Il 12 maggio si celebra la Giornata Internazionale dell’Infermiere: il ruolo, le competenze e il percorso formativo di una figura centrale nella cura."
+    }
+   }
+  },
+  {
+   "id": 1085,
+   "uri": "it/news-e-media/news/2026/giornata-mondiale-del-parkinson-focus-su-presa-in-carico-e-riabilitazione-all-iss-con-il-contributo-del-dott-daniele-volpe",
+   "campi": {
+    "description": {
+     "prima": "All’ISS un confronto su Parkinson, politiche sanitarie e riabilitazione neurologica. Focus su modelli di presa in carico e qualità della vita dei pazienti.",
+     "dopo": "Giornata Mondiale del Parkinson 2026: all’Istituto Superiore di Sanità un confronto su presa in carico e riabilitazione, con il dott. Daniele Volpe."
+    }
+   }
+  },
+  {
+   "id": 1125,
+   "uri": "it/news-e-media/news/2026/giornata-nazionale-delloss",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Nella Giornata Nazionale dell’OSS nasce OSSigeno puro, uno spazio fatto dagli operatori socio-sanitari per gli operatori socio-sanitari di KOS."
+    }
+   }
+  },
+  {
+   "id": 1126,
+   "uri": "it/news-e-media/news/2026/giuseppe-motta-nuovo-amministratore-delegato-e-direttore-generale-del-gruppo-kos",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Dal 1° giugno 2026 Giuseppe Motta è il nuovo Amministratore Delegato e Direttore Generale del Gruppo KOS, dopo oltre vent’anni in azienda."
+    }
+   }
+  },
+  {
+   "id": 1155,
+   "uri": "it/news-e-media/news/2026/il-fisiatra-nella-cura-multidisciplinare-del-parkinson-da-membro-a-direttore-d-orchestra",
+   "campi": {
+    "description": {
+     "prima": "Un position paper internazionale approfondisce il ruolo del fisiatra nella cura multidisciplinare delle persone con malattia di Parkinson e la sua possibile funzione di coordinamento nei percorsi riabilitativi dalla fase inziale a quella avanzata di malattia.",
+     "dopo": "Un position paper internazionale sul ruolo del fisiatra nella cura multidisciplinare del Parkinson, anche come coordinatore della riabilitazione."
+    }
+   }
+  },
+  {
+   "id": 1156,
+   "uri": "it/news-e-media/news/2026/il-movimento-che-aiuta-a-ritrovare-autonomia",
+   "campi": {
+    "description": {
+     "prima": "In occasione della Giornata Mondiale della Fisioterapia, approfondiamo il ruolo del fisioterapista nella prevenzione e nei percorsi di recupero dopo un ictus o una malattia cardiovascolare.",
+     "dopo": "Giornata Mondiale della Fisioterapia: il ruolo del fisioterapista nella prevenzione e nel recupero dopo un ictus o una malattia cardiovascolare."
+    }
+   }
+  },
+  {
+   "id": 1149,
+   "uri": "it/news-e-media/news/2026/infarto-il-cuore-lancia-segnali-molto-in-anticipo",
+   "campi": {
+    "longtitle": {
+     "prima": "Prevenzione infarto a Civitanova: il percorso cardio di Villa dei Pini | KOS",
+     "dopo": "Prevenzione infarto: il percorso cardio di Villa dei Pini | KOS"
+    },
+    "description": {
+     "prima": "Villa dei Pini a Civitanova: percorso di prevenzione cardiovascolare con Cardio TAC, Calcium Score ed ecocardiografia per individuare precocemente il rischio infarto.",
+     "dopo": "A Villa dei Pini di Civitanova Marche un percorso di prevenzione cardiovascolare con Cardio TAC, Calcium Score ed ecocardiografia contro l’infarto."
+    }
+   }
+  },
+  {
+   "id": 1138,
+   "uri": "it/news-e-media/news/2026/kos-e-mecenate-del-macerata-opera-festival",
+   "campi": {
+    "description": {
+     "prima": "KOS entra tra i Mecenati dell'Arena Sferisterio e sostiene il Macerata Opera Festival: un impegno per la cultura e il territorio marchigiano che dura da oltre 60 anni.",
+     "dopo": "KOS entra tra i Mecenati dell’Arena Sferisterio e sostiene il Macerata Opera Festival, un impegno per la cultura e per il territorio marchigiano."
+    }
+   }
+  },
+  {
+   "id": 1068,
+   "uri": "it/news-e-media/news/2026/l-attivita-di-ricerca-del-centro-cardinal-ferrari-kos",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Il Centro Cardinal Ferrari affianca all’assistenza la ricerca clinica e organizzativa, per sviluppare modelli riabilitativi efficaci e personalizzati."
+    }
+   }
+  },
+  {
+   "id": 1113,
+   "uri": "it/news-e-media/news/2026/la-diagnostica-a-domicilio-villa-pini-attiva-nuovi-servizi-per-la-salute-a-casa",
+   "campi": {
+    "description": {
+     "prima": "Villa dei Pini a Civitanova Marche attiva la diagnostica a domicilio: prelievi del sangue, ECG, Holter pressorio, Holter cardiaco e radiografie direttamente a casa tua. Un servizio pensato per anziani, pazienti fragili e chi ha difficoltà di spostamento.",
+     "dopo": "Villa dei Pini a Civitanova Marche attiva la diagnostica a domicilio: prelievi, ECG, Holter e radiografie a casa per anziani e pazienti fragili."
+    }
+   }
+  },
+  {
+   "id": 1105,
+   "uri": "it/news-e-media/news/2026/la-donna-il-centro-di-tutti-al-centro-di-tutto",
+   "campi": {
+    "description": {
+     "prima": "Prevenzione ginecologica, isteroscopia e percorsi in acqua per la donna a Civitanova Marche. A marzo iniziative dedicate al benessere femminile a Villa dei Pini.",
+     "dopo": "A marzo Villa dei Pini di Civitanova Marche dedica il mese alla donna: prevenzione ginecologica, isteroscopia e percorsi in acqua per il benessere."
+    }
+   }
+  },
+  {
+   "id": 1159,
+   "uri": "it/news-e-media/news/2026/nasce-homecare-academy-formiamo-chi-si-prende-cura",
+   "campi": {
+    "description": {
+     "prima": "HomeCare Academy è il programma KOS che forma i caregiver familiari: competenze pratiche e supporto per assistere a casa un familiare dopo un ricovero.",
+     "dopo": "Nasce HomeCare Academy, il programma KOS che forma i caregiver familiari per assistere a casa un familiare dopo un ricovero, con competenze pratiche."
+    }
+   }
+  },
+  {
+   "id": 1121,
+   "uri": "it/news-e-media/news/2026/open-day-obesita",
+   "campi": {
+    "description": {
+     "prima": "Il 15 maggio, dalle 12 alle 16, consulti medici e nutrizionali gratuiti su obesità e sovrappeso all'ambulatorio Villa Pineta di Modena. Partecipazione libera.",
+     "dopo": "Il 15 maggio, dalle 12 alle 16, consulti medici e nutrizionali gratuiti su obesità e sovrappeso all’ambulatorio Villa Pineta di Modena."
+    }
+   }
+  },
+  {
+   "id": 1124,
+   "uri": "it/news-e-media/news/2026/pelle-e-occhi-da-proteggere-prima-dell-estate",
+   "campi": {
+    "description": {
+     "prima": "Il dermatologo e l'oculista di Villa dei Pini consigliano come proteggere pelle e occhi dal sole: filtri solari, occhiali UV e buone abitudini prima dell'estate.",
+     "dopo": "Il dermatologo e l’oculista di Villa dei Pini a Civitanova Marche spiegano come proteggere pelle e occhi dal sole: filtri solari e occhiali UV."
+    }
+   }
+  },
+  {
+   "id": 1152,
+   "uri": "it/news-e-media/news/2026/pet-therapy-all-istituto-santo-stefano-di-porto-potenza-picena",
+   "campi": {
+    "description": {
+     "prima": "All'Istituto Santo Stefano KOS di Porto Potenza Picena, un progetto di pet therapy con i cani per stimolare relazione, benessere e partecipazione nei pazienti.",
+     "dopo": "All’Istituto Santo Stefano di Porto Potenza Picena un progetto di pet therapy con i cani per stimolare relazione, benessere e partecipazione."
+    }
+   }
+  },
+  {
+   "id": 1019,
+   "uri": "it/news-e-media/news/2026/primo-premio-per-villa-rosa-di-modena-ai-best-italian-healthcare-awards-2025",
+   "campi": {
+    "longtitle": {
+     "prima": "1° Premio per Villa Rosa di Modena ai “Best Italian Healthcare Awards 2025” | KOS",
+     "dopo": "Villa Rosa, 1° premio Best Italian Healthcare Awards 2025 | KOS"
+    },
+    "description": {
+     "prima": "Villa Rosa di Modena ottiene il 1° Premio ai Best Italian Healthcare Awards 2025 per le residenze psichiatriche, confermandosi eccellenza nel panorama sociosanitario nazionale.",
+     "dopo": "Villa Rosa di Modena vince il 1° premio ai Best Italian Healthcare Awards 2025 di Confcommercio Salute nella categoria delle residenze psichiatriche."
+    }
+   }
+  },
+  {
+   "id": 1111,
+   "uri": "it/news-e-media/news/2026/recupero-della-mano-post-ictus-pubblicata-su-stroke-una-ricerca-del-centro-cardinal-ferrari",
+   "campi": {
+    "description": {
+     "prima": "Un nuovo studio clinico del Centro Cardinal Ferrari, pubblicato sulla rivista Stroke, dimostra che combinare osservazione dell'azione e realtà virtuale migliora significativamente il recupero motorio della mano nei pazienti post-ictus, con effetti stabili fino a sei mesi dal trattamento.",
+     "dopo": "Uno studio del Centro Cardinal Ferrari pubblicato su Stroke: osservazione dell’azione e realtà virtuale migliorano il recupero della mano post ictus."
+    }
+   }
+  },
+  {
+   "id": 1129,
+   "uri": "it/news-e-media/news/2026/s-stefano-kos-group-stagione-ancora-ai-vertici-del-basket-in-carrozzina-italiano",
+   "campi": {
+    "description": {
+     "prima": "Santo Stefano KOS Group chiude la stagione in finale scudetto contro Cantù. Un'annata ai vertici del basket in carrozzina italiano, tra Coppa Italia e playoff.",
+     "dopo": "La Santo Stefano KOS Group chiude in finale scudetto contro Cantù una stagione ai vertici del basket in carrozzina, tra Coppa Italia e playoff."
+    }
+   }
+  },
+  {
+   "id": 1104,
+   "uri": "it/news-e-media/news/2026/salute-della-donna-villa-dei-pini-rafforza-l-offerta",
+   "campi": {
+    "description": {
+     "prima": "Isteroscopia ginecologica, ginecologia e riabilitazione del pavimento pelvico a Civitanova Marche. Scopri il percorso dedicato alla salute della donna a Villa dei Pini.",
+     "dopo": "Isteroscopia, ginecologia e riabilitazione del pavimento pelvico a Villa dei Pini di Civitanova Marche: il percorso dedicato alla salute della donna."
+    }
+   }
+  },
+  {
+   "id": 1128,
+   "uri": "it/news-e-media/news/2026/sirn-2026-istituto-santo-stefano-presenta-due-studi",
+   "campi": {
+    "description": {
+     "prima": "Al congresso SIRN 2026 di Verona, l'Istituto Santo Stefano presenta due protocolli su AI e dispositivi indossabili per la neuroriabilitazione post-ictus.",
+     "dopo": "Al congresso SIRN 2026 di Verona l’Istituto Santo Stefano presenta due protocolli su intelligenza artificiale e dispositivi indossabili post-ictus."
+    }
+   }
+  },
+  {
+   "id": 1139,
+   "uri": "it/news-e-media/news/2026/tcg-la-ricerca-del-centro-cardinal-ferrari",
+   "campi": {
+    "longtitle": {
+     "prima": " Trauma cranico grave: la ricerca del Centro Cardinal Ferrari | KOS",
+     "dopo": "Trauma cranico grave: la ricerca del Cardinal Ferrari | KOS"
+    },
+    "description": {
+     "prima": "Meta-analisi su 60.000 pazienti: il trauma cranico grave triplica il rischio di mortalità. Il Centro Cardinal Ferrari KOS tra i centri che hanno contribuito allo studio.",
+     "dopo": "Meta-analisi su 60.000 pazienti: il trauma cranico grave triplica il rischio di mortalità. Tra i centri che hanno contribuito, il Cardinal Ferrari."
+    }
+   }
+  },
+  {
+   "id": 1151,
+   "uri": "it/news-e-media/news/2026/un-prato-di-emozioni-mostra-di-lavori-artistici-realizzati-dai-pazienti",
+   "campi": {
+    "description": {
+     "prima": "All'Istituto Santo Stefano KOS di Porto Potenza Picena, i pazienti espongono i lavori del laboratorio di Arte terapia: colori ed emozioni al servizio della cura.",
+     "dopo": "All’Istituto Santo Stefano di Porto Potenza Picena i pazienti espongono i lavori del laboratorio di arte terapia: colori ed emozioni nella cura."
+    }
+   }
+  },
+  {
+   "id": 1137,
+   "uri": "it/news-e-media/news/2026/villa-adria-alla-conferenza-internazionale-sulla-sclerosi-multipla",
+   "campi": {
+    "longtitle": {
+     "prima": "Villa Adria alla conferenza RiMS 2026 sulla Sclerosi Multipla | KOS",
+     "dopo": "Villa Adria alla RiMS 2026 sulla sclerosi multipla | KOS"
+    },
+    "description": {
+     "prima": "La Clinica Villa Adria KOS di Ancona alla 31ª RiMS Conference di Praga: riabilitazione neurologica, neurotecnologie e nuove strategie per la Sclerosi Multipla.",
+     "dopo": "La Clinica Villa Adria KOS di Ancona alla 31ª RiMS Conference di Praga: riabilitazione neurologica e nuove strategie per la sclerosi multipla."
+    }
+   }
+  },
+  {
+   "id": 1163,
+   "uri": "it/news-e-media/news/2026/villa-dei-pini-amplia-ancora-il-servizio-di-gastroenterologia",
+   "campi": {
+    "description": {
+     "prima": "Villa dei Pini a Civitanova amplia il servizio di gastroenterologia: gastroscopia e colonscopia anche il sabato mattina, con sedazione e tecnologie avanzate.",
+     "dopo": "Villa dei Pini a Civitanova Marche amplia la gastroenterologia: gastroscopia e colonscopia anche il sabato mattina, con sedazione e tecnologie."
+    }
+   }
+  },
+  {
+   "id": 1162,
+   "uri": "it/news-e-media/news/2026/villa-dei-pini-porta-la-diagnostica-a-casa",
+   "campi": {
+    "description": {
+     "prima": "Villa dei Pini porta la diagnostica a casa: prelievi, ECG, Holter cardiaco e pressorio a domicilio a Civitanova Marche, con radiografie attive da settembre.",
+     "dopo": "Villa dei Pini porta la diagnostica a casa a Civitanova Marche: prelievi, ECG e Holter cardiaco e pressorio a domicilio e radiografie da settembre."
+    }
+   }
+  },
+  {
+   "id": 1127,
+   "uri": "it/news-e-media/news/2026/villa-dei-pini-un-evento-formativo-sul-percorso-cardiometabolico",
+   "campi": {
+    "description": {
+     "prima": "Villa dei Pini forma i professionisti sul percorso cardiometabolico: obesità, rischio cardiovascolare e approccio multidisciplinare al centro dell'evento ECM accreditato.",
+     "dopo": "Evento ECM a Villa dei Pini sul percorso cardiometabolico: obesità, rischio cardiovascolare e approccio multidisciplinare per i professionisti."
+    }
+   }
+  },
+  {
+   "id": 1160,
+   "uri": "it/news-e-media/news/2026/villa-margherita-benevento-nuovi-ambulatori-specialistici-e-day-hospital",
+   "campi": {
+    "description": {
+     "prima": "Villa Margherita Benevento amplia l'offerta con ambulatori specialistici e Day Hospital riabilitativo: visite, diagnostica avanzata e percorsi senza ricovero.",
+     "dopo": "Villa Margherita Benevento amplia l’offerta con ambulatori specialistici e Day Hospital riabilitativo: visite, diagnostica e percorsi senza ricovero."
+    }
+   }
+  },
+  {
+   "id": 1115,
+   "uri": "it/news-e-media/news/2026/welfare-integrativo-e-non-autosufficienza-con-kos-operativa-una-rete-di-strutture-in-8-regioni",
+   "campi": {
+    "description": {
+     "prima": "Welfare integrativo e non autosufficienza: accordo FASDAC–Conf Salute con KOS per una rete di strutture in 8 regioni e servizi sociosanitari accessibili.",
+     "dopo": "Accordo FASDAC–Conf Salute con il Gruppo KOS per il welfare integrativo e la non autosufficienza: una rete di strutture operativa in 8 regioni."
+    }
+   }
+  },
+  {
+   "id": 346,
+   "uri": "it/news-e-media/news/autismo-fondamentale-la-diagnosi-precoce-da-gennaio-il-disturbo-rientra-nei-lea",
+   "campi": {
+    "longtitle": {
+     "prima": "Autismo: l'importanza della diagnosi precoce e l'inclusione nei LEA | KOS",
+     "dopo": "Autismo: diagnosi precoce e inclusione nei LEA | KOS"
+    }
+   }
+  },
+  {
+   "id": 352,
+   "uri": "it/news-e-media/news/gloreha-il-guanto-robotico-che-aiuta-la-riabilitazione-della-mano",
+   "campi": {
+    "longtitle": {
+     "prima": "Gloreha, il guanto robotico che aiuta la riabilitazione della mano | KOS",
+     "dopo": "Gloreha, guanto robotico per la riabilitazione della mano | KOS"
+    }
+   }
+  },
+  {
+   "id": 353,
+   "uri": "it/news-e-media/news/il-dottor-perini-nuovo-primario-di-neurologia-di-villa-margherita-kos",
+   "campi": {
+    "longtitle": {
+     "prima": "Il Dottor Perini, nuovo primario di Neurologia di Villa Margherita KOS | KOS",
+     "dopo": "Il dottor Perini primario di Neurologia a Villa Margherita | KOS"
+    }
+   }
+  },
+  {
+   "id": 357,
+   "uri": "it/news-e-media/news/jesi-trasferito-il-centro-ambulatoriale-di-riabilitazione-specialistica",
+   "campi": {
+    "longtitle": {
+     "prima": "Jesi: trasferito il Centro Ambulatoriale di Riabilitazione Specialistica | KOS",
+     "dopo": "Jesi: trasferito il centro ambulatoriale di riabilitazione | KOS"
+    }
+   }
+  },
+  {
+   "id": 358,
+   "uri": "it/news-e-media/news/la-lettera-di-edo-per-immaginare-il-mondo-di-un-bambino-autistico",
+   "campi": {
+    "longtitle": {
+     "prima": "La lettera di Edo, per immaginare il mondo di un bambino autistico | KOS",
+     "dopo": "La lettera di Edo e il mondo di un bambino autistico | KOS"
+    },
+    "description": {
+     "prima": "Per ricordare le difficoltà che ogni giorno vivono i bambini autistici e le loro famiglie, soprattutto in questo periodo complicato di emergenza sanitaria",
+     "dopo": "La lettera di Edo racconta le difficoltà quotidiane dei bambini autistici e delle loro famiglie, soprattutto nel periodo dell’emergenza sanitaria."
+    }
+   }
+  },
+  {
+   "id": 360,
+   "uri": "it/news-e-media/news/ortopedia-e-ozonoterapia-attivi-due-nuovi-ambulatori-al-venerabile-marcucci",
+   "campi": {
+    "longtitle": {
+     "prima": "Ortopedia e Ozonoterapia, attivi due nuovi ambulatori al Venerabile Marcucci | KOS",
+     "dopo": "Venerabile Marcucci: ortopedia e ozonoterapia | KOS"
+    },
+    "description": {
+     "prima": "Scopri i nuovi ambulatori di Ortopedia e Ozonoterapia presso il Venerabile Marcucci. Prenota una visita con Kos ora!",
+     "dopo": "Al Venerabile Marcucci attivi due nuovi ambulatori di ortopedia e ozonoterapia, con i professionisti di riferimento Mulazzani e Bernardini."
+    }
+   }
+  },
+  {
+   "id": 718,
+   "uri": "it/news-e-media/news/ottobre-mese-del-benessere-psicologico",
+   "campi": {
+    "description": {
+     "prima": "Il Mese del Benessere Psicologico è realizzato grazie alla disponibilità di psicologi, liberi professionisti, i quali offrono consulenze e seminari gratuiti.",
+     "dopo": "Ottobre, mese del benessere psicologico: i Centri Ambulatoriali Santo Stefano Riabilitazione aderiscono con consulenze e seminari gratuiti."
+    }
+   }
+  },
+  {
+   "id": 744,
+   "uri": "it/news-e-media/news/tommaso-marini-sono-pronto-a-tornare",
+   "campi": {
+    "description": {
+     "prima": "Tommaso Marini, campione mondiale di fioretto, sta completando la riabilitazione alla spalla con il supporto di Myolab, puntando alle Olimpiadi di Parigi 2024.",
+     "dopo": "Tommaso Marini, campione mondiale di fioretto, completa la riabilitazione della spalla con Myolab e punta alle Olimpiadi di Parigi 2024."
+    }
+   }
+  },
+  {
+   "id": 366,
+   "uri": "it/news-e-media/news/villa-margherita-riconosciuta-tra-le-6-cliniche-italiane-eccellenze-per-il-parkinson",
+   "campi": {
+    "description": {
+     "prima": "La Clinica vicentina è Centro di riferimento per la riabilitazione di Parkinson e disordini del movimento, riconosciuto dal Fresco Parkinson Institute.",
+     "dopo": "Villa Margherita, clinica vicentina, è dal 2016 Centro di riferimento del Fresco Parkinson Institute per la riabilitazione del Parkinson."
+    }
+   }
+  },
+  {
+   "id": 746,
+   "uri": "it/news-e-media/news/walter-grassi-nel-team-di-myolab",
+   "campi": {
+    "description": {
+     "prima": "Il prof. Walter Grassi, esperto reumatologo, si unisce al team di Myolab per offrire consulenze specialistiche in malattie muscoloscheletriche e infiammatorie.",
+     "dopo": "Il prof. Walter Grassi, reumatologo, entra nel team di Myolab a Jesi: consulenze su malattie muscoloscheletriche e infiammatorie, su appuntamento."
+    }
+   }
+  },
+  {
+   "id": 887,
+   "uri": "it/news-e-media/progetti-speciali/2025/giornata-mondiale-oss",
+   "campi": {
+    "description": {
+     "prima": "In occasione della Giornata Nazionale degli OSS, abbiamo creato un simbolo che rappresenti i nostri oltre 3.000 Operatori Socio Sanitari e li accompagni in ogni attività.",
+     "dopo": "Per la Giornata degli OSS il Gruppo KOS ha creato un simbolo che rappresenta i suoi oltre 3.000 Operatori Socio Sanitari e li accompagna nel lavoro."
+    }
+   }
+  },
+  {
+   "id": 811,
+   "uri": "it/news-e-media/progetti-speciali/2025/settimana-del-cervello-2025",
+   "campi": {
+    "description": {
+     "prima": "Dal 10 al 16 marzo, scopri le video pillole e gli eventi gratuiti del Gruppo KOS: stress, ansia, sonno, nutrizione e molto altro per la tua salute cerebrale.",
+     "dopo": "Dal 10 al 16 marzo le video pillole e gli eventi gratuiti del Gruppo KOS per la Settimana del Cervello 2025: stress, ansia, sonno e nutrizione."
+    }
+   }
+  },
+  {
+   "id": 792,
+   "uri": "it/news-e-media/video/2022/kosplayers-2-essere-infermiera-in-una-rsa",
+   "campi": {
+    "description": {
+     "prima": "Ascolta un’infermiera raccontare la sua passione: vent’anni di esperienza, cura e formazione continua per il benessere degli ospiti della residenza Parco di Veio.",
+     "dopo": "Un’infermiera racconta vent’anni di esperienza, cura e formazione continua per il benessere degli ospiti della residenza Parco di Veio. KOSplayers #2."
+    }
+   }
+  },
+  {
+   "id": 791,
+   "uri": "it/news-e-media/video/2022/kosplayers-essere-medico-in-una-rsa",
+   "campi": {
+    "description": {
+     "prima": "Ascolta un medico geriatra di Anni Azzurri che parla dell'assistenza empatica, piena di cura, sorrisi e terapie occupazionali per il massimo benessere dell'ospite.",
+     "dopo": "Un medico geriatra di Anni Azzurri racconta l’assistenza in RSA: cura empatica, sorrisi e terapie occupazionali per l’ospite. KOSplayers #1."
+    }
+   }
+  },
+  {
+   "id": 793,
+   "uri": "it/news-e-media/video/2023/kosplayers-3-riabilitare-la-vita-in-rsa",
+   "campi": {
+    "description": {
+     "prima": "Scopri in questo video la fisioterapia in RSA: approccio dinamico, tecnologie avanzate e attenzione emotiva per un recupero motorio e una miglior qualità di vita.",
+     "dopo": "La fisioterapia in RSA raccontata in video: approccio dinamico, tecnologie e attenzione emotiva per il recupero motorio degli ospiti. KOSplayers #3."
+    }
+   }
+  },
+  {
+   "id": 648,
+   "uri": "it/news-e-media/video/2023/reparto-di-riabilitazione-cardiologica-ospedale-san-pancrazio-kos",
+   "campi": {
+    "longtitle": {
+     "prima": "Reparto di Riabilitazione Cardiologica - Ospedale San Pancrazio KOS | KOS",
+     "dopo": "Riabilitazione cardiologica all’Ospedale San Pancrazio | KOS"
+    }
+   }
+  },
+  {
+   "id": 794,
+   "uri": "it/news-e-media/video/2024/kosplayers-4-a-tu-per-tu-con-i-welcomers-di-anni-azzurri",
+   "campi": {
+    "description": {
+     "prima": "Scopri il ruolo del welcomer in RSA: un ponte empatico tra famiglie e équipe, con formazione e strumenti avanzati per un’accoglienza serena e supporto concreto.",
+     "dopo": "Il welcomer in RSA è un ponte tra le famiglie e l’équipe di Anni Azzurri: formazione e strumenti per un’accoglienza serena. KOSplayers #4."
+    }
+   }
+  },
+  {
+   "id": 250,
+   "uri": "it/news-e-media/video/2024/parola-ai-nostri-operatori-socio-sanitari",
+   "campi": {
+    "longtitle": {
+     "prima": "Parola ai nostri operatori socio-sanitari: testimonianze e storie dal fronte | KOS",
+     "dopo": "Parola ai nostri operatori socio-sanitari (video) | KOS"
+    }
+   }
+  },
+  {
+   "id": 865,
+   "uri": "it/news-e-media/video/2025/centro-cardinal-ferrari-raccontarsi-unesperienza-di-narrazione-e-cura",
+   "campi": {
+    "description": {
+     "prima": "Mostra e performance sul potere della cura e del racconto, con pazienti e caregiver del Centro Cardinal Ferrari. Un viaggio tra fragilità e rinascita.",
+     "dopo": "Raccontarsi: mostra e performance sul potere della cura e del racconto con pazienti e caregiver del Centro Cardinal Ferrari, nel cuore di Parma."
+    }
+   }
+  },
+  {
+   "id": 916,
+   "uri": "it/news-e-media/video/2025/la-psicoterapia-nel-trattamento-dei-disturbi-della-nutrizione-e-alimentazione",
+   "campi": {
+    "description": {
+     "prima": "Video: équipe transdisciplinare e psicoterapia su misura affrontano le radici dei disturbi alimentari, correggono disfunzioni e riattivano le emozioni.",
+     "dopo": "Video: un’équipe transdisciplinare e una psicoterapia su misura per affrontare le radici dei disturbi alimentari e ritrovare l’equilibrio mente-corpo."
+    }
+   }
+  },
+  {
+   "id": 954,
+   "uri": "it/news-e-media/video/2025/neuroni-in-festival-tre-giorni-per-capire-cosa-ci-muove-dentro",
+   "campi": {
+    "longtitle": {
+     "prima": " Neuroni in Festival | KOS",
+     "dopo": "Neuroni in Festival: tre giorni sulla mente (video) | KOS"
+    },
+    "description": {
+     "prima": "Tre giorni per capire cosa ci muove, dentro.",
+     "dopo": "Neuroni in Festival, iniziativa del Gruppo KOS e di Villa Sant’Alessandro con il patrocinio del Comune di Roma su salute mentale e inclusione."
+    }
+   }
+  },
+  {
+   "id": 894,
+   "uri": "it/news-e-media/video/2025/video-giornata-internazionale-dell-infermiere",
+   "campi": {
+    "longtitle": {
+     "prima": "12 maggio: Giornata Internazionale dell’Infermiere | KOS",
+     "dopo": "Giornata Internazionale dell’Infermiere 2025 (video) | KOS"
+    },
+    "description": {
+     "prima": "Il Gruppo KOS celebra i suoi 1600 infermieri nella Giornata Internazionale: competenza, umanità e formazione al centro della cura quotidiana.",
+     "dopo": "Video per la Giornata Internazionale dell’Infermiere 2025: il Gruppo KOS celebra i suoi 1600 infermieri, tra competenza, umanità e formazione."
+    },
+    "pagetitle": {
+     "prima": "Giornata Internazionale dell’infermiere",
+     "dopo": "Giornata Internazionale dell’infermiere: il video"
+    }
+   }
+  },
+  {
+   "id": 513,
+   "uri": "it/privacy",
+   "campi": {
+    "longtitle": {
+     "prima": "Privacy Policy | KOS",
+     "dopo": "Informativa sulla privacy | KOS"
+    },
+    "description": {
+     "prima": "Leggi la nostra informativa sulla privacy per scoprire come Kos protegge i tuoi dati personali. Entra nel dettaglio del nostro policy.",
+     "dopo": "Informativa sulla privacy del Gruppo KOS: come vengono raccolti, trattati e protetti i dati personali di chi visita il sito kosgroup.com."
+    }
+   }
+  },
+  {
+   "id": 1012,
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/ambulatorio-cardio-metabolico",
+   "campi": {
+    "longtitle": {
+     "prima": "Ambulatorio Cardio-Metabolico | Kos",
+     "dopo": "Ambulatorio cardio-metabolico | KOS"
+    },
+    "description": {
+     "prima": "",
+     "dopo": "Ambulatorio cardio-metabolico del Gruppo KOS: un approccio multidisciplinare alla gestione del peso e alla prevenzione del rischio cardiovascolare."
+    }
+   }
+  },
+  {
+   "id": 1076,
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/fisiatria",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Fisiatria nei centri del Gruppo KOS: visite di medicina fisica e riabilitativa per la valutazione, la cura e il recupero funzionale della persona."
+    }
+   }
+  },
+  {
+   "id": 64,
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/medicina-dello-sport",
+   "campi": {
+    "description": {
+     "prima": "Supporto medico per atleti e appassionati di sport, promuovendo performance ottimali e prevenzione degli infortuni. Scopri la Medicina dello Sport Kos.",
+     "dopo": "Medicina dello sport: prevenzione, diagnosi e cura delle patologie legate all’attività fisica, per atleti e appassionati, nei centri del Gruppo KOS."
+    }
+   }
+  },
+  {
+   "id": 68,
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/oculistica",
+   "campi": {
+    "description": {
+     "prima": "Servizi oculistici per il benessere della tua vista, offrendo diagnosi e terapie per diverse patologie oculari, così come servizi e visita stand e di controllo.",
+     "dopo": "Oculistica: prevenzione, diagnosi e cura delle malattie dell’occhio e dei disturbi della vista, con visite di base e di controllo nei centri KOS."
+    }
+   }
+  },
+  {
+   "id": 643,
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/odontoiatria",
+   "campi": {
+    "description": {
+     "prima": "Trova cure e servizi odontoiatrici di alta qualità presso i nostri ambulatori specializzati. Affida il tuo sorriso a KOS per una salute orale impeccabile.",
+     "dopo": "Odontoiatria negli ambulatori del Gruppo KOS: prevenzione, diagnosi e cura delle malattie di denti, bocca e ossa mascellari e riabilitazione dentale."
+    }
+   }
+  },
+  {
+   "id": 284,
+   "uri": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/servizio-anestesia",
+   "campi": {
+    "description": {
+     "prima": "Consulenze Anestesiologiche in preparazione di interventi chirurgici, consulenze di terapia antalgica/ palliativa e altro. Scopri ora le nostre prestazioni.",
+     "dopo": "Servizio di anestesia a Civitanova Marche: consulenze anestesiologiche prima di un intervento chirurgico e di terapia antalgica e palliativa."
+    }
+   }
+  },
+  {
+   "id": 1134,
+   "uri": "it/servizi-e-cure/homecare-academy",
+   "campi": {
+    "description": {
+     "prima": "Corsi pratici per il caregiver che assiste a casa un familiare fragile dopo la dimissione: sicurezza, farmaci, parametri vitali. In aula oppure online.",
+     "dopo": "HomeCare Academy: corsi per chi assiste a casa un familiare fragile dopo la dimissione, su sicurezza, farmaci e parametri vitali, in aula o online."
+    }
+   }
+  },
+  {
+   "id": 16,
+   "uri": "it/servizi-e-cure/psichiatria",
+   "campi": {
+    "description": {
+     "prima": "Percorsi terapeutici specialistici per la cura della salute mentale orientati al benessere della persona e al suo miglior recupero psichico, fisico e relazionale.",
+     "dopo": "Percorsi terapeutici specialistici per la salute mentale, orientati al benessere della persona e al suo recupero psichico, fisico e relazionale."
+    }
+   }
+  },
+  {
+   "id": 94,
+   "uri": "it/servizi-e-cure/psichiatria/dipendenze",
+   "campi": {
+    "description": {
+     "prima": "Le Dipendenze Patologiche sono alterazioni del comportamento causate dall'uso eccessivo di sostanze o da comportamenti ai quali si è completamente dipendenti.",
+     "dopo": "Le dipendenze patologiche sono alterazioni del comportamento causate dall'uso eccessivo di sostanze o da comportamenti che creano dipendenza."
+    }
+   }
+  },
+  {
+   "id": 96,
+   "uri": "it/servizi-e-cure/psichiatria/disturbi-dell-umore-e-depressione",
+   "campi": {
+    "description": {
+     "prima": "Le alterazioni dell'umore includono il quadro depressivo, caratterizzato da perdita di avolizione, capacità cognitiva, ritiro sociale e calo dell'umore.",
+     "dopo": "Disturbi dell'umore e depressione: calo dell'umore, perdita di motivazione, difficoltà cognitive e ritiro sociale. I percorsi di cura in psichiatria."
+    }
+   }
+  },
+  {
+   "id": 123,
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/psicoterapeutico-approccio-cognitivo-comportamentale",
+   "campi": {
+    "longtitle": {
+     "prima": "Trattamento psicoterapeutico - Approccio cognitivo comportamentale | KOS",
+     "dopo": "Psicoterapia con approccio cognitivo comportamentale | KOS"
+    }
+   }
+  },
+  {
+   "id": 129,
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/riabilitazione-psichiatrica",
+   "campi": {
+    "description": {
+     "prima": "La Riabilitazione Psichiatrica mira a controllare i sintomi, rimuovere le barriere interpersonali, recuperare l'indipendenza e favorire la socializzazione.",
+     "dopo": "La riabilitazione psichiatrica aiuta a controllare i sintomi, superare le barriere relazionali, recuperare l'autonomia e favorire la socializzazione."
+    }
+   }
+  },
+  {
+   "id": 130,
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/riabilitazione-psiconutrizionale",
+   "campi": {
+    "description": {
+     "prima": "La riabilitazione psiconutrizionale rappresenta al momento attuale lo strumento più valido per affrontare situazioni di malnutrizione. Scopri di più su Kos.",
+     "dopo": "La riabilitazione psiconutrizionale, trattamento dell'area psichiatrica, è oggi lo strumento più valido per affrontare le situazioni di malnutrizione."
+    }
+   }
+  },
+  {
+   "id": 15,
+   "uri": "it/servizi-e-cure/riabilitazione",
+   "campi": {
+    "longtitle": {
+     "prima": "Servizi di riabilitazione: recupera la tua salute e il benessere | KOS",
+     "dopo": "Riabilitazione: servizi e percorsi di recupero | KOS"
+    }
+   }
+  },
+  {
+   "id": 91,
+   "uri": "it/servizi-e-cure/riabilitazione/assistenza-stati-vegetativi-persistenti",
+   "campi": {
+    "longtitle": {
+     "prima": "L'Assistenza degli Stati Vegetativi Persistenti e delle Gravissime Disabilità | KOS",
+     "dopo": "Assistenza a stati vegetativi e gravissime disabilità | KOS"
+    }
+   }
+  },
+  {
+   "id": 272,
+   "uri": "it/servizi-e-cure/riabilitazione/riabilitazione-urologica-e-del-pavimento-pelvico",
+   "campi": {
+    "longtitle": {
+     "prima": "Diatermia (Tecarterapia), i benefici nel trattamento del dolore pelvico | KOS",
+     "dopo": "Riabilitazione urologica e del pavimento pelvico | KOS"
+    },
+    "description": {
+     "prima": "Abbinata alla fisioterapia tradizionale, risulta avere un'efficacia significativa sulla riduzione dell’infiammazione e del dolore.",
+     "dopo": "Riabilitazione urologica e del pavimento pelvico: la diatermia (tecarterapia), abbinata alla fisioterapia, riduce infiammazione e dolore."
+    }
+   }
+  },
+  {
+   "id": 110,
+   "uri": "it/servizi-e-cure/riabilitazione/trattamenti/diagnosi-e-trattamento-spasticita",
+   "campi": {
+    "description": {
+     "prima": "Scopri i percorsi di diagnosi e trattamento per la spasticità offerti da Kos. Valutazioni specializzate, terapie e interventi chirurgici per il benessere.",
+     "dopo": "Percorsi di diagnosi e trattamento della spasticità nelle strutture KOS: valutazioni specialistiche, terapie e, se indicati, interventi chirurgici."
+    }
+   }
+  },
+  {
+   "id": 25,
+   "uri": "it/strutture/comunita-terapeutiche-psichiatriche",
+   "campi": {
+    "description": {
+     "prima": "Elenco delle Comunità terapeutiche psichiatriche. Ambienti protetti per percorsi terapeutici intensivi, supportando il recupero e il reinserimento sociale.",
+     "dopo": "Elenco delle comunità terapeutiche psichiatriche KOS: ambienti protetti per percorsi terapeutici intensivi, il recupero e il reinserimento sociale."
+    }
+   }
+  },
+  {
+   "id": 24,
+   "uri": "it/strutture/residenze-per-anziani",
+   "campi": {
+    "longtitle": {
+     "prima": "Residenze per anziani: un luogo accogliente e sicuro per la terza età | KOS",
+     "dopo": "Residenze per anziani e RSA: elenco delle strutture | KOS"
+    }
+   }
+  }
+ ]
+}

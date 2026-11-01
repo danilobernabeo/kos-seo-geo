@@ -1,0 +1,838 @@
+{
+ "_info": "Testi proposti per le voci KOS-21 (title), KOS-22 (description), KOS-23 (H1). Chiave = URL dell'audit; campi facoltativi: title (longtitle, compreso « | KOS»), description, h1, note. Campo assente = invariato. Le description delle schede medici vengono da medici-description-proposte.json (qui si possono sovrascrivere). Rigenerare con: python3 scripts/docs/kos-21-23-proposte.py",
+ "_schemi": {
+  "convenzioni": {
+   "description": [
+    "Convenzione {nome} con il Gruppo KOS: agevolazioni economiche riservate agli assistiti convenzionati nelle strutture sanitarie che aderiscono all'accordo.",
+    "Convenzione {nome} con il Gruppo KOS: agevolazioni economiche riservate agli assistiti convenzionati nelle strutture KOS che aderiscono all'accordo.",
+    "Convenzione {nome} con il Gruppo KOS: agevolazioni economiche per gli assistiti convenzionati nelle strutture KOS aderenti all'accordo.",
+    "Convenzione {nome} con il Gruppo KOS: agevolazioni economiche per gli assistiti nelle strutture aderenti all'accordo.",
+    "Convenzione {nome}: agevolazioni economiche per gli assistiti nelle strutture del Gruppo KOS aderenti."
+   ],
+   "note": "Schema unico per le 60 convenzioni: nome dell'ente come nel title attuale; si usa la prima variante che sta tra 120 e 150 caratteri"
+  }
+ },
+ "_verifica_20261101": {
+  "redirect": {
+   "https://kosgroup.com/it/news-e-media/comunicati-stampa/grosseto-presentato-centro-diurno-maremma": "https://kosgroup.com/assets/doc/comunicati/2026/02-poggione-presentazione-centro-diurno.pdf",
+   "https://kosgroup.com/it/news-e-media/comunicati-stampa/istituto-santo-stefano-una-stanza-snoezelen-per-pazienti-in-stato-vegetativo": "https://kosgroup.com/assets/doc/comunicati/2026/01-kos-presentazione-stanza-polisensoriale-ppp.pdf",
+   "https://kosgroup.com/it/chi-siamo/qualita-delle-cure/medici/duplica-filippo-foscaro": "https://kosgroup.com/it/chi-siamo/qualita-delle-cure/medici/alice-doro",
+   "https://kosgroup.com/it/chi-siamo/qualita-delle-cure/medici/maria-maddalena-santanostaso": "https://kosgroup.com/it/chi-siamo/qualita-delle-cure/medici/maria-maddalena-santonastaso"
+  },
+  "h1_corretti": {
+   "https://kosgroup.com/it/news-e-media/eventi-e-convegni/2025/la-gestione-della-persona-con-demenza": "La gestione della persona con demenza"
+  },
+  "nota": "Il 1/11 Danilo ha verificato sul sito che title, description e H1 sono ancora quelli del 27/10, salvo le righe qui sopra"
+ },
+ "_segnalazioni": [
+  [
+   "Comunicati stampa in 301 verso il PDF",
+   "2 URL dell'audit (grosseto-presentato-centro-diurno-maremma, istituto-santo-stefano-una-stanza-snoezelen-per-pazienti-in-stato-vegetativo) rispondono con 301 al PDF del comunicato: non c'è una pagina su cui scrivere title, description e H1",
+   "Nessun testo sul campo. Il titolo si gestisce nei metadati del PDF (campo Title), voce KOS-8 in corso in un'altra chat"
+  ],
+  [
+   "Scheda medico duplicata",
+   "/medici/duplica-filippo-foscaro → 301 a /medici/alice-doro (id 1078): l'alias era quello di una scheda copiata. La scheda Alice Doro non ha description (non è nell'elenco dell'audit)",
+   "Nessun testo per l'URL dell'audit; togliere il vecchio URL da sitemap ed elenchi se compare ancora. Description di Alice Doro da scrivere quando c'è il profilo (fuori audit)"
+  ],
+  [
+   "Alias con refuso già corretto",
+   "/medici/maria-maddalena-santanostaso → 301 a /medici/maria-maddalena-santonastaso (id 882)",
+   "La description proposta va sulla scheda di destinazione (id 882), come indicato nel file delle description medici"
+  ],
+  [
+   "Alias con refuso",
+   "/medici/federia-sanges (Federica Sanges, id 1145)",
+   "Alias da correggere in federica-sanges con 301 dal vecchio URL (fuori dalle voci 21-23, da fare con il riallineamento degli URL)"
+  ],
+  [
+   "Nome invertito",
+   "/medici/querci-martina: title «Querci Martina», H1 «Martina Querci»",
+   "Title corretto nelle proposte (fuori audit); alias martina-querci con 301 da valutare insieme a federia-sanges"
+  ],
+  [
+   "Title e description copiati da un'altra pagina",
+   "/it/centri/villa-san-giuseppe/storico-liste-di-attesa ha title e description di «Dati societari»",
+   "Proposti testi propri; controllare il contenuto della pagina e la sua posizione nell'albero"
+  ],
+  [
+   "Introtext copiato da un'altra pagina",
+   "/it/servizi-e-cure/ambulatori-e-medicina-specialistica/fisiatria ha l'introtext della psicologia («La psicologia è una scienza…»)",
+   "Riscrivere l'introtext (compare in elenchi e anteprime); la description proposta non lo usa"
+  ],
+  [
+   "Description e introtext di un altro articolo",
+   "/approfondimenti/riabilitazione-cardiologica-…: description e introtext parlano di un dispositivo di traduzione vocale-gestuale",
+   "Description proposta sull'argomento della pagina; correggere anche l'introtext dopo aver letto il testo"
+  ],
+  [
+   "Title su un altro argomento",
+   "/servizi-e-cure/riabilitazione/riabilitazione-urologica-e-del-pavimento-pelvico: title sulla diatermia (tecarterapia), H1 sulla riabilitazione urologica",
+   "Title proposto sull'argomento della pagina; verificare che il testo della pagina tratti davvero la diatermia"
+  ],
+  [
+   "Testo con errore di contesto",
+   "/lavorare-in-kos/perche-lavorare-in-kos: la description promette «opportunità sull'isola» (confusione con l'isola di Kos)",
+   "Description riscritta (fuori audit)"
+  ],
+  [
+   "Testi copiati tra eventi",
+   "/eventi-e-convegni/2026/instabilita-di-spalla-e-gomito-…: description che inizia con «Partecipa all'evento \"Anestesia Loco-…»; /news/2026/giornata-del-fiocchetto-lilla-…: description con le date del 2025",
+   "Description riscritte; per il Fiocchetto 2026 senza date, da verificare sul testo"
+  ],
+  [
+   "Pagine doppie news/evento",
+   "Giornata di prevenzione femminile (news 886, evento 890) e Open Day osteopatia e fisioterapia (news 889, evento 908): stessi testi su due URL",
+   "Per ora differenziati (si cambia l'evento). Meglio consolidare: una sola pagina, l'altra in 301 (decisione editoriale di KOS)"
+  ],
+  [
+   "Probabile convegno doppio",
+   "/approfondimenti/convegno-cpr («Innovazione in Chirurgia Protesica. 10 giugno 2023») e /eventi-e-convegni/2024/innovazione-in-chirurgia-protesica",
+   "Verificare se è lo stesso convegno: in quel caso consolidare con 301"
+  ],
+  [
+   "Due news sullo stesso servizio",
+   "Diagnostica a domicilio di Villa dei Pini: /news/2026/la-diagnostica-a-domicilio-… (id 1113) e /news/2026/villa-dei-pini-porta-la-diagnostica-a-casa (id 1162)",
+   "Testi differenziati; collegare le due news o consolidarle"
+  ],
+  [
+   "Suffisso « | KOS» scritto a mano",
+   "Il suffisso è nel longtitle di ogni pagina: mancante (id 911), senza spazio («Villa Rosa| KOS», id 1135), «| Kos» (id 1012), spazio iniziale nel longtitle (id 954, 1138, 1139)",
+   "Corretti nelle proposte. Nel consolidamento degli head: suffisso aggiunto dal template solo se manca, così i nuovi contenuti non lo sbagliano"
+  ],
+  [
+   "H1 scritto nel contenuto",
+   "Nei template cure, generica, generica-en, strutture, specializzazioni e progetti-speciali l'H1 è nel campo content (5 H1 proposti: privacy IT, KOS Academy IT, residenze per anziani, Villa Margherita Vicenza ×2)",
+   "Modifica a mano nel contenuto (aggiorna-campi.php non tocca content); in prospettiva H1 dal campo pagetitle/longtitle nel template"
+  ],
+  [
+   "Nomi delle convenzioni",
+   "Title con maiuscole automatiche («Banco Bpm», «Iss Insalute», «Icc», «Iws», «Saa», «Seb Sms», «Mutua Nuova Sanita'», «Vis Valore in Sanita'») e H1 tutto maiuscolo",
+   "Nelle description si usa il nome come nel title (regola concordata). Correggere i nomi (BPM, ISS, Sanità…) con l'elenco ufficiale delle convenzioni, fuori dalle voci 21-23"
+  ],
+  [
+   "Contenuti datati",
+   "Tirocini post-lauream 2023 (Villa dei Pini Firenze), Pronto Parkinson «sospeso», lettera di Edo (emergenza sanitaria), Tommaso Marini verso Parigi 2024",
+   "Valutare con KOS se aggiornarli, archiviarli o metterli in noindex"
+  ],
+  [
+   "Giornata OSS: Mondiale o Nazionale",
+   "/progetti-speciali/2025/giornata-mondiale-oss: title «Giornata Mondiale», description «Giornata Nazionale»",
+   "Allineare dopo verifica"
+  ],
+  [
+   "LAMPO",
+   "/tecnologia-e-innovazione/lampo: title sullo studio del movimento umano, description su un laboratorio per la qualità delle cure",
+   "Verificare sul testo quale dei due è corretto"
+  ],
+  [
+   "Schede medici",
+   "11 description del file medici sono sotto 120 caratteri; 4 schede senza struttura leggibile (Zenobi, Conti, Argentieri, Guidoni) e 1 senza dati (Chiaramonti); Gambini: «Cardiochirurgo» sulla pagina, «cardiologo» nella description",
+   "Testi usati così come sono (niente fatti aggiunti); i dati mancanti si completano con l'anagrafica dei professionisti (voce 24 / TuoTempo)"
+  ],
+  [
+   "Voci già superate",
+   "Poliambulatori Parco di Veio e Valdaso (title e description già diversi al 27/10), HomeCare Academy (title 54 e description presenti al 27/10), H1 doppio del convegno demenza (corretto, verifica 1/11)",
+   "Evidenza: meta-stato-20261027.csv e verifica del 1/11; nella nota di consegna come «già risolto»"
+  ]
+ ],
+ "https://kosgroup.com/en": {
+  "description": "KOS Group: professionals dedicated to health and well-being, with psychiatric care, rehabilitation and diagnostics in a network of facilities."
+ },
+ "https://kosgroup.com/en/privacy": {
+  "description": "KOS Group privacy policy: how the personal data of kosgroup.com visitors is collected, processed and protected, and who to contact about it.",
+  "note": "Description fuori audit (99 caratteri); title e H1 restano: si cambia la pagina italiana"
+ },
+ "https://kosgroup.com/en/terms-and-conditions": {
+  "description": "Terms and conditions of the KOS Group website: intellectual property, use of content, trademarks, external links and liability for kosgroup.com."
+ },
+ "https://kosgroup.com/en/work-in-kos/kos-academy": {
+  "description": "KOS Academy, the KOS Group training programme: the course calendar and professional development opportunities for those working in or joining KOS.",
+  "note": "Description fuori audit (114 caratteri); title e H1 restano: si cambia la pagina italiana"
+ },
+ "https://kosgroup.com/it": {
+  "title": "RSA, riabilitazione, psichiatria e diagnostica | Gruppo KOS",
+  "description": "Gruppo KOS: riabilitazione, assistenza psichiatrica, diagnostica e residenze per anziani in una rete di strutture sanitarie e socio-sanitarie.",
+  "note": "Home: suffisso « | Gruppo KOS» invece di « | KOS» (marchio completo sulla pagina principale), da confermare"
+ },
+ "https://kosgroup.com/it/centri/casa-pero": {
+  "description": "Casa Pero è una comunità psichiatrica per adulti con disturbi psicotici, dell’umore e della personalità che necessitano di psicoterapia residenziale."
+ },
+ "https://kosgroup.com/it/centri/casa-sanremo": {
+  "description": "Casa Sanremo è una comunità riabilitativa per persone con disturbi psichici che necessitano di interventi alternativi o successivi al ricovero."
+ },
+ "https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-ascoli-piceno": {
+  "description": "Centro Ambulatoriale Santo Stefano di Ascoli Piceno: servizi di riabilitazione e cura del Gruppo KOS, con percorsi per recuperare salute e autonomia."
+ },
+ "https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-san-benedetto-del-tronto": {
+  "description": "Centro Ambulatoriale Santo Stefano di San Benedetto del Tronto: i servizi di riabilitazione ambulatoriale del Gruppo KOS sulla costa marchigiana."
+ },
+ "https://kosgroup.com/it/centri/centro-ambulatoriale-santo-stefano-san-severino": {
+  "description": "Centro Ambulatoriale Santo Stefano di San Severino Marche, nella frazione di Taccoli: servizi di riabilitazione e cura del Gruppo KOS."
+ },
+ "https://kosgroup.com/it/centri/poliambulatorio-parco-di-veio": {
+  "note": "Title e description già diversi da quelli del Poliambulatorio Valdaso al 27/10: duplicato superato"
+ },
+ "https://kosgroup.com/it/centri/poliambulatorio-valdaso": {
+  "description": "Poliambulatorio Valdaso a Campofilone, in Contrada Valdaso 53/A: i servizi sanitari e le prestazioni ambulatoriali del Gruppo KOS nel Fermano.",
+  "note": "Title e description già diversi da quelli di Parco di Veio al 27/10 (duplicato superato); description fuori audit (116 caratteri)"
+ },
+ "https://kosgroup.com/it/centri/villa-dei-pini-firenze": {
+  "description": "Villa dei Pini Firenze è una clinica specialistica psichiatrica accreditata e convenzionata con il SSN, con 75 posti letto in camere doppie e singole."
+ },
+ "https://kosgroup.com/it/centri/villa-fastiggi": {
+  "description": "Villa Fastiggi a Pesaro, in Piazza Tarquinio Provini 2: servizi di riabilitazione del Gruppo KOS con percorsi di cura personalizzati e di qualità."
+ },
+ "https://kosgroup.com/it/centri/villa-margherita-vicenza-psichiatria": {
+  "h1": "Villa Margherita Vicenza: Centro di Psichiatria",
+  "note": "H1 uguale alla scheda della riabilitazione nella stessa sede: si distinguono entrambe come nel title"
+ },
+ "https://kosgroup.com/it/centri/villa-margherita-vicenza-riabilitazione": {
+  "h1": "Villa Margherita Vicenza: Centro di riabilitazione",
+  "note": "H1 uguale alla scheda della psichiatria nella stessa sede: si distinguono entrambe come nel title"
+ },
+ "https://kosgroup.com/it/centri/villa-san-giuseppe": {
+  "description": "Villa San Giuseppe ad Anzano del Parco (CO): centro di riabilitazione del Gruppo KOS con servizi dedicati al recupero funzionale e al benessere."
+ },
+ "https://kosgroup.com/it/centri/villa-san-giuseppe/storico-liste-di-attesa": {
+  "title": "Storico liste di attesa - Villa San Giuseppe | KOS",
+  "description": "Storico delle liste di attesa di Villa San Giuseppe, struttura del Gruppo KOS: i dati sui tempi di attesa pubblicati dalla struttura per trasparenza.",
+  "note": "Title e description attuali sono quelli di «Dati societari» (copiati): da verificare sul testo della pagina"
+ },
+ "https://kosgroup.com/it/chi-siamo/governance/dati-societari": {
+  "title": "Dati societari: trasparenza e governance | KOS",
+  "description": "Dati societari di KOS S.p.A. e delle società del gruppo: informazioni sulla governance e sulla trasparenza aziendale del Gruppo KOS."
+ },
+ "https://kosgroup.com/it/chi-siamo/qualita-delle-cure/medici/querci-martina": {
+  "title": "Martina Querci | KOS",
+  "note": "Title fuori audit: nome e cognome invertiti rispetto all'H1 e alle altre schede"
+ },
+ "https://kosgroup.com/it/chi-siamo/qualita-delle-cure/tecnologia-e-innovazione/lampo": {
+  "description": "LAMPO è il laboratorio specializzato di KOS che migliora diagnosi, sicurezza e qualità delle cure grazie a processi più rapidi, tracciati e integrati.",
+  "note": "Il title parla di studio del movimento umano, la description di un laboratorio per la qualità delle cure: da verificare sul testo della pagina"
+ },
+ "https://kosgroup.com/it/lavorare-in-kos/formazione-kos-academy": {
+  "title": "KOS Academy: formazione e calendario corsi | KOS",
+  "description": "KOS Academy, la formazione del Gruppo KOS: il calendario dei corsi e le opportunità di crescita professionale per chi lavora o vuole lavorare in KOS.",
+  "h1": "Formazione KOS Academy",
+  "note": "Duplicato con la versione inglese (traduzione collegata da hreflang): si cambia solo la pagina italiana; description fuori audit (114 caratteri)"
+ },
+ "https://kosgroup.com/it/lavorare-in-kos/perche-lavorare-in-kos": {
+  "title": "Lavorare in KOS: opportunità e vantaggi | KOS",
+  "description": "Perché lavorare in KOS: opportunità di carriera e vantaggi per i professionisti della sanità e dell'assistenza nelle strutture del Gruppo KOS.",
+  "note": "Description fuori audit: quella attuale parla di «opportunità sull'isola» (confusione con l'isola di Kos)"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/a-villa-pineta-nasce-il-centro-di-ricerca-e-innovazione-scientifica": {
+  "title": "Villa Pineta: nasce il centro di ricerca e innovazione | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/a-villa-pineta-un-videodermatoscopio-digitale-per-la-mappatura-dei-nei": {
+  "title": "Villa Pineta: videodermatoscopio per la mappatura dei nei | KOS",
+  "description": "Al Poliambulatorio di Villa Pineta un videodermatoscopio digitale per la mappatura dei nei, strumento avanzato per la diagnosi precoce del melanoma.",
+  "note": "Description fuori audit (106 caratteri)"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/abbuffate-cosa-sono-come-riconoscerle-e-come-affrontarle": {
+  "description": "Cos'è il disturbo da alimentazione incontrollata, come riconoscere le abbuffate e quali percorsi di cura integrati offre Villa Sant'Alessandro a Roma."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/alberghi-e-accessibilit-importante-informarsi-prima-di-prenotare": {
+  "title": "Alberghi accessibili: cosa verificare prima di prenotare | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/analisi-del-passo-e-della-corsa-quando-serve-e-cosa-rivela": {
+  "description": "L'analisi del passo e della corsa valuta deambulazione e postura, aiuta a prevenire infortuni e a migliorare le performance: come si fa al Myolab."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/bpco-e-la-riabilitazione-pneumologica": {
+  "title": "BPCO e riabilitazione pneumologica | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/come-combattere-la-sedentarieta-con-semplici-abitudini-quotidiane": {
+  "title": "Sedentarietà: come combatterla ogni giorno | KOS",
+  "description": "Sedentarietà: come riconoscerla e affrontarla con piccoli cambiamenti nello stile di vita e strategie semplici per muoversi di più ogni giorno."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/come-conservare-e-organizzare-i-farmaci-in-casa": {
+  "title": "Come conservare e organizzare i farmaci in casa | KOS",
+  "description": "Come conservare e organizzare i farmaci in casa in sicurezza: dove riporli, quali tenere in frigorifero, come ordinarli e come smaltirli bene.",
+  "note": "Title fuori audit (67 caratteri)"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/come-riacquistare-l-autonomia-dopo-un-intervento-o-un-trauma": {
+  "title": "Riacquistare l’autonomia dopo un intervento o un trauma | KOS",
+  "description": "Come ritrovare l’autonomia dopo una malattia neurologica, un trauma o un intervento chirurgico: i percorsi riabilitativi del Gruppo KOS.",
+  "note": "Title fuori audit (66 caratteri)"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/come-richiedere-assistenza-domiciliare-per-anziani": {
+  "title": "Assistenza domiciliare per anziani: come richiederla | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/con-la-teatro-terapia-i-pazienti-di-villa-jolanda-imparano-a-comunicare-e-a-relazionarsi-in-un-modo-nuovo": {
+  "title": "Teatro terapia a Villa Jolanda: imparare a comunicare | KOS",
+  "description": "A Villa Jolanda la teatro terapia è un'attività espressiva inserita nel programma terapeutico, per aiutare i pazienti a comunicare e relazionarsi."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/consulenze-a-distanza-per-la-valutazione-dello-stato-di-salute-funzionale": {
+  "title": "Consulenze a distanza sulla salute funzionale | KOS",
+  "description": "Il dr. Gianni Saracini, fisiatra esperto di postura, offre consulenze online ai pazienti dei centri di Civitanova Marche, Porto Potenza e Tolentino."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/convegno-cpr": {
+  "description": "Convegno del 10 giugno 2023 sulle innovazioni in chirurgia protesica: uso del robot, protesi su misura (custom made) e benefici per il paziente."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/convegno-disturbi-alimentari": {
+  "title": "Convegno ECM 2019: disturbi dell’alimentazione e obesità | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/corso-per-diventare-operatore-socio-sanitario-oss": {
+  "description": "Corso per Operatore Socio Sanitario (OSS) contro la carenza di personale sanitario, con tirocinio nelle strutture del Gruppo KOS nelle Marche."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/cosa-si-intende-per-stile-di-vita": {
+  "description": "KOS e SIET alla sesta Giornata dello Stile di Vita: alimentazione sana, attività motoria, gestione di emozioni e stress e buona qualità del sonno."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/dca-in-adolescenza-segnali-precoci-e-come-intervenire": {
+  "description": "Anoressia, bulimia e altri DCA colpiscono sempre più adolescenti: i segnali precoci da riconoscere e come intervenire con l'aiuto di professionisti."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/dca-maschili-sintomi-e-vissuti-ancora-poco-riconosciuti": {
+  "title": "DCA negli uomini: sintomi e percorsi di cura | KOS",
+  "description": "Anoressia, bulimia e binge eating riguardano anche gli uomini: come si manifestano i DCA maschili, perché sono sottodiagnosticati e come si curano.",
+  "note": "Title fuori audit (66 caratteri)"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/dca-una-patologia-grave-ma-sottovalutata": {
+  "description": "DCA, patologia grave ma sottovalutata: per curarli servono diagnosi precoce, corretta presa in carico e percorsi multidisciplinari personalizzati."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/dipendenza-da-benzodiazepine": {
+  "title": "Dipendenza da benzodiazepine: cosa sapere | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/disturbi-visivi-valutazione-e-strategie-di-trattamento-in-et-evolutiva": {
+  "title": "Disturbi visivi nei bambini: valutazione e trattamento | KOS",
+  "description": "Disturbi visivi in età evolutiva: la presa in carico valuta il residuo visivo e aiuta il bambino a usare al meglio il proprio potenziale visivo."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/esdm-il-programma-precoce-per-bambini-con-autismo": {
+  "title": "Autismo e intervento precoce: l'Early Start Denver Model | KOS",
+  "description": "L'Early Start Denver Model (ESDM) è un intervento precoce per bambini con autismo che favorisce comunicazione, socialità e apprendimento col gioco."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/esercizi-di-respirazione-per-rilassarsi-5-tecniche-facili": {
+  "description": "Cinque tecniche di respirazione semplici ed efficaci per ridurre ansia e stress, migliorare sonno e concentrazione e ritrovare calma e benessere."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/fisiatria": {
+  "h1": "Fisioterapia e fisiatria al Centro Medico Riabilitativo",
+  "note": "H1 duplicato con la pagina di servizio /it/servizi-e-cure/ambulatori-e-medicina-specialistica/fisiatria (resta «Fisiatria»): si cambia l'approfondimento"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/gli-esami-del-sangue-potranno-predire-la-depressione": {
+  "description": "Depressione maggiore (MDD) e disturbo post-traumatico da stress (PTSD): gli esami del sangue potranno aiutare a predire questi disturbi psichiatrici?"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/idrokinesiterapia-per-adulti-e-bambini": {
+  "title": "Idrokinesiterapia: la riabilitazione in acqua | KOS",
+  "description": "L'idrokinesiterapia è riabilitazione in acqua per adulti e bambini: riduce dolore e carico articolare e aiuta il recupero neurologico e ortopedico.",
+  "note": "Title fuori audit (69 caratteri)"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/il-malato-al-centro-delle-cure": {
+  "title": "Parkinson: il malato al centro delle cure, convegno di Arco | KOS",
+  "description": "Convegno sulla malattia di Parkinson dell'8 marzo 2024 al Palazzo del Casinò di Arco: il malato al centro delle cure in Trentino-Alto Adige e Veneto.",
+  "note": "Description fuori audit (74 caratteri)"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/il-ruolo-della-psicomotricit-in-riabilitazione": {
+  "description": "La psicomotricità in riabilitazione per Abati e Colla: dalle esperienze senso-percettive alla sfera cognitiva, all'azione volontaria, all'autonomia."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/il-supporto-psicologico-ai-famigliari-nel-percorso-di-cura-perch-importante": {
+  "title": "Supporto psicologico ai familiari e alleanza terapeutica | KOS",
+  "description": "Il supporto psicologico ai familiari nel percorso di cura: il caregiver è una figura centrale e una risorsa per la riabilitazione dei pazienti.",
+  "note": "Description fuori audit (84 caratteri)"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/il-teatro-come-terapia-per-i-bambini-con-disturbi-del-linguaggio": {
+  "title": "Teatro terapia per bambini con disturbi del linguaggio | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/importanza-della-prevenzione-e-delle-analisi-del-sangue-periodiche": {
+  "description": "Perché fare analisi del sangue periodiche: gli esami chiave (emocromo, glicemia, colesterolo, funzione renale ed epatica) e quando ripeterli."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/informativa-tirocini-post-lauream-psicologia-2023-villa-dei-pini-firenze": {
+  "title": "Tirocini post-lauream in psicologia, Villa dei Pini Firenze | KOS",
+  "description": "Informativa 2023 sui tirocini post-lauream in Psicologia presso Villa dei Pini Firenze, struttura del Gruppo KOS: le informazioni per i candidati.",
+  "note": "Description fuori audit (119 caratteri); da verificare sul testo della pagina (informativa del 2023: valutare se è ancora attuale)"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/la-cardio-tac-esame-risolutivo-nella-prevenzione-cardiovascolare": {
+  "title": "Cardio TAC e prevenzione cardiovascolare | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/la-musica-e-i-suoi-benefici-nei-percorsi-di-riabilitazione-neurologica": {
+  "title": "Musica e riabilitazione neurologica: i benefici | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/laboratorio-di-cucina-stimola-lo-sviluppo-psico-fisico-del-bambino": {
+  "title": "Laboratorio di cucina per lo sviluppo del bambino | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/myolab-sempre-piu-smart": {
+  "description": "Il Centro Myolab attiva la prenotazione online: la visita si fissa comodamente da qualsiasi luogo, scegliendo il giorno e l'orario preferiti."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/nuovi-servizi-di-cura-e-assistenza-dedicati-ai-pazienti-in-eta-pediatrica": {
+  "title": "Polo Diagnostico Villalba: nuovi servizi pediatrici | KOS",
+  "description": "Il Polo Diagnostico Villalba di Macerata amplia l'offerta con nuovi servizi di cura e assistenza dedicati ai pazienti in età pediatrica."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/open-day-la-terapia-biostimolante-bemer": {
+  "title": "Open Day terapia BEMER a San Severino Marche | KOS",
+  "description": "Open Day venerdì 23 febbraio al Centro Ambulatoriale Santo Stefano Riabilitazione di San Severino Marche: un ciclo di terapia biostimolante BEMER."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/parkinson-come-riconoscerlo": {
+  "description": "Il Parkinson può esordire con segnali lievi e progressivi: quali sono i primi sintomi da riconoscere e quando rivolgersi a uno specialista."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/parkinson-le-infusioni-intraduodenale-con-levodopa": {
+  "description": "Infusioni intraduodenali di levodopa, trattamento efficace contro i sintomi del Parkinson: se ne è parlato alla Casa di Cura Villa Margherita."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/pronto-parkinson-per-non-lasciare-soli-i-pazienti-cronici": {
+  "description": "Pronto Parkinson, il servizio della Casa di Cura Villa Margherita per i pazienti con malattia di Parkinson nel periodo di emergenza, è stato sospeso."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/quanti-benefici-dalla-pet-therapy": {
+  "title": "Pet therapy a Villa Armonia Nuova: i benefici | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/recupero-di-coscienza-possibile-il-rientro-a-domicilio": {
+  "description": "Dopo il recupero di coscienza è possibile il rientro a domicilio? Per De Tanti la famiglia va sostenuta dal team riabilitativo nelle scelte da fare."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/riabilitazione-cardiologica-ridonare-al-paziente-le-migliori-condizioni-cliniche-nel-minor-tempo-possibile": {
+  "title": "Riabilitazione cardiologica: obiettivi e benefici | KOS",
+  "description": "La riabilitazione cardiologica punta a ridonare al paziente le migliori condizioni cliniche possibili nel minor tempo: come funziona il percorso.",
+  "note": "Description fuori audit: quella attuale parla di un dispositivo di traduzione vocale-gestuale (testo di un'altra pagina); da verificare sul testo della pagina"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/riabilitazione-della-spalla-esercizi-tempi-e-recupero": {
+  "description": "La riabilitazione della spalla dopo sovraccarichi, traumi o interventi: come funziona il percorso, quali esercizi si fanno e i tempi di recupero."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/riabilitazione-dopo-una-frattura-come-funziona": {
+  "description": "Quanto dura la riabilitazione dopo una frattura? Dal femore al bacino, cosa aspettarsi dal percorso riabilitativo e come favorire il recupero."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/robotica-il-gruppo-santo-stefano-studia-i-benefici-dellesoscheletro-hal": {
+  "title": "Esoscheletro HAL: il robot che aiuta a camminare | KOS",
+  "description": "L'esoscheletro bionico HAL, studiato dal Gruppo Santo Stefano, legge i segnali muscolari e nervosi del paziente e aiuta a recuperare il movimento.",
+  "note": "Description fuori audit (88 caratteri)"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/sport-e-stress-nei-ragazzi-quando-e-opportuno-chiedere-un-supporto-specialistico": {
+  "title": "Sport e stress nei ragazzi: quando chiedere aiuto | KOS",
+  "description": "Lo sport fa bene a bambini e adolescenti, ma può causare stress e ansia da prestazione: i segnali da riconoscere e quando rivolgersi a un esperto."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/stimolazione-magnetica-transcranica": {
+  "title": "Stimolazione magnetica transcranica (TMS) a Villa Rosa | KOS",
+  "description": "A Villa Rosa di Modena un ambulatorio di stimolazione magnetica transcranica (TMS), terapia non invasiva per disturbi psichiatrici e neurologici.",
+  "note": "Description fuori audit (108 caratteri)"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/tecnologia-3d-al-centro-cardinal-ferrari-ausili-su-misura-per-l-autonomia": {
+  "title": "Tecnologia 3D al Cardinal Ferrari: ausili su misura | KOS",
+  "description": "Al Centro Cardinal Ferrari la stampa 3D permette di realizzare ausili su misura per la riabilitazione, a favore di autonomia e qualità di vita."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/test-di-valutazione-del-ragionamento-verbale-dopo-cerebrolesione-acquisita-vrt": {
+  "title": "Test VRT: ragionamento verbale dopo cerebrolesione | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/una-scheda-di-valutazione-per-la-musicoterapia": {
+  "description": "Al Centro Cardinal Ferrari una scheda di valutazione per la musicoterapia, integrata nei percorsi riabilitativi: un progetto che compie tre anni."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/verso-una-psichiatria-gender-based": {
+  "description": "Verso una psichiatria gender-based: il riconoscimento delle differenze di genere in medicina e il Dipartimento Gender, Women and Health dell'OMS."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/visita-neurogeriatrica-cos-e-e-cosa-aspettarsi": {
+  "description": "La visita neurogeriatrica unisce neurologia e geriatria: quando è indicata, come si svolge, chi la esegue e i servizi di Villa San Giuseppe."
+ },
+ "https://kosgroup.com/it/news-e-media/approfondimenti/visita-specialistica-reumatologica": {
+  "description": "Guida alla visita reumatologica: cos'è, quando serve, come si svolge e quali esami aiutano a diagnosticare dolori e rigidità articolari."
+ },
+ "https://kosgroup.com/it/news-e-media/eventi-e-convegni/2024/innovazione-in-chirurgia-protesica": {
+  "title": "Chirurgia protesica: innovazioni e benefici per il paziente | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/eventi-e-convegni/2025/anestesia-loco-regionale-e-sicurezza-il-complesso-perfetto": {
+  "description": "Convegno del 29 marzo 2025 all'Istituto di Riabilitazione Santo Stefano di Porto Potenza Picena su anestesia loco-regionale e sicurezza del paziente."
+ },
+ "https://kosgroup.com/it/news-e-media/eventi-e-convegni/2025/compiti-no-stress": {
+  "description": "Dal 16 al 27 giugno e dal 28 luglio al 9 agosto i laboratori «Compiti no stress» del Centro Ambulatoriale Santo Stefano di Fabriano per lo studio."
+ },
+ "https://kosgroup.com/it/news-e-media/eventi-e-convegni/2025/giornata-di-prevenzione-femminile-al-centro-medico-riabilitativo": {
+  "title": "Giornata di prevenzione femminile del 10 maggio a Cinisello | KOS",
+  "description": "Il 10 maggio, al Centro Medico Riabilitativo di Cinisello Balsamo, visite ginecologiche, nutrizionali, cognitive ed estetiche gratuite per le donne.",
+  "h1": "Giornata di prevenzione femminile del 10 maggio al Centro Medico Riabilitativo",
+  "note": "Duplicato con la news dello stesso evento: si cambia l'evento, la news resta. Le due pagine andrebbero consolidate (vedi Segnalazioni)"
+ },
+ "https://kosgroup.com/it/news-e-media/eventi-e-convegni/2025/la-presa-in-carico-riabilitativa-delle-persone-con-malattia-di-parkinson": {
+  "title": "Parkinson: presa in carico riabilitativa, convegno ECM 2025 | KOS",
+  "description": "Convegno ECM gratuito del 5 dicembre 2025 al Teatro delle Muse di Ancona sulla presa in carico riabilitativa delle persone con malattia di Parkinson.",
+  "note": "Description fuori audit (92 caratteri)"
+ },
+ "https://kosgroup.com/it/news-e-media/eventi-e-convegni/2025/open-day-nutri-la-tua-vita": {
+  "description": "Il 23 ottobre al Poliambulatorio Valdaso mini consulenze nutrizionali gratuite di 15 minuti con le esperte del poliambulatorio, su prenotazione."
+ },
+ "https://kosgroup.com/it/news-e-media/eventi-e-convegni/2025/open-day-osteopatia-e-fisioterapia-al-centro-medico-riabilitativo-di-cinisello": {
+  "title": "Open Day del 24 maggio: osteopatia e fisioterapia | KOS",
+  "description": "Sabato 24 maggio 2025, dalle 10 alle 13, open day al Centro Medico Riabilitativo di Cinisello Balsamo: osteopatia, fisioterapia e postura gratis.",
+  "h1": "Open Day Osteopatia e Fisioterapia al Centro Medico Riabilitativo di Cinisello",
+  "note": "Duplicato con la news dello stesso evento: si cambia l'evento, la news resta. Le due pagine andrebbero consolidate (vedi Segnalazioni)"
+ },
+ "https://kosgroup.com/it/news-e-media/eventi-e-convegni/2025/settimana-del-cervello-screening-gratuiti-a-villa-rosa-per-il-declino-cognitivo": {
+  "description": "Il 15 marzo Villa Rosa a Modena offre screening gratuiti e informazioni sulla TMS, tecnica non invasiva contro il declino cognitivo e la depressione."
+ },
+ "https://kosgroup.com/it/news-e-media/eventi-e-convegni/2026/instabilita-di-spalla-e-gomito-dalla-diagnosi-al-trattamento": {
+  "title": "Instabilità di spalla e gomito: diagnosi e trattamento | KOS",
+  "description": "Corso regionale SICSeG del 31 gennaio 2026 all'Hotel Horizon di Montegranaro: instabilità di spalla e gomito, dalla diagnosi al trattamento.",
+  "note": "Description attuale con un pezzo copiato da un altro evento («Partecipa all'evento \"Anestesia Loco-…»); title fuori audit (67 caratteri)"
+ },
+ "https://kosgroup.com/it/news-e-media/eventi-e-convegni/2026/settimana-del-cervello-2026-eventi-gratuiti-per-la-salute-mentale-a-roma": {
+  "title": "Settimana del Cervello 2026 a Villa Sant’Alessandro, Roma | KOS",
+  "description": "Dal 16 al 22 marzo 2026 Villa Sant’Alessandro a Roma partecipa alla Settimana del Cervello: incontri su neuroscienze, ADHD, social e salute mentale."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2024/a-villa-margherita-uno-screening-dedicato-all-alzheimer": {
+  "description": "A Villa Margherita uno screening per l’Alzheimer: un semplice prelievo di sangue permette di identificare chi è a rischio di sviluppare la malattia."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2024/anni-azzurri-promuove-sei-incontri-formativi-gratuiti-per-i-caregiver": {
+  "title": "Anni Azzurri: sei incontri gratuiti per i caregiver | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/news/2024/farmacia-automatizzata-un-modello-innovativo-per-la-sicurezza-degli-ospiti": {
+  "title": "Farmacia automatizzata per la sicurezza degli ospiti | KOS",
+  "description": "Farmacia automatizzata per la sicurezza delle cure: il progetto coinvolge 2600 posti letto in 22 strutture in Lombardia. Nel World Patient Safety Day."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2024/forum-non-autosufficienza-2024-anni-azzurri-protagonista": {
+  "title": "Forum Non Autosufficienza 2024: Anni Azzurri protagonista | KOS",
+  "note": "Il title attuale dice «Gli Azzurri» invece di «Anni Azzurri»"
+ },
+ "https://kosgroup.com/it/news-e-media/news/2024/intelligenza-artificiale-istituto-santo-stefano-partner-clinico-di-3-progetti": {
+  "title": "IA: l’Istituto Santo Stefano partner clinico di 3 progetti | KOS",
+  "description": "L’Istituto Santo Stefano di Porto Potenza Picena è partner clinico di tre progetti di tecnologia e intelligenza artificiale finanziati dalle Marche."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2024/rinnovato-il-reparto-di-gastroenterologia-di-villa-dei-pini": {
+  "title": "Villa dei Pini: rinnovato il reparto di gastroenterologia | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/39-congresso-sigot-lo-studio-kos-dimostra-che-le-attivita-educative-riducono-l-uso-di-psicofarmaci": {
+  "title": "Studio KOS al SIGOT: meno psicofarmaci con l’educazione | KOS",
+  "description": "Al 39° Congresso SIGOT lo studio KOS: le attività educative in RSA riducono l’uso di psicofarmaci e migliorano autonomia e qualità di vita.",
+  "note": "Title fuori audit: manca il suffisso « | KOS»"
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/a-firenze-apre-il-reparto-per-i-disturbi-dell-alimentazione-nei-minori-di-18-anni": {
+  "description": "Villa dei Pini Firenze apre un reparto per i disturbi alimentari dei minori di 18 anni: ricovero o day hospital, équipe multidisciplinare e famiglia."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/a-villa-pineta-kos-introdotta-la-teleriabilitazione-respiratoria": {
+  "description": "Villa Pineta KOS, in provincia di Modena, avvia la teleriabilitazione respiratoria: fisioterapisti online per pazienti con BPCO e altre patologie."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/anni-azzurri-lancia-il-suo-primo-gioco-in-scatola-per-il-benessere-cognitivo-adatto-a-tutte-le-eta": {
+  "description": "Anni Azzurri lancia AzzurraMente, gioco in scatola che allena memoria, logica e socialità: per giovani, adulti e anziani, per il benessere cognitivo."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/dna-quando-serve-il-ricovero": {
+  "description": "Disturbi alimentari: segnali clinici, criteri ASL e percorsi di ricovero per i DCA a Villa Sant’Alessandro, con équipe multidisciplinare e famiglia."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/fiocchetto-lilla-gli-eventi-del-gruppo-kos": {
+  "description": "Fiocchetto Lilla 2025: dal 12 al 15 marzo incontri e laboratori gratuiti delle cliniche KOS per sensibilizzare sui disturbi alimentari."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/giornata-di-prevenzione-femminile-al-centro-medico-riabilitativo-di-cinisello": {
+  "note": "Duplicato con l'evento /eventi-e-convegni/2025/giornata-di-prevenzione-femminile-al-centro-medico-riabilitativo: si cambia l'evento, la news resta"
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/giornata-internazionale-dell-infermiere": {
+  "note": "Duplicato con il video dello stesso evento: si cambia il video, la news resta"
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/giornata-mondiale-dell-igiene-delle-mani": {
+  "description": "Il 5 maggio 2025 Giornata Mondiale dell’Igiene delle Mani: il tema dei guanti, come rimuoverli e il lavaggio con acqua e sapone contro le infezioni."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/kos-e-natale-una-canzone-per-raccontare-chi-siamo-ogni-giorno": {
+  "title": "KOS è Natale: una canzone per raccontare chi siamo | KOS",
+  "description": "La canzone di Natale del Gruppo KOS, cantata dai colleghi, racconta con gesti e voci i valori di cura, vicinanza e umanità che uniscono il gruppo.",
+  "note": "Title fuori audit (67 caratteri)"
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/musica-inclusione-e-riabilitazione-al-centro-cardinal-ferrari-con-musica-in-castello": {
+  "description": "La XXII edizione di Musica in Castello al Centro Cardinal Ferrari di Fontanellato, con Avis: una serata di musica, inclusione e riabilitazione."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/neuroni-in-festival": {
+  "title": "Neuroni in Festival: bilancio della prima edizione | KOS",
+  "note": "Title duplicato con il video del festival: si cambiano entrambi (news: bilancio; video: «(video)»)"
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/neuroni-in-festival-18-19-20-settembre-villa-sant-alessandro-roma": {
+  "description": "Dal 18 al 20 settembre a Villa Sant’Alessandro (Roma) tre giorni sulla salute mentale: talk, eventi, colloqui gratuiti e visite ai percorsi di cura."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/nuovo-sito-di-gruppo-kos-tutti-i-servizi-in-un-unica-piattaforma": {
+  "title": "È online il nuovo sito del Gruppo KOS | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/open-day-osteopatia-e-fisioterapia": {
+  "note": "Duplicato con l'evento /eventi-e-convegni/2025/open-day-osteopatia-e-fisioterapia-al-centro-medico-riabilitativo-di-cinisello: si cambia l'evento, la news resta"
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/quality-day-kos-promuove-la-cultura-della-qualita": {
+  "description": "Il Quality Day del Gruppo KOS: una giornata di ascolto di pazienti e caregiver, tra customer satisfaction e miglioramento continuo dei servizi."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/storie-di-donne-premiati-i-vincitori-della-xx-edizione-del-concorso-letterario": {
+  "description": "Premiati ad Arco i vincitori della 20ª edizione del concorso letterario Storie di donne: Sara Bicchierini, Fabio Lo Sacco e Ubaldo Busolin."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/una-tecnologia-per-ritrovare-autonomia-anche-alla-guida": {
+  "description": "Dopo una grave cerebrolesione la tecnologia aiuta a ritrovare autonomia anche alla guida, allenando coordinazione, attenzione e riflessi."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2025/villalba-promuove-la-prevenzione-incontro-informativo-sul-tumore-al-seno-e-mammografie-gratuite": {
+  "description": "Il 13 novembre a Macerata un incontro sulla prevenzione del tumore al seno e, dopo l’evento, mammografie gratuite al Poliambulatorio Villalba."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/a-villa-azzurra-apre-il-nuovo-punto-prelievi": {
+  "description": "A Villa Azzurra il nuovo Punto Prelievi: accesso libero senza prenotazione, orari mattutini e prelievo ematico eco-guidato per comfort e sicurezza."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/a-villa-dei-pini-si-rafforza-la-reumatologia": {
+  "description": "Villa dei Pini a Civitanova Marche rafforza la reumatologia con la dott.ssa Styhar: diagnosi precoce di artrosi e artriti e terapie personalizzate."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/a-villa-dei-pini-una-nuova-terapia-rigenerativa-per-articolazioni-tendini-e-muscoli": {
+  "description": "Terapia con PRP a Villa dei Pini di Civitanova Marche: plasma ricco di piastrine per articolazioni, tendini e muscoli, un trattamento poco invasivo."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/a-villa-margherita-torna-arte-e-cura": {
+  "description": "A Villa Margherita Vicenza la seconda edizione di «L’Arte è Cura», rassegna aperta alla cittadinanza: l’arte come relazione, partecipazione e cura."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/allistituto-santo-stefano-una-stanza-snoezelen-per-i-pazienti-in-coma": {
+  "title": "Stanza Snoezelen per pazienti in coma al Santo Stefano | KOS",
+  "description": "All’Istituto Santo Stefano di Porto Potenza Picena una stanza Snoezelen multisensoriale per pazienti in stato vegetativo o di minima coscienza."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/avviata-la-chirurgia-oculistica-a-villa-pini": {
+  "title": "Chirurgia oculistica a Villa dei Pini, Civitanova Marche | KOS",
+  "description": "Nuovo reparto di chirurgia oculistica a Villa dei Pini di Civitanova Marche: cataratta, glaucoma, retina e strabismo, dalla diagnosi al follow-up."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/cardio-tac-al-centro-cardinal-ferrari-guida-completa-all-esame-cardiologico": {
+  "title": "Cardio TAC al Cardinal Ferrari: cos’è e come si svolge | KOS",
+  "description": "La Cardio TAC al Centro Cardinal Ferrari: un esame non invasivo con tecnologia avanzata per diagnosi cardiologiche accurate da parte di specialisti."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/congresso-simfer-nelle-marche-tutte-le-competenze-dei-nostri-centri-ambulatoriali": {
+  "description": "I professionisti di KOS Santo Stefano al Congresso SIMFER Marche 2026 di Fabriano: riabilitazione in età evolutiva, presa in carico e tecnologie."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/controllo-del-peso-e-del-diabete-fondamentali-per-il-successo-degli-interventi-ad-anca-e-ginocchio": {
+  "title": "Protesi anca e ginocchio: peso e diabete sotto controllo | KOS",
+  "description": "Peso e diabete influenzano gli esiti delle protesi di anca e ginocchio: a Villa dei Pini percorsi di dimagrimento, riabilitazione e crioterapia."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/dai-campus-usa-a-villa-pineta-kos-formazione-e-confronto-internazionale-nella-riabilitazione": {
+  "description": "Da oltre dieci anni Villa Pineta KOS accoglie in tirocinio studenti statunitensi di EduGlobal Associates nella riabilitazione respiratoria."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/diagnostica-per-immagini-a-modena-i-servizi-del-poliambulatorio-diagnostico-villa-rosa-kos": {
+  "title": "Diagnostica per immagini a Modena: Villa Rosa | KOS",
+  "description": "Il Poliambulatorio Villa Rosa KOS a Modena offre ecografia, risonanza magnetica, TAC Cone Beam, radiologia ed elettromiografia, con SSN e in privato.",
+  "note": "Title fuori audit: manca lo spazio prima di «| KOS»"
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/estate-2026-riapre-la-spiaggia-riabilitativa-e-riceve-la-bandiera-blu": {
+  "description": "Riapre la spiaggia riabilitativa dell’Istituto Santo Stefano di Porto Potenza Picena: attività terapeutiche in acqua e all’aperto, Bandiera Blu 2026."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/gestione-clinica-del-peso-il-modello-kos": {
+  "title": "Gestione clinica del peso: il modello cardio-metabolico | KOS",
+  "description": "Il modello KOS di gestione clinica del peso integra competenze cardio-metaboliche e multidisciplinari per prevenire obesità e rischio cardiovascolare."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/giornata-del-fiocchetto-lilla-il-contributo-del-gruppo-kos-alla-rete-di-cura": {
+  "description": "Giornata del Fiocchetto Lilla 2026: gli appuntamenti del Gruppo KOS sui disturbi della nutrizione e dell’alimentazione, a sostegno di chi ne soffre.",
+  "note": "La description attuale è quella del 2025 (date 12-15 marzo): nella proposta niente date, da verificare sul testo della pagina"
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/giornata-internazionale-dell-infermiere-chi-e-cosa-fa-e-perche-e-al-centro-della-cura": {
+  "description": "Il 12 maggio si celebra la Giornata Internazionale dell’Infermiere: il ruolo, le competenze e il percorso formativo di una figura centrale nella cura."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/giornata-mondiale-del-parkinson-focus-su-presa-in-carico-e-riabilitazione-all-iss-con-il-contributo-del-dott-daniele-volpe": {
+  "description": "Giornata Mondiale del Parkinson 2026: all’Istituto Superiore di Sanità un confronto su presa in carico e riabilitazione, con il dott. Daniele Volpe."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/giornata-nazionale-delloss": {
+  "description": "Nella Giornata Nazionale dell’OSS nasce OSSigeno puro, uno spazio fatto dagli operatori socio-sanitari per gli operatori socio-sanitari di KOS.",
+  "note": "Da verificare sul testo della pagina («del Gruppo KOS»)"
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/giuseppe-motta-nuovo-amministratore-delegato-e-direttore-generale-del-gruppo-kos": {
+  "description": "Dal 1° giugno 2026 Giuseppe Motta è il nuovo Amministratore Delegato e Direttore Generale del Gruppo KOS, dopo oltre vent’anni in azienda."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/il-fisiatra-nella-cura-multidisciplinare-del-parkinson-da-membro-a-direttore-d-orchestra": {
+  "description": "Un position paper internazionale sul ruolo del fisiatra nella cura multidisciplinare del Parkinson, anche come coordinatore della riabilitazione."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/il-movimento-che-aiuta-a-ritrovare-autonomia": {
+  "description": "Giornata Mondiale della Fisioterapia: il ruolo del fisioterapista nella prevenzione e nel recupero dopo un ictus o una malattia cardiovascolare."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/infarto-il-cuore-lancia-segnali-molto-in-anticipo": {
+  "title": "Prevenzione infarto: il percorso cardio di Villa dei Pini | KOS",
+  "description": "A Villa dei Pini di Civitanova Marche un percorso di prevenzione cardiovascolare con Cardio TAC, Calcium Score ed ecocardiografia contro l’infarto."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/kos-e-mecenate-del-macerata-opera-festival": {
+  "title": "KOS Mecenate del Macerata Opera Festival | KOS",
+  "description": "KOS entra tra i Mecenati dell’Arena Sferisterio e sostiene il Macerata Opera Festival, un impegno per la cultura e per il territorio marchigiano.",
+  "note": "Title: tolto lo spazio iniziale nel longtitle"
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/l-attivita-di-ricerca-del-centro-cardinal-ferrari-kos": {
+  "description": "Il Centro Cardinal Ferrari affianca all’assistenza la ricerca clinica e organizzativa, per sviluppare modelli riabilitativi efficaci e personalizzati."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/la-diagnostica-a-domicilio-villa-pini-attiva-nuovi-servizi-per-la-salute-a-casa": {
+  "description": "Villa dei Pini a Civitanova Marche attiva la diagnostica a domicilio: prelievi, ECG, Holter e radiografie a casa per anziani e pazienti fragili."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/la-donna-il-centro-di-tutti-al-centro-di-tutto": {
+  "description": "A marzo Villa dei Pini di Civitanova Marche dedica il mese alla donna: prevenzione ginecologica, isteroscopia e percorsi in acqua per il benessere."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/nasce-homecare-academy-formiamo-chi-si-prende-cura": {
+  "description": "Nasce HomeCare Academy, il programma KOS che forma i caregiver familiari per assistere a casa un familiare dopo un ricovero, con competenze pratiche."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/open-day-obesita": {
+  "description": "Il 15 maggio, dalle 12 alle 16, consulti medici e nutrizionali gratuiti su obesità e sovrappeso all’ambulatorio Villa Pineta di Modena."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/pelle-e-occhi-da-proteggere-prima-dell-estate": {
+  "description": "Il dermatologo e l’oculista di Villa dei Pini a Civitanova Marche spiegano come proteggere pelle e occhi dal sole: filtri solari e occhiali UV."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/pet-therapy-all-istituto-santo-stefano-di-porto-potenza-picena": {
+  "description": "All’Istituto Santo Stefano di Porto Potenza Picena un progetto di pet therapy con i cani per stimolare relazione, benessere e partecipazione."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/primo-premio-per-villa-rosa-di-modena-ai-best-italian-healthcare-awards-2025": {
+  "title": "Villa Rosa, 1° premio Best Italian Healthcare Awards 2025 | KOS",
+  "description": "Villa Rosa di Modena vince il 1° premio ai Best Italian Healthcare Awards 2025 di Confcommercio Salute nella categoria delle residenze psichiatriche."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/recupero-della-mano-post-ictus-pubblicata-su-stroke-una-ricerca-del-centro-cardinal-ferrari": {
+  "description": "Uno studio del Centro Cardinal Ferrari pubblicato su Stroke: osservazione dell’azione e realtà virtuale migliorano il recupero della mano post ictus."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/s-stefano-kos-group-stagione-ancora-ai-vertici-del-basket-in-carrozzina-italiano": {
+  "description": "La Santo Stefano KOS Group chiude in finale scudetto contro Cantù una stagione ai vertici del basket in carrozzina, tra Coppa Italia e playoff."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/salute-della-donna-villa-dei-pini-rafforza-l-offerta": {
+  "description": "Isteroscopia, ginecologia e riabilitazione del pavimento pelvico a Villa dei Pini di Civitanova Marche: il percorso dedicato alla salute della donna."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/sirn-2026-istituto-santo-stefano-presenta-due-studi": {
+  "description": "Al congresso SIRN 2026 di Verona l’Istituto Santo Stefano presenta due protocolli su intelligenza artificiale e dispositivi indossabili post-ictus."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/tcg-la-ricerca-del-centro-cardinal-ferrari": {
+  "title": "Trauma cranico grave: la ricerca del Cardinal Ferrari | KOS",
+  "description": "Meta-analisi su 60.000 pazienti: il trauma cranico grave triplica il rischio di mortalità. Tra i centri che hanno contribuito, il Cardinal Ferrari.",
+  "note": "Title fuori audit (66 caratteri e spazio iniziale nel longtitle)"
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/un-prato-di-emozioni-mostra-di-lavori-artistici-realizzati-dai-pazienti": {
+  "description": "All’Istituto Santo Stefano di Porto Potenza Picena i pazienti espongono i lavori del laboratorio di arte terapia: colori ed emozioni nella cura."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/villa-adria-alla-conferenza-internazionale-sulla-sclerosi-multipla": {
+  "title": "Villa Adria alla RiMS 2026 sulla sclerosi multipla | KOS",
+  "description": "La Clinica Villa Adria KOS di Ancona alla 31ª RiMS Conference di Praga: riabilitazione neurologica e nuove strategie per la sclerosi multipla.",
+  "note": "Title fuori audit (67 caratteri)"
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/villa-dei-pini-amplia-ancora-il-servizio-di-gastroenterologia": {
+  "description": "Villa dei Pini a Civitanova Marche amplia la gastroenterologia: gastroscopia e colonscopia anche il sabato mattina, con sedazione e tecnologie."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/villa-dei-pini-porta-la-diagnostica-a-casa": {
+  "description": "Villa dei Pini porta la diagnostica a casa a Civitanova Marche: prelievi, ECG e Holter cardiaco e pressorio a domicilio e radiografie da settembre."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/villa-dei-pini-un-evento-formativo-sul-percorso-cardiometabolico": {
+  "description": "Evento ECM a Villa dei Pini sul percorso cardiometabolico: obesità, rischio cardiovascolare e approccio multidisciplinare per i professionisti."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/villa-margherita-benevento-nuovi-ambulatori-specialistici-e-day-hospital": {
+  "description": "Villa Margherita Benevento amplia l’offerta con ambulatori specialistici e Day Hospital riabilitativo: visite, diagnostica e percorsi senza ricovero."
+ },
+ "https://kosgroup.com/it/news-e-media/news/2026/welfare-integrativo-e-non-autosufficienza-con-kos-operativa-una-rete-di-strutture-in-8-regioni": {
+  "description": "Accordo FASDAC–Conf Salute con il Gruppo KOS per il welfare integrativo e la non autosufficienza: una rete di strutture operativa in 8 regioni."
+ },
+ "https://kosgroup.com/it/news-e-media/news/autismo-fondamentale-la-diagnosi-precoce-da-gennaio-il-disturbo-rientra-nei-lea": {
+  "title": "Autismo: diagnosi precoce e inclusione nei LEA | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/news/gloreha-il-guanto-robotico-che-aiuta-la-riabilitazione-della-mano": {
+  "title": "Gloreha, guanto robotico per la riabilitazione della mano | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/news/il-dottor-perini-nuovo-primario-di-neurologia-di-villa-margherita-kos": {
+  "title": "Il dottor Perini primario di Neurologia a Villa Margherita | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/news/jesi-trasferito-il-centro-ambulatoriale-di-riabilitazione-specialistica": {
+  "title": "Jesi: trasferito il centro ambulatoriale di riabilitazione | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/news/la-lettera-di-edo-per-immaginare-il-mondo-di-un-bambino-autistico": {
+  "title": "La lettera di Edo e il mondo di un bambino autistico | KOS",
+  "description": "La lettera di Edo racconta le difficoltà quotidiane dei bambini autistici e delle loro famiglie, soprattutto nel periodo dell’emergenza sanitaria."
+ },
+ "https://kosgroup.com/it/news-e-media/news/ortopedia-e-ozonoterapia-attivi-due-nuovi-ambulatori-al-venerabile-marcucci": {
+  "title": "Venerabile Marcucci: ortopedia e ozonoterapia | KOS",
+  "description": "Al Venerabile Marcucci attivi due nuovi ambulatori di ortopedia e ozonoterapia, con i professionisti di riferimento Mulazzani e Bernardini.",
+  "note": "Description fuori audit (116 caratteri)"
+ },
+ "https://kosgroup.com/it/news-e-media/news/ottobre-mese-del-benessere-psicologico": {
+  "description": "Ottobre, mese del benessere psicologico: i Centri Ambulatoriali Santo Stefano Riabilitazione aderiscono con consulenze e seminari gratuiti."
+ },
+ "https://kosgroup.com/it/news-e-media/news/tommaso-marini-sono-pronto-a-tornare": {
+  "description": "Tommaso Marini, campione mondiale di fioretto, completa la riabilitazione della spalla con Myolab e punta alle Olimpiadi di Parigi 2024."
+ },
+ "https://kosgroup.com/it/news-e-media/news/villa-margherita-riconosciuta-tra-le-6-cliniche-italiane-eccellenze-per-il-parkinson": {
+  "description": "Villa Margherita, clinica vicentina, è dal 2016 Centro di riferimento del Fresco Parkinson Institute per la riabilitazione del Parkinson."
+ },
+ "https://kosgroup.com/it/news-e-media/news/walter-grassi-nel-team-di-myolab": {
+  "description": "Il prof. Walter Grassi, reumatologo, entra nel team di Myolab a Jesi: consulenze su malattie muscoloscheletriche e infiammatorie, su appuntamento."
+ },
+ "https://kosgroup.com/it/news-e-media/progetti-speciali/2025/giornata-mondiale-oss": {
+  "description": "Per la Giornata degli OSS il Gruppo KOS ha creato un simbolo che rappresenta i suoi oltre 3.000 Operatori Socio Sanitari e li accompagna nel lavoro.",
+  "note": "Il title dice «Giornata Mondiale», la description attuale «Giornata Nazionale»: da allineare dopo verifica"
+ },
+ "https://kosgroup.com/it/news-e-media/progetti-speciali/2025/settimana-del-cervello-2025": {
+  "description": "Dal 10 al 16 marzo le video pillole e gli eventi gratuiti del Gruppo KOS per la Settimana del Cervello 2025: stress, ansia, sonno e nutrizione."
+ },
+ "https://kosgroup.com/it/news-e-media/video/2022/kosplayers-2-essere-infermiera-in-una-rsa": {
+  "description": "Un’infermiera racconta vent’anni di esperienza, cura e formazione continua per il benessere degli ospiti della residenza Parco di Veio. KOSplayers #2."
+ },
+ "https://kosgroup.com/it/news-e-media/video/2022/kosplayers-essere-medico-in-una-rsa": {
+  "description": "Un medico geriatra di Anni Azzurri racconta l’assistenza in RSA: cura empatica, sorrisi e terapie occupazionali per l’ospite. KOSplayers #1."
+ },
+ "https://kosgroup.com/it/news-e-media/video/2023/kosplayers-3-riabilitare-la-vita-in-rsa": {
+  "description": "La fisioterapia in RSA raccontata in video: approccio dinamico, tecnologie e attenzione emotiva per il recupero motorio degli ospiti. KOSplayers #3."
+ },
+ "https://kosgroup.com/it/news-e-media/video/2023/reparto-di-riabilitazione-cardiologica-ospedale-san-pancrazio-kos": {
+  "title": "Riabilitazione cardiologica all’Ospedale San Pancrazio | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/video/2024/kosplayers-4-a-tu-per-tu-con-i-welcomers-di-anni-azzurri": {
+  "description": "Il welcomer in RSA è un ponte tra le famiglie e l’équipe di Anni Azzurri: formazione e strumenti per un’accoglienza serena. KOSplayers #4."
+ },
+ "https://kosgroup.com/it/news-e-media/video/2024/parola-ai-nostri-operatori-socio-sanitari": {
+  "title": "Parola ai nostri operatori socio-sanitari (video) | KOS"
+ },
+ "https://kosgroup.com/it/news-e-media/video/2025/centro-cardinal-ferrari-raccontarsi-unesperienza-di-narrazione-e-cura": {
+  "description": "Raccontarsi: mostra e performance sul potere della cura e del racconto con pazienti e caregiver del Centro Cardinal Ferrari, nel cuore di Parma."
+ },
+ "https://kosgroup.com/it/news-e-media/video/2025/la-psicoterapia-nel-trattamento-dei-disturbi-della-nutrizione-e-alimentazione": {
+  "description": "Video: un’équipe transdisciplinare e una psicoterapia su misura per affrontare le radici dei disturbi alimentari e ritrovare l’equilibrio mente-corpo."
+ },
+ "https://kosgroup.com/it/news-e-media/video/2025/neuroni-in-festival-tre-giorni-per-capire-cosa-ci-muove-dentro": {
+  "title": "Neuroni in Festival: tre giorni sulla mente (video) | KOS",
+  "description": "Neuroni in Festival, iniziativa del Gruppo KOS e di Villa Sant’Alessandro con il patrocinio del Comune di Roma su salute mentale e inclusione.",
+  "note": "Description fuori audit (44 caratteri)"
+ },
+ "https://kosgroup.com/it/news-e-media/video/2025/video-giornata-internazionale-dell-infermiere": {
+  "title": "Giornata Internazionale dell’Infermiere 2025 (video) | KOS",
+  "description": "Video per la Giornata Internazionale dell’Infermiere 2025: il Gruppo KOS celebra i suoi 1600 infermieri, tra competenza, umanità e formazione.",
+  "h1": "Giornata Internazionale dell’infermiere: il video",
+  "note": "Duplicato con la news dello stesso evento: si cambia il video, la news resta"
+ },
+ "https://kosgroup.com/it/privacy": {
+  "title": "Informativa sulla privacy | KOS",
+  "description": "Informativa sulla privacy del Gruppo KOS: come vengono raccolti, trattati e protetti i dati personali di chi visita il sito kosgroup.com.",
+  "h1": "Informativa sulla privacy",
+  "note": "Duplicato con /en/privacy (traduzione): si cambia solo la pagina italiana; description fuori audit (errore «del nostro policy»)"
+ },
+ "https://kosgroup.com/it/servizi-e-cure/ambulatori-e-medicina-specialistica/ambulatorio-cardio-metabolico": {
+  "title": "Ambulatorio cardio-metabolico | KOS",
+  "description": "Ambulatorio cardio-metabolico del Gruppo KOS: un approccio multidisciplinare alla gestione del peso e alla prevenzione del rischio cardiovascolare.",
+  "note": "Description mancante, scritta dal title e dalle news sul modello cardio-metabolico: da verificare sul testo della pagina. Title fuori audit: suffisso «| Kos» invece di «| KOS»"
+ },
+ "https://kosgroup.com/it/servizi-e-cure/ambulatori-e-medicina-specialistica/fisiatria": {
+  "description": "Fisiatria nei centri del Gruppo KOS: visite di medicina fisica e riabilitativa per la valutazione, la cura e il recupero funzionale della persona.",
+  "note": "Description mancante, da verificare sul testo della pagina (l'introtext attuale parla di psicologia). H1 «Fisiatria» resta: si cambia l'approfondimento"
+ },
+ "https://kosgroup.com/it/servizi-e-cure/ambulatori-e-medicina-specialistica/medicina-dello-sport": {
+  "description": "Medicina dello sport: prevenzione, diagnosi e cura delle patologie legate all’attività fisica, per atleti e appassionati, nei centri del Gruppo KOS."
+ },
+ "https://kosgroup.com/it/servizi-e-cure/ambulatori-e-medicina-specialistica/oculistica": {
+  "description": "Oculistica: prevenzione, diagnosi e cura delle malattie dell’occhio e dei disturbi della vista, con visite di base e di controllo nei centri KOS."
+ },
+ "https://kosgroup.com/it/servizi-e-cure/ambulatori-e-medicina-specialistica/odontoiatria": {
+  "description": "Odontoiatria negli ambulatori del Gruppo KOS: prevenzione, diagnosi e cura delle malattie di denti, bocca e ossa mascellari e riabilitazione dentale."
+ },
+ "https://kosgroup.com/it/servizi-e-cure/ambulatori-e-medicina-specialistica/servizio-anestesia": {
+  "description": "Servizio di anestesia a Civitanova Marche: consulenze anestesiologiche prima di un intervento chirurgico e di terapia antalgica e palliativa."
+ },
+ "https://kosgroup.com/it/servizi-e-cure/homecare-academy": {
+  "description": "HomeCare Academy: corsi per chi assiste a casa un familiare fragile dopo la dimissione, su sicurezza, farmaci e parametri vitali, in aula o online.",
+  "note": "Title (54) e description (151) già presenti al 27/10: le voci «title lungo» e «description mancante» risultano superate; description accorciata di poco per stare entro 150"
+ },
+ "https://kosgroup.com/it/servizi-e-cure/psichiatria": {
+  "description": "Percorsi terapeutici specialistici per la salute mentale, orientati al benessere della persona e al suo recupero psichico, fisico e relazionale."
+ },
+ "https://kosgroup.com/it/servizi-e-cure/psichiatria/dipendenze": {
+  "description": "Le dipendenze patologiche sono alterazioni del comportamento causate dall'uso eccessivo di sostanze o da comportamenti che creano dipendenza."
+ },
+ "https://kosgroup.com/it/servizi-e-cure/psichiatria/disturbi-dell-umore-e-depressione": {
+  "description": "Disturbi dell'umore e depressione: calo dell'umore, perdita di motivazione, difficoltà cognitive e ritiro sociale. I percorsi di cura in psichiatria."
+ },
+ "https://kosgroup.com/it/servizi-e-cure/psichiatria/trattamenti/psicoterapeutico-approccio-cognitivo-comportamentale": {
+  "title": "Psicoterapia con approccio cognitivo comportamentale | KOS"
+ },
+ "https://kosgroup.com/it/servizi-e-cure/psichiatria/trattamenti/riabilitazione-psichiatrica": {
+  "description": "La riabilitazione psichiatrica aiuta a controllare i sintomi, superare le barriere relazionali, recuperare l'autonomia e favorire la socializzazione."
+ },
+ "https://kosgroup.com/it/servizi-e-cure/psichiatria/trattamenti/riabilitazione-psiconutrizionale": {
+  "description": "La riabilitazione psiconutrizionale, trattamento dell'area psichiatrica, è oggi lo strumento più valido per affrontare le situazioni di malnutrizione."
+ },
+ "https://kosgroup.com/it/servizi-e-cure/residenze-per-anziani": {
+  "note": "H1 «Residenze per anziani» resta (pagina di servizio): si cambia quello dell'elenco /it/strutture/residenze-per-anziani"
+ },
+ "https://kosgroup.com/it/servizi-e-cure/riabilitazione": {
+  "title": "Riabilitazione: servizi e percorsi di recupero | KOS"
+ },
+ "https://kosgroup.com/it/servizi-e-cure/riabilitazione/assistenza-stati-vegetativi-persistenti": {
+  "title": "Assistenza a stati vegetativi e gravissime disabilità | KOS"
+ },
+ "https://kosgroup.com/it/servizi-e-cure/riabilitazione/riabilitazione-urologica-e-del-pavimento-pelvico": {
+  "title": "Riabilitazione urologica e del pavimento pelvico | KOS",
+  "description": "Riabilitazione urologica e del pavimento pelvico: la diatermia (tecarterapia), abbinata alla fisioterapia, riduce infiammazione e dolore.",
+  "note": "Il title attuale parla di diatermia, non dell'argomento della pagina; description fuori audit (non nomina l'argomento): verificare sul testo della pagina che la diatermia sia trattata qui"
+ },
+ "https://kosgroup.com/it/servizi-e-cure/riabilitazione/trattamenti/diagnosi-e-trattamento-spasticita": {
+  "description": "Percorsi di diagnosi e trattamento della spasticità nelle strutture KOS: valutazioni specialistiche, terapie e, se indicati, interventi chirurgici."
+ },
+ "https://kosgroup.com/it/strutture/comunita-terapeutiche-psichiatriche": {
+  "description": "Elenco delle comunità terapeutiche psichiatriche KOS: ambienti protetti per percorsi terapeutici intensivi, il recupero e il reinserimento sociale."
+ },
+ "https://kosgroup.com/it/strutture/residenze-per-anziani": {
+  "title": "Residenze per anziani e RSA: elenco delle strutture | KOS",
+  "h1": "Le residenze per anziani del Gruppo KOS",
+  "note": "H1 duplicato con /it/servizi-e-cure/residenze-per-anziani (pagina di servizio, resta «Residenze per anziani»): si cambia l'elenco delle strutture"
+ }
+}
