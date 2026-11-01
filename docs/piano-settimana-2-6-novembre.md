@@ -38,6 +38,9 @@ sprint 1 (verifica di Cerved/ProWeb 9-14/11).
 | KOS 24 · Strutture (linea C) | Libreria e TV in produzione, spente (28/10) | Correzioni Yext, export, import TV, attivazione |
 | AA 1 · Sfondi | In produzione (27/10) | Solo evidenza |
 | AA 3 · PDF | 97 redirect (27/10) | Come KOS 8 (verificato il 31/10). L'audit AA chiede `noindex, nofollow` su tutti i PDF |
+
+**PDF (KOS 8, AA 3) in una chat dedicata dal 1/11**: punto di partenza `docs/pdf/brief-pdf.md` (inventario, Search Console, classificazione, titoli nei metadati dei file, `X-Robots-Tag`, redirect). Le regole web passano da qui; rilascio entro venerdì 6/11.
+
 | AA 6 · H2 | In produzione (27/10) | Solo evidenza |
 | AA 20 · Title e description | 90 pagine dell'audit (28/10) | 6 title lunghi (agenzia); circa 90 pagine fuori audit, da validare tra Danilo e Claude |
 | KOS 10 · Articoli | — | Article con autore ed editore nella libreria comune |
