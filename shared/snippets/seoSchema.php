@@ -16,7 +16,7 @@
  *
  * PARAMETRI
  *   &prefisso  prefisso delle impostazioni di sistema (default: aa)
- *   &type      auto | page | article | profile | box | briciole   (default: auto)
+ *   &type      auto | page | article | video | profile | box | briciole   (default: auto)
  *   &author    id risorsa autore; se omesso lo legge dalla TV aut.ref
  *   &pretty    1 = JSON indentato (solo per debug)
  *
@@ -27,11 +27,19 @@
  *   con i servizi della landing (lnd.servizi). Acceso solo con <prefisso>.struttura_attiva = 1: va
  *   attivato nello stesso rilascio in cui si toglie lo script Yext che descrive la stessa struttura.
  *
+ * ARTICOLI (AA-8; kosgroup.com voce KOS-10)
+ *   Pagine dei template <prefisso>.tpl_article: Article (o il tipo della sezione, <prefisso>.article_sezioni =
+ *   "id cartella:Tipo,...", es. News → NewsArticle) con headline, image (solo se il file esiste), datePublished,
+ *   dateModified, author, publisher, articleSection, mentions verso il #localbusiness delle strutture collegate.
+ *   Con article_sezioni impostata, una pagina del template fuori da quelle cartelle resta una WebPage.
+ *   Pagine dei template <prefisso>.tpl_video (kosgroup.com: video YouTube incorporato): VideoObject.
+ *
  * REGOLE
  *   - Briciole visibili e BreadcrumbList escono dalla STESSA funzione: stesso percorso.
  *   - TV aut.ref vuota = contenuto della redazione = author è l'Organization.
  *     Nessuna Person inventata per "La Redazione".
- *   - Ogni @id deriva da <prefisso>.canonical_base (convenzione degli identificativi).
+ *   - Ogni @id deriva da <prefisso>.canonical_base (convenzione degli identificativi) ed è costruito da una sola
+ *     funzione, $idDi(URL pagina, tipo), con i frammenti fissi di $FRAG.
  * -----------------------------------------------------------------------------
  */
 
@@ -70,6 +78,23 @@ $LANG     = $cfg('lang',      'it-IT');
 $SLASH    = (int) $cfg('trailing_slash', 0);
 $FRAG_PAT = $cfg('frag_patologia', '#condition');
 $FRAG_STR = $cfg('frag_struttura', '#localbusiness');   // convenzione del 20/10/2026 (audit AA, slide 29-30)
+$FRAG_DEV = $cfg('frag_dispositivo', '#device');
+/* Frammenti fissi per tipo di entità (convenzione degli identificativi). */
+$FRAG = [
+    'webpage'    => '#webpage',
+    'breadcrumb' => '#breadcrumb',
+    'article'    => '#article',
+    'video'      => '#video',
+    'person'     => '#person',
+    'medico'     => $cfg('frag_medico', '#medico'),
+    'struttura'  => $FRAG_STR,
+    'patologia'  => $FRAG_PAT,
+    'dispositivo'=> $FRAG_DEV,
+];
+/** UNICA funzione che compone gli @id delle entità di pagina: URL canonico della pagina + frammento del tipo. */
+$idDi = function ($pagina, $tipo) use ($FRAG) {
+    return ($pagina === '' || $pagina === null) ? '' : $pagina . $FRAG[$tipo];
+};
 
 $csv = function ($v) {
     return array_values(array_filter(array_map('trim', explode(',', (string) $v)), 'strlen'));
@@ -83,6 +108,21 @@ $ESCLUDI = array_map('intval', $csv($cfg('breadcrumb_exclude', '2,4,48,54,55,68,
 $TPL_ARTICOLO   = $csv($cfg('tpl_article',    'interna-articolo'));
 $TPL_PROFILO    = $csv($cfg('tpl_profile',    'autore'));
 $TPL_COLLEZIONE = $csv($cfg('tpl_collection', 'regione,provincia,residenze,news,le-nostre-storie-indice'));
+$TPL_VIDEO      = $csv($cfg('tpl_video',      ''));
+$TPL_MEDICO     = $csv($cfg('tpl_medico',     ''));
+/* Articoli: tipo e sezione dalla cartella che li contiene ("30:NewsArticle,31:Article"); vuoto = Article ovunque.
+ * Headline: "longtitle" (longtitle o pagetitle, anniazzurri.it) o "pagetitle" (kosgroup.com: il longtitle è il
+ * title con « | KOS», l'H1 è il pagetitle). TV dell'immagine e delle strutture collegate (id separati da virgola). */
+$ART_SEZIONI = [];
+foreach ($csv($cfg('article_sezioni', '')) as $voce) {
+    $p = array_map('trim', explode(':', $voce, 2));
+    if (count($p) === 2 && (int) $p[0] > 0 && in_array($p[1], ['Article', 'NewsArticle', 'BlogPosting'], true)) {
+        $ART_SEZIONI[(int) $p[0]] = $p[1];
+    }
+}
+$ART_HEADLINE = $cfg('article_headline', 'longtitle');
+$ART_TV_IMG   = $cfg('article_tv_immagine', 'art.immagine');
+$ART_TV_STR   = $cfg('article_tv_strutture', 'art.mentions');
 
 /* Lingue (kosgroup.com): "radice:lingua:home" separati da virgola, es.
  * "253:it-IT:1,385:en-GB:990". La radice è la cartella di lingua (it, en), la home è
@@ -142,38 +182,64 @@ $testo = function ($html) {
     return trim(preg_replace('/\s+/u', ' ', $t));
 };
 
-/** ImageObject da un percorso TV, con dimensioni reali se il file è leggibile. */
-$immagine = function ($percorso) use ($modx, $CANON) {
+/** ImageObject da un percorso TV, con dimensioni reali se il file è leggibile. Percorso del sito codificato
+ *  (spazi e accenti nei nomi dei file). $soloSeEsiste: un percorso del sito il cui file non c'è non esce. */
+$immagine = function ($percorso, $soloSeEsiste = false) use ($modx, $CANON) {
     $percorso = trim((string) $percorso);
     if ($percorso === '') return null;
 
-    $abs = preg_match('#^https?://#i', $percorso)
-        ? $percorso
-        : $CANON . '/' . ltrim($percorso, '/');
+    if (preg_match('#^https?://#i', $percorso)) return ['@type' => 'ImageObject', 'url' => $percorso];
 
-    $img = ['@type' => 'ImageObject', 'url' => $abs];
+    $rel = ltrim(rawurldecode((string) preg_replace('/[?#].*$/', '', $percorso)), '/');
+    if ($rel === '' || strpos($rel, '..') !== false) return null;
+    $img = ['@type' => 'ImageObject', 'url' => $CANON . '/' . implode('/', array_map('rawurlencode', explode('/', $rel)))];
 
-    if (!preg_match('#^https?://#i', $percorso)) {
-        $file = MODX_BASE_PATH . ltrim($percorso, '/');
-        if (is_readable($file) && ($d = @getimagesize($file))) {
+    $file = MODX_BASE_PATH . $rel;
+    if (is_readable($file) && is_file($file)) {
+        if ($d = @getimagesize($file)) {
             $img['width']  = (int) $d[0];
             $img['height'] = (int) $d[1];
         }
+    } elseif ($soloSeEsiste) {
+        return null;
     }
     return $img;
 };
 
 /** Data ISO 8601 con fuso. In MODX 3 get('publishedon'/'editedon') restituisce la data
- *  già formattata ("2025-03-04 10:12:00"), non il timestamp: si accettano entrambi. */
-$data = function ($v) use ($cfg) {
-    if ($v === null || $v === '' || $v === '0' || $v === 0) return null;
+ *  già formattata ("2025-03-04 10:12:00"), non il timestamp: si accettano entrambi.
+ *  $fusoSito = true per le TV di tipo data: il valore è quello scelto dalla redazione, già nel fuso del sito. */
+$data = function ($v, $fusoSito = false) use ($cfg) {
+    if ($v === null || $v === '' || $v === '0' || $v === 0 || strpos((string) $v, '0000-00-00') === 0) return null;
+    $tz = new DateTimeZone($cfg('timezone', 'Europe/Rome'));
+    if ($fusoSito && !is_numeric($v)) {
+        try { $d = new DateTime((string) $v, $tz); } catch (\Throwable $e) { return null; }
+        return $d->format('c');
+    }
     // La stringa formattata da MODX è nel fuso del server (MODX Cloud: America/Chicago):
     // si interpreta in quel fuso e si emette nel fuso del sito, così l'offset è +01:00/+02:00.
     $ts = is_numeric($v) ? (int) $v : strtotime((string) $v);
     if ($ts === false || $ts <= 0) return null;
     $d = new DateTime('@' . $ts);
-    $d->setTimezone(new DateTimeZone($cfg('timezone', 'Europe/Rome')));
+    $d->setTimezone($tz);
     return $d->format('c');
+};
+
+/** [datePublished, dateModified] di una risorsa: pubblicazione (o creazione) e ultima modifica, mai prima della
+ *  pubblicazione (con la pubblicazione programmata editedon può precederla). */
+$dateRisorsa = function ($r) use ($data) {
+    $pub = $data($r->get('publishedon')) ?: $data($r->get('createdon'));
+    $mod = $data($r->get('editedon'));
+    if ($pub && (!$mod || strtotime($mod) < strtotime($pub))) $mod = $pub;
+    return [$pub, $mod];
+};
+
+/** Riassunto di un nodo da usare come riferimento (author, publisher, mentions): tipo, @id, nome, URL. Il nodo
+ *  completo sta nel grafo; il riassunto serve a chi non risolve gli @id. */
+$rif = function ($n) {
+    if (!is_array($n) || empty($n['@id'])) return null;
+    return array_filter(['@type' => $n['@type'] ?? null, '@id' => $n['@id'], 'name' => $n['name'] ?? null, 'url' => $n['url'] ?? null],
+        function ($x) { return $x !== null && $x !== ''; });
 };
 
 /** Toglie ricorsivamente null, stringhe vuote e array vuoti. */
@@ -266,9 +332,16 @@ $org = function ($lingua = '') use ($cfg, $csv, $ORG_ID, $PARENT_ID, $CANON, $pu
 /* --- nodo Person ------------------------------------------------------------
  * Restituisce null se la risorsa autore non esiste o non è pubblicata:
  * il chiamante ricade sull'Organization.
+ * Se la pagina dell'autore è la scheda di un medico (template <prefisso>.tpl_medico, kosgroup.com: medici) il nodo è
+ * IndividualPhysician con @id {URL scheda}#medico: è un tipo di organizzazione medica, non una Person, quindi niente
+ * proprietà delle persone (jobTitle, worksFor, credenziali); la struttura in cui opera va in practicesAt
+ * (<prefisso>.medico_tv_struttura, id della scheda struttura). Il nodo completo del medico è della voce KOS-11.
  */
+$MED_TV_STR = $cfg('medico_tv_struttura', 'idSedeLavoro');
+$MED_TV_IMG = $cfg('medico_tv_immagine', 'infoImage');
 $persona = function ($idAutore) use (
-    $modx, $CLS_RES, $url, $tv, $righe, $testo, $immagine, $pulisci, $ORG_ID, $FRAG_STR
+    $modx, $CLS_RES, $url, $tv, $righe, $testo, $immagine, $pulisci, $idDi, $ORG_ID, $TPL_MEDICO, $MED_TV_STR, $MED_TV_IMG,
+    &$riferimentiStrutture
 ) {
     $idAutore = (int) $idAutore;
     if ($idAutore <= 0) return null;
@@ -279,12 +352,25 @@ $persona = function ($idAutore) use (
     $pagina = $url($idAutore);
     if ($pagina === '') return null;
 
+    $tpl = $TPL_MEDICO ? $a->getOne('Template') : null;
+    if ($tpl && in_array($tpl->get('templatename'), $TPL_MEDICO, true)) {
+        return $pulisci([
+            '@type'       => 'IndividualPhysician',
+            '@id'         => $idDi($pagina, 'medico'),
+            'name'        => $a->get('pagetitle'),
+            'url'         => $pagina,
+            'image'       => $immagine($tv($a, $MED_TV_IMG), true),
+            'practicesAt' => array_map(function ($s) { return ['@id' => $s['@id']]; },
+                                       $riferimentiStrutture($tv($a, $MED_TV_STR))),
+        ]);
+    }
+
     $nome = trim($tv($a, 'aut.given') . ' ' . $tv($a, 'aut.family'));
     if ($nome === '') $nome = $a->get('pagetitle');
 
     $p = [
         '@type'       => 'Person',
-        '@id'         => $pagina . '#person',
+        '@id'         => $idDi($pagina, 'person'),
         'name'        => $nome,
         'givenName'   => $tv($a, 'aut.given'),
         'familyName'  => $tv($a, 'aut.family'),
@@ -310,7 +396,7 @@ $persona = function ($idAutore) use (
 
     // Struttura di afferenza: aggancia la persona all'entità residenza.
     if ($aff = (int) $tv($a, 'aut.affiliazione')) {
-        if ($u = $url($aff)) $p['affiliation'] = ['@id' => $u . $FRAG_STR];
+        if ($u = $url($aff)) $p['affiliation'] = ['@id' => $idDi($u, 'struttura')];
     }
 
     // Iscrizione all'albo: identificativo verificabile, più la credenziale.
@@ -353,7 +439,7 @@ $persona = function ($idAutore) use (
             'name'          => $titolo,
             'datePublished' => $tv($a, 'aut.pub_data'),
             'url'           => $tv($a, 'aut.pub_url'),
-            'author'        => ['@id' => $pagina . '#person'],
+            'author'        => ['@id' => $idDi($pagina, 'person')],
         ];
         if ($doi !== '') {
             $pub['@id'] = 'https://doi.org/' . $doi;
@@ -465,12 +551,12 @@ $mostraBriciole = function ($res) use ($BC_TPL) {
 };
 
 /* Nodo BreadcrumbList, o null se la pagina non mostra briciole o ha meno di due livelli. */
-$nodoBriciole = function ($res, $pagina) use ($briciole, $mostraBriciole) {
+$nodoBriciole = function ($res, $pagina) use ($briciole, $mostraBriciole, $idDi) {
     if (!$mostraBriciole($res)) return null;
     $l = $briciole($res);
     return count($l) < 2 ? null : [
         '@type'           => 'BreadcrumbList',
-        '@id'             => $pagina . '#breadcrumb',
+        '@id'             => $idDi($pagina, 'breadcrumb'),
         'itemListElement' => $l,
     ];
 };
@@ -489,11 +575,11 @@ $sito = function ($lingua = null) use ($cfg, $CANON, $SITE_ID, $ORG_ID, $LANG, $
     ];
 };
 
-/* --- riferimenti a patologie e strutture ------------------------------------ */
-$riferimenti = function ($csv, $frammento) use ($url) {
+/* --- riferimenti a patologie (id di risorse separati da virgola) ------------- */
+$riferimenti = function ($csv, $tipo) use ($url, $idDi) {
     $out = [];
-    foreach (array_filter(array_map('trim', explode(',', (string) $csv)), 'strlen') as $id) {
-        if ($u = $url((int) $id)) $out[] = ['@id' => $u . $frammento];
+    foreach (array_unique(array_filter(array_map('intval', explode(',', (string) $csv)))) as $id) {
+        if ($u = $url($id)) $out[] = ['@id' => $idDi($u, $tipo)];
     }
     return $out;
 };
@@ -616,8 +702,7 @@ $serviziSito = function ($r) use ($modx, $CLS_RES, $tv, $csv, $url, $TV_SERVIZI)
  * al nodo della pagina della tecnologia quando sarà emesso. Nome dal longtitle senza il suffisso «| …» (su kosgroup.com
  * il longtitle è il title completo), altrimenti dal pagetitle. */
 $TV_TECNOLOGIE = $csv($cfg('struttura_tv_tecnologie', ''));
-$FRAG_DEV = $cfg('frag_dispositivo', '#device');
-$tecnologie = function ($r) use ($modx, $CLS_RES, $tv, $url, $TV_TECNOLOGIE, $FRAG_DEV) {
+$tecnologie = function ($r) use ($modx, $CLS_RES, $tv, $url, $idDi, $TV_TECNOLOGIE) {
     $out = []; $visti = [];
     foreach ($TV_TECNOLOGIE as $nome) {
         foreach (array_filter(array_map('intval', preg_split('/[^\d]+/', (string) $tv($r, $nome)))) as $id) {
@@ -626,7 +711,7 @@ $tecnologie = function ($r) use ($modx, $CLS_RES, $tv, $url, $TV_TECNOLOGIE, $FR
             $s = $modx->getObject($CLS_RES, $id);
             if (!$s || !$s->get('published') || $s->get('deleted')) continue;
             $u = $url($id);
-            $out[] = ['@type' => 'MedicalDevice', '@id' => $u . $FRAG_DEV, 'name' => trim((string) preg_replace('/\s+\|[^|]*$/u', '', (string) ($s->get('longtitle') ?: $s->get('pagetitle')))), 'url' => $u];
+            $out[] = ['@type' => 'MedicalDevice', '@id' => $idDi($u, 'dispositivo'), 'name' => trim((string) preg_replace('/\s+\|[^|]*$/u', '', (string) ($s->get('longtitle') ?: $s->get('pagetitle')))), 'url' => $u];
         }
     }
     return $out;
@@ -679,22 +764,49 @@ $prenotazione = function ($r) use ($modx, $tv, $PREN_PORTALE, $PREN_TV, $PREN_RE
     }
     return [$link(['areaid' => $area]), $catalogo];
 };
+/** Tipi schema.org della struttura dalla TV str.tipo (solo tipi noti; default MedicalClinic). Indirizzo, coordinate,
+ *  orari e mappa sono proprietà dei luoghi e delle attività locali: un tipo che non lo è (DiagnosticLab e
+ *  MedicalOrganization sono solo organizzazioni) si affianca a MedicalBusiness, altrimenti il validatore li segnala come
+ *  proprietà sconosciute e Google non riconosce l'attività locale. */
+$tipiStruttura = function ($r) use ($tv, $csv, $TIPI_STRUTTURA) {
+    $tipi = array_values(array_intersect($csv($tv($r, 'str.tipo')), $TIPI_STRUTTURA)) ?: ['MedicalClinic'];
+    if (!array_intersect($tipi, ['MedicalClinic', 'Hospital', 'Dentist', 'Physiotherapy', 'MedicalBusiness', 'LocalBusiness', 'Pharmacy', 'Optician'])) {
+        $tipi[] = 'MedicalBusiness';
+    }
+    return $tipi;
+};
+/* Riferimenti alle strutture (id delle schede separati da virgola, es. TV idStruttura degli articoli kosgroup.com).
+ * Con i template delle schede configurati (<prefisso>.tpl_struttura) si cita solo una struttura il cui nodo
+ * #localbusiness esiste davvero: scheda pubblicata con quel template, nodo acceso (struttura_attiva) e indirizzo
+ * (str.via). Senza tpl_struttura (anniazzurri.it oggi) solo l'@id, come prima. */
+$riferimentiStrutture = function ($csvId) use ($modx, $CLS_RES, $url, $tv, $idDi, $tipiStruttura, $STR_TPL, $STR_ON) {
+    $out = [];
+    foreach (array_unique(array_filter(array_map('intval', preg_split('/[^\d]+/', (string) $csvId)))) as $id) {
+        if (!$STR_TPL) {
+            if ($u = $url($id)) $out[] = ['@id' => $idDi($u, 'struttura')];
+            continue;
+        }
+        $r = $STR_ON ? $modx->getObject($CLS_RES, $id) : null;
+        if (!$r || !$r->get('published') || $r->get('deleted')) continue;
+        $t = $r->getOne('Template');
+        if (!$t || !in_array($t->get('templatename'), $STR_TPL, true)) continue;
+        if ((string) $tv($r, 'str.via') === '' || ($u = $url($id)) === '') continue;
+        $tipi = $tipiStruttura($r);
+        $out[] = ['@type' => count($tipi) === 1 ? $tipi[0] : $tipi, '@id' => $idDi($u, 'struttura'),
+                  'name' => $tv($r, 'str.nome') ?: $r->get('pagetitle'), 'url' => $u];
+    }
+    return $out;
+};
 $nodoStruttura = function ($r, $extraServizi = []) use (
     $url, $tv, $servizi, $serviziSito, $tecnologie, $prenotazione, $righe, $testo, $csv, $pulisci, $orari, $orariSpeciali, $immagineStruttura,
-    $TIPI_STRUTTURA, $SPECIALITA, $FRAG_STR, $ORG_ID
+    $tipiStruttura, $idDi, $SPECIALITA, $ORG_ID
 ) {
     $pagina = $url($r->get('id'));
     if ($pagina === '') return null;
     // Senza indirizzo non è un'attività locale descrivibile (Google richiede l'indirizzo): niente nodo, la pagina
     // resta una WebPage. Vale anche per le pagine di servizio con il template delle schede (es. Ritiro referti).
     if ($tv($r, 'str.via') === '' || $tv($r, 'str.via') === null) return null;
-    $tipi = array_values(array_intersect($csv($tv($r, 'str.tipo')), $TIPI_STRUTTURA)) ?: ['MedicalClinic'];
-    // Indirizzo, coordinate, orari e mappa sono proprietà dei luoghi e delle attività locali: un tipo che non lo è
-    // (DiagnosticLab e MedicalOrganization sono solo organizzazioni) si affianca a MedicalBusiness, altrimenti il
-    // validatore li segnala come proprietà sconosciute e Google non riconosce l'attività locale.
-    if (!array_intersect($tipi, ['MedicalClinic', 'Hospital', 'Dentist', 'Physiotherapy', 'MedicalBusiness', 'LocalBusiness', 'Pharmacy', 'Optician'])) {
-        $tipi[] = 'MedicalBusiness';
-    }
+    $tipi = $tipiStruttura($r);
     $via = $tv($r, 'str.via');
     $lat = str_replace(',', '.', (string) $tv($r, 'str.lat'));
     $lng = str_replace(',', '.', (string) $tv($r, 'str.lng'));
@@ -721,7 +833,7 @@ $nodoStruttura = function ($r, $extraServizi = []) use (
     }
     return $pulisci([
         '@type'       => count($tipi) === 1 ? $tipi[0] : $tipi,
-        '@id'         => $pagina . $FRAG_STR,
+        '@id'         => $idDi($pagina, 'struttura'),
         'name'        => $nome,
         'url'         => $pagina,
         'description' => $testo($r->get('description') ?: $r->get('introtext')),
@@ -797,11 +909,26 @@ if ($type === 'briciole') {
     return '<nav class="col" id="breadcrumbs" aria-label="' . $etichetta . '">' . implode('<span>|</span>', $pezzi) . '</nav>';
 }
 
+/* Sezione dell'articolo: la prima cartella di <prefisso>.article_sezioni tra gli antenati (id, tipo, nome). */
+$sezione = null;
+if ($ART_SEZIONI) {
+    $rid = (int) $res->get('parent');
+    for ($giri = 0; $rid > 0 && $giri < 100; $giri++) {
+        $r = $modx->getObject($CLS_RES, $rid);
+        if (!$r) break;
+        if (isset($ART_SEZIONI[$rid])) {
+            $sezione = ['id' => $rid, 'tipo' => $ART_SEZIONI[$rid], 'nome' => $r->get('menutitle') ?: $r->get('pagetitle')];
+            break;
+        }
+        $rid = (int) $r->get('parent');
+    }
+}
 if ($type === 'auto') {
     $tpl = $res->getOne('Template');
     $nomeTpl = $tpl ? $tpl->get('templatename') : '';
-    $type = in_array($nomeTpl, $TPL_ARTICOLO, true) ? 'article'
-          : (in_array($nomeTpl, $TPL_PROFILO, true) ? 'profile' : 'page');
+    $type = in_array($nomeTpl, $TPL_VIDEO, true) ? 'video'
+          : (in_array($nomeTpl, $TPL_ARTICOLO, true) ? (($ART_SEZIONI && !$sezione) ? 'page' : 'article')
+          : (in_array($nomeTpl, $TPL_PROFILO, true) ? 'profile' : 'page'));
 }
 $json = function ($grafo) use ($flags) {
     return '<script type="application/ld+json">'
@@ -888,7 +1015,7 @@ if ($type === 'profile') {
             $q->where(['id:IN' => $ids, 'published' => 1, 'deleted' => 0]);
             $q->sortby('publishedon', 'DESC');
             foreach ($modx->getCollection($CLS_RES, $q) as $r) {
-                if ($u = $url($r->get('id'))) $firmati[] = ['@id' => $u . '#article'];
+                if ($u = $url($r->get('id'))) $firmati[] = ['@id' => $idDi($u, 'article')];
             }
         }
     }
@@ -896,14 +1023,14 @@ if ($type === 'profile') {
     $grafo = [
         $pulisci([
             '@type'      => 'ProfilePage',
-            '@id'        => $paginaCorrente . '#webpage',
+            '@id'        => $idDi($paginaCorrente, 'webpage'),
             'url'        => $paginaCorrente,
             'name'       => $res->get('longtitle') ?: $res->get('pagetitle'),
             'inLanguage' => $LANG,
-            'mainEntity' => ['@id' => $paginaCorrente . '#person'],
+            'mainEntity' => ['@id' => $io['@id']],
             'hasPart'    => $firmati,
             'isPartOf'   => ['@id' => $SITE_ID],
-            'breadcrumb' => ['@id' => $paginaCorrente . '#breadcrumb'],
+            'breadcrumb' => ['@id' => $idDi($paginaCorrente, 'breadcrumb')],
         ]),
         $io,
         $nodoBriciole($res, $paginaCorrente),
@@ -935,7 +1062,7 @@ if ($type === 'page') {
 
     $pagina = $pulisci([
         '@type'       => in_array($nomeTpl, $TPL_COLLEZIONE, true) ? 'CollectionPage' : 'WebPage',
-        '@id'         => $paginaCorrente . '#webpage',
+        '@id'         => $idDi($paginaCorrente, 'webpage'),
         'url'         => $paginaCorrente,
         'name'        => $res->get('longtitle') ?: $res->get('pagetitle'),
         'description' => $res->get('description'),
@@ -943,46 +1070,103 @@ if ($type === 'page') {
         'isPartOf'    => ['@id' => $SITE_ID],
         'about'       => $home ? ['@id' => $ORG_ID] : (($struttura && $rel === 'about') ? ['@id' => $struttura['@id']] : null),
         'mainEntity'  => ($struttura && $rel === 'mainEntity') ? ['@id' => $struttura['@id']] : null,
-        'breadcrumb'  => $br ? ['@id' => $paginaCorrente . '#breadcrumb'] : null,
+        'breadcrumb'  => $br ? ['@id' => $br['@id']] : null,
         'dateModified'=> $data($res->get('editedon') ?: $res->get('publishedon')),
     ]);
     // Il nodo struttura per intero, anche sulle landing: i crawler AI raramente seguono un @id.
     return $json([$pagina, $struttura, $br, $sito($LANG), $org($LANG)]);
 }
 
-/* ---------------------------------------------------------------- articolo */
+/* ------------------------------------------------------------------- video
+ * kosgroup.com, template video: la pagina è il video YouTube incorporato in testa, con titolo e testo.
+ * VideoObject come entità principale (campi richiesti da Google: name, thumbnailUrl, uploadDate). Senza un
+ * identificativo YouTube valido la pagina resta una WebPage.
+ */
+$orgNodo = $org($LANG);
+$nodoPagina = function ($tipo, array $extra = []) use ($res, $paginaCorrente, $idDi, $LANG, $SITE_ID, $testo, $dateRisorsa) {
+    [, $mod] = $dateRisorsa($res);
+    return array_merge([
+        '@type'        => $tipo,
+        '@id'          => $idDi($paginaCorrente, 'webpage'),
+        'url'          => $paginaCorrente,
+        'name'         => $res->get('longtitle') ?: $res->get('pagetitle'),
+        'description'  => $testo($res->get('description')),
+        'inLanguage'   => $LANG,
+        'isPartOf'     => ['@id' => $SITE_ID],
+        'dateModified' => $mod,
+    ], $extra);
+};
+if ($type === 'video') {
+    $codice = trim((string) $tv($res, $cfg('video_tv_embed', 'embedCode')));
+    $yt = preg_match('~(?:youtu\.be/|/embed/|[?&]v=)([A-Za-z0-9_-]{11})(?![A-Za-z0-9_-])~', $codice, $m) ? $m[1]
+        : (preg_match('~^([A-Za-z0-9_-]{11})(?![A-Za-z0-9_-])~', $codice, $m) ? $m[1] : '');
+    if ($yt !== '') {
+        $br = $nodoBriciole($res, $paginaCorrente);
+        [$pub, $mod] = $dateRisorsa($res);
+        $miniatura = [];
+        if ($i = $immagine($tv($res, $ART_TV_IMG), true)) $miniatura[] = $i['url'];
+        $miniatura[] = 'https://i.ytimg.com/vi/' . $yt . '/hqdefault.jpg';
+        $video = $pulisci([
+            '@type'            => 'VideoObject',
+            '@id'              => $idDi($paginaCorrente, 'video'),
+            'name'             => $res->get('pagetitle'),
+            'description'      => $testo($res->get('description') ?: $res->get('introtext')) ?: $res->get('pagetitle'),
+            'thumbnailUrl'     => $miniatura,
+            'uploadDate'       => $data($tv($res, $cfg('video_tv_data', 'videoData')), true) ?: $pub,
+            'embedUrl'         => 'https://www.youtube.com/embed/' . $yt,
+            'inLanguage'       => $LANG,
+            'isPartOf'         => ['@id' => $idDi($paginaCorrente, 'webpage')],
+            'mainEntityOfPage' => ['@id' => $idDi($paginaCorrente, 'webpage')],
+            'publisher'        => $rif($orgNodo),
+            'mentions'         => $riferimentiStrutture($tv($res, $ART_TV_STR)),
+        ]);
+        $pagina = $pulisci($nodoPagina('WebPage', [
+            'mainEntity' => ['@id' => $video['@id']],
+            'breadcrumb' => $br ? ['@id' => $br['@id']] : null,
+        ]));
+        return $json([$pagina, $video, $br, $sito($LANG), $orgNodo]);
+    }
+    $br = $nodoBriciole($res, $paginaCorrente);
+    return $json([$pulisci($nodoPagina('WebPage', ['breadcrumb' => $br ? ['@id' => $br['@id']] : null])), $br, $sito($LANG), $orgNodo]);
+}
+
+/* ---------------------------------------------------------------- articolo
+ * Campi indicati da Google per Article: headline, image, datePublished, dateModified, author (con name e url),
+ * publisher. author: la persona o il medico della TV aut.ref se c'è, altrimenti l'ente (contenuto della redazione:
+ * su kosgroup.com il box «Articolo scritto da» mostra «Redazione Gruppo KOS»).
+ */
 
 $sanitario = (int) $tv($res, 'art.medical') === 1;
 $revisore  = $persona((int) $tv($res, 'rev.ref'));
+[$pub, $mod] = $dateRisorsa($res);
+$titolo = $ART_HEADLINE === 'pagetitle'
+    ? ($res->get('pagetitle') ?: $res->get('longtitle'))
+    : ($res->get('longtitle') ?: $res->get('pagetitle'));
 
 $articolo = [
-    '@type'            => 'Article',
-    '@id'              => $paginaCorrente . '#article',
-    'isPartOf'         => ['@id' => $paginaCorrente . '#webpage'],
-    'mainEntityOfPage' => ['@id' => $paginaCorrente . '#webpage'],
-    'headline'         => $res->get('longtitle') ?: $res->get('pagetitle'),
-    'description'      => $res->get('description') ?: $res->get('introtext'),
-    'image'            => $immagine($tv($res, 'art.immagine')),
-    'datePublished'    => $data($res->get('publishedon')),
-    'dateModified'     => $data($res->get('editedon') ?: $res->get('publishedon')),
+    '@type'            => $sezione ? $sezione['tipo'] : 'Article',
+    '@id'              => $idDi($paginaCorrente, 'article'),
+    'isPartOf'         => ['@id' => $idDi($paginaCorrente, 'webpage')],
+    'mainEntityOfPage' => ['@id' => $idDi($paginaCorrente, 'webpage')],
+    'headline'         => $testo($titolo),
+    'description'      => $testo($res->get('description') ?: $res->get('introtext')),
+    'image'            => $immagine($tv($res, $ART_TV_IMG), true),
+    'datePublished'    => $pub,
+    'dateModified'     => $mod,
     'inLanguage'       => $LANG,
+    'articleSection'   => $sezione ? $sezione['nome'] : null,
     // Qui sta la regola: niente autore assegnato = firma dell'organizzazione.
-    'author'           => ['@id' => $autore ? $autore['@id'] : $ORG_ID],
-    'publisher'        => ['@id' => $ORG_ID],
-    'about'            => $riferimenti($tv($res, 'art.about'), $FRAG_PAT),
-    'mentions'         => $riferimenti($tv($res, 'art.mentions'), $FRAG_STR),
+    'author'           => $rif($autore ?: $orgNodo),
+    'publisher'        => $rif($orgNodo),
+    'about'            => $riferimenti($tv($res, 'art.about'), 'patologia'),
+    'mentions'         => $riferimentiStrutture($tv($res, $ART_TV_STR)),
 ];
 if ($revisore) $articolo['reviewedBy'] = ['@id' => $revisore['@id']];
 
-$pagina = [
-    '@type'      => $sanitario ? 'MedicalWebPage' : 'WebPage',
-    '@id'        => $paginaCorrente . '#webpage',
-    'url'        => $paginaCorrente,
-    'name'       => $res->get('longtitle') ?: $res->get('pagetitle'),
-    'inLanguage' => $LANG,
-    'isPartOf'   => ['@id' => $SITE_ID],
-];
-if ($nodoBr = $nodoBriciole($res, $paginaCorrente)) $pagina['breadcrumb'] = ['@id' => $paginaCorrente . '#breadcrumb'];
+$nodoBr = $nodoBriciole($res, $paginaCorrente);
+$pagina = $nodoPagina($sanitario ? 'MedicalWebPage' : 'WebPage', [
+    'breadcrumb' => $nodoBr ? ['@id' => $nodoBr['@id']] : null,
+]);
 if ($sanitario) {
     $pagina['audience'] = ['@type' => 'MedicalAudience', 'audienceType' => 'Patient'];
     if ($rev = $tv($res, 'rev.data')) $pagina['lastReviewed'] = $rev;
@@ -993,10 +1177,10 @@ $grafo = [$pulisci($articolo), $pulisci($pagina)];
 // Il nodo Person va ripetuto per intero: i crawler degli assistenti AI
 // raramente seguono un @id verso un'altra pagina.
 if ($autore)  $grafo[] = $autore;
-if ($revisore) $grafo[] = $revisore;
+if ($revisore && (!$autore || $revisore['@id'] !== $autore['@id'])) $grafo[] = $revisore;
 
 $grafo[] = $nodoBr;
 $grafo[] = $sito($LANG);
-$grafo[] = $org($LANG);
+$grafo[] = $orgNodo;
 
 return $json($grafo);

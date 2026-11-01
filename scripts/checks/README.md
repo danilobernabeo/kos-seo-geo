@@ -15,3 +15,10 @@ Previsti per lo sprint 1:
 - `kos-head-controllo.py --base <stage> --pagine pagine.txt [--confronta https://kosgroup.com]` — sul PC, password
   dello stage solo in `$env:AUTH`: title, description, robots, canonical, hreflang (anche reciproci), og completi con
   immagine raggiungibile, tag MODX non risolti; con `--confronta` le differenze dalla produzione.
+
+## Articoli di kosgroup.com (KOS-10)
+
+- `kos-articoli.php /www [id] [--elenco]` — sul cloud, sola lettura: pagine dei template `informativo`, `video`,
+  `progetti-speciali` per sezione (cartelle di `kos.article_sezioni`), immagini mancanti o piccole, strutture collegate,
+  JSON-LD scritto a mano nel contenuto, date; con un id stampa il `@graph` che `kosSchema` produce per quella risorsa.
+- Prova locale della libreria senza MODX: `php scripts/test/seo-schema-simulazione.php` (vedi l'intestazione dello script).

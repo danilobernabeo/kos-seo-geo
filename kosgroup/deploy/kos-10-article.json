@@ -1,0 +1,66 @@
+{
+  "nome": "KOS-10 Article/NewsArticle negli articoli (news, approfondimenti, eventi) e VideoObject nei video, nell'unico @graph della libreria comune (kosSchema)",
+  "settings": [
+    {
+      "key": "kos.tpl_article",
+      "value": "informativo",
+      "area": "kos"
+    },
+    {
+      "key": "kos.article_sezioni",
+      "value": "30:NewsArticle,31:Article,32:Article",
+      "area": "kos"
+    },
+    {
+      "key": "kos.article_headline",
+      "value": "pagetitle",
+      "area": "kos"
+    },
+    {
+      "key": "kos.article_tv_immagine",
+      "value": "infoImage",
+      "area": "kos"
+    },
+    {
+      "key": "kos.article_tv_strutture",
+      "value": "idStruttura",
+      "area": "kos"
+    },
+    {
+      "key": "kos.tpl_video",
+      "value": "video",
+      "area": "kos"
+    },
+    {
+      "key": "kos.video_tv_embed",
+      "value": "embedCode",
+      "area": "kos"
+    },
+    {
+      "key": "kos.video_tv_data",
+      "value": "videoData",
+      "area": "kos"
+    },
+    {
+      "key": "kos.tpl_medico",
+      "value": "medici",
+      "area": "kos"
+    },
+    {
+      "key": "kos.medico_tv_struttura",
+      "value": "idSedeLavoro",
+      "area": "kos"
+    }
+  ],
+  "elements": [
+    {
+      "type": "snippet",
+      "name": "kosSchema",
+      "file": "shared/snippets/seoSchema.php",
+      "properties": {
+        "prefisso": "kos"
+      },
+      "description": "Dato strutturato e briciole (libreria comune seoSchema, prefisso kos)"
+    }
+  ]
+}
