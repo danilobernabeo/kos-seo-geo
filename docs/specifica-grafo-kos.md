@@ -406,12 +406,14 @@ accanto agli export: `kosgroup/dati/voce-24/gbp/registro.csv`.
    API si curano a mano.
 10. **Telefoni**: Numero Unico, cellulari, numeri condivisi (§5).
 11. **Errori attivi**: verifica di Danilo (proprietà e baseline per prime), poi invio a KOS.
-12. **Schede Bing (Bing Places)**: probabilmente gestite da Yext via API, senza un account Microsoft di KOS. Da chiedere a
-    Yext nella call di uscita sotto quale account stanno e che cosa resta alla disdetta (Yext smette di inviare dati e
-    toglie il marchio «Owner Verified»). Via consigliata: account Microsoft aziendale di KOS (non personale) su Bing
-    Places, «importa da Google Business Profile» con l'account Google proprietario delle schede, poi rivendicazione delle
-    sedi rimaste con la verifica di Bing. Da chiedere a RetailTune se pubblica su Bing (e Apple Business Connect) e con
-    quale accesso. Bing Webmaster Tools (KOS-19) è un'altra cosa.
+12. **Schede Bing (Bing Places) e Apple (Business Connect)**: RetailTune ha detto nelle prime call che gestisce Google,
+    Bing e Apple come gestore aggiunto dal proprietario: nessun import da fare. Probabilmente oggi le schede Bing e Apple
+    sono gestite da Yext via API, senza un account di KOS. Sequenza: 1) ricognizione senza modifiche (KOS crea account
+    aziendali su Bing Places e Apple Business Connect e guarda quali sedi esistono, chi le ha rivendicate, se ci sono
+    doppioni); 2) a Yext, nella call di uscita, sotto quale account stanno e trasferimento a KOS prima della disdetta
+    (alla disdetta Yext smette di inviare dati e toglie «Owner Verified»); 3) le sedi non trasferite si rivendicano con
+    la verifica di Bing e Apple; 4) KOS aggiunge RetailTune come gestore, come su Google. Gli account sono di KOS, mai
+    personali né di un fornitore. Bing Webmaster Tools (KOS-19) è un'altra cosa.
 
 ## 10. Riferimenti
 

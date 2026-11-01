@@ -124,5 +124,6 @@ sincronizzazioni orarie) nei campi delle pagine struttura. Corrispondenza previs
 10. **Visibilità degli attributi.** Che effetto ha `visible` sugli attributi nel widget e nell'API?
 11. **UTM.** Il sito pubblicato nei profili Google può avere parametri aggiunti solo nella sincronizzazione (es.
     `utm_source=google&utm_medium=organic&utm_campaign=gbp`), mentre il campo `link` resta l'URL canonico senza parametri?
-12. **Altri motori.** RetailTune sincronizza anche Bing Places e Apple Business Connect? Se sì, con quale accesso: le
-    schede vanno tenute sotto account di KOS, con RetailTune come gestore.
+12. **Bing e Apple.** Come detto nelle prime call, gestite Bing Places e Apple Business Connect come gestore aggiunto da
+    KOS: quale ruolo vi serve su ciascuno e con quale indirizzo vi aggiungiamo? L'abbinamento delle sedi è per codice
+    sede anche lì? Gli account restano di KOS.
