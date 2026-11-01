@@ -124,7 +124,10 @@ foreach ($man['risorse'] as $r) {
             if (preg_match('/^[a-z0-9]+(?:-[a-z0-9]+)*$/', trim($att))) { echo "  ! $etichetta: il longtitle attuale «{$att}» è un alias (cartella) — FERMO\n"; $fermo = true; break; }
             if ($dove = $usaLongtitle($res)) { echo "  ! $etichetta: il longtitle è usato da $dove — FERMO\n"; $fermo = true; break; }
         }
-        if ($att !== $v['prima']) {
+        // L'istantanea (meta-stato.php) salva i testi normalizzati: entità HTML decodificate e spazi compattati.
+        // Uguali dopo la stessa normalizzazione = nessuno li ha cambiati.
+        $norm = fn($s) => trim((string) preg_replace('/\s+/u', ' ', html_entity_decode((string) $s, ENT_QUOTES | ENT_HTML5, 'UTF-8')));
+        if ($att !== $v['prima'] && $norm($att) !== $norm($v['prima'])) {
             echo "  ! $etichetta: $c cambiato dopo l'istantanea («" . $breve($att) . "»)" . ($forza ? " — procedo per --forza\n" : " — FERMO\n");
             if (!$forza) { $fermo = true; break; }
         }
