@@ -71,6 +71,7 @@ def main():
         out_p = inserisci(base, sez_p)
         t_p = '\n'.join(out_p).rstrip('\n') + '\n'
         t_p = ('# Regole web di PRODUZIONE %s = produzione-2026-10-31.conf + sezione PDF (KOS-8 / AA-3)%s. Generato da scripts/web-rules/stage-da-produzione.py: non modificare a mano.\n'
+               '# ISTANTANEA del 1/11 (base: produzione-2026-10-31.conf): le modifiche fatte dopo nel pannello (es. AA-20, aa-senior-living.conf) non ci sono. Per aggiornare la produzione si sostituisce SOLO la sezione tra INIZIO e FINE, non questo file intero.\n'
                % (sito, ', che al posto del vecchio blocco «location ~* \\.pdf$» di questo file vale da solo' if sito == 'anniazzurri' else '')) + t_p
 
         # ---- stage ----

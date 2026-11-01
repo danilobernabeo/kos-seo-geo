@@ -20,6 +20,7 @@ RADICE = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__))
 ORDINE = {'TIENI': 0, 'ESCLUDI': 1}
 
 # --- parere 1/11 sui moduli di accesso rimasti ESCLUDI «valutare TIENI» -------------------------------------------------
+PAGINE_SPOSTATE = {'alloggi-protetti': 'appartamenti-anziani-bergamo'}   # AA-20 (1/11): nuovo indirizzo della risorsa 367
 SUPERATE = {  # intestazioni ASL (oggi ATS) o scansioni del 2014-2017: restano ESCLUDI
     'questionario-di-ammissione-ASL-MI2.pdf': 'intestazione ASL Milano 2 (oggi ATS): modulo superato',
     'questionario-socio-anagrafico-di-ammissione-ASL-MI.pdf': 'scheda socio-anagrafica ASL Milano del 2014: modulo superato',
@@ -326,7 +327,7 @@ def main():
         dati[sito] = righe
         if o.elenco_url:
             os.makedirs(o.elenco_url, exist_ok=True)
-            al = sorted({alias_di(x['Percorso']) for x in righe if x['Proposta'] == 'TIENI' and alias_di(x['Percorso'])})
+            al = sorted({PAGINE_SPOSTATE.get(alias_di(x['Percorso']), alias_di(x['Percorso'])) for x in righe if x['Proposta'] == 'TIENI' and alias_di(x['Percorso'])})
             base_url = 'https://anniazzurri.it/' if sito == 'aa' else None
             with open(os.path.join(o.elenco_url, 'url-strutture-%s.txt' % sito), 'w', encoding='utf-8') as fh:
                 if sito == 'aa':

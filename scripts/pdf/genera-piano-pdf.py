@@ -80,6 +80,20 @@ def header_sicurezza(sito):
     return out
 
 
+# Cartelle di documenti spostate dopo l'inventario del 1/11 (il foglio ha ancora il vecchio percorso). Il 301 del vecchio PDF
+# NON si genera qui: è già nelle regole web fuori sezione (anniazzurri/files/web-rules/aa-senior-living.conf).
+SPOSTATI = [
+    ('/assets/doc/strutture/alloggi-protetti/', '/assets/doc/strutture/appartamenti-anziani-bergamo/'),   # AA-20, risorsa 367, 1/11
+]
+
+
+def rimappa(p):
+    for vecchio, nuovo in SPOSTATI:
+        if p and p.startswith(vecchio):
+            return nuovo + p[len(vecchio):]
+    return p
+
+
 esclusi_modello = {}
 
 
@@ -99,7 +113,7 @@ def main():
         esclusi = 0
         lista_esclusi = []
         for r in rows:
-            p = r[ix['Percorso']]
+            p = rimappa(r[ix['Percorso']])
             if not p:
                 continue
             if r[ix['Proposta']] != 'TIENI':
@@ -117,7 +131,7 @@ def main():
                 continue
             if tit:
                 voci.append({'p': p, 't': tit})
-            c = r[ix['Canonical verso']]
+            c = rimappa(r[ix['Canonical verso']])
             if c:
                 canon.append((p, c))
         os.makedirs(os.path.join(RADICE, cart, 'dati', 'pdf'), exist_ok=True)
