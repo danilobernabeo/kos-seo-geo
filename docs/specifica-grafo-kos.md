@@ -73,9 +73,9 @@ di KOS S.p.A. Nel grafo: struttura `parentOrganization` → società; società `
 di KOS Care puntano direttamente a `https://anniazzurri.it/#organization`, anche su kosgroup.com. Beata Corte è cessata a
 luglio 2026 (scheda e documenti in 301 verso Corte Orero): fuori dal grafo. Sanatrix S.r.l. e KOS Servizi non gestiscono
 strutture dei due siti: fuori dal grafo finché non servono (nessuna pagina le descrive). Poliambulatori, centri
-ambulatoriali e cliniche dentali fanno capo a KOS Care, anche quando sono nella stessa sede di una struttura di un'altra
-società (es. Polo Diagnostico Villa dei Pini a Civitanova Marche: KOS Care; la casa di cura Villa dei Pini: Sanatrix
-Gestioni). Conferma di KOS del 1/11.
+ambulatoriali e cliniche dentali fanno capo a KOS Care (conferma di KOS del 1/11). Sul sito l'unica pagina di Sanatrix
+Gestioni è `/it/centri/villa-dei-pini-civitanova`; «Polo Diagnostico Villa dei Pini» esiste solo come scheda Google
+(stesso URL della casa di cura, vedi §5, schede da sistemare) e non è un nodo del grafo.
 
 Regole delle relazioni:
 
