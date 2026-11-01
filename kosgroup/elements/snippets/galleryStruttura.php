@@ -11,6 +11,8 @@
 // Lettura del percorso della cartella dal parametro dello snippet
 $directory = $modx->getOption('path', $scriptProperties, '');
 $priorita = (string) $modx->getOption('priorita', $scriptProperties, '1') !== '0';
+// Foto caricate subito: la griglia desktop ne mostra 5 nella prima schermata (collaudo stage 1/11). &subito=`n` per cambiare.
+$subito = max(1, (int) $modx->getOption('subito', $scriptProperties, 5));
 
 // Verifica se il percorso è stato fornito
 if (empty($directory)) {
@@ -41,7 +43,7 @@ foreach ($images as $i => $image) {
     $relativePath = $web . basename($image);
     $caricamento = $i === 0
         ? ($priorita ? ' fetchpriority="high"' : '')
-        : ' loading="lazy" decoding="async"';
+        : ($i < $subito ? '' : ' loading="lazy" decoding="async"');
 
     // Aggiunge il codice HTML per ciascuna immagine
     $output .= '<div class="gallery-foto" data-pswp-width="' . $width . '" data-pswp-height="' . $height . '" data-pswp-src="' . $relativePath . '">';

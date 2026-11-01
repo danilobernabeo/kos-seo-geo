@@ -117,9 +117,15 @@ foreach (preg_split('/[\r\n;]+/', $regole) as $r) {
     if (stripos($pulito, $nome) === false) continue;
     $q = preg_quote($nome, '~');
     $trovato = $tipo === '.'
-        ? preg_match('~\sclass\s*=\s*(["\'])(?:(?!\1).)*?(?<![\w-])' . $q . '(?![\w-])~is', $pulito)
-        : preg_match('~\sid\s*=\s*(["\'])' . $q . '\1~i', $pulito);
+        ? preg_match('~\sclass\s*=\s*(["\'])(?:(?!\1).)*?(?<![\w-])' . $q . '(?![\w-])~is', $pulito, $mm, PREG_OFFSET_CAPTURE)
+        : preg_match('~\sid\s*=\s*(["\'])' . $q . '\1~i', $pulito, $mm, PREG_OFFSET_CAPTURE);
     if (!$trovato) continue;
+    // Solo se lo sfondo viene prima della prima immagine del contenuto (dopo la testata): altrimenti l'elemento più
+    // grande in alto è un'<img> e il precaricamento ad alta priorità le ruberebbe banda (collaudo stage 1/11:
+    // visione-valori-missione, cura-delle-persone, news-e-media peggiorate).
+    $dopoHeader = stripos($pulito, '</header>');
+    if ($dopoHeader !== false && preg_match('~<img\b(?![^>]*\.svg)~i', $pulito, $im, PREG_OFFSET_CAPTURE, $dopoHeader)
+        && $im[0][1] < $mm[0][1]) continue;
     if (preg_match('~<link\b[^>]*rel\s*=\s*["\']preload["\'][^>]*href\s*=\s*["\']' . preg_quote($url, '~') . '["\']~i', substr($output, 0, $fineHead))) continue;
     $e = static fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
     $link[$url] = '<link rel="preload" as="image" href="' . $e($url) . '" fetchpriority="high"' . ($media !== '' ? ' media="' . $e($media) . '"' : '') . '>';
