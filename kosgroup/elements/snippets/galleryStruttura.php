@@ -43,7 +43,7 @@ foreach ($images as $i => $image) {
     $relativePath = $web . basename($image);
     $caricamento = $i === 0
         ? ($priorita ? ' fetchpriority="high"' : '')
-        : ($i < $subito ? '' : ' loading="lazy" decoding="async"');
+        : ($i < $subito ? ' loading="eager"' : ' loading="lazy" decoding="async"');   // eager esplicito: il plugin ImmaginiDifferite non le tocca
 
     // Aggiunge il codice HTML per ciascuna immagine
     $output .= '<div class="gallery-foto" data-pswp-width="' . $width . '" data-pswp-height="' . $height . '" data-pswp-src="' . $relativePath . '">';

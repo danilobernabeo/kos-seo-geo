@@ -1,0 +1,6 @@
+# KOS-2 B, prova A/B del precaricamento di bg-pattern (1/11): le 3 pagine peggiorate e 2 pagine in cui lo sfondo è l'LCP.
+/it/chi-siamo/gruppo-kos/visione-valori-missione
+/it/chi-siamo/qualita-delle-cure/cura-delle-persone
+/it/news-e-media
+/it/chi-siamo/gruppo-kos/la-nostra-storia
+/it/chi-siamo/governance/sostenibilita
