@@ -41,6 +41,14 @@ sprint 1 (verifica di Cerved/ProWeb 9-14/11).
 
 **PDF (KOS 8, AA 3) in una chat dedicata dal 1/11**: punto di partenza `docs/pdf/brief-pdf.md` (inventario, Search Console, classificazione, titoli nei metadati dei file, `X-Robots-Tag`, redirect). Le regole web passano da qui; rilascio entro venerdì 6/11.
 
+**PDF rilasciati in produzione il 1/11** (nota interna `docs/nota-consegna-pdf.md`): titoli nei metadati riscritti su 186 PDF AA e 242 KOS; regole web con noindex di default, eccezioni per elenco e per nome file, canonical sulle copie, redirect dei PDF spariti. Da fare:
+- 3/11, call KOS: «Il team», «La nostra équipe», «Organizzazione», tirocini (oggi invariati);
+- `/assets/doc/cv/`: verificare subito se è raggiungibile (dati personali) e, se sì, bloccarla;
+- Beata Corte: archiviare la cartella dei documenti fuori dal webroot (il 301 della cartella resta);
+- Biarella: attivare il redirect della carta quando la pagina risponde 200;
+- 17/11: Open Day odontoiatrico di Abitare il Tempo da TIENI a ESCLUDI;
+- 7 PDF con tabella interna rotta, controllo ripetibile dei PDF nuovi, pulizia dei file di lavoro in home sui server; backup dei metadati da tenere.
+
 | AA 6 · H2 | In produzione (27/10) | Solo evidenza |
 | AA 20 · Title e description | 90 pagine dell'audit (28/10) | 6 title lunghi (agenzia); circa 90 pagine fuori audit, da validare tra Danilo e Claude |
 | KOS 10 · Articoli | — | Article con autore ed editore nella libreria comune |
