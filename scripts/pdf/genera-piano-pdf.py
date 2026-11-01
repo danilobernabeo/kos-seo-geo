@@ -48,6 +48,19 @@ REDIRECT = {
 }
 
 
+# Modelli per nome file (senza distinzione di maiuscole, sul $uri): i tipi da tenere restano indicizzabili anche se caricati con un nome nuovo.
+MODELLI = [
+    ('carta dei servizi / carta degli alloggi', r'/[^/]*carte?[ _-]+(dei|degli)[ _-]+(servizi|alloggi)[^/]*\.pdf$'),
+    ('pieghevole / leaflet', r'/[^/]*(pieghevole|leaflet)[^/]*\.pdf$'),
+    ('guida utente / user manual / guida ai servizi', r'/[^/]*(guida[ _-]+(utente|ai[ _-]+servizi)|user[ _-]*(manual|guide))[^/]*\.pdf$'),
+    ('preparazioni', r'/preparazion[ie]'),
+]
+
+
+def qr(rx):
+    return '"' + rx + '"'
+
+
 def q(s):
     if '$' in s or '"' in s or '\\' in s:
         raise SystemExit('Carattere non ammesso in una regola nginx: ' + s)
@@ -67,6 +80,9 @@ def header_sicurezza(sito):
     return out
 
 
+esclusi_modello = {}
+
+
 def main():
     a = argparse.ArgumentParser()
     a.add_argument('--foglio', required=True)
@@ -81,12 +97,14 @@ def main():
         ix = {k: i for i, k in enumerate(h)}
         voci, tieni, canon, attesa, comunicati_cartella = [], [], [], [], []
         esclusi = 0
+        lista_esclusi = []
         for r in rows:
             p = r[ix['Percorso']]
             if not p:
                 continue
             if r[ix['Proposta']] != 'TIENI':
                 esclusi += 1
+                lista_esclusi.append(p)
                 continue
             tieni.append(p)
             ril = str(r[ix['Rilascio di oggi']] or '')
@@ -130,6 +148,16 @@ def main():
         if sito == 'kos':
             L.append('    # comunicati stampa: tutta la cartella è indicizzabile (decisione del 1/11)')
             L.append('    if ($uri ~ "^/assets/doc/comunicati/") { set $pdf_robots ""; }')
+        L.append('    # --- per nome file (senza distinzione di maiuscole): i tipi da tenere restano indicizzabili anche con un nome nuovo ---')
+        for nome, rx in MODELLI:
+            L.append('    # %s' % nome)
+            L.append('    if ($uri ~* %s) { set $pdf_robots ""; }' % qr(rx))
+        eccez = [e for e in sorted(lista_esclusi) if any(re.search(rx, e, re.I) for _, rx in MODELLI) or (sito == 'kos' and e.startswith('/assets/doc/comunicati/'))]
+        if eccez:
+            L.append('    # --- classificati ESCLUDI ma con un nome che coincide con un modello: noindex esplicito ---')
+            for e in eccez:
+                L.append('    if ($uri = %s) { set $pdf_robots "noindex"; }' % q(e))
+        esclusi_modello[sito] = eccez
         L.append('    # --- PDF indicizzabili (carte dei servizi, pieghevoli, guide, schede di servizio, moduli di accesso) ---')
         com = re.compile(r'^/assets/doc/comunicati/')
         for p in sorted(tieni):
@@ -150,6 +178,9 @@ def main():
         print('== %s: indicizzabili %d (di cui in attesa di KOS %d, comunicati %d), esclusi %d, canonical %d, redirect %d (attivi %d); piano: %d PDF da riscrivere' % (
             sito, len(tieni), len(attesa), sum(1 for v in voci if v.get('tipo')), esclusi, len(canon), len(REDIRECT[sito]),
             sum(1 for r in REDIRECT[sito] if r[3]), len(voci)))
+        print('   ESCLUDI che coincidono con i modelli per nome: %d' % len(esclusi_modello[sito]))
+        for e in esclusi_modello[sito]:
+            print('     ' + e)
 
 
 if __name__ == '__main__':
