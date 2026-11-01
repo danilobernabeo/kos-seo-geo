@@ -47,7 +47,7 @@ CORREZIONI = [  # (regex sul titolo del documento, sostituzione): accenti e apos
     (r'\bdi un\b', 'di un'), (r'\bUnita\'', 'Unità'), (r'\buo\b', 'UO'), (r'\brsa\b', 'RSA'),
     (r'\bcsrr\b', 'CSRR'), (r'\bcdi\b', 'CDI'), (r'\banniazzurri\b', 'Anni Azzurri'), (r'\bd alzheimer\b', "d'Alzheimer"),
     (r'\bequipe\b', 'équipe'), (r'\bcheck up\b', 'check-up'), (r'\bparkinson\b', 'Parkinson'), (r'\balzheimer\b', 'Alzheimer'), (r'\bdi un\b', 'di un'),
-    (r'\bdell\b', "dell'"), (r'\bl\b', "l'"),
+    (r"\bdell\b(?!')", "dell'"), (r"\bl\b(?!')", "l'"),
 ]
 MINUSC = {'di', 'del', 'della', 'dei', 'delle', 'degli', 'da', 'in', 'per', 'a', 'e', 'al', 'alla', 'sul', 'su', 'con', 'il', 'la', 'le', 'lo', 'un', 'una', 'd', 'dall'}
 
