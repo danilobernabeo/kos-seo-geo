@@ -175,6 +175,11 @@ def main():
         L.append('# ===== FINE SEZIONE PDF (KOS-8 / AA-3) =====')
         with open(os.path.join(RADICE, cart, 'files', 'web-rules', 'pdf-noindex.conf'), 'w', encoding='utf-8') as fh:
             fh.write('\n'.join(L) + '\n')
+        # variante per lo stage: lì $redirect_to (regola di produzione sul dominio) non esiste e nginx rifiuterebbe la variabile
+        LS = [l for l in L if '$redirect_to' not in l]
+        LS[0] = LS[0].replace('INIZIO SEZIONE PDF', 'INIZIO SEZIONE PDF — VARIANTE STAGE (senza $redirect_to)')
+        with open(os.path.join(RADICE, cart, 'files', 'web-rules', 'pdf-noindex-stage.conf'), 'w', encoding='utf-8') as fh:
+            fh.write('\n'.join(LS) + '\n')
         print('== %s: indicizzabili %d (di cui in attesa di KOS %d, comunicati %d), esclusi %d, canonical %d, redirect %d (attivi %d); piano: %d PDF da riscrivere' % (
             sito, len(tieni), len(attesa), sum(1 for v in voci if v.get('tipo')), esclusi, len(canon), len(REDIRECT[sito]),
             sum(1 for r in REDIRECT[sito] if r[3]), len(voci)))
