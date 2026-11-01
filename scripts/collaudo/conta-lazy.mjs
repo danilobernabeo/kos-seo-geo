@@ -54,7 +54,12 @@ const grezzo = fs.readFileSync(String(opz.pagine));
 const testo = grezzo[0] === 0xff && grezzo[1] === 0xfe ? grezzo.toString('utf16le') : grezzo.toString('utf8');
 const pagine = testo.replace(/^﻿/, '').split(/\r?\n/).map(r => r.replace(/#.*$/, '').trim()).filter(r => r.startsWith('/'));
 if (!pagine.length) { console.error('Nessuna pagina nel file (righe che iniziano con «/»).'); process.exit(1); }
-const httpCredentials = process.env.AUTH ? (([u, ...p]) => ({ username: u, password: p.join(':') }))(process.env.AUTH.split(':')) : undefined;
+// $env:AUTH = password dello stage (utente «kos», come nei comandi curl) oppure «utente:password»
+const httpCredentials = process.env.AUTH
+  ? (process.env.AUTH.includes(':')
+      ? (([u, ...p]) => ({ username: u, password: p.join(':') }))(process.env.AUTH.split(':'))
+      : { username: 'kos', password: process.env.AUTH })
+  : undefined;
 
 const INIT = () => {
   window.__lcp = null;
@@ -152,6 +157,7 @@ for (const nomeProf of profili) {
     try {
       const resp = await page.goto(BASE + pag, { waitUntil: 'load', timeout: 90000 });
       r.stato = resp ? resp.status() : null;
+      if (r.stato !== 200) segnala('KO', `pagina non servita (HTTP ${r.stato}): password dello stage in $env:AUTH?`, {});
       await page.waitForTimeout(2000);
       const a = await page.evaluate(FOTO);
       const scaricate = new Set(byte.keys());

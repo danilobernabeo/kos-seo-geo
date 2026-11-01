@@ -13,6 +13,13 @@ const soglia = Number((process.argv.find(a => a.startsWith('--soglia=')) || '--s
 if (!fa || !fb) { console.error('Uso: node confronta-lcp.mjs prima/risultati.json dopo/risultati.json [--soglia=10]'); process.exit(1); }
 const leggi = f => JSON.parse(fs.readFileSync(f, 'utf8'));
 const A = leggi(fa), B = leggi(fb);
+// Pagine non servite (401 password, 404, 5xx): il confronto non avrebbe senso, ci si ferma.
+const nonServite = [...A.risultati, ...B.risultati].filter(r => r.stato != null && r.stato !== 200);
+if (nonServite.length) {
+  console.error(`FERMO: ${nonServite.length} misure su pagine non servite (es. ${nonServite[0].stato} ${nonServite[0].pagina}). ` +
+    'Sullo stage: $env:AUTH con la password e --base dello stage; poi rifare la misura.');
+  process.exit(2);
+}
 const chiave = r => r.profilo + ' ' + r.pagina;
 const mappa = new Map(A.risultati.map(r => [chiave(r), r]));
 const mediana = a => { const v = a.filter(x => x != null).sort((x, y) => x - y); return v.length ? v[Math.floor((v.length - 1) / 2)] : null; };

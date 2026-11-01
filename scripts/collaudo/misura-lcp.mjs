@@ -54,7 +54,12 @@ const testo = grezzo[0] === 0xff && grezzo[1] === 0xfe ? grezzo.toString('utf16l
 const pagine = testo.replace(/^﻿/, '').split(/\r?\n/).map(r => r.replace(/#.*$/, '').trim()).filter(r => r.startsWith('/'));
 if (!pagine.length) { console.error('Nessuna pagina nel file (righe che iniziano con «/»).'); process.exit(1); }
 
-const httpCredentials = process.env.AUTH ? (([u, ...p]) => ({ username: u, password: p.join(':') }))(process.env.AUTH.split(':')) : undefined;
+// $env:AUTH = password dello stage (utente «kos», come nei comandi curl) oppure «utente:password»
+const httpCredentials = process.env.AUTH
+  ? (process.env.AUTH.includes(':')
+      ? (([u, ...p]) => ({ username: u, password: p.join(':') }))(process.env.AUTH.split(':'))
+      : { username: 'kos', password: process.env.AUTH })
+  : undefined;
 
 // Raccolta nel browser: LCP (ultimo candidato), FCP, TTFB, immagini visibili.
 const INIT = () => {
