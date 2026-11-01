@@ -34,9 +34,9 @@ TITOLI_MANUALI = {  # percorso (finale) → titolo; ente e territorio nel titolo
     'questionario-di-ammissione-UOR-rezzato.pdf': 'Questionario di ammissione UOR – Anni Azzurri Rezzato',
     'questionario-di-ammissione-UOR-polo-geriatrico-riabilitativo.pdf': 'Questionario di ammissione UOR – Polo Geriatrico Riabilitativo',
     'questionario-di-ammissione-residenze-anni-azzurri.pdf': 'Questionario di ammissione – Residenze Anni Azzurri',
-    'Analisi del Movimento Laboratorio L.A.M.PO..pdf': 'Analisi del movimento, laboratorio L.A.M.PO. – Istituto Santo Stefano',
-    'Analisi del Movimento Laboratorio L.A.M.PO.pdf': 'Analisi del movimento, laboratorio L.A.M.PO. – Istituto Santo Stefano',
-    'mod308-richiesta-cartella-persona-deceduta.pdf': 'Richiesta documentazione sanitaria di persona deceduta – Ospedale San Pancrazio',
+    'Analisi del Movimento Laboratorio L.A.M.PO..pdf': 'Analisi del movimento L.A.M.PO. – Istituto Santo Stefano',
+    'Analisi del Movimento Laboratorio L.A.M.PO.pdf': 'Analisi del movimento L.A.M.PO. – Istituto Santo Stefano',
+    'mod308-richiesta-cartella-persona-deceduta.pdf': 'Richiesta cartella clinica di defunto – Ospedale San Pancrazio',
     'aMod309-richiesta-cartella-clinica.pdf': 'Richiesta della cartella clinica – Ospedale San Pancrazio',
     'regolamento-comunita.pdf': 'Regolamento della comunità – Beata Corte',
     'pieghevole-home-care-academy.pdf': 'Pieghevole Home Care Academy – Anni Azzurri',
@@ -85,7 +85,7 @@ def nomi(sito, metas):
     if sito == 'kos':
         d = json.load(open(os.path.join(RADICE, 'kosgroup/dati/voce-24/mappatura-servizi-2026-10-25.json'), encoding='utf-8'))
         for s in d['schede']:
-            if s.get('template') == 'strutture' and s.get('pagetitle'):
+            if str(s.get('template', '')).startswith('strutture') and s.get('pagetitle'):
                 out[s['uri'].strip('/').split('/')[-1]] = (s['pagetitle'].strip(), 'pagetitle della scheda (H1 da verificare)')
     else:
         for r in leggi_csv(os.path.join(RADICE, 'anniazzurri/dati/aa-20/meta-stato-20261027.csv')):
@@ -101,22 +101,38 @@ def nomi(sito, metas):
 
 
 DOC_BREVE = {  # (cartella, file) → parte «documento» abbreviata a mano; il nome della struttura resta quello della scheda
+    ('residenza-anni-azzurri-campi-bisenzio', 'Carta dei servizi Hospice San Giorgio a Colonica.pdf'): 'Carta dei servizi Hospice',
+    ('residenza-anni-azzurri-mirasole', "Carta dei servizi Unita' Operativa Riabilitazione Generale Geriatrica.pdf"): 'Carta dei servizi Riabilitazione',
+    ('residenza-anni-azzurri-rezzato', "Carta dei servizi Unita' Operativa Riabilitazione Generale Geriatrica.pdf"): 'Carta dei servizi Riabilitazione',
+    ('residenza-anni-azzurri-pgr-cinisello', 'Carta dei servizi Dipartimento di Medicina Fisica e Riabilitativa.pdf'): 'Carta dei servizi Medicina Fisica',
+    ('residenza-anni-azzurri-villaggio-san-francesco', 'Carta dei servizi RSA aperta.pdf'): 'Carta servizi RSA aperta',
+    ('residenza-anni-azzurri-abitare-il-tempo', 'Richiesta di ricovero Riabilitazione Estensiva.pdf'): 'Richiesta ricovero riabilitazione',
+    ('residenza-anni-azzurri-santa-maria-in-chienti', 'Modulo ingresso in convenzione.pdf'): 'Ingresso in convenzione',
+    ('ospedale-san-pancrazio', 'centro-ambulatoriale-di-riabilitazione-neuromotoria.pdf'): 'Riabilitazione neuromotoria',
+    ('villa-margherita-vicenza-psichiatria', 'ricovero-intensivo-per-pazienti-con-disturbi-d-ansia-e-umore.pdf'): "Ricovero: disturbi d'ansia e umore",
+    ('villa-margherita-vicenza-psichiatria', 'ricovero-intensivo-per-pazienti-con-disturbo-della-personalita.pdf'): 'Ricovero: disturbo di personalità',
+    ('villa-margherita-vicenza-psichiatria', 'storia-di-villa-margherita.pdf'): 'Storia di Villa Margherita',
+    ('villa-margherita-vicenza-riabilitazione', 'storia-di-villa-margherita.pdf'): 'Storia di Villa Margherita',
+    ('villa-dei-pini-civitanova', 'carta-dei-servizi-rsa-villa-margherita.pdf'): 'Carta servizi RSA Villa Margherita',
+    ('centro-ambulatoriale-santo-stefano-camerino', 'user-manual.pdf'): 'User guide (overview)',
+    ('centro-ambulatoriale-santo-stefano-camerino', 'user-manual-en.pdf'): 'User guide',
+    ('centro-ambulatoriale-santo-stefano-camerino', 'guida-utente-eng.pdf'): 'User guide',
+    ('centro-ambulatoriale-santo-stefano-jesi', 'user-manual.pdf'): 'User guide (overview)',
+    ('centro-ambulatoriale-santo-stefano-jesi', 'user-manual-en.pdf'): 'User guide',
+    ('centro-ambulatoriale-santo-stefano-jesi', 'guida-utente-eng.pdf'): 'User guide',
+    ('centro-ambulatoriale-santo-stefano-macerata', 'user-manual.pdf'): 'User guide (overview)',
+    ('centro-ambulatoriale-santo-stefano-macerata', 'user-manual-en.pdf'): 'User guide',
+    ('centro-ambulatoriale-santo-stefano-macerata', 'guida-utente-eng.pdf'): 'User guide',
     ('residenza-anni-azzurri-beato-angelico', 'Carta dei servizi Centro Diurno Integrato.pdf'): 'Carta dei servizi Centro Diurno',
-    ('residenza-anni-azzurri-campi-bisenzio', 'Carta dei servizi Hospice San Giorgio a Colonica.pdf'): 'Carta dei servizi Hospice San Giorgio',
     ('residenza-anni-azzurri-il-poggione', 'Carta dei servizi Centro Diurno Integrato.pdf'): 'Carta dei servizi Centro Diurno',
     ('residenza-anni-azzurri-san-giuseppe', 'Carta dei servizi Centro Diurno Integrato.pdf'): 'Carta dei servizi Centro Diurno',
     ('centro-diurno-integrato-anni-azzurri-san-rocco', 'Carte dei servizi Centro Diurno Integrato.pdf'): 'Carta dei servizi Centro Diurno',
     ('residenza-anni-azzurri-san-rocco', 'Carte dei servizi Centro Diurno Integrato.pdf'): 'Carta dei servizi Centro Diurno',
-    ('residenza-anni-azzurri-mirasole', "Carta dei servizi Unita' Operativa Riabilitazione Generale Geriatrica.pdf"): 'Carta dei servizi Riabilitazione Geriatrica',
-    ('residenza-anni-azzurri-rezzato', "Carta dei servizi Unita' Operativa Riabilitazione Generale Geriatrica.pdf"): 'Carta dei servizi Riabilitazione Geriatrica',
-    ('residenza-anni-azzurri-pgr-cinisello', 'Carta dei servizi Dipartimento di Medicina Fisica e Riabilitativa.pdf'): 'Carta dei servizi Medicina Fisica e Riabilitativa',
     ('residenza-anni-azzurri-pgr-milano', 'Carta dei servizi Polo Geriatrico Riabilitativo 1.pdf'): 'Carta dei servizi, nucleo 1',
     ('residenza-anni-azzurri-pgr-milano', 'Carta dei servizi Polo Geriatrico Riabilitativo 2.pdf'): 'Carta dei servizi, nucleo 2',
     ('residenza-anni-azzurri-rezzato', 'Carta dei servizi Servizio di Cure Intermedie Residenziali.pdf'): 'Carta dei servizi Cure Intermedie',
     ('residenza-anni-azzurri-villa-reale', 'Carta dei servizi Servizio di Cure Intermedie Residenziali.pdf'): 'Carta dei servizi Cure Intermedie',
-    ('residenza-anni-azzurri-abitare-il-tempo', 'Richiesta di ricovero Riabilitazione Estensiva.pdf'): 'Richiesta di ricovero in riabilitazione',
     ('residenza-anni-azzurri-dorica', 'Modulo richiesta ricovero ex Riabilitazione Estensiva.pdf'): 'Richiesta di ricovero in riabilitazione',
-    ('residenza-anni-azzurri-santa-maria-in-chienti', 'Modulo ingresso in convenzione.pdf'): 'Modulo di ingresso in convenzione',
     ('residenza-anni-azzurri-san-sisto-2', 'Pieghevole informativo alloggi protetti.pdf'): 'Pieghevole alloggi protetti',
     ('', 'anniazzurri-a-casa-servizio-di-assistenza-domiciliare.pdf'): 'Anni Azzurri a casa: assistenza domiciliare',
     ('', 'le-10-cose-da-verificare-quando-scelgo-una-residenza.pdf'): '10 cose da verificare quando scelgo una residenza',
@@ -128,12 +144,11 @@ DOC_BREVE = {  # (cartella, file) → parte «documento» abbreviata a mano; il 
     ('poliambulatorio-villa-pineta', 'attivita-poliambulatorio-villa-pineta-modena.pdf'): 'Attività, sede di Modena',
     ('villa-pineta', 'attivita-poliambulatorio-villa-pineta-gaiato.pdf'): 'Attività del poliambulatorio, sede di Gaiato',
     ('centro-cardinal-ferrari', 'informazioni-utili-per-il-periodo-di-ricovero.pdf'): 'Informazioni utili per il ricovero',
-    ('ospedale-san-pancrazio', 'centro-ambulatoriale-di-riabilitazione-neuromotoria.pdf'): 'Riabilitazione neuromotoria ambulatoriale',
-    ('villa-margherita-vicenza-psichiatria', 'ricovero-intensivo-per-pazienti-con-disturbi-d-ansia-e-umore.pdf'): "Ricovero intensivo: disturbi d'ansia e umore",
-    ('villa-margherita-vicenza-psichiatria', 'ricovero-intensivo-per-pazienti-con-disturbo-della-personalita.pdf'): 'Ricovero intensivo: disturbo di personalità',
 }
 ABBREVIAZIONI = [  # nome ufficiale → forma abbreviata, nell'ordine in cui si prova
     (r'^Residenza (Anni Azzurri)', r'\1'), (r'^Centro Ambulatoriale ', ''), (r'Polo Geriatrico Riabilitativo', 'PGR'),
+    (r'^Centro Diurno Integrato ', 'CDI '), (r'^Centro Residenziale (Santo Stefano)', r'\1'),
+    (r'^(Villa Margherita) Vicenza \((Psichiatria|Riabilitazione)\)', r'\1 \2'),
 ]
 
 
@@ -199,6 +214,7 @@ def main():
     a.add_argument('--meta-kos', action='append', default=[])
     a.add_argument('--out', required=True)
     a.add_argument('--elenco-url')
+    a.add_argument('--nome', action='append', default=[], help="ALIAS=H1 letto a mano dalla scheda (ripetibile)")
     o = a.parse_args()
     import openpyxl
     from openpyxl.styles import Alignment, Font, PatternFill
@@ -214,6 +230,19 @@ def main():
     dati = {}
     for sito, nome_f in (('aa', 'AA'), ('kos', 'KOS')):
         nm = nomi(sito, o.meta_aa if sito == 'aa' else o.meta_kos)
+        for kv in o.nome:
+            al_, n_ = kv.split('=', 1)
+            nm[al_] = (n_, 'H1 della scheda (letto a mano)')
+        omonimi = collections.defaultdict(list)
+        for al, (n_, f_) in nm.items():
+            omonimi[n_].append(al)
+        for n_, als in omonimi.items():
+            if len(als) > 1:   # stessa H1 su schede diverse (es. Villa Margherita Vicenza): si qualifica con la parte che distingue la cartella
+                toks = [set(a_.split('-')) for a_ in als]
+                comune = set.intersection(*toks)
+                for a_, t_ in zip(als, toks):
+                    q_ = ' '.join(w for w in a_.split('-') if w not in comune).capitalize()
+                    nm[a_] = ('%s (%s)' % (n_, q_), nm[a_][1] + '; H1 uguale a un\'altra scheda: qualificata con la cartella')
         righe = []
         for r in wb[nome_f].iter_rows(min_row=2, values_only=True):
             x = dict(zip(intest, r))
@@ -258,6 +287,7 @@ def main():
                 elif not alias and x['Classe'] != 'Modulo / questionario':
                     nome, fonte = ('Anni Azzurri' if sito == 'aa' else 'KOS'), 'documento senza struttura: marchio'
                 en = bool(re.search(r'(^|[ -_])(en|eng)$|english|leaflet|guide to|user|patients|service[- ]charter', stem, re.I))
+                nome = re.sub(r'^(Villa Margherita) Vicenza \((Psichiatria|Riabilitazione)\)', r'\1 \2', nome)  # forma fissa per le due schede omonime
                 doc = DOC_BREVE.get((alias, base)) or titolo_doc(x['Classe'], x['Sottotipo'], stem, p, en or lingua_it_en(p) == 'en')
                 if x['Classe'] == 'Carta dei servizi' and re.search(r'service[- ]charter', stem, re.I):
                     doc = 'Service charter'
