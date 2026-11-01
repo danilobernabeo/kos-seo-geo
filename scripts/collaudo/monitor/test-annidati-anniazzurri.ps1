@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Verifica la regola nginx del 31/10/2026 su anniazzurri.it:
     - URL "annidati" inventati -> 404 leggero da nginx (pochi KB, non la pagina MODX da ~82 KB)
@@ -22,7 +22,7 @@ $casi = @(
   @("pagina",   "/rsa-in-lombardia", "200"),
   @("pagina",   "/chi-siamo/", "200"),
   @("pagina",   "/news/", "200"),
-  @("pagina",   "/rsa-in-provincia-di-roma/", "200"),
+  @("pagina",   "/rsa-in-provincia-di-roma/", "404"),   # pagina vuota non pubblicata il 31/10 (piano della settimana 2-6/11)
   @("pagina",   "/alzheimer-cura-e-assistenza", "200"),
   @("pagina",   "/cerca?query=rsa", "200"),
   @("pagina",   "/sitemap.xml", "200"),
