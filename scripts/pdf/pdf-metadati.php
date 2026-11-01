@@ -8,7 +8,7 @@
  * i byte originali devono essere un prefisso identico del nuovo file e il titolo deve risultare nei due punti.
  * Senza dipendenze (solo PHP): non serve pdftotext, qpdf o Python sul cloud.
  *
- * Uso:   php pdf-metadati.php <webroot> <piano.json> [--scrivi] [--solo=<testo nel percorso>] [--backup=<cartella>]
+ * Uso:   php pdf-metadati.php <webroot> <piano.json> [--scrivi] [--solo=<testo nel percorso>] [--senza-comunicati] [--backup=<cartella>]
  *        php pdf-metadati.php <webroot> --ripristina=<cartella di backup>
  *   Senza --scrivi è una PROVA: non scrive nulla, elenca per ogni file titolo attuale → nuovo e gli eventuali problemi.
  *   --scrivi: copia ogni originale in <backup> (default ~/backup-pdf-metadati-AAAAMMGG, stesso percorso relativo) con
@@ -506,7 +506,7 @@ $webroot = rtrim((string) ($argv[1] ?? ''), '/');
 $opt = [];
 $pos = [];
 foreach (array_slice($argv, 2) as $a) {
-    if (preg_match('/^--([a-z]+)(?:=(.*))?$/', $a, $m)) $opt[$m[1]] = $m[2] ?? true; else $pos[] = $a;
+    if (preg_match('/^--([a-z-]+)(?:=(.*))?$/', $a, $m)) $opt[$m[1]] = $m[2] ?? true; else $pos[] = $a;
 }
 $home = rtrim((string) (getenv('HOME') ?: '.'), '/');
 
@@ -549,6 +549,7 @@ $tutti = [];
 foreach ($piano['pdf'] as $voce) {
     $p = $voce['p'];
     if ($solo !== '' && !str_contains($p, $solo)) continue;
+    if (isset($opt['senza-comunicati']) && ($voce['tipo'] ?? '') === 'comunicato') continue;
     $file = $webroot . $p;
     if (!is_file($file)) { echo "MANCANTE   $p\n"; $conteggi['mancanti']++; continue; }
     $titolo = $voce['t'] ?? null;
