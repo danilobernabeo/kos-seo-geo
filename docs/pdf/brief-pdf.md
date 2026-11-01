@@ -66,8 +66,7 @@ servizi, tariffe e accesso di una residenza); la nota di consegna lo motiva in u
   `CLAUDE.md`.
 - Comandi per Danilo pronti da incollare, uno per blocco, **un pacchetto per comando con `--scrivi` dentro il comando**
   (il 1/11 un `--scrivi` messo solo in fondo ha lasciato in prova il primo di due pacchetti).
-- Rilasci in produzione entro **venerdì 6/11 alle 13:00**: dal 9 al 14/11 Cerved/ProWeb verifica lo sprint 1, il 13/11
-  si consegna lo sprint 2. Le regole web dei PDF non sono elementi dello sprint 1, ma conviene comunque chiudere prima.
+- Rilascio in produzione appena il pacchetto è collaudato sullo stage (Danilo, 1/11: anche lo stesso giorno); ultima data utile **venerdì 6/11 alle 13:00**. I PDF con nomi del personale («Il team», «La nostra équipe», «Organizzazione», tirocini) restano invariati fino alla conferma di KOS nella call del 3/11.
 - I PDF caricati dalla redazione dopo il rilascio non avranno il titolo: serve un controllo ripetibile (script che segnala
   i PDF senza titolo o con un titolo fuori schema) o un plugin al caricamento, come `ImmaginiCaricamento` per le immagini.
 
