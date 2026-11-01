@@ -42,7 +42,7 @@ baseline (decisione del 30/10). Proprietà verificata il 30/10 (account KOS su t
 | --- | --- | --- | --- | --- |
 | KOS S.p.A. | `Organization` | `https://kosgroup.com/#organization` | — (controllante: CIR S.p.A., non nel grafo) | In produzione (KOS 9) |
 | KOS Care S.r.l. | `Organization` | `https://anniazzurri.it/#organization` | `parentOrganization` → KOS S.p.A. | In produzione (AA-8) |
-| Altre società operative | `Organization` | `https://kosgroup.com/it/chi-siamo/governance/dati-societari#<partita IVA>` | `parentOrganization` → KOS S.p.A. | Deciso il 29/10, da implementare |
+| Altre società operative (Fidia, Jesilab, Sanatrix Gestioni, Abitare il Tempo) | `Organization` | `https://kosgroup.com/it/chi-siamo/governance/dati-societari#<partita IVA>` | `parentOrganization` → KOS Care S.r.l. (controllate di KOS Care, conferma di KOS del 1/11) | Deciso il 29/10, catena confermata il 1/11, da implementare |
 | Struttura (sede fisica) | tipo da `CLAUDE.md` (residenze `["MedicalBusiness","MedicalOrganization"]`; sanitarie `MedicalClinic`, `Hospital`…) | `{URL scheda}#localbusiness` | `parentOrganization` → società che la gestisce; `brand` → Anni Azzurri (solo residenze) | KOS: voce 24; AA: sprint 3 (27/11) |
 | Reparto o unità operativa nella stessa sede | stesso tipo della struttura | `{URL pagina unità}#department` | `department` dalla struttura; `parentOrganization` → struttura | Deciso il 29/10 |
 | Servizio senza sede propria (RSA Aperta, assistenza domiciliare) | `Service` | `{URL}#service` | `provider` → struttura; `areaServed` | Sportello in produzione; RSA Aperta sprint 3 |
@@ -55,6 +55,25 @@ KOS S.p.A. (10674520159), KOS Care (01148190547), Sanatrix Gestioni (01490070438
 Fidia (01348940436), Sanatrix (P.IVA 00625250436) e Ospedale di Suzzara, in liquidazione (04482440965), che non gestisce
 strutture e resta fuori dal grafo. Il frammento è la partita IVA di 11 cifre, senza prefisso `IT`; la proprietà `vatID`
 resta con il prefisso, come oggi.
+
+**Struttura → società (fonte: KOS, riferita da Danilo il 1/11/2026).** Tutte le strutture dei due siti fanno capo a
+KOS Care S.r.l., tranne:
+
+| Struttura | Sito | Società che la gestisce | Partita IVA (frammento) |
+| --- | --- | --- | --- |
+| Fidia | kosgroup.com | Fidia S.r.l. | 01348940436 |
+| Myolab | kosgroup.com | Jesilab S.r.l. | 02220610428 |
+| Villa dei Pini Civitanova Marche | kosgroup.com | Sanatrix Gestioni S.r.l. | 01490070438 |
+| Residenza Anni Azzurri Abitare il Tempo | anniazzurri.it | Abitare il Tempo S.r.l. | 01590980429 |
+| Residenza Anni Azzurri Casa Argento | anniazzurri.it | Abitare il Tempo S.r.l. | 01590980429 |
+
+Catena: Fidia, Jesilab, Sanatrix Gestioni e Abitare il Tempo sono controllate di KOS Care S.r.l.; KOS Care è controllata
+di KOS S.p.A. Nel grafo: struttura `parentOrganization` → società; società `parentOrganization` → KOS Care
+(`https://anniazzurri.it/#organization`); KOS Care `parentOrganization` → KOS S.p.A. (già in produzione). Le strutture
+di KOS Care puntano direttamente a `https://anniazzurri.it/#organization`, anche su kosgroup.com. Beata Corte è cessata a
+luglio 2026 (scheda e documenti in 301 verso Corte Orero): fuori dal grafo. Sanatrix S.r.l. e KOS Servizi non gestiscono
+strutture dei due siti: fuori dal grafo finché non servono (nessuna pagina le descrive). Da confermare: se il Polo
+Diagnostico Villa dei Pini e gli altri servizi nella sede di Civitanova Marche fanno capo anch'essi a Sanatrix Gestioni.
 
 Regole delle relazioni:
 
@@ -370,7 +389,7 @@ accanto agli export: `kosgroup/dati/voce-24/gbp/registro.csv`.
 
 ## 9. Punti aperti
 
-1. **Tabella struttura → società** che gestisce ciascuna struttura (la sta chiedendo Danilo).
+1. **Tabella struttura → società**: ricevuta il 1/11 (§2). Resta da confermare la società delle unità nella sede di Villa dei Pini Civitanova (Polo Diagnostico, ambulatori).
 2. **Proprietà dei profili**: verificato da Danilo il 30/10, tutti i gruppi hanno come proprietario principale un account
    KOS. Resta da togliere l'accesso di Yext alla dismissione e da dare a RetailTune il ruolo di gestore.
 3. **Abbinamento delle schede in RetailTune**: per codice sede o per ID del profilo Google, con conferma scritta (anche da
