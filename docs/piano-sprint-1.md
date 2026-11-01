@@ -180,6 +180,11 @@ produzione dipende dall'ambiente (lo stage è più lento sulle stesse pagine), q
 ambiente. Correzioni dopo il primo giro: precaricamento solo se lo sfondo precede la prima immagine del contenuto; prime 5
 foto della galleria con `loading="eager"` (griglia desktop). Script di collaudo: `$env:AUTH` con la sola password e stop
 sulle pagine non servite (il primo giro dello stage era stato misurato sulla pagina 401).
+**KOS 10 e KOS-2 B in produzione il 1/11 alle 18:53** (backup c0095 `20261101-115310` e `20261101-115318`). KOS 10
+verificato dal sito: 399 pagine della sitemap sotto news, approfondimenti, eventi e video, tutte 200, un solo JSON-LD,
+234 `Article`, 144 `NewsArticle`, 21 `VideoObject`, nessun campo obbligatorio mancante; 8 articoli senza immagine (validi,
+immagine consigliata). Test dei risultati multimediali di Google sullo stage: Articoli, Breadcrumb e Società validi, nessun
+avviso. Misura «dopo» di KOS-2 B in produzione: da registrare.
 
 ## Verifica dello sprint 1 prima della consegna (deciso il 28/10)
 
