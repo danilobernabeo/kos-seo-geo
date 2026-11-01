@@ -520,6 +520,12 @@ function titoloComunicato(array $c): string
     $taglio = mb_substr($arg, 0, $spazio);
     if (mb_substr($arg, $spazio, 1) !== ' ' && ($p = mb_strrpos($taglio, ' ')) !== false && $p > 10) $taglio = mb_substr($taglio, 0, $p);
     $taglio = rtrim($taglio, " ,;:–-.\"“”‘’'(");
+    foreach ([['“', '”'], ['"', '"'], ['(', ')']] as [$ap, $ch]) {   // virgolette o parentesi rimaste aperte dopo il taglio
+        if ($ap === $ch ? substr_count($taglio, $ap) % 2 === 1 : substr_count($taglio, $ap) > substr_count($taglio, $ch)) {
+            $q = mb_strrpos($taglio, $ap);
+            $taglio = mb_substr($taglio, 0, $q) . mb_substr($taglio, $q + 1);   // si toglie solo il segno rimasto aperto
+        }
+    }
     return $testa . $taglio . '…' . $coda;
 }
 
