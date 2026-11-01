@@ -113,6 +113,14 @@ Da lasciare non in cache: `switchCta*`, `switchCtaHoliday`, `dayLeft`, `currentM
 `nverdeMenuItem` e `getMenuContact` (orari), `prenotaOnline` e `mostraPrestazioniPerBranca` (chiamate esterne in tempo
 reale), `comunicatoRedirect` (reindirizza), FormIt e reCAPTCHA, `WAVEChecker`.
 **1/11: pacchetti pronti** `kos-ttfb-2` (28 elementi) e `aa-ttfb` (53 elementi: 26 head, 16 template, footer, menu, contactBox), generati da `scripts/deploy/togli-non-in-cache.py` sulla baseline del 31/10; esclusi `informativo` e `listingNewsLast3` (già in `kos-ttfb-31-10`), `news` e `news-list` (in `aa-news`), `interna-articolo-muba` (lavoro extra MUBA, resta com'è), `strutture-test`. `docList` AA resta non in cache: lo snippet AA non ha la cache con la data della cartella che ha quello KOS. Rilascio anticipato a domenica 1/11 su decisione di Danilo, con riallineamento degli stage e misura prima/dopo. **In produzione il 1/11 alle 7:36-7:38** (con `kos-ttfb-31-10` e `aa-news`), dopo riallineamento dei due stage e collaudo. Controllo in produzione: AA 450/450 e KOS 866/866 pagine della sitemap con 200, un solo JSON-LD, un solo canonical, un solo H1, nessun tag MODX non elaborato. Resta (preesistente, non dei pacchetti): `src="assets/..."` relativi nelle icone di menu e footer KOS su 797 pagine, da portare a `/assets/` in un prossimo pacchetto.
+
+Misura prima/dopo (1/11, `misura-ttfb.ps1`, 8 campioni, mediana del tempo del server): KOS scheda struttura 254 → 234 ms,
+area di cura 204 → 186, approfondimento 269 → 250, tipologia 222 → 184; AA residenza 507 → 264 (−48%), chi accogliamo
+506 → 256, regione 485 → 254; AA `/news/` circa 3.000 → circa 210 ms (misura dal browser, 6 richieste, dopo `aa-news`).
+`kos-ttfb-31-10` e `aa-news` erano rimasti in prova al primo giro (`--scrivi` solo sul secondo pacchetto del comando):
+applicati alle 8:30. Controllo finale: KOS 866/866, AA 450/450, nessun link relativo (escluse le email offuscate, che sono
+`mailto:`), og:image presenti e raggiungibili, URL annidati AA come atteso. Lezione per i prossimi rilasci: un pacchetto per
+comando, con `--scrivi` dentro il comando.
 Proposta iniziale: pacchetti `kos-ttfb-2` (voce KOS-2, sprint 2) e `aa-ttfb` (miglioria, gli head AA sono elementi dello sprint 1:
 uscita entro il 6/11 o dopo il 14/11), misura prima e dopo con `scripts/collaudo/monitor/misura-ttfb.ps1`.
 
