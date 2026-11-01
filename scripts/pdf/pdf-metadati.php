@@ -481,23 +481,46 @@ function titoliComunicati(string $webroot): array
     $modx->initialize('mgr');
     $db = $modx->pdo;
     $p = $modx->getOption('table_prefix', null, 'modx_');
-    $sql = "SELECT v.value, c.id, c.pagetitle, c.publishedon, c.createdon, c.pub_date
+    $sql = "SELECT v.value, c.id, c.pagetitle, c.publishedon, c.createdon,
+                   (SELECT d.value FROM {$p}site_tmplvar_contentvalues d JOIN {$p}site_tmplvars td ON td.id = d.tmplvarid AND td.name = 'comunicatoData'
+                     WHERE d.contentid = c.id LIMIT 1) AS data_tv
             FROM {$p}site_tmplvar_contentvalues v
             JOIN {$p}site_tmplvars t ON t.id = v.tmplvarid AND t.name = 'comunicatoPdf'
             JOIN {$p}site_content c ON c.id = v.contentid AND c.deleted = 0";
     $out = [];
     foreach ($db->query($sql)->fetchAll(PDO::FETCH_ASSOC) as $r) {
         $v = '/' . ltrim(rawurldecode(trim((string) $r['value'])), '/');
-        $ts = (int) ($r['publishedon'] ?: $r['createdon']);
-        $out[$v] = ['titolo' => trim((string) $r['pagetitle']), 'ts' => $ts, 'id' => (int) $r['id']];
+        $ts = dataComunicato((string) $r['data_tv']);
+        $out[$v] = ['titolo' => trim((string) $r['pagetitle']), 'ts' => $ts, 'data_tv' => (string) $r['data_tv'], 'id' => (int) $r['id']];
     }
     return $out;
 }
 
+/** Legge la TV comunicatoData (timestamp, AAAA-MM-GG[ hh:mm[:ss]], GG/MM/AAAA, GG-MM-AAAA, testo con strtotime). 0 se non leggibile. */
+function dataComunicato(string $v): int
+{
+    $v = trim($v);
+    if ($v === '') return 0;
+    if (preg_match('/^\d{9,11}$/', $v)) return (int) $v;
+    if (preg_match('#^(\d{1,2})[/.-](\d{1,2})[/.-](\d{4})#', $v, $m)) return (int) mktime(12, 0, 0, (int) $m[2], (int) $m[1], (int) $m[3]);
+    $t = strtotime($v);
+    return $t === false ? 0 : $t;
+}
+
 function titoloComunicato(array $c): string
 {
+    if (empty($c['ts'])) return '';
     $m = mesiIt();
-    return 'Comunicato stampa – ' . $c['titolo'] . ' – ' . $m[(int) date('n', $c['ts'])] . ' ' . date('Y', $c['ts']);
+    $coda = ' – ' . $m[(int) date('n', $c['ts'])] . ' ' . date('Y', $c['ts']);
+    $testa = 'Comunicato stampa – ';
+    $arg = trim((string) preg_replace('/\s+/u', ' ', $c['titolo']));
+    $max = 65;
+    if (mb_strlen($testa . $arg . $coda) <= $max) return $testa . $arg . $coda;
+    $spazio = $max - mb_strlen($testa . $coda) - 1;   // 1 = «…»
+    $taglio = mb_substr($arg, 0, $spazio);
+    if (mb_substr($arg, $spazio, 1) !== ' ' && ($p = mb_strrpos($taglio, ' ')) !== false && $p > 10) $taglio = mb_substr($taglio, 0, $p);
+    $taglio = rtrim($taglio, " ,;:–-.\"“”‘’'(");
+    return $testa . $taglio . '…' . $coda;
 }
 
 /* ============================ comando ============================ */
@@ -558,6 +581,7 @@ foreach ($piano['pdf'] as $voce) {
         $c = $comunicati[$p] ?? null;
         if (!$c) { echo "SALTATO    $p — nessuna risorsa MODX con questo PDF nella TV comunicatoPdf\n"; $conteggi['saltati']++; continue; }
         $titolo = titoloComunicato($c);
+        if ($titolo === '') { echo "SALTATO    $p — TV comunicatoData vuota o illeggibile («" . $c['data_tv'] . "»)\n"; $conteggi['saltati']++; continue; }
     }
     if (!$titolo) continue;
     $originale = (string) file_get_contents($file);
