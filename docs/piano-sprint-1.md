@@ -184,7 +184,11 @@ sulle pagine non servite (il primo giro dello stage era stato misurato sulla pag
 verificato dal sito: 399 pagine della sitemap sotto news, approfondimenti, eventi e video, tutte 200, un solo JSON-LD,
 234 `Article`, 144 `NewsArticle`, 21 `VideoObject`, nessun campo obbligatorio mancante; 8 articoli senza immagine (validi,
 immagine consigliata). Test dei risultati multimediali di Google sullo stage: Articoli, Breadcrumb e Società validi, nessun
-avviso. Misura «dopo» di KOS-2 B in produzione: da registrare.
+avviso. Misura «dopo» di KOS-2 B in produzione (20 pagine, mobile, stesso script e stesse pagine del «prima» delle 16:00):
+LCP mediano 4,5 → 2,9 s (−35%), immagini fuori schermo scaricate al caricamento 494 → 82, byte di immagini 15,8 → 6,8 MB;
+es. Villa dei Pini Civitanova 21,4 → 8,5 s, la nostra storia 9,7 → 2,8 s, il management 4,0 → 1,5 s, sostenibilità
+4,6 → 2,6 s. Da ricontrollare con più misure: cura-delle-persone 2,4 → 3,9 s (l'elemento LCP passa dallo sfondo a una foto)
+e news-e-media 2,8 → 3,4 s.
 
 ## Verifica dello sprint 1 prima della consegna (deciso il 28/10)
 
