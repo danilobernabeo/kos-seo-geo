@@ -169,6 +169,17 @@ Apple con misura e della home. **KOS-2/KOS-8 documenti in produzione il 27/10** 
 chunk, `listLda`; regole web `kos-8-cartelle-documenti.conf`): collaudo sullo stage con gli stessi PDF della produzione
 (Villa dei Pini Civitanova 5, storico liste d'attesa Villa San Giuseppe 20, Villa Margherita Benevento 10), cartella di
 Villa Sant'Alessandro da 403 a 301 verso la scheda.
+**Collaudo KOS-2 B sullo stage (1/11).** Pacchetti `kos-10-article` e `kos-2b-lazy` installati sullo stage. Misura su 20
+pagine (mobile, `conta-lazy.mjs` e `misura-lcp.mjs`, produzione contro stage): immagini fuori schermo scaricate al
+caricamento 494 → 82, byte di immagini 15,8 → 6,7 MB, LCP mediano 4,5 → 3,3 s (Villa dei Pini Civitanova 21,4 → 8,1 s,
+la nostra storia 9,7 → 3,2 s); nessun KO (nessun elemento LCP in lazy, nessuna immagine che non compare). Tre pagine
+risultavano più lente dello stesso URL in produzione (visione-valori-missione, cura-delle-persone, news-e-media): prova A/B
+sullo stage sulle stesse 5 pagine: con KOS-2 B 5,5 / 4,4 / 3,9 s; senza precaricamento 6,8 / 5,4 / 6,4 s; con il plugin
+spento 8,8 / 7,5 / 7,7 s. Il pacchetto migliora ogni pagina rispetto allo stage senza pacchetto: la differenza con la
+produzione dipende dall'ambiente (lo stage è più lento sulle stesse pagine), quindi i confronti vanno fatti nello stesso
+ambiente. Correzioni dopo il primo giro: precaricamento solo se lo sfondo precede la prima immagine del contenuto; prime 5
+foto della galleria con `loading="eager"` (griglia desktop). Script di collaudo: `$env:AUTH` con la sola password e stop
+sulle pagine non servite (il primo giro dello stage era stato misurato sulla pagina 401).
 
 ## Verifica dello sprint 1 prima della consegna (deciso il 28/10)
 
