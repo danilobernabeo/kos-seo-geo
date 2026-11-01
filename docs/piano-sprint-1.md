@@ -246,8 +246,11 @@ Backup produzione: tabella `modx_site_content_bak_20261101_0913` e `/paas/c0072/
 uguale al testo approvato, og:description allineata, un solo JSON-LD per pagina. **Title del giro 2 (65) validati da Danilo il 1/11** con gli stessi criteri. Eccezione: risorsa 367
 `/alloggi-protetti`, il cui testo KOS ha chiesto di aggiornare (Anni Azzurri Senior Living, sette bilocali per anziani
 autosufficienti accanto alla RSA San Sisto 2): sul template `rsa` il longtitle è un alias di cartella, quindi il title viene
-dal pagetitle, che diventa «Senior Living Bergamo: appartamenti per anziani» (title servito di 63 caratteri, anche H1 e
-briciole); description nuova di 143 caratteri. Nessun nodo struttura oggi sulla pagina: con le schede AA (sprint 3) sarà
+dal pagetitle, che diventa «Appartamenti per anziani autosufficienti a Bergamo» (title servito di 65 caratteri, anche H1
+e briciole); description di 150 caratteri che apre con il nome del servizio «Anni Azzurri Senior Living». Scelta dai dati di
+Search Console (giu. 2025-ott. 2026, anniazzurri.it): «appartamenti / mini appartamenti per anziani autosufficienti» circa
+31.400 impressioni, «senior living» circa 4.600 (339 «senior living bergamo»), «alloggi protetti» circa 5.500, «soluzioni
+abitative» 92. Nessun nodo struttura oggi sulla pagina: con le schede AA (sprint 3) sarà
 `LocalBusiness` (soluzione abitativa non sanitaria, convenzione del progetto).
 
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
