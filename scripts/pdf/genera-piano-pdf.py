@@ -139,10 +139,15 @@ def main():
         L.append('')
         L.append('# --- 2. Tutti i PDF: noindex tranne quelli in elenco; canonical per i duplicati ---')
         L.append('# Le add_header dentro una location annullano quelle del server: si ripetono qui gli header di sicurezza del sito.')
+        if sito == 'aa':
+            L.append('# ATTENZIONE: nelle regole di anniazzurri.it esiste già un blocco «location ~* \\.pdf$ { ... expires 1d; }» (sezione «Cache del browser»).')
+            L.append('# Con due blocchi regex uguali nginx usa solo il primo: va CANCELLATO quel blocco e al suo posto vale questo (che mantiene expires 1d).')
         L.append('location ~* \\.pdf$ {')
         L.append('    if ($redirect_to) { return 301 $redirect_to; }')
         for hd in header_sicurezza(sito):
             L.append('    ' + hd)
+        if sito == 'aa':
+            L.append('    expires 1d;')
         L.append('    set $pdf_robots "noindex";')
         L.append('    set $pdf_link "";')
         if sito == 'kos':
