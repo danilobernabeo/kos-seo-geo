@@ -1,0 +1,1169 @@
+{
+ "nome": "AA-20 giro 2: title (longtitle, senza suffisso) e description di pagine fuori audit, proposte del 27/10 — DA VALIDARE, non rilasciare",
+ "risorse": [
+  {
+   "id": 295,
+   "uri": "2-ottobre-educatori-professionali-e-nonni-due-feste-nello-stesso-giorno",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "2 ottobre: festa dei nonni e degli educatori"
+    },
+    "description": {
+     "prima": "Una ricorrenza importante che ha un duplice obiettivo: ricordare l’importanza dello scambio intergenerazionale e contrastare la solitudine in età avanzata.",
+     "dopo": "Il 2 ottobre si celebrano nonni ed educatori professionali: una giornata per lo scambio tra generazioni e contro la solitudine."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 352,
+   "uri": "29-maggio-giornata-nazionale-oss",
+   "campi": {
+    "description": {
+     "prima": "Cosa significa essere un Operatore Socio-Sanitario? Lo abbiamo chiesto a chi, nei tre principali settori di attività del nostro gruppo (RSA, Psichiatria e Riabilitazione), si prende cura ogni giorno dei nostri pazienti.",
+     "dopo": "Cosa significa essere OSS? Lo raccontano gli operatori socio-sanitari di RSA, psichiatria e riabilitazione del Gruppo KOS."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 296,
+   "uri": "30-candeline-per-la-rsa-anni-azzurri-mirasole",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "I 30 anni della RSA Mirasole con Bobby Solo"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 336,
+   "uri": "a-villa-clarice-un-pomeriggio-con-i-volontari-della-protezione-civile",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Villa Clarice: i volontari della Protezione Civile"
+    },
+    "description": {
+     "prima": "Un’iniziativa nata per informare e sensibilizzare gli anziani con l’obiettivo di infondere un maggiore senso di consapevolezza e appartenenza alla casa.",
+     "dopo": "A Villa Clarice un pomeriggio con la Protezione Civile di Rovello Porro per informare gli ospiti e rafforzare il senso di comunità."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 283,
+   "uri": "a-volpiano-un-progetto-per-il-benessere-dei-propri-operatori",
+   "campi": {
+    "longtitle": {
+     "prima": "Il benessere del personale al centro del progetto “Mens sana in corpore sano”",
+     "dopo": "«Mens sana in corpore sano» per il personale"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 526,
+   "uri": "alla-rsa-navigli-di-anni-azzurri-avviato-il-progetto-biovitae-per-il-supporto-alla-sanificazione-ambientale",
+   "campi": {
+    "longtitle": {
+     "prima": "Progetto Biovitae RSA Navigli: sanificazione con luce visibile",
+     "dopo": "Biovitae alla RSA Navigli: sanificazione con luce"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 367,
+   "uri": "alloggi-protetti",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Nuovi alloggi protetti Anni Azzurri a Bergamo, in via Colognola ai Colli 9: appartamenti per anziani con servizi e assistenza."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 192,
+   "uri": "alzheimer-cura-e-assistenza",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Alzheimer: come stare vicino a chi ne soffre"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 334,
+   "uri": "annamaria-marin-intervistata-dal-corriere-della-sera",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "RSA Navigli: la presidente del Comitato Ospiti"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 302,
+   "uri": "anni-azzurri-kos-la-cartella-clinica-elettronica-esperienza-di-successo",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "La Cartella Clinica Elettronica di Anni Azzurri"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 396,
+   "uri": "anni-azzurri-l-ai-per-la-sicurezza-in-residenza",
+   "campi": {
+    "description": {
+     "prima": "La Residenza Anni Azzurri Santena ha introdotto un innovativo sistema di monitoraggio notturno con intelligenza artificiale per garantire maggiore sicurezza agli ospiti, prevenendo cadute.",
+     "dopo": "Alla Residenza Anni Azzurri Santena un sistema di monitoraggio notturno con intelligenza artificiale aiuta a prevenire le cadute."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 423,
+   "uri": "anni-azzurri-lancia-il-nuovo-servizio-sportello-sociale-per-famiglie-e-caregiver",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Lo Sportello Sociale per famiglie e caregiver"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 338,
+   "uri": "anni-azzurri-posa-la-prima-pietra-della-nuova-casa-residenza-per-anziani",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Prima pietra della nuova Casa Residenza Anziani"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 306,
+   "uri": "anni-azzurri-presenta-il-suo-nuovo-video-istituzionale",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Il nuovo video istituzionale di Anni Azzurri"
+    },
+    "description": {
+     "prima": "Un omaggio alla vita e alla dignità delle persone anziane e fragili e alla dedizione e professionalità degli operatori, uno sguardo autentico sulla vita nelle residenze.",
+     "dopo": "Un omaggio alla dignità delle persone anziane e alla professionalità degli operatori: uno sguardo autentico sulla vita in residenza."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 363,
+   "uri": "anni-azzurri-promuove-sei-incontri-formativi-gratuiti-per-i-caregiver",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Sei incontri formativi gratuiti per i caregiver"
+    },
+    "description": {
+     "prima": "Scopri il ciclo di sei incontri formativi gratuiti di Anni Azzurri Gruppo KOS per caregiver, con il patrocinio del Comune di Cinisello Balsamo, da luglio a dicembre 2024.",
+     "dopo": "Sei incontri gratuiti di Anni Azzurri per i caregiver, da luglio a dicembre 2024, con il patrocinio del Comune di Cinisello Balsamo."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 359,
+   "uri": "anni-azzurri-raddoppia-a-bergamo-con-la-nuova-residenza-san-sisto-2",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Bergamo: apre la nuova Residenza San Sisto 2"
+    },
+    "description": {
+     "prima": "Oltre ai servizi medici e specialistici, San Sisto 2 offre una vasta gamma di servizi sanitari: degenza post ospedaliera, fisioterapia, logopedia, podologia e assistenza psicologica.",
+     "dopo": "San Sisto 2 offre degenza post ospedaliera, fisioterapia, logopedia, podologia e assistenza psicologica, oltre ai servizi medici."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 496,
+   "uri": "anni-azzurri-santena-un-anno-di-monitoraggio-intelligente-con-ancelia",
+   "campi": {
+    "description": {
+     "prima": "Un anno di monitoraggio intelligente con Ancelia: sicurezza potenziata, interventi più tempestivi, supporto agli operatori e maggiore fiducia dei familiari.",
+     "dopo": "Un anno di monitoraggio intelligente con Ancelia alla RSA Santena: più sicurezza, interventi tempestivi e fiducia dei familiari."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 259,
+   "uri": "anziani-e-bambini-insieme-per-una-mattinata-di-gioia-e-benessere",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Anziani e bambini insieme per una mattinata"
+    },
+    "description": {
+     "prima": "Obiettivo dell'attività è quello di agevolare uno scambio intergenerazionale che rechi benefici e benessere psicologico sia ai bambini che ai nostri anziani.",
+     "dopo": "Una mattinata di incontro tra bambini e ospiti della residenza: uno scambio tra generazioni che porta benessere a entrambi."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 468,
+   "uri": "anziano-rifiuta-assistenza-cosa-fare",
+   "campi": {
+    "description": {
+     "prima": "Quando un genitore anziano rifiuta l’assistenza, è importante agire con empatia e gradualità. Scopri come affrontare il rifiuto e supportarlo nel modo giusto.",
+     "dopo": "Quando un genitore anziano rifiuta l'assistenza servono empatia e gradualità: come affrontare il rifiuto e aiutarlo nel modo giusto."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 450,
+   "uri": "appartamenti-per-anziani-autosufficienti-soluzioni-abitative-sicure-e-indipendenti",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Appartamenti per anziani autosufficienti"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 161,
+   "uri": "aspetto-economico",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Rette, contributi e costi delle RSA Anni Azzurri: le risposte alle domande più frequenti sull'aspetto economico del ricovero."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 346,
+   "uri": "benessere-mentale-in-rsa-per-ospiti-e-caregiver.-attivata-la-televisita-con-gli-specialisti-del-gruppo-kos",
+   "campi": {
+    "description": {
+     "prima": "L'ingresso in RSA è un passo delicato per anziani e caregiver. Anni Azzurri offre un servizio di televisita psicologica e psichiatrica per preservare il benessere mentale.",
+     "dopo": "L'ingresso in RSA è un passo delicato: Anni Azzurri offre televisite psicologiche e psichiatriche per il benessere mentale."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 498,
+   "uri": "bollini-rosaargento-2025-2026-premiate-7-rsa-anni-azzurri-nel-concorso-best-practice-di-fondazione-onda",
+   "campi": {
+    "longtitle": {
+     "prima": "Bollini RosaArgento 2025-2026: premiate 7 RSA per Best Practice",
+     "dopo": "Bollini RosaArgento 2025-2026: 7 RSA premiate"
+    },
+    "description": {
+     "prima": "Sette RSA premiate nel Concorso Best Practice di Fondazione Onda per progetti innovativi e approcci non farmacologici dedicati agli anziani con decadimento cognitivo.",
+     "dopo": "Sette RSA premiate nel concorso Best Practice di Fondazione Onda per progetti non farmacologici dedicati al decadimento cognitivo."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 344,
+   "uri": "case-di-riposo-la-normativa",
+   "campi": {
+    "longtitle": {
+     "prima": "Tutte le normative per le case di riposo per anziani",
+     "dopo": "Le normative per le case di riposo per anziani"
+    },
+    "description": {
+     "prima": "Anche per le case di riposo esistono delle normative ben specifiche legate ai diversi ambiti dell'assistenza agli anziani: scopri quali sono in questo articolo.",
+     "dopo": "Le case di riposo seguono normative specifiche nei diversi ambiti dell'assistenza agli anziani: ecco quali sono e cosa prevedono."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 183,
+   "uri": "centro-diurno-anni-azzurri-la-maremma",
+   "campi": {
+    "description": {
+     "prima": "Servizio semi-residenziale per anziani e persone con disabilità. Servizi infermieristici, terapie non farmacologiche e attività socio-educative. Contattaci!",
+     "dopo": "Centro diurno per anziani e persone con disabilità: assistenza infermieristica, terapie non farmacologiche e attività educative."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 208,
+   "uri": "clownterapia-al-via-a-idice",
+   "campi": {
+    "description": {
+     "prima": "Progetto con l'Associazione Clown 2.0 di Bologna per stimolare le funzioni cognitive e motorie. Sorrisi che migliorano il benessere e la qualità della vita.",
+     "dopo": "Con l'Associazione Clown 2.0 di Bologna un progetto a Idice per stimolare funzioni cognitive e motorie e il benessere degli ospiti."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 494,
+   "uri": "convegno-anni-azzurri-sulla-gestione-della-persona-con-demenza",
+   "campi": {
+    "longtitle": {
+     "prima": "Modelli innovativi per la gestione della demenza - Convegno 2025",
+     "dopo": "Convegno 2025: modelli innovativi per la demenza"
+    },
+    "description": {
+     "prima": "Oltre 400 professionisti al Convegno Anni Azzurri 2025 dedicato alla gestione della demenza: modelli integrati, ricerca, innovazione e nuove prospettive di cura.",
+     "dopo": "Oltre 400 professionisti al Convegno Anni Azzurri 2025 sulla gestione della demenza: modelli integrati, ricerca e nuove prospettive."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 299,
+   "uri": "corso-di-ecografia-internistica-per-i-medici-delle-rsa",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Corso di ecografia internistica per i medici RSA"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 311,
+   "uri": "cosa-portare-in-rsa",
+   "campi": {
+    "description": {
+     "prima": "Leggi in questo articolo cosa portare in casa di riposo la prima volta: tutto il necessario per far sentire a proprio agio la persona che ci vivrà e cosa non dimenticare assolutamente.",
+     "dopo": "Cosa portare in casa di riposo il primo giorno: il necessario per far sentire a proprio agio chi entra e cosa non dimenticare."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 523,
+   "uri": "declino-motorio-negli-anziani-cause-e-come-affrontarlo",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Declino motorio negli anziani: cause e rimedi"
+    },
+    "description": {
+     "prima": "Declino motorio negli anziani: cause e come affrontarlo.",
+     "dopo": "Perché negli anziani diminuiscono forza, equilibrio e mobilità, quali segnali osservare e come contrastare il declino motorio."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 290,
+   "uri": "demenza-una-patologia-sempre-piu-in-aumento",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Demenza: una priorità di salute pubblica"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 497,
+   "uri": "disfagia-un-nuovo-modello-di-cura-che-migliora-sicurezza-nutrizione-e-qualita-della-vita",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Disfagia: i risultati del protocollo WeanCare"
+    },
+    "description": {
+     "prima": "",
+     "dopo": "La disfagia rende difficile deglutire cibi e liquidi in sicurezza: i risultati dello studio con il protocollo WeanCare-Dysphameal®."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 372,
+   "uri": "farmacia-automatizzata-un-modello-innovativo-per-la-sicurezza-degli-ospiti",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Farmacia automatizzata e sicurezza degli ospiti"
+    },
+    "description": {
+     "prima": "Il 17 settembre di ogni anno si celebra il World Patient Safety Day per sensibilizzare l'attenzione sul tema della sicurezza delle cure e della persona assistita.",
+     "dopo": "Nella Giornata mondiale della sicurezza del paziente, la farmacia automatizzata come modello per la sicurezza delle cure in RSA."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 378,
+   "uri": "festa-dei-nonni-2024-i-nostri-ospiti-ricordano-i-loro-nonni",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Festa dei nonni 2024: gli ospiti ricordano i nonni"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 193,
+   "uri": "fisioterapia-per-gli-anziani",
+   "campi": {
+    "longtitle": {
+     "prima": "Fisioterapia per anziani: esercizi, benefici e programmi personalizzati",
+     "dopo": "Fisioterapia per anziani: esercizi e benefici"
+    },
+    "description": {
+     "prima": "Scopri come la fisioterapia per anziani migliora mobilità, umore e autonomia: esercizi mirati, frequenza corretta, supporto psicologico e programmi personalizzati.",
+     "dopo": "Come la fisioterapia migliora mobilità, umore e autonomia negli anziani: esercizi mirati, frequenza corretta e programmi su misura."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 419,
+   "uri": "forum-non-autosufficienza-2024-anni-azzurri-protagonista-nel-dialogo-e-nella-qualita-dei-servizi",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Forum Non Autosufficienza 2024: Anni Azzurri"
+    },
+    "description": {
+     "prima": "Un approccio che mette al centro gli ospiti e i caregiver attraverso survey periodiche, nuove piattaforme tecnologiche e comitati di rappresentanza degli ospiti.",
+     "dopo": "Ospiti e caregiver al centro: survey periodiche, nuove piattaforme tecnologiche e comitati di rappresentanza degli ospiti."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 448,
+   "uri": "fragilita-ossea-e-salute-cerebrovascolare-incontro-informativo-gratuito-al-polo-geriatrico-riabilitativo-kos-di-cinisello",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Fragilità ossea e ictus: incontro a Cinisello"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 324,
+   "uri": "giorno-della-memoria-intervista-a-guido-hassan",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Giorno della Memoria: intervista a Guido Hassan"
+    },
+    "description": {
+     "prima": "Disponibile nelle librerie, esplora l'antisemitismo partendo dalla sulla esperienza personale. La prefazione è stata scritta dalla Senatrice Liliana Segre.",
+     "dopo": "L'antisemitismo raccontato dall'esperienza personale nel libro di Guido Hassan, con la prefazione della senatrice Liliana Segre."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 365,
+   "uri": "gli-ospiti-della-rsa-san-rocco-di-segrate-si-laureano",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Gli ospiti della RSA San Rocco si «laureano»"
+    },
+    "description": {
+     "prima": "Le lezioni sono cominciate a novembre 2023 e si sono concluse a giugno 2024. Le materie oggetto di studio sono state Arte, Benessere psicofisico, Letteratura, Scienze, Storia di Milano e Culture nel Mondo.",
+     "dopo": "Da novembre 2023 a giugno 2024 lezioni di arte, benessere, letteratura, scienze e storia di Milano per gli ospiti della RSA San Rocco."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 368,
+   "uri": "gli-ospiti-delle-residenze-anni-azzurri-celebrano-la-giornata-mondiale-dei-nonni-e-degli-anziani",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Giornata mondiale dei nonni nelle residenze"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 347,
+   "uri": "gli-studenti-dellhorizon-college-in-visita-alla-residenza-anni-azzurri-b-franchiolo-di-sanremo",
+   "campi": {
+    "longtitle": {
+     "prima": "Studenti dell'Horizon College in visita alla RSA di Sanremo",
+     "dopo": "Studenti dell'Horizon College alla RSA di Sanremo"
+    },
+    "description": {
+     "prima": "Ad accogliere gli studenti, circa una ventina, il promotore del progetto e Responsabile Liguria Anni Azzurri Gruppo KOS, Stefano Faraldi, il Direttore della Residenza Anni Azzurri B. Franchiolo, Michele Guccini, e tutto lo staff della struttura.",
+     "dopo": "Una ventina di studenti dell'Horizon College in visita alla Residenza Anni Azzurri B. Franchiolo di Sanremo con il personale."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 417,
+   "uri": "grosseto-nasce-la-nuova-residenza-anni-azzurri-il-poggione-2",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Grosseto: nasce la Residenza Il Poggione 2"
+    },
+    "description": {
+     "prima": "La nuova Residenza, che prende il nome de “Il Poggione 2”, offre servizi socio-assistenziali e socio-sanitari rivolti sia a persone autosufficienti sia a persone con diverse condizioni di non autosufficienza e/o grave decadimento cognitivo.",
+     "dopo": "Il Poggione 2 offre servizi socio-assistenziali e socio-sanitari a persone autosufficienti e non autosufficienti, anche con demenza."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 432,
+   "uri": "gruppo-kos-siglato-con-le-organizzazioni-sindacali-nazionali-il-premio-di-risultato-per-il-personale-delle-rsa",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "RSA KOS: firmato il premio di risultato"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 155,
+   "uri": "hospice-beati-coniugi-martin",
+   "campi": {
+    "description": {
+     "prima": "L'Hospice Beati Coniugi Martin è un servizio pubblico gratuito, in grado di offrire autonomamente tutti i servizi previsti dai livelli assistenziali di cure palliative.",
+     "dopo": "L'Hospice Beati Coniugi Martin è un servizio pubblico e gratuito di cure palliative, con tutti i servizi previsti dai livelli assistenziali."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 243,
+   "uri": "il-gruppo-kos-adotta-il-nuovo-ccnl-di-confcommercio-salute-sanita-e-cura",
+   "campi": {
+    "description": {
+     "prima": "Si tratta del CCNL di Confcommercio Salute, Sanità e Cura con cui il Gruppo KOS decide di investire sul proprio personale valorizzandone la professionalità.",
+     "dopo": "Il Gruppo KOS adotta il CCNL Confcommercio Salute, Sanità e Cura per investire sul proprio personale e valorizzarne la professionalità."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 158,
+   "uri": "il-mondo-anni-azzurri",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Domande frequenti: chi siamo"
+    },
+    "description": {
+     "prima": "",
+     "dopo": "Chi siamo, dove sono le residenze e quali servizi offre Anni Azzurri: le risposte alle domande più frequenti sul nostro gruppo."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 318,
+   "uri": "il-piano-di-assistenza-individuale",
+   "campi": {
+    "description": {
+     "prima": "Con il PAI si formula e si attua un progetto di cura e assistenza personalizzato per ciascun paziente della RSA: scopri in questo articolo cos'è e perché è importante.",
+     "dopo": "Il PAI è il progetto di cura e assistenza personalizzato per ogni ospite della RSA: cos'è, come si costruisce e perché è importante."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 357,
+   "uri": "il-polo-geriatrico-riabilitativo-ospita-milano-dancing-city",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Milano Dancing City al Polo Geriatrico"
+    },
+    "description": {
+     "prima": "Gli ospiti della RSA sono stati sono stati coinvolti nel processo creativo: i loro racconti, basati su amore e conflitti, hanno ispirato la performance di danza..",
+     "dopo": "I racconti degli ospiti della RSA, tra amori e conflitti, hanno ispirato la performance di danza di Milano Dancing City."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 460,
+   "uri": "inaugurato-a-bagnolo-in-piano-il-nuovo-centro-residenziale-orchidea-per-disabili-adulti",
+   "campi": {
+    "longtitle": {
+     "prima": "Centro Orchidea a Bagnolo: residenza per disabili adulti",
+     "dopo": "Centro Orchidea: residenza per disabili adulti"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 159,
+   "uri": "ingresso-in-rsa",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Come si entra in una RSA Anni Azzurri: domanda, documenti, visita e accoglienza. Le risposte alle domande più frequenti sull'ingresso."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 477,
+   "uri": "kos-celebra-la-giornata-alzheimer-2025",
+   "campi": {
+    "longtitle": {
+     "prima": "Giornata Alzheimer 2025: eventi e sostegno nelle strutture",
+     "dopo": "Giornata Alzheimer 2025 nelle residenze"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 500,
+   "uri": "kos-e-natale-una-canzone-per-raccontare-chi-siamo-ogni-giorno",
+   "campi": {
+    "longtitle": {
+     "prima": "KOS è Natale: la canzone che racconta i valori del Gruppo",
+     "dopo": "«KOS è Natale»: la canzone del Gruppo KOS"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 399,
+   "uri": "l-impegno-di-anni-azzurri-nel-panorama-scientifico",
+   "campi": {
+    "description": {
+     "prima": "Continua l’impegno di Anni Azzurri nel panorama della ricerca e dell’innovazione attraverso la realizzazione di studi, la partecipazione ai congressi delle maggiori Società Scientifiche e il coinvolgimento diretto nei contributi scientifici di eventi.",
+     "dopo": "Studi, congressi delle società scientifiche e pubblicazioni: l'impegno di Anni Azzurri nella ricerca e nell'innovazione."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 289,
+   "uri": "la-cartella-clinica-elettronica-piace",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Cartella Clinica Elettronica: la survey 2023"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 491,
+   "uri": "la-cura-delle-parole-il-progetto-anni-azzurri-e-parole-o-stili-per-la-giornata-della-gentilezza",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "«La cura delle parole»: gentilezza in RSA"
+    },
+    "description": {
+     "prima": "L’iniziativa, basata su dieci parole chiave e altrettante linee guida, mira a formare gli operatori e a diffondere una cultura della relazione responsabile all’interno delle residenze.",
+     "dopo": "Dieci parole chiave e altrettante linee guida per formare gli operatori a una cultura della relazione nelle residenze Anni Azzurri."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 358,
+   "uri": "la-residenza-anni-azzurri-polo-geriatrico-riabilitativo-milano-festeggia-20-anni",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Il Polo Geriatrico Riabilitativo festeggia 20 anni"
+    },
+    "description": {
+     "prima": "Ad intrattenere il pubblico un’ospite speciale, la famosa cantante Giovanna Nocetti che ha intonato i suoi brani più celebri e cover rendendo la festa un momento indimenticabile per tutti.",
+     "dopo": "Vent'anni del Polo Geriatrico Riabilitativo di Milano, festeggiati con la cantante Giovanna Nocetti e i suoi brani più celebri."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 476,
+   "uri": "la-residenza-anni-azzurri-vico-mercati-ottiene-la-certificazione-breeam-in-use",
+   "campi": {
+    "description": {
+     "prima": "Prima RSA Anni Azzurri ad ottenere il riconoscimento per la gestione responsabile delle risorse, l’impatto sull’ambiente e la qualità della vita degli utenti.",
+     "dopo": "La RSA Vico Mercati è la prima residenza Anni Azzurri certificata BREEAM In-Use per gestione delle risorse e qualità della vita."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 265,
+   "uri": "la-riabilitazione-respiratoria-un-aiuto-per-i-polmoni",
+   "campi": {
+    "longtitle": {
+     "prima": "Riabilitazione respiratoria, un aiuto per i polmoni",
+     "dopo": "Riabilitazione respiratoria per anziani"
+    },
+    "description": {
+     "prima": "L’associazione di terapie mediche tradizionali e tecniche di riabilitazione respiratoria consente di ottenere i migliori risultati in tema di qualità della vita.",
+     "dopo": "Terapie mediche e tecniche di riabilitazione respiratoria insieme per migliorare la qualità della vita delle persone anziane."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 169,
+   "uri": "la-rsa-san-giuseppe-capofila-di-un-progetto-di-community-building",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "RSA San Giuseppe e il community building"
+    },
+    "description": {
+     "prima": "",
+     "dopo": "La RSA San Giuseppe guida un progetto di community building per creare una rete attiva con le associazioni del territorio."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 300,
+   "uri": "la-sigot-premia-kos-per-il-miglior-contributo-scientifico-al-congresso-nazionale-2023",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Premio SIGOT 2023 per il contributo scientifico"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 160,
+   "uri": "la-vita-in-residenza",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Giornata tipo, visite, attività e servizi: come si vive in una residenza Anni Azzurri. Le risposte alle domande più frequenti."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 418,
+   "uri": "la-vita-in-rsa-una-mostra-la-racconta",
+   "campi": {
+    "description": {
+     "prima": "Inaugurata presso la Residenza Anni Azzurri Valdaso, a Campofilone (FM), la mostra “I Pianeti sotto le nubi” con le opere fotografiche di Maichol Ciarletta.",
+     "dopo": "Alla Residenza Anni Azzurri Valdaso di Campofilone (FM) la mostra fotografica «I Pianeti sotto le nubi» di Maichol Ciarletta."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 162,
+   "uri": "le-pratiche-burocratiche",
+   "campi": {
+    "description": {
+     "prima": "",
+     "dopo": "Documenti, domande e pratiche per l'ingresso in RSA: le risposte di Anni Azzurri alle domande più frequenti sulla burocrazia."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 479,
+   "uri": "le-residenze-anni-azzurri-si-preparano-a-celebrare-la-festa-dei-nonni",
+   "campi": {
+    "longtitle": {
+     "prima": "Festa dei Nonni: tutti gli eventi nelle Residenze Anni Azzurri",
+     "dopo": "Festa dei Nonni: gli eventi nelle residenze"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 271,
+   "uri": "le-rsa-marchigiane-protagoniste-giugno",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Le RSA delle Marche e «Il nostro week è…»"
+    },
+    "description": {
+     "prima": "Le Residenze Anni Azzurri delle Marche a giugno sono protagoniste di week end all’insegna di iniziative ed attività con il coinvolgimento di ospiti e familiari.",
+     "dopo": "A giugno le Residenze Anni Azzurri delle Marche propongono fine settimana di iniziative e attività con ospiti e familiari."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 309,
+   "uri": "meglio-la-badante-o-la-casa-di-riposo",
+   "campi": {
+    "description": {
+     "prima": "Per chi deve assistere un anziano la domanda sorge spontanea: meglio la badante o la casa di riposo? Leggi in questo articolo i pro, i contro e i costi da sostenere.",
+     "dopo": "Badante o casa di riposo? Pro, contro e costi delle due soluzioni per chi deve assistere un familiare anziano."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 431,
+   "uri": "nonni-per-tutti-le-storie-degli-ospiti-delle-rsa-diventano-favole-per-bambini",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Nonni per tutti: dalle storie alle favole"
+    },
+    "description": {
+     "prima": "Grazie alla collaborazione con la scrittrice Barbara Ferraro, i ricordi degli anziani si sono trasformati in fiabe per bambini, raccontate dagli stessi protagonisti anche in un podcast disponibile su Spotify.",
+     "dopo": "Con la scrittrice Barbara Ferraro i ricordi degli ospiti diventano fiabe per bambini, raccontate da loro anche in un podcast."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 175,
+   "uri": "nucleo-disabili",
+   "campi": {
+    "description": {
+     "prima": "Scopri le RSA Anni Azzurri per disabili: residenze che possiedono un Nucleo Disabili per la riabilitazione di persone giovani o adulte con necessità di sostegno intensivo.",
+     "dopo": "Le RSA Anni Azzurri con Nucleo Disabili accolgono persone giovani o adulte che hanno bisogno di sostegno e riabilitazione intensiva."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 371,
+   "uri": "open-day-centro-medico-riabilitativo-cinisello-balsamo",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Centro Medico Riabilitativo di Cinisello: open day"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 144,
+   "uri": "ospiti-con-demenza",
+   "campi": {
+    "description": {
+     "prima": "Le RSA Anni Azzurri sono in grado di accogliere ospiti con patologie neurologiche, compresi tutti i diversi tipi di demenza senile e l’Alzheimer. Scopri quali sono le nostre residenze in tutta Italia.",
+     "dopo": "Le RSA Anni Azzurri accolgono ospiti con demenza senile e Alzheimer: assistenza specializzata nelle residenze in tutta Italia."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 145,
+   "uri": "ospiti-disabili",
+   "campi": {
+    "description": {
+     "prima": "Assistenza infermieristica e cure riabilitative per una migliore qualità di vita. Scopri le Residenze specializzate nella presa in carico di ospiti disabili.",
+     "dopo": "Assistenza infermieristica e cure riabilitative per una migliore qualità di vita: le residenze specializzate per ospiti disabili."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 120,
+   "uri": "parliamone",
+   "campi": {
+    "description": {
+     "prima": "Prepararsi al ricovero: come gestire la delicata decisione con il tuo caro. Scopri come presentare i benefici di una RSA come soluzione migliore per entrambi.",
+     "dopo": "Il ricovero di un familiare è una decisione delicata: come affrontarla insieme e presentare la RSA come una scelta utile per tutti."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 303,
+   "uri": "paro-il-robot-terapeutico-che-aiuta-gli-anziani-con-demenza",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Paro, il robot terapeutico contro la demenza"
+    },
+    "description": {
+     "prima": "Interagendo con le persone, Paro risponde come se fosse viva, muovendo la testa e le zampe, facendo dei suoni e mostrando il comportamento preferito dal paziente.",
+     "dopo": "Paro è una foca robot interattiva: muove testa e zampe ed emette suoni, aiutando le persone con demenza nella relazione."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 428,
+   "uri": "pasti-nelle-residenze-anni-azzurri-un-progetto-con-harg-per-la-disfagia",
+   "campi": {
+    "longtitle": {
+     "prima": "Il Gruppo KOS e H.A.R.G. in un progetto per la disfagia ",
+     "dopo": "KOS e H.A.R.G.: un progetto per la disfagia"
+    },
+    "description": {
+     "prima": "Il Gruppo KOS e H.A.R.G. lanciano un progetto innovativo per la gestione dei pasti nei pazienti con disfagia, migliorando sicurezza, nutrizione e qualità della vita!",
+     "dopo": "Gruppo KOS e H.A.R.G. insieme per pasti più sicuri e nutrienti per chi soffre di disfagia, a beneficio della qualità della vita."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 170,
+   "uri": "per-42-anni-poliziotto-a-bologna-presentato-il-libro-di-vincenzo-raffa",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Per 42 anni poliziotto: il libro di Vincenzo Raffa"
+    },
+    "description": {
+     "prima": "",
+     "dopo": "Un ospite della RSA Villa dei Ciliegi di Valsamoggia racconta in un'autobiografia i suoi 42 anni da poliziotto a Bologna."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 389,
+   "uri": "prevenzione-e-trattamento-della-pelle-secca-negli-anziani",
+   "campi": {
+    "longtitle": {
+     "prima": "Pelle secca delle gambe degli anziani: prevenzione e trattamento",
+     "dopo": "Pelle secca delle gambe negli anziani"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 514,
+   "uri": "radio-anni-azzurri-on-the-road-ha-fatto-tappa-a-sanremo",
+   "campi": {
+    "longtitle": {
+     "prima": "Radio Anni Azzurri On The Road a Sanremo: musica e storie dalla residenza",
+     "dopo": "Radio Anni Azzurri On The Road a Sanremo"
+    },
+    "description": {
+     "prima": "Radio Anni Azzurri On The Road arriva nella residenza Anni Azzurri di Sanremo con musica, interviste e racconti degli ospiti. Un evento del progetto Sanremo in Residenza 2026 che porta socialità e condivisione nelle strutture del Gruppo KOS.",
+     "dopo": "Musica, interviste e racconti degli ospiti: Radio Anni Azzurri On The Road arriva alla residenza di Sanremo per Sanremo in Residenza."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 366,
+   "uri": "residenza-dorica-anni-azzurri-nasce-il-comitato-mensa",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Residenza Dorica: nasce il comitato mensa"
+    },
+    "description": {
+     "prima": "Costituito con l’obiettivo del miglioramento continuo della qualità in struttura attraverso proposte che arrivino direttamente dagli utenti e dai loro familiari.",
+     "dopo": "Un comitato mensa per migliorare la qualità del servizio con le proposte di ospiti e familiari della Residenza Dorica."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 413,
+   "uri": "residenze-anni-azzurri-premiate-con-i-bollini-rosaargento",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Bollini RosaArgento a 32 residenze Anni Azzurri"
+    },
+    "description": {
+     "prima": "32 Residenze Anni Azzurri ricevono il Bollino RosaArgento per la qualità del benessere degli ospiti. Un riconoscimento fondamentale per chi cerca RSA attente alla salute e dignità.",
+     "dopo": "32 Residenze Anni Azzurri ricevono il Bollino RosaArgento per l'attenzione alla salute, al benessere e alla dignità degli ospiti."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 25,
+   "uri": "ricovero-residenziale-temporaneo",
+   "campi": {
+    "description": {
+     "prima": "Il ricovero temporaneo nelle RSA Anni Azzurri ha una durata limitata e serve anche per dare sollievo a chi cura l'anziano a casa. Scopri quando sceglierlo, come accedere e quali sono le nostre residenze.",
+     "dopo": "Il ricovero temporaneo in RSA dà sollievo a chi assiste l'anziano a casa: quando sceglierlo, come accedere e le residenze Anni Azzurri."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 439,
+   "uri": "rsa-aperta",
+   "campi": {
+    "longtitle": {
+     "prima": "RSA Aperta, un servizio promosso e finanziato da Regione Lombardia che prevede prestazioni socio-sanitarie gratuite.",
+     "dopo": "RSA Aperta: prestazioni gratuite in Lombardia"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 421,
+   "uri": "rsa-aperta-la-cura-continua-anche-a-casa-tua",
+   "campi": {
+    "description": {
+     "prima": "Scopri RSA Aperta di Anni Azzurri: assistenza gratuita per anziani fragili, supporto ai caregiver e interventi personalizzati per migliorare qualità della vita e autonomia.",
+     "dopo": "RSA Aperta di Anni Azzurri: assistenza gratuita per anziani fragili, supporto ai caregiver e interventi personalizzati a casa."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 507,
+   "uri": "sanremo-in-residenza-2026",
+   "campi": {
+    "longtitle": {
+     "prima": "Sanremo in Residenza 2026: storie, musica e relazioni che emozionano",
+     "dopo": "Sanremo in Residenza 2026: musica e relazioni"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 513,
+   "uri": "sanremo-in-residenza-borgomanero-conquista-il-primo-posto",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Sanremo in Residenza: vince Borgomanero"
+    },
+    "description": {
+     "prima": "",
+     "dopo": "Numeri da record per la seconda edizione di Sanremo in Residenza: il primo posto va alla Residenza Anni Azzurri di Borgomanero."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 505,
+   "uri": "spid-cie-day-nelle-residenze-anni-azzurri-del-piemonte",
+   "campi": {
+    "longtitle": {
+     "prima": "SPID-CIE DAY nelle RSA del Piemonte: facilitazione digitale",
+     "dopo": "SPID-CIE DAY nelle RSA del Piemonte"
+    },
+    "description": {
+     "prima": "Giornate gratuite per creare o rinnovare SPID e CIE nelle RSA del Piemonte: un servizio di facilitazione digitale aperto a cittadini, caregiver e lavoratori.",
+     "dopo": "Giornate gratuite per creare o rinnovare SPID e CIE nelle RSA del Piemonte, aperte a cittadini, caregiver e lavoratori."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 171,
+   "uri": "tabu-accettare-e-gestire-l-espressione-della-sessualita",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Tabù: la sessualità degli anziani in RSA"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 408,
+   "uri": "un-assistente-virtuale-per-tutte-le-domande-degli-utenti",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Un assistente virtuale per le domande degli utenti"
+    },
+    "description": {
+     "prima": "Scopri il nuovo servizio chatbot di Anni Azzurri, disponibile 24/7 per rispondere alle domande frequenti, prenotare servizi e supportare il customer care migliorando l'esperienza utente.",
+     "dopo": "Il chatbot di Anni Azzurri risponde 24 ore su 24 alle domande frequenti e aiuta a prenotare servizi e contattare il customer care."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 512,
+   "uri": "un-laboratorio-floreale-al-polo-geriatrico-riabilitativo-di-milano",
+   "campi": {
+    "longtitle": {
+     "prima": "Laboratorio floreale al Polo Geriatrico Riabilitativo di Milano: creatività e relazione in RSA",
+     "dopo": "Laboratorio floreale al Polo Geriatrico di Milano"
+    },
+    "description": {
+     "prima": "Un laboratorio floreale al Polo Geriatrico Riabilitativo di Milano coinvolge gli ospiti della RSA in un’esperienza di creatività, socialità ed espressione emotiva.",
+     "dopo": "Al Polo Geriatrico Riabilitativo di Milano un laboratorio floreale coinvolge gli ospiti in un'esperienza di creatività e relazione."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 337,
+   "uri": "un-pranzo-speciale-per-gli-ospiti-della-residenza-sestri-ponente",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Un pranzo speciale alla Residenza Sestri Ponente"
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 424,
+   "uri": "una-poltrona-per-due-il-progetto-di-scambio-tra-le-rsa-di-anni-azzurri",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Una poltrona per due: scambio tra le RSA"
+    },
+    "description": {
+     "prima": "Attraverso il confronto diretto, i professionisti delle diverse RSA, possono condividere idee innovative e soluzioni operative, migliorando così il servizio offerto agli ospiti delle strutture.",
+     "dopo": "I professionisti delle RSA Anni Azzurri si scambiano esperienze, idee e soluzioni operative per migliorare il servizio agli ospiti."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 323,
+   "uri": "una-rassegna-di-incontri-informativi-per-i-caregiver",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "«Anni Azzurri per te»: incontri per caregiver"
+    },
+    "description": {
+     "prima": "Cinque appuntamenti in cui gli esperti della RSA e gli assistenti sociali del CISS di Borgomanero, saranno a disposizione con informazioni e consigli preziosi.",
+     "dopo": "Cinque incontri a Borgomanero con gli esperti della RSA e gli assistenti sociali del CISS: informazioni e consigli per i caregiver."
+    }
+   },
+   "da_validare": true
+  },
+  {
+   "id": 258,
+   "uri": "virtu-terapeutiche-archeologia",
+   "campi": {
+    "description": {
+     "prima": "L'archeoterapia come attività per portare pazienti con disabilità fisiche, cognitive e con difficoltà psichiche a contatto con la storia, l’archeologia e l’arte.",
+     "dopo": "L'archeoterapia porta persone con disabilità fisiche, cognitive e psichiche a contatto con storia, archeologia e arte."
+    }
+   },
+   "da_validare": true
+  }
+ ]
+}
