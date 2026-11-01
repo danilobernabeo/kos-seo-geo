@@ -1,0 +1,173 @@
+{
+  "nome": "kos-ttfb-2: chiamate in cache per contenutiStruttura, Wayfinder, getResources, pdoResources, pdoField, pdoMenu, DisplayResourceTags, Canonical, copyYears, getMenuChunk (tempo di risposta, censimento del 31/10)",
+  "elements": [
+    {
+      "type": "template",
+      "name": "landing",
+      "file": "kosgroup/elements/templates/landing.html",
+      "baseline": "kosgroup/baseline/templates/landing.html"
+    },
+    {
+      "type": "template",
+      "name": "strutture-VDP",
+      "file": "kosgroup/elements/templates/strutture-VDP.html",
+      "baseline": "kosgroup/baseline/templates/strutture-VDP.html"
+    },
+    {
+      "type": "template",
+      "name": "strutture",
+      "file": "kosgroup/elements/templates/strutture.html",
+      "baseline": "kosgroup/baseline/templates/strutture.html"
+    },
+    {
+      "type": "template",
+      "name": "tecnologie",
+      "file": "kosgroup/elements/templates/tecnologie.html",
+      "baseline": "kosgroup/baseline/templates/tecnologie.html"
+    },
+    {
+      "type": "template",
+      "name": "video",
+      "file": "kosgroup/elements/templates/video.html",
+      "baseline": "kosgroup/baseline/templates/video.html"
+    },
+    {
+      "type": "chunk",
+      "name": "aree-di-intervento-ambulatori-full",
+      "file": "kosgroup/elements/chunks/aree-di-intervento-ambulatori-full.html",
+      "baseline": "kosgroup/baseline/chunks/aree-di-intervento-ambulatori-full.html"
+    },
+    {
+      "type": "chunk",
+      "name": "aree-di-intervento-chirurgica",
+      "file": "kosgroup/elements/chunks/aree-di-intervento-chirurgica.html",
+      "baseline": "kosgroup/baseline/chunks/aree-di-intervento-chirurgica.html"
+    },
+    {
+      "type": "chunk",
+      "name": "aree-di-intervento-diagnostica",
+      "file": "kosgroup/elements/chunks/aree-di-intervento-diagnostica.html",
+      "baseline": "kosgroup/baseline/chunks/aree-di-intervento-diagnostica.html"
+    },
+    {
+      "type": "chunk",
+      "name": "aree-di-intervento-full",
+      "file": "kosgroup/elements/chunks/aree-di-intervento-full.html",
+      "baseline": "kosgroup/baseline/chunks/aree-di-intervento-full.html"
+    },
+    {
+      "type": "chunk",
+      "name": "aree-di-intervento-medica",
+      "file": "kosgroup/elements/chunks/aree-di-intervento-medica.html",
+      "baseline": "kosgroup/baseline/chunks/aree-di-intervento-medica.html"
+    },
+    {
+      "type": "chunk",
+      "name": "aree-di-intervento-psichiatria-full",
+      "file": "kosgroup/elements/chunks/aree-di-intervento-psichiatria-full.html",
+      "baseline": "kosgroup/baseline/chunks/aree-di-intervento-psichiatria-full.html"
+    },
+    {
+      "type": "chunk",
+      "name": "aree-di-intervento-psichiatria-struttura",
+      "file": "kosgroup/elements/chunks/aree-di-intervento-psichiatria-struttura.html",
+      "baseline": "kosgroup/baseline/chunks/aree-di-intervento-psichiatria-struttura.html"
+    },
+    {
+      "type": "chunk",
+      "name": "aree-di-intervento-psichiatria",
+      "file": "kosgroup/elements/chunks/aree-di-intervento-psichiatria.html",
+      "baseline": "kosgroup/baseline/chunks/aree-di-intervento-psichiatria.html"
+    },
+    {
+      "type": "chunk",
+      "name": "aree-di-intervento-riabilitazione-full",
+      "file": "kosgroup/elements/chunks/aree-di-intervento-riabilitazione-full.html",
+      "baseline": "kosgroup/baseline/chunks/aree-di-intervento-riabilitazione-full.html"
+    },
+    {
+      "type": "chunk",
+      "name": "aree-di-intervento-riabilitazione-struttura",
+      "file": "kosgroup/elements/chunks/aree-di-intervento-riabilitazione-struttura.html",
+      "baseline": "kosgroup/baseline/chunks/aree-di-intervento-riabilitazione-struttura.html"
+    },
+    {
+      "type": "chunk",
+      "name": "aree-di-intervento-riabilitazione",
+      "file": "kosgroup/elements/chunks/aree-di-intervento-riabilitazione.html",
+      "baseline": "kosgroup/baseline/chunks/aree-di-intervento-riabilitazione.html"
+    },
+    {
+      "type": "chunk",
+      "name": "aree-di-intervento-televisite-full",
+      "file": "kosgroup/elements/chunks/aree-di-intervento-televisite-full.html",
+      "baseline": "kosgroup/baseline/chunks/aree-di-intervento-televisite-full.html"
+    },
+    {
+      "type": "chunk",
+      "name": "faq-ambulatori",
+      "file": "kosgroup/elements/chunks/faq-ambulatori.html",
+      "baseline": "kosgroup/baseline/chunks/faq-ambulatori.html"
+    },
+    {
+      "type": "chunk",
+      "name": "footer-en",
+      "file": "kosgroup/elements/chunks/footer-en.html",
+      "baseline": "kosgroup/baseline/chunks/footer-en.html"
+    },
+    {
+      "type": "chunk",
+      "name": "footer-landing",
+      "file": "kosgroup/elements/chunks/footer-landing.html",
+      "baseline": "kosgroup/baseline/chunks/footer-landing.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-formazione",
+      "file": "kosgroup/elements/chunks/head-formazione.html",
+      "baseline": "kosgroup/baseline/chunks/head-formazione.html"
+    },
+    {
+      "type": "chunk",
+      "name": "listConvenzioni",
+      "file": "kosgroup/elements/chunks/listConvenzioni.html",
+      "baseline": "kosgroup/baseline/chunks/listConvenzioni.html"
+    },
+    {
+      "type": "chunk",
+      "name": "lista-strutture",
+      "file": "kosgroup/elements/chunks/lista-strutture.html",
+      "baseline": "kosgroup/baseline/chunks/lista-strutture.html"
+    },
+    {
+      "type": "chunk",
+      "name": "listaStrutture",
+      "file": "kosgroup/elements/chunks/listaStrutture.html",
+      "baseline": "kosgroup/baseline/chunks/listaStrutture.html"
+    },
+    {
+      "type": "chunk",
+      "name": "listingConvezioniLast3",
+      "file": "kosgroup/elements/chunks/listingConvezioniLast3.html",
+      "baseline": "kosgroup/baseline/chunks/listingConvezioniLast3.html"
+    },
+    {
+      "type": "chunk",
+      "name": "listingVideoLast3",
+      "file": "kosgroup/elements/chunks/listingVideoLast3.html",
+      "baseline": "kosgroup/baseline/chunks/listingVideoLast3.html"
+    },
+    {
+      "type": "chunk",
+      "name": "menu-en",
+      "file": "kosgroup/elements/chunks/menu-en.html",
+      "baseline": "kosgroup/baseline/chunks/menu-en.html"
+    },
+    {
+      "type": "chunk",
+      "name": "sedeSpecializzazione",
+      "file": "kosgroup/elements/chunks/sedeSpecializzazione.html",
+      "baseline": "kosgroup/baseline/chunks/sedeSpecializzazione.html"
+    }
+  ]
+}

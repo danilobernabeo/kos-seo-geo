@@ -112,7 +112,8 @@ dipendenza da richiesta, sessione o ora del giorno; la cache di MODX è per pagi
 Da lasciare non in cache: `switchCta*`, `switchCtaHoliday`, `dayLeft`, `currentMonth` (landing AA, dipendono dalla data),
 `nverdeMenuItem` e `getMenuContact` (orari), `prenotaOnline` e `mostraPrestazioniPerBranca` (chiamate esterne in tempo
 reale), `comunicatoRedirect` (reindirizza), FormIt e reCAPTCHA, `WAVEChecker`.
-Proposta: pacchetti `kos-ttfb-2` (voce KOS-2, sprint 2) e `aa-ttfb` (miglioria, gli head AA sono elementi dello sprint 1:
+**1/11: pacchetti pronti** `kos-ttfb-2` (28 elementi) e `aa-ttfb` (53 elementi: 26 head, 16 template, footer, menu, contactBox), generati da `scripts/deploy/togli-non-in-cache.py` sulla baseline del 31/10; esclusi `informativo` e `listingNewsLast3` (già in `kos-ttfb-31-10`), `news` e `news-list` (in `aa-news`), `interna-articolo-muba` (lavoro extra MUBA, resta com'è), `strutture-test`. `docList` AA resta non in cache: lo snippet AA non ha la cache con la data della cartella che ha quello KOS. Rilascio anticipato a domenica 1/11 su decisione di Danilo, con riallineamento degli stage e misura prima/dopo.
+Proposta iniziale: pacchetti `kos-ttfb-2` (voce KOS-2, sprint 2) e `aa-ttfb` (miglioria, gli head AA sono elementi dello sprint 1:
 uscita entro il 6/11 o dopo il 14/11), misura prima e dopo con `scripts/collaudo/monitor/misura-ttfb.ps1`.
 
 Regola nuova (già in `CLAUDE.md`, da rispettare negli elementi del progetto): MODX esegue i tag anche dentro i commenti HTML;

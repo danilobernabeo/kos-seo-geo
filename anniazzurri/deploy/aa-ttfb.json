@@ -1,0 +1,323 @@
+{
+  "nome": "aa-ttfb: chiamate in cache per Canonical, Wayfinder, CompanyInfo, ContactInfo, newsByStruttura, getResources, pdoResources, pdoMenu, photoGalleryAA2025 (tempo di risposta, censimento del 31/10)",
+  "elements": [
+    {
+      "type": "template",
+      "name": "convegnoAA",
+      "file": "anniazzurri/elements/templates/convegnoAA.html",
+      "baseline": "anniazzurri/baseline/templates/convegnoAA.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-articolo",
+      "file": "anniazzurri/elements/templates/interna-articolo.html",
+      "baseline": "anniazzurri/baseline/templates/interna-articolo.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-il-nostro-approccio",
+      "file": "anniazzurri/elements/templates/interna-il-nostro-approccio.html",
+      "baseline": "anniazzurri/baseline/templates/interna-il-nostro-approccio.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-menu-assistenza-domiciliare",
+      "file": "anniazzurri/elements/templates/interna-menu-assistenza-domiciliare.html",
+      "baseline": "anniazzurri/baseline/templates/interna-menu-assistenza-domiciliare.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-menu-chi-accogliamo",
+      "file": "anniazzurri/elements/templates/interna-menu-chi-accogliamo.html",
+      "baseline": "anniazzurri/baseline/templates/interna-menu-chi-accogliamo.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-menu-chi-siamo",
+      "file": "anniazzurri/elements/templates/interna-menu-chi-siamo.html",
+      "baseline": "anniazzurri/baseline/templates/interna-menu-chi-siamo.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-menu-cure-avanzate",
+      "file": "anniazzurri/elements/templates/interna-menu-cure-avanzate.html",
+      "baseline": "anniazzurri/baseline/templates/interna-menu-cure-avanzate.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-menu-cure-domiciliari-in-convenzione",
+      "file": "anniazzurri/elements/templates/interna-menu-cure-domiciliari-in-convenzione.html",
+      "baseline": "anniazzurri/baseline/templates/interna-menu-cure-domiciliari-in-convenzione.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-menu-cure-domiciliari",
+      "file": "anniazzurri/elements/templates/interna-menu-cure-domiciliari.html",
+      "baseline": "anniazzurri/baseline/templates/interna-menu-cure-domiciliari.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-menu-faq",
+      "file": "anniazzurri/elements/templates/interna-menu-faq.html",
+      "baseline": "anniazzurri/baseline/templates/interna-menu-faq.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-menu-patologie",
+      "file": "anniazzurri/elements/templates/interna-menu-patologie.html",
+      "baseline": "anniazzurri/baseline/templates/interna-menu-patologie.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-menu-soluzioni",
+      "file": "anniazzurri/elements/templates/interna-menu-soluzioni.html",
+      "baseline": "anniazzurri/baseline/templates/interna-menu-soluzioni.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-menu-sos-famiglia",
+      "file": "anniazzurri/elements/templates/interna-menu-sos-famiglia.html",
+      "baseline": "anniazzurri/baseline/templates/interna-menu-sos-famiglia.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-menu-tariffe-e-convenzioni",
+      "file": "anniazzurri/elements/templates/interna-menu-tariffe-e-convenzioni.html",
+      "baseline": "anniazzurri/baseline/templates/interna-menu-tariffe-e-convenzioni.html"
+    },
+    {
+      "type": "template",
+      "name": "interna-menu",
+      "file": "anniazzurri/elements/templates/interna-menu.html",
+      "baseline": "anniazzurri/baseline/templates/interna-menu.html"
+    },
+    {
+      "type": "template",
+      "name": "le-nostre-storie-indice",
+      "file": "anniazzurri/elements/templates/le-nostre-storie-indice.html",
+      "baseline": "anniazzurri/baseline/templates/le-nostre-storie-indice.html"
+    },
+    {
+      "type": "template",
+      "name": "le-nostre-storie",
+      "file": "anniazzurri/elements/templates/le-nostre-storie.html",
+      "baseline": "anniazzurri/baseline/templates/le-nostre-storie.html"
+    },
+    {
+      "type": "template",
+      "name": "rsa",
+      "file": "anniazzurri/elements/templates/rsa.html",
+      "baseline": "anniazzurri/baseline/templates/rsa.html"
+    },
+    {
+      "type": "chunk",
+      "name": "campagna-oss-lombardia",
+      "file": "anniazzurri/elements/chunks/campagna-oss-lombardia.html",
+      "baseline": "anniazzurri/baseline/chunks/campagna-oss-lombardia.html"
+    },
+    {
+      "type": "chunk",
+      "name": "contactBox-villaggio-san-francesco",
+      "file": "anniazzurri/elements/chunks/contactBox-villaggio-san-francesco.html",
+      "baseline": "anniazzurri/baseline/chunks/contactBox-villaggio-san-francesco.html"
+    },
+    {
+      "type": "chunk",
+      "name": "contactBox",
+      "file": "anniazzurri/elements/chunks/contactBox.html",
+      "baseline": "anniazzurri/baseline/chunks/contactBox.html"
+    },
+    {
+      "type": "chunk",
+      "name": "footer-cure-domiciliari",
+      "file": "anniazzurri/elements/chunks/footer-cure-domiciliari.html",
+      "baseline": "anniazzurri/baseline/chunks/footer-cure-domiciliari.html"
+    },
+    {
+      "type": "chunk",
+      "name": "footer",
+      "file": "anniazzurri/elements/chunks/footer.html",
+      "baseline": "anniazzurri/baseline/chunks/footer.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-albero-ricordi",
+      "file": "anniazzurri/elements/chunks/head-albero-ricordi.html",
+      "baseline": "anniazzurri/baseline/chunks/head-albero-ricordi.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-assistenza-domiciliare",
+      "file": "anniazzurri/elements/chunks/head-assistenza-domiciliare.html",
+      "baseline": "anniazzurri/baseline/chunks/head-assistenza-domiciliare.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-centro-diurno",
+      "file": "anniazzurri/elements/chunks/head-centro-diurno.html",
+      "baseline": "anniazzurri/baseline/chunks/head-centro-diurno.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-chi-accogliamo",
+      "file": "anniazzurri/elements/chunks/head-chi-accogliamo.html",
+      "baseline": "anniazzurri/baseline/chunks/head-chi-accogliamo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-chi-siamo",
+      "file": "anniazzurri/elements/chunks/head-chi-siamo.html",
+      "baseline": "anniazzurri/baseline/chunks/head-chi-siamo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-contatti",
+      "file": "anniazzurri/elements/chunks/head-contatti.html",
+      "baseline": "anniazzurri/baseline/chunks/head-contatti.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-cure-avanzate",
+      "file": "anniazzurri/elements/chunks/head-cure-avanzate.html",
+      "baseline": "anniazzurri/baseline/chunks/head-cure-avanzate.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-cure-e-assistenza-domiciliari",
+      "file": "anniazzurri/elements/chunks/head-cure-e-assistenza-domiciliari.html",
+      "baseline": "anniazzurri/baseline/chunks/head-cure-e-assistenza-domiciliari.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-faq",
+      "file": "anniazzurri/elements/chunks/head-faq.html",
+      "baseline": "anniazzurri/baseline/chunks/head-faq.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-form-registrazione",
+      "file": "anniazzurri/elements/chunks/head-form-registrazione.html",
+      "baseline": "anniazzurri/baseline/chunks/head-form-registrazione.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-home",
+      "file": "anniazzurri/elements/chunks/head-home.html",
+      "baseline": "anniazzurri/baseline/chunks/head-home.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-home2",
+      "file": "anniazzurri/elements/chunks/head-home2.html",
+      "baseline": "anniazzurri/baseline/chunks/head-home2.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-il-nostro-approccio",
+      "file": "anniazzurri/elements/chunks/head-il-nostro-approccio.html",
+      "baseline": "anniazzurri/baseline/chunks/head-il-nostro-approccio.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-interna-menu",
+      "file": "anniazzurri/elements/chunks/head-interna-menu.html",
+      "baseline": "anniazzurri/baseline/chunks/head-interna-menu.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-landing",
+      "file": "anniazzurri/elements/chunks/head-landing.html",
+      "baseline": "anniazzurri/baseline/chunks/head-landing.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-news",
+      "file": "anniazzurri/elements/chunks/head-news.html",
+      "baseline": "anniazzurri/baseline/chunks/head-news.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-oss-landing",
+      "file": "anniazzurri/elements/chunks/head-oss-landing.html",
+      "baseline": "anniazzurri/baseline/chunks/head-oss-landing.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-patologie",
+      "file": "anniazzurri/elements/chunks/head-patologie.html",
+      "baseline": "anniazzurri/baseline/chunks/head-patologie.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-regione",
+      "file": "anniazzurri/elements/chunks/head-regione.html",
+      "baseline": "anniazzurri/baseline/chunks/head-regione.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-rsa",
+      "file": "anniazzurri/elements/chunks/head-rsa.html",
+      "baseline": "anniazzurri/baseline/chunks/head-rsa.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-soluzioni",
+      "file": "anniazzurri/elements/chunks/head-soluzioni.html",
+      "baseline": "anniazzurri/baseline/chunks/head-soluzioni.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-sos-famiglia",
+      "file": "anniazzurri/elements/chunks/head-sos-famiglia.html",
+      "baseline": "anniazzurri/baseline/chunks/head-sos-famiglia.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-sportello-sociale",
+      "file": "anniazzurri/elements/chunks/head-sportello-sociale.html",
+      "baseline": "anniazzurri/baseline/chunks/head-sportello-sociale.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-storia",
+      "file": "anniazzurri/elements/chunks/head-storia.html",
+      "baseline": "anniazzurri/baseline/chunks/head-storia.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-tariffe-e-convenzioni",
+      "file": "anniazzurri/elements/chunks/head-tariffe-e-convenzioni.html",
+      "baseline": "anniazzurri/baseline/chunks/head-tariffe-e-convenzioni.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head",
+      "file": "anniazzurri/elements/chunks/head.html",
+      "baseline": "anniazzurri/baseline/chunks/head.html"
+    },
+    {
+      "type": "chunk",
+      "name": "menu-navbar",
+      "file": "anniazzurri/elements/chunks/menu-navbar.html",
+      "baseline": "anniazzurri/baseline/chunks/menu-navbar.html"
+    },
+    {
+      "type": "chunk",
+      "name": "menu-side-navbar",
+      "file": "anniazzurri/elements/chunks/menu-side-navbar.html",
+      "baseline": "anniazzurri/baseline/chunks/menu-side-navbar.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-argento-vivo",
+      "file": "anniazzurri/elements/chunks/residenze-argento-vivo.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-argento-vivo.html"
+    },
+    {
+      "type": "chunk",
+      "name": "residenze-rsa-aperta-lombardia",
+      "file": "anniazzurri/elements/chunks/residenze-rsa-aperta-lombardia.html",
+      "baseline": "anniazzurri/baseline/chunks/residenze-rsa-aperta-lombardia.html"
+    }
+  ]
+}
