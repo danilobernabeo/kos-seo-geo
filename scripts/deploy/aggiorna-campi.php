@@ -152,9 +152,18 @@ if ($scrivi && $daFare) {
         $copia['risorse'][] = ['id' => $res->get('id'), 'prima' => array_map(fn($x) => $x[0], $nuovi), 'scritto' => array_map(fn($x) => $x[1], $nuovi)];
     }
     file_put_contents("$bkDir/campi.json", json_encode($copia, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+    // Title, description e simili non sono una modifica del contenuto: si conserva la data di modifica
+    // (editedon/editedby), che il dato strutturato usa come dateModified. «published» invece la aggiorna.
+    $soloMeta = fn(array $nuovi) => !array_diff(array_keys($nuovi), ['longtitle', 'description', 'pagetitle', 'menutitle', 'introtext']);
     foreach ($daFare as [$res, $nuovi]) {
+        $prima = [(int) $res->get('editedon'), (int) $res->get('editedby')];
         foreach ($nuovi as $c => [, $v]) $res->set($c, $v);
-        if ($res->save()) $fatte++; else { echo "  ! salvataggio fallito: {$res->get('id')}\n"; $errori++; }
+        if ($res->save()) {
+            $fatte++;
+            if ($soloMeta($nuovi) && $prima[0]) {
+                $modx->exec("UPDATE $tab SET editedon = {$prima[0]}, editedby = {$prima[1]} WHERE id = " . (int) $res->get('id'));
+            }
+        } else { echo "  ! salvataggio fallito: {$res->get('id')}\n"; $errori++; }
     }
     $modx->cacheManager->refresh();
     echo "== $fatte risorse aggiornate; cache svuotata. Backup: tabella {$copia['tabella']} e $bkDir/campi.json\n";

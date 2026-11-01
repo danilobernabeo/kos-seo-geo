@@ -228,6 +228,19 @@ Restano: proposte da validare (circa 90 pagine), i 6 title lunghi, la verifica d
 nel title, e in `aaSchema` il `name` della pagina da un longtitle-alias (`/sportello-sociale`), da correggere con la regola
 di `titoloPagina` al prossimo rilascio dello snippet.
 
+**AA-20 giro 2, pagine fuori audit (1/11).** 92 pagine (77 articoli, 15 pagine di sezione) segnalate per title o
+description lunghi, mancanti o duplicati, oltre gli URL dell'agenzia. Proposte del 27/10 ricontrollate sul sito il 1/11:
+tutte 200, description invariate; 21 title serviti cambiati solo per la regola del suffisso di `titoloPagina` (31/10).
+Criteri delle description (buone pratiche SEO/GEO, non solo accorciamento): argomento e soggetto in apertura; nomi propri
+(residenza, città, persone, enti) quando presenti nel testo originale, perché sono le entità che motori e assistenti AI
+abbinano alle ricerche; frase autonoma che riassume la pagina senza rimandi («Scopri», «Leggi in questo articolo» tolti
+in 5 casi); nessun fatto aggiunto rispetto al testo della pagina; 110-140 caratteri, sotto la soglia di troncamento
+(audit: massimo 150). 10 description scritte dove mancavano. **Description validate da Danilo il 1/11 (65)**; title (65)
+in attesa. Foglio `anniazzurri/dati/aa-20/aa-20-giro-2-2026-11-01.xlsx` (fuori git), generato da
+`scripts/docs/aa-20-giro-2.py` con `giro-2-validazione.json`; campi in `anniazzurri/dati/aa-20/campi-giro-2.json`.
+Da questo giro `aggiorna-campi.php` conserva `editedon`/`editedby` quando cambiano solo title, description e simili:
+la data di modifica (dateModified nel dato strutturato) resta quella dell'ultima modifica del contenuto.
+
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
 
 Analisi nella chat «Sostituzione barra di ricerca Yext» (26/10): Yext Answers su entrambi i siti (KOS circa 2.150

@@ -17,7 +17,7 @@ from openpyxl.worksheet.datavalidation import DataValidation
 B = 'anniazzurri/dati/aa-20/'
 SUF = ' | Anni Azzurri'
 title_attuale_1_11 = json.load(open(B + 'title-serviti-20261101.json')) if os.path.exists(B + 'title-serviti-20261101.json') else {}
-val = json.load(open(B + 'giro-2-validazione.json')) if os.path.exists(B + 'giro-2-validazione.json') else {}
+val = {k: x for k, x in json.load(open(B + 'giro-2-validazione.json')).items() if not k.startswith('_')} if os.path.exists(B + 'giro-2-validazione.json') else {}
 
 def servito(lt):
     return lt if 'Anni Azzurri' in lt else lt + SUF
@@ -53,8 +53,16 @@ for r in ws.iter_rows(min_row=2, values_only=True):
     righe.append([int(rid), url, tpl, t_att, t_new or '(invariato)', len(t_new) if t_new else None,
                   d_att, d_prop if campi.get('description') else '(invariata)', len(d_prop) if campi.get('description') else None,
                   esito, ''])
-    if campi and esito != 'Respinto' and (not val or esito == 'Approvato' or v.get('title') or v.get('description')):
-        x = {'id': int(rid), 'uri': url.replace('https://anniazzurri.it/', ''), 'campi': campi}
+    # "approva": ["description"] approva solo quei campi; "esito": "Approvato" li approva tutti
+    approvati = set(v.get('approva', [])) | ({'longtitle', 'description'} if esito == 'Approvato' else set())
+    if val:
+        campi_ok = {c: x for c, x in campi.items() if c in approvati}
+    else:
+        campi_ok = campi
+    if not esito and approvati: esito = 'Approvato: ' + ', '.join(sorted(c for c in approvati if c in campi))
+    righe[-1][9] = esito
+    if campi_ok and esito != 'Respinto':
+        x = {'id': int(rid), 'uri': url.replace('https://anniazzurri.it/', ''), 'campi': campi_ok}
         if not val: x['da_validare'] = True
         risorse.append(x)
 
@@ -82,8 +90,10 @@ for t in ['AA-20 giro 2: pagine fuori audit, proposte del 27/10 ricontrollate su
     n.append([t])
 n.column_dimensions['A'].width = 140
 wb.save(B + 'aa-20-giro-2-2026-11-01.xlsx')
-json.dump({'nome': 'AA-20 giro 2: title (longtitle, senza suffisso) e description di pagine fuori audit, proposte del 27/10'
-           + ('' if val else ' — DA VALIDARE, non rilasciare'), 'risorse': risorse},
+nome = ('AA-20 giro 2: pagine fuori audit, proposte del 27/10 ricontrollate il 1/11; campi: '
+        + ', '.join(sorted({c for r in risorse for c in r['campi']})) + ('' if val else ' — DA VALIDARE, non rilasciare')
+        + '. Valori «prima» dall\'istantanea del 27/10 (meta-stato-20261027.csv); editedon conservato da aggiorna-campi.php.')
+json.dump({'nome': nome, 'risorse': risorse},
           open(B + 'campi-giro-2.json', 'w'), ensure_ascii=False, indent=1)
 print(f'righe {len(righe)}, risorse nel JSON {len(risorse)}, longtitle {sum("longtitle" in r["campi"] for r in risorse)}, '
       f'description {sum("description" in r["campi"] for r in risorse)}')
