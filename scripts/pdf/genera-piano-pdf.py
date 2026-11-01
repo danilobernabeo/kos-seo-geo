@@ -50,7 +50,7 @@ REDIRECT = {
 
 # Modelli per nome file (senza distinzione di maiuscole, sul $uri): i tipi da tenere restano indicizzabili anche se caricati con un nome nuovo.
 MODELLI = [
-    ('carta dei servizi / carta degli alloggi', r'/[^/]*carte?[ _-]+(dei|degli)[ _-]+(servizi|alloggi)[^/]*\.pdf$'),
+    ('carta dei servizi / carta degli alloggi', r'/[^/]*cart[ae][ _-]+(dei|degli)[ _-]+(servizi|alloggi)[^/]*\.pdf$'),
     ('pieghevole / leaflet', r'/[^/]*(pieghevole|leaflet)[^/]*\.pdf$'),
     ('guida utente / user manual / guida ai servizi', r'/[^/]*(guida[ _-]+(utente|ai[ _-]+servizi)|user[ _-]*(manual|guide))[^/]*\.pdf$'),
     ('preparazioni', r'/preparazion[ie]'),
