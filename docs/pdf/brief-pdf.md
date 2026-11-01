@@ -77,8 +77,8 @@ servizi, tariffe e accesso di una residenza); la nota di consegna lo motiva in u
 | --- | --- | --- |
 | 1-2/11 | Inventario sul server dei due siti: percorso, dimensione, data, pagine che lo linkano, titolo nei metadati, numero di pagine, prime righe di testo | `docs/pdf/inventario-<sito>-<data>.csv` (o xlsx fuori da git se contiene dati personali) |
 | 2/11 | Search Console: impressioni, clic, posizione e query per ogni PDF, e quali query il PDF intercetta al posto di una pagina HTML | foglio nell'inventario |
-| 2/11 | Classificazione per regole (nome e testo): carta dei servizi, pieghevole, altro (con sottotipo); proposta di titolo per i PDF da tenere | foglio per KOS con la risposta predefinita («se non rispondi, si applica la proposta»), come `kosgroup/dati/voce-24/punti-aperti-kos-yext-2026-10-29.xlsx` |
-| 3/11 | Domande di classificazione nella call KOS di martedì (Danilo le porta) | risposte nel foglio |
+| 2/11 | Classificazione per regole (nome e testo): carta dei servizi, pieghevole, comunicato, modulo, altro (con sottotipo); proposta di titolo per i PDF da tenere | foglio per la revisione di Danilo (xlsx fuori da git se contiene dati personali) |
+| 2-3/11 | Danilo conferma la classificazione e la condivide con KOS (call di martedì) | foglio confermato |
 | 3-4/11 | Pacchetto metadati (riscrittura, installatore, ripristino) e regole web `X-Robots-Tag` sullo stage; sitemap dei soli PDF da escludere | `scripts/pdf/`, `<sito>/files/web-rules/pdf-noindex.conf` |
 | 4-5/11 | Collaudo sullo stage, poi produzione | evidenze per la nota di consegna |
 | 5-6/11 | Controllo ripetibile per i PDF nuovi; reindirizzamenti per PDF spostati o con traffico | script e regole |
@@ -87,12 +87,26 @@ Schema di titolo da proporre (da confermare): `Carta dei servizi – <nome uffic
 `<Titolo del pieghevole> – <nome della struttura>`, con il nome ufficiale della struttura come nella scheda del sito
 (H1). Lunghezza entro 60-65 caratteri.
 
-## 6. Domande aperte (da chiudere con Danilo o con KOS)
+## 6. Decisioni (Danilo, 1/11) e punti da chiudere
 
-- Comunicati stampa KOS: fuori dall'indice o indicizzabili (sono notizie istituzionali)?
-- PDF con dati personali o moduli da compilare: oltre al `noindex`, vanno tolti dal sito?
-- PDF di strutture chiuse (La Margherita, Villalba): 301 alla pagina della regione o rimozione?
-- Documenti identici su più strutture (stesso file in più cartelle): uno solo indicizzabile?
+- **Classificazione:** la conferma Danilo sul foglio; poi la condivide con KOS. Il foglio va preparato per la sua
+  revisione (proposta, motivo, titolo proposto, impressioni), non come domanda aperta a KOS.
+- **Comunicati stampa KOS:** oggi il comunicato esiste **solo** come PDF (il template `comunicati` con
+  `comunicatoRedirect` manda la pagina del comunicato al PDF con un 301, circa 50 file). Con un `noindex` il contenuto
+  sparirebbe del tutto da Google e dagli assistenti AI, che sulle notizie istituzionali del gruppo (risultati,
+  acquisizioni, nomine) sono proprio la fonte da presidiare. Proposta: tenerli indicizzabili con un titolo
+  `Comunicato stampa – <titolo> – <mese anno>` (titolo e data dalla risorsa MODX del comunicato) e un'intestazione
+  `Link: <URL della pagina elenco>; rel="canonical"` solo se Danilo preferisce che vinca l'elenco. Decisione finale a Danilo
+  dopo aver visto impressioni e query in Search Console. La buona pratica vera (comunicato in HTML con il PDF allegato)
+  è fuori perimetro: si annota nel piano interno.
+- **Moduli e documenti con dati personali:** elencarli a parte (nome, struttura, pagina che li linka, motivo), senza
+  toglierli; Danilo decide dopo averli visti e sentito KOS. Nel frattempo ricevono il `noindex` come gli altri esclusi.
+- **PDF delle strutture chiuse:** il PDF segue il reindirizzamento della sua pagina. Se la pagina della struttura
+  chiusa rimanda a un'altra struttura e lì esiste il documento equivalente (carta → carta, pieghevole → pieghevole),
+  301 a quel documento; altrimenti 301 alla pagina di destinazione. Mai un 301 verso un documento di contenuto diverso
+  (Google lo tratta come soft 404). I documenti senza equivalente e senza traffico possono anche rispondere 410.
+- **Da chiudere nella chat:** documenti identici su più strutture (stesso file in più cartelle): uno solo indicizzabile,
+  gli altri con `Link: rel="canonical"` verso quello tenuto.
 
 ## 7. Fuori da questo lavoro
 
