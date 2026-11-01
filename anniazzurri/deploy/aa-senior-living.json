@@ -1,0 +1,11 @@
+{
+  "nome": "AA-20 Senior Living: nuovo indirizzo /appartamenti-anziani-bergamo della risorsa 367 (ex /alloggi-protetti); cdsList con il nuovo percorso della carta degli alloggi. Installare DOPO aver copiato la cartella dei documenti e cambiato l'alias.",
+  "elements": [
+    {
+      "type": "chunk",
+      "name": "cdsList",
+      "file": "anniazzurri/elements/chunks/cdsList.html",
+      "baseline": "anniazzurri/baseline/chunks/cdsList.html"
+    }
+  ]
+}
