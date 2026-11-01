@@ -224,6 +224,7 @@ Nessun rilascio in produzione nel weekend: solo preparazione e, se serve, stage.
 ## Cosa può slittare e come si recupera
 
 | Rischio | Effetto | Recupero |
+- **Protezione anti-bot di MODX Cloud (1/11 sera):** su entrambi i siti le richieste dall'IP di Danilo e dalle sessioni di Claude rispondono 403 «Security Check – Verifying Your Browser» (prova JavaScript con cookie); da altre reti i siti rispondono normalmente, quindi il blocco è per indirizzo, probabilmente scattato per le centinaia di richieste automatiche dei collaudi del giorno. Da fare: «Testa URL live» in Search Console sulle due home (Googlebot deve passare); chiedere al supporto MODX soglia, durata, esclusione dei crawler verificati (Googlebot, Bingbot, GPTBot, ClaudeBot, PerplexityBot: KOS-6, AA-19) e lista bianca per i collaudi. Collaudi automatici più lenti (meno richieste in parallelo) finché non è chiarito.
 |---|---|---|
 | Le due persone di KOS non disponibili martedì | Correzioni Yext più tardi | Primo orario utile entro mercoledì mattina; nell'attesa il foglio con le risposte predefinite e la scadenza: senza risposta si applica il predefinito |
 | Correzioni Yext non chiuse mercoledì | Import, KOS 24, schede AA e pagine provincia slittano | Linea C, fuori penale: KOS 24 e schede dal 16/11. AA 10 è sprint 3: uscita entro il 27/11 |
