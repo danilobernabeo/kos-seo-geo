@@ -240,6 +240,10 @@ in attesa. Foglio `anniazzurri/dati/aa-20/aa-20-giro-2-2026-11-01.xlsx` (fuori g
 `scripts/docs/aa-20-giro-2.py` con `giro-2-validazione.json`; campi in `anniazzurri/dati/aa-20/campi-giro-2.json`.
 Da questo giro `aggiorna-campi.php` conserva `editedon`/`editedby` quando cambiano solo title, description e simili:
 la data di modifica (dateModified nel dato strutturato) resta quella dell'ultima modifica del contenuto.
+**Description del giro 2 in produzione il 1/11** (stage alle 16:11, produzione alle 16:13): 65 risorse, nessun problema.
+Backup produzione: tabella `modx_site_content_bak_20261101_0913` e `/paas/c0072/backup-kos-seo-geo/20261101-091318-campi`
+(ripristino: `aggiorna-campi.php /www --ripristina <cartella> --scrivi`). Verifica dal sito: 65/65 pagine 200, description
+uguale al testo approvato, og:description allineata, un solo JSON-LD per pagina. Restano i 65 title del giro 2.
 
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
 
