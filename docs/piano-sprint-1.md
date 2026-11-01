@@ -243,7 +243,12 @@ la data di modifica (dateModified nel dato strutturato) resta quella dell'ultima
 **Description del giro 2 in produzione il 1/11** (stage alle 16:11, produzione alle 16:13): 65 risorse, nessun problema.
 Backup produzione: tabella `modx_site_content_bak_20261101_0913` e `/paas/c0072/backup-kos-seo-geo/20261101-091318-campi`
 (ripristino: `aggiorna-campi.php /www --ripristina <cartella> --scrivi`). Verifica dal sito: 65/65 pagine 200, description
-uguale al testo approvato, og:description allineata, un solo JSON-LD per pagina. Restano i 65 title del giro 2.
+uguale al testo approvato, og:description allineata, un solo JSON-LD per pagina. **Title del giro 2 (65) validati da Danilo il 1/11** con gli stessi criteri. Eccezione: risorsa 367
+`/alloggi-protetti`, il cui testo KOS ha chiesto di aggiornare (Anni Azzurri Senior Living, sette bilocali per anziani
+autosufficienti accanto alla RSA San Sisto 2): sul template `rsa` il longtitle è un alias di cartella, quindi il title viene
+dal pagetitle, che diventa «Senior Living Bergamo: appartamenti per anziani» (title servito di 63 caratteri, anche H1 e
+briciole); description nuova di 143 caratteri. Nessun nodo struttura oggi sulla pagina: con le schede AA (sprint 3) sarà
+`LocalBusiness` (soluzione abitativa non sanitaria, convenzione del progetto).
 
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
 

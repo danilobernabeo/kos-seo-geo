@@ -17,7 +17,9 @@ from openpyxl.worksheet.datavalidation import DataValidation
 B = 'anniazzurri/dati/aa-20/'
 SUF = ' | Anni Azzurri'
 title_attuale_1_11 = json.load(open(B + 'title-serviti-20261101.json')) if os.path.exists(B + 'title-serviti-20261101.json') else {}
-val = {k: x for k, x in json.load(open(B + 'giro-2-validazione.json')).items() if not k.startswith('_')} if os.path.exists(B + 'giro-2-validazione.json') else {}
+_v = json.load(open(B + 'giro-2-validazione.json')) if os.path.exists(B + 'giro-2-validazione.json') else {}
+val = {k: x for k, x in _v.items() if not k.startswith('_')}
+extra = _v.get('_extra', [])
 
 def servito(lt):
     return lt if 'Anni Azzurri' in lt else lt + SUF
@@ -66,6 +68,9 @@ for r in ws.iter_rows(min_row=2, values_only=True):
         if not val: x['da_validare'] = True
         risorse.append(x)
 
+# risorse con testi decisi a parte (es. pagina riscritta): sostituiscono la riga del giro
+for e in extra:
+    risorse = [r for r in risorse if r['id'] != e['id']] + [e]
 wb = openpyxl.Workbook(); w = wb.active; w.title = 'Proposte da validare'
 w.append(['ID', 'URL', 'Template', 'Title servito (1/11)', 'Title proposto (servito)', 'Len', 'Description attuale',
           'Description proposta', 'Len', 'Validazione', 'Testo corretto'])
