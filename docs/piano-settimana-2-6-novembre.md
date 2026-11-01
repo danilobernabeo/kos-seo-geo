@@ -43,7 +43,7 @@ sprint 1 (verifica di Cerved/ProWeb 9-14/11).
 
 **PDF rilasciati in produzione il 1/11** (nota interna `docs/nota-consegna-pdf.md`): titoli nei metadati riscritti su 186 PDF AA e 242 KOS; regole web con noindex di default, eccezioni per elenco e per nome file, canonical sulle copie, redirect dei PDF spariti. Da fare:
 - 3/11, call KOS: «Il team», «La nostra équipe», «Organizzazione», tirocini (oggi invariati);
-- `/assets/doc/cv/`: verificare subito se è raggiungibile (dati personali) e, se sì, bloccarla;
+- `/assets/doc/cv/` (curriculum del modulo di candidatura): elenco 403, nessuna impressione in Search Console; dal 1/11 `X-Robots-Tag: noindex, nofollow` su tutta la cartella, file ancora apribili dalla pagina riservata. Fuori progetto, da segnalare al referente: salvataggio fuori dal webroot, tempi di conservazione (ci sono CV del 2024), accesso vero al posto della chiave nell'indirizzo;
 - Beata Corte: archiviare la cartella dei documenti fuori dal webroot (il 301 della cartella resta);
 - Biarella: attivare il redirect della carta quando la pagina risponde 200;
 - 17/11: Open Day odontoiatrico di Abitare il Tempo da TIENI a ESCLUDI;
