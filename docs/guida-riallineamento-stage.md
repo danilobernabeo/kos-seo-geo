@@ -1,4 +1,4 @@
-﻿# Guida: riallineare lo stage dalla produzione e installare un pacchetto
+# Guida: riallineare lo stage dalla produzione e installare un pacchetto
 
 Procedura usata il 22/10/2026 sullo stage di kosgroup.com, prima del pacchetto KOS 9/12/13 (sprint 2). Vale per
 entrambi i siti: cambiano solo i nomi della tabella qui sotto.
@@ -20,23 +20,31 @@ entrambi i siti: cambiano solo i nomi della tabella qui sotto.
 | Indirizzo stage | `https://stage.kosgroup.com` | `https://stage.anniazzurri.it` |
 | Cartella baseline | `kosgroup/baseline/` | `anniazzurri/baseline/` |
 
-Tutti i cloud hanno lo stesso indirizzo IP: connessioni SSH ravvicinate vengono interrotte (Â«connection resetÂ»).
+Tutti i cloud hanno lo stesso indirizzo IP: connessioni SSH ravvicinate vengono interrotte («connection reset»).
 Tra un comando `ssh`/`scp` e il successivo lasciare `Start-Sleep 15`.
 
 I comandi si lanciano da PowerShell, nella cartella locale del repository. Gli esempi usano kosgroup.com.
 
-## Passo 1 â€” Salvare la password dello stage
+## Passo 1 — Salvare la password dello stage
 
 L'istantanea della produzione sovrascrive anche `/www/core/.htpasswd`, il file della protezione con password
 dello stage. Prima va copiato fuori da `/www`:
+
+KOS:
 
 ```powershell
 ssh kos-stage "cp /www/core/.htpasswd /home/htpasswd.bak && ls -la /home/htpasswd.bak && head -c 10 /home/htpasswd.bak"
 ```
 
+Anni Azzurri:
+
+```powershell
+ssh aa-stage "cp /www/core/.htpasswd /home/htpasswd.bak && ls -la /home/htpasswd.bak && head -c 10 /home/htpasswd.bak"
+```
+
 Atteso: il file esiste (circa 110 byte) e comincia con `kos:$6$`.
 
-## Passo 2 â€” Caricare l'istantanea della produzione sullo stage
+## Passo 2 — Caricare l'istantanea della produzione sullo stage
 
 Dal pannello di MODX Cloud:
 
@@ -44,10 +52,12 @@ Dal pannello di MODX Cloud:
 2. sul cloud di stage, caricare quell'istantanea;
 3. attendere che il caricamento sia completato.
 
-Dopo questo passo lo stage Ã¨ una copia della produzione: database, `/www` e quindi anche gli elementi giÃ 
+Dopo questo passo lo stage è una copia della produzione: database, `/www` e quindi anche gli elementi già
 pubblicati dei pacchetti del progetto e dei lavori extra.
 
-## Passo 3 â€” Ripristinare la password e verificare la protezione
+## Passo 3 — Ripristinare la password e verificare la protezione
+
+KOS:
 
 ```powershell
 ssh kos-stage "cp /home/htpasswd.bak /www/core/.htpasswd && ls -la /www/core/.htpasswd"
@@ -56,17 +66,26 @@ curl.exe -sI https://stage.kosgroup.com/ | Select-String "HTTP/|WWW-Authenticate
 curl.exe -sI -u kos https://stage.kosgroup.com/ | Select-String "HTTP/|X-Robots-Tag"
 ```
 
+Anni Azzurri:
+
+```powershell
+ssh aa-stage "cp /home/htpasswd.bak /www/core/.htpasswd && ls -la /www/core/.htpasswd"
+Start-Sleep 15
+curl.exe -sI https://stage.anniazzurri.it/ | Select-String "HTTP/|WWW-Authenticate|X-Robots-Tag"
+curl.exe -sI -u kos https://stage.anniazzurri.it/ | Select-String "HTTP/|X-Robots-Tag"
+```
+
 Atteso:
 
 - senza password: `401`, `WWW-Authenticate: Basic realm="Ambiente di prova KOS"`, `X-Robots-Tag: noindex, nofollow`;
 - con password: `200`, `X-Robots-Tag: noindex, nofollow`.
 
-Se la risposta senza password Ã¨ `200`, fermarsi: lo stage Ã¨ esposto. Ricontrollare il file e le regole web del
-pannello (il percorso del file per nginx Ã¨ `/c0044/www/core/.htpasswd`).
+Se la risposta senza password è `200`, fermarsi: lo stage è esposto. Ricontrollare il file e le regole web del
+pannello (il percorso del file per nginx è `/c0044/www/core/.htpasswd`).
 
-## Passo 4 â€” Riesportare la baseline dalla produzione
+## Passo 4 — Riesportare la baseline dalla produzione
 
-Lo script Ã¨ in sola lettura: fotografa template, chunk, snippet, plugin, TV e impostazioni.
+Lo script è in sola lettura: fotografa template, chunk, snippet, plugin, TV e impostazioni.
 
 ```powershell
 git pull
@@ -90,7 +109,7 @@ repository:
 
 Il file `.tgz` resta nella cartella locale: non va nel repository.
 
-## Passo 5 â€” Installare il pacchetto in prova
+## Passo 5 — Installare il pacchetto in prova
 
 L'installer senza `--scrivi` mostra cosa cambierebbe e non scrive nulla. Eventuali file statici (es. il logo) si
 caricano prima.
@@ -108,13 +127,13 @@ Legenda dell'output:
 | Riga | Significato |
 |---|---|
 | `+` | impostazione o elemento nuovo |
-| `~` | elemento o impostazione che verrÃ  modificato |
-| `=` | giÃ  come nel repository, non viene toccato |
-| `!` ... `FERMO` | l'elemento sul sito Ã¨ diverso dalla baseline: qualcuno l'ha modificato. Non usare `--forza` senza aver capito perchÃ© |
+| `~` | elemento o impostazione che verrà modificato |
+| `=` | già come nel repository, non viene toccato |
+| `!` ... `FERMO` | l'elemento sul sito è diverso dalla baseline: qualcuno l'ha modificato. Non usare `--forza` senza aver capito perché |
 
 Si prosegue solo con `== Nessun problema.` in fondo.
 
-## Passo 6 â€” Applicare e collaudare
+## Passo 6 — Applicare e collaudare
 
 ```powershell
 ssh kos-stage "cd ~/kos-seo-geo && php scripts/deploy/installa-elementi.php /www kosgroup/deploy/<manifest>.json --scrivi"
@@ -127,12 +146,12 @@ percorso. Per tornare indietro:
 ssh kos-stage "cd ~/kos-seo-geo && php scripts/deploy/installa-elementi.php /www /paas/c0044/backup-kos-seo-geo/<data>/ripristino.json --scrivi"
 ```
 
-Se lo stesso pacchetto viene reinstallato piÃ¹ volte (es. dopo una correzione), ogni installazione ha il suo
+Se lo stesso pacchetto viene reinstallato più volte (es. dopo una correzione), ogni installazione ha il suo
 manifest: per annullare tutto si usa quello della prima.
 
 Collaudo per i pacchetti di dato strutturato:
 
-1. **Controllo da PowerShell** â€” conta i blocchi JSON-LD, elenca i tipi e legge le briciole visibili:
+1. **Controllo da PowerShell** — conta i blocchi JSON-LD, elenca i tipi e legge le briciole visibili:
 
    ```powershell
    $c = Get-Credential kos
@@ -148,23 +167,23 @@ Collaudo per i pacchetti di dato strutturato:
    }
    ```
 
-   Atteso: un solo JSON-LD per pagina; dove si vedono le briciole c'Ã¨ anche `BreadcrumbList`, con lo stesso
+   Atteso: un solo JSON-LD per pagina; dove si vedono le briciole c'è anche `BreadcrumbList`, con lo stesso
    percorso. Gli indirizzi di esempio per ogni template si ricavano da `scripts/checks/kos-albero.php`. Se le
    briciole si vedono ma manca la `BreadcrumbList`, `scripts/checks/kos-briciole-origine.php` dice da dove
    escono.
 2. **Controllo nel browser** (lo stage chiede la password): aspetto delle pagine toccate dal pacchetto e home in
    una finestra anonima. Sullo stage il banner Cookiebot non compare (dominio diverso da quello registrato):
-   il controllo Â«senza consensoÂ» si fa in produzione, subito dopo il rilascio.
-3. **Validatori** â€” lo stage Ã¨ protetto, quindi si usa la modalitÃ  Â«codiceÂ»: `Ctrl+U` sulla pagina, copiare il
+   il controllo «senza consenso» si fa in produzione, subito dopo il rilascio.
+3. **Validatori** — lo stage è protetto, quindi si usa la modalità «codice»: `Ctrl+U` sulla pagina, copiare il
    sorgente e incollarlo in [validator.schema.org](https://validator.schema.org) e nella scheda *Code* di
    [Rich Results Test](https://search.google.com/test/rich-results).
-4. **Script di terzi** â€” il Rich Results Test esegue il JavaScript, quindi vede anche il JSON-LD inserito da
-   script esterni (es. Yext Knowledge Tags sulle schede struttura). Se trova piÃ¹ elementi di quelli attesi,
+4. **Script di terzi** — il Rich Results Test esegue il JavaScript, quindi vede anche il JSON-LD inserito da
+   script esterni (es. Yext Knowledge Tags sulle schede struttura). Se trova più elementi di quelli attesi,
    confrontare con il numero di blocchi arrivati dal server (controllo da PowerShell, punto 1).
 
 ## Dopo il riallineamento
 
-- I pacchetti giÃ  pubblicati in produzione sono arrivati con l'istantanea: non vanno reinstallati.
+- I pacchetti già pubblicati in produzione sono arrivati con l'istantanea: non vanno reinstallati.
 - I pacchetti ancora in collaudo (del progetto o dei lavori extra in `extra/`) si reinstallano con i loro script,
   ripartendo dal passo 5.
 - Il registro dell'installer (`~/backup-kos-seo-geo/installati.json`) e i backup sono fuori da `/www`; per
