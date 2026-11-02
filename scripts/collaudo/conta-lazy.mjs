@@ -22,7 +22,8 @@
  * Poi scorre la pagina fino in fondo e aspetta: KO per ogni immagine visibile con loading="lazy" che non si è
  * caricata («immagine che non compare»). Le immagini nascoste (display:none, slide fuori vista) non contano.
  *
- * Uscita: <uscita>/risultati.json, <uscita>/immagini.csv (una riga per immagine segnalata), riepilogo a video.
+ * Uscita: <uscita>/risultati.json, <uscita>/immagini.csv (una riga per immagine segnalata), <uscita>/scaricate.csv
+ *   (tutte le immagini scaricate al caricamento, dalla più pesante), riepilogo a video.
  * Codice di uscita 1 se c'è almeno un KO.
  */
 import { chromium, devices } from 'playwright';
@@ -169,6 +170,10 @@ for (const nomeProf of profili) {
       for (const i of fuori) segnala('INFO', 'fuori schermo senza lazy', i);
       r.immaginiScaricate = byte.size;
       r.immaginiKB = Math.round([...byte.values()].reduce((s, x) => s + x, 0) / 1024);
+      // elenco completo delle immagini scaricate al caricamento (per capire dove va il peso)
+      const perImg = new Map(a.immagini.map(i => [i.src, i]));
+      r.scaricateAlCaricamento = [...byte.entries()].sort((x, y) => y[1] - x[1])
+        .map(([u, b]) => ({ url: u, kb: Math.round(b / 1024), loading: perImg.get(u)?.loading || '', fuoriSchermo: !!perImg.get(u)?.fuoriSchermo, contenitore: perImg.get(u)?.contenitore || '' }));
       r.lcp = a.lcp;
       const lcpImg = a.immagini.find(i => i.lcp);
       if (lcpImg && lcpImg.loading === 'lazy') segnala('KO', 'elemento LCP con loading=lazy', lcpImg);
@@ -206,6 +211,8 @@ await browser.close();
 
 fs.writeFileSync(path.join(OUT, 'risultati.json'), JSON.stringify({ base: BASE, data: new Date().toISOString(), risultati }, null, 1));
 fs.writeFileSync(path.join(OUT, 'immagini.csv'), '﻿' + righe.join('\r\n'));
+fs.writeFileSync(path.join(OUT, 'scaricate.csv'), '\ufeff' + ['profilo;pagina;immagine;kb;loading;fuori_schermo;contenitore',
+  ...risultati.flatMap(r => (r.scaricateAlCaricamento || []).map(x => [r.profilo, r.pagina, x.url, x.kb, x.loading, x.fuoriSchermo ? 'sì' : '', x.contenitore].join(';')))].join('\r\n'));
 for (const p of profili) {
   const rr = risultati.filter(r => r.profilo === p && !r.errore);
   const tot = rr.reduce((s, r) => s + (r.fuoriSchermoSenzaLazy || 0), 0);
