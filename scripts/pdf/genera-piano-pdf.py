@@ -54,6 +54,7 @@ MODELLI = [
     ('pieghevole / leaflet', r'/[^/]*(pieghevole|leaflet)[^/]*\.pdf$'),
     ('guida utente / user manual / guida ai servizi', r'/[^/]*(guida[ _-]+(utente|ai[ _-]+servizi)|user[ _-]*(manual|guide))[^/]*\.pdf$'),
     ('preparazioni', r'/preparazion[ie]'),
+    ('pieghevole Anni Azzurri Senior Living (caricato il 2/11 come «Anni Azzurri Senior Living.pdf»)', r'/anni[ _-]+azzurri[ _-]+senior[ _-]+living[^/]*\.pdf$'),
 ]
 
 
