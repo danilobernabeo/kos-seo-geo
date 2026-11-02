@@ -1,0 +1,654 @@
+{
+ "base": "https://anniazzurri.it",
+ "data": "2026-11-02T22:02:33.680Z",
+ "risultati": [
+  {
+   "profilo": "mobile",
+   "pagina": "/residenza-anni-azzurri-parco-di-veio",
+   "stato": 200,
+   "errore": "",
+   "segnalazioni": [
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/img/3-bollini-2025-26.png",
+     "loading": "",
+     "contenitore": ""
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/img/dir-residenza-anni-azzurri-parco-di-veio.jpg",
+     "loading": "",
+     "contenitore": ""
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/spotify.png",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/radio.png",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/facebook.png",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/youtube.png",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/instagram.png",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/spotify.svg",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/radio.svg",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/facebook.svg",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/youtube.svg",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/instagram.svg",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/en-flag.svg",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/logo-gruppo-kos.svg",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    }
+   ],
+   "fuoriSchermoSenzaLazy": 14,
+   "fuoriSchermoSenzaLazyKB": 83,
+   "immaginiScaricate": 29,
+   "immaginiKB": 193,
+   "scaricateAlCaricamento": [
+    {
+     "url": "https://anniazzurri.it/assets/cache-img/img/rsa/residenza-anni-azzurri-parco-di-veio-800.webp",
+     "kb": 74,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "https://anniazzurri.it/assets/img/dir-residenza-anni-azzurri-parco-di-veio.jpg",
+     "kb": 26,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": ""
+    },
+    {
+     "url": "https://anniazzurri.it/assets/img/3-bollini-2025-26.png",
+     "kb": 25,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": ""
+    },
+    {
+     "url": "https://d3wo5wojvuv7l.cloudfront.net/t_square_limited_720/images.spreaker.com/original/8b932acb3cfb30dec7836e988165499b.jpg",
+     "kb": 24,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "https://anniazzurri.it/assets/instagram.png",
+     "kb": 8,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/spotify.png",
+     "kb": 7,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/youtube.png",
+     "kb": 3,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/radio.png",
+     "kb": 3,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/facebook.png",
+     "kb": 3,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/logo-anni.svg",
+     "kb": 3,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": "div#main-navbar.sticky-top"
+    },
+    {
+     "url": "https://www.gstatic.com/recaptcha/api2/logo_48.png",
+     "kb": 2,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "https://anniazzurri.it/assets/logo-gruppo-kos.svg",
+     "kb": 2,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/instagram.svg",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/radio.svg",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/spotify.svg",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://forms-eu1.hsforms.com/embed/v3/counters.gif?key=forms-embed-v2-RENDER_SUCCESS&count=1",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "https://forms-eu1.hsforms.com/embed/v3/counters.gif?key=forms-embed-v2-DEFINITION_SUCCESS&count=1",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "https://anniazzurri.it/assets/youtube.svg",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/facebook.svg",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://track-eu1.hubspot.com/__ptq.gif?k=15&fi=21053b6c-2af1-40c6-9d4b-d7a1dc37f029&fci=1cf6902d-7c28-4bc4-ac68-fc74846937b1&ft=0&sd=412x823&cd=24-bit&cs=UTF-8&ln=it-it&bfp=9b1bcc798cf3300e3064dc15fab53cfb&v=1.1&a=26644680&rcu=https%3A%2F%2Fanniazzurri.it%2Fresidenza-anni-azzurri-parco-di-veio&pu=https%3A%2F%2Fanniazzurri.it%2Fresidenza-anni-azzurri-parco-di-veio&t=Parco+di+Veio+RSA+Casa+di+Riposo+(RM)+%7C+Anni+Azzurri&cts=1793656931593&vi=e42213a88744fba98dcd1152770a589a&nc=true&u=249247192.e42213a88744fba98dcd1152770a589a.1793656931589.1793656931589.1793656931589.1&b=249247192.1.1793656931590&cc=15",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "https://anniazzurri.it/assets/en-flag.svg",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/icon-send.png",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": "div#top-navbar.sticky-top.bg-ice"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/radio-menu.png",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": "div#top-navbar.sticky-top.bg-ice"
+    },
+    {
+     "url": "https://widget.spreaker.com/3fc945b8060c503f649871b37b67cfc2.svg",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "https://track-eu1.hubspot.com/__ptq.gif?k=1&sd=412x823&cd=24-bit&cs=UTF-8&ln=it-it&bfp=9b1bcc798cf3300e3064dc15fab53cfb&v=1.1&a=26644680&rcu=https%3A%2F%2Fanniazzurri.it%2Fresidenza-anni-azzurri-parco-di-veio&pu=https%3A%2F%2Fanniazzurri.it%2Fresidenza-anni-azzurri-parco-di-veio&t=Parco+di+Veio+RSA+Casa+di+Riposo+(RM)+%7C+Anni+Azzurri&cts=1793656931592&vi=e42213a88744fba98dcd1152770a589a&nc=true&u=249247192.e42213a88744fba98dcd1152770a589a.1793656931589.1793656931589.1793656931589.1&b=249247192.1.1793656931590&cc=15",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "https://embeds.acswapp.com/info/track.gif?d=d19mMzk5MzRhM2IwNzYuZF84MDY3LmFfcHY&t=1793656930301",
+     "kb": 0,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2300356b'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e",
+     "kb": 0,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "data:image/png;base64,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",
+     "kb": 0,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": "div#CybotCookiebotDialogPoweredbyLink"
+    },
+    {
+     "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAC6SURBVHgBpdTdCcMgEAdwT/vk04EOkBG6QifpHH3rCF2hk3SVvBaEuoDYu4IgRRMv/iEkD/Hn+QnOuatS6gEAqDoJIQC/vfe594+m576FjAZKL6XXkSDiYox5UQFLXZEoNZJzXg9B/0hK6SKGWkiMcRVBewjnNIuURdIzyFBFo0jZPnoGqaMbCEqRJkSNIiFPCfILj7F1GLkySfvuqnFlShDxWesF6D76zF4jPJ/GWvum7/NRjBCegtsXQuuTY/odOJIAAAAASUVORK5CYII=",
+     "kb": 0,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": "div#CybotCookiebotDialogDetailBodyContentCookieTabsUnclassified.CollapseCard.CybotCookiebotDialogHide"
+    }
+   ],
+   "lcp": {
+    "tag": "img",
+    "url": "https://anniazzurri.it/assets/cache-img/img/rsa/residenza-anni-azzurri-parco-di-veio-800.webp",
+    "loading": "",
+    "ms": 14109
+   },
+   "preload": [],
+   "lazy": 33,
+   "immaginiDopoScorrimento": 71
+  },
+  {
+   "profilo": "desktop",
+   "pagina": "/residenza-anni-azzurri-parco-di-veio",
+   "stato": 200,
+   "errore": "",
+   "segnalazioni": [
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/img/3-bollini-2025-26.png",
+     "loading": "",
+     "contenitore": ""
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/img/dir-residenza-anni-azzurri-parco-di-veio.jpg",
+     "loading": "",
+     "contenitore": ""
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/spotify.png",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/radio.png",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/facebook.png",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/youtube.png",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/instagram.png",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/spotify.svg",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/radio.svg",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/facebook.svg",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/youtube.svg",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/instagram.svg",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/en-flag.svg",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "esito": "INFO",
+     "motivo": "fuori schermo senza lazy",
+     "src": "https://anniazzurri.it/assets/logo-gruppo-kos.svg",
+     "loading": "",
+     "contenitore": "footer.bg-primary"
+    }
+   ],
+   "fuoriSchermoSenzaLazy": 14,
+   "fuoriSchermoSenzaLazyKB": 83,
+   "immaginiScaricate": 29,
+   "immaginiKB": 366,
+   "scaricateAlCaricamento": [
+    {
+     "url": "https://anniazzurri.it/assets/cache-img/img/rsa/residenza-anni-azzurri-parco-di-veio-1500.webp",
+     "kb": 245,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "https://anniazzurri.it/assets/img/dir-residenza-anni-azzurri-parco-di-veio.jpg",
+     "kb": 26,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": ""
+    },
+    {
+     "url": "https://anniazzurri.it/assets/img/3-bollini-2025-26.png",
+     "kb": 25,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": ""
+    },
+    {
+     "url": "https://d3wo5wojvuv7l.cloudfront.net/t_square_limited_720/images.spreaker.com/original/8b932acb3cfb30dec7836e988165499b.jpg",
+     "kb": 24,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "https://anniazzurri.it/assets/instagram.png",
+     "kb": 8,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/spotify.png",
+     "kb": 7,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/youtube.png",
+     "kb": 3,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/radio.png",
+     "kb": 3,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/facebook.png",
+     "kb": 3,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/logo-anni.svg",
+     "kb": 3,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": "div#main-navbar.sticky-top"
+    },
+    {
+     "url": "https://widget.spreaker.com/4273b58bdcdc4225ef93f262d8732782.svg",
+     "kb": 3,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "https://www.gstatic.com/recaptcha/api2/logo_48.png",
+     "kb": 2,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "https://anniazzurri.it/assets/logo-gruppo-kos.svg",
+     "kb": 2,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/instagram.svg",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/radio.svg",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/spotify.svg",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://forms-eu1.hsforms.com/embed/v3/counters.gif?key=forms-embed-v2-RENDER_SUCCESS&count=1",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "https://forms-eu1.hsforms.com/embed/v3/counters.gif?key=forms-embed-v2-DEFINITION_SUCCESS&count=1",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "https://anniazzurri.it/assets/youtube.svg",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/facebook.svg",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/en-flag.svg",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": true,
+     "contenitore": "footer.bg-primary"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/icon-send.png",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": "div#top-navbar.sticky-top.bg-ice"
+    },
+    {
+     "url": "https://anniazzurri.it/assets/radio-menu.png",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": "div#top-navbar.sticky-top.bg-ice"
+    },
+    {
+     "url": "https://track-eu1.hubspot.com/__ptq.gif?k=15&fi=21053b6c-2af1-40c6-9d4b-d7a1dc37f029&fci=c1841999-8b6b-47af-b64a-7ddf5a21fb4a&ft=0&sd=1350x940&cd=24-bit&cs=UTF-8&ln=it-it&bfp=648767998eebb67d1c53826e581d1468&v=1.1&a=26644680&rcu=https%3A%2F%2Fanniazzurri.it%2Fresidenza-anni-azzurri-parco-di-veio&pu=https%3A%2F%2Fanniazzurri.it%2Fresidenza-anni-azzurri-parco-di-veio&t=Parco+di+Veio+RSA+Casa+di+Riposo+(RM)+%7C+Anni+Azzurri&cts=1793656944385&vi=f3219bfccfa6c4b8730c6e51a2909ad9&nc=true&u=249247192.f3219bfccfa6c4b8730c6e51a2909ad9.1793656944381.1793656944381.1793656944381.1&b=249247192.1.1793656944381&cc=15",
+     "kb": 1,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "https://embeds.acswapp.com/info/track.gif?d=d19mMzk5MzRhM2IwNzYuZF84MDY3LmFfcHY&t=1793656942972",
+     "kb": 0,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "https://track-eu1.hubspot.com/__ptq.gif?k=1&sd=1350x940&cd=24-bit&cs=UTF-8&ln=it-it&bfp=648767998eebb67d1c53826e581d1468&v=1.1&a=26644680&rcu=https%3A%2F%2Fanniazzurri.it%2Fresidenza-anni-azzurri-parco-di-veio&pu=https%3A%2F%2Fanniazzurri.it%2Fresidenza-anni-azzurri-parco-di-veio&t=Parco+di+Veio+RSA+Casa+di+Riposo+(RM)+%7C+Anni+Azzurri&cts=1793656944384&vi=f3219bfccfa6c4b8730c6e51a2909ad9&nc=true&u=249247192.f3219bfccfa6c4b8730c6e51a2909ad9.1793656944381.1793656944381.1793656944381.1&b=249247192.1.1793656944381&cc=15",
+     "kb": 0,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2300356b'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e",
+     "kb": 0,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": ""
+    },
+    {
+     "url": "data:image/png;base64,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",
+     "kb": 0,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": "div#CybotCookiebotDialogPoweredbyLink"
+    },
+    {
+     "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAC6SURBVHgBpdTdCcMgEAdwT/vk04EOkBG6QifpHH3rCF2hk3SVvBaEuoDYu4IgRRMv/iEkD/Hn+QnOuatS6gEAqDoJIQC/vfe594+m576FjAZKL6XXkSDiYox5UQFLXZEoNZJzXg9B/0hK6SKGWkiMcRVBewjnNIuURdIzyFBFo0jZPnoGqaMbCEqRJkSNIiFPCfILj7F1GLkySfvuqnFlShDxWesF6D76zF4jPJ/GWvum7/NRjBCegtsXQuuTY/odOJIAAAAASUVORK5CYII=",
+     "kb": 0,
+     "loading": "",
+     "fuoriSchermo": false,
+     "contenitore": "div#CybotCookiebotDialogDetailBodyContentCookieTabsUnclassified.CollapseCard.CybotCookiebotDialogHide"
+    }
+   ],
+   "lcp": {
+    "tag": "img",
+    "url": "https://anniazzurri.it/assets/cache-img/img/rsa/residenza-anni-azzurri-parco-di-veio-1500.webp",
+    "loading": "",
+    "ms": 839
+   },
+   "preload": [],
+   "lazy": 33,
+   "immaginiDopoScorrimento": 70
+  }
+ ]
+}
