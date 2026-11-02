@@ -9,7 +9,7 @@
  *
  * Uso (PowerShell):
  *   $env:AUTH = "kos:<password dello stage>"
- *   node collaudo-visivo.mjs --stage=https://tcm7b0i8.modx.dev --prod=https://anniazzurri.it --pagine=pagine-aa.txt
+ *   node collaudo-visivo.mjs --stage=https://stage.anniazzurri.it --prod=https://anniazzurri.it --pagine=pagine-aa.txt
  * Opzioni:
  *   --larghezze=390,768,1366,1920   larghezze in px (default); l'altezza della finestra è quella tipica del dispositivo
  *   --solo-stage                    niente confronto con la produzione (solo controlli)

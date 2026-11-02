@@ -1,9 +1,13 @@
 # Ambienti di prova (stage)
 
-| Sito | Host MODX Cloud | Utente SSH | Alias SSH | Dominio previsto |
+| Sito | Dominio dello stage (dal 2/11/2026) | Host MODX Cloud (dominio di prima) | Utente SSH | Alias SSH |
 |---|---|---|---|---|
-| anniazzurri.it | tcm7b0i8.modx.dev | c0025 | `aa-stage` | stage.anniazzurri.it |
-| kosgroup.com | b0k2gmat.modx.dev | c0044 | `kos-stage` | stage.kosgroup.com |
+| anniazzurri.it | https://stage.anniazzurri.it | tcm7b0i8.modx.dev | c0025 | `aa-stage` |
+| kosgroup.com | https://stage.kosgroup.com | b0k2gmat.modx.dev | c0044 | `kos-stage` |
+
+Dal 2/11 i domini `stage.*` sono il dominio principale dei cloud di sviluppo (attivati da Danilo). Negli script di
+collaudo si usano questi; i `.modx.dev` restano come host tecnici del pannello. In Google Tag Manager l'ID GA4 si sceglie
+con una tabella di ricerca su Page Hostname e i tag di conversione hanno l'eccezione «Stage».
 
 Accesso SSH con la chiave `~/.ssh/modxcloud` (alias nel file `config` di Danilo).
 

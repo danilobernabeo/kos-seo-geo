@@ -4,7 +4,7 @@
  *
  * Uso (in SSH sul cloud; legge il database e scarica le pagine pubbliche, non scrive nulla):
  *   php aa-ispezione-sprint2.php /www https://anniazzurri.it [pagine per template, default 3]
- * Su uno stage protetto: AUTH='kos:password' php aa-ispezione-sprint2.php /www https://tcm7b0i8.modx.dev
+ * Su uno stage protetto: AUTH='kos:password' php aa-ispezione-sprint2.php /www https://stage.anniazzurri.it
  *
  * Per un campione di pagine pubblicate e ricercabili di ogni template:
  *   - struttura dei titoli H1-H3, H2 ripetuti, titoli vuoti, titoli «Guarda di più / Guarda meno»;

@@ -17,7 +17,7 @@ entrambi i siti: cambiano solo i nomi della tabella qui sotto.
 |---|---|---|
 | Alias SSH produzione | `kos-prod` (utente `c0095`) | `aa-prod` (utente `c0072`) |
 | Alias SSH stage | `kos-stage` (utente `c0044`) | `aa-stage` (utente `c0025`) |
-| Indirizzo stage | `https://b0k2gmat.modx.dev` | `https://tcm7b0i8.modx.dev` |
+| Indirizzo stage | `https://stage.kosgroup.com` | `https://stage.anniazzurri.it` |
 | Cartella baseline | `kosgroup/baseline/` | `anniazzurri/baseline/` |
 
 Tutti i cloud hanno lo stesso indirizzo IP: connessioni SSH ravvicinate vengono interrotte («connection reset»).
@@ -52,8 +52,8 @@ pubblicati dei pacchetti del progetto e dei lavori extra.
 ```powershell
 ssh kos-stage "cp /home/htpasswd.bak /www/core/.htpasswd && ls -la /www/core/.htpasswd"
 Start-Sleep 15
-curl.exe -sI https://b0k2gmat.modx.dev/ | Select-String "HTTP/|WWW-Authenticate|X-Robots-Tag"
-curl.exe -sI -u kos https://b0k2gmat.modx.dev/ | Select-String "HTTP/|X-Robots-Tag"
+curl.exe -sI https://stage.kosgroup.com/ | Select-String "HTTP/|WWW-Authenticate|X-Robots-Tag"
+curl.exe -sI -u kos https://stage.kosgroup.com/ | Select-String "HTTP/|X-Robots-Tag"
 ```
 
 Atteso:
@@ -138,7 +138,7 @@ Collaudo per i pacchetti di dato strutturato:
    $c = Get-Credential kos
    $pagine = "/it", "/en", "/it/centri/poliambulatorio-valdaso"   # un indirizzo per template
    foreach ($p in $pagine) {
-     try { $h = (Invoke-WebRequest "https://b0k2gmat.modx.dev$p" -Credential $c -UseBasicParsing).Content }
+     try { $h = (Invoke-WebRequest "https://stage.kosgroup.com$p" -Credential $c -UseBasicParsing).Content }
      catch { "{0}`n   ERRORE {1}" -f $p, $_.Exception.Message; continue }
      $ld = ([regex]::Matches($h, 'application/ld\+json')).Count
      $tipi = ([regex]::Matches($h, '"@type":"(\w+)"') | ForEach-Object { $_.Groups[1].Value } | Select-Object -Unique) -join ","
