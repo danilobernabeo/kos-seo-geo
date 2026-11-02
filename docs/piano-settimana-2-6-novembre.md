@@ -94,6 +94,15 @@ Controllo: 11 pagine in 404, 450 pagine della sitemap in 200 con un solo JSON-LD
 con provincia fissa (già nel primo invio). Non sono una voce d'audit: lavoro interno da valutare a parte, non nei
 documenti condivisi finché Danilo non decide.
 
+**Correzione del 2/11:** togliere la pubblicazione aveva un effetto collaterale: le residenze che stanno sotto le 11
+pagine provincia non comparivano più negli elenchi delle pagine regione (es. Parco di Veio in Lazio, Il Poggione in
+Toscana, B. Franchiolo in Liguria, Il Giardino in Emilia-Romagna). Il controllo del 31/10 aveva guardato i link verso le 11
+pagine, non i figli. Pagine ripubblicate con il ripristino dello script (stage `20261031-034953-campi`, produzione
+`20261031-035209-campi`) e 302 verso la pagina regione nelle regole web (`anniazzurri/files/web-rules/aa-province-302.conf`,
+dopo la riga di `alloggi-protetti`). Verifica in produzione: 302 sulle province, le 8 pagine regione 200 con le residenze
+di nuovo in elenco. Le pagine provincia vuote non sono più raggiungibili (302); il 302 diventa la pagina vera quando la
+provincia si completa.
+
 ## Allineamento con la chat sulle prestazioni (istruzioni del 31/10)
 
 Fonte: `ISTRUZIONI-ALTRA-CHAT.md` e `handoff-ttfb-kosgroup-anniazzurri.md` nella cartella `monitor` di Danilo. Dal 19 al
