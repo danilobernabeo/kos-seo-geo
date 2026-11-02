@@ -68,6 +68,7 @@ finestra «guarda tutte le foto» avevano tutte `&differita=`0``.
   L'`esterno-cortile-1600.webp` scaricato su desktop resta: è il riquadro grande della griglia (visibile, `40vw` a DPR 2).
 - RSA, foto esterne (esterno-cortile, esterno, cortile-pergolato, esterno-giardino, ingresso-giardino): sfocatura
   gaussiana σ 0,7 e JPG 82; WebP stimate (q80) 1200: da 102-181 a 81-130 KB, 1600: da 157-311 a 113-188 KB.
+  Resa approvata da Danilo il 2/11: la sfocatura resta (nessuna riesportazione).
 - Poliambulatorio: 01-esterno (scatto 7209) e 02-ingresso-ambulatori (7503) riesportati dagli originali, 1280 × 853,
   σ 0,6, JPG 64 progressivo: da 199 e 183 KB a 112 e 111 KB (sotto i 150 KB dall'originale servirebbe una qualità
   troppo bassa senza ammorbidire).
