@@ -16,7 +16,7 @@
     </div>
     <div class="row d-lg-none pb-5">
       <div class="col-12">
-        <div class="photo-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "adaptiveHeight": true, "prevNextButtons": false, "imagesLoaded": true }'>
+        <div class="photo-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "adaptiveHeight": true, "prevNextButtons": false }'>
           <div class="carousel-cell d-flex justify-content-center w-100 px-0">[[immagine? &src=`/assets/img/strutture/[[*alias]]/esterno-cortile.jpg` &alt=`Residenza Anni Azzurri Parco di Veio: gli edifici in mattoni sul cortile` &class=`img-fluid` &sizes=`100vw` &differita=`0`]]</div>
           <div class="carousel-cell d-flex justify-content-center w-100 px-0">[[immagine? &src=`/assets/img/strutture/[[*alias]]/esterno.jpg` &alt=`Residenza Anni Azzurri Parco di Veio: facciata dell’edificio della residenza` &class=`img-fluid` &sizes=`100vw` &differita=`1`]]</div>
           <div class="carousel-cell d-flex justify-content-center w-100 px-0">[[immagine? &src=`/assets/img/strutture/[[*alias]]/cortile-pergolato.jpg` &alt=`Residenza Anni Azzurri Parco di Veio: il cortile con il pergolato e il giardino` &class=`img-fluid` &sizes=`100vw` &differita=`1`]]</div>
@@ -43,7 +43,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body mb-4">
-            <div class="photo-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "adaptiveHeight": true, "prevNextButtons": true, "imagesLoaded": true }'>
+            <div class="photo-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "adaptiveHeight": true, "prevNextButtons": true }'>
           <div class="carousel-cell d-flex justify-content-center w-100 px-0">[[immagine? &src=`/assets/img/strutture/[[*alias]]/esterno-cortile.jpg` &alt=`Residenza Anni Azzurri Parco di Veio: gli edifici in mattoni sul cortile` &class=`img-fluid` &sizes=`(min-width: 1200px) 1108px, (min-width: 992px) 768px, (min-width: 576px) 468px, 100vw` &differita=`1`]]</div>
           <div class="carousel-cell d-flex justify-content-center w-100 px-0">[[immagine? &src=`/assets/img/strutture/[[*alias]]/esterno.jpg` &alt=`Residenza Anni Azzurri Parco di Veio: facciata dell’edificio della residenza` &class=`img-fluid` &sizes=`(min-width: 1200px) 1108px, (min-width: 992px) 768px, (min-width: 576px) 468px, 100vw` &differita=`1`]]</div>
           <div class="carousel-cell d-flex justify-content-center w-100 px-0">[[immagine? &src=`/assets/img/strutture/[[*alias]]/cortile-pergolato.jpg` &alt=`Residenza Anni Azzurri Parco di Veio: il cortile con il pergolato e il giardino` &class=`img-fluid` &sizes=`(min-width: 1200px) 1108px, (min-width: 992px) 768px, (min-width: 576px) 468px, 100vw` &differita=`1`]]</div>
@@ -67,7 +67,9 @@
   </div>
 
   <hr>
-<script>/* kos-seo-geo: rimisura i caroselli delle foto quando sono caricate (AA-1) */
+<script>/* kos-seo-geo: rimisura i caroselli delle foto quando sono caricate (AA-1).
+   Niente opzione imagesLoaded di Flickity: per le immagini differite non ancora caricate scaricherebbe subito
+   img.src (il ripiego JPEG 1200 del <picture>), ignorando loading="lazy" e il WebP. Lo spazio lo riservano width/height. */
 function kosRimisura(radice) {
   radice.querySelectorAll('.photo-carousel').forEach(function (el) {
     var f = window.Flickity && Flickity.data(el);

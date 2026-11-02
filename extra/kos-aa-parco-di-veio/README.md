@@ -56,6 +56,13 @@ finestra «guarda tutte le foto» avevano tutte `&differita=`0``.
   `sizes` sulla larghezza del `modal-xl` (1108/768/468 px) e rimisura di Flickity all'apertura (`shown.bs.modal`). Le 15
   foto hanno lo stesso formato (1600 × 1067): `adaptiveHeight` non cambia altezza, e `width`/`height` riservano lo spazio
   anche prima del caricamento.
+- Misura sullo stage dopo il chunk (conta-lazy, `scripts/collaudo/pdv-aa-stage/scaricate.csv`): 32 immagini lazy, ma al
+  caricamento 14 JPEG `-1200.jpg` (81-183 KB, circa 1,7 MB) su mobile e desktop, non legate a nessun `<img>`. Causa:
+  l'opzione `"imagesLoaded": true` dei due caroselli. Flickity 2 (`flickity.pkgd`) include imagesLoaded v4, che per ogni
+  immagine non ancora completa crea un `new Image()` con `src = img.src`: il ripiego JPEG 1200 del `<picture>`, senza
+  srcset né WebP e scavalcando `loading="lazy"` (manca solo `esterno-cortile`, prima cella già caricata). Opzione tolta
+  da entrambi i caroselli: lo spazio lo riservano `width`/`height`, la rimisura resta al `load` e a `shown.bs.modal`.
+  Le altre gallerie `gal-*` usano `imagesLoaded` senza immagini differite: non hanno questo problema.
 - RSA, foto esterne (esterno-cortile, esterno, cortile-pergolato, esterno-giardino, ingresso-giardino): sfocatura
   gaussiana σ 0,7 e JPG 82; WebP stimate (q80) 1200: da 102-181 a 81-130 KB, 1600: da 157-311 a 113-188 KB.
 - Poliambulatorio: 01-esterno (scatto 7209) e 02-ingresso-ambulatori (7503) riesportati dagli originali, 1280 × 853,
