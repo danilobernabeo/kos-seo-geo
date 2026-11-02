@@ -1,0 +1,2 @@
+# galleria del poliambulatorio: lo snippet galleryStruttura mostra tutte le immagini della cartella
+assets/img/strutture/poliambulatorio-parco-di-veio

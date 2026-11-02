@@ -33,3 +33,7 @@ token*.json
 
 # esportazioni degli elementi (scripts/export-elements.php): restano in locale, possono contenere segreti
 export-elements*.tgz
+
+# originali delle foto dei lavori extra (pesanti, con metadati): restano in locale
+extra/*/selezione*/
+extra/*/foto-sorgenti/
