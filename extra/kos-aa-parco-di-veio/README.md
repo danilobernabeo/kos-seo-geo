@@ -72,3 +72,5 @@ ssh aa-stage "cd ~/veio && php scripts/deploy/installa-elementi.php /www extra/k
 | Data | Ambiente | Esito | Ripristino |
 |---|---|---|---|
 | 2/11/2026 | stage KOS (c0044) | galleria del poliambulatorio (20 foto) e footer; verificato con Chrome: 20 file 200, contatore 20, footer 1920 × 645 | (percorso da annotare) |
+| 2/11/2026 | produzione KOS (c0095) | galleria del poliambulatorio (20 foto) e footer; verificato con Chrome: 20 file 200, contatore 20, footer 1920 × 645, foto vecchie 404 | (percorso da annotare) |
+| 2/11/2026 | stage AA (c0025) | 15 foto della RSA e chunk della galleria; verificato con Chrome: 15 file 200 con varianti 480-1600 JPG e WebP, 15 testi alternativi, riquadri desktop, carosello a 390 px, finestra con 15 foto, nessun riferimento alle foto vecchie | (percorsi da annotare) |
