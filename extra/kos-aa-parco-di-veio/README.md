@@ -112,7 +112,7 @@ ssh aa-stage "cd ~/veio && php scripts/deploy/installa-elementi.php /www extra/k
 | 2/11/2026 | produzione AA (c0072) | testata della RSA; verificato: 8 varianti rigenerate (21:56), galleria nuova, un solo JSON-LD | `php installa.php /www --ripristina /paas/c0072/backup-kos-seo-geo/20261102-145556-parco-di-veio/ripristino.json --scrivi` |
 | 2/11/2026 | stage AA (c0025) | chunk della galleria con caroselli senza `imagesLoaded` e tutte le foto differite | `php scripts/deploy/installa-elementi.php /www /paas/c0025/backup-kos-seo-geo/20261102-155103/ripristino.json --scrivi` |
 | 2/11/2026 | produzione KOS (c0095) | foto ricompresse del poliambulatorio (01-esterno, 02-ingresso-ambulatori) | `php installa.php /www --ripristina /paas/c0095/backup-kos-seo-geo/20261102-155340-parco-di-veio/ripristino.json --scrivi` |
-| 2/11/2026 | produzione AA (c0072) | 5 foto esterne ricompresse; chunk della galleria con caroselli senza `imagesLoaded` e tutte le foto differite | foto: `php installa.php /www --ripristina /paas/c0072/backup-kos-seo-geo/20261102-155205-parco-di-veio/ripristino.json --scrivi`; chunk: _da annotare_ |
+| 2/11/2026 | produzione AA (c0072) | 5 foto esterne ricompresse; chunk della galleria con caroselli senza `imagesLoaded` e tutte le foto differite | foto: `php installa.php /www --ripristina /paas/c0072/backup-kos-seo-geo/20261102-155205-parco-di-veio/ripristino.json --scrivi`; chunk: `php scripts/deploy/installa-elementi.php /www /paas/c0072/backup-kos-seo-geo/20261102-155236/ripristino.json --scrivi` |
 
 Nota: le immagini hanno `cache-control: max-age=15552000` (180 giorni). Con lo stesso nome (testata RSA, footer del
 poliambulatorio) chi aveva già visto la pagina può vedere la versione vecchia fino alla scadenza della copia nel browser.
