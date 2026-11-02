@@ -1,0 +1,11 @@
+{
+  "nome": "Extra Parco di Veio: galleria della RSA con le foto del 25/9/2026 (15 foto, testi alternativi descrittivi). Installare DOPO aver copiato le foto con installa.php /www aa --scrivi.",
+  "elements": [
+    {
+      "type": "chunk",
+      "name": "gal-residenza-anni-azzurri-parco-di-veio",
+      "file": "anniazzurri/elements/chunks/gal-residenza-anni-azzurri-parco-di-veio.html",
+      "baseline": "anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-parco-di-veio.html"
+    }
+  ]
+}

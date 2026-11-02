@@ -37,8 +37,13 @@ cita ancora si ferma (`--forza` per procedere comunque).
 
 - Poliambulatorio (pronta, `kos/files/assets/img/strutture/poliambulatorio-parco-di-veio/`, 20 file, 2 MB): 1280 × 853, JPG 80, prefisso numerico (ordine) e nome descrittivo; le 18 foto attuali escono dalla
   cartella (backup), `kos/svuota.txt`.
-- RSA: sorgenti a 1600 × 1067 (le varianti 480-1600 le crea `immagine`), chunk riscritto con i nomi nuovi e testi
-  alternativi descrittivi. Il chunk è un elemento del progetto (AA-1, sprint 1): uscita entro il 6/11 oppure dopo il 14/11.
+- RSA (pronta, 2/11): 15 foto in `aa/files/assets/img/strutture/residenza-anni-azzurri-parco-di-veio/` a 1600 × 1067,
+  JPG 82 (le varianti 480-1600 in JPG e WebP le crea lo snippet `immagine` al rinnovo della cache); 7277 e 7320
+  confermate da KOS. Chunk `gal-residenza-anni-azzurri-parco-di-veio` riscritto in
+  `anniazzurri/elements/chunks/` (elemento del progetto, AA-1 sprint 1: uscita entro il 6/11 oppure dopo il 14/11),
+  manifest `aa/gal.json`: riquadri desktop esterno, camera, soggiorno; caroselli con le 15 foto; testi alternativi
+  descrittivi al posto di «[[*pagetitle]], foto N». Le foto vecchie restano nella cartella (non più citate): niente
+  `aa/svuota.txt`, perché il controllo delle citazioni le troverebbe nel chunk prima della sua sostituzione.
 
 ## Rilascio
 
@@ -52,7 +57,18 @@ ssh kos-stage "rm -rf ~/veio && mkdir ~/veio && tar xf ~/veio.tar -C ~/veio && c
 
 Poi lo stesso comando con `--scrivi`; poi produzione (`kos-prod`).
 
+RSA (anniazzurri.it): prima le foto, poi il chunk.
+
+```powershell
+git -C $R archive -o $env:TEMP\veio-aa.tar HEAD extra/kos-aa-parco-di-veio scripts/deploy/installa-elementi.php anniazzurri/elements/chunks/gal-residenza-anni-azzurri-parco-di-veio.html anniazzurri/baseline/chunks/gal-residenza-anni-azzurri-parco-di-veio.html
+scp $env:TEMP\veio-aa.tar aa-stage:
+Start-Sleep 15
+ssh aa-stage "rm -rf ~/veio && mkdir ~/veio && tar xf ~/veio-aa.tar -C ~/veio && cd ~/veio/extra/kos-aa-parco-di-veio && php installa.php /www aa"
+ssh aa-stage "cd ~/veio && php scripts/deploy/installa-elementi.php /www extra/kos-aa-parco-di-veio/aa/gal.json"
+```
+
 ## Rilasci
 
 | Data | Ambiente | Esito | Ripristino |
 |---|---|---|---|
+| 2/11/2026 | stage KOS (c0044) | galleria del poliambulatorio (20 foto) e footer; verificato con Chrome: 20 file 200, contatore 20, footer 1920 × 645 | (percorso da annotare) |
