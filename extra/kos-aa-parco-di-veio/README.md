@@ -26,7 +26,7 @@ Servizio fotografico del 25/9/2026 (Nikon D850, 122 foto, nessuna posizione GPS)
 elemento toccato. Niente srcset per ora: il markup lo scrive la scheda struttura comune a tutte le strutture KOS; le
 varianti arriveranno con KOS-2 C (`<picture>`/WebP su kosgroup.com, dopo il 16/11).
 
-## Gallerie (da fare)
+## Gallerie
 
 Proposta del 2/11: 20 foto per il poliambulatorio (copertina: esterno, scatto 7209). Risposta di KOS del 2/11: palestra
 e ingresso/accettazione (bancone blu nella hall) sono **solo del poliambulatorio**; anche il corridoio con le porte rosse e
@@ -81,3 +81,10 @@ ssh aa-stage "cd ~/veio && php scripts/deploy/installa-elementi.php /www extra/k
 | 2/11/2026 | produzione KOS (c0095) | galleria del poliambulatorio (20 foto) e footer; verificato con Chrome: 20 file 200, contatore 20, footer 1920 × 645, foto vecchie 404 | `php installa.php /www --ripristina /paas/c0095/backup-kos-seo-geo/20261102-142725-parco-di-veio/ripristino.json --scrivi` |
 | 2/11/2026 | stage AA (c0025) | 15 foto della RSA e chunk della galleria; verificato con Chrome: 15 file 200 con varianti 480-1600 JPG e WebP, 15 testi alternativi, riquadri desktop, carosello a 390 px, finestra con 15 foto, nessun riferimento alle foto vecchie | foto: `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261102-142928-parco-di-veio/ripristino.json --scrivi`; chunk: percorso non annotato |
 | 2/11/2026 | produzione AA (c0072) | 15 foto della RSA e chunk della galleria; verificato con Chrome: 15 file e 60 varianti WebP 200, 15 testi alternativi, nessun riferimento alle foto vecchie, un solo JSON-LD, nessun tag MODX non elaborato | foto: `php installa.php /www --ripristina /paas/c0072/backup-kos-seo-geo/20261102-143928-parco-di-veio/ripristino.json --scrivi`; chunk: `php scripts/deploy/installa-elementi.php /www /paas/c0072/backup-kos-seo-geo/20261102-144207/ripristino.json --scrivi` |
+| 2/11/2026 | stage AA (c0025) | testata della RSA; verificato: originale e 8 varianti rigenerate dopo lo svuotamento della cache | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261102-145316-parco-di-veio/ripristino.json --scrivi` |
+| 2/11/2026 | produzione AA (c0072) | testata della RSA; verificato: 8 varianti rigenerate (21:56), galleria nuova, un solo JSON-LD | `php installa.php /www --ripristina /paas/c0072/backup-kos-seo-geo/20261102-145556-parco-di-veio/ripristino.json --scrivi` |
+
+Nota: le immagini hanno `cache-control: max-age=15552000` (180 giorni). Con lo stesso nome (testata RSA, footer del
+poliambulatorio) chi aveva già visto la pagina può vedere la versione vecchia fino alla scadenza della copia nel browser.
+Rimedio proposto e rimandato (2/11, decisione di Danilo): data del file nell'indirizzo delle varianti dello snippet
+`immagine` (`?v=`), come AssetVersion per CSS e JS; su kosgroup.com con KOS-2 C.
