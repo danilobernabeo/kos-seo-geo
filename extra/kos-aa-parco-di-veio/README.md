@@ -63,6 +63,9 @@ finestra «guarda tutte le foto» avevano tutte `&differita=`0``.
   srcset né WebP e scavalcando `loading="lazy"` (manca solo `esterno-cortile`, prima cella già caricata). Opzione tolta
   da entrambi i caroselli: lo spazio lo riservano `width`/`height`, la rimisura resta al `load` e a `shown.bs.modal`.
   Le altre gallerie `gal-*` usano `imagesLoaded` senza immagini differite: non hanno questo problema.
+- Anche la prima cella del carosello mobile è differita (`&differita=`1``): il carosello sta sotto la piega e non è mai
+  l'LCP (che è la testata); su telefono la foto arriva scorrendo, su desktop il carosello nascosto non scarica nulla.
+  L'`esterno-cortile-1600.webp` scaricato su desktop resta: è il riquadro grande della griglia (visibile, `40vw` a DPR 2).
 - RSA, foto esterne (esterno-cortile, esterno, cortile-pergolato, esterno-giardino, ingresso-giardino): sfocatura
   gaussiana σ 0,7 e JPG 82; WebP stimate (q80) 1200: da 102-181 a 81-130 KB, 1600: da 157-311 a 113-188 KB.
 - Poliambulatorio: 01-esterno (scatto 7209) e 02-ingresso-ambulatori (7503) riesportati dagli originali, 1280 × 853,
@@ -107,6 +110,8 @@ ssh aa-stage "cd ~/veio && php scripts/deploy/installa-elementi.php /www extra/k
 | 2/11/2026 | produzione AA (c0072) | 15 foto della RSA e chunk della galleria; verificato con Chrome: 15 file e 60 varianti WebP 200, 15 testi alternativi, nessun riferimento alle foto vecchie, un solo JSON-LD, nessun tag MODX non elaborato | foto: `php installa.php /www --ripristina /paas/c0072/backup-kos-seo-geo/20261102-143928-parco-di-veio/ripristino.json --scrivi`; chunk: `php scripts/deploy/installa-elementi.php /www /paas/c0072/backup-kos-seo-geo/20261102-144207/ripristino.json --scrivi` |
 | 2/11/2026 | stage AA (c0025) | testata della RSA; verificato: originale e 8 varianti rigenerate dopo lo svuotamento della cache | `php installa.php /www --ripristina /paas/c0025/backup-kos-seo-geo/20261102-145316-parco-di-veio/ripristino.json --scrivi` |
 | 2/11/2026 | produzione AA (c0072) | testata della RSA; verificato: 8 varianti rigenerate (21:56), galleria nuova, un solo JSON-LD | `php installa.php /www --ripristina /paas/c0072/backup-kos-seo-geo/20261102-145556-parco-di-veio/ripristino.json --scrivi` |
+| 2/11/2026 | produzione KOS (c0095) | foto ricompresse del poliambulatorio (01-esterno, 02-ingresso-ambulatori) | foto: _da annotare_ |
+| 2/11/2026 | produzione AA (c0072) | 5 foto esterne ricompresse; chunk della galleria con caroselli senza `imagesLoaded` e tutte le foto differite | foto: _da annotare_; chunk: _da annotare_ |
 
 Nota: le immagini hanno `cache-control: max-age=15552000` (180 giorni). Con lo stesso nome (testata RSA, footer del
 poliambulatorio) chi aveva già visto la pagina può vedere la versione vecchia fino alla scadenza della copia nel browser.
