@@ -45,6 +45,23 @@ cita ancora si ferma (`--forza` per procedere comunque).
   descrittivi al posto di «[[*pagetitle]], foto N». Le foto vecchie restano nella cartella (non più citate): niente
   `aa/svuota.txt`, perché il controllo delle citazioni le troverebbe nel chunk prima della sua sostituzione.
 
+## Peso delle immagini (2/11)
+
+Misura in produzione (Chrome, 1920 px, DPR 2): 2,3 MB di immagini al primo caricamento, di cui 1,99 MB sono le 15 foto
+della galleria nella variante WebP 1600, caricate anche da desktop: carosello mobile (nascosto da `d-lg-none`) e
+finestra «guarda tutte le foto» avevano tutte `&differita=`0``.
+
+- Chunk: nel carosello mobile solo la prima cella con `&differita=`0`` e `&sizes=`100vw`` (su telefono equivale a
+  `naturale`, che diventa 1600 px solo sopra i 1600 px di finestra); nella finestra tutte le foto in caricamento differito,
+  `sizes` sulla larghezza del `modal-xl` (1108/768/468 px) e rimisura di Flickity all'apertura (`shown.bs.modal`). Le 15
+  foto hanno lo stesso formato (1600 × 1067): `adaptiveHeight` non cambia altezza, e `width`/`height` riservano lo spazio
+  anche prima del caricamento.
+- RSA, foto esterne (esterno-cortile, esterno, cortile-pergolato, esterno-giardino, ingresso-giardino): sfocatura
+  gaussiana σ 0,7 e JPG 82; WebP stimate (q80) 1200: da 102-181 a 81-130 KB, 1600: da 157-311 a 113-188 KB.
+- Poliambulatorio: 01-esterno (scatto 7209) e 02-ingresso-ambulatori (7503) riesportati dagli originali, 1280 × 853,
+  σ 0,6, JPG 64 progressivo: da 199 e 183 KB a 112 e 111 KB (sotto i 150 KB dall'originale servirebbe una qualità
+  troppo bassa senza ammorbidire).
+
 ## Testata della pagina RSA
 
 `/assets/img/rsa/residenza-anni-azzurri-parco-di-veio.jpg` (template `rsa`, snippet `immagine`, `object-fit: cover`): edificio
