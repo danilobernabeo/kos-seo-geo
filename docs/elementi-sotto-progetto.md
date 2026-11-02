@@ -28,7 +28,7 @@ Aggiornare l'elenco a ogni intervento.
 | template `interna-menu-form-registrazione` | template | AA-18 (pulizia: H1 e introtext commentati tolti dalla testata degli eventi) | **produzione (30/10)**, pacchetto `aa-18-commenti`, ripristino `php scripts/deploy/installa-elementi.php /www /paas/c0072/backup-kos-seo-geo/20261030-052126/ripristino.json --scrivi` |
 | template `news`, chunk `news-list` | template, chunk | KOS-2/AA prestazioni (`/news/` in cache, dalla chat sulle prestazioni del 31/10) | **produzione (1/11)**, pacchetto `aa-news`; ripristino in `/paas/c0072/backup-kos-seo-geo/20261101-013102/` |
 | 26 head (`[[Canonical]]`), template `convegnoAA`, `interna-articolo`, `rsa`, 13 `interna-menu-*`, `le-nostre-storie*`, chunk `footer`, `footer-cure-domiciliari`, `menu-navbar`, `menu-side-navbar`, `contactBox*`, `residenze-argento-vivo`, `residenze-rsa-aperta-lombardia`, `campagna-oss-lombardia` | template, chunk | prestazioni (chiamate in cache) | **produzione (1/11)**, pacchetto `aa-ttfb`; ripristino in `/paas/c0072/backup-kos-seo-geo/20261101-013750/` |
-| chunk `gal-residenza-anni-azzurri-parco-di-veio` | chunk | lavoro extra Parco di Veio (foto nuove, testi alternativi descrittivi; resta AA-1) | sviluppo (2/11), `extra/kos-aa-parco-di-veio/aa/gal.json` |
+| chunk `gal-residenza-anni-azzurri-parco-di-veio` | chunk | lavoro extra Parco di Veio (foto nuove, testi alternativi descrittivi; resta AA-1) | **produzione (2/11)**, `extra/kos-aa-parco-di-veio/aa/gal.json` |
 
 ## kosgroup.com
 

@@ -18,6 +18,22 @@ $scrivi = in_array('--scrivi', $args, true);
 $webroot = rtrim($args[0] ?? '', '/');
 if ($webroot === '' || !is_dir($webroot)) exit("Uso: php installa.php /www kos|aa [--scrivi]\n");
 $home = getenv('HOME') ?: '.';
+// MODX del sito (per la cache e per il controllo delle citazioni), caricato solo se serve
+$mx = function () use ($webroot) {
+    static $m = null;
+    if ($m === null && is_file("$webroot/config.core.php")) {
+        require "$webroot/config.core.php";
+        require MODX_CORE_PATH . 'vendor/autoload.php';
+        $m = \MODX\Revolution\modX::getInstance();
+        $m->initialize('mgr');
+    }
+    return $m;
+};
+// cache delle pagine: lo snippet `immagine` rigenera le varianti (stesso nome, file più recente) solo quando la pagina
+// si rigenera, quindi si svuota a ogni scrittura
+$svuotaCache = function () use ($mx) {
+    if ($m = $mx()) { $m->cacheManager->refresh(); echo "== Cache svuotata.\n"; }
+};
 
 // ---------- ripristino ----------
 $i = array_search('--ripristina', $args, true);
@@ -35,6 +51,7 @@ if ($i !== false) {
         echo "  < $rel\n";
         if ($scrivi) { @mkdir(dirname("$webroot/$rel"), 0775, true); copy("$dir/files/$rel", "$webroot/$rel"); }
     }
+    if ($scrivi) $svuotaCache();
     echo $scrivi ? "== Ripristinato.\n" : "== Prova riuscita.\n";
     exit;
 }
@@ -68,11 +85,7 @@ foreach ($svuota as $cartella) {
 
 // file che escono dalla cartella: qualche contenuto, TV, chunk o template li cita ancora per nome?
 $citati = [];
-if ($sposta && is_file("$webroot/config.core.php")) {
-    require "$webroot/config.core.php";
-    require MODX_CORE_PATH . 'vendor/autoload.php';
-    $modx = \MODX\Revolution\modX::getInstance();
-    $modx->initialize('mgr');
+if ($sposta && ($modx = $mx())) {
     $p = $modx->getOption('table_prefix');
     $dove = ["{$p}site_content" => ['id', 'content'], "{$p}site_tmplvar_contentvalues" => ['contentid', 'value'],
              "{$p}site_htmlsnippets" => ['name', 'snippet'], "{$p}site_templates" => ['templatename', 'content']];
@@ -112,4 +125,5 @@ foreach ($copia as $rel) {
     if (!copy("$src/$rel", "$webroot/$rel")) exit("Copia non riuscita: $rel (ripristino: $bk/ripristino.json)\n");
 }
 foreach ($sposta as $rel) unlink("$webroot/$rel");
+$svuotaCache();
 echo "== Aggiornato. Ripristino: php installa.php $webroot --ripristina $bk/ripristino.json --scrivi\n";
