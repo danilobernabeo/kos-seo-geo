@@ -610,7 +610,9 @@ $articolo = [
     'mainEntityOfPage' => ['@id' => $paginaCorrente . '#webpage'],
     'headline'         => $titoloNodo($res),
     'description'      => $res->get('description') ?: $res->get('introtext'),
-    'image'            => $immagine($tv($res, 'art.immagine')),
+    // Immagine dell'articolo: TV indicata in aa.article_tv_immagine (default newsImage, quella del template
+    // interna-articolo); art.immagine resta come prima scelta se un giorno viene creata (3/11: mancava l'image).
+    'image'            => $immagine($tv($res, 'art.immagine') ?: $tv($res, $cfg('article_tv_immagine', 'newsImage'))),
     'datePublished'    => $data($res->get('publishedon')),
     'dateModified'     => $data($res->get('editedon') ?: $res->get('publishedon')),
     'inLanguage'       => $LANG,
