@@ -9,18 +9,21 @@
  *   tutte le pagine, una sola volta (chunk footer-script*):   [[aaSchema]]
  *       il tipo si ricava dal template: articolo, pagina autore o pagina generica
  *   box autore, nel template articolo:                       [[aaSchema? &type=`box`]]
+ *   firma sotto il titolo, nel template articolo:            [[aaSchema? &type=`firma`]]
+ *       box e firma escono solo sugli articoli firmati (aut.ref); vuoti sulla redazione
  *
  *   Sostituisce i tre JSON-LD scritti a mano nei footer (Organization, WebSite,
  *   BreadcrumbList): un solo @graph per pagina, emesso lato server (voce AA-8).
  *
  * PARAMETRI
- *   &type     auto | page | article | profile | box   (default: auto)
+ *   &type     auto | page | article | profile | box | firma   (default: auto)
+ *   &redazione 1 = sul box degli articoli della redazione «A cura della Redazione…» (default: niente)
  *   &author   id risorsa autore; se omesso lo legge dalla TV aut.ref
  *   &pretty   1 = JSON indentato (solo per debug)
  *
  * RITORNA
  *   article/profile → il blocco <script type="application/ld+json">
- *   box             → l'HTML del box autore
+ *   box / firma     → l'HTML del box autore / della riga di firma ('' sugli articoli della redazione)
  *
  * REGOLA CARDINE
  *   TV aut.ref vuota  =  contenuto della redazione  =  author è l'Organization.
@@ -313,6 +316,7 @@ $persona = function ($idAutore) use (
         $pub = [
             '@type'         => 'ScholarlyArticle',
             'name'          => $titolo,
+            'headline'      => $titolo,   // Google la chiede su ogni *Article (Rich Results Test)
             'datePublished' => $tv($a, 'aut.pub_data'),
             'url'           => $tv($a, 'aut.pub_url'),
             'author'        => ['@id' => $pagina . '#person'],
@@ -451,27 +455,48 @@ $json = function ($grafo) use ($flags, $nodiPagina) {
 $idAutore = (int) $modx->getOption('author', $scriptProperties, $tv($res, 'aut.ref'));
 $autore   = $persona($idAutore);
 
-/* ---------------------------------------------------------------- box autore */
-if ($type === 'box') {
-    $nomeOrg = $cfg('org_name', 'Anni Azzurri');
+/* ------------------------------------------------------- firma e box autore
+ * Solo sugli articoli firmati (aut.ref verso una pagina autore pubblicata): sugli articoli della redazione
+ * non esce markup (lavoro extra aa-firma-autore, 3/11/2026); &redazione=`1` rimette la riga «A cura della Redazione».
+ *   &type=`firma`  riga sotto il titolo: «Nome — ruolo», con link alla pagina autore
+ *   &type=`box`    box a fine articolo
+ * Box, firma e JSON-LD leggono lo stesso nodo $persona: nome e ruolo sono identici carattere per carattere.
+ * Link interni nella forma /percorso (regola dei link assoluti del repository): sullo stage restano sullo stage.
+ */
+if ($type === 'box' || $type === 'firma') {
+    $e = function ($s) { return htmlspecialchars((string) $s, ENT_QUOTES, 'UTF-8'); };
+    $percorso = function ($u) { return (string) (parse_url((string) $u, PHP_URL_PATH) ?: '/'); };
 
-    // Redazione: nessuna foto, nessuna credenziale, solo l'attribuzione.
     if (!$autore) {
-        return '<div class="box-autore box-autore--redazione">'
-             . '<p class="box-autore__firma">A cura della Redazione ' . htmlspecialchars($nomeOrg, ENT_QUOTES, 'UTF-8') . '</p>'
-             . '</div>';
+        if ($type === 'box' && (int) $modx->getOption('redazione', $scriptProperties, 0)) {
+            return '<div class="box-autore box-autore--redazione">'
+                 . '<p class="box-autore__firma">A cura della Redazione ' . $e($cfg('org_name', 'Anni Azzurri')) . '</p>'
+                 . '</div>';
+        }
+        return '';
+    }
+    $link = $percorso($autore['url']);
+
+    if ($type === 'firma') {
+        return '<span class="firma-autore"><a href="' . $e($link) . '">' . $e($autore['name']) . '</a>'
+             . (!empty($autore['jobTitle']) ? ' — ' . $e($autore['jobTitle']) : '') . '</span>';
     }
 
-    $e = function ($s) { return htmlspecialchars((string) $s, ENT_QUOTES, 'UTF-8'); };
-    $a = $modx->getObject($CLS_RES, $idAutore);
-
-    $h  = '<div class="box-autore">';
+    $h = '<aside class="box-autore" aria-label="Chi firma l\'articolo">';
     if (!empty($autore['image']['url'])) {
-        $h .= '<img class="box-autore__foto" src="' . $e($autore['image']['url']) . '"'
-            . ' alt="' . $e($autore['name']) . '" width="120" height="120" loading="lazy">';
+        // Foto con lo snippet immagine (WebP, srcset), se installato; altrimenti <img> semplice.
+        $src = $percorso($autore['image']['url']);
+        $clsSnippet = class_exists('\MODX\Revolution\modSnippet') ? \MODX\Revolution\modSnippet::class : 'modSnippet';
+        $foto = $modx->getCount($clsSnippet, ['name' => 'immagine'])
+            ? (string) $modx->runSnippet('immagine', ['src' => $src, 'alt' => $autore['name'], 'class' => 'box-autore__foto', 'sizes' => '120px'])
+            : '';
+        if ($foto === '') {
+            $foto = '<img class="box-autore__foto" src="' . $e($src) . '" alt="' . $e($autore['name']) . '" width="120" height="120" loading="lazy">';
+        }
+        $h .= '<div class="box-autore__media">' . $foto . '</div>';
     }
     $h .= '<div class="box-autore__testo">';
-    $h .= '<p class="box-autore__nome"><a href="' . $e($autore['url']) . '">' . $e($autore['name']) . '</a></p>';
+    $h .= '<p class="box-autore__nome"><a href="' . $e($link) . '">' . $e($autore['name']) . '</a></p>';
     if (!empty($autore['jobTitle'])) {
         $h .= '<p class="box-autore__ruolo">' . $e($autore['jobTitle']) . '</p>';
     }
@@ -491,15 +516,15 @@ if ($type === 'box') {
         }
         $h .= '</ul>';
     }
-    $h .= '<p class="box-autore__profilo"><a href="' . $e($autore['url']) . '">Scheda completa</a></p>';
-    $h .= '</div></div>';
+    $h .= '<p class="box-autore__profilo"><a href="' . $e($link) . '">Scheda completa</a></p>';
+    $h .= '</div></aside>';
 
     // Revisione clinica, se presente.
     if ($revisore = $persona((int) $tv($res, 'rev.ref'))) {
         $quando = $tv($res, 'rev.data');
         $h .= '<p class="box-revisione">Revisione clinica a cura di '
-            . '<a href="' . $e($revisore['url']) . '">' . $e($revisore['name']) . '</a>'
-            . ($revisore['jobTitle'] ? ', ' . $e($revisore['jobTitle']) : '')
+            . '<a href="' . $e($percorso($revisore['url'])) . '">' . $e($revisore['name']) . '</a>'
+            . (!empty($revisore['jobTitle']) ? ', ' . $e($revisore['jobTitle']) : '')
             . ($quando ? ' — ' . $e($quando) : '') . '</p>';
     }
 

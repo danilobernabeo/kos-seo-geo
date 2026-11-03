@@ -1,0 +1,16 @@
+{
+  "nome": "Firma autore degli approfondimenti (lavoro extra aa-firma-autore, elementi del progetto toccati in coordinamento): aaSchema con firma e box solo sugli articoli firmati, link /..., foto con lo snippet immagine; template interna-articolo con riga di firma, box a fine articolo e foglio di stile dell'extra",
+  "elements": [
+    {
+      "type": "snippet",
+      "name": "aaSchema",
+      "file": "anniazzurri/elements/snippets/aaSchema.php"
+    },
+    {
+      "type": "template",
+      "name": "interna-articolo",
+      "file": "anniazzurri/elements/templates/interna-articolo.html",
+      "baseline": "anniazzurri/baseline/templates/interna-articolo.html"
+    }
+  ]
+}

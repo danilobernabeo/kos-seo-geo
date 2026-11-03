@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+
+[[$head-autore]]
+
+<body class="autore-page">
+[[$GTM_body]]
+
+[[$menu-sticky]]
+
+[[$menu-navbar]]
+
+[[$menu-side-navbar]]
+<main id="main-content" tabindex="-1">
+
+[[$breadcrumb-stripe]]
+
+  <div class="container py-4 py-lg-5">
+    <div class="row">
+      <div class="col-12 col-lg-8 text-brown scheda-autore">
+
+        <header class="scheda-autore__intestazione">
+          [[*aut.foto:notempty=`<div class="scheda-autore__media">[[immagine? &src=`[[*aut.foto]]` &alt=`[[*pagetitle]]` &class=`scheda-autore__foto` &sizes=`200px` &priorita=`1`]]</div>`]]
+          <div>
+            <h1 class="h2 text-primary">[[*pagetitle]]</h1>
+            [[*aut.jobTitle:notempty=`<p class="scheda-autore__ruolo">[[*aut.jobTitle]] — Gruppo KOS Care</p>`]]
+            [[*introtext:notempty=`<p class="scheda-autore__albo">[[*introtext]]</p>`]]
+          </div>
+        </header>
+
+        [[*content]]
+
+        <section class="scheda-autore__articoli">
+          <h2>Articoli firmati</h2>
+          [[pdoResources?
+            &parents=`8`
+            &depth=`0`
+            &limit=`0`
+            &tvFilters=`aut.ref===[[*id]]`
+            &sortby=`publishedon`
+            &sortdir=`DESC`
+            &tpl=`autore-articolo-firmato`
+            &tplWrapper=`@INLINE <ul class="scheda-autore__elenco">[[+output]]</ul>`
+          ]]
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+[[$footer]]
+
+[[$footer-script]]
+
+</body>
+
+</html>

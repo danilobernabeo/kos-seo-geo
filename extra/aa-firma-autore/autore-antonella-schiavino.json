@@ -1,0 +1,87 @@
+{
+  "_nota": "Valori della pagina autore di anniazzurri.it. Le chiavi sotto 'tv' sono i nomi esatti delle Template Variable; il valore va copiato così com'è. Le righe multiple nei campi testarea sono separate da \\n.",
+
+  "risorsa": {
+    "pagetitle": "Antonella Schiavino",
+    "longtitle": "Antonella Schiavino — Referente Qualità ed Accreditamento",
+    "alias": "antonella-schiavino",
+    "uri": "autori/antonella-schiavino",
+    "url_canonico": "https://anniazzurri.it/autori/antonella-schiavino",
+    "id_entita": "https://anniazzurri.it/autori/antonella-schiavino#person",
+    "description": "Antonella Schiavino, infermiera e Referente Qualità ed Accreditamento del Gruppo KOS Care. Ventisei anni di esperienza nelle RSA, iscritta all'OPI di Torino.",
+    "genitore": "contenitore /autori/ (da creare, hidemenu 1)",
+    "template": "tpl.Autore (da creare)",
+    "hidemenu": 1,
+    "published": 1,
+    "searchable": 1,
+    "_alias_bloccato": "L'alias non va più cambiato dopo la prima pubblicazione: è la chiave dell'entità. Cambiarlo cambia l'@id e per i motori diventa una persona nuova."
+  },
+
+  "tv": {
+    "aut.given": "Antonella",
+    "aut.family": "Schiavino",
+    "aut.honorific": "",
+    "aut.jobTitle": "Referente Qualità ed Accreditamento",
+    "aut.bio": "Infermiera dal 1997, ha iniziato la propria attività presso la Casa di Riposo Ospedale degli Infermi di Cherasco, per poi occuparsi di assistenza domiciliare oncologica in libera professione e collaborare con ADMO ad Alba. Dal 2000 opera nel Gruppo KOS Care, dove ha ricoperto incarichi di crescente responsabilità, dal coordinamento infermieristico alla gestione dei processi clinico-assistenziali e dell'area qualità. È tra gli autori dello studio multicentrico sui residenti delle RSA Anni Azzurri presentato al 40° Congresso Nazionale SIGOT.",
+    "aut.foto": "assets/img/autori/antonella-schiavino.jpg",
+    "aut.professione": "Infermiera",
+    "aut.professione_cat": "Professioni sanitarie infermieristiche",
+    "aut.knowsAbout": "Assistenza residenziale agli anziani\nQualità e accreditamento in ambito socio-sanitario\nProcessi clinico-assistenziali in RSA\nCoordinamento infermieristico\nGestione della persona con demenza in struttura",
+    "aut.albo_nome": "Albo delle Professioni Infermieristiche — OPI Torino",
+    "aut.albo_numero": "IP/20414",
+    "aut.credential": "Diploma di scuola per infermieri | 1997",
+    "aut.sameAs": "",
+    "aut.affiliazione": "",
+    "aut.pub_titolo": "Real-world data on clinical, functional, and cognitive characteristics of nursing home residents in a large Italian network (Anni Azzurri): a multicenter observational study",
+    "aut.pub_doi": "10.4081/gc.2026.15812",
+    "aut.pub_url": "https://www.pagepressjournals.org/gc/article/view/15812",
+    "aut.pub_data": "2026-06-15",
+    "aut.consenso": 1
+  },
+
+  "note_sui_campi": {
+    "aut.honorific": "Volutamente vuoto. Il diploma è di scuola per infermieri del vecchio ordinamento, che non conferisce il titolo di dottore; non ci sono titoli universitari successivi. Un honorificPrefix 'Dott.ssa' accanto a un hasCredential che dichiara quel diploma sarebbe un'incoerenza leggibile a macchina su un sito sanitario, e non porta alcun segnale in più: la qualificazione la portano hasCredential, identifier e il DOI.",
+    "aut.bio": "Senza il numero di anni di esperienza, di proposito: finisce in 'description' nel dato strutturato e invecchierebbe ogni anno. 'Dal 2000' dice la stessa cosa e resta vero. Il 'ventisei anni' compare solo nel testo visibile della pagina, dove aggiornarlo è banale.",
+    "aut.sameAs": "Vuoto. Il DOI della pubblicazione viene aggiunto automaticamente dallo snippet, non va ripetuto qui. Il profilo LinkedIn (https://www.linkedin.com/in/antonella-schiavino-b535b7304/) resta ESCLUSO: oggi non ha foto né headline, riporta un'unica esperienza 'Infermiere coordinatore' collegata a una pagina azienda inesistente e non nomina né KOS Care né Anni Azzurri. Un sameAs serve a far confermare l'entità da una fonte terza: così com'è contraddice la scheda invece di corroborarla. Si aggiunge quando il profilo viene aggiornato.",
+    "aut.affiliazione": "Vuoto in attesa di verifica interna. Nell'abstract SIGOT l'affiliazione è 'Anni Azzurri-KOS Care, Carmagnola'. Se è davvero la struttura in cui opera, qui va l'id della risorsa di quella residenza: lo snippet genera {URL scheda}#localbusiness e aggancia la persona all'entità struttura nel grafo. Se è solo l'affiliazione amministrativa dichiarata al congresso, lasciare vuoto.",
+    "aut.credential": "Una riga per titolo; l'anno dopo la barra verticale è facoltativo.",
+    "aut.consenso": "Consenso scritto alla pubblicazione di biografia, numero di iscrizione e profili ottenuto. Serve come gate: senza la spunta la pagina non va pubblicata."
+  },
+
+  "foto": {
+    "file": "foto/antonella-schiavino.jpg",
+    "originale": "foto/antonella-schiavino-originale.jpg",
+    "dimensioni": "1000x1000",
+    "peso": "144 KB",
+    "destinazione_sul_sito": "assets/img/autori/antonella-schiavino.jpg",
+    "alt": "Antonella Schiavino",
+    "requisiti": "Lo snippet legge le dimensioni reali dal file per popolare width e height dell'ImageObject: non vanno scritte a mano, ma il file deve essere leggibile dal filesystem del sito al percorso indicato.",
+    "stato": "pronta"
+  },
+
+  "pubblicazione_scientifica": {
+    "autori": ["Toussan L.", "Gallo C.", "Castenetto E.", "Giacopelli G.", "Pennesi M.", "Schiavino A.", "Cordoglio M.", "Cisini S.", "Spigarelli F."],
+    "titolo": "Real-world data on clinical, functional, and cognitive characteristics of nursing home residents in a large Italian network (Anni Azzurri): a multicenter observational study",
+    "rivista": "Geriatric Care",
+    "volume": "12",
+    "fascicolo": "s1",
+    "anno": 2026,
+    "data_pubblicazione": "2026-06-15",
+    "numero_abstract": 61,
+    "congresso": "40° Congresso Nazionale SIGOT",
+    "sede": "Omnia Hotel Shangri-La, Roma",
+    "date_congresso": "20-22 maggio 2026",
+    "tipo": "poster scientifico",
+    "doi": "10.4081/gc.2026.15812",
+    "doi_url": "https://doi.org/10.4081/gc.2026.15812",
+    "url_abstract": "https://www.pagepressjournals.org/gc/article/view/15812",
+    "url_pdf": "https://www.pagepressjournals.org/gc/article/view/15812/14195",
+    "affiliazione_dichiarata": "Anni Azzurri-KOS Care, Carmagnola",
+    "ampiezza": "oltre 6.400 residenti in 59 RSA",
+    "_perche_conta": "È un identificatore persistente e risolvibile, indicizzato in Scopus, DOAJ, Google Scholar e OpenAlex. Un numero d'albo dice che la persona esiste; un DOI dimostra che ha prodotto qualcosa di verificabile senza passare dal sito."
+  },
+
+  "contenuto_visibile": "<div class=\"scheda-autore\">\n\n  <header class=\"scheda-autore__intestazione\">\n    <img class=\"scheda-autore__foto\" src=\"/assets/img/autori/antonella-schiavino.jpg\" alt=\"Antonella Schiavino\" width=\"200\" height=\"200\">\n    <div>\n      <h1>Antonella Schiavino</h1>\n      <p class=\"scheda-autore__ruolo\">Referente Qualità ed Accreditamento — Gruppo KOS Care</p>\n      <p class=\"scheda-autore__albo\">Infermiera, iscritta all'Albo delle Professioni Infermieristiche di Torino con il n. IP/20414</p>\n    </div>\n  </header>\n\n  <section class=\"scheda-autore__bio\">\n    <h2>Il percorso professionale</h2>\n    <p>Infermiera dal 1997, ha iniziato la propria attività presso la Casa di Riposo Ospedale degli Infermi di Cherasco. Ha poi svolto attività infermieristica in libera professione nell'ambito dell'assistenza domiciliare oncologica e presso ADMO ad Alba.</p>\n    <p>Dal 2000 opera nel Gruppo KOS Care, dove ha ricoperto incarichi di crescente responsabilità: dal coordinamento infermieristico alla gestione dei processi clinico-assistenziali, fino all'area qualità. Oggi è Referente Qualità ed Accreditamento, con ventisei anni di esperienza nelle residenze per anziani.</p>\n  </section>\n\n  <section class=\"scheda-autore__competenze\">\n    <h2>Aree di competenza</h2>\n    <ul>\n      <li>Assistenza residenziale agli anziani</li>\n      <li>Qualità e accreditamento in ambito socio-sanitario</li>\n      <li>Processi clinico-assistenziali in RSA</li>\n      <li>Coordinamento infermieristico</li>\n      <li>Gestione della persona con demenza in struttura</li>\n    </ul>\n  </section>\n\n  <section class=\"scheda-autore__formazione\">\n    <h2>Formazione e iscrizione professionale</h2>\n    <ul>\n      <li>Diploma di scuola per infermieri, 1997</li>\n      <li>Iscrizione all'Albo delle Professioni Infermieristiche — OPI Torino, n. IP/20414</li>\n    </ul>\n  </section>\n\n  <section class=\"scheda-autore__pubblicazioni\">\n    <h2>Pubblicazioni</h2>\n    <p>Toussan L., Gallo C., Castenetto E., Giacopelli G., Pennesi M., <strong>Schiavino A.</strong>, Cordoglio M., Cisini S., Spigarelli F. <em>Real-world data on clinical, functional, and cognitive characteristics of nursing home residents in a large Italian network (Anni Azzurri): a multicenter observational study.</em> Geriatric Care, 2026;12(s1) — atti del 40° Congresso Nazionale SIGOT, Roma, 20-22 maggio 2026. <a href=\"https://doi.org/10.4081/gc.2026.15812\" rel=\"noopener\">doi.org/10.4081/gc.2026.15812</a></p>\n    <p>Lo studio ha analizzato i dati di oltre 6.400 residenti in 59 RSA del gruppo.</p>\n  </section>\n\n  <section class=\"scheda-autore__articoli\">\n    <h2>Articoli firmati</h2>\n    <!-- elenco generato dalla TV aut.ref, mai scritto a mano -->\n  </section>\n\n</div>",
+
+  "_elenco_articoli_firmati": "La sezione finale si popola interrogando la TV aut.ref delle risorse figlie del contenitore news (id 8), ordinate per publishedon decrescente, con link assoluti (link_tag_scheme abs, come da convenzione del repository). Su anniazzurri.it sono disponibili pdoTools e getResources. Non va scritto a mano: si disallineerebbe al primo articolo nuovo."
+}

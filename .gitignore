@@ -37,3 +37,7 @@ export-elements*.tgz
 # originali delle foto dei lavori extra (pesanti, con metadati): restano in locale
 extra/*/selezione*/
 extra/*/foto-sorgenti/
+extra/aa-firma-autore/foto/antonella-schiavino-originale.jpg
+
+# eccezioni: dati dei lavori extra che servono agli script di installazione
+!extra/aa-firma-autore/decisioni.csv

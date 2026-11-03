@@ -12,6 +12,7 @@
 
 [[$menu-side-navbar]]
 <main id="main-content" tabindex="-1">
+[[*aut.ref:notempty=`<link rel="stylesheet" href="/assets/firma-autore/firma-autore.css">`]]
 
 [[$breadcrumb-stripe]]
 
@@ -28,7 +29,7 @@
     <div class="container py-3">
       <div class="row">
         <div class="col-auto me-auto">
-          <span class="small text-brown">[[*publishedon:strtotime:date=`%d %B %Y`]]</span>
+          <span class="small text-brown">[[*publishedon:strtotime:date=`%d %B %Y`]]</span>[[aaSchema? &type=`firma`]]
         </div>
         <div class="col-auto">
           <ul class="list-group list-group-horizontal">
@@ -49,6 +50,7 @@
       </div>
       <div class="col-12 col-lg-8 text-brown">
       [[*content]]
+      [[aaSchema? &type=`box`]]
       </div>
     </div>
 

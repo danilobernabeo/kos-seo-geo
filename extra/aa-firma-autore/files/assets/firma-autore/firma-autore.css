@@ -1,0 +1,109 @@
+/* Firma autore degli approfondimenti — anniazzurri.it (extra/aa-firma-autore)
+ * Riga di firma sotto il titolo, box a fine articolo, pagina autore.
+ * Colori dalle variabili del tema (Bootstrap 5 del sito), con un valore di ripiego. */
+
+/* ---------- riga di firma, accanto alla data ---------- */
+.firma-autore {
+  font-size: .875em;
+  color: rgb(var(--bs-brown-rgb, 87, 70, 60));
+}
+.firma-autore::before {
+  content: "\00B7";
+  margin: 0 .5em;
+}
+.firma-autore a {
+  color: rgb(var(--bs-primary-rgb, 0, 59, 119));
+  font-weight: 600;
+  text-decoration: none;
+}
+.firma-autore a:hover,
+.firma-autore a:focus { text-decoration: underline; }
+
+/* ---------- box a fine articolo ---------- */
+.box-autore {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border-top: 3px solid rgb(var(--bs-primary-rgb, 0, 59, 119));
+  border-radius: .5rem;
+  background: rgba(var(--bs-primary-rgb, 0, 59, 119), .04);
+}
+.box-autore__media { flex: 0 0 120px; }
+.box-autore__media picture { display: block; }
+.box-autore__foto {
+  display: block;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  object-position: 50% 20%;
+  border-radius: 50%;
+}
+.box-autore__testo { min-width: 0; }
+.box-autore__testo p { margin-bottom: .5rem; }
+.box-autore__nome {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: .125rem !important;
+}
+.box-autore__nome a {
+  color: rgb(var(--bs-primary-rgb, 0, 59, 119));
+  text-decoration: none;
+}
+.box-autore__nome a:hover,
+.box-autore__nome a:focus { text-decoration: underline; }
+.box-autore__ruolo { font-weight: 600; }
+.box-autore__bio { font-size: .95rem; }
+.box-autore__albo { font-size: .875rem; opacity: .85; }
+.box-autore__link {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 .5rem;
+  font-size: .875rem;
+}
+.box-autore__link li { display: inline; }
+.box-autore__link li::before { content: "\00B7\00A0"; }
+.box-autore__profilo { font-size: .875rem; font-weight: 600; margin-bottom: 0 !important; }
+.box-autore a { color: rgb(var(--bs-primary-rgb, 0, 59, 119)); }
+.box-revisione { margin-top: .75rem; font-size: .875rem; font-style: italic; }
+
+@media (max-width: 575.98px) {
+  .box-autore { flex-direction: column; gap: 1rem; padding: 1.25rem; }
+  .box-autore__media { flex-basis: auto; }
+}
+
+/* ---------- pagina autore ---------- */
+.scheda-autore__intestazione {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+.scheda-autore__media { flex: 0 0 200px; }
+.scheda-autore__media picture { display: block; }
+.scheda-autore__foto {
+  display: block;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  object-position: 50% 20%;
+  border-radius: .5rem;
+}
+.scheda-autore__ruolo { font-weight: 600; margin-bottom: .25rem; }
+.scheda-autore__albo { margin-bottom: 0; }
+.scheda-autore section { margin-bottom: 2.5rem; }
+.scheda-autore section h2 {
+  font-size: 1.5rem;
+  color: rgb(var(--bs-primary-rgb, 0, 59, 119));
+  margin-bottom: 1rem;
+}
+.scheda-autore__elenco { padding-left: 1.25rem; }
+.scheda-autore__elenco li { margin-bottom: .5rem; }
+.scheda-autore__data { font-size: .875rem; opacity: .8; white-space: nowrap; }
+
+@media (max-width: 575.98px) {
+  .scheda-autore__intestazione { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+  .scheda-autore__media { flex-basis: auto; }
+  .scheda-autore__foto { width: 160px; height: 160px; }
+}
