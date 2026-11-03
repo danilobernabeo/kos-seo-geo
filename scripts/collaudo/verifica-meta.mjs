@@ -29,7 +29,8 @@ const URI_HOME = { 1: 'it', 385: 'en' };
 // entità HTML: numeriche, lettere accentate (&egrave; → è, per composizione Unicode) e le più comuni nei testi
 const DIACR = { grave: '̀', acute: '́', circ: '̂', tilde: '̃', uml: '̈', ring: '̊', cedil: '̧' };
 const NOMI = { quot: '"', apos: "'", lt: '<', gt: '>', nbsp: ' ', rsquo: '’', lsquo: '‘', rdquo: '”', ldquo: '“', laquo: '«', raquo: '»',
-  ndash: '–', mdash: '—', hellip: '…', euro: '€', deg: '°', middot: '·', bull: '•', copy: '©', reg: '®', szlig: 'ß' };
+  ndash: '–', mdash: '—', hellip: '…', euro: '€', deg: '°', middot: '·', bull: '•', copy: '©', reg: '®', szlig: 'ß',
+  ordf: 'ª', ordm: 'º', sup1: '¹', sup2: '²', sup3: '³', times: '×', frac12: '½', iexcl: '¡', iquest: '¿', shy: '' };
 const ent = s => s.replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n)).replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
   .replace(/&([a-zA-Z])(grave|acute|circ|tilde|uml|ring|cedil);/g, (_, l, d) => (l + DIACR[d]).normalize('NFC'))
   .replace(/&([a-z]+);/g, (m, n) => NOMI[n] ?? m).replace(/&amp;/g, '&');
