@@ -219,6 +219,10 @@ di `sameAs` escono con un'etichetta parlante («Pubblicazione scientifica»,
 
 ### Articolo della redazione
 
+**Aggiornamento 3/11 (decisione di Danilo):** sotto il titolo esce la firma «Redazione Anni Azzurri» con
+sotto «Gruppo KOS» e il monogramma AA della favicon (`aa.redazione_logo`, `aa.redazione_sottotitolo`),
+nome non cliccabile: non c'è una pagina della redazione. Quello che segue descrive la scelta precedente.
+
 **Nessun markup** (decisione del 3/11, in implementazione): né riga di firma né box.
 L'attribuzione alla redazione resta nel dato strutturato (`author` = organizzazione).
 La riga *«A cura della Redazione Anni Azzurri»* è predisposta e si accende con

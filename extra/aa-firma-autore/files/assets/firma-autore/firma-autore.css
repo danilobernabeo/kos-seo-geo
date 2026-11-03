@@ -25,8 +25,10 @@
   font-weight: 700;
   text-decoration: none;
 }
-.firma-autore__nome:hover,
-.firma-autore__nome:focus { text-decoration: underline; }
+.firma-autore--redazione .firma-autore__nome { color: rgb(var(--bs-primary-rgb, 0, 59, 119)); }
+.firma-autore--redazione .firma-autore__img { object-fit: contain; background: #fff; border: 1px solid rgba(0, 0, 0, .08); }
+a.firma-autore__nome:hover,
+a.firma-autore__nome:focus { text-decoration: underline; }
 .firma-autore__ruolo {
   font-size: .75rem;
   text-transform: uppercase;

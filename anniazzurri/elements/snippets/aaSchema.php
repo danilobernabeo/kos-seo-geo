@@ -473,6 +473,15 @@ if ($type === 'box' || $type === 'firma') {
                  . '<p class="box-autore__firma">A cura della Redazione ' . $e($cfg('org_name', 'Anni Azzurri')) . '</p>'
                  . '</div>';
         }
+        if ($type === 'firma') {
+            // Firma della redazione (3/11): stesso formato della firma d'autore, nome non cliccabile (nessuna pagina
+            // della redazione), monogramma AA della favicon. Nome = nome dell'ente nel dato strutturato (author).
+            $logo = (string) $cfg('redazione_logo', '/dist/assets/android-chrome-192x192.png');
+            return '<span class="firma-autore firma-autore--redazione">'
+                 . '<span class="firma-autore__foto"><img class="firma-autore__img" src="' . $e($logo) . '" alt="" width="40" height="40"></span>'
+                 . '<span class="firma-autore__testo"><span class="firma-autore__nome">Redazione ' . $e($cfg('org_name', 'Anni Azzurri')) . '</span>'
+                 . '<span class="firma-autore__ruolo">' . $e($cfg('redazione_sottotitolo', 'Gruppo KOS')) . '</span></span></span>';
+        }
         return '';
     }
     $link = $percorso($autore['url']);
