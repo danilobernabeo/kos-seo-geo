@@ -500,23 +500,12 @@ if ($type === 'box' || $type === 'firma') {
     if (!empty($autore['jobTitle'])) {
         $h .= '<p class="box-autore__ruolo">' . $e($autore['jobTitle']) . '</p>';
     }
+    // Box sintetico (3/11): foto, nome, ruolo, biografia breve (aut.bio, 2-3 frasi) e link alla scheda. Iscrizione
+    // all'albo, competenze, pubblicazioni e profili esterni stanno nella pagina autore e nel nodo Person.
     if (!empty($autore['description'])) {
         $h .= '<p class="box-autore__bio">' . $e($autore['description']) . '</p>';
     }
-    if (!empty($autore['identifier']['value'])) {
-        $h .= '<p class="box-autore__albo">' . $e($autore['identifier']['propertyID'])
-            . ' — n. ' . $e($autore['identifier']['value']) . '</p>';
-    }
-    if (!empty($autore['sameAs'])) {
-        $h .= '<ul class="box-autore__link">';
-        foreach ((array) $autore['sameAs'] as $u) {
-            $etichetta = (strpos($u, 'doi.org') !== false) ? 'Pubblicazione scientifica'
-                      : ((strpos($u, 'linkedin') !== false) ? 'Profilo LinkedIn' : 'Profilo');
-            $h .= '<li><a href="' . $e($u) . '" rel="noopener">' . $etichetta . '</a></li>';
-        }
-        $h .= '</ul>';
-    }
-    $h .= '<p class="box-autore__profilo"><a href="' . $e($link) . '">Scheda completa</a></p>';
+    $h .= '<p class="box-autore__profilo"><a href="' . $e($link) . '">Chi è ' . $e($autore['name']) . '</a></p>';
     $h .= '</div></aside>';
 
     // Revisione clinica, se presente.
