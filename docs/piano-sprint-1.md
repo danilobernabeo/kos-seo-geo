@@ -297,7 +297,7 @@ Correzioni emerse dal collaudo: `aggiorna-campi.php` non blocca più il longtitl
 (`<title>`, og:title); la home inglese servita da `/en` è la risorsa 990 (uri `en`), non la cartella 385 (uri `en/`,
 senza template) abbinata dal CSV del 27/10 (`scripts/checks/home-contesti.php`; sullo stage 385 riportata com'era).
 Stage: backup tabella `modx_site_content_bak_20261103_0352` e `/paas/c0044/backup-kos-seo-geo/20261103-035219-campi`.
-Produzione: backup da annotare dall'output di `--scrivi`. Verifica dal sito servito con `scripts/collaudo/verifica-meta.mjs`
+Produzione (3/11, 13:03): backup tabella `modx_site_content_bak_20261103_0503` e `/paas/c0095/backup-kos-seo-geo/20261103-050302-campi` (ripristino: `aggiorna-campi.php /www --ripristina <cartella> --scrivi`). Verifica dal sito servito con `scripts/collaudo/verifica-meta.mjs`
 (stesso file JSON dell'import): stage e produzione 339/339 pagine 200, 82/82 title, 310/310 description, 4/4 H1 e ultima voce
 del `BreadcrumbList`, introtext presente, un solo « | KOS» nel title su tutte (esiti in `scripts/collaudo/kos2123-*`, sul PC
 di Danilo). Restano per la nota di consegna: i 9 H1 scritti nel contenuto (modifica manuale, elenco nel foglio delle
