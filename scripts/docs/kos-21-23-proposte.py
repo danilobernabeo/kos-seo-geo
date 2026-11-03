@@ -187,9 +187,14 @@ def main():
             'h_fin': h_new if h_new is not None else h1_corretti.get(url, h_att),
         })
         if json_campi and s['id']:
-            r = {'id': int(s['id'])}
+            # home EN: il CSV del 27/10 abbinava /en alla cartella 385 (uri «en/», senza template); la pagina servita
+            # è la 990 (uri «en», template generica-en), verificato sullo stage il 3/11 (scripts/checks/home-contesti.php)
+            rid_id = {'385': 990}.get(s['id'], int(s['id']))
+            r = {'id': rid_id}
             uri = uri_dest or url.replace('https://kosgroup.com/', '')
-            if s['id'] not in ('1', '385'):  # home IT/EN: uri della pagina iniziale non affidabile, solo id
+            if s['id'] == '385':
+                r['uri'] = 'en'
+            elif s['id'] != '1':  # home IT: uri della pagina iniziale non affidabile, solo id
                 r['uri'] = uri
             r['campi'] = json_campi
             risorse.append(r)

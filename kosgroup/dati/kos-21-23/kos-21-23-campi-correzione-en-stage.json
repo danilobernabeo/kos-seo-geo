@@ -1,0 +1,25 @@
+{
+ "nome": "KOS 21-23, correzione della home inglese sullo stage (3/11): description sulla 990 (pagina servita da /en), cartella 385 riportata com'era",
+ "risorse": [
+  {
+   "id": 990,
+   "uri": "en",
+   "campi": {
+    "description": {
+     "prima": "KOS Group: professionals dedicated to your health and well-being: psychiatric assistance, rehabilitation and diagnostics, in a system of healthcare facilities.",
+     "dopo": "KOS Group: professionals dedicated to health and well-being, with psychiatric care, rehabilitation and diagnostics in a network of facilities."
+    }
+   }
+  },
+  {
+   "id": 385,
+   "uri": "en",
+   "campi": {
+    "description": {
+     "prima": "KOS Group: professionals dedicated to health and well-being, with psychiatric care, rehabilitation and diagnostics in a network of facilities.",
+     "dopo": "KOS Group: professionals dedicated to your health and well-being: psychiatric assistance, rehabilitation and diagnostics, in a system of healthcare facilities."
+    }
+   }
+  }
+ ]
+}
