@@ -479,7 +479,7 @@ if ($type === 'box' || $type === 'firma') {
 
     if ($type === 'firma') {
         return '<span class="firma-autore"><a href="' . $e($link) . '">' . $e($autore['name']) . '</a>'
-             . (!empty($autore['jobTitle']) ? ' — ' . $e($autore['jobTitle']) : '') . '</span>';
+             . (!empty($autore['jobTitle']) ? ' - ' . $e($autore['jobTitle']) : '') . '</span>';
     }
 
     $h = '<aside class="box-autore" aria-label="Chi firma l\'articolo">';
@@ -514,7 +514,7 @@ if ($type === 'box' || $type === 'firma') {
         $h .= '<p class="box-revisione">Revisione clinica a cura di '
             . '<a href="' . $e($percorso($revisore['url'])) . '">' . $e($revisore['name']) . '</a>'
             . (!empty($revisore['jobTitle']) ? ', ' . $e($revisore['jobTitle']) : '')
-            . ($quando ? ' — ' . $e($quando) : '') . '</p>';
+            . ($quando ? ' - ' . $e($quando) : '') . '</p>';
     }
 
     return $h;
