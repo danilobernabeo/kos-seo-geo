@@ -221,6 +221,10 @@ $files = [];
 $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator("$webroot/assets", FilesystemIterator::SKIP_DOTS));
 foreach ($it as $f) if ($f->isFile() && strtolower($f->getExtension()) === 'pdf') $files[substr($f->getPathname(), strlen($webroot))] = $f->getPathname();
 foreach (glob("$webroot/*.{pdf,PDF}", GLOB_BRACE) ?: [] as $f) $files['/' . basename($f)] = $f;
+// Cartelle con dati personali (curriculum caricati dal modulo di candidatura): non si leggono, non si elencano, non compaiono nel rapporto.
+$riservate = ['/assets/doc/cv/'];
+$nRiservati = 0;
+foreach (array_keys($files) as $rel) foreach ($riservate as $r) if (str_starts_with($rel, $r)) { unset($files[$rel]); $nRiservati++; continue 2; }
 uksort($files, 'strnatcasecmp');
 
 $md5 = []; $md5Originale = []; $stato = [];
@@ -439,6 +443,7 @@ echo "\n== Riepilogo: " . count($files) . ' PDF sul server; da controllare ' . c
 echo '== Nel piano: ' . count($piani) . '; noindex per default ma forse da tenere: ' . count($noindexDaTenere) . '; con copie identiche: ' . count($copie) . "\n";
 if ($attesa) echo "== Da tenere con titolo da correggere ma fuori dal piano (in attesa di conferma KOS): $attesa\n";
 if ($illeggibili) { echo '== Non leggibili (tabella interna rotta o cifrati), da ricostruire a parte: ' . count($illeggibili) . "\n"; foreach ($illeggibili as $p => $e) echo "   $p — $e\n"; }
+if ($nRiservati) echo "== Cartelle riservate non esaminate (dati personali, noindex dalle regole web): $nRiservati file in " . implode(', ', $riservate) . "\n";
 if (!$candidati) echo "== Nessun PDF nuovo, modificato o con titolo da correggere.\n";
 
 if ($scrivi) {
