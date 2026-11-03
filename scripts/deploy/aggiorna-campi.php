@@ -80,16 +80,20 @@ if (!is_array($man) || empty($man['risorse'])) { fwrite(STDERR, "$origine mancan
 echo ($scrivi ? "== APPLICAZIONE" : "== PROVA (nessuna scrittura; aggiungere --scrivi)") . " — " . ($man['nome'] ?? $origine) . ", " . count($man['risorse']) . " risorse\n";
 
 // chunk che usano [[*longtitle]]: una risorsa che li richiama non deve avere il longtitle cambiato
+// (l'uso come titolo — <title>, og:title, twitter:title — non conta: è proprio il campo che si vuole cambiare;
+// senza questa esclusione tutti gli head KOS, che stampano il longtitle nel <title>, bloccavano l'import, 3/11)
+$senzaTitolo = fn(string $t): string => (string) preg_replace(
+    ['~<title>.*?</title>~is', '~<meta\b[^>]*(?:og|twitter):title[^>]*>~i'], '', $t);
 $chunkLong = [];
 foreach ($modx->getIterator(modChunk::class) as $ch) {
-    if (str_contains((string) $ch->get('snippet'), '*longtitle')) $chunkLong[] = $ch->get('name');
+    if (str_contains($senzaTitolo((string) $ch->get('snippet')), '*longtitle')) $chunkLong[] = $ch->get('name');
 }
-$usaLongtitle = function (modResource $res) use ($modx, $chunkLong): string {
+$usaLongtitle = function (modResource $res) use ($modx, $chunkLong, $senzaTitolo): string {
     $testi = ['contenuto' => (string) $res->get('content')];
     $t = $modx->getObject(modTemplate::class, $res->get('template'));
     if ($t) $testi['template ' . $t->get('templatename')] = (string) $t->get('content');
     foreach ($testi as $dove => $txt) {
-        if (preg_match('/\[\[\*longtitle\b/', $txt) && !preg_match('/<title>[^<]*\*longtitle/', $txt)) {
+        if (preg_match('/\[\[\*longtitle\b/', $senzaTitolo($txt))) {
             // il template convegnoAA usa il longtitle anche come H1: è un titolo, non un altro uso
             if (!preg_match('/<h1[^>]*>\s*\[\[\*longtitle/', $txt)) return $dove;
         }
