@@ -26,8 +26,13 @@ const auth = process.env.AUTH
 const man = JSON.parse(fs.readFileSync(arg.campi, 'utf8').replace(/^﻿/, ''));
 const URI_HOME = { 1: 'it', 385: 'en' };
 
+// entità HTML: numeriche, lettere accentate (&egrave; → è, per composizione Unicode) e le più comuni nei testi
+const DIACR = { grave: '̀', acute: '́', circ: '̂', tilde: '̃', uml: '̈', ring: '̊', cedil: '̧' };
+const NOMI = { quot: '"', apos: "'", lt: '<', gt: '>', nbsp: ' ', rsquo: '’', lsquo: '‘', rdquo: '”', ldquo: '“', laquo: '«', raquo: '»',
+  ndash: '–', mdash: '—', hellip: '…', euro: '€', deg: '°', middot: '·', bull: '•', copy: '©', reg: '®', szlig: 'ß' };
 const ent = s => s.replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n)).replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
-  .replace(/&quot;/g, '"').replace(/&apos;|&#039;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&');
+  .replace(/&([a-zA-Z])(grave|acute|circ|tilde|uml|ring|cedil);/g, (_, l, d) => (l + DIACR[d]).normalize('NFC'))
+  .replace(/&([a-z]+);/g, (m, n) => NOMI[n] ?? m).replace(/&amp;/g, '&');
 const norm = s => ent(String(s ?? '')).replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim();
 const attesa = ms => new Promise(r => setTimeout(r, ms));
 
