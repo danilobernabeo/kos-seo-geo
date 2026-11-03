@@ -4,7 +4,7 @@
  * uri, pubblicata, description. SOLA LETTURA. Serve a capire quale risorsa serve /en e /it (KOS 21-23, 3/11).
  *
  * Uso (in SSH sul cloud, dalla cartella dell'archivio del repository):
- *   php scripts/checks/home-contesti.php /www [id ...]
+ *   php scripts/checks/home-contesti.php /www [id | uri ...]      (es. 385 en it: un uri cerca sia «en» sia «en/»)
  */
 declare(strict_types=1);
 if (PHP_SAPI !== 'cli') { fwrite(STDERR, "Solo da riga di comando.\n"); exit(1); }
@@ -39,5 +39,14 @@ foreach ($db->query("SELECT `key` FROM {$p}context WHERE `key` <> 'mgr'")->fetch
     $start = (int) ($s->fetchColumn() ?: $modx->getOption('site_start'));
     $stampa($start, "contesto $ctx (site_start)");
 }
-$ids = array_map('intval', array_slice($argv, 2));
-if ($ids) { echo "== Risorse richieste\n"; foreach ($ids as $id) $stampa($id, 'richiesta'); }
+$richieste = array_slice($argv, 2);
+if ($richieste) echo "== Risorse richieste\n";
+$perUri = $db->prepare("SELECT id FROM {$p}site_content WHERE uri IN (?, ?) AND deleted = 0 ORDER BY id");
+foreach ($richieste as $x) {
+    if (ctype_digit($x)) { $stampa((int) $x, 'richiesta'); continue; }
+    $u = trim($x, '/');
+    $perUri->execute([$u, "$u/"]);
+    $trovate = $perUri->fetchAll(PDO::FETCH_COLUMN);
+    if (!$trovate) echo "  uri «{$u}»: nessuna risorsa\n";
+    foreach ($trovate as $id) $stampa((int) $id, "uri «{$u}»");
+}
