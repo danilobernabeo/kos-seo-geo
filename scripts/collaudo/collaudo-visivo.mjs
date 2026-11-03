@@ -8,7 +8,7 @@
  *   npx playwright install chromium
  *
  * Uso (PowerShell):
- *   $env:AUTH = "kos:<password dello stage>"
+ *   $env:AUTH = "<password dello stage>"        (utente kos; accetta anche «utente:password»)
  *   node collaudo-visivo.mjs --stage=https://stage.anniazzurri.it --prod=https://anniazzurri.it --pagine=pagine-aa.txt
  * Opzioni:
  *   --larghezze=390,768,1366,1920   larghezze in px (default); l'altezza della finestra è quella tipica del dispositivo
@@ -61,7 +61,8 @@ const testoPagine = grezzo[0] === 0xff && grezzo[1] === 0xfe ? grezzo.toString('
 const pagine = testoPagine.replace(/^\uFEFF/, '').split(/\r?\n/).map(s => s.split('#')[0].trim()).filter(Boolean)
   .map(s => s.startsWith('/') ? s : '/' + s);
 const TEMPI = Number(opz.tempi ?? 0);
-const [utente, password] = (process.env.AUTH || '').split(/:(.*)/s);
+// $env:AUTH = password dello stage (utente «kos», come negli altri script) oppure «utente:password»
+const [utente, password] = (process.env.AUTH || '').includes(':') ? process.env.AUTH.split(/:(.*)/s) : ['kos', process.env.AUTH || ''];
 const credenziali = utente ? { username: utente, password: password || '' } : undefined;
 
 const FERMA = `*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}
