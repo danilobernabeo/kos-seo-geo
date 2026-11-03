@@ -210,7 +210,7 @@ Due elementi visibili per articolo.
                         Chi è Antonella Schiavino        ← link alla pagina autore
 ```
 
-Box reso sintetico il 3/11 (revisione dalla chat del progetto): iscrizione all'albo, pubblicazione
+**Box tolto dal template il 3/11** (decisione di Danilo): basta la firma sotto il titolo, con foto tonda, nome con link alla pagina autore e ruolo, come nel modello chiesto dal cliente. Lo snippet sa ancora generare il box (`[[aaSchema? &type=`box`]]`). Prima era stato reso sintetico: iscrizione all'albo, pubblicazione
 scientifica, competenze e percorso completo stanno nella pagina autore e nel nodo `Person`, non nel box.
 
 Il nome e «Scheda completa» puntano entrambi a `/autori/antonella-schiavino`. I link
