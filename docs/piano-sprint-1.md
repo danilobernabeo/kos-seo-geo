@@ -283,6 +283,26 @@ aggiorna da sola. Da fare tra qualche giorno: togliere dal server `assets/img/rs
 `assets/doc/strutture/alloggi-protetti/` (i 301 restano); aggiornare l'eccezione della sezione PDF al nuovo percorso alla
 prossima rigenerazione.
 
+**KOS 21-23 in produzione il 3/11.** Decisione di Danilo del 3/11: proposte validate dal progetto con gli stessi criteri
+SEO/GEO di AA-20 giro 2 (l'audit di settembre non contiene testi suggeriti); KOS e agenzia ricevono l'esito, non una
+richiesta di validazione. Prima dell'import: le 10 proposte segnate «da verificare» lette sulle pagine in produzione (6
+corrette perché nate da metadati sbagliati: L.A.M.P.O., OSSigeno puro di Anni Azzurri, simbolo OSS 2025 «Nazionale»,
+ambulatorio cardio-metabolico, riabilitazione urologica senza diatermia, Fiocchetto Lilla con le tre strutture) e le 89
+description dei medici confrontate con le schede (specializzazione, struttura, aree di interesse; corretta Sofia Fortuna).
+Decisi da Danilo: introtext della riabilitazione cardiologica corretto (era il sommario di un altro articolo); pagina dei
+tirocini 2023 (risorsa 482, annuncio scaduto con email personale) tolta da «Ricercabile», quindi dalla sitemap; il noindex
+arriva con il consolidamento degli head KOS (`head-informativo` non stampa il meta robots, la TV `noindex` vale solo per il
+template 6). Import: 339 risorse (310 description, 82 title con « | KOS» nel longtitle, 4 pagetitle, 1 introtext).
+Correzioni emerse dal collaudo: `aggiorna-campi.php` non blocca più il longtitle usato solo come titolo negli head
+(`<title>`, og:title); la home inglese servita da `/en` è la risorsa 990 (uri `en`), non la cartella 385 (uri `en/`,
+senza template) abbinata dal CSV del 27/10 (`scripts/checks/home-contesti.php`; sullo stage 385 riportata com'era).
+Stage: backup tabella `modx_site_content_bak_20261103_0352` e `/paas/c0044/backup-kos-seo-geo/20261103-035219-campi`.
+Produzione: backup da annotare dall'output di `--scrivi`. Verifica dal sito servito con `scripts/collaudo/verifica-meta.mjs`
+(stesso file JSON dell'import): stage e produzione 339/339 pagine 200, 82/82 title, 310/310 description, 4/4 H1 e ultima voce
+del `BreadcrumbList`, introtext presente, un solo « | KOS» nel title su tutte (esiti in `scripts/collaudo/kos2123-*`, sul PC
+di Danilo). Restano per la nota di consegna: i 9 H1 scritti nel contenuto (modifica manuale, elenco nel foglio delle
+proposte) e la mail di esito a KOS e all'agenzia.
+
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
 
 Analisi nella chat «Sostituzione barra di ricerca Yext» (26/10): Yext Answers su entrambi i siti (KOS circa 2.150
