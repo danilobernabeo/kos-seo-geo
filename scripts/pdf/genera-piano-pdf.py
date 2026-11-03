@@ -135,9 +135,29 @@ def main():
             c = rimappa(r[ix['Canonical verso']])
             if c:
                 canon.append((p, c))
+        # valori decisi a mano per singoli PDF (titolo, oggetto, autore, lingua): <sito>/dati/pdf/imposta-pdf.json, stesso formato di
+        # --imposta di scripts/pdf/controllo-pdf-nuovi.php. Prevalgono sul foglio e sopravvivono alle rigenerazioni.
+        f_imp = os.path.join(RADICE, cart, 'dati', 'pdf', 'imposta-pdf.json')
+        if os.path.exists(f_imp):
+            with open(f_imp, encoding='utf-8') as fh:
+                for pi, vals in json.load(fh).items():
+                    pi = rimappa(pi)
+                    v = next((x for x in voci if x['p'] == pi), None)
+                    if v is None:
+                        v = {'p': pi}
+                        voci.append(v)
+                        if pi not in tieni:
+                            tieni.append(pi)
+                    v.update({k: vals[k] for k in ('t', 'd', 'a', 'l') if vals.get(k)})
         os.makedirs(os.path.join(RADICE, cart, 'dati', 'pdf'), exist_ok=True)
         with open(os.path.join(RADICE, cart, 'dati', 'pdf', 'piano-pdf.json'), 'w', encoding='utf-8') as fh:
-            json.dump({'sito': sito, 'generato': oggi, 'pdf': voci}, fh, ensure_ascii=False, indent=1)
+            # 'tieni', 'canonical' e 'modelli' servono a scripts/pdf/controllo-pdf-nuovi.php (regole di indicizzazione come nelle regole web);
+            # pdf-metadati.php li ignora.
+            modelli = [{'nome': n, 'rx': rx, 'i': True} for n, rx in MODELLI]
+            if sito == 'kos':
+                modelli.append({'nome': 'comunicati stampa', 'rx': '^/assets/doc/comunicati/', 'i': False})
+            json.dump({'sito': sito, 'generato': oggi, 'pdf': voci, 'tieni': sorted(tieni), 'canonical': dict(canon), 'modelli': modelli},
+                      fh, ensure_ascii=False, indent=1)
         # ---- regole web ----
         L = []
         L.append('# ===== INIZIO SEZIONE PDF (KOS-8 / AA-3) — generata il %s da scripts/pdf/genera-piano-pdf.py: non modificare a mano, si rigenera =====' % oggi)

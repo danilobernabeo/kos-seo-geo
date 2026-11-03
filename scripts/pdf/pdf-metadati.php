@@ -1,10 +1,11 @@
 <?php
 /**
- * KOS-8 / AA-3 — Titolo nei metadati dei PDF da tenere (Info /Title + XMP dc:title) con aggiornamento incrementale.
+ * KOS-8 / AA-3 — Metadati dei PDF da tenere con aggiornamento incrementale: titolo (Info /Title + XMP dc:title) e, se il
+ * piano li indica, oggetto (/Subject + dc:description), autore (/Author + dc:creator) e lingua (/Lang del catalogo + dc:language).
  *
  * Il contenuto e i byte originali del file NON cambiano: in coda si aggiungono, come prevede lo standard PDF per gli
- * aggiornamenti incrementali, il dizionario Info e il flusso XMP con il nuovo titolo (e, se il catalogo non ha ancora
- * /Metadata, il catalogo aggiornato) più una nuova tabella di riferimenti. Ogni file scritto viene riletto e confrontato:
+ * aggiornamenti incrementali, il dizionario Info e il flusso XMP con i nuovi valori (e, se il catalogo non ha ancora
+ * /Metadata o la lingua è diversa, il catalogo aggiornato) più una nuova tabella di riferimenti. Ogni file scritto viene riletto e confrontato:
  * i byte originali devono essere un prefisso identico del nuovo file e il titolo deve risultare nei due punti.
  * Senza dipendenze (solo PHP): non serve pdftotext, qpdf o Python sul cloud.
  *
@@ -15,7 +16,11 @@
  *   il manifest (md5 prima/dopo), poi scrive il file nuovo in modo atomico (file temporaneo + rename).
  *   --ripristina: rimette i file dal backup, verificando l'md5 «dopo» del manifest (non sovrascrive file modificati
  *   nel frattempo, salvo --forza).
- * Piano: {"sito":"aa","pdf":[{"p":"/assets/doc/...pdf","t":"Titolo"},{"p":"/assets/doc/comunicati/2025/x.pdf","tipo":"comunicato"}]}
+ * Piano: {"sito":"aa","default":{"a":"Autore","l":"it-IT"},"pdf":[{"p":"/assets/doc/...pdf","t":"Titolo","d":"Oggetto (max 150)","a":"Autore","l":"it-IT"},
+ *          {"p":"/assets/doc/comunicati/2025/x.pdf","tipo":"comunicato"}]}   (d, a, l facoltativi; «default» vale per le voci che non li hanno;
+ *   senza questi campi il comportamento è quello di sempre: solo il titolo.)
+ *   Il backup tiene sempre il PRIMO originale di un percorso: una riscrittura dello stesso file non lo sovrascrive; un file
+ *   sostituito dopo una scrittura (nuovo caricamento) ha una sua copia «<nome>.<md5>.orig» nel backup.
  *   tipo «comunicato»: il titolo è «Comunicato stampa – <titolo della risorsa> – <mese anno>», letto dal database MODX
  *   (TV comunicatoPdf) e mostrato nella prova per il controllo.
  * File che si saltano (e si elencano): cifrati, struttura non leggibile, filtri diversi da Flate nelle parti da leggere,
@@ -285,14 +290,18 @@ function decodificaStringa(?string $s): ?string
     return mb_convert_encoding($raw, 'UTF-8', 'ISO-8859-1');
 }
 
-/** Sostituisce o inserisce /Title nel testo di un dizionario Info (piatto). */
-function infoConTitolo(string $dict, string $titolo): string
+/**
+ * Sostituisce o inserisce la chiave $chiave (senza «/») al livello superiore di un dizionario PDF.
+ * $valore è già in sintassi PDF (stringa esadecimale UTF-16, stringa letterale, ...). I sotto-dizionari non si toccano.
+ */
+function dizionarioConChiave(string $dict, string $chiave, string $valore): string
 {
     $corpo = substr($dict, 2, -2);
-    $nuovo = '/Title ' . esadecimale16($titolo);
-    $n = strlen($corpo); $i = 0; $out = ''; $fatto = false;
+    $nuovo = '/' . $chiave . ' ' . $valore;
+    $n = strlen($corpo); $i = 0; $out = ''; $fatto = false; $liv = 0;
     while ($i < $n) {
-        if ($corpo[$i] === '/' && preg_match('#\G/Title(?=[\s/<(\[]|$)#', $corpo, $m, 0, $i)) {
+        $c = $corpo[$i];
+        if ($liv === 0 && $c === '/' && preg_match('#\G/' . preg_quote($chiave, '#') . '(?=[\s/<(\[]|$)#', $corpo, $m, 0, $i)) {
             $j = $i + strlen($m[0]);
             while ($j < $n && ctype_space($corpo[$j])) $j++;
             if ($j < $n && $corpo[$j] === '(') $j = Pdf::fineStringa($corpo, $j);
@@ -302,55 +311,97 @@ function infoConTitolo(string $dict, string $titolo): string
             else { $j += strcspn($corpo, "/\r\n", $j); }
             $out .= $nuovo; $i = $j; $fatto = true; continue;
         }
-        if ($corpo[$i] === '(') { $j = Pdf::fineStringa($corpo, $i); $out .= substr($corpo, $i, $j - $i); $i = $j; continue; }
-        if ($corpo[$i] === '<') { $k = strpos($corpo, '>', $i); $k = $k === false ? $n : $k + 1; $out .= substr($corpo, $i, $k - $i); $i = $k; continue; }
+        if ($c === '(') { $j = Pdf::fineStringa($corpo, $i); $out .= substr($corpo, $i, $j - $i); $i = $j; continue; }
+        if ($c === '<' && ($corpo[$i + 1] ?? '') === '<') { $liv++; $out .= '<<'; $i += 2; continue; }
+        if ($c === '>' && ($corpo[$i + 1] ?? '') === '>') { $liv--; $out .= '>>'; $i += 2; continue; }
+        if ($c === '<') { $k = strpos($corpo, '>', $i); $k = $k === false ? $n : $k + 1; $out .= substr($corpo, $i, $k - $i); $i = $k; continue; }
         $out .= $corpo[$i++];
     }
     if (!$fatto) $out = $nuovo . "\n" . $out;
     return '<<' . $out . '>>';
 }
 
-function xmpConTitolo(?string $xmp, string $titolo): string
+/** Valore (UTF-8) di una chiave stringa di un dizionario, o null. */
+function valoreChiave(?string $dict, string $chiave): ?string
 {
-    $t = htmlspecialchars($titolo, ENT_XML1 | ENT_QUOTES, 'UTF-8');
-    $el = '<dc:title><rdf:Alt><rdf:li xml:lang="x-default">' . $t . '</rdf:li></rdf:Alt></dc:title>';
+    if ($dict === null || !preg_match('#/' . preg_quote($chiave, '#') . '\s*(\((?:[^()\\\\]|\\\\.)*\)|<[0-9A-Fa-f\s]*>)#s', $dict, $m)) return null;
+    return decodificaStringa($m[1]);
+}
+
+/** Campi del piano → chiavi del dizionario Info (la lingua sta nel catalogo, non in Info). */
+const CAMPI_INFO = ['t' => 'Title', 'd' => 'Subject', 'a' => 'Author'];
+const LIMITE_TITOLO = 65;
+const LIMITE_OGGETTO = 150;
+
+/** Elementi XMP (dc:*) dei campi presenti: titolo e oggetto come Alt, autore come Seq, lingua come Bag. */
+function xmpElementi(array $campi): array
+{
+    $x = fn(string $s) => htmlspecialchars($s, ENT_XML1 | ENT_QUOTES, 'UTF-8');
+    $e = [];
+    if (isset($campi['t'])) $e['dc:title'] = '<dc:title><rdf:Alt><rdf:li xml:lang="x-default">' . $x($campi['t']) . '</rdf:li></rdf:Alt></dc:title>';
+    if (isset($campi['d'])) $e['dc:description'] = '<dc:description><rdf:Alt><rdf:li xml:lang="x-default">' . $x($campi['d']) . '</rdf:li></rdf:Alt></dc:description>';
+    if (isset($campi['a'])) $e['dc:creator'] = '<dc:creator><rdf:Seq><rdf:li>' . $x($campi['a']) . '</rdf:li></rdf:Seq></dc:creator>';
+    if (isset($campi['l'])) $e['dc:language'] = '<dc:language><rdf:Bag><rdf:li>' . $x($campi['l']) . '</rdf:li></rdf:Bag></dc:language>';
+    return $e;
+}
+
+/** Primo valore di un elemento XMP dc:* (primo rdf:li), o null. */
+function xmpValore(?string $xmp, string $tag): ?string
+{
+    if ($xmp === null || !preg_match('#<' . preg_quote($tag, '#') . '\b[^>]*>.*?<rdf:li[^>]*>(.*?)</rdf:li>#s', $xmp, $m)) return null;
+    return html_entity_decode($m[1], ENT_QUOTES | ENT_XML1, 'UTF-8');
+}
+
+function xmpConCampi(?string $xmp, array $campi): string
+{
+    $elementi = xmpElementi($campi);
     $dcNs = 'xmlns:dc="http://purl.org/dc/elements/1.1/"';
     if ($xmp === null || trim($xmp) === '' || !str_contains($xmp, 'rdf:RDF')) {
         return '<?xpacket begin="' . "\xEF\xBB\xBF" . '" id="W5M0MpCehiHzreSzNTczkc9d"?>' . "\n"
             . '<x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">'
-            . '<rdf:Description rdf:about="" ' . $dcNs . '>' . $el . '</rdf:Description></rdf:RDF></x:xmpmeta>' . "\n" . '<?xpacket end="w"?>';
+            . '<rdf:Description rdf:about="" ' . $dcNs . '>' . implode('', $elementi) . '</rdf:Description></rdf:RDF></x:xmpmeta>' . "\n" . '<?xpacket end="w"?>';
     }
-    // 1. dc:title come elemento
-    if (preg_match('#<dc:title\b[^>]*?/>#s', $xmp)) {
-        $xmp = preg_replace('#<dc:title\b[^>]*?/>#s', $el, $xmp, 1);
-    } elseif (preg_match('#<dc:title\b[^>]*>.*?</dc:title>#s', $xmp)) {
-        $xmp = preg_replace_callback('#<dc:title\b[^>]*>.*?</dc:title>#s', fn() => $el, $xmp, 1);
-    } else {
-        // dc:title come attributo? lo si toglie
-        $xmp = preg_replace('#\sdc:title="[^"]*"#', '', $xmp, 1);
-        // inserisce nella prima rdf:Description
-        if (preg_match('#<rdf:Description\b[^>]*?(/?)>#s', $xmp, $m, PREG_OFFSET_CAPTURE)) {
-            $tag = $m[0][0]; $pos = $m[0][1];
-            if ($m[1][0] === '/') {
-                $aperto = substr($tag, 0, -2) . '>';
-                $nuovoTag = $aperto . $el . '</rdf:Description>';
-            } else {
-                $nuovoTag = $tag . $el;
-            }
-            $xmp = substr($xmp, 0, $pos) . $nuovoTag . substr($xmp, $pos + strlen($tag));
+    foreach ($elementi as $tag => $el) {
+        $q = preg_quote($tag, '#');
+        if (preg_match('#<' . $q . '\b[^>]*?/>#s', $xmp)) {
+            $xmp = preg_replace_callback('#<' . $q . '\b[^>]*?/>#s', fn() => $el, $xmp, 1);
+        } elseif (preg_match('#<' . $q . '\b[^>]*>.*?</' . $q . '>#s', $xmp)) {
+            $xmp = preg_replace_callback('#<' . $q . '\b[^>]*>.*?</' . $q . '>#s', fn() => $el, $xmp, 1);
         } else {
-            throw new RuntimeException('XMP senza rdf:Description');
+            // l'elemento può essere un attributo di rdf:Description: lo si toglie e si inserisce l'elemento
+            $xmp = preg_replace('#\s' . $q . '="[^"]*"#', '', $xmp, 1);
+            if (preg_match('#<rdf:Description\b[^>]*?(/?)>#s', $xmp, $m, PREG_OFFSET_CAPTURE)) {
+                $t = $m[0][0]; $p = $m[0][1];
+                $nuovoTag = $m[1][0] === '/' ? substr($t, 0, -2) . '>' . $el . '</rdf:Description>' : $t . $el;
+                $xmp = substr($xmp, 0, $p) . $nuovoTag . substr($xmp, $p + strlen($t));
+            } else {
+                throw new RuntimeException('XMP senza rdf:Description');
+            }
         }
     }
-    // 2. namespace dc dichiarato?
-    if (!preg_match('#xmlns:dc\s*=#', $xmp)) {
-        $xmp = preg_replace('#<rdf:Description\b#', '<rdf:Description ' . $dcNs, $xmp, 1);
-    }
+    if (!preg_match('#xmlns:dc\s*=#', $xmp)) $xmp = preg_replace('#<rdf:Description\b#', '<rdf:Description ' . $dcNs, $xmp, 1);
     return $xmp;
 }
 
-/** Costruisce il file nuovo (byte originali + aggiornamento incrementale). Restituisce [byte nuovi, informazioni]. */
-function aggiorna(string $bytes, string $titolo): array
+/** Valida i campi del piano e li porta in forma normale (stringhe senza spazi doppi). Restituisce [campi, avvisi]. */
+function campiDelPiano(array $voce, array $predefiniti, ?string $titolo): array
+{
+    $c = [];
+    if ($titolo !== null && $titolo !== '') $c['t'] = $titolo;
+    foreach (['d', 'a', 'l'] as $k) {
+        $v = $voce[$k] ?? $predefiniti[$k] ?? null;
+        if ($v === null || $v === '') continue;
+        $c[$k] = trim((string) preg_replace('/\s+/u', ' ', (string) $v));
+    }
+    $avvisi = [];
+    if (isset($c['t']) && mb_strlen($c['t']) > LIMITE_TITOLO) $avvisi[] = 'titolo >' . LIMITE_TITOLO . ' car.';
+    if (isset($c['d']) && mb_strlen($c['d']) > LIMITE_OGGETTO) $avvisi[] = 'oggetto >' . LIMITE_OGGETTO . ' car.';
+    if (isset($c['l']) && !preg_match('/^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8})*$/', $c['l'])) throw new RuntimeException('lingua non valida: ' . $c['l']);
+    return [$c, $avvisi];
+}
+
+/** Costruisce il file nuovo (byte originali + aggiornamento incrementale). $campi: t titolo, d oggetto, a autore, l lingua. */
+function aggiorna(string $bytes, array $campi): array
 {
     $pdf = new Pdf($bytes);
     $tr = $pdf->trailer;
@@ -362,7 +413,7 @@ function aggiorna(string $bytes, string $titolo): array
     $infoNum = preg_match('#/Info\s+(\d+)\s+(\d+)\s+R#', $tr, $i) ? (int) $i[1] : 0;
     $idRaw = preg_match('#/ID\s*\[[^\]]*\]#', $tr, $id) ? $id[0] : '';
 
-    $info = ['prima' => null, 'dopo' => null];
+    $info = ['attuali' => [], 'xmp' => []];
     $nuovi = [];   // numero → [gen, corpo (testo completo «n g obj ... endobj»)]
     $prossimo = $size;
 
@@ -371,10 +422,13 @@ function aggiorna(string $bytes, string $titolo): array
     if ($infoNum) {
         $o = $pdf->oggetto($infoNum);
         if ($o && strncmp($o['testo'], '<<', 2) === 0) $infoVecchio = $o['testo'];
-        $info['prima'] = $infoVecchio && preg_match('#/Title\s*(\((?:[^()\\\\]|\\\\.)*\)|<[0-9A-Fa-f\s]*>)#s', $infoVecchio, $tv) ? $tv[1] : null;
     }
-    $info['prima_testo'] = decodificaStringa($info['prima']);
-    $infoNuovo = infoConTitolo($infoVecchio ?? '<<>>', $titolo);
+    $infoNuovo = $infoVecchio ?? '<<>>';
+    foreach (CAMPI_INFO as $k => $chiave) {
+        if (!isset($campi[$k])) continue;
+        $info['attuali'][$k] = valoreChiave($infoVecchio, $chiave);
+        $infoNuovo = dizionarioConChiave($infoNuovo, $chiave, esadecimale16($campi[$k]));
+    }
     if (!$infoNum) { $infoNum = $prossimo++; $generaInfo = true; } else { $generaInfo = false; }
     $genInfo = $generaInfo ? 0 : ($pdf->xref[$infoNum][0] === 1 ? $pdf->xref[$infoNum][2] : 0);
     $nuovi[$infoNum] = [$genInfo, $infoNuovo];
@@ -390,17 +444,35 @@ function aggiorna(string $bytes, string $titolo): array
         elseif ($m) throw new RuntimeException('Metadata senza dati leggibili');
         $genMeta = ($pdf->xref[$metaNum][0] ?? 0) === 1 ? $pdf->xref[$metaNum][2] : 0;
     }
-    $xmpNuovo = xmpConTitolo($xmpVecchio, $titolo);
-    $info['xmp_prima'] = $xmpVecchio !== null && preg_match('#<dc:title\b[^>]*>.*?<rdf:li[^>]*>(.*?)</rdf:li>#s', $xmpVecchio, $xt) ? html_entity_decode($xt[1], ENT_QUOTES | ENT_XML1, 'UTF-8') : null;
-    if (($info['prima_testo'] ?? null) === $titolo && ($info['xmp_prima'] ?? null) === $titolo) { $info['gia_a_posto'] = true; return [$bytes, $info]; }
-    $nuoviCatalogo = false;
+    $xmpNuovo = xmpConCampi($xmpVecchio, $campi);
+    foreach (['t' => 'dc:title', 'd' => 'dc:description', 'a' => 'dc:creator', 'l' => 'dc:language'] as $k => $tag) {
+        if (isset($campi[$k])) $info['xmp'][$k] = xmpValore($xmpVecchio, $tag);
+    }
+    $langCatalogo = valoreChiave($cat['testo'], 'Lang');
+    if (isset($campi['l'])) $info['attuali']['l'] = $langCatalogo;
+    $aPosto = true;
+    foreach ($campi as $k => $v) {
+        if (isset(CAMPI_INFO[$k]) && ($info['attuali'][$k] ?? null) !== $v) $aPosto = false;
+        if (($info['xmp'][$k] ?? null) !== $v) $aPosto = false;
+        if ($k === 'l' && $langCatalogo !== $v) $aPosto = false;
+    }
+    if ($aPosto) { $info['gia_a_posto'] = true; return [$bytes, $info]; }
+
+    // il catalogo si riscrive solo se manca /Metadata o se la lingua è diversa
+    $catNuovo = $cat['testo'];
+    $riscriviCatalogo = false;
     if (!$metaNum) {
         $metaNum = $prossimo++;
-        // il catalogo va riscritto con /Metadata (solo se non è in un flusso di oggetti con stream non riscrivibile: lo è sempre, perché lo riscriviamo come oggetto normale)
-        $catNuovo = '<<' . ' /Metadata ' . $metaNum . ' 0 R ' . substr($cat['testo'], 2);
+        $catNuovo = '<<' . ' /Metadata ' . $metaNum . ' 0 R ' . substr($catNuovo, 2);
+        $riscriviCatalogo = true;
+    }
+    if (isset($campi['l']) && $langCatalogo !== $campi['l']) {
+        $catNuovo = dizionarioConChiave($catNuovo, 'Lang', '(' . $campi['l'] . ')');
+        $riscriviCatalogo = true;
+    }
+    if ($riscriviCatalogo) {
         $genCat = ($pdf->xref[$rootNum][0] ?? 0) === 1 ? $pdf->xref[$rootNum][2] : 0;
         $nuovi[$rootNum] = [$genCat, $catNuovo];
-        $nuoviCatalogo = true;
     }
     $nuovi[$metaNum] = [$genMeta, null, $xmpNuovo];
 
@@ -442,27 +514,31 @@ function aggiorna(string $bytes, string $titolo): array
         $out .= "$xrefNum 0 obj\n<< /Type /XRef /Size $nuovoSize /W [1 4 2] /Index [" . trim($index) . "] /Root $rootNum 0 R /Info $infoRef /Prev $prev"
             . ($idRaw ? " $idRaw" : '') . ' /Length ' . strlen($dati) . " >>\nstream\n" . $dati . "\nendstream\nendobj\nstartxref\n$startNuovo\n%%EOF\n";
     }
-    $info['catalogo_riscritto'] = $nuoviCatalogo;
+    $info['catalogo_riscritto'] = $riscriviCatalogo;
     return [$out, $info];
 }
 
-/** Rilegge il file scritto: prefisso identico e titolo in Info e in XMP. */
-function verifica(string $originale, string $nuovo, string $titolo): void
+/** Rilegge il file scritto: prefisso identico e ogni campo richiesto in Info, in XMP e (lingua) nel catalogo. */
+function verifica(string $originale, string $nuovo, array $campi): void
 {
     if (strncmp($nuovo, $originale, strlen($originale)) !== 0) throw new RuntimeException('i byte originali non sono un prefisso del file nuovo');
     $pdf = new Pdf($nuovo);
     $tr = $pdf->trailer;
     if (!preg_match('#/Info\s+(\d+)\s+\d+\s+R#', $tr, $i)) throw new RuntimeException('verifica: /Info assente');
     $o = $pdf->oggetto((int) $i[1]);
-    $hex = esadecimale16($titolo);
-    if (!$o || !str_contains($o['testo'], '/Title ' . $hex)) throw new RuntimeException('verifica: titolo non presente in Info');
+    foreach (CAMPI_INFO as $k => $chiave) {
+        if (isset($campi[$k]) && (!$o || !str_contains($o['testo'], '/' . $chiave . ' ' . esadecimale16($campi[$k])))) throw new RuntimeException("verifica: $chiave non presente in Info");
+    }
     if (!preg_match('#/Root\s+(\d+)\s+\d+\s+R#', $tr, $r)) throw new RuntimeException('verifica: /Root assente');
     $cat = $pdf->oggetto((int) $r[1]);
     if (!$cat || !preg_match('#/Metadata\s+(\d+)\s+\d+\s+R#', $cat['testo'], $m)) throw new RuntimeException('verifica: /Metadata assente');
+    if (isset($campi['l']) && valoreChiave($cat['testo'], 'Lang') !== $campi['l']) throw new RuntimeException('verifica: /Lang non presente nel catalogo');
     $meta = $pdf->oggetto((int) $m[1]);
     if (!$meta || $meta['dati'] === null) throw new RuntimeException('verifica: XMP illeggibile');
-    $atteso = htmlspecialchars($titolo, ENT_XML1 | ENT_QUOTES, 'UTF-8');
-    if (!str_contains($meta['dati'], $atteso)) throw new RuntimeException('verifica: titolo non presente in XMP');
+    foreach (xmpElementi($campi) as $tag => $el) {
+        $k = ['dc:title' => 't', 'dc:description' => 'd', 'dc:creator' => 'a', 'dc:language' => 'l'][$tag];
+        if (xmpValore($meta['dati'], $tag) !== $campi[$k]) throw new RuntimeException("verifica: $tag non presente in XMP");
+    }
     if (@simplexml_load_string(preg_replace('#<\?xpacket[^>]*\?>#', '', $meta['dati'])) === false) throw new RuntimeException('verifica: XMP non è XML valido');
 }
 
@@ -531,6 +607,9 @@ function titoloComunicato(array $c): string
 
 /* ============================ comando ============================ */
 
+/* Incluso da un altro script (controllo-pdf-nuovi.php): servono solo la classe e le funzioni, il comando non parte. */
+if (realpath($argv[0] ?? '') !== realpath(__FILE__)) return;
+
 $webroot = rtrim((string) ($argv[1] ?? ''), '/');
 $opt = [];
 $pos = [];
@@ -547,12 +626,15 @@ if (isset($opt['ripristina'])) {
     $manifest = json_decode((string) @file_get_contents($cartella . '/manifest.json'), true);
     if (!is_array($manifest)) { fwrite(STDERR, "manifest.json non trovato in $cartella\n"); exit(1); }
     $ok = 0; $saltati = 0;
-    foreach ($manifest['file'] as $f) {
+    $fatti = [];   // un percorso con più voci (file sostituito e riscritto) si ripristina una volta sola, dalla voce più recente
+    foreach (array_reverse($manifest['file']) as $f) {
+        if (isset($fatti[$f['p']])) continue;
         $dest = $webroot . $f['p'];
-        $src = $cartella . $f['p'];
+        $src = $cartella . ($f['copia'] ?? $f['p']);
         if (!is_file($src)) { echo "MANCA nel backup: {$f['p']}\n"; $saltati++; continue; }
         if (md5_file($src) !== $f['md5_prima']) { echo "BACKUP ALTERATO: {$f['p']}\n"; $saltati++; continue; }
         if (is_file($dest) && md5_file($dest) !== $f['md5_dopo'] && !isset($opt['forza'])) { echo "MODIFICATO DOPO IL RILASCIO (usa --forza): {$f['p']}\n"; $saltati++; continue; }
+        $fatti[$f['p']] = true;
         if (!isset($opt['scrivi'])) { echo "[prova] ripristinerei {$f['p']}\n"; $ok++; continue; }
         $tmp = $dest . '.ripr.' . getmypid();
         copy($src, $tmp);
@@ -575,6 +657,11 @@ $comunicati = null;
 $manifest = ['sito' => $piano['sito'] ?? '', 'creato' => date('c'), 'file' => []];
 $conteggi = ['da_scrivere' => 0, 'gia_a_posto' => 0, 'scritti' => 0, 'saltati' => 0, 'mancanti' => 0];
 $tutti = [];
+$predefiniti = is_array($piano['default'] ?? null) ? $piano['default'] : [];
+$gruppoManifest = [];
+$mf = $backup . '/manifest.json';
+$precedente = is_file($mf) ? json_decode((string) file_get_contents($mf), true) : null;
+$manifest['file'] = is_array($precedente) ? ($precedente['file'] ?? []) : [];
 foreach ($piano['pdf'] as $voce) {
     $p = $voce['p'];
     if ($solo !== '' && !str_contains($p, $solo)) continue;
@@ -589,39 +676,61 @@ foreach ($piano['pdf'] as $voce) {
         $titolo = titoloComunicato($c);
         if ($titolo === '') { echo "SALTATO    $p — TV comunicatoData vuota o illeggibile («" . $c['data_tv'] . "»)\n"; $conteggi['saltati']++; continue; }
     }
-    if (!$titolo) continue;
+    try {
+        [$campi, $avvisi] = campiDelPiano($voce, $predefiniti, $titolo);
+    } catch (Throwable $e) {
+        echo "SALTATO    $p — " . $e->getMessage() . "\n"; $conteggi['saltati']++; continue;
+    }
+    if (!$campi) continue;
     $originale = (string) file_get_contents($file);
     try {
-        [$nuovo, $info] = aggiorna($originale, $titolo);
+        [$nuovo, $info] = aggiorna($originale, $campi);
         if (!empty($info['gia_a_posto'])) { echo "GIÀ A POSTO $p\n"; $conteggi['gia_a_posto']++; continue; }
-        verifica($originale, $nuovo, $titolo);
+        verifica($originale, $nuovo, $campi);
     } catch (Throwable $e) {
         echo "SALTATO    $p — " . $e->getMessage() . "\n";
         $conteggi['saltati']++;
         continue;
     }
-    $attuale = $info['prima'] ?? '';
-    $lungo = mb_strlen($titolo) > 65 ? ' [>65 car.]' : '';
-    echo ($scrivi ? 'SCRIVO     ' : 'PROVA      ') . $p . "\n             titolo: " . $titolo . $lungo . ($info['catalogo_riscritto'] ? '  (catalogo aggiornato con /Metadata)' : '') . "\n";
+    $etichette = ['t' => 'titolo', 'd' => 'oggetto', 'a' => 'autore', 'l' => 'lingua'];
+    echo ($scrivi ? 'SCRIVO     ' : 'PROVA      ') . $p . "\n";
+    foreach ($campi as $k => $v) {
+        $att = $info['attuali'][$k] ?? null;
+        $lim = ($k === 't' && mb_strlen($v) > LIMITE_TITOLO) ? ' [>' . LIMITE_TITOLO . ' car.]' : (($k === 'd' && mb_strlen($v) > LIMITE_OGGETTO) ? ' [>' . LIMITE_OGGETTO . ' car.]' : '');
+        echo '             ' . $etichette[$k] . ': ' . $v . $lim . ($att !== null && $att !== '' && $att !== $v && $k !== 't' ? '   (era: ' . $att . ')' : '') . "\n";
+    }
+    if (!empty($info['catalogo_riscritto'])) echo "             (catalogo aggiornato)\n";
     $conteggi['da_scrivere']++;
-    $tutti[] = $titolo;
+    if (isset($campi['t'])) $tutti[] = $campi['t'];
     if (!$scrivi) continue;
-    $dest = $backup . $p;
+    // backup: il primo originale di un percorso non si sovrascrive mai (una riscrittura dello stesso file tiene l'originale vero)
+    $copia = $p;
+    $md5Originale = md5($originale);
+    $voceMf = null;
+    foreach ($manifest['file'] as $k2 => $f) { if ($f['p'] === $p && $f['md5_dopo'] === $md5Originale) $voceMf = $k2; }
+    $dest = $backup . $copia;
+    if (is_file($dest) && $voceMf === null) { $copia = $p . '.' . substr($md5Originale, 0, 8) . '.orig'; $dest = $backup . $copia; }   // file sostituito dopo una scrittura: altro originale
     if (!is_dir(dirname($dest))) mkdir(dirname($dest), 0700, true);
-    if (!copy($file, $dest)) { echo "ERRORE backup $p\n"; $conteggi['saltati']++; continue; }
+    if ($voceMf === null && !copy($file, $dest)) { echo "ERRORE backup $p\n"; $conteggi['saltati']++; continue; }
     $mtime = filemtime($file);
     $tmp = $file . '.nuovo.' . getmypid();
     if (file_put_contents($tmp, $nuovo) === false) { @unlink($tmp); echo "ERRORE scrittura $p\n"; $conteggi['saltati']++; continue; }
     @chmod($tmp, fileperms($file) & 0777);
     rename($tmp, $file);
-    $manifest['file'][] = ['p' => $p, 'titolo' => $titolo, 'md5_prima' => md5($originale), 'md5_dopo' => md5($nuovo), 'mtime' => $mtime, 'byte_prima' => strlen($originale), 'byte_dopo' => strlen($nuovo)];
+    if ($voceMf !== null) {   // riscrittura di un file già scritto: si aggiorna la voce, l'originale resta quello del primo backup
+        $manifest['file'][$voceMf]['campi'] = $campi;
+        $manifest['file'][$voceMf]['titolo'] = $campi['t'] ?? ($manifest['file'][$voceMf]['titolo'] ?? '');
+        $manifest['file'][$voceMf]['md5_dopo'] = md5($nuovo);
+        $manifest['file'][$voceMf]['byte_dopo'] = strlen($nuovo);
+    } else {
+        $manifest['file'][] = ['p' => $p, 'copia' => $copia, 'titolo' => $campi['t'] ?? '', 'campi' => $campi, 'md5_prima' => $md5Originale, 'md5_dopo' => md5($nuovo), 'mtime' => $mtime, 'byte_prima' => strlen($originale), 'byte_dopo' => strlen($nuovo)];
+    }
     $conteggi['scritti']++;
 }
-if ($scrivi) {
+if ($scrivi && $conteggi['scritti'] > 0) {
     if (!is_dir($backup)) mkdir($backup, 0700, true);
-    $mf = $backup . '/manifest.json';
-    $prec = is_file($mf) ? json_decode((string) file_get_contents($mf), true) : null;
-    if (is_array($prec) && !empty($prec['file'])) { $manifest['file'] = array_merge($prec['file'], $manifest['file']); }
+    $manifest['creato'] = is_array($precedente) && !empty($precedente['creato']) ? $precedente['creato'] : $manifest['creato'];
+    $manifest['aggiornato'] = date('c');
     file_put_contents($mf, json_encode($manifest, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
     echo "== Backup e manifest: $backup\n";
 }
