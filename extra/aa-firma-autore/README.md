@@ -206,11 +206,12 @@ Due elementi visibili per articolo.
 ```
 [foto 120×120, tonda]   Antonella Schiavino            ← link alla pagina autore
                         Referente Qualità ed Accreditamento
-                        [biografia, 3-4 righe]
-                        Albo delle Professioni Infermieristiche — OPI Torino — n. IP/20414
-                        · Pubblicazione scientifica      ← link al DOI
-                        Scheda completa                  ← link alla pagina autore
+                        [biografia breve, aut.bio, 2-3 righe]
+                        Chi è Antonella Schiavino        ← link alla pagina autore
 ```
+
+Box reso sintetico il 3/11 (revisione dalla chat del progetto): iscrizione all'albo, pubblicazione
+scientifica, competenze e percorso completo stanno nella pagina autore e nel nodo `Person`, non nel box.
 
 Il nome e «Scheda completa» puntano entrambi a `/autori/antonella-schiavino`. I link
 di `sameAs` escono con un'etichetta parlante («Pubblicazione scientifica»,
