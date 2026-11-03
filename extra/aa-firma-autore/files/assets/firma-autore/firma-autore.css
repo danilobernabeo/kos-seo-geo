@@ -2,22 +2,37 @@
  * Riga di firma sotto il titolo, box a fine articolo, pagina autore.
  * Colori dalle variabili del tema (Bootstrap 5 del sito), con un valore di ripiego. */
 
-/* ---------- riga di firma, accanto alla data ---------- */
+/* ---------- firma sotto il titolo: foto, nome, ruolo (sotto la data) ---------- */
 .firma-autore {
-  font-size: .875em;
-  color: rgb(var(--bs-brown-rgb, 87, 70, 60));
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+  margin-top: .5rem;
+  line-height: 1.25;
 }
-.firma-autore::before {
-  content: "\00B7";
-  margin: 0 .5em;
+.firma-autore__foto { flex: 0 0 auto; display: block; }
+.firma-autore__img,
+.firma-autore__foto img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
 }
-.firma-autore a {
+.firma-autore__testo { display: flex; flex-direction: column; }
+.firma-autore__nome {
   color: rgb(var(--bs-primary-rgb, 0, 59, 119));
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
 }
-.firma-autore a:hover,
-.firma-autore a:focus { text-decoration: underline; }
+.firma-autore__nome:hover,
+.firma-autore__nome:focus { text-decoration: underline; }
+.firma-autore__ruolo {
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  color: rgb(var(--bs-brown-rgb, 87, 70, 60));
+}
 
 /* ---------- box a fine articolo ---------- */
 .box-autore {

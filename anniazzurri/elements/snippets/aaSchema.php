@@ -478,8 +478,22 @@ if ($type === 'box' || $type === 'firma') {
     $link = $percorso($autore['url']);
 
     if ($type === 'firma') {
-        return '<span class="firma-autore"><a href="' . $e($link) . '">' . $e($autore['name']) . '</a>'
-             . (!empty($autore['jobTitle']) ? ' - ' . $e($autore['jobTitle']) : '') . '</span>';
+        // Firma sotto il titolo (3/11, modello chiesto dal cliente): foto tonda piccola, nome con link, ruolo.
+        // Foto senza caricamento differito (è sopra la piega) e senza priorità alta (l'immagine principale è la foto dell'articolo).
+        $foto = '';
+        if (!empty($autore['image']['url'])) {
+            $src = $percorso($autore['image']['url']);
+            $clsSnippet = class_exists('\MODX\Revolution\modSnippet') ? \MODX\Revolution\modSnippet::class : 'modSnippet';
+            $foto = $modx->getCount($clsSnippet, ['name' => 'immagine'])
+                ? (string) $modx->runSnippet('immagine', ['src' => $src, 'alt' => '', 'class' => 'firma-autore__img', 'sizes' => '40px', 'differita' => 0])
+                : '';
+            if ($foto === '') $foto = '<img class="firma-autore__img" src="' . $e($src) . '" alt="" width="40" height="40">';
+            $foto = '<a class="firma-autore__foto" href="' . $e($link) . '" tabindex="-1" aria-hidden="true">' . $foto . '</a>';
+        }
+        return '<span class="firma-autore">' . $foto . '<span class="firma-autore__testo">'
+             . '<a class="firma-autore__nome" href="' . $e($link) . '">' . $e($autore['name']) . '</a>'
+             . (!empty($autore['jobTitle']) ? '<span class="firma-autore__ruolo">' . $e($autore['jobTitle']) . '</span>' : '')
+             . '</span></span>';
     }
 
     $h = '<aside class="box-autore" aria-label="Chi firma l\'articolo">';
