@@ -196,8 +196,8 @@
  },
  "https://kosgroup.com/it/centri/villa-san-giuseppe/storico-liste-di-attesa": {
   "title": "Storico liste di attesa - Villa San Giuseppe | KOS",
-  "description": "Storico delle liste di attesa di Villa San Giuseppe, struttura del Gruppo KOS: i dati sui tempi di attesa pubblicati dalla struttura per trasparenza.",
-  "note": "Title e description attuali sono quelli di «Dati societari» (copiati): da verificare sul testo della pagina"
+  "description": "Storico dei tempi di attesa di Villa San Giuseppe (Gruppo KOS): le rilevazioni periodiche pubblicate dal 2025, scaricabili in PDF.",
+  "note": "Verificato sul testo della pagina il 3/11: title e description attuali erano quelli di «Dati societari»"
  },
  "https://kosgroup.com/it/chi-siamo/governance/dati-societari": {
   "title": "Dati societari: trasparenza e governance | KOS",
@@ -208,8 +208,9 @@
   "note": "Title fuori audit: nome e cognome invertiti rispetto all'H1 e alle altre schede"
  },
  "https://kosgroup.com/it/chi-siamo/qualita-delle-cure/tecnologia-e-innovazione/lampo": {
-  "description": "LAMPO è il laboratorio specializzato di KOS che migliora diagnosi, sicurezza e qualità delle cure grazie a processi più rapidi, tracciati e integrati.",
-  "note": "Il title parla di studio del movimento umano, la description di un laboratorio per la qualità delle cure: da verificare sul testo della pagina"
+  "description": "L.A.M.P.O., il laboratorio dell'Istituto Santo Stefano che analizza cammino, postura e attività muscolare per la diagnosi e la riabilitazione.",
+  "note": "Verificato sul testo della pagina il 3/11: laboratorio di analisi del movimento dell'Istituto Santo Stefano (la description attuale parlava di qualità delle cure)",
+  "title": "Laboratorio L.A.M.P.O.: analisi del movimento e del cammino | KOS"
  },
  "https://kosgroup.com/it/lavorare-in-kos/formazione-kos-academy": {
   "title": "KOS Academy: formazione e calendario corsi | KOS",
@@ -337,8 +338,8 @@
  },
  "https://kosgroup.com/it/news-e-media/approfondimenti/informativa-tirocini-post-lauream-psicologia-2023-villa-dei-pini-firenze": {
   "title": "Tirocini post-lauream in psicologia, Villa dei Pini Firenze | KOS",
-  "description": "Informativa 2023 sui tirocini post-lauream in Psicologia presso Villa dei Pini Firenze, struttura del Gruppo KOS: le informazioni per i candidati.",
-  "note": "Description fuori audit (119 caratteri); da verificare sul testo della pagina (informativa del 2023: valutare se è ancora attuale)"
+  "description": "Tirocini post-lauream in Psicologia a Villa dei Pini Firenze (Gruppo KOS): 2 posti dal 15 settembre 2023, colloqui di selezione il 22 maggio 2023.",
+  "note": "Verificato sul testo della pagina il 3/11: annuncio scaduto (2023) con email personale in chiaro: noindex deciso da Danilo il 3/11 (TV noindex, a mano nel CMS)"
  },
  "https://kosgroup.com/it/news-e-media/approfondimenti/la-cardio-tac-esame-risolutivo-nella-prevenzione-cardiovascolare": {
   "title": "Cardio TAC e prevenzione cardiovascolare | KOS"
@@ -377,8 +378,9 @@
  },
  "https://kosgroup.com/it/news-e-media/approfondimenti/riabilitazione-cardiologica-ridonare-al-paziente-le-migliori-condizioni-cliniche-nel-minor-tempo-possibile": {
   "title": "Riabilitazione cardiologica: obiettivi e benefici | KOS",
-  "description": "La riabilitazione cardiologica punta a ridonare al paziente le migliori condizioni cliniche possibili nel minor tempo: come funziona il percorso.",
-  "note": "Description fuori audit: quella attuale parla di un dispositivo di traduzione vocale-gestuale (testo di un'altra pagina); da verificare sul testo della pagina"
+  "description": "Riabilitazione cardiologica: come è nata e come funziona oggi il percorso che riporta il paziente alle migliori condizioni cliniche.",
+  "note": "Verificato sul testo della pagina il 3/11: description e sommario visibile (introtext) erano di un altro articolo (dispositivo di traduzione vocale-gestuale); introtext corretto, deciso da Danilo il 3/11",
+  "introtext": "Riabilitazione cardiologica: come è nata e come funziona oggi il percorso che riporta il paziente alle migliori condizioni cliniche."
  },
  "https://kosgroup.com/it/news-e-media/approfondimenti/riabilitazione-della-spalla-esercizi-tempi-e-recupero": {
   "description": "La riabilitazione della spalla dopo sovraccarichi, traumi o interventi: come funziona il percorso, quali esercizi si fanno e i tempi di recupero."
@@ -590,8 +592,8 @@
   "description": "Il modello KOS di gestione clinica del peso integra competenze cardio-metaboliche e multidisciplinari per prevenire obesità e rischio cardiovascolare."
  },
  "https://kosgroup.com/it/news-e-media/news/2026/giornata-del-fiocchetto-lilla-il-contributo-del-gruppo-kos-alla-rete-di-cura": {
-  "description": "Giornata del Fiocchetto Lilla 2026: gli appuntamenti del Gruppo KOS sui disturbi della nutrizione e dell’alimentazione, a sostegno di chi ne soffre.",
-  "note": "La description attuale è quella del 2025 (date 12-15 marzo): nella proposta niente date, da verificare sul testo della pagina"
+  "description": "Fiocchetto Lilla 2026: gli incontri di Villa dei Pini Firenze, Villa Sant'Alessandro e Villa Margherita Vicenza sui disturbi alimentari.",
+  "note": "Verificato sul testo della pagina il 3/11: description attuale del 2025; strutture citate nella pagina"
  },
  "https://kosgroup.com/it/news-e-media/news/2026/giornata-internazionale-dell-infermiere-chi-e-cosa-fa-e-perche-e-al-centro-della-cura": {
   "description": "Il 12 maggio si celebra la Giornata Internazionale dell’Infermiere: il ruolo, le competenze e il percorso formativo di una figura centrale nella cura."
@@ -600,8 +602,8 @@
   "description": "Giornata Mondiale del Parkinson 2026: all’Istituto Superiore di Sanità un confronto su presa in carico e riabilitazione, con il dott. Daniele Volpe."
  },
  "https://kosgroup.com/it/news-e-media/news/2026/giornata-nazionale-delloss": {
-  "description": "Nella Giornata Nazionale dell’OSS nasce OSSigeno puro, uno spazio fatto dagli operatori socio-sanitari per gli operatori socio-sanitari di KOS.",
-  "note": "Da verificare sul testo della pagina («del Gruppo KOS»)"
+  "description": "Per la Giornata Nazionale dell'OSS nasce OSSigeno puro, il mini sito con le voci degli operatori socio-sanitari di Anni Azzurri, Gruppo KOS.",
+  "note": "Verificato sul testo della pagina il 3/11: il progetto è di Anni Azzurri"
  },
  "https://kosgroup.com/it/news-e-media/news/2026/giuseppe-motta-nuovo-amministratore-delegato-e-direttore-generale-del-gruppo-kos": {
   "description": "Dal 1° giugno 2026 Giuseppe Motta è il nuovo Amministratore Delegato e Direttore Generale del Gruppo KOS, dopo oltre vent’anni in azienda."
@@ -721,7 +723,8 @@
  },
  "https://kosgroup.com/it/news-e-media/progetti-speciali/2025/giornata-mondiale-oss": {
   "description": "Per la Giornata degli OSS il Gruppo KOS ha creato un simbolo che rappresenta i suoi oltre 3.000 Operatori Socio Sanitari e li accompagna nel lavoro.",
-  "note": "Il title dice «Giornata Mondiale», la description attuale «Giornata Nazionale»: da allineare dopo verifica"
+  "note": "Verificato sul testo della pagina il 3/11: la pagina parla di Giornata Nazionale (title «Mondiale» corretto; URL invariato)",
+  "title": "Giornata Nazionale dell'OSS 2025: il simbolo degli OSS | KOS"
  },
  "https://kosgroup.com/it/news-e-media/progetti-speciali/2025/settimana-del-cervello-2025": {
   "description": "Dal 10 al 16 marzo le video pillole e gli eventi gratuiti del Gruppo KOS per la Settimana del Cervello 2025: stress, ansia, sonno e nutrizione."
@@ -769,12 +772,12 @@
  },
  "https://kosgroup.com/it/servizi-e-cure/ambulatori-e-medicina-specialistica/ambulatorio-cardio-metabolico": {
   "title": "Ambulatorio cardio-metabolico | KOS",
-  "description": "Ambulatorio cardio-metabolico del Gruppo KOS: un approccio multidisciplinare alla gestione del peso e alla prevenzione del rischio cardiovascolare.",
-  "note": "Description mancante, scritta dal title e dalle news sul modello cardio-metabolico: da verificare sul testo della pagina. Title fuori audit: suffisso «| Kos» invece di «| KOS»"
+  "description": "Ambulatorio cardio-metabolico del Gruppo KOS: percorso clinico con visite specialistiche e monitoraggi per peso, alimentazione e salute del cuore.",
+  "note": "Verificato sul testo della pagina il 3/11. Title fuori audit: suffisso «| Kos» invece di «| KOS»"
  },
  "https://kosgroup.com/it/servizi-e-cure/ambulatori-e-medicina-specialistica/fisiatria": {
   "description": "Fisiatria nei centri del Gruppo KOS: visite di medicina fisica e riabilitativa per la valutazione, la cura e il recupero funzionale della persona.",
-  "note": "Description mancante, da verificare sul testo della pagina (l'introtext attuale parla di psicologia). H1 «Fisiatria» resta: si cambia l'approfondimento"
+  "note": "Description mancante, verificato sul testo della pagina il 3/11. H1 «Fisiatria» resta: si cambia l'approfondimento"
  },
  "https://kosgroup.com/it/servizi-e-cure/ambulatori-e-medicina-specialistica/medicina-dello-sport": {
   "description": "Medicina dello sport: prevenzione, diagnosi e cura delle patologie legate all’attività fisica, per atleti e appassionati, nei centri del Gruppo KOS."
@@ -821,8 +824,8 @@
  },
  "https://kosgroup.com/it/servizi-e-cure/riabilitazione/riabilitazione-urologica-e-del-pavimento-pelvico": {
   "title": "Riabilitazione urologica e del pavimento pelvico | KOS",
-  "description": "Riabilitazione urologica e del pavimento pelvico: la diatermia (tecarterapia), abbinata alla fisioterapia, riduce infiammazione e dolore.",
-  "note": "Il title attuale parla di diatermia, non dell'argomento della pagina; description fuori audit (non nomina l'argomento): verificare sul testo della pagina che la diatermia sia trattata qui"
+  "description": "Riabilitazione del pavimento pelvico nei centri KOS per incontinenza, prolasso e post-chirurgia: chinesiterapia, biofeedback ed elettrostimolazione.",
+  "note": "Verificato sul testo della pagina il 3/11: la diatermia non è trattata nella pagina (solo nei vecchi metadati), tolta"
  },
  "https://kosgroup.com/it/servizi-e-cure/riabilitazione/trattamenti/diagnosi-e-trattamento-spasticita": {
   "description": "Percorsi di diagnosi e trattamento della spasticità nelle strutture KOS: valutazioni specialistiche, terapie e, se indicati, interventi chirurgici."

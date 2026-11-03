@@ -8,7 +8,7 @@ Legge da kosgroup/dati/kos-21-23/:
   - ac7a9f06-202609_KosGroup_Dettaglio_Audit_GEO_Ant.xlsx  fogli «Meta-Title», «Meta-Description», «H1» (dati dalla riga 4, URL in C)
   - meta-stato-20261027.csv            stato servito e campi MODX per URL (separatore «;», UTF-8 BOM)
   - medici-description-proposte.json   description delle schede medici: alias → [testo, nota]
-  - testi-proposti-<data>.json         testi proposti (chiave = URL; title, description, h1, note), schema delle
+  - testi-proposti-<data>.json         testi proposti (chiave = URL; title, description, h1, introtext, note), schema delle
                                        convenzioni, verifica del 1/11 (redirect, H1 corretti) e segnalazioni
 Scrive:
   - kos-21-23-proposte-<data>.xlsx     fogli «Proposte da validare», «Segnalazioni», «Riepilogo»
@@ -164,6 +164,11 @@ def main():
             else:
                 campi_modx.append('content (H1)')
                 note.append(NOTA_CONTENUTO.format(t=tpl or '?'))
+        i_new = p.get('introtext')  # correzione del sommario visibile (approvata caso per caso)
+        if i_new is not None and i_new != s['introtext']:
+            campi_modx.append('introtext')
+            json_campi['introtext'] = {'prima': s['introtext'], 'dopo': i_new}
+            note.append('Introtext corretto (sommario visibile sotto il titolo)')
 
         fuori = [n for n, v in (('title', t_new), ('description', d_new), ('H1', h_new))
                  if v is not None and n.lower() not in campi_voci]

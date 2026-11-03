@@ -153,7 +153,7 @@
     },
     "description": {
      "prima": "Scopri i dati societari di Kos e la sua trasparenza nella governance aziendale. Tutto ciò che devi sapere sulle informazioni societarie.",
-     "dopo": "Storico delle liste di attesa di Villa San Giuseppe, struttura del Gruppo KOS: i dati sui tempi di attesa pubblicati dalla struttura per trasparenza."
+     "dopo": "Storico dei tempi di attesa di Villa San Giuseppe (Gruppo KOS): le rilevazioni periodiche pubblicate dal 2025, scaricabili in PDF."
     }
    }
   },
@@ -1069,9 +1069,13 @@
    "id": 1001,
    "uri": "it/chi-siamo/qualita-delle-cure/tecnologia-e-innovazione/lampo",
    "campi": {
+    "longtitle": {
+     "prima": "Innovazione diagnostica nello studio del movimento umano | KOS",
+     "dopo": "Laboratorio L.A.M.P.O.: analisi del movimento e del cammino | KOS"
+    },
     "description": {
      "prima": "Scopri LAMPO, il laboratorio specializzato di KOS per migliorare diagnosi, sicurezza e qualità delle cure grazie a processi più rapidi, tracciati e integrati.",
-     "dopo": "LAMPO è il laboratorio specializzato di KOS che migliora diagnosi, sicurezza e qualità delle cure grazie a processi più rapidi, tracciati e integrati."
+     "dopo": "L.A.M.P.O., il laboratorio dell'Istituto Santo Stefano che analizza cammino, postura e attività muscolare per la diagnosi e la riabilitazione."
     }
    }
   },
@@ -2071,7 +2075,7 @@
     },
     "description": {
      "prima": "Scopri l'informativa per i tirocini post-laurea in Psicologia 2023 presso Villa Dei Pini Firenze. Tutte le info su Kos!",
-     "dopo": "Informativa 2023 sui tirocini post-lauream in Psicologia presso Villa dei Pini Firenze, struttura del Gruppo KOS: le informazioni per i candidati."
+     "dopo": "Tirocini post-lauream in Psicologia a Villa dei Pini Firenze (Gruppo KOS): 2 posti dal 15 settembre 2023, colloqui di selezione il 22 maggio 2023."
     }
    }
   },
@@ -2203,7 +2207,11 @@
     },
     "description": {
      "prima": "Il dispositivo di traduzione vocale-gestuale in tempo reale è utilizzato per le persone la cui capacità comunicativa risulta compromessa",
-     "dopo": "La riabilitazione cardiologica punta a ridonare al paziente le migliori condizioni cliniche possibili nel minor tempo: come funziona il percorso."
+     "dopo": "Riabilitazione cardiologica: come è nata e come funziona oggi il percorso che riporta il paziente alle migliori condizioni cliniche."
+    },
+    "introtext": {
+     "prima": "Il dispositivo di traduzione vocale-gestuale in tempo reale è utilizzato per le persone la cui capacità comunicativa risulta compromessa",
+     "dopo": "Riabilitazione cardiologica: come è nata e come funziona oggi il percorso che riporta il paziente alle migliori condizioni cliniche."
     }
    }
   },
@@ -2857,7 +2865,7 @@
    "campi": {
     "description": {
      "prima": "Partecipa agli eventi KOS dal 12 al 15 marzo: incontri e laboratori gratuiti per sensibilizzare sui Disturbi Alimentari.",
-     "dopo": "Giornata del Fiocchetto Lilla 2026: gli appuntamenti del Gruppo KOS sui disturbi della nutrizione e dell’alimentazione, a sostegno di chi ne soffre."
+     "dopo": "Fiocchetto Lilla 2026: gli incontri di Villa dei Pini Firenze, Villa Sant'Alessandro e Villa Margherita Vicenza sui disturbi alimentari."
     }
    }
   },
@@ -2887,7 +2895,7 @@
    "campi": {
     "description": {
      "prima": "",
-     "dopo": "Nella Giornata Nazionale dell’OSS nasce OSSigeno puro, uno spazio fatto dagli operatori socio-sanitari per gli operatori socio-sanitari di KOS."
+     "dopo": "Per la Giornata Nazionale dell'OSS nasce OSSigeno puro, il mini sito con le voci degli operatori socio-sanitari di Anni Azzurri, Gruppo KOS."
     }
    }
   },
@@ -3269,6 +3277,10 @@
    "id": 887,
    "uri": "it/news-e-media/progetti-speciali/2025/giornata-mondiale-oss",
    "campi": {
+    "longtitle": {
+     "prima": "Giornata Mondiale dell'Operatore Socio Sanitario 2025 | KOS",
+     "dopo": "Giornata Nazionale dell'OSS 2025: il simbolo degli OSS | KOS"
+    },
     "description": {
      "prima": "In occasione della Giornata Nazionale degli OSS, abbiamo creato un simbolo che rappresenti i nostri oltre 3.000 Operatori Socio Sanitari e li accompagni in ogni attività.",
      "dopo": "Per la Giornata degli OSS il Gruppo KOS ha creato un simbolo che rappresenta i suoi oltre 3.000 Operatori Socio Sanitari e li accompagna nel lavoro."
@@ -3421,7 +3433,7 @@
     },
     "description": {
      "prima": "",
-     "dopo": "Ambulatorio cardio-metabolico del Gruppo KOS: un approccio multidisciplinare alla gestione del peso e alla prevenzione del rischio cardiovascolare."
+     "dopo": "Ambulatorio cardio-metabolico del Gruppo KOS: percorso clinico con visite specialistiche e monitoraggi per peso, alimentazione e salute del cuore."
     }
    }
   },
@@ -3575,7 +3587,7 @@
     },
     "description": {
      "prima": "Abbinata alla fisioterapia tradizionale, risulta avere un'efficacia significativa sulla riduzione dell’infiammazione e del dolore.",
-     "dopo": "Riabilitazione urologica e del pavimento pelvico: la diatermia (tecarterapia), abbinata alla fisioterapia, riduce infiammazione e dolore."
+     "dopo": "Riabilitazione del pavimento pelvico nei centri KOS per incontinenza, prolasso e post-chirurgia: chinesiterapia, biofeedback ed elettrostimolazione."
     }
    }
   },
