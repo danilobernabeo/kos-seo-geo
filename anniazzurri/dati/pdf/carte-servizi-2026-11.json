@@ -1,0 +1,186 @@
+{
+ "sito": "aa",
+ "descrizione": "Carte dei servizi nuove (edizione novembre 2026) consegnate il 4/11: file sorgente (s, relativo alla cartella caricata) -> percorso sul sito (p) e metadati per pdf-metadati.php.",
+ "pdf": [
+  {
+   "s": "EMILIA ROMAGNA/CDS CDI Biancospino - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/centro-diurno-integrato-anni-azzurri-biancospino/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – CDI Anni Azzurri Biancospino",
+   "d": "Carta dei servizi e regolamento interno del Centro Diurno Integrato Anni Azzurri Biancospino di Bagnolo in Piano (RE), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "EMILIA ROMAGNA/CDS CSRR Orchidea - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-il-giardino/Carta dei servizi CSRR Orchidea.pdf",
+   "t": "Carta dei servizi – CSRR Orchidea (Residenza Il Giardino)",
+   "d": "Carta dei servizi e regolamento interno del CSRR Orchidea, nella Residenza Anni Azzurri Il Giardino di Bagnolo in Piano (RE), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "EMILIA ROMAGNA/CDS RSA Ducale 1 - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-ducale-1/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Ducale 1",
+   "d": "Carta dei servizi e regolamento interno della Casa Residenza per Anziani Anni Azzurri Ducale 1 di Modena, edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "EMILIA ROMAGNA/CDS RSA Ducale 2 -Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-ducale-2-3/Carta dei servizi Ducale 2.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Ducale 2",
+   "d": "Carta dei servizi e regolamento interno della Casa Residenza per Anziani Anni Azzurri Ducale 2 di Modena, edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "EMILIA ROMAGNA/CDS RSA Ducale 3 -Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-ducale-2-3/Carta dei servizi Ducale 3.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Ducale 3",
+   "d": "Carta dei servizi e regolamento interno della Casa Residenza per Anziani Anni Azzurri Ducale 3 di Modena, edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "EMILIA ROMAGNA/CDS RSA Idice - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-idice/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Idice",
+   "d": "Carta dei servizi e regolamento interno della Residenza Anni Azzurri Idice di Castenaso (BO), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "EMILIA ROMAGNA/CDS RSA Il Giardino - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-il-giardino/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Il Giardino",
+   "d": "Carta dei servizi e regolamento interno della Casa Residenza Anziani Anni Azzurri Il Giardino di Bagnolo in Piano (RE), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "EMILIA ROMAGNA/CDS RSA Villa dei Ciliegi - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villa-dei-ciliegi/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Villa dei Ciliegi",
+   "d": "Carta dei servizi e regolamento interno della Casa Residenza Anziani Anni Azzurri Villa dei Ciliegi di Valsamoggia (BO), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "EMILIA ROMAGNA/CRA Villa Pineta - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villa-pineta/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Villa Pineta",
+   "d": "Carta dei servizi della Casa Residenza per Anziani Villa Pineta di Gaiato di Pavullo nel Frignano (MO), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "PIEMONTE/CDS RSA Borgomanero - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-borgomanero/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Borgomanero",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Borgomanero (NO), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "PIEMONTE/CDS RSA Carmagnola - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-carmagnola/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Carmagnola",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Carmagnola (TO), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "PIEMONTE/CDS RSA Cit Turin - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-cit-turin/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Cit Turin",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Cit Turin di Torino, edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "PIEMONTE/CDS RSA La Corte - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-la-corte/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri La Corte",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri La Corte di Marene (CN), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "PIEMONTE/CDS RSA Montanaro - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-montanaro/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Montanaro",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Montanaro (TO), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "PIEMONTE/CDS RSA Palladio - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-palladio/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Palladio",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Palladio di Dormelletto (NO), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "PIEMONTE/CDS RSA San Lorenzo - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-lorenzo/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri San Lorenzo",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri San Lorenzo di Gattinara (VC), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "PIEMONTE/CDS RSA Santena - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-santena/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Santena",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Santena (TO), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "PIEMONTE/CDS RSA Tonengo D'Asti - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-tonengo/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Tonengo d'Asti",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Tonengo d'Asti (AT), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "PIEMONTE/CDS RSA Villa San Vincenzo - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villa-san-vincenzo/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Villa San Vincenzo",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Villa San Vincenzo di Scarnafigi (CN), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "PIEMONTE/CDS RSA Volpiano - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-volpiano/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Volpiano",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Volpiano (TO), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  }
+ ],
+ "sospesi": [
+  {
+   "s": "EMILIA ROMAGNA/CDS Residenza Villa Olga - Nov26 - PDFA-1B.pdf",
+   "sospeso": "la pagina della residenza reindirizza (301) a Idice: decidere percorso e collegamento",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-villa-olga/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Villa Olga",
+   "d": "Carta dei servizi della Residenza Anni Azzurri Villa Olga di Bologna, residenza socio-assistenziale per pazienti psichiatrici cronici stabilizzati.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "LOMBARDIA/KOS AA HOSPICE MARTIN WEB.pdf",
+   "sospeso": "pieghevole di 4 pagine, non una carta dei servizi: decidere se sostituisce la carta o si aggiunge",
+   "p": "/assets/doc/strutture/hospice-beati-coniugi-martin/Carta dei servizi.pdf",
+   "t": "",
+   "d": "",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  }
+ ]
+}
