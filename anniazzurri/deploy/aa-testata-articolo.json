@@ -1,0 +1,11 @@
+{
+  "nome": "AA-17 testata degli articoli: larghezza massima 980 px (come le testate storiche) e sizes coerente; le immagini da 2000 px servono gli schermi ad alta densità",
+  "elements": [
+    {
+      "type": "template",
+      "name": "interna-articolo",
+      "file": "anniazzurri/elements/templates/interna-articolo.html",
+      "baseline": "anniazzurri/baseline/templates/interna-articolo.html"
+    }
+  ]
+}
