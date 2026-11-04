@@ -10,7 +10,8 @@
  *                 "sospesi":[...]}   (le voci in «sospesi» si elencano e non si toccano)
  *   Senza --scrivi è una PROVA: per ogni voce mostra file attuale (dimensione, data, md5) → nuovo (dimensione, pagine se
  *   leggibili), e si FERMA se il sorgente manca, non è un PDF, è cifrato, o se il percorso di destinazione non esiste
- *   (un percorso nuovo non è richiamato da nessuna pagina: solo con --nuovi). File identici: «GIÀ UGUALE», saltati.
+ *   (un percorso nuovo non è richiamato da nessuna pagina: solo con "nuovo": true nella voce o --nuovi; nelle cartelle
+ *   assets/doc/strutture/<alias>/ lo elenca da sé lo snippet docList della pagina). File identici: «GIÀ UGUALE», saltati.
  *   --scrivi: copia gli attuali in <backup> (default ~/backup-kos-seo-geo/AAAAMMGG-HHMMSS-pdf-sostituiti) con
  *   ripristino.json (md5 prima/dopo), poi scrive ogni nuovo file in modo atomico (temporaneo + rename), permessi 0644.
  *   --ripristina: rimette gli originali, solo se il file sul sito è ancora quello scritto da qui (salvo --forza); i file
@@ -93,13 +94,14 @@ foreach ($abb['pdf'] as $v) {
     if (!str_starts_with($testa, '%PDF-')) { echo "    FERMO: il sorgente non è un PDF\n"; $fermi++; continue; }
     if (str_contains($coda, '/Encrypt')) { echo "    FERMO: PDF cifrato\n"; $fermi++; continue; }
     $esiste = is_file($dest);
-    if (!$esiste && !isset($opt['nuovi'])) { echo "    FERMO: il percorso non esiste sul sito (nessuna pagina lo richiama; --nuovi per crearlo)\n"; $fermi++; continue; }
+    if (!$esiste && empty($v['nuovo']) && !isset($opt['nuovi'])) { echo "    FERMO: il percorso non esiste sul sito (nessuna pagina lo richiama; \"nuovo\": true nella voce, o --nuovi)\n"; $fermi++; continue; }
     if ($esiste && md5_file($dest) === md5_file($src)) { echo "    GIÀ UGUALE\n"; continue; }
     echo '    attuale: ' . ($esiste ? $umano(filesize($dest)) . ', ' . date('d/m/Y H:i', filemtime($dest)) . ', ' . $pagine($dest) . ' pagine, md5 ' . md5_file($dest) : '(nuovo percorso)') . "\n";
     echo '    nuovo:   ' . $umano(filesize($src)) . ', ' . $pagine($src) . ' pagine, ' . substr($testa, 0, 8) . "\n";
     $daFare[] = [$v, $src, $dest, $esiste];
 }
 foreach ($abb['sospesi'] ?? [] as $v) echo "\nSOSPESO    {$v['s']}\n    {$v['sospeso']}\n";
+foreach ($abb['esclusi'] ?? [] as $v) echo "\nESCLUSO    {$v['s']}\n    {$v['motivo']}\n";
 
 echo "\n== " . count($daFare) . ' da sostituire, ' . $fermi . ' fermi, ' . count($abb['sospesi'] ?? []) . " sospesi\n";
 if ($fermi) { echo "Nessuna scrittura: correggere i FERMO.\n"; exit(2); }

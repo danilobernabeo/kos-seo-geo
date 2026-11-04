@@ -1,6 +1,6 @@
 {
  "sito": "aa",
- "descrizione": "Carte dei servizi nuove (edizione novembre 2026) consegnate il 4/11: file sorgente (s, relativo alla cartella caricata) -> percorso sul sito (p) e metadati per pdf-metadati.php.",
+ "descrizione": "Carte dei servizi nuove e pieghevole dell'Hospice Beati Coniugi Martin (edizione novembre 2026) consegnate il 4/11: file sorgente (s, relativo alla cartella caricata) -> percorso sul sito (p) e metadati per pdf-metadati.php.",
  "pdf": [
   {
    "s": "EMILIA ROMAGNA/CDS CDI Biancospino - Nov26 - PDFA-1B.pdf",
@@ -161,26 +161,22 @@
    "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Volpiano (TO), edizione novembre 2026.",
    "a": "Anni Azzurri",
    "l": "it-IT"
-  }
- ],
- "sospesi": [
-  {
-   "s": "EMILIA ROMAGNA/CDS Residenza Villa Olga - Nov26 - PDFA-1B.pdf",
-   "sospeso": "la pagina della residenza reindirizza (301) a Idice: decidere percorso e collegamento",
-   "p": "/assets/doc/strutture/residenza-anni-azzurri-villa-olga/Carta dei servizi.pdf",
-   "t": "Carta dei servizi – Residenza Anni Azzurri Villa Olga",
-   "d": "Carta dei servizi della Residenza Anni Azzurri Villa Olga di Bologna, residenza socio-assistenziale per pazienti psichiatrici cronici stabilizzati.",
-   "a": "Anni Azzurri",
-   "l": "it-IT"
   },
   {
    "s": "LOMBARDIA/KOS AA HOSPICE MARTIN WEB.pdf",
-   "sospeso": "pieghevole di 4 pagine, non una carta dei servizi: decidere se sostituisce la carta o si aggiunge",
-   "p": "/assets/doc/strutture/hospice-beati-coniugi-martin/Carta dei servizi.pdf",
-   "t": "",
-   "d": "",
+   "p": "/assets/doc/strutture/hospice-beati-coniugi-martin/Pieghevole informativo.pdf",
+   "nuovo": true,
+   "t": "Pieghevole informativo – Hospice Beati Coniugi Martin",
+   "d": "Pieghevole dell'Hospice Beati Coniugi Martin di Milano: cure palliative, équipe, camere, presenza dei familiari e modalità di accesso.",
    "a": "Anni Azzurri",
    "l": "it-IT"
+  }
+ ],
+ "sospesi": [],
+ "esclusi": [
+  {
+   "s": "EMILIA ROMAGNA/CDS Residenza Villa Olga - Nov26 - PDFA-1B.pdf",
+   "motivo": "Villa Olga non ha pagina (301 verso Idice): non si pubblica (decisione di Danilo del 4/11)"
   }
  ]
 }
