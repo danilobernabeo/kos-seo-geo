@@ -44,6 +44,8 @@ Criterio di Danilo: si indicizza ciò che risponde a ricerche degli utenti. Deci
 | KOS | `villa-margherita-vicenza-psichiatria/tirocini-in-area-psichiatrica.pdf` (era indicizzabile) | 128 | 2 | Passa a noindex: pubblico di tirocinanti, nessun clic utile (`ESCLUDI_DOPO` in `genera-piano-pdf.py`) |
 | KOS | `ospedale-san-pancrazio/il-team.pdf`, `villa-azzurra/la-nostra-équipe-2026.pdf`; AA `santa-maria-in-chienti/Organizzazione.pdf` | 1.384, 204, 550 | 61, 5, 26 | Restano indicizzabili: rispondono a ricerche sui medici e sulla direzione delle strutture |
 
+Regole web KOS con i tirocini in noindex: stage e produzione il 5/11 (`curl -I`: tirocini `X-Robots-Tag: noindex`, `il-team.pdf` senza intestazione, home 200); file completi `kosgroup/files/web-rules/stage-2026-11-05.conf` e `produzione-2026-11-05.conf`, ripristino con `produzione-2026-11-05-prima.conf`.
+
 Proposte in attesa di conferma, già scritte nelle regole come righe commentate: 301 di `villa-azzurra/la-nostra-equipe-2025.pdf`
 (non più sul server, 15 clic) verso l'edizione 2026; 410 per la carta e il pieghevole di Biarella (struttura uscita dal
 gruppo, nessuna impressione da settembre 2025), insieme alla rimozione della regola `/rsa-biarella` dalle regole di produzione.
