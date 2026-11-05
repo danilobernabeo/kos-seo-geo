@@ -39,6 +39,20 @@ def leggi_regole(sito):
     if sito == 'aa' and os.path.exists(altro):
         for m in re.finditer(r'location = "([^"]+)" \{\s*return 301 (\S+);', open(altro, encoding='utf-8').read()):
             redirect.setdefault(m.group(1), urllib.parse.unquote(m.group(2)))
+    # redirect delle regole di produzione (ultima istantanea <sito>/files/web-rules/produzione-*.conf): location esatte e
+    # prefissi ^~ con return 301, scritti anche su più righe (es. cartella di Beata Corte verso Corte Orero)
+    cart = os.path.join(RADICE, SITI[sito][0], 'files', 'web-rules')
+    prod = sorted(x for x in os.listdir(cart) if x.startswith('produzione-') and x.endswith('.conf'))
+    prefissi = {}
+    if prod:
+        tp = open(os.path.join(cart, prod[-1]), encoding='utf-8').read()
+        for m in re.finditer(r'location\s+(=|\^~)\s+"?([^"\s{]+)"?\s*\{\s*return\s+30[18]\s+"?([^";\s]+)"?\s*;', tp):
+            op, p, dest = m.groups()
+            if op == '=':
+                redirect.setdefault(p, dest)
+            else:
+                prefissi[p] = dest
+    redirect['__prefissi__'] = prefissi
     regole = []
     for m in re.finditer(r'if \(\$uri (=|~\*|~) "([^"]+)"\) \{ set \$pdf_(robots|link) "((?:[^"\\]|\\.)*)"; \}', testo):
         op, val, cosa, valore = m.groups()
@@ -51,6 +65,9 @@ def stato(percorso, redirect, regole):
         return 'curriculum', ''
     if percorso in redirect:
         return 'redirect', redirect[percorso]
+    for pref, dest in redirect.get('__prefissi__', {}).items():
+        if percorso.startswith(pref):
+            return 'redirect', dest
     robots, link = 'noindex', ''
     for op, val, cosa, valore in regole:
         if op == '=':
