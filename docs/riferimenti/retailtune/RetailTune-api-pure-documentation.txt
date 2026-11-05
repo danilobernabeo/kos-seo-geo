@@ -1,0 +1,1508 @@
+Stores API - Server to Server API
+
+Get All Store
+GET "https://stores-demo.retailtune.com/endpoint/sl/list.json.php"
+
+This endpoint generates a JSON array containing all JSON objects representing the opened stores in Italian. The structure of the JSONs is the following:
+
+    array cta contains an array of objects representing call to actions (campaigns and promotions). It contains:
+
+        string title is the title of the campaign
+
+        string text is the text of the cta
+
+        string start is the start date of the campaign
+
+        string end is the end date of the campaign
+
+        string text_button is the text inside the button
+
+        string link is the link the cta points to
+
+        string img is the image url
+
+        string tab-img is the tablet image url
+
+        string mob-img is the mobile image url
+
+        string eventonload is the information for the onload event
+
+        string eventonclick is the information for the onclick event
+
+        string type is the type of cta (“campaign” or “promotion”)
+
+        string last-modified is the datetime (in ISO8601) of the last change to the JSON.
+
+    array reviews is an array of objects representing reviews of the store. It contains:
+
+        int rating the rating of the store given (1 to 5)
+
+        string createdTime the time the review was created in the format “day.month.year”
+
+        string author the author username of the review
+
+        string comment the comment of the review
+
+    array overlay: the structure is the same as cta but for overlay campaigns.
+
+    array attributes is an array of json objects describing the attributes active for the store.
+
+        string groupDisplayName is the display name of the group the attribute belongs to. It depends on language.
+
+        string enumValue is a comma separated list of values that complement the information regarding the ser-vice, e.g., if the attribute id is “pay_credit_card_types_accepted” then enumValue
+        will contain the kind of credit cards accepted. It depends on language.
+
+        string displayName is the display name, the human-readable name of the attribute. It depends on langua-ge.
+
+        string id is the id of the attribute, it does not depend on language.
+
+        String icon is the url of the icon if present. It is the empty string if the url is not present.
+
+    object store the store data, it contains:
+
+        string GASEND is a piece of information to send for analytics. For this endpoint it will always be “”.
+
+        object hours contains the fields “sun”, “mon”, “tue”, “wed”, “thu”, “fri”, “sat” (days of the week), each of which is associated with an object of the form:
+
+             string morningOpen the morning opening hour in the format “hh:mm”. It is be empty (“”) if the store is closed in the morning.
+
+             string morningClose the morning closing hour in the format “hh:mm”. It is be empty (“”) if the store is closed in the morning.
+
+             string eveningOpen the evening opening hour in the format “hh:mm”. It is be empty (“”) if the store is closed in the evening.
+
+             string eveningClose the evening closing hour in the format “hh:mm”. It is be empty (“”) if the store is closed in the evening.
+
+             boolean close whether the store is closed for that day or not
+
+        string address the address of the store
+
+        string address_1 the first address line
+
+        string address_2 the second address line
+
+        string district the district
+
+        string province the province code
+
+        string zipcode the zipcode
+
+        string country_code the country code
+
+        string country the country name
+
+        string city the city of the store
+
+        string title_near the title to display if the store is near the user
+
+        array custom_fields: array of key/value associations
+
+             string key (name)
+
+             string value (value)
+
+             examples
+
+                 key gbp_add_review_link -> google business profile link to add new review
+
+                 key gbp_add_review_qr_code -> link to QR code to add new review on google business profile
+
+                 key open_date_yyyy_mm_dd -> store opening date in google business profile
+
+        string link the url of the store page
+
+        string text_button_near the text of the button if the store is near the user
+
+        string servertime the datetime (in ISO8601) of the response of the server
+
+        string lon the longitude of the store in degrees (as a decimal number)
+
+        object media an object that contains the keys
+              string update_date the datetime of the last update of the media in ISO8601
+
+              array media contains objects of the form:
+
+                  string big the url of the big image (with width 1024 px)
+
+                  string mini the url of the small image (480x480 px)
+
+        string eventonload information for the onload event
+
+        string title the title
+
+        string type the type of store
+
+        string text_button the text for the button
+
+        array special contains the special opening/closing hours in the same format as in hours but with the addi-tional field date which contains a string with the date in the format “yyyy-mm-dd”.
+
+        string id the id of the store
+
+        string link_finder link for the product finder (inactive for Gabrielli)
+
+        string phone the phone number associated to the store
+
+        string eventonclick the information for the onclick event
+
+        string name the name of the store
+
+        string fuso the offset for the time zone
+
+        string fax the fax number associated to the store
+
+        string dayserver the day of the week of the server response as a number, with “monday” being “1”, “tues-day” “2”,…
+
+        string lat the latitude of the store in degrees expressed as a decimal number.
+
+        string whatsapp is the phone number used for whatsapp. It is the empty string if it is miss-ing.
+
+    string cta-intro is an introduction sentence for call to actions.
+
+
+
+Endpoint details 1 (standard)
+
+Path: /endpoint/sl/list.json.php
+
+Method and Input
+
+Method: GET
+Body: none
+Response Content-Type: application/json Response Code : 200 OK
+
+Authentication
+
+Basic Authentication
+Username: demo_endpoint_user
+Password: x3db7Zpz34QecqLTfiHz
+
+Response Example
+
+Here is an example of a response.
+
+
+  [{                                                                                                                                                                                               
+             "cta": [],
+             "last-modified": "2022-05-17T00:21:41",
+             "reviews": [
+                 {
+                     "createTime": "02.07.2021",
+                     "author": "Alessandro Cortone",
+                     "rating": 5,
+                     "comment": "bellissimo\n\n"
+                 },
+                 {
+                     "createTime": "18.05.2021",
+                     "author": "Francesco d'Angella",
+                     "rating": 4,
+                     "comment": "Gentili e disponibili con la clientela, capi di abbigliamento molto belli.\n\n"
+                 },
+                 {
+                     "createTime": "10.09.2020",
+                     "author": "anna maria mastrolia",
+                     "rating": 4,
+                     "comment": "Pantaloni in ecopelle molto trendy e grintosi. Jeans ok e anfibi veramente belli. Personale professionale e discreto.\n\n"
+                 },
+                 {
+                     "createTime": "18.07.2020",
+                     "author": "Antonella Castagna",
+                     "rating": 5,
+                     "comment": "Personale professionale, negozio ampio e assortito e ben collocato\n\n"
+                 },
+                 {
+                     "createTime": "17.12.2019",
+                     "author": "Lali Lali",
+                     "rating": 5,
+                     "comment": "luogo santo\n\n"
+                 },
+                 {
+                     "createTime": "30.06.2019",
+                     "author": "SIMONE SIMONE",
+                     "rating": 5,
+                     "comment": "Ok\n\n"
+                 },
+                 {
+                     "createTime": "10.06.2019",
+                     "author": "chiara colucci",
+                     "rating": 5,
+                     "comment": "bellissima boutique. Personale eccellente!!!\n\n"
+                 },
+                 {
+                     "createTime": "10.03.2019",
+                     "author": "Patrizia Colasanto",
+                     "rating": 5,
+                     "comment": "Bella Boutique...e personale Gentile.\n\n"
+                 },
+                 {
+                     "createTime": "12.01.2019",
+         "author": "Flo' Mincuzzi",                                                                                                               
+         "rating": 5,
+         "comment": "Negozio bellissimo il personale disponibile e gentilissimo noi ci siamo trovati molto bene !outfit super !😍👏👏👏\n\n"
+    },
+    {
+         "createTime": "11.12.2018",
+         "author": "Giacomo Colavitti",
+         "rating": 5,
+         "comment": "Personale molto gentile e preparato, negozio stupendo\n\n"
+    },
+    {
+         "createTime": "06.12.2018",
+         "author": "Bibi Love",
+         "rating": 5,
+         "comment": "Bello ma davvero costoso\n\n"
+    },
+    {
+         "createTime": "30.10.2017",
+         "author": "francesca guidoni",
+         "rating": 4,
+         "comment": "ottima esperienza d'acquisto: personale gentile, bellissimi i capi della nuova collezione, ottimo layout del negozio.\n\n"
+    },
+    {
+         "createTime": "23.10.2017",
+         "author": "Adnan Mordeniz",
+         "rating": 5,
+         "comment": "DEMO is a great store for women clothing..."
+    },
+    {
+         "createTime": "15.09.2017",
+         "author": "valentina grassi",
+         "rating": 5,
+         "comment": "come al solito vestiti bellissimi e di ottima qualità: staff gentile e di supporto. Tutto molto bene!\n\n"
+    }
+],
+"overlay": [],
+"attributes": [
+    {
+        "groupDisplayName": "Custom Services",
+        "enumValue": "",
+        "displayName": "Pickup in store",
+        "icon": "pickup_m.svg",
+        "id": "Pickup in store"
+    },
+    {
+        "groupDisplayName": "Custom Services",
+        "enumValue": "",
+        "displayName": "Fitting room",
+        "icon": "fitting-room_m.svg",
+        "id": "Fitting room"
+    },
+    {
+        "groupDisplayName": "Custom Services",
+        "enumValue": "",
+        "displayName": "Credit Cards",
+        "icon": "credit-cards_m.svg",
+        "id": "Credit Cards"
+    },
+    {
+        "groupDisplayName": "Custom Services",
+        "enumValue": "",
+        "displayName": "Abbigliamento",
+        "icon": "abbigliamento_m.svg",
+        "id": "Clothing"
+    },
+    {
+        "groupDisplayName": "Custom Services",
+        "enumValue": "",
+        "displayName": "Accessori",
+        "icon": "accessori_m.svg",
+        "id": "Accessories"
+    },
+    {
+        "groupDisplayName": "Custom Services",
+        "enumValue": "",
+        "displayName": "Wi-fi",
+        "icon": "wifi_m.svg",
+        "id": "Wi-fi"
+    }
+],
+"store": {
+    "GASEND": null,
+    "whatsapp": "+39 3358747340",
+    "country": "Italia",
+    "distance": "RADIALDISTANCEPIBA",
+    "city": "Bari",
+    "address_1": "Via Abate Gimma 69",
+    "link": "https:\/\/stores.DEMO.com\/it\/italia\/bari\/DEMO-boutique-bari",
+    "text_button_near": "Trova lo store più vicino e verifica disponibilità taglie e colori",
+    "lon": "16.869175",
+    "media": {
+        "media": [],
+        "update_date": "2022-03-18T17:38:51"
+    },
+    "eventonload": "DEMO001 - Bari, Via Abate Gimma 69 - IT-PDP-IT",
+    "title": "Trovi questo prodotto nello store",
+    "type": "DEMO STORE",
+    "text_button": "Maggiori informazioni sullo store",
+    "link_finder": "",
+    "province": "BA",
+    "id": "PIBA",
+    "fuso": "7200",
+    "fax": "",
+    "email": "store.bari@DEMO.com",
+    "lat": "41.124752",
+    "hours": {
+        "thu": {
+            "eveningClose": "",
+            "morningClose": "20:00",
+            "eveningOpen": "",
+            "morningOpen": "10:00",
+            "close": false
+        },
+        "tue": {
+            "eveningClose": "",
+                            "morningClose": "20:00",                                                                                                                                                               
+                            "eveningOpen": "",
+                            "morningOpen": "10:00",
+                            "close": false
+                       },
+                       "wed": {
+                           "eveningClose": "",
+                           "morningClose": "20:00",
+                           "eveningOpen": "",
+                           "morningOpen": "10:00",
+                           "close": false
+                       },
+                       "sat": {
+                           "eveningClose": "",
+                           "morningClose": "20:00",
+                           "eveningOpen": "",
+                           "morningOpen": "10:00",
+                           "close": false
+                       },
+                       "fri": {
+                           "eveningClose": "",
+                           "morningClose": "20:00",
+                           "eveningOpen": "",
+                           "morningOpen": "10:00",
+                           "close": false
+                       },
+                       "sun": {
+                           "eveningClose": "20:00",
+                           "morningClose": "13:00",
+                           "eveningOpen": "17:00",
+                           "morningOpen": "10:30",
+                           "close": false
+                       },
+                       "mon": {
+                           "eveningClose": "",
+                           "morningClose": "20:00",
+                           "eveningOpen": "",
+                           "morningOpen": "10:00",
+                           "close": false
+                       }
+                  },
+                  "address": "Via Abate Gimma 69, 70121 Bari BA",
+                  "address 2": "",
+                  "title_near": "Il centro CRLAB più vicino a te",
+                  "custom_fields": [
+                      {
+                          "name": "gbp_add_review_link",
+                          "value": "https:/domains/v2.0/permalinks/gbp-post-review?storeId=1"
+                      },
+                      {
+                          "name": "gbp_add_review_qr_code",
+                          "value": "https://domains/v2.0/qr-codes/gbp-post-review/OVS/1.png"
+                      }
+                  ],
+                  "servertime": "2024-07-09T14:27:57+0200",
+                  "zipcode": "70121",
+                  "special": [],
+                  "country_code": "IT",
+                  "phone": "+390805249997",
+                  "district": "",
+                  "eventonclick": "DEMO001 - Bari, Via Abate Gimma 69 - IT-PDP-IT",
+                  "name": "DEMO Boutique",
+                  "dayserver": "2"
+             },
+             "cta_intro": ""
+         }
+  ...]
+
+
+
+Endpoint details 2 (standard)
+
+Path: /endpoint/sl/list.json.php
+
+Method and Input
+
+Method: POST
+Body: {"types":<array<>, "province":, "attributes":<array<>, "city":, "lang":, “modi-fied-since”:} or “”
+
+where:
+
+input.types is an array containing the types of store, corresponding to the field “name” of the jsons returned by list.type.php. Only stores with one of the specified type will be included in the result.
+If it is missing or the empty string then no filter is applied regarding to the store type. If it is set to [] the result will always be []. It is case-sensitive.
+
+input.province is the two-letter province code, corresponding to the field “sigla” of the jsons returnd by list.province.php. Only stores in the specified province will be included in the result. If it is
+missing or the empty string then no filter is applied regarding the store province. If it is set to an unknown type the result will always be []. It is case-insensitive.
+
+input.attributes is an array containing the id of some attributes/services, corresponding to the field “id” of the jsons re-turned by list.attribute.php. Only stores that have at least one of the specified
+attributes/services will be included in the result. If it is missing or the empty string then no filter is applied regarding the store attributes. If it is set to [] the result will always be []. It is case-
+sensitive.
+
+input.city is the city of the stores, corresponding to the field “citta” of the jsons returned by list.city.php. Only stores in the specified city will be included in the result. If it is missing or the empty
+string then no filter is applied regarding the store city. If it is set to an unknown city then the result will always be []. It is case-insensitive.
+
+input.lang is the two-letter code of a language, case-insensitive, e.g., “IT”, “it”, “en”, “EN”. If it is unspecified or the empty string then the default language will be used. The default language is “it”. If
+the language is not supported the result will be [].
+
+input.modified-since is the datetime in ISO8601 of the last change to the json. Only stores that have been modified after (or in) the specified datetime will be included in the result. It corresponds to
+the field “last-modified” of the jsons re-turned by this endpoint.
+
+Authentication
+
+Basic Authentication
+Username: demo_endpoint_user
+Password: x3db7Zpz34QecqLTfiHz
+
+Response
+
+Response Content-Type: application/json Response Code : 200 OK
+Output: A JSON array containing all JSON objects representing the stores in the required language and that satisfy all the filters.
+
+
+
+Endpoint details 3 (standard)
+
+Path: /endpoint/sl/list.json.gzip.php
+
+Method and Input
+
+Method: GET
+Body: none
+
+Authentication
+
+Basic Authentication
+Username: demo_endpoint_user
+Password: x3db7Zpz34QecqLTfiHz
+
+Response
+
+Response Content-Type: application/json Response Code : 200 OK
+
+Ouput: A zip file called “all-stores-.zip” containing a single file called “all-stores-.json” where “” is the language code, for example “it”, in which case the file name is “all-stores-it.json”. The json inside
+the zip is the same json obtained by calling list.json.php in GET except for the fact that the properties “dayserver” and “servertime” are set to the empty string (“”).
+
+
+
+Endpoint details 4 (standard)
+
+Path: /endpoint/sl/list.json.gzip.php
+
+Method and Input
+
+Method: POST
+Body: {“lang”: } or “”
+
+where:
+
+input.lang is the two-letter code of a language, case-insensitive, e.g., “IT”, “it”, “en”, “EN”.
+
+Authentication
+
+Basic Authentication
+Username: demo_endpoint_user
+Password: x3db7Zpz34QecqLTfiHz
+
+Response
+
+Response Content-Type: application/json Response Code : 200 OK
+
+Ouput: A zip file called “all-stores-.zip” containing a single file called “all-stores-.json” where “” is the language code, for example “it”, in which case the file name is “all-stores-it.json”. The json inside
+the zip is the same json obtained by calling list.json.php in POST with the same input except for the fact that the properties “dayserver” and “servertime” are set to the empty string (“”). If the
+language specified is not known the result is [].
+
+
+
+Endpoint details 5 (customization)
+
+Path: /endpoint/sl/list.json.php?allstore=true
+
+Method and Input
+
+Method: GET
+Body: none
+
+Authentication
+
+Basic Authentication
+Username: demo_endpoint_user
+Password: x3db7Zpz34QecqLTfiHz
+
+Response
+
+Response Content-Type: application/json Response Code : 200 OK
+
+This personalization consents to view all stores
+
+In the output we inserted the information
+
+"status": "open|closed|will_open_soon|temporarily_closed"
+
+
+
+Endpoint details 6 (customization)
+
+Path: /endpoint/sl/list.json.php?allstore=true
+
+Method and Input
+
+Method: GET
+Body: none
+Header : "API-KEY: AA66E5C1-2142-46D7-B502-40AA717DA2E8"
+
+Authentication
+
+Basic Authentication
+Username: demo_endpoint_user
+Password: x3db7Zpz34QecqLTfiHz
+
+Response
+
+Response Content-Type: application/json Response Code : 200 OK
+
+This personalization consents to view all stores and prefilter type of stores using an API KEY
+In the output we inserted the information
+
+"status": "open|closed|will_open_soon|temporarily_closed"
+
+
+
+
+Get All Attributes
+GET "https://stores-demo.retailtune.com/endpoint/sl/list.attribute.php "
+
+This endpoint generates a JSON array containing all JSON objects representing the attributes for the stores:
+
+      array attributes is an array of json objects describing the attributes active for the store.
+
+            string groupDisplayName is the display name of the group the attribute belongs to. It depends on language.
+
+            string enumValue is a comma separated list of values that complement the information regarding the ser-vice, e.g., if the attribute id is “pay_credit_card_types_accepted” then enumValue
+            will contain the kind of credit cards accepted. It depends on language.
+
+            string displayName is the display name, the human-readable name of the attribute. It depends on langua-ge.
+
+            string id is the id of the attribute, it does not depend on language.
+
+            String icon is the url of the icon if present. It is the empty string if the url is not present.
+
+
+
+Response Example
+
+  [
+        {
+               "groupDisplayName": "Custom Services",
+               "enumValue": "",
+               "displayName": "Pickup in store",
+               "icon": "pickup_m.svg",
+               "id": "Pickup in store"
+        },
+        {
+               "groupDisplayName": "Custom Services",
+               "enumValue": "",
+               "displayName": "Fitting room",
+               "icon": "fitting-room_m.svg",
+               "id": "Fitting room"
+        },
+        ...
+        ]
+
+
+
+Endpoint details 1 (standard)
+
+Path: /endpoint/sl/list.attribute.php
+
+Method and Input
+
+Method: GET
+Body: none
+
+Authentication
+
+Basic Authentication
+Username: demo_endpoint_user
+Password: x3db7Zpz34QecqLTfiHz
+
+Response
+
+Response Content-Type: application/json Response Code : 200 OK
+
+Output: A JSON array containing JSON objects representing all attributes. The response is of the form:
+
+
+  [
+        {
+               "groupDisplayName": <string>,
+               "enumValue": <string>,
+               "displayName": <string>,
+             "icon": <string>
+               "id": <string>
+        },
+  …
+  ]
+
+
+Only those Google My Business attributes that are active for at least one store will be inserted in the returned JSON array. All services will be put in the returned JSON array, even those inactive for
+every store. The “groupDisplayName” of services is “Custom Services”, their “enumValue” is always “”, their “displayName” is the name of the service, their “id” is the id and their “icon” is the url of
+the icon of the service (if present, it is the empty string otherwise). The language of the result is Italian.
+
+
+
+Endpoint details 2 (standard)
+
+Path: /endpoint/sl/list.attribute.php
+
+Method and Input
+
+Method: POST Body: A JSON Object of the form {“lang”: } or “” where:
+
+input.lang is the two-letter code of a language, case-insensitive, e.g., “IT”, “it”, “en”, “EN”.
+
+Authentication
+
+Basic Authentication
+Username: demo_endpoint_user
+Password: x3db7Zpz34QecqLTfiHz
+
+Response
+
+Response Content-Type: application/json Response Code : 200 OK
+
+Output: The same as Method: Get, but:
+If input.lang is specified and does not correspond to a valid known language then the empty JSON array is returned, i.e. []
+
+If input.lang is specified then the result is the same as Method: Get but with the proper translations for the selected language.
+
+
+
+
+Get All City
+GET "https://stores-demo.retailtune.com/endpoint/sl/list.city.php"
+
+This endpoint generates a JSON array containing JSON objects representing all the cities with their respective provinces in Italian. The jsons will be ordered lexicographically by province and for
+each province the jsons will be ordered lexicographically by city.
+
+
+
+Response Example
+
+     [
+         {
+               "sigla": "BA",
+               "citta": "Bari"
+         },
+         {
+               "sigla": "BA",
+               "citta": "Palese"
+         },
+         ...
+         ]
+
+
+
+Endpoint details 1 (standard)
+
+Path: /endpoint/sl/list.city.php
+
+Method and Input
+
+Method: GET
+Body: none
+
+Authentication
+
+Basic Authentication
+Username: demo_endpoint_user
+Password: x3db7Zpz34QecqLTfiHz
+
+Response
+
+Response Content-Type: application/json Response Code : 200 OK
+
+Output: A JSON array containing JSON objects representing all the cities with their respective provinces in Italian. The jsons will be ordered lexicographically by province and for each province the
+jsons will be ordered lexicographically by city. The JSON objects in the array are of the form
+
+
+     {
+         “sigla”: <string>,
+         “citta”: <string>
+     }
+
+
+where “sigla” is the two letter code of the province of the city, for italian cities, the empty string otherwise. “citta” is the name of the city.
+
+
+
+Endpoint details 2 (standard)
+
+Path: /endpoint/sl/list.city.php
+
+Method and Input
+
+Method: POST Body: A JSON Object of the form { “code” : , “lang”: } or “” where:
+
+input.code is the code of a province, case-insensitive, e.g., “PR”, “PA”, “pr”, “pa”.
+
+input.lang is the two-letter code of a language, case-insensitive, e.g., “IT”, “it”, “en”, “EN”.
+
+Authentication
+
+Basic Authentication
+Username: demo_endpoint_user
+Password: x3db7Zpz34QecqLTfiHz
+
+Response
+
+Response Content-Type: application/json Response Code : 200 OK
+
+Output: A JSON array containing JSON objects representing all the cities with their respective provinces in Italian.
+
+If input.code is unspecified or is the empty string then no city will be filtered out.
+
+If input.code is the code (case-insensitive) of a province that has at least one store then the output JSON Array will contain all and only the cities in the province input.code.
+
+If input.code is not the code (case-insensitive) of a province that has at least one store (or is not the code of a province at all) and is not the empty string then the result is the empty JSON array, i.e.
+[]
+
+If input.lang is specified and does not correspond to a valid known language then the empty JSON array is returned, i.e. []
+
+If input.lang is specified then the city names will be returned with the most appropriate name (language-wise) in the retailtune database. The name of the city can either be in the specified
+language, in english or in italian depending on the availability of the translation in the database. No guarantee is given on which of the three choices will be made or on the persistence of said
+choice.
+
+The jsons will be ordered lexicographically by province and for each province the jsons will be ordered lexicographically by city. The JSON objects in the array are of the form { “sigla”: , “citta”: }
+
+
+
+
+Get All Province
+GET "https://stores-demo.retailtune.com/endpoint/sl/list.province.php"
+This endpoint generates a JSON array containing JSON objects representing all the provinces with their respective province codes. Province names will be in italian. The jsons will be ordered
+lexicographically by province.
+
+
+
+Response Example
+
+  [
+       {
+             "sigla": "BA",
+             "nome": "Bari"
+       },
+       {
+             "sigla": "BG",
+             "nome": "Bergamo"
+       },
+       ...
+       ]
+
+
+
+Endpoint details 1 (standard)
+
+Path: /endpoint/sl/list.province.php
+
+Method and Input
+
+Method: GET
+Body: none
+
+Authentication
+
+Basic Authentication
+Username: demo_endpoint_user
+Password: x3db7Zpz34QecqLTfiHz
+
+Response
+
+Response Content-Type: application/json Response Code : 200 OK
+
+Output: A JSON array containing JSON objects representing all the provinces with their respective province codes. Province names will be in italian. The jsons will be ordered lexicographically by
+province. The JSON objects in the array are of the form
+
+
+  {
+       “sigla”: <string>,
+       “nome”: <string>
+  }
+
+
+where “sigla” is the two letter code of the province and “nome” is the name of the province.
+
+
+
+Endpoint details 2 (standard)
+
+Path: /endpoint/sl/list.province.php
+
+Method and Input
+
+Method: POST Input: same as Method: GET
+
+Authentication
+
+Basic Authentication
+Username: demo_endpoint_user
+Password: x3db7Zpz34QecqLTfiHz
+
+Response
+
+Output code: same as Method: GET
+Output: same as Method: GET
+
+
+
+
+Get All Type
+GET "https://stores-demo.retailtune.com/endpoint/sl/list.type.php"
+
+This endpoint generates a JSON array containing JSON objects representing all the store types.
+
+
+
+Response Example
+
+  [
+       {
+             "name": "DEMO STORE",
+             "label": "DEMO STORE"
+       },
+       {
+             "name": "DEMO SHOWROOM",
+             "label": "DEMO SHOWROOM"
+       },
+       {
+             "name": "DEMO TRAVEL",
+             "label": "DEMO TRAVEL"
+       }
+       ]
+
+
+
+Endpoint details 1 (standard)
+
+Path: /endpoint/sl/list.type.php
+
+Method and Input
+
+Method: GET
+Body: none
+Authentication
+
+Basic Authentication
+Username: demo_endpoint_user
+Password: x3db7Zpz34QecqLTfiHz
+
+Response
+
+Response Content-Type: application/json Response Code : 200 OK
+
+Output: A JSON array containing JSON objects representing all the store types
+
+
+  {
+       “name”: <string>,
+       “label”: <string>
+  }
+
+
+
+Endpoint details 2 (standard)
+
+Path: /endpoint/sl/list.type.php
+
+Method and Input
+
+Method: POST
+Input: same as Method: GET
+
+Authentication
+
+Basic Authentication
+Username: demo_endpoint_user
+Password: x3db7Zpz34QecqLTfiHz
+
+Response
+
+Output code: same as Method: GET
+Output: same as Method: GET
+
+
+
+
+Get Nearest Store
+GET "https://stores-demo.retailtune.com/endpoint/sl/index.php"
+
+This endpoint generates a JSON of the nearest store from (latitude, longitude) that respects every query. If there is no such store then [] is re-turned. If storeid is specified and corresponds to a
+valid store id then that store will be returned regardless of other queries.
+
+
+
+Response Example
+
+  {                                                                                                                                                                                                      
+      "cta": [],
+      "last-modified": "2022-03-21T17:19:59",
+      "reviews": [
+          {
+              "createTime": "18.09.2021",
+              "author": "Donatella Ioli",
+              "rating": 5,
+              "comment": "Posta molto accogliente e soprattutto personale gentilissimo!!!!\n\n"
+          },
+          {
+              "createTime": "16.12.2020",
+              "author": "myillusion3",
+              "rating": 5,
+              "comment": "La boutique più bella a Roma e quella con il personale più simpatico e qualificato. Consigliatissima\n\n"
+          },
+          {
+              "createTime": "29.09.2020",
+              "author": "Valerio Speziale",
+              "rating": 5,
+              "comment": "inzioamo corsi formazioni con tutti ragazzi codividere a tutti a voi\n\n"
+          },
+          {
+              "createTime": "22.07.2019",
+              "author": "Fabio Ciminelli",
+              "rating": 5,
+              "comment": "Personale gentile, cordiale e soprattutto, cosa rara al giorno d'oggi, professionale.\n\n"
+          },
+          {
+              "createTime": "09.04.2019",
+              "author": "Bessy Avgeri",
+              "rating": 5,
+              "comment": "Bellissimo negozio\n\n"
+          },
+          {
+              "createTime": "26.03.2019",
+              "author": "юрий кузнецов",
+              "rating": 5,
+              "comment": "\nМазин в котором кредитка плачет. Магазин конечно дело вкуса и кошелька. У нас в компании у девушки был день рождения мы им это сказали ини
+  сразу принесли бокалы 2 бут. Прозеко и нас угостили понятно что если бы не было покупки то никто бы не угощал. Но всеавно приятно - персонал спел 'хепи.. ю'"
+          },
+          {
+              "createTime": "17.10.2018",
+              "author": "Chiara Solari",
+              "rating": 5,
+              "comment": "Molto bello il negozio di Via Due Macelli degno dell'ottimo brand che rappresenta.. il personale di queso punto vendita è davvero molto
+  cortese e gentile.\n\n"
+          },
+          {
+              "createTime": "12.10.2018",
+              "author": "Francesca Ienne",
+              "rating": 5,
+              "comment": "Professionali e cortesi ... ottimo negozio con collezioni sempre fresche\n\n"
+          },
+          {
+              "createTime": "25.08.2018",
+              "author": "Marianna Moretti",
+              "rating": 5,
+            "comment": "Professionalità e disponibilità del personale si sposano bene con la qualità e l’eccellenza di questo marchio. Negozio moderno, ben tenuto e 
+camerini molto puliti.\n\n"
+        }
+    ],
+    "overlay": [],
+    "attributes": [
+        {
+            "groupDisplayName": "Custom Services",
+            "enumValue": "",
+            "displayName": "Pickup in store",
+            "icon": "pickup_m.svg",
+            "id": "Pickup in store"
+        },
+        {
+            "groupDisplayName": "Custom Services",
+            "enumValue": "",
+            "displayName": "Fitting room",
+            "icon": "fitting-room_m.svg",
+            "id": "Fitting room"
+        },
+        {
+            "groupDisplayName": "Custom Services",
+            "enumValue": "",
+            "displayName": "Credit Cards",
+            "icon": "credit-cards_m.svg",
+            "id": "Credit Cards"
+        },
+        {
+            "groupDisplayName": "Custom Services",
+            "enumValue": "",
+            "displayName": "Abbigliamento",
+            "icon": "abbigliamento_m.svg",
+            "id": "Clothing"
+        },
+        {
+            "groupDisplayName": "Custom Services",
+            "enumValue": "",
+            "displayName": "Accessori",
+            "icon": "accessori_m.svg",
+            "id": "Accessories"
+        },
+        {
+            "groupDisplayName": "Custom Services",
+            "enumValue": "",
+            "displayName": "Wi-fi",
+            "icon": "wifi_m.svg",
+            "id": "Wi-fi"
+        }
+    ],
+    "store": {
+        "GASEND": null,
+        "whatsapp": "+39 3357746469",
+        "country": "Italia",
+        "distance": "125.77024966876",
+        "city": "Roma",
+        "address_1": "Via due Macelli 90\/92\/94",
+        "link": "https:\/\/stores.DEMO.com\/it\/italia\/roma\/DEMO-boutique-roma-via-due-macelli",
+        "text_button_near": "Trova lo store più vicino e verifica disponibilità taglie e colori",
+        "lon": "12.4846255",
+        "media": {
+            "media": [],
+            "update_date": "2022-03-21T17:20:00"
+        },
+        "eventonload": "DEMO049 - Roma, Via due Macelli 90\/92\/94 - IT-PDP-
+IT|58jCdnzIWobE7f3oqnuZLlBVazooHr/2XBi/JIf7bK4HNQ7b2/xNeP063/OpViiaoUhHbyM8XFEV781KGf+HVIneAXSlny1qZJYde/tt8zS7bA6Pxh5+9I0uPK/0dR5l",
+        "title": "Trovi questo prodotto nello store",
+        "type": "DEMO STORE",
+        "text_button": "Maggiori informazioni sullo store",
+        "link_finder": "",
+        "province": "RM",
+        "id": "ZCR2",
+        "fuso": "7200",
+        "fax": "",
+        "email": "store.romaduemacelli@DEMO.com",
+        "lat": "41.9037767",
+        "hours": {
+            "thu": {
+                "eveningClose": "",
+                "morningClose": "19:30",
+                "eveningOpen": "",
+                "morningOpen": "11:00",
+                "close": false
+            },
+            "tue": {
+                "eveningClose": "",
+                "morningClose": "19:30",
+                "eveningOpen": "",
+                "morningOpen": "11:00",
+                "close": false
+            },
+            "wed": {
+                "eveningClose": "",
+                "morningClose": "19:30",
+                "eveningOpen": "",
+                "morningOpen": "11:00",
+                "close": false
+            },
+            "sat": {
+                "eveningClose": "",
+                "morningClose": "19:30",
+                "eveningOpen": "",
+                "morningOpen": "11:00",
+                "close": false
+            },
+            "fri": {
+                "eveningClose": "",
+                "morningClose": "19:30",
+                "eveningOpen": "",
+                "morningOpen": "11:00",
+                "close": false
+            },
+            "sun": {
+                "eveningClose": "19:30",
+                "morningClose": "14:30",
+                "eveningOpen": "15:00",
+                      "morningOpen": "11:00",                                                                                                                                                                      
+                      "close": false
+                  },
+                  "mon": {
+                      "eveningClose": "",
+                      "morningClose": "19:30",
+                      "eveningOpen": "",
+                      "morningOpen": "11:00",
+                      "close": false
+                  }
+            },
+            "address": "Via due Macelli 90\/92\/94, 00187 Roma RM",
+            "address 2": "",
+            "title_near": "Il centro CRLAB più vicino a te",
+            "custom_fields": [
+                    {
+                        "name": "gbp_add_review_link",
+                        "value": "https:/domains/v2.0/permalinks/gbp-post-review?storeId=1"
+                    },
+                    {
+                        "name": "gbp_add_review_qr_code",
+                        "value": "https://domains/v2.0/qr-codes/gbp-post-review/OVS/1.png"
+                    }
+                ],
+            "servertime": "2024-11-05T23:07:31+0100",
+            "zipcode": "00187",
+            "special": [],
+            "country_code": "IT",
+            "phone": "+390669202091",
+            "district": "",
+            "eventonclick": "DEMO049 - Roma, Via due Macelli 90\/92\/94 - IT-PDP-IT",
+            "name": "DEMO Boutique",
+            "dayserver": "2"
+       },
+       "cta_intro": ""
+  }
+
+
+
+Endpoint details 1 (standard)
+
+Path: /endpoint/sl/index.php
+
+Method and Input
+
+Method: GET
+NOT SUPPORTED
+
+
+
+Endpoint details 2 (standard)
+
+Path: /endpoint/sl/index.php
+
+Method and Input
+
+Method: POST
+Input: A JSON Object of the form
+
+
+  {
+       "user": {
+           "latitude": <float>,
+           "longitude": <float>,
+           "accuracy": <integer>,
+           "device": <string>,
+           "session": <string>,
+           "radius": <integer>
+       },
+       "types": <array<<string>> ,
+       "province": <string>,
+       "attributes": <array<<string>>,
+       "city": <string>,
+       "lang": <string>,
+       “modified-since”: <string>,
+       “storeid”: <string>
+  }
+  or “”
+
+
+where: input.user.latitude is the latitude expressed in degrees.
+
+input.user.longitude is the longitude expressed in degrees.
+
+input.user.accuracy is the accuracy of the position expressed in meters.
+
+input.user.device is the kind of device the user is using, e.g., “desktop”, “mobile”, “tablet”.
+
+input.user.session is the session token.
+
+input.user.radius is the maximum radius from the point (latitude, longitude) expressed in meters. Only the stores that are inside the radius will be included in the result. If no radius is given the
+dafult value is 100000 (100km).
+
+input.types is an array containing the types of store, corresponding to the field “name” of the jsons returned by list.type.php. Only stores with one of the specified type will be included in the result.
+If it is missing or the empty string then no filter is applied regarding to the store type. If it is set to [] the result will always be []. It is case-sensitive.
+
+input.province is the two-letter province code, corresponding to the field “sigla” of the jsons returnd by list.province.php. Only stores in the specified province will be included in the result. If it is
+missing or the empty string then no filter is applied regarding the store province. If it is set to an unknown type the result will always be []. It is case-insensitive.
+
+input.attributes is an array containing the id of some attributes/services, corresponding to the field “id” of the jsons re-turned by list.attribute.php. Only stores that have at least one of the specified
+attributes/services will be included in the result. If it is missing or the empty string then no filter is applied regarding the store attributes. It is case-sensitive.
+
+input.city is the city of the stores, corresponding to the field “citta” of the jsons returned by list.city.php. Only stores in the specified city will be included in the result. If it is missing or the empty
+string then no filter is applied regarding the store city. If it is set to an unknown city then the result will always be []. It is case-insensitive.
+
+input.lang is the two-letter code of a language, case-insensitive, e.g., “IT”, “it”, “en”, “EN”. If it is unspecified or the empty string then the default language will be used. The default language is “it”. If
+the language is not supported the result will be [].
+
+input.modified-since is the datetime in ISO8601 of the last change to the json. Only stores that have been modified after (or in) the specified datetime will be included in the result. It corresponds to
+the field “last-modified” of the jsons re-turned by this endpoint.
+input.storeid is the id of the store to be retrieved and corresponds to the id field of the returned JSON. If it is specified and is not the empty string and corresponds to a valid store then every other
+query will be ignored and the requested store will be returned. If it is specified and is not the empty string and is not a valid store then [] is returned.
+
+Authentication
+
+Basic Authentication
+Username: demo_endpoint_user
+Password: x3db7Zpz34QecqLTfiHz
+
+Response
+
+Output code: 200 OK
+Output: The JSON of the nearest store from (latitude, longitude) that respects every query. If there is no such store then [] is returned. If storeid is specified and corresponds to a valid store id then
+that store will be returned regardless of other queries. See the specification of list.json.php for the explanation of the returned json. The json produced by this endpoint and by list.json.php differ in
+the fact that for this endpoint the field GASEND is not the empty string but is “CTA_IP” if in-put.accuracy=-1 or “CTA” otherwise and in other minor details.
+
+
+
+
+Locator
+GET "https://stores-demo.retailtune.com/endpoint/sl/locator.php"
+
+This endpoint generates a JSON array containing JSON objects representing all the store types.
+
+
+
+Response Example
+
+  [                                                                                                                                                                                                       
+       {
+          "cta": [],
+          "last-modified": "2021-12-14T18:14:27",
+          "reviews": [
+              {
+                  "createTime": "19.12.2017",
+                  "author": "laura mora",
+                  "rating": 4,
+                  "comment": "preso LoveBag di pelle per regalo di natale: prodotto molto elegante.\n\n"
+              }
+          ],
+          "overlay": [],
+          "attributes": [
+              {
+                  "groupDisplayName": "Custom Services",
+                  "enumValue": "",
+                  "displayName": "Pickup in store",
+                  "icon": "pickup_m.svg",
+                  "id": "Pickup in store"
+              },
+              {
+                  "groupDisplayName": "Custom Services",
+                  "enumValue": "",
+                  "displayName": "Fitting room",
+                  "icon": "fitting-room_m.svg",
+                  "id": "Fitting room"
+              },
+              {
+                  "groupDisplayName": "Custom Services",
+                  "enumValue": "",
+                  "displayName": "Credit Cards",
+                  "icon": "credit-cards_m.svg",
+                  "id": "Credit Cards"
+              },
+              {
+                  "groupDisplayName": "Custom Services",
+                  "enumValue": "",
+                  "displayName": "Abbigliamento",
+                  "icon": "abbigliamento_m.svg",
+                  "id": "Clothing"
+              },
+              {
+                  "groupDisplayName": "Custom Services",
+                  "enumValue": "",
+                  "displayName": "Accessori",
+                  "icon": "accessori_m.svg",
+                  "id": "Accessories"
+              },
+              {
+                  "groupDisplayName": "Custom Services",
+                  "enumValue": "",
+                  "displayName": "Wi-fi",
+                  "icon": "wifi_m.svg",
+                  "id": "Wi-fi"
+              }
+          ],
+          "store": {
+              "GASEND": null,
+              "whatsapp": "+39 3666333003",
+              "country": "Italia",
+              "distance": "2.9377544817889",
+              "city": "Milano",
+              "address_1": "Via Belfiore 7",
+              "link": "https:\/\/stores.DEMO.com\/it\/italia\/milano\/DEMO-boutique-milano-belfiore",
+              "text_button_near": "Trova lo store più vicino e verifica disponibilità taglie e colori",
+              "lon": "9.15825",
+              "media": {
+                  "media": [],
+                  "update_date": "2021-12-14T18:14:23"
+              },
+              "eventonload": "DEMO019 - Milano, Via Belfiore 7 - IT-PDP-
+  IT|58jCdnzIWobE7f3oqnuZLlBVazooHr/2ElyAFCUtVmDTKvvy3Ew1/Sl69wnzluX4X0/4te9dmppdGx95kbVX1xc8wlt+1sJNK2UvJWgIcU544Bie/cS6w/bOLl9+7ctk",
+              "title": "Trovi questo prodotto nello store",
+              "type": "DEMO STORE",
+              "text_button": "Maggiori informazioni sullo store",
+              "link_finder": "",
+              "province": "MI",
+              "id": "LOM6",
+              "fuso": "7200",
+              "fax": "",
+              "email": "milanobelfiore@DEMOmail.com",
+              "lat": "45.467515",
+              "hours": {
+                     "thu": {                                                                  
+                         "eveningClose": "19:30",
+                         "morningClose": "01:30",
+                         "eveningOpen": "15:00",
+                         "morningOpen": "09:30",
+                         "close": false
+                     },
+                     "tue": {
+                         "eveningClose": "19:30",
+                         "morningClose": "01:30",
+                         "eveningOpen": "15:00",
+                         "morningOpen": "09:30",
+                         "close": false
+                     },
+                     "wed": {
+                         "eveningClose": "19:30",
+                         "morningClose": "01:30",
+                         "eveningOpen": "15:00",
+                         "morningOpen": "09:30",
+                         "close": false
+                     },
+                     "sat": {
+                         "eveningClose": "19:30",
+                         "morningClose": "01:30",
+                         "eveningOpen": "15:00",
+                         "morningOpen": "09:30",
+                         "close": false
+                     },
+                     "fri": {
+                         "eveningClose": "19:30",
+                         "morningClose": "01:30",
+                         "eveningOpen": "15:00",
+                         "morningOpen": "09:30",
+                         "close": false
+                     },
+                     "sun": {
+                         "eveningClose": "",
+                         "morningClose": "",
+                         "eveningOpen": "",
+                         "morningOpen": "",
+                         "close": true
+                     },
+                     "mon": {
+                         "eveningClose": "",
+                         "morningClose": "19:30",
+                         "eveningOpen": "",
+                         "morningOpen": "15:00",
+                         "close": false
+                     }
+                 },
+                 "address": "Via Belfiore 7, 20145 Milano MI",
+                 "address 2": "",
+                 "title_near": "Il centro CRLAB più vicino a te",
+                 "custom_fields": [
+                     {
+                         "name": "gbp_add_review_link",
+                         "value": "https:/domains/v2.0/permalinks/gbp-post-review?storeId=1"
+                     },
+                     {
+                         "name": "gbp_add_review_qr_code",
+                         "value": "https://domains/v2.0/qr-codes/gbp-post-review/OVS/1.png"
+                     }
+                 ],
+                 "servertime": "2024-11-05T23:13:26+0100",
+                 "zipcode": "20145",
+                 "special": [],
+                 "country_code": "IT",
+                 "phone": "+39 02 48015042",
+                 "district": "",
+                 "eventonclick": "DEMO019 - Milano, Via Belfiore 7 - IT-PDP-IT",
+                 "name": "DEMO Boutique",
+                 "dayserver": "2"
+             },
+             "cta_intro": ""
+      },
+      ....
+  ]
+
+
+
+Endpoint details 1 (standard)
+
+Path: /endpoint/sl/locator.php
+
+Method and Input
+
+Method: GET
+NOT SUPPORTED
+
+
+
+Endpoint details 2 (standard)
+
+Path: /endpoint/sl/locator.php
+
+Method and Input
+
+Method: POST
+Input: A JSON Object of the form
+
+
+  {                                                                                            
+      "user": {
+          "latitude": <float>,
+          "longitude": <float>,
+          "accuracy": <integer>,
+          "device": <string>,
+          "session": <string>,
+          "radius": <integer>
+      },
+      "types": <array<<string>> ,
+      "province": <string>,
+      "attributes": <array<<string>>,
+      "city": <string>,
+      "lang": <string>,
+      “modified-since”: <string>,                                                                                                                                                                                  
+      “storeid”: <string>
+  }
+  or “”
+
+where: input.user.latitude is the latitude expressed in degrees.
+
+input.user.longitude is the longitude expressed in degrees.
+
+input.user.accuracy is the accuracy of the position expressed in meters.
+
+input.user.device is the kind of device the user is using, e.g., “desktop”, “mobile”, “tablet”.
+
+input.user.session is the session token.
+
+input.user.radius is the maximum radius from the point (latitude, longitude) expressed in meters. Only the stores that are inside the radius will be included in the result. If no radius is given the
+dafult value is 100000 (100km).                                                                                                                                                                                    
+
+input.types is an array containing the types of store, corresponding to the field “name” of the jsons returned by list.type.php. Only stores with one of the specified type will be included in the result.
+If it is missing or the empty string then no filter is applied regarding to the store type. If it is set to [] the result will always be []. It is case-sensitive.
+
+input.province is the two-letter province code, corresponding to the field “sigla” of the jsons returnd by list.province.php. Only stores in the specified province will be included in the result. If it is
+missing or the empty string then no filter is applied regarding the store province. If it is set to an unknown type the result will always be []. It is case-insensitive.
+
+input.attributes is an array containing the id of some attributes/services, corresponding to the field “id” of the jsons re-turned by list.attribute.php. Only stores that have at least one of the specified
+attributes/services will be included in the result. If it is missing or the empty string then no filter is applied regarding the store attributes. It is case-sensitive.
+
+input.city is the city of the stores, corresponding to the field “citta” of the jsons returned by list.city.php. Only stores in the specified city will be included in the result. If it is missing or the empty
+string then no filter is applied regarding the store city. If it is set to an unknown city then the result will always be []. It is case-insensitive.
+
+input.lang is the two-letter code of a language, case-insensitive, e.g., “IT”, “it”, “en”, “EN”. If it is unspecified or the empty string then the default language will be used. The default language is “it”. If
+the language is not supported the result will be [].
+
+input.modified-since is the datetime in ISO8601 of the last change to the json. Only stores that have been modified after (or in) the specified datetime will be included in the result. It corresponds to
+the field “last-modified” of the jsons re-turned by this endpoint.
+
+input.storeid is the id of the store to be retrieved and corresponds to the id field of the returned JSON. If it is specified and is not the empty string and corresponds to a valid store then every other
+query will be ignored and the requested store will be returned. If it is specified and is not the empty string and is not a valid store then [] is returned.
+
+Authentication
+
+Basic Authentication
+Username: demo_endpoint_user
+Password: x3db7Zpz34QecqLTfiHz
+
+Response
+
+Output code: 200 OK
+Output: The JSON of the nearest store from (latitude, longitude) that respects every query. If there is no such store then [] is returned. If storeid is specified and corresponds to a valid store id then
+that store will be returned regardless of other queries. See the specification of list.json.php for the explanation of the returned json. The json produced by this endpoint and by list.json.php differ in
+the fact that for this endpoint the field GASEND is not the empty string but is “CTA_IP” if in-put.accuracy=-1 or “CTA” otherwise and in other minor details.
+

@@ -1,0 +1,3578 @@
+Store Locator API
+
+        Warning
+
+
+  The API described in this page and, by consequence, this documentation, are in beta and may be subject to changes.
+
+
+
+This page documents the public API used to create the storelocator. For the authorization mechanism refer to Public APIs Authorization - Querystring api key.
+
+
+
+
+Pages url scheme
+The Store Locator API does not make assumptions on the format of the paths on which the storelocator is mounted but assumes that the caller can provide two values to the api: the language in
+two letters ISO 639-1 and the path of the page relative to the path on which the storelocator is mounted with the exclusion of the language part. For Example, for the url of a store in Parma may be
+the following.
+
+   https://client.com/it/whatever/path/you/want/italia/emilia-romagna/parma/storeinparma
+
+In this case the language is "it" and the path is "/italia/emilia-romagna/parma/storeinparma". It is not necessary that the language is a node of the path. A more reasonable example may be the
+following.
+
+   https://client.com/it-en/storelocator/italy/emilia-romagna/parma/storeinparma
+
+In this case the language is "en" and the path is "/italy/emilia-romagna/parma/storeinparma".
+
+The internal links of the storelocator will be given in the following format.
+
+
+  {
+        "language":"it",
+        "path":"/italia/emilia-romagna/parma/storeinparma"
+  }
+
+
+
+        Info
+
+
+  The pair (language,path) is consistently used both for internal links outputted by our Store Locator API and for internal links received by our Store Locator APIs (for example to identify the data of a
+  specific store in a specific language).
+
+
+
+
+General overview
+There is a single API to call for obtaining the data necessary to create the storelocator. The API needs to be called in GET and the URL is
+
+   https://{api-url}/storelocator/{language}{path}
+
+With {api-url} being either "test.api.retailtune.com" for the development environment and "api.retailtune.com" for the stable production environment. Since the API is read-only the production
+environment is advised for its stability and will be directly referred to throught the rest of this page.
+Please remember that path contains the initial "/". Here we present a couple of example of calls:
+
+   https://api.retailtune.com/storelocator/it/
+
+Here the language is "it" and the path is "/". This url returns the data necessary to populate the homepage of the storelocator in Italian.
+
+   https://api.retailtune.com/storelocator/it/italia/puglia/bari/demo-boutique-bari
+
+Here the language is "it" and the path is "/italia/puglia/bari/demo-boutique-bari". This url returns the data necessary to populate the concierge page (the store page) of the demo boutique situated
+in Bari in Italy.
+
+
+
+
+Store locator page types
+The possible page types for the storelocator are the following:
+
+
+   Page type                                                                                                     Description
+
+
+
+   STORELOCATOR_HOME                                                                                             the homepage of the storelocator
+
+
+   STORELOCATOR_CONCIERGE                                                                                        the concierge page of a store
+
+
+
+   STORELOCATOR_REDIRECT                                                                                         the page has moved to a new path
+
+
+   STORELOCATOR_PAGE_NOT_FOUND                                                                                   the page has not been found
+
+
+
+   STORELOCATOR_SEO_ALL_STORES                                                                                   the SEO page for all stores
+
+
+   STORELOCATOR_PRODUCT_FINDER                                                                                   the product page of a store
+
+
+
+   STORELOCATOR_BOOKING                                                                                          the booking page of a store
+
+
+   STORELOCATOR_STORE_SERVICE                                                                                    the service page of a store
+
+
+
+The following page types for the storelocator are only available for clients that have subscribed to the Advanced SEO module.
+
+
+   Page type                                                                          Description
+
+
+
+   STORELOCATOR_SEO_COUNTRY                                                           same as above but for a specific country
+   Page type                                                                       Description
+
+
+   STORELOCATOR_SEO_REGION                                                         same as above but only for a specific (Italian) region.
+
+
+
+   STORELOCATOR_SEO_PROVINCE                                                       same as above but only for a specific (Italian) province.
+
+
+   STORELOCATOR_SEO_SERVICE                                                        same as above but only for a specific service.
+
+
+
+
+Response description
+For every valid request the response code is 200 OK unless the page is not found in which case the response code is 404.
+For every valid request the response body has the following structure.
+
+
+  {
+       "pageType": <string>,
+       "redirect": <optional object: RedirectItem>,
+       "link": <optional object: NamedUrlItem>,
+       "services": <optional array of object: ServiceItem>,
+       "stores": <optional array of object: StoreListItem>,
+       "seoData": <optional object: SeoItem>,
+       "breadcrumbs": <optional array of object: NamedUrlItem>
+  }
+
+Which optional fields are included depends on the "pageType" field.
+All the fields except for "redirect" are included for the following "pageType" values.
+
+
+      STORELOCATOR_HOME
+
+      STORELOCATOR_CONCIERGE
+
+      STORELOCATOR_SEO_ALL_STORES
+
+      STORELOCATOR_SEO_COUNTRY
+
+      STORELOCATOR_SEO_REGION
+
+      STORELOCATOR_SEO_PROVINCE
+
+      STORELOCATOR_SEO_SERVICE
+
+      STORELOCATOR_PRODUCT_FINDER
+
+      STORELOCATOR_BOOKING
+
+      STORELOCATOR_STORE_SERVICE
+
+
+For the following "pageType" values only the fields "pageType" and "redirect" are included.
+
+
+      STORELOCATOR_REDIRECT
+
+      STORELOCATOR_PAGE_NOT_FOUND
+
+
+NamedUrlItem type
+
+Since the type NamedUrlItem is used multiple times throughout the API we describe it here. Its format is the following.
+
+
+  {
+       "name": <string>,
+       "url": <object: UrlItem>
+  }
+
+
+The field "name" is the name of the URL. The field "url" contains the actual data to create the URL.
+
+UrlItem type
+
+With UrlItem also being used multiple times throught the API. Its format is the following.
+
+
+  {
+       "language": <string>,
+       "path": <string>
+  }
+
+
+The pair "language" and "path" compose the page URL scheme describe here.
+
+
+
+The field "pageType"
+
+This field is always included and specifies the type of the page to display. The types of pages are explained here
+
+
+
+The field "redirect"
+
+This field is included only when "pageType" is STORELOCATOR_REDIRECT or STORELOCATOR_PAGE_NOT_FOUND. In the first case it tells the new url of the page that has moved. In the second
+case it tells where to redirect the user since the page requested does not exist. Its format is the following.
+
+
+  {
+       "redirectType": <int>,
+       "url": <object: UrlItem>
+  }
+
+The field "redirectType" contains an integer specifying the type of redirect to use, for example, 301. It has meaning only for the STORELOCATOR_REDIRECT "pageType", which requires to perform an
+actual redirect.
+The field "url" is a UrlItem containing the data necessary to compose the URL.
+
+
+
+The field "link"
+
+This field is always present when "pageType" is neither STORELOCATOR_REDIRECT nor STORELOCATOR_PAGE_NOT_FOUND. When present, this field contains a NamedUrlItem containing the data
+relative to the requested url.
+This field is included only for convenience for the user of the API.
+
+
+
+The field "services"
+
+This field is always present when "pageType" is neither STORELOCATOR_REDIRECT nor STORELOCATOR_PAGE_NOT_FOUND. When present, this field contains an array (possibly empty) of
+ServiceItem objects. Only the services offered by at least one of the stores included in the "stores" field and enabled for the current "pageType" are included int this field. The format of the
+ServiceItem objects is the following.
+
+
+  {
+        "groupId": <int>,
+        "icon": <string>,
+        "description": <string>,
+        "url": <object: UrlItem>,
+        "url_store": <object: UrlItem>,
+        "groupName": <string>,
+        "name": <string>,
+        "id": <int>,
+        "visible": <int>,
+        "title": <string>,
+        "text": <string>,
+        "image1": <string>,
+        "image2": <string>,
+        "featured": <int>
+  }
+
+- The field "groupId" is the numeric id of the group of services the service belongs to.
+
+
+      The "icon" field contains a string containing the url of the icon to use for the service.
+
+      The field "description" contains the description of the service in the given language.
+
+      The field "url" is a UrlItem containing the data for the url of the SEO page with "pageType" STORELOCATOR_SEO_SERVICE (available only for clients with a subscription to the Advanced SEO
+      module).
+
+      The field "url_store" is a UrlItem containing the data for the url of the STORE SERVICE page with "pageType"
+
+      The field "groupName" is the name in the given language of the group of services the service belongs to.
+
+      The field "name" is the name in the given language of the service.
+
+      The field "id" is the numeric id of the service.
+
+      The field "visible" is 0 if the service should not be displayed to the user, 1 if the service should be displayed.
+
+      The field "title" is title for STORE SERVICE PAGE.
+
+      The field "text" is text for STORE SERVICE PAGE.
+
+      The field "image1" is image for STORE SERVICE PAGE.
+
+      The field "image2" is image for STORE SERVICE PAGE.
+
+      The field "featured" is 0 if the service should not be featured, 1 if the service should be featured.
+
+
+
+The field "stores"
+
+This field is always present when "pageType" is neither STORELOCATOR_REDIRECT nor STORELOCATOR_PAGE_NOT_FOUND. When present, this field is an array containing the objects representing
+the stores included in the requested page. The format of the objects is the following.
+
+
+  {
+                  "whatsapp": <string>,
+                  "city": <string>,
+                  "postalCode": <string>,
+                  "latitude": <double>,
+                  "longitude": <double>,
+                  "county": <string>,
+                  "status": <string>,
+                  "province": {
+                      "code": <string>,
+                      "name": <string>,
+                      "url": <object: UrlItem>
+                  },
+                  "hourOffset": <int>,
+                  "id": <int>,
+                  "email": <string>,
+                  "website": <string>,
+                  "priority": <int>,
+                  "address1": <string>,
+                  "address2": <string>,
+                  "googleMapsLink": <string>,
+                  "storeLink": <object: UrlItem>,
+                  "storeLinkConcierge": <object: UrlItem>,
+                  "storeLinkProductFinder": <object: UrlItem>,
+                  "storeLinkBooking": <object: UrlItem>,
+                  "phone": <string>,
+                  "phoneLocal": <string>,
+                  "name": <string>,
+                  "storeDescription": <string>,
+                  "storeManagerDescription": <string>,
+                  "locationNote": <string>,
+                  "otherServices": <string>,
+                  "region": {
+                      "name": <string>,
+                      "url": <object: UrlItem>
+                  },
+                  "storeCode": <string>,
+                  "secondaryStoreCode": <string>,
+                  "country": {
+                      "alpha2": <string>,
+                      "alpha3": <string>,
+                      "name": <string>,
+                      "url": <object: UrlItem>
+                  },
+                  "storeTypes": <array of object>,
+                  "openingHours": <array of array of string>,
+                  "specialHours": <array of object>,
+                  "serviceIds": <array of int>,
+                  "reviews": <array of object>,
+                  "ctas": <array of object>,
+                  "proximity": <array of object>,
+                  "facebookLink": <string | null>,
+                 "instagramLink": <string | null>,
+                 "otherPhones": <array of string>,
+                 "media": {
+                     "coverPhoto": <object: PhotoItem>,
+                     "managerPhoto": <object: PhotoItem>,
+                     "additionalPhotos": <array of object: PhotoItem>
+                 },
+                 "customFields": <array of object>
+            }
+
+The fields "reviews", "ctas", "proximity" and "media" are included only when "pageType" is STORELOCATOR_CONCIERGE / STORELOCATOR_PRODUCT_FINDER / STORELOCATOR_BOOKING /
+STORELOCATOR_STORE_SERVICE .
+
+
+   The field "whatsapp" contains the whatsapp number or is an empty string.
+
+   The field "city" contains the name of the city the store is in.
+
+   The field "postalCode" contains the postal code and can be the empty string.
+
+   The field "latitude" contains the latitude of the store as a double.
+
+   The field "longitude" contains the longitude of the store as a double.
+
+   The field "county" contains the county of the store and can be the empty string.
+
+   The field "status" contains the status of the store and can have one of the following values.
+
+
+
+  Status value                                                                  Description
+
+
+  closed                                                                        the store is closed
+
+
+  open                                                                          the store is open
+
+
+
+  will_open_soon                                                                the store has opened yet but will soon
+
+
+  will_close_soon                                                               the store is open but will close soon
+
+
+
+  temporarily_closed                                                            the store is temporarily closed
+
+
+
+
+      Warning
+
+
+ Please note that the value of the "status" field is not related in any way to the opening hours of the store. In this context the word "closed" means that the store is not operational at all irregardless of
+ opening hours. The word "open" means that the store is operational, even if for some days it might not have opening hours.
+
+
+
+
+   The field "province" is an object containing the following properties:
+
+         The field "code" has value only for Italian stores and is the two-letter code of the province
+
+         The field "name" is the name of the province (even for non Italian provinces)
+
+         The field "url" is a UrlItem and contains the data to compose the URL of the SEO page of the province. The SEO page of the province, and by consequence its URL, exists only for Italian
+         stores of clients that are subscribed to the Advanced SEO Module.
+
+   The field "hourOffset" is an integer that tells the offset of the store time to UTC in seconds (3600 for 1 hour) taking into account both the timezone and the daylight savings time.
+
+   The field "id" is an integer containing the RetailTune provided id of the store.
+
+   The field "email" contains the email of the store and can be the empty string.
+
+   The field "website" contains the full absolute URL of the website of the store. It can be the empty string.
+
+   The field "priority" contains an integer that indicates the priority of the store with respect to the others.
+
+   The field "address1" contains the first address line of the store.
+
+   The field "address2" contains the second address line of the store. It can be the empty string.
+
+   The field "googleMapsLink" contains the link to the Google Maps place for the store. It is optional.
+
+   The field "phone" contains the phone number of the store. It can be the empty string.
+
+   The field "phoneLocal" contains the phone number of the store formatted according to local rules. It can be the empty string.
+
+   The field "name" contains the name of the store.
+
+   The field "storeDescription" contains the description of the store. It is optional.
+
+   The field "storeManagerDescription" contains the description of the store manager of the store. It is optional.
+
+   The field "locationNote" contains additional location notes. It is optional.
+
+   The field "otherServices" contains additional information about the store. It is optional.
+
+   The field "region" is an object containing the following properties:
+
+         The field "name" is the name of the (Italian) region.
+
+         The field "url" is a UrlItem and contains the data to compose the URL of the SEO page of the region. The SEO page of the region, and by consequence its URL, exists only for Italian stores of
+         clients that are subscribed to the Advanced SEO Module.
+
+   The field "storeCode" is the string store code. It is another identifier for the store.
+
+   The field "secondaryStoreCode" is a secondary string store code. It is yet another identifier for the store and can be the empty string (in which case it might not be unique).
+
+   The field "country" is an object containing the following fields.
+
+         The field "alpha2" is the ISO 3166-1 alpha-2 of the country of the store.
+
+         The field "alpha3" is the ISO 3166-1 alpha-3 of the country of the store.
+
+         The field "name" contains the name of the country of the store.
+
+         The field "url" is a UrlItem and contains the data to compose the URL of the SEO page of the country. The SEO page of the country, and by consequence its URL, exists only for clients that
+         are subscribed to the Advanced SEO Module.
+
+   The field "storeTypes" is an array containg objects representing the data relative to the types of the store. The fields of the objects contained in this field are the following.
+
+         The field "name" is a string that can be empty. If not empty contains the name of the type
+
+         The field "id" is the string identifier of the type.
+  The field "openingHours" is an array containing the opening hours of the seven days of the week. The array thus contains 7 elements. The first element is relative to sunday, the second to
+  monday, the third to tuesday and so on. Every element can either be null to signal that the opening hour of the day is unknown, the empty array [] to signal that the store is closed for the day, an
+  array containing one pair [<string hh:mm>, <string hh:mm>] for single-slot opening hours or two pairs [<string hh:mm>, <string hh:mm>] for two-slots opening hours. The first element of each
+  pair is the hour the store opens in H24 format local to the store and the second element is the hour the store closes in H24 format local to the store. An example is necessary.
+
+
+    "openingHours": [
+        [
+            [
+                "10:30",
+                "13:00"
+            ],
+            [
+                "17:00",
+                "20:00"
+            ]
+        ],
+        null,
+        [
+            [
+                "10:00",
+                "20:00"
+            ]
+        ],
+        [],
+        null,
+        null,
+        null,
+    ]
+
+     In this example the store is open from "10:30" to "13:00" and then from "17:00" to "20:00" on sunday. The opening hours for monday are unknown. The store is open from "10:00" to "20:00"
+     on tuesday. The store is closed on wednesday. The opening hours of thursday, friday and saturday are unknown.
+
+
+
+     Info
+
+
+Please note that if there are special hours active in the 7 days starting from the current day they are automatically merged into the field "openingHours" and removed from the field "specialHours" for the
+convenience of the user of the API.
+
+
+
+
+  The field "specialHours" contains an array of objects detailing the special hours. If there are no special hours the array is empty. Every object contained in the array has the following fields:
+
+      The field "data" is the date the special hour is active on in ISO 8601 "YYYY-MM-DD" format.
+
+      The field "hours" which can be any value allowed in any (except for null) of the 7 positions in the "openingHours" array with the same meaning.
+
+
+Again, an example is needed.
+
+
+  "specialHours":[{"data":"2024-01-02","hours":[]}]
+
+
+This example shows that the store has a special hour for the second day of janurary 2024 and in that day the store is closed.
+
+
+  The field "serviceIds" is an array (possibly empty) containing the ids of the "services" that are offered by the store and allowed to be shown in the "pageType".
+
+  The field "reviewsSummary" is an object containing the following fields:
+
+      The field "count" containing the number of reviews the store has.
+
+      The field "mean" containing the mean of the reviews.
+
+  The field "reviews" is included only when "pageType" is STORELOCATOR_CONCIERGE / STORELOCATOR_PRODUCT_FINDER / STORELOCATOR_BOOKING / STORELOCATOR_STORE_SERVICE.
+  When included, it is an array, possibly empty, of review objects containing the following fields:
+
+      The field "username" is a string containing the username of the user who posted the review.
+
+      The field "date" is a string containing the last update date (the creation date in case of no updates) of the review in ISO 8601 "YYYY-MM-DD" format.
+
+      The field "text" is a string containing the text of the review.
+
+      The field "score" is an number containing the score given to the store. It might be null for reviews with a source that does not allow scores.
+
+      The field "scoreScaleMin" is a number containing the minimum (inclusive) score allowed by the source. It might be null for reviews with a source that does not allow scores.
+
+      The field "scoreScaleMax" is a number containing the maximum (inclusive) score allowed by the review. It might be null for reviews with a source that does not allow scores.
+
+      The field "source" is a string containing the source of the review. The only possible source for now is "gbp" which stands for "Google Business Profile".
+
+  The field "ctas" is included only when "pageType" is STORELOCATOR_CONCIERGE / STORELOCATOR_PRODUCT_FINDER / STORELOCATOR_BOOKING / STORELOCATOR_STORE_SERVICE.
+  When included, it is an array, possibly empty, of call to actions (campaigns, promotions) active for the store. The objects contained in the array have the following fields.
+
+      The field "idCampaign" is an integer containing the id of the campaign.
+
+      The field "name" is a string containing the string identifier of the campaign.
+
+      The field "type" is a string containing the type of the campaign: either "campaign" or "promotion".
+
+      The field "title" is the title of the campaign to show to the user. It might be the empty string.
+
+      The field "text" is the text of the campaign. It might be the empty string.
+
+      The field "textButton" is the text for the button of the campaign. It might be the empty string.
+
+      The field "link" is the link the campaign points to. It might be the empty string.
+
+      The field "isEvent" is a boolean telling whether the campaign is an event.
+
+      The field "images" is an array containing objects with the following fields.
+
+            The field "type" is a string containing the type of the image: either "desktop", "mobile" or "tablet".
+
+            The field "url" is the full absolute URL of the image of the campaign.
+
+  The field "proximity" is included only when "pageType" is STORELOCATOR_CONCIERGE / STORELOCATOR_PRODUCT_FINDER / STORELOCATOR_BOOKING / STORELOCATOR_STORE_SERVICE.
+  When included, it is an array, possibly empty, of call to actions (campaigns, promotions) active for the store. The objects contained in the array have the following fields.
+
+      The field "idCampaign" is an integer containing the id of the campaign.
+
+      The field "name" is a string containing the string identifier of the campaign.
+
+      The field "type" is a string containing the type of the campaign: either "campaign" or "promotion".
+
+      The field "title" is the title of the campaign to show to the user in the widget component. It might be the empty string.
+
+      The field "text" is the text of the campaign in the widget component. It might be the empty string.
+          The field "title_concierge" is the title of the campaign to show to the user in concierge page. It might be the empty string.
+
+          The field "text_concierge" is the text of the campaign in concierge page. It might be the empty string.
+
+          The field "title_productfinder" is the title of the campaign to show to the user in product finder page. It might be the empty string.
+
+          The field "text_productfinder" is the text of the campaign in product finder page. It might be the empty string.
+
+          The field "textButton" is the text for the button of the campaign. It might be the empty string.
+
+          The field "link" is the link the campaign points to. It might be the empty string.
+
+          The field "isEvent" is a boolean telling whether the campaign is an event.
+
+          The field "images" is an array containing objects with the following fields.
+
+               The field "type" is a string containing the type of the image: either "widget", "concierge" or "productfinder".
+
+               The field "url" is the full absolute URL of the image of the campaign.
+
+      The field "facebookLink" is included only when "pageType" is STORELOCATOR_CONCIERGE / STORELOCATOR_PRODUCT_FINDER / STORELOCATOR_BOOKING /
+      STORELOCATOR_STORE_SERVICE. When included, it is null or contains the link of the facebook page of the store.
+
+      The field "instagramLink" is included only when "pageType" is STORELOCATOR_CONCIERGE / STORELOCATOR_PRODUCT_FINDER / STORELOCATOR_BOOKING /
+      STORELOCATOR_STORE_SERVICE. When included, it is null or contains the link of the instagram page of the store.
+
+      The field "otherPhones" is included only when "pageType" is STORELOCATOR_CONCIERGE / STORELOCATOR_PRODUCT_FINDER / STORELOCATOR_BOOKING /
+      STORELOCATOR_STORE_SERVICE. When included, it contains the array of other phone numbers.
+
+      The field "media" is included only when "pageType" is STORELOCATOR_CONCIERGE / STORELOCATOR_PRODUCT_FINDER / STORELOCATOR_BOOKING / STORELOCATOR_STORE_SERVICE.
+      When included, it is an object containing the following fields:
+
+          The optional field "coverPhoto" is an object of type PhotoItem. It contains the data relative to the cover photo of the store. The type PhotoItem contains the following fields.
+
+               The field "formats" containing an array of photo formats, which are objects containing the following fields.
+
+                   The field "formatType", currently only possible value is "big".
+
+                   The field "url" containing the full URL of the photo.
+
+          The optional field "managerPhoto" is an object of type PhotoItem. It contains the data relative to the manager photo of the store.
+
+          The field "additionalPhotos" is an array, possibly empty, of objects of type PhotoItem containing the data relative to additional photos of the store.
+
+      The field "customFields" is an array, possibly empty, of custom fields set for the store. The objects contained in the array have the following fields:
+
+          The field "name" is a string containing the string identifier of the custom field.
+
+          The field "value" is a string containing the value of the custom field for the particular store.
+
+
+
+The field "seoData"
+
+This field is always present when "pageType" is neither STORELOCATOR_REDIRECT nor STORELOCATOR_PAGE_NOT_FOUND. When present, it is an object with the following format.
+
+
+  {
+        "title": <string>,
+        "description": <string>,
+        "h1": <string>,
+        "h2": <string>,
+        "structuredData": <array of string>,
+        "alternates": <array of object: UrlItem>,
+        "allStoresLink": <object: NamedUrlItem>
+  }
+
+
+      The field "title" is a string containing the title of the page. It can be empty if no SEO title is present for the page.
+
+      The field "description" is a string containing the description of the page. It can be empty if no SEO description is present for the page.
+
+      The field "h1" is a string containing the text to put in the h1 element in the page. It can be empty if no SEO h1 is present for the page.
+
+      The field "h2" is a string containing the text to put in the h2 element in the page. It can be empty if no SEO h2 is present for the page.
+
+      The field "structuredData" is an array of strings. Every string contained is a structured data to insert in the page. The array may be empty.
+
+      The field "alternates" is an array of UrlItem containing the data necessary to obtain the same page in other languages.These UrlItems also contain a property called "languageName", which
+      contains the name of the language in the language.
+
+      The field ""allStoresLink" is a NamedUrlItem containing the name and the url data of a SEO page for all the stores.
+
+
+
+The field "breadcrumbs"
+
+This field is always present when "pageType" is neither STORELOCATOR_REDIRECT nor STORELOCATOR_PAGE_NOT_FOUND. When present this field is an array of breadcrumb items in order. The
+objects contained in the array have the following format.
+
+
+  {
+        "name": <string>,
+        "url": <object: UrlItem>
+  }
+
+      The field "name" is a string and is the name of the breadcrumb item.
+
+      The field "url" is a UrlItem containing the data necessary to compose the URL of the breadcrumb item.
+
+
+
+
+Request-Response examples
+In this section we sho examples of requests and responses for the various page types.
+
+
+
+Request-Response STORELOCATOR_HOME
+
+Requested url in GET:
+
+
+  https://api.retailtune.com/storelocator/it/
+
+
+Response code: 200.
+Response body below.
+
+
+  {
+        "pageType": "STORELOCATOR_HOME",
+"link": {
+    "name": "HOME",
+    "url": {
+        "language": "it",
+        "path": "/"
+    }
+},
+"services": [
+    {
+        "groupId": 0,
+        "icon": "",
+        "description": "",
+        "url": {
+             "language": "it",
+             "path": "/default-group/luce"
+        },
+        "url_store": {
+             "language": "it",
+             "path": ""
+        },
+        "groupName": "Default group",
+        "name": "Luce",
+        "id": 222,
+        "title": "",
+        "text": "",
+        "image1":"",
+        "image2":"",
+        "featured":0
+    },
+    // ...
+],
+"stores": [
+    {
+        "whatsapp": "+39 3358747340",
+        "city": "Bari",
+        "postalCode": "70121",
+        "latitude": 41.124752,
+        "longitude": 16.869175,
+        "county": "",
+        "reviewsSummary": {
+             "count": 779,
+             "mean": 4.1836
+        },
+        "status": "closed",
+        "province": {
+             "code": "BA",
+             "name": "Bari",
+             "url": {
+                 "language": "it",
+                 "path": "/italia/puglia/bari"
+             }
+        },
+        "hourOffset": 7200,
+        "id": 1,
+        "email": "store.bari@DEMO.com",
+        "website": "https://stores.DEMO.com/it/italia/bari/DEMO-boutique-bari",
+        "priority": -1,
+        "address1": "Via Abate Gimma 69",
+        "address2": "",
+        "googleMapsLink": "https://www.google.com/maps/dir//41.124752,16.869175",
+        "storeLink": {
+             "language": "it",
+             "path": "/italia/puglia/bari/demo-boutique-bari"
+        },
+        "storeLinkConcierge": {
+             "language": "it",
+             "path": "/italia/puglia/bari/demo-boutique-bari"
+        },
+        "storeLinkProductFinder": {
+             "language": "it",
+             "path": "/italia/puglia/bari/demo-boutique-bari-DEMO001-ProductFinder"
+        },
+        "storeLinkBooking": {
+             "language": "it",
+             "path": "/italia/puglia/bari/demo-boutique-bari/booking"
+        },
+        "phone": "+390805249997",
+        "phoneLocal": "+390805249997",
+        "name": "DEMO Boutique",
+        "region": {
+             "name": "Puglia",
+             "url": {
+                 "language": "it",
+                 "path": "/italia/puglia"
+             }
+        },
+        "storeCode": "DEMO001",
+        "secondaryStoreCode": "PIBA",
+        "country": {
+             "alpha2": "it",
+             "alpha3": "ITA",
+             "name": "Italia",
+             "url": {
+                 "language": "it",
+                 "path": "/italia"
+             }
+        },
+        "storeTypes": [
+             {
+                 "name": "",
+                 "id": "DEMO STORE"
+             }
+        ],
+        "openingHours": [
+             [
+                 [
+                      "10:30",
+                      "13:00"
+                 ],
+                 [
+                      "17:00",
+                      "20:00"
+                 ]
+             ],
+             [
+                         [
+                             "10:00",
+                             "20:00"
+                         ]
+                    ],
+                    [
+                         [
+                             "10:00",
+                             "20:00"
+                         ]
+                    ],
+                    [
+                         [
+                             "10:00",
+                             "20:00"
+                         ]
+                    ],
+                    [
+                         [
+                             "10:00",
+                             "20:00"
+                         ]
+                    ],
+                    [
+                         [
+                             "10:00",
+                             "20:00"
+                         ]
+                    ],
+                    [
+                         [
+                             "10:00",
+                             "20:00"
+                         ]
+                   ]
+               ],
+               "specialHours": [
+                   {
+                        "data": "2024-01-01",
+                        "hours": []
+                   }
+               ],
+               "serviceIds": [
+                   1,
+                   2,
+                   3,
+                   4,
+                   5,
+                   6,
+                   212,
+                   214,
+                   215,
+                   221
+               ],
+               "customFields":[]
+          },
+          //...
+      ],
+      "seoData": {
+          "title": "",
+          "description": "",
+          "h1": "",
+          "h2": "",
+          "structuredData": [],
+          "alternates": [
+              {
+                   "language": "it",
+                   "languageName":"Italiano",
+                   "path": "/"
+              },
+              {
+                   "language": "en",
+                   "languageName":"English",
+                   "path": "/"
+              },
+              // ...
+          ],
+          "allStoresLink": {
+              "name": "",
+              "url": {
+                   "language": "it",
+                   "path": "/negozi"
+              }
+          }
+      },
+      "breadcrumbs": [
+          {
+              "name": "HOME",
+              "url": {
+                   "language": "it",
+                   "path": "/"
+              }
+          }
+      ]
+  }
+
+
+
+Request-Response STORELOCATOR_CONCIERGE
+
+Requested url in GET:
+
+
+  https://api.retailtune.com/storelocator/en/italy/lombardia/bergamo/bergamo
+
+
+Response code: 200.
+Response body below.
+
+
+  {
+      "pageType": "STORELOCATOR_CONCIERGE",
+      "link": {
+          "name": "DEMO Boutique",
+          "url": {
+              "language": "en",
+        "path": "/italy/lombardia/bergamo/bergamo"
+    }
+},
+"services": [
+    {
+        "groupId": 0,
+        "icon": "",
+        "description": "",
+        "url": {
+            "language": "en",
+            "path": "/default-group/luce"
+        },
+        "url_store": {
+            "language": "en",
+            "path": ""
+        },
+        "groupName": "Default group",
+        "name": "Luce",
+        "id": 222,
+        "title": "",
+        "text": "",
+        "image1":"",
+        "image2":"",
+        "featured":0
+    },
+    // ...
+],
+"stores": [
+    {
+        "media": {
+            "coverPhoto": {
+                 "formats": [
+                     {
+                         "formatType": "big",
+                         "url": "https://stores-demo.retailtune.com//upload/store/big/storedemoDEMO003.jpg"
+                     }
+                 ]
+            },
+            "additionalPhotos": []
+        },
+        "reviews": [],
+        "ctas": [],
+         "proximity": [
+            {
+                 "idCampaign": 94,
+                 "name": "proximity-1752703376950",
+                 "type": "promotion",
+                 "title": "Title nel Widget",
+                 "text": "testo widget",
+                 "title_concierge": "Titolo nella Concierge",
+                 "text_concierge": "Testo nelle Concierge",
+                 "title_productfinder": "Titolo nella Product Finder",
+                 "text_productfinder": "Testo nella Product Finder",
+                 "textButton": "",
+                 "link": "",
+                 "images": [
+                     {
+                         "type": "widget",
+                         "url": "https://stores-demo.retailtune.com/upload/cta/sl/desktop/1-94.jpg"
+                     },
+                     {
+                         "type": "productfinder",
+                         "url": "https://stores-demo.retailtune.com/upload/cta/sl/mobile/1-94.jpg"
+                     },
+                     {
+                         "type": "concierge",
+                         "url": "https://stores-demo.retailtune.com/upload/cta/sl/tablet/1-94.jpg"
+                     }
+                 ],
+                 "isEvent": false
+            }
+        ],
+        "otherPhones":[],
+        "whatsapp": "",
+        "city": "Bergamo",
+        "postalCode": "24050",
+        "latitude": 45.6656384,
+        "longitude": 9.6986742,
+        "county": "",
+        "reviewsSummary": {
+            "count": 779,
+            "mean": 4.1836
+        },
+        "status": "open",
+        "province": {
+            "code": "BG",
+            "name": "Bergamo",
+            "url": {
+                 "language": "en",
+                 "path": "/italy/lombardia/bergamo"
+            }
+        },
+        "hourOffset": 3600,
+        "id": 3,
+        "email": "aeroportobergamo@DEMOmail.com",
+        "website": "https://stores.DEMO.com/it/italia/bergamo/bergamo",
+        "priority": -1,
+        "address1": "Via Aeroporto 13",
+        "address2": "Aeroporto Bergamo Orio Al Serio",
+        "googleMapsLink": "https://www.google.com/maps/dir//45.6656384,9.6986742",
+        "storeLink": {
+            "language": "en",
+            "path": "/italy/lombardia/bergamo/bergamo"
+        },
+        "storeLinkConcierge": {
+            "language": "it",
+            "path": "/italy/lombardia/bergamo/bergamo"
+        },
+        "storeLinkProductFinder": {
+            "language": "it",
+            "path": "/italy/lombardia/bergamo/bergamo-DEMO003-ProductFinder"
+        },
+        "storeLinkBooking": {
+            "language": "it",
+            "path": "/italy/lombardia/bergamo/bergamo/booking"
+},
+"phone": "+390354210612",
+"phoneLocal": "+390354210612",
+"name": "DEMO Boutique",
+"region": {
+    "name": "Lombardia",
+    "url": {
+        "language": "en",
+        "path": "/italy/lombardia"
+    }
+},
+"storeCode": "DEMO003",
+"secondaryStoreCode": "-",
+"country": {
+    "alpha2": "it",
+    "alpha3": "ITA",
+    "name": "Italy",
+    "url": {
+        "language": "en",
+        "path": "/italy"
+    }
+},
+"storeTypes": [
+    {
+        "name": "",
+        "id": "DEMO TRAVEL"
+    }
+],
+"openingHours": [
+    [],
+    [
+        [
+             "08:00",
+             "12:30"
+        ],
+        [
+             "16:00",
+             "22:00"
+        ]
+    ],
+    [
+        [
+             "10:00",
+             "19:30"
+        ]
+    ],
+    [
+        [
+             "10:00",
+             "19:30"
+        ]
+    ],
+    [
+        [
+             "10:00",
+             "19:30"
+        ]
+    ],
+    [
+        [
+             "10:00",
+             "19:30"
+        ]
+    ],
+    [
+        [
+             "08:01",
+             "13:00"
+        ],
+        [
+             "15:30",
+             "19:30"
+        ]
+    ]
+],
+"specialHours": [
+    {
+        "data": "2024-01-01",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+             ]
+        ]
+    },
+    {
+        "data": "2024-01-02",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+             ]
+        ]
+    },
+    {
+        "data": "2024-01-03",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+             ]
+        ]
+    },
+    {
+        "data": "2024-01-04",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+             ]
+        ]
+    },
+    {
+        "data": "2024-01-05",
+        "hours": [
+                             [
+                                 "09:00",
+                                 "15:00"
+                             ]
+                         ]
+                    },
+                    {
+                         "data": "2024-01-06",
+                         "hours": [
+                             [
+                                 "09:00",
+                                 "15:00"
+                             ]
+                         ]
+                   }
+               ],
+               "serviceIds": [
+                   2,
+                   3,
+                   4,
+                   5,
+                   6,
+                   7,
+                   8,
+                   212,
+                   214,
+                   215
+               ],
+               "customFields":[]
+          }
+      ],
+      "seoData": {
+          "structuredData": [],
+          "alternates": [
+              {
+                   "language": "IT",
+                   "languageName":"Italiano",
+                   "path": "/italia/lombardia/bergamo/bergamo"
+              },
+              {
+                   "language": "EN",
+                   "languageName":"English",
+                   "path": "/italy/lombardia/bergamo/bergamo"
+              },
+              // ...
+          ],
+          "allStoresLink": {
+              "name": "",
+              "url": {
+                   "language": "en",
+                   "path": "/stores"
+              }
+          }
+      },
+      "breadcrumbs": [
+          {
+              "name": "HOME",
+              "url": {
+                   "language": "en",
+                   "path": "/"
+              }
+          },
+          {
+              "name": "Italy",
+              "url": {
+                   "language": "en",
+                   "path": "/italy"
+              }
+          },
+          {
+              "name": "Lombardia",
+              "url": {
+                   "language": "en",
+                   "path": "/italy/lombardia"
+              }
+          },
+          {
+              "name": "Bergamo",
+              "url": {
+                   "language": "en",
+                   "path": "/italy/lombardia/bergamo"
+              }
+          },
+          {
+              "name": "DEMO Boutique",
+              "url": {
+                   "language": "en",
+                   "path": "/italy/lombardia/bergamo/bergamo"
+              }
+          }
+      ]
+  }
+
+
+
+Request-Response STORELOCATOR_PRODUCT_FINDER
+
+Requested url in GET:
+
+
+  https://api.retailtune.com/storelocator/en/italy/lombardia/bergamo/bergamo-DEMO003-ProductFinder
+
+Response code: 200.
+Response body below.
+
+
+  {
+      "pageType": "STORELOCATOR_PRODUCT_FINDER",
+      "link": {
+          "name": "DEMO Boutique - Product Finder",
+          "url": {
+              "language": "en",
+              "path": "/italy/lombardia/bergamo/bergamo"
+          }
+      },
+"services": [
+    {
+        "groupId": 0,
+        "icon": "",
+        "description": "",
+        "url": {
+            "language": "en",
+            "path": "/default-group/luce"
+        },
+        "url_store": {
+            "language": "it",
+            "path": ""
+        },
+        "groupName": "Default group",
+        "name": "Luce",
+        "id": 222,
+        "title": "",
+        "text": "",
+        "image1":"",
+        "image2":"",
+        "featured":0
+    },
+    // ...
+],
+"stores": [
+    {
+        "media": {
+            "coverPhoto": {
+                 "formats": [
+                     {
+                         "formatType": "big",
+                         "url": "https://stores-demo.retailtune.com//upload/store/big/storedemoDEMO003.jpg"
+                     }
+                 ]
+            },
+            "additionalPhotos": []
+        },
+        "reviews": [],
+        "ctas": [],
+         "proximity": [
+            {
+                 "idCampaign": 94,
+                 "name": "proximity-1752703376950",
+                 "type": "promotion",
+                 "title": "Title nel Widget",
+                 "text": "testo widget",
+                 "title_concierge": "Titolo nella Concierge",
+                 "text_concierge": "Testo nelle Concierge",
+                 "title_productfinder": "Titolo nella Product Finder",
+                 "text_productfinder": "Testo nella Product Finder",
+                 "textButton": "",
+                 "link": "",
+                 "images": [
+                     {
+                         "type": "widget",
+                         "url": "https://stores-demo.retailtune.com/upload/cta/sl/desktop/1-94.jpg"
+                     },
+                     {
+                         "type": "productfinder",
+                         "url": "https://stores-demo.retailtune.com/upload/cta/sl/mobile/1-94.jpg"
+                     },
+                     {
+                         "type": "concierge",
+                         "url": "https://stores-demo.retailtune.com/upload/cta/sl/tablet/1-94.jpg"
+                     }
+                 ],
+                 "isEvent": false
+            }
+        ],
+        "otherPhones":[],
+        "whatsapp": "",
+        "city": "Bergamo",
+        "postalCode": "24050",
+        "latitude": 45.6656384,
+        "longitude": 9.6986742,
+        "county": "",
+        "reviewsSummary": {
+            "count": 779,
+            "mean": 4.1836
+        },
+        "status": "open",
+        "province": {
+            "code": "BG",
+            "name": "Bergamo",
+            "url": {
+                 "language": "en",
+                 "path": "/italy/lombardia/bergamo"
+            }
+        },
+        "hourOffset": 3600,
+        "id": 3,
+        "email": "aeroportobergamo@DEMOmail.com",
+        "website": "https://stores.DEMO.com/it/italia/bergamo/bergamo",
+        "priority": -1,
+        "address1": "Via Aeroporto 13",
+        "address2": "Aeroporto Bergamo Orio Al Serio",
+        "googleMapsLink": "https://www.google.com/maps/dir//45.6656384,9.6986742",
+        "storeLink": {
+            "language": "en",
+            "path": "/italy/lombardia/bergamo/bergamo-DEMO003-ProductFinder"
+        },
+        "storeLinkConcierge": {
+            "language": "it",
+            "path": "/italy/lombardia/bergamo/bergamo"
+        },
+        "storeLinkProductFinder": {
+            "language": "it",
+            "path": "/italy/lombardia/bergamo/bergamo-DEMO003-ProductFinder"
+        },
+        "storeLinkBooking": {
+            "language": "it",
+            "path": "/italy/lombardia/bergamo/bergamo/booking"
+        },
+        "phone": "+390354210612",
+        "phoneLocal": "+390354210612",
+"name": "DEMO Boutique",
+"region": {
+    "name": "Lombardia",
+    "url": {
+        "language": "en",
+        "path": "/italy/lombardia"
+    }
+},
+"storeCode": "DEMO003",
+"secondaryStoreCode": "-",
+"country": {
+    "alpha2": "it",
+    "alpha3": "ITA",
+    "name": "Italy",
+    "url": {
+        "language": "en",
+        "path": "/italy"
+    }
+},
+"storeTypes": [
+    {
+        "name": "",
+        "id": "DEMO TRAVEL"
+    }
+],
+"openingHours": [
+    [],
+    [
+        [
+             "08:00",
+             "12:30"
+        ],
+        [
+             "16:00",
+             "22:00"
+        ]
+    ],
+    [
+        [
+             "10:00",
+             "19:30"
+        ]
+    ],
+    [
+        [
+             "10:00",
+             "19:30"
+        ]
+    ],
+    [
+        [
+             "10:00",
+             "19:30"
+        ]
+    ],
+    [
+        [
+             "10:00",
+             "19:30"
+        ]
+    ],
+    [
+        [
+             "08:01",
+             "13:00"
+        ],
+        [
+             "15:30",
+             "19:30"
+        ]
+    ]
+],
+"specialHours": [
+    {
+        "data": "2024-01-01",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+             ]
+        ]
+    },
+    {
+        "data": "2024-01-02",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+             ]
+        ]
+    },
+    {
+        "data": "2024-01-03",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+             ]
+        ]
+    },
+    {
+        "data": "2024-01-04",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+             ]
+        ]
+    },
+    {
+        "data": "2024-01-05",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+                             ]
+                         ]
+                    },
+                    {
+                         "data": "2024-01-06",
+                         "hours": [
+                             [
+                                 "09:00",
+                                 "15:00"
+                             ]
+                         ]
+                   }
+               ],
+               "serviceIds": [
+                   2,
+                   3,
+                   4,
+                   5,
+                   6,
+                   7,
+                   8,
+                   212,
+                   214,
+                   215
+               ],
+               "customFields":[]
+          }
+      ],
+      "seoData": {
+          "structuredData": [],
+          "alternates": [
+              {
+                   "language": "IT",
+                   "languageName":"Italiano",
+                   "path": "/italia/lombardia/bergamo/bergamo"
+              },
+              {
+                   "language": "EN",
+                   "languageName":"English",
+                   "path": "/italy/lombardia/bergamo/bergamo"
+              },
+              // ...
+          ],
+          "allStoresLink": {
+              "name": "",
+              "url": {
+                   "language": "en",
+                   "path": "/stores"
+              }
+          }
+      },
+      "breadcrumbs": [
+          {
+              "name": "HOME",
+              "url": {
+                   "language": "en",
+                   "path": "/"
+              }
+          },
+          {
+              "name": "Italy",
+              "url": {
+                   "language": "en",
+                   "path": "/italy"
+              }
+          },
+          {
+              "name": "Lombardia",
+              "url": {
+                   "language": "en",
+                   "path": "/italy/lombardia"
+              }
+          },
+          {
+              "name": "Bergamo",
+              "url": {
+                   "language": "en",
+                   "path": "/italy/lombardia/bergamo"
+              }
+          },
+          {
+              "name": "DEMO Boutique",
+              "url": {
+                   "language": "en",
+                   "path": "/italy/lombardia/bergamo/bergamo"
+              }
+          }
+      ]
+  }
+
+
+
+Request-Response STORELOCATOR_BOOKING
+
+Requested url in GET:
+
+
+  https://api.retailtune.com/storelocator/en/italy/lombardia/bergamo/bergamo/booking
+
+
+Response code: 200.
+Response body below.
+
+
+  {
+      "pageType": "STORELOCATOR_BOOKING",
+      "link": {
+          "name": "DEMO Boutique - Booking",
+          "url": {
+              "language": "en",
+              "path": "/italy/lombardia/bergamo/bergamo/booking"
+          }
+      },
+      "services": [
+          {
+              "groupId": 0,
+        "icon": "",
+        "description": "",
+        "url": {
+            "language": "en",
+            "path": "/default-group/luce"
+        },
+        "url_store": {
+            "language": "en",
+            "path": ""
+        },
+        "groupName": "Default group",
+        "name": "Luce",
+        "id": 222,
+        "title": "",
+        "text": "",
+        "image1":"",
+        "image2":"",
+        "featured":0
+    },
+    // ...
+],
+"stores": [
+    {
+        "media": {
+            "coverPhoto": {
+                 "formats": [
+                     {
+                         "formatType": "big",
+                         "url": "https://stores-demo.retailtune.com//upload/store/big/storedemoDEMO003.jpg"
+                     }
+                 ]
+            },
+            "additionalPhotos": []
+        },
+        "reviews": [],
+        "ctas": [],
+         "proximity": [
+            {
+                 "idCampaign": 94,
+                 "name": "proximity-1752703376950",
+                 "type": "promotion",
+                 "title": "Title nel Widget",
+                 "text": "testo widget",
+                 "title_concierge": "Titolo nella Concierge",
+                 "text_concierge": "Testo nelle Concierge",
+                 "title_productfinder": "Titolo nella Product Finder",
+                 "text_productfinder": "Testo nella Product Finder",
+                 "textButton": "",
+                 "link": "",
+                 "images": [
+                     {
+                         "type": "widget",
+                         "url": "https://stores-demo.retailtune.com/upload/cta/sl/desktop/1-94.jpg"
+                     },
+                     {
+                         "type": "productfinder",
+                         "url": "https://stores-demo.retailtune.com/upload/cta/sl/mobile/1-94.jpg"
+                     },
+                     {
+                         "type": "concierge",
+                         "url": "https://stores-demo.retailtune.com/upload/cta/sl/tablet/1-94.jpg"
+                     }
+                 ],
+                 "isEvent": false
+            }
+        ],
+        "otherPhones":[],
+        "whatsapp": "",
+        "city": "Bergamo",
+        "postalCode": "24050",
+        "latitude": 45.6656384,
+        "longitude": 9.6986742,
+        "county": "",
+        "reviewsSummary": {
+            "count": 779,
+            "mean": 4.1836
+        },
+        "status": "open",
+        "province": {
+            "code": "BG",
+            "name": "Bergamo",
+            "url": {
+                 "language": "en",
+                 "path": "/italy/lombardia/bergamo"
+            }
+        },
+        "hourOffset": 3600,
+        "id": 3,
+        "email": "aeroportobergamo@DEMOmail.com",
+        "website": "https://stores.DEMO.com/it/italia/bergamo/bergamo",
+        "priority": -1,
+        "address1": "Via Aeroporto 13",
+        "address2": "Aeroporto Bergamo Orio Al Serio",
+        "googleMapsLink": "https://www.google.com/maps/dir//45.6656384,9.6986742",
+        "storeLink": {
+            "language": "en",
+            "path": "/italy/lombardia/bergamo/bergamo/booking"
+        },
+        "storeLinkConcierge": {
+            "language": "it",
+            "path": "/italy/lombardia/bergamo/bergamo"
+        },
+        "storeLinkProductFinder": {
+            "language": "it",
+            "path": "/italy/lombardia/bergamo/bergamo-DEMO003-ProductFinder"
+        },
+        "storeLinkBooking": {
+            "language": "it",
+            "path": "/italy/lombardia/bergamo/bergamo/booking"
+        },
+        "phone": "+390354210612",
+        "phoneLocal": "+390354210612",
+        "name": "DEMO Boutique",
+        "region": {
+            "name": "Lombardia",
+    "url": {
+        "language": "en",
+        "path": "/italy/lombardia"
+    }
+},
+"storeCode": "DEMO003",
+"secondaryStoreCode": "-",
+"country": {
+    "alpha2": "it",
+    "alpha3": "ITA",
+    "name": "Italy",
+    "url": {
+        "language": "en",
+        "path": "/italy"
+    }
+},
+"storeTypes": [
+    {
+        "name": "",
+        "id": "DEMO TRAVEL"
+    }
+],
+"openingHours": [
+    [],
+    [
+        [
+             "08:00",
+             "12:30"
+        ],
+        [
+             "16:00",
+             "22:00"
+        ]
+    ],
+    [
+        [
+             "10:00",
+             "19:30"
+        ]
+    ],
+    [
+        [
+             "10:00",
+             "19:30"
+        ]
+    ],
+    [
+        [
+             "10:00",
+             "19:30"
+        ]
+    ],
+    [
+        [
+             "10:00",
+             "19:30"
+        ]
+    ],
+    [
+        [
+             "08:01",
+             "13:00"
+        ],
+        [
+             "15:30",
+             "19:30"
+        ]
+    ]
+],
+"specialHours": [
+    {
+        "data": "2024-01-01",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+             ]
+        ]
+    },
+    {
+        "data": "2024-01-02",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+             ]
+        ]
+    },
+    {
+        "data": "2024-01-03",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+             ]
+        ]
+    },
+    {
+        "data": "2024-01-04",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+             ]
+        ]
+    },
+    {
+        "data": "2024-01-05",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+             ]
+        ]
+    },
+                    {
+                        "data": "2024-01-06",
+                        "hours": [
+                            [
+                                "09:00",
+                                "15:00"
+                            ]
+                        ]
+                   }
+               ],
+               "serviceIds": [
+                   2,
+                   3,
+                   4,
+                   5,
+                   6,
+                   7,
+                   8,
+                   212,
+                   214,
+                   215
+               ],
+               "customFields":[]
+          }
+      ],
+      "seoData": {
+          "structuredData": [],
+          "alternates": [
+              {
+                   "language": "IT",
+                   "languageName":"Italiano",
+                   "path": "/italia/lombardia/bergamo/bergamo"
+              },
+              {
+                   "language": "EN",
+                   "languageName":"English",
+                   "path": "/italy/lombardia/bergamo/bergamo"
+              },
+              // ...
+          ],
+          "allStoresLink": {
+              "name": "",
+              "url": {
+                   "language": "en",
+                   "path": "/stores"
+              }
+          }
+      },
+      "breadcrumbs": [
+          {
+              "name": "HOME",
+              "url": {
+                   "language": "en",
+                   "path": "/"
+              }
+          },
+          {
+              "name": "Italy",
+              "url": {
+                   "language": "en",
+                   "path": "/italy"
+              }
+          },
+          {
+              "name": "Lombardia",
+              "url": {
+                   "language": "en",
+                   "path": "/italy/lombardia"
+              }
+          },
+          {
+              "name": "Bergamo",
+              "url": {
+                   "language": "en",
+                   "path": "/italy/lombardia/bergamo"
+              }
+          },
+          {
+              "name": "DEMO Boutique",
+              "url": {
+                   "language": "en",
+                   "path": "/italy/lombardia/bergamo/bergamo"
+              }
+          }
+      ]
+  }
+
+
+
+Request-Response STORELOCATOR_STORE_SERVICE
+
+Requested url in GET:
+
+
+  https://api.retailtune.com/storelocator/it/italia/lombardia/milano/milano/adidas
+
+Response code: 200.
+Response body below.
+
+
+  {
+      "pageType": "STORELOCATOR_STORE_SERVICE",
+      "link": {
+          "name": "Why Run - ADIDAS",
+          "url": {
+              "language": "it",
+              "path": "/italia/lombardia/milano/milano/adidas"
+          }
+      },
+      "services": [
+          {
+              "groupId": 0,
+              "icon": "/img/services/sportland-card.svg",
+              "description": "",
+              "url": {
+                  "language": "it",
+                  "path": "/servizi/sportland-card"
+              },
+              "url_store": {
+                  "language": "it",
+                  "path": ""
+              },
+              "groupName": "Servizi",
+              "name": "Sportland Card",
+              "visible": 1,
+              "id": 1,
+              "title": "",
+              "text": "",
+              "image1": "",
+              "image2": "",
+              "featured": 0
+        },
+        ...
+        {
+            "groupId": 2,
+            "icon": "",
+            "description": "Aku, calzature italiane per l'outdoor, progettate per le sfide più estreme.",
+            "url": {
+                "language": "it",
+                "path": "/brand/aku"
+            },
+            "url_store": {
+                "language": "it",
+                "path": "/italia/lombardia/milano/milano/aku"
+            },
+            "groupName": "Brand",
+            "name": "AKU",
+            "visible": 1,
+            "id": 44,
+            "title": "AKU",
+            "text": "Aku è un marchio italiano con una lunga tradizione nella produzione di calzature tecniche per l'outdoor. Dalla sua fondazione, Aku si è
+impegnato a creare scarpe che combinano artigianalità, innovazione e sostenibilità. Ogni modello è realizzato con materiali di alta qualità, pensato per offrire
+comfort e prestazioni eccezionali su ogni tipo di terreno. Aku è il compagno ideale per gli escursionisti e gli amanti dell'avventura, grazie alla sua esperienza nel
+settore e alla sua attenzione ai dettagli.",
+            "image1": "",
+            "image2": "",
+            "featured": 1
+        },
+        {
+            "groupId": 2,
+            "icon": "",
+            "description": "Adidas, leader mondiale nell'abbigliamento sportivo, sinonimo di innovazione e prestazioni.",
+            "url": {
+                "language": "it",
+                "path": "/brand/adidas"
+            },
+            "url_store": {
+                "language": "it",
+                "path": "/italia/lombardia/milano/milano/adidas"
+            },
+            "groupName": "Brand",
+            "name": "ADIDAS",
+            "visible": 1,
+            "id": 45,
+            "title": "ADIDAS",
+            "text": "Adidas è uno dei marchi più iconici nel mondo dello sport, fondato con l'idea di migliorare le prestazioni degli atleti attraverso
+l'innovazione. Con un forte impegno verso la sostenibilità e il design all'avanguardia, Adidas ha cambiato il modo in cui le persone si approcciano allo sport. Dalle
+scarpe ai capi tecnici, ogni prodotto riflette la dedizione del brand verso l'eccellenza. Che si tratti di running, calcio o allenamento, Adidas continua a essere
+una scelta di fiducia per atleti professionisti e amatori di tutto il mondo.",
+            "image1": "",
+            "image2": "",
+            "featured": 1
+        },
+        {
+            "groupId": 2,
+            "icon": "",
+            "description": "Asics, un'icona dell'abbigliamento sportivo, combina tecnologia avanzata e comfort per runner e atleti.",
+            "url": {
+                "language": "it",
+                "path": "/brand/asics"
+            },
+            "url_store": {
+                "language": "it",
+                "path": "/italia/lombardia/milano/milano/asics"
+            },
+            "groupName": "Brand",
+            "name": "ASICS",
+            "visible": 1,
+            "id": 46,
+            "title": "ASICS",
+            "text": "Fondata nel 1949, Asics ha costruito la sua reputazione come leader nel mondo delle calzature sportive. Il brand è famoso per la sua dedizione
+alla ricerca scientifica e alla creazione di scarpe che migliorano il benessere fisico degli atleti. Con un forte impegno verso l'innovazione e la sostenibilità,
+Asics continua a spingere i confini del design sportivo, diventando la scelta principale di molti runner e sportivi.",
+            "image1": "",
+            "image2": "",
+            "featured": 1
+        }
+    ],
+    "stores": [
+        {
+            "whatsapp": "",
+            "otherPhones":[],
+            "city": "Milano",
+            "postalCode": "20154",
+            "latitude": 45.4771391,
+            "longitude": 9.171047999999999,
+            "county": "",
+            "reviewsSummary": {
+                "count": 779,
+                "mean": 4.1836
+            },
+            "status": "open",
+            "province": {
+                "code": "MI",
+                "name": "Milano",
+                "url": {}
+            },
+            "hourOffset": 3600,
+            "id": 14,
+            "email": "whyrun.milano@whyrun.com",
+            "website": "",
+            "priority": -1,
+            "address1": "Corso Sempione, 6",
+            "address2": "",
+            "googleMapsLink": "https://maps.google.com/maps?cid=9960040529144216076",
+            "storeLink": {
+                 "language": "it",
+                 "path": "/italia/lombardia/milano/milano"
+            },
+            "storeLinkProductFinder": {
+                 "language": "it",
+                 "path": ""
+            },
+            "storeLinkConcierge": {
+                 "language": "it",
+                 "path": "/italia/lombardia/milano/milano"
+            },
+            "storeLinkBooking": {
+                 "language": "it",
+                 "path": ""
+            },
+            "phone": "0280897305",
+            "phoneLocal": "0280897305",
+            "name": "Why Run",
+            "region": {
+                 "name": "Lombardia",
+                 "url": {}
+            },
+            "storeCode": "SP25",
+            "secondaryStoreCode": "SP25",
+            "country": {
+                 "alpha2": "it",
+                 "alpha3": "ITA",
+                 "name": "Italia",
+                 "url": {}
+            },
+            "storeTypes": [
+                 {
+                     "name": "Why Run",
+                     "id": "WhyRun"
+                 }
+            ],
+            "openingHours": [
+                 [],
+                 [
+                     [
+                         "12:30",
+                         "21:00"
+                     ]
+                 ],
+                 [
+                     [
+                         "10:30",
+                         "21:00"
+                     ]
+                 ],
+                 [
+                     [
+                         "10:30",
+                         "21:00"
+                     ]
+                 ],
+                 [
+                     [
+                         "10:30",
+                         "21:00"
+                     ]
+                 ],
+                 [
+                     [
+                         "10:30",
+                         "21:00"
+                     ]
+                 ],
+                 [
+                     [
+                         "10:30",
+                         "21:00"
+                     ]
+                 ]
+            ],
+            "specialHours": [],
+            "serviceIds": [
+                 2,
+                 3,
+                 4,
+                 5,
+                 6,
+                 7,
+                 13,
+                 14,
+                 15,
+                 16,
+                 17,
+                 30,
+                 32,
+                 36,
+                 41,
+                 42,
+                 44,
+                 45,
+                 46
+            ],
+            "storeDescription": "<p>Il negozio di Running per tutti i tipi di runner. WhyRun Milano nasce dall&rsquo;idea di supportare la passione della corsa a
+prescindere dall&rsquo;obiettivo finale di ognuno. WhyRun &egrave; il luogo in cui chi ama correre pu&ograve; finalmente trovare tutte le risposte. Il concept store
+&egrave; tutto ci&ograve; che un runner, amatoriale o assiduo che sia, pu&ograve; desiderare. Un vero e proprio tempio dedicato interamente al running che offr la
+miglior esperienza d&rsquo;acquisto per chi ha fatto della corsa la sua pi&ugrave; grande passione. Da WhyRun si trovano i migliori prodotti dei migliori brand: una
+vastissima scelta di scarpe, accessori, materiale tecnico, vestiario interamente dedicato al mondo running. Da WhyRun ognuno ha un mondo di servizi al servizio della
+sua corsa.</p>",
+            "locationNote": "",
+            "customFields":[]
+        }
+    ],
+    "seoData": {
+        "structuredData": [],
+           "alternates": [
+               {
+                   "languageName": "Italiano",
+                   "language": "it",
+                   "path": "/italia/lombardia/milano/milano"
+               }
+           ],
+           "allStoresLink": {
+               "name": "",
+               "url": {
+                   "language": "it",
+                   "path": "/tutti-i-negozi"
+               }
+           }
+      },
+      "breadcrumbs": [
+          {
+              "name": "HOME",
+              "url": {
+                  "language": "it",
+                  "path": "/"
+              }
+          },
+          {
+              "name": "Italia",
+              "url": {}
+          },
+          {
+              "name": "Why Run",
+              "url": {
+                  "language": "it",
+                  "path": "/italia/lombardia/milano/milano"
+              }
+          }
+      ]
+  }
+
+
+
+Request-Response STORELOCATOR_REDIRECT
+
+Requested url in GET:
+
+
+  https://api.retailtune.com/storelocator/it/italia/bari/demo-boutique-bari
+
+
+Response code: 200.
+Response body below.
+
+
+  {
+      "pageType": "STORELOCATOR_REDIRECT",
+      "redirect": {
+          "redirectType": 301,
+          "url": {
+              "language": "it",
+              "path": "/italia/puglia/bari/demo-boutique-bari"
+          }
+      }
+  }
+
+
+
+Request-Response STORELOCATOR_PAGE_NOT_FOUND
+
+Requested url in GET:
+
+
+  https://api.retailtune.com/storelocator/it/italia/bari/hello-world
+
+
+Response code: 404.
+Response body below.
+
+
+  {
+      "pageType": "STORELOCATOR_PAGE_NOT_FOUND",
+      "redirect": {
+          "redirectType": 301,
+          "url": {
+              "language": "it",
+              "path": "/"
+          }
+      }
+  }
+
+
+
+Request-Response STORELOCATOR_SEO_ALL_STORES
+
+Requested url in GET:
+
+
+  https://api.retailtune.com/storelocator/en/stores
+
+
+Response code: 200.
+Response body below.
+
+
+  {
+      "pageType": "STORELOCATOR_SEO_ALL_STORES",
+      "link": {
+          "name": "",
+          "url": {
+              "language": "en",
+              "path": ""
+          }
+      },
+      "services": [
+          {
+              "groupId": 0,
+              "icon": "pickup_m.svg",
+              "description": "",
+              "url": {
+                   "language": "en",
+                   "path": "/default-group/pickup-in-store"
+        },
+        "url_store": {
+            "language": "en",
+            "path": ""
+        },
+        "groupName": "Default group",
+        "name": "Pickup in store",
+        "id": 1,
+        "title": "",
+        "text": "",
+        "image1":"",
+        "image2":"",
+        "featured":0
+    },
+    // ...
+],
+"stores": [
+    {
+        "whatsapp": "+39 3358747340",
+        "city": "Bari",
+        "postalCode": "70121",
+        "latitude": 41.124752,
+        "longitude": 16.869175,
+        "county": "",
+        "reviewsSummary": {
+            "count": 779,
+            "mean": 4.1836
+        },
+        "status": "closed",
+        "province": {
+            "code": "BA",
+            "name": "Bari",
+            "url": {
+                 "language": "en",
+                 "path": "/italy/puglia/bari"
+            }
+        },
+        "hourOffset": 7200,
+        "id": 1,
+        "email": "store.bari@DEMO.com",
+        "website": "https://stores.DEMO.com/it/italia/bari/DEMO-boutique-bari",
+        "priority": -1,
+        "address1": "Via Abate Gimma 69",
+        "address2": "",
+        "googleMapsLink": "https://www.google.com/maps/dir//41.124752,16.869175",
+        "storeLink": {
+            "language": "en",
+            "path": "/italy/puglia/bari/demo-boutique-bari"
+        },
+        "storeLinkProductFinder": {
+            "language": "en",
+            "path": "/italy/puglia/bari/demo-boutique-bari-DEMO001-ProductFinder"
+        },
+        "phone": "+390805249997",
+        "phoneLocal": "+390805249997",
+        "name": "DEMO Boutique",
+        "region": {
+            "name": "Puglia",
+            "url": {
+                 "language": "en",
+                 "path": "/italy/puglia"
+            }
+        },
+        "storeCode": "DEMO001",
+        "secondaryStoreCode": "PIBA",
+        "country": {
+            "alpha2": "it",
+            "alpha3": "ITA",
+            "name": "Italy",
+            "url": {
+                 "language": "en",
+                 "path": "/italy"
+            }
+        },
+        "storeTypes": [
+            {
+                 "name": "",
+                 "id": "DEMO STORE"
+            }
+        ],
+        "openingHours": [
+            [
+                 [
+                     "10:30",
+                     "13:00"
+                 ],
+                 [
+                     "17:00",
+                     "20:00"
+                 ]
+            ],
+            [
+                 [
+                     "10:00",
+                     "20:00"
+                 ]
+            ],
+            [
+                 [
+                     "10:00",
+                     "20:00"
+                 ]
+            ],
+            [
+                 [
+                     "10:00",
+                     "20:00"
+                 ]
+            ],
+            [
+                 [
+                     "10:00",
+                     "20:00"
+                 ]
+            ],
+                    [
+                         [
+                             "10:00",
+                             "20:00"
+                         ]
+                    ],
+                    [
+                         [
+                             "10:00",
+                             "20:00"
+                         ]
+                   ]
+               ],
+               "specialHours": [
+                   {
+                        "data": "2024-01-01",
+                        "hours": []
+                   }
+               ],
+               "serviceIds": [
+                   1,
+                   2,
+                   3,
+                   4,
+                   5,
+                   6,
+                   212,
+                   214,
+                   215,
+                   221
+               ],
+               "customFields":[]
+          },
+          // ...
+      ],
+      "seoData": {
+          "title": "",
+          "description": "",
+          "h1": "",
+          "h2": "",
+          "structuredData": [],
+          "alternates": [
+              {
+                   "language": "de",
+                   "path": "/stores"
+              },
+              {
+                   "language": "ru",
+                   "path": "/stores"
+              },
+              // ...
+          ],
+          "allStoresLink": {
+              "name": "",
+              "url": {
+                   "language": "en",
+                   "path": "/stores"
+              }
+          }
+      },
+      "breadcrumbs": [
+          {
+              "name": "HOME",
+              "url": {
+                   "language": "en",
+                   "path": "/"
+              }
+          }
+      ]
+  }
+
+
+
+Request-Response STORELOCATOR_SEO_COUNTRY
+
+Requested url in GET:
+
+
+  https://api.retailtune.com/storelocator/it/italia
+
+Response code: 200.
+Response body below.
+
+
+  {
+      "pageType": "STORELOCATOR_SEO_COUNTRY",
+      "link": {
+          "name": "Italia",
+          "url": {
+              "language": "it",
+              "path": "/italia"
+          }
+      },
+      "services": [
+          {
+              "groupId": 0,
+              "icon": "pickup_m.svg",
+              "description": "",
+              "url": {
+                   "language": "it",
+                   "path": "/default-group/pickup-in-store"
+              },
+              "url_store": {
+                   "language": "it",
+                   "path": ""
+              },
+              "groupName": "Default group",
+              "name": "Pickup in store",
+              "id": 1,
+              "title": "",
+              "text": "",
+              "image1":"",
+              "image2":"",
+              "featured":0
+          },
+    // ...
+],
+"stores": [
+    {
+        "whatsapp": "+39 3358747340",
+        "city": "Bari",
+        "postalCode": "70121",
+        "latitude": 41.124752,
+        "longitude": 16.869175,
+        "county": "",
+        "reviewsSummary": {
+            "count": 779,
+            "mean": 4.1836
+        },
+        "status": "closed",
+        "province": {
+            "code": "BA",
+            "name": "Bari",
+            "url": {
+                 "language": "it",
+                 "path": "/italia/puglia/bari"
+            }
+        },
+        "hourOffset": 7200,
+        "id": 1,
+        "email": "store.bari@DEMO.com",
+        "website": "https://stores.DEMO.com/it/italia/bari/DEMO-boutique-bari",
+        "priority": -1,
+        "address1": "Via Abate Gimma 69",
+        "address2": "",
+        "googleMapsLink": "https://www.google.com/maps/dir//41.124752,16.869175",
+        "storeLink": {
+            "language": "it",
+            "path": "/italia/puglia/bari/demo-boutique-bari"
+        },
+        "storeLinkConcierge": {
+            "language": "it",
+            "path": "/italia/puglia/bari/demo-boutique-bari"
+        },
+        "storeLinkProductFinder": {
+            "language": "it",
+            "path": "/italia/puglia/bari/demo-boutique-bari-DEMO001-ProductFinder"
+        },
+        "storeLinkBooking": {
+            "language": "it",
+            "path": "/italia/puglia/bari/demo-boutique-bari/booking"
+        },
+        "phone": "+390805249997",
+        "phoneLocal": "+390805249997",
+        "name": "DEMO Boutique",
+        "region": {
+            "name": "Puglia",
+            "url": {
+                 "language": "it",
+                 "path": "/italia/puglia"
+            }
+        },
+        "storeCode": "DEMO001",
+        "secondaryStoreCode": "PIBA",
+        "country": {
+            "alpha2": "it",
+            "alpha3": "ITA",
+            "name": "Italia",
+            "url": {
+                 "language": "it",
+                 "path": "/italia"
+            }
+        },
+        "storeTypes": [
+            {
+                 "name": "",
+                 "id": "DEMO STORE"
+            }
+        ],
+        "openingHours": [
+            [
+                 [
+                     "10:30",
+                     "13:00"
+                 ],
+                 [
+                     "17:00",
+                     "20:00"
+                 ]
+            ],
+            [
+                 [
+                     "10:00",
+                     "20:00"
+                 ]
+            ],
+            [
+                 [
+                     "10:00",
+                     "20:00"
+                 ]
+            ],
+            [
+                 [
+                     "10:00",
+                     "20:00"
+                 ]
+            ],
+            [
+                 [
+                     "10:00",
+                     "20:00"
+                 ]
+            ],
+            [
+                 [
+                     "10:00",
+                     "20:00"
+                 ]
+            ],
+                    [
+                        [
+                            "10:00",
+                            "20:00"
+                        ]
+                   ]
+               ],
+               "specialHours": [
+                   {
+                        "data": "2024-01-01",
+                        "hours": []
+                   }
+               ],
+               "serviceIds": [
+                   1,
+                   2,
+                   3,
+                   4,
+                   5,
+                   6,
+                   212,
+                   214,
+                   215,
+                   221
+               ],
+               "customFields":[]
+          },
+          // ...
+      ],
+      "seoData": {
+          "title": "",
+          "description": "",
+          "h1": "",
+          "h2": "",
+          "structuredData": [],
+          "alternates": [
+              {
+                   "language": "de",
+                   "path": "/italy"
+              },
+              {
+                   "language": "ru",
+                   "path": "/italy"
+              },
+              // ...
+          ],
+          "allStoresLink": {
+              "name": "",
+              "url": {
+                   "language": "it",
+                   "path": "/negozi"
+              }
+          }
+      },
+      "breadcrumbs": [
+          {
+              "name": "HOME",
+              "url": {
+                   "language": "it",
+                   "path": "/"
+              }
+          },
+          {
+              "name": "Italia",
+              "url": {
+                   "language": "it",
+                   "path": "/italia"
+              }
+          }
+      ]
+  }
+
+
+
+Request-Response STORELOCATOR_SEO_REGION
+
+Requested url in GET:
+
+
+  https://api.retailtune.com/storelocator/it/italia/emilia-romagna
+
+Response code: 200.
+Response body below.
+
+
+  {
+      "pageType": "STORELOCATOR_SEO_REGION",
+      "link": {
+          "name": "Emilia-Romagna",
+          "url": {
+              "language": "it",
+              "path": "/italia/emilia-romagna"
+          }
+      },
+      "services": [
+          {
+              "groupId": 0,
+              "icon": "pickup_m.svg",
+              "description": "",
+              "url": {
+                   "language": "it",
+                   "path": "/default-group/pickup-in-store"
+              },
+              "url_store": {
+                   "language": "it",
+                   "path": ""
+              },
+              "groupName": "Default group",
+              "name": "Pickup in store",
+              "id": 1,
+              "title": "",
+              "text": "",
+              "image1":"",
+              "image2":"",
+              "featured":0
+    },
+    // ...
+],
+"stores": [
+    {
+        "whatsapp": "+39 366 6628253",
+        "city": "Bologna",
+        "postalCode": "40124",
+        "latitude": 44.492148,
+        "longitude": 11.344973,
+        "county": "",
+        "reviewsSummary": {
+            "count": 779,
+            "mean": 4.1836
+        },
+        "status": "open",
+        "province": {
+            "code": "BO",
+            "name": "Bologna",
+            "url": {
+                 "language": "it",
+                 "path": "/italia/emilia-romagna/bologna"
+            }
+        },
+        "hourOffset": 7200,
+        "id": 4,
+        "email": "store.bologna@DEMO.com",
+        "website": "https://stores.DEMO.com/it/italia/bologna/DEMO-boutique-bologna",
+        "priority": -1,
+        "address1": "Piazza Minghetti 3/E",
+        "address2": "",
+        "googleMapsLink": "https://www.google.com/maps/dir//44.492148,11.344973",
+        "storeLink": {
+            "language": "it",
+            "path": "/italia/emilia-romagna/bologna/demo-boutique-bologna"
+        },
+        "storeLinkConcierge": {
+            "language": "it",
+            "path": "/italia/emilia-romagna/bologna/demo-boutique-bologna"
+        },
+        "storeLinkProductFinder": {
+            "language": "it",
+            "path": "/italia/emilia-romagna/bologna/demo-boutique-bologna-DEMO004-ProductFinder"
+        },
+        "storeLinkBooking": {
+            "language": "it",
+            "path": "/italia/emilia-romagna/bologna/demo-boutique-bologna/booking"
+        },
+        "phone": "+39051228709",
+        "phoneLocal": "+39051228709",
+        "name": "DEMO Boutique",
+        "region": {
+            "name": "Emilia-Romagna",
+            "url": {
+                 "language": "it",
+                 "path": "/italia/emilia-romagna"
+            }
+        },
+        "storeCode": "DEMO004",
+        "secondaryStoreCode": "EMBO",
+        "country": {
+            "alpha2": "it",
+            "alpha3": "ITA",
+            "name": "Italia",
+            "url": {
+                 "language": "it",
+                 "path": "/italia"
+            }
+        },
+        "storeTypes": [
+            {
+                 "name": "",
+                 "id": "DEMO STORE"
+            }
+        ],
+        "openingHours": [
+            [
+                 [
+                     "10:30",
+                     "13:00"
+                 ],
+                 [
+                     "15:30",
+                     "19:00"
+                 ]
+            ],
+            [
+                 [
+                     "10:00",
+                     "19:30"
+                 ]
+            ],
+            [
+                 [
+                     "10:00",
+                     "19:30"
+                 ]
+            ],
+            [
+                 [
+                     "10:00",
+                     "19:30"
+                 ]
+            ],
+            [
+                 [
+                     "10:00",
+                     "19:30"
+                 ]
+            ],
+            [
+                 [
+                     "10:00",
+                     "19:30"
+                 ]
+            ],
+            [
+                 [
+                     "10:00",
+                     "19:30"
+                 ]
+            ]
+        ],
+        "specialHours": [
+            {
+                 "data": "2024-01-01",
+                 "hours": [
+                     [
+                         "09:00",
+                         "15:00"
+                     ]
+                 ]
+            },
+            {
+                 "data": "2024-01-02",
+                 "hours": [
+                     [
+                         "09:00",
+                         "15:00"
+                     ]
+                 ]
+            },
+            {
+                 "data": "2024-01-03",
+                 "hours": [
+                     [
+                         "09:00",
+                         "15:00"
+                     ]
+                 ]
+            },
+            {
+                 "data": "2024-01-04",
+                 "hours": [
+                     [
+                         "09:00",
+                         "15:00"
+                     ]
+                 ]
+            },
+            {
+                 "data": "2024-01-05",
+                 "hours": [
+                     [
+                         "09:00",
+                         "15:00"
+                     ]
+                 ]
+            },
+            {
+                 "data": "2024-01-06",
+                 "hours": [
+                     [
+                         "09:00",
+                         "15:00"
+                     ]
+                 ]
+            }
+        ],
+        "serviceIds": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            212,
+            214,
+            215,
+            221
+        ],
+        "customFields":[]
+    },
+    // ...
+],
+"seoData": {
+    "title": "",
+    "description": "",
+    "h1": "",
+    "h2": "",
+    "structuredData": [],
+    "alternates": [
+        {
+             "language": "de",
+             "path": "/italy/emilia-romagna"
+        },
+        {
+             "language": "ru",
+             "path": "/italy/emilia-romagna"
+        },
+        // ...
+    ],
+    "allStoresLink": {
+        "name": "",
+        "url": {
+             "language": "it",
+             "path": "/negozi"
+        }
+    }
+},
+"breadcrumbs": [
+    {
+        "name": "HOME",
+        "url": {
+             "language": "it",
+             "path": "/"
+        }
+    },
+    {
+        "name": "Italia",
+                "url": {
+                    "language": "it",
+                    "path": "/italia"
+                }
+           },
+           {
+                "name": "Emilia-Romagna",
+                "url": {
+                    "language": "it",
+                    "path": "/italia/emilia-romagna"
+                }
+           }
+      ]
+  }
+
+
+
+Request-Response STORELOCATOR_SEO_PROVINCE
+
+Requested url in GET:
+
+
+  https://api.retailtune.com/storelocator/it/italia/emilia-romagna/parma
+
+
+Response code: 200.
+Response body below.
+
+
+  {
+      "pageType": "STORELOCATOR_SEO_PROVINCE",
+      "link": {
+          "name": "Parma",
+          "url": {
+              "language": "it",
+              "path": "/italia/emilia-romagna/parma"
+          }
+      },
+      "services": [
+          {
+              "groupId": 0,
+              "icon": "pickup_m.svg",
+              "description": "",
+              "url": {
+                   "language": "it",
+                   "path": "/default-group/pickup-in-store"
+              },
+              "url_store": {
+                   "language": "it",
+                   "path": ""
+              },
+              "groupName": "Default group",
+              "name": "Pickup in store",
+              "id": 1,
+              "title": "",
+              "text": "",
+              "image1":"",
+              "image2":"",
+              "featured":0
+          },
+          // ...
+      ],
+      "stores": [
+          {
+              "whatsapp": "+39 3666310611",
+              "city": "Fidenza",
+              "postalCode": "43036",
+              "latitude": 44.86667,
+              "longitude": 10.06003,
+              "county": "",
+              "reviewsSummary": {
+                   "count": 779,
+                   "mean": 4.1836
+              },
+              "status": "open",
+              "province": {
+                   "code": "PR",
+                   "name": "Parma",
+                   "url": {
+                       "language": "it",
+                       "path": "/italia/emilia-romagna/parma"
+                   }
+              },
+              "hourOffset": 7200,
+              "id": 9,
+              "email": "store.fidenzacavour@DEMO.com",
+              "website": "https://stores.DEMO.com/it/italia/parma/DEMO-boutique-fidenza",
+              "priority": -1,
+              "address1": "Via Camillo Benso conte di Cavour, 23",
+              "address2": "",
+              "googleMapsLink": "https://www.google.com/maps/dir//44.86667,10.06003",
+              "storeLink": {
+                   "language": "it",
+                   "path": "/italia/emilia-romagna/parma/demo-boutique-fidenza"
+              },
+              "storeLinkConcierge": {
+                   "language": "it",
+                   "path": "/italia/emilia-romagna/parma/demo-boutique-fidenza"
+              },
+              "storeLinkProductFinder": {
+                   "language": "it",
+                   "path": "/italia/emilia-romagna/parma/demo-boutique-fidenza-DEMO009-ProductFinder"
+              },
+              "storeLinkBooking": {
+                   "language": "it",
+                   "path": "/italia/emilia-romagna/parma/demo-boutique-fidenza/booking"
+              },
+              "phone": "+39052484128",
+              "phoneLocal": "+39052484128",
+              "name": "DEMO Boutique",
+              "region": {
+                   "name": "Emilia-Romagna",
+                   "url": {
+                       "language": "it",
+                       "path": "/italia/emilia-romagna"
+                   }
+},
+"storeCode": "DEMO009",
+"secondaryStoreCode": "EMFI",
+"country": {
+    "alpha2": "it",
+    "alpha3": "ITA",
+    "name": "Italia",
+    "url": {
+        "language": "it",
+        "path": "/italia"
+    }
+},
+"storeTypes": [
+    {
+        "name": "",
+        "id": "DEMO STORE"
+    }
+],
+"openingHours": [
+    [],
+    [
+        [
+             "09:30",
+             "13:00"
+        ],
+        [
+             "16:00",
+             "19:30"
+        ]
+    ],
+    [
+        [
+             "09:30",
+             "13:00"
+        ],
+        [
+             "16:00",
+             "19:30"
+        ]
+    ],
+    [
+        [
+             "09:30",
+             "13:00"
+        ],
+        [
+             "16:00",
+             "19:30"
+        ]
+    ],
+    [
+        [
+             "09:00",
+             "13:00"
+        ]
+    ],
+    [
+        [
+             "09:30",
+             "13:00"
+        ],
+        [
+             "15:30",
+             "19:30"
+        ]
+    ],
+    [
+        [
+             "09:30",
+             "13:00"
+        ],
+        [
+             "15:30",
+             "19:30"
+        ]
+    ]
+],
+"specialHours": [
+    {
+        "data": "2024-01-01",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+             ]
+        ]
+    },
+    {
+        "data": "2024-01-02",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+             ]
+        ]
+    },
+    {
+        "data": "2024-01-03",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+             ]
+        ]
+    },
+    {
+        "data": "2024-01-04",
+        "hours": [
+             [
+                 "09:00",
+                 "15:00"
+             ]
+        ]
+    },
+    {
+                         "data": "2024-01-05",
+                         "hours": [
+                             [
+                                 "09:00",
+                                 "15:00"
+                             ]
+                         ]
+                    },
+                    {
+                         "data": "2024-01-06",
+                         "hours": [
+                             [
+                                 "09:00",
+                                 "15:00"
+                             ]
+                         ]
+                   }
+               ],
+               "serviceIds": [
+                   1,
+                   2,
+                   3,
+                   4,
+                   5,
+                   6,
+                   212,
+                   214,
+                   215,
+                   221
+               ],
+               "customFields":[]
+          },
+          // ...
+      ],
+      "seoData": {
+          "title": "",
+          "description": "",
+          "h1": "",
+          "h2": "",
+          "structuredData": [],
+          "alternates": [
+              {
+                   "language": "de",
+                   "path": "/italy/emilia-romagna/parma"
+              },
+              {
+                   "language": "ru",
+                   "path": "/italy/emilia-romagna/parma"
+              },
+              // ...
+          ],
+          "allStoresLink": {
+              "name": "",
+              "url": {
+                   "language": "it",
+                   "path": "/negozi"
+              }
+          }
+      },
+      "breadcrumbs": [
+          {
+              "name": "HOME",
+              "url": {
+                   "language": "it",
+                   "path": "/"
+              }
+          },
+          {
+              "name": "Italia",
+              "url": {
+                   "language": "it",
+                   "path": "/italia"
+              }
+          },
+          {
+              "name": "Emilia-Romagna",
+              "url": {
+                   "language": "it",
+                   "path": "/italia/emilia-romagna"
+              }
+          },
+          {
+              "name": "Parma",
+              "url": {
+                   "language": "it",
+                   "path": "/italia/emilia-romagna/parma"
+              }
+          }
+      ]
+  }
+
+
+
+Request-Response STORELOCATOR_SEO_SERVICE
+
+Requested url in GET:
+
+
+  https://api.retailtune.com/storelocator/it/default-group/credit-cards
+
+
+Response code: 200.
+Response body below.
+
+
+  {
+      "pageType": "STORELOCATOR_SEO_SERVICE",
+      "link": {
+          "name": "Credit Cards",
+          "url": {
+              "language": "it",
+              "path": "/default-group/credit-cards"
+          }
+      },
+      "services": [
+          {
+        "groupId": 0,
+        "icon": "pickup_m.svg",
+        "description": "",
+        "url": {
+            "language": "it",
+            "path": "/default-group/pickup-in-store"
+        },
+        "url_store": {
+            "language": "it",
+            "path": ""
+        },
+        "groupName": "Default group",
+        "name": "Pickup in store",
+        "id": 1,
+        "title": "",
+        "text": "",
+        "image1":"",
+        "image2":"",
+        "featured":0
+    },
+    // ...
+],
+"stores": [
+    {
+        "whatsapp": "+39 3358747340",
+        "city": "Bari",
+        "postalCode": "70121",
+        "latitude": 41.124752,
+        "longitude": 16.869175,
+        "county": "",
+        "reviewsSummary": {
+            "count": 779,
+            "mean": 4.1836
+        },
+        "status": "closed",
+        "province": {
+            "code": "BA",
+            "name": "Bari",
+            "url": {
+                 "language": "it",
+                 "path": "/italia/puglia/bari"
+            }
+        },
+        "hourOffset": 7200,
+        "id": 1,
+        "email": "store.bari@DEMO.com",
+        "website": "https://stores.DEMO.com/it/italia/bari/DEMO-boutique-bari",
+        "priority": -1,
+        "address1": "Via Abate Gimma 69",
+        "address2": "",
+        "googleMapsLink": "https://www.google.com/maps/dir//41.124752,16.869175",
+        "storeLink": {
+            "language": "it",
+            "path": "/italia/puglia/bari/demo-boutique-bari"
+        },
+        "storeLinkConcierge": {
+            "language": "it",
+            "path": "/italia/puglia/bari/demo-boutique-bari"
+        },
+        "storeLinkProductFinder": {
+            "language": "it",
+            "path": "/italia/puglia/bari/demo-boutique-bari-DEMO001-ProductFinder"
+        },
+        "storeLinkBooking": {
+            "language": "it",
+            "path": "/italia/puglia/bari/demo-boutique-bari/booking"
+        },
+        "phone": "+390805249997",
+        "phoneLocal": "+390805249997",
+        "name": "DEMO Boutique",
+        "region": {
+            "name": "Puglia",
+            "url": {
+                 "language": "it",
+                 "path": "/italia/puglia"
+            }
+        },
+        "storeCode": "DEMO001",
+        "secondaryStoreCode": "PIBA",
+        "country": {
+            "alpha2": "it",
+            "alpha3": "ITA",
+            "name": "Italia",
+            "url": {
+                 "language": "it",
+                 "path": "/italia"
+            }
+        },
+        "storeTypes": [
+            {
+                 "name": "",
+                 "id": "DEMO STORE"
+            }
+        ],
+        "openingHours": [
+            [
+                 [
+                     "10:30",
+                     "13:00"
+                 ],
+                 [
+                     "17:00",
+                     "20:00"
+                 ]
+            ],
+            [
+                 [
+                     "10:00",
+                     "20:00"
+                 ]
+            ],
+            [
+                 [
+                     "10:00",
+                     "20:00"
+                     ]
+                ],
+                [
+                     [
+                         "10:00",
+                         "20:00"
+                     ]
+                ],
+                [
+                     [
+                         "10:00",
+                         "20:00"
+                     ]
+                ],
+                [
+                     [
+                         "10:00",
+                         "20:00"
+                     ]
+                ],
+                [
+                     [
+                         "10:00",
+                         "20:00"
+                     ]
+                ]
+            ],
+            "specialHours": [
+                {
+                     "data": "2024-01-01",
+                     "hours": []
+                }
+            ],
+            "serviceIds": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                212,
+                214,
+                215,
+                221
+            ],
+        "customFields":[]
+        },
+        // ...
+    ],
+    "seoData": {
+        "title": "",
+        "description": "",
+        "h1": "",
+        "h2": "",
+        "structuredData": [],
+        "alternates": [
+            {
+                 "language": "en",
+                 "path": "/default-group/credit-cards"
+            },
+            {
+                 "language": "it",
+                 "path": "/default-group/credit-cards"
+            },
+            // ...
+        ],
+        "allStoresLink": {
+            "name": "",
+            "url": {
+                 "language": "it",
+                 "path": "/negozi"
+            }
+        }
+    },
+    "breadcrumbs": [
+        {
+            "name": "HOME",
+            "url": {
+                 "language": "it",
+                 "path": "/"
+            }
+        },
+        {
+            "name": "Credit Cards",
+            "url": {
+                 "language": "it",
+                 "path": "/default-group/credit-cards"
+            }
+        }
+    ]
+}
+
