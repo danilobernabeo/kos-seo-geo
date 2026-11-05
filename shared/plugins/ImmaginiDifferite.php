@@ -36,7 +36,10 @@
  * L'<img> resta identico (src, classi, attributi): i browser senza WebP e gli script che lo cercano lo trovano come prima.
  * sizes: quello dell'<img> se c'è, altrimenti «(max-width: Wpx) 100vw, Wpx» con W = larghezza del file (al massimo 2400):
  * il browser sceglie la variante vicina alla dimensione mostrata, mai più grande dell'originale.
- * Non tocca: immagini già dentro un <picture> o con srcset, data-src e simili, SVG/GIF/esterne, immagini senza varianti,
+ * <picture> già presenti nel sito (art direction desktop/mobile): per ogni <source media srcset="un file"> si aggiunge
+ * subito prima la stessa sorgente in WebP (stesso media), e prima dell'<img> la sua sorgente WebP; l'ordine dei media resta quello
+ * dell'autore. Un <picture> che ha già una sorgente WebP non si tocca.
+ * Non tocca: immagini con srcset, data-src e simili, SVG/GIF/esterne, immagini senza varianti,
  * e (salvo kosseogeo.img_webp_caroselli = 1) quelle dentro un carosello. Le varianti trovate restano in cache MODX
  * (kosseogeo/webp) fino a quando cambia il file: nessuna lettura delle immagini a ogni richiesta.
  * Richiede core/components/kosseogeo/Immagini.php; senza, la parte WebP non fa nulla.
@@ -89,22 +92,21 @@ $contate = 0;                                                            // imma
 
 /* WebP: libreria comune e varianti già generate (cache MODX per file e data di modifica) */
 $webp = null;
+$webpSorgente = null;
 if ((string) $modx->getOption('kosseogeo.img_webp', null, '0') === '1' && is_file(MODX_CORE_PATH . 'components/kosseogeo/Immagini.php')) {
     require_once MODX_CORE_PATH . 'components/kosseogeo/Immagini.php';
     $lib = new \KosSeoGeo\Immagini(MODX_BASE_PATH, ['solo_webp' => (string) $modx->getOption('kosseogeo.img_solo_webp', null, '0') === '1']);
     $caroselli = (string) $modx->getOption('kosseogeo.img_webp_caroselli', null, '0') === '1';
     $memo = [];
-    $webp = function (string $t, int $pos, array $a) use ($lib, $modx, $inZona, $caroselli, &$memo): string {
-        $src = $a['src'] ?? '';
-        if ($src === '' || !preg_match('/\.(?:jpe?g|png)(?:[?#]|$)/i', $src)) return $t;
-        foreach (['srcset', 'data-src', 'data-srcset', 'data-lazy', 'data-lazy-src'] as $k) if (isset($a[$k])) return $t;
-        if (!$caroselli && $inZona($pos)) return $t;
+    // varianti WebP di un'immagine del sito: ['set' => srcset, 'w' => larghezza massima] oppure null
+    $varianti = function (string $src) use ($lib, $modx, &$memo): ?array {
+        if ($src === '' || !preg_match('/\.(?:jpe?g|png)(?:[?#]|$)/i', $src)) return null;
         if (preg_match('#^(?:https?:)?//#i', $src)) {
             $host = parse_url((strpos($src, '//') === 0 ? 'https:' : '') . $src, PHP_URL_HOST);
-            if (strcasecmp((string) $host, (string) parse_url($modx->getOption('site_url'), PHP_URL_HOST)) !== 0) return $t;
+            if (strcasecmp((string) $host, (string) parse_url($modx->getOption('site_url'), PHP_URL_HOST)) !== 0) return null;
         }
         $file = $lib->percorso(preg_replace('/[?#].*$/', '', $src));
-        if ($file === null) return $t;
+        if ($file === null) return null;
         if (!isset($memo[$file])) {
             $chiave = 'webp/' . md5($file);
             $c = $modx->cacheManager->get($chiave, ['cache_key' => 'kosseogeo']);
@@ -117,26 +119,50 @@ if ((string) $modx->getOption('kosseogeo.img_webp', null, '0') === '1' && is_fil
             }
             $memo[$file] = $c;
         }
-        $c = $memo[$file];
-        if ($c['set'] === '') return $t;
-        $e = static fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
-        $sizes = $a['sizes'] ?? '(max-width: ' . $c['w'] . 'px) 100vw, ' . $c['w'] . 'px';
-        return '<picture style="display:contents"><source type="image/webp" srcset="' . $e($c['set']) . '" sizes="' . $e($sizes) . '">' . $t . '</picture>';
+        return $memo[$file]['set'] === '' ? null : $memo[$file];
+    };
+    $e = static fn($s) => htmlspecialchars((string) $s, ENT_QUOTES, 'UTF-8');
+    $sorgente = fn(array $c, ?string $sizes, string $media = '') => '<source' . ($media !== '' ? ' media="' . $e($media) . '"' : '')
+        . ' type="image/webp" srcset="' . $e($c['set']) . '" sizes="' . $e($sizes ?? '(max-width: ' . $c['w'] . 'px) 100vw, ' . $c['w'] . 'px') . '">';
+    // $dentro: l'<img> sta già in un <picture> del sito (art direction): si aggiunge solo la sorgente WebP prima dell'<img>
+    $webp = function (string $t, int $pos, array $a, bool $dentro = false) use ($varianti, $sorgente, $inZona, $caroselli): string {
+        foreach (['srcset', 'data-src', 'data-srcset', 'data-lazy', 'data-lazy-src'] as $k) if (isset($a[$k])) return $t;
+        if (!$caroselli && $inZona($pos)) return $t;
+        $c = $varianti($a['src'] ?? '');
+        if ($c === null) return $t;
+        return $dentro ? $sorgente($c, $a['sizes'] ?? null) . $t
+            : '<picture style="display:contents">' . $sorgente($c, $a['sizes'] ?? null) . $t . '</picture>';
+    };
+    // <source media srcset="un solo file"> di un <picture> del sito: la stessa sorgente in WebP, subito prima (stesso media)
+    $webpSorgente = function (string $t, int $pos, array $a) use ($varianti, $sorgente, $inZona, $caroselli): string {
+        if (isset($a['type']) || !isset($a['srcset']) || preg_match('/[,\s]/', trim($a['srcset']))) return $t;
+        if (!$caroselli && $inZona($pos)) return $t;
+        $c = $varianti(trim($a['srcset']));
+        return $c === null ? $t : $sorgente($c, $a['sizes'] ?? null, $a['media'] ?? '') . $t;
     };
 }
 $inPicture = 0;
+$pictureConWebp = false;                                                  // il <picture> ha già una sorgente WebP: non si tocca
 
 $nuovo = preg_replace_callback(
-    '~<!--.*?-->|<(script|style|noscript|template|textarea)\b[^>]*>.*?</\1\s*>|</header\s*>|</?picture\b[^>]*>|<img\b[^>]*>~is',
-    function ($m) use (&$dopoTestata, &$contate, &$inPicture, $salta, $inZona, $attributi, $webp) {
+    '~<!--.*?-->|<(script|style|noscript|template|textarea)\b[^>]*>.*?</\1\s*>|</header\s*>|</?picture\b[^>]*>|<source\b[^>]*>|<img\b[^>]*>~is',
+    function ($m) use (&$dopoTestata, &$contate, &$inPicture, &$pictureConWebp, $salta, $inZona, $attributi, $webp, $webpSorgente) {
         [$t, $pos] = $m[0];
         if ($t[1] === '!' || ($m[1][0] ?? '') !== '') return $t;            // commento, script, noscript...
-        if (stripos($t, '<picture') === 0) { $inPicture++; return $t; }
+        if (stripos($t, '<picture') === 0) { $inPicture++; $pictureConWebp = false; return $t; }
         if (stripos($t, '</picture') === 0) { $inPicture = max(0, $inPicture - 1); return $t; }
+        if (stripos($t, '<source') === 0) {                                  // solo nei <picture> (non in <video>/<audio>)
+            if (!$inPicture) return $t;
+            $a = $attributi($t);
+            if (stripos($a['type'] ?? '', 'webp') !== false) { $pictureConWebp = true; return $t; }
+            return ($webpSorgente && !$pictureConWebp) ? $webpSorgente($t, $pos, $a) : $t;
+        }
         if ($t[1] === '/') { $dopoTestata = true; return $t; }               // </header>
         $a = $attributi($t);
         // WebP sul tag così com'è (prima o dopo l'eventuale loading="lazy" qui sotto: l'<img> interno è lo stesso)
-        $avvolgi = ($webp && !$inPicture) ? fn(string $x) => $webp($x, $pos, $a) : fn(string $x) => $x;
+        $avvolgi = !$webp ? fn(string $x) => $x
+            : (!$inPicture ? fn(string $x) => $webp($x, $pos, $a)
+            : ($pictureConWebp ? fn(string $x) => $x : fn(string $x) => $webp($x, $pos, $a, true)));
         return $avvolgi((function () use ($t, $pos, $a, &$dopoTestata, &$contate, $salta, $inZona) {
         if (!$dopoTestata) return $t;
         $src = $a['src'] ?? '';
