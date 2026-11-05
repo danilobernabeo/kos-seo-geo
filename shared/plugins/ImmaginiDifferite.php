@@ -32,7 +32,8 @@
  * o dal plugin ImmaginiCaricamento) viene racchiuso in
  *   <picture style="display:contents"><source type="image/webp" srcset="…-480.webp 480w, …" sizes="…"><img …invariato…></picture>
  * display:contents: il <picture> non crea un riquadro proprio, l'<img> si impagina come prima (flex, griglie, larghezze).
- * Restano da collaudare solo i selettori CSS con «>» verso l'immagine (es. «.box > img»), che il nuovo genitore interrompe.
+ * I selettori CSS del tema con «>» verso l'immagine (es. «.box > img») non valgono più per l'<img> avvolto: le regole si ripetono
+ * per «> picture > img» nell'impostazione kosseogeo.img_webp_css, che il plugin stampa nell'head solo sulle pagine con immagini avvolte.
  * L'<img> resta identico (src, classi, attributi): i browser senza WebP e gli script che lo cercano lo trovano come prima.
  * sizes: quello dell'<img> se c'è, altrimenti «(max-width: Wpx) 100vw, Wpx» con W = larghezza del file (al massimo 2400):
  * il browser sceglie la variante vicina alla dimensione mostrata, mai più grande dell'originale.
@@ -125,13 +126,15 @@ if ((string) $modx->getOption('kosseogeo.img_webp', null, '0') === '1' && is_fil
     $sorgente = fn(array $c, ?string $sizes, string $media = '') => '<source' . ($media !== '' ? ' media="' . $e($media) . '"' : '')
         . ' type="image/webp" srcset="' . $e($c['set']) . '" sizes="' . $e($sizes ?? '(max-width: ' . $c['w'] . 'px) 100vw, ' . $c['w'] . 'px') . '">';
     // $dentro: l'<img> sta già in un <picture> del sito (art direction): si aggiunge solo la sorgente WebP prima dell'<img>
-    $webp = function (string $t, int $pos, array $a, bool $dentro = false) use ($varianti, $sorgente, $inZona, $caroselli): string {
+    $avvolte = 0;
+    $webp = function (string $t, int $pos, array $a, bool $dentro = false) use ($varianti, $sorgente, $inZona, $caroselli, &$avvolte): string {
         foreach (['srcset', 'data-src', 'data-srcset', 'data-lazy', 'data-lazy-src'] as $k) if (isset($a[$k])) return $t;
         if (!$caroselli && $inZona($pos)) return $t;
         $c = $varianti($a['src'] ?? '');
         if ($c === null) return $t;
-        return $dentro ? $sorgente($c, $a['sizes'] ?? null) . $t
-            : '<picture style="display:contents">' . $sorgente($c, $a['sizes'] ?? null) . $t . '</picture>';
+        if ($dentro) return $sorgente($c, $a['sizes'] ?? null) . $t;
+        $avvolte++;
+        return '<picture style="display:contents">' . $sorgente($c, $a['sizes'] ?? null) . $t . '</picture>';
     };
     // <source media srcset="un solo file"> di un <picture> del sito: la stessa sorgente in WebP, subito prima (stesso media)
     $webpSorgente = function (string $t, int $pos, array $a) use ($varianti, $sorgente, $inZona, $caroselli): string {
@@ -188,6 +191,12 @@ if ($nuovo === null) {                       // errore di PCRE (pagina enorme): 
     return;
 }
 $output = substr($output, 0, $corpo) . $nuovo;
+
+/* WebP: regole CSS del tema scritte con «> img» (il <picture> aggiunto diventa il genitore dell'<img>) ripetute per
+   «> picture > img» (impostazione kosseogeo.img_webp_css), solo se la pagina ha immagini avvolte */
+if (!empty($avvolte) && ($css = trim((string) $modx->getOption('kosseogeo.img_webp_css', null, ''))) !== '' && ($fh = stripos($output, '</head>')) !== false) {
+    $output = substr($output, 0, $fh) . '<style id="kosseogeo-webp">' . str_ireplace('</style', '', $css) . "</style>\n" . substr($output, $fh);
+}
 
 /* ---------- 2. precaricamento degli sfondi CSS ---------- */
 $regole = trim((string) $modx->getOption('kosseogeo.img_preload', null, ''));

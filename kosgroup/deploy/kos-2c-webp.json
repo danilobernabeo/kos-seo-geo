@@ -15,6 +15,11 @@
       "key": "kosseogeo.img_solo_webp",
       "value": "1",
       "area": "kosseogeo"
+    },
+    {
+      "key": "kosseogeo.img_webp_css",
+      "value": ".gallery-struttura>.gallery-foto>picture>img{object-fit:cover;width:100%;height:100%;margin-top:0!important;margin-bottom:0!important}.gallery-struttura>.gallery-foto:not(:first-child)>picture>img,.gallery-struttura>.gallery-foto:first-of-type>picture>img{aspect-ratio:1/1}.lista-icone-img>ul>li>picture>img,ul.lista-icone-img>li>picture>img,.box-dettaglio-content.lista-icone-img ul>li>picture>img,.box-dettaglio-content ul.lista-icone-img>li>picture>img{position:absolute;width:24px;height:24px;left:0;top:50%;transform:translateY(-50%)}",
+      "area": "kosseogeo"
     }
   ],
   "elements": [
