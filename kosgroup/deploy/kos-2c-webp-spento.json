@@ -1,0 +1,6 @@
+{
+  "nome": "KOS-2 C solo per il collaudo: WebP spento (kosseogeo.img_webp = 0); per riaccenderlo si reinstalla kos-2c-webp.json",
+  "settings": [
+    {"key": "kosseogeo.img_webp", "value": "0", "area": "kosseogeo"}
+  ]
+}
