@@ -35,8 +35,11 @@
  * I selettori CSS del tema con «>» verso l'immagine (es. «.box > img») non valgono più per l'<img> avvolto: le regole si ripetono
  * per «> picture > img» nell'impostazione kosseogeo.img_webp_css, che il plugin stampa nell'head solo sulle pagine con immagini avvolte.
  * L'<img> resta identico (src, classi, attributi): i browser senza WebP e gli script che lo cercano lo trovano come prima.
- * sizes: quello dell'<img> se c'è, altrimenti «(max-width: Wpx) 100vw, Wpx» con W = larghezza del file (al massimo 2400):
- * il browser sceglie la variante vicina alla dimensione mostrata, mai più grande dell'originale.
+ * sizes: quello dell'<img> se c'è; altrimenti «Wpx» (W = larghezza del file, al massimo 2400), così la dimensione naturale
+ * resta quella del file e l'impaginazione non cambia (collaudo del 5/11: il management e Villa dei Pini Firenze cambiavano
+ * altezza con «100vw»); «(max-width: Wpx) 100vw, Wpx» solo per le immagini che il CSS dimensiona (img-fluid, w-100, width e
+ * height scritti), dove sui telefoni arriva la variante più piccola. Nessuna sorgente se il WebP intero non pesa almeno il
+ * 10% in meno dell'originale.
  * <picture> già presenti nel sito (art direction desktop/mobile): per ogni <source media srcset="un file"> si aggiunge
  * subito prima la stessa sorgente in WebP (stesso media), e prima dell'<img> la sua sorgente WebP; l'ordine dei media resta quello
  * dell'autore. Un <picture> che ha già una sorgente WebP non si tocca.
@@ -109,11 +112,13 @@ if ((string) $modx->getOption('kosseogeo.img_webp', null, '0') === '1' && is_fil
         $file = $lib->percorso(preg_replace('/[?#].*$/', '', $src));
         if ($file === null) return null;
         if (!isset($memo[$file])) {
-            $chiave = 'webp/' . md5($file);
+            $chiave = 'webp2/' . md5($file);
             $c = $modx->cacheManager->get($chiave, ['cache_key' => 'kosseogeo']);
             $mt = @filemtime($file);
             if (!is_array($c) || ($c['mt'] ?? 0) !== $mt) {
                 $v = array_values(array_filter($lib->varianti($file, false), fn($x) => is_file($x['webp'])));
+                // WebP che non pesa almeno il 10% in meno dell'originale (JPG già molto compressi, es. KOS-2 A): si tiene l'originale
+                if ($v && filesize(end($v)['webp']) >= 0.9 * filesize($file)) $v = [];
                 $c = ['mt' => $mt, 'set' => $v ? implode(', ', array_map(fn($x) => $lib->url($x['webp']) . ' ' . $x['w'] . 'w', $v)) : '',
                       'w' => $v ? end($v)['w'] : 0];
                 $modx->cacheManager->set($chiave, $c, 0, ['cache_key' => 'kosseogeo']);
@@ -123,18 +128,24 @@ if ((string) $modx->getOption('kosseogeo.img_webp', null, '0') === '1' && is_fil
         return $memo[$file]['set'] === '' ? null : $memo[$file];
     };
     $e = static fn($s) => htmlspecialchars((string) $s, ENT_QUOTES, 'UTF-8');
-    $sorgente = fn(array $c, ?string $sizes, string $media = '') => '<source' . ($media !== '' ? ' media="' . $e($media) . '"' : '')
-        . ' type="image/webp" srcset="' . $e($c['set']) . '" sizes="' . $e($sizes ?? '(max-width: ' . $c['w'] . 'px) 100vw, ' . $c['w'] . 'px') . '">';
+    // sizes: con un srcset a larghezze la dimensione «naturale» dell'immagine diventa quella di sizes, non più quella del file.
+    // Per non cambiare l'impaginazione, sizes = larghezza del file (il browser sceglie la variante intera), salvo le immagini
+    // che il CSS dimensiona da sé (img-fluid, w-100, oppure width e height scritti): lì le varianti più piccole per i telefoni.
+    $sorgente = fn(array $c, ?string $sizes, string $media = '', bool $fluida = false) => '<source' . ($media !== '' ? ' media="' . $e($media) . '"' : '')
+        . ' type="image/webp" srcset="' . $e($c['set']) . '" sizes="'
+        . $e($sizes ?? ($fluida ? '(max-width: ' . $c['w'] . 'px) 100vw, ' . $c['w'] . 'px' : $c['w'] . 'px')) . '">';
+    $fluida = static fn(array $a): bool => (bool) preg_match('/(?<![\w-])(?:img-fluid|w-100)(?![\w-])/', $a['class'] ?? '')
+        || (isset($a['width'], $a['height']) && ctype_digit(trim($a['width'])) && ctype_digit(trim($a['height'])));
     // $dentro: l'<img> sta già in un <picture> del sito (art direction): si aggiunge solo la sorgente WebP prima dell'<img>
     $avvolte = 0;
-    $webp = function (string $t, int $pos, array $a, bool $dentro = false) use ($varianti, $sorgente, $inZona, $caroselli, &$avvolte): string {
+    $webp = function (string $t, int $pos, array $a, bool $dentro = false) use ($varianti, $sorgente, $fluida, $inZona, $caroselli, &$avvolte): string {
         foreach (['srcset', 'data-src', 'data-srcset', 'data-lazy', 'data-lazy-src'] as $k) if (isset($a[$k])) return $t;
         if (!$caroselli && $inZona($pos)) return $t;
         $c = $varianti($a['src'] ?? '');
         if ($c === null) return $t;
-        if ($dentro) return $sorgente($c, $a['sizes'] ?? null) . $t;
+        if ($dentro) return $sorgente($c, $a['sizes'] ?? null, '', $fluida($a)) . $t;
         $avvolte++;
-        return '<picture style="display:contents">' . $sorgente($c, $a['sizes'] ?? null) . $t . '</picture>';
+        return '<picture style="display:contents">' . $sorgente($c, $a['sizes'] ?? null, '', $fluida($a)) . $t . '</picture>';
     };
     // <source media srcset="un solo file"> di un <picture> del sito: la stessa sorgente in WebP, subito prima (stesso media)
     $webpSorgente = function (string $t, int $pos, array $a) use ($varianti, $sorgente, $inZona, $caroselli): string {
