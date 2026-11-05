@@ -1,0 +1,65 @@
+{
+ "nome": "AA-20 giro 3: i 6 title di residenza oltre 65 caratteri del giro 1, riscritti dal progetto e validati da Danilo il 5/11 (nel longtitle, senza « | Anni Azzurri» che aggiunge titoloPagina). Ducale 1, Ducale 2-3 e Villa Pineta restano con «RSA» (decisione del 5/11: in Emilia-Romagna CRA è il nome regionale delle ex RSA, e le ricerche usano RSA). Valori «prima» dall'istantanea del 27/10 (longtitle vuoto).",
+ "risorse": [
+  {
+   "id": 91,
+   "uri": "residenza-anni-azzurri-il-giardino",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Il Giardino RSA a Bagnolo in Piano (RE)"
+    }
+   }
+  },
+  {
+   "id": 44,
+   "uri": "residenza-anni-azzurri-villaggio-san-francesco",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Villaggio San Francesco RSA Villanuova sul Clisi"
+    }
+   }
+  },
+  {
+   "id": 87,
+   "uri": "residenza-anni-azzurri-villa-dei-ciliegi",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Villa dei Ciliegi RSA a Valsamoggia (BO)"
+    }
+   }
+  },
+  {
+   "id": 65,
+   "uri": "residenza-anni-azzurri-villa-san-vincenzo",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Villa San Vincenzo RSA a Scarnafigi (CN)"
+    }
+   }
+  },
+  {
+   "id": 66,
+   "uri": "residenza-anni-azzurri-tonengo",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Tonengo d'Asti RSA Casa di Riposo (AT)"
+    }
+   }
+  },
+  {
+   "id": 73,
+   "uri": "residenza-anni-azzurri-casteldonino",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Casteldonino RSA a Favale di Malvaro (GE)"
+    }
+   }
+  }
+ ]
+}
