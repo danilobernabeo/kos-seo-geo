@@ -63,7 +63,7 @@ della galleria e dei video.
 2. Una residenza nuova: si aggiunge in `foto.json` → `gruppi` (etichetta del pulsante del visore, `etichetta_mosaico` per la targhetta blu sulle foto del mosaico — «Residenza …», «Residenze …» se il gruppo riunisce più strutture, deciso il 30/10 —, nome, luogo, slug, cartelle,
    `collegamenti`: uno per struttura, con nome e indirizzo). L'ordine dei gruppi è quello dell'elenco. La frase del
    mosaico (`mosaico.invito`, oggi «Oltre 50 ospiti, un solo laboratorio», dal testo del 29/10) si cambia a mano. Scatti doppi: nome del file in
-   `escluse`. Con un gruppo in più va rimisurato sullo stage il punto (oggi 992 px, con il titolo del visore nascosto fino a 1199) da cui i pulsanti sostituiscono il menu: «Tutte» + 5 gruppi misurati il 5/11 (vedi «Rilasci»).
+   `escluse`. Con un gruppo in più va rimisurato sullo stage il punto (oggi 1024 px, con il titolo del visore nascosto fino a 1279) da cui i pulsanti sostituiscono il menu. Misura del 5/11 («Tutte» + 5 gruppi, carattere del sito): pulsanti 906 px, su una riga da 996 px senza titolo e da circa 1220 con il titolo (in anteprima, con il carattere di ripiego, solo 810 px: la misura vale solo sullo stage). Prima era 992 / 1199, con 5 pulsanti.
 3. Testi alternativi in `foto.json` → `alt`, con il nome del file come chiave (lo script avvisa di quelli mancanti).
 4. `python prepara-foto.py` (serve Pillow). Prepara solo le foto nuove o cambiate (`--forza` le rifà tutte), toglie
    quelle che non servono più e riscrive il blocco fra `<!-- galleria:inizio -->` e `<!-- galleria:fine -->` in
@@ -123,7 +123,7 @@ Ripristino: il comando è stampato alla fine di ogni scrittura
 - Mosaico: griglia della home da 1200 px, sotto foto grande + due verticali + frase; ricaricando cambiano le
   caselle piccole (mai due volte la stessa foto, mai la grande).
 - Visore: clic su una casella (si apre su quella foto) o su «Guarda tutte» (dalla prima); frecce, tasti
-  sinistra/destra, scorrimento con il dito, miniature; pulsanti per residenza da 992 px, menu sotto; contatore e
+  sinistra/destra, scorrimento con il dito, miniature; pulsanti per residenza da 1024 px (titolo del visore nascosto fino a 1279), menu sotto; contatore e
   link alla residenza; Esc chiude e il focus torna dove si era.
 - Video: niente richieste a YouTube prima del clic (pannello Rete del browser); al clic si apre la finestra e parte
   il video; chiudendo (X, Esc, clic fuori) l'audio si ferma e il focus torna sul pulsante; aprendo un altro video
