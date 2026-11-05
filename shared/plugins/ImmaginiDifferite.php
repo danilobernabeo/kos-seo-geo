@@ -27,6 +27,20 @@
  *   <link rel="preload" as="image" href="..." fetchpriority="high">
  * L'URL deve essere identico a quello che il CSS risolve (altrimenti il file si scarica due volte).
  *
+ * WebP (KOS-2 C, interruttore kosseogeo.img_webp, default 0): ogni <img> con un JPG o PNG del sito che ha già le
+ * varianti della libreria comune (assets/cache-img, generate da scripts/immagini/ottimizza-immagini.php --solo-varianti
+ * o dal plugin ImmaginiCaricamento) viene racchiuso in
+ *   <picture style="display:contents"><source type="image/webp" srcset="…-480.webp 480w, …" sizes="…"><img …invariato…></picture>
+ * display:contents: il <picture> non crea un riquadro proprio, l'<img> si impagina come prima (flex, griglie, larghezze).
+ * Restano da collaudare solo i selettori CSS con «>» verso l'immagine (es. «.box > img»), che il nuovo genitore interrompe.
+ * L'<img> resta identico (src, classi, attributi): i browser senza WebP e gli script che lo cercano lo trovano come prima.
+ * sizes: quello dell'<img> se c'è, altrimenti «(max-width: Wpx) 100vw, Wpx» con W = larghezza del file (al massimo 2400):
+ * il browser sceglie la variante vicina alla dimensione mostrata, mai più grande dell'originale.
+ * Non tocca: immagini già dentro un <picture> o con srcset, data-src e simili, SVG/GIF/esterne, immagini senza varianti,
+ * e (salvo kosseogeo.img_webp_caroselli = 1) quelle dentro un carosello. Le varianti trovate restano in cache MODX
+ * (kosseogeo/webp) fino a quando cambia il file: nessuna lettura delle immagini a ogni richiesta.
+ * Richiede core/components/kosseogeo/Immagini.php; senza, la parte WebP non fa nulla.
+ *
  * Interruttore: kosseogeo.img_differita = 0 spegne tutto il plugin (ritorno indietro senza reinstallare).
  */
 if ($modx->event->name !== 'OnWebPagePrerender') return;
@@ -73,14 +87,58 @@ $attributi = static function (string $tag): array {
 $dopoTestata = !preg_match('~</header\s*>~i', $body);                    // senza testata: dall'inizio del <body>
 $contate = 0;                                                            // immagini raster dopo la testata
 
+/* WebP: libreria comune e varianti già generate (cache MODX per file e data di modifica) */
+$webp = null;
+if ((string) $modx->getOption('kosseogeo.img_webp', null, '0') === '1' && is_file(MODX_CORE_PATH . 'components/kosseogeo/Immagini.php')) {
+    require_once MODX_CORE_PATH . 'components/kosseogeo/Immagini.php';
+    $lib = new \KosSeoGeo\Immagini(MODX_BASE_PATH);
+    $caroselli = (string) $modx->getOption('kosseogeo.img_webp_caroselli', null, '0') === '1';
+    $memo = [];
+    $webp = function (string $t, int $pos, array $a) use ($lib, $modx, $inZona, $caroselli, &$memo): string {
+        $src = $a['src'] ?? '';
+        if ($src === '' || !preg_match('/\.(?:jpe?g|png)(?:[?#]|$)/i', $src)) return $t;
+        foreach (['srcset', 'data-src', 'data-srcset', 'data-lazy', 'data-lazy-src'] as $k) if (isset($a[$k])) return $t;
+        if (!$caroselli && $inZona($pos)) return $t;
+        if (preg_match('#^(?:https?:)?//#i', $src)) {
+            $host = parse_url((strpos($src, '//') === 0 ? 'https:' : '') . $src, PHP_URL_HOST);
+            if (strcasecmp((string) $host, (string) parse_url($modx->getOption('site_url'), PHP_URL_HOST)) !== 0) return $t;
+        }
+        $file = $lib->percorso(preg_replace('/[?#].*$/', '', $src));
+        if ($file === null) return $t;
+        if (!isset($memo[$file])) {
+            $chiave = 'webp/' . md5($file);
+            $c = $modx->cacheManager->get($chiave, ['cache_key' => 'kosseogeo']);
+            $mt = @filemtime($file);
+            if (!is_array($c) || ($c['mt'] ?? 0) !== $mt) {
+                $v = array_values(array_filter($lib->varianti($file, false), fn($x) => is_file($x['webp'])));
+                $c = ['mt' => $mt, 'set' => $v ? implode(', ', array_map(fn($x) => $lib->url($x['webp']) . ' ' . $x['w'] . 'w', $v)) : '',
+                      'w' => $v ? end($v)['w'] : 0];
+                $modx->cacheManager->set($chiave, $c, 0, ['cache_key' => 'kosseogeo']);
+            }
+            $memo[$file] = $c;
+        }
+        $c = $memo[$file];
+        if ($c['set'] === '') return $t;
+        $e = static fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
+        $sizes = $a['sizes'] ?? '(max-width: ' . $c['w'] . 'px) 100vw, ' . $c['w'] . 'px';
+        return '<picture style="display:contents"><source type="image/webp" srcset="' . $e($c['set']) . '" sizes="' . $e($sizes) . '">' . $t . '</picture>';
+    };
+}
+$inPicture = 0;
+
 $nuovo = preg_replace_callback(
-    '~<!--.*?-->|<(script|style|noscript|template|textarea)\b[^>]*>.*?</\1\s*>|</header\s*>|<img\b[^>]*>~is',
-    function ($m) use (&$dopoTestata, &$contate, $salta, $inZona, $attributi) {
+    '~<!--.*?-->|<(script|style|noscript|template|textarea)\b[^>]*>.*?</\1\s*>|</header\s*>|</?picture\b[^>]*>|<img\b[^>]*>~is',
+    function ($m) use (&$dopoTestata, &$contate, &$inPicture, $salta, $inZona, $attributi, $webp) {
         [$t, $pos] = $m[0];
         if ($t[1] === '!' || ($m[1][0] ?? '') !== '') return $t;            // commento, script, noscript...
+        if (stripos($t, '<picture') === 0) { $inPicture++; return $t; }
+        if (stripos($t, '</picture') === 0) { $inPicture = max(0, $inPicture - 1); return $t; }
         if ($t[1] === '/') { $dopoTestata = true; return $t; }               // </header>
-        if (!$dopoTestata) return $t;
         $a = $attributi($t);
+        // WebP sul tag così com'è (prima o dopo l'eventuale loading="lazy" qui sotto: l'<img> interno è lo stesso)
+        $avvolgi = ($webp && !$inPicture) ? fn(string $x) => $webp($x, $pos, $a) : fn(string $x) => $x;
+        return $avvolgi((function () use ($t, $pos, $a, &$dopoTestata, &$contate, $salta, $inZona) {
+        if (!$dopoTestata) return $t;
         $src = $a['src'] ?? '';
         if (!preg_match('/\.svg(?:[?#]|$)/i', $src)) $contate++;
         if ($contate <= $salta) return $t;                                   // prime immagini dopo la testata
@@ -95,6 +153,7 @@ $nuovo = preg_replace_callback(
         if ($inZona($pos)) return $t;                                        // dentro un carosello
         $aggiunta = ' loading="lazy"' . (isset($a['decoding']) ? '' : ' decoding="async"');
         return preg_replace('~\s*(/?)>$~', $aggiunta . '$1>', $t, 1);
+        })());
     },
     $body, -1, $n, PREG_OFFSET_CAPTURE
 );
