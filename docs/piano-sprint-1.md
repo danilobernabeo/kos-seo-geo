@@ -248,6 +248,15 @@ Restano: proposte da validare (circa 90 pagine), i 6 title lunghi, la verifica d
 nel title, e in `aaSchema` il `name` della pagina da un longtitle-alias (`/sportello-sociale`), da correggere con la regola
 di `titoloPagina` al prossimo rilascio dello snippet.
 
+**AA-20 giro 3 in produzione il 5/11** (`anniazzurri/dati/aa-20/campi-giro-3.json`): i 6 title di residenza oltre 65 caratteri,
+riscritti dal progetto e validati da Danilo (nome, «RSA», comune e provincia; il comune resta perché porta la maggior parte dei
+clic: Search Console 2026, es. Il Giardino «bagnolo» 374 clic, Villa dei Ciliegi «valsamoggia» 586). Ducale 1, Ducale 2-3 e Villa
+Pineta restano con «RSA»: in Emilia-Romagna CRA è il nome regionale delle ex RSA, e le ricerche usano RSA (Ducale 1: 51 clic da
+ricerche con «rsa», 0 con «cra»). Verifica dal sito: 6/6 pagine 200, title 53-63 caratteri con il marchio una volta, `name` della
+WebPage uguale al longtitle, un solo JSON-LD. Backup: stage tabella `modx_site_content_bak_20261105_0317` e
+`/paas/c0025/backup-kos-seo-geo/20261105-031723-campi`; produzione `modx_site_content_bak_20261105_0318` e
+`/paas/c0072/backup-kos-seo-geo/20261105-031835-campi` (`aggiorna-campi.php /www --ripristina <cartella> --scrivi`).
+
 **AA-20 giro 2, pagine fuori audit (1/11).** 92 pagine (77 articoli, 15 pagine di sezione) segnalate per title o
 description lunghi, mancanti o duplicati, oltre gli URL dell'agenzia. Proposte del 27/10 ricontrollate sul sito il 1/11:
 tutte 200, description invariate; 21 title serviti cambiati solo per la regola del suffisso di `titoloPagina` (31/10).
