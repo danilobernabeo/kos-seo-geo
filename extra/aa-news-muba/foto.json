@@ -70,6 +70,22 @@
         }
       ],
       "_nota": "evento unico con gli ospiti delle due strutture insieme: non si distinguono, quindi un solo gruppo"
+    },
+    {
+      "etichetta": "Mirasole",
+      "etichetta_mosaico": "Residenza Mirasole",
+      "nome": "Residenza Anni Azzurri Mirasole",
+      "luogo": "Noverasco di Opera (MI)",
+      "slug": "mirasole",
+      "cartelle": [
+        "RSA Mirasole"
+      ],
+      "collegamenti": [
+        {
+          "nome": "Residenza Anni Azzurri Mirasole",
+          "url": "https://anniazzurri.it/residenza-anni-azzurri-mirasole"
+        }
+      ]
     }
   ],
   "_nota_generiche": "Le generiche sono ingrandimenti scattati a San Rocco (stessa fotocamera, stesso giorno): stanno nel gruppo San Rocco, in ordine di scatto, e restano fuori dal sorteggio del mosaico.",
@@ -141,7 +157,15 @@
     "XC4A8959.JPG": "Ospiti al lavoro fianco a fianco con gli operatori",
     "XC4A8972.JPG": "Un ospite accanto alle decorazioni di carta appese",
     "XC4A8976.JPG": "Un'ospite appende la sua stella insieme a un'operatrice",
-    "XC4A8988.JPG": "La sala del laboratorio con ospiti e operatori al lavoro"
+    "XC4A8988.JPG": "La sala del laboratorio con ospiti e operatori al lavoro",
+    "1793880481060.jpg": "Gli ospiti della residenza attraversano la sala del MUBA, ripresi dall'alto",
+    "1793880481083.jpg": "Due abeti di carta realizzati con i ritagli di vecchie riviste",
+    "1793880481109.jpg": "Una stella di cartoncino giallo appesa alla struttura di fili del MUBA",
+    "1793880481134.jpg": "Un'ospite mostra la sua stella di cartoncino giallo",
+    "1793880481185.jpg": "Ospiti e operatrici al lavoro intorno al tavolo del laboratorio",
+    "1793880481212.jpg": "Ospiti al tavolo del laboratorio tra riviste, nastri e stelle di cartoncino",
+    "1793880481239.jpg": "Un'ospite sorridente con la sua stella rossa",
+    "1793880481310.jpg": "Un'ospite incolla le punte di una stella gialla"
   },
   "escluse": [
     "XC4A8875.JPG",

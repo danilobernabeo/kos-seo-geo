@@ -49,9 +49,10 @@ della galleria e dei video.
 - **Testata** (TV `newsImage`): `testata.jpg`, dell'agenzia (29/10), **980 × 551 px** come le altre news; originale
   in `foto-sorgenti/Testata/`, fuori da git. `--aggiorna` riallinea anche la TV. La testata è anche l'immagine
   dell'elenco delle news e della condivisione social.
-- **Foto della galleria**: oggi 53 in 4 gruppi: Navigli 15 (7 più 8 da WhatsApp del 29/10, 1200 × 1600), San Luca 7, San Rocco 10 (7 più 3 ingrandimenti scattati
+- **Foto della galleria**: oggi 61 in 5 gruppi: Navigli 15 (7 più 8 da WhatsApp del 29/10, 1200 × 1600), San Luca 7, San Rocco 10 (7 più 3 ingrandimenti scattati
   lì), San Faustino e PGR Milano 21 (evento unico con gli ospiti delle due strutture insieme, non distinguibili: un
-  gruppo solo, con il link a entrambe le pagine; 3 scatti quasi doppi esclusi in `escluse`). Ne arriveranno altre.
+  gruppo solo, con il link a entrambe le pagine; 3 scatti quasi doppi esclusi in `escluse`), Mirasole 8 (Noverasco di Opera, 5/11:
+  foto da telefono senza data di scatto, quindi in ordine di nome; 6 verticali, rotazione EXIF applicata). Ne arriveranno altre.
   Liberatorie presenti. San Luca è a 1200 × 1600: se ci sono gli originali dal telefono, meglio quelli. Testi
   alternativi in `foto.json`; nel primo gruppo di foto al tavolo ci sono solo operatrici della residenza; nelle foto
   di San Faustino e PGR alcune persone indossano la maglietta del MUBA: i testi dicono «operatore/operatrice».
@@ -62,7 +63,7 @@ della galleria e dei video.
 2. Una residenza nuova: si aggiunge in `foto.json` → `gruppi` (etichetta del pulsante del visore, `etichetta_mosaico` per la targhetta blu sulle foto del mosaico — «Residenza …», «Residenze …» se il gruppo riunisce più strutture, deciso il 30/10 —, nome, luogo, slug, cartelle,
    `collegamenti`: uno per struttura, con nome e indirizzo). L'ordine dei gruppi è quello dell'elenco. La frase del
    mosaico (`mosaico.invito`, oggi «Oltre 50 ospiti, un solo laboratorio», dal testo del 29/10) si cambia a mano. Scatti doppi: nome del file in
-   `escluse`. Con più di 5 pulsanti va rimisurato sullo stage il punto (oggi 992 px, con il titolo del visore nascosto fino a 1199) da cui i pulsanti sostituiscono il menu.
+   `escluse`. Con un gruppo in più va rimisurato sullo stage il punto (oggi 992 px, con il titolo del visore nascosto fino a 1199) da cui i pulsanti sostituiscono il menu: «Tutte» + 5 gruppi misurati il 5/11 (vedi «Rilasci»).
 3. Testi alternativi in `foto.json` → `alt`, con il nome del file come chiave (lo script avvisa di quelli mancanti).
 4. `python prepara-foto.py` (serve Pillow). Prepara solo le foto nuove o cambiate (`--forza` le rifà tutte), toglie
    quelle che non servono più e riscrive il blocco fra `<!-- galleria:inizio -->` e `<!-- galleria:fine -->` in
@@ -76,7 +77,7 @@ ingrandimenti, troppo simili alla foto grande) restano solo nel visore. Dentro u
 scatto, se tutte le foto hanno la data; altrimenti quello dei nomi dei file.
 
 Per ogni foto lo script scrive in `foto/`: `-1600.jpg` e `-1600.webp` (visore), `-800.webp` (mosaico e smartphone),
-`-q.webp` (miniatura quadrata). Niente snippet `immagine` per la galleria: con 52 foto genererebbe centinaia di
+`-q.webp` (miniatura quadrata). Niente snippet `immagine` per la galleria: con 61 foto genererebbe centinaia di
 varianti in una sola richiesta, al primo rinnovo della cache.
 
 - **REMIDA Milano**: senza link, finché non c'è una pagina ufficiale da collegare.
