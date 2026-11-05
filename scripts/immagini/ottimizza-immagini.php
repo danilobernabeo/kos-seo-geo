@@ -19,6 +19,7 @@
  *                   PNG a 256 colori se la differenza visiva è trascurabile
  *   --varianti      genera anche le varianti WebP e le larghezze per lo srcset (snippet `immagine`)
  *   --solo-varianti non tocca gli originali, genera solo le varianti
+ *   --solo-webp     varianti solo in WebP (niente copie ridotte nel formato originale): kosgroup.com, metà dello spazio
  *
  * Gli originali sostituiti vengono copiati in ~/backup-kos-seo-geo/immagini-<data>/ (stesso percorso relativo),
  * con un manifest.json; --ripristina li rimette al loro posto.
@@ -55,7 +56,7 @@ if (isset($opz['ripristina'])) {
 }
 
 /* ---------- elenco delle immagini ---------- */
-$I = new \KosSeoGeo\Immagini($webroot, ['max_lato' => (int) ($opz['max'] ?? 2400)]);
+$I = new \KosSeoGeo\Immagini($webroot, ['max_lato' => (int) ($opz['max'] ?? 2400), 'solo_webp' => !empty($opz['solo-webp'])]);
 if (!$I->disponibile()) { fwrite(STDERR, "Imagick con supporto WebP non disponibile.\n"); exit(1); }
 $origine = $pos[1] ?? '';
 $voci = [];

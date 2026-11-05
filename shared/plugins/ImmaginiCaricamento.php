@@ -17,6 +17,7 @@ $img = new \KosSeoGeo\Immagini(MODX_BASE_PATH, [
     'max_lato' => (int) $modx->getOption('kosseogeo.img_max_lato', null, 2400),
     'q_jpg'    => (int) $modx->getOption('kosseogeo.img_q_jpg', null, 82),
     'q_webp'   => (int) $modx->getOption('kosseogeo.img_q_webp', null, 80),
+    'solo_webp' => (string) $modx->getOption('kosseogeo.img_solo_webp', null, '0') === '1',
 ]);
 if (!$img->disponibile()) return;
 

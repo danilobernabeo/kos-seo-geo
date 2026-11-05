@@ -1,8 +1,21 @@
 {
   "nome": "KOS-2 C immagini WebP: il plugin ImmaginiDifferite racchiude in <picture> con sorgente WebP le immagini JPG/PNG che hanno le varianti della libreria comune; libreria Immagini e plugin ImmaginiCaricamento (varianti per le immagini caricate da qui in avanti)",
   "settings": [
-    {"key": "kosseogeo.img_webp", "value": "1", "area": "kosseogeo"},
-    {"key": "kosseogeo.img_webp_caroselli", "value": "0", "area": "kosseogeo"}
+    {
+      "key": "kosseogeo.img_webp",
+      "value": "1",
+      "area": "kosseogeo"
+    },
+    {
+      "key": "kosseogeo.img_webp_caroselli",
+      "value": "0",
+      "area": "kosseogeo"
+    },
+    {
+      "key": "kosseogeo.img_solo_webp",
+      "value": "1",
+      "area": "kosseogeo"
+    }
   ],
   "elements": [
     {
@@ -11,7 +24,9 @@
       "file": "shared/plugins/ImmaginiDifferite.php",
       "baseline": "kosgroup/baseline/plugins/ImmaginiDifferite.php",
       "description": "KOS-2 B e C: loading=lazy fuori schermo, preload degli sfondi LCP, <picture> WebP (kosseogeo.img_*)",
-      "events": ["OnWebPagePrerender"],
+      "events": [
+        "OnWebPagePrerender"
+      ],
       "disabled": false
     },
     {
@@ -19,10 +34,15 @@
       "name": "ImmaginiCaricamento",
       "file": "shared/plugins/ImmaginiCaricamento.php",
       "description": "Ottimizza le immagini caricate e crea le varianti WebP",
-      "events": ["OnFileManagerUpload"]
+      "events": [
+        "OnFileManagerUpload"
+      ]
     }
   ],
   "files": [
-    {"file": "shared/lib/Immagini.php", "dest": "core/components/kosseogeo/Immagini.php"}
+    {
+      "file": "shared/lib/Immagini.php",
+      "dest": "core/components/kosseogeo/Immagini.php"
+    }
   ]
 }

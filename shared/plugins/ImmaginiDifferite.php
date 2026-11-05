@@ -91,7 +91,7 @@ $contate = 0;                                                            // imma
 $webp = null;
 if ((string) $modx->getOption('kosseogeo.img_webp', null, '0') === '1' && is_file(MODX_CORE_PATH . 'components/kosseogeo/Immagini.php')) {
     require_once MODX_CORE_PATH . 'components/kosseogeo/Immagini.php';
-    $lib = new \KosSeoGeo\Immagini(MODX_BASE_PATH);
+    $lib = new \KosSeoGeo\Immagini(MODX_BASE_PATH, ['solo_webp' => (string) $modx->getOption('kosseogeo.img_solo_webp', null, '0') === '1']);
     $caroselli = (string) $modx->getOption('kosseogeo.img_webp_caroselli', null, '0') === '1';
     $memo = [];
     $webp = function (string $t, int $pos, array $a) use ($lib, $modx, $inZona, $caroselli, &$memo): string {

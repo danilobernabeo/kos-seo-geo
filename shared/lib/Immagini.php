@@ -32,6 +32,8 @@ class Immagini
             'max_lato'  => 2400,                        // lato massimo dell'originale ottimizzato
             'q_jpg'     => 82,
             'q_webp'    => 80,
+            'solo_webp' => false,                       // true: varianti solo in WebP, senza le copie ridotte nel formato originale
+                                                        // (kosgroup.com, dove il ripiego è l'<img> originale; metà dello spazio su disco)
         ];
         sort($this->o['larghezze']);
     }
@@ -258,7 +260,9 @@ class Immagini
         foreach ($larghezze as $l) {
             $h = (int) round($H * $l / $W);
             $v = ['w' => $l, 'h' => $h, 'orig' => "$base-$l.$ext", 'webp' => "$base-$l.webp"];
-            $manca = !is_file($v['orig']) || filemtime($v['orig']) < $mtime || !is_file($v['webp']) || filemtime($v['webp']) < $mtime;
+            $soloWebp = !empty($this->o['solo_webp']);
+            if ($soloWebp) $v['orig'] = $file;            // nessuna copia ridotta: il ripiego è l'originale
+            $manca = (!$soloWebp && (!is_file($v['orig']) || filemtime($v['orig']) < $mtime)) || !is_file($v['webp']) || filemtime($v['webp']) < $mtime;
             if ($manca) {
                 if (!$genera || !$this->disponibile()) continue;
                 try {
@@ -266,7 +270,7 @@ class Immagini
                     $c = clone $im;
                     if ($l < $c->getImageWidth()) $c->resizeImage($l, 0, \Imagick::FILTER_LANCZOS, 1);
                     $v['h'] = $c->getImageHeight();
-                    $this->scrivi($c, $v['orig'], $ext);
+                    if (!$soloWebp) $this->scrivi($c, $v['orig'], $ext);
                     $this->scrivi($c, $v['webp'], 'webp');
                     $c->clear();
                 } catch (\Throwable $e) {
