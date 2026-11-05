@@ -300,8 +300,10 @@ Stage: backup tabella `modx_site_content_bak_20261103_0352` e `/paas/c0044/backu
 Produzione (3/11, 13:03): backup tabella `modx_site_content_bak_20261103_0503` e `/paas/c0095/backup-kos-seo-geo/20261103-050302-campi` (ripristino: `aggiorna-campi.php /www --ripristina <cartella> --scrivi`). Verifica dal sito servito con `scripts/collaudo/verifica-meta.mjs`
 (stesso file JSON dell'import): stage e produzione 339/339 pagine 200, 82/82 title, 310/310 description, 4/4 H1 e ultima voce
 del `BreadcrumbList`, introtext presente, un solo « | KOS» nel title su tutte (esiti in `scripts/collaudo/kos2123-*`, sul PC
-di Danilo). Restano per la nota di consegna: i 9 H1 scritti nel contenuto (modifica manuale, elenco nel foglio delle
-proposte) e la mail di esito a KOS e all'agenzia.
+di Danilo). H1 scritti nel contenuto (5, non 9: elenco nel foglio delle proposte) modificati a mano da Danilo in produzione il 5/11 e
+verificati dal sito (un solo H1, 200, un solo JSON-LD): 37 «Formazione KOS Academy», 513 «Informativa sulla privacy», 24 «Le
+residenze per anziani del Gruppo KOS», 234 «Villa Margherita Vicenza - Psichiatria», 233 «Villa Margherita Vicenza -
+Riabilitazione» (forma breve decisa da Danilo: la categoria è già nella riga sotto il titolo). Resta la mail di esito a KOS e all'agenzia.
 
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
 
