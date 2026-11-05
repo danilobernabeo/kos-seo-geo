@@ -18,7 +18,7 @@ con la stessa logica delle regole web (`scripts/pdf/deindicizza-pdf.py`):
 | PDF in noindex visti su Google | 135 | 263 |
 | di cui ancora sul server | 87 | 217 |
 | PDF in noindex mai visti su Google, sul server | 130 | 208 |
-| URL nella sitemap di uscita (noindex presenti sul server) | 217 | 425 |
+| URL nella sitemap di uscita (noindex presenti sul server) | 217 | 426 |
 | impressioni negli ultimi 90 giorni (noindex) | 1.123 | 3.647 |
 | impressioni negli ultimi 90 giorni (PDF indicizzabili, per confronto) | 34.860 | 41.353 |
 | priorità A (≥ 100 impressioni in 90 giorni o ≥ 10 clic) | 9 | 13 |
@@ -28,23 +28,28 @@ utile, salvo i casi da riesaminare sotto. I PDF in noindex che non sono più sul
 Google li toglie da sé; i PDF in redirect (25 AA, 19 KOS, compresa la cartella di Beata Corte verso Corte Orero) non entrano
 nella sitemap. Classificazione: regole della sezione PDF più i redirect dell'ultima istantanea delle regole di produzione.
 
-## Prima di partire: PDF da riesaminare
+## Decisioni sui PDF da riesaminare (5/11)
 
-Criterio di Danilo (5/11): si indicizza ciò che risponde a ricerche degli utenti. Questi PDF in noindex hanno clic veri,
-cioè persone che li cercano e li aprono: vanno confermati uno per uno prima di metterli nella sitemap di uscita.
+Criterio di Danilo: si indicizza ciò che risponde a ricerche degli utenti. Decisioni sui PDF in noindex con clic veri:
 
-| Sito | PDF | Impressioni | Clic | Proposta |
+| Sito | PDF | Impressioni | Clic | Decisione |
 |---|---|---|---|---|
-| AA | `residenza-anni-azzurri-sacra-famiglia/Scheda AGED.pdf` | 2.627 | 425 | Probabile scheda per l'ingresso in RSA: se è un modulo di accesso, tenere (come i questionari di ammissione già indicizzabili) |
-| AA | `scheda-invio-e-valutazione-per-ricovero-in-unita-di-cure-intermedie.pdf` | 3.076 | 150 | Modulo di accesso: tenere |
-| AA | `residenza-anni-azzurri-casa-argento/Contratto accoglienza Privato.pdf` | 1.023 | 133 | Da decidere con KOS: un contratto in chiaro nei risultati è una scelta commerciale |
-| AA | `residenza-anni-azzurri-casa-argento/Contratto accoglienza RSA.pdf` | 620 | 23 | Come sopra |
-| AA | `residenza-anni-azzurri-la-corte/PARM 2025.pdf` | 278 | 35 | Escludere (documento di obbligo; verificare se c'è già l'edizione 2026) |
-| KOS | `villa-jolanda/gestione-liste-di-attesa.pdf` | 3.164 | 41 | Tenere: informazione che gli utenti cercano |
-| KOS | `societa-trasparente/kos-care-estratto-visura-camerale-…-2024.pdf` | 1.694 | 39 | Escludere e chiedere la rimozione: il nome del file contiene il nome di una persona |
-| KOS | `societa-trasparente/kos-care-bilancio-2024.pdf` | 898 | 23 | Escludere (resta pubblicato nella pagina «Società trasparente») |
-| KOS | `villa-azzurra/la-nostra-equipe-2025.pdf` (non più sul server) | 271 | 15 | 301 verso `la-nostra-équipe-2026.pdf`, stesso documento aggiornato |
-| KOS | `villa-margherita-vicenza-psichiatria/tirocini-in-area-psichiatrica.pdf` (oggi indicizzabile) | 128 | 2 | Escludere: pubblico di tirocinanti, nessun clic utile (valutazione del 5/11) |
+| AA | `residenza-anni-azzurri-sacra-famiglia/Scheda AGED.pdf` | 2.627 | 425 | Escluso: vecchia scansione di un modulo |
+| AA | `scheda-invio-e-valutazione-per-ricovero-in-unita-di-cure-intermedie.pdf` | 3.076 | 150 | Escluso: modulo regionale lombardo del 2022, non collegato da nessuna pagina |
+| AA | `residenza-anni-azzurri-casa-argento/Contratto accoglienza Privato.pdf` e `… RSA.pdf` | 1.023, 620 | 133, 23 | Esclusi: vecchie scansioni |
+| AA | `residenza-anni-azzurri-la-corte/PARM 2025.pdf` | 278 | 35 | Escluso |
+| KOS | `villa-jolanda/gestione-liste-di-attesa.pdf` | 3.164 | 41 | Escluso: vecchia scansione |
+| KOS | `societa-trasparente/kos-care-estratto-visura-camerale-…-2024.pdf` | 1.694 | 39 | Escluso; candidato allo strumento Rimozioni (nome di una persona nel file) |
+| KOS | `societa-trasparente/kos-care-bilancio-2024.pdf` | 898 | 23 | Escluso (resta pubblicato nella pagina «Società trasparente») |
+| KOS | `villa-margherita-vicenza-psichiatria/tirocini-in-area-psichiatrica.pdf` (era indicizzabile) | 128 | 2 | Passa a noindex: pubblico di tirocinanti, nessun clic utile (`ESCLUDI_DOPO` in `genera-piano-pdf.py`) |
+| KOS | `ospedale-san-pancrazio/il-team.pdf`, `villa-azzurra/la-nostra-équipe-2026.pdf`; AA `santa-maria-in-chienti/Organizzazione.pdf` | 1.384, 204, 550 | 61, 5, 26 | Restano indicizzabili: rispondono a ricerche sui medici e sulla direzione delle strutture |
+
+Proposte in attesa di conferma, già scritte nelle regole come righe commentate: 301 di `villa-azzurra/la-nostra-equipe-2025.pdf`
+(non più sul server, 15 clic) verso l'edizione 2026; 410 per la carta e il pieghevole di Biarella (struttura uscita dal
+gruppo, nessuna impressione da settembre 2025), insieme alla rimozione della regola `/rsa-biarella` dalle regole di produzione.
+
+Sitemap definitive: `anniazzurri/files/sitemap/sitemap-pdf-noindex.xml` (217 URL), `kosgroup/files/sitemap/sitemap-pdf-noindex.xml`
+(426 URL), da pubblicare in `/www/sitemap-pdf-noindex.xml`.
 
 Elenco completo, con tutti i PDF e le priorità: `deindicizzare-aa.csv`, `deindicizzare-kos.csv` (generati dallo script,
 fuori dal repository).
@@ -54,7 +59,7 @@ fuori dal repository).
 | # | Cosa | Chi | Quando |
 |---|---|---|---|
 | 1 | Inventario dei PDF presenti sui due server (la sitemap deve contenere solo file che esistono: un 404 in sitemap è un errore) | D | **fatto il 5/11** |
-| 2 | Decisione sui PDF da riesaminare; quelli da tenere passano nell'elenco delle regole web (`genera-piano-pdf.py`) | D + C | 5/11 |
+| 2 | Decisione sui PDF da riesaminare; quelli da tenere passano nell'elenco delle regole web (`genera-piano-pdf.py`) | D + C | **fatto il 5/11** |
 | 3 | `sitemap-pdf-noindex.xml` per sito (PDF in noindex presenti sul server, anche mai visti su Google), caricata nella webroot | C, D | 6/11 |
 | 4 | Invio della sitemap in Search Console e in Bing Webmaster Tools | D | 6/11 |
 | 5 | Strumento «Rimozioni» di Search Console per i PDF con dati personali, documenti superati o errati con impressioni recenti (priorità A, dopo il passo 2): li nasconde per circa 6 mesi, il tempo che il noindex agisca | D | 6/11 |

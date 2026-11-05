@@ -28,8 +28,10 @@ REDIRECT = {
          'residenza chiusa il 19/10: la pagina rimanda a /rsa-nelle-marche e non esiste una carta equivalente', True),
         (D + 'residenza-anni-azzurri-parco-di-veio/PARM 2024.pdf', 'https://anniazzurri.it/assets/doc/strutture/residenza-anni-azzurri-parco-di-veio/PARM 2025.pdf',
          'stesso documento (PARM) della stessa residenza, edizione 2025 (come PARS 2022 → PARS 2025)', True),
-        (D + 'residenza-anni-azzurri-biarella/Carta dei servizi.pdf', 'https://anniazzurri.it/residenza-anni-azzurri-biarella',
-         'la cartella non ha più documenti: alla pagina della residenza. ATTIVARE SOLO se la pagina risponde 200 (curl -I)', False),
+        (D + 'residenza-anni-azzurri-biarella/Carta dei servizi.pdf', None,
+         'Biarella non fa più parte delle strutture Anni Azzurri (5/11), nessuna impressione da settembre 2025: 410. DA ATTIVARE con la conferma di Danilo', False),
+        (D + 'residenza-anni-azzurri-biarella/Pieghevole informativo.pdf', None,
+         'come sopra (pieghevole della stessa residenza). DA ATTIVARE con la conferma di Danilo', False),
     ],
     'kos': [
         (D + 'villa-rosa/informazioni-per-il-ricovero.pdf', 'https://kosgroup.com/it/centri/villa-rosa',
@@ -44,6 +46,17 @@ REDIRECT = {
          'stesso documento rinominato (dellumore → dell-umore)', True),
         (D + 'centro-residenziale-santo-stefano-foligno/sintesi-clinica-urs.pdf', 'https://kosgroup.com/it/centri/centro-residenziale-santo-stefano-foligno',
          'nessun documento equivalente (le sintesi cliniche RSA e SUAP sono per altri percorsi): alla scheda della struttura', True),
+        (D + 'villa-azzurra/la-nostra-equipe-2025.pdf', 'https://kosgroup.com/assets/doc/strutture/villa-azzurra/la-nostra-%C3%A9quipe-2026.pdf',
+         'stesso documento, edizione 2026 (il 2025 non è più sul server e ha ancora clic). DA ATTIVARE con la conferma di Danilo', False),
+    ],
+}
+
+# PDF che il foglio dà da tenere ma che le decisioni successive escludono (noindex): prevalgono sul foglio.
+ESCLUDI_DOPO = {
+    'aa': [],
+    'kos': [
+        # 5/11: pubblico di tirocinanti, nessun clic utile (criterio: si indicizza ciò che risponde a ricerche degli utenti)
+        '/assets/doc/strutture/villa-margherita-vicenza-psichiatria/tirocini-in-area-psichiatrica.pdf',
     ],
 }
 
@@ -121,6 +134,10 @@ def main():
                 esclusi += 1
                 lista_esclusi.append(p)
                 continue
+            if p in ESCLUDI_DOPO[sito]:
+                esclusi += 1
+                lista_esclusi.append(p)
+                continue
             tieni.append(p)
             ril = str(r[ix['Rilascio di oggi']] or '')
             tit = r[ix['Titolo proposto (metadati del file)']]
@@ -170,7 +187,10 @@ def main():
         for p, dest, motivo, attivo in REDIRECT[sito]:
             pre = '' if attivo else '#'
             L.append('# %s' % motivo)
-            L.append('%slocation = %s { return 301 %s; }' % (pre, q(p), q(dest)))
+            if dest is None:
+                L.append('%slocation = %s { return 410; }' % (pre, q(p)))
+            else:
+                L.append('%slocation = %s { return 301 %s; }' % (pre, q(p), q(dest)))
         L.append('')
         L.append('# --- 2. Tutti i PDF: noindex tranne quelli in elenco; canonical per i duplicati ---')
         L.append('# Le add_header dentro una location annullano quelle del server: si ripetono qui gli header di sicurezza del sito.')
