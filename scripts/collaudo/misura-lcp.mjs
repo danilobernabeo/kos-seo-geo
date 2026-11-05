@@ -9,7 +9,7 @@
  *   --ripetizioni=3     caricamenti per pagina (mediana di LCP, FCP, TTFB); default 3
  *   --profilo=mobile    mobile (default: 412×823, DPR 1,75, CPU 4×, rete 4G lenta come Lighthouse) | desktop | entrambi
  *   --uscita=lcp-<data> cartella del rapporto (default con data e ora)
- *   (stage: $env:AUTH = "kos:<password>" e --base=https://<stage>.modx.dev)
+ *   (stage: $env:AUTH = "<password dello stage>" e --base=https://stage.kosgroup.com oppure https://stage.anniazzurri.it)
  * L'elenco delle pagine è lo stesso di collaudo-visivo.mjs (anche UTF-16, commenti con «#»).
  *
  * Per ogni pagina e profilo:
