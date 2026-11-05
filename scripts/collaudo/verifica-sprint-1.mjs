@@ -118,7 +118,11 @@ async function chiedi(url, { ua = UA_BROWSER, metodo = 'GET', segui = false } = 
 const entita = s => String(s ?? '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#0?39;|&apos;/g, "'")
   .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n))
   .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16))).replace(/&agrave;/g, 'à').replace(/&egrave;/g, 'è')
-  .replace(/&eacute;/g, 'é').replace(/&igrave;/g, 'ì').replace(/&ograve;/g, 'ò').replace(/&ugrave;/g, 'ù');
+  .replace(/&eacute;/g, 'é').replace(/&igrave;/g, 'ì').replace(/&ograve;/g, 'ò').replace(/&ugrave;/g, 'ù')
+  // apostrofi, virgolette e trattini tipografici scritti dall'editor del manager (prima contavano 6-7 caratteri l'uno)
+  .replace(/&(rsquo|lsquo|rdquo|ldquo|laquo|raquo|ndash|mdash|hellip|Egrave|Agrave|ecirc|deg|euro);/g, (_, n) => ({
+    rsquo: '’', lsquo: '‘', rdquo: '”', ldquo: '“', laquo: '«', raquo: '»', ndash: '–', mdash: '—', hellip: '…',
+    Egrave: 'È', Agrave: 'À', ecirc: 'ê', deg: '°', euro: '€' })[n]);
 const testo = h => entita(String(h).replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 const maxAge = cc => { const m = /max-age=(\d+)/i.exec(cc || ''); return m ? Number(m[1]) : null; };
 const assoluto = (u, base) => { try { return new URL(entita(u), base).href; } catch { return null; } };

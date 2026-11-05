@@ -1,0 +1,559 @@
+{
+ "nome": "AA-20 giro 4: title oltre 65 e description oltre 160 caratteri trovati dalla verifica del 5/11 (pagine fuori dagli elenchi dell'audit), più 2 description troncate o con refusi; proposte del progetto del 5/11 da validare da Danilo. Longtitle senza « | Anni Azzurri» (lo aggiunge titoloPagina). Sportello Sociale: longtitle alias di cartella, title non toccato. Valori «prima» dall'istantanea del 5/11 (meta-stato-20261105-133910).",
+ "risorse": [
+  {
+   "id": 592,
+   "uri": "autori/antonella-schiavino",
+   "campi": {
+    "longtitle": {
+     "prima": "Antonella Schiavino - Referente Qualità ed Accreditamento",
+     "dopo": "Antonella Schiavino - Qualità e Accreditamento"
+    }
+   }
+  },
+  {
+   "id": 438,
+   "uri": "assistenza-e-cure-domiciliari-in-regime-privato",
+   "campi": {
+    "longtitle": {
+     "prima": "Cure Domiciliari Private Milano | Infermieri e Fisioterapisti a Domicilio",
+     "dopo": "Cure domiciliari private a Milano e provincia"
+    },
+    "description": {
+     "prima": "Infermieri, fisioterapisti e OSS qualificati a domicilio a Milano e provincia, in regime privato. Attivazione in 24/48 ore senza passare dal medico di base. Scopri servizi, copertura e come attivare l'assistenza.",
+     "dopo": "Infermieri, fisioterapisti e OSS a domicilio a Milano e provincia, in regime privato: attivazione in 24/48 ore, senza prescrizione medica. Scopri come."
+    }
+   }
+  },
+  {
+   "id": 525,
+   "uri": "sportello-sociale-orientamento-per-assistenza-anziani",
+   "campi": {
+    "description": {
+     "prima": "Lo Sportello Sociale di Anni Azzurri ti aiuta a orientarti tra RSA, assistenza domiciliare e centri diurni. Colloquio con un assistente sociale specializzato. Prenota ora.",
+     "dopo": "Lo Sportello Sociale di Anni Azzurri ti orienta tra RSA, assistenza domiciliare e centri diurni con un colloquio con un assistente sociale. Prenota ora."
+    }
+   }
+  },
+  {
+   "id": 587,
+   "uri": "convegno-parkinson-realta-prospettive",
+   "campi": {
+    "longtitle": {
+     "prima": "Convegno La malattia di Parkinson: realtà e prospettive",
+     "dopo": "Convegno Parkinson: realtà e prospettive"
+    }
+   }
+  },
+  {
+   "id": 195,
+   "uri": "alzheimer-e-arte-un-binomio-dagli-importanti-benefici",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Alzheimer e arte: un binomio di benefici"
+    }
+   }
+  },
+  {
+   "id": 223,
+   "uri": "un-pomeriggio-speciale-nelle-residenze-anni-azzurri-di-milano-con-l-iniziativa-volontari-per-un-giorno",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "“Volontari per un giorno” nelle RSA di Milano"
+    }
+   }
+  },
+  {
+   "id": 277,
+   "uri": "quali-sono-le-letture-consigliate-per-anziani-in-casa-di-riposo",
+   "campi": {
+    "longtitle": {
+     "prima": "Letture per anziani in casa di riposo: la nostra guida",
+     "dopo": "Letture per anziani in casa di riposo: la guida"
+    }
+   }
+  },
+  {
+   "id": 307,
+   "uri": "borgomanero-il-2-dicembre-porte-aperte-al-pubblico",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Borgomanero: porte aperte il 2 dicembre"
+    }
+   }
+  },
+  {
+   "id": 321,
+   "uri": "sclerosi-laterale-amiotrofica-i-sintomi-le-cause-e-la-cura",
+   "campi": {
+    "longtitle": {
+     "prima": "Sclerosi laterale amiotrofica: sintomi, cause e cura",
+     "dopo": "SLA, sclerosi laterale amiotrofica: sintomi e cura"
+    }
+   }
+  },
+  {
+   "id": 377,
+   "uri": "terapia-occupazionale-per-anziani-di-cosa-si-tratta",
+   "campi": {
+    "longtitle": {
+     "prima": "Terapia occupazionale per anziani: di cosa si tratta?",
+     "dopo": "Terapia occupazionale per anziani: cos'è"
+    }
+   }
+  },
+  {
+   "id": 388,
+   "uri": "creatinina-alta-negli-anziani-cause-rischi-e-rimedi",
+   "campi": {
+    "longtitle": {
+     "prima": "Creatinina alta negli anziani: valori, cause, rimedi",
+     "dopo": "Creatinina alta negli anziani: cause e rimedi"
+    }
+   }
+  },
+  {
+   "id": 394,
+   "uri": "come-richiedere-assistenza-domiciliare-per-anziani",
+   "campi": {
+    "longtitle": {
+     "prima": "Come richiedere assistenza domiciliare per anziani?",
+     "dopo": "Assistenza domiciliare anziani: come richiederla"
+    }
+   }
+  },
+  {
+   "id": 415,
+   "uri": "giornata-internazionale-delle-persone-con-disabilita",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Giornata della disabilità: musica a Mestre"
+    },
+    "description": {
+     "prima": "Gli ospiti del nucleo disabili La Fenice di Mestre partecipano a \"Musica senza Confini\", un progetto che permette l'espressione musicale con strumenti adattati alle loro abilità.",
+     "dopo": "Gli ospiti del nucleo La Fenice di Mestre partecipano a «Musica senza Confini», un progetto di espressione musicale con strumenti adattati alle loro abilità."
+    }
+   }
+  },
+  {
+   "id": 422,
+   "uri": "residenza-kos-anni-azzurri-grande-festa-per-i-10-anni",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Santa Maria in Chienti festeggia 10 anni"
+    }
+   }
+  },
+  {
+   "id": 452,
+   "uri": "familiari-anziani-quando-valutare-ingresso-in-rsa",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Familiari anziani: quando scegliere la RSA"
+    }
+   }
+  },
+  {
+   "id": 455,
+   "uri": "39-congresso-sigot-lo-studio-kos-dimostra-che-le-attivita-educative-riducono-uso-di-psicofarmaci",
+   "campi": {
+    "longtitle": {
+     "prima": "Studio KOS: attività educative riducono psicofarmaci",
+     "dopo": "SIGOT: attività educative e meno psicofarmaci"
+    }
+   }
+  },
+  {
+   "id": 467,
+   "uri": "apre-per-il-territorio-il-poliambulatorio-valdaso",
+   "campi": {
+    "longtitle": {
+     "prima": "Apre per il territorio il \"Poliambulatorio Valdaso\"",
+     "dopo": "Poliambulatorio Valdaso: apre per il territorio"
+    },
+    "description": {
+     "prima": "Un’offerta, rivolta a tutto il territorio, di prestazioni diagnostiche, visite specialistiche e attività ambulatoriali,",
+     "dopo": "Nella Residenza Anni Azzurri Valdaso apre il Poliambulatorio: diagnostica, visite specialistiche e attività ambulatoriali aperte a tutto il territorio."
+    }
+   }
+  },
+  {
+   "id": 471,
+   "uri": "operatori-e-ospiti-il-valore-della-relazione-in-rsa",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Operatori e ospiti: la relazione in RSA"
+    }
+   }
+  },
+  {
+   "id": 487,
+   "uri": "sensi-di-colpa-dopo-il-ricovero-di-un-genitore-in-rsa",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Sensi di colpa per un genitore in RSA"
+    }
+   }
+  },
+  {
+   "id": 503,
+   "uri": "come-parlare-di-assistenza-domiciliare-con-un-genitore",
+   "campi": {
+    "longtitle": {
+     "prima": "Come parlare di assistenza domiciliare con un genitore",
+     "dopo": "Parlare di assistenza domiciliare con un genitore"
+    }
+   }
+  },
+  {
+   "id": 509,
+   "uri": "prendersi-cura-di-un-genitore-anziano-cosa-comporta",
+   "campi": {
+    "longtitle": {
+     "prima": "Prendersi cura di un genitore anziano: cosa comporta",
+     "dopo": "Prendersi cura di un genitore anziano"
+    }
+   }
+  },
+  {
+   "id": 510,
+   "uri": "crescere-in-rsa-opportunita-di-carriera-nel-settore",
+   "campi": {
+    "longtitle": {
+     "prima": "Crescere in RSA: opportunità di carriera nel settore",
+     "dopo": "Carriera in RSA: le opportunità nel settore"
+    }
+   }
+  },
+  {
+   "id": 519,
+   "uri": "perdita-udito-negli-anziani-quando-fare-un-controllo",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Udito negli anziani: quando fare un controllo"
+    }
+   }
+  },
+  {
+   "id": 520,
+   "uri": "sonno-e-invecchiamento-quando-serve-uno-specialista",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Sonno negli anziani: quando serve uno specialista"
+    }
+   }
+  },
+  {
+   "id": 528,
+   "uri": "supporto-psicologico-allanziano-perche-e-importante",
+   "campi": {
+    "longtitle": {
+     "prima": "Supporto psicologico all'anziano: perché è importante",
+     "dopo": "Supporto psicologico all'anziano: perché serve"
+    }
+   }
+  },
+  {
+   "id": 530,
+   "uri": "welfare-integrativo-e-non-autosufficienza-con-kos-operativa-una-rete-di-strutture-in-8-regioni",
+   "campi": {
+    "longtitle": {
+     "prima": "Welfare integrativo: rete KOS per la non autosufficienza | KOS",
+     "dopo": "Welfare e non autosufficienza: la rete KOS"
+    }
+   }
+  },
+  {
+   "id": 531,
+   "uri": "a-pieni-polmoni-il-progetto-di-riabilitazione-respiratoria-nella-rsa-anni-azzurri-parco-di-veio",
+   "campi": {
+    "longtitle": {
+     "prima": "Riabilitazione respiratoria per anziani: A pieni polmoni",
+     "dopo": "Riabilitazione respiratoria: A pieni polmoni"
+    }
+   }
+  },
+  {
+   "id": 532,
+   "uri": "io-non-sono-il-parkinson-il-progetto-del-polo-geriatrico-riabilitativo-di-cinisello-balsamo",
+   "campi": {
+    "longtitle": {
+     "prima": "Io non sono il Parkinson\": il progetto di Cinisello",
+     "dopo": "“Io non sono il Parkinson” a Cinisello Balsamo"
+    }
+   }
+  },
+  {
+   "id": 536,
+   "uri": "alla-fondazione-marazza-la-residenza-anni-azzurri-borgomanero-presenta-l-altro-sono-io-un-corso-gratuito-per-i-familiari-caregiver",
+   "campi": {
+    "longtitle": {
+     "prima": "Corso gratuito per caregiver familiari a Borgomanero",
+     "dopo": "Corso gratuito per caregiver a Borgomanero"
+    },
+    "description": {
+     "prima": "Anni Azzurri Borgomanero lancia un corso gratuito per caregiver familiari: 6 incontri su assistenza, comunicazione e benessere per chi si prende cura di un anziano.",
+     "dopo": "Anni Azzurri Borgomanero propone «L'altro sono io», corso gratuito per caregiver familiari: 6 incontri su assistenza, comunicazione e benessere."
+    }
+   }
+  },
+  {
+   "id": 540,
+   "uri": "la-memoria-come-ponte-tra-generazioni-cosa-ci-insegna-la-maturita-2026",
+   "campi": {
+    "longtitle": {
+     "prima": "Maturità 2026: la memoria come ponte tra generazioni",
+     "dopo": "Maturità 2026: la memoria tra generazioni"
+    }
+   }
+  },
+  {
+   "id": 543,
+   "uri": "caldo-estivo-e-anziani-quello-che-ce-da-sapere-e-da-fare",
+   "campi": {
+    "longtitle": {
+     "prima": "Caldo estivo e anziani: cosa fare e a cosa stare attenti",
+     "dopo": "Caldo e anziani: cosa fare e a cosa stare attenti"
+    }
+   }
+  },
+  {
+   "id": 545,
+   "uri": "cosa-e-l-incontinenza-urinaria-e-quanto-e-diffusa-negli-anziani",
+   "campi": {
+    "longtitle": {
+     "prima": "Incontinenza urinaria negli anziani: cause e consigli",
+     "dopo": "Incontinenza negli anziani: cause e consigli"
+    }
+   }
+  },
+  {
+   "id": 547,
+   "uri": "lavorare-con-gli-anziani-competenze-e-aspetti-psicologici",
+   "campi": {
+    "longtitle": {
+     "prima": "Lavorare con gli anziani: competenze, ruoli e benessere",
+     "dopo": "Lavorare con gli anziani: competenze e benessere"
+    }
+   }
+  },
+  {
+   "id": 549,
+   "uri": "cosa-fa-un-oss-in-una-rsa-mansioni-e-giornata-tipo",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Cosa fa un OSS in RSA: mansioni e giornata tipo"
+    }
+   }
+  },
+  {
+   "id": 550,
+   "uri": "lafil-porta-musica-nei-quartieri-al-polo-geriatrico-riabilitativo-milano",
+   "campi": {
+    "longtitle": {
+     "prima": "LaFil e Musica nei Quartieri al Polo Geriatrico Milano",
+     "dopo": "LaFil e Musica nei Quartieri al Polo di Milano"
+    },
+    "description": {
+     "prima": "LaFil – Filarmonica di Milano porta \"Musica nei Quartieri\" al Polo Geriatrico Riabilitativo Milano: un concerto dal vivo con Pierino e il Lupo per gli ospiti della struttura.",
+     "dopo": "LaFil – Filarmonica di Milano porta «Musica nei Quartieri» al Polo Geriatrico Riabilitativo Milano: concerto con Pierino e il Lupo per gli ospiti."
+    }
+   }
+  },
+  {
+   "id": 551,
+   "uri": "un-sogno-lungo-una-vita-diventa-realta-elena-incontra-vasco-rossi",
+   "campi": {
+    "longtitle": {
+     "prima": "Elena incontra Vasco Rossi: il sogno diventa realtà",
+     "dopo": "Elena incontra Vasco Rossi: un sogno realizzato"
+    }
+   }
+  },
+  {
+   "id": 553,
+   "uri": "frattura-del-femore-negli-anziani-conseguenze-e-recupero",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Frattura del femore negli anziani: il recupero"
+    }
+   }
+  },
+  {
+   "id": 554,
+   "uri": "perche-diventare-oss-storie-di-chi-ha-scelto-questo-lavoro",
+   "campi": {
+    "longtitle": {
+     "prima": "Diventare OSS: storie di chi ha scelto questo lavoro",
+     "dopo": "Diventare OSS: le storie di chi l'ha scelto"
+    }
+   }
+  },
+  {
+   "id": 556,
+   "uri": "perche-una-persona-con-alzheimer-puo-rifiutarsi-di-lavarsi",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Alzheimer: perché si rifiuta di lavarsi"
+    }
+   }
+  },
+  {
+   "id": 559,
+   "uri": "demenza-senile-e-alzheimer-quali-sono-le-differenze",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Demenza senile e Alzheimer: le differenze"
+    }
+   }
+  },
+  {
+   "id": 563,
+   "uri": "legge-104-permessi-e-tutele-per-chi-assiste-un-familiare",
+   "campi": {
+    "longtitle": {
+     "prima": "Legge 104 nel 2026: permessi, novità e nuove tutele",
+     "dopo": "Legge 104 nel 2026: permessi e nuove tutele"
+    }
+   }
+  },
+  {
+   "id": 564,
+   "uri": "vaccino-pneumococco-per-anziani-a-chi-serve-e-quando",
+   "campi": {
+    "longtitle": {
+     "prima": "Vaccino pneumococco over 65: quando farlo e a chi serve",
+     "dopo": "Vaccino pneumococco over 65: quando e a chi"
+    }
+   }
+  },
+  {
+   "id": 567,
+   "uri": "ansia-negli-anziani-sintomi-cause-e-come-affrontarla",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Ansia negli anziani: sintomi, cause e aiuto"
+    }
+   }
+  },
+  {
+   "id": 576,
+   "uri": "il-mantello-del-custode-dare-voce-alle-scelte-dare-senso-alla-cura",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Il Mantello del Custode: convegno sulle DAT"
+    },
+    "description": {
+     "prima": "L’11 novembre l’Hospice Beati Coniugi Martin di Anni Azzurri ospita a Milano “Il Mantello del Custode”, un convegno dedicato alle Disposizioni anticipate di trattamento (DAT) e alla bioetica del fine vita, con professionisti, esperti e rappresentanti delle istituzioni.",
+     "dopo": "L'11 novembre l'Hospice Beati Coniugi Martin ospita a Milano «Il Mantello del Custode», convegno sulle Disposizioni anticipate di trattamento e il fine vita."
+    }
+   }
+  },
+  {
+   "id": 578,
+   "uri": "stitichezza-negli-anziani-cause-rimedi-e-cosa-fare",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Stitichezza negli anziani: cause e rimedi"
+    }
+   }
+  },
+  {
+   "id": 580,
+   "uri": "retta-casa-di-riposo-i-figli-sono-obbligati-a-pagarla",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Retta della casa di riposo: pagano i figli?"
+    }
+   }
+  },
+  {
+   "id": 585,
+   "uri": "quando-prendersi-cura-di-un-genitore-anziano-e-pesante",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Quando assistere un genitore anziano pesa"
+    }
+   }
+  },
+  {
+   "id": 529,
+   "uri": "kos-premiata-al-convegno-agire-2026-con-il-progetto-pannolone-intelligente",
+   "campi": {
+    "description": {
+     "prima": "Anni Azzurri premiata al convegno AGIRE 2026 con il progetto \"Pannolone Intelligente\": un sistema smart per il monitoraggio in tempo reale dell'incontinenza che migliora il benessere degli ospiti, riduce le lesioni cutanee e ottimizza il lavoro degli operatori.",
+     "dopo": "Anni Azzurri vince il premio AGIRE 2026 con il «Pannolone Intelligente», sistema smart che monitora l'incontinenza in tempo reale e riduce le lesioni cutanee."
+    }
+   }
+  },
+  {
+   "id": 533,
+   "uri": "oss-in-piemonte-corso-kos-e-assunzioni",
+   "campi": {
+    "description": {
+     "prima": "Gruppo KOS e EssenzialMente Formazione aprono le iscrizioni al corso OSS gratuito in Piemonte: 1.000 ore di formazione e contratto a tempo indeterminato a Tonengo d'Asti.",
+     "dopo": "Corso OSS gratuito in Piemonte con Gruppo KOS ed EssenzialMente Formazione: 1.000 ore di formazione e assunzione a tempo indeterminato a Tonengo d'Asti."
+    }
+   }
+  },
+  {
+   "id": 534,
+   "uri": "anni-azzurri-al-congresso-nazionale-sigot-2026-con-uno-studio-multicentrico-sulle-rsa-anni-azzurri",
+   "campi": {
+    "description": {
+     "prima": "Anni Azzurri presenta al SIGOT 2026 uno studio su 6.400 residenti in 59 RSA: bisogni clinici, cognitivi e funzionali degli anziani non autosufficienti in Italia.",
+     "dopo": "Al SIGOT 2026 Anni Azzurri presenta uno studio su 6.400 residenti in 59 RSA: bisogni clinici, cognitivi e funzionali degli anziani non autosufficienti."
+    }
+   }
+  },
+  {
+   "id": 538,
+   "uri": "la-corrida-accende-mestre-una-festa-senza-barriere-tra-sorrisi-e-comunita",
+   "campi": {
+    "description": {
+     "prima": "Torna \"La Corrida di Anni Azzurri\" a Favaro Veneto: tredicesima edizione tra esibizioni, sorrisi e inclusione, con ospiti, famiglie e associazioni del territorio.",
+     "dopo": "Torna «La Corrida di Anni Azzurri» a Favaro Veneto: tredicesima edizione tra esibizioni, sorrisi e inclusione, con ospiti, famiglie e associazioni."
+    }
+   }
+  },
+  {
+   "id": 539,
+   "uri": "il-valore-di-condividere-cio-che-si-impara-sul-campo",
+   "campi": {
+    "description": {
+     "prima": "Il prof. Cristiano Gori presenta la nuova piattaforma de I Luoghi della cura: condividere esperienze sul campo per migliorare la qualità dei servizi agli anziani.",
+     "dopo": "Il prof. Cristiano Gori presenta la nuova piattaforma de I Luoghi della cura: condividere le esperienze sul campo per migliorare i servizi agli anziani."
+    }
+   }
+  },
+  {
+   "id": 565,
+   "uri": "albero-dei-ricordi",
+   "campi": {
+    "description": {
+     "prima": "Oltre cinquecento ricordi raccolti nelle 60 residenze Anni Azzurri e appesi a un albero di carta. Quarantuno di quelle storie rivivono qui, per la Giornata Mondiale dell'Alzheimer.",
+     "dopo": "Oltre 500 ricordi raccolti nelle 60 residenze Anni Azzurri e appesi a un albero di carta: 41 storie rivivono qui per la Giornata Mondiale dell'Alzheimer."
+    }
+   }
+  }
+ ]
+}

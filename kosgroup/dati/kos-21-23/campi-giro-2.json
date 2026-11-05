@@ -1,0 +1,217 @@
+{
+ "nome": "KOS-21/22 giro 2: title oltre 65 e description oltre 160 caratteri trovati dalla verifica del 5/11 (pagine fuori dagli elenchi dell'audit); proposte del progetto del 5/11 da validare da Danilo. Longtitle con « | KOS». Valori «prima» dall'istantanea del 5/11 (meta-stato-20261105-133833).",
+ "risorse": [
+  {
+   "id": 305,
+   "uri": "it/news-e-media/approfondimenti/ictus",
+   "campi": {
+    "longtitle": {
+     "prima": "La riabilitazione post ictus. Competenza, ricerca, tecnologia | KOS",
+     "dopo": "Riabilitazione post ictus: competenza, ricerca, tecnologia | KOS"
+    }
+   }
+  },
+  {
+   "id": 356,
+   "uri": "it/news-e-media/news/inaugurati-i-nuovi-servizi-del-centro-santo-stefano-di-cagli",
+   "campi": {
+    "longtitle": {
+     "prima": "Inaugurati i nuovi servizi del Centro Santo Stefano di Cagli | KOS",
+     "dopo": "Centro Santo Stefano di Cagli: i nuovi servizi | KOS"
+    }
+   }
+  },
+  {
+   "id": 496,
+   "uri": "it/news-e-media/news/2024/anni-azzurri-posa-la-prima-pietra-della-nuova-casa-residenza-per-anziani",
+   "campi": {
+    "longtitle": {
+     "prima": "Anni Azzurri: la nuova casa residenza per anziani prende forma | KOS",
+     "dopo": "Anni Azzurri: nuova residenza per anziani a Modena | KOS"
+    }
+   }
+  },
+  {
+   "id": 241,
+   "uri": "it/news-e-media/news/2024/a-villa-dei-pini-ortoterapia-per-curare-i-disturbi-alimentari",
+   "campi": {
+    "longtitle": {
+     "prima": "A Villa dei Pini l’ortoterapia per curare i disturbi alimentari | KOS",
+     "dopo": "Villa dei Pini: l'ortoterapia per i disturbi alimentari | KOS"
+    }
+   }
+  },
+  {
+   "id": 243,
+   "uri": "it/news-e-media/news/2024/villa-pini-ecco-la-rinnovata-gastroenterologia",
+   "campi": {
+    "longtitle": {
+     "prima": "Villa Pini si potenzia ancora: da luglio arriva il prof. Grassi | KOS",
+     "dopo": "Villa Pini: rinnovata la gastroenterologia | KOS"
+    }
+   }
+  },
+  {
+   "id": 125,
+   "uri": "it/servizi-e-cure/psichiatria/trattamenti/psicoterapeutico-approccio-sistemico-relazionale",
+   "campi": {
+    "longtitle": {
+     "prima": "Trattamento psicoterapeutico - Approccio sistemico relazionale | KOS",
+     "dopo": "Psicoterapia: approccio sistemico relazionale | KOS"
+    }
+   }
+  },
+  {
+   "id": 935,
+   "uri": "it/news-e-media/approfondimenti/psicologia-e-alimentazione-il-potere-delle-emozioni-sul-cibo",
+   "campi": {
+    "longtitle": {
+     "prima": "Psicologia e alimentazione: il potere delle emozioni sul cibo | KOS",
+     "dopo": "Psicologia e alimentazione: emozioni e cibo | KOS"
+    }
+   }
+  },
+  {
+   "id": 369,
+   "uri": "it/news-e-media/news/villa-pini-centro-di-riferimento-nelle-marche-per-le-cefalee",
+   "campi": {
+    "longtitle": {
+     "prima": "Villa Pini centro di riferimento nelle Marche per le cefalee | KOS",
+     "dopo": "Villa Pini, centro di riferimento per le cefalee | KOS"
+    }
+   }
+  },
+  {
+   "id": 1130,
+   "uri": "it/news-e-media/news/2026/ad-arco-premiati-i-vincitori-della-21-edizione-di-storie-di-donne",
+   "campi": {
+    "longtitle": {
+     "prima": "Storie di donne 2026: i vincitori della 21ª edizione ad Arco | KOS",
+     "dopo": "Storie di donne 2026: i vincitori ad Arco | KOS"
+    },
+    "description": {
+     "prima": "Ad Arco la cerimonia della 21ª edizione di \"Storie di donne\": 137 autori da tutta Italia, premi per la sezione generale e il Premio San Pancrazio dell'Ospedale KOS.",
+     "dopo": "Ad Arco la 21ª edizione di «Storie di donne»: 137 autori da tutta Italia, premi per la sezione generale e Premio San Pancrazio dell'Ospedale KOS."
+    }
+   }
+  },
+  {
+   "id": 298,
+   "uri": "it/news-e-media/approfondimenti/disturbi-del-linguaggio-la-differenza-fra-afasia-e-disartria",
+   "campi": {
+    "longtitle": {
+     "prima": "Disturbi del linguaggio, la differenza fra afasia e disartria | KOS",
+     "dopo": "Disturbi del linguaggio: afasia e disartria | KOS"
+    }
+   }
+  },
+  {
+   "id": 1177,
+   "uri": "it/news-e-media/approfondimenti/il-centro-cardinal-ferrari-per-la-riabilitazione-neurologica",
+   "campi": {
+    "longtitle": {
+     "prima": "Il Centro Cardinal Ferrari per la riabilitazione neurologica | KOS",
+     "dopo": "Centro Cardinal Ferrari: riabilitazione neurologica | KOS"
+    }
+   }
+  },
+  {
+   "id": 1172,
+   "uri": "it/news-e-media/news/2026/protesi-di-ginocchio-a-san-pancrazio-una-riabilitazione-dedicata-dopo-l-allineamento-cinematico",
+   "campi": {
+    "longtitle": {
+     "prima": "",
+     "dopo": "Protesi di ginocchio: la riabilitazione a San Pancrazio | KOS"
+    },
+    "description": {
+     "prima": "All’Ospedale San Pancrazio di Arco un incontro dedicato all’allineamento cinematico nella protesi di ginocchio e alla riabilitazione nelle prime settimane dopo l’intervento.",
+     "dopo": "All'Ospedale San Pancrazio di Arco un incontro sull'allineamento cinematico nella protesi di ginocchio e sulla riabilitazione nelle prime settimane."
+    }
+   }
+  },
+  {
+   "id": 1175,
+   "uri": "it/news-e-media/news/2026/giornata-mondiale-della-salute-mentale-conoscere-per-comprendere-e-prendersi-cura",
+   "campi": {
+    "longtitle": {
+     "prima": "Giornata Mondiale della Salute Mentale: conoscere per comprendere e prendersi cura | KOS",
+     "dopo": "Giornata Mondiale della Salute Mentale 2026 | KOS"
+    },
+    "description": {
+     "prima": "Il 10 ottobre si celebra la Giornata Mondiale della Salute Mentale. Un’occasione per parlare di benessere psicologico, accesso alle cure e conoscere più da vicino i percorsi dedicati alle neurodivergenze in età adulta.",
+     "dopo": "10 ottobre, Giornata Mondiale della Salute Mentale: benessere psicologico, accesso alle cure e i percorsi KOS per le neurodivergenze in età adulta."
+    }
+   }
+  },
+  {
+   "id": 1013,
+   "uri": "it/news-e-media/approfondimenti/disturbo-borderline-di-personalita-sintomi-cause-e-approcci",
+   "campi": {
+    "longtitle": {
+     "prima": "Disturbo borderline di personalità: sintomi, cause e approcci | KOS",
+     "dopo": "Disturbo borderline: sintomi, cause e approcci | KOS"
+    }
+   }
+  },
+  {
+   "id": 796,
+   "uri": "it/news-e-media/news/2024/grosseto-nasce-la-nuova-residenza-anni-azzurri-il-poggione-2",
+   "campi": {
+    "description": {
+     "prima": "La nuova Residenza \"Il Poggione 2\" aggiunge 40 posti alle RSA di via Genova, offrendo assistenza personalizzata, centro diurno Alzheimer ampliato e cure avanzate.",
+     "dopo": "La nuova Residenza «Il Poggione 2» aggiunge 40 posti alle RSA di via Genova a Grosseto, con assistenza personalizzata e centro diurno Alzheimer ampliato."
+    }
+   }
+  },
+  {
+   "id": 1153,
+   "uri": "it/news-e-media/news/2026/ospiti-del-santo-stefano-protagonisti-a-bordo-delle-auto-depoca",
+   "campi": {
+    "description": {
+     "prima": "All'Istituto Santo Stefano KOS di Porto Potenza Picena torna \"Viaggiare Insieme\": gli ospiti protagonisti a bordo delle auto d'epoca del CAEM tra prove e sorrisi.",
+     "dopo": "All'Istituto Santo Stefano di Porto Potenza Picena torna «Viaggiare Insieme»: gli ospiti a bordo delle auto d'epoca del CAEM tra prove e sorrisi."
+    }
+   }
+  },
+  {
+   "id": 1173,
+   "uri": "it/news-e-media/approfondimenti/come-sollevare-un-malato-dal-letto-senza-farsi-male",
+   "campi": {
+    "description": {
+     "prima": "Come aiutare una persona non autosufficiente a muoversi e trasferirsi in sicurezza, favorendo ciò che riesce ancora a fare autonomamente e proteggendo la schiena di chi lo assiste.",
+     "dopo": "Come aiutare una persona non autosufficiente a muoversi in sicurezza, valorizzando ciò che sa ancora fare e proteggendo la schiena di chi assiste."
+    }
+   }
+  },
+  {
+   "id": 1174,
+   "uri": "it/news-e-media/approfondimenti/ho-male-alla-spalla-da-quale-specialista-partire",
+   "campi": {
+    "description": {
+     "prima": "Hai dolore alla spalla e non sai se rivolgerti all’ortopedico, al fisiatra o al fisioterapista? Scopri da dove partire, quando possono servire esami e in quali casi è meglio non aspettare.",
+     "dopo": "Dolore alla spalla: ortopedico, fisiatra o fisioterapista? Da dove partire, quando servono esami e in quali casi è meglio non aspettare."
+    }
+   }
+  },
+  {
+   "id": 1182,
+   "uri": "it/news-e-media/approfondimenti/malanni-di-stagione-come-prevenirli-e-difendersi",
+   "campi": {
+    "description": {
+     "prima": "Quali sono i malanni di stagione più comuni in autunno e inverno, come ridurre il rischio di contagio e quali abitudini aiutano a mantenere l'organismo in salute.",
+     "dopo": "I malanni di stagione più comuni in autunno e inverno, come ridurre il rischio di contagio e le abitudini che aiutano a mantenersi in salute."
+    }
+   }
+  },
+  {
+   "id": 1186,
+   "uri": "it/news-e-media/approfondimenti/assistere-un-familiare-allettato-a-casa-guida-pratica",
+   "campi": {
+    "description": {
+     "prima": "Come assistere a casa un familiare allettato: organizzazione quotidiana, mobilizzazione, mantenimento delle capacità residue, prevenzione delle complicanze, errori da evitare e quando chiedere il supporto dei professionisti.",
+     "dopo": "Assistere a casa un familiare allettato: organizzazione, mobilizzazione, prevenzione delle complicanze, errori da evitare e quando chiedere aiuto."
+    }
+   }
+  }
+ ]
+}
