@@ -49,7 +49,7 @@ Proposte in attesa di conferma, già scritte nelle regole come righe commentate:
 gruppo, nessuna impressione da settembre 2025), insieme alla rimozione della regola `/rsa-biarella` dalle regole di produzione.
 
 Sitemap definitive: `anniazzurri/files/sitemap/sitemap-pdf-noindex.xml` (217 URL), `kosgroup/files/sitemap/sitemap-pdf-noindex.xml`
-(426 URL), da pubblicare in `/www/sitemap-pdf-noindex.xml`.
+(426 URL), pubblicate il 5/11 in `/www/sitemap-pdf-noindex.xml` su stage e produzione (`curl -I`: 200, `text/xml`).
 
 Elenco completo, con tutti i PDF e le priorità: `deindicizzare-aa.csv`, `deindicizzare-kos.csv` (generati dallo script,
 fuori dal repository).
@@ -60,7 +60,7 @@ fuori dal repository).
 |---|---|---|---|
 | 1 | Inventario dei PDF presenti sui due server (la sitemap deve contenere solo file che esistono: un 404 in sitemap è un errore) | D | **fatto il 5/11** |
 | 2 | Decisione sui PDF da riesaminare; quelli da tenere passano nell'elenco delle regole web (`genera-piano-pdf.py`) | D + C | **fatto il 5/11** |
-| 3 | `sitemap-pdf-noindex.xml` per sito (PDF in noindex presenti sul server, anche mai visti su Google), caricata nella webroot | C, D | 6/11 |
+| 3 | `sitemap-pdf-noindex.xml` per sito (PDF in noindex presenti sul server, anche mai visti su Google), caricata nella webroot | C, D | **fatto il 5/11** |
 | 4 | Invio della sitemap in Search Console e in Bing Webmaster Tools | D | 6/11 |
 | 5 | Strumento «Rimozioni» di Search Console per i PDF con dati personali, documenti superati o errati con impressioni recenti (priorità A, dopo il passo 2): li nasconde per circa 6 mesi, il tempo che il noindex agisca | D | 6/11 |
 | 6 | Misura settimanale (lunedì): storico di Search Console aggiornato e script rilanciato; report «Indicizzazione delle pagine» filtrato sulla sitemap (pagine «Escluse dal tag noindex») | C | dal 9/11 |
