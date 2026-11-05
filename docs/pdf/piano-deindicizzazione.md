@@ -46,9 +46,15 @@ Criterio di Danilo: si indicizza ciò che risponde a ricerche degli utenti. Deci
 
 Regole web KOS con i tirocini in noindex: stage e produzione il 5/11 (`curl -I`: tirocini `X-Robots-Tag: noindex`, `il-team.pdf` senza intestazione, home 200); file completi `kosgroup/files/web-rules/stage-2026-11-05.conf` e `produzione-2026-11-05.conf`, ripristino con `produzione-2026-11-05-prima.conf`.
 
-Proposte in attesa di conferma, già scritte nelle regole come righe commentate: 301 di `villa-azzurra/la-nostra-equipe-2025.pdf`
-(non più sul server, 15 clic) verso l'edizione 2026; 410 per la carta e il pieghevole di Biarella (struttura uscita dal
-gruppo, nessuna impressione da settembre 2025), insieme alla rimozione della regola `/rsa-biarella` dalle regole di produzione.
+Biarella (struttura uscita dal gruppo, confermato da Danilo il 5/11): 410 sulla carta e sul pieghevole (nessuna impressione
+da settembre 2025, file già assenti), sulla pagina `/residenza-anni-azzurri-biarella` (già 404) e sul vecchio indirizzo
+`/rsa-biarella` (il suo 301 portava a un 404). Stage e produzione AA il 5/11: le quattro risorse 410, Idice 200, `/rsa-idice`
+301. File completi `anniazzurri/files/web-rules/stage-2026-11-05.conf` e `produzione-2026-11-05.conf`, ripristino con
+`produzione-2026-11-05-prima.conf`. Resta nel carosello «dicono di noi» della home una testimonianza firmata «Residenza Anni
+Azzurri Biarella»: da togliere dal contenuto.
+
+Proposta in attesa di conferma, già scritta nelle regole come riga commentata: 301 di `villa-azzurra/la-nostra-equipe-2025.pdf`
+(non più sul server, 15 clic) verso l'edizione 2026.
 
 Sitemap definitive: `anniazzurri/files/sitemap/sitemap-pdf-noindex.xml` (217 URL), `kosgroup/files/sitemap/sitemap-pdf-noindex.xml`
 (426 URL), pubblicate il 5/11 in `/www/sitemap-pdf-noindex.xml` su stage e produzione (`curl -I`: 200, `text/xml`).

@@ -61,7 +61,7 @@ Collaudi in produzione, `curl -I` dal PC di Danilo, dopo l'aggiornamento della s
 - Strutture uscite dal gruppo: Beata Corte è già in 301 verso Corte Orero (regole di produzione), quindi i suoi PDF non sono serviti e figurano ESCLUDI.
 - «Il team», «La nostra équipe», «Organizzazione» e tirocini: invariati, in attesa della conferma di KOS (call del 3/11).
 - Open Day odontoiatrico del 16/11/2026: da tenere fino all'evento, poi ESCLUDI.
-- Redirect della carta dei servizi di Biarella: commentato, da attivare solo se la pagina della residenza risponde 200.
+- Biarella, uscita dal gruppo: 410 sulla carta dei servizi, sul pieghevole, sulla pagina della residenza e sul vecchio indirizzo `/rsa-biarella` (stage e produzione il 5/11).
 
 ## Da fare
 
