@@ -190,6 +190,25 @@ es. Villa dei Pini Civitanova 21,4 → 8,5 s, la nostra storia 9,7 → 2,8 s, il
 4,6 → 2,6 s. Da ricontrollare con più misure: cura-delle-persone 2,4 → 3,9 s (l'elemento LCP passa dallo sfondo a una foto)
 e news-e-media 2,8 → 3,4 s.
 
+**KOS-2 C (WebP) in produzione il 5/11 alle 17:49** (pacchetto `kosgroup/deploy/kos-2c-webp.json`, commit 8e8a0f1; backup
+c0095 `/paas/c0095/backup-kos-seo-geo/20261105-104828/`, ripristino immediato con `kos-2c-webp-spento.json`, che porta
+`kosseogeo.img_webp` a 0). Varianti WebP delle immagini di `assets/img` oltre 30 KB, solo WebP (gli originali restano
+invariati): 4.768 larghezze, 190 MB in `assets/cache-img`. Il plugin `ImmaginiDifferite` racchiude le `<img>` in
+`<picture style="display:contents">` con una `<source>` WebP, e aggiunge la sorgente WebP ai `<picture>` del sito (testate
+desktop/mobile); caroselli compresi (`img_webp_caroselli` = 1). Regole dal collaudo visivo sullo stage (40 schermate, stage
+contro produzione, WebP acceso e spento): `sizes` uguale alla larghezza del file (le varianti ridotte solo per `img-fluid`,
+`w-100` o width/height espliciti), altrimenti cambia l'impaginazione (il management, Villa dei Pini Firenze); niente WebP
+se non pesa almeno il 10% in meno del JPG (es. `home-img.jpg`, la prima foto della galleria di Civitanova: 245 KB in WebP
+contro 212 in JPG); `picture>source{display:none}` nell'head, perché nei contenitori flex le `<source>` aggiungevano il gap
+(+16 px per scheda nel management); regole CSS del tema con «> img» ripetute per «> picture > img»
+(`kosseogeo.img_webp_css`). Collaudo finale `kos2c-finale-2`: nessuna differenza dovuta al WebP (restano home, strutture,
+Villa dei Pini Civitanova e KOS Academy, diverse già con il WebP spento per contenuti cambiati in produzione). Misura sullo
+stage (20 pagine mobile, 4G lenta): byte di immagini 7,1 → 5,7 MB (−20%), non WebP 6,5 → 3,3 MB; LCP mediano 3,7 → 3,4 s,
+indicativo (rete di casa variabile). Verifica in produzione: 7 pagine con lo stile e le sorgenti WebP (home 21, Civitanova
+52), file WebP 200 `image/webp`, schede del management alte come prima. Migliorie per dopo la consegna (stesso perimetro
+KOS-2): larghezze ridotte per la galleria delle schede (la prima foto, che è l'LCP, scenderebbe da 212 a 138 KB su
+mobile; serve offrire solo le varianti più leggere del JPG e il JPG per gli schermi grandi), `home-img.jpg` ridimensionata.
+
 ## Verifica dello sprint 1 prima della consegna (deciso il 28/10)
 
 Per evitare che il controllo di Cerved/ProWeb (9-14/11) trovi mancanze: (1) script di verifica ripetibile
