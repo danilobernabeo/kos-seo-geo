@@ -31,7 +31,8 @@
  * varianti della libreria comune (assets/cache-img, generate da scripts/immagini/ottimizza-immagini.php --solo-varianti
  * o dal plugin ImmaginiCaricamento) viene racchiuso in
  *   <picture style="display:contents"><source type="image/webp" srcset="…-480.webp 480w, …" sizes="…"><img …invariato…></picture>
- * display:contents: il <picture> non crea un riquadro proprio, l'<img> si impagina come prima (flex, griglie, larghezze).
+ * display:contents: il <picture> non crea un riquadro proprio, l'<img> si impagina come prima (flex, griglie, larghezze);
+ * le <source> si nascondono con «picture>source{display:none}» nello stile stampato nell'head (altrimenti contano nel gap).
  * I selettori CSS del tema con «>» verso l'immagine (es. «.box > img») non valgono più per l'<img> avvolto: le regole si ripetono
  * per «> picture > img» nell'impostazione kosseogeo.img_webp_css, che il plugin stampa nell'head solo sulle pagine con immagini avvolte.
  * L'<img> resta identico (src, classi, attributi): i browser senza WebP e gli script che lo cercano lo trovano come prima.
@@ -203,10 +204,15 @@ if ($nuovo === null) {                       // errore di PCRE (pagina enorme): 
 }
 $output = substr($output, 0, $corpo) . $nuovo;
 
-/* WebP: regole CSS del tema scritte con «> img» (il <picture> aggiunto diventa il genitore dell'<img>) ripetute per
-   «> picture > img» (impostazione kosseogeo.img_webp_css), solo se la pagina ha immagini avvolte */
-if (!empty($avvolte) && ($css = trim((string) $modx->getOption('kosseogeo.img_webp_css', null, ''))) !== '' && ($fh = stripos($output, '</head>')) !== false) {
-    $output = substr($output, 0, $fh) . '<style id="kosseogeo-webp">' . str_ireplace('</style', '', $css) . "</style>\n" . substr($output, $fh);
+/* WebP, solo se la pagina ha immagini avvolte:
+   - «picture>source{display:none}»: con il <picture> in display:contents le <source> (display:block per il browser)
+     diventerebbero elementi del contenitore flex/griglia e ne aggiungerebbero il gap (collaudo del 5/11: +16 px per scheda
+     nel management); nascoste non cambiano la scelta dell'immagine, che dipende solo dagli attributi;
+   - regole CSS del tema scritte con «> img» (il <picture> aggiunto diventa il genitore dell'<img>) ripetute per
+     «> picture > img» (impostazione kosseogeo.img_webp_css) */
+if (!empty($avvolte) && ($fh = stripos($output, '</head>')) !== false) {
+    $css = 'picture>source{display:none}' . str_ireplace('</style', '', trim((string) $modx->getOption('kosseogeo.img_webp_css', null, '')));
+    $output = substr($output, 0, $fh) . '<style id="kosseogeo-webp">' . $css . "</style>\n" . substr($output, $fh);
 }
 
 /* ---------- 2. precaricamento degli sfondi CSS ---------- */
