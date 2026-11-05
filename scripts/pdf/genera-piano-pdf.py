@@ -248,7 +248,9 @@ def main():
         with open(os.path.join(RADICE, cart, 'files', 'web-rules', 'pdf-noindex.conf'), 'w', encoding='utf-8') as fh:
             fh.write('\n'.join(L) + '\n')
         # variante per lo stage: lì $redirect_to (regola di produzione sul dominio) non esiste e nginx rifiuterebbe la variabile
-        LS = [l for l in L if '$redirect_to' not in l]
+        # e i redirect dei singoli PDF restano sullo stage ($scheme://$host), mentre i canonical puntano sempre alla produzione
+        LS = [re.sub(r'return 301 "https://(?:anniazzurri\.it|kosgroup\.com)', 'return 301 "$scheme://$host', l)
+              for l in L if '$redirect_to' not in l]
         LS[0] = LS[0].replace('INIZIO SEZIONE PDF', 'INIZIO SEZIONE PDF — VARIANTE STAGE (senza $redirect_to)')
         with open(os.path.join(RADICE, cart, 'files', 'web-rules', 'pdf-noindex-stage.conf'), 'w', encoding='utf-8') as fh:
             fh.write('\n'.join(LS) + '\n')
