@@ -332,7 +332,11 @@ function analizzaPagina(s, url, r) {
   for (const b of ld) { try { const j = JSON.parse(b); grafi.push(j); } catch { jsonKo++; } }
   const crumbs = (() => {
     const ol = /<ol\b[^>]*class="[^"]*breadcrumb[^"]*"[^>]*>([\s\S]*?)<\/ol>/i.exec(h);
-    return ol ? [...ol[1].matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/gi)].map(m => testo(m[1])) : null;
+    if (ol) return [...ol[1].matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/gi)].map(m => testo(m[1]));
+    // kosgroup.com: <nav id="breadcrumbs"> con link e <span class="bc-attivo"> separati da <span>|</span>
+    const nav = /<nav\b[^>]*id="breadcrumbs"[^>]*>([\s\S]*?)<\/nav>/i.exec(h);
+    return nav ? [...nav[1].matchAll(/<a\b[^>]*>([\s\S]*?)<\/a>|<span\b[^>]*class="[^"]*bc-attivo[^"]*"[^>]*>([\s\S]*?)<\/span>/gi)]
+      .map(m => testo(m[1] ?? m[2])).filter(Boolean) : null;
   })();
   // sprint 2: title, description, link ai PDF del sito, immagini (KOS-2), tempo di risposta
   const title = testo((/<title\b[^>]*>([\s\S]*?)<\/title>/i.exec(head) || [])[1] || '');
@@ -457,13 +461,15 @@ function controllaDatoKos(s, ok200) {
     campi.length ? `mancano: ${campi.join(', ')}` : org.legalName, org ? [JSON.stringify(org, null, 1).slice(0, 1500)] : []);
   const senzaRif = ok200.filter(a => !JSON.stringify(a.grafi).includes(ORG));
   esito(s.nome, 'KOS-9', 'ogni pagina collega l\'ente (#organization)', senzaRif.length === 0, `${senzaRif.length} pagine`, [], senzaRif.map(a => a.url));
-  const brKo = [], brDiverse = [];
+  const brKo = [], brDiverse = [], brSenza = [];
   for (const a of ok200) {
     const p = new URL(a.url).pathname.replace(/\/$/, '');
     const can = a.can[0] || a.url;
     const br = nodi(a.grafi).find(n => n['@type'] === 'BreadcrumbList');
     if (p === '/it' || p === '/en' || p === '') { if (br) brKo.push(`${a.url}: BreadcrumbList sulla home`); continue; }
-    if (!br) { brKo.push(`${a.url}: BreadcrumbList assente`); continue; }
+    // Decisione del 22/10 (docs/kos-9-12-13.md, slide 29 dell'audit): BreadcrumbList solo dove le briciole si vedono
+    if (!br) { if ((a.crumbs || []).length >= 2) brKo.push(`${a.url}: BreadcrumbList assente (briciole visibili: ${a.crumbs.join(' › ')})`); else brSenza.push(a.url); continue; }
+    if (!(a.crumbs || []).length) brKo.push(`${a.url}: BreadcrumbList senza briciole visibili`);
     if (br['@id'] !== senzaFrammento(can) + '#breadcrumb') brKo.push(`${a.url}: @id ${br['@id']} (atteso ${senzaFrammento(can)}#breadcrumb)`);
     const voci = [].concat(br.itemListElement || []).sort((x, y) => x.position - y.position);
     const ultima = voci.at(-1); const idU = typeof ultima?.item === 'string' ? ultima.item : ultima?.item?.['@id'];
@@ -471,8 +477,10 @@ function controllaDatoKos(s, ok200) {
     const nomi = voci.map(v => entita(v.name ?? v.item?.name ?? '').replace(/\s+/g, ' ').trim());
     if (a.crumbs && nomi.join(' › ') !== a.crumbs.join(' › ')) brDiverse.push(`${a.url}\n      visibili: ${a.crumbs.join(' › ')}\n      JSON-LD:  ${nomi.join(' › ')}`);
   }
-  esito(s.nome, 'KOS-12/13', 'BreadcrumbList su tutte le pagine tranne le home, @id {URL}#breadcrumb, ultimo livello = pagina', brKo.length === 0,
+  esito(s.nome, 'KOS-12/13', 'BreadcrumbList su tutte le pagine con briciole visibili (e solo lì), @id {URL}#breadcrumb, ultimo livello = pagina', brKo.length === 0,
     `${brKo.length} problemi su ${ok200.length} pagine`, [], brKo);
+  esito(s.nome, 'KOS-12/13', 'pagine senza briciole visibili, quindi senza BreadcrumbList (landing e pagine di sezione; informativo)', null,
+    `${brSenza.length} pagine`, [], brSenza);
   esito(s.nome, 'KOS-12/13', 'briciole JSON-LD uguali a quelle visibili (dove le briciole sono visibili)', brDiverse.length === 0,
     `${brDiverse.length} pagine diverse`, [], brDiverse, 'ATTENZIONE');
 }
