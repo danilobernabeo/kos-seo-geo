@@ -205,7 +205,12 @@ contro 212 in JPG); `picture>source{display:none}` nell'head, perché nei conten
 Villa dei Pini Civitanova e KOS Academy, diverse già con il WebP spento per contenuti cambiati in produzione). Misura sullo
 stage (20 pagine mobile, 4G lenta): byte di immagini 7,1 → 5,7 MB (−20%), non WebP 6,5 → 3,3 MB; LCP mediano 3,7 → 3,4 s,
 indicativo (rete di casa variabile). Verifica in produzione: 7 pagine con lo stile e le sorgenti WebP (home 21, Civitanova
-52), file WebP 200 `image/webp`, schede del management alte come prima. Migliorie per dopo la consegna (stesso perimetro
+52), file WebP 200 `image/webp`, schede del management alte come prima. Misura in produzione dopo KOS-2 C (5/11 alle 20:47, stesse 20
+pagine e stesso script della misura «dopo» di KOS-2 B del 1/11): byte di immagini 6,8 → 5,2 MB (−23%), immagini non WebP
+2,8 MB; LCP mediano 2,9 → 2,9 s (invariato: su 9 pagine su 20 l'elemento LCP è lo sfondo CSS `bg-pattern.jpg`, già
+precaricato con KOS-2 B); TTFB mediano 369 ms. Su adel-chehida l'elemento LCP è il testo del banner Cookiebot (7,5 s, prima
+visita senza consenso): il banner arriva tardi perché è caricato da Google Tag Manager; da valutare dopo la consegna
+(fuori dalle voci dell'audit). Migliorie per dopo la consegna (stesso perimetro
 KOS-2): larghezze ridotte per la galleria delle schede (la prima foto, che è l'LCP, scenderebbe da 212 a 138 KB su
 mobile; serve offrire solo le varianti più leggere del JPG e il JPG per gli schermi grandi), `home-img.jpg` ridimensionata.
 
