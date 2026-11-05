@@ -29,9 +29,9 @@ REDIRECT = {
         (D + 'residenza-anni-azzurri-parco-di-veio/PARM 2024.pdf', 'https://anniazzurri.it/assets/doc/strutture/residenza-anni-azzurri-parco-di-veio/PARM 2025.pdf',
          'stesso documento (PARM) della stessa residenza, edizione 2025 (come PARS 2022 → PARS 2025)', True),
         (D + 'residenza-anni-azzurri-biarella/Carta dei servizi.pdf', None,
-         'Biarella non fa più parte delle strutture Anni Azzurri (5/11), nessuna impressione da settembre 2025: 410. DA ATTIVARE con la conferma di Danilo', False),
+         'Biarella non fa più parte delle strutture Anni Azzurri (5/11), nessuna impressione da settembre 2025, file già assente (404): 410, confermato da Danilo il 5/11', True),
         (D + 'residenza-anni-azzurri-biarella/Pieghevole informativo.pdf', None,
-         'come sopra (pieghevole della stessa residenza). DA ATTIVARE con la conferma di Danilo', False),
+         'come sopra (pieghevole della stessa residenza)', True),
     ],
     'kos': [
         (D + 'villa-rosa/informazioni-per-il-ricovero.pdf', 'https://kosgroup.com/it/centri/villa-rosa',
