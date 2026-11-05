@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Verifica dello sprint 1 in produzione, voce per voce degli audit (KosGroup settembre 2026, Anni Azzurri aprile 2026).
+ * Verifica degli sprint 1 e 2 in produzione, voce per voce degli audit (KosGroup settembre 2026, Anni Azzurri aprile 2026).
  * SOLA LETTURA: solo richieste GET/HEAD, distanziate (whackabot di MODX Cloud sfida chi fa molte richieste in fretta).
  * Nessuna dipendenza: Node 18+ (fetch). Si lancia dal PC: la produzione è raggiungibile solo da lì.
  *
@@ -23,6 +23,13 @@
  *                  parentOrganization verso KOS, mai sameAs verso kosgroup.com), BreadcrumbList su tutte le pagine
  *                  tranne la home, @id {URL}#breadcrumb, livelli uguali alle briciole visibili
  *   AA-18          H1: uno per pagina su tutte le pagine della sitemap
+ * Voci controllate (sprint 2):
+ *   KOS-21/22 / AA-20  title (presente, marchio una volta, entro 65 caratteri, non ripetuto) e description (presente,
+ *                  entro 160 caratteri, non ripetuta) dell'HTML servito
+ *   KOS-23         H1: uno per pagina
+ *   KOS-9, 12, 13  un solo @graph per pagina, ente https://kosgroup.com/#organization, BreadcrumbList con @id e livelli
+ *   KOS-8 / AA-3   PDF collegati dalle pagine: raggiungibili, senza redirect, X-Robots-Tag e Link canonical
+ *   KOS-2 / AA-17  immagini con loading="lazy" e sorgenti WebP, tempo di risposta delle pagine (informativi)
  *   Igiene (informativa, entrambi): pagine della sitemap che non rispondono 200 diretto, noindex in sitemap,
  *                  blocchi JSON-LD per pagina su kosgroup.com.
  * Rapporto: <uscita>/rapporto.html, <uscita>/risultati.json, <uscita>/pagine.csv.
@@ -327,7 +334,16 @@ function analizzaPagina(s, url, r) {
     const ol = /<ol\b[^>]*class="[^"]*breadcrumb[^"]*"[^>]*>([\s\S]*?)<\/ol>/i.exec(h);
     return ol ? [...ol[1].matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/gi)].map(m => testo(m[1])) : null;
   })();
-  return { url, status: r.status, location: r.location, can, h1, robots, ld: ld.length, jsonKo, grafi, senzaV, locali: locali.length, crumbs };
+  // sprint 2: title, description, link ai PDF del sito, immagini (KOS-2), tempo di risposta
+  const title = testo((/<title\b[^>]*>([\s\S]*?)<\/title>/i.exec(head) || [])[1] || '');
+  const desc = entita((/<meta\b[^>]*name=["']description["'][^>]*content=["']([^"']*)["']/i.exec(head)
+    || /<meta\b[^>]*content=["']([^"']*)["'][^>]*name=["']description["']/i.exec(head) || [])[1] || '').replace(/\s+/g, ' ').trim();
+  const pdf = [...new Set([...hv.matchAll(/<a\b[^>]*href=["']([^"']+\.pdf(?:[?#][^"']*)?)["']/gi)]
+    .map(m => assoluto(m[1], url)).filter(u => u && u.startsWith(s.base)).map(u => senzaFrammento(u.split('?')[0])))];
+  const img = [...hv.matchAll(/<img\b[^>]*>/gi)].map(m => m[0]).filter(t => !/\.svg/i.test(t));
+  const webp = (hv.match(/<source\b[^>]*type=["']image\/webp["']/gi) || []).length;
+  return { url, status: r.status, location: r.location, can, h1, robots, ld: ld.length, jsonKo, grafi, senzaV, locali: locali.length, crumbs,
+    title, desc, pdf, img: img.length, lazy: img.filter(t => /loading=["']lazy/i.test(t)).length, webp, ms: r.ms };
 }
 
 async function controllaPagine(s, sm) {
@@ -380,7 +396,7 @@ async function controllaPagine(s, sm) {
   esito(s.nome, voceCan, 'canonical uguale all\'URL della sitemap', canDiverso.length === 0, `${canDiverso.length} pagine`, [], canDiverso, 'ATTENZIONE');
 
   // H1 (voce AA-18 su AA, informativa su KOS)
-  const voceH1 = s === SITI.aa ? 'AA-18' : 'Igiene';
+  const voceH1 = s === SITI.aa ? 'AA-18' : 'KOS-23';
   const zero = ok200.filter(a => a.h1.length === 0), piu = ok200.filter(a => a.h1.length > 1);
   esito(s.nome, voceH1, 'almeno un H1 per pagina', zero.length === 0, `${zero.length} pagine senza H1`, [], zero.map(a => a.url));
   esito(s.nome, voceH1, 'non più di un H1 per pagina', piu.length === 0, `${piu.length} pagine`, [], piu.map(a => `${a.url}: ${a.h1.join(' | ')}`), 'ATTENZIONE');
@@ -394,8 +410,107 @@ async function controllaPagine(s, sm) {
       Object.entries(dist).map(([k, v]) => `${k} blocchi: ${v} pagine`).join(', '), [],
       ok200.filter(a => a.ld !== 1).slice(0, 100).map(a => `${a.ld}  ${a.url}`));
     esito(s.nome, 'Igiene', 'JSON-LD sintatticamente valido', json.length === 0, `${json.length} pagine`, [], json.map(a => a.url));
+    controllaDatoKos(s, ok200);
   }
+  controllaMeta(s, ok200);
+  controllaImmagini(s, ok200);
+  await controllaPdf(s, ok200);
   return html;
+}
+
+/* ---------- sprint 2 ---------- */
+// KOS-21/22 e AA-20: title e description dell'HTML servito
+function controllaMeta(s, ok200) {
+  const voce = s === SITI.aa ? 'AA-20' : 'KOS-21/22';
+  const marchio = s === SITI.aa ? /\|\s*Anni Azzurri/gi : /\|\s*KOS\b/g;
+  const senza = ok200.filter(a => !a.title);
+  esito(s.nome, voce, 'title presente su tutte le pagine', senza.length === 0, `${senza.length} pagine senza title`, [], senza.map(a => a.url));
+  const doppio = ok200.filter(a => (a.title.match(marchio) || []).length > 1);
+  esito(s.nome, voce, 'marchio una sola volta nel title', doppio.length === 0, `${doppio.length} pagine`, [], doppio.map(a => `${a.url}: ${a.title}`));
+  const lunghi = ok200.filter(a => [...a.title].length > 65);
+  esito(s.nome, voce, 'title entro 65 caratteri (compreso il marchio)', lunghi.length === 0, `${lunghi.length} pagine oltre 65`, [],
+    lunghi.map(a => `${[...a.title].length}  ${a.url}: ${a.title}`), 'ATTENZIONE');
+  const gruppi = (k) => Object.values(ok200.reduce((m, a) => { if (a[k]) (m[a[k].toLowerCase()] ??= []).push(a.url); return m; }, {})).filter(g => g.length > 1);
+  const dupT = gruppi('title');
+  esito(s.nome, voce, 'title diversi tra le pagine', dupT.length === 0, `${dupT.length} title ripetuti`, [],
+    dupT.map(g => `${ok200.find(a => a.url === g[0]).title}\n      ${g.join('\n      ')}`), 'ATTENZIONE');
+  const senzaD = ok200.filter(a => !a.desc);
+  esito(s.nome, voce, 'meta description presente su tutte le pagine', senzaD.length === 0, `${senzaD.length} pagine senza description`, [], senzaD.map(a => a.url));
+  const lungheD = ok200.filter(a => [...a.desc].length > 160);
+  esito(s.nome, voce, 'description entro 160 caratteri', lungheD.length === 0, `${lungheD.length} pagine oltre 160`, [],
+    lungheD.map(a => `${[...a.desc].length}  ${a.url}`), 'ATTENZIONE');
+  const dupD = gruppi('desc');
+  esito(s.nome, voce, 'description diverse tra le pagine', dupD.length === 0, `${dupD.length} description ripetute`, [],
+    dupD.map(g => `${ok200.find(a => a.url === g[0]).desc.slice(0, 90)}…\n      ${g.join('\n      ')}`), 'ATTENZIONE');
+}
+
+// KOS-9, 12, 13: ente e briciole nel grafo di kosgroup.com
+function controllaDatoKos(s, ok200) {
+  const ORG = 'https://kosgroup.com/#organization';
+  const uno = ok200.filter(a => a.ld !== 1 || a.jsonKo || !a.grafi[0]?.['@graph']);
+  esito(s.nome, 'KOS-9', 'un solo blocco JSON-LD con @graph per pagina', uno.length === 0, `${uno.length} pagine non conformi su ${ok200.length}`, [],
+    uno.map(a => `${a.url}: ${a.ld} blocchi${a.jsonKo ? ', JSON non valido' : ''}`));
+  const home = ok200.find(a => /\/it$/.test(normUrl(a.url)));
+  const org = home && nodi(home.grafi).find(n => n['@id'] === ORG);
+  const campi = org ? ['name', 'legalName', 'vatID', 'logo', 'url'].filter(k => !org[k]) : ['nodo assente'];
+  esito(s.nome, 'KOS-9', `ente ${ORG} sulla home con name, legalName, vatID, logo, url`, campi.length === 0,
+    campi.length ? `mancano: ${campi.join(', ')}` : org.legalName, org ? [JSON.stringify(org, null, 1).slice(0, 1500)] : []);
+  const senzaRif = ok200.filter(a => !JSON.stringify(a.grafi).includes(ORG));
+  esito(s.nome, 'KOS-9', 'ogni pagina collega l\'ente (#organization)', senzaRif.length === 0, `${senzaRif.length} pagine`, [], senzaRif.map(a => a.url));
+  const brKo = [], brDiverse = [];
+  for (const a of ok200) {
+    const p = new URL(a.url).pathname.replace(/\/$/, '');
+    const can = a.can[0] || a.url;
+    const br = nodi(a.grafi).find(n => n['@type'] === 'BreadcrumbList');
+    if (p === '/it' || p === '/en' || p === '') { if (br) brKo.push(`${a.url}: BreadcrumbList sulla home`); continue; }
+    if (!br) { brKo.push(`${a.url}: BreadcrumbList assente`); continue; }
+    if (br['@id'] !== senzaFrammento(can) + '#breadcrumb') brKo.push(`${a.url}: @id ${br['@id']} (atteso ${senzaFrammento(can)}#breadcrumb)`);
+    const voci = [].concat(br.itemListElement || []).sort((x, y) => x.position - y.position);
+    const ultima = voci.at(-1); const idU = typeof ultima?.item === 'string' ? ultima.item : ultima?.item?.['@id'];
+    if (idU && normUrl(idU) !== normUrl(can)) brKo.push(`${a.url}: ultimo livello ${idU} diverso dal canonical`);
+    const nomi = voci.map(v => entita(v.name ?? v.item?.name ?? '').replace(/\s+/g, ' ').trim());
+    if (a.crumbs && nomi.join(' › ') !== a.crumbs.join(' › ')) brDiverse.push(`${a.url}\n      visibili: ${a.crumbs.join(' › ')}\n      JSON-LD:  ${nomi.join(' › ')}`);
+  }
+  esito(s.nome, 'KOS-12/13', 'BreadcrumbList su tutte le pagine tranne le home, @id {URL}#breadcrumb, ultimo livello = pagina', brKo.length === 0,
+    `${brKo.length} problemi su ${ok200.length} pagine`, [], brKo);
+  esito(s.nome, 'KOS-12/13', 'briciole JSON-LD uguali a quelle visibili (dove le briciole sono visibili)', brDiverse.length === 0,
+    `${brDiverse.length} pagine diverse`, [], brDiverse, 'ATTENZIONE');
+}
+
+// KOS-2 (e AA-17): caricamento differito e WebP nell'HTML servito; tempo di risposta delle pagine (informativo)
+function controllaImmagini(s, ok200) {
+  const voce = s === SITI.aa ? 'AA-17' : 'KOS-2';
+  const tot = ok200.reduce((t, a) => t + a.img, 0), lazy = ok200.reduce((t, a) => t + a.lazy, 0), webp = ok200.reduce((t, a) => t + a.webp, 0);
+  const ms = ok200.map(a => a.ms).sort((x, y) => x - y);
+  const q = p => ms.length ? ms[Math.min(ms.length - 1, Math.floor(p * ms.length))] : 0;
+  esito(s.nome, voce, 'immagini nell\'HTML servito: caricamento differito e WebP (informativo)', null,
+    `${tot} immagini raster, ${lazy} con loading="lazy" (${tot ? Math.round(lazy * 100 / tot) : 0}%), ${webp} sorgenti WebP`);
+  esito(s.nome, voce, 'tempo di risposta delle pagine dal PC (informativo, comprende rete e scaricamento)', null,
+    `mediana ${q(0.5)} ms, 90° percentile ${q(0.9)} ms su ${ms.length} pagine`, [], ok200.filter(a => a.ms > 3000).map(a => `${a.ms} ms  ${a.url}`));
+}
+
+// KOS-8 / AA-3: PDF collegati dalle pagine (HEAD, una richiesta per PDF)
+async function controllaPdf(s, ok200) {
+  const voce = s === SITI.aa ? 'AA-3' : 'KOS-8';
+  const da = new Map();
+  for (const a of ok200) for (const u of a.pdf) { if (!da.has(u)) da.set(u, a.url); }
+  const rotti = [], spostati = [], robots = {}, canon = [];
+  let n = 0;
+  for (const [u, pagina] of da) {
+    const r = await chiedi(u, { metodo: 'HEAD' });
+    if (r.status >= 400 || r.status === 0) rotti.push(`${r.status}  ${decodeURI(u)}  (link in ${pagina})`);
+    else if (r.status >= 300) spostati.push(`${r.status}  ${decodeURI(u)} → ${r.location}  (link in ${pagina})`);
+    else {
+      const x = (r.headers.get('x-robots-tag') || 'indicizzabile').toLowerCase();
+      robots[x] = (robots[x] || 0) + 1;
+      if (/rel="?canonical/i.test(r.headers.get('link') || '')) canon.push(decodeURI(u));
+    }
+    if (++n % 50 === 0) process.stdout.write(`    ${s.nome}: ${n}/${da.size} PDF\r`);
+  }
+  esito(s.nome, voce, `PDF collegati dalle pagine raggiungibili (${da.size} PDF distinti)`, rotti.length === 0, `${rotti.length} link a PDF inesistenti`, [], rotti);
+  esito(s.nome, voce, 'link ai PDF senza redirect', spostati.length === 0, `${spostati.length} link da aggiornare`, [], spostati, 'ATTENZIONE');
+  esito(s.nome, voce, 'intestazioni X-Robots-Tag dei PDF collegati (informativo)', null,
+    Object.entries(robots).map(([k, v]) => `${k}: ${v}`).join(', ') + `; Link rel=canonical: ${canon.length}`, [], canon.map(u => `canonical  ${u}`));
 }
 
 function nodi(grafi) {
@@ -515,10 +630,10 @@ function salva() {
   const e = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
   const col = { OK: '#d9f2d9', KO: '#f8d0d0', ATTENZIONE: '#fff2cc', INFO: '#e8eef7' };
   const cont = esiti.reduce((m, x) => (m[x.esito] = (m[x.esito] || 0) + 1, m), {});
-  let h = `<!doctype html><meta charset="utf-8"><title>Verifica sprint 1</title><style>body{font:14px system-ui,sans-serif;margin:16px;max-width:1300px}
+  let h = `<!doctype html><meta charset="utf-8"><title>Verifica sprint 1 e 2</title><style>body{font:14px system-ui,sans-serif;margin:16px;max-width:1300px}
 table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccc;padding:4px 6px;vertical-align:top;text-align:left}th{background:#1f4e79;color:#fff}
 details{margin:2px 0}pre{white-space:pre-wrap;font-size:12px;margin:4px 0;max-height:400px;overflow:auto;background:#f6f6f6;padding:6px}</style>
-<h1>Verifica dello sprint 1 in produzione</h1><p>${ora.toLocaleString('it-IT')} · ${richieste} richieste · ${Object.entries(cont).map(([k, v]) => `${k} ${v}`).join(' · ')}</p>
+<h1>Verifica degli sprint 1 e 2 in produzione</h1><p>${ora.toLocaleString('it-IT')} · ${richieste} richieste · ${Object.entries(cont).map(([k, v]) => `${k} ${v}`).join(' · ')}</p>
 <table><tr><th>Sito</th><th>Voce</th><th>Controllo</th><th>Esito</th><th>Dettaglio ed evidenza</th></tr>`;
   for (const x of esiti) {
     const det = (x.evidenza.length || x.elenco.length) ? `<details><summary>${e(x.dettaglio || 'dettaglio')}</summary><pre>${e([...x.evidenza, ...x.elenco].join('\n'))}</pre></details>` : e(x.dettaglio);
