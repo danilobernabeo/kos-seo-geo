@@ -2,7 +2,8 @@
 // testata «GRUPPO KOS», titolo, sottotitolo linee A e B, firma, intestazione «Documento riservato», numero di pagina,
 // Arial, tabelle con intestazione #1F5C6E. Uso: node scripts/docs/impagina-kos.js <file.md> <uscita.docx> ["Danilo Bernabeo · data"]
 // Sottotitolo diverso con la variabile d'ambiente SOTTOTITOLO (es. documenti della linea C).
-// Argomenti 5 e 6 (facoltativi): immagine PNG al posto del contenuto incorporato della scheda e dimensioni LxA in px.
+// Argomenti 5 e 6 (facoltativi): immagini PNG al posto dei contenuti incorporati della scheda, nell'ordine, separate da virgola,
+// e dimensioni LxA in px (una per immagine, separate da virgola; una sola vale per tutte).
 // Il Markdown è l’export della scheda (prima riga «# Titolo», terza riga la firma della scheda, che viene sostituita).
 const fs=require('fs');
 const d=require('docx');
@@ -53,7 +54,7 @@ function table(rows){
       children:[new Paragraph({alignment:(ri>0&&numeric(c))?AlignmentType.RIGHT:AlignmentType.LEFT,
         children: ri==0? [new TextRun({text:c.replace(/`/g,''),font:F,bold:true,color:'FFFFFF',size:19})] : runs(c,{size:19,bold:ci==0})})]}))}))});
 }
-const kids=[]; let i=0; let prevList=false;
+const kids=[]; let i=0; let prevList=false; let nImg=0;
 // title block
 const title=lines[0].replace(/^# /,'');
 kids.push(new Paragraph({spacing:{after:80},children:[new TextRun({text:'GRUPPO KOS',font:F,bold:true,color:RED,size:18,characterSpacing:50})]}));
@@ -72,9 +73,9 @@ while(i<lines.length){
       border:k==0?{top:{style:BorderStyle.SINGLE,color:LINE,size:4,space:4}}:(k==code.length-1?{bottom:{style:BorderStyle.SINGLE,color:LINE,size:4,space:4}}:undefined),
       children:[new TextRun({text:c.replace(/ /g,'\u00a0'),font:'Consolas',size:14,color:INK})]})));
     kids.push(new Paragraph({spacing:{after:120},children:[]})); continue; }
-  if(l.startsWith('&#91;embedded content')){ const img=process.argv[5]; if(img&&fs.existsSync(img)){ const [w,h]=(process.argv[6]||'600x494').split('x').map(Number);
+  if(l.startsWith('&#91;embedded content')){ const img=(process.argv[5]||'').split(',')[nImg]; const dim=(process.argv[6]||'600x494').split(','); const dimN=dim[nImg]||dim[0]; nImg++; if(img&&fs.existsSync(img)){ const [w,h]=dimN.split('x').map(Number);
       kids.push(new Paragraph({alignment:AlignmentType.CENTER,spacing:{after:120},children:[new ImageRun({type:'png',data:fs.readFileSync(img),transformation:{width:w,height:h}})]})); } i++; continue; }
-  if(l.startsWith('|')){ if(/^(\d+\.|- )/.test(lines[i-2]||'')) kids.push(new Paragraph({spacing:{after:60},children:[]})); const rows=[]; while(i<lines.length&&lines[i].startsWith('|')){ const cells=lines[i].slice(1,-1).split(' | ').map(s=>s.trim()); if(!/^-+$/.test(cells[0])) rows.push(cells); i++; }
+  if(l.startsWith('|')){ if(/^(\d+\.|- )/.test(lines[i-2]||'')) kids.push(new Paragraph({spacing:{after:60},children:[]})); const rows=[]; while(i<lines.length&&lines[i].startsWith('|')){ const cells=lines[i].slice(1,-1).split(/ (?<!\\)\| /).map(s=>s.trim().replace(/\\\|/g,'|')); if(!/^-+$/.test(cells[0])) rows.push(cells); i++; }
     kids.push(table(rows)); kids.push(new Paragraph({spacing:{after:60},children:[]})); continue; }
   if(/^\d+\. /.test(l)){ kids.push(new Paragraph({numbering:{reference:'num',level:0},spacing:{after:70,line:290},alignment:AlignmentType.JUSTIFIED,children:runs(l.replace(/^\d+\. /,''))})); i++; continue; }
   if(l.startsWith('- ')){ kids.push(new Paragraph({numbering:{reference:'bul',level:0},spacing:{after:70,line:290},alignment:AlignmentType.JUSTIFIED,children:runs(l.slice(2))})); i++; continue; }
