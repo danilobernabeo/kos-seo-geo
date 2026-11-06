@@ -1,0 +1,23 @@
+Pacchetto di stile per lo store locator RetailTune - Gruppo KOS (6/11/2026)
+
+kosgroup/
+  logo-kos.svg, logo-kos.png      logo KOS group (SVG originale del sito; PNG 272x272 a fondo trasparente)
+  token-kosgroup.css              colori, font, misure e componenti in forma di variabili CSS
+anniazzurri/
+  logo-anni-azzurri.svg, .png     logo Anni Azzurri con marchio KOS group (SVG originale del sito)
+  token-anniazzurri.css           colori, font, misure e componenti in forma di variabili CSS
+
+Fogli di stile pubblicati (versioni del 6/11/2026; il parametro ?v cambia a ogni aggiornamento):
+kosgroup.com
+  https://kosgroup.com/assets/css/bootstrap.min.css
+  https://kosgroup.com/assets/css/style.css
+  https://kosgroup.com/assets/css/custom.css
+  font: https://kosgroup.com/assets/fonts/satoshi-regular.woff2, satoshi-medium.woff2, satoshi-bold.woff2
+  icone: Font Awesome 5 Pro (https://kosgroup.com/assets/css/all.min.css) e SVG in https://kosgroup.com/assets/img/
+anniazzurri.it
+  https://anniazzurri.it/dist/css/app.css      (Bootstrap 5 personalizzato)
+  https://anniazzurri.it/dist/css/custom.css
+  https://anniazzurri.it/dist/css/bootstrap-icons.min.css
+  font: https://anniazzurri.it/dist/assets/fonts/OpenSans.woff2, OpenSans-Semibold.woff2, OpenSans-Bold.woff2
+
+Il documento «Linee guida di stile per lo store locator» spiega come usare questi valori.

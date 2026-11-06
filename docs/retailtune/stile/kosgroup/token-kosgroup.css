@@ -1,0 +1,35 @@
+/* kosgroup.com - token di stile per lo store locator
+   Ricavati dai CSS pubblicati e dagli stili calcolati il 6/11/2026 (style.css, custom.css, Bootstrap 5).
+   I nomi a destra sono le variabili gia presenti nel sito. */
+:root {
+  /* Colori */
+  --kos-blu: #1A2031;            /* testo e titoli (--blu) */
+  --kos-blu-logo: #20467B;       /* logo (--bluchiaro) */
+  --kos-rosso-logo: #D2072A;     /* accento del logo, solo dettagli */
+  --kos-rosso: #B10723;          /* errori e avvisi (--rosso) */
+  --kos-azzurro: #115974;        /* bottoni primari e link (--azzurro) */
+  --kos-azzurro-chiaro: #1B7F9D; /* bordo del bottone primario, --bs-primary */
+  --kos-ottanio: #2091B0;        /* accento secondario (icone, hover) */
+  --kos-giallo-prenota: #FFC107; /* bottone «Prenota» con testo --kos-blu */
+  --kos-grigio-300: #E5EBEF;     /* bordi di card e campi (--grigio-300) */
+  --kos-grigio-100: #F6F8FA;     /* fondi di sezione e footer (--grigio-100) */
+  --kos-grigio-50: #FBFCFC;      /* fondo testata (--grigio-50) */
+  --kos-bianco: #FFFFFF;
+
+  /* Tipografia: Satoshi 400/500/700, file woff2 in https://kosgroup.com/assets/fonts/ */
+  --kos-font: Satoshi, sans-serif;
+  --kos-testo: 16px;             /* interlinea 24px */
+  --kos-piccolo: 14px;
+  --kos-etichetta: 12px;         /* maiuscolo, 500, spaziatura 0.12px */
+  --kos-h1: 36px;                /* 500, interlinea 44px, spaziatura -0.54px */
+  --kos-h2: 24px;                /* 500, interlinea 32px, spaziatura -0.48px */
+  --kos-h3: 20px;                /* 500, interlinea 28px */
+
+  /* Forme e spazi */
+  --kos-raggio: 2px;             /* bottoni e card */
+  --kos-raggio-campo: 8px;       /* select e campi di ricerca */
+  --kos-spazio: 8px;             /* scala 8 / 16 / 24 / 32 / 48 */
+}
+/* Bottone primario: fondo --kos-azzurro, testo bianco, 14px 700 maiuscolo, spaziatura 0.4px,
+   padding 10px, raggio 2px; hover: transform scale(1.05). Secondario: fondo bianco, bordo 1px
+   --kos-grigio-300, testo --kos-blu. Link testuali: --kos-azzurro, 500, sottolineati. */

@@ -1,0 +1,35 @@
+/* anniazzurri.it - token di stile per lo store locator
+   Ricavati dai CSS pubblicati e dagli stili calcolati il 6/11/2026 (app.css, custom.css, Bootstrap 5).
+   I nomi a destra sono le variabili gia presenti nel sito. */
+:root {
+  /* Colori */
+  --aa-blu: #003B77;             /* primario: titoli, bottoni, footer (--bs-primary, --bs-blue) */
+  --aa-blu-notte: #001E3B;       /* testo su fondi chiari, ombre (--bs-navy) */
+  --aa-pavone: #006E9C;          /* secondario (--bs-secondary, --bs-peacock) */
+  --aa-pavone-fasce: #005C85;    /* fondo delle fasce .bg-peacock come appare sul sito */
+  --aa-azzurro: #0E5A91;         /* link «Visita la residenza», bottone .btn-azure (.text-azure) */
+  --aa-ceruleo: #0098D7;         /* accento (--bs-cerulean) */
+  --aa-cielo: #C2E6F9;           /* fondi leggeri (--bs-blue-sky) */
+  --aa-ghiaccio: #E5F4FA;        /* fondi leggeri (--bs-ice) */
+  --aa-ghiaccio-card: #F6FCFE;   /* fondo della card «Contatti» (.bg-ice come appare) */
+  --aa-testo: #212529;           /* testo base (--bs-body-color) */
+  --aa-testo-secondario: #494949;/* paragrafi (--bs-brown) */
+  --aa-grigio: #949494;          /* testo di servizio (--bs-dark-brown) */
+  --aa-grigio-chiaro: #E8E8E8;   /* bordi (--bs-light-gray) */
+  --aa-rosso-logo: #CE1531;      /* solo nel logo */
+  --aa-bianco: #FFFFFF;
+
+  /* Tipografia: Open Sans 400/600/700, file woff2 in https://anniazzurri.it/dist/assets/fonts/ */
+  --aa-font: "Open Sans", sans-serif;
+  --aa-radice: 18px;             /* font-size di html: 1rem = 18px */
+  --aa-testo: 16px;              /* paragrafi 0.9rem circa, interlinea 1.5 */
+  --aa-titoli-peso: 600;         /* h1-h3 600, colore --aa-blu */
+
+  /* Forme */
+  --aa-raggio-bottone: 30px;     /* bottoni a pillola, bordo 2px */
+  --aa-raggio-card: 8px;         /* card (0.444rem) */
+  --aa-raggio-ricerca: 30px;     /* barra di ricerca, altezza 58px */
+}
+/* Bottone primario: fondo --aa-blu, testo bianco, bordo 2px --aa-blu, maiuscolo, 400, padding 16px 32px,
+   raggio 30px. Outline: fondo trasparente, bordo 2px e testo --aa-blu; hover: fondo --aa-blu e testo bianco.
+   Il font LobstersBlush e solo per le firme delle testimonianze: non usarlo nello store locator. */
