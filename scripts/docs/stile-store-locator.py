@@ -69,12 +69,12 @@ B.append(p('',after=200))
 B.append(h('Linee guida di stile per lo store locator',0))
 B.append(p('kosgroup.com e anniazzurri.it · materiale per RetailTune',sz=26,col=GR,after=60))
 B.append(p('Gruppo KOS · 6 novembre 2026 · a cura di Danilo Bernabeo',sz=19,col=GR,after=360))
-B.append(h('A cosa serve questo documento'))
-B.append(p('RetailTune ci ha chiesto la guida di stile e la documentazione grafica disponibile (colori, font, spaziature, icone, CSS) per personalizzare lo store locator e le mappe dei due siti. Qui trovate i valori in uso oggi, ricavati dai fogli di stile pubblicati e dagli stili effettivamente applicati alle pagine il 6 novembre 2026.'))
-B.append(p('Gli store locator sono due, uno per sito: ciascuno deve sembrare parte del sito che lo ospita. **kosgroup.com** ha un tono istituzionale e sobrio (bottoni squadrati, raggio 2 px, font Satoshi); **anniazzurri.it** è più morbido e caldo (bottoni a pillola, font Open Sans, blu e azzurri). Non mescolate i due stili.'))
-B.append(p('In allegato, nel file `stile-store-locator-kos.zip`, ci sono i loghi in SVG e PNG, un file di variabili CSS per sito e l\'elenco dei fogli di stile e dei font pubblicati.'))
-
-B.append(h('Indicazioni comuni ai due siti'))
+B.append(h('Contenuto del documento'))
+B.append(p('Il documento raccoglie i riferimenti di stile di **kosgroup.com** e **anniazzurri.it** per la personalizzazione grafica dello store locator e delle mappe: colori, tipografia, componenti (bottoni, card, campi), icone e spaziature. I valori sono quelli in uso sui due siti, ricavati dai fogli di stile pubblicati e dagli stili applicati alle pagine il 6 novembre 2026.'))
+B.append(p('È diviso in tre parti: le indicazioni per la realizzazione, valide per entrambi i siti; i riferimenti di kosgroup.com; i riferimenti di anniazzurri.it. Gli store locator sono due, uno per sito, e ciascuno segue lo stile del sito che lo ospita: **kosgroup.com** ha un tono istituzionale e sobrio (bottoni squadrati, raggio 2 px, font Satoshi), **anniazzurri.it** è più morbido e caldo (bottoni a pillola, font Open Sans, blu e azzurri).'))
+B.append(p('Il file allegato `stile-store-locator-kos.zip` contiene i loghi in SVG e PNG, un file di variabili CSS per sito e l\'elenco dei fogli di stile e dei font pubblicati.'))
+B.append(h('Indicazioni per la realizzazione'))
+B.append(p('Le indicazioni che seguono, come i colori suggeriti per segnaposto e schede nelle sezioni dei due siti, sono un punto di partenza e non un vincolo: siamo aperti alle vostre proposte, purché restino coerenti con i riferimenti di stile.'))
 for s in [
  '**Font del sito.** Il widget usa il font della pagina che lo ospita (`font-family: inherit`) e non carica font propri: Satoshi e Open Sans sono già scaricati dai siti.',
  '**Colori come variabili.** Esponete i colori come variabili CSS sovrascrivibili, così possiamo correggerli dal nostro lato senza un nuovo rilascio.',
@@ -87,7 +87,6 @@ for s in [
 ]: B.append(bullet(s))
 
 # ---------------- KOS
-B.append(pagebreak())
 B.append(h('kosgroup.com'))
 B.append(h('Colori',2))
 B.append(table(W,['','Nome','Valore','Uso sul sito'],[
@@ -101,7 +100,7 @@ B.append(table(W,['','Nome','Valore','Uso sul sito'],[
  ['#E5EBEF','Grigio 300','#E5EBEF · --grigio-300','Bordi di card e campi'],
  ['#F6F8FA','Grigio 100','#F6F8FA · --grigio-100','Fondi di sezione e footer'],
 ],swatch_col=0))
-B.append(p('Per lo store locator: segnaposto **#115974**, segnaposto selezionato **#2091B0**, testo **#1A2031**, bordi **#E5EBEF**, fondo dell\'elenco **#F6F8FA**.',sz=20))
+B.append(p('Proposta per lo store locator: segnaposto **#115974**, segnaposto selezionato **#2091B0**, testo **#1A2031**, bordi **#E5EBEF**, fondo dell\'elenco **#F6F8FA**.',sz=20))
 B.append(h('Tipografia',2))
 B.append(p('**Satoshi** in tre pesi: 400 (testo), 500 (titoli, menu), 700 (bottoni). File woff2 serviti dal sito in `/assets/fonts/`.'))
 B.append(table([2400,1700,1700,3830],['Elemento','Dimensione','Peso','Note'],[
@@ -139,9 +138,9 @@ B.append(table(W,['','Nome','Valore','Uso sul sito'],[
  ['#494949','Testo secondario','#494949 · --bs-brown','Paragrafi; testo base #212529'],
  ['#CE1531','Rosso logo','#CE1531','Solo nel logo'],
 ],swatch_col=0))
-B.append(p('Per lo store locator: segnaposto **#003B77**, segnaposto selezionato **#0098D7**, testo **#003B77** e **#494949**, fondo delle schede **#F6FCFE**.',sz=20))
+B.append(p('Proposta per lo store locator: segnaposto **#003B77**, segnaposto selezionato **#0098D7**, testo **#003B77** e **#494949**, fondo delle schede **#F6FCFE**.',sz=20))
 B.append(h('Tipografia',2))
-B.append(p('**Open Sans** in tre pesi: 400 (testo), 600 (titoli, link in evidenza), 700. File woff2 serviti dal sito in `/dist/assets/fonts/`. La radice è a 18 px (1 rem = 18 px) e i titoli usano la scala fluida di Bootstrap 5 (RFS). LobstersBlush, il corsivo delle firme nelle testimonianze, è decorativo: non usatelo nel locator.'))
+B.append(p('**Open Sans** in tre pesi: 400 (testo), 600 (titoli, link in evidenza), 700. File woff2 serviti dal sito in `/dist/assets/fonts/`. La radice è a 18 px (1 rem = 18 px) e i titoli usano la scala fluida di Bootstrap 5 (RFS). LobstersBlush, il corsivo delle firme nelle testimonianze, è decorativo: non usatelo nel locator. Le dimensioni in tabella sono misurate a 743 px di larghezza; su desktop i titoli crescono con la scala fluida.'))
 B.append(table([2400,1700,1700,3830],['Elemento','Dimensione','Peso','Note'],[
  ['Titolo pagina (H1)','32–38 px','600','colore #003B77 (bianco sulle immagini)'],
  ['Titolo sezione (H2)','32 px','600',''],
@@ -150,7 +149,6 @@ B.append(table([2400,1700,1700,3830],['Elemento','Dimensione','Peso','Note'],[
  ['Testo di servizio','13,5 px','400','briciole, barra superiore'],
  ['Bottoni','16 px','400','maiuscolo'],
 ]))
-B.append(p('Dimensioni misurate a 743 px di larghezza; su desktop i titoli crescono con la scala fluida.',sz=18,col=GR))
 B.append(h('Componenti',2))
 for s in [
  '**Bottoni a pillola:** raggio 30 px, bordo 2 px, maiuscolo, padding circa 16 × 32 px. Primario: fondo #003B77 e testo bianco. Outline: bordo e testo #003B77 su fondo trasparente, al passaggio del mouse diventa pieno. Variante azzurra: fondo #0E5A91.',
@@ -160,10 +158,6 @@ for s in [
  '**Mappe di oggi** (pagine regionali, es. /rsa-in-liguria): Google Maps con segnaposto standard; la finestra informativa mostra il nome in grassetto, l\'indirizzo e il link «VISITA LA RESIDENZA ›» in maiuscolo #0E5A91. Il nuovo locator le sostituirà e può partire da questa struttura.',
  '**Breakpoint:** Bootstrap 5: 576, 768, 992, 1200, 1400 px.',
 ]: B.append(bullet(s))
-
-B.append(h('Riferimenti e prossimi passi'))
-B.append(p('Come livello di personalizzazione ci riconosciamo negli esempi che ci avete mostrato: Plenitude (eniplenitude.com/energy-store), OVS (ovs.it/it/it/stores) e Calligaris (stores.calligaris.com/it). Vi chiediamo una proposta grafica per ciascun sito (desktop e mobile, con elenco, scheda e mappa) da validare prima dello sviluppo.'))
-B.append(p('Per qualsiasi dubbio sui valori scriveteci: se KOS dispone di un manuale di brand ufficiale più recente, prevale su questi valori e ve lo inoltriamo.'))
 
 body=''.join(B)
 x=open(T+'/word/document.xml').read()
