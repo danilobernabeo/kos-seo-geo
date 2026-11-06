@@ -76,6 +76,8 @@ for (const s of schede) {
   if (n && !tv['str.via']) err.push('nodo #localbusiness senza indirizzo nelle TV');
   if (n) {
     const atteso = String(tv['str.tipo'] || '').split(',').map(x => x.trim()).filter(Boolean);
+    // convenzione: un tipo che non è attività locale (DiagnosticLab) va affiancato a MedicalBusiness
+    if (atteso.includes('DiagnosticLab') && !atteso.includes('MedicalBusiness')) atteso.push('MedicalBusiness');
     if (atteso.length && atteso.join(',') !== tipi(n).join(',')) err.push(`@type ${tipi(n).join(',')} ≠ ${atteso.join(',')}`);
     if (percorso(n.url) !== '/' + s.uri) err.push('url ≠ scheda');
     const a = n.address || {};
