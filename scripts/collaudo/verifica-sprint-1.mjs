@@ -409,7 +409,21 @@ async function controllaPagine(s, sm) {
   esito(s.nome, voceH1, 'almeno un H1 per pagina', zero.length === 0, `${zero.length} pagine senza H1`, [], zero.map(a => a.url));
   esito(s.nome, voceH1, 'non più di un H1 per pagina', piu.length === 0, `${piu.length} pagine`, [], piu.map(a => `${a.url}: ${a.h1.join(' | ')}`), 'ATTENZIONE');
 
-  // dato strutturato
+  // dato strutturato: valori con entità HTML (plugin che offuscano le email, 6/11) o URL non validi
+  const valoriKo = [];
+  const visita = (v, chiave, url) => {
+    if (Array.isArray(v)) return v.forEach(x => visita(x, chiave, url));
+    if (v && typeof v === 'object') return Object.entries(v).forEach(([k, x]) => visita(x, k, url));
+    if (typeof v !== 'string') return;
+    if (/&(#x?[0-9a-f]+|[a-z]+);/i.test(v)) valoriKo.push(`${url}: ${chiave} con entità HTML «${v.slice(0, 80)}»`);
+    else if (/^(url|sameAs|@id|logo|image|hasMap|item|contentUrl|embedUrl|thumbnailUrl)$/.test(chiave) && /^https?:/.test(v)) {
+      try { new URL(v); } catch { valoriKo.push(`${url}: ${chiave} non è un URL valido «${v.slice(0, 80)}»`); }
+    }
+  };
+  for (const a of ok200) visita(a.grafi, '', a.url);
+  esito(s.nome, s === SITI.aa ? 'AA-8' : 'KOS-9', 'valori del JSON-LD senza entità HTML, URL validi', valoriKo.length === 0,
+    `${valoriKo.length} valori`, [], [...new Set(valoriKo)].slice(0, 100));
+
   if (s === SITI.aa) controllaDatoAA(s, ok200);
   else {
     const dist = ok200.reduce((m, a) => (m[a.ld] = (m[a.ld] || 0) + 1, m), {});
