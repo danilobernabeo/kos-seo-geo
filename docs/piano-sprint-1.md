@@ -281,6 +281,18 @@ WebPage uguale al longtitle, un solo JSON-LD. Backup: stage tabella `modx_site_c
 `/paas/c0025/backup-kos-seo-geo/20261105-031723-campi`; produzione `modx_site_content_bak_20261105_0318` e
 `/paas/c0072/backup-kos-seo-geo/20261105-031835-campi` (`aggiorna-campi.php /www --ripristina <cartella> --scrivi`).
 
+**AA-20 giro 4 e KOS-21/22 giro 2 in produzione il 6/11 alle 7:24** (`anniazzurri/dati/aa-20/campi-giro-4.json`,
+`kosgroup/dati/kos-21-23/campi-giro-2.json`): title oltre 65 e description oltre 160 caratteri trovati dalla verifica del 5/11
+su pagine fuori dagli elenchi dell'audit (news, approfondimenti, eventi), più due correzioni (virgoletta orfana in «Io non sono
+il Parkinson», marchio doppio nel welfare) e una description troncata (Poliambulatorio Valdaso). Proposte del progetto validate
+da Danilo; 48 pagine AA e 19 KOS. Title lasciati invariati su 6 pagine con molto traffico e posizioni alte, dove il testo
+nuovo avrebbe tolto parole delle query principali (Search Console 23/7-23/10): creatinina alta (1.198 clic, «valori»),
+vaccino pneumococco (677), legge 104 (327, «novità»), assistenza domiciliare (198), sensi di colpa (129), afasia e disartria KOS
+(157); lo Sportello Sociale tiene il title (69 caratteri) perché il longtitle è un alias di cartella. La verifica contava
+`&rsquo;` come 7 caratteri: 7 description KOS segnalate erano già entro 160 (script corretto il 5/11). Verifica dal sito:
+67/67 pagine con title e description attesi. Backup: tabella `modx_site_content_bak_20261106_0024` su entrambi i siti,
+`/paas/c0072/backup-kos-seo-geo/20261106-002403-campi` e `/paas/c0095/backup-kos-seo-geo/20261106-002429-campi`.
+
 **AA-20 giro 2, pagine fuori audit (1/11).** 92 pagine (77 articoli, 15 pagine di sezione) segnalate per title o
 description lunghi, mancanti o duplicati, oltre gli URL dell'agenzia. Proposte del 27/10 ricontrollate sul sito il 1/11:
 tutte 200, description invariate; 21 title serviti cambiati solo per la regola del suffisso di `titoloPagina` (31/10).
