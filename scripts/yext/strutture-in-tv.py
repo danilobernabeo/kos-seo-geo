@@ -33,6 +33,13 @@ import re
 import sys
 import warnings
 
+# Schede del sito che non esistono più (struttura chiusa o ceduta) ma hanno ancora un'entità Yext aperta
+SCHEDE_CHIUSE = {
+    'residenza-anni-azzurri-la-margherita': 'Ne (GE), 301 verso /rsa-in-liguria',
+    'residenza-anni-azzurri-villa-olga': '301 verso Idice',
+    'residenza-anni-azzurri-biarella': 'uscita dal gruppo, 410',
+}
+
 TIPI = {   # Tipologia di Struttura (Yext) → (tipo schema.org, specialità) — PROPOSTA del 25/10/2026
     'Ambulatori di riabilitazione': ('MedicalClinic', ['Physiotherapy']),
     'Centri riabilitazione': ('MedicalClinic', ['Physiotherapy']),
@@ -46,7 +53,8 @@ TIPI = {   # Tipologia di Struttura (Yext) → (tipo schema.org, specialità) �
     'Cliniche dentali': ('Dentist', ['Dentistry']),
     'Ospedali': ('Hospital', []),
     'Hospice': ('MedicalOrganization,LocalBusiness', []),
-    'Residenze per anziani': ('MedicalOrganization,LocalBusiness', ['Geriatric']),
+    # deciso il 29/10 (CLAUDE.md): tutte le residenze aperte sono socio-sanitarie; NursingHome non esiste su schema.org
+    'Residenze per anziani': ('MedicalBusiness,MedicalOrganization', ['Geriatric']),
 }
 GIORNI = [('Lunedì', 'Mo'), ('Martedì', 'Tu'), ('Mercoledì', 'We'), ('Giovedì', 'Th'), ('Venerdì', 'Fr'),
           ('Sabato', 'Sa'), ('Domenica', 'Su')]
@@ -131,6 +139,10 @@ def main():
         if g(y, 'Chiuso').lower() in ('vero', 'true'):
             N('entità segnata come chiusa in Yext: non importata')
             continue
+        if uri in SCHEDE_CHIUSE:
+            N(f'struttura chiusa o uscita dal gruppo, la scheda del sito non esiste più ({SCHEDE_CHIUSE[uri]}): non importata; '
+              'in Yext va segnata come chiusa')
+            continue
 
         via = re.sub(r'\s+', ' ', g(y, 'Indirizzo > Riga 1'))
         if re.match(r'^\d', via):
@@ -141,8 +153,11 @@ def main():
                 estese.append(f'{via} → {nuova}')
                 via = nuova
                 break
-        if not uri.startswith(('it/centri/', 'en/')):
-            N(f'URL del sito web /{uri} non è una scheda struttura (/it/centri/...): l\'entità non si abbina')
+        # schede struttura: /it/centri/... su kosgroup.com, /<slug> al primo livello su anniazzurri.it (residenze,
+        # centri diurni, hospice)
+        scheda = uri.startswith(('it/centri/', 'en/')) if o.sito == 'kosgroup.com' else (uri != '' and '/' not in uri)
+        if not scheda:
+            N(f'URL del sito web /{uri} non è una scheda struttura: l\'entità non si abbina')
             continue
         if g(y, 'Indirizzo > Riga 2'):
             N(f'seconda riga dell\'indirizzo non importata: «{g(y, "Indirizzo > Riga 2")}»')
