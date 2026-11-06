@@ -71,3 +71,9 @@ Collaudi in produzione, `curl -I` dal PC di Danilo, dopo l'aggiornamento della s
 - Ricostruire i 7 PDF con la tabella interna rotta (fuori voce, a consuntivo).
 - Rilasciare il piano dell'Aurora (stage, poi produzione) e lanciare `controllo-pdf-nuovi.php` in prova su entrambi i siti di produzione per vedere cosa è cambiato dal 1/11; da rilanciare dopo ogni caricamento di PDF (o a cadenza settimanale).
 - Pulizia dei file di lavoro sui cloud: `~/pdfmeta*`, `~/pdf-h1*`, `~/meta-stato-*`, `~/prova-pdf-*`.
+
+## Locandina «Il mantello del custode» (AA, 6/11/2026)
+
+- File sostituito da Danilo allo stesso percorso (`/assets/doc/il-mantello-del-custode-locandina.pdf`, evento dell'11/11 all'Hospice Beati Coniugi Martin). Caricato dopo il piano del 1/11, quindi senza metadati nostri.
+- Metadati con `pdf-metadati.php` e `anniazzurri/dati/pdf/locandina-mantello-2026-11.json`: titolo «Locandina Il mantello del custode – Hospice Beati Coniugi Martin», oggetto (147 caratteri), autore «Anni Azzurri», `it-IT`; stessi valori in `anniazzurri/dati/pdf/imposta-pdf.json` per i controlli successivi. Produzione 6/11 alle 14:26: 1 scritto; backup `/paas/c0072/backup-pdf-metadati-20261106`.
+- Resta `noindex` (regola predefinita: le locandine non sono tra i PDF da tenere; la pagina dell'evento è indicizzata). `curl -I`: 200, `X-Robots-Tag: noindex`, 2.492.618 byte.
