@@ -1,5 +1,5 @@
 {
- "nome": "AA-20 giro 4: title oltre 65 e description oltre 160 caratteri trovati dalla verifica del 5/11 (pagine fuori dagli elenchi dell'audit), più 2 description troncate o con refusi; proposte del progetto del 5/11 da validare da Danilo. Longtitle senza « | Anni Azzurri» (lo aggiunge titoloPagina). Sportello Sociale: longtitle alias di cartella, title non toccato. Valori «prima» dall'istantanea del 5/11 (meta-stato-20261105-133910).",
+ "nome": "AA-20 giro 4: title oltre 65 e description oltre 160 caratteri trovati dalla verifica del 5/11 (pagine fuori dagli elenchi dell'audit), più 2 description troncate o con refusi; proposte del progetto del 5/11 da validare da Danilo. Longtitle senza « | Anni Azzurri» (lo aggiunge titoloPagina). Sportello Sociale: longtitle alias di cartella, title non toccato. Valori «prima» dall'istantanea del 5/11 (meta-stato-20261105-133910). Validato da Danilo il 6/11; title lasciati invariati su 6 pagine con molto traffico e posizioni alte (Search Console 23/7-23/10: creatinina, vaccino pneumococco, legge 104, assistenza domiciliare, sensi di colpa, afasia e disartria) per non rischiare le query che contengono parole del title attuale.",
  "risorse": [
   {
    "id": 592,
@@ -106,26 +106,6 @@
    }
   },
   {
-   "id": 388,
-   "uri": "creatinina-alta-negli-anziani-cause-rischi-e-rimedi",
-   "campi": {
-    "longtitle": {
-     "prima": "Creatinina alta negli anziani: valori, cause, rimedi",
-     "dopo": "Creatinina alta negli anziani: cause e rimedi"
-    }
-   }
-  },
-  {
-   "id": 394,
-   "uri": "come-richiedere-assistenza-domiciliare-per-anziani",
-   "campi": {
-    "longtitle": {
-     "prima": "Come richiedere assistenza domiciliare per anziani?",
-     "dopo": "Assistenza domiciliare anziani: come richiederla"
-    }
-   }
-  },
-  {
    "id": 415,
    "uri": "giornata-internazionale-delle-persone-con-disabilita",
    "campi": {
@@ -190,16 +170,6 @@
     "longtitle": {
      "prima": "",
      "dopo": "Operatori e ospiti: la relazione in RSA"
-    }
-   }
-  },
-  {
-   "id": 487,
-   "uri": "sensi-di-colpa-dopo-il-ricovero-di-un-genitore-in-rsa",
-   "campi": {
-    "longtitle": {
-     "prima": "",
-     "dopo": "Sensi di colpa per un genitore in RSA"
     }
    }
   },
@@ -418,26 +388,6 @@
     "longtitle": {
      "prima": "",
      "dopo": "Demenza senile e Alzheimer: le differenze"
-    }
-   }
-  },
-  {
-   "id": 563,
-   "uri": "legge-104-permessi-e-tutele-per-chi-assiste-un-familiare",
-   "campi": {
-    "longtitle": {
-     "prima": "Legge 104 nel 2026: permessi, novità e nuove tutele",
-     "dopo": "Legge 104 nel 2026: permessi e nuove tutele"
-    }
-   }
-  },
-  {
-   "id": 564,
-   "uri": "vaccino-pneumococco-per-anziani-a-chi-serve-e-quando",
-   "campi": {
-    "longtitle": {
-     "prima": "Vaccino pneumococco over 65: quando farlo e a chi serve",
-     "dopo": "Vaccino pneumococco over 65: quando e a chi"
     }
    }
   },
