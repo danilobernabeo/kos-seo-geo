@@ -935,9 +935,14 @@ if ($type === 'auto') {
           : (in_array($nomeTpl, $TPL_PROFILO, true) ? 'profile' : 'page'));
 }
 $json = function ($grafo) use ($flags) {
-    return '<script type="application/ld+json">'
-         . json_encode(['@context' => 'https://schema.org', '@graph' => array_values(array_filter($grafo))], $flags)
-         . '</script>';
+    $s = json_encode(['@context' => 'https://schema.org', '@graph' => array_values(array_filter($grafo))], $flags);
+    // I plugin che offuscano le email nell'HTML (ObfuscateEmail su KOS, EMO su AA) riconoscono «testo@testo» anche
+    // dentro il JSON-LD e lo trasformano in entità HTML, che nello script non vengono decodificate: sameAs come
+    // https://www.youtube.com/@KOSGroupIT diventava un URL non valido (verifica del 6/11), e lo stesso varrebbe per
+    // le email delle strutture. Una «@» preceduta da un carattere di indirizzo si scrive \u0040: per JSON è identica,
+    // per le espressioni regolari dei plugin no. Le chiavi «@id», «@type» non sono toccate (precedute da virgolette).
+    $s = preg_replace('~(?<=[-!#$%&\'*+/=?^_`{|}\~0-9A-Za-z.])@~', '\\u0040', $s);
+    return '<script type="application/ld+json">' . $s . '</script>';
 };
 
 /* --- autore della pagina corrente ------------------------------------------ */
