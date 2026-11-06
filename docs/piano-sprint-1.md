@@ -350,6 +350,38 @@ verificati dal sito (un solo H1, 200, un solo JSON-LD): 37 «Formazione KOS Acad
 residenze per anziani del Gruppo KOS», 234 «Villa Margherita Vicenza - Psichiatria», 233 «Villa Margherita Vicenza -
 Riabilitazione» (forma breve decisa da Danilo: la categoria è già nella riga sotto il titolo). Resta la mail di esito a KOS e all'agenzia.
 
+## Dismissione di Yext Knowledge Tags dalle schede e sprint 3 (deciso il 6/11)
+
+**Decisione di Danilo (6/11):** lo script Yext Knowledge Tags si toglie dalle schede struttura dei due siti appena i dati
+dell'export Yext del 6/11 sono importati nelle TV anagrafiche, senza aspettare RetailTune. Accettata la perdita delle
+statistiche Knowledge Tags. Restano Yext Answers (ricerca su home e strutture, finché non c'è il sostituto) e la
+sincronizzazione Yext verso Google, Bing e Apple (fino al passaggio a RetailTune). Dalla dismissione i contatti del sito si
+aggiornano sulle TV dal manager (e in Yext per i profili), finché la sincronizzazione RetailTune non aggiorna le TV.
+
+**Stato del 6/11.** Export Yext del 6/11 uguale a quello del 25/10 entità per entità (in più `POLOVEIO`, Poliambulatorio
+Parco di Veio; Fisioclinics segnata chiusa): le correzioni in Yext dei punti aperti del 2/11 non sono state fatte (54
+entità con la CTA verso lo stage `modx.dev`, indirizzi abbreviati, orari 7/7 sulle residenze). TV dall'export
+(`scripts/yext/strutture-in-tv.py`, ora valido anche per anniazzurri.it): 58 schede KOS
+(`kosgroup/dati/voce-24/strutture-yext-2026-11-06.json`) e 57 residenze AA (`anniazzurri/dati/schede/`, La Margherita
+esclusa: chiusa ma aperta in Yext; residenze `MedicalBusiness`+`MedicalOrganization` con `Geriatric`, Villa Pineta senza
+tipologia né email in Yext). Confronto con le schede KOS pubblicate: 56/58 con telefono, email e CAP uguali; diversi
+Punto Prelievi Salus Villalba (telefono 0733 184841 sul sito, 0733 1930310 in Yext) e Punto Prelievi Selemar (email
+selemar@ sul sito, polodiagnosticourbino@ in Yext). Su anniazzurri.it il box contatti mostra già i dati Yext.
+
+**Verifica del 6/11:** il `sameAs` YouTube dell'ente KOS esce codificato in entità HTML dal plugin ObfuscateEmail
+(«www.youtube.com/@KOSGroupIT» scambiato per un'email), quindi non è un URL valido; correzione nella libreria comune
+(«@» degli indirizzi scritta `\u0040`, commit 8f1b648), in produzione con KOS 24.
+
+**Sequenza:**
+- 9/11: KOS, TV aggiornate sullo stage, script Yext tolto dalle schede, `kos.struttura_attiva` = 1, collaudo; AA, TV
+  anagrafiche e box contatti lato server sullo stage.
+- 10-12/11: KOS 24 in produzione (schede KOS non sono elementi dello sprint 1) con la correzione del `sameAs`; verifica,
+  nella nota dello sprint 2 consegnata il 13/11.
+- Dal 16/11: AA in produzione (schede 2, 5, 11, 21, pagine provincia AA 10): `aaSchema` è in verifica 9-14/11.
+- Sprint 3 (consegna 27/11): alt KOS 7 e AA 9 (proposte dal 9/11, in produzione 12-13/11, solo contenuti), AA 4
+  stabilità visiva (misura e correzione sullo stage, rilascio 23-26/11), KOS 11 medici (parte tecnica sullo stage, dati da
+  IT/TuoTempo entro il 20/11, da sollecitare), verifica completa il 26/11. KOS 10 già in produzione dal 1/11.
+
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
 
 Analisi nella chat «Sostituzione barra di ricerca Yext» (26/10): Yext Answers su entrambi i siti (KOS circa 2.150
