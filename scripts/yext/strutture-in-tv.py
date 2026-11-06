@@ -111,6 +111,8 @@ def main():
     a.add_argument('export')
     a.add_argument('--sito', default='kosgroup.com')
     a.add_argument('--uscita', default='kosgroup/dati/voce-24')
+    a.add_argument('--correzioni', help='JSON {uri: {tv: valore}}: valori decisi diversi da Yext (es. quelli del sito), '
+                                        'applicati sopra all\'export e riportati nel report')
     a.add_argument('--servizi-yext', action='store_true',
                    help='anche specialità e servizi dai filtri «Servizi e Cure» di Yext (dal 25/10 la fonte è il sito)')
     o = a.parse_args()
@@ -254,6 +256,15 @@ def main():
     if doppi:   # due entità sulla stessa scheda: non si sceglie a caso, si salta e si segnala
         risorse = [r for r in risorse if r['uri'] not in doppi]
 
+    corrette = []
+    if o.correzioni:
+        corr = json.load(open(o.correzioni, encoding='utf-8'))
+        for r in risorse:
+            for tvn, val in corr.get(r['uri'], {}).items():
+                if tvn.startswith('str.') and r['tv'].get(tvn) != val:
+                    corrette.append(f"/{r['uri']}: {tvn} «{r['tv'].get(tvn, '')}» (Yext) → «{val}» (deciso)")
+                    r['tv'][tvn] = val
+
     os.makedirs(o.uscita, exist_ok=True)
     fj = os.path.join(o.uscita, f'strutture-yext-{data}.json')
     with open(fj, 'w', encoding='utf-8') as f:
@@ -268,6 +279,9 @@ def main():
                 'Il file JSON si applica con `scripts/deploy/imposta-tv.php` (prova, poi `--scrivi`): la prova mostra la '
                 'scheda (pagetitle) accanto a ogni valore, così si vedono anche le differenze di nome. Le schede del sito '
                 'senza entità Yext risultano dall\'elenco delle schede pubblicate, non da qui.\n\n')
+        if corrette:
+            f.write('## Valori decisi diversi da Yext (da correggere anche in Yext)\n\n')
+            f.write(''.join(f'- {c}\n' for c in corrette) + '\n')
         if doppi:
             f.write('## Più entità sulla stessa scheda (non importate)\n\n')
             for u, ids in doppi.items():

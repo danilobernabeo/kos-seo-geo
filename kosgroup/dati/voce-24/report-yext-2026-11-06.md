@@ -3,6 +3,11 @@
 Entità Yext con URL su kosgroup.com: 61; schede da importare: 58.
 Il file JSON si applica con `scripts/deploy/imposta-tv.php` (prova, poi `--scrivi`): la prova mostra la scheda (pagetitle) accanto a ogni valore, così si vedono anche le differenze di nome. Le schede del sito senza entità Yext risultano dall'elenco delle schede pubblicate, non da qui.
 
+## Valori decisi diversi da Yext (da correggere anche in Yext)
+
+- /it/centri/punto-prelievi-salus-villalba: str.telefono «+3907331930310» (Yext) → «+390733184841» (deciso)
+- /it/centri/punto-prelievi-selemar: str.email «polodiagnosticourbino@kosgroup.com» (Yext) → «selemar@kosgroup.com» (deciso)
+
 ## Più entità sulla stessa scheda (non importate)
 
 - /it/centri/poliambulatorio-villalba: VPI00_VPM, Villalba
