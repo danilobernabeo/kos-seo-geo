@@ -372,11 +372,16 @@ selemar@ sul sito, polodiagnosticourbino@ in Yext). Su anniazzurri.it il box con
 («www.youtube.com/@KOSGroupIT» scambiato per un'email), quindi non è un URL valido; correzione nella libreria comune
 («@» degli indirizzi scritta `\u0040`, commit 8f1b648), in produzione con KOS 24.
 
+**KOS 24 in produzione il 6/11 (anticipato rispetto alla sequenza del mattino):** stage e produzione tra le 9:40 e le
+10:25 con `kos-24.json` (libreria con la correzione del `sameAs`), TV delle 58 schede (832 valori) e delle 5 landing
+(10 valori), `kos-24-attivazione.json`. Collaudo `scripts/collaudo/collaudo-kos-24.mjs`: 63/63 OK su stage e produzione.
+Verifica generale KOS delle 10:43: OK 38, INFO 6, ATTENZIONE 1 (title di afasia/disartria lasciato apposta), 0 KO; i 2 KO
+del 5/11 (rendering Yext, secondo JSON-LD sulle schede) chiusi; 865/865 pagine con un solo JSON-LD. Evidenze in
+`docs/evidenze/kos-24-20261106/`. Su kosgroup.com Yext Knowledge Tags è dismesso.
+
 **Sequenza:**
-- 9/11: KOS, TV aggiornate sullo stage, script Yext tolto dalle schede, `kos.struttura_attiva` = 1, collaudo; AA, TV
-  anagrafiche e box contatti lato server sullo stage.
-- 10-12/11: KOS 24 in produzione (schede KOS non sono elementi dello sprint 1) con la correzione del `sameAs`; verifica,
-  nella nota dello sprint 2 consegnata il 13/11.
+- 9/11: AA, TV anagrafiche e box contatti lato server sullo stage.
+- 13/11: KOS 24 e correzione del `sameAs` nella nota dello sprint 2.
 - Dal 16/11: AA in produzione (schede 2, 5, 11, 21, pagine provincia AA 10): `aaSchema` è in verifica 9-14/11.
 - Sprint 3 (consegna 27/11): alt KOS 7 e AA 9 (proposte dal 9/11, in produzione 12-13/11, solo contenuti), AA 4
   stabilità visiva (misura e correzione sullo stage, rilascio 23-26/11), KOS 11 medici (parte tecnica sullo stage, dati da

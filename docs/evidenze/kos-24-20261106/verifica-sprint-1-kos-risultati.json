@@ -1,0 +1,594 @@
+{
+ "data": "2026-11-06T09:43:59.985Z",
+ "richieste": 1726,
+ "esiti": [
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-19",
+   "titolo": "nessun Crawl-delay",
+   "esito": "OK",
+   "dettaglio": "",
+   "evidenza": [
+    "GET https://kosgroup.com/robots.txt → 200 text/plain; charset=utf-8",
+    "User-agent: *\r\nDisallow: /*?query=\r\nDisallow: /*&query=\r\nDisallow: /*?formId=\r\nDisallow: /*&formId=\r\n\r\nSitemap: https://kosgroup.com/sitemap.xml"
+   ],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-19",
+   "titolo": "Disallow/Allow che iniziano con «/» (RFC 9309)",
+   "esito": "OK",
+   "dettaglio": "5 regole",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-19",
+   "titolo": "Sitemap dichiarate, assolute e raggiungibili",
+   "esito": "OK",
+   "dettaglio": "https://kosgroup.com/sitemap.xml",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-6",
+   "titolo": "robots.txt: nessun blocco totale per 36 crawler (AI e motori)",
+   "esito": "OK",
+   "dettaglio": "gruppi: *",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-18",
+   "titolo": "llms.txt: 200, text/plain; charset=utf-8",
+   "esito": "OK",
+   "dettaglio": "text/plain; charset=utf-8",
+   "evidenza": [
+    "GET https://kosgroup.com/llms.txt → 200 content-type: text/plain; charset=utf-8"
+   ],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-18",
+   "titolo": "formato llmstxt.org (# titolo, > sintesi, sezioni ## con elenchi di link)",
+   "esito": "OK",
+   "dettaglio": "titolo sì, sintesi sì, 6 sezioni",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-18",
+   "titolo": "link di llms.txt: 200 diretto (79 link)",
+   "esito": "OK",
+   "dettaglio": "",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-18",
+   "titolo": "variante www di llms.txt: 301 verso https://kosgroup.com/llms.txt",
+   "esito": "OK",
+   "dettaglio": "301 → https://kosgroup.com/llms.txt",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-4",
+   "titolo": "redirect dei 5 domini storici: un solo 301 verso kosgroup.com, poi 200",
+   "esito": "OK",
+   "dettaglio": "20 varianti",
+   "evidenza": [],
+   "elenco": [
+    "OK  https://polodiagnostico.it/ → 301 https://kosgroup.com/it/strutture/poliambulatori → 200",
+    "OK  https://www.polodiagnostico.it/ → 301 https://kosgroup.com/it/strutture/poliambulatori → 200",
+    "OK  http://polodiagnostico.it/ → 301 https://kosgroup.com/it/strutture/poliambulatori → 200",
+    "OK  http://www.polodiagnostico.it/ → 301 https://kosgroup.com/it/strutture/poliambulatori → 200",
+    "OK  https://neomesia.com/ → 301 https://kosgroup.com/it/strutture/cliniche-psichiatriche → 200",
+    "OK  https://www.neomesia.com/ → 301 https://kosgroup.com/it/strutture/cliniche-psichiatriche → 200",
+    "OK  http://neomesia.com/ → 301 https://kosgroup.com/it/strutture/cliniche-psichiatriche → 200",
+    "OK  http://www.neomesia.com/ → 301 https://kosgroup.com/it/strutture/cliniche-psichiatriche → 200",
+    "OK  https://sstefano.it/ → 301 https://kosgroup.com/it/strutture/centri-riabilitazione → 200",
+    "OK  https://www.sstefano.it/ → 301 https://kosgroup.com/it/strutture/centri-riabilitazione → 200",
+    "OK  http://sstefano.it/ → 301 https://kosgroup.com/it/strutture/centri-riabilitazione → 200",
+    "OK  http://www.sstefano.it/ → 301 https://kosgroup.com/it/strutture/centri-riabilitazione → 200",
+    "OK  https://myolab.it/ → 301 https://kosgroup.com/it/centri/myolab → 200",
+    "OK  https://www.myolab.it/ → 301 https://kosgroup.com/it/centri/myolab → 200",
+    "OK  http://myolab.it/ → 301 https://kosgroup.com/it/centri/myolab → 200",
+    "OK  http://www.myolab.it/ → 301 https://kosgroup.com/it/centri/myolab → 200",
+    "OK  https://casadicuravillapini.it/ → 301 https://kosgroup.com/it/centri/villa-dei-pini-civitanova → 200",
+    "OK  https://www.casadicuravillapini.it/ → 301 https://kosgroup.com/it/centri/villa-dei-pini-civitanova → 200",
+    "OK  http://casadicuravillapini.it/ → 301 https://kosgroup.com/it/centri/villa-dei-pini-civitanova → 200",
+    "OK  http://www.casadicuravillapini.it/ → 301 https://kosgroup.com/it/centri/villa-dei-pini-civitanova → 200"
+   ]
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-4",
+   "titolo": "pagine interne dei domini storici: 301 verso kosgroup.com, poi 200",
+   "esito": "OK",
+   "dettaglio": "0 su 15",
+   "evidenza": [],
+   "elenco": [
+    "OK  https://polodiagnostico.it/chi-siamo → 301 https://kosgroup.com/it/chi-siamo/gruppo-kos/visione-valori-missione → 200",
+    "OK  https://polodiagnostico.it/contatti → 301 https://kosgroup.com/it/strutture/poliambulatori → 200",
+    "OK  https://polodiagnostico.it/index.php?id=2 → 301 https://kosgroup.com/it/strutture/poliambulatori?id=2 → 200",
+    "OK  https://neomesia.com/chi-siamo → 301 https://kosgroup.com/it/news-e-media → 200",
+    "OK  https://neomesia.com/contatti → 301 https://kosgroup.com/it/news-e-media → 200",
+    "OK  https://neomesia.com/index.php?id=2 → 301 https://kosgroup.com/it/news-e-media?id=2 → 200",
+    "OK  https://sstefano.it/chi-siamo → 301 https://kosgroup.com/it/chi-siamo/gruppo-kos/visione-valori-missione → 200",
+    "OK  https://sstefano.it/contatti → 301 https://kosgroup.com/it/strutture/centri-riabilitazione → 200",
+    "OK  https://sstefano.it/index.php?id=2 → 301 https://kosgroup.com/it → 200",
+    "OK  https://myolab.it/chi-siamo → 301 https://kosgroup.com/it/centri/myolab → 200",
+    "OK  https://myolab.it/contatti → 301 https://kosgroup.com/it/centri/myolab → 200",
+    "OK  https://myolab.it/index.php?id=2 → 301 https://kosgroup.com/it/centri/myolab?id=2 → 200",
+    "OK  https://casadicuravillapini.it/chi-siamo → 301 https://kosgroup.com/it/chi-siamo/gruppo-kos/visione-valori-missione → 200",
+    "OK  https://casadicuravillapini.it/contatti → 301 https://kosgroup.com/it/centri/villa-dei-pini-civitanova → 200",
+    "OK  https://casadicuravillapini.it/index.php?id=2 → 301 https://kosgroup.com/it/centri/villa-dei-pini-civitanova?id=2 → 200"
+   ]
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-4",
+   "titolo": "refuso dell'audit «casadicuravillalpini.it» (informativo)",
+   "esito": "INFO",
+   "dettaglio": "non risponde (fetch failed): il dominio storico è casadicuravillapini.it",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "Igiene",
+   "titolo": "pagine della sitemap con 200 diretto (niente redirect né errori)",
+   "esito": "OK",
+   "dettaglio": "0 su 865",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "Igiene",
+   "titolo": "nessuna pagina noindex nella sitemap",
+   "esito": "OK",
+   "dettaglio": "0",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-3",
+   "titolo": "?v= su tutti i CSS e JS locali delle pagine",
+   "esito": "OK",
+   "dettaglio": "0 pagine con file senza ?v=",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "Igiene",
+   "titolo": "un solo canonical per pagina, assoluto, https, senza www",
+   "esito": "OK",
+   "dettaglio": "0 pagine non conformi su 865",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "Igiene",
+   "titolo": "canonical uguale all'URL della sitemap",
+   "esito": "OK",
+   "dettaglio": "0 pagine",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-23",
+   "titolo": "almeno un H1 per pagina",
+   "esito": "OK",
+   "dettaglio": "0 pagine senza H1",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-23",
+   "titolo": "non più di un H1 per pagina",
+   "esito": "OK",
+   "dettaglio": "0 pagine",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-9",
+   "titolo": "valori del JSON-LD senza entità HTML, URL validi",
+   "esito": "OK",
+   "dettaglio": "0 valori",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "Igiene",
+   "titolo": "blocchi JSON-LD per pagina nell'HTML servito (informativo)",
+   "esito": "INFO",
+   "dettaglio": "1 blocchi: 865 pagine",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "Igiene",
+   "titolo": "JSON-LD sintatticamente valido",
+   "esito": "OK",
+   "dettaglio": "0 pagine",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-9",
+   "titolo": "un solo blocco JSON-LD con @graph per pagina",
+   "esito": "OK",
+   "dettaglio": "0 pagine non conformi su 865",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-9",
+   "titolo": "ente https://kosgroup.com/#organization sulla home con name, legalName, vatID, logo, url",
+   "esito": "OK",
+   "dettaglio": "KOS S.p.A.",
+   "evidenza": [
+    "{\n \"@type\": \"Organization\",\n \"@id\": \"https://kosgroup.com/#organization\",\n \"name\": \"Gruppo KOS\",\n \"alternateName\": \"KOS Group\",\n \"legalName\": \"KOS S.p.A.\",\n \"vatID\": \"IT10674520159\",\n \"taxID\": \"02058910874\",\n \"url\": \"https://kosgroup.com/it\",\n \"subOrganization\": [\n  {\n   \"@id\": \"https://anniazzurri.it/#organization\"\n  }\n ],\n \"logo\": {\n  \"@type\": \"ImageObject\",\n  \"@id\": \"https://kosgroup.com/#logo\",\n  \"url\": \"https://kosgroup.com/assets/img/logo/kos-group-logo-512.png\"\n },\n \"image\": {\n  \"@id\": \"https://kosgroup.com/#logo\"\n },\n \"sameAs\": [\n  \"https://www.linkedin.com/company/kos\",\n  \"https://www.youtube.com/@KOSGroupIT\"\n ],\n \"parentOrganization\": {\n  \"@type\": \"Organization\",\n  \"name\": \"CIR S.p.A.\",\n  \"legalName\": \"CIR S.p.A.\",\n  \"url\": \"https://www.cirgroup.it\"\n },\n \"address\": {\n  \"@type\": \"PostalAddress\",\n  \"streetAddress\": \"Via Durini, 9\",\n  \"postalCode\": \"20122\",\n  \"addressLocality\": \"Milano\",\n  \"addressCountry\": \"IT\"\n }\n}"
+   ],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-9",
+   "titolo": "ogni pagina collega l'ente (#organization)",
+   "esito": "OK",
+   "dettaglio": "0 pagine",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-12/13",
+   "titolo": "BreadcrumbList su tutte le pagine con briciole visibili (e solo lì), @id {URL}#breadcrumb, ultimo livello = pagina",
+   "esito": "OK",
+   "dettaglio": "0 problemi su 865 pagine",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-12/13",
+   "titolo": "pagine senza briciole visibili, quindi senza BreadcrumbList (landing e pagine di sezione; informativo)",
+   "esito": "INFO",
+   "dettaglio": "7 pagine",
+   "evidenza": [],
+   "elenco": [
+    "https://kosgroup.com/it/lavorare-in-kos/perche-lavorare-in-kos",
+    "https://kosgroup.com/it/news-e-media/progetti-speciali/2025/settimana-del-cervello-2025",
+    "https://kosgroup.com/en/work-in-kos/why-work-at-kos",
+    "https://kosgroup.com/it/news-e-media/progetti-speciali/2025/giornata-mondiale-oss",
+    "https://kosgroup.com/en/services-and-care",
+    "https://kosgroup.com/it/servizi-e-cure",
+    "https://kosgroup.com/it/strutture"
+   ]
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-12/13",
+   "titolo": "briciole JSON-LD uguali a quelle visibili (dove le briciole sono visibili)",
+   "esito": "OK",
+   "dettaglio": "0 pagine diverse",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-21/22",
+   "titolo": "title presente su tutte le pagine",
+   "esito": "OK",
+   "dettaglio": "0 pagine senza title",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-21/22",
+   "titolo": "marchio una sola volta nel title",
+   "esito": "OK",
+   "dettaglio": "0 pagine",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-21/22",
+   "titolo": "title entro 65 caratteri (compreso il marchio)",
+   "esito": "ATTENZIONE",
+   "dettaglio": "1 pagine oltre 65",
+   "evidenza": [],
+   "elenco": [
+    "67  https://kosgroup.com/it/news-e-media/approfondimenti/disturbi-del-linguaggio-la-differenza-fra-afasia-e-disartria: Disturbi del linguaggio, la differenza fra afasia e disartria | KOS"
+   ]
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-21/22",
+   "titolo": "title diversi tra le pagine",
+   "esito": "OK",
+   "dettaglio": "0 title ripetuti",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-21/22",
+   "titolo": "meta description presente su tutte le pagine",
+   "esito": "OK",
+   "dettaglio": "0 pagine senza description",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-21/22",
+   "titolo": "description entro 160 caratteri",
+   "esito": "OK",
+   "dettaglio": "0 pagine oltre 160",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-21/22",
+   "titolo": "description diverse tra le pagine",
+   "esito": "OK",
+   "dettaglio": "0 description ripetute",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-2",
+   "titolo": "immagini nell'HTML servito: caricamento differito e WebP (informativo)",
+   "esito": "INFO",
+   "dettaglio": "10994 immagini raster, 8452 con loading=\"lazy\" (77%), 4553 sorgenti WebP",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-2",
+   "titolo": "tempo di risposta delle pagine dal PC (informativo, comprende rete e scaricamento)",
+   "esito": "INFO",
+   "dettaglio": "mediana 1230 ms, 90° percentile 1619 ms su 865 pagine",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-8",
+   "titolo": "PDF collegati dalle pagine raggiungibili (543 PDF distinti)",
+   "esito": "OK",
+   "dettaglio": "0 link a PDF inesistenti",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-8",
+   "titolo": "link ai PDF senza redirect",
+   "esito": "OK",
+   "dettaglio": "0 link da aggiornare",
+   "evidenza": [],
+   "elenco": []
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-8",
+   "titolo": "intestazioni X-Robots-Tag dei PDF collegati (informativo)",
+   "esito": "INFO",
+   "dettaglio": "noindex: 346, indicizzabile: 197; Link rel=canonical: 15",
+   "evidenza": [],
+   "elenco": [
+    "canonical  https://kosgroup.com/assets/doc/strutture/centro-ambulatoriale-santo-stefano-matelica/carta-dei-servizi.pdf",
+    "canonical  https://kosgroup.com/assets/doc/strutture/centro-ambulatoriale-santo-stefano-porto-potenza-picena/carta-dei-servizi.pdf",
+    "canonical  https://kosgroup.com/assets/doc/strutture/centro-ambulatoriale-santo-stefano-san-severino/carta-dei-servizi.pdf",
+    "canonical  https://kosgroup.com/assets/doc/strutture/clinica-dentale-porto-potenza-picena/carta-dei-servizi.pdf",
+    "canonical  https://kosgroup.com/assets/doc/strutture/ospedale-san-pancrazio/pieghevole-ambulatorio-cardio-metabolico.pdf",
+    "canonical  https://kosgroup.com/assets/doc/strutture/poliambulatorio-santo-stefano/carta-dei-servizi.pdf",
+    "canonical  https://kosgroup.com/assets/doc/strutture/poliambulatorio-villa-pineta/attivita-poliambulatorio-villa-pineta-gaiato.pdf",
+    "canonical  https://kosgroup.com/assets/doc/strutture/punto-prelievi-biemme/carta-dei-servizi.pdf",
+    "canonical  https://kosgroup.com/assets/doc/strutture/punto-prelievi-gamma/carta-dei-servizi.pdf",
+    "canonical  https://kosgroup.com/assets/doc/strutture/punto-prelievi-salus-villalba/carta-dei-servizi.pdf",
+    "canonical  https://kosgroup.com/assets/doc/strutture/punto-prelievi-selemar/carta-dei-servizi.pdf",
+    "canonical  https://kosgroup.com/assets/doc/strutture/villa-armonia/percorsi-di-cura-disturbi-alimentazione.pdf",
+    "canonical  https://kosgroup.com/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/come-arrivare.pdf",
+    "canonical  https://kosgroup.com/assets/doc/strutture/villa-margherita-vicenza-riabilitazione/storia-di-villa-margherita.pdf",
+    "canonical  https://kosgroup.com/assets/doc/strutture/villa-margherita-vicenza-psichiatria/pieghevole-informativo.pdf"
+   ]
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-3",
+   "titolo": "Cache-Control css ≥ 15552000 s (10 file)",
+   "esito": "OK",
+   "dettaglio": "es. /assets/css/bootstrap.min.css?v=1750773970: max-age=15552000",
+   "evidenza": [],
+   "elenco": [
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/css/bootstrap.min.css?v=1750773970",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/css/all.min.css?v=1726204414",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/css/fontawesome.css?v=1726204415",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/css/default.css?v=1745314641",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/css/nice-select.css?v=1726204415",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/css/aos.css?v=1726204414",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/css/swiper.min.css?v=1750656688",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/css/photoswipe.css?v=1726204415",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/css/style.css?v=1790018611",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/css/custom.css?v=1790010537"
+   ]
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-3",
+   "titolo": "Cache-Control js ≥ 15552000 s (12 file)",
+   "esito": "OK",
+   "dettaglio": "es. /assets/js/scroll-anchors.js?v=1753286992: max-age=15552000",
+   "evidenza": [],
+   "elenco": [
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/js/scroll-anchors.js?v=1753286992",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/js/jquery.min.js?v=1726204494",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/js/popper.js?v=1726204494",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/js/bootstrap.min.js?v=1726204493",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/js/aos.js?v=1726204493",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/js/jquery.nice-select.min.js?v=1726204494",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/js/ResizeSensor.min.js?v=1726204495",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/js/sticky-sidebar.min.js?v=1726204495",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/js/swiper-bundle.min.js?v=1726204495",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/js/photoswipe.umd.min.js?v=1726204494",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/js/photoswipe-lightbox.umd.min.js?v=1726204494",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/js/data-strutture.js?v=1735725119"
+   ]
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-3",
+   "titolo": "Cache-Control img ≥ 15552000 s (12 file)",
+   "esito": "OK",
+   "dettaglio": "es. /assets/img/favicon-96x96.png: max-age=15552000",
+   "evidenza": [],
+   "elenco": [
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/img/favicon-96x96.png",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/img/favicon.svg",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/img/favicon.ico",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/img/apple-touch-icon.png",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/img/top-ico-1.svg",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/img/top-ico-2.svg",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/img/top-ico-3.svg",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/img/logo.svg",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/img/icon-hamburger-menu.svg",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/img/icon-close.svg",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/cache-img/img/hero-bg-home-1-480.webp",
+    "OK  200  max-age=15552000  https://kosgroup.com/assets/cache-img/img/hero-bg-home-1-800.webp"
+   ]
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-3",
+   "titolo": "Cache-Control font ≥ 31536000 s (12 file)",
+   "esito": "OK",
+   "dettaglio": "es. /assets/webfonts/fa-brands-400.woff2: max-age=31536000",
+   "evidenza": [],
+   "elenco": [
+    "OK  200  max-age=31536000  https://kosgroup.com/assets/webfonts/fa-brands-400.woff2",
+    "OK  200  max-age=31536000  https://kosgroup.com/assets/webfonts/fa-brands-400.woff",
+    "OK  200  max-age=31536000  https://kosgroup.com/assets/webfonts/fa-brands-400.ttf",
+    "OK  200  max-age=31536000  https://kosgroup.com/assets/webfonts/fa-light-300.woff2",
+    "OK  200  max-age=31536000  https://kosgroup.com/assets/webfonts/fa-light-300.woff",
+    "OK  200  max-age=31536000  https://kosgroup.com/assets/webfonts/fa-light-300.ttf",
+    "OK  200  max-age=31536000  https://kosgroup.com/assets/webfonts/fa-regular-400.woff2",
+    "OK  200  max-age=31536000  https://kosgroup.com/assets/webfonts/fa-regular-400.woff",
+    "OK  200  max-age=31536000  https://kosgroup.com/assets/webfonts/fa-regular-400.ttf",
+    "OK  200  max-age=31536000  https://kosgroup.com/assets/webfonts/fa-solid-900.woff2",
+    "OK  200  max-age=31536000  https://kosgroup.com/assets/webfonts/fa-solid-900.woff",
+    "OK  200  max-age=31536000  https://kosgroup.com/assets/webfonts/fa-solid-900.ttf"
+   ]
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "KOS-6",
+   "titolo": "12 user agent su 3 pagine, 3 richieste ciascuno: 200, stessa pagina del browser, risposta sotto 5 s",
+   "esito": "OK",
+   "dettaglio": "",
+   "evidenza": [],
+   "elenco": [
+    "OK  GPTBot                /it                                      200  126866 byte (browser 126849)  JSON-LD 1  tempi 759/797/802 ms",
+    "OK  OAI-SearchBot         /it                                      200  126851 byte (browser 126849)  JSON-LD 1  tempi 757/776/795 ms",
+    "OK  ChatGPT-User          /it                                      200  126859 byte (browser 126849)  JSON-LD 1  tempi 765/765/831 ms",
+    "OK  ClaudeBot             /it                                      200  126854 byte (browser 126849)  JSON-LD 1  tempi 759/775/793 ms",
+    "OK  Claude-User           /it                                      200  126807 byte (browser 126849)  JSON-LD 1  tempi 735/767/809 ms",
+    "OK  Claude-SearchBot      /it                                      200  126856 byte (browser 126849)  JSON-LD 1  tempi 737/752/1025 ms",
+    "OK  PerplexityBot         /it                                      200  126881 byte (browser 126849)  JSON-LD 1  tempi 277/308/458 ms",
+    "OK  Perplexity-User       /it                                      200  126823 byte (browser 126849)  JSON-LD 1  tempi 260/288/296 ms",
+    "OK  Googlebot             /it                                      200  126859 byte (browser 126849)  JSON-LD 1  tempi 251/267/280 ms",
+    "OK  Bingbot               /it                                      200  126852 byte (browser 126849)  JSON-LD 1  tempi 247/275/278 ms",
+    "OK  Gemini-Deep-Research  /it                                      200  126849 byte (browser 126849)  JSON-LD 1  tempi 260/275/300 ms",
+    "OK  Google-CloudVertexBot /it                                      200  126855 byte (browser 126849)  JSON-LD 1  tempi 262/274/282 ms",
+    "OK  GPTBot                /it/centri/casa-cima                     200  96101 byte (browser 96097)  JSON-LD 1  tempi 751/753/778 ms",
+    "OK  OAI-SearchBot         /it/centri/casa-cima                     200  96065 byte (browser 96097)  JSON-LD 1  tempi 726/754/768 ms",
+    "OK  ChatGPT-User          /it/centri/casa-cima                     200  96095 byte (browser 96097)  JSON-LD 1  tempi 774/817/1245 ms",
+    "OK  ClaudeBot             /it/centri/casa-cima                     200  96061 byte (browser 96097)  JSON-LD 1  tempi 768/808/1197 ms",
+    "OK  Claude-User           /it/centri/casa-cima                     200  96074 byte (browser 96097)  JSON-LD 1  tempi 728/739/750 ms",
+    "OK  Claude-SearchBot      /it/centri/casa-cima                     200  96062 byte (browser 96097)  JSON-LD 1  tempi 755/786/990 ms",
+    "OK  PerplexityBot         /it/centri/casa-cima                     200  96092 byte (browser 96097)  JSON-LD 1  tempi 213/260/271 ms",
+    "OK  Perplexity-User       /it/centri/casa-cima                     200  96056 byte (browser 96097)  JSON-LD 1  tempi 222/236/246 ms",
+    "OK  Googlebot             /it/centri/casa-cima                     200  96103 byte (browser 96097)  JSON-LD 1  tempi 239/244/248 ms",
+    "OK  Bingbot               /it/centri/casa-cima                     200  96076 byte (browser 96097)  JSON-LD 1  tempi 270/297/324 ms",
+    "OK  Gemini-Deep-Research  /it/centri/casa-cima                     200  96062 byte (browser 96097)  JSON-LD 1  tempi 236/263/272 ms",
+    "OK  Google-CloudVertexBot /it/centri/casa-cima                     200  96044 byte (browser 96097)  JSON-LD 1  tempi 236/236/248 ms",
+    "OK  GPTBot                /en                                      200  41129 byte (browser 41129)  JSON-LD 1  tempi 674/689/708 ms",
+    "OK  OAI-SearchBot         /en                                      200  41129 byte (browser 41129)  JSON-LD 1  tempi 689/697/705 ms",
+    "OK  ChatGPT-User          /en                                      200  41129 byte (browser 41129)  JSON-LD 1  tempi 646/674/683 ms",
+    "OK  ClaudeBot             /en                                      200  41129 byte (browser 41129)  JSON-LD 1  tempi 673/725/1043 ms",
+    "OK  Claude-User           /en                                      200  41129 byte (browser 41129)  JSON-LD 1  tempi 665/668/896 ms",
+    "OK  Claude-SearchBot      /en                                      200  41129 byte (browser 41129)  JSON-LD 1  tempi 654/678/696 ms",
+    "OK  PerplexityBot         /en                                      200  41129 byte (browser 41129)  JSON-LD 1  tempi 166/169/176 ms",
+    "OK  Perplexity-User       /en                                      200  41129 byte (browser 41129)  JSON-LD 1  tempi 184/189/244 ms",
+    "OK  Googlebot             /en                                      200  41129 byte (browser 41129)  JSON-LD 1  tempi 155/210/234 ms",
+    "OK  Bingbot               /en                                      200  41129 byte (browser 41129)  JSON-LD 1  tempi 166/171/183 ms",
+    "OK  Gemini-Deep-Research  /en                                      200  41129 byte (browser 41129)  JSON-LD 1  tempi 157/188/193 ms",
+    "OK  Google-CloudVertexBot /en                                      200  41129 byte (browser 41129)  JSON-LD 1  tempi 176/196/215 ms"
+   ]
+  },
+  {
+   "sito": "kosgroup.com",
+   "voce": "Rendering",
+   "titolo": "DOM renderizzato (dopo JavaScript) su 25 pagine campione: 1 canonical, 1 JSON-LD, 1 H1",
+   "esito": "OK",
+   "dettaglio": "",
+   "evidenza": [],
+   "elenco": [
+    "OK  https://kosgroup.com/it  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/en  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/centri/casa-cima  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/centri/villa-rosa  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/chi-siamo/qualita-delle-cure/medici/stefano-albanelli  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/servizi-e-cure/riabilitazione/riabilitazione-mielolesioni  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/news-e-media/approfondimenti/come-bere-piu-acqua-durante-la-giornata  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/lavorare-in-kos/posizioni-aperte  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/strutture  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/prenota-online  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/servizi-e-cure/ambulatori-e-medicina-specialistica  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/strutture/cliniche-psichiatriche  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/news-e-media/news/2025/blue-monday-il-giorno-piu-triste-dell-anno-esiste-davvero  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/lavorare-in-kos/perche-lavorare-in-kos  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/chi-siamo/gruppo-kos/visione-valori-missione  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/convenzioni/aidental  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/en/who-we-are/kos-group/the-group  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/en/work-in-kos/why-work-at-kos  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/centri/villa-dei-pini-civitanova/check-up-prevenzione  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/en/services-and-care  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/en/book-online  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/contattaci  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/parla-con-noi  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/ritiro-referti  canonical 1  JSON-LD 1  H1 1",
+    "OK  https://kosgroup.com/it/privacy  canonical 1  JSON-LD 1  H1 1"
+   ]
+  }
+ ]
+}

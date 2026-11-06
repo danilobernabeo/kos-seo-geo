@@ -1,0 +1,49 @@
+== kosgroup.com
+  OK         KOS-19             nessun Crawl-delay
+  OK         KOS-19             Disallow/Allow che iniziano con «/» (RFC 9309) — 5 regole
+  OK         KOS-19             Sitemap dichiarate, assolute e raggiungibili — https://kosgroup.com/sitemap.xml
+  OK         KOS-6              robots.txt: nessun blocco totale per 36 crawler (AI e motori) — gruppi: *
+  OK         KOS-18             llms.txt: 200, text/plain; charset=utf-8 — text/plain; charset=utf-8
+  OK         KOS-18             formato llmstxt.org (# titolo, > sintesi, sezioni ## con elenchi di link) — titolo sì, sintesi sì, 6 sezioni
+  OK         KOS-18             link di llms.txt: 200 diretto (79 link)
+  OK         KOS-18             variante www di llms.txt: 301 verso https://kosgroup.com/llms.txt — 301 → https://kosgroup.com/llms.txt
+  OK         KOS-4              redirect dei 5 domini storici: un solo 301 verso kosgroup.com, poi 200 — 20 varianti
+  OK         KOS-4              pagine interne dei domini storici: 301 verso kosgroup.com, poi 200 — 0 su 15
+  INFO       KOS-4              refuso dell'audit «casadicuravillalpini.it» (informativo) — non risponde (fetch failed): il dominio storico è casadicuravillapini.it
+    kosgroup.com: 865 pagine analizzate (865 nella sitemap)
+  OK         Igiene             pagine della sitemap con 200 diretto (niente redirect né errori) — 0 su 865
+  OK         Igiene             nessuna pagina noindex nella sitemap — 0
+  OK         KOS-3              ?v= su tutti i CSS e JS locali delle pagine — 0 pagine con file senza ?v=
+  OK         Igiene             un solo canonical per pagina, assoluto, https, senza www — 0 pagine non conformi su 865
+  OK         Igiene             canonical uguale all'URL della sitemap — 0 pagine
+  OK         KOS-23             almeno un H1 per pagina — 0 pagine senza H1
+  OK         KOS-23             non più di un H1 per pagina — 0 pagine
+  OK         KOS-9              valori del JSON-LD senza entità HTML, URL validi — 0 valori
+  INFO       Igiene             blocchi JSON-LD per pagina nell'HTML servito (informativo) — 1 blocchi: 865 pagine
+  OK         Igiene             JSON-LD sintatticamente valido — 0 pagine
+  OK         KOS-9              un solo blocco JSON-LD con @graph per pagina — 0 pagine non conformi su 865
+  OK         KOS-9              ente https://kosgroup.com/#organization sulla home con name, legalName, vatID, logo, url — KOS S.p.A.
+  OK         KOS-9              ogni pagina collega l'ente (#organization) — 0 pagine
+  OK         KOS-12/13          BreadcrumbList su tutte le pagine con briciole visibili (e solo lì), @id {URL}#breadcrumb, ultimo livello = pagina — 0 problemi su 865 pagine
+  INFO       KOS-12/13          pagine senza briciole visibili, quindi senza BreadcrumbList (landing e pagine di sezione; informativo) — 7 pagine
+  OK         KOS-12/13          briciole JSON-LD uguali a quelle visibili (dove le briciole sono visibili) — 0 pagine diverse
+  OK         KOS-21/22          title presente su tutte le pagine — 0 pagine senza title
+  OK         KOS-21/22          marchio una sola volta nel title — 0 pagine
+  ATTENZIONE KOS-21/22          title entro 65 caratteri (compreso il marchio) — 1 pagine oltre 65
+  OK         KOS-21/22          title diversi tra le pagine — 0 title ripetuti
+  OK         KOS-21/22          meta description presente su tutte le pagine — 0 pagine senza description
+  OK         KOS-21/22          description entro 160 caratteri — 0 pagine oltre 160
+  OK         KOS-21/22          description diverse tra le pagine — 0 description ripetute
+  INFO       KOS-2              immagini nell'HTML servito: caricamento differito e WebP (informativo) — 10994 immagini raster, 8452 con loading="lazy" (77%), 4553 sorgenti WebP
+  INFO       KOS-2              tempo di risposta delle pagine dal PC (informativo, comprende rete e scaricamento) — mediana 1230 ms, 90° percentile 1619 ms su 865 pagine
+  OK         KOS-8              PDF collegati dalle pagine raggiungibili (543 PDF distinti) — 0 link a PDF inesistenti
+  OK         KOS-8              link ai PDF senza redirect — 0 link da aggiornare
+  INFO       KOS-8              intestazioni X-Robots-Tag dei PDF collegati (informativo) — noindex: 346, indicizzabile: 197; Link rel=canonical: 15
+  OK         KOS-3              Cache-Control css ≥ 15552000 s (10 file) — es. /assets/css/bootstrap.min.css?v=1750773970: max-age=15552000
+  OK         KOS-3              Cache-Control js ≥ 15552000 s (12 file) — es. /assets/js/scroll-anchors.js?v=1753286992: max-age=15552000
+  OK         KOS-3              Cache-Control img ≥ 15552000 s (12 file) — es. /assets/img/favicon-96x96.png: max-age=15552000
+  OK         KOS-3              Cache-Control font ≥ 31536000 s (12 file) — es. /assets/webfonts/fa-brands-400.woff2: max-age=31536000
+  OK         KOS-6              12 user agent su 3 pagine, 3 richieste ciascuno: 200, stessa pagina del browser, risposta sotto 5 s
+  OK         Rendering          DOM renderizzato (dopo JavaScript) su 25 pagine campione: 1 canonical, 1 JSON-LD, 1 H1
+
+== Fine: OK 38, INFO 6, ATTENZIONE 1 — rapporto in C:\Users\danil\progetti\kos-seo-geo\repo\scripts\collaudo\verifica-sprint-1-202611060943\rapporto.html

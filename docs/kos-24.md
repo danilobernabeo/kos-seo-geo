@@ -88,6 +88,12 @@ Vengono sostituiti dalla libreria. I servizi elencati sono già trascritti nella
    senza lo script Yext, `head-extra-landing` senza i JSON-LD `head-<id>`. Ripristino con il manifest che l'installer
    scrive nel backup.
 
+**Rilascio del 6/11:** dati dall'export Yext del 6/11 con i valori del sito per telefono di Salus Villalba ed email di
+Selemar (`correzioni-sito.json`). Stage 9:40-9:49, produzione entro le 10:25; backup stage in
+`/paas/c0044/backup-kos-seo-geo/20261106-0243*`. Collaudo con `scripts/collaudo/collaudo-kos-24.mjs` (58 schede, 5 landing):
+63/63 OK su stage e produzione; evidenze in `docs/evidenze/kos-24-20261106/`. Due schede senza tipologia in Yext
+(tra cui Poliambulatorio Valdaso) prendono il tipo predefinito: da correggere con i dati per RetailTune.
+
 Collaudo: un solo `@graph` per pagina e nessun JSON-LD Yext; `#localbusiness` su tutte le schede pubblicate, con
 indirizzo, telefono e coordinate; Rich Results Test e validatore schema.org su un campione per tipo di struttura;
 landing con `about` verso la scheda corretta e FAQ visibili nel testo.
