@@ -400,6 +400,21 @@ Dorica e Santa Maria scritti per esteso, Villa Pineta come residenza; da conferm
 Tempo, San Martino, Casa Serena, San Faustino; telefoni di Navigli (02 833051 / 02 803051), Villa Pineta e Santa Maria in
 Chienti; email di Villa Pineta. Produzione dal 16/11 (dopo la verifica dello sprint 1 su `aaSchema` e `head-rsa`).
 
+**Pagine provincia AA (AA-10, stage 8/11).** `aaSchema` emette sulle pagine con template `provincia` un `ItemList`
+(`{URL}#itemlist`, mainEntity della pagina) delle residenze figlie, nel formato del carosello di attività locali di
+Google (beta, solo SEE): voci `MedicalBusiness` con un solo tipo, `name`, `url`, `image` (anche dalla galleria della
+scheda), `priceRange` breve («Da 108,50 €», sotto i 12 caratteri). Rich Results Test su Genova: 15 elementi validi; il
+test non ha una voce «Caroselli» per questa beta. `priceRange` presente sulle 24 schede che indicano la retta: le altre 33
+non riportano importi (verifica sulle pagine di produzione dell'8/11), l'avviso non critico resta. Da scrivere nella nota
+dello sprint 3: markup conforme al carosello, comparsa non garantita; l'ente Anni Azzurri compare sempre tra le «Attività
+locali» del test (comportamento di Google, anche sulla home in produzione). Produzione con le schede dal 16/11.
+
+**Tag MODX dentro commenti HTML (AA-2, KOS-2), in produzione l'8/11.** Pacchetti `aa-2-commenti` (`header-209`:
+`[[!switchCta-landing-badante]]` non in cache; `footer-rsa-landing`, `footer-ap-landing`: `[[$tariffa-agevolata-landing]]`)
+e `kos-2-commenti` (`box-info-check-up-prevenzione`, `box-info-checkup`: `[[$kosplayer-banner-small]]`), disattivati con
+`[[- ]]`. Verifica: pagine 200, nessun commento con tag o markup nel sorgente (landing 209 AA, tre pagine check-up KOS).
+`commenti-modx.php` sulle 14 pagine provincia: 0 pagine, già pulite (verificato anche in produzione).
+
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
 
 Analisi nella chat «Sostituzione barra di ricerca Yext» (26/10): Yext Answers su entrambi i siti (KOS circa 2.150
