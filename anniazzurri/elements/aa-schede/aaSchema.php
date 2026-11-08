@@ -468,7 +468,17 @@ $eScheda = function ($r) use ($TPL_STRUTTURA, $STR_ON, $tv) {
     if (!$t || !in_array($t->get('templatename'), $TPL_STRUTTURA, true)) return false;
     return (string) $tv($r, 'str.via') !== '';
 };
-$nodoStruttura = function ($r) use ($url, $tv, $csv, $righe, $testo, $pulisci, $orari, $orariSpeciali, $immagine,
+/** Foto della residenza: TV indicata in aa.struttura_tv_immagine (imgHeader), altrimenti la foto storica della scheda
+ *  assets/img/rsa/<alias>.jpg (la stessa dell'og:image di head-rsa), solo se il file esiste. */
+$immagineScheda = function ($r) use ($tv, $cfg, $immagine) {
+    $p = (string) $tv($r, $cfg('struttura_tv_immagine', 'imgHeader'));
+    if ($p === '') {
+        $f = 'assets/img/rsa/' . $r->get('alias') . '.jpg';
+        if (is_readable(MODX_BASE_PATH . $f)) $p = $f;
+    }
+    return $p !== '' ? $immagine($p) : null;
+};
+$nodoStruttura = function ($r) use ($url, $tv, $csv, $righe, $testo, $pulisci, $orari, $orariSpeciali, $immagineScheda,
                                     $TIPI_STRUTTURA, $SPECIALITA, $FRAG_STR, $ORG_ID, $cfg) {
     $pagina = $url($r->get('id'));
     if ($pagina === '' || (string) $tv($r, 'str.via') === '') return null;
@@ -487,7 +497,7 @@ $nodoStruttura = function ($r) use ($url, $tv, $csv, $righe, $testo, $pulisci, $
         'name'        => $nome,
         'url'         => $pagina,
         'description' => $testo($r->get('description') ?: $r->get('introtext')),
-        'image'       => $immagine($tv($r, $cfg('struttura_tv_immagine', 'imgHeader'))),
+        'image'       => $immagineScheda($r),
         'telephone'   => $tv($r, 'str.telefono'),
         'faxNumber'   => $tv($r, 'str.fax'),
         'email'       => $tv($r, 'str.email'),
