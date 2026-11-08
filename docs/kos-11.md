@@ -24,7 +24,7 @@ la pagina (`WebPage`) ha come `mainEntity` il nodo del professionista, nell'unic
 
 | Caso | Tipo | `@id` | Proprietà |
 | --- | --- | --- | --- |
-| Medico che opera in una struttura con scheda (nodo `#localbusiness`) | `IndividualPhysician` | `{URL}#medico` | `name`, `url`, `image`, `description`, `medicalSpecialty`, `address` della sede, `practicesAt` → struttura |
+| Medico che opera in una struttura con scheda (nodo `#localbusiness`) | `IndividualPhysician` | `{URL}#medico` | `name`, `url`, `image`, `description`, `medicalSpecialty`, `address` e `telephone` della sede (centralino), `practicesAt` → struttura |
 | Altro professionista sanitario (fisioterapista, psicologo, infermiere, logopedista, nutrizionista…) | `Person` | `{URL}#person` | `name`, `url`, `image`, `description`, `jobTitle` = ruolo della pagina, `worksFor` → struttura (o ente) |
 | Medico senza una sede con scheda | `Person` | `{URL}#person` | come sopra, `worksFor` → ente |
 
@@ -50,7 +50,9 @@ ne ha una adatta).
   all'`@id` lega il medico alla stessa entità della scheda e del profilo Google.
 - Niente `jobTitle` sui medici (proprietà di `Person`): il ruolo è espresso da `medicalSpecialty`.
 - Frammento `#medico` (convenzione degli identificativi del progetto) invece di `#physician`.
-- `address` della sede sul medico: Google tratta `IndividualPhysician` come attività locale e vuole l'indirizzo.
+- `address` e `telephone` della sede sul medico: Google tratta `IndividualPhysician` come attività locale, vuole
+  l'indirizzo e consiglia il telefono; il numero è il centralino della sede, a cui si prenota. `priceRange` non esce
+  (nessuna tariffa nelle pagine): resta l'avviso facoltativo del Rich Results Test.
 - Professionisti non medici come `Person` con `jobTitle` e `worksFor`, secondo la convenzione del progetto.
 
 ## Da segnalare a KOS (contenuti delle pagine)

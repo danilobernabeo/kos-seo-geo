@@ -848,11 +848,14 @@ $professionista = function ($r) use (
     // Strutture con nodo (#localbusiness) e indirizzo della prima: IndividualPhysician è un'attività locale per Google,
     // che vuole address (Rich Results Test, «Attività locali»). Il medico riceve l'indirizzo della sede in cui opera;
     // senza una sede con nodo resta Person (jobTitle, worksFor verso l'ente), che è vero e valido.
-    $strutture = []; $indirizzo = null;
+    $strutture = []; $indirizzo = null; $telefono = null;
     foreach (array_unique(array_filter(array_map('intval', preg_split('/[^\d]+/', (string) $tv($r, $MED_TV_STR))))) as $sid) {
         if (!($rif = $riferimentiStrutture((string) $sid))) continue;
         $strutture = array_merge($strutture, $rif);
-        if ($indirizzo === null && ($sr = $modx->getObject($CLS_RES, $sid)) && ($ns = $nodoStruttura($sr))) $indirizzo = $ns['address'] ?? null;
+        if ($indirizzo === null && ($sr = $modx->getObject($CLS_RES, $sid)) && ($ns = $nodoStruttura($sr))) {
+            $indirizzo = $ns['address'] ?? null;
+            $telefono  = $ns['telephone'] ?? null;   // centralino della sede: è il numero a cui si prenota il medico
+        }
     }
     if (!$indirizzo) $tipo['medico'] = false;
     $nodo = [
@@ -867,6 +870,7 @@ $professionista = function ($r) use (
     if ($tipo['medico']) {
         $nodo['medicalSpecialty'] = $tipo['specialita'];
         $nodo['address'] = $indirizzo;
+        $nodo['telephone'] = $telefono;
         $nodo['practicesAt'] = $strutture;
     } else {
         $nodo['jobTitle'] = $ruolo;

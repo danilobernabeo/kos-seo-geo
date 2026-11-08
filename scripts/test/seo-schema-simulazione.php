@@ -282,7 +282,7 @@ $CASI = [
     777  => ['nome' => 'scheda medico (IndividualPhysician, specialità dal ruolo, practicesAt verso la struttura)',
              'tipi' => ['WebPage', 'IndividualPhysician', 'BreadcrumbList', 'WebSite', 'Organization'],
              'contiene' => ['"mainEntity":{"@id":"https://kosgroup.com/it/chi-siamo/qualita-delle-cure/medici/fabio-conti#medico"}',
-                            '"medicalSpecialty":["Psychiatric"]', '"address":{"@type":"PostalAddress","streetAddress":"Via di prova 1"', '"practicesAt":[{"@type":"Hospital","@id":"https://kosgroup.com/it/centri/villa-dei-pini-civitanova#localbusiness"'],
+                            '"medicalSpecialty":["Psychiatric"]', '"address":{"@type":"PostalAddress","streetAddress":"Via di prova 1"', '"telephone":"+390000000000"', '"practicesAt":[{"@type":"Hospital","@id":"https://kosgroup.com/it/centri/villa-dei-pini-civitanova#localbusiness"'],
              'non_contiene' => ['"jobTitle"', '"worksFor"']],
     778  => ['nome' => 'scheda fisioterapista (Person, jobTitle, worksFor verso la struttura)',
              'tipi' => ['WebPage', 'Person', 'BreadcrumbList', 'WebSite', 'Organization'],
