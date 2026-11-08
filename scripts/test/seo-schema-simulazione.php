@@ -41,7 +41,7 @@ register_shutdown_function(function () use ($BASE) { exec('rm -rf ' . escapeshel
 
 /* ---------- impostazioni dai manifest ---------- */
 $SETTINGS = ['site_start' => 1];
-foreach (['kos-9-12-13.json', 'kos-24.json', 'kos-24-attivazione.json', 'kos-10-article.json'] as $m) {
+foreach (['kos-9-12-13.json', 'kos-24.json', 'kos-24-attivazione.json', 'kos-10-article.json', 'kos-11.json'] as $m) {
     if (in_array($m, $SENZA, true)) continue;
     $f = "$RADICE/kosgroup/deploy/$m";
     if (!is_file($f)) continue;
@@ -97,7 +97,14 @@ $R = [
     999  => [['pagetitle' => 'Struttura senza indirizzo', 'uri' => 'it/centri/senza-indirizzo', 'parent' => 253, 'template' => 'strutture'], []],
     // medico (per la prova dell'autore con la TV aut.ref, che su kosgroup.com oggi non esiste)
     777  => [['pagetitle' => 'Fabio Conti', 'uri' => 'it/chi-siamo/qualita-delle-cure/medici/fabio-conti', 'parent' => 253, 'template' => 'medici'],
-             ['ruolo' => 'Psichiatra']],
+             ['ruolo' => 'Psichiatra', 'idSedeLavoro' => '218', 'infoImage' => '/assets/img/news/abbuffate.png']],
+    // professionisti (KOS-11): fisioterapista (Person), neurologo con sede senza nodo, ruolo con refuso
+    778  => [['pagetitle' => 'Anna Rossi', 'uri' => 'it/chi-siamo/qualita-delle-cure/medici/anna-rossi', 'parent' => 253, 'template' => 'medici',
+              'description' => 'Fisioterapista a Villa dei Pini.'], ['ruolo' => 'Fisioterapista', 'idSedeLavoro' => '218']],
+    779  => [['pagetitle' => 'Luca Bianchi', 'uri' => 'it/chi-siamo/qualita-delle-cure/medici/luca-bianchi', 'parent' => 253, 'template' => 'medici'],
+             ['ruolo' => 'Neurologo e Neuroradiologo', 'idSedeLavoro' => '999']],
+    780  => [['pagetitle' => 'Marta Verdi', 'uri' => 'it/chi-siamo/qualita-delle-cure/medici/marta-verdi', 'parent' => 253, 'template' => 'medici'],
+             ['ruolo' => 'Psicologa clinica', 'idSedeLavoro' => '999']],
     3106 => [['pagetitle' => 'Anoressia: quando serve il ricovero', 'uri' => 'it/news-e-media/approfondimenti/anoressia-ricovero',
               'parent' => 3102, 'template' => 'informativo', 'publishedon' => $ts('2025-05-05 10:00:00'), 'editedon' => $ts('2025-05-06 10:00:00')],
              ['infoImage' => 'assets/img/news/abbuffate.png', 'aut.ref' => '777']],
@@ -272,6 +279,22 @@ $CASI = [
              'tipi' => ['WebPage', 'BreadcrumbList', 'WebSite', 'Organization']],
     218  => ['nome' => 'scheda struttura (invariata)',
              'tipi' => ['WebPage', 'Hospital', 'BreadcrumbList', 'WebSite', 'Organization']],
+    777  => ['nome' => 'scheda medico (IndividualPhysician, specialità dal ruolo, practicesAt verso la struttura)',
+             'tipi' => ['WebPage', 'IndividualPhysician', 'BreadcrumbList', 'WebSite', 'Organization'],
+             'contiene' => ['"mainEntity":{"@id":"https://kosgroup.com/it/chi-siamo/qualita-delle-cure/medici/fabio-conti#medico"}',
+                            '"medicalSpecialty":["Psychiatric"]', '"address":{"@type":"PostalAddress","streetAddress":"Via di prova 1"', '"practicesAt":[{"@type":"Hospital","@id":"https://kosgroup.com/it/centri/villa-dei-pini-civitanova#localbusiness"'],
+             'non_contiene' => ['"jobTitle"', '"worksFor"']],
+    778  => ['nome' => 'scheda fisioterapista (Person, jobTitle, worksFor verso la struttura)',
+             'tipi' => ['WebPage', 'Person', 'BreadcrumbList', 'WebSite', 'Organization'],
+             'contiene' => ['anna-rossi#person', '"jobTitle":"Fisioterapista"', '"worksFor":[{"@type":"Hospital"', '"description":"Fisioterapista a Villa dei Pini."'],
+             'non_contiene' => ['practicesAt', 'IndividualPhysician']],
+    779  => ['nome' => 'scheda medico con sede senza nodo: Person (niente IndividualPhysician senza indirizzo)',
+             'tipi' => ['WebPage', 'Person', 'BreadcrumbList', 'WebSite', 'Organization'],
+             'contiene' => ['luca-bianchi#person', '"jobTitle":"Neurologo e Neuroradiologo"', '"worksFor":{"@id":"https://kosgroup.com/#organization"}'],
+             'non_contiene' => ['practicesAt', 'IndividualPhysician']],
+    780  => ['nome' => 'scheda psicologa con sede senza nodo (Person, worksFor verso l\'ente)',
+             'tipi' => ['WebPage', 'Person', 'BreadcrumbList', 'WebSite', 'Organization'],
+             'contiene' => ['"worksFor":{"@id":"https://kosgroup.com/#organization"}']],
     1    => ['nome' => 'home (invariata)', 'tipi' => ['WebPage', 'WebSite', 'Organization']],
 ];
 

@@ -415,6 +415,13 @@ e `kos-2-commenti` (`box-info-check-up-prevenzione`, `box-info-checkup`: `[[$kos
 `[[- ]]`. Verifica: pagine 200, nessun commento con tag o markup nel sorgente (landing 209 AA, tre pagine check-up KOS).
 `commenti-modx.php` sulle 14 pagine provincia: 0 pagine, già pulite (verificato anche in produzione).
 
+**KOS 11 professionisti, parte tecnica pronta l'8/11** (dettaglio in `docs/kos-11.md`): nella libreria comune, sulle 150
+pagine pubblicate del template `medici`, `IndividualPhysician` `#medico` (specialità dal ruolo, `address` e
+`practicesAt` della sede con scheda) per i medici, `Person` `#person` (`jobTitle`, `worksFor`) per gli altri
+professionisti e per i medici senza una sede con scheda. Classificazione al 29/10: 100 medici, 50 altri professionisti.
+Pacchetto `kos-11`, simulazione superata, collaudo `collaudo-kos-11.mjs`. Da installare sullo stage; produzione dopo la
+verifica dello sprint 2 (dal 16/11). I dati IT/TuoTempo servono solo per l'abbinamento alle risorse di prenotazione.
+
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
 
 Analisi nella chat «Sostituzione barra di ricerca Yext» (26/10): Yext Answers su entrambi i siti (KOS circa 2.150

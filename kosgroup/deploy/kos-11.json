@@ -1,0 +1,21 @@
+{
+  "nome": "KOS-11 professionisti: IndividualPhysician (#medico, medicalSpecialty dal ruolo, practicesAt verso le schede struttura) o Person (#person, jobTitle, worksFor) sulle pagine del template medici, nell'unico @graph della libreria comune (kosSchema)",
+  "elements": [
+    {
+      "type": "snippet",
+      "name": "kosSchema",
+      "file": "shared/snippets/seoSchema.php",
+      "properties": {
+        "prefisso": "kos"
+      },
+      "description": "Dato strutturato e briciole (libreria comune seoSchema, prefisso kos)"
+    }
+  ],
+  "settings": [
+    {
+      "key": "kos.medico_tv_ruolo",
+      "value": "ruolo",
+      "area": "kos"
+    }
+  ]
+}

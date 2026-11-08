@@ -335,16 +335,16 @@ $org = function ($lingua = '') use ($cfg, $csv, $ORG_ID, $PARENT_ID, $CANON, $pu
 /* --- nodo Person ------------------------------------------------------------
  * Restituisce null se la risorsa autore non esiste o non è pubblicata:
  * il chiamante ricade sull'Organization.
- * Se la pagina dell'autore è la scheda di un medico (template <prefisso>.tpl_medico, kosgroup.com: medici) il nodo è
- * IndividualPhysician con @id {URL scheda}#medico: è un tipo di organizzazione medica, non una Person, quindi niente
- * proprietà delle persone (jobTitle, worksFor, credenziali); la struttura in cui opera va in practicesAt
- * (<prefisso>.medico_tv_struttura, id della scheda struttura). Il nodo completo del medico è della voce KOS-11.
+ * Se la pagina dell'autore è la scheda di un professionista (template <prefisso>.tpl_medico, kosgroup.com: medici) il
+ * nodo è quello di $professionista (voce KOS-11): IndividualPhysician #medico per i medici, Person #person per gli
+ * altri professionisti sanitari.
  */
 $MED_TV_STR = $cfg('medico_tv_struttura', 'idSedeLavoro');
 $MED_TV_IMG = $cfg('medico_tv_immagine', 'infoImage');
+$MED_TV_RUOLO = $cfg('medico_tv_ruolo', 'ruolo');
 $persona = function ($idAutore) use (
     $modx, $CLS_RES, $url, $tv, $righe, $testo, $immagine, $pulisci, $idDi, $ORG_ID, $TPL_MEDICO, $MED_TV_STR, $MED_TV_IMG,
-    &$riferimentiStrutture
+    &$riferimentiStrutture, &$professionista
 ) {
     $idAutore = (int) $idAutore;
     if ($idAutore <= 0) return null;
@@ -356,17 +356,7 @@ $persona = function ($idAutore) use (
     if ($pagina === '') return null;
 
     $tpl = $TPL_MEDICO ? $a->getOne('Template') : null;
-    if ($tpl && in_array($tpl->get('templatename'), $TPL_MEDICO, true)) {
-        return $pulisci([
-            '@type'       => 'IndividualPhysician',
-            '@id'         => $idDi($pagina, 'medico'),
-            'name'        => $a->get('pagetitle'),
-            'url'         => $pagina,
-            'image'       => $immagine($tv($a, $MED_TV_IMG), true),
-            'practicesAt' => array_map(function ($s) { return ['@id' => $s['@id']]; },
-                                       $riferimentiStrutture($tv($a, $MED_TV_STR))),
-        ]);
-    }
+    if ($tpl && in_array($tpl->get('templatename'), $TPL_MEDICO, true)) return $professionista($a);
 
     $nome = trim($tv($a, 'aut.given') . ' ' . $tv($a, 'aut.family'));
     if ($nome === '') $nome = $a->get('pagetitle');
@@ -801,6 +791,88 @@ $riferimentiStrutture = function ($csvId) use ($modx, $CLS_RES, $url, $tv, $idDi
     }
     return $out;
 };
+/* --- professionisti (voce KOS-11) --------------------------------------------
+ * Pagine del template <prefisso>.tpl_medico (kosgroup.com: «medici»). Il ruolo scritto nella pagina (TV
+ * <prefisso>.medico_tv_ruolo, «ruolo») decide il tipo, come da convenzione del progetto:
+ * - medico («Ortopedico», «Radiologa», «Medico estetico», «Geriatra e Fisiatra»…) che opera in una struttura con nodo
+ *   (TV <prefisso>.medico_tv_struttura): IndividualPhysician con @id {URL}#medico, medicalSpecialty ricavate dal ruolo
+ *   (solo valori di schema.org), address della sede, practicesAt verso le schede struttura. IndividualPhysician è un
+ *   tipo di organizzazione medica: niente jobTitle;
+ * - medico senza una sede con nodo: Person come i professionisti qui sotto (un IndividualPhysician senza indirizzo
+ *   è un'attività locale non valida per Google);
+ * - altro professionista sanitario (fisioterapista, psicologo, infermiere, logopedista, nutrizionista…): Person con
+ *   @id {URL}#person, jobTitle = ruolo, worksFor verso le strutture (practicesAt esiste solo su IndividualPhysician) o,
+ *   senza struttura con nodo, verso l'ente.
+ * Ruolo non riconosciuto = Person: un professionista non medico descritto come medico sarebbe un dato falso, il
+ * contrario solo un dato meno preciso. Il riconoscimento è nella tabella $RUOLI_MEDICI qui sotto; l'elenco della
+ * classificazione delle pagine esce dal collaudo scripts/collaudo/collaudo-kos-11.mjs.
+ */
+$RUOLI_NON_MEDICI = '~assistente|coordinat|tecnico|infermier|fisioterapist|logoped|terapist|podolog|psicolog|nutrizion|dietist|chinesiolog|musicoterap|biolog~u';
+$RUOLI_MEDICI = [   // espressione sul ruolo (minuscolo) => specialità schema.org (anche vuote: medico senza specialità)
+    'anestesi' => ['Anesthesia'], 'dolore' => ['Anesthesia'],
+    'cardiochir' => ['Surgical', 'Cardiovascular'], 'cardiolog' => ['Cardiovascular'],
+    'angiolog' => ['Cardiovascular'], 'flebolog' => ['Cardiovascular'], 'vascolar' => ['Surgical', 'Cardiovascular'],
+    'chirur' => ['Surgical'], 'chiurur' => ['Surgical'], 'chirrug' => ['Surgical'],
+    'dermatolog' => ['Dermatology'], 'gastroenter' => ['Gastroenterologic'], 'geriatr' => ['Geriatric'],
+    'ginecolog' => ['Gynecologic'], 'ostetric' => ['Obstetric'], 'oncolog' => ['Oncologic'],
+    'ortoped' => ['Musculoskeletal'], 'traumatolog' => ['Musculoskeletal'], 'fisiatr' => ['Physiotherapy'],
+    'neurochir' => ['Surgical', 'Neurologic'], 'neurolog' => ['Neurologic'], 'neuroradiolog' => ['Neurologic', 'Radiography'],
+    'radiolog' => ['Radiography'], 'ecografist' => ['Radiography'], 'otorino' => ['Otolaryngologic'],
+    'oculist' => ['Optometric'], 'oftalmolog' => ['Optometric'], 'psichiatr' => ['Psychiatric'],
+    'reumatolog' => ['Rheumatologic'], '(?<![a-z])urolog' => ['Urologic'], 'androlog' => ['Urologic'],
+    'pediatr' => ['Pediatric'], 'pneumolog' => ['Pulmonary'], 'patolog' => ['Pathology'], 'endocrinolog' => ['Endocrine'],
+    'nefrolog' => ['Renal'], 'ematolog' => ['Hematologic'], 'infettivolog' => ['Infectious'],
+    'medic' => [],   // «Medico estetico», «Medicina del dolore»: medico, specialità dagli altri frammenti
+];
+/** ['medico' => bool, 'specialita' => [...]] dal ruolo scritto nella pagina. */
+$ruoloProfessionista = function ($ruolo) use ($RUOLI_NON_MEDICI, $RUOLI_MEDICI, $SPECIALITA) {
+    $r = mb_strtolower(trim((string) $ruolo), 'UTF-8');
+    if ($r === '' || preg_match($RUOLI_NON_MEDICI, $r)) return ['medico' => false, 'specialita' => []];
+    $medico = false; $spec = [];
+    foreach ($RUOLI_MEDICI as $frammento => $s) {
+        if (!preg_match('~' . $frammento . '~u', $r)) continue;
+        $medico = true;
+        $spec = array_merge($spec, $s);
+    }
+    return ['medico' => $medico, 'specialita' => array_values(array_intersect($SPECIALITA, array_unique($spec)))];
+};
+$professionista = function ($r) use (
+    $modx, $CLS_RES, $url, $tv, $testo, $immagine, $pulisci, $idDi, $ORG_ID, $MED_TV_STR, $MED_TV_IMG, $MED_TV_RUOLO,
+    $ruoloProfessionista, &$riferimentiStrutture, &$nodoStruttura
+) {
+    if (!$r || !$r->get('published') || $r->get('deleted')) return null;
+    $pagina = $url($r->get('id'));
+    if ($pagina === '') return null;
+    $ruolo = trim((string) $tv($r, $MED_TV_RUOLO));
+    $tipo = $ruoloProfessionista($ruolo);
+    // Strutture con nodo (#localbusiness) e indirizzo della prima: IndividualPhysician è un'attività locale per Google,
+    // che vuole address (Rich Results Test, «Attività locali»). Il medico riceve l'indirizzo della sede in cui opera;
+    // senza una sede con nodo resta Person (jobTitle, worksFor verso l'ente), che è vero e valido.
+    $strutture = []; $indirizzo = null;
+    foreach (array_unique(array_filter(array_map('intval', preg_split('/[^\d]+/', (string) $tv($r, $MED_TV_STR))))) as $sid) {
+        if (!($rif = $riferimentiStrutture((string) $sid))) continue;
+        $strutture = array_merge($strutture, $rif);
+        if ($indirizzo === null && ($sr = $modx->getObject($CLS_RES, $sid)) && ($ns = $nodoStruttura($sr))) $indirizzo = $ns['address'] ?? null;
+    }
+    if (!$indirizzo) $tipo['medico'] = false;
+    $nodo = [
+        '@type'       => $tipo['medico'] ? 'IndividualPhysician' : 'Person',
+        '@id'         => $idDi($pagina, $tipo['medico'] ? 'medico' : 'person'),
+        'name'        => trim((string) $r->get('pagetitle')),
+        'url'         => $pagina,
+        'image'       => $immagine($tv($r, $MED_TV_IMG), true),
+        'description' => $testo($r->get('description')),
+    ];
+    if ($tipo['medico']) {
+        $nodo['medicalSpecialty'] = $tipo['specialita'];
+        $nodo['address'] = $indirizzo;
+        $nodo['practicesAt'] = $strutture;
+    } else {
+        $nodo['jobTitle'] = $ruolo;
+        $nodo['worksFor'] = $strutture ?: ['@id' => $ORG_ID];
+    }
+    return $pulisci($nodo);
+};
 $nodoStruttura = function ($r, $extraServizi = []) use (
     $url, $tv, $servizi, $serviziSito, $tecnologie, $prenotazione, $righe, $testo, $csv, $pulisci, $orari, $orariSpeciali, $immagineStruttura,
     $tipiStruttura, $idDi, $SPECIALITA, $ORG_ID
@@ -1088,6 +1160,12 @@ if ($type === 'page') {
             $struttura = $nodoStruttura($sr, $servizi($tv($res, 'lnd.servizi')));
             $rel = 'about';
         }
+    }
+
+    // Scheda di un professionista (voce KOS-11): la pagina descrive il medico o il professionista.
+    if (!$struttura && $TPL_MEDICO && in_array($nomeTpl, $TPL_MEDICO, true) && ($pro = $professionista($res))) {
+        $struttura = $pro;
+        $rel = 'mainEntity';
     }
 
     $pagina = $pulisci([
