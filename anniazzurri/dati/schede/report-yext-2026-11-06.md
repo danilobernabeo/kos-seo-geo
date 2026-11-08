@@ -3,12 +3,22 @@
 Entità Yext con URL su anniazzurri.it: 58; schede da importare: 57.
 Il file JSON si applica con `scripts/deploy/imposta-tv.php` (prova, poi `--scrivi`): la prova mostra la scheda (pagetitle) accanto a ogni valore, così si vedono anche le differenze di nome. Le schede del sito senza entità Yext risultano dall'elenco delle schede pubblicate, non da qui.
 
+## Valori decisi diversi da Yext (da correggere anche in Yext)
+
+- /residenza-anni-azzurri-santa-maria-in-chienti: str.email «santamariainchienti@sstefano.it» (Yext) → «residenzasantamariainchienti@anniazzurri.it» (deciso)
+- /residenza-anni-azzurri-santa-maria-in-chienti: str.via «C.da Cavallino 79» (Yext) → «Contrada Cavallino 79» (deciso)
+- /residenza-anni-azzurri-conero: str.via «SS 16 V. Flaminia km 293 326/A» (Yext) → «Strada Statale 16 Flaminia km 293, 326/A» (deciso)
+- /residenza-anni-azzurri-dorica: str.email «residenzadorica@sstefano.it» (Yext) → «residenzadorica@anniazzurri.it» (deciso)
+- /residenza-anni-azzurri-dorica: str.via «Via Primo Maggio 152» (Yext) → «Via Primo Maggio 152, Loc. Baraccola Sud» (deciso)
+- /residenza-anni-azzurri-dorica: str.citta «Loc. Baraccola Sud - Ancona» (Yext) → «Ancona» (deciso)
+- /residenza-anni-azzurri-villa-pineta: str.tipo «» (Yext) → «MedicalBusiness,MedicalOrganization» (deciso)
+- /residenza-anni-azzurri-villa-pineta: str.specialita «» (Yext) → «Geriatric» (deciso)
+
 ## Tipi schema.org applicati (PROPOSTA, da approvare)
 
 | Tipo | Specialità | Schede |
 |---|---|---|
-| MedicalBusiness,MedicalOrganization | Geriatric | 56 |
-| (predefinito) | — | 1 |
+| MedicalBusiness,MedicalOrganization | Geriatric | 57 |
 
 ## Indirizzi abbreviati scritti per esteso (41)
 

@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 /**
- * collaudo-kos-24.mjs — KOS-24: controlla sul sito servito il dato strutturato delle schede struttura e delle landing,
+ * collaudo-kos-24.mjs — KOS-24 (e schede residenza AA con --sito=aa): controlla sul sito servito il dato strutturato delle
+ * schede struttura e delle landing,
  * a partire dagli stessi file importati con imposta-tv.php.
  *
  * Uso (da scripts/collaudo, PowerShell):
  *   $env:AUTH = "<password dello stage>"        # utente «kos»; non serve in produzione
  *   node collaudo-kos-24.mjs --base=https://stage.kosgroup.com [--uscita=kos24-stage]
  *   node collaudo-kos-24.mjs --base=https://kosgroup.com --uscita=kos24-prod
+ *   node collaudo-kos-24.mjs --sito=aa --base=https://stage.anniazzurri.it --uscita=aa-schede-stage   (schede residenza:
+ *     anche box contatti dal server, senza markup Yext, email con «@» scritta &#64;)
  *
  * Schede (kosgroup/dati/voce-24/strutture-yext-2026-11-06.json): HTTP 200; un solo <script type="application/ld+json">
  * con JSON valido; nessuno script Yext; nodo {URL}#localbusiness con il tipo della TV str.tipo, indirizzo, telefono,
@@ -24,10 +27,12 @@ if (!arg.base) { console.error('Uso: node collaudo-kos-24.mjs --base=https://sta
 const base = arg.base.replace(/\/$/, '');
 const uscita = arg.uscita || 'collaudo-kos-24';
 const radice = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
-const dati = f => JSON.parse(fs.readFileSync(path.join(radice, 'kosgroup', 'dati', 'voce-24', f), 'utf8').replace(/^﻿/, ''));
+const AA = arg.sito === 'aa';
+const cartella = AA ? path.join(radice, 'anniazzurri', 'dati', 'schede') : path.join(radice, 'kosgroup', 'dati', 'voce-24');
+const dati = f => JSON.parse(fs.readFileSync(path.join(cartella, f), 'utf8').replace(/^\uFEFF/, ''));
 const schede = dati(arg.strutture || 'strutture-yext-2026-11-06.json').risorse;
 const correzioni = (() => { try { return dati('correzioni-sito.json'); } catch { return {}; } })();
-const landing = dati('landing.json').risorse;
+const landing = AA ? [] : dati('landing.json').risorse;
 const auth = process.env.AUTH
   ? 'Basic ' + Buffer.from(process.env.AUTH.includes(':') ? process.env.AUTH : 'kos:' + process.env.AUTH).toString('base64')
   : null;
@@ -75,7 +80,7 @@ for (const s of schede) {
   if (stato === 200 && !n && tv['str.via']) err.push('nodo #localbusiness assente');
   if (n && !tv['str.via']) err.push('nodo #localbusiness senza indirizzo nelle TV');
   if (n) {
-    const atteso = String(tv['str.tipo'] || '').split(',').map(x => x.trim()).filter(Boolean);
+    const atteso = String(tv['str.tipo'] || (AA ? 'MedicalBusiness,MedicalOrganization' : '')).split(',').map(x => x.trim()).filter(Boolean);
     // convenzione: un tipo che non è attività locale (DiagnosticLab) va affiancato a MedicalBusiness
     if (atteso.includes('DiagnosticLab') && !atteso.includes('MedicalBusiness')) atteso.push('MedicalBusiness');
     if (atteso.length && atteso.join(',') !== tipi(n).join(',')) err.push(`@type ${tipi(n).join(',')} ≠ ${atteso.join(',')}`);
@@ -91,6 +96,16 @@ for (const s of schede) {
     for (const u of [].concat(n.sameAs || [])) if (!/^https:\/\/[^\s"<>]+$/.test(u)) err.push('sameAs non valido: ' + u);
     if (tv['str.orari'] && !n.openingHoursSpecification) err.push('orari assenti');
     if (!n.parentOrganization && !n.brand && !n.branchOf) err.push('nessun legame con il gruppo');
+  }
+  if (AA && stato === 200) {
+    // box contatti scritto dal server (aaContatto): niente campi Yext, telefono, email e indirizzo nell'HTML servito
+    const testo = html.replace(/&#64;/g, '@').replace(/&#0?39;|&apos;/g, "'").replace(/&amp;/g, '&');
+    if (/data-yext-field/.test(html)) err.push('markup Yext (data-yext-field) ancora presente');
+    const cifre = soloCifre(tv['str.telefono']).replace(/^\+?39/, '');
+    if (cifre && !html.includes(`href="tel:+39${cifre}"`)) err.push('telefono assente dal box');
+    if (tv['str.email'] && !testo.includes(`mailto:${tv['str.email']}`)) err.push('email assente dal box');
+    if (tv['str.via'] && !testo.includes(tv['str.via'])) err.push('indirizzo assente dal box');
+    if (tv['str.email'] && html.includes(`mailto:${tv['str.email']}`)) err.push('email della residenza con @ in chiaro: EMO la offusca');
   }
   const esito = err.length ? 'KO' : 'OK';
   esito === 'OK' ? ok++ : ko++;

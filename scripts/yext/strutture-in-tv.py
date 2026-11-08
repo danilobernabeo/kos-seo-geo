@@ -113,6 +113,7 @@ def main():
     a.add_argument('--uscita', default='kosgroup/dati/voce-24')
     a.add_argument('--correzioni', help='JSON {uri: {tv: valore}}: valori decisi diversi da Yext (es. quelli del sito), '
                                         'applicati sopra all\'export e riportati nel report')
+    a.add_argument('--fax', action='store_true', help='importa anche il fax (TV str.fax, anniazzurri.it: box contatti)')
     a.add_argument('--servizi-yext', action='store_true',
                    help='anche specialità e servizi dai filtri «Servizi e Cure» di Yext (dal 25/10 la fonte è il sito)')
     o = a.parse_args()
@@ -250,6 +251,7 @@ def main():
             'str.place_id': place, 'str.tipo': tipo, 'str.specialita': ', '.join(spec),
             'str.marchio': marchio, 'str.sameAs': same, 'str.prenotazione': pren,
             **({'str.servizi': '\n'.join(servizi)} if o.servizi_yext else {}),
+            **({'str.fax': ('+39' + fax) if (fax := re.sub(r'\D', '', g(y, 'Numero di fax > Telefono'))) else ''} if o.fax else {}),
         }})
 
     doppi = {u: ids for u, ids in per_uri.items() if len(ids) > 1}

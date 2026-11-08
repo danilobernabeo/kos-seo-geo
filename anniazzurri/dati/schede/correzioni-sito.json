@@ -1,0 +1,6 @@
+{
+ "residenza-anni-azzurri-dorica": {"str.email": "residenzadorica@anniazzurri.it", "str.via": "Via Primo Maggio 152, Loc. Baraccola Sud", "str.citta": "Ancona"},
+ "residenza-anni-azzurri-santa-maria-in-chienti": {"str.email": "residenzasantamariainchienti@anniazzurri.it", "str.via": "Contrada Cavallino 79"},
+ "residenza-anni-azzurri-conero": {"str.via": "Strada Statale 16 Flaminia km 293, 326/A"},
+ "residenza-anni-azzurri-villa-pineta": {"str.tipo": "MedicalBusiness,MedicalOrganization", "str.specialita": "Geriatric"}
+}

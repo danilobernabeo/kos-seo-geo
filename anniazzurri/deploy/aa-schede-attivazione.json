@@ -1,0 +1,48 @@
+{
+ "nome": "AA-2/5/11/21 schede residenza, attivazione: aa.struttura_attiva = 1, box contatti dal server (contactBox e varianti delle schede), script Yext Knowledge Tags tolto da head-rsa. Prima: aa-schede.json, import delle TV (imposta-tv.php) e conversione dei contenuti (aa-yext-contenuti.php).",
+ "settings": [
+  {
+   "key": "aa.struttura_attiva",
+   "value": "1",
+   "area": "aa"
+  }
+ ],
+ "elements": [
+  {
+   "type": "chunk",
+   "name": "head-rsa",
+   "file": "anniazzurri/elements/aa-schede/head-rsa.html",
+   "baseline": "anniazzurri/elements/chunks/head-rsa.html"
+  },
+  {
+   "type": "chunk",
+   "name": "contactBox",
+   "file": "anniazzurri/elements/aa-schede/contactBox.html",
+   "baseline": "anniazzurri/elements/chunks/contactBox.html"
+  },
+  {
+   "type": "chunk",
+   "name": "contactBox-villaggio-san-francesco",
+   "file": "anniazzurri/elements/aa-schede/contactBox-villaggio-san-francesco.html",
+   "baseline": "anniazzurri/elements/chunks/contactBox-villaggio-san-francesco.html"
+  },
+  {
+   "type": "chunk",
+   "name": "contactBox-residenza-anni-azzurri-rezzato",
+   "file": "anniazzurri/elements/aa-schede/contactBox-residenza-anni-azzurri-rezzato.html",
+   "baseline": "anniazzurri/baseline/chunks/contactBox-residenza-anni-azzurri-rezzato.html"
+  },
+  {
+   "type": "chunk",
+   "name": "contactBox-residenza-anni-azzurri-casteldonino",
+   "file": "anniazzurri/elements/aa-schede/contactBox-residenza-anni-azzurri-casteldonino.html",
+   "baseline": "anniazzurri/baseline/chunks/contactBox-residenza-anni-azzurri-casteldonino.html"
+  },
+  {
+   "type": "chunk",
+   "name": "contactBox-residenza-anni-azzurri-san-lorenzo",
+   "file": "anniazzurri/elements/aa-schede/contactBox-residenza-anni-azzurri-san-lorenzo.html",
+   "baseline": "anniazzurri/baseline/chunks/contactBox-residenza-anni-azzurri-san-lorenzo.html"
+  }
+ ]
+}
