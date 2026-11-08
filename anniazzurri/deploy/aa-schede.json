@@ -1,14 +1,9 @@
 {
- "nome": "AA-2/5/11/21 schede residenza, preparazione (sprint 3): TV anagrafiche str.* sul template rsa, snippet aaContatto (box contatti dal server), aaSchema con il nodo #localbusiness delle residenze (spento: aa.struttura_attiva = 0). Si accende con aa-schede-attivazione.json dopo l'import delle TV e la conversione dei contenuti.",
+ "nome": "AA-2/5/11/21 schede residenza, preparazione (sprint 3): TV anagrafiche str.* sul template rsa, snippet aaContatto (box contatti dal server), aaSchema con il nodo #localbusiness delle residenze (spento finché aa.struttura_attiva non vale 1: il manifest non tocca l'interruttore, così rilanciarlo non spegne il nodo). Si accende con aa-schede-attivazione.json dopo l'import delle TV e la conversione dei contenuti.",
  "settings": [
   {
    "key": "aa.tpl_struttura",
    "value": "rsa",
-   "area": "aa"
-  },
-  {
-   "key": "aa.struttura_attiva",
-   "value": "0",
    "area": "aa"
   },
   {
