@@ -16,7 +16,7 @@ $modx->initialize('mgr');
 $p = $modx->getOption('table_prefix', null, 'modx_');
 $like = $modx->quote('%' . $testo . '%');
 $q = [
-    'contenuto'  => "SELECT id, uri AS nome FROM {$p}site_content WHERE content LIKE $like OR introtext LIKE $like",
+    'contenuto'  => "SELECT id, uri AS nome, content AS testo FROM {$p}site_content WHERE content LIKE $like OR introtext LIKE $like",
     'tv'         => "SELECT v.contentid AS id, CONCAT(t.name, ' (risorsa ', v.contentid, ')') AS nome FROM {$p}site_tmplvar_contentvalues v JOIN {$p}site_tmplvars t ON t.id = v.tmplvarid WHERE v.value LIKE $like",
     'tv default' => "SELECT id, name AS nome FROM {$p}site_tmplvars WHERE default_text LIKE $like OR elements LIKE $like",
     'chunk'      => "SELECT id, name AS nome FROM {$p}site_htmlsnippets WHERE snippet LIKE $like",
@@ -27,6 +27,14 @@ $q = [
 $tot = 0;
 foreach ($q as $tipo => $sql) {
     $st = $modx->query($sql);
-    foreach ($st ? $st->fetchAll(PDO::FETCH_ASSOC) : [] as $r) { echo sprintf("%-11s %-6s %s\n", $tipo, $r['id'], $r['nome']); $tot++; }
+    foreach ($st ? $st->fetchAll(PDO::FETCH_ASSOC) : [] as $r) {
+        echo sprintf("%-11s %-6s %s\n", $tipo, $r['id'], $r['nome']); $tot++;
+        // contesto: il tag che contiene il testo (o 200 caratteri attorno)
+        if (isset($r['testo']) && ($i = strpos((string) $r['testo'], $testo)) !== false) {
+            $a = strrpos(substr($r['testo'], 0, $i), '<'); $b = strpos($r['testo'], '>', $i);
+            $a = $a === false ? max(0, $i - 100) : $a; $b = $b === false ? $i + 100 : $b + 1;
+            echo '            ' . str_replace(["\r", "\n"], ' ', substr($r['testo'], $a, min(400, $b - $a))) . "\n";
+        }
+    }
 }
 echo "== $tot occorrenze di «$testo»\n";
