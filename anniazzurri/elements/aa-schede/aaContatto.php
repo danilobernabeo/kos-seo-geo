@@ -19,8 +19,9 @@
  *   &classe  classi dell'elemento (come nel markup originale)
  *   &id      risorsa da cui leggere (default: la pagina corrente)
  *
- * Le email escono con «@» scritta &#64;: il plugin EMO non le trasforma in JavaScript, quindi restano leggibili dai
- * crawler degli assistenti AI che non eseguono JavaScript (voce 21 dell'audit); il browser le mostra normalmente.
+ * Le email escono tra i marcatori <!-- emo-exclude --> del plugin EMO e con «@» scritta &#64;: EMO non le trasforma in
+ * JavaScript, quindi restano leggibili dai crawler degli assistenti AI che non eseguono JavaScript (voce 21 dell'audit);
+ * il browser le mostra normalmente.
  * Campo vuoto = stringa vuota (come faceva Yext).
  */
 $campo  = (string) $modx->getOption('campo', $scriptProperties, '');
@@ -48,11 +49,14 @@ if (!is_string($v0) || trim($v0) === '') {
 $e   = fn($s) => htmlspecialchars((string) $s, ENT_QUOTES, 'UTF-8');
 $tv  = function ($nome) use ($res) { $v = $res->getTVValue($nome); return is_string($v) ? trim($v) : ''; };
 $cls = $classe !== '' ? ' class="' . $e($classe) . '"' : '';
-$mail = function ($indirizzo) use ($e, $cls) {
+$mail = function ($indirizzo) use ($e, $cls, $modx) {
     $indirizzo = strtolower(trim((string) $indirizzo));
     if (!preg_match('/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/', $indirizzo)) return '';
     $v = str_replace('@', '&#64;', $e($indirizzo));
-    return '<a' . $cls . ' href="mailto:' . $v . '">' . $v . '</a>';
+    // Fuori dall'offuscamento di EMO (che riconosce anche la «@» scritta &#64;): marcatori di esclusione del plugin
+    // (aa.contatti_emo_escludi = 0 per toglierli). Così l'indirizzo è nell'HTML servito, leggibile dai crawler AI.
+    $a = '<a' . $cls . ' href="mailto:' . $v . '">' . $v . '</a>';
+    return (int) $modx->getOption('aa.contatti_emo_escludi', null, 1) ? '<!-- emo-exclude -->' . $a . '<!-- /emo-exclude -->' : $a;
 };
 /* Numero nazionale leggibile: prefisso + numero. Prefissi a 2 cifre (02, 06), a 3 cifre dall'elenco dei distretti
  * a tre cifre, gli altri a 4; cellulari 3xx + resto. */
