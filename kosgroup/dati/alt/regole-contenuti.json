@@ -1,5 +1,5 @@
 {
- "nota": "KOS-7: immagini scritte nel contenuto. Controllo dell'8/11 su 865 pagine della sitemap: 339 senza alt (336 segnaposto dei medici nelle schede, decorativo) e 78 foto di contenuto con alt vuoto nelle pagine istituzionali (storia, perché lavorare in KOS, cura delle persone, visione e valori, ricerca, posizioni aperte, KOS Academy, home). Testi scritti guardando le foto, senza nomi di persone, in italiano per le pagine it/ e in inglese per le en/: validati da Danilo l'8/11 (34 OK, 4 corretti). Restano con alt vuoto, perché decorative: separatori e sfondi (img-sep, sfondo-tit-img, servizi-main-bg), anteprime dei video accanto al titolo, loghi dei progetti speciali accanto al nome, foto delle tecnologie nelle schede dell'elenco (link con il nome). Pagina Sostenibilità esclusa: lavoro extra kos-sostenibilita.",
+ "nota": "KOS-7: immagini scritte nel contenuto. Controllo dell'8/11 su 865 pagine della sitemap: 339 senza alt (336 segnaposto dei medici nelle schede, decorativo) e 78 foto di contenuto con alt vuoto nelle pagine istituzionali (storia, perché lavorare in KOS, cura delle persone, visione e valori, ricerca, posizioni aperte, KOS Academy, home). Testi scritti guardando le foto, senza nomi di persone, in italiano per le pagine it/ e in inglese per le en/: validati da Danilo l'8/11 (34 OK, 4 corretti). Restano con alt vuoto, perché decorative: separatori e sfondi (img-sep, sfondo-tit-img, servizi-main-bg), anteprime dei video accanto al titolo, loghi dei progetti speciali accanto al nome, foto delle tecnologie nelle schede dell'elenco (link con il nome). Pagina Sostenibilità esclusa: lavoro extra kos-sostenibilita. La foto del banner dei check-up è nel chunk checkup-banner-small (pacchetto kos-7-alt). img-laterale-1/2 della home non sono nei contenuti né negli elementi esportati: da cercare (probabilmente in una TV della home).",
  "regole": [
   {
    "src": "/assets/img/medico-thumb.svg",
@@ -782,18 +782,6 @@
   {
    "src": "/assets/img/kos-academy-2.jpg",
    "alt": "Healthcare workers attending a KOS Academy course",
-   "uri_prefisso": "en/",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/mychekup-analisi-banner.jpg",
-   "alt": "Dottoressa e paziente durante un colloquio",
-   "uri_prefisso": "it/",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/mychekup-analisi-banner.jpg",
-   "alt": "Doctor talking with a patient",
    "uri_prefisso": "en/",
    "sostituisci_vuoto": true
   }

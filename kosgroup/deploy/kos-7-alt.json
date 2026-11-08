@@ -1,5 +1,5 @@
 {
-  "nome": "KOS-7 testi alternativi: foto delle strutture (gallerie «<struttura> – foto N di T», schede negli elenchi), immagine di testata di articoli e tecnologie (alt dal titolo; prima [[+introtext]] vuoto), alt rotto «*pagetitle]]» di imgFooter, freccia decorativa delle news di struttura",
+  "nome": "KOS-7 testi alternativi: foto delle strutture (gallerie «<struttura> – foto N di T», schede negli elenchi), immagine di testata di articoli e tecnologie (alt dal titolo; prima [[+introtext]] vuoto), alt rotto «*pagetitle]]» di imgFooter, freccia decorativa delle news di struttura; foto del banner dei check-up (checkup-banner-small)",
   "elements": [
     {
       "type": "snippet",
@@ -42,6 +42,12 @@
       "name": "tecnologie",
       "file": "kosgroup/elements/templates/tecnologie.html",
       "baseline": "kosgroup/baseline/templates/tecnologie.html"
+    },
+    {
+      "type": "chunk",
+      "name": "checkup-banner-small",
+      "file": "kosgroup/elements/chunks/checkup-banner-small.html",
+      "baseline": "kosgroup/baseline/chunks/checkup-banner-small.html"
     }
   ]
 }
