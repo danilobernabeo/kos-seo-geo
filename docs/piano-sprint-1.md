@@ -387,6 +387,19 @@ del 5/11 (rendering Yext, secondo JSON-LD sulle schede) chiusi; 865/865 pagine c
   stabilità visiva (misura e correzione sullo stage, rilascio 23-26/11), KOS 11 medici (parte tecnica sullo stage, dati da
   IT/TuoTempo entro il 20/11, da sollecitare), verifica completa il 26/11. KOS 10 già in produzione dal 1/11.
 
+**Schede residenza AA sullo stage (8/11, sprint 3, voci AA-2/5/11/21).** Pacchetti `anniazzurri/deploy/aa-schede.json`
+(18 TV `str.*` sul template `rsa`, fax compreso; snippet `aaContatto`; `aaSchema` con il nodo `#localbusiness`) e
+`aa-schede-attivazione.json` (`aa.struttura_attiva` = 1; `contactBox` e le varianti di Rezzato, Casteldonino, San Lorenzo,
+Villaggio San Francesco con i dati dal server; script Yext tolto da `head-rsa`). TV da
+`anniazzurri/dati/schede/strutture-yext-2026-11-06.json` (`strutture-in-tv.py --fax --correzioni`), markup Yext nei
+contenuti convertito con `scripts/deploy/aa-yext-contenuti.php` (circa 40 pagine). Email della residenza tra i marcatori
+`<!-- emo-exclude -->` (EMO offusca anche `&#64;`), email del direttore ancora offuscata. Collaudo
+`collaudo-kos-24.mjs --sito=aa`: 57/57 OK. Confronto Yext/sito (fotografia `scripts/checks/aa-schede-anagrafica.php`):
+email `@sstefano.it` → `@anniazzurri.it` (Dorica, Santa Maria in Chienti, confermato da Danilo), indirizzi di Conero,
+Dorica e Santa Maria scritti per esteso, Villa Pineta come residenza; da confermare con KOS il 9/11: email di Abitare il
+Tempo, San Martino, Casa Serena, San Faustino; telefoni di Navigli (02 833051 / 02 803051), Villa Pineta e Santa Maria in
+Chienti; email di Villa Pineta. Produzione dal 16/11 (dopo la verifica dello sprint 1 su `aaSchema` e `head-rsa`).
+
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
 
 Analisi nella chat «Sostituzione barra di ricerca Yext» (26/10): Yext Answers su entrambi i siti (KOS circa 2.150
