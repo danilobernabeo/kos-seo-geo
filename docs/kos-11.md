@@ -5,6 +5,12 @@ almeno nome, immagine, specializzazione e struttura di appartenenza.
 
 ## Stato
 
+- 8/11, collaudo sullo stage: 150 pagine, 91 `IndividualPhysician` e 59 `Person`; 2 KO per spazi doppi o finali
+  nel titolo della pagina (Michele Tulli, Rolando Gregorio Edoardo Rocchetti), corretti nella libreria (nome con gli
+  spazi normalizzati). I 9 medici `Person` sono i 7 di Villa Margherita Vicenza (id 233), che non ha ancora il nodo
+  struttura (esclusa dall'import della voce 24 in attesa della decisione di KOS: una entità, due pagine), e 2 senza
+  struttura. Con il nodo di Villa Margherita Vicenza diventano `IndividualPhysician` senza altri interventi (29
+  professionisti della struttura in tutto).
 - 8/11: parte tecnica pronta nella libreria comune (`shared/snippets/seoSchema.php`, snippet `kosSchema`), pacchetto
   `kosgroup/deploy/kos-11.json`, simulazione superata (`scripts/test/seo-schema-simulazione.php`, casi 777-780),
   collaudo `scripts/collaudo/collaudo-kos-11.mjs`. Da installare sullo stage.
@@ -51,6 +57,8 @@ ne ha una adatta).
 
 - Refusi nel ruolo, visibili sulla pagina: «Chiururgo generale», «Chirrugo vascolare».
 - Ruoli scritti come disciplina invece che come professione: «Cardiologia», «Radiologia».
+- Titoli con spazi doppi o finali: Michele Tulli, Rolando Gregorio Edoardo Rocchetti (il dato strutturato li corregge,
+  la pagina no).
 - Due pagine pubblicate senza struttura (`idSedeLavoro` vuoto) e 18 senza foto (export del 29/10).
 - 14 pagine non pubblicate nel template.
 

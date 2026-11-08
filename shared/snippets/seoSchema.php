@@ -843,7 +843,7 @@ $professionista = function ($r) use (
     if (!$r || !$r->get('published') || $r->get('deleted')) return null;
     $pagina = $url($r->get('id'));
     if ($pagina === '') return null;
-    $ruolo = trim((string) $tv($r, $MED_TV_RUOLO));
+    $ruolo = trim((string) preg_replace('/[\s\x{00A0}]+/u', ' ', (string) $tv($r, $MED_TV_RUOLO)));
     $tipo = $ruoloProfessionista($ruolo);
     // Strutture con nodo (#localbusiness) e indirizzo della prima: IndividualPhysician è un'attività locale per Google,
     // che vuole address (Rich Results Test, «Attività locali»). Il medico riceve l'indirizzo della sede in cui opera;
@@ -858,7 +858,8 @@ $professionista = function ($r) use (
     $nodo = [
         '@type'       => $tipo['medico'] ? 'IndividualPhysician' : 'Person',
         '@id'         => $idDi($pagina, $tipo['medico'] ? 'medico' : 'person'),
-        'name'        => trim((string) $r->get('pagetitle')),
+        // spazi doppi e finali nei titoli inseriti a mano (es. «Michele  Tulli», «… Rocchetti »): via dal nome
+        'name'        => trim((string) preg_replace('/[\s\x{00A0}]+/u', ' ', (string) $r->get('pagetitle'))),
         'url'         => $pagina,
         'image'       => $immagine($tv($r, $MED_TV_IMG), true),
         'description' => $testo($r->get('description')),

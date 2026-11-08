@@ -62,7 +62,8 @@ for (const p of pagine) {
     if (!n) err.push('nodo del professionista assente');
     else {
       if (wp?.mainEntity?.['@id'] !== n['@id']) err.push('mainEntity della pagina ≠ professionista');
-      if (n.name !== p.pagetitle.trim()) err.push(`name «${n.name}»`);
+      const pulito = x => String(x || '').replace(/[\s\u00A0]+/g, ' ').trim();
+      if (n.name !== pulito(p.pagetitle)) err.push(`name «${n.name}» (titolo «${p.pagetitle}»)`);
       if (p.infoImage && !n.image?.url) err.push('immagine assente');
       const t = tipi(n).join(',');
       if (t === 'IndividualPhysician') {
@@ -73,7 +74,7 @@ for (const p of pagine) {
       } else if (t === 'Person') {
         if (!n['@id'].endsWith('#person')) err.push('@id non #person');
         if (n.practicesAt) err.push('practicesAt su Person');
-        if ((n.jobTitle || '') !== p.ruolo.trim()) err.push(`jobTitle «${n.jobTitle}»`);
+        if ((n.jobTitle || '') !== p.ruolo.replace(/[\s\u00A0]+/g, ' ').trim()) err.push(`jobTitle «${n.jobTitle}»`);
         if (!n.worksFor) err.push('worksFor assente');
       } else err.push('tipo ' + t);
     }
