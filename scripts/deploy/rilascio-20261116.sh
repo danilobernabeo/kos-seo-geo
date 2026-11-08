@@ -20,7 +20,7 @@ installa-elementi.php anniazzurri/deploy/aa-9-alt.json
 alt-contenuti.php anniazzurri/dati/alt/regole-contenuti.json' ;;
   kos) PASSI='installa-elementi.php kosgroup/deploy/kos-11.json
 installa-elementi.php kosgroup/deploy/kos-7-alt.json
-alt-contenuti.php kosgroup/dati/alt/regole-contenuti.json' ;;
+alt-contenuti.php kosgroup/dati/alt/regole-contenuti.json --tv=modale' ;;
   *) echo "Uso: sh scripts/deploy/rilascio-20261116.sh aa|kos [--scrivi]"; exit 1 ;;
 esac
 N=0
