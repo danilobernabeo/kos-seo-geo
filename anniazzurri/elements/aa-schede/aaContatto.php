@@ -61,8 +61,10 @@ $mail = function ($indirizzo) use ($e, $cls, $modx) {
 /* Numero nazionale leggibile: prefisso + numero. Prefissi a 2 cifre (02, 06), a 3 cifre dall'elenco dei distretti
  * a tre cifre, gli altri a 4; cellulari 3xx + resto. */
 $leggibile = function ($n) {
-    $n = preg_replace('/\D/', '', (string) $n);
-    if (strpos($n, '39') === 0 && strlen($n) > 10) $n = substr($n, 2);
+    $n = trim((string) $n);
+    // prefisso internazionale solo se scritto (+39 / 0039): un numero di 10 cifre che inizia per 39 può essere un cellulare
+    $n = preg_replace('/^(?:\+|00)39/', '', preg_replace('/[^\d+]/', '', $n));
+    $n = preg_replace('/\D/', '', $n);
     if ($n === '') return '';
     if ($n[0] === '3') return substr($n, 0, 3) . ' ' . substr($n, 3);
     if (in_array(substr($n, 0, 2), ['02', '06'], true)) return substr($n, 0, 2) . ' ' . substr($n, 2);

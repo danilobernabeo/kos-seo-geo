@@ -103,6 +103,7 @@ for (const s of schede) {
     if (/data-yext-field/.test(html)) err.push('markup Yext (data-yext-field) ancora presente');
     const cifre = soloCifre(tv['str.telefono']).replace(/^\+?39/, '');
     if (cifre && !html.includes(`href="tel:+39${cifre}"`)) err.push('telefono assente dal box');
+    if (/href="tel:\+39\d+">\s*39/.test(html)) err.push('telefono mostrato con il prefisso 39');
     if (tv['str.email'] && !testo.includes(`mailto:${tv['str.email']}`)) err.push('email assente dal box');
     if (tv['str.via'] && !testo.includes(tv['str.via'])) err.push('indirizzo assente dal box');
     if (tv['str.email'] && html.includes(`mailto:${tv['str.email']}`)) err.push('email della residenza con @ in chiaro: EMO la offusca');
