@@ -90,6 +90,15 @@ Esclusa la pagina Sostenibilità (lavoro extra `kos-sostenibilita`).
 
 ### anniazzurri.it
 
+Le 18 foto delle tre news non sono nel contenuto: le stampa lo snippet `NewsGallery` dalla cartella
+`assets/img/news/<id>/`. Lo snippet ora legge i testi da `alt.txt` nella stessa cartella (una riga per foto,
+«nome-file | testo») e, per le gallerie senza `alt.txt`, usa «titolo della news – foto N di T» (prima l'alt era sempre
+vuoto). Pacchetto `anniazzurri/deploy/aa-9-alt.json`. Per le prossime news basta caricare `alt.txt` con le foto.
+
+KOS: la foto del banner dei check-up è nel chunk `checkup-banner-small` (pacchetto `kos-7-alt`); le foto laterali della
+home sono nel contenuto delle risorse 1 e 990 (la versione mobile `img-faq-3-mb.jpg` è una foto diversa: testo
+aggiunto l'8/11).
+
 | Immagine | Alt |
 | --- | --- |
 | `dir-residenza-anni-azzurri-volpiano.jpg` | Stefania Sali, direttrice della Residenza Anni Azzurri Volpiano |

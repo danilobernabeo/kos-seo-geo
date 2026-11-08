@@ -38,7 +38,7 @@ Aggiornare l'elenco a ogni intervento.
 
 | Elemento | Tipo | Voce | Stato |
 | `/dist/css/custom.css`, `/dist/css/kos-seo-geo.css` (blocco AA-4) | file | AA-4: caroselli Flickity con lo spazio finale prima dell'avvio, spazio riservato alla ricerca Yext della home | sviluppo (8/11), pacchetto `aa-4-cls` |
-| contenuti con immagini senza alt o con alt vuoto (regole `anniazzurri/dati/alt/regole-contenuti.json`) | campo content | AA-9 | sviluppo (8/11), `scripts/deploy/alt-contenuti.php` |
+| contenuti con immagini senza alt o con alt vuoto (regole `anniazzurri/dati/alt/regole-contenuti.json`); snippet `NewsGallery` e `assets/img/news/<id>/alt.txt` | campo content, snippet, file | AA-9 | sviluppo (8/11), `scripts/deploy/alt-contenuti.php` e pacchetto `aa-9-alt` |
 |---|---|---|---|
 | `AssetVersion` (shared) | plugin (nuovo) | KOS-3 (`?v=` automatico su CSS/JS) | in produzione (20/10) |
 | Web Rules | configurazione | KOS-3 e redirect | `kosgroup/files/web-rules/web-rules.conf` |

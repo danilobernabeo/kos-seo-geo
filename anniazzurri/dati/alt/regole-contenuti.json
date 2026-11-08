@@ -1,5 +1,5 @@
 {
- "nota": "AA-9: immagini senza alt nel contenuto (controllo dell'8/11 su 454 pagine della sitemap e 36 landing): alt vuoto per le icone accanto a un titolo o a un numero (decorative), descrittivo per le foto. Foto delle news con alt vuoto (3 articoli, 18 foto): descrizioni scritte guardando le foto, senza nomi di persone (validate da Danilo l'8/11, tutte OK).",
+ "nota": "AA-9: immagini senza alt nel contenuto (controllo dell'8/11 su 454 pagine della sitemap e 36 landing): alt vuoto per le icone accanto a un titolo o a un numero (decorative), descrittivo per le foto. Le foto delle news (gallerie NewsGallery da assets/img/news/<id>/) hanno i testi in alt.txt nella cartella (anniazzurri/files/assets/img/news/<id>/alt.txt, pacchetto aa-9-alt), validati da Danilo l'8/11.",
  "regole": [
   {
    "src": "/assets/img/dir-residenza-anni-azzurri-volpiano.jpg",
@@ -40,96 +40,6 @@
   {
    "src": "/assets/img/icon-collaboratori.png",
    "alt": ""
-  },
-  {
-   "src": "/assets/img/news/484/rsa-sa-giuseppe-invecchiamento-attivo-1.jpg",
-   "alt": "Piantine in vaso su un tavolo, progetto Invecchiamento attivo della RSA San Giuseppe",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/news/484/rsa-sa-giuseppe-invecchiamento-attivo-2.jpg",
-   "alt": "Operatrice e ospite compongono foglie su un telo durante un laboratorio",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/news/484/rsa-sa-giuseppe-invecchiamento-attivo-3.jpg",
-   "alt": "Ospite e operatore osservano le piante nell'orto",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/news/484/rsa-sa-giuseppe-invecchiamento-attivo-4.jpg",
-   "alt": "Ospiti e operatrice al tavolo del laboratorio con foglie e limoni",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/news/484/rsa-sa-giuseppe-invecchiamento-attivo-5.jpg",
-   "alt": "Ospiti e operatori con i teli decorati davanti al porticato della residenza",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/news/484/rsa-sa-giuseppe-invecchiamento-attivo-6.jpg",
-   "alt": "Telo decorato con le impronte delle foglie",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/news/484/rsa-sa-giuseppe-invecchiamento-attivo-7.jpg",
-   "alt": "Ospiti e operatori al tavolo del laboratorio con le foglie",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/news/484/rsa-sa-giuseppe-invecchiamento-attivo-8.jpg",
-   "alt": "Ospite in carrozzina accarezza le capre durante una visita alla fattoria",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/news/484/rsa-sa-giuseppe-invecchiamento-attivo-9.jpg",
-   "alt": "Ospite in carrozzina raccoglie le foglie di un albero in giardino",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/news/524/grosseto-presentato-il-centro-diurno-maremma-01.jpg",
-   "alt": "Intervento al microfono alla presentazione del Centro Diurno Anni Azzurri Maremma a Grosseto",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/news/524/grosseto-presentato-il-centro-diurno-maremma-02.jpg",
-   "alt": "Pubblico alla presentazione del Centro Diurno Anni Azzurri Maremma",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/news/524/grosseto-presentato-il-centro-diurno-maremma-03.jpg",
-   "alt": "Brochure del Centro Diurno Anni Azzurri Maremma",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/news/524/grosseto-presentato-il-centro-diurno-maremma-04.jpg",
-   "alt": "Interventi dei relatori alla presentazione del Centro Diurno Anni Azzurri Maremma",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/news/524/grosseto-presentato-il-centro-diurno-maremma-05.jpg",
-   "alt": "Autorità in visita al Centro Diurno Anni Azzurri Maremma",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/news/529/kos-premiata-al-convegno-agire-2026-con-il-progetto-pannolone-intelligente-01.jpg",
-   "alt": "Premiazione del progetto Pannolone intelligente al convegno AGIRE 2026",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/news/529/kos-premiata-al-convegno-agire-2026-con-il-progetto-pannolone-intelligente-02.jpg",
-   "alt": "Consegna degli attestati ai premiati del convegno AGIRE 2026",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/news/529/kos-premiata-al-convegno-agire-2026-con-il-progetto-pannolone-intelligente-03.jpg",
-   "alt": "Foto di gruppo dei premiati al convegno AGIRE 2026",
-   "sostituisci_vuoto": true
-  },
-  {
-   "src": "/assets/img/news/529/kos-premiata-al-convegno-agire-2026-con-il-progetto-pannolone-intelligente-04.jpg",
-   "alt": "Presentazione del progetto «Il pannolone intelligente: oltre il presidio, verso il servizio» al convegno AGIRE 2026",
-   "sostituisci_vuoto": true
   }
  ]
 }

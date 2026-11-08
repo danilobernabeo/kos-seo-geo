@@ -1,0 +1,25 @@
+{
+  "nome": "AA-9 testi alternativi delle gallerie delle news: snippet NewsGallery (alt da alt.txt della cartella, altrimenti «titolo – foto N di T») e alt.txt delle news 484, 524, 529",
+  "elements": [
+    {
+      "type": "snippet",
+      "name": "NewsGallery",
+      "file": "anniazzurri/elements/snippets/NewsGallery.php",
+      "baseline": "anniazzurri/baseline/snippets/NewsGallery.php"
+    }
+  ],
+  "files": [
+    {
+      "file": "anniazzurri/files/assets/img/news/484/alt.txt",
+      "dest": "assets/img/news/484/alt.txt"
+    },
+    {
+      "file": "anniazzurri/files/assets/img/news/524/alt.txt",
+      "dest": "assets/img/news/524/alt.txt"
+    },
+    {
+      "file": "anniazzurri/files/assets/img/news/529/alt.txt",
+      "dest": "assets/img/news/529/alt.txt"
+    }
+  ]
+}

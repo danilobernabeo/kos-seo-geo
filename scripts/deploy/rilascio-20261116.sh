@@ -16,6 +16,7 @@ imposta-tv.php anniazzurri/dati/schede/strutture-yext-2026-11-06.json
 aa-yext-contenuti.php
 installa-elementi.php anniazzurri/deploy/aa-schede-attivazione.json
 installa-elementi.php anniazzurri/deploy/aa-4-cls.json
+installa-elementi.php anniazzurri/deploy/aa-9-alt.json
 alt-contenuti.php anniazzurri/dati/alt/regole-contenuti.json' ;;
   kos) PASSI='installa-elementi.php kosgroup/deploy/kos-11.json
 installa-elementi.php kosgroup/deploy/kos-7-alt.json
