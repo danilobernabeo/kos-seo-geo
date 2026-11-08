@@ -1,0 +1,17 @@
+{
+  "nome": "KOS-2 TTFB: chunk kosplayer-banner-small dentro i commenti HTML disattivato con [[- ]] (MODX lo esegue comunque) nei box informativi dei check-up",
+  "elements": [
+    {
+      "type": "chunk",
+      "name": "box-info-check-up-prevenzione",
+      "file": "kosgroup/elements/chunks/box-info-check-up-prevenzione.html",
+      "baseline": "kosgroup/baseline/chunks/box-info-check-up-prevenzione.html"
+    },
+    {
+      "type": "chunk",
+      "name": "box-info-checkup",
+      "file": "kosgroup/elements/chunks/box-info-checkup.html",
+      "baseline": "kosgroup/baseline/chunks/box-info-checkup.html"
+    }
+  ]
+}

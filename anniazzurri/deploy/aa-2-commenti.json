@@ -1,0 +1,23 @@
+{
+  "nome": "AA-2 TTFB: tag MODX dentro i commenti HTML disattivati con [[- ]] (MODX li esegue comunque): snippet non in cache switchCta-landing-badante in header-209, chunk tariffa-agevolata-landing nei footer delle landing",
+  "elements": [
+    {
+      "type": "chunk",
+      "name": "header-209",
+      "file": "anniazzurri/elements/chunks/header-209.html",
+      "baseline": "anniazzurri/baseline/chunks/header-209.html"
+    },
+    {
+      "type": "chunk",
+      "name": "footer-rsa-landing",
+      "file": "anniazzurri/elements/chunks/footer-rsa-landing.html",
+      "baseline": "anniazzurri/baseline/chunks/footer-rsa-landing.html"
+    },
+    {
+      "type": "chunk",
+      "name": "footer-ap-landing",
+      "file": "anniazzurri/elements/chunks/footer-ap-landing.html",
+      "baseline": "anniazzurri/baseline/chunks/footer-ap-landing.html"
+    }
+  ]
+}
