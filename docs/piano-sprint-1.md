@@ -415,6 +415,13 @@ e `kos-2-commenti` (`box-info-check-up-prevenzione`, `box-info-checkup`: `[[$kos
 `[[- ]]`. Verifica: pagine 200, nessun commento con tag o markup nel sorgente (landing 209 AA, tre pagine check-up KOS).
 `commenti-modx.php` sulle 14 pagine provincia: 0 pagine, già pulite (verificato anche in produzione).
 
+**AA 4 stabilità visiva, misura e correzione l'8/11** (dettaglio in `docs/aa-4.md`): dati reali dal tag Web Vitals
+(dal 1/11): CLS p75 desktop 0,157 sulla home, 0,077 sulle altre pagine; mobile 0. Cause: sulla home i caroselli Flickity
+impilati prima dell'avvio e la barra di ricerca Yext (0,236 a 575 ms, è lo spostamento del video dell'agenzia); su tutte le
+pagine desktop l'apertura automatica della chat HubSpot dopo circa 10 s (85% delle visite sopra 0,1 fuori dalla home).
+Correzione CSS nel pacchetto `aa-4-cls` (verificata al pixel a 1366 e 390 px). La chat è un'impostazione di HubSpot: da
+proporre a KOS.
+
 **KOS 11 professionisti, parte tecnica pronta l'8/11** (dettaglio in `docs/kos-11.md`): nella libreria comune, sulle 150
 pagine pubblicate del template `medici`, `IndividualPhysician` `#medico` (specialità dal ruolo, `address` e
 `practicesAt` della sede con scheda) per i medici, `Person` `#person` (`jobTitle`, `worksFor`) per gli altri

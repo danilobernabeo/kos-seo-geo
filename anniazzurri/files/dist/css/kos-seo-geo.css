@@ -45,3 +45,17 @@ h3.card-header { font-size: inherit; font-weight: inherit; line-height: inherit;
    width/height l'altezza segue la larghezza (Bootstrap dà alla card-img-top solo width: 100%) */
 .card > picture, .card a > picture { display: contents; }
 img.card-img-top[height] { height: auto; }
+
+/* AA-4 stabilità visiva (CLS). Prima che Flickity si avvii (script in fondo alla pagina) le celle dei caroselli sono
+   impilate: sulla home la testata è alta 2.835 px invece di 567 e tutta la pagina sotto risale all'avvio (CLS 0,24 a
+   1920×1031, misura dell'8/11). Prima dell'avvio le celle stanno già affiancate e il carosello occupa lo spazio finale:
+   altezza della cella più alta, come Flickity; nei caroselli con adaptiveHeight (gallerie) conta solo la prima cella.
+   .carousel: caroselli avviati da /dist/js/app.js senza data-flickity (news della home). */
+[data-flickity]:not(.flickity-enabled), .carousel:not(.flickity-enabled) { display: flex; overflow: hidden; }
+[data-flickity]:not(.flickity-enabled) > *, .carousel:not(.flickity-enabled) > * { flex: 0 0 auto; }
+[data-flickity*="adaptiveHeight"]:not(.flickity-enabled) { align-items: flex-start; }
+[data-flickity*="adaptiveHeight"]:not(.flickity-enabled) > :not(:first-child) { position: absolute; visibility: hidden; }
+
+/* AA-4: barra di ricerca Yext Answers della home, scritta da JavaScript (+58 px dopo il caricamento): spazio riservato.
+   Da togliere con la sostituzione della ricerca Yext (linea C). */
+#main-content .search_form { min-height: 58px; }

@@ -37,6 +37,7 @@ Aggiornare l'elenco a ogni intervento.
 ## kosgroup.com
 
 | Elemento | Tipo | Voce | Stato |
+| `/dist/css/custom.css`, `/dist/css/kos-seo-geo.css` (blocco AA-4) | file | AA-4: caroselli Flickity con lo spazio finale prima dell'avvio, spazio riservato alla ricerca Yext della home | sviluppo (8/11), pacchetto `aa-4-cls` |
 |---|---|---|---|
 | `AssetVersion` (shared) | plugin (nuovo) | KOS-3 (`?v=` automatico su CSS/JS) | in produzione (20/10) |
 | Web Rules | configurazione | KOS-3 e redirect | `kosgroup/files/web-rules/web-rules.conf` |

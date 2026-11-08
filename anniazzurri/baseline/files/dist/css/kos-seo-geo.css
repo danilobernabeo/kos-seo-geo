@@ -1,0 +1,47 @@
+/* ==========================================================================
+   kos-seo-geo — AA-1 immagini di sfondo → <img>, AA-6 titoli (ottobre 2026)
+   Blocco aggiunto in fondo a /dist/css/custom.css e copiato in /dist/css/kos-seo-geo.css
+   (head delle landing, che non caricano custom.css). Sorgente: anniazzurri/files/css/kos-seo-geo.css.
+   ========================================================================== */
+
+/* AA-1: immagine che sostituisce lo sfondo CSS. L'elemento contenitore ha position-relative;
+   l'immagine lo riempie come faceva background-size: cover; è il primo figlio, quindi overlay e testi
+   (posizionati e successivi nel codice) restano sopra. */
+.kos-sfondo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: inherit;
+  z-index: 0;
+}
+/* L'<img> eredita gli angoli arrotondati dal <picture>, che a sua volta li eredita dal contenitore
+   (senza questa riga il <picture> ha raggio 0 e l'immagine esce dagli angoli arrotondati) */
+picture:has(> img.kos-sfondo) { border-radius: inherit; }
+
+/* Immagini dentro i caroselli (gallerie): il <picture> non deve cambiare l'impaginazione dell'<img>;
+   gli attributi width/height servono solo alle proporzioni, la larghezza resta automatica come prima
+   (il carosello fissa l'altezza: con la larghezza dell'attributo l'immagine verrebbe deformata) */
+.carousel-cell > picture { display: contents; }
+.carousel-cell img[width]:not(.kos-sfondo) { width: auto; }   /* non le immagini-sfondo delle slide */
+
+/* AA-6: «Guarda meno / Guarda di più» degli accordion scritto dal CSS, fuori dal testo dell'H2 */
+.accordion-button-helper [data-testo]::after { content: attr(data-testo); }
+
+/* AA-6: titoli diventati paragrafi. Le classi .h1-.h5 del tema (app.css) danno già al paragrafo margini, interlinea,
+   peso e dimensione dei titoli; resta da correggere il footer, dove app.css rimpicciolisce tutti i paragrafi
+   (footer[stripe-footer] p { font-size: .75rem }, più specifica di .h3): frase della newsletter, prima un h2.h3 */
+footer[stripe-footer] p.h3 { font-size: calc(0.875rem + 1.5vw); }
+@media (min-width: 1200px) { footer[stripe-footer] p.h3 { font-size: 2rem; } }
+
+/* AA-6: intestazioni delle sottosezioni diventate H3 (Servizi, Chi accogliamo, Équipe, In automobile, Mezzi pubblici):
+   stesso aspetto della vecchia intestazione della scheda */
+h3.card-header { font-size: inherit; font-weight: inherit; line-height: inherit; font-family: inherit;
+  color: inherit; letter-spacing: inherit; margin-top: 0; margin-bottom: 0; }
+
+/* Immagini delle news (snippet `immagine`): il <picture> non cambia l'impaginazione della card; con gli attributi
+   width/height l'altezza segue la larghezza (Bootstrap dà alla card-img-top solo width: 100%) */
+.card > picture, .card a > picture { display: contents; }
+img.card-img-top[height] { height: auto; }
