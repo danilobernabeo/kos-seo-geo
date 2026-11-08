@@ -7,6 +7,8 @@
  * Pini Civitanova): resta caricata subito, con fetchpriority="high"; le altre (fino a 99 per scheda) hanno
  * loading="lazy" decoding="async". Indirizzi delle immagini assoluti (/assets/...). Il resto è invariato.
  * &priorita=`0` toglie fetchpriority alla prima foto (gallerie che non stanno in testa alla pagina).
+ * KOS-7 (8/11): testo alternativo «<nome della struttura> – foto N di T» (prima era vuoto: le foto delle strutture sono
+ * immagini di contenuto). Nome da &nome, altrimenti dalla TV str.nome o dal titolo della pagina che richiama lo snippet.
  */
 // Lettura del percorso della cartella dal parametro dello snippet
 $directory = $modx->getOption('path', $scriptProperties, '');
@@ -23,6 +25,13 @@ if (empty($directory)) {
 if (substr($directory, -1) !== '/') {
     $directory .= '/';
 }
+
+// Nome della struttura per il testo alternativo
+$nome = trim((string) $modx->getOption('nome', $scriptProperties, ''));
+if ($nome === '' && $modx->resource) {
+    $nome = trim((string) $modx->resource->getTVValue('str.nome')) ?: trim((string) $modx->resource->get('pagetitle'));
+}
+$nome = trim((string) preg_replace('/[\s\x{00A0}]+/u', ' ', $nome));
 
 // Creazione di un array di tutti i file immagine nella cartella
 $images = glob($directory . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
@@ -47,7 +56,8 @@ foreach ($images as $i => $image) {
 
     // Aggiunge il codice HTML per ciascuna immagine
     $output .= '<div class="gallery-foto" data-pswp-width="' . $width . '" data-pswp-height="' . $height . '" data-pswp-src="' . $relativePath . '">';
-    $output .= '<img src="' . $relativePath . '" alt=""' . $caricamento . '/>';
+    $alt = $nome !== '' ? $nome . ' – foto ' . ($i + 1) . ' di ' . $totalImages : '';
+    $output .= '<img src="' . $relativePath . '" alt="' . htmlspecialchars($alt, ENT_QUOTES, 'UTF-8') . '"' . $caricamento . '/>';
     $output .= '</div>';
 }
 

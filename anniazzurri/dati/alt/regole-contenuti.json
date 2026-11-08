@@ -1,0 +1,15 @@
+{
+  "nota": "AA-9: immagini senza alt nel contenuto (controllo dell'8/11 su 454 pagine della sitemap e 36 landing): alt vuoto per le icone accanto a un titolo o a un numero (decorative), descrittivo per le foto.",
+  "regole": [
+    {"src": "/assets/img/dir-residenza-anni-azzurri-volpiano.jpg", "alt": "Stefania Sali, direttrice della Residenza Anni Azzurri Volpiano"},
+    {"src": "/assets/img/prestazioni-riabilitative-2.png", "alt": ""},
+    {"src": "/assets/img/prestazioni-infermieristiche-2.png", "alt": ""},
+    {"src": "/assets/img/prestazioni-specialistiche-2.png", "alt": ""},
+    {"src": "/assets/img/supporto-socio-assistenziale-2.png", "alt": ""},
+    {"src": "/assets/img/prestazioni-diagnostiche-2.png", "alt": ""},
+    {"src": "/assets/img/supporto-psicologico-2.png", "alt": ""},
+    {"src": "/assets/img/icon-esperienze-formative.svg", "alt": ""},
+    {"src": "/assets/img/icon-ore-totali-formazione.svg", "alt": ""},
+    {"src": "/assets/img/icon-collaboratori.png", "alt": ""}
+  ]
+}

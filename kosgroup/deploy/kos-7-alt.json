@@ -1,0 +1,47 @@
+{
+  "nome": "KOS-7 testi alternativi: foto delle strutture (gallerie «<struttura> – foto N di T», schede negli elenchi), immagine di testata di articoli e tecnologie (alt dal titolo; prima [[+introtext]] vuoto), alt rotto «*pagetitle]]» di imgFooter, freccia decorativa delle news di struttura",
+  "elements": [
+    {
+      "type": "snippet",
+      "name": "galleryStruttura",
+      "file": "kosgroup/elements/snippets/galleryStruttura.php",
+      "baseline": "kosgroup/baseline/snippets/galleryStruttura.php"
+    },
+    {
+      "type": "chunk",
+      "name": "listaStrutture",
+      "file": "kosgroup/elements/chunks/listaStrutture.html",
+      "baseline": "kosgroup/baseline/chunks/listaStrutture.html"
+    },
+    {
+      "type": "chunk",
+      "name": "servizi-centri-row",
+      "file": "kosgroup/elements/chunks/servizi-centri-row.html",
+      "baseline": "kosgroup/baseline/chunks/servizi-centri-row.html"
+    },
+    {
+      "type": "chunk",
+      "name": "imgFooter",
+      "file": "kosgroup/elements/chunks/imgFooter.html",
+      "baseline": "kosgroup/baseline/chunks/imgFooter.html"
+    },
+    {
+      "type": "chunk",
+      "name": "news-struttura",
+      "file": "kosgroup/elements/chunks/news-struttura.html",
+      "baseline": "kosgroup/baseline/chunks/news-struttura.html"
+    },
+    {
+      "type": "template",
+      "name": "informativo",
+      "file": "kosgroup/elements/templates/informativo.html",
+      "baseline": "kosgroup/baseline/templates/informativo.html"
+    },
+    {
+      "type": "template",
+      "name": "tecnologie",
+      "file": "kosgroup/elements/templates/tecnologie.html",
+      "baseline": "kosgroup/baseline/templates/tecnologie.html"
+    }
+  ]
+}

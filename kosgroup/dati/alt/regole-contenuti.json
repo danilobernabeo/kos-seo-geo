@@ -1,0 +1,6 @@
+{
+  "nota": "KOS-7: immagini scritte nel contenuto. alt vuoto = immagine decorativa (segnaposto, icona accanto al testo).",
+  "regole": [
+    {"src": "/assets/img/medico-thumb.svg", "alt": ""}
+  ]
+}
