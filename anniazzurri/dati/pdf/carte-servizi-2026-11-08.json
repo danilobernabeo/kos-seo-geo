@@ -1,0 +1,72 @@
+{
+ "sito": "aa",
+ "descrizione": "Carte dei servizi delle RSA delle Marche e di Idice (edizione novembre 2026) consegnate l'8/11: file sorgente (s, relativo alla cartella caricata) -> percorso sul sito (p) e metadati per pdf-metadati.php. Idice era già stata sostituita il 4/11: si riscrive solo se il file è diverso.",
+ "pdf": [
+  {
+   "s": "MARCHE/CDS RSA Abitare il Tempo - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-abitare-il-tempo/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Abitare il Tempo",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Abitare il Tempo di Loreto (AN), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "MARCHE/CDS RSA Casa Argento - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-casa-argento/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Casa Argento",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Casa Argento di Fossombrone (PU), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "MARCHE/CDS RSA Conero - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-conero/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Conero",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Conero di Ancona, edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "MARCHE/CDS RSA Residenza Dorica - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-dorica/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Dorica",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Dorica di Ancona, edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "MARCHE/CDS RSA San Giuseppe - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-giuseppe/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri San Giuseppe",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri San Giuseppe di San Benedetto del Tronto (AP), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "MARCHE/CDS RSA Santa Maria in Chienti - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-santa-maria-in-chienti/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Santa Maria in Chienti",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Santa Maria in Chienti di Montecosaro Scalo (MC), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "MARCHE/CDS RSA Valdaso - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-valdaso/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Valdaso",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Valdaso di Campofilone (FM), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "CDS RSA Idice - Nov26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-idice/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Idice",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Idice di Castenaso (BO), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  }
+ ],
+ "sospesi": [],
+ "esclusi": []
+}

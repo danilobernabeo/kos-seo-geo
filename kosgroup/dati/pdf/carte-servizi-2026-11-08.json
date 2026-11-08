@@ -1,0 +1,33 @@
+{
+ "sito": "kos",
+ "descrizione": "Poliambulatorio Parco di Veio: carta dei servizi (versione giugno 2026) e pieghevole consegnati l'8/11, stesso percorso dei file pubblicati.",
+ "pdf": [
+  {
+   "s": "CDS Poliambulatorio Parco di Veio (3).pdf",
+   "p": "/assets/doc/strutture/poliambulatorio-parco-di-veio/carta-dei-servizi.pdf",
+   "t": "Carta dei servizi – Poliambulatorio Parco di Veio",
+   "d": "Carta dei servizi del Poliambulatorio Parco di Veio di Roma, nella Residenza Anni Azzurri Parco di Veio, versione di giugno 2026.",
+   "a": "Gruppo KOS",
+   "l": "it-IT"
+  },
+  {
+   "s": "KOS CENTRO PARCO DI VEIO A5 v3.pdf",
+   "p": "/assets/doc/strutture/poliambulatorio-parco-di-veio/pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Poliambulatorio Parco di Veio",
+   "d": "Pieghevole del Poliambulatorio Parco di Veio di Roma: visite specialistiche in regime privato, specialità, sede, contatti e prenotazioni.",
+   "a": "Gruppo KOS",
+   "l": "it-IT"
+  }
+ ],
+ "sospesi": [
+  {
+   "s": "OpenDay Neurochirurgia.pdf",
+   "motivo": "locandina dell'open day del 20/11 al Poliambulatorio Valdaso: percorso e pagina che la richiama da decidere"
+  },
+  {
+   "s": "Template Customer CAR Macerata.pdf",
+   "motivo": "Customer Satisfaction 2025 del Centro Ambulatoriale di Macerata: nessun file corrispondente sul sito, percorso e pagina da decidere"
+  }
+ ],
+ "esclusi": []
+}
