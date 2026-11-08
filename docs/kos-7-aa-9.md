@@ -40,7 +40,7 @@ già scritto non si tocca. Lingua per prefisso dell'URI (`it/`, `en/`). Prova, `
 un template o in un chunk).
 
 Testi scritti guardando le foto, senza nomi di persone (salvo la direttrice di Volpiano, nominata nella pagina):
-**proposta da validare**. Le varianti mobili delle stesse foto hanno lo stesso testo.
+validati da Danilo l'8/11 con il foglio `docs/evidenze/kos-7-aa-9-20261108/validazione-alt-20261108.xlsx` (KOS 34 OK e 4 corretti, AA 28 OK). Le varianti mobili delle stesse foto hanno lo stesso testo.
 
 ### kosgroup.com (pagine istituzionali, italiano e inglese)
 
@@ -49,8 +49,8 @@ Testi scritti guardando le foto, senza nomi di persone (salvo la direttrice di V
 | `chi-siamo/2002-1.jpg` | Gruppo KOS, 2002: la nascita del Gruppo | KOS Group, 2002: the Group is founded |
 | `chi-siamo/2002-2.jpg` | Gruppo KOS, 2002: la nascita del Gruppo | KOS Group, 2002: the Group is founded |
 | `chi-siamo/2003-banner.jpg` | Gruppo KOS, 2003: le prime tre RSA in Liguria | KOS Group, 2003: the first three nursing homes in Liguria |
-| `chi-siamo/2004-1.jpg` | Gruppo KOS, 2004: l'ingresso nella riabilitazione psichiatrica | KOS Group, 2004: entry into psychiatric rehabilitation |
-| `chi-siamo/2004-2.jpg` | Gruppo KOS, 2004: l'ingresso nella riabilitazione psichiatrica | KOS Group, 2004: entry into psychiatric rehabilitation |
+| `chi-siamo/2004-1.jpg` | Una struttura sanitaria del Gruppo KOS | A KOS Group healthcare facility |
+| `chi-siamo/2004-2.jpg` | Terapia di gruppo nel parco della struttura | Group therapy in the facility's park |
 | `chi-siamo/2006-banner.jpg` | Gruppo KOS, 2006: l'acquisizione delle Residenze Anni Azzurri | KOS Group, 2006: acquisition of the Anni Azzurri residences |
 | `chi-siamo/2007-1.jpg` | Gruppo KOS, 2007: la riabilitazione si rafforza con Santo Stefano | KOS Group, 2007: rehabilitation grows with Santo Stefano |
 | `chi-siamo/2007-2.jpg` | Gruppo KOS, 2007: la riabilitazione si rafforza con Santo Stefano | KOS Group, 2007: rehabilitation grows with Santo Stefano |
@@ -67,7 +67,7 @@ Testi scritti guardando le foto, senza nomi di persone (salvo la direttrice di V
 | `img-competenze-2.jpg` | Fisioterapista e paziente durante un esercizio con un dispositivo di riabilitazione | Physiotherapist and patient using a rehabilitation device |
 | `img-competenze-1.jpg` | Paziente e terapista durante la riabilitazione del cammino | Patient and therapist during gait rehabilitation |
 | `chi-siamo/cura-delle-persone-banner.jpg` | Terapista e paziente durante un esercizio di riabilitazione | Therapist and patient during a rehabilitation exercise |
-| `chi-siamo/cura-di-te-1.jpg` | Bambini al tavolo durante un'attività di terapia | Children at a table during a therapy activity |
+| `chi-siamo/cura-di-te-1.jpg` | Bambino al tavolo durante un'attività di terapia | Child at a table during a therapy activity |
 | `chi-siamo/cura-di-te-2.jpg` | Operatrice e ospite in carrozzina leggono insieme | Care worker and resident in a wheelchair reading together |
 | `chi-siamo/sicurezza-nelle-cure-banner.jpg` | Operatrice sanitaria e ospite nel corridoio di una struttura | Healthcare worker and resident in a facility corridor |
 | `chi-siamo/assistenza-personalizzata-1.jpg` | Paziente e terapista durante la riabilitazione del cammino | Patient and therapist during gait rehabilitation |
@@ -83,7 +83,7 @@ Testi scritti guardando le foto, senza nomi di persone (salvo la direttrice di V
 | `intro-pagina-imgs-3.jpg` | Operatrice accompagna un'ospite | Care worker assisting a resident |
 | `intro-pagina-imgs-4.jpg` | Infermiera misura la pressione a un'ospite | Nurse measuring a resident's blood pressure |
 | `kos-academy-2.jpg` | Operatori sanitari in aula durante un corso KOS Academy | Healthcare workers attending a KOS Academy course |
-| `mychekup-analisi-banner.jpg` | Medica e paziente durante un colloquio | Doctor talking with a patient |
+| `mychekup-analisi-banner.jpg` | Dottoressa e paziente durante un colloquio | Doctor talking with a patient |
 
 In più: `medico-thumb.svg` (segnaposto dei medici senza foto, 336 nelle schede struttura) con alt vuoto.
 Esclusa la pagina Sostenibilità (lavoro extra `kos-sostenibilita`).

@@ -1,5 +1,5 @@
 {
- "nota": "AA-9: immagini senza alt nel contenuto (controllo dell'8/11 su 454 pagine della sitemap e 36 landing): alt vuoto per le icone accanto a un titolo o a un numero (decorative), descrittivo per le foto. Foto delle news con alt vuoto (3 articoli, 18 foto): descrizioni scritte guardando le foto, senza nomi di persone (da validare).",
+ "nota": "AA-9: immagini senza alt nel contenuto (controllo dell'8/11 su 454 pagine della sitemap e 36 landing): alt vuoto per le icone accanto a un titolo o a un numero (decorative), descrittivo per le foto. Foto delle news con alt vuoto (3 articoli, 18 foto): descrizioni scritte guardando le foto, senza nomi di persone (validate da Danilo l'8/11, tutte OK).",
  "regole": [
   {
    "src": "/assets/img/dir-residenza-anni-azzurri-volpiano.jpg",

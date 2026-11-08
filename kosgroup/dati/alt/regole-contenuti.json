@@ -1,5 +1,5 @@
 {
- "nota": "KOS-7: immagini scritte nel contenuto. Controllo dell'8/11 su 865 pagine della sitemap: 339 senza alt (336 segnaposto dei medici nelle schede, decorativo) e 78 foto di contenuto con alt vuoto nelle pagine istituzionali (storia, perché lavorare in KOS, cura delle persone, visione e valori, ricerca, posizioni aperte, KOS Academy, home). Testi scritti guardando le foto, senza nomi di persone, in italiano per le pagine it/ e in inglese per le en/: proposta da validare. Restano con alt vuoto, perché decorative: separatori e sfondi (img-sep, sfondo-tit-img, servizi-main-bg), anteprime dei video accanto al titolo, loghi dei progetti speciali accanto al nome, foto delle tecnologie nelle schede dell'elenco (link con il nome). Pagina Sostenibilità esclusa: lavoro extra kos-sostenibilita.",
+ "nota": "KOS-7: immagini scritte nel contenuto. Controllo dell'8/11 su 865 pagine della sitemap: 339 senza alt (336 segnaposto dei medici nelle schede, decorativo) e 78 foto di contenuto con alt vuoto nelle pagine istituzionali (storia, perché lavorare in KOS, cura delle persone, visione e valori, ricerca, posizioni aperte, KOS Academy, home). Testi scritti guardando le foto, senza nomi di persone, in italiano per le pagine it/ e in inglese per le en/: validati da Danilo l'8/11 (34 OK, 4 corretti). Restano con alt vuoto, perché decorative: separatori e sfondi (img-sep, sfondo-tit-img, servizi-main-bg), anteprime dei video accanto al titolo, loghi dei progetti speciali accanto al nome, foto delle tecnologie nelle schede dell'elenco (link con il nome). Pagina Sostenibilità esclusa: lavoro extra kos-sostenibilita.",
  "regole": [
   {
    "src": "/assets/img/medico-thumb.svg",
@@ -79,49 +79,49 @@
   },
   {
    "src": "/assets/img/chi-siamo/2004-1.jpg",
-   "alt": "Gruppo KOS, 2004: l'ingresso nella riabilitazione psichiatrica",
+   "alt": "Una struttura sanitaria del Gruppo KOS",
    "uri_prefisso": "it/",
    "sostituisci_vuoto": true
   },
   {
    "src": "/assets/img/chi-siamo/2004-1.jpg",
-   "alt": "KOS Group, 2004: entry into psychiatric rehabilitation",
+   "alt": "A KOS Group healthcare facility",
    "uri_prefisso": "en/",
    "sostituisci_vuoto": true
   },
   {
    "src": "/assets/img/chi-siamo/2004-1-mobile.jpg",
-   "alt": "Gruppo KOS, 2004: l'ingresso nella riabilitazione psichiatrica",
+   "alt": "Una struttura sanitaria del Gruppo KOS",
    "uri_prefisso": "it/",
    "sostituisci_vuoto": true
   },
   {
    "src": "/assets/img/chi-siamo/2004-1-mobile.jpg",
-   "alt": "KOS Group, 2004: entry into psychiatric rehabilitation",
+   "alt": "A KOS Group healthcare facility",
    "uri_prefisso": "en/",
    "sostituisci_vuoto": true
   },
   {
    "src": "/assets/img/chi-siamo/2004-2.jpg",
-   "alt": "Gruppo KOS, 2004: l'ingresso nella riabilitazione psichiatrica",
+   "alt": "Terapia di gruppo nel parco della struttura",
    "uri_prefisso": "it/",
    "sostituisci_vuoto": true
   },
   {
    "src": "/assets/img/chi-siamo/2004-2.jpg",
-   "alt": "KOS Group, 2004: entry into psychiatric rehabilitation",
+   "alt": "Group therapy in the facility's park",
    "uri_prefisso": "en/",
    "sostituisci_vuoto": true
   },
   {
    "src": "/assets/img/chi-siamo/2004-2-mobile.jpg",
-   "alt": "Gruppo KOS, 2004: l'ingresso nella riabilitazione psichiatrica",
+   "alt": "Terapia di gruppo nel parco della struttura",
    "uri_prefisso": "it/",
    "sostituisci_vuoto": true
   },
   {
    "src": "/assets/img/chi-siamo/2004-2-mobile.jpg",
-   "alt": "KOS Group, 2004: entry into psychiatric rehabilitation",
+   "alt": "Group therapy in the facility's park",
    "uri_prefisso": "en/",
    "sostituisci_vuoto": true
   },
@@ -463,25 +463,25 @@
   },
   {
    "src": "/assets/img/chi-siamo/cura-di-te-1.jpg",
-   "alt": "Bambini al tavolo durante un'attività di terapia",
+   "alt": "Bambino al tavolo durante un'attività di terapia",
    "uri_prefisso": "it/",
    "sostituisci_vuoto": true
   },
   {
    "src": "/assets/img/chi-siamo/cura-di-te-1.jpg",
-   "alt": "Children at a table during a therapy activity",
+   "alt": "Child at a table during a therapy activity",
    "uri_prefisso": "en/",
    "sostituisci_vuoto": true
   },
   {
    "src": "/assets/img/chi-siamo/cura-di-te-1-mobile.jpg",
-   "alt": "Bambini al tavolo durante un'attività di terapia",
+   "alt": "Bambino al tavolo durante un'attività di terapia",
    "uri_prefisso": "it/",
    "sostituisci_vuoto": true
   },
   {
    "src": "/assets/img/chi-siamo/cura-di-te-1-mobile.jpg",
-   "alt": "Children at a table during a therapy activity",
+   "alt": "Child at a table during a therapy activity",
    "uri_prefisso": "en/",
    "sostituisci_vuoto": true
   },
@@ -787,7 +787,7 @@
   },
   {
    "src": "/assets/img/mychekup-analisi-banner.jpg",
-   "alt": "Medica e paziente durante un colloquio",
+   "alt": "Dottoressa e paziente durante un colloquio",
    "uri_prefisso": "it/",
    "sostituisci_vuoto": true
   },
