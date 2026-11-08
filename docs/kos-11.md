@@ -11,6 +11,9 @@ almeno nome, immagine, specializzazione e struttura di appartenenza.
   struttura (esclusa dall'import della voce 24 in attesa della decisione di KOS: una entità, due pagine), e 2 senza
   struttura. Con il nodo di Villa Margherita Vicenza diventano `IndividualPhysician` senza altri interventi (29
   professionisti della struttura in tutto).
+- 8/11, dopo la correzione: collaudo sullo stage 150/150 OK; Rich Results Test su Stefano Albanelli (pagina
+  dell'esempio dell'audit): 5 elementi validi (Breadcrumb; Attività locali 1, solo `priceRange` facoltativo mancante;
+  Società 3: struttura, medico, ente). Evidenze in `docs/evidenze/kos-11-20261108/`.
 - 8/11: parte tecnica pronta nella libreria comune (`shared/snippets/seoSchema.php`, snippet `kosSchema`), pacchetto
   `kosgroup/deploy/kos-11.json`, simulazione superata (`scripts/test/seo-schema-simulazione.php`, casi 777-780),
   collaudo `scripts/collaudo/collaudo-kos-11.mjs`. Da installare sullo stage.

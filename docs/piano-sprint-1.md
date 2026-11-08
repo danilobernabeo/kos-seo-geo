@@ -419,7 +419,9 @@ e `kos-2-commenti` (`box-info-check-up-prevenzione`, `box-info-checkup`: `[[$kos
 pagine pubblicate del template `medici`, `IndividualPhysician` `#medico` (specialità dal ruolo, `address` e
 `practicesAt` della sede con scheda) per i medici, `Person` `#person` (`jobTitle`, `worksFor`) per gli altri
 professionisti e per i medici senza una sede con scheda. Classificazione al 29/10: 100 medici, 50 altri professionisti.
-Pacchetto `kos-11`, simulazione superata, collaudo `collaudo-kos-11.mjs`. Da installare sullo stage; produzione dopo la
+Pacchetto `kos-11` sullo stage l'8/11: collaudo 150/150 (91 `IndividualPhysician`, 59 `Person`), Rich Results Test valido
+su Stefano Albanelli (solo `priceRange` facoltativo). Da decidere con KOS il nodo di Villa Margherita Vicenza (233: 7 medici
+ora `Person`, 29 professionisti in tutto). Produzione dopo la
 verifica dello sprint 2 (dal 16/11). I dati IT/TuoTempo servono solo per l'abbinamento alle risorse di prenotazione.
 
 ## Sostituzione della ricerca Yext (linea C, deciso il 27/10)
