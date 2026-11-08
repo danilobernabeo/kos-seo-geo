@@ -72,7 +72,8 @@ $converti = function (string $t, int $id, string $uri = '') use ($regole, $norm,
         $src = $norm($s[2]);
         foreach ($regole as $g) {
             if ($g['src'] !== $src || ($g['id'] && $g['id'] !== $id)) continue;
-            if ($g['uri_prefisso'] !== '' && strpos(ltrim($uri, '/'), $g['uri_prefisso']) !== 0) continue;
+            // «it/» vale anche per la home della lingua, il cui uri è «it» o «it/»
+            if ($g['uri_prefisso'] !== '' && strpos(rtrim(ltrim($uri, '/'), '/') . '/', $g['uri_prefisso']) !== 0) continue;
             $trovate[$g['src'] . '|' . $g['uri_prefisso']] = true;
             $alt = htmlspecialchars((string) $g['alt'], ENT_QUOTES, 'UTF-8');
             if (!preg_match('~\balt\s*=\s*(["\'])(.*?)\1~is', $tag, $a)) {
