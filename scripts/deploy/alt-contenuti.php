@@ -5,11 +5,12 @@
  *
  *   {"regole": [
  *     {"src": "/assets/img/medico-thumb.svg", "alt": ""},                          // tutte le pagine
- *     {"src": "/assets/img/img-faq.jpg", "alt": "Infermiera con un paziente", "id": 1234, "sostituisci_vuoto": true}
+ *     {"src": "/assets/img/img-faq.jpg", "alt": "Infermiera con un paziente", "id": 1234, "sostituisci_vuoto": true},
+ *     {"src": "/assets/img/img-faq.jpg", "alt": "Nurse with a patient", "uri_prefisso": "en/", "sostituisci_vuoto": true}
  *   ]}
  *
  * Per ogni <img> del contenuto il cui src (senza host, slash iniziale e parametri) è quello della regola, e solo nella
- * risorsa "id" se indicata: se l'alt manca lo aggiunge; se è vuoto lo sostituisce solo con "sostituisci_vuoto"; un alt
+ * risorsa "id" o nelle risorse il cui uri inizia con "uri_prefisso" (lingua: it/, en/) se indicati: se l'alt manca lo aggiunge; se è vuoto lo sostituisce solo con "sostituisci_vuoto"; un alt
  * già scritto non si tocca mai. Le regole più specifiche (con id) vincono su quelle generali.
  *
  * Uso (in SSH, dalla cartella dell'archivio del repository):
@@ -57,18 +58,22 @@ $file = $pos[1] ?? '';
 $regole = is_file($file) ? (json_decode((string) file_get_contents($file), true)['regole'] ?? null) : null;
 if (!is_array($regole) || !$regole) { fwrite(STDERR, "Regole non leggibili: $file\n"); exit(1); }
 $norm = fn($s) => '/' . ltrim((string) preg_replace(['#^https?://[^/]+#i', '/[?#].*$/'], '', html_entity_decode((string) $s)), '/');
-foreach ($regole as &$g) { $g['src'] = $norm($g['src']); $g['id'] = (int) ($g['id'] ?? 0); }
+foreach ($regole as &$g) { $g['src'] = $norm($g['src']); $g['id'] = (int) ($g['id'] ?? 0); $g['uri_prefisso'] = (string) ($g['uri_prefisso'] ?? ''); }
 unset($g);
-usort($regole, fn($a, $b) => ($b['id'] > 0) <=> ($a['id'] > 0));   // prima le regole con id
+$peso = fn($g) => ($g['id'] > 0 ? 2 : 0) + ($g['uri_prefisso'] !== '' ? 1 : 0);
+usort($regole, fn($a, $b) => $peso($b) <=> $peso($a));   // prima le regole più specifiche
 
-$converti = function (string $t, int $id) use ($regole, $norm): array {
-    $n = []; 
-    $nuovo = preg_replace_callback('~<img\b[^>]*>~i', function ($m) use ($regole, $norm, $id, &$n) {
+$trovate = [];   // src delle regole incontrati nei contenuti (anche se già a posto)
+$converti = function (string $t, int $id, string $uri = '') use ($regole, $norm, &$trovate): array {
+    $n = [];
+    $nuovo = preg_replace_callback('~<img\b[^>]*>~i', function ($m) use ($regole, $norm, $id, $uri, &$n, &$trovate) {
         $tag = $m[0];
         if (!preg_match('~\bsrc\s*=\s*(["\'])(.*?)\1~is', $tag, $s)) return $tag;
         $src = $norm($s[2]);
         foreach ($regole as $g) {
             if ($g['src'] !== $src || ($g['id'] && $g['id'] !== $id)) continue;
+            if ($g['uri_prefisso'] !== '' && strpos(ltrim($uri, '/'), $g['uri_prefisso']) !== 0) continue;
+            $trovate[$g['src'] . '|' . $g['uri_prefisso']] = true;
             $alt = htmlspecialchars((string) $g['alt'], ENT_QUOTES, 'UTF-8');
             if (!preg_match('~\balt\s*=\s*(["\'])(.*?)\1~is', $tag, $a)) {
                 $n[] = "$src: alt aggiunto «{$g['alt']}»";
@@ -88,13 +93,16 @@ $converti = function (string $t, int $id) use ($regole, $norm): array {
 $pagine = []; $tot = 0;
 $q = $modx->newQuery(modResource::class, ['deleted' => 0, 'content:LIKE' => '%<img%']);
 foreach ($modx->getIterator(modResource::class, $q) as $r) {
-    [$nuovo, $n] = $converti((string) $r->get('content'), (int) $r->get('id'));
+    [$nuovo, $n] = $converti((string) $r->get('content'), (int) $r->get('id'), (string) $r->get('uri'));
     if (!$n || $nuovo === (string) $r->get('content')) continue;
     echo sprintf("%-5d %-60s %d immagini\n", $r->get('id'), $r->get('uri'), count($n));
     foreach (array_count_values($n) as $riga => $k) echo "        $k × $riga\n";
     $pagine[] = [$r, $nuovo]; $tot += count($n);
 }
 echo "== " . count($pagine) . " pagine, $tot immagini\n";
+$assenti = array_filter($regole, fn($g) => !isset($trovate[$g['src'] . '|' . $g['uri_prefisso']]));
+if ($assenti) echo "   Regole senza immagini nei contenuti (immagine in un template o chunk, o già tolta): " . count($assenti) . "\n"
+    . implode('', array_map(fn($g) => "     {$g['uri_prefisso']}{$g['src']}\n", $assenti));
 if (!$scrivi) { echo "Prova: nessuna scrittura. Rilanciare con --scrivi.\n"; exit(0); }
 if (!$pagine) exit(0);
 

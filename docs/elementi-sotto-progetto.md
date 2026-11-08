@@ -38,6 +38,7 @@ Aggiornare l'elenco a ogni intervento.
 
 | Elemento | Tipo | Voce | Stato |
 | `/dist/css/custom.css`, `/dist/css/kos-seo-geo.css` (blocco AA-4) | file | AA-4: caroselli Flickity con lo spazio finale prima dell'avvio, spazio riservato alla ricerca Yext della home | sviluppo (8/11), pacchetto `aa-4-cls` |
+| contenuti con immagini senza alt o con alt vuoto (regole `anniazzurri/dati/alt/regole-contenuti.json`) | campo content | AA-9 | sviluppo (8/11), `scripts/deploy/alt-contenuti.php` |
 |---|---|---|---|
 | `AssetVersion` (shared) | plugin (nuovo) | KOS-3 (`?v=` automatico su CSS/JS) | in produzione (20/10) |
 | Web Rules | configurazione | KOS-3 e redirect | `kosgroup/files/web-rules/web-rules.conf` |
@@ -64,3 +65,4 @@ Aggiornare l'elenco a ogni intervento.
 | chunk `cdsList` (AA: link alla carta degli alloggi nel nuovo percorso `/assets/doc/strutture/appartamenti-anziani-bergamo/`) | chunk | AA-20 (risorsa 367 da `/alloggi-protetti` a `/appartamenti-anziani-bergamo`, Senior Living) | **produzione (1/11)**, pacchetto `aa-senior-living`; regole web in `anniazzurri/files/web-rules/aa-senior-living.conf` |
 | chunk `box-info-check-up-prevenzione`, `box-info-checkup` | chunk | KOS-2 (TTFB): `$kosplayer-banner-small` commentato in HTML disattivato con `[[- ]]` | **produzione (8/11)**, pacchetto `kos-2-commenti`; ripristino in `/paas/c0095/backup-kos-seo-geo/20261108-073314/` |
 | `kosSchema` (shared `seoSchema`): professionisti del template `medici` (`IndividualPhysician` `#medico` o `Person` `#person`), impostazione `kos.medico_tv_ruolo` | snippet, impostazione di sistema | KOS-11 | sviluppo (8/11), pacchetto `kos-11` |
+| `galleryStruttura`, `listaStrutture`, `servizi-centri-row`, `imgFooter`, `news-struttura`, template `informativo`, `tecnologie`; contenuti (regole `kosgroup/dati/alt/regole-contenuti.json`) | snippet, chunk, template, campo content | KOS-7 | sviluppo (8/11), pacchetto `kos-7-alt` e `scripts/deploy/alt-contenuti.php` |

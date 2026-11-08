@@ -1,6 +1,801 @@
 {
-  "nota": "KOS-7: immagini scritte nel contenuto. alt vuoto = immagine decorativa (segnaposto, icona accanto al testo).",
-  "regole": [
-    {"src": "/assets/img/medico-thumb.svg", "alt": ""}
-  ]
+ "nota": "KOS-7: immagini scritte nel contenuto. Controllo dell'8/11 su 865 pagine della sitemap: 339 senza alt (336 segnaposto dei medici nelle schede, decorativo) e 78 foto di contenuto con alt vuoto nelle pagine istituzionali (storia, perché lavorare in KOS, cura delle persone, visione e valori, ricerca, posizioni aperte, KOS Academy, home). Testi scritti guardando le foto, senza nomi di persone, in italiano per le pagine it/ e in inglese per le en/: proposta da validare. Restano con alt vuoto, perché decorative: separatori e sfondi (img-sep, sfondo-tit-img, servizi-main-bg), anteprime dei video accanto al titolo, loghi dei progetti speciali accanto al nome, foto delle tecnologie nelle schede dell'elenco (link con il nome). Pagina Sostenibilità esclusa: lavoro extra kos-sostenibilita.",
+ "regole": [
+  {
+   "src": "/assets/img/medico-thumb.svg",
+   "alt": ""
+  },
+  {
+   "src": "/assets/img/chi-siamo/2002-1.jpg",
+   "alt": "Gruppo KOS, 2002: la nascita del Gruppo",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2002-1.jpg",
+   "alt": "KOS Group, 2002: the Group is founded",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2002-1-mobile.jpg",
+   "alt": "Gruppo KOS, 2002: la nascita del Gruppo",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2002-1-mobile.jpg",
+   "alt": "KOS Group, 2002: the Group is founded",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2002-2.jpg",
+   "alt": "Gruppo KOS, 2002: la nascita del Gruppo",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2002-2.jpg",
+   "alt": "KOS Group, 2002: the Group is founded",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2002-2-mobile.jpg",
+   "alt": "Gruppo KOS, 2002: la nascita del Gruppo",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2002-2-mobile.jpg",
+   "alt": "KOS Group, 2002: the Group is founded",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2003-banner.jpg",
+   "alt": "Gruppo KOS, 2003: le prime tre RSA in Liguria",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2003-banner.jpg",
+   "alt": "KOS Group, 2003: the first three nursing homes in Liguria",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2003-banner-mobile.jpg",
+   "alt": "Gruppo KOS, 2003: le prime tre RSA in Liguria",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2003-banner-mobile.jpg",
+   "alt": "KOS Group, 2003: the first three nursing homes in Liguria",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2004-1.jpg",
+   "alt": "Gruppo KOS, 2004: l'ingresso nella riabilitazione psichiatrica",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2004-1.jpg",
+   "alt": "KOS Group, 2004: entry into psychiatric rehabilitation",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2004-1-mobile.jpg",
+   "alt": "Gruppo KOS, 2004: l'ingresso nella riabilitazione psichiatrica",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2004-1-mobile.jpg",
+   "alt": "KOS Group, 2004: entry into psychiatric rehabilitation",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2004-2.jpg",
+   "alt": "Gruppo KOS, 2004: l'ingresso nella riabilitazione psichiatrica",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2004-2.jpg",
+   "alt": "KOS Group, 2004: entry into psychiatric rehabilitation",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2004-2-mobile.jpg",
+   "alt": "Gruppo KOS, 2004: l'ingresso nella riabilitazione psichiatrica",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2004-2-mobile.jpg",
+   "alt": "KOS Group, 2004: entry into psychiatric rehabilitation",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2006-banner.jpg",
+   "alt": "Gruppo KOS, 2006: l'acquisizione delle Residenze Anni Azzurri",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2006-banner.jpg",
+   "alt": "KOS Group, 2006: acquisition of the Anni Azzurri residences",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2006-banner-mobile.jpg",
+   "alt": "Gruppo KOS, 2006: l'acquisizione delle Residenze Anni Azzurri",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2006-banner-mobile.jpg",
+   "alt": "KOS Group, 2006: acquisition of the Anni Azzurri residences",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2007-1.jpg",
+   "alt": "Gruppo KOS, 2007: la riabilitazione si rafforza con Santo Stefano",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2007-1.jpg",
+   "alt": "KOS Group, 2007: rehabilitation grows with Santo Stefano",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2007-1-mobile.jpg",
+   "alt": "Gruppo KOS, 2007: la riabilitazione si rafforza con Santo Stefano",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2007-1-mobile.jpg",
+   "alt": "KOS Group, 2007: rehabilitation grows with Santo Stefano",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2007-2.jpg",
+   "alt": "Gruppo KOS, 2007: la riabilitazione si rafforza con Santo Stefano",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2007-2.jpg",
+   "alt": "KOS Group, 2007: rehabilitation grows with Santo Stefano",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2007-2-mobile.jpg",
+   "alt": "Gruppo KOS, 2007: la riabilitazione si rafforza con Santo Stefano",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2007-2-mobile.jpg",
+   "alt": "KOS Group, 2007: rehabilitation grows with Santo Stefano",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2009-banner.jpg",
+   "alt": "Gruppo KOS, 2009: il Gruppo cambia nome e nasce KOS",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2009-banner.jpg",
+   "alt": "KOS Group, 2009: the Group changes its name to KOS",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2009-banner-mobile.jpg",
+   "alt": "Gruppo KOS, 2009: il Gruppo cambia nome e nasce KOS",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2009-banner-mobile.jpg",
+   "alt": "KOS Group, 2009: the Group changes its name to KOS",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2019-1.jpg",
+   "alt": "Gruppo KOS, 2019: l'espansione in Germania con Charleston",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2019-1.jpg",
+   "alt": "KOS Group, 2019: expansion into Germany with Charleston",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2019-1-mobile.jpg",
+   "alt": "Gruppo KOS, 2019: l'espansione in Germania con Charleston",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2019-1-mobile.jpg",
+   "alt": "KOS Group, 2019: expansion into Germany with Charleston",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2019-2.jpg",
+   "alt": "Gruppo KOS, 2019: l'espansione in Germania con Charleston",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2019-2.jpg",
+   "alt": "KOS Group, 2019: expansion into Germany with Charleston",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2019-2-mobile.jpg",
+   "alt": "Gruppo KOS, 2019: l'espansione in Germania con Charleston",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/2019-2-mobile.jpg",
+   "alt": "KOS Group, 2019: expansion into Germany with Charleston",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/oggi-banner.jpg",
+   "alt": "Gruppo KOS oggi",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/oggi-banner.jpg",
+   "alt": "KOS Group today",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/oggi-banner-mobile.jpg",
+   "alt": "Gruppo KOS oggi",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/oggi-banner-mobile.jpg",
+   "alt": "KOS Group today",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/home-img.jpg",
+   "alt": "Persona che passeggia nel giardino di una struttura del Gruppo KOS",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/home-img.jpg",
+   "alt": "Person walking in the garden of a KOS Group facility",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-laterale-1.jpg",
+   "alt": "Una struttura sanitaria del Gruppo KOS",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-laterale-1.jpg",
+   "alt": "A KOS Group healthcare facility",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-laterale-2.jpg",
+   "alt": "Operatrice accanto a un'ospite",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-laterale-2.jpg",
+   "alt": "Care worker with a resident",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-counter.jpg",
+   "alt": "Ospite in carrozzina affacciata al balcone con un'operatrice",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-counter.jpg",
+   "alt": "Resident in a wheelchair on a balcony with a care worker",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-faq.jpg",
+   "alt": "Paziente con esoscheletro e fisioterapista durante la riabilitazione",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-faq.jpg",
+   "alt": "Patient with an exoskeleton and a physiotherapist during rehabilitation",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-faq-mb.jpg",
+   "alt": "Paziente con esoscheletro e fisioterapista durante la riabilitazione",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-faq-mb.jpg",
+   "alt": "Patient with an exoskeleton and a physiotherapist during rehabilitation",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-faq-2.jpg",
+   "alt": "Operatrice accompagna un'ospite in carrozzina",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-faq-2.jpg",
+   "alt": "Care worker assisting a resident in a wheelchair",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-faq-2-mb.jpg",
+   "alt": "Operatrice accompagna un'ospite in carrozzina",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-faq-2-mb.jpg",
+   "alt": "Care worker assisting a resident in a wheelchair",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-competenze-2.jpg",
+   "alt": "Fisioterapista e paziente durante un esercizio con un dispositivo di riabilitazione",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-competenze-2.jpg",
+   "alt": "Physiotherapist and patient using a rehabilitation device",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-competenze-mb-2.jpg",
+   "alt": "Fisioterapista e paziente durante un esercizio con un dispositivo di riabilitazione",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-competenze-mb-2.jpg",
+   "alt": "Physiotherapist and patient using a rehabilitation device",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-competenze-1.jpg",
+   "alt": "Paziente e terapista durante la riabilitazione del cammino",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-competenze-1.jpg",
+   "alt": "Patient and therapist during gait rehabilitation",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-competenze-mb-1.jpg",
+   "alt": "Paziente e terapista durante la riabilitazione del cammino",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/img-competenze-mb-1.jpg",
+   "alt": "Patient and therapist during gait rehabilitation",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/cura-delle-persone-banner.jpg",
+   "alt": "Terapista e paziente durante un esercizio di riabilitazione",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/cura-delle-persone-banner.jpg",
+   "alt": "Therapist and patient during a rehabilitation exercise",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/cura-delle-persone-banner-mobile.jpg",
+   "alt": "Terapista e paziente durante un esercizio di riabilitazione",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/cura-delle-persone-banner-mobile.jpg",
+   "alt": "Therapist and patient during a rehabilitation exercise",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/cura-di-te-1.jpg",
+   "alt": "Bambini al tavolo durante un'attività di terapia",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/cura-di-te-1.jpg",
+   "alt": "Children at a table during a therapy activity",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/cura-di-te-1-mobile.jpg",
+   "alt": "Bambini al tavolo durante un'attività di terapia",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/cura-di-te-1-mobile.jpg",
+   "alt": "Children at a table during a therapy activity",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/cura-di-te-2.jpg",
+   "alt": "Operatrice e ospite in carrozzina leggono insieme",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/cura-di-te-2.jpg",
+   "alt": "Care worker and resident in a wheelchair reading together",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/cura-di-te-2-mobile.jpg",
+   "alt": "Operatrice e ospite in carrozzina leggono insieme",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/cura-di-te-2-mobile.jpg",
+   "alt": "Care worker and resident in a wheelchair reading together",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/sicurezza-nelle-cure-banner.jpg",
+   "alt": "Operatrice sanitaria e ospite nel corridoio di una struttura",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/sicurezza-nelle-cure-banner.jpg",
+   "alt": "Healthcare worker and resident in a facility corridor",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/sicurezza-nelle-cure-banner-mobile.jpg",
+   "alt": "Operatrice sanitaria e ospite nel corridoio di una struttura",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/sicurezza-nelle-cure-banner-mobile.jpg",
+   "alt": "Healthcare worker and resident in a facility corridor",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/assistenza-personalizzata-1.jpg",
+   "alt": "Paziente e terapista durante la riabilitazione del cammino",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/assistenza-personalizzata-1.jpg",
+   "alt": "Patient and therapist during gait rehabilitation",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/assistenza-personalizzata-1-mobile.jpg",
+   "alt": "Paziente e terapista durante la riabilitazione del cammino",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/assistenza-personalizzata-1-mobile.jpg",
+   "alt": "Patient and therapist during gait rehabilitation",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/assistenza-personalizzata-2.jpg",
+   "alt": "Fisioterapista e paziente durante un esercizio con un dispositivo di riabilitazione",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/assistenza-personalizzata-2.jpg",
+   "alt": "Physiotherapist and patient using a rehabilitation device",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/assistenza-personalizzata-2-mobile.jpg",
+   "alt": "Fisioterapista e paziente durante un esercizio con un dispositivo di riabilitazione",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/assistenza-personalizzata-2-mobile.jpg",
+   "alt": "Physiotherapist and patient using a rehabilitation device",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/visione-valori-missione-1.jpg",
+   "alt": "Riunione dell'équipe sanitaria",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/visione-valori-missione-1.jpg",
+   "alt": "Healthcare team meeting",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/visione-valori-missione-1-mobile.jpg",
+   "alt": "Riunione dell'équipe sanitaria",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/visione-valori-missione-1-mobile.jpg",
+   "alt": "Healthcare team meeting",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/visione-valori-missione-2.jpg",
+   "alt": "Operatrice accanto a un'ospite con deambulatore",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/visione-valori-missione-2.jpg",
+   "alt": "Care worker with a resident using a walker",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/visione-valori-missione-2-mobile.jpg",
+   "alt": "Operatrice accanto a un'ospite con deambulatore",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/visione-valori-missione-2-mobile.jpg",
+   "alt": "Care worker with a resident using a walker",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/principi-banner.jpg",
+   "alt": "Medici consultano insieme un tablet",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/principi-banner.jpg",
+   "alt": "Doctors reviewing a tablet together",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/principi-banner-mobile.jpg",
+   "alt": "Medici consultano insieme un tablet",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/principi-banner-mobile.jpg",
+   "alt": "Doctors reviewing a tablet together",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/ricerca-scientifica-banner.jpg",
+   "alt": "Guanto robotico per la riabilitazione della mano",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/ricerca-scientifica-banner.jpg",
+   "alt": "Robotic glove for hand rehabilitation",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/ricerca-scientifica-banner-mobile.jpg",
+   "alt": "Guanto robotico per la riabilitazione della mano",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/ricerca-scientifica-banner-mobile.jpg",
+   "alt": "Robotic glove for hand rehabilitation",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/aggiornamento-continuo-1.jpg",
+   "alt": "Paziente con esoscheletro e fisioterapista",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/aggiornamento-continuo-1.jpg",
+   "alt": "Patient with an exoskeleton and a physiotherapist",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/aggiornamento-continuo-1-mobile.jpg",
+   "alt": "Paziente con esoscheletro e fisioterapista",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/aggiornamento-continuo-1-mobile.jpg",
+   "alt": "Patient with an exoskeleton and a physiotherapist",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/aggiornamento-continuo-2.jpg",
+   "alt": "Riabilitazione con la realtà virtuale",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/aggiornamento-continuo-2.jpg",
+   "alt": "Virtual reality rehabilitation",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/aggiornamento-continuo-2-mobile.jpg",
+   "alt": "Riabilitazione con la realtà virtuale",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/chi-siamo/aggiornamento-continuo-2-mobile.jpg",
+   "alt": "Virtual reality rehabilitation",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/intro-pagina-imgs.jpg",
+   "alt": "Fisioterapista e paziente durante un esercizio di riabilitazione",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/intro-pagina-imgs.jpg",
+   "alt": "Physiotherapist and patient during a rehabilitation exercise",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/intro-pagina-imgs-2.jpg",
+   "alt": "Fisioterapista durante un trattamento",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/intro-pagina-imgs-2.jpg",
+   "alt": "Physiotherapist during a treatment",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/intro-pagina-imgs-3.jpg",
+   "alt": "Operatrice accompagna un'ospite",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/intro-pagina-imgs-3.jpg",
+   "alt": "Care worker assisting a resident",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/intro-pagina-imgs-4.jpg",
+   "alt": "Infermiera misura la pressione a un'ospite",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/intro-pagina-imgs-4.jpg",
+   "alt": "Nurse measuring a resident's blood pressure",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/kos-academy-2.jpg",
+   "alt": "Operatori sanitari in aula durante un corso KOS Academy",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/kos-academy-2.jpg",
+   "alt": "Healthcare workers attending a KOS Academy course",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/mychekup-analisi-banner.jpg",
+   "alt": "Medica e paziente durante un colloquio",
+   "uri_prefisso": "it/",
+   "sostituisci_vuoto": true
+  },
+  {
+   "src": "/assets/img/mychekup-analisi-banner.jpg",
+   "alt": "Doctor talking with a patient",
+   "uri_prefisso": "en/",
+   "sostituisci_vuoto": true
+  }
+ ]
 }
