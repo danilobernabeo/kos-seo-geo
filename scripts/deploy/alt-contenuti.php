@@ -16,6 +16,7 @@
  * Uso (in SSH, dalla cartella dell'archivio del repository):
  *   php scripts/deploy/alt-contenuti.php /www <regole.json>            # prova: elenca pagine e immagini
  *   php scripts/deploy/alt-contenuti.php /www <regole.json> --scrivi
+ *   ... --tv=modale[,altra]   anche i valori di queste TV (HTML scritto nelle TV, es. l'équipe nelle schede KOS)
  *   php scripts/deploy/alt-contenuti.php /www --ripristina=<file ripristino.json> [--scrivi]
  * Prima di scrivere: tabella <prefisso>site_content_bak_<AAAAMMGG_HHMM> (id, content) e ripristino.json in
  * ~/backup-kos-seo-geo/<data>-alt-contenuti/. Ripristino solo delle pagine non modificate dopo (salvo --forza).
@@ -31,7 +32,7 @@ $webroot = rtrim($pos[0] ?? '', '/');
 if (!is_file("$webroot/config.core.php")) { fwrite(STDERR, "Uso: php alt-contenuti.php /www <regole.json> [--scrivi]\n"); exit(1); }
 require "$webroot/config.core.php";
 require MODX_CORE_PATH . 'vendor/autoload.php';
-use MODX\Revolution\{modX, modResource};
+use MODX\Revolution\{modX, modResource, modTemplateVar, modTemplateVarResource};
 $modx = modX::getInstance();
 $modx->initialize('mgr');
 $scrivi = isset($opt['scrivi']);
@@ -43,11 +44,14 @@ if (isset($opt['ripristina'])) {
     if (!is_array($rip)) { fwrite(STDERR, "File di ripristino non leggibile\n"); exit(1); }
     $fatte = 0; $fermi = 0;
     foreach ($rip['pagine'] as $p) {
-        $r = $modx->getObject(modResource::class, (int) $p['id']);
+        $tvid = (int) ($p['tv'] ?? 0);
+        $r = $tvid ? $modx->getObject(modTemplateVarResource::class, ['tmplvarid' => $tvid, 'contentid' => (int) $p['id']])
+                   : $modx->getObject(modResource::class, (int) $p['id']);
+        $campo = $tvid ? 'value' : 'content';
         if (!$r) { echo "MANCANTE  {$p['id']}\n"; continue; }
-        if (sha1((string) $r->get('content')) !== $p['sha1_dopo'] && !isset($opt['forza'])) { echo "FERMO     {$p['id']} modificata dopo (--forza per rimettere comunque)\n"; $fermi++; continue; }
-        echo ($scrivi ? 'RIPRISTINO' : 'DA RIPRISTINARE') . " {$p['id']} {$r->get('uri')}\n";
-        if ($scrivi) { $r->set('content', $p['prima']); $r->save(); $fatte++; }
+        if (sha1((string) $r->get($campo)) !== $p['sha1_dopo'] && !isset($opt['forza'])) { echo "FERMO     {$p['id']} modificata dopo (--forza per rimettere comunque)\n"; $fermi++; continue; }
+        echo ($scrivi ? 'RIPRISTINO' : 'DA RIPRISTINARE') . " {$p['id']} " . ($p['uri'] ?? '') . ($tvid ? " (TV $tvid)" : '') . "\n";
+        if ($scrivi) { $r->set($campo, $p['prima']); $r->save(); $fatte++; }
     }
     if ($scrivi) $modx->cacheManager->refresh();
     echo "== " . ($scrivi ? "$fatte ripristinate" : 'prova') . ", $fermi fermi\n";
@@ -98,7 +102,22 @@ foreach ($modx->getIterator(modResource::class, $q) as $r) {
     if (!$n || $nuovo === (string) $r->get('content')) continue;
     echo sprintf("%-5d %-60s %d immagini\n", $r->get('id'), $r->get('uri'), count($n));
     foreach (array_count_values($n) as $riga => $k) echo "        $k × $riga\n";
-    $pagine[] = [$r, $nuovo]; $tot += count($n);
+    $pagine[] = [$r, $nuovo, 'content', 0, (string) $r->get('uri')]; $tot += count($n);
+}
+// HTML scritto nelle TV indicate con --tv
+foreach (array_filter(array_map('trim', explode(',', (string) ($opt['tv'] ?? '')))) as $nomeTv) {
+    $tv = $modx->getObject(modTemplateVar::class, ['name' => $nomeTv]);
+    if (!$tv) { echo "   TV $nomeTv inesistente\n"; continue; }
+    $c = $modx->newQuery(modTemplateVarResource::class, ['tmplvarid' => $tv->get('id'), 'value:LIKE' => '%<img%']);
+    foreach ($modx->getIterator(modTemplateVarResource::class, $c) as $v) {
+        $res = $modx->getObject(modResource::class, (int) $v->get('contentid'));
+        if (!$res || $res->get('deleted')) continue;
+        [$nuovo, $n] = $converti((string) $v->get('value'), (int) $v->get('contentid'), (string) $res->get('uri'));
+        if (!$n || $nuovo === (string) $v->get('value')) continue;
+        echo sprintf("%-5d %-60s %d immagini (TV %s)\n", $v->get('contentid'), $res->get('uri'), count($n), $nomeTv);
+        foreach (array_count_values($n) as $riga => $k) echo "        $k × $riga\n";
+        $pagine[] = [$v, $nuovo, 'value', (int) $tv->get('id'), (string) $res->get('uri')]; $tot += count($n);
+    }
 }
 echo "== " . count($pagine) . " pagine, $tot immagini\n";
 $assenti = array_filter($regole, fn($g) => !isset($trovate[$g['src'] . '|' . $g['uri_prefisso']]));
@@ -110,14 +129,17 @@ if (!$pagine) exit(0);
 @mkdir($bk, 0700, true);
 $pref = $modx->getOption('table_prefix', null, 'modx_');
 $tab = $pref . 'site_content_bak_' . date('Ymd_Hi');
-$ids = implode(',', array_map(fn($p) => (int) $p[0]->get('id'), $pagine));
-$modx->exec("CREATE TABLE IF NOT EXISTS `$tab` AS SELECT id, content FROM `{$pref}site_content` WHERE id IN ($ids)");
+$ids = implode(',', array_map(fn($p) => (int) $p[0]->get('id'), array_filter($pagine, fn($p) => $p[2] === 'content')));
+if ($ids !== '') $modx->exec("CREATE TABLE IF NOT EXISTS `$tab` AS SELECT id, content FROM `{$pref}site_content` WHERE id IN ($ids)");
+$tvv = implode(',', array_map(fn($p) => (int) $p[0]->get('id'), array_filter($pagine, fn($p) => $p[2] === 'value')));
+if ($tvv !== '') $modx->exec("CREATE TABLE IF NOT EXISTS `{$pref}site_tmplvar_contentvalues_bak_" . date('Ymd_Hi') . "` AS SELECT * FROM `{$pref}site_tmplvar_contentvalues` WHERE id IN ($tvv)");
 $rip = ['creato' => date('c'), 'tabella' => $tab, 'pagine' => []];
-foreach ($pagine as [$r, $nuovo]) {
-    $prima = (string) $r->get('content');
-    $r->set('content', $nuovo);
-    if (!$r->save()) { echo "ERRORE salvataggio {$r->get('id')}\n"; continue; }
-    $rip['pagine'][] = ['id' => (int) $r->get('id'), 'uri' => $r->get('uri'), 'prima' => $prima, 'sha1_dopo' => sha1($nuovo)];
+foreach ($pagine as [$r, $nuovo, $campo, $tvid, $uri]) {
+    $prima = (string) $r->get($campo);
+    $r->set($campo, $nuovo);
+    $idRis = $tvid ? (int) $r->get('contentid') : (int) $r->get('id');
+    if (!$r->save()) { echo "ERRORE salvataggio $idRis\n"; continue; }
+    $rip['pagine'][] = ['id' => $idRis, 'tv' => $tvid, 'uri' => $uri, 'prima' => $prima, 'sha1_dopo' => sha1($nuovo)];
 }
 file_put_contents("$bk/ripristino.json", json_encode($rip, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 $modx->cacheManager->refresh();
