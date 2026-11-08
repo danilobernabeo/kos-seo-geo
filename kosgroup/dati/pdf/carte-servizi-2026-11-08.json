@@ -1,6 +1,6 @@
 {
  "sito": "kos",
- "descrizione": "Poliambulatorio Parco di Veio: carta dei servizi (versione giugno 2026) e pieghevole consegnati l'8/11, stesso percorso dei file pubblicati.",
+ "descrizione": "Poliambulatorio Parco di Veio: carta dei servizi (versione giugno 2026) e pieghevole, stesso percorso dei file pubblicati; locandina dell'Open Day di neurochirurgia del Poliambulatorio Valdaso (nuovo file, elencato da docList, noindex). Consegnati l'8/11.",
  "pdf": [
   {
    "s": "CDS Poliambulatorio Parco di Veio (3).pdf",
@@ -17,16 +17,21 @@
    "d": "Pieghevole del Poliambulatorio Parco di Veio di Roma: visite specialistiche in regime privato, specialità, sede, contatti e prenotazioni.",
    "a": "Gruppo KOS",
    "l": "it-IT"
+  },
+  {
+   "s": "OpenDay Neurochirurgia.pdf",
+   "p": "/assets/doc/strutture/poliambulatorio-valdaso/open-day-neurochirurgia-20-novembre-2026.pdf",
+   "nuovo": true,
+   "t": "Locandina Open Day Neurochirurgia – Poliambulatorio Valdaso",
+   "d": "Locandina dell'Open Day di neurochirurgia del 20 novembre 2026 al Poliambulatorio Valdaso di Campofilone (FM), con visita neurochirurgica gratuita.",
+   "a": "Gruppo KOS",
+   "l": "it-IT"
   }
  ],
  "sospesi": [
   {
-   "s": "OpenDay Neurochirurgia.pdf",
-   "motivo": "locandina dell'open day del 20/11 al Poliambulatorio Valdaso: percorso e pagina che la richiama da decidere"
-  },
-  {
    "s": "Template Customer CAR Macerata.pdf",
-   "motivo": "Customer Satisfaction 2025 del Centro Ambulatoriale di Macerata: nessun file corrispondente sul sito, percorso e pagina da decidere"
+   "motivo": "Customer Satisfaction del Centro Ambulatoriale di Macerata: in copertina «2025» come il file già pubblicato (customer-satisfaction-2025.pdf, stesso nome in elenco); anno da confermare con KOS prima di scegliere il nome del file"
   }
  ],
  "esclusi": []
