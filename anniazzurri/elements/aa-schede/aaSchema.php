@@ -473,13 +473,17 @@ $eScheda = function ($r) use ($TPL_STRUTTURA, $STR_ON, $tv) {
     return (string) $tv($r, 'str.via') !== '';
 };
 /** Foto della residenza: TV indicata in aa.struttura_tv_immagine (imgHeader), altrimenti la foto storica della scheda
- *  assets/img/rsa/<alias>.jpg (la stessa dell'og:image di head-rsa), solo se il file esiste. */
+ *  assets/img/rsa/<alias>.jpg (la stessa dell'og:image di head-rsa), altrimenti la prima foto locale del contenuto;
+ *  solo se il file esiste. */
 $immagineScheda = function ($r) use ($tv, $cfg, $immagine) {
     $p = (string) $tv($r, $cfg('struttura_tv_immagine', 'imgHeader'));
     if ($p === '') {
         $f = 'assets/img/rsa/' . $r->get('alias') . '.jpg';
         if (is_readable(MODX_BASE_PATH . $f)) $p = $f;
     }
+    // ultima possibilità: la prima foto locale del contenuto (galleria), così ogni voce del carosello ha un'immagine
+    if ($p === '' && preg_match('~<img\b[^>]*\bsrc="/?(assets/[^"?#]+\.(?:jpe?g|png|webp))"~i', (string) $r->get('content'), $m)
+        && is_readable(MODX_BASE_PATH . $m[1])) $p = $m[1];
     return $p !== '' ? $immagine($p) : null;
 };
 /** Fascia di prezzo dalla sezione Tariffe della scheda («La retta giornaliera … parte da 106,00 €» → «Da 106,00 €»), solo
@@ -738,7 +742,20 @@ if ($type === 'page') {
         $voci = [];
         foreach ($modx->getCollection($CLS_RES, $q) as $figlia) {
             if (!$eScheda($figlia) || !($n = $nodoStruttura($figlia))) continue;
-            $voci[] = ['@type' => 'ListItem', 'position' => count($voci) + 1, 'item' => $n];
+            // voce del carosello (Google, attività locali): un solo tipo LocalBusiness, name, url, image obbligatori.
+            // Il nodo completo resta sulla scheda: qui una sintesi senza @id, per non fondersi con il nodo a due tipi
+            // (MedicalOrganization non è un'attività locale e il carosello non riconosce la voce).
+            $voci[] = ['@type' => 'ListItem', 'position' => count($voci) + 1, 'item' => $pulisci([
+                '@type'      => 'MedicalBusiness',
+                'name'       => $n['name'] ?? null,
+                'url'        => $n['url'] ?? null,
+                'image'      => $n['image'] ?? null,
+                'priceRange' => $n['priceRange'] ?? null,
+                'telephone'  => $n['telephone'] ?? null,
+                'address'    => $n['address'] ?? null,
+                'geo'        => $n['geo'] ?? null,
+                'medicalSpecialty' => $n['medicalSpecialty'] ?? null,
+            ])];
         }
         if ($voci) {
             $lista = [
