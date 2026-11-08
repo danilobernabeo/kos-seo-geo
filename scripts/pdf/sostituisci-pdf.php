@@ -100,7 +100,7 @@ foreach ($abb['pdf'] as $v) {
     echo '    nuovo:   ' . $umano(filesize($src)) . ', ' . $pagine($src) . ' pagine, ' . substr($testa, 0, 8) . "\n";
     $daFare[] = [$v, $src, $dest, $esiste];
 }
-foreach ($abb['sospesi'] ?? [] as $v) echo "\nSOSPESO    {$v['s']}\n    {$v['sospeso']}\n";
+foreach ($abb['sospesi'] ?? [] as $v) echo "\nSOSPESO    {$v['s']}\n    " . ($v['motivo'] ?? $v['sospeso'] ?? '') . "\n";
 foreach ($abb['esclusi'] ?? [] as $v) echo "\nESCLUSO    {$v['s']}\n    {$v['motivo']}\n";
 
 echo "\n== " . count($daFare) . ' da sostituire, ' . $fermi . ' fermi, ' . count($abb['sospesi'] ?? []) . " sospesi\n";
