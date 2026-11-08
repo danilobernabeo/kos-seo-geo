@@ -62,8 +62,13 @@ ne ha una adatta).
 
 - Refusi nel ruolo, visibili sulla pagina: «Chiururgo generale», «Chirrugo vascolare».
 - Ruoli scritti come disciplina invece che come professione: «Cardiologia», «Radiologia».
-- Titoli con spazi doppi o finali: Michele Tulli, Rolando Gregorio Edoardo Rocchetti (il dato strutturato li corregge,
-  la pagina no).
+- Corretti da Danilo in produzione l'8/11: ruoli di Andrea Conti, Arcangela Rozza, Diego Spagnolo, Elena Vezzelli;
+  spazio finale nel titolo di Rocchetti. Michele Tulli: tra nome e cognome c'è uno spazio non separabile (U+00A0,
+  invisibile nel manager), anche nel titolo lungo: da cancellare e riscrivere come spazio normale. Il dato strutturato
+  lo normalizza comunque.
+- Senza struttura per scelta (8/11): Cosimo Argentieri (Direttore Sanitario e Responsabile Scientifico e Qualità) e
+  Alessandro Stronati (Kos Academy, Comitato Scientifico) non sono legati a una sede: `Person` con `worksFor` verso
+  l'ente, che è il dato corretto.
 - Due pagine pubblicate senza struttura (`idSedeLavoro` vuoto) e 18 senza foto (export del 29/10).
 - 14 pagine non pubblicate nel template.
 
