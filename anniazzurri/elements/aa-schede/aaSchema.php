@@ -478,7 +478,15 @@ $immagineScheda = function ($r) use ($tv, $cfg, $immagine) {
     }
     return $p !== '' ? $immagine($p) : null;
 };
-$nodoStruttura = function ($r) use ($url, $tv, $csv, $righe, $testo, $pulisci, $orari, $orariSpeciali, $immagineScheda,
+/** Fascia di prezzo dalla sezione Tariffe della scheda («La retta giornaliera … parte da 106,00 €»), solo se il testo è
+ *  nella pagina: Google accetta un testo libero sotto i 100 caratteri. Nessuna retta nel testo = nessun priceRange. */
+$retta = function ($r) use ($testo) {
+    $t = $testo((string) $r->get('content'));
+    if (!preg_match('/retta giornaliera.{0,120}?(parte da|a partire da|è di)\s*(\d{2,4}(?:[.,]\d{1,2})?)\s*(?:€|euro)/iu', $t, $m)) return null;
+    $da = (mb_stripos($m[1], 'è di') === 0) ? '' : 'Da ';   // «è di 64,86 €» = retta unica
+    return trim($da . str_replace('.', ',', $m[2]) . ' € al giorno');
+};
+$nodoStruttura = function ($r) use ($url, $tv, $csv, $righe, $testo, $pulisci, $orari, $orariSpeciali, $immagineScheda, $retta,
                                     $TIPI_STRUTTURA, $SPECIALITA, $FRAG_STR, $ORG_ID, $cfg) {
     $pagina = $url($r->get('id'));
     if ($pagina === '' || (string) $tv($r, 'str.via') === '') return null;
@@ -498,6 +506,7 @@ $nodoStruttura = function ($r) use ($url, $tv, $csv, $righe, $testo, $pulisci, $
         'url'         => $pagina,
         'description' => $testo($r->get('description') ?: $r->get('introtext')),
         'image'       => $immagineScheda($r),
+        'priceRange'  => $retta($r),
         'telephone'   => $tv($r, 'str.telefono'),
         'faxNumber'   => $tv($r, 'str.fax'),
         'email'       => $tv($r, 'str.email'),
