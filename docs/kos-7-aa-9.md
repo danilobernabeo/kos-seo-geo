@@ -12,31 +12,31 @@ landing AA fuori sitemap: per ogni immagine, alt assente, vuoto o scritto.
 | Sito | Immagini | Senza alt | Con alt vuoto (foto) | Note |
 | --- | --- | --- | --- | --- |
 | kosgroup.com | 26.168 | 339: 336 segnaposto dei medici nelle schede, 3 frecce | 5.627 su 894 file | 874 foto delle strutture (gallerie ed elenchi), 351 testate di articoli e news, 78 foto delle pagine istituzionali; il resto è decorativo |
-| anniazzurri.it | 11.332 + landing | 10: 6 icone, 3 icone, foto della direttrice di Volpiano | 18 foto in 3 news | dopo AA-1 e gli alt delle news del 27/10 |
+| anniazzurri.it | 11.332 e landing | 10: 9 icone e la foto della direttrice di Volpiano | 18 foto in 3 news | dopo AA-1 e gli alt delle news del 27/10 |
 
 Su anniazzurri.it la voce è quasi chiusa dagli interventi di ottobre. Su kosgroup.com le immagini senza alt sono
-poche; il problema è l'alt vuoto su foto di contenuto, cioè la mancanza di pattern che l'audit chiede.
+poche; il problema è l'alt vuoto su foto di contenuto, cioè la mancanza dei pattern che l'audit chiede.
 
-## Pattern nel codice (pacchetto )
+## Pattern nel codice (pacchetto `kosgroup/deploy/kos-7-alt.json`)
 
 | Immagini | Dove | Alt |
 | --- | --- | --- |
-| Gallerie delle strutture (874 occorrenze con gli elenchi) | snippet  | «<nome della struttura> – foto N di T» (TV  o titolo della pagina) |
-| Foto delle strutture negli elenchi | chunk ,  | nome della struttura |
-| Testata di articoli, news, eventi e tecnologie | template ,  | titolo della pagina (prima , segnaposto inesistente: alt sempre vuoto) |
-| Immagine di fondo pagina | chunk  | titolo della pagina (prima l'alt era il testo rotto «*pagetitle]]») |
-| Freccia «Leggi l'articolo» | chunk  | vuoto (decorativa) |
+| Gallerie delle strutture (874 occorrenze con gli elenchi) | snippet `galleryStruttura` | «nome della struttura – foto N di T» (TV `str.nome` o titolo della pagina) |
+| Foto delle strutture negli elenchi | chunk `listaStrutture`, `servizi-centri-row` | nome della struttura |
+| Testata di articoli, news, eventi e tecnologie | template `informativo`, `tecnologie` | titolo della pagina (prima `[[+introtext]]`, segnaposto inesistente: alt sempre vuoto) |
+| Immagine di fondo pagina | chunk `imgFooter` | titolo della pagina (prima l'alt era il testo rotto «*pagetitle]]») |
+| Freccia «Leggi l'articolo» | chunk `news-struttura` | vuoto (decorativa) |
 
 Restano con alt vuoto, perché decorative o già descritte dal testo accanto: avatar e foto del banner «KOSplayer»,
 icone, separatori e sfondi, anteprime dei video accanto al titolo, loghi dei progetti speciali accanto al nome, foto
-delle tecnologie nell'elenco (link con il nome, già ).
+delle tecnologie nell'elenco (link con il nome, già `aria-hidden`).
 
-## Immagini nei contenuti ()
+## Immagini nei contenuti (`scripts/deploy/alt-contenuti.php`)
 
-Regole per sito in  e : per ogni
-immagine (src) l'alt da aggiungere se manca o, con , da mettere al posto di quello vuoto; un alt
-già scritto non si tocca. Lingua per prefisso dell'URI (, ). Prova,  con tabella di backup e
-, . La prova elenca anche le regole che non trovano l'immagine nei contenuti (immagine in
+Regole per sito in `kosgroup/dati/alt/regole-contenuti.json` e `anniazzurri/dati/alt/regole-contenuti.json`: per ogni
+immagine (src) l'alt da aggiungere se manca o, con `sostituisci_vuoto`, da mettere al posto di quello vuoto; un alt
+già scritto non si tocca. Lingua per prefisso dell'URI (`it/`, `en/`). Prova, `--scrivi` con tabella di backup e
+`ripristino.json`, `--ripristina`. La prova elenca anche le regole che non trovano l'immagine nei contenuti (immagine in
 un template o in un chunk).
 
 Testi scritti guardando le foto, senza nomi di persone (salvo la direttrice di Volpiano, nominata nella pagina):
@@ -85,8 +85,8 @@ Testi scritti guardando le foto, senza nomi di persone (salvo la direttrice di V
 | `kos-academy-2.jpg` | Operatori sanitari in aula durante un corso KOS Academy | Healthcare workers attending a KOS Academy course |
 | `mychekup-analisi-banner.jpg` | Medica e paziente durante un colloquio | Doctor talking with a patient |
 
-In più:  (segnaposto dei medici senza foto, 336 nelle schede struttura) con alt vuoto.
-Esclusa la pagina Sostenibilità (lavoro extra ).
+In più: `medico-thumb.svg` (segnaposto dei medici senza foto, 336 nelle schede struttura) con alt vuoto.
+Esclusa la pagina Sostenibilità (lavoro extra `kos-sostenibilita`).
 
 ### anniazzurri.it
 
@@ -123,5 +123,5 @@ Esclusa la pagina Sostenibilità (lavoro extra ).
 
 ## Rilascio
 
-Stage, poi produzione: prima la prova di  (pagine e immagini toccate), poi ; elementi con
- e . Dopo: stesso controllo dell'8/11 sulle pagine della sitemap.
+Stage, poi produzione: prima la prova di `alt-contenuti.php` (pagine e immagini toccate), poi `--scrivi`; elementi con
+`installa-elementi.php` e `kos-7-alt.json`. Dopo: stesso controllo dell'8/11 sulle pagine della sitemap.
