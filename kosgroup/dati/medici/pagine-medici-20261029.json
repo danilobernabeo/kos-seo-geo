@@ -1,0 +1,1481 @@
+{
+ "fonte": "scripts/checks/kos-medici-pagine.php, produzione 29/10/2026",
+ "pagine": [
+  {
+   "id": "777",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/adel-chehida",
+   "pagetitle": "Adel Chehida",
+   "publicato": "1",
+   "ruolo": "Anestesista",
+   "idSedeLavoro": "218",
+   "infoImage": "assets/img/medici/adel-chehida.jpg"
+  },
+  {
+   "id": "747",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/adolfo-bandettini-di-poggio",
+   "pagetitle": "Adolfo Bandettini di Poggio",
+   "publicato": "1",
+   "ruolo": "Psichiatra",
+   "idSedeLavoro": "229",
+   "infoImage": "assets/img/medici/adolfo-bandettini-di-poggio.jpg"
+  },
+  {
+   "id": "597",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/alberto-busilacchi",
+   "pagetitle": "Alberto Busilacchi",
+   "publicato": "1",
+   "ruolo": "Ortopedico",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/alberto-busilacchi.jpg"
+  },
+  {
+   "id": "604",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/alberto-damiani",
+   "pagetitle": "Alberto Damiani",
+   "publicato": "1",
+   "ruolo": "Gastroenterologo",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/alberto-damiani.jpg"
+  },
+  {
+   "id": "829",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/alessandra-cavuto",
+   "pagetitle": "Alessandra Cavuto",
+   "publicato": "1",
+   "ruolo": "Musicoterapeuta",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/alessandra-cavuto.jpg"
+  },
+  {
+   "id": "843",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/alessandra-pastorio",
+   "pagetitle": "Alessandra Pastorio",
+   "publicato": "1",
+   "ruolo": "Fisiatra",
+   "idSedeLavoro": "233",
+   "infoImage": ""
+  },
+  {
+   "id": "748",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/alessandra-ramati",
+   "pagetitle": "Alessandra Ramati",
+   "publicato": "1",
+   "ruolo": "Psichiatra",
+   "idSedeLavoro": "175",
+   "infoImage": "assets/img/medici/alessandra-ramati.jpg"
+  },
+  {
+   "id": "749",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/alessandro-stronati",
+   "pagetitle": "Alessandro Stronati",
+   "publicato": "1",
+   "ruolo": "Psicologo e Psicoterapeuta",
+   "idSedeLavoro": "",
+   "infoImage": "assets/img/medici/alessandro-stronati.jpg"
+  },
+  {
+   "id": "1078",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/alice-doro",
+   "pagetitle": "Alice Doro",
+   "publicato": "1",
+   "ruolo": "Terapista Occupazionale",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/alice-doro.jpeg"
+  },
+  {
+   "id": "596",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/andrea-bianchi",
+   "pagetitle": "Andrea Bianchi",
+   "publicato": "0",
+   "ruolo": "Ortopedico",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/andrea-bianchi.jpg"
+  },
+  {
+   "id": "602",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/andrea-conti",
+   "pagetitle": "Andrea Conti",
+   "publicato": "1",
+   "ruolo": "Chiururgo generale",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/andrea-conti.jpg"
+  },
+  {
+   "id": "905",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/andrea-giorgini",
+   "pagetitle": "Andrea Giorgini",
+   "publicato": "0",
+   "ruolo": "Ortopedico",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/rolando-rocchetti.jpg"
+  },
+  {
+   "id": "1097",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/andrea-mastriani",
+   "pagetitle": "Andrea Mastriani",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "190",
+   "infoImage": "assets/img/medici/andrea-mastriani.jpg"
+  },
+  {
+   "id": "571",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/andrea-moggi",
+   "pagetitle": "Andrea Moggi",
+   "publicato": "1",
+   "ruolo": "Podologo",
+   "idSedeLavoro": "190",
+   "infoImage": "assets/img/medici/andrea-moggi.jpg"
+  },
+  {
+   "id": "733",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/angelica-luttichau",
+   "pagetitle": "Angelica Luttichau",
+   "publicato": "1",
+   "ruolo": "Ginecologa e ostetrica",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/angelica-luttichau.jpg"
+  },
+  {
+   "id": "873",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/annalisa-fumagalli",
+   "pagetitle": "Annalisa Fumagalli",
+   "publicato": "1",
+   "ruolo": "Assistente Medicina Estetica",
+   "idSedeLavoro": "190",
+   "infoImage": "/assets/img/medici/annalisa-fumagalli.jpg"
+  },
+  {
+   "id": "618",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/antonela-tinca",
+   "pagetitle": "Antonela Tinca",
+   "publicato": "1",
+   "ruolo": "Anatoma patologa",
+   "idSedeLavoro": "218",
+   "infoImage": "assets/img/medici/antonela-tinca.jpg"
+  },
+  {
+   "id": "562",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/antonio-ballarino",
+   "pagetitle": "Antonio Ballarino",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "190",
+   "infoImage": "assets/img/medici/antonio-ballarino.jpg"
+  },
+  {
+   "id": "723",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/antonio-capomagi",
+   "pagetitle": "Antonio Capomagi",
+   "publicato": "1",
+   "ruolo": "Chirurgo generale",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/antonio-capomagi.jpg"
+  },
+  {
+   "id": "739",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/antonio-rencricca",
+   "pagetitle": "Antonio Rencricca",
+   "publicato": "1",
+   "ruolo": "Otorinolaringoiatra",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/antonio-rencricca.jpg"
+  },
+  {
+   "id": "847",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/antonio-rizzetto",
+   "pagetitle": "Antonio Rizzetto",
+   "publicato": "1",
+   "ruolo": "Coordinatore Fisioterapisti, Logopedisti, Terapisti Occupazionali",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/antonio-rizzetto.jpg"
+  },
+  {
+   "id": "586",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/arcangela-rozza",
+   "pagetitle": "Arcangela Rozza",
+   "publicato": "1",
+   "ruolo": "Chirrugo vascolare",
+   "idSedeLavoro": "226",
+   "infoImage": "assets/img/medici/arcangela-rozza.jpg"
+  },
+  {
+   "id": "869",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/assunta-benincasa",
+   "pagetitle": "Assunta Benincasa",
+   "publicato": "1",
+   "ruolo": "Otorinolaringoiatra",
+   "idSedeLavoro": "190",
+   "infoImage": "/assets/img/medici/assunta-benincasa.jpg"
+  },
+  {
+   "id": "900",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/azzurra-moscatelli",
+   "pagetitle": "Azzurra Moscatelli",
+   "publicato": "1",
+   "ruolo": "Biologa Nutrizionista",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/azzurra-moscatelli.jpg"
+  },
+  {
+   "id": "563",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/beatrice-baroni",
+   "pagetitle": "Beatrice Baroni",
+   "publicato": "1",
+   "ruolo": "Biologa nutrizionista",
+   "idSedeLavoro": "190",
+   "infoImage": "assets/img/medici/beatrice-baroni.jpg"
+  },
+  {
+   "id": "1057",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/beatrice-bertinato",
+   "pagetitle": "Beatrice Bertinato",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/beatrice-bertinato.jpg"
+  },
+  {
+   "id": "570",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/beatrice-mazzucato",
+   "pagetitle": "Beatrice Mazzucato",
+   "publicato": "1",
+   "ruolo": "Psicologa clinica",
+   "idSedeLavoro": "190",
+   "infoImage": "assets/img/medici/beatrice-mazzuccato.jpg"
+  },
+  {
+   "id": "579",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/biagio-cotticelli",
+   "pagetitle": "Biagio Cotticelli",
+   "publicato": "1",
+   "ruolo": "Neurologo",
+   "idSedeLavoro": "226",
+   "infoImage": ""
+  },
+  {
+   "id": "572",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/bruno-passaretti",
+   "pagetitle": "Bruno Passaretti",
+   "publicato": "0",
+   "ruolo": "Cardiologo",
+   "idSedeLavoro": "190",
+   "infoImage": ""
+  },
+  {
+   "id": "583",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/carlo-pagannone",
+   "pagetitle": "Carlo Pagannone",
+   "publicato": "1",
+   "ruolo": "Radiologo",
+   "idSedeLavoro": "226",
+   "infoImage": "assets/img/medici/carlo-pagannone.jpg"
+  },
+  {
+   "id": "740",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/carlo-rondanini",
+   "pagetitle": "Carlo Rondanini",
+   "publicato": "1",
+   "ruolo": "Angiologo",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/carlo-rondanini.jpg"
+  },
+  {
+   "id": "721",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/cesare-boria",
+   "pagetitle": "Cesare Boria",
+   "publicato": "1",
+   "ruolo": "Cardiochirurgo",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/cesare-boria.jpg"
+  },
+  {
+   "id": "727",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/claudio-gambini",
+   "pagetitle": "Claudio Gambini",
+   "publicato": "1",
+   "ruolo": "Cardiochirurgo",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/claudio-gambini.jpg"
+  },
+  {
+   "id": "772",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/cosimo-argentieri",
+   "pagetitle": "Cosimo Argentieri",
+   "publicato": "1",
+   "ruolo": "Psichiatra",
+   "idSedeLavoro": "",
+   "infoImage": "assets/img/medici/cosimo-argentieri.jpg"
+  },
+  {
+   "id": "824",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/cristina-beretta",
+   "pagetitle": "Cristina Beretta",
+   "publicato": "1",
+   "ruolo": "Medico Fisiatra",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/cristina-beretta.jpg"
+  },
+  {
+   "id": "1091",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/cristina-landi",
+   "pagetitle": "Cristina Landi",
+   "publicato": "1",
+   "ruolo": "Neurologo",
+   "idSedeLavoro": "190",
+   "infoImage": ""
+  },
+  {
+   "id": "877",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/daniela-matei",
+   "pagetitle": "Daniela Matei",
+   "publicato": "1",
+   "ruolo": "Infermiera",
+   "idSedeLavoro": "190",
+   "infoImage": "/assets/img/medici/daniela-matei.jpg"
+  },
+  {
+   "id": "842",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/daniele-panozzo",
+   "pagetitle": "Daniele Panozzo",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/daniele-panozzo.jpg"
+  },
+  {
+   "id": "850",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/daniele-volpe",
+   "pagetitle": "Daniele Volpe",
+   "publicato": "1",
+   "ruolo": "Geriatra e Fisiatra",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/daniele-volpe.jpg"
+  },
+  {
+   "id": "578",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/dario-colasanto",
+   "pagetitle": "Dario Colasanto",
+   "publicato": "1",
+   "ruolo": "Radiologo",
+   "idSedeLavoro": "226",
+   "infoImage": "assets/img/medici/dario-colasanto.jpg"
+  },
+  {
+   "id": "780",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/david-mariani",
+   "pagetitle": "David Mariani",
+   "publicato": "1",
+   "ruolo": "Responsabile DH Oncologico e Reparto di Oncologia",
+   "idSedeLavoro": "218",
+   "infoImage": "assets/img/medici/david-mariani.jpg"
+  },
+  {
+   "id": "879",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/diego-pais",
+   "pagetitle": "Diego Pais",
+   "publicato": "1",
+   "ruolo": "Infermiere",
+   "idSedeLavoro": "190",
+   "infoImage": "/assets/img/medici/diego-pais.jpg"
+  },
+  {
+   "id": "1146",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/diego-spagnolo",
+   "pagetitle": "Diego Spagnolo",
+   "publicato": "1",
+   "ruolo": "Cardiologia",
+   "idSedeLavoro": "218",
+   "infoImage": "assets/img/medici/diego-spagnolo.jpg"
+  },
+  {
+   "id": "867",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/domenico-corrado-ali",
+   "pagetitle": "Domenico Corrado Alì",
+   "publicato": "1",
+   "ruolo": "Medico estetico",
+   "idSedeLavoro": "190",
+   "infoImage": "assets/img/medici/domenico-corrado-ali.jpg"
+  },
+  {
+   "id": "779",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/domenico-lo-giudice",
+   "pagetitle": "Domenico Lo Giudice",
+   "publicato": "1",
+   "ruolo": "Neurologo",
+   "idSedeLavoro": "218",
+   "infoImage": "assets/img/medici/domenico-lo-giudice.jpg"
+  },
+  {
+   "id": "585",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/donatella-roncaglia",
+   "pagetitle": "Donatella Roncaglia",
+   "publicato": "1",
+   "ruolo": "Radiologa",
+   "idSedeLavoro": "226",
+   "infoImage": "assets/img/medici/donatella-roncaglia.jpg"
+  },
+  {
+   "id": "1055",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/elena-regau",
+   "pagetitle": "Elena Regaù",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/elena-ragau.jpg"
+  },
+  {
+   "id": "846",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/elena-righetto",
+   "pagetitle": "Elena Righetto",
+   "publicato": "1",
+   "ruolo": "Coordinatrice Infermieristica",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/elena-righetto.jpg"
+  },
+  {
+   "id": "590",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/elena-vezzelli",
+   "pagetitle": "Elena Vezzelli",
+   "publicato": "1",
+   "ruolo": "Radiologia",
+   "idSedeLavoro": "226",
+   "infoImage": "assets/img/medici/elena-vezzelli.jpg"
+  },
+  {
+   "id": "953",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/elisa-falappa",
+   "pagetitle": "Elisa Falappa",
+   "publicato": "1",
+   "ruolo": "Biologo Nutrizionista",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/elisa-falappa.jpg"
+  },
+  {
+   "id": "566",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/emanuele-cucchi",
+   "pagetitle": "Emanuele Cucchi",
+   "publicato": "0",
+   "ruolo": "Radiologo",
+   "idSedeLavoro": "190",
+   "infoImage": "assets/img/medici/emanuele-cucchi.jpg"
+  },
+  {
+   "id": "775",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/emanuele-pallotti",
+   "pagetitle": "Emanuele Pallotti",
+   "publicato": "1",
+   "ruolo": "Tecnico della Riabilitazione Psichiatrica",
+   "idSedeLavoro": "228",
+   "infoImage": "assets/img/medici/emanuele-pallotti.jpg"
+  },
+  {
+   "id": "773",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/fabio-conti",
+   "pagetitle": "Fabio Conti",
+   "publicato": "1",
+   "ruolo": "Psichiatra",
+   "idSedeLavoro": "216",
+   "infoImage": "assets/img/medici/fabio-conti.jpg"
+  },
+  {
+   "id": "1092",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/fabio-lissoni",
+   "pagetitle": "Fabio Lissoni",
+   "publicato": "1",
+   "ruolo": "Cardiologo",
+   "idSedeLavoro": "190",
+   "infoImage": ""
+  },
+  {
+   "id": "1096",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/federica-lenti",
+   "pagetitle": "Federica Lenti",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "190",
+   "infoImage": ""
+  },
+  {
+   "id": "1145",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/federia-sanges",
+   "pagetitle": "Federica Sanges",
+   "publicato": "1",
+   "ruolo": "Nutrizionista",
+   "idSedeLavoro": "218",
+   "infoImage": "assets/img/medici/federica-sanges.jpg"
+  },
+  {
+   "id": "868",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/ferdinando-ambrosi",
+   "pagetitle": "Ferdinando Ambrosi",
+   "publicato": "1",
+   "ruolo": "Geriatra",
+   "idSedeLavoro": "190",
+   "infoImage": "/assets/img/medici/ferdinando-ambrosi.jpg"
+  },
+  {
+   "id": "834",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/flavia-frighetto",
+   "pagetitle": "Flavia Frighetto",
+   "publicato": "1",
+   "ruolo": "Logopedista",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/flavia-frighetto.jpg"
+  },
+  {
+   "id": "881",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/francesca-passoni",
+   "pagetitle": "Francesca Passoni",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "190",
+   "infoImage": "/assets/img/medici/francesca-passoni.jpg"
+  },
+  {
+   "id": "776",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/francesca-russo",
+   "pagetitle": "Francesca Russo",
+   "publicato": "1",
+   "ruolo": "Tecnico della Riabilitazione Psichiatrica",
+   "idSedeLavoro": "228",
+   "infoImage": "assets/img/medici/francesca-russo.jpg"
+  },
+  {
+   "id": "836",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/francesco-giust",
+   "pagetitle": "Francesco Giust",
+   "publicato": "0",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/francesco-giust.jpg"
+  },
+  {
+   "id": "845",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/francesco-perini",
+   "pagetitle": "Francesco Perini",
+   "publicato": "1",
+   "ruolo": "Neurologo",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/francesco-perini.jpg"
+  },
+  {
+   "id": "722",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/franco-burattini",
+   "pagetitle": "Franco Burattini",
+   "publicato": "1",
+   "ruolo": "Psicologo e Psicoterapeuta",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/franco-burattini.jpg"
+  },
+  {
+   "id": "605",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/franco-de-carlo",
+   "pagetitle": "Franco De Carlo",
+   "publicato": "1",
+   "ruolo": "Otorinolaringoiatra",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/franco-de-carlo.jpg"
+  },
+  {
+   "id": "594",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/gabriele-amicucci",
+   "pagetitle": "Gabriele Amicucci",
+   "publicato": "1",
+   "ruolo": "Flebologo",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/gabriele-amicucci.jpg"
+  },
+  {
+   "id": "616",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/gabriele-mammana",
+   "pagetitle": "Gabriele Mammana",
+   "publicato": "1",
+   "ruolo": "Urologo",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/gabriele-mammana.jpg"
+  },
+  {
+   "id": "1143",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/gabriele-poloni",
+   "pagetitle": "Gabriele Poloni",
+   "publicato": "1",
+   "ruolo": "Oculista",
+   "idSedeLavoro": "218",
+   "infoImage": "assets/img/medici/gabriele-poloni.jpg"
+  },
+  {
+   "id": "591",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/gabriele-zelent",
+   "pagetitle": "Gabriele Zelent",
+   "publicato": "1",
+   "ruolo": "Radiologo",
+   "idSedeLavoro": "226",
+   "infoImage": ""
+  },
+  {
+   "id": "1095",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/gerardo-mele",
+   "pagetitle": "Gerardo Mele",
+   "publicato": "1",
+   "ruolo": "Fisiatra",
+   "idSedeLavoro": "190",
+   "infoImage": ""
+  },
+  {
+   "id": "1000",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giacomo-brocani",
+   "pagetitle": "Giacomo Brocani",
+   "publicato": "1",
+   "ruolo": "Biologo Nutrizionista",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/giacomo-brocani.jpg"
+  },
+  {
+   "id": "902",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giacomo-zenobi",
+   "pagetitle": "Giacomo Zenobi",
+   "publicato": "1",
+   "ruolo": "Medicina del Dolore",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/giacomo-zenobi.jpg"
+  },
+  {
+   "id": "1056",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giada-spigarolo",
+   "pagetitle": "Giada Spigarolo",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/giada-spigarolo.jpg"
+  },
+  {
+   "id": "841",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giampietro-nordera",
+   "pagetitle": "Giampietro Nordera",
+   "publicato": "1",
+   "ruolo": "Neurologo",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/giampietro-nordera.jpg"
+  },
+  {
+   "id": "734",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/gian-mario-micheloni",
+   "pagetitle": "Gian Mario Micheloni",
+   "publicato": "1",
+   "ruolo": "Chirurgo ortopedico",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/gian-mario-micheloni.jpg"
+  },
+  {
+   "id": "577",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giancarlo-sparpaglione",
+   "pagetitle": "Giancarlo Sparpaglione",
+   "publicato": "1",
+   "ruolo": "Ginecologo",
+   "idSedeLavoro": "190",
+   "infoImage": "assets/img/medici/giancarlo-sparpaglione.jpg"
+  },
+  {
+   "id": "601",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/gianluca-colapinto",
+   "pagetitle": "Gianluca Colapinto",
+   "publicato": "0",
+   "ruolo": "Chirurgo Maxillo-Facciale",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/gianluca-colapinto.jpg"
+  },
+  {
+   "id": "584",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/gianluca-rampini",
+   "pagetitle": "Gianluca Rampini",
+   "publicato": "1",
+   "ruolo": "Radiologo",
+   "idSedeLavoro": "226",
+   "infoImage": "assets/img/medici/gianluca-rampini.jpg"
+  },
+  {
+   "id": "580",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/gianni-de-berti",
+   "pagetitle": "Gianni De Berti",
+   "publicato": "1",
+   "ruolo": "Neurologo e Neuroradiologo",
+   "idSedeLavoro": "226",
+   "infoImage": ""
+  },
+  {
+   "id": "619",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/gino-mattutini",
+   "pagetitle": "Gino Mattutini",
+   "publicato": "1",
+   "ruolo": "Dermatologo e venereologo",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/gino-mattutini.jpg"
+  },
+  {
+   "id": "1093",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giorgio-gritti",
+   "pagetitle": "Giorgio Gritti",
+   "publicato": "1",
+   "ruolo": "Ortopedico",
+   "idSedeLavoro": "190",
+   "infoImage": ""
+  },
+  {
+   "id": "608",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giovanni-battista-frongia",
+   "pagetitle": "Giovanni Battista Frongia",
+   "publicato": "1",
+   "ruolo": "Oculista",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/giovanni-battista-frongia.jpg"
+  },
+  {
+   "id": "837",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giovanni-gottin",
+   "pagetitle": "Giovanni Gottin",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/giovanni-gottin.jpg"
+  },
+  {
+   "id": "735",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giovanni-oteri",
+   "pagetitle": "Giovanni Oteri",
+   "publicato": "0",
+   "ruolo": "Dermatologo e Venereologo",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/giovanni-oteri.jpg"
+  },
+  {
+   "id": "880",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giovanni-paone",
+   "pagetitle": "Giovanni Paone",
+   "publicato": "1",
+   "ruolo": "Ecografista",
+   "idSedeLavoro": "190",
+   "infoImage": "assets/img/medici/giovanni-paone.jpg"
+  },
+  {
+   "id": "830",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giuliana-ciampa",
+   "pagetitle": "Giuliana Ciampa",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/giuliana-ciampa.jpg"
+  },
+  {
+   "id": "899",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giulio-milanese",
+   "pagetitle": "Giulio Milanese",
+   "publicato": "1",
+   "ruolo": "Urologo",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/giulio-milanese.jpg"
+  },
+  {
+   "id": "742",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/giuseppe-sortino",
+   "pagetitle": "Giuseppe Sortino",
+   "publicato": "1",
+   "ruolo": "Urologo e Andrologo",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/giuseppe-sortino.jpg"
+  },
+  {
+   "id": "885",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/guido-zanandrea",
+   "pagetitle": "Guido Zanandrea",
+   "publicato": "1",
+   "ruolo": "Urologo",
+   "idSedeLavoro": "190",
+   "infoImage": "/assets/img/medici/guido-zanandrea.jpg"
+  },
+  {
+   "id": "614",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/ivano-lorenzini",
+   "pagetitle": "Ivano Lorenzini",
+   "publicato": "1",
+   "ruolo": "Gastroenterologo",
+   "idSedeLavoro": "202",
+   "infoImage": "/assets/img/medici/ivano-lorenzini.jpg"
+  },
+  {
+   "id": "825",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/katia-bernasconi",
+   "pagetitle": "Katia Bernasconi",
+   "publicato": "1",
+   "ruolo": "Medico Fisiatra",
+   "idSedeLavoro": "233",
+   "infoImage": ""
+  },
+  {
+   "id": "823",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/leila-bakdounes",
+   "pagetitle": "Leila Bakdounes",
+   "publicato": "1",
+   "ruolo": "Fisiatra",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/leila-bakdounes.jpg"
+  },
+  {
+   "id": "612",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/leonidas-kontocristos",
+   "pagetitle": "Leonidas Kontocristos",
+   "publicato": "1",
+   "ruolo": "Ortopedico",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/leonidas-kontocristos.jpg"
+  },
+  {
+   "id": "840",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/lisa-nalesso",
+   "pagetitle": "Lisa Nalesso",
+   "publicato": "1",
+   "ruolo": "Dietista",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/lisa-nalesso.jpg"
+  },
+  {
+   "id": "1099",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/lisa-ventura",
+   "pagetitle": "Lisa Ventura",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "190",
+   "infoImage": ""
+  },
+  {
+   "id": "725",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/luca-dei-giudici",
+   "pagetitle": "Luca Dei Giudici",
+   "publicato": "1",
+   "ruolo": "Ortopedico",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/luca-dei-giudici.jpg"
+  },
+  {
+   "id": "1059",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/lucia-zenere",
+   "pagetitle": "Lucia Zenere",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/lucia-zenere.jpg"
+  },
+  {
+   "id": "778",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/luciano-ferrini",
+   "pagetitle": "Luciano Ferrini",
+   "publicato": "1",
+   "ruolo": "Gastroenterologo",
+   "idSedeLavoro": "218",
+   "infoImage": "assets/img/medici/luciano-ferrini.jpg"
+  },
+  {
+   "id": "595",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/lucio-baffoni",
+   "pagetitle": "Lucio Baffoni",
+   "publicato": "1",
+   "ruolo": "Responsabile servizio radiologia",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/lucio-baffoni.jpg"
+  },
+  {
+   "id": "617",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/lucio-marcaccio",
+   "pagetitle": "Lucio Marcaccio",
+   "publicato": "1",
+   "ruolo": "Oculista",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/lucio-marcaccio.jpg"
+  },
+  {
+   "id": "600",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/luigi-chiaramonti",
+   "pagetitle": "Luigi Chiaramonti",
+   "publicato": "1",
+   "ruolo": "Neurologo",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/luigi-chiaramonti.jpg"
+  },
+  {
+   "id": "607",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/luigi-fasanella",
+   "pagetitle": "Luigi Fasanella",
+   "publicato": "1",
+   "ruolo": "Otorinolaringoiatra",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/luigi-fasanella.jpg"
+  },
+  {
+   "id": "1094",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/marco-bandi",
+   "pagetitle": "Marco Bandi",
+   "publicato": "1",
+   "ruolo": "Fisiatra",
+   "idSedeLavoro": "190",
+   "infoImage": ""
+  },
+  {
+   "id": "876",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/marco-mariani",
+   "pagetitle": "Marco Mariani",
+   "publicato": "1",
+   "ruolo": "Infermiere",
+   "idSedeLavoro": "190",
+   "infoImage": "/assets/img/medici/marco-mariani.jpg"
+  },
+  {
+   "id": "828",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/maria-concetta-campo",
+   "pagetitle": "Maria Concetta Campo",
+   "publicato": "1",
+   "ruolo": "Psicologa",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/maria-concetta-campo.jpg"
+  },
+  {
+   "id": "882",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/maria-maddalena-santonastaso",
+   "pagetitle": "Maria Maddalena Santonastaso",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "190",
+   "infoImage": "assets/img/medici/maria-maddalena-santanostaso.jpg"
+  },
+  {
+   "id": "849",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/marina-stojanovic",
+   "pagetitle": "Marina Stojanovic",
+   "publicato": "0",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/marina-stojanovic.jpg"
+  },
+  {
+   "id": "720",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/marinella-baroni",
+   "pagetitle": "Marinella Baroni",
+   "publicato": "1",
+   "ruolo": "Fisiatra",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/marinella-baroni.jpg"
+  },
+  {
+   "id": "1080",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/querci-martina",
+   "pagetitle": "Martina Querci",
+   "publicato": "1",
+   "ruolo": "Chinesiologa",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/martina-querci.jpeg"
+  },
+  {
+   "id": "581",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/massimo-maggi",
+   "pagetitle": "Massimo Maggi",
+   "publicato": "1",
+   "ruolo": "Neuroradiologo",
+   "idSedeLavoro": "226",
+   "infoImage": "assets/img/medici/massimo-maggi.jpg"
+  },
+  {
+   "id": "743",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/massimo-vallasciani",
+   "pagetitle": "Massimo Vallasciani",
+   "publicato": "1",
+   "ruolo": "Fisiatra",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/massimo-vallasciani.jpg"
+  },
+  {
+   "id": "1142",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/matteo-lagorio",
+   "pagetitle": "Matteo Lagorio",
+   "publicato": "1",
+   "ruolo": "Ortopedico",
+   "idSedeLavoro": "218",
+   "infoImage": "assets/img/medici/matteo-lagorio.jpg"
+  },
+  {
+   "id": "568",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/matteo-mariani",
+   "pagetitle": "Matteo Mariani",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "190",
+   "infoImage": "assets/img/medici/matteo-mariani.jpg"
+  },
+  {
+   "id": "737",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/matteo-pavan",
+   "pagetitle": "Matteo Pavan",
+   "publicato": "1",
+   "ruolo": "Ortopedico e Traumatologo",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/matteo-pavan.jpg"
+  },
+  {
+   "id": "715",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/maurilio-genovese",
+   "pagetitle": "Maurilio Genovese",
+   "publicato": "1",
+   "ruolo": "Radiologo",
+   "idSedeLavoro": "226",
+   "infoImage": ""
+  },
+  {
+   "id": "582",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/mauro-marchetti",
+   "pagetitle": "Mauro Marchetti",
+   "publicato": "0",
+   "ruolo": "Radiologo",
+   "idSedeLavoro": "226",
+   "infoImage": ""
+  },
+  {
+   "id": "624",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/mauro-proietti-pannunzi",
+   "pagetitle": "Mauro Proietti Pannunzi",
+   "publicato": "1",
+   "ruolo": "Anestesista",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/mauro-proietti-pannunzi.jpg"
+  },
+  {
+   "id": "1079",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/michela-monda",
+   "pagetitle": "Michela Monda",
+   "publicato": "1",
+   "ruolo": "Terapista Occupazionale",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/michela-monda.jpeg"
+  },
+  {
+   "id": "573",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/michelangelo-porretta",
+   "pagetitle": "Michelangelo Porretta",
+   "publicato": "1",
+   "ruolo": "Fisioterapista e osteopata",
+   "idSedeLavoro": "190",
+   "infoImage": "assets/img/medici/michelangelo-porretta.jpg"
+  },
+  {
+   "id": "564",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/michele-carangelo",
+   "pagetitle": "Michele Carangelo",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "190",
+   "infoImage": "assets/img/medici/michele-carangelo.jpg"
+  },
+  {
+   "id": "623",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/michele-paniccia",
+   "pagetitle": "Michele Paniccia",
+   "publicato": "1",
+   "ruolo": "Neurologo",
+   "idSedeLavoro": "218",
+   "infoImage": "assets/img/medici/paniccia-michele.jpg"
+  },
+  {
+   "id": "901",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/michele-tulli",
+   "pagetitle": "Michele Tulli",
+   "publicato": "1",
+   "ruolo": "Otorinolaringoiatra",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/michele-tulli.jpg"
+  },
+  {
+   "id": "884",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/miriam-vedrodyova",
+   "pagetitle": "Miriam Vedrodyova",
+   "publicato": "1",
+   "ruolo": "Logopedista",
+   "idSedeLavoro": "190",
+   "infoImage": "/assets/img/medici/miriam-vedrodyova.jpg"
+  },
+  {
+   "id": "728",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/mirko-gigli",
+   "pagetitle": "Mirko Gigli",
+   "publicato": "1",
+   "ruolo": "Podologo",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/mirko-gigli.jpg"
+  },
+  {
+   "id": "1147",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/myroslava-styhar",
+   "pagetitle": "Myroslava Styhar",
+   "publicato": "1",
+   "ruolo": "Reumatologo",
+   "idSedeLavoro": "218",
+   "infoImage": "assets/img/medici/myroslava-styhar.jpg"
+  },
+  {
+   "id": "838",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/nicol-marchetto",
+   "pagetitle": "Nicol Marchetto",
+   "publicato": "0",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/nicol-marchetto.jpg"
+  },
+  {
+   "id": "826",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/nicola-bonetto",
+   "pagetitle": "Nicola Bonetto",
+   "publicato": "1",
+   "ruolo": "Neurologo",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/nicola-bonetto.jpg"
+  },
+  {
+   "id": "1058",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/nicola-dalla-chiara",
+   "pagetitle": "Nicola Dalla Chiara",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/nicola-dalla-chiara.jpg"
+  },
+  {
+   "id": "609",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/nicola-gentili",
+   "pagetitle": "Nicola Gentili",
+   "publicato": "1",
+   "ruolo": "Ortopedico",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/nicola-gentili.jpg"
+  },
+  {
+   "id": "736",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/nicola-pace",
+   "pagetitle": "Nicola Pace",
+   "publicato": "1",
+   "ruolo": "Ortopedico e Traumatologo",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/nicola-pace.jpg"
+  },
+  {
+   "id": "587",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/nicola-santini",
+   "pagetitle": "Nicola Santini",
+   "publicato": "1",
+   "ruolo": "Radiologo",
+   "idSedeLavoro": "226",
+   "infoImage": "assets/img/medici/nicola-santini.jpg"
+  },
+  {
+   "id": "831",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/nicoletta-del-grosso",
+   "pagetitle": "Nicoletta Del Grosso Destreri",
+   "publicato": "1",
+   "ruolo": "Psicologa",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/nicoletta-del-grosso.jpg"
+  },
+  {
+   "id": "844",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/nives-pegoraro",
+   "pagetitle": "Nives Pegoraro",
+   "publicato": "0",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/nives-pegoraro.jpg"
+  },
+  {
+   "id": "738",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/osvaldo-pirani",
+   "pagetitle": "Osvaldo Pirani",
+   "publicato": "1",
+   "ruolo": "Radiologo",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/osvaldo-pirani.jpg"
+  },
+  {
+   "id": "729",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/paolo-giudici",
+   "pagetitle": "Paolo Giudici",
+   "publicato": "1",
+   "ruolo": "Ortopedico, Traumatologo e Osteopata",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/paolo-giudici.jpg"
+  },
+  {
+   "id": "731",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/paolo-guidoni",
+   "pagetitle": "Paolo Guidoni",
+   "publicato": "1",
+   "ruolo": "Neurochirurgo",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/paolo-guidoni.jpg"
+  },
+  {
+   "id": "1077",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/paolo-maria-squadroni",
+   "pagetitle": "Paolo Maria Squadroni",
+   "publicato": "1",
+   "ruolo": "Gastroenterologo",
+   "idSedeLavoro": "218",
+   "infoImage": "assets/img/medici/squadroni-paolo-maria.jpg"
+  },
+  {
+   "id": "592",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/paolo-zonari",
+   "pagetitle": "Paolo Zonari",
+   "publicato": "1",
+   "ruolo": "Neurologo e radiologo",
+   "idSedeLavoro": "226",
+   "infoImage": ""
+  },
+  {
+   "id": "610",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/pierluigi-giansante",
+   "pagetitle": "Pierluigi Giansante",
+   "publicato": "1",
+   "ruolo": "Ortopedico",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/pierluigi-giansante.jpg"
+  },
+  {
+   "id": "1141",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/remo-di-matteo",
+   "pagetitle": "Remo Di Matteo",
+   "publicato": "1",
+   "ruolo": "Ortopedico",
+   "idSedeLavoro": "218",
+   "infoImage": "assets/img/medici/remo-di-matteo.jpg"
+  },
+  {
+   "id": "588",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/riccardo-scaglioni",
+   "pagetitle": "Riccardo Scaglioni",
+   "publicato": "1",
+   "ruolo": "Radiologo ed ecografista",
+   "idSedeLavoro": "226",
+   "infoImage": ""
+  },
+  {
+   "id": "719",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/roberto-baldoni",
+   "pagetitle": "Roberto Baldoni",
+   "publicato": "1",
+   "ruolo": "Ortopedico",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/roberto-baldoni.jpg"
+  },
+  {
+   "id": "598",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/roberto-castricini",
+   "pagetitle": "Roberto Castricini",
+   "publicato": "1",
+   "ruolo": "Ortopedico",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/roberto-castricini.jpg"
+  },
+  {
+   "id": "589",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/roberto-suozzi",
+   "pagetitle": "Roberto Suozzi",
+   "publicato": "1",
+   "ruolo": "Neurologo",
+   "idSedeLavoro": "226",
+   "infoImage": "assets/img/medici/roberto-suozzi.jpg"
+  },
+  {
+   "id": "870",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/rodolfo-calorio",
+   "pagetitle": "Rodolfo Calorio",
+   "publicato": "1",
+   "ruolo": "Medico estetico",
+   "idSedeLavoro": "190",
+   "infoImage": "/assets/img/medici/rodolfo-calorio.jpg"
+  },
+  {
+   "id": "726",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/rolando-gagliardini",
+   "pagetitle": "Rolando Gagliardini",
+   "publicato": "1",
+   "ruolo": "Pediatra e Pneumologo",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/rolando-gagliardini.jpg"
+  },
+  {
+   "id": "903",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/rolando-gregorio-edoardo-rocchetti",
+   "pagetitle": "Rolando Gregorio Edoardo Rocchetti",
+   "publicato": "1",
+   "ruolo": "Chirurgo",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/rolando-rocchetti.jpg"
+  },
+  {
+   "id": "835",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/sabina-giarrusso",
+   "pagetitle": "Sabina Giarrusso",
+   "publicato": "0",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "233",
+   "infoImage": ""
+  },
+  {
+   "id": "567",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/sara-fantoni",
+   "pagetitle": "Sara Fantoni",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "190",
+   "infoImage": "assets/img/medici/sara-fantoni.jpg"
+  },
+  {
+   "id": "741",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/sara-scuppa",
+   "pagetitle": "Sara Scuppa",
+   "publicato": "1",
+   "ruolo": "Ginecologa e ostetrica",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/sara-scuppa.jpg"
+  },
+  {
+   "id": "848",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/sara-sgarbossa",
+   "pagetitle": "Sara Sgarbossa",
+   "publicato": "0",
+   "ruolo": "Terapista Occupazionale",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/sara-sgarbossa.jpg"
+  },
+  {
+   "id": "1098",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/sara-tenace",
+   "pagetitle": "Sara Tenace",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "190",
+   "infoImage": ""
+  },
+  {
+   "id": "827",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/selena-bressan",
+   "pagetitle": "Selena Bressan",
+   "publicato": "1",
+   "ruolo": "Logopedista",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/selena-bressan.jpg"
+  },
+  {
+   "id": "839",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/silvia-moretti",
+   "pagetitle": "Silvia Moretti",
+   "publicato": "1",
+   "ruolo": "Coordinatrice Infermieristica",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/silvia-moretti.jpg"
+  },
+  {
+   "id": "1144",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/silvia-pranzetti",
+   "pagetitle": "Silvia Pranzetti",
+   "publicato": "1",
+   "ruolo": "Chirurgo",
+   "idSedeLavoro": "218",
+   "infoImage": "assets/img/medici/silvia-pranzetti.jpg"
+  },
+  {
+   "id": "1140",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/simona-turtu",
+   "pagetitle": "Simona Turtù",
+   "publicato": "1",
+   "ruolo": "Dermatologa",
+   "idSedeLavoro": "218",
+   "infoImage": "assets/img/medici/simona-turtu.jpg"
+  },
+  {
+   "id": "832",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/sofia-fortuna",
+   "pagetitle": "Sofia Fortuna",
+   "publicato": "1",
+   "ruolo": "Fisioterapista",
+   "idSedeLavoro": "233",
+   "infoImage": "assets/img/medici/sofia-fortuna.jpg"
+  },
+  {
+   "id": "714",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/sonia-ferraresi",
+   "pagetitle": "Sonia Ferraresi",
+   "publicato": "1",
+   "ruolo": "Radiologa",
+   "idSedeLavoro": "226",
+   "infoImage": ""
+  },
+  {
+   "id": "724",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/stefania-d-acunto",
+   "pagetitle": "Stefania D'Acunto",
+   "publicato": "1",
+   "ruolo": "Neurologo",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/stefania-d-acunto.jpg"
+  },
+  {
+   "id": "593",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/stefano-albanelli",
+   "pagetitle": "Stefano Albanelli",
+   "publicato": "1",
+   "ruolo": "Ortopedico",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/stefano-albanelli.jpg"
+  },
+  {
+   "id": "904",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/valerio-fauda",
+   "pagetitle": "Valerio Fauda",
+   "publicato": "0",
+   "ruolo": "Radiologo",
+   "idSedeLavoro": "202",
+   "infoImage": "assets/img/medici/rolando-rocchetti.jpg"
+  },
+  {
+   "id": "774",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/vassilij-di-giorgio",
+   "pagetitle": "Vassilij Di Giorgio",
+   "publicato": "1",
+   "ruolo": "Psichiatra",
+   "idSedeLavoro": "216",
+   "infoImage": "assets/img/medici/vassilij-di-giorgio.jpg"
+  },
+  {
+   "id": "615",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/vincenzo-magliani",
+   "pagetitle": "Vincenzo Magliani",
+   "publicato": "1",
+   "ruolo": "Neurochirurgo",
+   "idSedeLavoro": "218",
+   "infoImage": "/assets/img/medici/vincenzo-magliani.jpg"
+  },
+  {
+   "id": "1100",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/vittorio-valla",
+   "pagetitle": "Vittorio Valla",
+   "publicato": "1",
+   "ruolo": "Podologo",
+   "idSedeLavoro": "190",
+   "infoImage": ""
+  },
+  {
+   "id": "611",
+   "uri": "it/chi-siamo/qualita-delle-cure/medici/walter-grassi",
+   "pagetitle": "Walter Grassi",
+   "publicato": "1",
+   "ruolo": "Reumatologo",
+   "idSedeLavoro": "202",
+   "infoImage": "/assets/img/medici/walter-grassi.jpg"
+  }
+ ]
+}

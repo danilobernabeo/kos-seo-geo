@@ -13,7 +13,7 @@ almeno nome, immagine, specializzazione e struttura di appartenenza.
 
 ## Cosa esce
 
-Su ogni pagina pubblicata del template `medici` (150 l'8/11; fonte `kosgroup/dati/medici/pagine-medici-20261029.csv`)
+Su ogni pagina pubblicata del template `medici` (150 l'8/11; fonte `kosgroup/dati/medici/pagine-medici-20261029.json`)
 la pagina (`WebPage`) ha come `mainEntity` il nodo del professionista, nell'unico `@graph` della pagina.
 
 | Caso | Tipo | `@id` | Proprietà |

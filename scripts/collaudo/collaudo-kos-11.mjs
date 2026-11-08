@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
  * collaudo-kos-11.mjs — KOS-11: dato strutturato delle pagine dei professionisti (template «medici») sul sito servito.
- * Elenco delle pagine dall'export di scripts/checks/kos-medici-pagine.php (kosgroup/dati/medici/pagine-medici-*.csv,
- * solo le pubblicate).
+ * Elenco delle pagine dall'export di scripts/checks/kos-medici-pagine.php, ridotto ai campi pubblici
+ * (kosgroup/dati/medici/pagine-medici-*.json: i CSV sono esclusi da git), solo le pubblicate.
  *
  * Uso (da scripts/collaudo, PowerShell):
  *   $env:AUTH = "<password dello stage>"        # utente «kos»; non serve in produzione
@@ -25,24 +25,8 @@ const base = arg.base.replace(/\/$/, '');
 const uscita = arg.uscita || 'collaudo-kos-11';
 const radice = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const cartella = path.join(radice, 'kosgroup', 'dati', 'medici');
-const file = arg.pagine || fs.readdirSync(cartella).filter(f => /^pagine-medici-\d+\.csv$/.test(f)).sort().pop();
-const testoCsv = fs.readFileSync(path.join(cartella, file), 'utf8').replace(/^﻿/, '');
-
-function leggiCsv(t) {   // CSV con «;» e campi tra virgolette
-  const righe = []; let riga = [], campo = '', q = false;
-  for (let i = 0; i < t.length; i++) {
-    const c = t[i];
-    if (q) { if (c === '"' && t[i + 1] === '"') { campo += '"'; i++; } else if (c === '"') q = false; else campo += c; }
-    else if (c === '"') q = true;
-    else if (c === ';') { riga.push(campo); campo = ''; }
-    else if (c === '\n') { riga.push(campo.replace(/\r$/, '')); righe.push(riga); riga = []; campo = ''; }
-    else campo += c;
-  }
-  if (campo || riga.length) { riga.push(campo); righe.push(riga); }
-  const [testa, ...corpo] = righe;
-  return corpo.filter(r => r.length > 1).map(r => Object.fromEntries(testa.map((k, i) => [k, r[i] ?? ''])));
-}
-const pagine = leggiCsv(testoCsv).filter(p => p.publicato === '1');
+const file = arg.pagine || fs.readdirSync(cartella).filter(f => /^pagine-medici-\d+\.json$/.test(f)).sort().pop();
+const pagine = JSON.parse(fs.readFileSync(path.join(cartella, file), 'utf8').replace(/^\uFEFF/, '')).pagine.filter(p => p.publicato === '1');
 const auth = process.env.AUTH
   ? 'Basic ' + Buffer.from(process.env.AUTH.includes(':') ? process.env.AUTH : 'kos:' + process.env.AUTH).toString('base64')
   : null;
