@@ -31,6 +31,7 @@ Gli identificativi usano sempre la forma del dominio verso cui puntano canonical
 | Sito | `WebSite` | `{base}/#website` | `https://anniazzurri.it/#website` |
 | Pagina | `WebPage` e sottotipi | `{URL}#webpage` | `https://anniazzurri.it/rsa-in-lombardia#webpage` |
 | Briciole | `BreadcrumbList` | `{URL}#breadcrumb` | `https://anniazzurri.it/residenza-anni-azzurri-vico-mercati#breadcrumb` |
+| Elenco delle strutture di una pagina (pagine provincia) | `ItemList` | `{URL}#itemlist` | `https://anniazzurri.it/rsa-in-provincia-di-genova#itemlist` |
 | Struttura o residenza | `LocalBusiness` e sottotipi | `{URL scheda}#localbusiness` | `https://anniazzurri.it/residenza-anni-azzurri-navigli#localbusiness` |
 | Medico | `IndividualPhysician` | `{URL scheda}#medico` | `https://kosgroup.com/it/chi-siamo/qualita-delle-cure/medici/nome-cognome#medico` |
 | Altro professionista sanitario | `Person` | `{URL scheda}#person` | `https://kosgroup.com/it/chi-siamo/qualita-delle-cure/medici/nome-cognome#person` |

@@ -79,6 +79,10 @@ $TPL_COLLEZIONE = $csv($cfg('tpl_collection', 'regione,provincia,residenze,news,
  * aa.struttura_attiva = 1, nello stesso rilascio in cui si toglie lo script Yext dalle schede (head-rsa). */
 $TPL_STRUTTURA = $csv($cfg('tpl_struttura', 'rsa'));
 $STR_ON        = (int) $cfg('struttura_attiva', 0);
+/* Pagine provincia (voce AA-10): ItemList delle residenze elencate (figlie della pagina, stesso criterio del menu
+ * Wayfinder della pagina: pubblicate, visibili nel menu, ordine menuindex), ogni voce con la residenza per intero, come
+ * chiede la forma «summary page + full details» dei caroselli di Google. Solo con le schede accese. */
+$TPL_LISTA     = $csv($cfg('tpl_lista_strutture', 'provincia'));
 
 /* --- helper ---------------------------------------------------------------- */
 
@@ -725,6 +729,27 @@ if ($type === 'page') {
     $br = $nodoBriciole($res, $paginaCorrente);
 
     $struttura = $eScheda($res) ? $nodoStruttura($res) : null;
+    $lista = null;
+    if ($STR_ON && in_array($nomeTpl, $TPL_LISTA, true)) {
+        $q = $modx->newQuery($CLS_RES, ['parent' => (int) $res->get('id'), 'published' => 1, 'deleted' => 0, 'hidemenu' => 0]);
+        $q->sortby('menuindex', 'ASC');
+        $voci = [];
+        foreach ($modx->getCollection($CLS_RES, $q) as $figlia) {
+            if (!$eScheda($figlia) || !($n = $nodoStruttura($figlia))) continue;
+            $voci[] = ['@type' => 'ListItem', 'position' => count($voci) + 1, 'item' => $n];
+        }
+        if ($voci) {
+            $lista = [
+                '@type'           => 'ItemList',
+                '@id'             => $paginaCorrente . '#itemlist',
+                'name'            => $titoloNodo($res),
+                'url'             => $paginaCorrente,
+                'numberOfItems'   => count($voci),
+                'itemListOrder'   => 'https://schema.org/ItemListUnordered',
+                'itemListElement' => $voci,
+            ];
+        }
+    }
     $pagina = $pulisci([
         '@type'       => in_array($nomeTpl, $TPL_COLLEZIONE, true) ? 'CollectionPage' : 'WebPage',
         '@id'         => $paginaCorrente . '#webpage',
@@ -734,11 +759,11 @@ if ($type === 'page') {
         'inLanguage'  => $LANG,
         'isPartOf'    => ['@id' => $SITE_ID],
         'about'       => $home ? ['@id' => $ORG_ID] : null,
-        'mainEntity'  => $struttura ? ['@id' => $struttura['@id']] : null,
+        'mainEntity'  => $struttura ? ['@id' => $struttura['@id']] : ($lista ? ['@id' => $lista['@id']] : null),
         'breadcrumb'  => $br ? ['@id' => $paginaCorrente . '#breadcrumb'] : null,
         'dateModified'=> $data($res->get('editedon') ?: $res->get('publishedon')),
     ]);
-    return $json([$pagina, $struttura, $br, $sito(), $org()]);
+    return $json([$pagina, $struttura, $lista, $br, $sito(), $org()]);
 }
 
 /* ---------------------------------------------------------------- articolo */
