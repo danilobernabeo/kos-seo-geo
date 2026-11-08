@@ -37,6 +37,14 @@ Rilascio del 1/11/2026, prima sugli stage e poi in produzione. Brief: `docs/pdf/
 - **Produzione (4/11):** 21 file sostituiti, metadati 21 scritti e poi «già a posto». `curl -I` con gli stessi valori dello stage, `Last-Modified` del 4/11 alle 15:11 (UTC). Backup della sostituzione `/paas/c0072/backup-kos-seo-geo/20261104-091101-pdf-sostituiti`, dei metadati `/paas/c0072/backup-pdf-metadati-20261104`.
 - **Ripristino:** `php scripts/pdf/sostituisci-pdf.php /www --ripristina=/paas/c0072/backup-kos-seo-geo/20261104-091101-pdf-sostituiti --scrivi --forza` (rimette le carte precedenti, già con i loro metadati, e toglie il pieghevole; `--forza` perché i metadati hanno modificato i file dopo la sostituzione). Stage: stesso comando con `/paas/c0025/backup-kos-seo-geo/20261104-090602-pdf-sostituiti`.
 
+## Carte dei servizi e documenti dell'8/11/2026 (AA e KOS)
+
+- **Consegna:** 12 PDF forniti da KOS. AA: carte dei servizi edizione novembre 2026 delle 7 RSA delle Marche (Abitare il Tempo, Casa Argento, Conero, Dorica, San Giuseppe, Santa Maria in Chienti, Valdaso) e di Idice (già sostituita il 4/11; riproposta). KOS: carta dei servizi del Poliambulatorio Parco di Veio (versione di giugno 2026) e pieghevole A5, stesso percorso; locandina dell'Open Day di neurochirurgia del 20/11 al Poliambulatorio Valdaso, nuovo file `poliambulatorio-valdaso/open-day-neurochirurgia-20-novembre-2026.pdf` (elencato da `docList` come «Open day neurochirurgia 20 novembre 2026», `noindex` per regola predefinita).
+- **Sospeso:** «Customer Satisfaction 2025» del Centro Ambulatoriale di Macerata: in copertina lo stesso anno del file già pubblicato (`customer-satisfaction-2025.pdf`); nome del file da decidere quando KOS conferma l'anno (Danilo lo segnala).
+- **Strumenti:** `sostituisci-pdf.php` e `pdf-metadati.php` con `anniazzurri/dati/pdf/carte-servizi-2026-11-08.json` e `kosgroup/dati/pdf/carte-servizi-2026-11-08.json` (titoli «Carta dei servizi – Residenza Anni Azzurri <nome>», oggetto con città ed edizione; KOS autore «Gruppo KOS»). Corretto in `sostituisci-pdf.php` il motivo dei sospesi (chiave `motivo`).
+- **Stage e produzione (8/11):** AA e KOS sostituiti e con metadati. Produzione KOS: 3 sostituiti, 3 metadati scritti, backup metadati `/paas/c0095/backup-pdf-metadati-20261108`, backup della sostituzione in `~/backup-kos-seo-geo/20261108-*-pdf-sostituiti`. `curl -I`: carta Parco di Veio 200, 664.556 byte; pieghevole 200, 1.295.779 byte; locandina 200 con `X-Robots-Tag: noindex`, 297.195 byte; carta AA Conero 200, 3.289.399 byte, senza `X-Robots-Tag`.
+- **Ripristino:** `php scripts/pdf/sostituisci-pdf.php /www --ripristina=<cartella del backup della sostituzione> --scrivi --forza` sul cloud interessato.
+
 ## Evidenza (1/11/2026)
 
 - Stage KOS e AA: sei `curl -I`, uno per caso, con l'esito atteso (nessun `X-Robots-Tag` sul PDF da tenere, `noindex` sull'escluso, `Link` canonical sulla copia) e gli header di sicurezza presenti.

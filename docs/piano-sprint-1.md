@@ -495,3 +495,13 @@ necessari: Cookiebot può accettare i sottodomini e il cookie `_ga` su `.anniazz
 produzione. Proposta: ID di misurazione GA4 da una tabella di ricerca su `{{Page Hostname}}` (stage → proprietà di test o vuoto)
 e un solo attivatore di eccezione «Stage» sui tag di conversione (Ads, Meta). Dopo il cambio, Claude aggiorna
 `docs/ambienti-di-prova.md` e gli esempi degli script di collaudo (`--stage`, `--base`).
+
+## Proposta fuori piano: automazione dei PDF caricati (8/11, a consuntivo, dopo il 27/11)
+
+Richiesta di Danilo: a regime, uno script che controlli i PDF nuovi o sostituiti e ne scriva i metadati. Proposta: l'indicizzazione
+resta alle regole web per nome file; lo script segnala i casi a rischio (carta dei servizi riconosciuta dalla copertina ma con
+un nome escluso). Metadati scritti in automatico solo per tipi con regola certa (carte dei servizi, pieghevoli, locandine con
+titolo dalla pagina che le richiama); per gli altri proposta via email. Riscrittura solo dei file cambiati rispetto all'ultimo
+manifest; backup, PDF/A mantenuto, PDF firmati o cifrati saltati, rapporto per email. Innesco: plugin MODX sull'upload del
+manager più giro notturno (da verificare la pianificazione su MODX Cloud, altrimenti scheduler esterno via SSH). Base:
+`controllo-pdf-nuovi.php`. Stima circa un giorno. Non è una voce d'audit: fuori dai documenti condivisi.
