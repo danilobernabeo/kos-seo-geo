@@ -136,8 +136,9 @@ aggiunto l'8/11).
 kosgroup.com (20 pagine, 140 immagini) e anniazzurri.it (4 pagine, 14 immagini), pacchetto `aa-9-alt` (`NewsGallery` e
 `alt.txt` delle news 484, 524, 529). Controllo con Claude in Chrome: home it/en, storia it/en, «Perché lavorare in KOS»,
 «Cura delle persone», «Posizioni aperte» con tutte le foto descritte; le tre news AA con le 18 foto descritte; nessuna
-immagine senza alt su Volpiano, cure domiciliari, KOS Academy. Resta: i segnaposto `medico-thumb.svg` delle schede KOS
-(es. Casa Cima, 6) non sono nel contenuto, da cercare con `cerca-testo.php`. Con il rilascio grande: pacchetto `kos-7-alt`.
+immagine senza alt su Volpiano, cure domiciliari, KOS Academy. Segnaposto `medico-thumb.svg` delle schede KOS: stavano nella TV `modale` (riquadro «Dettagli della struttura»),
+`alt-contenuti.php --tv=modale` in produzione l'8/11 sera (47 schede, 338 immagini; controllo: Casa Cima e Villa
+Margherita Vicenza psichiatria senza immagini prive di alt). Con il rilascio grande: pacchetto `kos-7-alt`.
 
 
 Stage, poi produzione: prima la prova di `alt-contenuti.php` (pagine e immagini toccate), poi `--scrivi`; elementi con
