@@ -5,6 +5,7 @@ almeno nome, immagine, specializzazione e struttura di appartenenza.
 
 ## Stato
 
+- 8/11 sera, **produzione**: collaudo 150/150 (91 `IndividualPhysician`, 59 `Person`), schede e landing 63/63.
 - 8/11, collaudo sullo stage: 150 pagine, 91 `IndividualPhysician` e 59 `Person`; 2 KO per spazi doppi o finali
   nel titolo della pagina (Michele Tulli, Rolando Gregorio Edoardo Rocchetti), corretti nella libreria (nome con gli
   spazi normalizzati). I 9 medici `Person` sono i 7 di Villa Margherita Vicenza (id 233), che non ha ancora il nodo

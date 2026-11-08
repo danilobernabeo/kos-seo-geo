@@ -27,7 +27,7 @@ Le cause sono due.
 
 Le schede residenza non hanno spostamenti propri (0,001 su Villa Reale).
 
-## Correzione (sullo stage dall'8/11)
+## Correzione (in produzione dall'8/11 sera)
 
 Pacchetto `anniazzurri/deploy/aa-4-cls.json`, solo CSS, in `/dist/css/custom.css` e `/dist/css/kos-seo-geo.css`
 (sorgente `anniazzurri/files/css/kos-seo-geo.css`):

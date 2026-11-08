@@ -415,6 +415,17 @@ e `kos-2-commenti` (`box-info-check-up-prevenzione`, `box-info-checkup`: `[[$kos
 `[[- ]]`. Verifica: pagine 200, nessun commento con tag o markup nel sorgente (landing 209 AA, tre pagine check-up KOS).
 `commenti-modx.php` sulle 14 pagine provincia: 0 pagine, già pulite (verificato anche in produzione).
 
+**Sprint 3 in produzione l'8/11 sera** (anticipato: la verifica di Cerved/ProWeb sugli elementi dello sprint 2 parte il
+9/11, quindi trova già lo stato definitivo). Snapshot MODX Cloud dei due cloud prima del rilascio; script
+`rilascio-20261116.sh` (prova di ogni passo prima della scrittura). AA: TV `str.*`, `aaContatto`, `aaSchema` (schede e
+pagine provincia), import delle TV, conversione del markup Yext in 37 schede, attivazione, CSS AA-4, gallerie delle news;
+collaudo 57/57; controllo con Claude in Chrome di Genova (ItemList di 6 voci) e Rezzato. KOS: `kos-11` e `kos-7-alt`;
+collaudo professionisti 150/150 (91 `IndividualPhysician`, 59 `Person`) e schede/landing 63/63; testi alternativi
+verificati (galleria, banner dei check-up, testate, elenchi). Testi alternativi nei contenuti dei due siti e TV `modale`
+KOS in produzione nello stesso pomeriggio. Evidenze in `docs/evidenze/sprint3-20261108/`. Restano: correzioni di
+email e telefoni AA dalle risposte di KOS (solo TV, `imposta-tv.php`), nodo di Villa Margherita Vicenza, riallineamento
+degli stage dalla produzione, nota di consegna dello sprint 3.
+
 **AA 4 stabilità visiva, misura e correzione l'8/11** (dettaglio in `docs/aa-4.md`): dati reali dal tag Web Vitals
 (dal 1/11): CLS p75 desktop 0,157 sulla home, 0,077 sulle altre pagine; mobile 0. Cause: sulla home i caroselli Flickity
 impilati prima dell'avvio e la barra di ricerca Yext (0,236 a 575 ms, è lo spostamento del video dell'agenzia); su tutte le
