@@ -18,9 +18,9 @@ Le scelte di configurazione sono già fissate nel primo invio a RetailTune del 2
 | Pinko | [pinko.com/it-it/a/storelocator](https://www.pinko.com/it-it/a/storelocator) | Widget RetailTune dentro la pagina del sito, con briciole; percorso a piedi, in auto o con i mezzi calcolato nel widget | Il widget dentro la pagina del sito. Da evitare: il calcolo del percorso nel widget, che consuma chiamate a pagamento alle API di Google (vedi «Indicazioni» sotto) |
 | Decò (Multicedi) | [puntivenditadeco.multicedi.it/it](https://puntivenditadeco.multicedi.it/it) | Pulsante «Seleziona filtri» sopra la mappa che apre un pannello con i gruppi Reparti, Servizi e Tipologie negozio; raggio di ricerca 10, 50 o 100 km; più formati di punto vendita | Il pulsante unico con i filtri a gruppi e il raggio di ricerca. Da evitare: dopo l'applicazione i filtri attivi non si vedono più (da 85 a 19 negozi senza alcuna indicazione) |
 | Percassi | [percassi.com/store-locator](https://www.percassi.com/store-locator/) e pagina marchio [LEGO](https://www.percassi.com/portfolio/lego/) | Mappa generale e, nella pagina del marchio, il pulsante «Trova lo store più vicino» verso la sezione negozi | Lo schema del widget filtrato nelle pagine interne |
-| CR Lab | [crlab.com/it_it/storelocator](https://crlab.com/it_it/storelocator) | Centri con «Prenota una consulenza» come azione principale | Azione principale diversa secondo la tipologia |
+| CR Lab | [crlab.com/it_it/storelocator](https://crlab.com/it_it/storelocator) | Scheda nell'elenco con etichette delle specialità, stato «Chiuso. Riapre martedì alle ore 08:00», riquadro a scomparsa «Trattamenti disponibili in questo centro» con icone; «Prenota una consulenza» nel menu del sito | Il riquadro a scomparsa dei servizi, per le prestazioni delle strutture KOS (vedi sotto); il messaggio di riapertura per ambulatori e punti prelievo |
 
-Nota: OVS, Calligaris e i filtri di Decò li ho provati dal vivo. Pinko, Percassi e CR Lab caricano tutto via JavaScript: li ho visti nella struttura, non nel comportamento su mobile.
+Nota: OVS, Calligaris, CR Lab e i filtri di Decò li ho provati dal vivo. Pinko e Percassi caricano tutto via JavaScript: li ho visti nella struttura, non nel comportamento su mobile.
 
 ## Il modello OVS
 
@@ -47,6 +47,8 @@ Da noi il terzo passaggio porta alla scheda della struttura su kosgroup.com o an
 - Telefono ed email in chiaro.
 - Orari con un'etichetta per tipologia: «Accoglienza e informazioni» per le residenze, «Prelievi» per i punti prelievo, «Orari» per gli ambulatori.
 - Servizi e aree di cura con icone (fase 2), con link alle pagine dei servizi del sito.
+- **Prestazioni in un riquadro a scomparsa** (sul modello di CR Lab), chiuso all'apertura del pannello: «Prestazioni disponibili in questa struttura (24)». Per i poliambulatori e i centri con molte prestazioni le voci sono raggruppate per area (es. Diagnostica per immagini, Visite specialistiche, Riabilitazione), ciascuna con il link alla pagina del servizio e, dove c'è, alla prenotazione online; oltre una certa lunghezza il riquadro rimanda alla scheda della struttura per l'elenco completo. Per le residenze lo stesso riquadro elenca servizi e nuclei (Alzheimer, sollievo, centro diurno).
+- Per ambulatori e punti prelievo, stato con la prossima apertura (es. «Chiuso. Riapre lunedì alle 7:30»).
 - Azione principale per tipologia: «Richiedi informazioni» per le residenze, «Prenota» per gli ambulatori con prenotazione online.
 - «Indicazioni»: link al profilo della struttura su Google Maps (campo già previsto nell'API), senza calcolo del percorso nel widget.
 - In fondo: «Vai alla scheda della struttura».
