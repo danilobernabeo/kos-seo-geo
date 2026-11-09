@@ -15,7 +15,7 @@ Le scelte di configurazione sono già fissate nel primo invio a RetailTune del 2
 | OVS | [ovs.it/it/it/stores](https://www.ovs.it/it/it/stores) | Elenco, pannello di dettaglio, pagina negozio sul dominio principale; filtri per reparti, servizi e marchi | Il modello di riferimento (vedi sotto) |
 | Plenitude | [eniplenitude.com/energy-store](https://eniplenitude.com/energy-store) | Tabella dei servizi offerti da ogni tipo di punto, accanto alla ricerca per città o CAP | Un blocco «quale struttura fa per me» nella pagina, fuori dal widget |
 | Calligaris | [stores.calligaris.com/it](https://stores.calligaris.com/it) | Prodotto standard RetailTune: etichetta di tipologia sopra il nome, contatore dei risultati, «info e promozioni» e «portami qui» | Etichetta di tipologia e contatore. Da verificare: ordine per distanza (nell'elenco di Roma compare un negozio di Digione) |
-| Pinko | [pinko.com/it-it/a/storelocator](https://www.pinko.com/it-it/a/storelocator) | Widget RetailTune dentro la pagina del sito, con briciole; percorso a piedi, in auto o con i mezzi | Percorso con i mezzi pubblici, utile a chi va a trovare un parente in residenza |
+| Pinko | [pinko.com/it-it/a/storelocator](https://www.pinko.com/it-it/a/storelocator) | Widget RetailTune dentro la pagina del sito, con briciole; percorso a piedi, in auto o con i mezzi calcolato nel widget | Il widget dentro la pagina del sito. Da evitare: il calcolo del percorso nel widget, che consuma chiamate a pagamento alle API di Google (vedi «Indicazioni» sotto) |
 | Decò (Multicedi) | [puntivenditadeco.multicedi.it/it](https://puntivenditadeco.multicedi.it/it) | Più formati di punto vendita nello stesso locator | Pin distinti per grandi famiglie (sanitario, residenze), non per ogni tipologia |
 | Percassi | [percassi.com/store-locator](https://www.percassi.com/store-locator/) e pagina marchio [LEGO](https://www.percassi.com/portfolio/lego/) | Mappa generale e, nella pagina del marchio, il pulsante «Trova lo store più vicino» verso la sezione negozi | Lo schema del widget filtrato nelle pagine interne |
 | CR Lab | [crlab.com/it_it/storelocator](https://crlab.com/it_it/storelocator) | Centri con «Prenota una consulenza» come azione principale | Azione principale diversa secondo la tipologia |
@@ -37,7 +37,7 @@ Da noi il terzo passaggio porta alla scheda della struttura su kosgroup.com o an
 ### Scheda nell'elenco
 
 - Nome, etichetta della tipologia (anche più di una, es. Ospedale San Pancrazio), indirizzo, distanza dopo una ricerca, telefono cliccabile.
-- Due pulsanti: «Scheda» (la nostra pagina) e «Indicazioni».
+- Due pulsanti: «Scheda» (la nostra pagina) e «Indicazioni» (link a Google Maps, vedi sotto).
 - Contatore dei risultati.
 - Niente «Aperto / Chiuso» per residenze, hospice e comunità, aperte tutto il giorno.
 
@@ -48,8 +48,18 @@ Da noi il terzo passaggio porta alla scheda della struttura su kosgroup.com o an
 - Orari con un'etichetta per tipologia: «Accoglienza e informazioni» per le residenze, «Prelievi» per i punti prelievo, «Orari» per gli ambulatori.
 - Servizi e aree di cura con icone (fase 2), con link alle pagine dei servizi del sito.
 - Azione principale per tipologia: «Richiedi informazioni» per le residenze, «Prenota» per gli ambulatori con prenotazione online.
-- Percorso a piedi, in auto o con i mezzi.
+- «Indicazioni»: link al profilo della struttura su Google Maps (campo già previsto nell'API), senza calcolo del percorso nel widget.
 - In fondo: «Vai alla scheda della struttura».
+
+### Indicazioni stradali
+
+Il pulsante «Indicazioni» apre il profilo della struttura su Google Maps invece di calcolare il percorso dentro il widget, come fanno Pinko e Calligaris («portami qui»):
+
+- il calcolo nel widget usa servizi a pagamento di Google Maps, con fatturazione sull'account di KOS; il link a Google Maps è gratuito;
+- Google Maps offre già percorso a piedi, in auto e con i mezzi, apre l'app sul telefono e da computer permette di inviare il percorso al telefono;
+- le richieste di indicazioni dal profilo si sommano alle statistiche della scheda Google della struttura.
+
+Da chiedere a RetailTune quali servizi Google a pagamento usa il widget (mappa, completamento dell'indirizzo nella ricerca, geolocalizzazione, percorsi), per spegnere quelli non necessari.
 
 ### Widget nelle pagine interne
 
