@@ -14,14 +14,13 @@ Le scelte di configurazione sono già fissate nel primo invio a RetailTune del 2
 | --- | --- | --- | --- |
 | OVS | [ovs.it/it/it/stores](https://www.ovs.it/it/it/stores) | Elenco, pannello di dettaglio, pagina negozio sul dominio principale; filtri per reparti, servizi e marchi | Il modello di riferimento (vedi sotto) |
 | Plenitude | [eniplenitude.com/energy-store](https://eniplenitude.com/energy-store) | Tabella dei servizi offerti da ogni tipo di punto, accanto alla ricerca per città o CAP | Un blocco «quale struttura fa per me» nella pagina, fuori dal widget |
-| Vestopazzo | [stores.vestopazzo.it/it](https://stores.vestopazzo.it/it); pagina negozio: [Milano Corso Garibaldi](https://stores.vestopazzo.it/it/italia/lombardia/milano/milano-corso-garibaldi-81) | Pagina negozio con orari della settimana accanto all'indirizzo, servizi disponibili in una riga di icone, descrizione e foto, categorie con link, promozioni e recensioni Google | Orari della settimana sempre visibili; servizi come riga di icone; categorie con link (da noi: aree di cura). Da evitare: recensioni e promozioni |
 | Calligaris | [stores.calligaris.com/it](https://stores.calligaris.com/it) | Prodotto standard RetailTune: etichetta di tipologia sopra il nome, contatore dei risultati, «info e promozioni» e «portami qui» | Etichetta di tipologia e contatore. Da verificare: ordine per distanza (nell'elenco di Roma compare un negozio di Digione) |
 | Pinko | [pinko.com/it-it/a/storelocator](https://www.pinko.com/it-it/a/storelocator) | Widget RetailTune dentro la pagina del sito, con briciole; percorso a piedi, in auto o con i mezzi | Percorso con i mezzi pubblici, utile a chi va a trovare un parente in residenza |
 | Decò (Multicedi) | [puntivenditadeco.multicedi.it/it](https://puntivenditadeco.multicedi.it/it) | Più formati di punto vendita nello stesso locator | Pin distinti per grandi famiglie (sanitario, residenze), non per ogni tipologia |
 | Percassi | [percassi.com/store-locator](https://www.percassi.com/store-locator/) e pagina marchio [LEGO](https://www.percassi.com/portfolio/lego/) | Mappa generale e, nella pagina del marchio, il pulsante «Trova lo store più vicino» verso la sezione negozi | Lo schema del widget filtrato nelle pagine interne |
 | CR Lab | [crlab.com/it_it/storelocator](https://crlab.com/it_it/storelocator) | Centri con «Prenota una consulenza» come azione principale | Azione principale diversa secondo la tipologia |
 
-Nota: OVS, Calligaris e la pagina negozio di Vestopazzo li ho provati dal vivo. Pinko, Decò, Percassi e CR Lab caricano tutto via JavaScript: li ho visti nella struttura, non nel comportamento su mobile.
+Nota: OVS e Calligaris li ho provati dal vivo. Pinko, Decò, Percassi e CR Lab caricano tutto via JavaScript: li ho visti nella struttura, non nel comportamento su mobile.
 
 ## Il modello OVS
 
