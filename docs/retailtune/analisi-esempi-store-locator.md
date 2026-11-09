@@ -14,10 +14,9 @@ Le scelte di configurazione sono già fissate nel primo invio a RetailTune del 2
 | --- | --- | --- | --- |
 | OVS | [ovs.it/it/it/stores](https://www.ovs.it/it/it/stores) | Elenco, pannello di dettaglio, pagina negozio sul dominio principale; pulsante «Filtra» con reparti, servizi e marchi | Il modello di riferimento (vedi sotto). Da evitare: dopo l'applicazione i filtri attivi non si vedono più |
 | Plenitude | [eniplenitude.com/energy-store](https://eniplenitude.com/energy-store) | Tendina «Tutte le tipologie» accanto alla ricerca per città o CAP; sezione «Qual è lo store più adatto a te?» con i servizi di ogni tipo di punto; sezione «Per saperne di più» con approfondimenti e contatti; pulsante di condivisione su ogni punto vendita | La tendina delle tipologie; le due sezioni nella pagina, fuori dal widget; la condivisione, ampliata (vedi sotto). Da evitare la versione mobile: richiesta di posizione a pagina aperta, mappa a tutta larghezza prima dell'elenco, elenco in un riquadro con scorrimento interno |
-| Percassi | [percassi.com/store-locator](https://www.percassi.com/store-locator/) e pagina marchio [LEGO](https://www.percassi.com/portfolio/lego/) | Mappa generale e, nella pagina del marchio, il pulsante «Trova lo store più vicino» verso la sezione negozi | Lo schema del widget filtrato nelle pagine interne |
 | CR Lab | [crlab.com/it_it/storelocator](https://crlab.com/it_it/storelocator) | Scheda nell'elenco con etichette delle specialità, stato «Chiuso. Riapre martedì alle ore 08:00», riquadro a scomparsa «Trattamenti disponibili in questo centro» con icone; «Prenota una consulenza» nel menu del sito | Il riquadro a scomparsa dei servizi, per le prestazioni delle strutture KOS (vedi sotto); il messaggio di riapertura per ambulatori e punti prelievo; su mobile l'interruttore «Lista / Mappa». Da evitare: su mobile il riquadro dei trattamenti si apre vuoto (componente RetailTune `rt-accordion-menu`, contenuto con altezza zero), da far correggere prima del nostro rilascio |
 
-Nota: OVS, CR Lab e Plenitude li ho provati dal vivo. Percassi carica tutto via JavaScript: l'ho visto nella struttura, non nel comportamento su mobile.
+Nota: OVS, Plenitude e CR Lab li ho provati dal vivo; Plenitude e CR Lab anche simulando un telefono.
 
 ## Il modello OVS
 
