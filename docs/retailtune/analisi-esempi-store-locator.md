@@ -12,13 +12,12 @@ Le scelte di configurazione sono già fissate nel primo invio a RetailTune del 2
 
 | Esempio | Link | Cosa mostra | Da prendere |
 | --- | --- | --- | --- |
-| OVS | [ovs.it/it/it/stores](https://www.ovs.it/it/it/stores) | Elenco, pannello di dettaglio, pagina negozio sul dominio principale; filtri per reparti, servizi e marchi | Il modello di riferimento (vedi sotto) |
-| Plenitude | [eniplenitude.com/energy-store](https://eniplenitude.com/energy-store) | Tabella dei servizi offerti da ogni tipo di punto, accanto alla ricerca per città o CAP | Un blocco «quale struttura fa per me» nella pagina, fuori dal widget |
-| Decò (Multicedi) | [puntivenditadeco.multicedi.it/it](https://puntivenditadeco.multicedi.it/it) | Pulsante «Seleziona filtri» sopra la mappa che apre un pannello con i gruppi Reparti, Servizi e Tipologie negozio; raggio di ricerca 10, 50 o 100 km; più formati di punto vendita | Il pulsante unico con i filtri a gruppi e il raggio di ricerca. Da evitare: dopo l'applicazione i filtri attivi non si vedono più (da 85 a 19 negozi senza alcuna indicazione) |
+| OVS | [ovs.it/it/it/stores](https://www.ovs.it/it/it/stores) | Elenco, pannello di dettaglio, pagina negozio sul dominio principale; pulsante «Filtra» con reparti, servizi e marchi | Il modello di riferimento (vedi sotto). Da evitare: dopo l'applicazione i filtri attivi non si vedono più |
+| Plenitude | [eniplenitude.com/energy-store](https://eniplenitude.com/energy-store) | Tendina «Tutte le tipologie» accanto alla ricerca per città o CAP; sezione «Qual è lo store più adatto a te?» con i servizi di ogni tipo di punto; sezione «Per saperne di più» con approfondimenti e contatti; pulsante di condivisione su ogni punto vendita | La tendina delle tipologie; le due sezioni nella pagina, fuori dal widget; la condivisione, ampliata (vedi sotto) |
 | Percassi | [percassi.com/store-locator](https://www.percassi.com/store-locator/) e pagina marchio [LEGO](https://www.percassi.com/portfolio/lego/) | Mappa generale e, nella pagina del marchio, il pulsante «Trova lo store più vicino» verso la sezione negozi | Lo schema del widget filtrato nelle pagine interne |
 | CR Lab | [crlab.com/it_it/storelocator](https://crlab.com/it_it/storelocator) | Scheda nell'elenco con etichette delle specialità, stato «Chiuso. Riapre martedì alle ore 08:00», riquadro a scomparsa «Trattamenti disponibili in questo centro» con icone; «Prenota una consulenza» nel menu del sito | Il riquadro a scomparsa dei servizi, per le prestazioni delle strutture KOS (vedi sotto); il messaggio di riapertura per ambulatori e punti prelievo |
 
-Nota: OVS, CR Lab e i filtri di Decò li ho provati dal vivo. Percassi carica tutto via JavaScript: l'ho visto nella struttura, non nel comportamento su mobile.
+Nota: OVS, CR Lab e Plenitude li ho provati dal vivo. Percassi carica tutto via JavaScript: l'ho visto nella struttura, non nel comportamento su mobile.
 
 ## Il modello OVS
 
@@ -49,6 +48,7 @@ Da noi il terzo passaggio porta alla scheda della struttura su kosgroup.com o an
 - Per ambulatori e punti prelievo, stato con la prossima apertura (es. «Chiuso. Riapre lunedì alle 7:30»).
 - Azione principale per tipologia: «Richiedi informazioni» per le residenze, «Prenota» per gli ambulatori con prenotazione online.
 - «Indicazioni»: link al profilo della struttura su Google Maps (campo già previsto nell'API), senza calcolo del percorso nel widget.
+- «Condividi» (vedi sotto).
 - In fondo: «Vai alla scheda della struttura».
 
 ### Indicazioni stradali
@@ -60,6 +60,13 @@ Il pulsante «Indicazioni» apre il profilo della struttura su Google Maps invec
 - le richieste di indicazioni dal profilo si sommano alle statistiche della scheda Google della struttura.
 
 Da chiedere a RetailTune quali servizi Google a pagamento usa il widget (mappa, completamento dell'indirizzo nella ricerca, geolocalizzazione, percorsi), per spegnere quelli non necessari.
+
+### Condivisione
+
+Plenitude ha su ogni punto vendita un pulsante di condivisione che apre una finestra con il link a Google Maps da copiare. Per le nostre strutture è utile, perché la scelta di una residenza o di un centro si fa spesso in famiglia. Propongo di ampliarlo:
+
+- nella stessa finestra, oltre a «Copia link», il pulsante **WhatsApp** (un semplice link `wa.me` con il testo già pronto, senza costi né integrazioni) e, da telefono, il menu di condivisione del sistema, che offre anche SMS, email e le altre app;
+- testo condiviso: nome della struttura, indirizzo, telefono, link alla nostra scheda e link al profilo Google Maps (Plenitude condivide solo le coordinate per il percorso).
 
 ### Widget nelle pagine interne
 
@@ -74,8 +81,9 @@ Da chiedere a RetailTune quali servizi Google a pagamento usa il widget (mappa, 
 
 ### Filtri
 
-- Sulla mappa generale un solo pulsante «Filtri» che apre un pannello a gruppi (sul modello di Decò): tipologia, marchio e aree di cura su kosgroup.com; tipo di servizio e nuclei su anniazzurri.it, dove le voci sono poche e possono stare anche in vista.
-- **Filtri attivi sempre visibili** come etichette sopra l'elenco, ognuna con la X per toglierla, anche quando arrivano preimpostati dalla pagina.
+- Accanto alla ricerca, una tendina «Tutte le tipologie» (come Plenitude) per la scelta più frequente.
+- Per gli altri criteri un pulsante «Filtri» che apre un pannello a gruppi (come OVS): marchio e aree di cura su kosgroup.com; servizi e nuclei su anniazzurri.it, dove le voci sono poche e possono stare anche in vista.
+- **Importante: filtri attivi sempre visibili** come etichette sopra l'elenco, ognuna con la X per toglierla, anche quando arrivano preimpostati dalla pagina. OVS non li mostra dopo l'applicazione: l'utente vede meno strutture senza sapere perché e può concludere che nella sua zona non c'è ciò che cerca.
 - Numero dei risultati sul pulsante di conferma («Mostra 23 strutture») e contatore sempre aggiornato.
 - Nei widget delle pagine interne, dove i filtri sono fissi e nascosti, un'intestazione dice cosa si sta vedendo (es. «Residenze in provincia di Lodi · 6 strutture») con il link alla mappa generale.
 - Se un filtro azzera i risultati, il messaggio lo dice e propone la struttura più vicina e il pulsante «Togli i filtri».
@@ -92,7 +100,12 @@ Da chiedere a RetailTune quali servizi Google a pagamento usa il widget (mappa, 
 
 ## Fuori dal widget, nelle pagine del sito
 
-Sulla pagina `/it/strutture` di kosgroup.com, sopra la mappa, un blocco scritto da noi che spiega quale tipo di struttura offre cosa (sul modello di Plenitude). Aiuta le famiglie a scegliere ed è testo leggibile da Google e dai motori di intelligenza artificiale. Le pagine provincia di anniazzurri.it mantengono il loro elenco delle residenze nel testo della pagina; il widget si aggiunge sopra.
+Due sezioni scritte da noi nella pagina della mappa, sul modello di Plenitude, testo leggibile da Google e dai motori di intelligenza artificiale:
+
+- **«Quale struttura fa per te?»**: per ogni tipo di struttura i servizi offerti, con il link alla pagina della tipologia. Su kosgroup.com riabilitazione, residenze, hospice, psichiatria, ambulatori e diagnostica; su anniazzurri.it residenza, nucleo Alzheimer, ricovero di sollievo, centro diurno.
+- **«Per saperne di più»**: i rimandi alle pagine pratiche. Su anniazzurri.it come accedere, costi e contributi, documenti, cosa sono le RSA; su kosgroup.com prenotazioni, referti, convenzioni, contatti.
+
+Le pagine provincia di anniazzurri.it mantengono il loro elenco delle residenze nel testo della pagina; il widget si aggiunge sopra.
 
 ## Punti ancora da decidere che toccano il design
 
