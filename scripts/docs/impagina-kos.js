@@ -36,6 +36,7 @@ function runs(s,base={}){
 const body={spacing:{after:120,before:0,line:290},alignment:AlignmentType.JUSTIFIED};
 const H2=t=>new Paragraph({keepNext:true,border:{bottom:{style:BorderStyle.SINGLE,color:LINE,size:6,space:4}},spacing:{after:140,before:300},children:[new TextRun({text:t,font:F,bold:true,color:TEAL,size:28})]});
 const W=9638;
+let numInst=0; // istanza della numerazione corrente
 const WIDTHS={5:[1750,2050,3238,1500,1100],3:[2000,4238,3400],4:[1700,2400,2938,2600],2:[2200,7438]};
 const WBOT=[3638,2000,2000,2000];
 function table(rows){
@@ -77,7 +78,9 @@ while(i<lines.length){
       kids.push(new Paragraph({alignment:AlignmentType.CENTER,spacing:{after:120},children:[new ImageRun({type:'png',data:fs.readFileSync(img),transformation:{width:w,height:h}})]})); } i++; continue; }
   if(l.startsWith('|')){ if(/^(\d+\.|- )/.test(lines[i-2]||'')) kids.push(new Paragraph({spacing:{after:60},children:[]})); const rows=[]; while(i<lines.length&&lines[i].startsWith('|')){ const cells=lines[i].slice(1,-1).split(/ (?<!\\)\| /).map(s=>s.trim().replace(/\\\|/g,'|')); if(!/^-+$/.test(cells[0])) rows.push(cells); i++; }
     kids.push(table(rows)); kids.push(new Paragraph({spacing:{after:60},children:[]})); continue; }
-  if(/^\d+\. /.test(l)){ kids.push(new Paragraph({numbering:{reference:'num',level:0},spacing:{after:70,line:290},alignment:AlignmentType.JUSTIFIED,children:runs(l.replace(/^\d+\. /,''))})); i++; continue; }
+  // ogni elenco numerato riparte da 1 (instance nuova quando la riga precedente non è una voce numerata)
+  if(/^\d+\. /.test(l)){ if(!/^\d+\. /.test(lines[i-1]||'')) numInst++;
+    kids.push(new Paragraph({numbering:{reference:'num',level:0,instance:numInst},spacing:{after:70,line:290},alignment:AlignmentType.JUSTIFIED,children:runs(l.replace(/^\d+\. /,''))})); i++; continue; }
   if(l.startsWith('- ')){ kids.push(new Paragraph({numbering:{reference:'bul',level:0},spacing:{after:70,line:290},alignment:AlignmentType.JUSTIFIED,children:runs(l.slice(2))})); i++; continue; }
   kids.push(new Paragraph({...body,spacing:{...body.spacing,before:_w?180:0},children:runs(l)})); i++;
 }
