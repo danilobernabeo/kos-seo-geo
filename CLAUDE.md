@@ -43,6 +43,7 @@ Interventi fatti da Danilo in un'altra chat, ora conclusa (dettaglio in `docs/ri
 - Prima di intervenire su una voce d'audit, verificare lo stato attuale del sito: alcune voci possono essere già state risolte nei giorni precedenti. In quel caso raccogliere l'evidenza (comando e output) per la nota di consegna.
 - Le voci d'audit sono il minimo, non il limite: ragionare secondo le buone pratiche attuali e proporre sempre eventuali migliorie, indicando se rientrano nel perimetro o vanno consuntivate a parte.
 
+- Le decisioni già prese sono in `docs/registro-decisioni.md`: leggerlo prima di proporre o chiedere qualcosa che potrebbe essere già deciso, e aggiungere a fine sessione le decisioni nuove (data, decisione, fonte, dove è applicata).
 - Si sviluppa in questo repository e si collauda sullo stage prima della produzione.
 - Gli elementi modificati diventano elementi statici (vedi README). Il codice comune ai due siti va in `shared/`.
 - Prima di modificare un elemento esistente, partire dalla sua versione in `<sito>/baseline/`.
