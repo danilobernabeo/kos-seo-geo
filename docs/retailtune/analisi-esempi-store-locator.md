@@ -16,11 +16,11 @@ Le scelte di configurazione sono già fissate nel primo invio a RetailTune del 2
 | Plenitude | [eniplenitude.com/energy-store](https://eniplenitude.com/energy-store) | Tabella dei servizi offerti da ogni tipo di punto, accanto alla ricerca per città o CAP | Un blocco «quale struttura fa per me» nella pagina, fuori dal widget |
 | Calligaris | [stores.calligaris.com/it](https://stores.calligaris.com/it) | Prodotto standard RetailTune: etichetta di tipologia sopra il nome, contatore dei risultati, «info e promozioni» e «portami qui» | Etichetta di tipologia e contatore. Da verificare: ordine per distanza (nell'elenco di Roma compare un negozio di Digione) |
 | Pinko | [pinko.com/it-it/a/storelocator](https://www.pinko.com/it-it/a/storelocator) | Widget RetailTune dentro la pagina del sito, con briciole; percorso a piedi, in auto o con i mezzi calcolato nel widget | Il widget dentro la pagina del sito. Da evitare: il calcolo del percorso nel widget, che consuma chiamate a pagamento alle API di Google (vedi «Indicazioni» sotto) |
-| Decò (Multicedi) | [puntivenditadeco.multicedi.it/it](https://puntivenditadeco.multicedi.it/it) | Più formati di punto vendita nello stesso locator | Pin distinti per grandi famiglie (sanitario, residenze), non per ogni tipologia |
+| Decò (Multicedi) | [puntivenditadeco.multicedi.it/it](https://puntivenditadeco.multicedi.it/it) | Pulsante «Seleziona filtri» sopra la mappa che apre un pannello con i gruppi Reparti, Servizi e Tipologie negozio; raggio di ricerca 10, 50 o 100 km; più formati di punto vendita | Il pulsante unico con i filtri a gruppi e il raggio di ricerca. Da evitare: dopo l'applicazione i filtri attivi non si vedono più (da 85 a 19 negozi senza alcuna indicazione) |
 | Percassi | [percassi.com/store-locator](https://www.percassi.com/store-locator/) e pagina marchio [LEGO](https://www.percassi.com/portfolio/lego/) | Mappa generale e, nella pagina del marchio, il pulsante «Trova lo store più vicino» verso la sezione negozi | Lo schema del widget filtrato nelle pagine interne |
 | CR Lab | [crlab.com/it_it/storelocator](https://crlab.com/it_it/storelocator) | Centri con «Prenota una consulenza» come azione principale | Azione principale diversa secondo la tipologia |
 
-Nota: OVS e Calligaris li ho provati dal vivo. Pinko, Decò, Percassi e CR Lab caricano tutto via JavaScript: li ho visti nella struttura, non nel comportamento su mobile.
+Nota: OVS, Calligaris e i filtri di Decò li ho provati dal vivo. Pinko, Percassi e CR Lab caricano tutto via JavaScript: li ho visti nella struttura, non nel comportamento su mobile.
 
 ## Il modello OVS
 
@@ -71,6 +71,15 @@ Da chiedere a RetailTune quali servizi Google a pagamento usa il widget (mappa, 
 
 - Elenco prima della mappa, con interruttore «Elenco / Mappa».
 - «Chiama» sempre visibile nel pannello di dettaglio.
+
+### Filtri
+
+- Sulla mappa generale un solo pulsante «Filtri» che apre un pannello a gruppi (sul modello di Decò): tipologia, marchio e aree di cura su kosgroup.com; tipo di servizio e nuclei su anniazzurri.it, dove le voci sono poche e possono stare anche in vista.
+- **Filtri attivi sempre visibili** come etichette sopra l'elenco, ognuna con la X per toglierla, anche quando arrivano preimpostati dalla pagina.
+- Numero dei risultati sul pulsante di conferma («Mostra 23 strutture») e contatore sempre aggiornato.
+- Nei widget delle pagine interne, dove i filtri sono fissi e nascosti, un'intestazione dice cosa si sta vedendo (es. «Residenze in provincia di Lodi · 6 strutture») con il link alla mappa generale.
+- Se un filtro azzera i risultati, il messaggio lo dice e propone la struttura più vicina e il pulsante «Togli i filtri».
+- Da chiedere a RetailTune: i filtri si possono passare nell'indirizzo della pagina (es. `/it/strutture?tipologia=centri-riabilitazione&citta=milano`)? Servirebbe a portare la nuova ricerca del sito, le newsletter e le campagne direttamente sulla mappa filtrata.
 
 ### Comportamenti generali
 
