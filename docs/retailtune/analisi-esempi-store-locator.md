@@ -14,13 +14,12 @@ Le scelte di configurazione sono già fissate nel primo invio a RetailTune del 2
 | --- | --- | --- | --- |
 | OVS | [ovs.it/it/it/stores](https://www.ovs.it/it/it/stores) | Elenco, pannello di dettaglio, pagina negozio sul dominio principale; filtri per reparti, servizi e marchi | Il modello di riferimento (vedi sotto) |
 | Plenitude | [eniplenitude.com/energy-store](https://eniplenitude.com/energy-store) | Tabella dei servizi offerti da ogni tipo di punto, accanto alla ricerca per città o CAP | Un blocco «quale struttura fa per me» nella pagina, fuori dal widget |
-| Calligaris | [stores.calligaris.com/it](https://stores.calligaris.com/it) | Prodotto standard RetailTune: etichetta di tipologia sopra il nome, contatore dei risultati, «info e promozioni» e «portami qui» | Etichetta di tipologia e contatore. Da verificare: ordine per distanza (nell'elenco di Roma compare un negozio di Digione) |
 | Pinko | [pinko.com/it-it/a/storelocator](https://www.pinko.com/it-it/a/storelocator) | Widget RetailTune dentro la pagina del sito, con briciole; percorso a piedi, in auto o con i mezzi calcolato nel widget | Il widget dentro la pagina del sito. Da evitare: il calcolo del percorso nel widget, che consuma chiamate a pagamento alle API di Google (vedi «Indicazioni» sotto) |
 | Decò (Multicedi) | [puntivenditadeco.multicedi.it/it](https://puntivenditadeco.multicedi.it/it) | Pulsante «Seleziona filtri» sopra la mappa che apre un pannello con i gruppi Reparti, Servizi e Tipologie negozio; raggio di ricerca 10, 50 o 100 km; più formati di punto vendita | Il pulsante unico con i filtri a gruppi e il raggio di ricerca. Da evitare: dopo l'applicazione i filtri attivi non si vedono più (da 85 a 19 negozi senza alcuna indicazione) |
 | Percassi | [percassi.com/store-locator](https://www.percassi.com/store-locator/) e pagina marchio [LEGO](https://www.percassi.com/portfolio/lego/) | Mappa generale e, nella pagina del marchio, il pulsante «Trova lo store più vicino» verso la sezione negozi | Lo schema del widget filtrato nelle pagine interne |
 | CR Lab | [crlab.com/it_it/storelocator](https://crlab.com/it_it/storelocator) | Scheda nell'elenco con etichette delle specialità, stato «Chiuso. Riapre martedì alle ore 08:00», riquadro a scomparsa «Trattamenti disponibili in questo centro» con icone; «Prenota una consulenza» nel menu del sito | Il riquadro a scomparsa dei servizi, per le prestazioni delle strutture KOS (vedi sotto); il messaggio di riapertura per ambulatori e punti prelievo |
 
-Nota: OVS, Calligaris, CR Lab e i filtri di Decò li ho provati dal vivo. Pinko e Percassi caricano tutto via JavaScript: li ho visti nella struttura, non nel comportamento su mobile.
+Nota: OVS, CR Lab e i filtri di Decò li ho provati dal vivo. Pinko e Percassi caricano tutto via JavaScript: li ho visti nella struttura, non nel comportamento su mobile.
 
 ## Il modello OVS
 
@@ -30,7 +29,7 @@ Il dettaglio di un negozio si apre in tre modi:
 2. **Dal pin sulla mappa:** un fumetto con nome, indirizzo, stato di apertura e telefono, insieme al pannello di dettaglio.
 3. **Dal pannello:** «Vai alla pagina negozio» porta alla pagina del negozio sul dominio principale (esempio: [OVS Roma Tritone](https://www.ovs.it/it/it/stores/italia/lazio/roma/ovs-roma-tritone)).
 
-Da noi il terzo passaggio porta alla scheda della struttura su kosgroup.com o anniazzurri.it (campo `link` dell'API, uguale all'URL canonico). Il comportamento standard di RetailTune, come su Calligaris, porta invece subito alla pagina negozio: va chiesto il pannello di dettaglio come secondo livello.
+Da noi il terzo passaggio porta alla scheda della struttura su kosgroup.com o anniazzurri.it (campo `link` dell'API, uguale all'URL canonico). Il comportamento standard di RetailTune porta invece subito alla pagina negozio: va chiesto il pannello di dettaglio come secondo livello.
 
 ## Requisiti di design proposti
 
@@ -55,7 +54,7 @@ Da noi il terzo passaggio porta alla scheda della struttura su kosgroup.com o an
 
 ### Indicazioni stradali
 
-Il pulsante «Indicazioni» apre il profilo della struttura su Google Maps invece di calcolare il percorso dentro il widget, come fanno Pinko e Calligaris («portami qui»):
+Il pulsante «Indicazioni» apre il profilo della struttura su Google Maps invece di calcolare il percorso dentro il widget, come fa Pinko («portami qui»):
 
 - il calcolo nel widget usa servizi a pagamento di Google Maps, con fatturazione sull'account di KOS; il link a Google Maps è gratuito;
 - Google Maps offre già percorso a piedi, in auto e con i mezzi, apre l'app sul telefono e da computer permette di inviare il percorso al telefono;
