@@ -124,5 +124,4 @@ Le pagine provincia di anniazzurri.it mantengono il loro elenco delle residenze 
 ## Punti ancora da decidere che toccano il design
 
 - **Assistenza domiciliare:** resta fuori dalla mappa; da decidere se nel widget di anniazzurri.it serve un rimando testuale (es. «Assistenza a casa in queste province»).
-- **Pagina `/cosa-sono-le-rsa`:** widget come `/residenze` o mappa tolta.
 - **Categoria Cookiebot della mappa:** proposta «marketing»; decide quando compare l'immagine statica al posto della mappa.
