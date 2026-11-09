@@ -4,9 +4,9 @@ Danilo Bernabeo · 9 novembre 2026
 
 ## In breve
 
-Per kosgroup.com e anniazzurri.it propongo come riferimento lo store locator di **OVS**: mappa con elenco laterale e **pannello di dettaglio** che prende il posto dell'elenco, con il rimando finale alla pagina della struttura. Da noi il terzo livello sono le schede struttura già esistenti sui due siti, perché RetailTune non pubblica pagine proprie. Gli altri esempi danno spunti puntuali, elencati più avanti.
+Per kosgroup.com e anniazzurri.it proponiamo come riferimento lo store locator di **OVS**: mappa con elenco laterale e **pannello di dettaglio** che prende il posto dell'elenco, con il rimando finale alla pagina della struttura. Nel nostro caso il terzo livello sono le schede struttura già esistenti sui due siti, perché il widget non pubblica pagine proprie. Gli altri esempi danno spunti puntuali, elencati più avanti.
 
-Le scelte di configurazione sono già fissate nel primo invio a RetailTune del 2 novembre: due istanze separate (una per sito), filtri preimpostati pagina per pagina, nessuna pagina struttura pubblicata da RetailTune, consenso gestito con Cookiebot, dati letti dai siti tramite l'API. Questo documento riguarda solo l'aspetto e il comportamento del widget.
+Le scelte di configurazione sono già fissate nel nostro primo invio del 2 novembre: due istanze separate (una per sito), filtri preimpostati pagina per pagina, nessuna pagina struttura pubblicata dal widget, consenso gestito con Cookiebot, dati letti dai siti tramite l'API. Questo documento riguarda l'aspetto e il comportamento del widget.
 
 ## Gli esempi esaminati
 
@@ -14,9 +14,9 @@ Le scelte di configurazione sono già fissate nel primo invio a RetailTune del 2
 | --- | --- | --- | --- |
 | OVS | [ovs.it/it/it/stores](https://www.ovs.it/it/it/stores) | Elenco, pannello di dettaglio, pagina negozio sul dominio principale; pulsante «Filtra» con reparti, servizi e marchi | Il modello di riferimento (vedi sotto). Da evitare: dopo l'applicazione i filtri attivi non si vedono più |
 | Plenitude | [eniplenitude.com/energy-store](https://eniplenitude.com/energy-store) | Tendina «Tutte le tipologie» accanto alla ricerca per città o CAP; sezione «Qual è lo store più adatto a te?» con i servizi di ogni tipo di punto; sezione «Per saperne di più» con approfondimenti e contatti; pulsante di condivisione su ogni punto vendita | La tendina delle tipologie; le due sezioni nella pagina, fuori dal widget; la condivisione, ampliata (vedi sotto). Da evitare la versione mobile: richiesta di posizione a pagina aperta, mappa a tutta larghezza prima dell'elenco, elenco in un riquadro con scorrimento interno |
-| CR Lab | [crlab.com/it_it/storelocator](https://crlab.com/it_it/storelocator) | Scheda nell'elenco con etichette delle specialità, stato «Chiuso. Riapre martedì alle ore 08:00», riquadro a scomparsa «Trattamenti disponibili in questo centro» con icone; «Prenota una consulenza» nel menu del sito | Il riquadro a scomparsa dei servizi, per le prestazioni delle strutture KOS (vedi sotto); il messaggio di riapertura per ambulatori e punti prelievo; su mobile l'interruttore «Lista / Mappa». Da evitare: su mobile il riquadro dei trattamenti si apre vuoto (componente RetailTune `rt-accordion-menu`, contenuto con altezza zero), da far correggere prima del nostro rilascio |
+| CR Lab | [crlab.com/it_it/storelocator](https://crlab.com/it_it/storelocator) | Scheda nell'elenco con etichette delle specialità, stato «Chiuso. Riapre martedì alle ore 08:00», riquadro a scomparsa «Trattamenti disponibili in questo centro» con icone; su mobile interruttore «Lista / Mappa» | Il riquadro a scomparsa dei servizi, per le prestazioni delle strutture KOS (vedi sotto); il messaggio di riapertura per ambulatori e punti prelievo; l'interruttore «Lista / Mappa». Da correggere: su mobile il riquadro dei trattamenti si apre vuoto (vedi Mobile) |
 
-Nota: OVS, Plenitude e CR Lab li ho provati dal vivo; Plenitude e CR Lab anche simulando un telefono.
+Nota: i tre esempi li abbiamo provati dal vivo il 9 novembre 2026; Plenitude e CR Lab anche simulando un telefono.
 
 ## Il modello OVS
 
@@ -26,7 +26,7 @@ Il dettaglio di un negozio si apre in tre modi:
 2. **Dal pin sulla mappa:** un fumetto con nome, indirizzo, stato di apertura e telefono, insieme al pannello di dettaglio.
 3. **Dal pannello:** «Vai alla pagina negozio» porta alla pagina del negozio sul dominio principale (esempio: [OVS Roma Tritone](https://www.ovs.it/it/it/stores/italia/lazio/roma/ovs-roma-tritone)).
 
-Da noi il terzo passaggio porta alla scheda della struttura su kosgroup.com o anniazzurri.it (campo `link` dell'API, uguale all'URL canonico). Il comportamento standard di RetailTune porta invece subito alla pagina negozio: va chiesto il pannello di dettaglio come secondo livello.
+Nel nostro caso il terzo passaggio porta alla scheda della struttura su kosgroup.com o anniazzurri.it (campo `link` dell'API, uguale all'URL canonico). Chiediamo quindi il pannello di dettaglio come secondo livello, al posto del passaggio diretto alla pagina negozio.
 
 ## Requisiti di design proposti
 
@@ -50,19 +50,25 @@ Da noi il terzo passaggio porta alla scheda della struttura su kosgroup.com o an
 - «Condividi» (vedi sotto).
 - In fondo: «Vai alla scheda della struttura».
 
+**Domande**
+
+- Le prestazioni si possono gestire come attributi della struttura, con un codice stabile per ciascuna, in aggiunta alle aree di cura previste in fase 2? In alternativa, il riquadro può leggere l'elenco da una fonte esterna fornita da noi?
+
 ### Indicazioni stradali
 
-Il pulsante «Indicazioni» apre il profilo della struttura su Google Maps invece di calcolare il percorso dentro il widget, come fa il pulsante «portami qui» di molti store locator:
+Proponiamo che il pulsante «Indicazioni» apra il profilo della struttura su Google Maps invece di calcolare il percorso dentro il widget, come fa il pulsante «portami qui» di molti store locator:
 
 - il calcolo nel widget usa servizi a pagamento di Google Maps, con fatturazione sull'account di KOS; il link a Google Maps è gratuito;
 - Google Maps offre già percorso a piedi, in auto e con i mezzi, apre l'app sul telefono e da computer permette di inviare il percorso al telefono;
 - le richieste di indicazioni dal profilo si sommano alle statistiche della scheda Google della struttura.
 
-Da chiedere a RetailTune quali servizi Google a pagamento usa il widget (mappa, completamento dell'indirizzo nella ricerca, geolocalizzazione, percorsi), per spegnere quelli non necessari.
+**Domande**
+
+- Quali servizi Google a pagamento usa il widget (mappa, completamento dell'indirizzo nella ricerca, geolocalizzazione, percorsi)? Vorremmo spegnere quelli non necessari.
 
 ### Condivisione
 
-Plenitude ha su ogni punto vendita un pulsante di condivisione che apre una finestra con il link a Google Maps da copiare. Per le nostre strutture è utile, perché la scelta di una residenza o di un centro si fa spesso in famiglia. Propongo di ampliarlo:
+Plenitude ha su ogni punto vendita un pulsante di condivisione che apre una finestra con il link a Google Maps da copiare. Per le nostre strutture è utile, perché la scelta di una residenza o di un centro si fa spesso in famiglia. Proponiamo di ampliarlo:
 
 - nella stessa finestra, oltre a «Copia link», il pulsante **WhatsApp** (un semplice link `wa.me` con il testo già pronto, senza costi né integrazioni) e, da telefono, il menu di condivisione del sistema, che offre anche SMS, email e le altre app;
 - testo condiviso: nome della struttura, indirizzo, telefono, link alla nostra scheda e link al profilo Google Maps (Plenitude condivide solo le coordinate per il percorso).
@@ -76,9 +82,13 @@ Plenitude ha su ogni punto vendita un pulsante di condivisione che apre una fine
 ### Mobile
 
 - Elenco prima della mappa, con interruttore «Elenco / Mappa».
-- Riquadri a scomparsa (prestazioni, servizi) collaudati da telefono: su CR Lab, che usa lo stesso componente RetailTune, da mobile il riquadro si apre senza mostrare il contenuto.
 - L'elenco scorre con la pagina, non in un riquadro con scorrimento proprio dentro la pagina (su Plenitude da telefono si scorre la pagina o l'elenco a seconda di dove si appoggia il dito).
 - «Chiama» sempre visibile nel pannello di dettaglio.
+- Riquadri a scomparsa (prestazioni, servizi) funzionanti da telefono. Su CR Lab, da mobile, il riquadro «Trattamenti disponibili in questo centro» si apre senza mostrare il contenuto: il contenuto del componente `rt-accordion-menu` resta con altezza zero e invisibile.
+
+**Domande**
+
+- Il difetto del riquadro su CR Lab riguarda il componente standard del widget? Se sì, può essere corretto prima del nostro rilascio?
 
 ### Filtri
 
@@ -88,7 +98,10 @@ Plenitude ha su ogni punto vendita un pulsante di condivisione che apre una fine
 - Numero dei risultati sul pulsante di conferma («Mostra 23 strutture») e contatore sempre aggiornato.
 - Nei widget delle pagine interne, dove i filtri sono fissi e nascosti, un'intestazione dice cosa si sta vedendo (es. «Residenze in provincia di Lodi · 6 strutture») con il link alla mappa generale.
 - Se un filtro azzera i risultati, il messaggio lo dice e propone la struttura più vicina e il pulsante «Togli i filtri».
-- Da chiedere a RetailTune: i filtri si possono passare nell'indirizzo della pagina (es. `/it/strutture?tipologia=centri-riabilitazione&citta=milano`)? Servirebbe a portare la nuova ricerca del sito, le newsletter e le campagne direttamente sulla mappa filtrata.
+
+**Domande**
+
+- I filtri si possono passare nell'indirizzo della pagina (es. `/it/strutture?tipologia=centri-riabilitazione&citta=milano`)? Servirebbe a portare la ricerca del sito, le newsletter e le campagne direttamente sulla mappa filtrata.
 
 ### Comportamenti generali
 
@@ -101,7 +114,7 @@ Plenitude ha su ogni punto vendita un pulsante di condivisione che apre una fine
 
 ## Fuori dal widget, nelle pagine del sito
 
-Due sezioni scritte da noi nella pagina della mappa, sul modello di Plenitude, testo leggibile da Google e dai motori di intelligenza artificiale:
+Per completezza: nella pagina della mappa aggiungeremo due sezioni di testo, sul modello di Plenitude, che il widget non deve coprire.
 
 - **«Quale struttura fa per te?»**: per ogni tipo di struttura i servizi offerti, con il link alla pagina della tipologia. Su kosgroup.com riabilitazione, residenze, hospice, psichiatria, ambulatori e diagnostica; su anniazzurri.it residenza, nucleo Alzheimer, ricovero di sollievo, centro diurno.
 - **«Per saperne di più»**: i rimandi alle pagine pratiche. Su anniazzurri.it come accedere, costi e contributi, documenti, cosa sono le RSA; su kosgroup.com prenotazioni, referti, convenzioni, contatti.
@@ -112,4 +125,4 @@ Le pagine provincia di anniazzurri.it mantengono il loro elenco delle residenze 
 
 - **Assistenza domiciliare:** resta fuori dalla mappa; da decidere se nel widget di anniazzurri.it serve un rimando testuale (es. «Assistenza a casa in queste province»).
 - **Pagina `/cosa-sono-le-rsa`:** widget come `/residenze` o mappa tolta.
-- **Categoria Cookiebot della mappa:** proposta «marketing», da confermare con KOS; decide quando compare l'immagine statica al posto della mappa.
+- **Categoria Cookiebot della mappa:** proposta «marketing»; decide quando compare l'immagine statica al posto della mappa.
