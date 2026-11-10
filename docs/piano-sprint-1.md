@@ -417,6 +417,11 @@ residenza indica orari di visita, che sono però cercati (112 ricerche sul sito,
   seguito come `#department`.
 Dati da raccogliere con KOS nella giornata di lavoro in presenza del 19/11: per ogni struttura orario principale
 (accoglienza e informazioni) ed eventuali orari di visita, prelievi e ritiro referti; chi li aggiorna.
+Aggiornamento 10/11: RetailTune gestisce gli orari aggiuntivi come attributi personalizzati (il blocco istituzionale
+resta quello per Google); proposta di chiavi `orari_N_etichetta` / `orari_N_testo` (N 2-4) più `orari_1_etichetta` per
+il blocco principale, da confermare in call il 13/11. Nell'integrazione: snippet comune (`shared/`) che genera il box
+«Orari» delle schede dalle TV (blocco principale strutturato con gli orari speciali, blocchi aggiuntivi in testo); il box
+oggi è scritto a mano nel contenuto di 15 schede KOS e va tolto con uno script con backup.
 
 **Pagine provincia AA (AA-10, stage 8/11).** `aaSchema` emette sulle pagine con template `provincia` un `ItemList`
 (`{URL}#itemlist`, mainEntity della pagina) delle residenze figlie, nel formato del carosello di attività locali di
