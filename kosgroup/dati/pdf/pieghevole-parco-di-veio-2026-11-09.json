@@ -1,9 +1,9 @@
 {
  "sito": "kos",
- "descrizione": "Poliambulatorio Parco di Veio: nuova versione del pieghevole A5 (file KOS_CENTRO_PARCO_DI_VEIO_A5_ESE_1.pdf del 6/11/2026, consegnato il 9/11), stesso percorso del file pubblicato l'8/11 (v3).",
+ "descrizione": "Poliambulatorio Parco di Veio: nuova versione del pieghevole A5 (file KOS_CENTRO_PARCO_DI_VEIO_A5_ESE_2.pdf del 10/11/2026, con le correzioni dei refusi della versione ESE_1), stesso percorso del file pubblicato l'8/11 (v3).",
  "pdf": [
   {
-   "s": "KOS_CENTRO_PARCO_DI_VEIO_A5_ESE_1.pdf",
+   "s": "KOS_CENTRO_PARCO_DI_VEIO_A5_ESE_2.pdf",
    "p": "/assets/doc/strutture/poliambulatorio-parco-di-veio/pieghevole-informativo.pdf",
    "t": "Pieghevole informativo – Poliambulatorio Parco di Veio",
    "d": "Pieghevole del Poliambulatorio Parco di Veio di Roma: visite specialistiche in regime privato, specialità, sede, contatti e prenotazioni.",

@@ -49,6 +49,6 @@ Uso interno. Una riga per decisione: data, cosa si è deciso, chi o quale fonte,
 
 ## Aperte (in attesa di risposta)
 
-- Pieghevole Parco di Veio (versione del 6/11): refusi «AMPIO AMPIO» e «Psichiatira», civico 43 contro 41 di Yext e del sito. Da chiedere a KOS il file corretto.
+- Pieghevole Parco di Veio: la versione ESE_2 del 10/11 corregge «AMPIO AMPIO»; «Psichiatira» è diventato «Psichiatra» invece di «Psichiatria». Civico 43 contro 41 di Yext e del sito, da confermare con KOS.
 - Profilo Google di Villa Pineta ancora con 0536 1803620: chi lo aggiorna (Yext o importazione RetailTune).
 - Via libera di KOS alla prova di Vertex AI Search e progetto Google Cloud da usare.
