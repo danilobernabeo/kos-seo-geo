@@ -19,6 +19,7 @@ Uso interno. Una riga per decisione: data, cosa si è deciso, chi o quale fonte,
 |---|---|---|---|
 | 8/11/2026 | Sprint 3 rilasciato in produzione la sera dell'8/11, prima dell'avvio della verifica di Cerved/ProWeb del 9/11 | Danilo | `docs/rilascio-20261116.md` |
 | 9/11/2026 | Hook e controllo dei commit rinviati a dopo il 16/11 (nessun cambiamento al repository durante la verifica) | Proposta del 9/11 | Questo registro |
+| 10/11/2026 | CAR Macerata: guide per l'utente (italiano e inglese) e organigramma nuovi, raddrizzati e con OCR; tolti i 3 documenti Fisiosport (unità chiusa); carta dei servizi di agosto 2026 invariata. CDI San Giuseppe: carta di novembre 2026 nella pagina del centro diurno e al posto della copia vecchia nella pagina della RSA. In produzione il 10/11 | Richiesta di KOS del 10/11 | `kosgroup/dati/pdf/car-macerata-2026-11-10.json`, `anniazzurri/dati/pdf/cdi-san-giuseppe-2026-11-10.json` |
 
 ## Sostituzione della ricerca Yext (Linea C)
 
@@ -57,4 +58,6 @@ Uso interno. Una riga per decisione: data, cosa si è deciso, chi o quale fonte,
 - Pieghevole Parco di Veio: la versione ESE_2 del 10/11 corregge «AMPIO AMPIO»; «Psichiatira» è diventato «Psichiatra» invece di «Psichiatria». Civico 43 contro 41 di Yext e del sito, da confermare con KOS.
 - Profilo Google di Villa Pineta ancora con 0536 1803620: chi lo aggiorna (Yext o importazione RetailTune).
 - Via libera di KOS alla prova di Vertex AI Search e progetto Google Cloud da usare.
+- Al passaggio da Yext a RetailTune: aggiornare l'intestazione `Permissions-Policy` di kosgroup.com (`geolocation=(self "https://cdn.yextapis.com")`) per il widget RetailTune.
+- Villa dei Pini Civitanova: nuovo direttore sanitario Roberta Tomassini, da scrivere nella TV «contatti struttura» (manager, produzione).
 - Giornata di lavoro con KOS in presenza il 19/11: orari per struttura (principale, visite, prelievi, ritiro referti) e chi li aggiorna; significato degli orari 08:00-20:00 delle residenze.
