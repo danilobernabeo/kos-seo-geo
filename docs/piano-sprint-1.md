@@ -399,6 +399,24 @@ email `@sstefano.it` → `@anniazzurri.it` (Dorica, Santa Maria in Chienti, conf
 Dorica e Santa Maria scritti per esteso, Villa Pineta come residenza; da confermare con KOS il 9/11: email di Abitare il
 Tempo, San Martino, Casa Serena, San Faustino; telefoni di Navigli (02 833051 / 02 803051), Villa Pineta e Santa Maria in
 Chienti; email di Villa Pineta. Produzione dal 16/11 (dopo la verifica dello sprint 1 su `aaSchema` e `head-rsa`).
+Risposte di KOS del 9/11: Villa Pineta 0536 18031 e anziani.villapineta@kosgroup.com (TV aggiornate sullo stage il 9/11,
+pacchetto `anniazzurri/dati/schede/contatti-kos-2026-11-09.json`); le altre residenze restano con i dati del sito.
+
+**Orari multipli e orari di visita (proposta del 10/11, AA-21 e linea C).** Sulle 58 schede KOS, 15 hanno la sezione
+«Orari» e 8 più di un blocco (Villa dei Pini Civitanova 4: accettazione, accettazione prelievi, ufficio informazioni,
+ritiro referti; Cardinal Ferrari, Poliambulatorio Santo Stefano e i 5 punti prelievo 2); su anniazzurri.it nessuna
+residenza indica orari di visita, che sono però cercati (112 ricerche sul sito, 35 formulazioni). Proposta:
+- RetailTune prevede un blocco di orari principale più fino a tre aggiuntivi, ciascuno con etichetta e testo libero
+  (es. «Su appuntamento»); esempio peggiore: Villa dei Pini Civitanova;
+- gli orari arrivano da RetailTune via API e finiscono nelle TV della scheda (`str.orari` principale, nuove TV per i
+  blocchi aggiuntivi, es. `str.orari_visite`): una sola fonte per widget, pagina, profilo Google e dato strutturato;
+- nella pagina, lato server: blocchi con etichetta nel riquadro contatti («Accoglienza e informazioni», «Visite») e
+  domanda frequente «Quali sono gli orari di visita?» generata dalla stessa TV (leggibile dalla ricerca del sito, da
+  Google e dai motori AI, a differenza del widget);
+- nel dato strutturato solo l'orario principale (`openingHoursSpecification`); eventuali reparti con orari propri in
+  seguito come `#department`.
+Dati da raccogliere con KOS nella giornata di lavoro in presenza del 19/11: per ogni struttura orario principale
+(accoglienza e informazioni) ed eventuali orari di visita, prelievi e ritiro referti; chi li aggiorna.
 
 **Pagine provincia AA (AA-10, stage 8/11).** `aaSchema` emette sulle pagine con template `provincia` un `ItemList`
 (`{URL}#itemlist`, mainEntity della pagina) delle residenze figlie, nel formato del carosello di attività locali di

@@ -43,6 +43,7 @@ Uso interno. Una riga per decisione: data, cosa si è deciso, chi o quale fonte,
 | 10/11/2026 | Sulla chiave Google di KOS solo la Maps JavaScript API; niente Directions API (indicazioni via link al profilo Google Maps). Il completamento dell'indirizzo è un prodotto RetailTune fatturato a parte | Risposta di RetailTune del 10/11 | Idem |
 | 10/11/2026 | Prestazioni: attributi della struttura in RetailTune con codice stabile, inseriti a mano o importati lato server da un elenco di KOS | Risposta di RetailTune del 10/11 | Idem |
 | 10/11/2026 | Assistenza domiciliare: testo fuori dal widget nella pagina di anniazzurri.it, gestito da noi. Cookiebot: categoria «marketing» confermata; l'elenco visibile senza consenso è nella proposta del 13/11 | Risposta di RetailTune del 10/11 | Idem |
+| 10/11/2026 | Orari: blocco principale più fino a tre aggiuntivi con etichetta e testo libero (esempio peggiore Villa dei Pini Civitanova, 4 blocchi); orari di visita delle residenze anche nel contenuto delle pagine, lato server, da TV alimentate via API da RetailTune; nel dato strutturato solo l'orario principale | Danilo | `docs/piano-sprint-1.md` (orari multipli) |
 
 ## Dati e strumenti
 
@@ -56,3 +57,4 @@ Uso interno. Una riga per decisione: data, cosa si è deciso, chi o quale fonte,
 - Pieghevole Parco di Veio: la versione ESE_2 del 10/11 corregge «AMPIO AMPIO»; «Psichiatira» è diventato «Psichiatra» invece di «Psichiatria». Civico 43 contro 41 di Yext e del sito, da confermare con KOS.
 - Profilo Google di Villa Pineta ancora con 0536 1803620: chi lo aggiorna (Yext o importazione RetailTune).
 - Via libera di KOS alla prova di Vertex AI Search e progetto Google Cloud da usare.
+- Giornata di lavoro con KOS in presenza il 19/11: orari per struttura (principale, visite, prelievi, ritiro referti) e chi li aggiorna; significato degli orari 08:00-20:00 delle residenze.
