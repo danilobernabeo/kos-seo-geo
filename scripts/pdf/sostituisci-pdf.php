@@ -7,7 +7,8 @@
  * Uso:   php sostituisci-pdf.php <webroot> <abbinamento.json> <cartella dei file nuovi> [--scrivi] [--nuovi] [--backup=<cartella>]
  *        php sostituisci-pdf.php <webroot> --ripristina=<cartella di backup> [--scrivi] [--forza]
  *   abbinamento: {"pdf":[{"s":"<file relativo alla cartella dei nuovi>","p":"/assets/doc/...pdf","t":"..","d":"..","a":"..","l":".."}],
- *                 "sospesi":[...]}   (le voci in «sospesi» si elencano e non si toccano)
+ *                 "sospesi":[...], "rimuovi":[{"p":"/assets/doc/...pdf","motivo":".."}]}
+ *   (le voci in «sospesi» si elencano e non si toccano; quelle in «rimuovi» si tolgono dal sito, con backup)
  *   Senza --scrivi è una PROVA: per ogni voce mostra file attuale (dimensione, data, md5) → nuovo (dimensione, pagine se
  *   leggibili), e si FERMA se il sorgente manca, non è un PDF, è cifrato, o se il percorso di destinazione non esiste
  *   (un percorso nuovo non è richiamato da nessuna pagina: solo con "nuovo": true nella voce o --nuovi; nelle cartelle
@@ -83,7 +84,7 @@ $pagine = function (string $file): string {
 };
 $umano = fn(int $n): string => number_format($n / 1048576, 2, ',', '.') . ' MB';
 
-$fermi = 0; $daFare = [];
+$fermi = 0; $daFare = []; $daTogliere = [];
 foreach ($abb['pdf'] as $v) {
     $src = "$nuovi/{$v['s']}";
     $dest = $webroot . $v['p'];
@@ -100,13 +101,21 @@ foreach ($abb['pdf'] as $v) {
     echo '    nuovo:   ' . $umano(filesize($src)) . ', ' . $pagine($src) . ' pagine, ' . substr($testa, 0, 8) . "\n";
     $daFare[] = [$v, $src, $dest, $esiste];
 }
+foreach ($abb['rimuovi'] ?? [] as $v) {
+    $dest = $webroot . $v['p'];
+    echo "\n{$v['p']}\n    da RIMUOVERE: " . ($v['motivo'] ?? '') . "\n";
+    if (!is_file($dest)) { echo "    GIÀ ASSENTE\n"; continue; }
+    if (!str_ends_with(strtolower($dest), '.pdf')) { echo "    FERMO: non è un PDF\n"; $fermi++; continue; }
+    echo '    attuale: ' . $umano(filesize($dest)) . ', ' . date('d/m/Y H:i', filemtime($dest)) . ', md5 ' . md5_file($dest) . "\n";
+    $daTogliere[] = [$v, $dest];
+}
 foreach ($abb['sospesi'] ?? [] as $v) echo "\nSOSPESO    {$v['s']}\n    " . ($v['motivo'] ?? $v['sospeso'] ?? '') . "\n";
 foreach ($abb['esclusi'] ?? [] as $v) echo "\nESCLUSO    {$v['s']}\n    {$v['motivo']}\n";
 
-echo "\n== " . count($daFare) . ' da sostituire, ' . $fermi . ' fermi, ' . count($abb['sospesi'] ?? []) . " sospesi\n";
+echo "\n== " . count($daFare) . ' da sostituire, ' . count($daTogliere) . ' da rimuovere, ' . $fermi . ' fermi, ' . count($abb['sospesi'] ?? []) . " sospesi\n";
 if ($fermi) { echo "Nessuna scrittura: correggere i FERMO.\n"; exit(2); }
 if (!$scrivi) { echo "PROVA: nessun file scritto (aggiungi --scrivi).\n"; exit(0); }
-if (!$daFare) exit(0);
+if (!$daFare && !$daTogliere) exit(0);
 
 $home = getenv('HOME') ?: '/tmp';
 $bak = rtrim((string) ($opt['backup'] ?? "$home/backup-kos-seo-geo/" . date('Ymd-His') . '-pdf-sostituiti'), '/');
@@ -119,11 +128,19 @@ foreach ($daFare as [$v, $src, $dest, $esiste]) {
     }
     $man['file'][] = ['p' => $v['p'], 's' => $v['s'], 'md5_prima' => $prima, 'md5_dopo' => md5_file($src)];
 }
+foreach ($daTogliere as [$v, $dest]) {
+    $scriviAtomico($dest, "$bak/file{$v['p']}");
+    $man['file'][] = ['p' => $v['p'], 's' => null, 'md5_prima' => md5_file($dest), 'md5_dopo' => null];
+}
 if (!is_dir($bak)) mkdir($bak, 0755, true);
 file_put_contents("$bak/ripristino.json", json_encode($man, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 foreach ($daFare as [$v, $src, $dest]) {
     $scriviAtomico($src, $dest);
     echo "SOSTITUITO {$v['p']}\n";
+}
+foreach ($daTogliere as [$v, $dest]) {
+    unlink($dest);
+    echo "RIMOSSO    {$v['p']}\n";
 }
 echo "== Backup: $bak\n   Ripristino: php " . basename(__FILE__) . " $webroot --ripristina=$bak --scrivi\n";
 echo "   Poi i metadati: php pdf-metadati.php $webroot " . ($pos[1]) . " (prova), e con --scrivi\n";

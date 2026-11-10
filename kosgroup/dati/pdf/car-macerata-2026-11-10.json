@@ -1,0 +1,46 @@
+{
+ "sito": "kos",
+ "descrizione": "CAR Macerata (Centro Ambulatoriale Santo Stefano): nuove guide per l'utente italiano e inglese e nuovo organigramma (consegna KOS del 10/11/2026; pagine ruotate e testo riconosciuto con OCR), rimozione dei documenti Fisiosport (unità non più attiva). La carta dei servizi di agosto 2026 resta invariata.",
+ "pdf": [
+  {
+   "s": "car-macerata-guida-utente.pdf",
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-macerata/guida-utente.pdf",
+   "t": "Guida per l'utente – Centro Ambulatoriale Santo Stefano Macerata",
+   "d": "Guida per l'utente del Centro Ambulatoriale di Riabilitazione Santo Stefano di Macerata: servizi, équipe, orari di accesso e contatti.",
+   "a": "Gruppo KOS",
+   "l": "it-IT"
+  },
+  {
+   "s": "car-macerata-guida-utente-eng.pdf",
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-macerata/guida-utente-eng.pdf",
+   "t": "User guide – Santo Stefano Outpatient Rehabilitation Centre, Macerata",
+   "d": "User guide of the Santo Stefano Outpatient Rehabilitation Centre in Macerata: services, team, opening hours and contacts.",
+   "a": "Gruppo KOS",
+   "l": "en-GB"
+  },
+  {
+   "s": "car-macerata-organigramma.pdf",
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-macerata/organigramma.pdf",
+   "t": "Organigramma – Centro Ambulatoriale Santo Stefano Macerata",
+   "d": "Organigramma nominativo del Centro Ambulatoriale di Macerata, aggiornato al 15 gennaio 2026.",
+   "a": "Gruppo KOS",
+   "l": "it-IT"
+  }
+ ],
+ "rimuovi": [
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-macerata/carta-dei-serivizi-fisiosport.pdf",
+   "motivo": "Fisiosport: unità non più attiva (KOS, 10/11/2026)"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-macerata/guida-utente-fisiosport.pdf",
+   "motivo": "Fisiosport: unità non più attiva (KOS, 10/11/2026)"
+  },
+  {
+   "p": "/assets/doc/strutture/centro-ambulatoriale-santo-stefano-macerata/user-guide-fisiosport.pdf",
+   "motivo": "Fisiosport: unità non più attiva (KOS, 10/11/2026)"
+  }
+ ],
+ "sospesi": [],
+ "esclusi": []
+}

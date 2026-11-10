@@ -1,0 +1,24 @@
+{
+ "sito": "aa",
+ "descrizione": "Centro Diurno Alzheimer San Giuseppe (San Benedetto del Tronto): carta dei servizi edizione novembre 2026 (consegna KOS del 10/11/2026), nella pagina del centro diurno e al posto della copia più vecchia pubblicata nella pagina della RSA San Giuseppe.",
+ "pdf": [
+  {
+   "s": "cdi-san-giuseppe-carta-dei-servizi.pdf",
+   "p": "/assets/doc/strutture/centro-diurno-alzheimer-san-giuseppe/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Centro Diurno Alzheimer San Giuseppe",
+   "d": "Carta dei servizi e regolamento interno del Centro Diurno Integrato Anni Azzurri San Giuseppe di San Benedetto del Tronto (AP), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "cdi-san-giuseppe-carta-dei-servizi.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-san-giuseppe/Carta dei servizi Centro Diurno Integrato.pdf",
+   "t": "Carta dei servizi Centro Diurno – Anni Azzurri San Giuseppe",
+   "d": "Carta dei servizi e regolamento interno del Centro Diurno Integrato Anni Azzurri San Giuseppe di San Benedetto del Tronto (AP), edizione novembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  }
+ ],
+ "sospesi": [],
+ "esclusi": []
+}
