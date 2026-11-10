@@ -39,7 +39,6 @@ Uso interno. Una riga per decisione: data, cosa si è deciso, chi o quale fonte,
 | 9/11/2026 | «Indicazioni» = link al profilo Google Maps, niente percorso calcolato nel widget (API a pagamento) | Danilo | Idem |
 | 9/11/2026 | Filtri attivi sempre visibili (OVS non li mostra: da evitare) | Danilo | Idem |
 | 9/11/2026 | `/cosa-sono-le-rsa` non ha nessuna mappa: il punto «[Da decidere]» del primo invio era sbagliato | Verifica sulla pagina | Da correggere nel prossimo invio |
-
 | 10/11/2026 | RetailTune conferma il modello OVS, la condivisione, i filtri nell'indirizzo (nomi dei parametri nella documentazione del 16/11), nessuna richiesta di posizione all'apertura, niente recensioni né promozioni. Proposta grafica di kosgroup.com in call venerdì 13/11 alle 11; anniazzurri.it uguale con i colori del marchio | Risposta di RetailTune del 10/11 | `docs/retailtune/analisi-esempi-store-locator.md` |
 | 10/11/2026 | Sulla chiave Google di KOS solo la Maps JavaScript API; niente Directions API (indicazioni via link al profilo Google Maps). Il completamento dell'indirizzo è un prodotto RetailTune fatturato a parte | Risposta di RetailTune del 10/11 | Idem |
 | 10/11/2026 | Prestazioni: attributi della struttura in RetailTune con codice stabile, inseriti a mano o importati lato server da un elenco di KOS | Risposta di RetailTune del 10/11 | Idem |
