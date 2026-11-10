@@ -383,6 +383,7 @@ del 5/11 (rendering Yext, secondo JSON-LD sulle schede) chiusi; 865/865 pagine c
 - 9/11: AA, TV anagrafiche e box contatti lato server sullo stage.
 - 13/11: KOS 24 e correzione del `sameAs` nella nota dello sprint 2.
 - Dal 16/11: AA in produzione (schede 2, 5, 11, 21, pagine provincia AA 10): `aaSchema` è in verifica 9-14/11.
+- **Aggiornamento 10/11: lo sprint 3 si consegna venerdì 13/11** (deciso da Danilo): verifiche la mattina del 13 (collaudi AA 57, KOS 150 e 63, verifica generale, revisione indipendente), poi nota di consegna e invio; bozza della nota l'11-12/11, nessun rilascio il 12/11. Nella nota: AA-4 con le prime misure reali (CLS p75 desktop home 0,157 → 0,096 il 9/11), KOS-11 Villa Margherita Vicenza e Argentieri in attesa di KOS, chat HubSpot a carico di KOS.
 - Sprint 3 (consegna 27/11): alt KOS 7 e AA 9 (proposte dal 9/11, in produzione 12-13/11, solo contenuti), AA 4
   stabilità visiva (misura e correzione sullo stage, rilascio 23-26/11), KOS 11 medici (parte tecnica sullo stage, dati da
   IT/TuoTempo entro il 20/11, da sollecitare), verifica completa il 26/11. KOS 10 già in produzione dal 1/11.

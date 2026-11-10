@@ -20,6 +20,7 @@ Uso interno. Una riga per decisione: data, cosa si è deciso, chi o quale fonte,
 | 8/11/2026 | Sprint 3 rilasciato in produzione la sera dell'8/11, prima dell'avvio della verifica di Cerved/ProWeb del 9/11 | Danilo | `docs/rilascio-20261116.md` |
 | 9/11/2026 | Hook e controllo dei commit rinviati a dopo il 16/11 (nessun cambiamento al repository durante la verifica) | Proposta del 9/11 | Questo registro |
 | 10/11/2026 | CAR Macerata: guide per l'utente (italiano e inglese) e organigramma nuovi, raddrizzati e con OCR; tolti i 3 documenti Fisiosport (unità chiusa); carta dei servizi di agosto 2026 invariata. CDI San Giuseppe: carta di novembre 2026 nella pagina del centro diurno e al posto della copia vecchia nella pagina della RSA. In produzione il 10/11 | Richiesta di KOS del 10/11 | `kosgroup/dati/pdf/car-macerata-2026-11-10.json`, `anniazzurri/dati/pdf/cdi-san-giuseppe-2026-11-10.json` |
+| 10/11/2026 | Consegna dello sprint 3 venerdì 13/11 (in anticipo sul 27/11): verifiche la mattina, poi nota di consegna e invio, prima della call RetailTune delle 11. Bozza della nota preparata l'11-12/11; nessun rilascio il 12/11 | Danilo | `docs/piano-sprint-1.md` |
 
 ## Sostituzione della ricerca Yext (Linea C)
 
