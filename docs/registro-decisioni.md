@@ -45,6 +45,7 @@ Uso interno. Una riga per decisione: data, cosa si è deciso, chi o quale fonte,
 | 10/11/2026 | Prestazioni: attributi della struttura in RetailTune con codice stabile, inseriti a mano o importati lato server da un elenco di KOS | Risposta di RetailTune del 10/11 | Idem |
 | 10/11/2026 | Assistenza domiciliare: testo fuori dal widget nella pagina di anniazzurri.it, gestito da noi. Cookiebot: categoria «marketing» confermata; l'elenco visibile senza consenso è nella proposta del 13/11 | Risposta di RetailTune del 10/11 | Idem |
 | 10/11/2026 | Orari: blocco principale più fino a tre aggiuntivi con etichetta e testo libero (esempio peggiore Villa dei Pini Civitanova, 4 blocchi); orari di visita delle residenze anche nel contenuto delle pagine, lato server, da TV alimentate via API da RetailTune; nel dato strutturato solo l'orario principale | Danilo | `docs/piano-sprint-1.md` (orari multipli) |
+| 10/11/2026 | Orari aggiuntivi come attributi personalizzati RetailTune (il blocco istituzionale resta quello per Google): proposta di chiavi `orari_N_etichetta` e `orari_N_testo`, N da 2 a 4, testo libero, etichette da elenco chiuso (es. «Visite ai familiari»). Da confermare in call il 13/11 | Risposta di RetailTune del 10/11, proposta di Danilo | Mail a RetailTune del 10/11 |
 
 ## Dati e strumenti
 
