@@ -61,6 +61,7 @@ Uso interno. Una riga per decisione: data, cosa si è deciso, chi o quale fonte,
 - Pieghevole Parco di Veio: la versione ESE_2 del 10/11 corregge «AMPIO AMPIO»; «Psichiatira» è diventato «Psichiatra» invece di «Psichiatria». Civico 43 contro 41 di Yext e del sito, da confermare con KOS.
 - Profilo Google di Villa Pineta ancora con 0536 1803620: chi lo aggiorna (Yext o importazione RetailTune).
 - Via libera di KOS alla prova di Vertex AI Search e progetto Google Cloud da usare.
+- CNAME RetailTune configurati dall'IT (verifica dell'11/11): `mappe.kosgroup.com` → `stores-kosgroup.retailtune.com`, `mappe.anniazzurri.it` → `stores-anniazzurri.retailtune.com` (TTL 6 h, nessun record CAA che limiti le CA). HTTPS non ancora attivo: il certificato servito non contiene `mappe.kosgroup.com` (ERR_CERT_COMMON_NAME_INVALID). Da chiedere a RetailTune l'emissione dei certificati.
 - Al passaggio da Yext a RetailTune: aggiornare l'intestazione `Permissions-Policy` di kosgroup.com (`geolocation=(self "https://cdn.yextapis.com")`) per il widget RetailTune.
 - Villa dei Pini Civitanova: nuovo direttore sanitario Roberta Tomassini, da scrivere nella TV «contatti struttura» (manager, produzione).
 - Giornata di lavoro con KOS in presenza il 19/11: orari per struttura (principale, visite, prelievi, ritiro referti) e chi li aggiorna; significato degli orari 08:00-20:00 delle residenze.
