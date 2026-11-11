@@ -21,6 +21,7 @@ Uso interno. Una riga per decisione: data, cosa si è deciso, chi o quale fonte,
 | 9/11/2026 | Hook e controllo dei commit rinviati a dopo il 16/11 (nessun cambiamento al repository durante la verifica) | Proposta del 9/11 | Questo registro |
 | 10/11/2026 | CAR Macerata: guide per l'utente (italiano e inglese) e organigramma nuovi, raddrizzati e con OCR; tolti i 3 documenti Fisiosport (unità chiusa); carta dei servizi di agosto 2026 invariata. CDI San Giuseppe: carta di novembre 2026 nella pagina del centro diurno e al posto della copia vecchia nella pagina della RSA. In produzione il 10/11 | Richiesta di KOS del 10/11 | `kosgroup/dati/pdf/car-macerata-2026-11-10.json`, `anniazzurri/dati/pdf/cdi-san-giuseppe-2026-11-10.json` |
 | 10/11/2026 | Locandina «Il mantello del custode» (anniazzurri.it): Bertolaso sostituito con «Dott. Mario Melazzini - Direttore Generale Welfare - Regione Lombardia», stesso percorso, metadati scritti. Resta `X-Robots-Tag: noindex` (regola `pdf-noindex.conf`, come già l'8/11). In produzione il 10/11, 2.614.243 byte | Richiesta urgente del 10/11 | `anniazzurri/dati/pdf/mantello-custode-2026-11-10.json` |
+| 11/11/2026 | Pieghevole del Poliambulatorio Parco di Veio, versione definitiva ESE_3 («Psichiatria» corretto, civico 43): sostituito con metadati su stage e produzione l'11/11, 1.296.461 byte, senza `X-Robots-Tag` | Invio di KOS dell'11/11 | `kosgroup/dati/pdf/pieghevole-parco-di-veio-2026-11-11.json` |
 | 10/11/2026 | Consegna dello sprint 3 venerdì 13/11 (in anticipo sul 27/11): verifiche la mattina, poi nota di consegna e invio, prima della call RetailTune delle 11. Bozza della nota preparata l'11-12/11; nessun rilascio il 12/11 | Danilo | `docs/piano-sprint-1.md` |
 
 ## Sostituzione della ricerca Yext (Linea C)
@@ -61,7 +62,7 @@ Uso interno. Una riga per decisione: data, cosa si è deciso, chi o quale fonte,
 
 ## Aperte (in attesa di risposta)
 
-- Pieghevole Parco di Veio: la versione ESE_2 del 10/11 corregge «AMPIO AMPIO»; «Psichiatira» è diventato «Psichiatra» invece di «Psichiatria». Civico 43 contro 41 di Yext e del sito, da confermare con KOS.
+- Poliambulatorio Parco di Veio: civico 41 sul profilo Google contro il 43 di sito, Yext, residenza e pieghevole ESE_3: da correggere sul profilo (KOS).
 - Profilo Google di Villa Pineta ancora con 0536 1803620: chi lo aggiorna (Yext o importazione RetailTune).
 - Via libera di KOS alla prova di Vertex AI Search e progetto Google Cloud da usare.
 - CNAME RetailTune configurati dall'IT (verifica dell'11/11): `mappe.kosgroup.com` → `stores-kosgroup.retailtune.com`, `mappe.anniazzurri.it` → `stores-anniazzurri.retailtune.com` (TTL 6 h, nessun record CAA che limiti le CA). Certificati emessi da RetailTune l'11/11: verifica in browser OK sui due nomi (HTTPS valido, radice 200 vuota, server Apache). Resta da verificare lo script del widget quando RetailTune ne comunica il percorso.

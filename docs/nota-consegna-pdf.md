@@ -85,3 +85,7 @@ Collaudi in produzione, `curl -I` dal PC di Danilo, dopo l'aggiornamento della s
 - File sostituito da Danilo allo stesso percorso (`/assets/doc/il-mantello-del-custode-locandina.pdf`, evento dell'11/11 all'Hospice Beati Coniugi Martin). Caricato dopo il piano del 1/11, quindi senza metadati nostri.
 - Metadati con `pdf-metadati.php` e `anniazzurri/dati/pdf/locandina-mantello-2026-11.json`: titolo «Locandina Il mantello del custode – Hospice Beati Coniugi Martin», oggetto (147 caratteri), autore «Anni Azzurri», `it-IT`; stessi valori in `anniazzurri/dati/pdf/imposta-pdf.json` per i controlli successivi. Produzione 6/11 alle 14:26: 1 scritto; backup `/paas/c0072/backup-pdf-metadati-20261106`.
 - Resta `noindex` (regola predefinita: le locandine non sono tra i PDF da tenere; la pagina dell'evento è indicizzata). `curl -I`: 200, `X-Robots-Tag: noindex`, 2.492.618 byte.
+
+## Aggiornamento dell'11/11: pieghevole del Poliambulatorio Parco di Veio
+
+Versione definitiva ESE_3 di KOS al posto di quella dell'8/11, stesso percorso (`/assets/doc/strutture/poliambulatorio-parco-di-veio/pieghevole-informativo.pdf`), con titolo, oggetto, autore e lingua. Stage e produzione l'11/11: `curl -I` 200, `Content-Length` 1.296.461, `Last-Modified` 11/11 15:21 (UTC), nessun `X-Robots-Tag`. Piano: `kosgroup/dati/pdf/pieghevole-parco-di-veio-2026-11-11.json`.
