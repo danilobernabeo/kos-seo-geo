@@ -119,3 +119,24 @@ Nota: le immagini hanno `cache-control: max-age=15552000` (180 giorni). Con lo s
 poliambulatorio) chi aveva già visto la pagina può vedere la versione vecchia fino alla scadenza della copia nel browser.
 Rimedio proposto e rimandato (2/11, decisione di Danilo): data del file nell'indirizzo delle varianti dello snippet
 `immagine` (`?v=`), come AssetVersion per CSS e JS; su kosgroup.com con KOS-2 C.
+
+## Banner del poliambulatorio nella pagina della RSA (11/11)
+
+Richiesta di KOS dell'11/11: nella pagina `https://anniazzurri.it/residenza-anni-azzurri-parco-di-veio`, dopo la
+presentazione della struttura, un box che rimanda a `https://kosgroup.com/it/centri/poliambulatorio-parco-di-veio`.
+Modello: box «Scarica il pieghevole» della pagina Aurora di kosgroup.com, con i colori di Anni Azzurri. Simulazione
+approvata da Danilo l'11/11.
+
+| Percorso | Cosa |
+|---|---|
+| `aa/banner/banner-poliambulatorio-parco-di-veio.html` | chunk (CSS con prefisso `pv-`, testi, link, copertina tramite lo snippet `immagine`) |
+| `aa/banner/files/assets/img/banner/poliambulatorio-parco-di-veio.jpg` | copertina del pieghevole ESE_3 (600 × 851, JPG 82, dalla prima pagina del PDF) |
+| `banner.php` | prova, `--scrivi` con backup, `--ripristina` |
+
+- Il link «Sfoglia il pieghevole» punta al PDF su kosgroup.com
+  (`/assets/doc/strutture/poliambulatorio-parco-di-veio/pieghevole-informativo.pdf`): si sostituisce in un punto solo.
+- La chiamata `[[$banner-poliambulatorio-parco-di-veio]]` va nel campo content della risorsa, prima del primo
+  `<div class="accordion…">`. Il content delle residenze è un elemento del progetto (AA-1, AA-6, AA-9, tutti in
+  produzione): l'aggiunta è coordinata con il progetto e non tocca immagini né testi esistenti.
+- Se il pieghevole cambia copertina: rigenerare l'immagine dalla prima pagina del PDF e rilanciare `banner.php`
+  (sostituisce il file, le varianti WebP si rigenerano allo svuotamento della cache).

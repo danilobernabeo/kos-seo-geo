@@ -1,0 +1,36 @@
+<style>
+.pv-box{display:flex;gap:32px;background:#e8f3fb;border-radius:4px;overflow:hidden;margin:16px 0 48px;align-items:stretch}
+.pv-box__testo{flex:1;padding:40px 0 40px 40px;display:flex;flex-direction:column;justify-content:center}
+.pv-box .pv-eti{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:#333;margin:0 0 8px}
+.pv-box h2{color:#003b77;font-size:2rem;margin:0 0 12px}
+.pv-box p{margin:0 0 12px;color:#333;font-size:1rem;line-height:1.6}
+.pv-box .pv-spec{font-size:.92rem;color:#444}
+.pv-azioni{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:12px}
+.pv-btn{background:#003b77;color:#fff;padding:.75rem 1.4rem;border-radius:4px;font-weight:700;text-transform:uppercase;font-size:.9rem;text-decoration:none}
+.pv-btn:hover,.pv-btn:focus{background:#002a56;color:#fff}
+.pv-link{color:#003b77;font-weight:600;text-decoration:underline}
+.pv-box__img{flex:0 0 280px;aspect-ratio:600/851}
+.pv-box__img img{display:block;width:100%;height:100%;object-fit:cover}
+@media (max-width:767.98px){
+.pv-box{flex-direction:column-reverse;gap:0}
+.pv-box__img{flex:0 0 auto;width:170px;margin:28px auto 0;box-shadow:0 8px 20px rgba(0,40,80,.25)}
+.pv-box__testo{padding:20px 24px 28px}
+.pv-box h2{font-size:1.6rem}
+.pv-azioni{flex-direction:column;align-items:stretch;text-align:center}
+}
+</style>
+<div class="container">
+  <aside class="pv-box" aria-labelledby="pv-titolo">
+    <div class="pv-box__testo">
+      <p class="pv-eti">Nella stessa sede · Gruppo KOS</p>
+      <h2 id="pv-titolo">Poliambulatorio Parco di Veio</h2>
+      <p>Al piano terra della residenza, con ingresso indipendente e ampio parcheggio: visite specialistiche e fisioterapia in regime privato, per gli ospiti, le loro famiglie e il quartiere.</p>
+      <p class="pv-spec">Cardiologia · Fisiatria e fisioterapia · Geriatria · Ginecologia · Medicina interna · Ortopedia · Pneumologia · Psichiatria</p>
+      <div class="pv-azioni">
+        <a class="pv-btn" href="https://kosgroup.com/it/centri/poliambulatorio-parco-di-veio">Scopri il poliambulatorio</a>
+        <a class="pv-link" href="https://kosgroup.com/assets/doc/strutture/poliambulatorio-parco-di-veio/pieghevole-informativo.pdf" type="application/pdf" target="_blank" rel="noopener" aria-label="Sfoglia il pieghevole del poliambulatorio (PDF - 1,2 MB), si apre in una nuova finestra">Sfoglia il pieghevole (PDF - 1,2 MB)</a>
+      </div>
+    </div>
+    <div class="pv-box__img">[[immagine? &src=`/assets/img/banner/poliambulatorio-parco-di-veio.jpg` &alt=`Copertina del pieghevole del Poliambulatorio Parco di Veio: «La tua salute al Centro»` &sizes=`(max-width: 767.98px) 170px, 280px`]]</div>
+  </aside>
+</div>
