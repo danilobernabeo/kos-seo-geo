@@ -16,8 +16,7 @@ Uso interno (appunti per Danilo). Raccolti il 10-11/11; venerdì mattina si rile
 
 ## Mappa e chiavi Google
 
-10. **Da quale indirizzo parte la richiesta della mappa:** dalle nostre pagine o da un riquadro su `mappe.*`? Decide i referrer da autorizzare sulla chiave.
-11. **Una chiave per sito o una sola?** Proposta: due chiavi nel nuovo progetto `kos-mappe` sulla fatturazione di KOS, solo Maps JavaScript API.
+- (Chiavi: decise l'11/11, due chiavi nel progetto `kos-mappe`, sola Maps JavaScript API, referrer `dominio/*` e `*.dominio/*`; mandate a RetailTune.)
 12. **Completamento dell'indirizzo** (prodotto RetailTune fatturato a parte): costo, ed è previsto nel contratto?
 13. **Certificati di `mappe.*`:** attivati l'11/11, rinnovo automatico? Percorso dello script del widget, per la verifica.
 
