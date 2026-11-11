@@ -146,3 +146,5 @@ finestra. Verifica in produzione a 375, 768, 992 e 1366 px: copertina intera (28
 200 px su tablet e 170 px su telefono), WebP servito, entrambi i link con `target="_blank" rel="noopener"`.
 HubSpot aggiunge in pagina i parametri `__hstc`, `__hssc`, `__hsfp` ai link verso kosgroup.com (tracciamento tra
 domini dello stesso portale): comportamento previsto, nell'HTML i link restano puliti.
+Ripristino della produzione: `php banner.php /www --ripristina /paas/c0072/backup-kos-seo-geo/20261111-095128-banner-pdv/ripristino.json --scrivi`
+(dalla cartella del pacchetto; l'ora nel nome è quella del server).
