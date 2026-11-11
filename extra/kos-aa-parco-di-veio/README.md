@@ -140,3 +140,9 @@ approvata da Danilo l'11/11.
   produzione): l'aggiunta è coordinata con il progetto e non tocca immagini né testi esistenti.
 - Se il pieghevole cambia copertina: rigenerare l'immagine dalla prima pagina del PDF e rilanciare `banner.php`
   (sostituisce il file, le varianti WebP si rigenerano allo svuotamento della cache).
+
+Rilascio dell'11/11: stage e produzione (risorsa 110), etichetta «Nella stessa sede», link a kosgroup.com in nuova
+finestra. Verifica in produzione a 375, 768, 992 e 1366 px: copertina intera (280 × 397 da 992 px in su, miniatura
+200 px su tablet e 170 px su telefono), WebP servito, entrambi i link con `target="_blank" rel="noopener"`.
+HubSpot aggiunge in pagina i parametri `__hstc`, `__hssc`, `__hsfp` ai link verso kosgroup.com (tracciamento tra
+domini dello stesso portale): comportamento previsto, nell'HTML i link restano puliti.
