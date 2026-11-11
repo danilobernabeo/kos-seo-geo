@@ -59,8 +59,17 @@ Comportamento attuale (chatflow «mostra il benvenuto, poi apri la chat al trigg
 A 1366×768 la finestra copre le voci di menu «SOS Famiglia», «Tariffe e convenzioni» e «Chi siamo», oltre alla
 colonna destra del contenuto. Senza la chat il CLS è 0,004 sulla home e 0 sulla scheda.
 
-Mobile: HubSpot prevede solo il fumetto o il solo pulsante, nessuna apertura automatica né trigger (guida della
-chatflow). La prova da mobile non è conclusiva, perché la chiusura del test desktop resta valida 24 ore. Lo confermano
+Impostazioni della chatflow «KOS_Welcome Chatbot» (verificate da Danilo in HubSpot l'11/11), con un trigger comune a
+tutti i dispositivi, «tempo sulla pagina» di 7 s:
+- desktop e tablet: «Mostra il messaggio di benvenuto, quindi apri il widget della chat al momento dell'attivazione»;
+- mobile: «Mostra solo l'utilità di avvio della chat quando si verifica la condizione di attivazione», cioè solo il
+  pulsante, senza fumetto.
+
+Volumi (pannello della chatflow):
+- luglio-settembre 2026: 859 conversazioni avviate, 496 completate (58%);
+- ottobre: 191 avviate, 111 completate (58%).
+
+Mobile: HubSpot prevede solo il fumetto o il solo pulsante, nessuna apertura automatica (guida della chatflow). La prova da mobile non è conclusiva, perché la chiusura del test desktop resta valida 24 ore. Lo confermano
 però i dati reali: la chat è l'elemento che si sposta nell'1% delle pagine viste da mobile, contro il 61-65% da
 desktop.
 
