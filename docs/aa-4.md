@@ -40,6 +40,39 @@ Verifica prima del rilascio (Chrome, home di produzione con il CSS applicato e J
 pagina dopo l'avvio): posizioni delle sezioni identiche al pixel a 1366×768 e 390×844; senza il CSS la seconda sezione
 parte a 2.539 px invece di 724.
 
+## Chat HubSpot: misura dell'11/11
+
+Prova nel browser sulla produzione (home e Villa Reale), più dati dei visitatori reali dall'1 al 9/11 (BigQuery).
+
+Comportamento attuale (chatflow «mostra il benvenuto, poi apri la chat al trigger»):
+- dopo 1-2,5 s compare il fumetto di benvenuto (da 100×96 a 282×253 px);
+- dopo 8-9,5 s si apre la finestra intera, 448 px di larghezza e fino a 804 di altezza;
+- si riapre a ogni pagina finché il visitatore non la chiude. Chiusa, resta chiusa per 24 ore (cookie
+  `hs-messages-hide-welcome-message`).
+
+| Schermo | CLS dalla chat | Altezza coperta | Area coperta |
+| --- | --- | --- | --- |
+| 1920×1080 (calcolo) | – | 74% | 17% |
+| 1366×768 | 0,123 (fumetto 0,009, finestra 0,114) | 96% | 31% |
+| 743×1027 (finestra stretta) | 0,276 | 78% | 47% |
+
+A 1366×768 la finestra copre le voci di menu «SOS Famiglia», «Tariffe e convenzioni» e «Chi siamo», oltre alla
+colonna destra del contenuto. Senza la chat il CLS è 0,004 sulla home e 0 sulla scheda.
+
+Mobile: HubSpot prevede solo il fumetto o il solo pulsante, nessuna apertura automatica né trigger (guida della
+chatflow). La prova da mobile non è conclusiva, perché la chiusura del test desktop resta valida 24 ore. Lo confermano
+però i dati reali: la chat è l'elemento che si sposta nell'1% delle pagine viste da mobile, contro il 61-65% da
+desktop.
+
+Dati reali da desktop (pagine diverse dalla home), 9/11:
+- p75 0,076;
+- 17,3% delle visite sopra 0,1, di cui 16,1 punti per la chat;
+- spostamento mediano dovuto alla chat 0,06.
+
+Home da desktop, 9/11 (55 visite):
+- p75 0,096;
+- 23,6% delle visite sopra 0,1, di cui 21,8 punti per la chat.
+
 ## Chat HubSpot (da proporre a KOS)
 
 L'apertura automatica è un'impostazione del chatflow in HubSpot, non del sito. Proposta: sul desktop mostrare il
