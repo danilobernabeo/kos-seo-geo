@@ -64,6 +64,17 @@ Rilascio del 1/11/2026, prima sugli stage e poi in produzione. Brief: `docs/pdf/
   (`--forza` perché i metadati hanno modificato il file dopo la sostituzione).
 - **CAR Macerata (risposta di KOS del 12/11):** funzionigramma invariato, `user-manual` da tenere: nessun intervento.
 
+## Pieghevole 2026 del Poliambulatorio Valdaso (KOS, 12/11/2026)
+
+- **Consegna:** `KOS_POLI_VALDASO_A5_2026_v1.pdf` (A5, 2 pagine, testo selezionabile), al posto di
+  `poliambulatorio-valdaso/pieghevole-informativo.pdf` (stesso percorso, link della pagina invariato). Abbinamento
+  `kosgroup/dati/pdf/pieghevole-valdaso-2026-11-12.json`.
+- **Controllo dei contenuti:** telefono, email, indirizzo, direttore sanitario e orari (lun-ven 10:00-18:00) uguali alla
+  scheda. Il dato strutturato della scheda dichiara invece 9:30-18:30 (dati Yext): da chiarire con KOS, poi TV.
+- **Stage e produzione (12/11):** sostituito e con metadati; `curl -I` di produzione: `200`, 1.355.364 byte,
+  `Last-Modified` 12/11 16:30 UTC. Backup dei metadati `/paas/c0095/backup-pdf-metadati-20261112` (stage `c0044`), della
+  sostituzione in `~/backup-kos-seo-geo/20261112-*-pdf-sostituiti`.
+
 ## Evidenza (1/11/2026)
 
 - Stage KOS e AA: sei `curl -I`, uno per caso, con l'esito atteso (nessun `X-Robots-Tag` sul PDF da tenere, `noindex` sull'escluso, `Link` canonical sulla copia) e gli header di sicurezza presenti.
