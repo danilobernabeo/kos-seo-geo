@@ -46,7 +46,10 @@ Flickity dà al riquadro l'altezza della cella più alta misurata all'avvio, ma 
 le slide con meno testo restavano più basse e sotto si vedeva una striscia vuota. Misura in produzione il 12/11:
 telefono 375×812 celle da 365 a 397 px in un riquadro da 376 (misurato prima del caricamento del font); 1366×768 celle
 da 422 a 512 px in un riquadro da 512. Correzione in `kos-seo-geo.css` (pacchetto `aa-4-cls`): ogni cella occupa almeno
-tutto il riquadro (`min-height: 100%`, flex) e l'immagine la riempie. Provata nel browser sulla produzione: tutte le
+tutto il riquadro (`min-height: 100%`, flex) e l'immagine la riempie; il testo resta in alto (`align-items: flex-start`),
+alla stessa altezza di prima: centrato nella cella allungata cambiava posizione da una slide all'altra (prima prova sullo
+stage, 12/11). Nel chunk le immagini delle slide successive alla prima hanno `&differita=`0``: con il caricamento
+differito la seconda slide compariva senza immagine. Provata nel browser sulla produzione: tutte le
 celle 397 px sul telefono e 512 a 1366. Nessun effetto sul CLS: l'altezza del riquadro non cambia.
 
 ## Chat HubSpot: misura dell'11/11
