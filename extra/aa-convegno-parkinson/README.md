@@ -108,6 +108,79 @@ slide di `slide-home.html` dopo quella del Mantello, sul ramo da cui si rilascia
 Mai durante la verifica dell'agenzia (9-14/11), che controlla anche `heading-home2`. Finito il Mantello (11/11)
 la sua slide si toglie con lo stesso vincolo.
 
+**12/11:** la slide del Parkinson entra al secondo posto, dopo quella Muba di Natale, nel chunk come è in produzione
+(modificato a mano dopo l'ultimo rilascio: slide Muba, link OSS, `col-lg-6`; copia in
+`anniazzurri/baseline/chunks/heading-home2.html`, letta con `scripts/checks/chunk-contenuto.php`). Nello stesso giro:
+alt delle slide Muba e OSSigeno Puro, che erano scambiati, e `&priorita=`1`` sulla prima slide (immagine più grande della
+pagina, LCP). Immagini da `slide-home.py` sul banner ricevuto il 12/11 (`materiali/`): titolo tolto (è nell'HTML),
+foto spostata a destra fuori dalla colonna del testo, logo Anni Azzurri | KOS ridotto in basso a destra, sfumatura grigia
+neutra a sinistra; 1900x570 (47 KB) e versione per i telefoni 740x740 (32 KB, `&srcMobile`). Manifest `home-slide.json`
+(chunk e immagini), con `scripts/deploy/installa-elementi.php`: stage subito, produzione dopo la verifica dell'agenzia
+(dal 15/11).
+
+## Rilascio
+
+Prima sullo stage (`aa-stage`), con le pagine pubblicate per l'approvazione:
+
+```powershell
+git pull
+git archive -o $env:TEMP\parkinson.tar HEAD extra/aa-convegno-parkinson
+scp $env:TEMP\parkinson.tar aa-stage:
+Start-Sleep 20
+ssh aa-stage "rm -rf ~/parkinson && mkdir ~/parkinson && tar xf ~/parkinson.tar -C ~/parkinson && cd ~/parkinson/extra/aa-convegno-parkinson && php installa.php /www"
+Start-Sleep 20
+ssh aa-stage "cd ~/parkinson/extra/aa-convegno-parkinson && php installa.php /www --scrivi --pubblica"
+```
+
+Se lo stage non ha le pagine del Mantello (riallineamento precedente alla loro creazione), la prova lo dice: modello non trovato.
+
+In produzione, ad approvazione: stessi comandi sul cloud di produzione, con `--scrivi --pubblica`; oppure prima
+`--scrivi` (pagine non pubblicate, anteprima dal manager) e alla conferma `--pubblica --scrivi`.
+Niente rilasci in produzione giovedì 29/10 (giorno prima della consegna dello sprint 1).
+
+Dopo il rilascio:
+
+- invio di prova del modulo: arriva a `manuela.devasini@anniazzurri.it`, conferma all'iscritto con oggetto
+  «Richiesta di iscrizione - La malattia di Parkinson - …», segreteria del Polo Geriatrico in fondo alla mail;
+- l'iscrizione al Mantello del custode continua ad arrivare ai suoi destinatari;
+- pagina evento: testata desktop e mobile, «Scarica la locandina», pulsante «Iscrizioni online», `og:image`
+  (`/assets/img/convegno-parkinson-realta-prospettive.jpg`) nel sorgente.
+
+Immagini o documenti di `files/`, o il chunk del programma, cambiati dopo l'installazione: `php installa.php /www --aggiorna-file`,
+poi con `--scrivi`. Sostituisce solo i file e il chunk diversi, salva i precedenti nel backup, svuota la cache (le varianti
+dello snippet `immagine` si rigenerano da sole) e stampa il comando di ripristino. Pagine e TV non cambiano.
+
+Ripristino: il comando esatto è stampato alla fine dell'installazione
+(`php installa.php /www --ripristina ~/backup-kos-seo-geo/<data>-convegno-parkinson/ripristino.json --scrivi`):
+rimuove le due pagine (con le TV), il chunk e i file copiati. Le iscrizioni già salvate da FormIt restano.
+
+## Testata del Mantello senza velatura
+
+Il template delle pagine evento mette sulla testata una velatura scura da sinistra. Il Parkinson la toglie con una
+regola CSS nel suo chunk del programma; `mantello-senza-velatura.php` aggiunge la stessa regola al chunk
+`programma-560`, che compare solo nella pagina del Mantello. Il template, elemento del progetto, non cambia.
+
+```powershell
+ssh aa-stage "cd ~/parkinson/extra/aa-convegno-parkinson && php mantello-senza-velatura.php /www"
+ssh aa-stage "cd ~/parkinson/extra/aa-convegno-parkinson && php mantello-senza-velatura.php /www --scrivi"
+```
+
+Si ferma se il chunk non ha esattamente uno `</style>`. Se la regola c'è già non fa niente. Il ripristino dal
+backup è stampato alla fine. Dopo il rilascio in produzione va aggiornata la copia
+`anniazzurri/baseline/chunks/programma-560.html`, perché gli strumenti del progetto non lo segnalino come modificato a mano.
+
+## Carosello della home
+
+La slide sta nel chunk `heading-home2`, che è un elemento statico del progetto (AA-18) e fa parte del pacchetto
+`aa-1-6-markup` dello sprint 2: non si modifica da `installa.php`. Quando la pagina è pubblicata si incolla la
+slide di `slide-home.html` dopo quella del Mantello, sul ramo da cui si rilascia:
+
+- variante A (snippet `immagine`) se `heading-home2` esce insieme ad `aa-1-6-markup` (finestra 26/10-6/11);
+- variante B (sfondo CSS) se il convegno si pubblica prima di quel rilascio.
+
+Mai durante la verifica dell'agenzia (9-14/11), che controlla anche `heading-home2`. Finito il Mantello (11/11)
+la sua slide si toglie con lo stesso vincolo.
+
 **12/11:** nel repository la slide del Parkinson (variante A, prima posizione, `&priorita=`1``) prende il posto di
 quella del Mantello, concluso l'11/11. Manifest `home-slide.json` (solo `heading-home2`), installazione con
 `scripts/deploy/installa-elementi.php`: stage subito, produzione dopo la verifica dell'agenzia (dal 15/11). Il banner

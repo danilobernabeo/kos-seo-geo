@@ -1,8 +1,7 @@
 """Slide della home del convegno Parkinson dal banner ricevuto il 12/11 (materiali/banner-home-ricevuto-20261112.jpg).
 
 Toglie titolo e loghi, sposta tutta la foto a destra di 330 px (testa e filo (fuori dalla colonna del testo HTML: 300-950 px a 1920, 160-940 a
-1366), rimette il logo Anni Azzurri | KOS ridotto in basso a destra, aggiunge a sinistra la sfumatura blu per il testo
-bianco. Uscita 1900x570 (proporzione della slide a 1920x1031: 1905x567), JPEG progressivo.
+1366), rimette il logo Anni Azzurri | KOS ridotto in basso a destra, aggiunge a sinistra una sfumatura grigia neutra. Uscita 1900x570 (proporzione della slide a 1920x1031: 1905x567), JPEG progressivo.
 Uso: python3 -I slide-home.py <banner ricevuto> <uscita.jpg> [<uscita-mobile.jpg>]
 """
 import sys
@@ -52,22 +51,21 @@ la = L[..., 3:] / 255
 reg = tela[ly:ly + L.shape[0], lx:lx + L.shape[1]]
 tela[ly:ly + L.shape[0], lx:lx + L.shape[1]] = reg * (1 - la) + L[..., :3] * la
 
-# sfumatura blu a sinistra per il testo bianco
-blu = np.array([30, 62, 122], float)
+# sfumatura grigia a sinistra (stessa tinta neutra della velatura CSS .overlay, nero 60% → 10%): con il solo .overlay
+# il fondo chiaro della foto lascerebbe poco contrasto al testo bianco
+grigio = np.array([58, 60, 66], float)
 x = np.arange(W) / 1250.0
-t = np.clip(1 - x, 0, 1); t = t * t * (3 - 2 * t) * 0.95
-tela = tela * (1 - t[None, :, None]) + blu * t[None, :, None]
-
+t = np.clip(1 - x, 0, 1); t = t * t * (3 - 2 * t) * 0.7
+tela = tela * (1 - t[None, :, None]) + grigio * t[None, :, None]
 img = Image.fromarray(np.clip(tela, 0, 255).astype(np.uint8)).crop((10, 15, 1910, 585))
 img.save(out, 'JPEG', quality=80, optimize=True, progressive=True, subsampling='4:2:0')
 print(out, img.size)
 
 # versione per i telefoni (&srcMobile): la slide è quasi quadrata (375x365) e il testo occupa tutta la larghezza;
-# quadrato attorno alla testa, velatura blu più forte a sinistra perché il testo bianco resti leggibile
+# quadrato attorno alla testa
 if len(sys.argv) > 3:
     q = np.asarray(img.crop((975, 0, 1545, 570)).resize((740, 740), Image.LANCZOS)).astype(float)
-    xs = np.linspace(0, 1, 740)
-    v = (0.88 - 0.38 * xs)[None, :, None]
-    q = q * (1 - v) + blu * v
+    v = (0.62 - 0.25 * np.linspace(0, 1, 740))[None, :, None]   # velatura grigia, il testo occupa tutta la larghezza
+    q = q * (1 - v) + grigio * v
     Image.fromarray(np.clip(q, 0, 255).astype(np.uint8)).save(sys.argv[3], 'JPEG', quality=80, optimize=True, progressive=True)
     print(sys.argv[3], (740, 740))

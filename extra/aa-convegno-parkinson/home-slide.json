@@ -1,11 +1,21 @@
 {
-  "nome": "Extra aa-convegno-parkinson: slide del convegno al posto di quella del Mantello del custode (concluso l'11/11) nel carosello della home (chunk heading-home2, elemento AA-18)",
+  "nome": "Extra aa-convegno-parkinson: slide del convegno (seconda, dopo Muba) nel carosello della home; corretti gli alt scambiati di Muba e OSSigeno Puro e la priorità della prima slide (chunk heading-home2, elemento AA-18)",
   "elements": [
     {
       "type": "chunk",
       "name": "heading-home2",
       "file": "anniazzurri/elements/chunks/heading-home2.html",
       "baseline": "anniazzurri/baseline/chunks/heading-home2.html"
+    }
+  ],
+  "files": [
+    {
+      "file": "extra/aa-convegno-parkinson/files/assets/img/convegno-parkinson-slider.jpg",
+      "dest": "assets/img/convegno-parkinson-slider.jpg"
+    },
+    {
+      "file": "extra/aa-convegno-parkinson/files/assets/img/convegno-parkinson-slider-mobile.jpg",
+      "dest": "assets/img/convegno-parkinson-slider-mobile.jpg"
     }
   ]
 }
