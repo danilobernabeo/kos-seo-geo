@@ -59,8 +59,9 @@ Rilascio del 1/11/2026, prima sugli stage e poi in produzione. Brief: `docs/pdf/
   mentre il testo parla del 2026.
 - **Stage e produzione (12/11):** sostituito e con metadati; `curl -I` su entrambi: `200`, 649.951 byte, `X-Robots-Tag:
   noindex`, `Last-Modified` del 12/11 (produzione 11:04 UTC). Backup dei metadati `/paas/c0095/backup-pdf-metadati-20261112`
-  (stage `/paas/c0044/...`), della sostituzione in `~/backup-kos-seo-geo/20261112-*-pdf-sostituiti`.
-- **Ripristino:** `php scripts/pdf/sostituisci-pdf.php /www --ripristina=<cartella del backup della sostituzione> --scrivi --forza`.
+  (stage `/paas/c0044/...`), della sostituzione in produzione `/paas/c0095/backup-kos-seo-geo/20261112-050435-pdf-sostituiti`.
+- **Ripristino:** `php scripts/pdf/sostituisci-pdf.php /www --ripristina=/paas/c0095/backup-kos-seo-geo/20261112-050435-pdf-sostituiti --scrivi --forza`
+  (`--forza` perché i metadati hanno modificato il file dopo la sostituzione).
 - **CAR Macerata (risposta di KOS del 12/11):** funzionigramma invariato, `user-manual` da tenere: nessun intervento.
 
 ## Evidenza (1/11/2026)
