@@ -108,10 +108,10 @@ slide di `slide-home.html` dopo quella del Mantello, sul ramo da cui si rilascia
 Mai durante la verifica dell'agenzia (9-14/11), che controlla anche `heading-home2`. Finito il Mantello (11/11)
 la sua slide si toglie con lo stesso vincolo.
 
-**12/11:** la slide del Parkinson entra al secondo posto, dopo quella Muba di Natale, nel chunk come è in produzione
+**12/11:** la slide del Parkinson entra al primo posto (deciso da Danilo dopo la prova sullo stage), prima di quella Muba di Natale, nel chunk come è in produzione
 (modificato a mano dopo l'ultimo rilascio: slide Muba, link OSS, `col-lg-6`; copia in
 `anniazzurri/baseline/chunks/heading-home2.html`, letta con `scripts/checks/chunk-contenuto.php`). Nello stesso giro:
-alt delle slide Muba e OSSigeno Puro, che erano scambiati, e `&priorita=`1`` sulla prima slide (immagine più grande della
+alt delle slide Muba e OSSigeno Puro, che erano scambiati, e `&priorita=`1`` sulla prima slide, ora il Parkinson (immagine più grande della
 pagina, LCP). Immagini da `slide-home.py` sul banner ricevuto il 12/11 (`materiali/`): titolo tolto (è nell'HTML),
 foto spostata a destra fuori dalla colonna del testo, logo Anni Azzurri | KOS ridotto in basso a destra, sfumatura grigia
 neutra a sinistra; 1900x570 (47 KB) e versione per i telefoni 740x740 (32 KB, `&srcMobile`). Manifest `home-slide.json`

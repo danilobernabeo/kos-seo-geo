@@ -1,5 +1,5 @@
 {
-  "nome": "Extra aa-convegno-parkinson: slide del convegno (seconda, dopo Muba) nel carosello della home; corretti gli alt scambiati di Muba e OSSigeno Puro e la priorità della prima slide (chunk heading-home2, elemento AA-18)",
+  "nome": "Extra aa-convegno-parkinson: slide del convegno (prima, poi Muba) nel carosello della home; corretti gli alt scambiati di Muba e OSSigeno Puro con la priorità sulla prima slide (chunk heading-home2, elemento AA-18)",
   "elements": [
     {
       "type": "chunk",
