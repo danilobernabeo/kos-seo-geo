@@ -1,0 +1,11 @@
+{
+  "nome": "KOS-2 Canonical degli elenchi paginati (news, approfondimenti, eventi, video, comunicati): indirizzo della pagina con il solo ?page, senza gli altri parametri della richiesta",
+  "elements": [
+    {
+      "type": "plugin",
+      "name": "MultiPaginationCanonical",
+      "file": "kosgroup/elements/plugins/MultiPaginationCanonical.php",
+      "baseline": "kosgroup/baseline/plugins/MultiPaginationCanonical.php"
+    }
+  ]
+}
