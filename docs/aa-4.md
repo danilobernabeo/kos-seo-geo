@@ -40,6 +40,15 @@ Verifica prima del rilascio (Chrome, home di produzione con il CSS applicato e J
 pagina dopo l'avvio): posizioni delle sezioni identiche al pixel a 1366×768 e 390×844; senza il CSS la seconda sezione
 parte a 2.539 px invece di 724.
 
+## Carosello della home: celle di altezza diversa (12/11)
+
+Flickity dà al riquadro l'altezza della cella più alta misurata all'avvio, ma ogni slide è alta quanto il suo testo:
+le slide con meno testo restavano più basse e sotto si vedeva una striscia vuota. Misura in produzione il 12/11:
+telefono 375×812 celle da 365 a 397 px in un riquadro da 376 (misurato prima del caricamento del font); 1366×768 celle
+da 422 a 512 px in un riquadro da 512. Correzione in `kos-seo-geo.css` (pacchetto `aa-4-cls`): ogni cella occupa almeno
+tutto il riquadro (`min-height: 100%`, flex) e l'immagine la riempie. Provata nel browser sulla produzione: tutte le
+celle 397 px sul telefono e 512 a 1366. Nessun effetto sul CLS: l'altezza del riquadro non cambia.
+
 ## Chat HubSpot: misura dell'11/11
 
 Prova nel browser sulla produzione (home e Villa Reale), più dati dei visitatori reali dall'1 al 9/11 (BigQuery).

@@ -56,6 +56,13 @@ img.card-img-top[height] { height: auto; }
 [data-flickity*="adaptiveHeight"]:not(.flickity-enabled) { align-items: flex-start; }
 [data-flickity*="adaptiveHeight"]:not(.flickity-enabled) > :not(:first-child) { position: absolute; visibility: hidden; }
 
+/* AA-4: carosello della home a tutta larghezza. Flickity dà al riquadro l'altezza della cella più alta, misurata
+   all'avvio (prima del font): le slide con meno testo restavano più basse e sotto si vedeva una striscia vuota
+   (telefono, 12/11: celle da 365 a 397 px in un riquadro da 376). Ogni cella occupa almeno tutto il riquadro e
+   l'immagine la riempie; min-height non cambia la misura di Flickity (all'avvio il riquadro non ha ancora altezza). */
+.carousel-full .flickity-slider > .carousel-cell { min-height: 100%; display: flex; }
+.carousel-full .flickity-slider > .carousel-cell > [stripe-one-col-media-component] { flex: 1 1 auto; height: auto !important; }
+
 /* AA-4: barra di ricerca Yext Answers della home, scritta da JavaScript (+58 px dopo il caricamento): spazio riservato.
    Da togliere con la sostituzione della ricerca Yext (linea C). */
 #main-content .search_form { min-height: 58px; }
