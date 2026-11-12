@@ -1,0 +1,11 @@
+{
+  "nome": "KOS-11 Villa Margherita Vicenza: menu del sito sulla pagina della sede /villamargherita (risorsa 1161, template landing), al posto del menu ridotto delle landing",
+  "elements": [
+    {
+      "type": "snippet",
+      "name": "getMenuChunk",
+      "file": "kosgroup/elements/snippets/getMenuChunk.php",
+      "baseline": "kosgroup/baseline/snippets/getMenuChunk.php"
+    }
+  ]
+}

@@ -106,6 +106,10 @@ description «Scopri i servizi di neurologi, riabilitazione e psichiatria di Vil
 informazioni!» → «Villa Margherita: a Vicenza neurologia, riabilitazione e psichiatria; a Benevento riabilitazione
 cardiologica, pneumologica, neurologica e ortopedica.»; cambiati da Danilo il 12/11 in produzione e sullo stage).
 Link verso `/villamargherita`, sitemap in produzione e URL del profilo Google: dopo la condivisione con KOS.
+Obiezione del referente (12/11): la landing non ha il menu del sito (chi arriva dal profilo Google resta su una
+pagina isolata) e ripete contenuti delle schede (aggiornamenti doppi). Risposta: menu del sito sulla pagina 1161
+(snippet `getMenuChunk`, pacchetto `kosgroup/deploy/kos-11-vm-menu.json`); per le campagne, se servirà, una landing
+gemella senza menu e fuori indice; contenuti: la pagina della sede presenta e rimanda, il dettaglio resta nelle schede.
 `/villamargherita` pagina della sede di Vicenza: link dalle schede riabilitazione e psichiatria, sito del profilo Google
 (oggi in Yext, poi `store.link` RetailTune). Base GSC degli ultimi 90 giorni, ricerche Vicenza: pagina del marchio 9.832
 impressioni, 1.723 clic, pos. 2,0; psichiatria 899 clic (3,2); riabilitazione 448 (5,2). Confronto a 4 settimane.
