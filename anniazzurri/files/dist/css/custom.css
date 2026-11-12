@@ -328,6 +328,11 @@ img.card-img-top[height] { height: auto; }
    min-height non cambia la misura di Flickity (all'avvio il riquadro non ha ancora altezza). */
 .carousel-full .flickity-slider > .carousel-cell { min-height: 100%; display: flex; }
 .carousel-full .flickity-slider > .carousel-cell > [stripe-one-col-media-component] { flex: 1 1 auto; height: auto !important; align-items: flex-start !important; }
+/* occhiello e titolo alla stessa altezza in tutte le slide: il blocco di testo parte dall'alto invece di essere centrato
+   (centrato, saliva o scendeva con la lunghezza del titolo); sul desktop parte a circa un settimo dell'altezza dello
+   schermo. Il pulsante segue il titolo (1-3 righe). */
+.carousel-full .flickity-slider .content-container { align-items: flex-start !important; }
+@media (min-width: 992px) { .carousel-full .flickity-slider .content-container { padding-top: max(81px, 14vh) !important; } }
 
 /* AA-4: barra di ricerca Yext Answers della home, scritta da JavaScript (+58 px dopo il caricamento): spazio riservato.
    Da togliere con la sostituzione della ricerca Yext (linea C). */
