@@ -14,7 +14,7 @@ Uso interno (linea C). Date concordate con il referente KOS il 12/11; obiettivo:
 | 26-27/11 | Valutazione di KOS |
 | 30/11-11/12 | Sviluppo (se l'esito è positivo) |
 | 14-15/12 | Collaudo di KOS sullo stage |
-| 16/12 | Messa online (margine fino al 18/12) |
+| entro il 18/12 | Messa online, data esatta coordinata con la pubblicazione dello store locator RetailTune (interno: 16/12; cambio RetailTune il 3-4/12 o dopo il 7/1, mai tra il 7 e il 18/12) |
 
 Passaggi critici per KOS: parere del DPO entro il 25/11, decisione entro il 27/11, collaudo il 14-15/12.
 
