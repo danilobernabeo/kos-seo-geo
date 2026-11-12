@@ -101,7 +101,11 @@ presente. Ripristino: rimettere `&showHidden=`0`` e togliere `&where`. Dopo la p
 
 Gerarchia (deciso il 12/11, per evitare la concorrenza fra le pagine): `/it/villa-margherita` pagina del marchio con le
 due sedi, link «Vicenza» verso `/villamargherita` e «Benevento» verso la scheda; title e H1 sul marchio, non su Vicenza
-(longtitle del 12/11 «Villa Margherita Vicenza | KOS» → «Villa Margherita: Case di Cura a Vicenza e Benevento | KOS»).
+(longtitle del 12/11 «Villa Margherita Vicenza | KOS» → «Villa Margherita: Case di Cura a Vicenza e Benevento | KOS»;
+description «Scopri i servizi di neurologi, riabilitazione e psichiatria di Villa Margherita. Contattaci ora per maggiori
+informazioni!» → «Villa Margherita: a Vicenza neurologia, riabilitazione e psichiatria; a Benevento riabilitazione
+cardiologica, pneumologica, neurologica e ortopedica.»; cambiati da Danilo il 12/11 in produzione e sullo stage).
+Link verso `/villamargherita`, sitemap in produzione e URL del profilo Google: dopo la condivisione con KOS.
 `/villamargherita` pagina della sede di Vicenza: link dalle schede riabilitazione e psichiatria, sito del profilo Google
 (oggi in Yext, poi `store.link` RetailTune). Base GSC degli ultimi 90 giorni, ricerche Vicenza: pagina del marchio 9.832
 impressioni, 1.723 clic, pos. 2,0; psichiatria 899 clic (3,2); riabilitazione 448 (5,2). Confronto a 4 settimane.
