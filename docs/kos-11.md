@@ -83,6 +83,22 @@ ne ha una adatta).
 - Due pagine pubblicate senza struttura (`idSedeLavoro` vuoto) e 18 senza foto (export del 29/10).
 - 14 pagine non pubblicate nel template.
 
+## Sitemap: landing di Villa Margherita (12/11)
+
+La risorsa `sitemap.xml` di kosgroup.com (pdoSitemap) esclude le pagine con «Nascondi dai menu» (`&showHidden=`0``),
+quindi tutte le landing alla radice, compresa `/villamargherita` (865 URL in produzione il 12/11). Le landing di
+campagna restano fuori; la sola 1161 entra in deroga. Modifica nel manager (risorsa, non elemento statico):
+
+```
+prima:  &showHidden=`0`
+dopo:   &showHidden=`1`
+        &where=`[{"hidemenu":0,"OR:id:IN":[1161]}]`
+```
+
+Il gruppo tra parentesi quadre è necessario: con l'«oppure» al primo livello le altre condizioni (pubblicata,
+«Ricercabile») non si applicano (prova sullo stage: 915 URL, comunicati compresi). Stage 12/11: 866 URL, `/villamargherita`
+presente. Ripristino: rimettere `&showHidden=`0`` e togliere `&where`. Dopo la produzione: reinvio in Search Console.
+
 ## Collaudo
 
 ```powershell
