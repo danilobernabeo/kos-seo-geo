@@ -26,6 +26,12 @@ Uso interno (appunti per Danilo). Raccolti il 10-11/11; venerdì mattina si rile
 15. **Prestazioni:** chi le mantiene (inserite a mano o importate da un elenco di KOS) e con quale frequenza.
 16. **Export del 6/11:** ricevuto e usabile per l'import preliminare entro il 26/11?
 
+16b. **Correzioni ai dati delle strutture prima del cambio** (orari, telefoni, email confermati da KOS, es. orario del
+   Poliambulatorio Valdaso: Yext 9:30-18:30, sito e pieghevole 10:00-18:00): esiste un'API di scrittura (aggiornamento
+   di struttura, orari, attributi) con credenziali separate e registro delle modifiche, da usare con uno script nostro
+   (prova, scrittura, backup)? Prima del cambio rifate un import da Yext, e in quel caso le modifiche fatte in
+   piattaforma restano? Chi può scrivere in piattaforma: solo voi o anche noi? Yext per ora non si tocca.
+
 ## Widget
 
 17. **Elenco visibile senza consenso** (mappa in categoria «marketing» di Cookiebot): come si presenta nella proposta grafica?
