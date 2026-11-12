@@ -38,6 +38,8 @@ Uso interno. Una riga per decisione: data, cosa si è deciso, chi o quale fonte,
 | 9/11/2026 | Risposte AI solo su anniazzurri.it e solo per domande pratiche, con filtro nostro su sintomi, diagnosi, farmaci e terapie («alzheimer» e «ricovero temporaneo» non vanno bloccati) ed elenco chiuso di pagine; spente su kosgroup.com | Analisi delle ricerche | Idem |
 | 9/11/2026 | Nel documento per KOS nessuna stima minima in ore dell'integrazione: «pochi giorni di lavoro», il preventivo arriva dopo la prova | Danilo | Idem |
 | 9/11/2026 | Dati di riferimento: anniazzurri.it 17 visite su 100 con contatto se c'è ricerca, contro 2,9 (GA4, 12 mesi); kosgroup.com 4,9 contro 2,9 (BigQuery, 30/12/2025-7/11/2026). Le ricerche (Yext) e le visite (GA4) non sono confrontabili tra loro | GA4 e BigQuery | Idem |
+| 12/11/2026 | Prova Vertex: avvio 16/11, scheda al DPO 18/11 (parere entro 25/11), test di KOS dal 23/11, restituzione e preventivo 26/11, decisione 27/11; se positiva sviluppo 30/11-11/12, collaudo 14-15/12, messa online 16/12 (entro il 18/12, budget 2026). Lavoro nostro da venerdì 13/11 pomeriggio | Danilo, mail al referente KOS | `docs/ricerca/piano-prova-vertex.md` |
+| 12/11/2026 | Scheda DPO: log del servizio intermedio senza testo delle ricerche, statistiche Vertex 30 giorni, GA4 senza testo della ricerca, coordinate dal browser non salvate | Danilo | Idem |
 
 ## Store locator RetailTune (Linea C)
 
