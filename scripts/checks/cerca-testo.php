@@ -1,40 +1,27 @@
 <?php
 /**
- * cerca-testo.php — SOLA LETTURA: dove compare un testo nel database MODX (contenuti, introtext, valori delle TV, chunk,
- * template, snippet, plugin). Serve a trovare la sorgente di un elemento della pagina (es. un'immagine) quando non è
- * nel contenuto né negli elementi esportati.
- *
- * Uso: php scripts/checks/cerca-testo.php /www <testo>
+ * Diagnostica in SOLA LETTURA: elenca le risorse (contenuto, introtext e valori delle TV) che contengono un testo.
+ * Uso: php scripts/checks/cerca-testo.php /www <testo> [<testo> ...]
+ * Esempio: php scripts/checks/cerca-testo.php /www hsa_acc beata-corte utm_source
  */
 declare(strict_types=1);
-[$webroot, $testo] = [rtrim($argv[1] ?? '', '/'), (string) ($argv[2] ?? '')];
-if (!is_file("$webroot/config.core.php") || $testo === '') { fwrite(STDERR, "Uso: php cerca-testo.php /www <testo>\n"); exit(1); }
+$a = array_slice($argv, 1); $webroot = rtrim((string) array_shift($a), '/');
+if (!is_file("$webroot/config.core.php") || !$a) { fwrite(STDERR, "Uso: php cerca-testo.php /www <testo> [...]\n"); exit(1); }
 require "$webroot/config.core.php";
 require MODX_CORE_PATH . 'vendor/autoload.php';
-$modx = MODX\Revolution\modX::getInstance();
-$modx->initialize('mgr');
-$p = $modx->getOption('table_prefix', null, 'modx_');
-$like = $modx->quote('%' . $testo . '%');
-$q = [
-    'contenuto'  => "SELECT id, uri AS nome, content AS testo FROM {$p}site_content WHERE content LIKE $like OR introtext LIKE $like",
-    'tv'         => "SELECT v.contentid AS id, CONCAT(t.name, ' (risorsa ', v.contentid, ')') AS nome FROM {$p}site_tmplvar_contentvalues v JOIN {$p}site_tmplvars t ON t.id = v.tmplvarid WHERE v.value LIKE $like",
-    'tv default' => "SELECT id, name AS nome FROM {$p}site_tmplvars WHERE default_text LIKE $like OR elements LIKE $like",
-    'chunk'      => "SELECT id, name AS nome FROM {$p}site_htmlsnippets WHERE snippet LIKE $like",
-    'template'   => "SELECT id, templatename AS nome FROM {$p}site_templates WHERE content LIKE $like",
-    'snippet'    => "SELECT id, name AS nome FROM {$p}site_snippets WHERE snippet LIKE $like",
-    'plugin'     => "SELECT id, name AS nome FROM {$p}site_plugins WHERE plugincode LIKE $like",
-];
-$tot = 0;
-foreach ($q as $tipo => $sql) {
-    $st = $modx->query($sql);
-    foreach ($st ? $st->fetchAll(PDO::FETCH_ASSOC) : [] as $r) {
-        echo sprintf("%-11s %-6s %s\n", $tipo, $r['id'], $r['nome']); $tot++;
-        // contesto: il tag che contiene il testo (o 200 caratteri attorno)
-        if (isset($r['testo']) && ($i = strpos((string) $r['testo'], $testo)) !== false) {
-            $a = strrpos(substr($r['testo'], 0, $i), '<'); $b = strpos($r['testo'], '>', $i);
-            $a = $a === false ? max(0, $i - 100) : $a; $b = $b === false ? $i + 100 : $b + 1;
-            echo '            ' . str_replace(["\r", "\n"], ' ', substr($r['testo'], $a, min(400, $b - $a))) . "\n";
-        }
-    }
+use MODX\Revolution\modX;
+$modx = modX::getInstance(); $modx->initialize('web');
+$pdo = $modx->getConnection()->pdo ?? $modx->pdo; $p = $modx->getOption('table_prefix');
+foreach ($a as $t) {
+    echo "== «$t»\n"; $like = '%' . $t . '%';
+    $q = $pdo->prepare("SELECT id, uri, published, 'content' AS dove FROM {$p}site_content WHERE deleted = 0 AND (content LIKE ? OR introtext LIKE ?)
+        UNION SELECT c.id, c.uri, c.published, CONCAT('TV ', v.name) FROM {$p}site_tmplvar_contentvalues tv
+        JOIN {$p}site_tmplvars v ON v.id = tv.tmplvarid JOIN {$p}site_content c ON c.id = tv.contentid
+        WHERE c.deleted = 0 AND tv.value LIKE ? ORDER BY 1");
+    $q->execute([$like, $like, $like]);
+    $n = 0;
+    foreach ($q as $r) { $n++; printf("  %5d %s %-12s %s\n", $r['id'], $r['published'] ? 'pub' : 'non', $r['dove'], $r['uri']); }
+    if (!$n) echo "  (nessuna risorsa)\n";
+    $q = $pdo->prepare("SELECT name FROM {$p}site_htmlsnippets WHERE snippet LIKE ?"); $q->execute([$like]);
+    foreach ($q as $r) echo "  chunk ", $r['name'], "\n";
 }
-echo "== $tot occorrenze di «$testo»\n";
