@@ -1,0 +1,17 @@
+{
+ "sito": "kos",
+ "descrizione": "Villa Jolanda: Piano programma per la sicurezza delle cure 2026 con la rendicontazione annuale 2025 (consegna KOS del 12/11/2026, scansione con testo riconosciuto con OCR, pagina bianca finale tolta), al posto del PPSC pubblicato allo stesso percorso (link della pagina invariato).",
+ "pdf": [
+  {
+   "s": "villa-jolanda-ppsc-2026.pdf",
+   "p": "/assets/doc/strutture/villa-jolanda/ppsc.pdf",
+   "t": "Piano programma per la sicurezza delle cure 2026 – Villa Jolanda",
+   "d": "Piano programma per la sicurezza delle cure (PPSC) 2026 della Clinica Villa Jolanda di Maiolati Spontini, con la rendicontazione annuale degli eventi avversi 2025 (legge 24/2017).",
+   "a": "Gruppo KOS",
+   "l": "it-IT"
+  }
+ ],
+ "rimuovi": [],
+ "sospesi": [],
+ "esclusi": []
+}

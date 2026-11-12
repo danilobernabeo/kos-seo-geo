@@ -45,6 +45,20 @@ Rilascio del 1/11/2026, prima sugli stage e poi in produzione. Brief: `docs/pdf/
 - **Stage e produzione (8/11):** AA e KOS sostituiti e con metadati. Produzione KOS: 3 sostituiti, 3 metadati scritti, backup metadati `/paas/c0095/backup-pdf-metadati-20261108`, backup della sostituzione in `~/backup-kos-seo-geo/20261108-*-pdf-sostituiti`. `curl -I`: carta Parco di Veio 200, 664.556 byte; pieghevole 200, 1.295.779 byte; locandina 200 con `X-Robots-Tag: noindex`, 297.195 byte; carta AA Conero 200, 3.289.399 byte, senza `X-Robots-Tag`.
 - **Ripristino:** `php scripts/pdf/sostituisci-pdf.php /www --ripristina=<cartella del backup della sostituzione> --scrivi --forza` sul cloud interessato.
 
+## PPSC 2026 di Villa Jolanda (KOS, 12/11/2026)
+
+- **Consegna:** «Piano programma per la sicurezza delle cure 2026 – Rendicontazione annuale anno 2025» della Clinica Villa
+  Jolanda, scansione di 12 pagine senza testo. Sostituisce `villa-jolanda/ppsc.pdf` allo stesso percorso (link della
+  pagina invariato; il PDF resta escluso dall'indice come prima, regola predefinita).
+- **Lavorazione:** testo riconosciuto con OCR (italiano) sotto l'immagine della scansione, che resta quella originale;
+  tolta la 12ª pagina, bianca (il documento dichiara 11 pagine). 647.624 byte, `qpdf --check` senza errori. Abbinamento
+  `kosgroup/dati/pdf/ppsc-villa-jolanda-2026-11-12.json` (titolo «Piano programma per la sicurezza delle cure 2026 –
+  Villa Jolanda», autore «Gruppo KOS», `it-IT`).
+- **Da segnalare a KOS (contenuto, il file si pubblica com'è):** il sommario elenca ancora «Rendicontazione annuale anno
+  2023» e «PPSC anno 2024», la data di redazione in prima pagina è 31/03/2025, il titolo della sezione 5 dice «anno 2025»
+  mentre il testo parla del 2026.
+- **CAR Macerata (risposta di KOS del 12/11):** funzionigramma invariato, `user-manual` da tenere: nessun intervento.
+
 ## Evidenza (1/11/2026)
 
 - Stage KOS e AA: sei `curl -I`, uno per caso, con l'esito atteso (nessun `X-Robots-Tag` sul PDF da tenere, `noindex` sull'escluso, `Link` canonical sulla copia) e gli header di sicurezza presenti.
