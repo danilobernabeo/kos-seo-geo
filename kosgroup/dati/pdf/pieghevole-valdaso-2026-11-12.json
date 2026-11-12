@@ -1,0 +1,16 @@
+{
+ "sito": "kos",
+ "descrizione": "Poliambulatorio Valdaso: pieghevole A5 2026 (file KOS_POLI_VALDASO_A5_2026_v1.pdf, consegna KOS del 12/11/2026), stesso percorso del pieghevole pubblicato (link della pagina invariato). Contatti, indirizzo, direttore e orari coincidono con la scheda.",
+ "pdf": [
+  {
+   "s": "KOS_POLI_VALDASO_A5_2026_v1.pdf",
+   "p": "/assets/doc/strutture/poliambulatorio-valdaso/pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Poliambulatorio Valdaso",
+   "d": "Pieghevole del Poliambulatorio Valdaso di Campofilone, presso la Residenza Anni Azzurri Valdaso: visite specialistiche in regime privato, specialità, sede, contatti e prenotazioni.",
+   "a": "Gruppo KOS",
+   "l": "it-IT"
+  }
+ ],
+ "sospesi": [],
+ "esclusi": []
+}
