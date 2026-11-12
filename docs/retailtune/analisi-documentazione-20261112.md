@@ -59,6 +59,7 @@ RetailTune chiede le risposte dopo la proposta grafica di venerdì 13/11.
 
 ## Lato nostro
 
-- Credenziali Stores API (`kosgroup_endpoint_user`) e documentazione: password solo da Danilo, mai nel repository
-  (impostazione di sistema MODX per l'importatore).
+- Credenziali: la password arrivata il 12/11 è quella della documentazione (utente `kosgroup`). Quella della Stores API
+  (utente `kosgroup_endpoint_user`) va ancora chiesta. Le password solo a Danilo, mai nel repository: per l'importatore
+  in un'impostazione di sistema MODX.
 - `store.link` e `store.media` vuoti fino alla fine dell'import: l'importatore usa `store.id` come chiave.
