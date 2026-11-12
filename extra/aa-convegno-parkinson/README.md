@@ -108,6 +108,12 @@ slide di `slide-home.html` dopo quella del Mantello, sul ramo da cui si rilascia
 Mai durante la verifica dell'agenzia (9-14/11), che controlla anche `heading-home2`. Finito il Mantello (11/11)
 la sua slide si toglie con lo stesso vincolo.
 
+**12/11:** nel repository la slide del Parkinson (variante A, prima posizione, `&priorita=`1``) prende il posto di
+quella del Mantello, concluso l'11/11. Manifest `home-slide.json` (solo `heading-home2`), installazione con
+`scripts/deploy/installa-elementi.php`: stage subito, produzione dopo la verifica dell'agenzia (dal 15/11). Il banner
+ricevuto il 12/11 (testo e loghi dentro l'immagine) non si usa: nella slide il testo resta HTML sopra
+`banner-news-convegno-parkinson-realta-prospettive.jpg`, leggibile dai motori e non tagliato sul telefono.
+
 ## Rilasci
 
 | Data | Ambiente | Esito | Ripristino |

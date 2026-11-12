@@ -1,0 +1,11 @@
+{
+  "nome": "Extra aa-convegno-parkinson: slide del convegno al posto di quella del Mantello del custode (concluso l'11/11) nel carosello della home (chunk heading-home2, elemento AA-18)",
+  "elements": [
+    {
+      "type": "chunk",
+      "name": "heading-home2",
+      "file": "anniazzurri/elements/chunks/heading-home2.html",
+      "baseline": "anniazzurri/baseline/chunks/heading-home2.html"
+    }
+  ]
+}
