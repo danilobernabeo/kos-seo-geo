@@ -25,3 +25,9 @@ OPTIONS (description = 'Entità Yext di tipo location: entita = codice negozio d
 
 -- Aggiornamento prima della dismissione: esportare dal giorno dopo l'ultimo caricato, poi
 -- DELETE FROM ...azioni WHERE data >= '<inizio>'; (idem impressioni, ricerche per mese) e caricare in append.
+
+-- Ricerche nelle barre Yext dei siti (esporta-ricerche-sito.ps1). Testo libero: può contenere dati personali.
+CREATE TABLE IF NOT EXISTS `kos-analytics-482819.yext_kos.ricerche_sito` (
+  data DATE NOT NULL, experience STRING NOT NULL, ricerca STRING, risultati BOOL, ricerche INT64 NOT NULL, con_clic INT64)
+PARTITION BY DATE_TRUNC(data, MONTH)
+OPTIONS (description = 'Ricerche nelle barre Yext dei siti (kos-care-search = kosgroup.com, it-answer-anniazzurri = anniazzurri.it). Testo libero: può contenere dati personali, accesso ristretto');
