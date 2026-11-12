@@ -57,6 +57,10 @@ Rilascio del 1/11/2026, prima sugli stage e poi in produzione. Brief: `docs/pdf/
 - **Da segnalare a KOS (contenuto, il file si pubblica com'è):** il sommario elenca ancora «Rendicontazione annuale anno
   2023» e «PPSC anno 2024», la data di redazione in prima pagina è 31/03/2025, il titolo della sezione 5 dice «anno 2025»
   mentre il testo parla del 2026.
+- **Stage e produzione (12/11):** sostituito e con metadati; `curl -I` su entrambi: `200`, 649.951 byte, `X-Robots-Tag:
+  noindex`, `Last-Modified` del 12/11 (produzione 11:04 UTC). Backup dei metadati `/paas/c0095/backup-pdf-metadati-20261112`
+  (stage `/paas/c0044/...`), della sostituzione in `~/backup-kos-seo-geo/20261112-*-pdf-sostituiti`.
+- **Ripristino:** `php scripts/pdf/sostituisci-pdf.php /www --ripristina=<cartella del backup della sostituzione> --scrivi --forza`.
 - **CAR Macerata (risposta di KOS del 12/11):** funzionigramma invariato, `user-manual` da tenere: nessun intervento.
 
 ## Evidenza (1/11/2026)
