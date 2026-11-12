@@ -38,3 +38,8 @@ Passaggi critici per KOS: parere del DPO entro il 25/11, decisione entro il 27/1
 - «Vicino a me»: coordinate dal browser con consenso, solo per ordinare i risultati, non salvate; niente posizione da IP.
 - Risposte AI: solo su anniazzurri.it e solo per domande pratiche, con il filtro su sintomi, diagnosi, farmaci e terapie
   (decisione del 9/11); nessun addestramento sui dati.
+
+## Da chiarire con KOS
+
+- Contratto Yext: data di scadenza e se si può disdire per singolo servizio (ricerca Answers separata da profili e
+  store locator) o solo per intero. Nella mail del 12/11: «togliere la ricerca dal contratto Yext».
