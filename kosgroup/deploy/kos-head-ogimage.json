@@ -1,0 +1,17 @@
+{
+  "nome": "KOS-2 og:image delle pagine KOS dalla TV infoImage (snippet ogImage con &tvsDefault, chunk head senza valore annidato)",
+  "elements": [
+    {
+      "type": "snippet",
+      "name": "ogImage",
+      "file": "shared/snippets/ogImage.php",
+      "baseline": "kosgroup/baseline/snippets/ogImage.php"
+    },
+    {
+      "type": "chunk",
+      "name": "head",
+      "file": "kosgroup/elements/chunks/head.html",
+      "baseline": "kosgroup/baseline/chunks/head.html"
+    }
+  ]
+}

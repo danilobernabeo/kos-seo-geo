@@ -20,12 +20,14 @@
     {
       "type": "chunk",
       "name": "head-extra-strutture",
-      "file": "kosgroup/elements/chunks/head-extra-strutture.html"
+      "file": "kosgroup/elements/voce-24-attivazione/head-extra-strutture.html",
+      "nota": "dal 12/11 la versione attivata con la voce 24 (kos-24-attivazione): quella in chunks/ è precedente e rimetterebbe Yext Knowledge Tags e JSON-LD scritto a mano"
     },
     {
       "type": "chunk",
       "name": "head-extra-landing",
-      "file": "kosgroup/elements/chunks/head-extra-landing.html"
+      "file": "kosgroup/elements/voce-24-attivazione/head-extra-landing.html",
+      "nota": "dal 12/11 la versione attivata con la voce 24 (kos-24-attivazione): quella in chunks/ è precedente e rimetterebbe Yext Knowledge Tags e JSON-LD scritto a mano"
     },
     {
       "type": "chunk",
