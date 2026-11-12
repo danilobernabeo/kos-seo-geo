@@ -13,7 +13,7 @@ Uso interno. Una riga per decisione: data, cosa si è deciso, chi o quale fonte,
 | 12/11/2026 | Villa Margherita Vicenza: nel dato strutturato telefono e orari del profilo Google (+39 0444 15851, lun-ven 8:00-17:30); la landing mostra anche il centralino accanto al numero della landing (0444 043322, lun-ven 9-17), aggiunto a mano nel manager. Nome dei `#department` dal longtitle senza «\| KOS» | Danilo | `shared/snippets/seoSchema.php`, landing `/villamargherita` |
 | 8/11/2026 | Pagine provincia AA: `ItemList` con voci `MedicalBusiness` compatte, senza `@id`; `priceRange` breve («Da 106,00 €») | Requisiti del carosello locale di Google (beta, SEE) | `aaSchema` |
 | 8/11/2026 | L'ente Anni Azzurri compare sempre tra le «Attività locali» del test: accettato, comportamento di Google | Rich Results Test | Nota di consegna sprint 3 |
-| 9/11/2026 | Villa Pineta: telefono 0536 18031, email anziani.villapineta@kosgroup.com. Navigli, Santa Maria in Chienti, Abitare il Tempo, San Martino, Casa Serena, San Faustino: corretti i dati del sito | Risposta di KOS del 9/11 | `correzioni-sito.json`, TV (stage 9/11) |
+| 9/11/2026 | Villa Pineta: telefono 0536 18031, email anziani.villapineta@kosgroup.com. Navigli, Santa Maria in Chienti, Abitare il Tempo, San Martino, Casa Serena, San Faustino: corretti i dati del sito | Risposta di KOS del 9/11 | `correzioni-sito.json`, TV (stage 9/11; produzione verificata il 12/11) |
 
 ## Rilasci
 
