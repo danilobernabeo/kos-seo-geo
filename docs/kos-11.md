@@ -99,6 +99,12 @@ Il gruppo tra parentesi quadre è necessario: con l'«oppure» al primo livello 
 «Ricercabile») non si applicano (prova sullo stage: 915 URL, comunicati compresi). Stage 12/11: 866 URL, `/villamargherita`
 presente. Ripristino: rimettere `&showHidden=`0`` e togliere `&where`. Dopo la produzione: reinvio in Search Console.
 
+Gerarchia (deciso il 12/11, per evitare la concorrenza fra le pagine): `/it/villa-margherita` pagina del marchio con le
+due sedi, link «Vicenza» verso `/villamargherita` e «Benevento» verso la scheda; title e H1 sul marchio, non su Vicenza.
+`/villamargherita` pagina della sede di Vicenza: link dalle schede riabilitazione e psichiatria, sito del profilo Google
+(oggi in Yext, poi `store.link` RetailTune). Base GSC degli ultimi 90 giorni, ricerche Vicenza: pagina del marchio 9.832
+impressioni, 1.723 clic, pos. 2,0; psichiatria 899 clic (3,2); riabilitazione 448 (5,2). Confronto a 4 settimane.
+
 ## Collaudo
 
 ```powershell
