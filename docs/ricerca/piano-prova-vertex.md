@@ -14,7 +14,7 @@ Uso interno (linea C). Date concordate con il referente KOS il 12/11; obiettivo:
 | 26-27/11 | Valutazione di KOS |
 | 30/11-11/12 | Sviluppo (se l'esito è positivo) |
 | 14-15/12 | Collaudo di KOS sullo stage |
-| entro il 18/12 | Messa online, data esatta coordinata con la pubblicazione dello store locator RetailTune (interno: 16/12; cambio RetailTune il 3-4/12 o dopo il 7/1, mai tra il 7 e il 18/12) |
+| entro il 18/12 | Messa online (interno: 16/12); la barra Yext esce dai due siti |
 
 Passaggi critici per KOS: parere del DPO entro il 25/11, decisione entro il 27/11, collaudo il 14-15/12.
 
@@ -38,6 +38,19 @@ Passaggi critici per KOS: parere del DPO entro il 25/11, decisione entro il 27/1
 - «Vicino a me»: coordinate dal browser con consenso, solo per ordinare i risultati, non salvate; niente posizione da IP.
 - Risposte AI: solo su anniazzurri.it e solo per domande pratiche, con il filtro su sintomi, diagnosi, farmaci e terapie
   (decisione del 9/11); nessun addestramento sui dati.
+
+## Dopo la risposta del referente (12/11)
+
+- Store locator RetailTune a metà gennaio, dismissione di Yext a fine gennaio (referente KOS, 12/11): niente
+  sovrapposizione con la ricerca; la richiesta a RetailTune di anticipare al 3-4/12 non serve più.
+- Entro il 18/12: barra Yext tolta dai due siti; il servizio Yext resta attivo fino a fine gennaio come rete di sicurezza
+  (codice della barra conservato, ripristino in pochi minuti). Prima: export dello storico delle ricerche da Yext.
+  Da sistemare: `/it/risultati` di kosgroup.com reindirizzata alla nuova pagina dei risultati, spazio di 58 px riservato
+  alla barra Yext nella home di anniazzurri.it (AA-4).
+- Ricerche geografiche: oggi la mappa con i filtri è dentro i risultati di Yext Answers e sparisce con la barra. La nuova
+  ricerca mostra l'elenco delle strutture per distanza (coordinate delle schede, comune nella frase o posizione del
+  browser) e una mappa con i pin, ripresa dal componente Google Maps delle pagine regione e provincia di anniazzurri.it
+  (chiavi sotto il controllo di Danilo). Da metà gennaio, link «Apri nello store locator» verso RetailTune.
 
 ## Da chiarire con KOS
 

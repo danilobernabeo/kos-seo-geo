@@ -41,6 +41,7 @@ Uso interno. Una riga per decisione: data, cosa si è deciso, chi o quale fonte,
 | 9/11/2026 | Dati di riferimento: anniazzurri.it 17 visite su 100 con contatto se c'è ricerca, contro 2,9 (GA4, 12 mesi); kosgroup.com 4,9 contro 2,9 (BigQuery, 30/12/2025-7/11/2026). Le ricerche (Yext) e le visite (GA4) non sono confrontabili tra loro | GA4 e BigQuery | Idem |
 | 12/11/2026 | Prova Vertex: avvio 16/11, scheda al DPO 18/11 (parere entro 25/11), test di KOS dal 23/11, restituzione e preventivo 26/11, decisione 27/11; se positiva sviluppo 30/11-11/12, collaudo 14-15/12, messa online 16/12 (entro il 18/12, budget 2026). Lavoro nostro da venerdì 13/11 pomeriggio | Danilo, mail al referente KOS | `docs/ricerca/piano-prova-vertex.md` |
 | 12/11/2026 | Scheda DPO: log del servizio intermedio senza testo delle ricerche, statistiche Vertex 30 giorni, GA4 senza testo della ricerca, coordinate dal browser non salvate | Danilo | Idem |
+| 12/11/2026 | Store locator RetailTune a metà gennaio, dismissione di Yext a fine gennaio; barra di ricerca Yext tolta dai siti entro il 18/12 (servizio attivo fino a fine gennaio come riserva). Ricerche geografiche nel frattempo: elenco per distanza e mappa con i pin (componente Google Maps delle pagine regione AA), poi link allo store locator RetailTune | Referente KOS e Danilo | `docs/ricerca/piano-prova-vertex.md`, `docs/retailtune/domande-call-20261113.md` |
 
 ## Store locator RetailTune (Linea C)
 

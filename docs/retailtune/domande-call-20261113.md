@@ -34,7 +34,7 @@ Uso interno (appunti per Danilo). Raccolti il 10-11/11; venerdì mattina si rile
 
 ## Calendario (con KOS)
 
-20. **Data del cambio** da concordare entro il 26/11: serve la scadenza del contratto Yext (la decide KOS). Proposta: cambio entro il 10/12 se import e widget sono pronti, altrimenti dopo il 7/1, per non avere la finestra di rientro di 10 giorni lavorativi durante le feste. Dal 12/11 c'è anche la messa online della nuova ricerca il 16/12 (sviluppo 30/11-11/12): con il cambio al 10/12 i due rilasci cadrebbero nella stessa finestra di rientro e nelle stesse due settimane di lavoro; da chiarire se RetailTune può essere pronta per il 3-4/12, altrimenti cambio dopo il 7/1.
+20. **Data del cambio** da concordare entro il 26/11: serve la scadenza del contratto Yext (la decide KOS). Proposta: cambio entro il 10/12 se import e widget sono pronti, altrimenti dopo il 7/1, per non avere la finestra di rientro di 10 giorni lavorativi durante le feste. Aggiornamento 12/11: il referente KOS fissa la pubblicazione dello store locator a metà gennaio e la dismissione di Yext a fine gennaio; la nuova ricerca va online entro il 18/12. Da comunicare a RetailTune.
 
 ## Da correggere nel prossimo invio
 
