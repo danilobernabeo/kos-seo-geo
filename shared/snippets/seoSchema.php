@@ -967,7 +967,7 @@ $nodoStruttura = function ($r, $extraServizi = []) use (
                 $u = $modx->getObject($CLS_RES, $uid);
                 if (!$u || !$u->get('published') || $u->get('deleted') || ($pu = $url($uid)) === '') continue;
                 $out[] = ['@type' => 'MedicalOrganization', '@id' => $idDi($pu, 'reparto'),
-                          'name' => $u->get('longtitle') ?: $u->get('pagetitle'), 'url' => $pu];
+                          'name' => trim((string) preg_replace('/\s+\|[^|]*$/u', '', (string) ($u->get('longtitle') ?: $u->get('pagetitle')))), 'url' => $pu];
             }
             return $out;
         })(),
@@ -983,7 +983,8 @@ $nodoReparto = function ($r, $sedeNodo) use ($url, $testo, $idDi, $serviziSito, 
     return $pulisci([
         '@type'              => 'MedicalOrganization',
         '@id'                => $idDi($pagina, 'reparto'),
-        'name'               => $r->get('longtitle') ?: $r->get('pagetitle'),
+        // nome dal longtitle senza il suffisso «| KOS» (su kosgroup.com il longtitle è il title completo)
+        'name'               => trim((string) preg_replace('/\s+\|[^|]*$/u', '', (string) ($r->get('longtitle') ?: $r->get('pagetitle')))),
         'url'                => $pagina,
         'description'        => $testo($r->get('description') ?: $r->get('introtext')),
         'medicalSpecialty'   => array_values(array_intersect(array_unique($spec), $SPECIALITA)),
