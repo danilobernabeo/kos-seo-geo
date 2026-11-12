@@ -1,0 +1,20 @@
+{
+  "nome": "Villa Margherita Vicenza (KOS-11, voce 24): Casa di Cura sulla landing /villamargherita, unità di riabilitazione e psichiatria come reparti. Dati dall'entità Yext VMA00_OAR (JSON-LD Yext del 22/10, docs/evidenze/yext-schema-kosgroup-20261022/schemi.json); telefono del profilo Google confermato da Danilo il 12/11.",
+  "sede": "villamargherita",
+  "reparti": ["it/centri/villa-margherita-vicenza-riabilitazione", "it/centri/villa-margherita-vicenza-psichiatria"],
+  "tv": {
+    "str.nome": "Villa Margherita Vicenza",
+    "str.via": "Via Costacolonna 6",
+    "str.cap": "36057",
+    "str.citta": "Arcugnano",
+    "str.provincia": "VI",
+    "str.telefono": "+39044415851",
+    "str.email": "villamargherita.vi@kosgroup.com",
+    "str.lat": "45.51335",
+    "str.lng": "11.54432",
+    "str.orari": "Mo-Fr 08:00-17:30",
+    "str.tipo": "Hospital",
+    "str.specialita": "Neurologic,Psychiatric",
+    "str.prenotazione": "https://app.tuotempo.com/mop/index.php?dbName=tt_kosgroup_portale&areaid=sc16799e00462df3@tt_kosgroup_villamargherita"
+  }
+}

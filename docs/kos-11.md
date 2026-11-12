@@ -18,6 +18,15 @@ almeno nome, immagine, specializzazione e struttura di appartenenza.
 - 8/11: parte tecnica pronta nella libreria comune (`shared/snippets/seoSchema.php`, snippet `kosSchema`), pacchetto
   `kosgroup/deploy/kos-11.json`, simulazione superata (`scripts/test/seo-schema-simulazione.php`, casi 777-780),
   collaudo `scripts/collaudo/collaudo-kos-11.mjs`. Da installare sullo stage.
+- 12/11, Villa Margherita Vicenza: deciso il modello con Danilo. La Casa di Cura (una entità Yext, un profilo Google,
+  «una serie di edifici con unità specialistiche») ha il nodo `#localbusiness` (`Hospital`) sulla landing
+  `https://kosgroup.com/villamargherita`, pagina permanente della struttura; le schede riabilitazione (233) e psichiatria
+  (234) diventano reparti `#department` (`MedicalOrganization`, `parentOrganization` verso la sede); la sede dichiara
+  `department`. `/it/villa-margherita` raccoglie Vicenza e Benevento e resta senza nodo. I medici delle unità diventano
+  `IndividualPhysician` con `practicesAt` e indirizzo della sede. Eccezione alla forma `/it/…`: l'indirizzo breve della
+  landing (nato per le affissioni) è il canonical della pagina. Libreria: impostazione `kos.reparti`; installazione con
+  `scripts/deploy/kos-reparti-villa-margherita.php` (dati in `kosgroup/dati/voce-24/villa-margherita-vicenza.json`);
+  simulazione casi 1500, 1233, 781 superata, anche sul vocabolario di schema.org.
 - Dati da IT/TuoTempo (entro il 20/11): servono solo per l'abbinamento delle pagine alle risorse di prenotazione
   (identificativo del gestionale, mai il codice fiscale) e per il widget per medico. Il dato strutturato non ne dipende.
 

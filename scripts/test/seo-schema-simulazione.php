@@ -47,6 +47,12 @@ foreach (['kos-9-12-13.json', 'kos-24.json', 'kos-24-attivazione.json', 'kos-10-
     if (!is_file($f)) continue;
     foreach (json_decode((string) file_get_contents($f), true)['settings'] ?? [] as $s) $SETTINGS[$s['key']] = $s['value'];
 }
+// Reparti (Villa Margherita Vicenza, 12/11): sede su una landing (template landing aggiunto alle schede struttura),
+// due unità specialistiche. Sul sito i valori li scrive scripts/deploy/kos-reparti-villa-margherita.php.
+if (!in_array('reparti', $SENZA, true)) {
+    $SETTINGS['kos.tpl_struttura'] = ($SETTINGS['kos.tpl_struttura'] ?? '') . ',landing';
+    $SETTINGS['kos.reparti'] = '1233:1500,1234:1500';
+}
 
 /* ---------- albero di prova ---------- */
 $ts = fn(string $d) => date('Y-m-d H:i:s', strtotime($d));
@@ -105,6 +111,17 @@ $R = [
              ['ruolo' => 'Neurologo e Neuroradiologo', 'idSedeLavoro' => '999']],
     780  => [['pagetitle' => 'Marta Verdi', 'uri' => 'it/chi-siamo/qualita-delle-cure/medici/marta-verdi', 'parent' => 253, 'template' => 'medici'],
              ['ruolo' => 'Psicologa clinica', 'idSedeLavoro' => '999']],
+    // reparti: sede su landing (1500), due unità (1233, 1234), un medico dell'unità (781)
+    1500 => [['pagetitle' => 'Villa Margherita Vicenza', 'uri' => 'villamargherita', 'parent' => 0, 'template' => 'landing',
+              'description' => 'Casa di Cura dal 1926.'],
+             ['str.via' => 'Via Costacolonna 6', 'str.cap' => '36057', 'str.citta' => 'Arcugnano', 'str.provincia' => 'VI',
+              'str.tipo' => 'Hospital', 'str.specialita' => 'Neurologic,Psychiatric', 'str.telefono' => '+39044415851']],
+    1233 => [['pagetitle' => 'Villa Margherita Vicenza - Riabilitazione', 'uri' => 'it/centri/villa-margherita-vicenza-riabilitazione',
+              'parent' => 253, 'template' => 'strutture'], []],
+    1234 => [['pagetitle' => 'Villa Margherita Vicenza - Psichiatria', 'uri' => 'it/centri/villa-margherita-vicenza-psichiatria',
+              'parent' => 253, 'template' => 'strutture'], []],
+    781  => [['pagetitle' => 'Paolo Neri', 'uri' => 'it/chi-siamo/qualita-delle-cure/medici/paolo-neri', 'parent' => 253, 'template' => 'medici'],
+             ['ruolo' => 'Neurologo', 'idSedeLavoro' => '1233']],
     3106 => [['pagetitle' => 'Anoressia: quando serve il ricovero', 'uri' => 'it/news-e-media/approfondimenti/anoressia-ricovero',
               'parent' => 3102, 'template' => 'informativo', 'publishedon' => $ts('2025-05-05 10:00:00'), 'editedon' => $ts('2025-05-06 10:00:00')],
              ['infoImage' => 'assets/img/news/abbuffate.png', 'aut.ref' => '777']],
@@ -155,7 +172,7 @@ $TIPI = ['WebPage', 'CollectionPage', 'MedicalWebPage', 'ProfilePage', 'WebSite'
     'EducationalOccupationalCredential', 'ScholarlyArticle', 'MedicalAudience', 'OfferCatalog', 'Offer', 'Service',
     'MedicalTherapy', 'MedicalTest', 'MedicalProcedure', 'MedicalCondition'];
 $FRAMMENTI = ['#organization', '#website', '#webpage', '#breadcrumb', '#article', '#person', '#medico', '#localbusiness',
-    '#logo', '#video', '#condition', '#device', '#service'];
+    '#logo', '#video', '#condition', '#device', '#service', '#department'];
 $errori = 0;
 $ko = function (string $m) use (&$errori) { $errori++; echo "    KO $m\n"; };
 
@@ -295,6 +312,20 @@ $CASI = [
     780  => ['nome' => 'scheda psicologa con sede senza nodo (Person, worksFor verso l\'ente)',
              'tipi' => ['WebPage', 'Person', 'BreadcrumbList', 'WebSite', 'Organization'],
              'contiene' => ['"worksFor":{"@id":"https://kosgroup.com/#organization"}']],
+    1500 => ['nome' => 'sede su landing (Hospital con department verso le due unità)',
+             'tipi' => ['WebPage', 'Hospital', 'WebSite', 'Organization'],
+             'contiene' => ['"@id":"https://kosgroup.com/villamargherita#localbusiness"', '"mainEntity":{"@id":"https://kosgroup.com/villamargherita#localbusiness"}',
+                            '"department":[{"@type":"MedicalOrganization","@id":"https://kosgroup.com/it/centri/villa-margherita-vicenza-riabilitazione#department"',
+                            'villa-margherita-vicenza-psichiatria#department']],
+    1233 => ['nome' => 'unità specialistica (MedicalOrganization #department, sede per intero)',
+             'tipi' => ['WebPage', 'MedicalOrganization', 'Hospital', 'BreadcrumbList', 'WebSite', 'Organization'],
+             'contiene' => ['"mainEntity":{"@id":"https://kosgroup.com/it/centri/villa-margherita-vicenza-riabilitazione#department"}',
+                            '"parentOrganization":{"@id":"https://kosgroup.com/villamargherita#localbusiness"}', '"telephone":"+39044415851"'],
+             'non_contiene' => ['villa-margherita-vicenza-riabilitazione#localbusiness']],
+    781  => ['nome' => 'medico di un\'unità: IndividualPhysician con practicesAt e indirizzo della sede',
+             'tipi' => ['WebPage', 'IndividualPhysician', 'BreadcrumbList', 'WebSite', 'Organization'],
+             'contiene' => ['"practicesAt":[{"@type":"Hospital","@id":"https://kosgroup.com/villamargherita#localbusiness"', '"streetAddress":"Via Costacolonna 6"'],
+             'non_contiene' => ['"worksFor"']],
     1    => ['nome' => 'home (invariata)', 'tipi' => ['WebPage', 'WebSite', 'Organization']],
 ];
 

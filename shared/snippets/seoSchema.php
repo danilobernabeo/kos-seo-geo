@@ -29,6 +29,11 @@
  *   sulle landing (<prefisso>.tpl_landing) la pagina è «about» la struttura indicata in lnd.struttura,
  *   con i servizi della landing (lnd.servizi). Acceso solo con <prefisso>.struttura_attiva = 1: va
  *   attivato nello stesso rilascio in cui si toglie lo script Yext che descrive la stessa struttura.
+ *   REPARTI (<prefisso>.reparti = "idPaginaUnità:idPaginaSede,..."): unità specialistiche nella stessa sede
+ *   (es. Villa Margherita Vicenza, una Casa di Cura con due unità). La pagina dell'unità ha come mainEntity il nodo
+ *   {URL pagina unità}#department (MedicalOrganization, parentOrganization verso la sede); la sede è il solo nodo
+ *   #localbusiness (indirizzo, profilo Google) e dichiara department verso le unità. Chi cita l'unità (medici,
+ *   articoli) cita la sede: practicesAt e mentions vogliono un'organizzazione con indirizzo.
  *
  * ARTICOLI (AA-8; kosgroup.com voce KOS-10)
  *   Pagine dei template <prefisso>.tpl_article: Article (o il tipo della sezione, <prefisso>.article_sezioni =
@@ -93,6 +98,7 @@ $FRAG = [
     'struttura'  => $FRAG_STR,
     'patologia'  => $FRAG_PAT,
     'dispositivo'=> $FRAG_DEV,
+    'reparto'    => $cfg('frag_reparto', '#department'),
 ];
 /** UNICA funzione che compone gli @id delle entità di pagina: URL canonico della pagina + frammento del tipo. */
 $idDi = function ($pagina, $tipo) use ($FRAG) {
@@ -587,6 +593,11 @@ $riferimenti = function ($csv, $tipo) use ($url, $idDi) {
 $STR_TPL = $csv($cfg('tpl_struttura', ''));
 $LND_TPL = $csv($cfg('tpl_landing', ''));
 $STR_ON  = (int) $cfg('struttura_attiva', 0);
+/* Reparti: id della pagina dell'unità => id della pagina della sede. */
+$REPARTI = [];
+foreach ($csv($cfg('reparti', '')) as $coppia) {
+    if (preg_match('/^\s*(\d+)\s*:\s*(\d+)\s*$/', $coppia, $m)) $REPARTI[(int) $m[1]] = (int) $m[2];
+}
 $TIPI_STRUTTURA = ['MedicalClinic', 'Hospital', 'DiagnosticLab', 'Dentist', 'Physiotherapy', 'MedicalOrganization',
     'MedicalBusiness', 'LocalBusiness', 'Pharmacy', 'Optician'];
 $SPECIALITA = ['Anesthesia', 'Cardiovascular', 'CommunityHealth', 'Dentistry', 'Dermatology', 'DietNutrition',
@@ -773,9 +784,10 @@ $tipiStruttura = function ($r) use ($tv, $csv, $TIPI_STRUTTURA) {
  * Con i template delle schede configurati (<prefisso>.tpl_struttura) si cita solo una struttura il cui nodo
  * #localbusiness esiste davvero: scheda pubblicata con quel template, nodo acceso (struttura_attiva) e indirizzo
  * (str.via). Senza tpl_struttura (anniazzurri.it oggi) solo l'@id, come prima. */
-$riferimentiStrutture = function ($csvId) use ($modx, $CLS_RES, $url, $tv, $idDi, $tipiStruttura, $STR_TPL, $STR_ON) {
+$riferimentiStrutture = function ($csvId) use ($modx, $CLS_RES, $url, $tv, $idDi, $tipiStruttura, $STR_TPL, $STR_ON, $REPARTI) {
     $out = [];
-    foreach (array_unique(array_filter(array_map('intval', preg_split('/[^\d]+/', (string) $csvId)))) as $id) {
+    $ids = array_map(fn($i) => $REPARTI[$i] ?? $i, array_filter(array_map('intval', preg_split('/[^\d]+/', (string) $csvId))));
+    foreach (array_unique($ids) as $id) {
         if (!$STR_TPL) {
             if ($u = $url($id)) $out[] = ['@id' => $idDi($u, 'struttura')];
             continue;
@@ -838,7 +850,7 @@ $ruoloProfessionista = function ($ruolo) use ($RUOLI_NON_MEDICI, $RUOLI_MEDICI, 
 };
 $professionista = function ($r) use (
     $modx, $CLS_RES, $url, $tv, $testo, $immagine, $pulisci, $idDi, $ORG_ID, $MED_TV_STR, $MED_TV_IMG, $MED_TV_RUOLO,
-    $ruoloProfessionista, &$riferimentiStrutture, &$nodoStruttura
+    $ruoloProfessionista, &$riferimentiStrutture, &$nodoStruttura, $REPARTI
 ) {
     if (!$r || !$r->get('published') || $r->get('deleted')) return null;
     $pagina = $url($r->get('id'));
@@ -852,7 +864,7 @@ $professionista = function ($r) use (
     foreach (array_unique(array_filter(array_map('intval', preg_split('/[^\d]+/', (string) $tv($r, $MED_TV_STR))))) as $sid) {
         if (!($rif = $riferimentiStrutture((string) $sid))) continue;
         $strutture = array_merge($strutture, $rif);
-        if ($indirizzo === null && ($sr = $modx->getObject($CLS_RES, $sid)) && ($ns = $nodoStruttura($sr))) {
+        if ($indirizzo === null && ($sr = $modx->getObject($CLS_RES, $REPARTI[$sid] ?? $sid)) && ($ns = $nodoStruttura($sr))) {
             $indirizzo = $ns['address'] ?? null;
             $telefono  = $ns['telephone'] ?? null;   // centralino della sede: è il numero a cui si prenota il medico
         }
@@ -880,7 +892,7 @@ $professionista = function ($r) use (
 };
 $nodoStruttura = function ($r, $extraServizi = []) use (
     $url, $tv, $servizi, $serviziSito, $tecnologie, $prenotazione, $righe, $testo, $csv, $pulisci, $orari, $orariSpeciali, $immagineStruttura,
-    $tipiStruttura, $idDi, $SPECIALITA, $ORG_ID
+    $tipiStruttura, $idDi, $SPECIALITA, $ORG_ID, $REPARTI, $modx, $CLS_RES
 ) {
     $pagina = $url($r->get('id'));
     if ($pagina === '') return null;
@@ -949,7 +961,35 @@ $nodoStruttura = function ($r, $extraServizi = []) use (
                          'actionPlatform' => ['https://schema.org/DesktopWebPlatform', 'https://schema.org/MobileWebPlatform']],
         ] : null,
         'sameAs'      => array_values(array_filter($righe($tv($r, 'str.sameAs')), fn($u) => preg_match('#^https://#', $u))),
+        'department'  => (function () use ($r, $REPARTI, $modx, $CLS_RES, $url, $idDi) {
+            $out = [];
+            foreach (array_keys($REPARTI, (int) $r->get('id'), true) as $uid) {
+                $u = $modx->getObject($CLS_RES, $uid);
+                if (!$u || !$u->get('published') || $u->get('deleted') || ($pu = $url($uid)) === '') continue;
+                $out[] = ['@type' => 'MedicalOrganization', '@id' => $idDi($pu, 'reparto'),
+                          'name' => $u->get('longtitle') ?: $u->get('pagetitle'), 'url' => $pu];
+            }
+            return $out;
+        })(),
         'parentOrganization' => ['@id' => $ORG_ID],
+    ]);
+};
+/* Nodo dell'unità specialistica (#department) nella sede indicata da <prefisso>.reparti: MedicalOrganization, non
+ * attività locale (l'indirizzo e il profilo Google sono della sede). Specialità dai servizi collegati alla pagina. */
+$nodoReparto = function ($r, $sedeNodo) use ($url, $testo, $idDi, $serviziSito, $SPECIALITA, $pulisci) {
+    $pagina = $url($r->get('id'));
+    if ($pagina === '' || !$sedeNodo) return null;
+    [$voci, $spec] = $serviziSito($r);
+    return $pulisci([
+        '@type'              => 'MedicalOrganization',
+        '@id'                => $idDi($pagina, 'reparto'),
+        'name'               => $r->get('longtitle') ?: $r->get('pagetitle'),
+        'url'                => $pagina,
+        'description'        => $testo($r->get('description') ?: $r->get('introtext')),
+        'medicalSpecialty'   => array_values(array_intersect(array_unique($spec), $SPECIALITA)),
+        'knowsAbout'         => array_map(fn($v) => array_filter(['@type' => $v['@type'], 'name' => $v['name'], 'url' => $v['url'] ?? null]), $voci),
+        'telephone'          => $sedeNodo['telephone'] ?? null,
+        'parentOrganization' => ['@id' => $sedeNodo['@id']],
     ]);
 };
 
@@ -1155,11 +1195,18 @@ if ($type === 'page') {
     $br = $nodoBriciole($res, $paginaCorrente);
 
     // Scheda struttura: la pagina descrive la struttura. Landing: la pagina parla di una struttura.
-    $struttura = null; $rel = null;
-    if ($STR_ON && in_array($nomeTpl, $STR_TPL, true)) {
-        $struttura = $nodoStruttura($res);
+    $struttura = null; $rel = null; $sede = null;
+    if ($STR_ON && isset($REPARTI[(int) $res->get('id')])) {
+        // Unità specialistica: mainEntity è il reparto; la sede (attività locale) segue per intero.
+        $sr = $modx->getObject($CLS_RES, $REPARTI[(int) $res->get('id')]);
+        $sede = ($sr && $sr->get('published') && !$sr->get('deleted')) ? $nodoStruttura($sr) : null;
+        if ($struttura = $nodoReparto($res, $sede)) $rel = 'mainEntity';
+        else $sede = null;
+    }
+    if (!$struttura && $STR_ON && in_array($nomeTpl, $STR_TPL, true) && ($struttura = $nodoStruttura($res))) {
         $rel = 'mainEntity';
-    } elseif ($STR_ON && in_array($nomeTpl, $LND_TPL, true) && ($sid = (int) $tv($res, 'lnd.struttura'))) {
+    }
+    if (!$struttura && $STR_ON && in_array($nomeTpl, $LND_TPL, true) && ($sid = (int) $tv($res, 'lnd.struttura'))) {
         $sr = $modx->getObject($CLS_RES, $sid);
         if ($sr && $sr->get('published') && !$sr->get('deleted')) {
             $struttura = $nodoStruttura($sr, $servizi($tv($res, 'lnd.servizi')));
@@ -1187,7 +1234,7 @@ if ($type === 'page') {
         'dateModified'=> $data($res->get('editedon') ?: $res->get('publishedon')),
     ]);
     // Il nodo struttura per intero, anche sulle landing: i crawler AI raramente seguono un @id.
-    return $json([$pagina, $struttura, $br, $sito($LANG), $org($LANG)]);
+    return $json([$pagina, $struttura, $sede, $br, $sito($LANG), $org($LANG)]);
 }
 
 /* ------------------------------------------------------------------- video
