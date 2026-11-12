@@ -50,7 +50,9 @@ Passaggi critici per KOS: parere del DPO entro il 25/11, decisione entro il 27/1
 - Ricerche geografiche: oggi la mappa con i filtri è dentro i risultati di Yext Answers e sparisce con la barra. La nuova
   ricerca mostra l'elenco delle strutture per distanza (coordinate delle schede, comune nella frase o posizione del
   browser) e una mappa con i pin, ripresa dal componente Google Maps delle pagine regione e provincia di anniazzurri.it
-  (chiavi sotto il controllo di Danilo). Da metà gennaio, link «Apri nello store locator» verso RetailTune.
+  (chiavi sotto il controllo di Danilo). Da metà gennaio, nelle ricerche geografiche il widget RetailTune al posto della
+  mappa nostra, dentro la pagina dei risultati, con i filtri preimpostati dalla ricerca (comune, provincia, tipologia) e
+  caricato solo per quelle ricerche; da confermare con RetailTune (domanda 19b della call del 13/11).
 
 ## Da chiarire con KOS
 

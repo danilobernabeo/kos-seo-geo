@@ -31,6 +31,7 @@ Uso interno (appunti per Danilo). Raccolti il 10-11/11; venerdì mattina si rile
 17. **Elenco visibile senza consenso** (mappa in categoria «marketing» di Cookiebot): come si presenta nella proposta grafica?
 18. **Contenitore su mobile:** l'elenco scorre con la pagina, non in un riquadro con scorrimento proprio.
 19. **Riquadro a scomparsa vuoto su mobile** (CR Lab, componente `rt-accordion-menu`): è il componente standard? Corretto prima del nostro rilascio?
+19b. **Widget dentro la pagina dei risultati della ricerca** (da metà gennaio, per le ricerche geografiche): si può inizializzare in un'altra pagina dello stesso dominio, in un contenitore nostro, con filtri preimpostati da JavaScript o dall'indirizzo (`citta`, `provincia`, `regione`, `tipologia`, `servizi`) e caricamento solo su richiesta? Le richieste in più a Google Maps contano sulla stessa chiave e sullo stesso budget.
 
 ## Calendario (con KOS)
 
