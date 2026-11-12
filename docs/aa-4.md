@@ -93,3 +93,32 @@ visto dai visitatori.
 
 Dopo il rilascio: CLS dei visitatori reali dal tag Web Vitals (query sopra, per giorno) e misura in Chrome sulla home.
 Il dato CrUX dell'origine si aggiorna sui 28 giorni precedenti.
+
+## Test A/B dell'apertura automatica (12/11-13/12)
+
+Via libera del referente l'11/11. Strumento: tag `scripts/collaudo/monitor/gtm-chat-hubspot/` (GA4, BigQuery, Clarity).
+
+| Fase | Periodo | Impostazione da computer (HubSpot, stato predefinito Desktop) |
+|---|---|---|
+| A | dalla pubblicazione del tag (12/11) al 20/11 | attuale: «Mostra il messaggio di benvenuto, quindi apri il widget della chat al momento dell'attivazione» (7 s) |
+| B | 21/11-6/12 | «Mostra l'utilità di avvio della chat al caricamento della pagina, quindi mostra il messaggio di benvenuto quando si verifica la condizione di attivazione» |
+| A | 7/12-13/12 | di nuovo l'attuale |
+
+A e B hanno 16 giorni ciascuna e la fase B sta in mezzo alle due A: l'andamento del periodo (avvicinamento a dicembre,
+ponte del 7-8/12, che cade in A) si divide fra le due impostazioni. Il telefono, che non cambia, fa da controllo.
+Cambi: venerdì 20/11 sera o sabato 21/11 mattina (A→B), lunedì 7/12 mattina (B→A); annotare l'ora esatta qui sotto.
+Analisi il 14/12.
+
+**Regola di decisione** (fissata prima del test):
+- contatti totali da computer (moduli, telefono, email, conversazioni) per 100 sessioni stabili in B rispetto ad A,
+  calo entro il 15% al netto della variazione da telefono: B diventa l'impostazione definitiva;
+- calo oltre il 15%: si prova l'apertura automatica dopo lo scorrimento del 50% della pagina;
+- conversazioni in chat in calo ma contatti totali stabili: nessuna perdita, B resta;
+- indicatori del disturbo (chiusure entro 5 s senza uso, ritorni rapidi in Clarity, interazione e letture fino in
+  fondo in GA4) a supporto della decisione.
+
+| Evento | Data e ora |
+|---|---|
+| Pubblicazione del tag (inizio A) | |
+| Cambio A→B | |
+| Cambio B→A | |

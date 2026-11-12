@@ -1,0 +1,396 @@
+{
+  "exportFormatVersion": 2,
+  "exportTime": "2026-11-12 06:49:55",
+  "containerVersion": {
+    "path": "accounts/4702223675/containers/12225762/versions/76",
+    "accountId": "4702223675",
+    "containerId": "12225762",
+    "containerVersionId": "76",
+    "container": {
+      "path": "accounts/4702223675/containers/12225762",
+      "accountId": "4702223675",
+      "containerId": "12225762",
+      "name": "Anni Azzurri Web",
+      "publicId": "GTM-THMLNFX",
+      "usageContext": [
+        "WEB"
+      ],
+      "fingerprint": "1674725648078",
+      "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4702223675/containers/12225762/workspaces?apiLink=container",
+      "features": {
+        "supportUserPermissions": true,
+        "supportEnvironments": true,
+        "supportWorkspaces": true,
+        "supportGtagConfigs": false,
+        "supportBuiltInVariables": true,
+        "supportClients": false,
+        "supportFolders": true,
+        "supportTags": true,
+        "supportTemplates": true,
+        "supportTriggers": true,
+        "supportVariables": true,
+        "supportVersions": true,
+        "supportZones": true,
+        "supportTransformations": false
+      },
+      "tagIds": [
+        "GTM-THMLNFX"
+      ]
+    },
+    "name": "Chat HubSpot AA-4 (import)",
+    "tag": [
+      {
+        "accountId": "4702223675",
+        "containerId": "12225762",
+        "tagId": "9201",
+        "name": "CH - Misura chat HubSpot (AA-4)",
+        "type": "html",
+        "firingTriggerId": [
+          "9201"
+        ],
+        "tagFiringOption": "ONCE_PER_LOAD",
+        "monitoringMetadata": {
+          "type": "MAP"
+        },
+        "consentSettings": {
+          "consentStatus": "NOT_NEEDED"
+        },
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "html",
+            "value": "<script>\n/* AA-4 - Misura della chat HubSpot (test A/B dell'apertura automatica da computer).\n   Invia al dataLayer l'evento \"chat_hubspot\" con chat_azione = mostrata | aperta | interazione | conversazione | chiusa.\n   - aperta: la finestra passa da pulsante (100x96) a finestra intera. chat_modo: utente (clic sul pulsante),\n     automatica (senza interazione, dopo almeno 4 s: il trigger della chatflow) o ripresa (senza interazione nei primi\n     4 s: HubSpot riapre una finestra lasciata aperta nella pagina precedente). Si misura dalle dimensioni del\n     contenitore, l'unico segnale affidabile per l'apertura automatica.\n   - chiusa: la finestra torna pulsante; chat_secondi_aperta = durata; chat_interazione = si se, oltre al clic di\n     chiusura (che HubSpot conta come interazione), c'è stato almeno un altro clic o una conversazione.\n   - chat_secondi: secondi dal caricamento della pagina.\n   Gli stessi momenti vanno a Microsoft Clarity come eventi e tag di sessione, per filtrare le registrazioni.\n   Nessun cookie, nessun dato personale, nessuna richiesta ad altri server. */\n(function () {\n  if (window.__kosChatMisura) return;\n  window.__kosChatMisura = true;\n  var t0 = Date.now(), mostrata = false, aperta = 0, modo = '', interagito = false, interazioniQui = 0, conversazioneQui = false, aperto = false;\n  var dl = window.dataLayer = window.dataLayer || [];\n  function sec(ms) { return Math.round(ms / 1000); }\n  function clarityEvento(nome, tag) {\n    try {\n      if (typeof window.clarity === 'function') {\n        window.clarity('event', nome);\n        if (tag) window.clarity('set', tag[0], tag[1]);\n      }\n    } catch (e) {}\n  }\n  function invia(azione, extra) {\n    var o = { event: 'chat_hubspot', chat_azione: azione, chat_secondi: sec(Date.now() - t0),\n              chat_modo: '', chat_secondi_aperta: '', chat_interazione: '' };\n    for (var k in extra) o[k] = extra[k];\n    dl.push(o);\n  }\n  function osserva(c) {\n    if (!window.ResizeObserver) return;\n    new ResizeObserver(function () {\n      var r = c.getBoundingClientRect(), ora = r.width >= 300 && r.height >= 400;\n      if (ora && !aperto) {\n        aperto = true; aperta = Date.now(); interazioniQui = 0; conversazioneQui = false;\n        // l'evento di interazione dell'SDK può arrivare subito dopo il ridimensionamento: si attende un attimo\n        setTimeout(function () {\n          modo = interagito ? 'utente' : (aperta - t0 < 4000 ? 'ripresa' : 'automatica');\n          invia('aperta', { chat_modo: modo });\n          clarityEvento('chat_aperta_' + modo, ['chat_aperta', modo]);\n        }, 600);\n      } else if (!ora && aperto && r.width > 0) {\n        aperto = false;\n        var durata = sec(Date.now() - aperta), usata = interazioniQui >= 2 || conversazioneQui;\n        var esito = usata ? 'dopo_uso' : (durata <= 5 ? 'subito' : 'senza_uso');\n        invia('chiusa', { chat_modo: modo, chat_secondi_aperta: durata, chat_interazione: usata ? 'si' : 'no' });\n        clarityEvento('chat_chiusa_' + esito, ['chat_chiusa', esito]);\n        interagito = false;\n      }\n    }).observe(c);\n  }\n  function collega() {\n    var api = window.HubSpotConversations;\n    if (!api || !api.on || api.__kosMisura) return;\n    api.__kosMisura = true;\n    function segnaMostrata() { if (!mostrata) { mostrata = true; invia('mostrata'); } }\n    api.on('widgetLoaded', segnaMostrata);\n    api.on('userInteractedWithWidget', function () {\n      interagito = true; if (aperto) interazioniQui++; invia('interazione', { chat_modo: aperto ? modo : '' });\n    });\n    api.on('conversationStarted', function () {\n      conversazioneQui = true; invia('conversazione', { chat_modo: modo }); clarityEvento('chat_conversazione', ['chat_conversazione', 'si']);\n    });\n    if (api.widget && api.widget.status && api.widget.status().loaded) segnaMostrata();\n  }\n  window.hsConversationsOnReady = window.hsConversationsOnReady || [];\n  window.hsConversationsOnReady.push(collega);\n  collega();\n  var tentativi = 0, attesa = setInterval(function () {\n    var c = document.getElementById('hubspot-messages-iframe-container');\n    if (c) { clearInterval(attesa); osserva(c); }\n    else if (++tentativi > 60) clearInterval(attesa);\n  }, 500);\n})();\n</script>"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "supportDocumentWrite",
+            "value": "false"
+          }
+        ]
+      },
+      {
+        "accountId": "4702223675",
+        "containerId": "12225762",
+        "tagId": "9202",
+        "name": "GA4 - Chat HubSpot",
+        "type": "gaawe",
+        "firingTriggerId": [
+          "9202"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "monitoringMetadata": {
+          "type": "MAP"
+        },
+        "consentSettings": {
+          "consentStatus": "NOT_SET"
+        },
+        "parameter": [
+          {
+            "type": "BOOLEAN",
+            "key": "sendEcommerceData",
+            "value": "false"
+          },
+          {
+            "type": "LIST",
+            "key": "eventSettingsTable",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "chat_azione"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{DLV - CH azione}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "chat_modo"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{DLV - CH modo}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "chat_secondi"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{DLV - CH secondi}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "chat_secondi_aperta"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{DLV - CH secondi aperta}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "chat_interazione"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{DLV - CH interazione}}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "chat_hubspot"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "measurementIdOverride",
+            "value": "{{GA4 ID}}"
+          }
+        ]
+      }
+    ],
+    "trigger": [
+      {
+        "accountId": "4702223675",
+        "containerId": "12225762",
+        "triggerId": "9201",
+        "name": "CH - Page View anniazzurri.it",
+        "type": "PAGEVIEW",
+        "filter": [
+          {
+            "type": "MATCH_REGEX",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{Page Hostname}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "^(www\\.)?anniazzurri\\.it$"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "accountId": "4702223675",
+        "containerId": "12225762",
+        "triggerId": "9202",
+        "name": "CH - chat_hubspot",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "chat_hubspot"
+              }
+            ]
+          }
+        ],
+        "filter": [
+          {
+            "type": "MATCH_REGEX",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{Page Hostname}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "^(www\\.)?anniazzurri\\.it$"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "variable": [
+      {
+        "accountId": "4702223675",
+        "containerId": "12225762",
+        "variableId": "9210",
+        "name": "DLV - CH azione",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "false"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "chat_azione"
+          }
+        ],
+        "formatValue": {}
+      },
+      {
+        "accountId": "4702223675",
+        "containerId": "12225762",
+        "variableId": "9211",
+        "name": "DLV - CH modo",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "false"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "chat_modo"
+          }
+        ],
+        "formatValue": {}
+      },
+      {
+        "accountId": "4702223675",
+        "containerId": "12225762",
+        "variableId": "9212",
+        "name": "DLV - CH secondi",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "false"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "chat_secondi"
+          }
+        ],
+        "formatValue": {}
+      },
+      {
+        "accountId": "4702223675",
+        "containerId": "12225762",
+        "variableId": "9213",
+        "name": "DLV - CH secondi aperta",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "false"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "chat_secondi_aperta"
+          }
+        ],
+        "formatValue": {}
+      },
+      {
+        "accountId": "4702223675",
+        "containerId": "12225762",
+        "variableId": "9214",
+        "name": "DLV - CH interazione",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "false"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "chat_interazione"
+          }
+        ],
+        "formatValue": {}
+      }
+    ],
+    "builtInVariable": [
+      {
+        "accountId": "4702223675",
+        "containerId": "12225762",
+        "type": "PAGE_HOSTNAME",
+        "name": "Page Hostname"
+      },
+      {
+        "accountId": "4702223675",
+        "containerId": "12225762",
+        "type": "EVENT",
+        "name": "Event"
+      }
+    ]
+  }
+}

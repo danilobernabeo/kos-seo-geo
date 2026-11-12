@@ -1,0 +1,78 @@
+<script>
+/* AA-4 - Misura della chat HubSpot (test A/B dell'apertura automatica da computer).
+   Invia al dataLayer l'evento "chat_hubspot" con chat_azione = mostrata | aperta | interazione | conversazione | chiusa.
+   - aperta: la finestra passa da pulsante (100x96) a finestra intera. chat_modo: utente (clic sul pulsante),
+     automatica (senza interazione, dopo almeno 4 s: il trigger della chatflow) o ripresa (senza interazione nei primi
+     4 s: HubSpot riapre una finestra lasciata aperta nella pagina precedente). Si misura dalle dimensioni del
+     contenitore, l'unico segnale affidabile per l'apertura automatica.
+   - chiusa: la finestra torna pulsante; chat_secondi_aperta = durata; chat_interazione = si se, oltre al clic di
+     chiusura (che HubSpot conta come interazione), c'è stato almeno un altro clic o una conversazione.
+   - chat_secondi: secondi dal caricamento della pagina.
+   Gli stessi momenti vanno a Microsoft Clarity come eventi e tag di sessione, per filtrare le registrazioni.
+   Nessun cookie, nessun dato personale, nessuna richiesta ad altri server. */
+(function () {
+  if (window.__kosChatMisura) return;
+  window.__kosChatMisura = true;
+  var t0 = Date.now(), mostrata = false, aperta = 0, modo = '', interagito = false, interazioniQui = 0, conversazioneQui = false, aperto = false;
+  var dl = window.dataLayer = window.dataLayer || [];
+  function sec(ms) { return Math.round(ms / 1000); }
+  function clarityEvento(nome, tag) {
+    try {
+      if (typeof window.clarity === 'function') {
+        window.clarity('event', nome);
+        if (tag) window.clarity('set', tag[0], tag[1]);
+      }
+    } catch (e) {}
+  }
+  function invia(azione, extra) {
+    var o = { event: 'chat_hubspot', chat_azione: azione, chat_secondi: sec(Date.now() - t0),
+              chat_modo: '', chat_secondi_aperta: '', chat_interazione: '' };
+    for (var k in extra) o[k] = extra[k];
+    dl.push(o);
+  }
+  function osserva(c) {
+    if (!window.ResizeObserver) return;
+    new ResizeObserver(function () {
+      var r = c.getBoundingClientRect(), ora = r.width >= 300 && r.height >= 400;
+      if (ora && !aperto) {
+        aperto = true; aperta = Date.now(); interazioniQui = 0; conversazioneQui = false;
+        // l'evento di interazione dell'SDK può arrivare subito dopo il ridimensionamento: si attende un attimo
+        setTimeout(function () {
+          modo = interagito ? 'utente' : (aperta - t0 < 4000 ? 'ripresa' : 'automatica');
+          invia('aperta', { chat_modo: modo });
+          clarityEvento('chat_aperta_' + modo, ['chat_aperta', modo]);
+        }, 600);
+      } else if (!ora && aperto && r.width > 0) {
+        aperto = false;
+        var durata = sec(Date.now() - aperta), usata = interazioniQui >= 2 || conversazioneQui;
+        var esito = usata ? 'dopo_uso' : (durata <= 5 ? 'subito' : 'senza_uso');
+        invia('chiusa', { chat_modo: modo, chat_secondi_aperta: durata, chat_interazione: usata ? 'si' : 'no' });
+        clarityEvento('chat_chiusa_' + esito, ['chat_chiusa', esito]);
+        interagito = false;
+      }
+    }).observe(c);
+  }
+  function collega() {
+    var api = window.HubSpotConversations;
+    if (!api || !api.on || api.__kosMisura) return;
+    api.__kosMisura = true;
+    function segnaMostrata() { if (!mostrata) { mostrata = true; invia('mostrata'); } }
+    api.on('widgetLoaded', segnaMostrata);
+    api.on('userInteractedWithWidget', function () {
+      interagito = true; if (aperto) interazioniQui++; invia('interazione', { chat_modo: aperto ? modo : '' });
+    });
+    api.on('conversationStarted', function () {
+      conversazioneQui = true; invia('conversazione', { chat_modo: modo }); clarityEvento('chat_conversazione', ['chat_conversazione', 'si']);
+    });
+    if (api.widget && api.widget.status && api.widget.status().loaded) segnaMostrata();
+  }
+  window.hsConversationsOnReady = window.hsConversationsOnReady || [];
+  window.hsConversationsOnReady.push(collega);
+  collega();
+  var tentativi = 0, attesa = setInterval(function () {
+    var c = document.getElementById('hubspot-messages-iframe-container');
+    if (c) { clearInterval(attesa); osserva(c); }
+    else if (++tentativi > 60) clearInterval(attesa);
+  }, 500);
+})();
+</script>
