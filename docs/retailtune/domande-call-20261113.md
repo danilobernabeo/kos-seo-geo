@@ -32,6 +32,14 @@ Uso interno (appunti per Danilo). Raccolti il 10-11/11; venerdì mattina si rile
    (prova, scrittura, backup)? Prima del cambio rifate un import da Yext, e in quel caso le modifiche fatte in
    piattaforma restano? Chi può scrivere in piattaforma: solo voi o anche noi? Yext per ora non si tocca.
 
+16c. **Portali oltre a Google** (archivio Yext del 12/11): Yext oggi pubblica le 110 sedi con profilo su 40 portali.
+   Tra questi Apple, Bing, Facebook, Meta, TomTom, HERE, PagineGialle e i fornitori di dati degli assistenti AI
+   (OpenAI, Alexa, Brave), quasi tutti attivi. Quali portali sincronizzate voi oltre a Google? Alla dismissione di Yext
+   le schede su quelli non coperti restano ferme ai dati di gennaio (o vengono ritirate): serve un elenco di cosa
+   resta scoperto, per decidere con KOS. Le 4 schede Google non pubblicate (Cagli: verifica di proprietà; Clinica
+   Dentale Villalba, Clinica Dentale Porto Potenza, Poliambulatorio San Martino: profilo non trovato nel gruppo
+   Google) le sistemate voi nel passaggio?
+
 ## Widget
 
 17. **Elenco visibile senza consenso** (mappa in categoria «marketing» di Cookiebot): come si presenta nella proposta grafica?
