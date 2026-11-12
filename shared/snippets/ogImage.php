@@ -12,6 +12,7 @@
  *        - una cartella (termina con /): la prima immagine in ordine alfabetico
  *   3. &default (se manca: impostazione di sistema seo.og_image_default, poi assets/img/kos-condivisione-social.jpg)
  *
+ * &tvsDefault   TV da usare quando &tvs è vuoto (`-` in &tvs = nessuna TV)
  * &meta=`1`      restituisce i tag completi: og:image, og:image:width, og:image:height, og:image:type (dimensioni lette
  *                dal file, non scritte a mano); senza &meta restituisce solo l'URL (uso storico: content="[[ogImage?...]]")
  * &versione=`1`  aggiunge ?v=<data di modifica del file>, così i social rileggono l'immagine quando cambia
@@ -20,7 +21,11 @@
  *   <meta property="og:image" content="[[ogImage? &tvs=`infoImage` &legacy=`assets/img/header/[[*alias]].jpg`]]">
  *   [[ogImage? &tvs=`newsImage` &default=`assets/img/anni-azzurri-condivisione-social.jpg` &meta=`1` &versione=`1`]]
  */
-$tvs      = array_filter(array_map('trim', explode(',', (string) $modx->getOption('tvs', $scriptProperties, ''))));
+// &tvs vuoto (o un segnaposto non risolto) → &tvsDefault: evita il valore annidato `[[+ogTv:default=`infoImage`]]`
+// nel chunk head di KOS, che arrivava troncato allo snippet (og:image sempre predefinita, 12/11/2026)
+$tvsRaw  = trim((string) $modx->getOption('tvs', $scriptProperties, ''));
+if ($tvsRaw === '' || strpos($tvsRaw, '[[') !== false) $tvsRaw = trim((string) $modx->getOption('tvsDefault', $scriptProperties, ''));
+$tvs      = array_filter(array_map('trim', explode(',', $tvsRaw)), fn($t) => $t !== '' && $t !== '-');
 $legacy   = array_filter(array_map('trim', explode('|', (string) $modx->getOption('legacy', $scriptProperties, ''))));
 $default  = trim((string) $modx->getOption('default', $scriptProperties, ''));
 $meta     = !empty($modx->getOption('meta', $scriptProperties, ''));
