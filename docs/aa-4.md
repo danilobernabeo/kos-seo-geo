@@ -119,6 +119,6 @@ Analisi il 14/12.
 
 | Evento | Data e ora |
 |---|---|
-| Pubblicazione del tag (inizio A) | |
+| Pubblicazione del tag (inizio A) | 12/11/2026 07:24, versione 78 del container GTM-THMLNFX |
 | Cambio A→B | |
 | Cambio B→A | |
