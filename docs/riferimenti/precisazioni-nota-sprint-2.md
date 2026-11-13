@@ -4,6 +4,10 @@ Danilo Bernabeo · 16 novembre 2026
 
 Rileggendo la nota del 6 novembre prima della vostra verifica abbiamo trovato alcune imprecisioni di testo. Nessuna riguarda lo stato dei siti: gli interventi descritti sono in produzione come indicato. I conteggi della nota si riferiscono al 6 novembre (oggi, per esempio, le sitemap contano 866 URL su kosgroup.com e 457 su anniazzurri.it).
 
+## Data di ultima modifica delle pagine (corretta il 13 novembre)
+
+Dal 3 al 13 novembre la data di ultima modifica di 470 pagine (328 su kosgroup.com, 142 su anniazzurri.it) risultava 1° gennaio 1970, nel dato strutturato (`dateModified`) e nelle sitemap (`<lastmod>`). La causa era lo script con cui abbiamo aggiornato title e description (voci KOS 21-23 e AA 20): doveva conservare la data di modifica delle pagine e invece la azzerava. Lo script è corretto e le date sono ripristinate: le pagine mai modificate in precedenza tornano alla data di pubblicazione, le altre hanno la data dell'aggiornamento di title e description. Se nelle vostre scansioni compare ancora il 1970, è una copia precedente al 13 novembre.
+
 ## Scostamento aggiunto (AA 3 · PDF)
 
 Negli Scostamenti mancava la riga sui PDF di anniazzurri.it: gli scostamenti sono quindi sei.
