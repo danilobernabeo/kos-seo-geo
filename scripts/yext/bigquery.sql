@@ -34,5 +34,5 @@ OPTIONS (description = 'Ricerche nelle barre Yext dei siti (kos-care-search = ko
 
 -- Clic per ricerca nelle barre Yext dei siti (esporta-clic-ricerche.ps1).
 CREATE TABLE IF NOT EXISTS `kos-analytics-482819.yext_kos.clic_ricerche` (
-  mese DATE NOT NULL, experience STRING NOT NULL, ricerca STRING, risultato STRING, tipo_clic STRING, clic INT64 NOT NULL)
+  mese DATE NOT NULL, experience STRING NOT NULL, ricerca STRING, entita STRING, tipo_clic STRING, clic INT64 NOT NULL)
 OPTIONS (description = 'Pagine aperte dai risultati della ricerca Yext dei siti, per mese e ricerca. Testo libero: accesso ristretto');
