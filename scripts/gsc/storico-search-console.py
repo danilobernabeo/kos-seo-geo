@@ -19,6 +19,10 @@ Opzioni:
     --dal / --fino-al   intervallo (default: da 16 mesi fa a ieri); --fino-al = giorno prima dell'avvio dell'esportazione
                    collettiva, così i due periodi non si sovrappongono
     --prova        scarica un solo giorno e mostra il conteggio, senza scrivere in BigQuery
+    --aggiorna     aggiornamento periodico (finché l'esportazione collettiva resta verso Cerved): cancella dalle tre
+                   tabelle i giorni da --dal a --fino-al e li riscarica, anche nei mesi già presenti. Senza --fino-al
+                   si ferma a 3 giorni fa (gli ultimi giorni dell'API sono provvisori). Esempio:
+                   --proprieta sc-domain:kosgroup.com --dataset searchconsole_kos --dal 2026-10-24 --aggiorna
 
 Tabelle create nel dataset (partizionate per data_date), con colonne e convenzioni dell'esportazione collettiva così che
 le due fonti si possano unire con una vista:
@@ -120,6 +124,7 @@ def main():
     a.add_argument('--progetto', default='kos-analytics-482819')
     a.add_argument('--localita', default='europe-west3')
     a.add_argument('--dal')
+    a.add_argument('--aggiorna', action='store_true')
     a.add_argument('--fino-al')
     a.add_argument('--elenco', action='store_true')
     a.add_argument('--prova', action='store_true')
@@ -136,7 +141,9 @@ def main():
         sys.exit('Servono --proprieta e --dataset (oppure --elenco)')
 
     oggi = dt.date.today()
-    fine = dt.date.fromisoformat(o.fino_al) if o.fino_al else oggi - dt.timedelta(days=1)
+    fine = dt.date.fromisoformat(o.fino_al) if o.fino_al else oggi - dt.timedelta(days=3 if o.aggiorna else 1)
+    if o.aggiorna and not o.dal:
+        sys.exit('Con --aggiorna serve --dal (primo giorno da riscaricare)')
     inizio = dt.date.fromisoformat(o.dal) if o.dal else (oggi.replace(day=1) - dt.timedelta(days=16 * 31)).replace(day=1)
     giorni = [inizio + dt.timedelta(days=i) for i in range((fine - inizio).days + 1)]
 
@@ -162,6 +169,12 @@ def main():
         client.create_table(t, exists_ok=True)
         q = f'SELECT DISTINCT FORMAT_DATE("%Y-%m", data_date) m FROM `{o.progetto}.{o.dataset}.{nome}`'
         presenti[nome] = {r.m for r in client.query(q, location=o.localita).result()}
+        if o.aggiorna:
+            d = (f'DELETE FROM `{o.progetto}.{o.dataset}.{nome}` '
+                 f'WHERE data_date BETWEEN "{giorni[0].isoformat()}" AND "{giorni[-1].isoformat()}"')
+            n_canc = client.query(d, location=o.localita).result().num_dml_affected_rows
+            print(f'{nome}: cancellate {n_canc} righe dal {giorni[0]} al {giorni[-1]}')
+            presenti[nome] = set()
 
     mesi = sorted({g.strftime('%Y-%m') for g in giorni})
     print(f'{o.proprieta} → {o.progetto}.{o.dataset} ({o.localita}), {giorni[0]} … {giorni[-1]}, {len(mesi)} mesi')
