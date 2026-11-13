@@ -43,6 +43,9 @@ Uso interno (appunti per Danilo). Raccolti il 10-11/11; venerdì mattina si rile
    sede con dati potenzialmente diversi?
    Le 4 schede Google non pubblicate (Cagli: verifica di proprietà; Clinica Dentale Villalba, Clinica Dentale Porto
    Potenza, Poliambulatorio San Martino: profilo non trovato nel gruppo Google) le sistemate voi nel passaggio?
+   ChatGPT: dal 10/11 OpenAI permette di rivendicare i profili delle attività in ChatGPT (beta; per le sedi locali per
+   ora solo negli Stati Uniti). Avete o prevedete una sincronizzazione delle sedi verso ChatGPT quando sarà disponibile
+   in Italia?
 
 ## Widget
 
