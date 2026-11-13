@@ -5,6 +5,10 @@ almeno nome, immagine, specializzazione e struttura di appartenenza.
 
 ## Stato
 
+- 13/11, **produzione** dopo Villa Margherita: collaudo 150/150 (99 `IndividualPhysician`, 51 `Person`): gli 8 medici
+  delle unità di Villa Margherita Vicenza (non 7, come stimato l'8/11) passano a `IndividualPhysician` con `practicesAt`
+  verso `https://kosgroup.com/villamargherita#localbusiness`; verifica con curl della landing (nodo `Hospital`,
+  `#localbusiness`, `#department`) e di Francesco Perini. Resta `Person` legato all'ente un solo medico (Argentieri).
 - 8/11 sera, **produzione**: collaudo 150/150 (91 `IndividualPhysician`, 59 `Person`), schede e landing 63/63.
 - 8/11, collaudo sullo stage: 150 pagine, 91 `IndividualPhysician` e 59 `Person`; 2 KO per spazi doppi o finali
   nel titolo della pagina (Michele Tulli, Rolando Gregorio Edoardo Rocchetti), corretti nella libreria (nome con gli
@@ -56,8 +60,9 @@ ne ha una adatta).
 
 ## Differenze dall'esempio dell'audit (da motivare nella nota di consegna)
 
-- `IndividualPhysician` invece di `Physician`: dalla versione 28 di schema.org `Physician` indica anche lo studio
-  medico, `IndividualPhysician` il singolo medico ([schema.org/IndividualPhysician](https://schema.org/IndividualPhysician)).
+- `IndividualPhysician` invece di `Physician`: dalla versione 24 schema.org distingue il singolo medico
+  (`IndividualPhysician`) dallo studio (`PhysiciansOffice`); `Physician` vale per entrambi (corretto il 13/11: prima era
+  scritto «versione 28») ([schema.org/IndividualPhysician](https://schema.org/IndividualPhysician)).
 - `practicesAt` verso il nodo della struttura (`#localbusiness`, lo stesso delle schede) invece di `worksFor` con una
   struttura scritta per esteso: `worksFor` è una proprietà di `Person`, non di `IndividualPhysician`, e il riferimento
   all'`@id` lega il medico alla stessa entità della scheda e del profilo Google.
