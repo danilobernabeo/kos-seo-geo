@@ -31,3 +31,8 @@ CREATE TABLE IF NOT EXISTS `kos-analytics-482819.yext_kos.ricerche_sito` (
   data DATE NOT NULL, experience STRING NOT NULL, ricerca STRING, risultati BOOL, ricerche INT64 NOT NULL, con_clic INT64)
 PARTITION BY DATE_TRUNC(data, MONTH)
 OPTIONS (description = 'Ricerche nelle barre Yext dei siti (kos-care-search = kosgroup.com, it-answer-anniazzurri = anniazzurri.it). Testo libero: può contenere dati personali, accesso ristretto');
+
+-- Clic per ricerca nelle barre Yext dei siti (esporta-clic-ricerche.ps1).
+CREATE TABLE IF NOT EXISTS `kos-analytics-482819.yext_kos.clic_ricerche` (
+  mese DATE NOT NULL, experience STRING NOT NULL, ricerca STRING, url STRING, clic INT64 NOT NULL)
+OPTIONS (description = 'Pagine aperte dai risultati della ricerca Yext dei siti, per mese e ricerca. Testo libero: accesso ristretto');
