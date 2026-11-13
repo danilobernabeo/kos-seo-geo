@@ -72,6 +72,11 @@ Le voci di menu sono quelle della versione in inglese.
   | jsonld_medico | Regex | `"@id":\s*"([^"]+#(?:medico|person))"` |
   | og_image | XPath, Extract Inner HTML | `//meta[@property="og:image"]/@content` |
   | robots_meta | XPath | `//meta[@name="robots"]/@content` |
+  | jsonld_dateModified | Regex | `"dateModified":\s*"([^"]+)"` |
+  | jsonld_datePublished | Regex | `"datePublished":\s*"([^"]+)"` |
+  | jsonld_brand | Regex | `"brand":\s*\{[^}]*"name":\s*"([^"]+)"` |
+  | jsonld_telephone | Regex | `"telephone":\s*"([^"]+)"` |
+  | canonical | XPath | `//link[@rel="canonical"]/@href` |
 
   Per le regex Screaming Frog restituisce tutte le corrispondenze in colonne successive (jsonld_tipi 1, 2, ...).
 
@@ -127,3 +132,21 @@ essere acceso e collegato.
 
 Esito: una nota breve con le sole anomalie, ciascuna con pagina, causa e correzione proposta. Confronto con i collaudi:
 `scripts/collaudo/verifica-sprint-1.mjs`, `collaudo-kos-11.mjs`, `collaudo-kos-24.mjs`.
+
+## Analisi dei risultati con il revisore (Claude Code)
+
+Dopo la scansione completa, in Claude Code dalla cartella del repository (modello diverso da quello che ha scritto le
+note, `/model`), con le esportazioni nella cartella della scansione:
+
+```
+Leggi docs/verifica-screaming-frog.md (sezione «Cosa controlliamo poi») e docs/revisioni/prompt-revisione-nota.md.
+Analizza le esportazioni di Screaming Frog in <cartella> per kosgroup.com e anniazzurri.it e confrontale con le note di
+consegna degli sprint 2 e 3 (docs/docx/Nota di consegna dello sprint 2.docx, docs/riferimenti/nota-di-consegna-sprint-3.md,
+docs/riferimenti/precisazioni-nota-sprint-2.md): ogni affermazione verificabile sulle pagine deve risultare vera su tutte
+le pagine del tipo, non solo sugli esempi. Controlla in più: date (dateModified, datePublished, lastmod) plausibili e mai
+anteriori al 2000; campi del dato strutturato presenti in modo uniforme per tipo di pagina (brand, telefono, orari,
+specialità); canonical uguale all'URL; nessuna pagina in sitemap con redirect, 404 o noindex. Non fare richieste ai siti
+oltre a quelle necessarie per confermare un'anomalia (al massimo una al secondo). Scrivi il rapporto in
+docs/revisioni/screaming-frog-<AAAAMMGG>.md: anomalie in ordine di gravità, con numero di pagine, esempi, causa
+probabile e correzione; poi ciò che risulta corretto.
+```
