@@ -7,7 +7,9 @@
     $env:YEXT_KEY = Read-Host "Chiave API Yext"
     & "$R\scripts\yext\esporta-clic-ricerche.ps1" -Da 2020-11-01 -A 2026-11-11 -Uscita "$env:USERPROFILE\Downloads\yext-statistiche"
 
-  Produce clic-ricerche.csv (mese, experience, ricerca, url, clic). Testo libero: resta fuori dal repository.
+  Produce clic-ricerche.csv (mese, experience, ricerca, risultato, tipo_clic, clic). Il risultato è il titolo
+  dell'entità cliccata (la pagina si ricava dall'archivio delle entità); ANSWERS_CLICK_URL restituisce solo l'indirizzo
+  di tracciamento di Yext e non si usa. Testo libero: resta fuori dal repository.
 #>
 param(
     [Parameter(Mandatory = $true)][string]$Da,
@@ -36,7 +38,7 @@ while ($m -le $fine) {
     $s = if ($m -lt $inizio) { $inizio } else { $m }
     $e = $m.AddMonths(1).AddDays(-1); if ($e -gt $fine) { $e = $fine }
     $corpo = @{ metrics = @('ANSWERS_CLICKS');
-                dimensions = @('MONTHS', 'ANSWERS_EXPERIENCE_KEY', 'ANSWERS_SEARCH_TERM', 'ANSWERS_CLICK_URL');
+                dimensions = @('MONTHS', 'ANSWERS_EXPERIENCE_KEY', 'ANSWERS_SEARCH_TERM', 'ANSWERS_RESULT_TITLE', 'ANSWERS_CLICK_TYPE');
                 filters = @{ startDate = $s.ToString('yyyy-MM-dd'); endDate = $e.ToString('yyyy-MM-dd') } } | ConvertTo-Json -Depth 5
     $tentativi = 0
     while ($true) {
@@ -60,7 +62,7 @@ while ($m -le $fine) {
         $righe | ForEach-Object {
             [pscustomobject]@{
                 mese = $_.MONTHS; experience = (Campo $_ 'EXPERIENCE_KEY'); ricerca = (Campo $_ 'SEARCH_TERM')
-                url = (Campo $_ 'CLICK_URL'); clic = [int](Campo $_ 'CLICKS')
+                risultato = (Campo $_ 'RESULT_TITLE'); tipo_clic = (Campo $_ 'CLICK_TYPE'); clic = [int](Campo $_ 'CLICKS')
             }
         } | Export-Csv -Path $percorso -NoTypeInformation -Encoding UTF8 -Append
         $totale += $righe.Count
