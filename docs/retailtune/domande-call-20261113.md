@@ -34,11 +34,15 @@ Uso interno (appunti per Danilo). Raccolti il 10-11/11; venerdì mattina si rile
 
 16c. **Portali oltre a Google** (archivio Yext del 12/11): Yext oggi pubblica le 110 sedi con profilo su 40 portali.
    Tra questi Apple, Bing, Facebook, Meta, TomTom, HERE, PagineGialle e i fornitori di dati degli assistenti AI
-   (OpenAI, Alexa, Brave), quasi tutti attivi. Quali portali sincronizzate voi oltre a Google? Alla dismissione di Yext
-   le schede su quelli non coperti restano ferme ai dati di gennaio (o vengono ritirate): serve un elenco di cosa
-   resta scoperto, per decidere con KOS. Le 4 schede Google non pubblicate (Cagli: verifica di proprietà; Clinica
-   Dentale Villalba, Clinica Dentale Porto Potenza, Poliambulatorio San Martino: profilo non trovato nel gruppo
-   Google) le sistemate voi nel passaggio?
+   (OpenAI, Alexa, Brave), quasi tutti attivi. Voi coprite Google, Apple, Bing e Facebook. Oltre a questi avete
+   accordi con aggregatori (TomTom, HERE, Foursquare, PagineGialle) o un partner che li copre? Alla dismissione di Yext
+   le schede non coperte restano ferme ai dati di gennaio o tornano ai dati precedenti: serve l'elenco di cosa resta
+   scoperto, per decidere con KOS.
+   Bing: scrivete su schede nuove e Bing unisce quelle di Yext. In quanto tempo, chi verifica l'unione, e se una
+   scheda Yext resta doppia chi ne chiede la soppressione? Nel frattempo, fino a fine gennaio, ci sono due schede per
+   sede con dati potenzialmente diversi?
+   Le 4 schede Google non pubblicate (Cagli: verifica di proprietà; Clinica Dentale Villalba, Clinica Dentale Porto
+   Potenza, Poliambulatorio San Martino: profilo non trovato nel gruppo Google) le sistemate voi nel passaggio?
 
 ## Widget
 
