@@ -163,7 +163,10 @@ if ($scrivi && $daFare) {
     // (editedon/editedby), che il dato strutturato usa come dateModified. «published» invece la aggiorna.
     $soloMeta = fn(array $nuovi) => !array_diff(array_keys($nuovi), ['longtitle', 'description', 'pagetitle', 'menutitle', 'introtext']);
     foreach ($daFare as [$res, $nuovi]) {
-        $prima = [(int) $res->get('editedon'), (int) $res->get('editedby')];
+        // editedon va letto grezzo (intero) dal database: in MODX 3 get('editedon') restituisce la data formattata
+        // («2025-03-04 10:12:00») e (int) ne terrebbe solo l'anno, scritto poi come timestamp (1970-01-01). Corretto il 13/11.
+        $riga = $modx->query("SELECT editedon, editedby FROM $tab WHERE id = " . (int) $res->get('id'))->fetch(PDO::FETCH_NUM);
+        $prima = [(int) ($riga[0] ?? 0), (int) ($riga[1] ?? 0)];
         foreach ($nuovi as $c => [, $v]) $res->set($c, $v);
         if ($res->save()) {
             $fatte++;

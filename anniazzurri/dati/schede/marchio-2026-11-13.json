@@ -1,0 +1,53 @@
+{
+  "nome": "AA-5 marchio Anni Azzurri sulle 8 schede senza str.marchio (revisione del 13/11)",
+  "risorse": [
+    {
+      "uri": "residenza-anni-azzurri-vico-mercati",
+      "tv": {
+        "str.marchio": "Anni Azzurri"
+      }
+    },
+    {
+      "uri": "residenza-anni-azzurri-idice",
+      "tv": {
+        "str.marchio": "Anni Azzurri"
+      }
+    },
+    {
+      "uri": "residenza-anni-azzurri-valdaso",
+      "tv": {
+        "str.marchio": "Anni Azzurri"
+      }
+    },
+    {
+      "uri": "residenza-anni-azzurri-sestri-ponente",
+      "tv": {
+        "str.marchio": "Anni Azzurri"
+      }
+    },
+    {
+      "uri": "residenza-anni-azzurri-casa-serena",
+      "tv": {
+        "str.marchio": "Anni Azzurri"
+      }
+    },
+    {
+      "uri": "residenza-anni-azzurri-il-poggione",
+      "tv": {
+        "str.marchio": "Anni Azzurri"
+      }
+    },
+    {
+      "uri": "residenza-anni-azzurri-borgomanero",
+      "tv": {
+        "str.marchio": "Anni Azzurri"
+      }
+    },
+    {
+      "uri": "residenza-anni-azzurri-villa-pineta",
+      "tv": {
+        "str.marchio": "Anni Azzurri"
+      }
+    }
+  ]
+}
