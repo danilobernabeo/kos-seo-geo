@@ -12,7 +12,8 @@
  *       date originali da un backup del database precedente al 5/11 (righe «id;editedon», editedon come intero Unix)
  * Ripristino: UPDATE <prefisso>site_content c JOIN <tabella di backup> b ON b.id = c.id SET c.editedon = b.editedon;
  *
- * Risorse rovinate: editedon tra 1 e 100000 (un anno usato come timestamp). Data proposta, senza --csv: il momento in cui
+ * Risorse rovinate: editedon tra 1 e 100000 (un anno usato come timestamp). Anno 1969 o 1970: in origine editedon era 0
+ * (risorsa mai modificata dopo la creazione), e si rimette 0. Altrimenti, senza --csv: il momento in cui
  * aggiorna-campi.php ha modificato title/description della risorsa, letto dal nome dell'ultima tabella di backup
  * <prefisso>site_content_bak_AAAAMMGG_HHMM che contiene la risorsa (la pagina è stata davvero modificata in quel momento).
  * Se nessuna tabella la contiene: la data più recente tra publishedon e createdon. Alla fine svuota la cache
@@ -64,16 +65,17 @@ foreach ($st->fetchAll(PDO::FETCH_COLUMN) as $t) {
 }
 
 $proposte = [];
-$conta = ['file' => 0, 'backup' => 0, 'pubblicazione' => 0];
+$conta = ['file' => 0, 'mai modificata' => 0, 'backup' => 0, 'pubblicazione' => 0];
 foreach ($rovinate as $id => $r) {
     if (isset($originali[$id])) { $ts = $originali[$id]; $fonte = 'file'; }
+    elseif (in_array((int) $r['editedon'], [1969, 1970], true)) { $ts = 0; $fonte = 'mai modificata'; }
     elseif (isset($bak[$id])) { $ts = $bak[$id]; $fonte = 'backup'; }
     else { $ts = max((int) $r['publishedon'], (int) $r['createdon']); $fonte = 'pubblicazione'; }
-    if ($ts <= 100000) { echo "  ! $id {$r['uri']}: nessuna data utilizzabile, saltata\n"; continue; }
+    if ($ts !== 0 && $ts <= 100000) { echo "  ! $id {$r['uri']}: nessuna data utilizzabile, saltata\n"; continue; }
     $proposte[$id] = $ts; $conta[$fonte]++;
-    printf("  %6d %-8s %-55s anno %s → %s (%s)\n", $id, $r['context_key'], mb_substr((string) $r['uri'], 0, 55), $r['editedon'], date('Y-m-d H:i', $ts), $fonte);
+    printf("  %6d %-8s %-55s anno %s → %s (%s)\n", $id, $r['context_key'], mb_substr((string) $r['uri'], 0, 55), $r['editedon'], $ts ? date('Y-m-d H:i', $ts) : '0', $fonte);
 }
-printf("== Proposte: %d (dal file %d, dal momento della modifica dei campi %d, dalla pubblicazione %d)\n", count($proposte), $conta['file'], $conta['backup'], $conta['pubblicazione']);
+printf("== Proposte: %d (dal file %d, mai modificate prima: 0 come in origine %d, dal momento della modifica dei campi %d, dalla pubblicazione %d)\n", count($proposte), $conta['file'], $conta['mai modificata'], $conta['backup'], $conta['pubblicazione']);
 
 if (!$scrivi) { echo "== Prova: nessuna modifica. Rilanciare con --scrivi.\n"; exit(0); }
 $bakTab = '`' . $tabNudo . '_bak_editedon_' . date('Ymd_Hi') . '`';
