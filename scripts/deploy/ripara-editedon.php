@@ -88,5 +88,7 @@ foreach ($proposte as $id => $ts) {
     if ($modx->exec("UPDATE $tab SET editedon = " . (int) $ts . " WHERE id = $id AND editedon BETWEEN 1 AND 100000") !== false) $fatte++;
 }
 $modx->cacheManager->refresh();
-echo "== $fatte risorse aggiornate; cache svuotata. Backup: tabella $bakTab\n";
+// la sitemap di anniazzurri.it (GoogleSiteMap) ha una propria cartella di cache, che refresh() non tocca
+$modx->cacheManager->deleteTree(MODX_CORE_PATH . 'cache/googlesitemap/', ['deleteTop' => false, 'skipDirs' => false, 'extensions' => []]);
+echo "== $fatte risorse aggiornate; cache svuotata (anche quella della sitemap). Backup: tabella $bakTab\n";
 echo "   Ripristino: UPDATE $tab c JOIN $bakTab b ON b.id = c.id SET c.editedon = b.editedon;\n";
