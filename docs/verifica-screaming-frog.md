@@ -6,7 +6,8 @@ anniazzurri.it sta nei 500 URL della versione gratuita.
 
 ## Quando
 
-Dal 15/11, dopo la verifica di Cerved/ProWeb. Il 1/11 le richieste automatiche dei collaudi hanno fatto scattare la
+Domenica 15/11, dopo la verifica di Cerved/ProWeb (fino al 14/11) e con poco traffico sui siti; prima kosgroup.com, poi
+anniazzurri.it, uno per volta. Il 1/11 le richieste automatiche dei collaudi hanno fatto scattare la
 protezione anti-bot di MODX Cloud sull'IP di Danilo («Security Check», 403): una scansione veloce durante la verifica
 potrebbe bloccare anche le loro richieste. Prima di partire: home del sito aperta nel browser dallo stesso computer
 (nessun 403).
@@ -18,7 +19,8 @@ Un sito per volta. Le voci di menu sono quelle della versione in inglese (Config
 ### Velocità (Configuration › Speed)
 
 - Max Threads: **1**
-- Limit URL/s: **1,5** (circa 10 minuti per anniazzurri.it e 10-15 per kosgroup.com)
+- Limit URL/s: **1** (circa 10 minuti per anniazzurri.it e 15-20 per kosgroup.com; la protezione anti-bot è scattata a
+  1,7 richieste/s con SEOZoom il 12/11)
 
 ### Spider › Crawl
 
