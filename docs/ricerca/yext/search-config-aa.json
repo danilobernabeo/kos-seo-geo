@@ -1,0 +1,618 @@
+{
+  "$id": "it-answer-anniazzurri",
+  "$schema": "https://schema.yext.com/config/answers/answers-config/v1",
+  "experienceKey": "it-answer-anniazzurri",
+  "name": "it-answer-AnniAzzurri",
+  "supportedLocales": [
+    "it"
+  ],
+  "synonyms": {
+    "oneWay": [],
+    "synonymSet": [
+      [
+        "Sede",
+        "Sedi",
+        "Centri",
+        "Centro",
+        "Locale",
+        "Locali",
+        "Casa di riposo",
+        "RSA",
+        "residenza",
+        "residenze",
+        "casa per anziani",
+        "ospizio",
+        "struttura",
+        "clinica",
+        "case di riposo",
+        "ospizi",
+        "strutture",
+        "r.s.a."
+      ],
+      [
+        "centri riabilitazione",
+        "riabilitazione",
+        "fisioterapia",
+        "u.o.riabilitazione",
+        "unità di riabilitazione"
+      ],
+      [
+        "AN",
+        "Ancona"
+      ],
+      [
+        "CO",
+        "Como"
+      ],
+      [
+        "TN",
+        "Trento"
+      ],
+      [
+        "Vi",
+        "Vicenza",
+        "Veneto"
+      ],
+      [
+        "AP",
+        "Ascoli-Piceno"
+      ],
+      [
+        "RE",
+        "Reggio-Emilia"
+      ],
+      [
+        "BN",
+        "Benevento"
+      ],
+      [
+        "BG",
+        "Bergamo"
+      ],
+      [
+        "MI",
+        "Milano"
+      ],
+      [
+        "FI",
+        "Firenze",
+        "Toscana"
+      ],
+      [
+        "PU",
+        "Pesaro-Urbino"
+      ],
+      [
+        "MC",
+        "Macerata"
+      ],
+      [
+        "FM",
+        "Fermo"
+      ],
+      [
+        "GE",
+        "Genova"
+      ],
+      [
+        "SV",
+        "Savona"
+      ],
+      [
+        "TO",
+        "Torino",
+        "provincia di torino"
+      ],
+      [
+        "BO",
+        "Bologna"
+      ],
+      [
+        "CN",
+        "Cuneo"
+      ],
+      [
+        "NO",
+        "Novara"
+      ],
+      [
+        "VE",
+        "Venezia",
+        "Veneto"
+      ],
+      [
+        "PG",
+        "Perugia"
+      ],
+      [
+        "PR",
+        "Parma"
+      ],
+      [
+        "VC",
+        "Vercelli"
+      ],
+      [
+        "LU",
+        "Lucca"
+      ],
+      [
+        "MO",
+        "Modena"
+      ],
+      [
+        "MB",
+        "Monza-Brianza"
+      ],
+      [
+        "PV",
+        "Pavia"
+      ],
+      [
+        "BS",
+        "Brescia"
+      ],
+      [
+        "RA",
+        "Ravenna"
+      ],
+      [
+        "IM",
+        "Imperia"
+      ],
+      [
+        "RM",
+        "Roma"
+      ],
+      [
+        "MN",
+        "Mantova"
+      ],
+      [
+        "AT",
+        "Asti"
+      ],
+      [
+        "RO",
+        "Rovigo",
+        "Veneto"
+      ],
+      [
+        "Curriculum",
+        " CV",
+        " curricula",
+        "curiculum",
+        "posto lavoro",
+        "lavora con noi",
+        "assumete",
+        "assunzioni",
+        "posso lasciare il mio curriculum",
+        "posizioni aperte",
+        "posizioni lavorative aperte",
+        "candidatura",
+        "lavorare con voi",
+        "lavorare come oss",
+        "cercate oss",
+        "ricerca di personale",
+        "nuove assunzioni"
+      ],
+      [
+        "in",
+        "nella",
+        "nel",
+        "a"
+      ],
+      [
+        "covid",
+        "greenpass",
+        "green",
+        "green-pass",
+        "covid19",
+        "pandemia",
+        "restrizioni",
+        "pass",
+        "certificato verde",
+        "green pass"
+      ],
+      [
+        "Radio",
+        "spotify",
+        "radio anni azzurri",
+        "mercurio",
+        "casa anni azzurri",
+        "età della memoria"
+      ],
+      [
+        "contributi regionali",
+        "aiuti economici",
+        "convenzioni",
+        "convenzioni regione",
+        "agevolazioni"
+      ],
+      [
+        "Torino",
+        "provincia di torino"
+      ],
+      [
+        "temporaneo",
+        "ricovero temporaneo",
+        "sollievo",
+        "ricovero di sollievo",
+        "soggiorno breve",
+        "ricovero estivo",
+        "soggiorno estivo"
+      ],
+      [
+        "questionari di ammissione",
+        "documenti riabiltizione",
+        "domanda inserimento",
+        "scheda sanitaria",
+        "domanda unica",
+        "scheda d'ingresso",
+        "sched unica"
+      ],
+      [
+        "Quanto costa una residenza",
+        "costo",
+        "costo rsa",
+        "tariffe",
+        "retta",
+        "prezzi",
+        "oneri",
+        "spese",
+        "canone",
+        "importo",
+        "compensi"
+      ],
+      [
+        "documentazione riabilitazione",
+        "scheda ammissione riabilitazione",
+        "questionario ammissione riabilitazione",
+        "Scheda riabilitativa"
+      ]
+    ],
+    "normalization": []
+  },
+  "countryRestrictions": [],
+  "verticals": {
+    "faqs": {
+      "name": "FAQs",
+      "source": "KNOWLEDGE_MANAGER",
+      "entityTypes": [
+        "faq"
+      ],
+      "searchableFields": {
+        "answer": {
+          "textSearch": true
+        },
+        "keywords": {
+          "nlpFilter": true
+        },
+        "name": {
+          "textSearch": true
+        },
+        "builtin.entityType": {
+          "nlpFilter": true
+        }
+      },
+      "verticalIntents": {
+        "boostingIntents": [],
+        "blacklistedIntents": []
+      },
+      "sortBys": []
+    },
+    "location": {
+      "name": "Locations",
+      "source": "KNOWLEDGE_MANAGER",
+      "entityTypes": [
+        "location"
+      ],
+      "searchableFields": {
+        "c_provincia": {
+          "nlpFilter": true
+        },
+        "address.city": {
+          "nlpFilter": true
+        },
+        "keywords": {
+          "nlpFilter": true
+        },
+        "c_answersCategories": {
+          "nlpFilter": true
+        },
+        "c_answersName": {
+          "nlpFilter": true
+        },
+        "c_tipologiaDiRicovero": {
+          "facet": true
+        },
+        "builtin.entityType": {
+          "nlpFilter": true
+        },
+        "c_tipologiaDiOspite": {
+          "facet": true
+        },
+        "c_cureAvanzate": {
+          "facet": true
+        },
+        "builtin.location": {
+          "nlpFilter": true
+        },
+        "address.region": {
+          "nlpFilter": true
+        },
+        "c_linkedFAQ.name": {
+          "textSearch": true
+        },
+        "name": {
+          "textSearch": true
+        },
+        "c_region": {
+          "facet": true,
+          "nlpFilter": true
+        },
+        "specialities": {
+          "nlpFilter": true
+        }
+      },
+      "savedSearchId": "106176734",
+      "sortBys": [],
+      "facetOrder": [
+        "c_region",
+        "c_tipologiaDiRicovero",
+        "c_tipologiaDiOspite",
+        "c_cureAvanzate"
+      ]
+    }
+  },
+  "localizations": {},
+  "querySuggestions": {
+    "universalPrompts": [],
+    "verticalPrompts": {},
+    "popularQueriesBlacklistedTerms": [],
+    "disablePopularQueries": false,
+    "verticalPromptsOnEmpty": false,
+    "popularQueriesBlacklistedRegex": []
+  },
+  "rules": [
+    {
+      "actions": [
+        {
+          "actionType": "BOOST_VERTICAL_INTENT",
+          "boostValue": 5,
+          "verticals": [
+            "location"
+          ]
+        }
+      ],
+      "criteria": {
+        "searchTermContainsAll": [
+          "$c_region"
+        ]
+      }
+    },
+    {
+      "actions": [
+        {
+          "actionType": "BOOST_VERTICAL_INTENT",
+          "boostValue": 5,
+          "verticals": [
+            "faqs"
+          ]
+        }
+      ],
+      "criteria": {
+        "searchTermContainsAll": [
+          "Contributi"
+        ]
+      }
+    },
+    {
+      "actions": [
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "FAQ27"
+          ],
+          "verticalKey": "faqs"
+        },
+        {
+          "actionType": "BURY_ENTITIES",
+          "entityIds": [
+            "FAQ76",
+            "FAQ134",
+            "FAQ90",
+            "FAQ8",
+            "FAQ3",
+            "FAQ151",
+            "FAQ18",
+            "FAQ28"
+          ],
+          "verticalKey": "faqs"
+        }
+      ],
+      "criteria": {
+        "searchTermExactlyMatches": "rsa in veneto"
+      },
+      "name": "When search term is \"rsa\" in \"veneto\""
+    },
+    {
+      "actions": [
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "174627105193040774"
+          ],
+          "verticalKey": "faqs"
+        },
+        {
+          "actionType": "BURY_ENTITIES",
+          "entityIds": [
+            "FAQ39",
+            "FAQ36",
+            "FAQ148",
+            "FAQ151",
+            "FAQ149",
+            "FAQ46",
+            "FAQ41",
+            "FAQ150",
+            "FAQ118",
+            "FAQ119",
+            "FAQ114",
+            "FAQ120",
+            "FAQ116",
+            "FAQ117",
+            "FAQ115",
+            "FAQ125",
+            "FAQ145",
+            "FAQ127",
+            "FAQ123",
+            "FAQ121",
+            "FAQ122",
+            "FAQ141",
+            "FAQ25",
+            "FAQ126",
+            "FAQ124",
+            "FAQ147",
+            "FAQ146",
+            "FAQ144",
+            "FAQ132",
+            "FAQ140",
+            "FAQ143",
+            "FAQ128",
+            "FAQ133",
+            "FAQ131",
+            "FAQ130",
+            "FAQ129"
+          ],
+          "verticalKey": "faqs"
+        }
+      ],
+      "criteria": {
+        "searchTermExactlyMatches": "posso inviare il cv"
+      },
+      "name": "When search term is \"posso inviare il cv\""
+    },
+    {
+      "actions": [
+        {
+          "actionType": "BURY_VERTICALS",
+          "verticals": [
+            "faqs"
+          ]
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "2857505614844162947",
+            "174627105193040774"
+          ],
+          "verticalKey": "faqs"
+        },
+        {
+          "actionType": "BURY_ENTITIES",
+          "entityIds": [
+            "FAQ39"
+          ],
+          "verticalKey": "faqs"
+        }
+      ],
+      "criteria": {
+        "searchTermExactlyMatches": "assumete"
+      },
+      "name": "When search term is \"assumete\""
+    },
+    {
+      "actions": [
+        {
+          "actionType": "BOOST_VERTICALS",
+          "verticals": [
+            "faqs"
+          ]
+        },
+        {
+          "actionType": "BURY_VERTICALS",
+          "verticals": [
+            "location"
+          ]
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "FAQ48"
+          ],
+          "verticalKey": "faqs"
+        },
+        {
+          "actionType": "BURY_ENTITIES",
+          "entityIds": [
+            "FAQ39",
+            "FAQ148",
+            "FAQ41",
+            "FAQ36",
+            "FAQ26",
+            "FAQ123"
+          ],
+          "verticalKey": "faqs"
+        }
+      ],
+      "criteria": {
+        "searchTermExactlyMatches": "quanto costa un soggiorno"
+      },
+      "name": "When search term is \"quanto costa un soggiorno\""
+    },
+    {
+      "actions": [
+        {
+          "actionType": "BOOST_VERTICALS",
+          "verticals": [
+            "faqs"
+          ]
+        },
+        {
+          "actionType": "BURY_VERTICALS",
+          "verticals": [
+            "location"
+          ]
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "FAQ48"
+          ],
+          "verticalKey": "faqs"
+        }
+      ],
+      "criteria": {
+        "searchTermExactlyMatches": "quanto costa una rsa"
+      },
+      "name": "When search term is \"quanto costa una rsa\""
+    },
+    {
+      "actions": [
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "FAQover30"
+          ],
+          "verticalKey": "faqs"
+        }
+      ],
+      "criteria": {
+        "searchTermMatchesRegex": "^.{30,}$",
+        "searchTypes": "ALL"
+      },
+      "name": "30 Characters Rule"
+    }
+  ],
+  "additionalStopWords": [
+    "Residenza",
+    "Anni",
+    "Azzurri",
+    "V.",
+    "P.za",
+    "via",
+    "piazza"
+  ],
+  "additionalSearchablePlaces": []
+}
