@@ -28,4 +28,3 @@ Negli Scostamenti mancava la riga sui PDF di anniazzurri.it: gli scostamenti son
 - **AA 6:** nessun «Guarda meno / Guarda di più» dentro un titolo (i titoli come «Guarda il video della residenza» sono legittimi).
 - **AA 17:** nessuna immagine sopra 200 KB (testata e schede in WebP; restano in PNG o JPG alcune immagini piccole).
 - **KOS 8:** oltre alla carta dei servizi di Punto Prelievi Biemme, un documento escluso: `curl -sI` su https://kosgroup.com/assets/doc/strutture/casa-villa-maura/contratto.pdf, intestazione `X-Robots-Tag: noindex`.
-- **Formulazioni:** «un assistente AI trova la prestazione» va letto come «può trovare»; «i motori e i sistemi AI ora le leggono» come «sono leggibili nell'HTML». La frase «l'obiettivo della voce è raggiunto in tutti» va intesa come la nostra valutazione, che resta vostra da verificare.
