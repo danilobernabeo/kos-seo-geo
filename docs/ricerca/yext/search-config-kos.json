@@ -1,0 +1,911 @@
+{
+  "$id": "kos-care-search",
+  "$schema": "https://schema.yext.com/config/answers/answers-config/v1",
+  "experienceKey": "kos-care-search",
+  "name": "Kos Care Search",
+  "supportedLocales": [
+    "it"
+  ],
+  "synonyms": {
+    "oneWay": [
+      {
+        "phrase": "Napoli",
+        "synonyms": [
+          "Benevento"
+        ]
+      }
+    ],
+    "synonymSet": [
+      [
+        "Sede",
+        "Sedi",
+        "Centri",
+        "Centro",
+        "Locale",
+        "Locali",
+        "Casa di riposo",
+        "RSA",
+        "residenza",
+        "residenze",
+        "casa per anziani",
+        "ospizio",
+        "struttura",
+        "clinica",
+        "case di riposo",
+        "ospizi",
+        "strutture",
+        "r.s.a."
+      ],
+      [
+        "centri riabilitazione",
+        "riabilitazione",
+        "fisioterapia",
+        "u.o.riabilitazione",
+        "unità di riabilitazione"
+      ],
+      [
+        "AN",
+        "Ancona"
+      ],
+      [
+        "CO",
+        "Como"
+      ],
+      [
+        "TN",
+        "Trento"
+      ],
+      [
+        "Vi",
+        "Vicenza",
+        "Veneto"
+      ],
+      [
+        "AP",
+        "Ascoli-Piceno"
+      ],
+      [
+        "RE",
+        "Reggio-Emilia"
+      ],
+      [
+        "BN",
+        "Benevento",
+        "Napoli",
+        "Campania"
+      ],
+      [
+        "BG",
+        "Bergamo",
+        "lombardia"
+      ],
+      [
+        "MI",
+        "Milano",
+        "lombardia"
+      ],
+      [
+        "FI",
+        "Firenze",
+        "Toscana"
+      ],
+      [
+        "PU",
+        "Pesaro-Urbino"
+      ],
+      [
+        "MC",
+        "Macerata"
+      ],
+      [
+        "FM",
+        "Fermo"
+      ],
+      [
+        "GE",
+        "Genova"
+      ],
+      [
+        "SV",
+        "Savona"
+      ],
+      [
+        "TO",
+        "Torino",
+        "provincia di torino"
+      ],
+      [
+        "BO",
+        "Bologna"
+      ],
+      [
+        "CN",
+        "Cuneo"
+      ],
+      [
+        "NO",
+        "Novara"
+      ],
+      [
+        "VE",
+        "Venezia",
+        "Veneto"
+      ],
+      [
+        "PG",
+        "Perugia"
+      ],
+      [
+        "PR",
+        "Parma"
+      ],
+      [
+        "VC",
+        "Vercelli"
+      ],
+      [
+        "LU",
+        "Lucca"
+      ],
+      [
+        "MO",
+        "Modena"
+      ],
+      [
+        "MB",
+        "Monza-Brianza"
+      ],
+      [
+        "PV",
+        "Pavia"
+      ],
+      [
+        "BS",
+        "Brescia"
+      ],
+      [
+        "RA",
+        "Ravenna"
+      ],
+      [
+        "IM",
+        "Imperia"
+      ],
+      [
+        "RM",
+        "Roma"
+      ],
+      [
+        "MN",
+        "Mantova"
+      ],
+      [
+        "AT",
+        "Asti"
+      ],
+      [
+        "RO",
+        "Rovigo",
+        "Veneto"
+      ],
+      [
+        "Curriculum",
+        " CV",
+        " curricula",
+        "curiculum",
+        "posto lavoro",
+        "lavora con noi",
+        "assumete",
+        "assunzioni",
+        "posso lasciare il mio curriculum",
+        "posizioni aperte",
+        "posizioni lavorative aperte",
+        "candidatura",
+        "lavorare con voi",
+        "lavorare come oss",
+        "cercate oss",
+        "ricerca di personale",
+        "nuove assunzioni"
+      ],
+      [
+        "in",
+        "nella",
+        "nel",
+        "a"
+      ],
+      [
+        "covid",
+        "greenpass",
+        "green",
+        "green-pass",
+        "covid19",
+        "pandemia",
+        "restrizioni",
+        "pass",
+        "certificato verde",
+        "green pass"
+      ],
+      [
+        "Radio",
+        "spotify",
+        "radio anni azzurri",
+        "mercurio",
+        "casa anni azzurri",
+        "età della memoria"
+      ],
+      [
+        "contributi regionali",
+        "aiuti economici",
+        "convenzioni",
+        "convenzioni regione",
+        "agevolazioni"
+      ],
+      [
+        "Torino",
+        "provincia di torino"
+      ],
+      [
+        "temporaneo",
+        "ricovero temporaneo",
+        "sollievo",
+        "ricovero di sollievo",
+        "soggiorno breve",
+        "ricovero estivo",
+        "soggiorno estivo"
+      ],
+      [
+        "questionari di ammissione",
+        "documenti riabiltizione",
+        "domanda inserimento",
+        "scheda sanitaria",
+        "domanda unica",
+        "scheda d'ingresso",
+        "sched unica"
+      ],
+      [
+        "Quanto costa una residenza",
+        "costo",
+        "costo rsa",
+        "tariffe",
+        "retta",
+        "prezzi",
+        "oneri",
+        "spese",
+        "canone",
+        "importo",
+        "compensi"
+      ],
+      [
+        "documentazione riabilitazione",
+        "scheda ammissione riabilitazione",
+        "questionario ammissione riabilitazione",
+        "Scheda riabilitativa"
+      ],
+      [
+        "RSA",
+        "Residenza sanitaria assistenziale",
+        "residenza per anziani",
+        "residenze per anziani",
+        "ospizio"
+      ],
+      [
+        "Parkinson",
+        "Malattia di parkinosn",
+        "disturbi del movimento",
+        "tremore",
+        "freezing",
+        "dbs",
+        "stimolazione cerebrale profonda"
+      ],
+      [
+        "cefalea",
+        " cefalee",
+        "mal di testa",
+        "centro cefalee",
+        "centro cefalea"
+      ]
+    ],
+    "normalization": []
+  },
+  "countryRestrictions": [],
+  "verticals": {
+    "chi-siamo": {
+      "name": "Chi Siamo",
+      "source": "KNOWLEDGE_MANAGER",
+      "entityTypes": [
+        "ce_promoBanner"
+      ],
+      "searchableFields": {
+        "c_body": {
+          "textSearch": true
+        },
+        "c_labelsFacets": {
+          "facet": true
+        },
+        "name": {
+          "textSearch": true
+        },
+        "title": {
+          "textSearch": true
+        },
+        "c_subtitle": {
+          "textSearch": true
+        }
+      },
+      "savedSearchId": "1396354168",
+      "sortBys": [
+        {
+          "type": "RELEVANCE"
+        }
+      ],
+      "facetOrder": [
+        "c_labelsFacets"
+      ],
+      "dynamicRerank": {
+        "target": "CLICKS"
+      }
+    },
+    "convenzioni": {
+      "name": "Convenzioni",
+      "source": "KNOWLEDGE_MANAGER",
+      "entityTypes": [
+        "ce_convenzioni"
+      ],
+      "searchableFields": {
+        "c_filtroAreaClinica": {
+          "facet": true
+        },
+        "c_tipologiaConvenzoni": {
+          "facet": true
+        },
+        "name": {
+          "textSearch": true
+        },
+        "body": {
+          "textSearch": true
+        },
+        "title": {
+          "textSearch": true
+        },
+        "c_subtitle": {
+          "textSearch": true
+        }
+      },
+      "savedSearchId": "1397833494",
+      "sortBys": [],
+      "facetOrder": [
+        "c_tipologiaConvenzoni",
+        "c_filtroAreaClinica"
+      ]
+    },
+    "lavora-con-noi": {
+      "name": "Lavora con noi",
+      "source": "KNOWLEDGE_MANAGER",
+      "entityTypes": [
+        "ce_work"
+      ],
+      "searchableFields": {
+        "c_secondaryCTA.linkType": {
+          "textSearch": true
+        },
+        "c_primaryCTA.link": {
+          "textSearch": true
+        },
+        "c_primaryCTA.linkType": {
+          "textSearch": true
+        },
+        "c_primaryCTA.label": {
+          "textSearch": true
+        },
+        "name": {
+          "textSearch": true
+        },
+        "body": {
+          "textSearch": true
+        },
+        "c_secondaryCTA.link": {
+          "textSearch": true
+        },
+        "title": {
+          "textSearch": true
+        },
+        "c_secondaryCTA.label": {
+          "textSearch": true
+        },
+        "c_subtitle": {
+          "textSearch": true
+        }
+      },
+      "savedSearchId": "1397844292",
+      "sortBys": [],
+      "displayFields": [
+        "c_tipologiaLavoro",
+        "c_citta",
+        "name",
+        "c_region"
+      ]
+    },
+    "news": {
+      "name": "News",
+      "source": "KNOWLEDGE_MANAGER",
+      "entityTypes": [
+        "ce_newsArticle"
+      ],
+      "searchableFields": {
+        "c_categoriaFacets": {
+          "facet": true,
+          "phraseMatch": true
+        },
+        "c_body": {
+          "textSearch": true
+        },
+        "name": {
+          "textSearch": true
+        },
+        "datePosted": {
+          "sortable": true
+        },
+        "title": {
+          "textSearch": true
+        },
+        "c_subtitle": {
+          "textSearch": true
+        }
+      },
+      "savedSearchId": "1397838893",
+      "sortBys": [
+        {
+          "type": "FIELD",
+          "field": "datePosted",
+          "direction": "DESC"
+        }
+      ],
+      "facetOrder": [
+        "c_categoriaFacets"
+      ]
+    },
+    "servizi": {
+      "name": "Servizi",
+      "source": "KNOWLEDGE_MANAGER",
+      "entityTypes": [
+        "ce_services"
+      ],
+      "searchableFields": {
+        "c_serviziFacets": {
+          "facet": true,
+          "phraseMatch": true
+        },
+        "c_body": {
+          "textSearch": true
+        },
+        "name": {
+          "textSearch": true,
+          "phraseMatch": true
+        },
+        "title": {
+          "textSearch": true
+        },
+        "c_subtitle": {
+          "textSearch": true
+        }
+      },
+      "savedSearchId": "1397849691",
+      "sortBys": [],
+      "facetOrder": [
+        "c_serviziFacets"
+      ],
+      "displayFields": [
+        "c_secondaryCTA.linkType",
+        "c_serviceImage",
+        "c_primaryCTA.link",
+        "c_primaryCTA.linkType",
+        "c_primaryCTA.label",
+        "c_primaryCTA"
+      ]
+    },
+    "strutture": {
+      "name": "Strutture",
+      "source": "KNOWLEDGE_MANAGER",
+      "entityTypes": [
+        "location"
+      ],
+      "searchableFields": {
+        "c_tipologiaDiStruttura": {
+          "facet": true,
+          "semanticTextSearch": true
+        },
+        "address.city": {
+          "textSearch": true,
+          "phraseMatch": true
+        },
+        "builtin.location": {
+          "nlpFilter": true
+        },
+        "keywords": {
+          "phraseMatch": true
+        },
+        "name": {
+          "textSearch": true,
+          "phraseMatch": true
+        },
+        "c_region": {
+          "facet": true,
+          "textSearch": true
+        },
+        "c_tipologiaDiRicovero": {
+          "facet": true,
+          "semanticTextSearch": true
+        }
+      },
+      "savedSearchId": "1397855090",
+      "sortBys": [],
+      "facetOrder": [
+        "c_region",
+        "c_tipologiaDiStruttura",
+        "c_tipologiaDiRicovero"
+      ]
+    }
+  },
+  "localizations": {},
+  "querySuggestions": {
+    "universalPrompts": [
+      "Strutture",
+      "News",
+      "Servizi",
+      "Convenzioni",
+      "Lavora con noi",
+      "Video",
+      "[[name]]"
+    ],
+    "verticalPrompts": {
+      "servizi": [
+        "Supporto psicologico al paziente",
+        "Risonanza Magnetica",
+        "Diagnostica ecografica",
+        "Laboratorio analisi",
+        "Dipendenze",
+        "[[name]]"
+      ],
+      "strutture": [
+        "Poliambulatorio Santo Stefano",
+        "Villa Rosa",
+        "Villa Azzurra",
+        "Villa San Giuseppe",
+        "Poliambulatorio Villalba",
+        "[[name]]"
+      ],
+      "chi-siamo": [
+        "Il Gruppo KOS",
+        "Cura delle persone",
+        "Ricerca Scientifica",
+        "Tecnologia e innovazione",
+        "I nostri medici",
+        "[[name]]"
+      ],
+      "lavora-con-noi": [
+        "Posizioni di lavoro",
+        "Lavori",
+        "[[name]]"
+      ]
+    },
+    "popularQueriesBlacklistedTerms": [],
+    "disablePopularQueries": false,
+    "verticalPromptsOnEmpty": true,
+    "popularQueriesBlacklistedRegex": []
+  },
+  "rules": [
+    {
+      "actions": [
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "NewsTest9"
+          ],
+          "verticalKey": "news"
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "Servizi34",
+            "Servizi7"
+          ],
+          "verticalKey": "servizi"
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "VPI00_VPS",
+            "JES00_JES",
+            "107",
+            "KCA00_APO",
+            "VPI00_VPM",
+            "108"
+          ],
+          "verticalKey": "strutture"
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "551",
+            "479"
+          ],
+          "verticalKey": "lavora-con-noi"
+        }
+      ],
+      "criteria": {
+        "searchTermExactlyMatches": "visita ortopedica"
+      },
+      "name": "When search term is \"visita ortopedica\""
+    },
+    {
+      "actions": [
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "NewsTest70"
+          ],
+          "verticalKey": "news"
+        },
+        {
+          "actionType": "BURY_ENTITIES",
+          "entityIds": [
+            "NewsTest46",
+            "NewsTest48"
+          ],
+          "verticalKey": "news"
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "VPI00_VPS",
+            "JES00_JES",
+            "107",
+            "VPI00_VPM",
+            "KCA00_OSP",
+            "VMA00_OBN",
+            "KCA08202"
+          ],
+          "verticalKey": "strutture"
+        },
+        {
+          "actionType": "BURY_ENTITIES",
+          "entityIds": [
+            "104"
+          ],
+          "verticalKey": "strutture"
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "550"
+          ],
+          "verticalKey": "lavora-con-noi"
+        }
+      ],
+      "criteria": {
+        "searchTermExactlyMatches": "visita cardiologica"
+      },
+      "name": "When search term is \"visita cardiologica\""
+    },
+    {
+      "actions": [
+        {
+          "actionType": "BOOST_VERTICALS",
+          "verticals": [
+            "servizi",
+            "strutture",
+            "news"
+          ]
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "NewsTest51",
+            "NewsTest20",
+            "NewsTest49"
+          ],
+          "verticalKey": "news"
+        },
+        {
+          "actionType": "BURY_ENTITIES",
+          "entityIds": [
+            "Servizi66"
+          ],
+          "verticalKey": "servizi"
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "VMA00_OAR",
+            "VMA00_OBN",
+            "KCA00_OSP"
+          ],
+          "verticalKey": "strutture"
+        },
+        {
+          "actionType": "BURY_ENTITIES",
+          "entityIds": [
+            "KCA00_OSA",
+            "KCA00_OSB",
+            "KCA00_ASB"
+          ],
+          "verticalKey": "strutture"
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "516"
+          ],
+          "verticalKey": "lavora-con-noi"
+        }
+      ],
+      "criteria": {
+        "searchTermExactlyMatches": "parkinson"
+      },
+      "name": "When search term is \"parkinson\""
+    },
+    {
+      "actions": [
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "NewsTest30",
+            "NewsTest20"
+          ],
+          "verticalKey": "news"
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "VPI00_VPS",
+            "VMA00_OAR"
+          ],
+          "verticalKey": "strutture"
+        }
+      ],
+      "criteria": {
+        "searchTermExactlyMatches": "cefalea"
+      },
+      "name": "When search term is \"cefalea\""
+    },
+    {
+      "actions": [
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "NewsTest30",
+            "NewsTest20"
+          ],
+          "verticalKey": "news"
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "VPI00_VPS",
+            "VMA00_OAR"
+          ],
+          "verticalKey": "strutture"
+        }
+      ],
+      "criteria": {
+        "searchTermExactlyMatches": "cefalee"
+      },
+      "name": "When search term is \"cefalee\""
+    },
+    {
+      "actions": [
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "NewsTest30",
+            "NewsTest20"
+          ],
+          "verticalKey": "news"
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "VPI00_VPS",
+            "VMA00_OAR"
+          ],
+          "verticalKey": "strutture"
+        }
+      ],
+      "criteria": {
+        "searchTermExactlyMatches": "emicrania"
+      },
+      "name": "When search term is \"emicrania\""
+    },
+    {
+      "actions": [
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "NewsTest30",
+            "NewsTest20"
+          ],
+          "verticalKey": "news"
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "VPI00_VPS",
+            "VMA00_OAR"
+          ],
+          "verticalKey": "strutture"
+        }
+      ],
+      "criteria": {
+        "searchTermExactlyMatches": "mal di testa"
+      },
+      "name": "When search term is \"mal di testa\""
+    },
+    {
+      "actions": [
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "NewsTest9"
+          ],
+          "verticalKey": "news"
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "Servizi34",
+            "Servizi7"
+          ],
+          "verticalKey": "servizi"
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "VPI00_VPS",
+            "JES00_JES",
+            "107",
+            "KCA00_APO",
+            "VPI00_VPM",
+            "108"
+          ],
+          "verticalKey": "strutture"
+        },
+        {
+          "actionType": "BOOST_ENTITIES",
+          "entityIds": [
+            "551",
+            "479"
+          ],
+          "verticalKey": "lavora-con-noi"
+        }
+      ],
+      "criteria": {
+        "searchTermContainsAll": [
+          "visita al ginocchio",
+          "esame ortopedico",
+          "visita alla gamba"
+        ]
+      },
+      "name": "When search term is \"ortopedica\""
+    }
+  ],
+  "customPhrases": [
+    "Riabilitazione ortopedica",
+    "Riabilitazione Psichiatrica",
+    "Riabilitazione gravi cerebrolesioni ",
+    "Riabilitazione cardiologica",
+    "riabilitazione mielolesioni",
+    "Riabilitazione in età evolutiva",
+    "Riabilitazione neurologica",
+    "Disturbi alimentari",
+    "Disturbi dell'umore ",
+    "Disturbi d'ansia",
+    "Disturbi della personalità",
+    "Assistenza stati vegetativi persistenti",
+    "Parkinson e disordini del movimento",
+    "Riabilitazione estensiva e generale geriatrica",
+    "Riabilitazione metabolica",
+    "Riabilitazione pneumologica",
+    "Riabilitazione urologica e del pavimento pelvico"
+  ],
+  "additionalSearchablePlaces": []
+}
