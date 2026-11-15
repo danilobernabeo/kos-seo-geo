@@ -191,8 +191,9 @@ note, `/model`), con le esportazioni nella cartella della scansione:
 ```
 Leggi docs/verifica-screaming-frog.md (sezione «Cosa controlliamo poi») e docs/revisioni/prompt-revisione-nota.md.
 Analizza le esportazioni di Screaming Frog in <cartella> per kosgroup.com e anniazzurri.it e confrontale con le note di
-consegna degli sprint 2 e 3 (docs/docx/Nota di consegna dello sprint 2.docx, docs/riferimenti/nota-di-consegna-sprint-3.md,
-docs/riferimenti/precisazioni-nota-sprint-2.md): ogni affermazione verificabile sulle pagine deve risultare vera su tutte
+consegna degli sprint 1, 2 e 3 (docs/riferimenti/nota-di-consegna-sprint-1.md, docs/docx/Nota di consegna dello sprint 2.docx,
+docs/riferimenti/nota-di-consegna-sprint-3.md, docs/riferimenti/precisazioni-nota-sprint-2.md), usando anche lista.csv e la
+tabella «Copertura delle voci degli sprint 1-3»: ogni affermazione verificabile sulle pagine deve risultare vera su tutte
 le pagine del tipo, non solo sugli esempi. Controlla in più: date (dateModified, datePublished, lastmod) plausibili e mai
 anteriori al 2000; campi del dato strutturato presenti in modo uniforme per tipo di pagina (brand, telefono, orari,
 specialità); canonical uguale all'URL; nessuna pagina in sitemap con redirect, 404 o noindex. Non fare richieste ai siti
