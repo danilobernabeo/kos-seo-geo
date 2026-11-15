@@ -1,0 +1,173 @@
+{
+  "nome": "Orari delle strutture KOS dalle carte dei servizi (15/11): ambulatori e prelievi = orari di apertura; degenze = orario dell'accettazione o dell'URP (decisione di Danilo del 15/11)",
+  "risorse": [
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-ascoli-piceno",
+      "tv": {
+        "str.orari": "Mo-Fr 08:00-13:00,13:30-19:30"
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-camerino",
+      "tv": {
+        "str.orari": "Mo-Fr 08:00-13:00,14:00-19:00\nSa 09:00-12:00"
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-civitanova-marche",
+      "tv": {
+        "str.orari": "Mo-Fr 08:00-13:00,14:00-19:00\nSa 09:00-12:00"
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-fabriano",
+      "tv": {
+        "str.orari": "Mo-Fr 08:00-19:00\nSa 08:00-12:00"
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-jesi",
+      "tv": {
+        "str.orari": "Mo-Fr 08:00-19:00\nSa 08:30-13:00"
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-macerata",
+      "tv": {
+        "str.orari": "Mo-Fr 08:00-19:00"
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-san-benedetto-del-tronto",
+      "tv": {
+        "str.orari": "Mo-Fr 08:00-13:00,13:15-19:00\nSa 08:00-12:00"
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-tolentino",
+      "tv": {
+        "str.orari": "Mo-Fr 08:30-13:00,13:30-18:30"
+      }
+    },
+    {
+      "uri": "it/centri/myolab",
+      "tv": {
+        "str.orari": "Mo-Fr 08:00-20:30\nSa 08:00-13:30"
+      }
+    },
+    {
+      "uri": "it/centri/punto-prelievi-biemme",
+      "tv": {
+        "str.orari": "Mo,We,Fr 07:30-12:30,15:00-16:30\nTu,Th,Sa 07:30-12:30"
+      }
+    },
+    {
+      "uri": "it/centri/punto-prelievi-delta",
+      "tv": {
+        "str.orari": "Mo,We,Fr 07:30-12:30,15:00-16:30\nTu,Th,Sa 07:30-12:30"
+      }
+    },
+    {
+      "uri": "it/centri/punto-prelievi-gamma",
+      "tv": {
+        "str.orari": "Mo,We,Fr 07:30-12:30,15:00-16:30\nTu,Th,Sa 07:30-12:30"
+      }
+    },
+    {
+      "uri": "it/centri/punto-prelievi-salus-villalba",
+      "tv": {
+        "str.orari": "Mo,We,Fr 07:30-12:30,15:00-16:30\nTu,Th,Sa 07:30-12:30"
+      }
+    },
+    {
+      "uri": "it/centri/punto-prelievi-selemar",
+      "tv": {
+        "str.orari": "Mo,We,Fr 07:30-12:30,15:00-16:30\nTu,Th,Sa 07:30-12:30"
+      }
+    },
+    {
+      "uri": "it/centri/centro-cardinal-ferrari",
+      "tv": {
+        "str.orari": "Mo-Sa 08:00-20:00"
+      }
+    },
+    {
+      "uri": "it/centri/centro-residenziale-santo-stefano-foligno",
+      "tv": {
+        "str.orari": "Mo-Fr 09:00-13:30"
+      }
+    },
+    {
+      "uri": "it/centri/centro-santo-stefano-macerata-feltria",
+      "tv": {
+        "str.orari": "Mo-Fr 08:30-18:00"
+      }
+    },
+    {
+      "uri": "it/centri/centro-venerabile-marcucci",
+      "tv": {
+        "str.orari": "Mo-Fr 08:30-18:00"
+      }
+    },
+    {
+      "uri": "it/centri/istituto-santo-stefano",
+      "tv": {
+        "str.orari": "Mo-Fr 08:30-13:30,15:00-17:00"
+      }
+    },
+    {
+      "uri": "it/centri/corte-orero",
+      "tv": {
+        "str.orari": "Mo-Th 08:00-13:00,14:30-17:30"
+      }
+    },
+    {
+      "uri": "it/centri/ospedale-san-pancrazio",
+      "tv": {
+        "str.orari": "Mo-Su 08:00-19:00"
+      }
+    },
+    {
+      "uri": "it/centri/villa-adria",
+      "tv": {
+        "str.orari": "Mo-Fr 09:00-14:00"
+      }
+    },
+    {
+      "uri": "it/centri/villa-dei-pini-firenze",
+      "tv": {
+        "str.orari": "Mo-Fr 08:00-15:00"
+      }
+    },
+    {
+      "uri": "it/centri/villa-fastiggi",
+      "tv": {
+        "str.orari": "Mo-Fr 08:30-18:00"
+      }
+    },
+    {
+      "uri": "it/centri/villa-jolanda",
+      "tv": {
+        "str.orari": "Mo-Fr 08:30-13:30,14:30-17:30"
+      }
+    },
+    {
+      "uri": "it/centri/villa-rosa",
+      "tv": {
+        "str.orari": "Mo-Fr 09:00-12:00"
+      }
+    },
+    {
+      "uri": "it/centri/villa-san-giuseppe",
+      "tv": {
+        "str.orari": "Tu,Th 11:00-12:00"
+      }
+    },
+    {
+      "uri": "it/centri/villa-sant-alessandro",
+      "tv": {
+        "str.orari": "Mo-Fr 08:30-19:30\nSa-Su 08:00-12:30"
+      }
+    }
+  ]
+}
