@@ -144,7 +144,7 @@ dati di partenza (collaudi `collaudo-kos-11.mjs`, `collaudo-kos-24.mjs`).
 
 File › Scheduling: una pianificazione per sito e cadenza (domenica, kosgroup.com e poi anniazzurri.it a distanza di
 qualche ora), con la configurazione salvata, «Run in headless mode», salvataggio della scansione ed esportazioni
-automatiche (elenco sotto) in `C:\Users\danil\Documents\screaming-frog\<sito>\<AAAAMMGG>-<cadenza>\`. Il computer deve
+automatiche (elenco sotto) in `C:\Users\danil\progetti\kos-seo-geo\screaming-frog\<sito>\<AAAAMMGG>-<cadenza>\` (accanto al repository, fuori da git). Il computer deve
 essere acceso e collegato.
 
 ## Cosa esportare (nella cartella della scansione)
