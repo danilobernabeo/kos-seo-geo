@@ -1,0 +1,245 @@
+{
+  "nome": "KOS-24 marchi dismessi: str.marchio svuotata sulle schede Neomesia, Santo Stefano Riabilitazione e Polo Diagnostico (marchi non più esistenti, indicazione di Danilo del 15/11): niente brand nel nodo",
+  "risorse": [
+    {
+      "uri": "it/centri/casa-villa-maura",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-jesi",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-san-benedetto-del-tronto",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/casa-mioglia",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/villa-adria",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/villa-azzurra",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/villa-jolanda",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/villa-rosa",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/ville-di-nozzano",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/centro-cardinal-ferrari",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-pesaro",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-porto-potenza-picena",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/ospedale-san-pancrazio",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/poliambulatorio-santo-stefano",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/istituto-santo-stefano",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/casa-cima",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/casa-pero",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/villa-sant-alessandro",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-ascoli-piceno",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-fabriano",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/centro-santo-stefano-cagli",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/casa-sampeyre",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-filottrano",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/villa-san-giuseppe",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/punto-prelievi-biemme",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-civitanova-marche",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-camerino",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-san-severino",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-tolentino",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/centro-residenziale-santo-stefano-foligno",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/centro-santo-stefano-macerata-feltria",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/corte-carcare",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/casa-sanremo",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/corte-orero",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/punto-prelievi-salus-villalba",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/villa-margherita-benevento",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/villa-dei-pini-firenze",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-matelica",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/centro-ambulatoriale-santo-stefano-macerata",
+      "tv": {
+        "str.marchio": ""
+      }
+    },
+    {
+      "uri": "it/centri/poliambulatorio-valdaso",
+      "tv": {
+        "str.marchio": ""
+      }
+    }
+  ]
+}
