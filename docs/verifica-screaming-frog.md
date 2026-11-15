@@ -78,7 +78,21 @@ Le voci di menu sono quelle della versione in inglese.
   | jsonld_telephone | Regex | `"telephone":\s*"([^"]+)"` |
   | canonical | XPath | `//link[@rel="canonical"]/@href` |
 
+  | briciole_visibili | XPath | `//*[contains(@class,"breadcrumb-item")]` |
+  | jsonld_briciole | Regex | `"@type":\s*"ListItem"[^{}]*?"name":\s*"([^"]+)"` |
+  | webp_sorgenti | XPath, Function Value | `count(//source[@type="image/webp"])` |
+  | img_senza_alt | XPath, Function Value | `count(//img[not(@alt)])` |
+  | img_lazy | XPath, Function Value | `count(//img[@loading="lazy"])` |
+  | email_offuscate | XPath, Function Value | `count(//*[contains(text(),"Turn on Javascript")])` |
+  | jsonld_itemlist | Regex | `"@type":\s*"ItemList"` |
+
   Per le regex Screaming Frog restituisce tutte le corrispondenze in colonne successive (jsonld_tipi 1, 2, ...).
+
+- **Custom › Search, in più** (opzione «Regex»): `link_relativi` con `href="(?!https?:|/|#|mailto:|tel:|javascript:)`
+  (link interni non assoluti, regola del progetto).
+- **Spider › Extraction:** spunta anche **HTTP Headers** (per `X-Robots-Tag` e `Link rel="canonical"` dei PDF) e le
+  proprietà dei **PDF** (titolo, oggetto, autore: i titoli riscritti nei metadati con lo sprint 2). I nomi esatti delle
+  caselle possono variare con la versione di Screaming Frog.
 
 ## Differenze per configurazione
 
@@ -89,6 +103,42 @@ Le voci di menu sono quelle della versione in inglese.
   generale); Spider › Rendering **JavaScript**, «Store HTML» e «Store Rendered HTML»; poi View Source mostra il confronto
   tra HTML del server e HTML dopo JavaScript. Controllo: nessun JSON-LD, canonical o contenuto aggiunto solo da
   JavaScript.
+
+## Controlli in modalità elenco (15/11, una volta)
+
+Due scansioni brevi in Mode › List, con le impostazioni comuni e la velocità di 0,5 URL/s:
+
+- `docs/revisioni/screaming-frog/controlli-lista.txt`: robots.txt, llms.txt, favicon e apple-touch-icon, sitemap, una
+  pagina inesistente per sito (deve dare 404, mai 200), gli URL annidati `/it/.../it` di kosgroup.com (404), le forme con
+  www e http (301 verso la forma canonica). Esporta Internal › All: `lista.csv`.
+- `docs/revisioni/screaming-frog/campione-js.txt` (28 pagine dei due siti, una o due per tipo): è il campione della
+  configurazione JavaScript. Facoltativo nella stessa scansione: Configuration › API Access › PageSpeed Insights con una
+  chiave API di Google, strategia mobile, per LCP e CLS di laboratorio e dati CrUX per pagina (voci KOS 2 e AA 4).
+
+## Cosa la scansione non copre
+
+Rich Results Test (solo a campione, a mano), misure dei visitatori reali (CLS e LCP da GA4 su BigQuery e CrUX),
+accesso dei bot AI con i loro user agent (`scripts/collaudo/verifica-sprint-1.mjs`), contenuto delle schede contro i
+dati di partenza (collaudi `collaudo-kos-11.mjs`, `collaudo-kos-24.mjs`).
+
+## Copertura delle voci degli sprint 1-3
+
+| Voci | Come si verificano nella scansione |
+|---|---|
+| Accesso dei crawler AI, robots.txt (KOS 6, 19; AA 19) | lista: robots.txt; user agent con lo script di verifica |
+| 404, URL annidati, redirect www/http (sprint 1) | lista; Response Codes della completa |
+| Canonical (AA 7, paginazione) | Canonicals, estrazione `canonical`, pagine `?page=N` |
+| Ente, briciole (KOS 9, 12-13; AA 8) | Structured Data, `jsonld_tipi`, `briciole_visibili` contro `jsonld_briciole` |
+| Tempo di risposta e immagini (KOS 2; AA 17) | Response Time, Images over 200 KB, `webp_sorgenti`, `img_lazy`; PSI sul campione |
+| PDF (KOS 8; AA 3) | PDF, HTTP Headers (`X-Robots-Tag`, `Link`), proprietà dei PDF, `sitemap-pdf-noindex.xml` |
+| Title, description, H1, H2 (KOS 21-23; AA 6, 20) | Page Titles, Meta Description, H1, H2 (duplicati) |
+| Immagini di sfondo e alt (AA 1, 9; KOS 7) | Images › Missing Alt Text, `img_senza_alt` |
+| Dato strutturato delle strutture e delle residenze (KOS 24; AA 2, 5, 11) | Structured Data, `jsonld_localbusiness`, `jsonld_brand`, `jsonld_telephone`, `jsonld_dateModified`; ricerca `yextapis.com` |
+| Pagine provincia (AA 10) | `jsonld_itemlist` sulle 14 pagine |
+| Scheda contatti (AA 21) | `email_offuscate` sulle schede (atteso: solo l'email del direttore) |
+| Professionisti, Villa Margherita (KOS 11) | `jsonld_medico`, `jsonld_department`, `jsonld_mainEntity` |
+| Link assoluti, parametri, resti di tag (regole del progetto) | ricerche `link_relativi`, `utm`, `gclid`, `tag-modx` |
+| CLS (AA 4) | PSI sul campione; misura reale da GA4 |
 
 ## Pianificazione
 
