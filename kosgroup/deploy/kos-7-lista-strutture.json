@@ -1,0 +1,11 @@
+{
+  "nome": "KOS-7 alt delle foto negli elenchi «Le nostre strutture a cui rivolgersi» (chunk listaStrutture): nome della struttura senza modificatore, perché dentro un @INLINE il segnaposto con :htmlent viene risolto prima di getResources e restava vuoto",
+  "elements": [
+    {
+      "type": "chunk",
+      "name": "listaStrutture",
+      "file": "kosgroup/elements/chunks/listaStrutture.html",
+      "baseline": "kosgroup/baseline/chunks/listaStrutture.html"
+    }
+  ]
+}
