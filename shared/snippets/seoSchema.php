@@ -33,7 +33,8 @@
  *   (es. Villa Margherita Vicenza, una Casa di Cura con due unità). La pagina dell'unità ha come mainEntity il nodo
  *   {URL pagina unità}#department (MedicalOrganization, parentOrganization verso la sede); la sede è il solo nodo
  *   #localbusiness (indirizzo, profilo Google) e dichiara department verso le unità. Chi cita l'unità (medici,
- *   articoli) cita la sede: practicesAt e mentions vogliono un'organizzazione con indirizzo.
+ *   articoli) cita la sede: practicesAt e mentions vogliono un'organizzazione con indirizzo (il riferimento porta
+ *   address e telephone della scheda).
  *
  * ARTICOLI (AA-8; kosgroup.com voce KOS-10)
  *   Pagine dei template <prefisso>.tpl_article: Article (o il tipo della sezione, <prefisso>.article_sezioni =
@@ -798,8 +799,22 @@ $riferimentiStrutture = function ($csvId) use ($modx, $CLS_RES, $url, $tv, $idDi
         if (!$t || !in_array($t->get('templatename'), $STR_TPL, true)) continue;
         if ((string) $tv($r, 'str.via') === '' || ($u = $url($id)) === '') continue;
         $tipi = $tipiStruttura($r);
-        $out[] = ['@type' => count($tipi) === 1 ? $tipi[0] : $tipi, '@id' => $idDi($u, 'struttura'),
-                  'name' => $tv($r, 'str.nome') ?: $r->get('pagetitle'), 'url' => $u];
+        // Il riferimento è tipizzato (attività locale): Google lo convalida come tale e vuole address (errore
+        // «address obbligatorio» del Rich Results Test su medici e articoli, Screaming Frog 15/11). Indirizzo e
+        // telefono della scheda, gli stessi del nodo completo sulla sua pagina.
+        $out[] = array_filter([
+            '@type' => count($tipi) === 1 ? $tipi[0] : $tipi, '@id' => $idDi($u, 'struttura'),
+            'name' => $tv($r, 'str.nome') ?: $r->get('pagetitle'), 'url' => $u,
+            'address' => [
+                '@type'           => 'PostalAddress',
+                'streetAddress'   => (string) $tv($r, 'str.via'),
+                'postalCode'      => (string) $tv($r, 'str.cap'),
+                'addressLocality' => (string) $tv($r, 'str.citta'),
+                'addressRegion'   => strtoupper((string) $tv($r, 'str.provincia')),
+                'addressCountry'  => 'IT',
+            ],
+            'telephone' => (string) $tv($r, 'str.telefono'),
+        ], fn($x) => $x !== '' && $x !== null);
     }
     return $out;
 };
