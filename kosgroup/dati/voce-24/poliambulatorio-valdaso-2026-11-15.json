@@ -1,0 +1,14 @@
+{
+  "nome": "KOS-24 Poliambulatorio Valdaso: orario 10:00-18:00, specialità e aree di intervento aggiornate (indicazioni KOS del 13/11)",
+  "risorse": [
+    {
+      "id": 909,
+      "uri": "it/centri/poliambulatorio-valdaso",
+      "tv": {
+        "str.orari": "Mo-Fr 10:00-18:00",
+        "str.specialita": "Cardiovascular,Surgical,Dermatology,DietNutrition,Physiotherapy,Gastroenterologic,SpeechPathology,Musculoskeletal,Otolaryngologic,Urologic",
+        "str.servizi": "MedicalProcedure|Cardiologia\nMedicalProcedure|Chirurgia generale\nMedicalProcedure|Chirurgia vascolare\nMedicalProcedure|Dermatologia\nMedicalTest|Diagnostica ecografica\nMedicalProcedure|Dietologia\nMedicalTherapy|Fisioterapia\nMedicalProcedure|Gastroenterologia\nMedicalTherapy|Logopedia\nMedicalProcedure|Medicina dello sport\nMedicalProcedure|Neurochirurgia e chirurgia vertebrale\nMedicalProcedure|Ortopedia\nMedicalTherapy|Osteopatia\nMedicalProcedure|Otorinolaringoiatria\nMedicalTherapy|Psicologia\nMedicalTherapy|Psicoterapia\nMedicalProcedure|Urologia"
+      }
+    }
+  ]
+}
