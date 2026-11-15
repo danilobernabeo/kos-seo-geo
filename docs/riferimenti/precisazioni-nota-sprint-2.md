@@ -38,5 +38,5 @@ Negli Scostamenti mancava la riga sui PDF di anniazzurri.it: gli scostamenti son
 ## Come verificare: indicazioni più precise
 
 - **AA 6:** nessun «Guarda meno / Guarda di più» dentro un titolo (i titoli come «Guarda il video della residenza» sono legittimi).
-- **AA 17:** nessuna immagine sopra 200 KB (testata e schede in WebP; restano in PNG o JPG alcune immagini piccole).
+- **AA 17:** le 101 immagini dell'allegato sono state ridotte da 51,4 a 13,2 MB e testata e schede sono servite in WebP. Restano sopra 200 KB 8 mappe regionali della pagina Residenze e alcune varianti WebP delle larghezze maggiori (fino a 1600 px, per gli schermi grandi): sono in correzione.
 - **KOS 8:** oltre alla carta dei servizi di Punto Prelievi Biemme, un documento escluso: `curl -sI` su https://kosgroup.com/assets/doc/strutture/casa-villa-maura/contratto.pdf, intestazione `X-Robots-Tag: noindex`.
