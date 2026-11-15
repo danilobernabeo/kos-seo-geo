@@ -72,6 +72,8 @@ Verifica del 13 novembre in produzione, sul sorgente: https://kosgroup.com/villa
 
 Restano `Person` legati all'ente due professionisti senza una sede: uno per scelta (Comitato Scientifico), l'altro in attesa che KOS indichi la struttura di riferimento.
 
+Correzione del 15 novembre: la struttura citata da `practicesAt` e `worksFor` (e dalle `mentions` degli articoli) aveva tipo, nome e URL ma non l'indirizzo, e la convalida di Google delle attività locali la segnalava come incompleta («address obbligatorio») su 148 pagine di professionisti. Ora il riferimento riporta indirizzo e telefono della struttura, gli stessi della sua scheda. Ricontrollo con Screaming Frog sulle 308 pagine interessate (professionisti e articoli): nessun errore; restano gli avvisi facoltativi (`priceRange`, orari, `geo`).
+
 ## Scostamenti dalle proposte dell'audit
 
 In sei punti la forma scelta differisce dall'esempio dell'audit; per ciascuno il motivo e la fonte.
