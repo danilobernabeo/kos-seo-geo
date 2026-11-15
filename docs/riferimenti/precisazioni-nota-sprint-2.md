@@ -8,6 +8,10 @@ Rileggendo la nota del 6 novembre prima della vostra verifica abbiamo trovato al
 
 Dal 3 al 13 novembre la data di ultima modifica di 470 pagine (328 su kosgroup.com, 142 su anniazzurri.it) risultava 1° gennaio 1970, nel dato strutturato (`dateModified`) e nelle sitemap (`<lastmod>`). La causa era lo script con cui abbiamo aggiornato title e description (voci KOS 21-23 e AA 20): doveva conservare la data di modifica delle pagine e invece la azzerava. Lo script è corretto e le date sono ripristinate: le pagine mai modificate in precedenza tornano alla data di pubblicazione, le altre hanno la data dell'aggiornamento di title e description. Se nelle vostre scansioni compare ancora il 1970, è una copia precedente al 13 novembre.
 
+## Riferimenti alle strutture negli articoli (corretto il 15 novembre)
+
+Fino al 15 novembre gli articoli di kosgroup.com che citano una struttura (`mentions`) la indicavano con tipo, nome e URL ma senza indirizzo. La convalida di Google delle attività locali tratta questi riferimenti come attività a sé e segnalava l'errore «address obbligatorio» (Rich Results Test, sezione Attività locali), su 160 articoli e video. Dal 15 novembre il riferimento riporta anche indirizzo e telefono della struttura, gli stessi della sua scheda. Se nelle vostre scansioni compare ancora l'errore, è una copia precedente al 15 novembre.
+
 ## Scostamento aggiunto (AA 3 · PDF)
 
 Negli Scostamenti mancava la riga sui PDF di anniazzurri.it: gli scostamenti sono quindi sei.
