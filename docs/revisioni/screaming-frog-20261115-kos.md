@@ -8,7 +8,7 @@ Uso interno. Revisione indipendente del 15/11/2026 (Claude Fable 5.2) sulla scan
 1. La scansione conferma la base degli sprint 1-3 su tutte le 914 pagine: un blocco JSON-LD, un H1, canonical uguale all'URL, nessun errore schema.org, sitemap pulita (866 URL, tutti 200), hreflang reciproci, nessuna data anteriore al 2000.
 2. Unico errore di convalida: «address obbligatorio» su 308 pagine (400 riferimenti). La correzione nel codice (1b5365d) copre tutti i punti che li emettono, ma è successiva alla scansione: lo stato in produzione non è dimostrato, va chiuso con il ricontrollo delle 308 URL prima del 16/11.
 3. Nota dello sprint 3, KOS 7: due affermazioni non reggono su tutte le pagine (foto delle strutture con `alt=""` su 12 pagine di riabilitazione; 17 immagini senza attributo `alt` su 2 pagine). KOS 11: la nota non cita la correzione del 15/11.
-4. Da correggere senza urgenza: 3 schede struttura senza nodo non dichiarate nelle note, `brand` su 43 schede contro la decisione del 29/10, og:image predefinita su 43 pagine delle cure, dati dei reparti di Villa Margherita, tag MODX eseguiti nel commento del chunk `head`.
+4. Da correggere senza urgenza: 3 schede struttura senza nodo non dichiarate nelle note, `brand` su 43 schede contro la decisione del 29/10, dati dei reparti di Villa Margherita, tag MODX eseguiti nel commento del chunk `head`.
 5. Limiti: l'estrazione `briciole_visibili` è vuota su 914 pagine (XPath non adatto a kosgroup.com), quindi briciole verificate su un campione di 47 sorgenti; `/villamargherita` e le 5 landing non sono state scansionate (non collegate, fuori sitemap).
 
 ## Metodo e limiti
@@ -56,13 +56,12 @@ Uso interno. Revisione indipendente del 15/11/2026 (Claude Fable 5.2) sulla scan
 - **Decisione non rispettata:** CLAUDE.md e `docs/specifica-grafo-kos.md` («`brand` solo sulle residenze, come riferimento a `https://anniazzurri.it/#organization`»; «la TV `str.marchio` di kosgroup.com si svuota»).
 - **Correzione proposta:** svuotare `str.marchio` sulle schede di kosgroup.com (script con backup) dopo la verifica dello sprint 2, perché tocca `kosSchema`.
 
-### C3 · og:image predefinita su pagine delle cure che hanno una testata propria
+### C3 · og:image predefinita sulle pagine delle cure di psichiatria (rilievo ridimensionato)
 
-- **Pagine:** 43 (30 su 31 di `/it/servizi-e-cure/psichiatria/…`, 13 trattamenti di `/it/servizi-e-cure/riabilitazione/trattamenti/…`). Verificato sul sorgente di un caso; per gli altri dedotto dal template.
-- **Esempi:** `/it/servizi-e-cure/psichiatria/trattamenti/psicoterapeutico-approccio-cognitivo-comportamentale` (testata `/assets/img/servizi-e-cure/…__.jpg`, og:image `kos-condivisione-social.jpg`), `/it/servizi-e-cure/psichiatria/psicosi`, `/it/servizi-e-cure/riabilitazione/trattamenti/gestione-del-dolore`.
-- **Evidenza:** `interni_tutti.csv`, colonna `og_image 1` (172 pagine con l'immagine predefinita; le altre sono pagine istituzionali, elenchi, 18 professionisti senza foto, 8 articoli senza immagine).
-- **Causa probabile:** la testata di questi template non viene da `infoImage` né da `assets/img/header/<alias>.jpg`, i due percorsi che `ogImage` prova.
-- **Correzione proposta:** `&ogLegacy` con il percorso `assets/img/servizi-e-cure/[[*alias]]__.jpg` nel chunk head di quei template. Miglioria nel consolidamento degli head.
+- **Rettifica (15/11, seconda analisi):** nella prima stesura questo rilievo diceva che le pagine hanno una testata propria. È sbagliato: sui due sorgenti di psichiatria controllati il blocco `<div id="intro-pagina-img">` con l'immagine `/assets/img/servizi-e-cure/<alias>__.jpg` è dentro un commento HTML, quindi l'immagine non è mostrata e non risulta tra le immagini scansionate. L'og:image predefinita è coerente con la pagina.
+- **Pagine:** 43 con og:image predefinita (30 su 31 di `/it/servizi-e-cure/psichiatria/…`, 13 di `/it/servizi-e-cure/riabilitazione/trattamenti/…`); per i 13 trattamenti di riabilitazione il sorgente non è stato controllato.
+- **Evidenza:** `interni_tutti.csv`, colonna `og_image 1`; sorgenti di `…/psichiatria/disturbi-d-ansia` e `…/psichiatria/trattamenti/psicoterapeutico-approccio-cognitivo-comportamentale`.
+- **Resta come miglioria:** decidere se riattivare la testata (e allora usarla anche come og:image) o togliere il blocco commentato. Fuori dalle voci.
 
 ### C4 · Villa Margherita Vicenza: dati dei reparti e pagina della sede
 
