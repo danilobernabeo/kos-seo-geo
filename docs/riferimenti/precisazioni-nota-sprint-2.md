@@ -12,6 +12,10 @@ Dal 3 al 13 novembre la data di ultima modifica di 470 pagine (328 su kosgroup.c
 
 Fino al 15 novembre gli articoli di kosgroup.com che citano una struttura (`mentions`) la indicavano con tipo, nome e URL ma senza indirizzo. La convalida di Google delle attività locali tratta questi riferimenti come attività a sé e segnalava l'errore «address obbligatorio» (Rich Results Test, sezione Attività locali), su 160 articoli e video. Dal 15 novembre il riferimento riporta anche indirizzo e telefono della struttura, gli stessi della sua scheda. Se nelle vostre scansioni compare ancora l'errore, è una copia precedente al 15 novembre.
 
+## Schede struttura senza nodo (KOS 24)
+
+La nota non lo diceva: 3 schede su 61 non hanno ancora il nodo della struttura, perché l'anagrafica importata da Yext non aveva un indirizzo univoco e la regola del progetto è «nodo struttura solo se c'è l'indirizzo». Sono https://kosgroup.com/it/centri/poliambulatorio-villalba (due entità Yext sulla stessa scheda), https://kosgroup.com/it/centri/santo-stefano-casorate e https://kosgroup.com/it/centri/santo-stefano-mede (nessuna entità Yext). Le pagine hanno comunque `WebPage` e briciole. Le completiamo con l'indirizzo pubblicato sulla pagina e ne diamo conto nella nota dello sprint 3.
+
 ## Scostamento aggiunto (AA 3 · PDF)
 
 Negli Scostamenti mancava la riga sui PDF di anniazzurri.it: gli scostamenti sono quindi sei.
