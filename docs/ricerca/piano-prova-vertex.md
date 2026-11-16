@@ -164,22 +164,30 @@ coordinate) ed eventualmente il servizio, e mostra in testa le strutture vicine;
 
 ## PDF nella ricerca (16/11)
 
-Carte dei servizi e pieghevoli commerciali sono indicizzati anche nella prova. Elenco ricavato dalla regola, non scritto a
-mano (`docs/ricerca/pdf-prova-2026-11-16.csv`):
+Carte dei servizi e pieghevoli commerciali sono indicizzati anche nella prova. **Regola: un PDF entra se è indicizzabile
+(nessun `X-Robots-Tag: noindex`) e collegato da almeno una pagina pubblicata; i PDF orfani escono.** Pagine pubblicate =
+pagine delle sitemap dei siti (anniazzurri.it 475, kosgroup.com 866), lette il 16/11. Elenco in
+`docs/ricerca/pdf-prova-2026-11-16.csv`, ricavato dalla regola e non scritto a mano.
 
-- **anniazzurri.it**: tutti i PDF di `/assets/` meno quelli di `anniazzurri/files/sitemap/sitemap-pdf-noindex.xml` (216).
-  Fonte: inventario `anniazzurri/dati/pdf/piano-pdf.json` del 3/11, 192 PDF, tutti 200 senza `X-Robots-Tag: noindex`
-  (verifica del 16/11; i PDF della sitemap noindex rispondono con `noindex`). Comprende anche moduli e infografiche, non
-  solo carte e pieghevoli.
-- **kosgroup.com**: carte di `kosgroup/dati/orari/carte-dei-servizi.txt` più pieghevoli, leaflet e brochure dell'inventario,
-  verificati sull'intestazione: 78 indicizzabili. Una carta risponde 404
-  (`centro-ambulatoriale-santo-stefano-macerata/carta-dei-serivizi-fisiosport.pdf`, refuso nel nome).
-- **Senza testo** (scansioni, da segnalare a KOS per una versione con testo): anniazzurri.it 4 (moduli di richiesta
-  ricovero di Abitare il Tempo e Casa Argento, modulo ingresso in convenzione di Santa Maria in Chienti, infografica
-  Alzheimer); kosgroup.com 5 (carte dei servizi dei punti prelievi Biemme, Delta, Gamma, Salus Villalba, Selemar).
-  **Senza titolo**: nessuno.
-- **Caricamento nella prova**: manuale (`recrawlUris`) il 16/11; sull'archivio `kosgroup-it` aggiunto il percorso
-  `kosgroup.com/assets/doc/*`, perché l'archivio includeva solo `/it/*`.
+- **anniazzurri.it**: 321 PDF collegati da `/assets/`; 192 nella ricerca, 127 in `noindex`, 2 link rotti (404) sulla pagina
+  `/documentazione` (questionari di ammissione ASL-MB, già noti). Rispetto al primo caricamento della mattina: usciti 2 PDF
+  orfani (`anniazzurri-a-casa-servizio-di-assistenza-domiciliare.pdf`, `cure-domiciliari-anniazzurri.pdf`), esclusi
+  dall'archivio con una regola di esclusione; entrati `Organizzazione.pdf` di Santa Maria in Chienti e il pieghevole
+  Anni Azzurri Senior Living; ricaricati i 5 moduli di richiesta ricovero ricostruiti il 16/11 (stesso indirizzo, titolo
+  nuovo).
+- **kosgroup.com**: carte di `kosgroup/dati/orari/carte-dei-servizi.txt` (53, senza la carta Fisiosport del CAR Macerata,
+  unità chiusa, PDF tolto il 10/11) più pieghevoli, leaflet e brochure collegati: 78, tutti indicizzabili e collegati.
+- **Da verificare**: il pieghevole Anni Azzurri Senior Living e il pieghevole informativo dell'Hospice Beati Coniugi Martin
+  rispondono **senza** `noindex`, mentre le precisazioni dello sprint 2 (AA 3) li danno in `noindex` per la regola
+  generale. Nella ricerca entrano perché oggi sono indicizzabili; se la nota è corretta va sistemata la regola web, e
+  allora escono anche dalla ricerca.
+- **Senza testo** (scansioni): kosgroup.com 5 carte dei punti prelievi (Biemme, Delta, Gamma, Salus Villalba, Selemar),
+  da segnalare a KOS proponendo l'OCR da parte nostra (stesso documento con testo leggibile, come per le guide del CAR
+  Macerata il 10/11), solo con il loro consenso; anniazzurri.it 3 moduli di ricovero e l'infografica Alzheimer, che restano
+  come sono. **Senza titolo**: nessuno.
+- **Caricamento nella prova**: manuale (`recrawlUris`); sull'archivio `kosgroup-it` aggiunto il percorso
+  `kosgroup.com/assets/doc/*`, perché l'archivio includeva solo `/it/*`; PDF usciti esclusi con regole di esclusione
+  esatte.
 - **Nei risultati i PDF non superano le pagine**: per il nome di una struttura vince la scheda, la carta compare sotto con
   l'etichetta PDF e il nome della struttura. Nella prova si contano le ricerche che trovano il risultato giusto solo grazie
   a un PDF.
@@ -188,8 +196,8 @@ mano (`docs/ricerca/pdf-prova-2026-11-16.csv`):
 
 ## Sviluppo dopo la decisione (appunti)
 
-- Sitemap dei PDF indicizzabili per sito, generata dalla stessa regola, inviata a Vertex: l'indice si aggiorna da solo
-  quando una carta viene sostituita (nella prova il caricamento è manuale).
+- Sitemap dei PDF indicizzabili e collegati per sito, generata dalla stessa regola, inviata a Vertex: l'indice si aggiorna
+  da solo quando una carta viene sostituita o un PDF resta orfano (nella prova il caricamento è manuale).
 
 ## Ordine delle ricerche della prova
 
