@@ -449,7 +449,9 @@ del contratto Yext (richiesta di Danilo del 16/11).
 **Giro ridotto su Yext approvato da Danilo il 16/11** (la prova approvata da KOS prevede il confronto con la ricerca
 Yext attuale): solo il campione congelato del livello 2, lanciato il 16/11 dopo le 21, un solo giro senza ripetizioni
 (un tentativo per ricerca), `sessionTrackingEnabled=false` e `source=CONFRONTO_VERTEX`; l'intervallo esatto di inizio e
-fine si registra qui e Danilo lo comunica al referente KOS per escludere le ricerche dai report Yext. Il livello 1 su
+fine si registra qui e Danilo lo comunica al referente KOS per escludere le ricerche dai report Yext. Regola di arresto:
+se le ricerche in errore superano il 2% su un sito, il confronto non si calcola e si decide con Danilo se rilanciare
+solo quelle in errore. Il livello 1 su
 Yext resta subordinato alla conferma di KOS sulla capacità del contratto.
 
 (Prima ipotesi) **Se KOS non risponde entro mercoledì 18/11**: giro ridotto su Yext con il solo campione del livello 2 (kosgroup.com 400,
