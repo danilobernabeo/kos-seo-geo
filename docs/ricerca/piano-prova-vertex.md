@@ -1,6 +1,7 @@
 # Sostituzione della ricerca Yext: piano della prova Vertex AI Search
 
 Uso interno (linea C). Date concordate con il referente KOS il 12/11; obiettivo: messa online entro il 18/12 (budget 2026).
+Approvazione di KOS alla prova ricevuta il 16/11.
 
 ## Date comunicate a KOS
 
@@ -53,6 +54,48 @@ Passaggi critici per KOS: parere del DPO entro il 25/11, decisione entro il 27/1
   (chiavi sotto il controllo di Danilo). Da metà gennaio, nelle ricerche geografiche il widget RetailTune al posto della
   mappa nostra, dentro la pagina dei risultati, con i filtri preimpostati dalla ricerca (comune, provincia, tipologia) e
   caricato solo per quelle ricerche; da confermare con RetailTune (domanda 19b della call del 13/11).
+
+## Indicatori della prova
+
+Su circa 300 ricerche reali ripulite dai dati personali, lanciate su Vertex e sulla ricerca Yext di oggi, ciascuna pesata
+per quante volte è stata fatta:
+
+1. ricerche senza risultati;
+2. risultato atteso tra i primi tre;
+3. tempo di risposta;
+4. riconoscimento dei luoghi (aggiunto il 16/11): luoghi riconosciuti correttamente e falsi allarmi sui nomi di struttura.
+
+Risposte AI (solo anniazzurri.it): attingono a un elenco chiuso di pagine pratiche; la prova misura anche l'effetto dei
+filtri sulle domande cliniche.
+
+Soglia del «migliora abbastanza» (proposta del 16/11, da confermare): risultato atteso tra i primi tre in almeno 15 punti
+percentuali di ricerche in più rispetto a Yext, pesate per frequenza, e meno ricerche senza risultati su entrambi i siti.
+Se Vertex non la raggiunge, si ripete la misura con Site Search 360.
+
+## Ricerche geografiche (16/11)
+
+La distanza non la calcola Vertex: la pagina dei risultati riconosce il luogo (tabella comuni, province, regioni con
+coordinate) ed eventualmente il servizio, e mostra in testa le strutture vicine; sotto, i risultati di Vertex.
+
+- **Fase intermedia, dal 18/12 a metà gennaio:** elenco testuale delle strutture per distanza (coordinate delle schede) e
+  mappa con i pin dal componente Google Maps delle pagine regione e provincia di anniazzurri.it. Da decidere se la mappa
+  resta o si salta (resta solo l'elenco).
+- **Da metà gennaio:** widget RetailTune al posto della mappa, già filtrato su coordinate e raggio (ed eventuale servizio),
+  caricato solo per le ricerche con un luogo. Parametri, comportamento senza strutture nel raggio e caricamento su
+  richiesta da confermare con RetailTune.
+- In entrambe le fasi l'elenco testuale resta sempre: il widget RetailTune è in categoria Cookiebot «marketing» e senza
+  consenso non compare (vale anche per i motori AI).
+- Il nome della struttura vince sul luogo: se la ricerca corrisponde al nome di una struttura (dalle TV) si mostra la
+  scheda, l'elenco o il widget solo come aggiunta (Casa Pero, Casa Sanremo, Santo Stefano, Arco).
+- Zone senza strutture: raggio che si allarga fino ad almeno una struttura, con la frase «La struttura più vicina a … è a …».
+
+## Configurazione di Google Cloud
+
+- Progetto sull'account di fatturazione KOS; Discovery Engine API; indice in regione UE con indicizzazione avanzata, che
+  richiede i due domini verificati in Search Console dall'account che crea gli archivi.
+- Limite giornaliero alle ricerche e avviso di budget.
+- Service account con chiave JSON: la usa solo il servizio intermedio (Cloud Run, in un segreto del servizio), mai nel
+  codice del sito né nel repository; durante la prova anche gli script di misura, con la chiave fuori dal repository.
 
 ## Da chiarire con KOS
 
