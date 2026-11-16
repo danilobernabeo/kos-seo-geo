@@ -76,7 +76,28 @@ def pagine_luogo(sito, luogo, prov):
 FORME = [('vertex', 'vertex', False), ('vertex_con_riconoscimento', 'vertex', True),
          ('vertex_senza_espansione', 'vertex-senza-espansione', False),
          ('vertex_senza_espansione_con_riconoscimento', 'vertex-senza-espansione', True),
-         ('vertex_schede_aa_con_riconoscimento', 'vertex-schede-aa', True), ('yext', 'yext', False)]
+         ('vertex_schede_aa_con_riconoscimento', 'vertex-schede-aa', True),
+         # Yext (giro del 16/11): «yext» con le schede riportate al loro indirizzo dal nome dell'entità e le FAQ
+         # giudicate; «yext_grezzo» com'è; «yext_faq_tutte_giuste» tetto con ogni FAQ giusta (decisione del 16/11)
+         ('yext', 'yext', False), ('yext_grezzo', 'yext', False), ('yext_faq_tutte_giuste', 'yext', False)]
+ABBINAMENTI_YEXT = Path(__file__).resolve().parents[2] / 'docs/ricerca/abbinamenti-yext-2026-11-16.json'
+
+
+def risultati_yext(ris, forma, faq_giusta):
+    """Risultati Yext per il confronto: schede con «Altro» nel link principale riportate al loro indirizzo dal nome
+    dell'entità (abbinamento esatto, elenco in docs/ricerca); FAQ senza indirizzo valutate con il giudizio."""
+    if forma == 'yext_grezzo':
+        return ris
+    abb = json.loads(ABBINAMENTI_YEXT.read_text(encoding='utf-8'))['abbinamenti']
+    out = []
+    for x in ris:
+        x = dict(x)
+        if not x['url'].startswith('http') and x.get('categoria') == 'strutture':
+            x['url'] = abb.get(x['titolo'], 'NON-ABBINATA')
+        elif x.get('categoria') == 'faqs' and not x['url']:
+            x['url'] = 'FAQ-GIUSTA' if (forma == 'yext_faq_tutte_giuste' or faq_giusta) else 'FAQ'
+        out.append(x)
+    return out
 
 
 def province(comuni_json):
@@ -245,6 +266,8 @@ def misura(o):
                                         for k, x in sorted(mancanti.items())}}
     (Path(o.esiti) / f'senza-pagina-giusta-{o.sito}.json').write_text(
         json.dumps(mancanti, ensure_ascii=False, indent=1), encoding='utf-8')
+    ff = Path(o.esiti) / f'giudizi-faq-yext-{o.sito}.json'
+    faq = json.loads(ff.read_text(encoding='utf-8')) if ff.exists() else {}
     for forma, motore, riconosci in FORME:
         es = esiti(o.esiti, motore, o.sito)
         if not es:
@@ -254,9 +277,12 @@ def misura(o):
             if v['ricerca'] not in es:
                 continue
             ris = es[v['ricerca']]['risultati']
+            if motore == 'yext':
+                ris = risultati_yext(ris, forma, faq.get(v['ricerca'], False))
             if riconosci:
                 ris = m.componi(v['attesi'] if v['categoria'] == 'struttura' else None, ris)
-            righe.append((v, any(corrisponde(x['url'], v['attesi'], cache) for x in ris[:3])))
+            righe.append((v, any(x['url'] == 'FAQ-GIUSTA' or corrisponde(x['url'], v['attesi'], cache)
+                                 for x in ris[:3])))
 
         def quota(sel, pesata):
             n = sum((v['ricerche'] if pesata else 1) for v, _ in sel)

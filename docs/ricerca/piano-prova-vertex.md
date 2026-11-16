@@ -342,6 +342,18 @@ repository, in `kos-ricerca-dati`):
 
 Pulizie successive: nessuna.
 
+**Modifica dopo il giro Yext (16/11 sera, decisione di Danilo).** Ricerche di lavoro: aggiunti ai giudizi gli annunci su
+`lavoraconnoi.kosgroup.com` (e, su anniazzurri.it, la pagina delle posizioni aperte di kosgroup.com), stessa fonte della
+pagina delle posizioni aperte; aggiunto il file dei giudizi sulle FAQ di Yext. Nuove impronte:
+
+| File | SHA-256 |
+|---|---|
+| `esiti/giudizi-livello2-kosgroup.json` | `e24c6e69ff2970feaac0a79e36856024430bc9e67188ead75dc4e7914f7744b4` |
+| `esiti/giudizi-livello2-anniazzurri.json` | `74e6699a2a9483a1590f386dd1645df6a9a302e67aaff8e847ae5801cbcbe38f` |
+| `esiti/giudizi-faq-yext-anniazzurri.json` | `bfc0077e45b1dd5ef084211a96e55788353eaa7426f6b380dd7b683247defc2a` |
+
+Gli altri file sono invariati (elenco completo in `esiti/congelati-20261116b.sha256`).
+
 ## Livello 2: risultati attesi (16/11)
 
 Script `scripts/ricerca/livello2.py` (`campione`, `misura`). Campione: kosgroup.com 400 ricerche (le 250 più frequenti,
@@ -465,17 +477,69 @@ solo quelle in errore.
 | kosgroup.com (`kos-care-search`) | 400 | 21:06:36 (20:06:36 UTC) | 21:15:43 (20:15:43 UTC) |
 | anniazzurri.it (`it-answer-anniazzurri`) | 320 | 21:15:43 (20:15:43 UTC) | 21:22:59 (20:22:59 UTC) |
 
-Il confronto non è ancora in tabella: Yext restituisce risultati senza indirizzo di pagina (vedi «Risultati Yext senza
-indirizzo», da decidere con Danilo).
+Il livello 1 su Yext (tutte le ricerche) resta subordinato alla conferma di KOS sulla capacità del contratto.
 
-**Risultati Yext senza indirizzo (16/11 sera).** Nei primi tre risultati: kosgroup.com 379 schede di struttura con il
-campo del link principale (`c_primaryCTA.link`) che contiene l'etichetta «Altro» invece dell'indirizzo, 125 offerte di
-lavoro su `lavoraconnoi.kosgroup.com`, 8 link a `7ydxba3m.modx.dev` (Poliambulatorio Villa Pineta: l'entità Yext punta
-all'ambiente di sviluppo); anniazzurri.it 321 FAQ con la risposta nella pagina dei risultati e nessun indirizzo.
-Risultato atteso tra i primi tre, pesato: kosgroup.com 33,1% così com'è, 61,1% riportando le schede al loro indirizzo
-dal nome, 65,7% accettando anche le offerte su `lavoraconnoi.kosgroup.com` per le ricerche di lavoro; anniazzurri.it 9,4%
-così com'è, 46,5% come tetto se ogni FAQ fosse una risposta giusta. Il livello 1 su
-Yext resta subordinato alla conferma di KOS sulla capacità del contratto.
+**Risultati Yext senza indirizzo e criteri del confronto (decisi da Danilo il 16/11 sera).** Nei primi tre risultati
+Yext: kosgroup.com 379 schede di struttura con il campo del link principale (`c_primaryCTA.link`) che contiene
+l'etichetta «Altro» invece dell'indirizzo, 125 offerte di lavoro su `lavoraconnoi.kosgroup.com`; anniazzurri.it 321
+FAQ con la risposta nella pagina dei risultati e nessun indirizzo.
+
+1. **Schede di kosgroup.com**: riportate al loro indirizzo abbinando il nome dell'entità Yext al nome della scheda, sui
+   risultati salvati (abbinamento esatto). Elenco in `docs/ricerca/abbinamenti-yext-2026-11-16.json`: 54 nomi, tutti
+   abbinati; Villa Margherita Vicenza va alla landing `/villamargherita` (le schede delle unità sono equivalenti).
+   Nessun nome ambiguo né non abbinato: Villa Pineta e Villalba hanno nomi distinti per ogni scheda.
+2. **FAQ di anniazzurri.it**: giudicate dalla domanda della FAQ (risponde alla ricerca o no), con lo stesso metodo del
+   livello 2 (giudizio assistito, ricontrollo a mano a campione). Le ricerche giudicate con sole FAQ nei primi tre sono
+   107 (le 120 contate prima comprendevano 13 ricerche escluse dal calcolo perché senza pagina giusta sul sito): 45 con
+   una FAQ che risponde. La FAQ «Non hai trovato quello che cercavi?» è la risposta di ripiego di Yext e non conta.
+   Giudizi in `esiti/giudizi-faq-yext-anniazzurri.json`, fuori dal repository.
+3. **Ricerche di lavoro**: la pagina `https://kosgroup.com/it/lavorare-in-kos/posizioni-aperte` è generata dal server
+   con le stesse offerte di `lavoraconnoi.kosgroup.com` (la stessa API che usa Yext), è nella sitemap e contiene i link
+   ai singoli annunci: per entrambi i motori sono risposte giuste equivalenti la pagina delle posizioni aperte e gli
+   annunci su `lavoraconnoi.kosgroup.com`. I giudizi congelati accettavano già la pagina delle posizioni aperte (e
+   «Perché lavorare in KOS»), non solo `/it/lavorare-in-kos`; il 16/11 sera, **dopo il giro Yext**, si sono aggiunti gli
+   annunci su `lavoraconnoi.kosgroup.com` (e, per anniazzurri.it, la pagina delle posizioni aperte di kosgroup.com),
+   perché le due fonti sono la stessa. Nuove impronte nella tabella dei file congelati.
+
+**Domini di sviluppo nei risultati Yext.** Nei risultati salvati (primi dieci di 720 ricerche) un solo dominio di
+sviluppo: l'entità Poliambulatorio Villa Pineta punta a `https://7ydxba3m.modx.dev/it/centri/poliambulatorio-villa-pineta`
+(8 volte nei primi tre); in più l'entità Fisioclinics punta a `https://polodiagnostico.it/fisioclinics`, dominio del
+marchio dismesso. L'esportazione completa delle entità Yext (xlsx usato da `scripts/yext/strutture-in-tv.py`) non è
+nell'area di lavoro: il controllo su tutte le entità si fa quando Danilo la mette a disposizione. Danilo segnala a KOS.
+
+**Confronto con Yext sul livello 2** (giro del 16/11; risultato atteso tra i primi tre):
+
+| Sito | Forma | Pesato | Non pesato | Frasi da 4 parole senza nomi (pesato) | Metà di verifica (pesato) | Struttura / luogo / altro (pesato) |
+|---|---|---|---|---|---|---|
+| kosgroup.com | Yext | 65,7% | 56,8% | 65,1% | 61,6% | 99,5 / 82,2 / 41,4 |
+| kosgroup.com | Vertex da solo | 82,0% | 66,3% | 96,6% | 80,2% | 85,1 / 71,0 / 86,0 |
+| kosgroup.com | Vertex con riconoscimento | 85,6% | 76,4% | 96,6% | 83,6% | 100 / 71,0 / 86,0 |
+| anniazzurri.it | Yext (FAQ giudicate) | 30,7% | 28,3% | 14,0% | 31,1% | 86,4 / 78,2 / 23,0 |
+| anniazzurri.it | Vertex da solo | 85,4% | 80,6% | 86,8% | 85,4% | 86,4 / 74,5 / 86,6 |
+| anniazzurri.it | Vertex con riconoscimento | 85,9% | 80,9% | 86,8% | 85,4% | 100 / 74,5 / 86,6 |
+
+Forbice di Yext su anniazzurri.it: dal 9,4% (risultati così come sono) al 50,3% (ogni FAQ giusta; il 46,5% detto prima
+contava le FAQ solo per le ricerche «altro»). Su kosgroup.com Yext così com'è dà 37,8% (con gli annunci di
+`lavoraconnoi.kosgroup.com` accettati). Ricerche senza alcun risultato nel campione, pesate: kosgroup.com Yext 3,1%,
+Vertex 0,3%; anniazzurri.it Yext 15,5% (più 4,6% con la sola FAQ di ripiego), Vertex 2,2%.
+
+**Soglia (decisa il 16/11) sul campione del livello 2:**
+
+1. risultato atteso tra i primi tre, pesato, +15 punti o metà del divario recuperata: kosgroup.com +16,3 punti (Vertex
+   da solo) e +19,9 (con riconoscimento); anniazzurri.it +54,7 e +55,2. **Superata.**
+2. meno ricerche senza risultati su entrambi i siti: sì nel campione (3,1% → 0,3%; 15,5% → 2,2%); il dato su tutte le
+   ricerche dei 12 mesi richiede il livello 1 su Yext, subordinato alla conferma di KOS. **Superata sul campione.**
+3. nessun peggioramento sulle ricerche per nome di struttura: **non superata da Vertex da solo su kosgroup.com** (85,1%
+   contro 99,5% di Yext: le residenze AA sono fuori dall'archivio di kosgroup.com); superata con il riconoscimento dei
+   nomi (100%), che quindi è parte necessaria della soluzione; su anniazzurri.it 86,4% pari a Yext, 100% con il
+   riconoscimento. La terza forma (archivio delle schede AA) è ancora da misurare.
+4. anniazzurri.it non pesato e frasi lunghe: 80,6% contro 28,3%; frasi da 4 parole senza nomi 86,8% contro 14,0%.
+   **Superata.**
+
+Esito provvisorio: Vertex supera la soglia **con il riconoscimento dei nomi di struttura**; da solo no, per il punto 3.
+
+**Per lo sviluppo**: regola di posizionamento che mette in testa la pagina delle posizioni aperte per le ricerche di
+professioni (infermiere, oss, fisioterapista…), da definire sulla metà di definizione e misurare sulla metà di verifica.
 
 (Prima ipotesi) **Se KOS non risponde entro mercoledì 18/11**: giro ridotto su Yext con il solo campione del livello 2 (kosgroup.com 400,
 anniazzurri.it 320, circa 720 ricerche, una al secondo, circa 12 minuti), così il confronto con la soglia non dipende
