@@ -12,7 +12,8 @@ Esempi:
   python3 -I scripts/ricerca/misura.py yext --sito anniazzurri --ricerche ... --chiave-yext <file> --esiti ...
   python3 -I scripts/ricerca/misura.py livello1 --sito anniazzurri --ricerche ... --esiti ... --comuni <comuni.json>
 
-Le ricerche vanno ripulite prima con pulisci-ricerche.py. Gli esiti (ricerche e risultati) stanno con i dati della prova,
+Le ricerche vanno ripulite prima con pulisci-ricerche.py e controllate con controlla-dlp.py (vertex e yext si
+rifiutano di partire senza il controllo). Gli esiti (ricerche e risultati) stanno con i dati della prova,
 fuori dal repository. Ogni comando riprende da dove si era fermato: le ricerche già presenti negli esiti si saltano.
 """
 import argparse
@@ -112,7 +113,17 @@ def cerca_yext(sessione, chiave, sito, q):
             'limite_residuo': r.headers.get('rate-limit-remaining')}
 
 
+def controllo_dlp_fatto(percorso):
+    """Il set ripulito è passato da controlla-dlp.py senza ritrovamenti aperti (decisione del 16/11)."""
+    import hashlib
+    ok = Path(str(percorso) + '.dlp-ok')
+    return ok.exists() and ok.read_text().strip() == hashlib.sha256(Path(percorso).read_bytes()).hexdigest()
+
+
 def lancia(o, motore):
+    if not controllo_dlp_fatto(o.ricerche):
+        sys.exit(f'{o.ricerche}: manca il controllo di Sensitive Data Protection (controlla-dlp.py) o il file è cambiato '
+                 'dopo il controllo: nessuna ricerca lanciata')
     ricerche = leggi_ricerche(o.ricerche)
     variante = getattr(o, 'variante', None)
     app = VARIANTI[variante][o.sito] if variante else None

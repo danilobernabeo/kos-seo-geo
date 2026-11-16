@@ -18,8 +18,13 @@ Regole dei risultati attesi:
   altro              giudizio nel file giudizi-livello2-<sito>.json: {"ricerca": [voce, ...]}, dove una voce è
                      un URL esatto, un prefisso con «*», «LUOGO:<comune, provincia o regione>» (schede della provincia
                      o della regione), «CITTA:<città>» (schede della città) o «TESTO:<espressione regolare>» (pagina
-                     che contiene il testo: per la coda lunga, es. una prestazione senza pagina propria); una lista
-                     vuota vuol dire «nessun risultato giusto sul sito» (la ricerca esce dal calcolo).
+                     che contiene il testo: per la coda lunga, es. una prestazione senza pagina propria);
+                     «NESSUNA:<motivo>» vuol dire nessuna pagina giusta sul sito: la ricerca esce dal calcolo e va
+                     nell'elenco per motivo («contenuto mancante: …», «rimando a kosgroup.com», «struttura di altri»,
+                     «non chiara»), da riportare nella restituzione.
+
+Metà del campione (assegnata per hash della ricerca, stabile) serve a definire le regole di posizionamento, l'altra metà a
+misurarle: `misura` riporta le due metà separate.
 
 Tutti i file (campione, giudizi, esiti) stanno con i dati della prova, fuori dal repository.
 
@@ -106,6 +111,11 @@ def esiti(cartella, motore, sito):
     return {e['ricerca']: e for e in (json.loads(x) for x in f.open(encoding='utf-8'))}
 
 
+def meta(q):
+    import hashlib
+    return 'definizione' if int(hashlib.sha1(q.encode('utf-8')).hexdigest()[:8], 16) % 2 == 0 else 'verifica'
+
+
 def campione(o):
     ricerche = sorted(m.leggi_ricerche(o.ricerche), key=lambda r: -int(r['ricerche']))
     el = m.strutture(o.sito)
@@ -133,7 +143,7 @@ def campione(o):
             luogo = m.luogo_cercato(q, noti)
             nominate = m.struttura_cercata(q, el, luogo)
             voce = {'ricerca': q, 'ricerche': int(r['ricerche']), 'strato': strato,
-                    'parole': len(q.split())}
+                    'parole': len(q.split()), 'meta': meta(q)}
             if nominate:
                 voce.update(categoria='struttura', attesi=[x['url'] for x in nominate], fonte='regola')
             elif luogo and set(m.norm(q)) - set(luogo[0].split()) <= PAROLE_GEO:
@@ -210,17 +220,27 @@ def misura(o):
     prov = province(o.comuni)
     sigle = sigle_strutture(o.sito)
     citta = {x['url']: x['citta'] for x in m.strutture(o.sito)}
+    mancanti = {}
     for v in camp:
+        v.setdefault('meta', meta(v['ricerca']))
         if v['attesi'] is None and v['ricerca'] in giudizi:
-            v['attesi'], v['fonte'] = espandi(giudizi[v['ricerca']], prov, sigle, citta, o.sito), 'giudizio'
-            if giudizi[v['ricerca']] and not v['attesi']:
+            g = giudizi[v['ricerca']]
+            if g and g[0].startswith('NESSUNA:'):
+                v['attesi'] = []
+                mancanti.setdefault(g[0][8:], []).append((v['ricerca'], v['ricerche']))
+                continue
+            v['attesi'], v['fonte'] = espandi(g, prov, sigle, citta, o.sito), 'giudizio'
+            if g and not v['attesi']:
                 v['attesi'] = [ELENCO[o.sito]]  # luogo senza strutture: l'elenco
     cf = Path(o.esiti) / 'pagine-cache.json'
     cache = json.loads(cf.read_text(encoding='utf-8')) if cf.exists() else {}
     valide = [v for v in camp if v['attesi']]
     rapporto = {'sito': o.sito, 'campione': len(camp), 'giudicate': len(valide),
                 'da_giudicare': sum(1 for v in camp if v['attesi'] is None),
-                'senza_risultato_giusto_sul_sito': sum(1 for v in camp if v['attesi'] == [])}
+                'senza_pagina_giusta': {k: {'ricerche': len(x), 'volte': sum(n for _, n in x)}
+                                        for k, x in sorted(mancanti.items())}}
+    (Path(o.esiti) / f'senza-pagina-giusta-{o.sito}.json').write_text(
+        json.dumps(mancanti, ensure_ascii=False, indent=1), encoding='utf-8')
     for forma, motore, riconosci in FORME:
         es = esiti(o.esiti, motore, o.sito)
         if not es:
@@ -239,8 +259,16 @@ def misura(o):
             k = sum((v['ricerche'] if pesata else 1) for v, ok in sel if ok)
             return round(k / n * 100, 1) if n else None
         lunghe = [x for x in righe if x[0]['parole'] >= 4]
+        lunghe_senza_nomi = [x for x in lunghe if x[0]['categoria'] != 'struttura']
         rapporto[forma] = {'ricerche': len(righe), 'pesata': quota(righe, True), 'non_pesata': quota(righe, False),
                            'da_4_parole_pesata': quota(lunghe, True), 'da_4_parole_non_pesata': quota(lunghe, False),
+                           'da_4_parole': {'ricerche': len(lunghe), 'nomi_di_struttura': len(lunghe) - len(lunghe_senza_nomi),
+                                           'residenza_anni_azzurri': sum(1 for x in lunghe if x[0]['ricerca'].startswith(
+                                               ('residenza anni azzurri', 'residenza anni azurri', 'residenza anni azzurrii'))),
+                                           'senza_nomi_pesata': quota(lunghe_senza_nomi, True),
+                                           'senza_nomi_non_pesata': quota(lunghe_senza_nomi, False)},
+                           'per_meta_pesata': {k: quota([x for x in righe if x[0]['meta'] == k], True)
+                                               for k in ('definizione', 'verifica')},
                            'per_categoria_pesata': {c: quota([x for x in righe if x[0]['categoria'] == c], True)
                                                     for c in ('struttura', 'luogo', 'altro')}}
     cf.write_text(json.dumps(cache, ensure_ascii=False), encoding='utf-8')

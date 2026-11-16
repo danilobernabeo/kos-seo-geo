@@ -46,8 +46,20 @@ bloccati), lo si dice a KOS insieme all'invio della scheda al DPO.
   progetto Google Cloud `kos-ricerca`, con accesso limitato a Danilo e al service account della prova, stessa cancellazione.
 - Nomi di persona: 113 esclusi (kosgroup.com 110, 0,68% delle ricerche; anniazzurri.it 3, 1,3%), nessuno corrisponde
   alle pagine medico. Da dire nella scheda: nella prima tornata su Vertex (16/11) c'erano ancora 76 di questi nomi e 5
-  ricerche con codici di accesso ai referti dentro la frase, esclusi lo stesso giorno (regola dei codici estesa alle
-  singole parole); su Yext non è partito nulla.
+  ricerche con **credenziali di accesso a dati sanitari** (codici per scaricare i referti, es. «login» seguito dal
+  codice), esclusi lo stesso giorno (regola dei codici estesa alle singole parole); su Yext non è partito nulla. Le
+  credenziali sono anche nello storico delle ricerche di Yext, perché gli utenti le scrivono nella barra di ricerca:
+  Danilo lo segnala a KOS (16/11).
+- Testi conservati da Vertex (verifica del 16/11): le app di ricerca conservano i «search log» delle richieste per le
+  statistiche (la console permette di filtrare per testo della ricerca); non si possono cancellare né spegnere su un'app
+  esistente. Le app `ricerca-kosgroup` e `ricerca-kosgroup-schede-aa` sono state eliminate e ricreate lo stesso giorno
+  con le statistiche spente (`disableAnalytics`) e l'osservabilità spenta; nessun evento utente è mai stato inviato.
+  Google non documenta per quanto restano i log di un'app eliminata. L'app `ricerca-anniazzurri` ha ricevuto solo
+  ricerche già ripulite (i 3 nomi di anniazzurri.it erano esclusi dalla prima tornata): osservabilità spenta, statistiche
+  attive (non spegnibili); si ricrea se il controllo di Sensitive Data Protection trova altro. Log di Cloud Logging
+  (osservabilità era attiva senza registrazione dei contenuti sensibili): da verificare nella console (Esplora log).
+- Secondo controllo con **Google Sensitive Data Protection** (regione UE) del set ripulito prima del giro su Yext e di
+  ogni nuovo giro su Vertex (decisione del 16/11).
 - Nella prova anche le ricerche di kosgroup.com passano dalla generazione delle risposte AI (storico già ripulito,
   nessuna risposta pubblicata).
 - Regola per le domande di crisi: riquadro fisso con il 112 e i numeri di emergenza sopra i risultati, nessuna risposta
@@ -171,6 +183,9 @@ coordinate) ed eventualmente il servizio, e mostra in testa le strutture vicine;
   siti inviate (kosgroup.com 847 pagine italiane, anniazzurri.it 475); la sitemap dei PDF esclusi di anniazzurri.it non va
   mai inviata.
 - App `ricerca-kosgroup` e `ricerca-anniazzurri`, edizione Enterprise con funzioni LLM.
+- 16/11 sera: app `ricerca-kosgroup` e `ricerca-kosgroup-schede-aa` eliminate e ricreate con statistiche e
+  osservabilità spente (testi della prima tornata, vedi la scheda del DPO); osservabilità spenta anche su
+  `ricerca-anniazzurri`. Archivio `anniazzurri-schede` indicizzato (64 su 64).
 - Dal 16/11 pomeriggio: archivio `anniazzurri-schede` con le sole 64 schede delle strutture di anniazzurri.it (57
   residenze, 5 centri diurni, 2 hospice; inclusione per indirizzo esatto, niente news, pagine istituzionali né PDF) e app
   di prova `ricerca-kosgroup-schede-aa` (archivi `kosgroup-it` e `anniazzurri-schede`), per la terza forma
@@ -187,7 +202,11 @@ Script `scripts/ricerca/pulisci-ricerche.py`, da lanciare prima di ogni invio a 
    almeno due cifre, anche dentro la frase: codici di accesso ai referti, di prenotazione o di pratica), nomi di persona
    che non corrispondono a una pagina pubblica dei siti;
 2. **tolte dal testo**: età («83 anni», «classe 1936»);
-3. **riscritte a mano**: frasi con nomi, indirizzi o dettagli di vita privata, tenendo il bisogno, i refusi e la città.
+3. **riscritte a mano**: frasi con nomi, indirizzi o dettagli di vita privata, tenendo il bisogno, i refusi e la città;
+4. **secondo controllo** con Google Sensitive Data Protection, regione UE (`scripts/ricerca/controlla-dlp.py`: nomi,
+   codici fiscali, telefoni, email, indirizzi, date di nascita, documenti, codici alfanumerici): i ritrovamenti si
+   controllano a mano e tornano nelle correzioni; `misura.py` non lancia ricerche su Vertex o Yext senza il controllo
+   sul file esatto (impronta del file).
 
 **Nomi di persona.** 113 nomi di persona esclusi (kosgroup.com 110, 0,68% delle ricerche; anniazzurri.it 3, 1,3%),
 nessuno corrisponde alle pagine medico. Il controllo del 16/11 pomeriggio (cognomi cercati nelle pagine pubbliche
@@ -267,19 +286,50 @@ Risultati attesi:
 
 I giudizi contengono i testi delle ricerche: stanno con i dati della prova, fuori dal repository.
 
-**Primi numeri di Vertex (16/11, provvisori)**, risultato atteso tra i primi tre:
+**Primi numeri di Vertex (16/11, provvisori**: esiti della prima tornata, da rifare dopo il controllo di Sensitive
+Data Protection sulle app ricreate), risultato atteso tra i primi tre:
 
 | Sito | Pesato | Non pesato | Da 4 parole in su (pesato) | Struttura / luogo / altro (pesato) |
 |---|---|---|---|---|
-| kosgroup.com, Vertex da solo | 82,2% | 66,7% | 73,0% | 85,1 / 71,0 / 86,4 |
-| kosgroup.com, con riconoscimento | 85,8% | 77,0% | 99,5% | 100 / 71,0 / 86,4 |
+| kosgroup.com, Vertex da solo | 82,1% | 66,3% | 73,0% | 85,1 / 71,0 / 86,1 |
+| kosgroup.com, con riconoscimento | 85,7% | 76,6% | 99,5% | 100 / 71,0 / 86,1 |
 | anniazzurri.it, Vertex da solo | 85,4% | 80,6% | 86,1% | 86,4 / 74,5 / 86,6 |
 | anniazzurri.it, con riconoscimento | 85,9% | 80,9% | 88,2% | 100 / 74,5 / 86,6 |
+
+**Da cosa è fatto il 99,5% sulle frasi da 4 parole in su (kosgroup.com).** Sono 109 ricerche: 63 sono nomi di struttura
+scritti per intero (35 «residenza anni azzurri …», le altre «centro ambulatoriale santo stefano …», «villa dei pini
+civitanova marche»…) e pesano l'85% delle ricerche del gruppo; il riconoscimento le porta tutte al 100%. Le 46 frasi
+lunghe che non sono nomi di struttura danno 96,6% pesato e 91,3% non pesato, uguali con e senza riconoscimento: nella
+restituzione il dato sulle frasi lunghe si riporta **senza i nomi di struttura**. Su anniazzurri.it 83 frasi lunghe, 7
+nomi di struttura, nessuna «residenza anni azzurri …»: senza nomi 86,8% pesato, 84,2% non pesato.
+
+**Ricerche senza una pagina giusta sul sito**: nella restituzione si elencano come contenuti mancanti, per motivo.
+
+| Motivo | kosgroup.com | anniazzurri.it |
+|---|---|---|
+| Contenuto mancante: informazioni sul ricovero (come si accede, cosa portare) | 2 | – |
+| Contenuto mancante: modulistica (richiesta di ricovero, cartella clinica, delega) | 1 | – |
+| Contenuto mancante: wifi per i ricoverati | 1 | – |
+| Contenuto mancante: accesso per i dipendenti / area dipendenti | 1 | 3 |
+| Contenuto mancante: contatti per fornitori e proposte commerciali | – | 6 |
+| Contenuto mancante: dotazioni sanitarie delle residenze (ossigeno, presidi) | – | 3 |
+| Rimando a kosgroup.com (prestazioni ambulatoriali, strutture sanitarie) | – | 12 |
+| Strutture di altri gruppi | 7 | 1 |
+| Ricerche non chiare | 8 | 12 |
+| **Totale** | **20** | **37** |
+
+(kosgroup.com da 22 a 20: «medico» va all'elenco dei medici e «addetta beauty» alle posizioni aperte.) L'elenco delle
+ricerche per motivo è negli esiti della prova (`senza-pagina-giusta-<sito>.json`).
+
+**Regole di posizionamento** (es. posizioni aperte in testa per le professioni, PDF sotto le pagine): metà del campione,
+assegnata per hash della ricerca, serve a definirle, l'altra metà a misurarle; la restituzione mostra Vertex senza e con
+regole sulla metà di verifica. Oggi, senza regole: kosgroup.com 80,3% (verifica) e 84,7% (definizione); anniazzurri.it
+85,4% e 85,5%.
 
 La categoria «luogo» misura solo l'elenco dei risultati: l'elenco delle strutture vicine della pagina dei risultati si
 valuta a parte (riconoscimento dei luoghi, livello 1). Su kosgroup.com Vertex manca soprattutto le professioni (mette
 in testa gli approfondimenti «infermiere», «oss» invece delle posizioni aperte) e la ricerca «servizi» (carte dei
-servizi in PDF): correggibili con controlli di posizionamento.
+servizi in PDF).
 
 ## PDF nella ricerca (16/11)
 
