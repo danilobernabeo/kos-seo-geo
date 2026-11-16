@@ -61,6 +61,8 @@ def leggi_regole(sito):
 
 
 def stato(percorso, redirect, regole):
+    if not percorso.startswith('/assets/'):
+        return 'sistema', ''   # file di librerie (es. /core/vendor/...): mai in sitemap
     if percorso.startswith('/assets/doc/cv/'):
         return 'curriculum', ''
     if percorso in redirect:

@@ -1,0 +1,11 @@
+{
+  "nome": "Dato strutturato degli articoli AA: dateModified mai precedente a datePublished (19 articoli con pubblicazione programmata, Screaming Frog 15/11)",
+  "elements": [
+    {
+      "type": "snippet",
+      "name": "aaSchema",
+      "file": "anniazzurri/elements/aa-schede/aaSchema.php",
+      "baseline": "anniazzurri/elements/snippets/aaSchema.php"
+    }
+  ]
+}

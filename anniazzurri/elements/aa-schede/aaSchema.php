@@ -801,7 +801,12 @@ $articolo = [
     // interna-articolo); art.immagine resta come prima scelta se un giorno viene creata (3/11: mancava l'image).
     'image'            => $immagine($tv($res, 'art.immagine') ?: $tv($res, $cfg('article_tv_immagine', 'newsImage'))),
     'datePublished'    => $data($res->get('publishedon')),
-    'dateModified'     => $data($res->get('editedon') ?: $res->get('publishedon')),
+    // Con la pubblicazione programmata editedon può precedere publishedon: mai una modifica prima della pubblicazione.
+    'dateModified'     => (function () use ($res, $data) {
+        $ts = fn($v) => $v ? (is_numeric($v) ? (int) $v : (int) strtotime((string) $v)) : 0;
+        $m = max($ts($res->get('editedon')), $ts($res->get('publishedon')));
+        return $m > 0 ? $data($m) : null;
+    })(),
     'inLanguage'       => $LANG,
     // Qui sta la regola: niente autore assegnato = firma dell'organizzazione.
     'author'           => ['@id' => $autore ? $autore['@id'] : $ORG_ID],
