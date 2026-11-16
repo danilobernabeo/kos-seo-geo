@@ -1,0 +1,40 @@
+{
+ "nome": "AA-3 cinque moduli di richiesta ricovero con tabella interna rotta: ricostruiti con qpdf (contenuto invariato) e titolati dal piano",
+ "pdf": [
+  {
+   "s": "residenza-anni-azzurri-dorica/Modulo richiesta ricovero Privato.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-dorica/Modulo richiesta ricovero Privato.pdf",
+   "t": "Modulo richiesta ricovero Privato – Residenza Anni Azzurri Dorica",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "residenza-anni-azzurri-dorica/Modulo richiesta ricovero ex Riabilitazione Estensiva.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-dorica/Modulo richiesta ricovero ex Riabilitazione Estensiva.pdf",
+   "t": "Richiesta di ricovero in riabilitazione – Anni Azzurri Dorica",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "residenza-anni-azzurri-abitare-il-tempo/Richiesta di ricovero Riabilitazione Estensiva.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-abitare-il-tempo/Richiesta di ricovero Riabilitazione Estensiva.pdf",
+   "t": "Richiesta ricovero riabilitazione – Anni Azzurri Abitare il Tempo",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "residenza-anni-azzurri-abitare-il-tempo/Richiesta di ricovero Privato.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-abitare-il-tempo/Richiesta di ricovero Privato.pdf",
+   "t": "Richiesta di ricovero Privato – Anni Azzurri Abitare il Tempo",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "residenza-anni-azzurri-abitare-il-tempo/Richiesta di ricovero UCP-UGIR.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-abitare-il-tempo/Richiesta di ricovero UCP-UGIR.pdf",
+   "t": "Richiesta di ricovero UCP UGIR – Anni Azzurri Abitare il Tempo",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  }
+ ]
+}
