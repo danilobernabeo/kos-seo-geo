@@ -44,11 +44,15 @@ bloccati), lo si dice a KOS insieme all'invio della scheda al DPO.
   cartella separata (`kos-ricerca-chiavi`), revocata a fine prova.
 - Alternativa, se il DPO preferisce che i testi restino su infrastruttura KOS: bucket Cloud Storage in regione UE nel
   progetto Google Cloud `kos-ricerca`, con accesso limitato a Danilo e al service account della prova, stessa cancellazione.
-- Nomi di persona: 125 esclusi (kosgroup.com 122, 0,74% delle ricerche; anniazzurri.it 3, 1,3%), nessuno corrisponde
-  alle pagine medico. Da dire nella scheda: nella prima tornata su Vertex (16/11) c'erano ancora 88 di questi nomi e 5
-  ricerche con **credenziali di accesso a dati sanitari** (codici per scaricare i referti, es. «login» seguito dal
-  codice), esclusi lo stesso giorno (regola dei codici estesa alle singole parole); su Yext non è partito nulla. Le
-  credenziali sono anche nello storico delle ricerche di Yext, perché gli utenti le scrivono nella barra di ricerca:
+- Due numeri distinti, da scrivere separati nella scheda:
+  - **arrivati a Vertex nella prima tornata (16/11)**: 88 nomi di persona e 5 credenziali di accesso ai referti
+    (**credenziali di accesso a dati sanitari**: codici per scaricare i referti, es. «login» seguito dal codice), poi
+    esclusi; su Yext non è partito nulla;
+  - **esclusi in tutto dopo le pulizie e il controllo DLP**: 125 nomi di persona (kosgroup.com 122, 0,74% delle
+    ricerche; anniazzurri.it 3, 1,3%), nessuno corrisponde alle pagine medico. Di questi, 37 (i nomi dell'elenco
+    iniziale) non sono mai stati inviati; gli altri 88 sono quelli della prima tornata. Dopo la ricreazione delle app è
+    arrivato solo «martire», escluso subito dopo, alle app nuove con le statistiche spente.
+  Le credenziali sono anche nello storico delle ricerche di Yext, perché gli utenti le scrivono nella barra di ricerca:
   Danilo lo segnala a KOS (16/11).
 - Testi conservati da Vertex (verifica del 16/11): le app di ricerca conservano i «search log» delle richieste per le
   statistiche (la console permette di filtrare per testo della ricerca); non si possono cancellare né spegnere su un'app
@@ -222,7 +226,8 @@ Script `scripts/ricerca/pulisci-ricerche.py`, da lanciare prima di ogni invio a 
 **Nomi di persona.** 125 nomi di persona esclusi (kosgroup.com 122, 0,74% delle ricerche; anniazzurri.it 3, 1,3%),
 nessuno corrisponde alle pagine medico. Ai 37 iniziali il controllo del 16/11 pomeriggio (cognomi cercati nelle pagine
 pubbliche trovate da Vertex) ha aggiunto 76 nomi, quello di Sensitive Data Protection altri 11 e la rilettura del campione uno; i cognomi di medici con
-pagina o citati in pagine pubbliche restano. La prima tornata su Vertex li conteneva ancora: vedi la scheda del DPO.
+pagina o citati in pagine pubbliche restano. Arrivati a Vertex nella prima tornata: 88 di questi nomi (vedi la
+scheda del DPO); i 37 iniziali non sono mai stati inviati.
 
 **Dove stanno i testi originali** (export Yext, set ripulito, riscritture, elenco dei nomi): sul PC di Danilo, in
 `C:\Users\danil\progetti\kos-seo-geo\kos-ricerca-dati`, fuori dal repository, con accesso solo di Danilo; durante il lavoro una
