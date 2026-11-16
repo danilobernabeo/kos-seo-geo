@@ -44,7 +44,10 @@ bloccati), lo si dice a KOS insieme all'invio della scheda al DPO.
   cartella separata (`kos-ricerca-chiavi`), revocata a fine prova.
 - Alternativa, se il DPO preferisce che i testi restino su infrastruttura KOS: bucket Cloud Storage in regione UE nel
   progetto Google Cloud `kos-ricerca`, con accesso limitato a Danilo e al service account della prova, stessa cancellazione.
-- Nomi di persona: 37 esclusi (0,18% delle ricerche KOS, 1,3% AA), nessuno corrisponde alle 164 pagine medico.
+- Nomi di persona: 113 esclusi (kosgroup.com 110, 0,68% delle ricerche; anniazzurri.it 3, 1,3%), nessuno corrisponde
+  alle pagine medico. Da dire nella scheda: nella prima tornata su Vertex (16/11) c'erano ancora 76 di questi nomi e 5
+  ricerche con codici di accesso ai referti dentro la frase, esclusi lo stesso giorno (regola dei codici estesa alle
+  singole parole); su Yext non è partito nulla.
 - Nella prova anche le ricerche di kosgroup.com passano dalla generazione delle risposte AI (storico già ripulito,
   nessuna risposta pubblicata).
 - Regola per le domande di crisi: riquadro fisso con il 112 e i numeri di emergenza sopra i risultati, nessuna risposta
@@ -168,19 +171,28 @@ coordinate) ed eventualmente il servizio, e mostra in testa le strutture vicine;
   siti inviate (kosgroup.com 847 pagine italiane, anniazzurri.it 475); la sitemap dei PDF esclusi di anniazzurri.it non va
   mai inviata.
 - App `ricerca-kosgroup` e `ricerca-anniazzurri`, edizione Enterprise con funzioni LLM.
+- Dal 16/11 pomeriggio: archivio `anniazzurri-schede` con le sole 64 schede delle strutture di anniazzurri.it (57
+  residenze, 5 centri diurni, 2 hospice; inclusione per indirizzo esatto, niente news, pagine istituzionali né PDF) e app
+  di prova `ricerca-kosgroup-schede-aa` (archivi `kosgroup-it` e `anniazzurri-schede`), per la terza forma
+  dell'indicatore; l'app `ricerca-kosgroup` resta com'è (Vertex da solo). Landing `kosgroup.com/villamargherita`
+  aggiunta all'archivio `kosgroup-it` (indirizzo esatto: è fuori da `/it/` e non è ancora nella sitemap). Indicizzazione
+  in corso.
 - Le sitemap non contengono PDF: per la prova i PDF sono caricati a mano (sezione «PDF nella ricerca»).
 
 ## Pulizia delle ricerche (16/11)
 
 Script `scripts/ricerca/pulisci-ricerche.py`, da lanciare prima di ogni invio a Vertex o a Yext. Regole:
 
-1. **escluse**: email, codici fiscali, telefoni, date, codici alfanumerici (6 caratteri o più con almeno due cifre: codici
-   di prenotazione o di pratica), nomi di persona che non corrispondono a una pagina pubblica dei siti;
+1. **escluse**: email, codici fiscali, telefoni, date, codici alfanumerici (parole di 5 caratteri o più con lettere e
+   almeno due cifre, anche dentro la frase: codici di accesso ai referti, di prenotazione o di pratica), nomi di persona
+   che non corrispondono a una pagina pubblica dei siti;
 2. **tolte dal testo**: età («83 anni», «classe 1936»);
 3. **riscritte a mano**: frasi con nomi, indirizzi o dettagli di vita privata, tenendo il bisogno, i refusi e la città.
 
-**Nomi di persona.** 37 nomi di persona esclusi (0,18% delle ricerche KOS, 1,3% AA), nessuno corrisponde alle 164
-pagine medico.
+**Nomi di persona.** 113 nomi di persona esclusi (kosgroup.com 110, 0,68% delle ricerche; anniazzurri.it 3, 1,3%),
+nessuno corrisponde alle pagine medico. Il controllo del 16/11 pomeriggio (cognomi cercati nelle pagine pubbliche
+trovate da Vertex) ha aggiunto 76 nomi ai 37 iniziali; 15 cognomi di medici con pagina o citati in pagine pubbliche
+restano. La prima tornata su Vertex li conteneva ancora: vedi la scheda del DPO.
 
 **Dove stanno i testi originali** (export Yext, set ripulito, riscritture, elenco dei nomi): sul PC di Danilo, in
 `C:\Users\danil\progetti\kos-seo-geo\kos-ricerca-dati`, fuori dal repository, con accesso solo di Danilo; durante il lavoro una
@@ -190,7 +202,7 @@ prova. Mai in git: nel repository solo regole e conteggi.
 
 | Sito | Termini nell'export | Esclusi | Riscritti | Ricerche distinte ripulite |
 |---|---|---|---|---|
-| kosgroup.com | 2.822 | 60 (34 nomi di persona, 24 codici, 1 email, 1 codice fiscale) | 2 | 2.762 |
+| kosgroup.com | 2.822 | 141 (110 nomi di persona, 29 codici, 1 email, 1 codice fiscale) | 2 | 2.681 |
 | anniazzurri.it | 325 | 5 (3 nomi di persona, 2 frasi con indirizzi privati) | 8 | 320 |
 
 ## Script di misura (16/11)
@@ -203,9 +215,10 @@ prova. Mai in git: nel repository solo regole e conteggi.
 - `livello1`: senza risultati, tempo mediano e al 95° percentile, nome di struttura → scheda tra i primi tre (pesato per
   frequenza), luoghi riconosciuti e nomi di struttura che contengono un luogo.
 
-Riconoscimento delle strutture (58 strutture kosgroup.com dalle TV, più 5 schede `/it/centri/` della sitemap senza TV
-`str.*`: Poliambulatorio Villalba, Santo Stefano Casorate e Mede, Villa Margherita Vicenza riabilitazione e psichiatria;
-e le 57 residenze, perché la ricerca di kosgroup.com trova anche le residenze): tutti i token distintivi del nome nella ricerca, con tolleranza sui refusi; la città della struttura non serve
+Riconoscimento delle strutture (le 58 strutture kosgroup.com dell'export delle TV del 6/11, più Poliambulatorio
+Villalba, Santo Stefano Casorate e Santo Stefano Mede, con i dati della struttura dal 16/11 notte, e Villa Margherita
+Vicenza, la cui struttura è la landing `/villamargherita` con le due schede delle unità come reparti: vale una qualunque
+delle tre; e le 57 residenze, perché la ricerca di kosgroup.com trova anche le residenze): tutti i token distintivi del nome nella ricerca, con tolleranza sui refusi; la città della struttura non serve
 quando il nome ha altre parole, ma decide se c'è («villa dei pini» vale per Firenze e Civitanova, «villa dei pini
 civitanova» solo per Civitanova); quando più schede rispondono allo stesso nome, ognuna conta come risultato atteso
 («villalba»: Clinica Dentale e Punto Prelievi Salus Villalba). Il nome non vale se è solo una città con più strutture
@@ -218,22 +231,55 @@ fuori dal repository.
 
 | Sito | Ricerche distinte (pesate) | Senza risultati | Tempo mediano / 95° percentile | Nome di struttura → scheda tra i primi tre |
 |---|---|---|---|---|
-| kosgroup.com | 2.762 (25.666) | 162 termini, 1,2% delle ricerche | 335 / 429 ms | 82,3% (332 termini, 4.745 ricerche) |
+| kosgroup.com | 2.681 (25.531) | 152 termini, 1,2% delle ricerche | 335 / 429 ms | 81,4% (348 termini, 5.638 ricerche) |
 | anniazzurri.it | 320 (625) | 8 termini, 2,2% | 371 / 536 ms | 86,4% (12 termini, 22 ricerche) |
 
-Luoghi riconosciuti: kosgroup.com 712 termini (7.440 ricerche), anniazzurri.it 39 (72); nomi di struttura che contengono
-anche un luogo: 142 e 4 (lì vince il nome).
+Luoghi riconosciuti: kosgroup.com 655 termini (6.489 ricerche), anniazzurri.it 39 (72); nomi di struttura che contengono
+anche un luogo: 160 e 4 (lì vince il nome).
 
-Su kosgroup.com l'82,3% si divide in due: **schede kosgroup.com 99,5%** (3.925 ricerche) e **residenze Anni Azzurri 0%**
-(820 ricerche, es. «residenza anni azzurri volpiano»): l'app `ricerca-kosgroup` indicizza solo kosgroup.com e Vertex
-risponde con le pagine generali sulle residenze. Due strade, da decidere prima del confronto con Yext:
+Su kosgroup.com l'81,4% si divide in due: **schede kosgroup.com 99,6%** (4.609 ricerche) e **residenze Anni Azzurri 0%**
+(1.029 ricerche, es. «residenza anni azzurri volpiano»): l'app `ricerca-kosgroup` indicizza solo kosgroup.com.
+**Decisione del 16/11:** riconoscimento dei nomi dalle TV con la scheda in testa (per le residenze, link alla scheda su
+anniazzurri.it) **più** un archivio con le sole schede delle strutture di anniazzurri.it collegato all'app di
+kosgroup.com, per coprire anche ricerche come «rsa volpiano» o «casa di riposo torino» che il riconoscimento dei nomi non
+vede. Nella restituzione l'indicatore in tre forme: Vertex da solo, con il riconoscimento, con il riconoscimento più
+l'archivio delle schede AA (`livello1` e `livello2` le calcolano quando ci sono gli esiti di `vertex --variante
+schede-aa`).
 
-1. la pagina dei risultati riconosce il nome dalle TV e mette la scheda in testa (regola «il nome della struttura vince»,
-   già prevista), per le residenze con link alla scheda su anniazzurri.it; Vertex resta solo su kosgroup.com;
-2. collegare anche l'archivio `anniazzurri` all'app di kosgroup.com: le residenze le trova Vertex, ma nei risultati di
-   kosgroup.com entrano anche news e pagine di anniazzurri.it.
+## Livello 2: risultati attesi (16/11)
 
-Nella restituzione l'indicatore si riporta in tutte e due le forme: Vertex da solo e Vertex con il riconoscimento dei nomi.
+Script `scripts/ricerca/livello2.py` (`campione`, `misura`). Campione: kosgroup.com 400 ricerche (le 250 più frequenti,
+77% delle ricerche dei 12 mesi, più 60 frasi da 4 parole in su, 45 con refusi e 45 con un luogo, estratte con seme fisso);
+anniazzurri.it tutte le 320.
+
+Risultati attesi:
+
+- **nome di struttura**: la scheda (o le schede omonime), come nel livello 1;
+- **luogo** (solo ricerche per luogo pure, es. «rsa a milano»): le schede delle strutture della stessa provincia o
+  regione e, su anniazzurri.it, la pagina «RSA in provincia di …»; senza strutture, l'elenco delle strutture;
+- **tutte le altre**: giudizio assistito dall'AI, ricontrollato a mano sui casi mancati. Criteri: prestazione o
+  specialità → la sua pagina di servizio; professione → pagine «Lavorare in KOS» (più la pagina di servizio quando la
+  parola indica anche la prestazione, es. fisioterapista); referti, accesso, registrazione → ritiro referti / prenota
+  online; moduli e domande d'ingresso (AA) → documentazione e moduli; orari di visita, reclami, camera mortuaria (AA) →
+  carte dei servizi; domande lunghe delle famiglie → la pagina del servizio che risponde al bisogno; coda lunga senza
+  pagina propria → pagina che contiene il termine. Ricerche senza una pagina giusta sul sito (strutture di altri gruppi,
+  testi incomprensibili) escono dal calcolo: kosgroup.com 22, anniazzurri.it 37.
+
+I giudizi contengono i testi delle ricerche: stanno con i dati della prova, fuori dal repository.
+
+**Primi numeri di Vertex (16/11, provvisori)**, risultato atteso tra i primi tre:
+
+| Sito | Pesato | Non pesato | Da 4 parole in su (pesato) | Struttura / luogo / altro (pesato) |
+|---|---|---|---|---|
+| kosgroup.com, Vertex da solo | 82,2% | 66,7% | 73,0% | 85,1 / 71,0 / 86,4 |
+| kosgroup.com, con riconoscimento | 85,8% | 77,0% | 99,5% | 100 / 71,0 / 86,4 |
+| anniazzurri.it, Vertex da solo | 85,4% | 80,6% | 86,1% | 86,4 / 74,5 / 86,6 |
+| anniazzurri.it, con riconoscimento | 85,9% | 80,9% | 88,2% | 100 / 74,5 / 86,6 |
+
+La categoria «luogo» misura solo l'elenco dei risultati: l'elenco delle strutture vicine della pagina dei risultati si
+valuta a parte (riconoscimento dei luoghi, livello 1). Su kosgroup.com Vertex manca soprattutto le professioni (mette
+in testa gli approfondimenti «infermiere», «oss» invece delle posizioni aperte) e la ricerca «servizi» (carte dei
+servizi in PDF): correggibili con controlli di posizionamento.
 
 ## PDF nella ricerca (16/11)
 

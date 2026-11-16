@@ -29,6 +29,8 @@ import requests
 PROGETTO = 'kos-ricerca'
 BASE_VERTEX = 'https://eu-discoveryengine.googleapis.com/v1/projects/kos-ricerca/locations/eu/collections/default_collection'
 APP = {'kosgroup': 'ricerca-kosgroup', 'anniazzurri': 'ricerca-anniazzurri'}
+# varianti dell'app per la prova (16/11): kosgroup.com più l'archivio delle sole schede delle strutture di anniazzurri.it
+VARIANTI = {'schede-aa': {'kosgroup': 'ricerca-kosgroup-schede-aa'}}
 YEXT = 'https://prod-cdn-cached.us.yextapis.com/v2/accounts/me/search/query'
 ESPERIENZA = {'kosgroup': 'kos-care-search', 'anniazzurri': 'it-answer-anniazzurri'}
 STRUTTURE = {
@@ -71,14 +73,14 @@ def token_vertex(chiave):
     return c
 
 
-def cerca_vertex(sessione, cred, sito, q):
+def cerca_vertex(sessione, cred, sito, q, app=None):
     import google.auth.transport.requests as tr
     if not cred.valid:
         cred.refresh(tr.Request())
     corpo = {'query': q, 'pageSize': 10, 'languageCode': 'it',
              'spellCorrectionSpec': {'mode': 'AUTO'}, 'queryExpansionSpec': {'condition': 'AUTO'}}
     t0 = time.time()
-    r = sessione.post(f"{BASE_VERTEX}/engines/{APP[sito]}/servingConfigs/default_search:search",
+    r = sessione.post(f"{BASE_VERTEX}/engines/{app or APP[sito]}/servingConfigs/default_search:search",
                       headers={'Authorization': 'Bearer ' + cred.token, 'x-goog-user-project': PROGETTO},
                       json=corpo, timeout=60)
     ms = round((time.time() - t0) * 1000)
@@ -112,7 +114,10 @@ def cerca_yext(sessione, chiave, sito, q):
 
 def lancia(o, motore):
     ricerche = leggi_ricerche(o.ricerche)
-    dest = Path(o.esiti) / f'{motore}-{o.sito}.jsonl'
+    variante = getattr(o, 'variante', None)
+    app = VARIANTI[variante][o.sito] if variante else None
+    etichetta = f'{motore}-{variante}' if variante else motore
+    dest = Path(o.esiti) / f'{etichetta}-{o.sito}.jsonl'
     dest.parent.mkdir(parents=True, exist_ok=True)
     fatti = esiti_fatti(dest)
     s = requests.Session()
@@ -121,12 +126,13 @@ def lancia(o, motore):
     else:
         cred, pausa = Path(o.chiave_yext).read_text().strip(), 1.0
     nuove = [r for r in ricerche if r['ricerca'] not in fatti]
-    print(f'{motore} {o.sito}: {len(nuove)} ricerche da lanciare ({len(fatti)} già fatte)')
+    print(f'{etichetta} {o.sito}: {len(nuove)} ricerche da lanciare ({len(fatti)} già fatte)')
     with dest.open('a', encoding='utf-8') as f:
         for i, r in enumerate(nuove, 1):
             for tentativo in range(3):
                 try:
-                    esito = (cerca_vertex if motore == 'vertex' else cerca_yext)(s, cred, o.sito, r['ricerca'])
+                    esito = (cerca_vertex(s, cred, o.sito, r['ricerca'], app) if motore == 'vertex'
+                             else cerca_yext(s, cred, o.sito, r['ricerca']))
                     if esito['http'] == 429:
                         time.sleep(30)
                         continue
@@ -141,13 +147,17 @@ def lancia(o, motore):
             time.sleep(pausa)
 
 
-# schede /it/centri/ nella sitemap di kosgroup.com senza le TV str.* (verifica del 16/11: titolo e addressLocality della pagina)
+# Schede che l'export delle TV del 6/11 non contiene (verifica del 16/11 sul sorgente pubblicato):
+# - tre schede con i dati della struttura dal 16/11 notte (registro, «KOS 24, tre schede senza nodo»);
+# - Villa Margherita Vicenza: la struttura è la landing /villamargherita, le schede delle unità sono reparti
+#   (#department, registro 12/11); per la ricerca valgono tutte e tre.
 ALTRE_SCHEDE = {'kosgroup': [
-    ('Poliambulatorio Villalba', 'Macerata', 'it/centri/poliambulatorio-villalba'),
-    ('Santo Stefano Casorate', 'Casorate Primo', 'it/centri/santo-stefano-casorate'),
-    ('Santo Stefano Mede', 'Mede', 'it/centri/santo-stefano-mede'),
-    ('Villa Margherita Vicenza', 'Arcugnano', 'it/centri/villa-margherita-vicenza-riabilitazione'),
-    ('Villa Margherita Vicenza', 'Arcugnano', 'it/centri/villa-margherita-vicenza-psichiatria'),
+    ('Poliambulatorio Villalba', 'Macerata', 'MC', 'it/centri/poliambulatorio-villalba'),
+    ('Santo Stefano Casorate', 'Casorate Primo', 'PV', 'it/centri/santo-stefano-casorate'),
+    ('Santo Stefano Mede', 'Mede', 'PV', 'it/centri/santo-stefano-mede'),
+    ('Villa Margherita Vicenza', 'Arcugnano', 'VI', 'villamargherita'),
+    ('Villa Margherita Vicenza', 'Arcugnano', 'VI', 'it/centri/villa-margherita-vicenza-riabilitazione'),
+    ('Villa Margherita Vicenza', 'Arcugnano', 'VI', 'it/centri/villa-margherita-vicenza-psichiatria'),
 ]}
 
 
@@ -164,7 +174,7 @@ def strutture(sito):
             out.append({'nome': nome, 'url': url_canonico(base + s['uri']), 'token': norm(nome),
                         'citta': s['tv'].get('str.citta', ''), 'lat': s['tv'].get('str.lat'),
                         'lng': s['tv'].get('str.lng')})
-        for nome, citta, uri in ALTRE_SCHEDE.get(nome_sito, []):
+        for nome, citta, _sigla, uri in ALTRE_SCHEDE.get(nome_sito, []):
             out.append({'nome': nome, 'url': url_canonico(base + uri), 'token': norm(nome), 'citta': citta,
                         'lat': None, 'lng': None})
     return out
@@ -173,6 +183,9 @@ def strutture(sito):
 GENERICI = set('residenza anni azzurri azzurra centro ambulatoriale santo stefano villa casa poliambulatorio laboratorio '
                'analisi punto prelievi istituto ospedale clinica dentale di dei del della la il le san sant santa polo '
                'geriatrico riabilitativo residenziale corte medico diagnostica'.split())
+
+
+VUOTE = set('di dei del della la il le'.split())
 
 
 def simile(a, b):
@@ -188,8 +201,9 @@ def struttura_cercata(q, elenco, luogo=None):
     («villa dei pini» vale per Firenze e per Civitanova; «villa dei pini civitanova» solo per Civitanova); refusi
     tollerati sulle parole di 6 lettere e più. A parità vince chi ha più parole del nome e della città nella ricerca; a chi vince si
     aggiungono le schede il cui nome lo contiene (es. «villalba»: Clinica Dentale e Punto Prelievi Salus Villalba).
-    Il nome non vale se è solo una città con più strutture (es. Polo Geriatrico Riabilitativo Milano) o se sta dentro
-    il nome di un comune più lungo (es. «borgo san lorenzo» non è la Residenza San Lorenzo): è una ricerca per luogo."""
+    Se il nome distintivo è solo una città con più strutture (es. Polo Geriatrico Riabilitativo Milano) servono almeno
+    due altre parole del nome, altrimenti è una ricerca per luogo; il nome non vale nemmeno se sta dentro il nome di un
+    comune più lungo (es. «borgo san lorenzo» non è la Residenza San Lorenzo): è una ricerca per luogo."""
     from collections import Counter
     tq = norm(q)
     per_citta = Counter(' '.join(norm(s['citta'])) for s in elenco)
@@ -205,12 +219,16 @@ def struttura_cercata(q, elenco, luogo=None):
             continue
         citta = norm(s['citta'])
         senza_citta = [t for t in dist if t not in citta]
-        if not senza_citta and per_citta[' '.join(citta)] > 1:
-            continue
         richiesti = senza_citta or dist
         if not all(any(simile(d, t) for t in tq) for d in richiesti):
             continue
-        if luogo_t and set(richiesti) <= luogo_t and len(luogo_t) > len(richiesti) and not set(citta) & luogo_t:
+        if not senza_citta and per_citta[' '.join(citta)] > 1:
+            # nome distintivo = città con più strutture: serve anche il resto del nome (almeno due parole,
+            # es. «centro ambulatoriale santo stefano jesi»), altrimenti è una ricerca per luogo
+            resto = [t for t in s['token'] if t not in citta and t not in VUOTE]
+            if sum(1 for t in resto if any(simile(t, x) for x in tq)) < 2:
+                continue
+        if luogo_t and set(richiesti) <= luogo_t and luogo_t - set(s['token']) and not set(citta) & luogo_t:
             continue
         tutte = sum(1 for t in set(s['token']) | set(citta) if any(simile(t, x) for x in tq))
         richiesti_di[id(s)] = richiesti
@@ -232,7 +250,9 @@ def struttura_cercata(q, elenco, luogo=None):
 # comuni che sono anche parole comuni nelle ricerche: non contano come luogo
 NON_LUOGHI = set('salve mese parenti posta carbone varsi sono cento fondi lavoro villa casa santa centro bella vita '
                  'monte piano valle porto calcio cane ponte pace sole nove mare colle cervo ospedaletto arco pero bra '
-                 'campo campi fiume lago scala forno capo prato rocca torre pieve corte castello'.split())
+                 'campo campi fiume lago scala forno capo prato rocca torre pieve corte castello medicina dello minori '
+                 'front monti opera piscina viale piatto venosa dolce bono stella alto quarto mele falcone paola '
+                 'tortorella ginestra'.split())
 
 
 def luoghi(comuni_json):
@@ -253,6 +273,13 @@ def luogo_cercato(q, luoghi_noti):
     return None
 
 
+def componi(schede, risultati):
+    """Pagina dei risultati con il riconoscimento dei nomi: prima le schede delle strutture nominate, poi Vertex."""
+    testa = [{'url': u, 'titolo': '', 'riconosciuta': True} for u in (schede or [])]
+    visti = {x['url'] for x in testa}
+    return testa + [x for x in risultati if x['url'] not in visti]
+
+
 def livello1(o):
     ricerche = {r['ricerca']: r for r in leggi_ricerche(o.ricerche)}
     el = strutture(o.sito)
@@ -271,18 +298,26 @@ def livello1(o):
     rapporto['luoghi'] = {'termini': sum(1 for a in attesi.values() if a['luogo'] and not a['struttura']),
                           'ricerche': sum(peso[q] for q, a in attesi.items() if a['luogo'] and not a['struttura']),
                           'nome_struttura_con_luogo': sum(1 for a in attesi.values() if a['falso_allarme_luogo'])}
-    for motore in ('vertex', 'yext'):
+    forme = [('vertex', 'vertex', False), ('vertex_con_riconoscimento', 'vertex', True),
+             ('vertex_schede_aa', 'vertex-schede-aa', False),
+             ('vertex_schede_aa_con_riconoscimento', 'vertex-schede-aa', True), ('yext', 'yext', False)]
+    for forma, motore, riconosci in forme:
         f = Path(o.esiti) / f'{motore}-{o.sito}.jsonl'
         if not f.exists():
             continue
-        es = {json.loads(x)['ricerca']: json.loads(x) for x in f.open(encoding='utf-8')}
+        es = {}
+        for x in f.open(encoding='utf-8'):
+            e = json.loads(x)
+            if riconosci:
+                e['risultati'] = componi(attesi[e['ricerca']]['struttura'], e['risultati'])
+            es[e['ricerca']] = e
         qs = [q for q in ricerche if q in es]
         tot = sum(peso[q] for q in qs)
         senza = [q for q in qs if not es[q]['risultati']]
         ms = sorted(es[q]['ms'] for q in qs if es[q].get('ms') is not None)
         strutt = [q for q in qs if attesi[q]['struttura']]
         trovate = [q for q in strutt if set(attesi[q]['struttura']) & {x['url'] for x in es[q]['risultati'][:3]}]
-        rapporto[motore] = {
+        rapporto[forma] = {
             'ricerche_lanciate': len(qs),
             'senza_risultati_termini': len(senza),
             'senza_risultati_quota_pesata': round(sum(peso[q] for q in senza) / tot * 100, 1) if tot else None,
@@ -305,6 +340,7 @@ def main():
         p.add_argument('--esiti', required=True)
         if nome == 'vertex':
             p.add_argument('--chiave', required=True)
+            p.add_argument('--variante', choices=list(VARIANTI))
         if nome == 'yext':
             p.add_argument('--chiave-yext', required=True)
         if nome == 'livello1':
