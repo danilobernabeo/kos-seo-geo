@@ -193,6 +193,21 @@ prova. Mai in git: nel repository solo regole e conteggi.
 | kosgroup.com | 2.822 | 60 (34 nomi di persona, 24 codici, 1 email, 1 codice fiscale) | 2 | 2.762 |
 | anniazzurri.it | 325 | 5 (3 nomi di persona, 2 frasi con indirizzi privati) | 8 | 320 |
 
+## Script di misura (16/11)
+
+`scripts/ricerca/misura.py`, sulle ricerche ripulite:
+
+- `vertex`: primi 10 risultati e tempo di risposta di ogni ricerca (correzione ortografica ed espansione automatiche);
+- `yext`: stesse ricerche sull'API di Yext, una al secondo, `source=CONFRONTO_VERTEX`; come risultati si contano i primi 3
+  di ogni categoria nell'ordine della pagina universale, cioè quello che l'utente vede;
+- `livello1`: senza risultati, tempo mediano e al 95° percentile, nome di struttura → scheda tra i primi tre (pesato per
+  frequenza), luoghi riconosciuti e nomi di struttura che contengono un luogo.
+
+Riconoscimento delle strutture: tutti i token distintivi del nome nella ricerca, con tolleranza sui refusi; se il nome
+distintivo è solo una città con più strutture (es. Polo Geriatrico Riabilitativo Milano), la città non basta. Riconoscimento
+dei luoghi: comuni, province e regioni italiane, esclusi i comuni che sono anche parole comuni nelle ricerche («salve»,
+«mese», «parenti», «posta»...). Gli esiti (ricerche e risultati) stanno con i dati della prova, fuori dal repository.
+
 ## PDF nella ricerca (16/11)
 
 Carte dei servizi e pieghevoli commerciali sono indicizzati anche nella prova. **Regola: un PDF entra se è indicizzabile
