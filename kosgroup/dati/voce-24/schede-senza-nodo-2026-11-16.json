@@ -1,0 +1,39 @@
+{
+  "nome": "KOS-24 tre schede senza nodo completate (16/11): Poliambulatorio Villalba (indirizzo univoco: la RSA Villalba non c'è più), Santo Stefano Casorate e Mede (reparti dentro ospedali pubblici: indirizzo dell'ospedale), dati dalla pagina; orari in attesa della conferma di KOS",
+  "risorse": [
+    {
+      "uri": "it/centri/poliambulatorio-villalba",
+      "tv": {
+        "str.nome": "Poliambulatorio Villalba",
+        "str.via": "Via Jacopo Robusti, 37",
+        "str.cap": "62100",
+        "str.citta": "Macerata",
+        "str.provincia": "MC",
+        "str.telefono": "+3907331930310",
+        "str.email": "poliambulatorio.villalba@kosgroup.com"
+      }
+    },
+    {
+      "uri": "it/centri/santo-stefano-casorate",
+      "tv": {
+        "str.nome": "Santo Stefano Casorate",
+        "str.via": "Via Volontari del Sangue, 1",
+        "str.cap": "27022",
+        "str.citta": "Casorate Primo",
+        "str.provincia": "PV",
+        "str.telefono": "+3902900401"
+      }
+    },
+    {
+      "uri": "it/centri/santo-stefano-mede",
+      "tv": {
+        "str.nome": "Santo Stefano Mede",
+        "str.via": "Viale dei Mille, 23",
+        "str.cap": "27035",
+        "str.citta": "Mede",
+        "str.provincia": "PV",
+        "str.telefono": "+3903848081"
+      }
+    }
+  ]
+}

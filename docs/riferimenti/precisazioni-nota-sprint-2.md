@@ -19,10 +19,6 @@ Fino al 15 novembre gli articoli di kosgroup.com che citano una struttura (`ment
 - **Sitemap e «Ricercabile»:** https://anniazzurri.it/home-en e https://anniazzurri.it/azzurramente sono entrate nella sitemap; la pagina di iscrizione al convegno sul Parkinson è ora in `noindex, follow` e fuori sitemap.
 - **AA 8 · breadcrumb:** su 41 pagine il livello intermedio del breadcrumb (visibile e `BreadcrumbList`) puntava all'indirizzo di un contenitore che reindirizza alla prima pagina figlia (es. `/soluzioni/`, `/chi-siamo/`). Ora punta alla pagina di arrivo, con gli stessi nomi e livelli: su https://anniazzurri.it/cure-intermedie il secondo livello «Le nostre soluzioni» porta a `/le-nostre-soluzioni`.
 
-## Schede struttura senza nodo (KOS 24)
-
-La nota non lo diceva: 3 schede su 61 non hanno ancora il nodo della struttura, perché l'anagrafica importata da Yext non aveva un indirizzo univoco e la regola del progetto è «nodo struttura solo se c'è l'indirizzo». Sono https://kosgroup.com/it/centri/poliambulatorio-villalba (due entità Yext sulla stessa scheda), https://kosgroup.com/it/centri/santo-stefano-casorate e https://kosgroup.com/it/centri/santo-stefano-mede (nessuna entità Yext). Le pagine hanno comunque `WebPage` e breadcrumb. Le completerò con l'indirizzo pubblicato sulla pagina e ne darò conto nella nota dello sprint 3.
-
 ## Scostamento aggiunto (AA 3 · PDF)
 
 Negli Scostamenti mancava la riga sui PDF di anniazzurri.it: gli scostamenti sono quindi sei.
