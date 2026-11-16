@@ -57,3 +57,10 @@ foreach ($termini as $t) {
     echo "== «$t»: " . count($r2) . "\n";
     foreach ($r2 as $x) $riga($x);
 }
+// Chiamate a pdoSitemap (risorse, chunk, template), per intero
+echo "== Chiamate a pdoSitemap\n";
+foreach (["SELECT CONCAT('risorsa ', id, ' ', uri) n, content t FROM {$p}site_content WHERE deleted = 0 AND content LIKE '%pdoSitemap%'",
+          "SELECT CONCAT('chunk ', name) n, snippet t FROM {$p}site_htmlsnippets WHERE snippet LIKE '%pdoSitemap%'",
+          "SELECT CONCAT('template ', templatename) n, content t FROM {$p}site_templates WHERE content LIKE '%pdoSitemap%'"] as $sql) {
+    foreach ($modx->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC) as $x) echo "-- {$x['n']}\n{$x['t']}\n";
+}
