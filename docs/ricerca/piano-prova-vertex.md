@@ -168,7 +168,7 @@ coordinate) ed eventualmente il servizio, e mostra in testa le strutture vicine;
   siti inviate (kosgroup.com 847 pagine italiane, anniazzurri.it 475); la sitemap dei PDF esclusi di anniazzurri.it non va
   mai inviata.
 - App `ricerca-kosgroup` e `ricerca-anniazzurri`, edizione Enterprise con funzioni LLM.
-- Le sitemap non contengono PDF: per ora la ricerca trova solo pagine. Da decidere se aggiungere le carte dei servizi.
+- Le sitemap non contengono PDF: per la prova i PDF sono caricati a mano (sezione «PDF nella ricerca»).
 
 ## Pulizia delle ricerche (16/11)
 
@@ -203,10 +203,37 @@ prova. Mai in git: nel repository solo regole e conteggi.
 - `livello1`: senza risultati, tempo mediano e al 95° percentile, nome di struttura → scheda tra i primi tre (pesato per
   frequenza), luoghi riconosciuti e nomi di struttura che contengono un luogo.
 
-Riconoscimento delle strutture: tutti i token distintivi del nome nella ricerca, con tolleranza sui refusi; se il nome
-distintivo è solo una città con più strutture (es. Polo Geriatrico Riabilitativo Milano), la città non basta. Riconoscimento
-dei luoghi: comuni, province e regioni italiane, esclusi i comuni che sono anche parole comuni nelle ricerche («salve»,
-«mese», «parenti», «posta»...). Gli esiti (ricerche e risultati) stanno con i dati della prova, fuori dal repository.
+Riconoscimento delle strutture (58 strutture kosgroup.com dalle TV, più 5 schede `/it/centri/` della sitemap senza TV
+`str.*`: Poliambulatorio Villalba, Santo Stefano Casorate e Mede, Villa Margherita Vicenza riabilitazione e psichiatria;
+e le 57 residenze, perché la ricerca di kosgroup.com trova anche le residenze): tutti i token distintivi del nome nella ricerca, con tolleranza sui refusi; la città della struttura non serve
+quando il nome ha altre parole, ma decide se c'è («villa dei pini» vale per Firenze e Civitanova, «villa dei pini
+civitanova» solo per Civitanova); quando più schede rispondono allo stesso nome, ognuna conta come risultato atteso
+(«villalba»: Clinica Dentale e Punto Prelievi Salus Villalba). Il nome non vale se è solo una città con più strutture
+(es. Polo Geriatrico Riabilitativo Milano) o se sta dentro il nome di un comune («borgo san lorenzo» non è la Residenza San
+Lorenzo). Riconoscimento dei luoghi: comuni, province e regioni italiane, esclusi i comuni che sono anche parole comuni
+nelle ricerche («salve», «mese», «parenti», «posta»...). Gli esiti (ricerche e risultati) stanno con i dati della prova,
+fuori dal repository.
+
+**Livello 1, primi numeri di Vertex (16/11, provvisori: manca il confronto con Yext, che si lancia per ultimo).**
+
+| Sito | Ricerche distinte (pesate) | Senza risultati | Tempo mediano / 95° percentile | Nome di struttura → scheda tra i primi tre |
+|---|---|---|---|---|
+| kosgroup.com | 2.762 (25.666) | 162 termini, 1,2% delle ricerche | 335 / 429 ms | 82,3% (332 termini, 4.745 ricerche) |
+| anniazzurri.it | 320 (625) | 8 termini, 2,2% | 371 / 536 ms | 86,4% (12 termini, 22 ricerche) |
+
+Luoghi riconosciuti: kosgroup.com 712 termini (7.440 ricerche), anniazzurri.it 39 (72); nomi di struttura che contengono
+anche un luogo: 142 e 4 (lì vince il nome).
+
+Su kosgroup.com l'82,3% si divide in due: **schede kosgroup.com 99,5%** (3.925 ricerche) e **residenze Anni Azzurri 0%**
+(820 ricerche, es. «residenza anni azzurri volpiano»): l'app `ricerca-kosgroup` indicizza solo kosgroup.com e Vertex
+risponde con le pagine generali sulle residenze. Due strade, da decidere prima del confronto con Yext:
+
+1. la pagina dei risultati riconosce il nome dalle TV e mette la scheda in testa (regola «il nome della struttura vince»,
+   già prevista), per le residenze con link alla scheda su anniazzurri.it; Vertex resta solo su kosgroup.com;
+2. collegare anche l'archivio `anniazzurri` all'app di kosgroup.com: le residenze le trova Vertex, ma nei risultati di
+   kosgroup.com entrano anche news e pagine di anniazzurri.it.
+
+Nella restituzione l'indicatore si riporta in tutte e due le forme: Vertex da solo e Vertex con il riconoscimento dei nomi.
 
 ## PDF nella ricerca (16/11)
 

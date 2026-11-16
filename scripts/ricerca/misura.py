@@ -141,44 +141,92 @@ def lancia(o, motore):
             time.sleep(pausa)
 
 
+# schede /it/centri/ nella sitemap di kosgroup.com senza le TV str.* (verifica del 16/11: titolo e addressLocality della pagina)
+ALTRE_SCHEDE = {'kosgroup': [
+    ('Poliambulatorio Villalba', 'Macerata', 'it/centri/poliambulatorio-villalba'),
+    ('Santo Stefano Casorate', 'Casorate Primo', 'it/centri/santo-stefano-casorate'),
+    ('Santo Stefano Mede', 'Mede', 'it/centri/santo-stefano-mede'),
+    ('Villa Margherita Vicenza', 'Arcugnano', 'it/centri/villa-margherita-vicenza-riabilitazione'),
+    ('Villa Margherita Vicenza', 'Arcugnano', 'it/centri/villa-margherita-vicenza-psichiatria'),
+]}
+
+
 def strutture(sito):
-    percorso, base = STRUTTURE[sito]
-    d = json.loads(Path(percorso).read_text(encoding='utf-8'))
-    elenco = d if isinstance(d, list) else next(v for v in d.values() if isinstance(v, list))
+    """Strutture del sito con nome e scheda; la ricerca di kosgroup.com trova anche le residenze Anni Azzurri."""
+    siti = [sito] + (['anniazzurri'] if sito == 'kosgroup' else [])
     out = []
-    for s in elenco:
-        nome = s['tv'].get('str.nome', '')
-        url = base + s['uri']
-        out.append({'nome': nome, 'url': url_canonico(url), 'token': norm(nome),
-                    'citta': s['tv'].get('str.citta', ''), 'lat': s['tv'].get('str.lat'), 'lng': s['tv'].get('str.lng')})
+    for nome_sito in siti:
+        percorso, base = STRUTTURE[nome_sito]
+        d = json.loads(Path(percorso).read_text(encoding='utf-8'))
+        elenco = d if isinstance(d, list) else next(v for v in d.values() if isinstance(v, list))
+        for s in elenco:
+            nome = s['tv'].get('str.nome', '')
+            out.append({'nome': nome, 'url': url_canonico(base + s['uri']), 'token': norm(nome),
+                        'citta': s['tv'].get('str.citta', ''), 'lat': s['tv'].get('str.lat'),
+                        'lng': s['tv'].get('str.lng')})
+        for nome, citta, uri in ALTRE_SCHEDE.get(nome_sito, []):
+            out.append({'nome': nome, 'url': url_canonico(base + uri), 'token': norm(nome), 'citta': citta,
+                        'lat': None, 'lng': None})
     return out
 
 
-GENERICI = set('residenza anni azzurri centro ambulatoriale santo stefano villa casa poliambulatorio laboratorio analisi '
-               'punto prelievi istituto ospedale clinica dentale di dei del della la il le san sant santa polo geriatrico '
-               'riabilitativo residenziale corte'.split())
+GENERICI = set('residenza anni azzurri azzurra centro ambulatoriale santo stefano villa casa poliambulatorio laboratorio '
+               'analisi punto prelievi istituto ospedale clinica dentale di dei del della la il le san sant santa polo '
+               'geriatrico riabilitativo residenziale corte medico diagnostica'.split())
 
 
-def struttura_cercata(q, elenco):
-    """La struttura che la ricerca nomina: tutti i token distintivi del nome devono comparire (tolleranza sui refusi).
-    Se i token distintivi sono solo il nome della città e in quella città ci sono più strutture (es. «Polo Geriatrico
-    Riabilitativo Milano»), la sola città non basta: è una ricerca per luogo."""
+def simile(a, b):
     import difflib
+    if a == b:
+        return True
+    return len(a) >= 6 and len(b) >= 6 and difflib.SequenceMatcher(None, a, b).ratio() >= 0.88
+
+
+def struttura_cercata(q, elenco, luogo=None):
+    """Le strutture che la ricerca nomina (insieme: più schede possono rispondere allo stesso nome, es. Villa dei Pini).
+    Servono tutti i token distintivi del nome, città della struttura esclusa quando il nome ha anche altre parole
+    («villa dei pini» vale per Firenze e per Civitanova; «villa dei pini civitanova» solo per Civitanova); refusi
+    tollerati sulle parole di 6 lettere e più. A parità vince chi ha più parole del nome e della città nella ricerca; a chi vince si
+    aggiungono le schede il cui nome lo contiene (es. «villalba»: Clinica Dentale e Punto Prelievi Salus Villalba).
+    Il nome non vale se è solo una città con più strutture (es. Polo Geriatrico Riabilitativo Milano) o se sta dentro
+    il nome di un comune più lungo (es. «borgo san lorenzo» non è la Residenza San Lorenzo): è una ricerca per luogo."""
     from collections import Counter
     tq = norm(q)
     per_citta = Counter(' '.join(norm(s['citta'])) for s in elenco)
-    migliore = None
+    luogo_t = set(norm(luogo[0])) if luogo else set()
+
+    def distintivi(s):
+        return [t for t in s['token'] if t not in GENERICI and len(t) > 2]
+
+    candidati, richiesti_di = [], {}
     for s in elenco:
-        distintivi = [t for t in s['token'] if t not in GENERICI and len(t) > 2]
-        if not distintivi:
+        dist = distintivi(s)
+        if not dist:
             continue
         citta = norm(s['citta'])
-        if set(distintivi) <= set(citta) and per_citta[' '.join(citta)] > 1:
+        senza_citta = [t for t in dist if t not in citta]
+        if not senza_citta and per_citta[' '.join(citta)] > 1:
             continue
-        ok = all(any(difflib.SequenceMatcher(None, d, t).ratio() >= 0.85 for t in tq) for d in distintivi)
-        if ok and (migliore is None or len(distintivi) > migliore[1]):
-            migliore = (s, len(distintivi))
-    return migliore[0] if migliore else None
+        richiesti = senza_citta or dist
+        if not all(any(simile(d, t) for t in tq) for d in richiesti):
+            continue
+        if luogo_t and set(richiesti) <= luogo_t and len(luogo_t) > len(richiesti) and not set(citta) & luogo_t:
+            continue
+        tutte = sum(1 for t in set(s['token']) | set(citta) if any(simile(t, x) for x in tq))
+        richiesti_di[id(s)] = richiesti
+        candidati.append(((len(richiesti), tutte), s))
+    if not candidati:
+        return []
+    top = max(c[0] for c in candidati)
+    scelte = [s for k, s in candidati if k == top]
+    vincitori = list(scelte)
+    def nominate(x):  # parole del nome (e della città) che la ricerca contiene
+        return {t for t in set(x['token']) | set(norm(x['citta'])) if any(simile(t, y) for y in tq)}
+    for s in elenco:
+        if s not in scelte and any(set(richiesti_di[id(x)]) < set(distintivi(s)) and nominate(x) <= set(s['token'])
+                                   for x in vincitori):
+            scelte.append(s)
+    return scelte
 
 
 # comuni che sono anche parole comuni nelle ricerche: non contano come luogo
@@ -213,9 +261,9 @@ def livello1(o):
                 'ricerche_pesate': sum(int(r['ricerche']) for r in ricerche.values())}
     attesi = {}
     for q, r in ricerche.items():
-        s = struttura_cercata(q, el)
         l = luogo_cercato(q, noti)
-        attesi[q] = {'struttura': s['url'] if s else None, 'luogo': l,
+        s = struttura_cercata(q, el, l)
+        attesi[q] = {'struttura': [x['url'] for x in s] or None, 'luogo': l,
                      'falso_allarme_luogo': bool(s and l)}
     peso = {q: int(r['ricerche']) for q, r in ricerche.items()}
     rapporto['nome_struttura'] = {'termini': sum(1 for a in attesi.values() if a['struttura']),
@@ -233,7 +281,7 @@ def livello1(o):
         senza = [q for q in qs if not es[q]['risultati']]
         ms = sorted(es[q]['ms'] for q in qs if es[q].get('ms') is not None)
         strutt = [q for q in qs if attesi[q]['struttura']]
-        trovate = [q for q in strutt if attesi[q]['struttura'] in [x['url'] for x in es[q]['risultati'][:3]]]
+        trovate = [q for q in strutt if set(attesi[q]['struttura']) & {x['url'] for x in es[q]['risultati'][:3]}]
         rapporto[motore] = {
             'ricerche_lanciate': len(qs),
             'senza_risultati_termini': len(senza),
