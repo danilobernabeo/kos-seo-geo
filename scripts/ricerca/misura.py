@@ -100,7 +100,10 @@ def cerca_vertex(sessione, cred, sito, q, app=None, espansione=True):
 
 def cerca_yext(sessione, chiave, sito, q):
     p = {'api_key': chiave, 'experienceKey': ESPERIENZA[sito], 'v': '20190101', 'version': 'PRODUCTION',
-         'locale': 'it', 'input': q, 'source': 'CONFRONTO_VERTEX'}
+         'locale': 'it', 'input': q, 'source': 'CONFRONTO_VERTEX',
+         # niente sessioni Yext per le ricerche del confronto (decisione del 16/11): il referente KOS le esclude dai
+         # report con source e intervallo di tempo
+         'sessionTrackingEnabled': 'false'}
     t0 = time.time()
     r = sessione.get(YEXT, params=p, timeout=60)
     ms = round((time.time() - t0) * 1000)
@@ -150,13 +153,17 @@ def lancia(o, motore):
         ricerche = [r for r in ricerche if r['ricerca'] in nel_campione]
     nuove = [r for r in ricerche if r['ricerca'] not in fatti]
     print(f'{etichetta} {o.sito}: {len(nuove)} ricerche da lanciare ({len(fatti)} già fatte)')
+    from datetime import datetime, timezone
+    inizio = datetime.now(timezone.utc).isoformat(timespec='seconds')
+    # Yext: un solo tentativo per ricerca, niente ripetizioni (decisione del 16/11)
+    tentativi = 3 if motore == 'vertex' else 1
     with dest.open('a', encoding='utf-8') as f:
         for i, r in enumerate(nuove, 1):
-            for tentativo in range(3):
+            for tentativo in range(tentativi):
                 try:
                     esito = (cerca_vertex(s, cred, o.sito, r['ricerca'], app, espansione) if motore == 'vertex'
                              else cerca_yext(s, cred, o.sito, r['ricerca']))
-                    if esito['http'] == 429:
+                    if esito['http'] == 429 and tentativi > 1:
                         time.sleep(30)
                         continue
                     break
@@ -168,6 +175,10 @@ def lancia(o, motore):
             if i % 200 == 0:
                 print(f'  {i}/{len(nuove)}')
             time.sleep(pausa)
+    fine = datetime.now(timezone.utc).isoformat(timespec='seconds')
+    intervallo = {'inizio_utc': inizio, 'fine_utc': fine, 'ricerche_lanciate': len(nuove), 'source': 'CONFRONTO_VERTEX'}
+    Path(o.esiti, f'{etichetta}-{o.sito}.intervallo.json').write_text(json.dumps(intervallo, indent=1), encoding='utf-8')
+    print(json.dumps(intervallo))
 
 
 # Schede che l'export delle TV del 6/11 non contiene (verifica del 16/11 sul sorgente pubblicato):
