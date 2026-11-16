@@ -153,6 +153,15 @@ coordinate) ed eventualmente il servizio, e mostra in testa le strutture vicine;
 - Service account con chiave JSON: la usa solo il servizio intermedio (Cloud Run, in un segreto del servizio), mai nel
   codice del sito né nel repository; durante la prova anche gli script di misura, con la chiave fuori dal repository.
 
+## Stato della configurazione (16/11)
+
+- Archivi dati in regione `eu`, indicizzazione avanzata, domini verificati, aggiornamento solo da sitemap: `kosgroup-it`
+  (`kosgroup.com/it/*`, escluso `/it/risultati*`) e `anniazzurri` (`anniazzurri.it/*`, escluso `/cerca*`). Sitemap dei
+  siti inviate (kosgroup.com 847 pagine italiane, anniazzurri.it 475); la sitemap dei PDF esclusi di anniazzurri.it non va
+  mai inviata.
+- App `ricerca-kosgroup` e `ricerca-anniazzurri`, edizione Enterprise con funzioni LLM.
+- Le sitemap non contengono PDF: per ora la ricerca trova solo pagine. Da decidere se aggiungere le carte dei servizi.
+
 ## Da chiarire con KOS
 
 - Contratto Yext: data di scadenza e se si può disdire per singolo servizio (ricerca Answers separata da profili e
