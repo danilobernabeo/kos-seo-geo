@@ -74,6 +74,8 @@ def pagine_luogo(sito, luogo, prov):
 
 
 FORME = [('vertex', 'vertex', False), ('vertex_con_riconoscimento', 'vertex', True),
+         ('vertex_senza_espansione', 'vertex-senza-espansione', False),
+         ('vertex_senza_espansione_con_riconoscimento', 'vertex-senza-espansione', True),
          ('vertex_schede_aa_con_riconoscimento', 'vertex-schede-aa', True), ('yext', 'yext', False)]
 
 
@@ -161,6 +163,8 @@ def campione(o):
                 voce.update(categoria='altro', attesi=None, fonte='da giudicare', candidate=candidate)
             out.append(voce)
     dest = Path(o.esiti) / f'campione-livello2-{o.sito}.json'
+    if dest.exists() and not o.sostituisci:
+        sys.exit(f'{dest} esiste ed è congelato (decisione del 16/11): per rifarlo serve --sostituisci, da annotare nel piano')
     dest.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding='utf-8')
     from collections import Counter
     print(o.sito, len(out), 'ricerche;', dict(Counter(v['categoria'] for v in out)), dict(Counter(v['strato'] for v in out)))
@@ -271,6 +275,23 @@ def misura(o):
                                                for k in ('definizione', 'verifica')},
                            'per_categoria_pesata': {c: quota([x for x in righe if x[0]['categoria'] == c], True)
                                                     for c in ('struttura', 'luogo', 'altro')}}
+    vf = Path(o.esiti) / f'verita-riconoscimento-{o.sito}.json'
+    if vf.exists():
+        # quarto indicatore: riconoscimento di nomi e luoghi sulle ricerche reali del campione, contro il giudizio a mano
+        # ({"nomi_falsi": [...], "nomi_mancati": [...], "luoghi_falsi": [...], "luoghi_mancati": [...]})
+        ver = json.loads(vf.read_text(encoding='utf-8'))
+        nel = {v['ricerca'] for v in camp}
+        def conta(riconosciute, falsi, mancati):
+            falsi = [q for q in falsi if q in nel]
+            mancati = [q for q in mancati if q in nel]
+            giusti = len(riconosciute) - len(falsi)
+            return {'riconosciute': len(riconosciute), 'falsi_allarmi': len(falsi), 'non_riconosciute': len(mancati),
+                    'precisione': round(giusti / len(riconosciute) * 100, 1) if riconosciute else None,
+                    'copertura': round(giusti / (giusti + len(mancati)) * 100, 1) if giusti + len(mancati) else None}
+        rapporto['riconoscimento'] = {
+            'nomi': conta([v for v in camp if v['categoria'] == 'struttura'], ver['nomi_falsi'], ver['nomi_mancati']),
+            'luoghi': conta([v for v in camp if v['categoria'] == 'luogo' or v.get('luogo')], ver['luoghi_falsi'],
+                            ver['luoghi_mancati'])}
     cf.write_text(json.dumps(cache, ensure_ascii=False), encoding='utf-8')
     print(json.dumps(rapporto, ensure_ascii=False, indent=1))
 
@@ -286,6 +307,7 @@ def main():
         p.add_argument('--comuni', required=True)
         if nome == 'campione':
             p.add_argument('--vocabolario', required=True)
+            p.add_argument('--sostituisci', action='store_true')
     o = a.parse_args()
     (campione if o.cmd == 'campione' else misura)(o)
 

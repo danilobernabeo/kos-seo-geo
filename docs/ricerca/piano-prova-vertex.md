@@ -194,7 +194,9 @@ coordinate) ed eventualmente il servizio, e mostra in testa le strutture vicine;
 - App `ricerca-kosgroup` e `ricerca-anniazzurri`, edizione Enterprise con funzioni LLM.
 - 16/11 sera: app `ricerca-kosgroup` e `ricerca-kosgroup-schede-aa` eliminate e ricreate con statistiche e
   osservabilità spente (testi della prima tornata, vedi la scheda del DPO); osservabilità spenta anche su
-  `ricerca-anniazzurri`. Archivio `anniazzurri-schede` indicizzato (64 su 64).
+  `ricerca-anniazzurri`. Archivio `anniazzurri-schede`: **scansionato 64 su 64** (operazione di rilettura conclusa), ma
+  **nell'indice 3 documenti su 64** (16/11 sera): il «64 su 64» detto prima era la scansione, non l'indice. Se il 17/11
+  mattina l'indice è ancora sotto 64 si forza una nuova rilettura delle 64 schede.
 - Dal 16/11 pomeriggio: archivio `anniazzurri-schede` con le sole 64 schede delle strutture di anniazzurri.it (57
   residenze, 5 centri diurni, 2 hospice; inclusione per indirizzo esatto, niente news, pagine istituzionali né PDF) e app
   di prova `ricerca-kosgroup-schede-aa` (archivi `kosgroup-it` e `anniazzurri-schede`), per la terza forma
@@ -276,6 +278,57 @@ l'archivio delle schede AA (`livello1` e `livello2` le calcolano quando ci sono 
 schede-aa`). L'app con due archivi non accetta l'espansione automatica delle ricerche (errore 400): la terza forma gira
 senza, le altre con. Il 16/11 sera l'archivio delle schede AA risultava scansionato (64 su 64) ma con solo 3 documenti
 nell'indice: il giro della terza forma si fa quando l'indice è completo.
+
+**Confronto alla pari (16/11).** Per separare l'effetto dell'espansione da quello dell'archivio AA, «Vertex da solo» gira
+anche senza espansione sulla metà di verifica del campione (`misura.py vertex --senza-espansione --campione … --meta
+verifica`). Metà di verifica, pesato:
+
+| Sito | Con espansione | Senza espansione |
+|---|---|---|
+| kosgroup.com (176 ricerche giudicate) | 80,2% | 80,2% |
+| anniazzurri.it (141) | 85,4% | 81,8% |
+
+Su kosgroup.com l'espansione non sposta nulla, quindi la differenza della terza forma sarà dovuta all'archivio delle
+schede AA; su anniazzurri.it l'espansione vale circa 3,6 punti.
+
+**Quarto indicatore: riconoscimento di nomi e luoghi sulle ricerche reali (16/11).** Il 100% del riconoscimento dei nomi
+nelle tabelle è vero per costruzione (la scheda riconosciuta va in testa); accanto si riportano falsi allarmi e nomi non
+riconosciuti, giudicati a mano sulle ricerche del campione (`verita-riconoscimento-<sito>.json`, fuori dal repository):
+
+| Sito | Nomi riconosciuti | Falsi allarmi | Non riconosciuti | Precisione | Copertura |
+|---|---|---|---|---|---|
+| kosgroup.com, nomi di struttura | 102 | 2 | 13 | 98,0% | 88,5% |
+| kosgroup.com, luoghi | 127 | 2 | 10 | 98,4% | 92,6% |
+| anniazzurri.it, nomi di struttura | 12 | 0 | 4 | 100% | 75,0% |
+| anniazzurri.it, luoghi | 39 | 1 | 3 | 97,4% | 92,7% |
+
+Falsi allarmi: nomi di strutture di altri con un nome uguale a una nostra («villa san vincenzo catanzaro», «ospedale del
+delta lagosanto»), nomi di struttura letti come luogo («casa sanremo», «villa alba», refuso di Villalba). Non
+riconosciuti: nomi fatti solo di parole comuni o del marchio («santo stefano», «poliambulatorio santo stefano», «villa
+azzurra», «residenza anni azzurri la corte»), refusi sulle parole comuni del nome («riabilazzazione santo stafano
+macerata»), società («sanatrix»), località parziali o storpiate («pavullo», «reggio emilia», «civitanova», «hlazio»,
+«arco», escluso perché parola comune). In due ricerche il nome è riconosciuto ma il bisogno è il lavoro («infermiere
+volpiano», «lavora con noi oss montanaro»): la scheda in testa non basta, servono anche le posizioni aperte. Da
+correggere nello sviluppo: alias dei nomi brevi e di marchio dalle TV, tolleranza ai refusi anche sulle parole comuni del
+nome, nomi parziali dei comuni (frazioni, «pavullo»).
+
+**Campione e giudizi congelati (16/11, 17:30 circa).** Da qui Yext (mercoledì), la terza forma e ogni altro giro usano
+questi file; `livello2.py campione` si rifiuta di riscrivere il campione senza `--sostituisci`. Una nuova pulizia si fa
+solo se Sensitive Data Protection trova altro, e si annota qui con le nuove impronte. Impronte SHA-256 (file fuori dal
+repository, in `kos-ricerca-dati`):
+
+| File | SHA-256 |
+|---|---|
+| `ricerche-kosgroup.csv` (2.668 ricerche, controllato con DLP) | `d7808a995b3eac638d2e63df5310f22786f630eb98c209bf98490f341b3ab0e7` |
+| `ricerche-anniazzurri.csv` (320, controllato con DLP) | `e884603c0f120cc93918a026dcf6c2f7d9658f9e67c467610520e441050d98f8` |
+| `esiti/campione-livello2-kosgroup.json` | `8cf93940621a329a905afe9bd382c50a1da7e41bc13b56f24fe0422295184341` |
+| `esiti/campione-livello2-anniazzurri.json` | `8a06eac56d7a8c0962a7d27c1449a127c62ef4887fa613987a7dd10082d82dbd` |
+| `esiti/giudizi-livello2-kosgroup.json` | `e2e8105e968202bd3004f8ed024870a094da2dd5b3664c520d34d0090357e048` |
+| `esiti/giudizi-livello2-anniazzurri.json` | `328fa533644a6c9533e01f8764fb217687e237ac90ac563915c757e87b64370d` |
+| `esiti/verita-riconoscimento-kosgroup.json` | `4f8a4e69919ead0910f9fff96f02e2d4efcb5c762b5a8131e8fe9f16c8acc5e2` |
+| `esiti/verita-riconoscimento-anniazzurri.json` | `df87048395421e3c6de783712991c261aeac3d67d21e8d9d30baba5a3cf62b13` |
+
+Pulizie successive: nessuna.
 
 ## Livello 2: risultati attesi (16/11)
 

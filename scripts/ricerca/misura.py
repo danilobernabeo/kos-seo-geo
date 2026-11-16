@@ -74,13 +74,15 @@ def token_vertex(chiave):
     return c
 
 
-def cerca_vertex(sessione, cred, sito, q, app=None):
+def cerca_vertex(sessione, cred, sito, q, app=None, espansione=True):
     import google.auth.transport.requests as tr
     if not cred.valid:
         cred.refresh(tr.Request())
     corpo = {'query': q, 'pageSize': 10, 'languageCode': 'it',
              'spellCorrectionSpec': {'mode': 'AUTO'}, 'queryExpansionSpec': {'condition': 'AUTO'}}
-    if app:  # app con più archivi: Vertex non accetta l'espansione delle ricerche (errore 400, verifica del 16/11)
+    if app or not espansione:
+        # app con più archivi: Vertex non accetta l'espansione delle ricerche (errore 400, verifica del 16/11);
+        # senza espansione anche per il confronto alla pari con quella forma (decisione del 16/11)
         del corpo['queryExpansionSpec']
     t0 = time.time()
     r = sessione.post(f"{BASE_VERTEX}/engines/{app or APP[sito]}/servingConfigs/default_search:search",
@@ -130,6 +132,9 @@ def lancia(o, motore):
     variante = getattr(o, 'variante', None)
     app = VARIANTI[variante][o.sito] if variante else None
     etichetta = f'{motore}-{variante}' if variante else motore
+    espansione = not getattr(o, 'senza_espansione', False)
+    if not espansione:
+        etichetta += '-senza-espansione'
     dest = Path(o.esiti) / f'{etichetta}-{o.sito}.jsonl'
     dest.parent.mkdir(parents=True, exist_ok=True)
     fatti = esiti_fatti(dest)
@@ -140,7 +145,8 @@ def lancia(o, motore):
         cred, pausa = Path(o.chiave_yext).read_text().strip(), 1.0
     if getattr(o, 'campione', None):
         # giro ridotto (es. Yext sul solo livello 2, decisione del 16/11): solo le ricerche del campione
-        nel_campione = {v['ricerca'] for v in json.loads(Path(o.campione).read_text(encoding='utf-8'))}
+        nel_campione = {v['ricerca'] for v in json.loads(Path(o.campione).read_text(encoding='utf-8'))
+                        if not getattr(o, 'meta', None) or v.get('meta') == o.meta}
         ricerche = [r for r in ricerche if r['ricerca'] in nel_campione]
     nuove = [r for r in ricerche if r['ricerca'] not in fatti]
     print(f'{etichetta} {o.sito}: {len(nuove)} ricerche da lanciare ({len(fatti)} già fatte)')
@@ -148,7 +154,7 @@ def lancia(o, motore):
         for i, r in enumerate(nuove, 1):
             for tentativo in range(3):
                 try:
-                    esito = (cerca_vertex(s, cred, o.sito, r['ricerca'], app) if motore == 'vertex'
+                    esito = (cerca_vertex(s, cred, o.sito, r['ricerca'], app, espansione) if motore == 'vertex'
                              else cerca_yext(s, cred, o.sito, r['ricerca']))
                     if esito['http'] == 429:
                         time.sleep(30)
@@ -358,9 +364,14 @@ def main():
         if nome == 'vertex':
             p.add_argument('--chiave', required=True)
             p.add_argument('--variante', choices=list(VARIANTI))
+            p.add_argument('--senza-espansione', action='store_true',
+                           help='senza queryExpansionSpec: confronto alla pari con l\'app con più archivi')
         if nome == 'yext':
             p.add_argument('--chiave-yext', required=True)
+        if nome in ('vertex', 'yext'):
             p.add_argument('--campione', help='campione-livello2-<sito>.json: giro ridotto alle sole ricerche del campione')
+        if nome in ('vertex', 'yext'):
+            p.add_argument('--meta', choices=['definizione', 'verifica'], help='con --campione: solo una metà')
         if nome == 'livello1':
             p.add_argument('--comuni', required=True)
     o = a.parse_args()
