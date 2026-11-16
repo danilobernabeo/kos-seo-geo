@@ -101,10 +101,10 @@ Interventi del singolo sito:
   tabella «Script inutili o doppi»). Interventi: togliere highlight.js (su tutte le pagine, mai usato) e il secondo
   Flickity (unpkg e cdnjs su 57 schede e 41 altre pagine), `defer` sugli altri script, widget Spreaker solo dove serve
   (321 pagine); Open Sans servito dal nostro dominio invece che da `fonts.googleapis.com` (BaseTemplate, recruiting,
-  convegnoAA); sostituzione della ricerca Yext Answers (`yext-scripts` negli head home) al passaggio a RetailTune. Lo
-  script Knowledge Tags delle schede è invece già nel perimetro (sprint 3, decisione del 6/11). Stima indicativa: 0,5
-  script, 0,3 font, ricerca da valutare con RetailTune. Per kosgroup.com le stesse voci sono la 12, la 28 e la 29 delle
-  migliorie del 15/11.
+  convegnoAA). Non rientrano qui: lo script Knowledge Tags delle schede (già nel perimetro, sprint 3, decisione del 6/11)
+  e la ricerca Yext Answers (`yext-scripts`), che si sostituisce con la linea C (prova Vertex, preventivo a parte il
+  26/11). Stima indicativa: 0,5 script, 0,3 font. Per kosgroup.com le stesse voci sono la 12 e la 28 delle migliorie del
+  15/11.
 - **[KOS] Migliorie dalla scansione Screaming Frog del 15/11** (27 interventi, tutti fuori perimetro per decisione di Danilo del 15/11; stima indicativa: alta priorità circa 4 giornate, media circa 12, bassa circa 9): elenco, numeri e dipendenze in `docs/migliorie-kosgroup-20261115.md`. Non avviare prima dell'approvazione.
 
 - **[KOS, da fare dopo la voce 24, da valutare se a consuntivo] Pagine delle condizioni come entità mediche** (proposta del 25 ottobre). Oggi la condizione trattata (es. «Disturbi d'ansia») compare nel nodo della struttura come `knowsAbout` → `MedicalCondition` con l'URL della pagina: schema.org non ha una proprietà «condizione trattata» per le strutture. Passo complementare: le pagine di «Servizi e cure» del ramo Psichiatria (12 condizioni) e Riabilitazione (es. Parkinson) diventano `MedicalWebPage` con `about` → `MedicalCondition` (`@id` `{URL}#condition`, già previsto dalla convenzione con `frag_patologia`), nome, eventuali sinonimi (`alternateName`), `possibleTreatment` verso le pagine dei trattamenti e le strutture che la trattano lette al contrario dalle associazioni delle schede (`mentions` o `relevantSpecialty` più l'elenco delle strutture con `@id` `#localbusiness`). Così il legame condizione ↔ struttura è descritto da entrambi i lati, come sul sito. Prerequisiti: associazioni confermate da KOS, tabella `srv.schema` approvata. Stima indicativa mezza giornata nella libreria comune più il collaudo; utile anche ad anniazzurri.it (patologie nelle residenze) con la stessa funzione.
