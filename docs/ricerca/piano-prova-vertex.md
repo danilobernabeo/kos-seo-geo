@@ -35,7 +35,13 @@ bloccati), lo si dice a KOS insieme all'invio della scheda al DPO.
 - Settimana del 23/11: integrazione definitiva nei due siti, solo sullo stage, prima dell'approvazione (riduce lo sviluppo
   dopo il 27/11; in caso di esito negativo si perdono solo giorni di lavoro nostri).
 
-## Scelte per la scheda del DPO (12/11)
+## Scelte per la scheda del DPO (12/11, integrate il 16/11)
+
+- Ricerche della prova: «tutte le ricerche distinte dei 12 mesi, ripulite dai dati personali» (non «300 ricerche»).
+- Nella prova anche le ricerche di kosgroup.com passano dalla generazione delle risposte AI (storico già ripulito,
+  nessuna risposta pubblicata).
+- Regola per le domande di crisi: riquadro fisso con il 112 e i numeri di emergenza sopra i risultati, nessuna risposta
+  AI (kosgroup.com 7 ricerche in 12 mesi, anniazzurri.it nessuna).
 
 - Progetto Google Cloud di KOS, Cloud Data Processing Addendum sull'account di fatturazione (da verificare).
 - Indice e servizio in regione UE; servizio intermedio su Cloud Run in UE: il browser non chiama Google direttamente.
@@ -64,18 +70,45 @@ bloccati), lo si dice a KOS insieme all'invio della scheda al DPO.
   mappa nostra, dentro la pagina dei risultati, con i filtri preimpostati dalla ricerca (comune, provincia, tipologia) e
   caricato solo per quelle ricerche; da confermare con RetailTune (domanda 19b della call del 13/11).
 
-## Indicatori della prova
+## Indicatori e campione della prova (16/11)
 
-Su circa 300 ricerche reali ripulite dai dati personali, lanciate su Vertex e sulla ricerca Yext di oggi, ciascuna pesata
-per quante volte è stata fatta:
+Le ricerche vengono da tutte le ricerche distinte dei 12 mesi dei due siti (export Yext: kosgroup.com 2.822 termini,
+anniazzurri.it 325), ripulite dai dati personali, lanciate su Vertex e sulla ricerca Yext di oggi. Con 300 ricerche
+divise tra due siti il margine d'errore sarebbe di circa ±8 punti per sito, troppo con una soglia di +15: il campione si
+allarga su tre livelli, senza cambiare il calendario.
 
-1. ricerche senza risultati;
-2. risultato atteso tra i primi tre;
-3. tempo di risposta;
-4. riconoscimento dei luoghi (aggiunto il 16/11): luoghi riconosciuti correttamente e falsi allarmi sui nomi di struttura.
+1. **Controlli automatici su tutte le ricerche distinte dei 12 mesi**: ricerche senza risultati; tempo di risposta; nome
+   di struttura che porta alla sua scheda; riconoscimento dei luoghi, con i falsi allarmi sui nomi di struttura. I casi
+   rari trovati (refusi, frazioni, nomi storici dei marchi) si riportano a parte.
+2. **Giudizio di pertinenza su circa 400 ricerche per sito** (risultato atteso tra i primi tre): le più frequenti, più un
+   campione stratificato tra frasi lunghe, refusi e luoghi. Giudizio assistito dall'AI, ricontrollato a mano a campione.
+   La soglia di +15 punti si misura su questo livello.
+3. **Risposte AI su tutte le ricerche da 4 parole in su dei due siti** (kosgroup.com 417 termini, 3.488 ricerche nei 12
+   mesi; anniazzurri.it 91 termini, 155 ricerche), non solo su quelle del campione.
 
-Risposte AI (solo anniazzurri.it): attingono a un elenco chiuso di pagine pratiche; la prova misura anche l'effetto dei
-filtri sulle domande cliniche.
+Ricerca Yext di oggi: API Content Delivery (`prod-cdn-cached.us.yextapis.com`), limite pubblicato di 100.000 richieste
+all'ora; circa una ricerca al secondo, parametro `source` dedicato per riconoscere le ricerche del confronto nelle
+statistiche Yext. La documentazione dell'API di ricerca dice che il traffico che non passa dalla libreria di Yext è
+conteggiato sulla capacità di ricerca del contratto: le circa 3.150 ricerche del confronto valgono circa un mese e mezzo
+di traffico reale. Prima di lanciarle va verificato con KOS che la capacità del contratto Yext le assorba.
+
+### Risposte AI (16/11)
+
+- **anniazzurri.it**: risposte su domande pratiche da un elenco chiuso di pagine (decisione del 9/11).
+- **kosgroup.com, solo misurate**: stesso filtro, nessuna risposta visibile a KOS nella pagina di prova; decide KOS sui
+  numeri del 26/11. La decisione del 9/11 (spente in produzione su kosgroup.com) non cambia. Nella restituzione due gruppi
+  separati: tutte le ricerche e quelle da 4 parole in su (13,6% delle ricerche), il secondo è quello che decide.
+- **Elenco chiuso di kosgroup.com**, leggero (mezza giornata al massimo): lavora con noi, ritiro referti, prenotazioni,
+  convenzioni, contatti generali. Fuori le pagine con orari, che oggi non coincidono con le carte dei servizi in 49
+  strutture (correzione in attesa di conferma di KOS, `docs/orari/orari-strutture-kos-confronto.md`), e le pagine dei
+  marchi dismessi (Neomesia, Santo Stefano Riabilitazione, Polo Diagnostico, in attesa di conferma di KOS); rientrano
+  quando sono allineate.
+- **Domande di crisi, su entrambi i siti**: per ricerche come «pensieri suicidi», «autolesionismo» o «crisi» il filtro non
+  si limita a bloccare la risposta AI: mostra un riquadro fisso sopra i risultati con il 112 e i numeri di emergenza. Nei
+  12 mesi: kosgroup.com 1 termine, «autolesionismo», 7 ricerche; anniazzurri.it nessuna (conteggio su suicidio,
+  autolesionismo, crisi, emergenza, aggressione, violenza, maltrattamento e simili).
+- **Restituzione**: numeri per sito (risposte utili, bloccate dal filtro, a rischio) e 10-15 esempi veri per sito,
+  soprattutto quelli a rischio.
 
 Soglia del «migliora abbastanza» (decisa il 16/11, fissata prima di vedere i risultati e riportata nella restituzione del
 26/11). Vertex supera la prova se valgono tutte:
