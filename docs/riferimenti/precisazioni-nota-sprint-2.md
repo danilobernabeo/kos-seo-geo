@@ -12,6 +12,15 @@ Dal 3 al 13 novembre la data di ultima modifica di 470 pagine (328 su kosgroup.c
 
 Fino al 15 novembre gli articoli di kosgroup.com che citano una struttura (`mentions`) la indicavano con tipo, nome e URL ma senza indirizzo. La convalida di Google delle attività locali tratta questi riferimenti come attività a sé e segnalava l'errore «address obbligatorio» (Rich Results Test, sezione Attività locali), su 160 articoli e video. Dal 15 novembre il riferimento riporta anche indirizzo e telefono della struttura, gli stessi della sua scheda. Se nelle vostre scansioni compare ancora l'errore, è una copia precedente al 15 novembre.
 
+## Correzioni del 16 novembre (anniazzurri.it)
+
+Dalla scansione completa del 15 novembre, prima della verifica:
+
+- **AA 3 · PDF:** la sitemap dei PDF esclusi (`https://anniazzurri.it/sitemap-pdf-noindex.xml`) elencava anche un file di una libreria del CMS, ora tolto (216 PDF). Cinque moduli di richiesta ricovero (Abitare il Tempo, Dorica) avevano ancora il titolo del file Word perché la loro struttura interna era danneggiata e non si potevano aggiornare: sono stati ricostruiti (stesso contenuto, stesse pagine) e hanno ora il titolo «documento – struttura». Rispetto al piano del 3 novembre sono comparsi 2 PDF nuovi (Anni Azzurri Senior Living, pieghevole dell'Hospice Beati Coniugi Martin, in `noindex` per la regola generale) e 2 PDF indicizzabili non sono più collegati da nessuna pagina.
+- **Articoli:** con la pubblicazione programmata la data di modifica poteva risultare precedente a quella di pubblicazione (19 articoli); ora `dateModified` non è mai anteriore a `datePublished`.
+- **Sitemap e «Ricercabile»:** `https://anniazzurri.it/home-en` e `https://anniazzurri.it/azzurramente` sono entrate nella sitemap; la pagina di iscrizione al convegno sul Parkinson è ora in `noindex, follow` e fuori sitemap.
+- **AA 8 · briciole (in correzione questa settimana):** su 41 pagine il livello intermedio delle briciole (visibili e `BreadcrumbList`) punta all'indirizzo di un contenitore che reindirizza alla prima pagina figlia (es. `/soluzioni/`, `/chi-siamo/`). Nomi e livelli sono corretti; l'indirizzo diventerà quello di arrivo.
+
 ## Schede struttura senza nodo (KOS 24)
 
 La nota non lo diceva: 3 schede su 61 non hanno ancora il nodo della struttura, perché l'anagrafica importata da Yext non aveva un indirizzo univoco e la regola del progetto è «nodo struttura solo se c'è l'indirizzo». Sono https://kosgroup.com/it/centri/poliambulatorio-villalba (due entità Yext sulla stessa scheda), https://kosgroup.com/it/centri/santo-stefano-casorate e https://kosgroup.com/it/centri/santo-stefano-mede (nessuna entità Yext). Le pagine hanno comunque `WebPage` e briciole. Le completiamo con l'indirizzo pubblicato sulla pagina e ne diamo conto nella nota dello sprint 3.
