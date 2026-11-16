@@ -1,7 +1,11 @@
 # Sostituzione della ricerca Yext: piano della prova Vertex AI Search
 
-Uso interno (linea C). Date concordate con il referente KOS il 12/11; obiettivo: messa online entro il 18/12 (budget 2026).
-Approvazione di KOS alla prova ricevuta il 16/11.
+Uso interno (linea C). Date della prova concordate con il referente KOS il 12/11. Approvazione di KOS alla prova ricevuta
+il 16/11.
+
+**Piano dal 16/11 (da confermare con il referente: data di messa online e fatturazione sul 2026):** sviluppo e collaudo
+di KOS sullo stage entro il 18/12 (lavoro fatturabile sul 2026); messa online a metà gennaio insieme allo store locator
+RetailTune; fino ad allora resta attiva la barra Yext (servizio Yext fino a fine gennaio).
 
 ## Date comunicate a KOS
 
@@ -15,9 +19,12 @@ Approvazione di KOS alla prova ricevuta il 16/11.
 | 26-27/11 | Valutazione di KOS |
 | 30/11-11/12 | Sviluppo (se l'esito è positivo) |
 | 14-15/12 | Collaudo di KOS sullo stage |
-| entro il 18/12 | Messa online (interno: 16/12); la barra Yext esce dai due siti |
+| entro il 18/12 | Messa online (interno: 16/12); la barra Yext esce dai due siti. **Dal 16/11, da confermare:** entro il 18/12 solo sviluppo e collaudo sullo stage; messa online a metà gennaio con lo store locator |
 
 Passaggi critici per KOS: parere del DPO entro il 25/11, decisione entro il 27/11, collaudo il 14-15/12.
+
+Scadenza interna (16/11): se mercoledì 18/11 la prova non riesce ancora a chiamare Vertex (domini dell'area di lavoro
+bloccati), lo si dice a KOS insieme all'invio della scheda al DPO.
 
 ## Calendario interno
 
@@ -48,7 +55,7 @@ Passaggi critici per KOS: parere del DPO entro il 25/11, decisione entro il 27/1
   (codice della barra conservato, ripristino in pochi minuti). Prima: export dello storico delle ricerche da Yext.
   Da sistemare: `/it/risultati` di kosgroup.com reindirizzata alla nuova pagina dei risultati, spazio di 58 px riservato
   alla barra Yext nella home di anniazzurri.it (AA-4).
-- Ricerche geografiche: oggi la mappa con i filtri è dentro i risultati di Yext Answers e sparisce con la barra. La nuova
+- Superato il 16/11 (vedi «Ricerche geografiche»). Ricerche geografiche: oggi la mappa con i filtri è dentro i risultati di Yext Answers e sparisce con la barra. La nuova
   ricerca mostra l'elenco delle strutture per distanza (coordinate delle schede, comune nella frase o posizione del
   browser) e una mappa con i pin, ripresa dal componente Google Maps delle pagine regione e provincia di anniazzurri.it
   (chiavi sotto il controllo di Danilo). Da metà gennaio, nelle ricerche geografiche il widget RetailTune al posto della
@@ -68,23 +75,33 @@ per quante volte è stata fatta:
 Risposte AI (solo anniazzurri.it): attingono a un elenco chiuso di pagine pratiche; la prova misura anche l'effetto dei
 filtri sulle domande cliniche.
 
-Soglia del «migliora abbastanza» (proposta del 16/11, da confermare): risultato atteso tra i primi tre in almeno 15 punti
-percentuali di ricerche in più rispetto a Yext, pesate per frequenza, e meno ricerche senza risultati su entrambi i siti.
-Se Vertex non la raggiunge, si ripete la misura con Site Search 360.
+Soglia del «migliora abbastanza» (decisa il 16/11, fissata prima di vedere i risultati e riportata nella restituzione del
+26/11). Vertex supera la prova se valgono tutte:
+
+1. risultato atteso tra i primi tre, pesato per frequenza: +15 punti percentuali rispetto a Yext, oppure almeno metà del
+   divario dal 100% recuperata (se Yext parte già alto);
+2. meno ricerche senza risultati su entrambi i siti;
+3. nessun peggioramento sulle ricerche per nome di struttura;
+4. anniazzurri.it (circa 53 ricerche al mese) valutato anche sul campione non pesato, con le domande lunghe in evidenza.
+
+Se la soglia non è raggiunta si passa al piano B, Site Search 360.
 
 ## Ricerche geografiche (16/11)
 
 La distanza non la calcola Vertex: la pagina dei risultati riconosce il luogo (tabella comuni, province, regioni con
 coordinate) ed eventualmente il servizio, e mostra in testa le strutture vicine; sotto, i risultati di Vertex.
 
-- **Fase intermedia, dal 18/12 a metà gennaio:** elenco testuale delle strutture per distanza (coordinate delle schede) e
-  mappa con i pin dal componente Google Maps delle pagine regione e provincia di anniazzurri.it. Da decidere se la mappa
-  resta o si salta (resta solo l'elenco).
-- **Da metà gennaio:** widget RetailTune al posto della mappa, già filtrato su coordinate e raggio (ed eventuale servizio),
-  caricato solo per le ricerche con un luogo. Parametri, comportamento senza strutture nel raggio e caricamento su
-  richiesta da confermare con RetailTune.
-- In entrambe le fasi l'elenco testuale resta sempre: il widget RetailTune è in categoria Cookiebot «marketing» e senza
-  consenso non compare (vale anche per i motori AI).
+- **Nessuna fase intermedia (16/11):** con la messa online a metà gennaio il widget RetailTune c'è dal primo giorno, già
+  filtrato su coordinate e raggio (ed eventuale servizio), caricato solo per le ricerche con un luogo. Parametri,
+  comportamento senza strutture nel raggio e caricamento su richiesta da confermare con RetailTune.
+- **Elenco testuale per distanza sempre presente**, sotto il widget o al suo posto senza consenso: il widget è in categoria
+  Cookiebot «marketing» (vale anche per i motori AI). Ogni struttura ha la distanza e il link «Indicazioni» al suo profilo
+  Google Maps.
+- **Regola di riserva:** se il widget RetailTune non è pronto, la ricerca va online lo stesso con il solo elenco e il widget
+  si aggiunge dopo; la data non dipende da RetailTune (tra metà e fine gennaio circa due settimane di margine prima della
+  dismissione di Yext).
+- **Mappa con i pin: non si fa.** Se il referente confermasse la messa online al 18/12, si salta comunque (elenco con
+  distanza e «Indicazioni»); la mappa diventa un'opzione separata nel preventivo del 26/11.
 - Il nome della struttura vince sul luogo: se la ricerca corrisponde al nome di una struttura (dalle TV) si mostra la
   scheda, l'elenco o il widget solo come aggiunta (Casa Pero, Casa Sanremo, Santo Stefano, Arco).
 - Zone senza strutture: raggio che si allarga fino ad almeno una struttura, con la frase «La struttura più vicina a … è a …».
