@@ -38,6 +38,9 @@ bloccati), lo si dice a KOS insieme all'invio della scheda al DPO.
 ## Scelte per la scheda del DPO (12/11, integrate il 16/11)
 
 - Ricerche della prova: «tutte le ricerche distinte dei 12 mesi, ripulite dai dati personali» (non «300 ricerche»).
+- Testi originali (export Yext, riscritture, elenco dei nomi): sul PC di Danilo, fuori dal repository, accesso solo di
+  Danilo; copia temporanea nell'area di lavoro durante il lavoro; cancellazione il 27/11 salvo decisione diversa.
+- Nomi di persona: restano solo quelli di professionisti KOS (dati professionali pubblici); gli altri esclusi.
 - Nella prova anche le ricerche di kosgroup.com passano dalla generazione delle risposte AI (storico già ripulito,
   nessuna risposta pubblicata).
 - Regola per le domande di crisi: riquadro fisso con il 112 e i numeri di emergenza sopra i risultati, nessuna risposta
@@ -80,8 +83,9 @@ allarga su tre livelli, senza cambiare il calendario.
 1. **Controlli automatici su tutte le ricerche distinte dei 12 mesi**: ricerche senza risultati; tempo di risposta; nome
    di struttura che porta alla sua scheda; riconoscimento dei luoghi, con i falsi allarmi sui nomi di struttura. I casi
    rari trovati (refusi, frazioni, nomi storici dei marchi) si riportano a parte.
-2. **Giudizio di pertinenza su circa 400 ricerche per sito** (risultato atteso tra i primi tre): le più frequenti, più un
-   campione stratificato tra frasi lunghe, refusi e luoghi. Giudizio assistito dall'AI, ricontrollato a mano a campione.
+2. **Giudizio di pertinenza** (risultato atteso tra i primi tre): su kosgroup.com circa 400 ricerche, le più frequenti
+   più un campione stratificato tra frasi lunghe, refusi e luoghi; su anniazzurri.it **tutte le 320 ricerche ripulite**,
+   non un campione. Giudizio assistito dall'AI, ricontrollato a mano a campione.
    La soglia di +15 punti si misura su questo livello.
 3. **Risposte AI su tutte le ricerche da 4 parole in su dei due siti** (kosgroup.com 417 termini, 3.488 ricerche nei 12
    mesi; anniazzurri.it 91 termini, 155 ricerche), non solo su quelle del campione.
@@ -171,8 +175,18 @@ Script `scripts/ricerca/pulisci-ricerche.py`, da lanciare prima di ogni invio a 
 2. **tolte dal testo**: età («83 anni», «classe 1936»);
 3. **riscritte a mano**: frasi con nomi, indirizzi o dettagli di vita privata, tenendo il bisogno, i refusi e la città.
 
-Le riscritture e l'elenco dei nomi contengono i testi originali: stanno fuori dal repository (area di lavoro della prova),
-mai in git; nel repository solo regole e conteggi.
+**Nomi di persona.** Un nome resta nella prova se corrisponde a un professionista KOS (pagine medico del sito, risorse
+TuoTempo, professionisti in Yext): sono dati professionali pubblici, e Yext potrebbe trovarli. Gli altri escono. Confronto
+del 16/11 con le 164 pagine medico (`kosgroup/dati/medici/pagine-medici-20261029.json`, pubblicate e non): nessuna
+corrispondenza per i 37 nomi cercati (2 somiglianze scartate perché sono cognomi diversi). Restano da confrontare le risorse
+TuoTempo e i professionisti in Yext, che non sono nel repository. Nella restituzione si riportano numero e quota pesata
+delle ricerche di nomi «senza pagina», senza i nomi: kosgroup.com 34 termini, 46 ricerche (0,18%); anniazzurri.it 3
+termini, 8 ricerche (1,3%). Se la quota fosse alta, sarebbe un argomento per un elenco dei medici ricercabile.
+
+**Dove stanno i testi originali** (export Yext, set ripulito, riscritture, elenco dei nomi): sul PC di Danilo, in
+`C:\Users\danil\progetti\kos-seo-geo\kos-ricerca-chiavi\dati-prova`, fuori dal repository, con accesso solo di Danilo; durante il
+lavoro una copia temporanea nell'area di lavoro della prova, che non è permanente. Cancellazione alla fine della prova
+(27/11) salvo decisione diversa. Mai in git: nel repository solo regole e conteggi.
 
 | Sito | Termini nell'export | Esclusi | Riscritti | Ricerche distinte ripulite |
 |---|---|---|---|---|
