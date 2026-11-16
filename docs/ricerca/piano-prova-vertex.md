@@ -309,8 +309,15 @@ azzurra», «residenza anni azzurri la corte»), refusi sulle parole comuni del 
 macerata»), società («sanatrix»), località parziali o storpiate («pavullo», «reggio emilia», «civitanova», «hlazio»,
 «arco», escluso perché parola comune). In due ricerche il nome è riconosciuto ma il bisogno è il lavoro («infermiere
 volpiano», «lavora con noi oss montanaro»): la scheda in testa non basta, servono anche le posizioni aperte. Da
-correggere nello sviluppo: alias dei nomi brevi e di marchio dalle TV, tolleranza ai refusi anche sulle parole comuni del
-nome, nomi parziali dei comuni (frazioni, «pavullo»).
+correggere nello sviluppo:
+
+- nomi alternativi delle strutture (nomi brevi, nomi di marchio), comprese le **denominazioni con i marchi storici**:
+  Santo Stefano Riabilitazione, Neomesia, Polo Diagnostico e i domini `sstefano.it`, `neomesia.com`,
+  `polodiagnostico.it`. Gli utenti continueranno a cercarli. L'elenco dei nomi alternativi è **indipendente dalla TV
+  `str.marchio`**: per le 40 schede di quei marchi la TV verrà svuotata quando KOS conferma la dismissione
+  (`kosgroup/dati/voce-24/marchi-dismessi-2026-11-15.json`), e il riconoscimento non deve perderli (nota del 16/11);
+- tolleranza ai refusi anche sulle parole comuni del nome;
+- nomi parziali dei comuni (frazioni, «pavullo»).
 
 **Campione e giudizi congelati (16/11, 17:30 circa).** Da qui Yext (mercoledì), la terza forma e ogni altro giro usano
 questi file; `livello2.py campione` si rifiuta di riscrivere il campione senza `--sostituisci`. Una nuova pulizia si fa
