@@ -44,8 +44,8 @@ bloccati), lo si dice a KOS insieme all'invio della scheda al DPO.
   cartella separata (`kos-ricerca-chiavi`), revocata a fine prova.
 - Alternativa, se il DPO preferisce che i testi restino su infrastruttura KOS: bucket Cloud Storage in regione UE nel
   progetto Google Cloud `kos-ricerca`, con accesso limitato a Danilo e al service account della prova, stessa cancellazione.
-- Nomi di persona: 113 esclusi (kosgroup.com 110, 0,68% delle ricerche; anniazzurri.it 3, 1,3%), nessuno corrisponde
-  alle pagine medico. Da dire nella scheda: nella prima tornata su Vertex (16/11) c'erano ancora 76 di questi nomi e 5
+- Nomi di persona: 125 esclusi (kosgroup.com 122, 0,74% delle ricerche; anniazzurri.it 3, 1,3%), nessuno corrisponde
+  alle pagine medico. Da dire nella scheda: nella prima tornata su Vertex (16/11) c'erano ancora 88 di questi nomi e 5
   ricerche con **credenziali di accesso a dati sanitari** (codici per scaricare i referti, es. «login» seguito dal
   codice), esclusi lo stesso giorno (regola dei codici estesa alle singole parole); su Yext non è partito nulla. Le
   credenziali sono anche nello storico delle ricerche di Yext, perché gli utenti le scrivono nella barra di ricerca:
@@ -56,10 +56,19 @@ bloccati), lo si dice a KOS insieme all'invio della scheda al DPO.
   con le statistiche spente (`disableAnalytics`) e l'osservabilità spenta; nessun evento utente è mai stato inviato.
   Google non documenta per quanto restano i log di un'app eliminata. L'app `ricerca-anniazzurri` ha ricevuto solo
   ricerche già ripulite (i 3 nomi di anniazzurri.it erano esclusi dalla prima tornata): osservabilità spenta, statistiche
-  attive (non spegnibili); si ricrea se il controllo di Sensitive Data Protection trova altro. Log di Cloud Logging
-  (osservabilità era attiva senza registrazione dei contenuti sensibili): da verificare nella console (Esplora log).
+  attive (non spegnibili); il controllo di Sensitive Data Protection non ha trovato altro su anniazzurri.it, quindi
+  resta. **Cloud Logging, punto chiuso** (verifica di Danilo del 16/11 in Esplora log, progetto `kos-ricerca`, dal 16/11
+  00:00): il log `discoveryengine.googleapis.com/gemini_enterprise_user_activity` (3.093 voci) registra le ricerche con
+  il testo oscurato (`request.query` = `<elided>` su tutte le voci, nessuna voce con un testo diverso), solo il servizio
+  usato e i documenti restituiti; nessun risultato cercando due dei testi esclusi. **Resta aperta solo la conservazione
+  dei registri delle app eliminate, non documentata da Google.**
 - Secondo controllo con **Google Sensitive Data Protection** (regione UE) del set ripulito prima del giro su Yext e di
-  ogni nuovo giro su Vertex (decisione del 16/11).
+  ogni nuovo giro su Vertex (decisione del 16/11). Primo controllo, 16/11 sera: 11 nomi di persona in più su
+  kosgroup.com (anche questi nella prima tornata su Vertex) e un codice breve, esclusi, più un cognome trovato
+  rileggendo il campione («martire»); gli altri 232 ritrovamenti sono
+  falsi allarmi controllati a mano (nomi di strutture, luoghi e santi letti come nomi, 20 medici con pagina pubblica,
+  indirizzi delle sedi, parole con una cifra come «rsa1»). Il rilevatore dei nomi non è del tutto ripetibile tra un
+  giro e l'altro: si rilancia finché non restano ritrovamenti aperti.
 - Nella prova anche le ricerche di kosgroup.com passano dalla generazione delle risposte AI (storico già ripulito,
   nessuna risposta pubblicata).
 - Regola per le domande di crisi: riquadro fisso con il 112 e i numeri di emergenza sopra i risultati, nessuna risposta
@@ -208,10 +217,10 @@ Script `scripts/ricerca/pulisci-ricerche.py`, da lanciare prima di ogni invio a 
    controllano a mano e tornano nelle correzioni; `misura.py` non lancia ricerche su Vertex o Yext senza il controllo
    sul file esatto (impronta del file).
 
-**Nomi di persona.** 113 nomi di persona esclusi (kosgroup.com 110, 0,68% delle ricerche; anniazzurri.it 3, 1,3%),
-nessuno corrisponde alle pagine medico. Il controllo del 16/11 pomeriggio (cognomi cercati nelle pagine pubbliche
-trovate da Vertex) ha aggiunto 76 nomi ai 37 iniziali; 15 cognomi di medici con pagina o citati in pagine pubbliche
-restano. La prima tornata su Vertex li conteneva ancora: vedi la scheda del DPO.
+**Nomi di persona.** 125 nomi di persona esclusi (kosgroup.com 122, 0,74% delle ricerche; anniazzurri.it 3, 1,3%),
+nessuno corrisponde alle pagine medico. Ai 37 iniziali il controllo del 16/11 pomeriggio (cognomi cercati nelle pagine
+pubbliche trovate da Vertex) ha aggiunto 76 nomi, quello di Sensitive Data Protection altri 11 e la rilettura del campione uno; i cognomi di medici con
+pagina o citati in pagine pubbliche restano. La prima tornata su Vertex li conteneva ancora: vedi la scheda del DPO.
 
 **Dove stanno i testi originali** (export Yext, set ripulito, riscritture, elenco dei nomi): sul PC di Danilo, in
 `C:\Users\danil\progetti\kos-seo-geo\kos-ricerca-dati`, fuori dal repository, con accesso solo di Danilo; durante il lavoro una
@@ -221,7 +230,7 @@ prova. Mai in git: nel repository solo regole e conteggi.
 
 | Sito | Termini nell'export | Esclusi | Riscritti | Ricerche distinte ripulite |
 |---|---|---|---|---|
-| kosgroup.com | 2.822 | 141 (110 nomi di persona, 29 codici, 1 email, 1 codice fiscale) | 2 | 2.681 |
+| kosgroup.com | 2.822 | 154 (122 nomi di persona, 29 codici, 1 codice breve escluso a mano, 1 email, 1 codice fiscale) | 2 | 2.668 |
 | anniazzurri.it | 325 | 5 (3 nomi di persona, 2 frasi con indirizzi privati) | 8 | 320 |
 
 ## Script di misura (16/11)
@@ -246,24 +255,27 @@ Lorenzo). Riconoscimento dei luoghi: comuni, province e regioni italiane, esclus
 nelle ricerche («salve», «mese», «parenti», «posta»...). Gli esiti (ricerche e risultati) stanno con i dati della prova,
 fuori dal repository.
 
-**Livello 1, primi numeri di Vertex (16/11, provvisori: manca il confronto con Yext, che si lancia per ultimo).**
+**Livello 1, primi numeri di Vertex (16/11 sera, sul set controllato e sulle app ricreate; manca il confronto con Yext,
+che si lancia per ultimo).**
 
 | Sito | Ricerche distinte (pesate) | Senza risultati | Tempo mediano / 95° percentile | Nome di struttura → scheda tra i primi tre |
 |---|---|---|---|---|
-| kosgroup.com | 2.681 (25.531) | 152 termini, 1,2% delle ricerche | 335 / 429 ms | 81,4% (348 termini, 5.638 ricerche) |
+| kosgroup.com | 2.668 (25.514) | 149 termini, 1,2% delle ricerche | 361 / 447 ms | 81,5% (347 termini, 5.637 ricerche) |
 | anniazzurri.it | 320 (625) | 8 termini, 2,2% | 371 / 536 ms | 86,4% (12 termini, 22 ricerche) |
 
-Luoghi riconosciuti: kosgroup.com 655 termini (6.489 ricerche), anniazzurri.it 39 (72); nomi di struttura che contengono
+Luoghi riconosciuti: kosgroup.com 654 termini (6.488 ricerche), anniazzurri.it 39 (72); nomi di struttura che contengono
 anche un luogo: 160 e 4 (lì vince il nome).
 
-Su kosgroup.com l'81,4% si divide in due: **schede kosgroup.com 99,6%** (4.609 ricerche) e **residenze Anni Azzurri 0%**
-(1.029 ricerche, es. «residenza anni azzurri volpiano»): l'app `ricerca-kosgroup` indicizza solo kosgroup.com.
+Su kosgroup.com l'81,5% si divide in due: **schede kosgroup.com 99,6%** (4.609 ricerche) e **residenze Anni Azzurri 0%**
+(1.028 ricerche, es. «residenza anni azzurri volpiano»): l'app `ricerca-kosgroup` indicizza solo kosgroup.com.
 **Decisione del 16/11:** riconoscimento dei nomi dalle TV con la scheda in testa (per le residenze, link alla scheda su
 anniazzurri.it) **più** un archivio con le sole schede delle strutture di anniazzurri.it collegato all'app di
 kosgroup.com, per coprire anche ricerche come «rsa volpiano» o «casa di riposo torino» che il riconoscimento dei nomi non
 vede. Nella restituzione l'indicatore in tre forme: Vertex da solo, con il riconoscimento, con il riconoscimento più
 l'archivio delle schede AA (`livello1` e `livello2` le calcolano quando ci sono gli esiti di `vertex --variante
-schede-aa`).
+schede-aa`). L'app con due archivi non accetta l'espansione automatica delle ricerche (errore 400): la terza forma gira
+senza, le altre con. Il 16/11 sera l'archivio delle schede AA risultava scansionato (64 su 64) ma con solo 3 documenti
+nell'indice: il giro della terza forma si fa quando l'indice è completo.
 
 ## Livello 2: risultati attesi (16/11)
 
@@ -286,13 +298,13 @@ Risultati attesi:
 
 I giudizi contengono i testi delle ricerche: stanno con i dati della prova, fuori dal repository.
 
-**Primi numeri di Vertex (16/11, provvisori**: esiti della prima tornata, da rifare dopo il controllo di Sensitive
-Data Protection sulle app ricreate), risultato atteso tra i primi tre:
+**Primi numeri di Vertex (16/11 sera**, set controllato con Sensitive Data Protection, app ricreate), risultato atteso
+tra i primi tre:
 
 | Sito | Pesato | Non pesato | Da 4 parole in su (pesato) | Struttura / luogo / altro (pesato) |
 |---|---|---|---|---|
-| kosgroup.com, Vertex da solo | 82,1% | 66,3% | 73,0% | 85,1 / 71,0 / 86,1 |
-| kosgroup.com, con riconoscimento | 85,7% | 76,6% | 99,5% | 100 / 71,0 / 86,1 |
+| kosgroup.com, Vertex da solo | 82,0% | 66,3% | 73,0% | 85,1 / 71,0 / 86,0 |
+| kosgroup.com, con riconoscimento | 85,6% | 76,4% | 99,5% | 100 / 71,0 / 86,0 |
 | anniazzurri.it, Vertex da solo | 85,4% | 80,6% | 86,1% | 86,4 / 74,5 / 86,6 |
 | anniazzurri.it, con riconoscimento | 85,9% | 80,9% | 88,2% | 100 / 74,5 / 86,6 |
 
@@ -307,23 +319,25 @@ nomi di struttura, nessuna «residenza anni azzurri …»: senza nomi 86,8% pesa
 
 | Motivo | kosgroup.com | anniazzurri.it |
 |---|---|---|
-| Contenuto mancante: informazioni sul ricovero (come si accede, cosa portare) | 2 | – |
-| Contenuto mancante: modulistica (richiesta di ricovero, cartella clinica, delega) | 1 | – |
-| Contenuto mancante: wifi per i ricoverati | 1 | – |
+| Contenuto mancante: informazioni sul ricovero (come si accede, cosa portare) | 1 | – |
 | Contenuto mancante: accesso per i dipendenti / area dipendenti | 1 | 3 |
 | Contenuto mancante: contatti per fornitori e proposte commerciali | – | 6 |
 | Contenuto mancante: dotazioni sanitarie delle residenze (ossigeno, presidi) | – | 3 |
-| Rimando a kosgroup.com (prestazioni ambulatoriali, strutture sanitarie) | – | 12 |
-| Strutture di altri gruppi | 7 | 1 |
-| Ricerche non chiare | 8 | 12 |
-| **Totale** | **20** | **37** |
+| Strutture di altri gruppi | 11 | 1 |
+| Ricerche non chiare | 10 | 12 |
+| **Totale** | **23** | **25** |
 
-(kosgroup.com da 22 a 20: «medico» va all'elenco dei medici e «addetta beauty» alle posizioni aperte.) L'elenco delle
-ricerche per motivo è negli esiti della prova (`senza-pagina-giusta-<sito>.json`).
+Il campione di kosgroup.com cambia di poco a ogni nuova pulizia (le ricerche escluse escono anche dagli strati estratti);
+l'elenco per ricerca è negli esiti della prova (`senza-pagina-giusta-<sito>.json`).
+
+**anniazzurri.it, prestazioni ambulatoriali (12 ricerche: visita medica, dermatologo, radiologia, poliambulatorio, Villa
+Margherita…)**: non sono ricerche senza risposta. Proposta per la restituzione: quando la pagina dei risultati di
+anniazzurri.it riconosce una prestazione o una struttura sanitaria del gruppo, mostra «Cerca su kosgroup.com» con la
+stessa ricerca. Nel livello 2 stanno in questa voce, fuori dal calcolo di Vertex su anniazzurri.it.
 
 **Regole di posizionamento** (es. posizioni aperte in testa per le professioni, PDF sotto le pagine): metà del campione,
 assegnata per hash della ricerca, serve a definirle, l'altra metà a misurarle; la restituzione mostra Vertex senza e con
-regole sulla metà di verifica. Oggi, senza regole: kosgroup.com 80,3% (verifica) e 84,7% (definizione); anniazzurri.it
+regole sulla metà di verifica. Oggi, senza regole: kosgroup.com 80,2% (verifica) e 84,7% (definizione); anniazzurri.it
 85,4% e 85,5%.
 
 La categoria «luogo» misura solo l'elenco dei risultati: l'elenco delle strutture vicine della pagina dei risultati si
@@ -371,6 +385,12 @@ pagine delle sitemap dei siti (anniazzurri.it 475, kosgroup.com 866), lette il 1
 
 Lo script lancia prima le ricerche su Vertex e per ultime quelle su Yext, in attesa che KOS confermi la capacità di ricerca
 del contratto Yext (richiesta di Danilo del 16/11).
+
+**Se KOS non risponde entro mercoledì 18/11**: giro ridotto su Yext con il solo campione del livello 2 (kosgroup.com 400,
+anniazzurri.it 320, circa 720 ricerche, una al secondo, circa 12 minuti), così il confronto con la soglia non dipende
+dalla risposta; il livello 1 su Yext (tutte le ricerche) si fa solo con la conferma di KOS. Comando:
+`misura.py yext --sito <sito> --campione <dati>/esiti/campione-livello2-<sito>.json ...` (dopo il controllo di Sensitive
+Data Protection, come ogni giro).
 
 ## Da chiarire con KOS
 

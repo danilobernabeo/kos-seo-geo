@@ -25,9 +25,11 @@ import requests
 
 DLP = 'https://dlp.googleapis.com/v2/projects/kos-ricerca/locations/europe/content:inspect'
 TIPI = ['PERSON_NAME', 'FIRST_NAME', 'LAST_NAME', 'ITALY_FISCAL_CODE', 'PHONE_NUMBER', 'EMAIL_ADDRESS',
-        'STREET_ADDRESS', 'DATE_OF_BIRTH', 'IBAN_CODE', 'PASSPORT', 'ITALY_PASSPORT', 'ITALY_IDENTITY_CARD_NUMBER']
+        'STREET_ADDRESS', 'DATE_OF_BIRTH', 'IBAN_CODE', 'PASSPORT', 'ITALY_PASSPORT', 'MEDICAL_RECORD_NUMBER',
+        'AUTH_TOKEN', 'PASSWORD']  # rilevatori disponibili nella regione europe (verifica del 16/11)
 CODICE = {'infoType': {'name': 'CODICE_ALFANUMERICO'}, 'likelihood': 'LIKELY',
-          'regex': {'pattern': r'\b(?=[a-z0-9]*[a-z])(?=(?:[a-z]*\d){2})[a-z0-9]{5,}\b'}}
+          # RE2, senza lookahead: ogni parola che mescola lettere e cifre (più larga della regola della pulizia)
+          'regex': {'pattern': r'\b(?:[a-z]+\d|\d+[a-z])[a-z0-9]*\b'}}
 
 
 def impronta(percorso):
@@ -53,7 +55,8 @@ def ispeziona(righe, cred):
     }
     r = requests.post(DLP, json=corpo, timeout=120,
                       headers={'Authorization': 'Bearer ' + cred.token, 'x-goog-user-project': 'kos-ricerca'})
-    r.raise_for_status()
+    if r.status_code != 200:
+        sys.exit(f"DLP {r.status_code}: {r.text[:600]}")
     out = []
     for f in r.json().get('result', {}).get('findings', []):
         riga = int(f['location']['contentLocations'][0]['recordLocation']['tableLocation'].get('rowIndex', 0))

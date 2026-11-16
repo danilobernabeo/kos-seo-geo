@@ -80,6 +80,8 @@ def cerca_vertex(sessione, cred, sito, q, app=None):
         cred.refresh(tr.Request())
     corpo = {'query': q, 'pageSize': 10, 'languageCode': 'it',
              'spellCorrectionSpec': {'mode': 'AUTO'}, 'queryExpansionSpec': {'condition': 'AUTO'}}
+    if app:  # app con più archivi: Vertex non accetta l'espansione delle ricerche (errore 400, verifica del 16/11)
+        del corpo['queryExpansionSpec']
     t0 = time.time()
     r = sessione.post(f"{BASE_VERTEX}/engines/{app or APP[sito]}/servingConfigs/default_search:search",
                       headers={'Authorization': 'Bearer ' + cred.token, 'x-goog-user-project': PROGETTO},
@@ -136,6 +138,10 @@ def lancia(o, motore):
         cred, pausa = token_vertex(o.chiave), 0.25
     else:
         cred, pausa = Path(o.chiave_yext).read_text().strip(), 1.0
+    if getattr(o, 'campione', None):
+        # giro ridotto (es. Yext sul solo livello 2, decisione del 16/11): solo le ricerche del campione
+        nel_campione = {v['ricerca'] for v in json.loads(Path(o.campione).read_text(encoding='utf-8'))}
+        ricerche = [r for r in ricerche if r['ricerca'] in nel_campione]
     nuove = [r for r in ricerche if r['ricerca'] not in fatti]
     print(f'{etichetta} {o.sito}: {len(nuove)} ricerche da lanciare ({len(fatti)} già fatte)')
     with dest.open('a', encoding='utf-8') as f:
@@ -354,6 +360,7 @@ def main():
             p.add_argument('--variante', choices=list(VARIANTI))
         if nome == 'yext':
             p.add_argument('--chiave-yext', required=True)
+            p.add_argument('--campione', help='campione-livello2-<sito>.json: giro ridotto alle sole ricerche del campione')
         if nome == 'livello1':
             p.add_argument('--comuni', required=True)
     o = a.parse_args()
