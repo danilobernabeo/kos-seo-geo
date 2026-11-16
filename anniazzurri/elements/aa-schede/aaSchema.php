@@ -352,7 +352,23 @@ $persona = function ($idAutore) use (
  * - URL assoluti nella forma canonica.
  * Sulla home non si emette nessuna BreadcrumbList.
  */
-$briciole = function ($res) use ($modx, $url, $CLS_RES, $START, $ESCLUDI, $CANON, $nomeTesto) {
+/* Pagina a cui porta davvero un livello intermedio: i contenitori con FirstChildRedirect reindirizzano alla prima figlia
+ * pubblicata per menuindex (stessa regola dello snippet aaLinkArrivo delle briciole visibili; AA-8, 15/11). */
+$arrivo = function (int $id) use ($modx, $CLS_RES) {
+    for ($giri = 0; $giri < 5; $giri++) {
+        $r = $modx->getObject($CLS_RES, $id);
+        if (!$r || stripos((string) $r->get('content'), 'FirstChildRedirect') === false) break;
+        $c = $modx->newQuery($CLS_RES);
+        $c->where(['parent' => $id, 'published' => 1, 'deleted' => 0]);
+        $c->sortby('menuindex', 'ASC');
+        $c->limit(1);
+        $f = $modx->getObject($CLS_RES, $c);
+        if (!$f) break;
+        $id = (int) $f->get('id');
+    }
+    return $id;
+};
+$briciole = function ($res) use ($modx, $url, $CLS_RES, $START, $ESCLUDI, $CANON, $nomeTesto, $arrivo) {
     $id = (int) $res->get('id');
     if ($id === $START) return [];
 
@@ -373,7 +389,7 @@ $briciole = function ($res) use ($modx, $url, $CLS_RES, $START, $ESCLUDI, $CANON
         $corrente = ((int) $r->get('id') === $id);
         $voci[] = [
             'name' => $nomeTesto($corrente ? ($r->get('menutitle') ?: $r->get('pagetitle')) : $r->get('pagetitle')),
-            'item' => $url($r->get('id')),
+            'item' => $url($corrente ? $r->get('id') : $arrivo((int) $r->get('id'))),
         ];
     }
 

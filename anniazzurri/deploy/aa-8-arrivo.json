@@ -1,0 +1,9 @@
+{
+  "nome": "AA-8 briciole: il livello intermedio punta alla pagina di arrivo dei contenitori FirstChildRedirect (visibili e BreadcrumbList), 41 pagine segnalate da Screaming Frog il 15/11",
+  "elements": [
+    { "type": "snippet", "name": "aaLinkArrivo", "file": "anniazzurri/elements/snippets/aaLinkArrivo.php", "description": "URL della pagina di arrivo di una risorsa (prima figlia dei contenitori FirstChildRedirect)" },
+    { "type": "chunk", "name": "breadcrumb-link", "file": "anniazzurri/elements/chunks/breadcrumb-link.html", "description": "Voce intermedia delle briciole visibili con link alla pagina di arrivo" },
+    { "type": "chunk", "name": "breadcrumb-stripe", "file": "anniazzurri/elements/chunks/breadcrumb-stripe.html", "baseline": "anniazzurri/baseline/chunks/breadcrumb-stripe.html" },
+    { "type": "snippet", "name": "aaSchema", "file": "anniazzurri/elements/aa-schede/aaSchema.php", "baseline": "anniazzurri/elements/snippets/aaSchema.php" }
+  ]
+}
