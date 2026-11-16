@@ -112,7 +112,10 @@ coordinate) ed eventualmente il servizio, e mostra in testa le strutture vicine;
 
 - Progetto sull'account di fatturazione KOS; Discovery Engine API; indice in regione UE con indicizzazione avanzata, che
   richiede i due domini verificati in Search Console dall'account che crea gli archivi.
-- Limite giornaliero alle ricerche e avviso di budget.
+- Limite alle ricerche: la quota delle ricerche è un limite di sistema non modificabile (UE 300/min), quindi il tetto
+  giornaliero sta nel servizio intermedio (istanze massime di Cloud Run e contatore giornaliero); avviso di budget a 20 €.
+  Quote ridotte il 16/11: Search lite a 0 (accesso con chiave API non usato), completamento delle query a 60/min, risposte
+  AI lasciate a 10/min.
 - Service account con chiave JSON: la usa solo il servizio intermedio (Cloud Run, in un segreto del servizio), mai nel
   codice del sito né nel repository; durante la prova anche gli script di misura, con la chiave fuori dal repository.
 
