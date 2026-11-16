@@ -456,7 +456,25 @@ Yext attuale): solo il campione congelato del livello 2, lanciato il 16/11 dopo 
 (un tentativo per ricerca), `sessionTrackingEnabled=false` e `source=CONFRONTO_VERTEX`; l'intervallo esatto di inizio e
 fine si registra qui e Danilo lo comunica al referente KOS per escludere le ricerche dai report Yext. Regola di arresto:
 se le ricerche in errore superano il 2% su un sito, il confronto non si calcola e si decide con Danilo se rilanciare
-solo quelle in errore. Il livello 1 su
+solo quelle in errore.
+
+**Giro eseguito il 16/11/2026** (720 ricerche, nessun errore, tutte con risposta 200), da comunicare al referente KOS:
+
+| Esperienza Yext | Ricerche | Inizio (ora italiana) | Fine (ora italiana) |
+|---|---|---|---|
+| kosgroup.com (`kos-care-search`) | 400 | 21:06:36 (20:06:36 UTC) | 21:15:43 (20:15:43 UTC) |
+| anniazzurri.it (`it-answer-anniazzurri`) | 320 | 21:15:43 (20:15:43 UTC) | 21:22:59 (20:22:59 UTC) |
+
+Il confronto non è ancora in tabella: Yext restituisce risultati senza indirizzo di pagina (vedi «Risultati Yext senza
+indirizzo», da decidere con Danilo).
+
+**Risultati Yext senza indirizzo (16/11 sera).** Nei primi tre risultati: kosgroup.com 379 schede di struttura con il
+campo del link principale (`c_primaryCTA.link`) che contiene l'etichetta «Altro» invece dell'indirizzo, 125 offerte di
+lavoro su `lavoraconnoi.kosgroup.com`, 8 link a `7ydxba3m.modx.dev` (Poliambulatorio Villa Pineta: l'entità Yext punta
+all'ambiente di sviluppo); anniazzurri.it 321 FAQ con la risposta nella pagina dei risultati e nessun indirizzo.
+Risultato atteso tra i primi tre, pesato: kosgroup.com 33,1% così com'è, 61,1% riportando le schede al loro indirizzo
+dal nome, 65,7% accettando anche le offerte su `lavoraconnoi.kosgroup.com` per le ricerche di lavoro; anniazzurri.it 9,4%
+così com'è, 46,5% come tetto se ogni FAQ fosse una risposta giusta. Il livello 1 su
 Yext resta subordinato alla conferma di KOS sulla capacità del contratto.
 
 (Prima ipotesi) **Se KOS non risponde entro mercoledì 18/11**: giro ridotto su Yext con il solo campione del livello 2 (kosgroup.com 400,
