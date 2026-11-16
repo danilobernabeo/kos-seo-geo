@@ -162,6 +162,23 @@ coordinate) ed eventualmente il servizio, e mostra in testa le strutture vicine;
 - App `ricerca-kosgroup` e `ricerca-anniazzurri`, edizione Enterprise con funzioni LLM.
 - Le sitemap non contengono PDF: per ora la ricerca trova solo pagine. Da decidere se aggiungere le carte dei servizi.
 
+## Pulizia delle ricerche (16/11)
+
+Script `scripts/ricerca/pulisci-ricerche.py`, da lanciare prima di ogni invio a Vertex o a Yext. Regole:
+
+1. **escluse**: email, codici fiscali, telefoni, date, codici alfanumerici (6 caratteri o più con almeno due cifre: codici
+   di prenotazione o di pratica), nomi di persona che non corrispondono a una pagina pubblica dei siti;
+2. **tolte dal testo**: età («83 anni», «classe 1936»);
+3. **riscritte a mano**: frasi con nomi, indirizzi o dettagli di vita privata, tenendo il bisogno, i refusi e la città.
+
+Le riscritture e l'elenco dei nomi contengono i testi originali: stanno fuori dal repository (area di lavoro della prova),
+mai in git; nel repository solo regole e conteggi.
+
+| Sito | Termini nell'export | Esclusi | Riscritti | Ricerche distinte ripulite |
+|---|---|---|---|---|
+| kosgroup.com | 2.822 | 60 (34 nomi di persona, 24 codici, 1 email, 1 codice fiscale) | 2 | 2.762 |
+| anniazzurri.it | 325 | 5 (3 nomi di persona, 2 frasi con indirizzi privati) | 8 | 320 |
+
 ## PDF nella ricerca (16/11)
 
 Carte dei servizi e pieghevoli commerciali sono indicizzati anche nella prova. **Regola: un PDF entra se è indicizzabile
