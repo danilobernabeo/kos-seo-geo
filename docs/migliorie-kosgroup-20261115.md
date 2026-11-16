@@ -28,6 +28,8 @@ di lavoro, collaudo compreso; nessuna voce va avviata prima dell'approvazione.
 | 11 | HTML memorizzabile | `Cache-Control: no-store` e cookie `PHPSESSID` su tutte le 914 pagine | Prerequisito di Cloud Edge e della cache del browser (avanti/indietro) | 0,5 analisi più 0,5 configurazione | Decisione su Cloud Edge (rif. KOS 2) |
 | 12 | Meno file JS e CSS, caricamento differito | 14 script senza `defer` e 10 fogli di stile su ogni pagina, nessun `preconnect` | Utenti su mobile, Core Web Vitals | 1,5 con collaudo visivo | Nessuna (rif. KOS 2) |
 | 13 | Pulsanti senza testo accessibile | 39 `<button>` su 214 senza testo (da verificare `aria-label`) | Accessibilità | 0,3 | Nessuna |
+| 28 | Font dal nostro dominio | Open Sans da `fonts.googleapis.com` (BaseTemplate, head formazione e gallery): connessione e CSS bloccante verso un terzo; segnalato anche nel riscontro di Cerved/ProWeb sullo sprint 1 (16/11) | Tempo di caricamento, privacy (nessuna chiamata a Google al caricamento) | 0,3 | Nessuna (rif. KOS 2) |
+| 29 | Ricerca Yext Answers sostituita | Script Yext Answers nella ricerca (`head-ricerca-yext`, home e strutture): resta dopo la dismissione dei Knowledge Tags (6/11) finché non c'è un sostituto; file esterni segnalati nel riscontro sullo sprint 1 | Meno script di terzi; fine della dipendenza da Yext | da valutare con RetailTune | Passaggio a RetailTune |
 
 ## Priorità bassa
 
@@ -48,7 +50,7 @@ di lavoro, collaudo compreso; nessuna voce va avviata prima dell'approvazione.
 | 26 | Description generiche, secondo giro | 311 su 914 iniziano con «Scopri…»; chiusure «Visita ora!»; «il brand Kos» su Santo Stefano Mede; title di convenzioni e tecnologie da 13-23 caratteri | Clic dai risultati | 1 più validazione |
 | 27 | Catalogo prenotazioni più leggero | `/it/prenota-online` 760 KB di HTML; Villa dei Pini 396 KB (274 prestazioni nel JSON-LD) | Utenti | da valutare |
 
-Totale indicativo: priorità alta circa 4 giornate, media circa 12, bassa circa 9 (senza i testi e i dati a cura di KOS).
+Totale indicativo: priorità alta circa 4 giornate, media circa 12 (più le voci 28-29, aggiunte il 16/11), bassa circa 9 (senza i testi e i dati a cura di KOS).
 
 ## Da segnalare a KOS (contenuti e dati, nessun lavoro nostro)
 
