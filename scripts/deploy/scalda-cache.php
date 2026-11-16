@@ -4,7 +4,7 @@
  * sitemap così il primo visitatore, e il primo crawler, trovano la pagina già in cache (0,2-0,3 s invece di circa 1 s).
  * Misura del 15/11: prima richiesta dopo lo svuotamento 1,05-1,24 s, seconda 0,24-0,29 s, su articoli e schede.
  *
- * Uso (sul cloud, anche in SSH; richieste al sito pubblico, una alla volta):
+ * Uso (sul cloud, in primo piano: la shell BusyBox di MODX Cloud non ha nohup; richieste al sito pubblico, una alla volta):
  *   php scripts/deploy/scalda-cache.php https://kosgroup.com/sitemap.xml
  *   php scripts/deploy/scalda-cache.php https://anniazzurri.it/sitemap.xml --pausa=0.5
  *   ... --utente=kos --password-env=AUTH   per lo stage con Basic Auth (password letta da una variabile d'ambiente)
