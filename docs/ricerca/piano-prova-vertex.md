@@ -44,6 +44,8 @@ bloccati), lo si dice a KOS insieme all'invio della scheda al DPO.
 - Log del servizio intermedio senza il testo delle ricerche; statistiche di ricerca di Vertex conservate 30 giorni.
 - GA4: evento di ricerca con il numero di risultati, senza il testo.
 - «Vicino a me»: coordinate dal browser con consenso, solo per ordinare i risultati, non salvate; niente posizione da IP.
+- Campionamento di input e risposte del modello da parte di Google non consentito (scelta fatta all'attivazione del
+  servizio sul progetto `kos-ricerca`, 16/11).
 - Risposte AI: solo su anniazzurri.it e solo per domande pratiche, con il filtro su sintomi, diagnosi, farmaci e terapie
   (decisione del 9/11); nessun addestramento sui dati.
 
