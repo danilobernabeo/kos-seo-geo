@@ -5,7 +5,6 @@ assets/doc/strutture/centro-ambulatoriale-santo-stefano-civitanova-marche/carta-
 assets/doc/strutture/centro-ambulatoriale-santo-stefano-fabriano/carta-dei-servizi.pdf
 assets/doc/strutture/centro-ambulatoriale-santo-stefano-filottrano/carta-dei-servizi.pdf
 assets/doc/strutture/centro-ambulatoriale-santo-stefano-jesi/carta-dei-servizi.pdf
-assets/doc/strutture/centro-ambulatoriale-santo-stefano-macerata/carta-dei-serivizi-fisiosport.pdf
 assets/doc/strutture/centro-ambulatoriale-santo-stefano-macerata/carta-dei-servizi.pdf
 assets/doc/strutture/centro-ambulatoriale-santo-stefano-matelica/carta-dei-servizi.pdf
 assets/doc/strutture/centro-ambulatoriale-santo-stefano-porto-potenza-picena/carta-dei-servizi.pdf
