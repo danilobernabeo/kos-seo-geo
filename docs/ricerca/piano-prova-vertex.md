@@ -177,10 +177,9 @@ pagine delle sitemap dei siti (anniazzurri.it 475, kosgroup.com 866), lette il 1
   nuovo).
 - **kosgroup.com**: carte di `kosgroup/dati/orari/carte-dei-servizi.txt` (53, senza la carta Fisiosport del CAR Macerata,
   unità chiusa, PDF tolto il 10/11) più pieghevoli, leaflet e brochure collegati: 78, tutti indicizzabili e collegati.
-- **Da verificare**: il pieghevole Anni Azzurri Senior Living e il pieghevole informativo dell'Hospice Beati Coniugi Martin
-  rispondono **senza** `noindex`, mentre le precisazioni dello sprint 2 (AA 3) li danno in `noindex` per la regola
-  generale. Nella ricerca entrano perché oggi sono indicizzabili; se la nota è corretta va sistemata la regola web, e
-  allora escono anche dalla ricerca.
+- Il pieghevole Anni Azzurri Senior Living e il pieghevole informativo dell'Hospice Beati Coniugi Martin sono
+  indicizzabili per la regola web (carte, guide e pieghevoli per nome file, più una riga per Senior Living): restano nella
+  ricerca. La nota dello sprint 2 che li dava in `noindex` è stata corretta (commit 777afe6).
 - **Senza testo** (scansioni): kosgroup.com 5 carte dei punti prelievi (Biemme, Delta, Gamma, Salus Villalba, Selemar),
   da segnalare a KOS proponendo l'OCR da parte nostra (stesso documento con testo leggibile, come per le guide del CAR
   Macerata il 10/11), solo con il loro consenso; anniazzurri.it 3 moduli di ricovero e l'infografica Alzheimer, che restano
