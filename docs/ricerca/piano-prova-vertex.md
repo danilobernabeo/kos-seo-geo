@@ -162,6 +162,40 @@ coordinate) ed eventualmente il servizio, e mostra in testa le strutture vicine;
 - App `ricerca-kosgroup` e `ricerca-anniazzurri`, edizione Enterprise con funzioni LLM.
 - Le sitemap non contengono PDF: per ora la ricerca trova solo pagine. Da decidere se aggiungere le carte dei servizi.
 
+## PDF nella ricerca (16/11)
+
+Carte dei servizi e pieghevoli commerciali sono indicizzati anche nella prova. Elenco ricavato dalla regola, non scritto a
+mano (`docs/ricerca/pdf-prova-2026-11-16.csv`):
+
+- **anniazzurri.it**: tutti i PDF di `/assets/` meno quelli di `anniazzurri/files/sitemap/sitemap-pdf-noindex.xml` (216).
+  Fonte: inventario `anniazzurri/dati/pdf/piano-pdf.json` del 3/11, 192 PDF, tutti 200 senza `X-Robots-Tag: noindex`
+  (verifica del 16/11; i PDF della sitemap noindex rispondono con `noindex`). Comprende anche moduli e infografiche, non
+  solo carte e pieghevoli.
+- **kosgroup.com**: carte di `kosgroup/dati/orari/carte-dei-servizi.txt` più pieghevoli, leaflet e brochure dell'inventario,
+  verificati sull'intestazione: 78 indicizzabili. Una carta risponde 404
+  (`centro-ambulatoriale-santo-stefano-macerata/carta-dei-serivizi-fisiosport.pdf`, refuso nel nome).
+- **Senza testo** (scansioni, da segnalare a KOS per una versione con testo): anniazzurri.it 4 (moduli di richiesta
+  ricovero di Abitare il Tempo e Casa Argento, modulo ingresso in convenzione di Santa Maria in Chienti, infografica
+  Alzheimer); kosgroup.com 5 (carte dei servizi dei punti prelievi Biemme, Delta, Gamma, Salus Villalba, Selemar).
+  **Senza titolo**: nessuno.
+- **Caricamento nella prova**: manuale (`recrawlUris`) il 16/11; sull'archivio `kosgroup-it` aggiunto il percorso
+  `kosgroup.com/assets/doc/*`, perché l'archivio includeva solo `/it/*`.
+- **Nei risultati i PDF non superano le pagine**: per il nome di una struttura vince la scheda, la carta compare sotto con
+  l'etichetta PDF e il nome della struttura. Nella prova si contano le ricerche che trovano il risultato giusto solo grazie
+  a un PDF.
+- **Risposte AI**: le carte di anniazzurri.it entrano nell'elenco chiuso; quelle di kosgroup.com no, finché gli orari delle
+  pagine non sono allineati alle carte (`docs/orari/orari-strutture-kos-confronto.md`).
+
+## Sviluppo dopo la decisione (appunti)
+
+- Sitemap dei PDF indicizzabili per sito, generata dalla stessa regola, inviata a Vertex: l'indice si aggiorna da solo
+  quando una carta viene sostituita (nella prova il caricamento è manuale).
+
+## Ordine delle ricerche della prova
+
+Lo script lancia prima le ricerche su Vertex e per ultime quelle su Yext, in attesa che KOS confermi la capacità di ricerca
+del contratto Yext (richiesta di Danilo del 16/11).
+
 ## Da chiarire con KOS
 
 - Contratto Yext: data di scadenza e se si può disdire per singolo servizio (ricerca Answers separata da profili e
