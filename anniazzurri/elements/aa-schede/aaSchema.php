@@ -58,6 +58,10 @@ $ORG_ID   = $cfg('org_id',     $CANON . '/#organization');
 $SITE_ID  = $cfg('website_id', $CANON . '/#website');
 $PARENT_ID= $cfg('parent_org_id', 'https://kosgroup.com/#organization');
 $LANG     = $cfg('lang',      'it-IT');
+/* Pagine in un'altra lingua (es. /home-en): &lingua=`en` cambia solo la lingua della pagina, non quella del sito;
+ * &briciole=`0` toglie il BreadcrumbList dove le briciole non si vedono (pagine con head proprio, sprint 3, 17/11). */
+$LANG_PAGINA = (string) $modx->getOption('lingua', $scriptProperties, $LANG) ?: $LANG;
+$CON_BRICIOLE = (int) $modx->getOption('briciole', $scriptProperties, 1) === 1;
 $SLASH    = (int) $cfg('trailing_slash', 0);   // gli URL del sito sono piatti, senza slash finale
 $FRAG_PAT = $cfg('frag_patologia', '#condition');
 $FRAG_STR = $cfg('frag_struttura', '#localbusiness');   // convenzione del 20/10/2026 (audit AA, slide 29-30)
@@ -406,7 +410,8 @@ $briciole = function ($res) use ($modx, $url, $CLS_RES, $START, $ESCLUDI, $CANON
 };
 
 /* Nodo BreadcrumbList, o null se non ci sono almeno due livelli. */
-$nodoBriciole = function ($res, $pagina) use ($briciole) {
+$nodoBriciole = function ($res, $pagina) use ($briciole, $CON_BRICIOLE) {
+    if (!$CON_BRICIOLE) return null;
     $l = $briciole($res);
     return count($l) < 2 ? null : [
         '@type'           => 'BreadcrumbList',
@@ -729,7 +734,7 @@ if ($type === 'profile') {
             '@id'        => $paginaCorrente . '#webpage',
             'url'        => $paginaCorrente,
             'name'       => $titoloNodo($res),
-            'inLanguage' => $LANG,
+            'inLanguage' => $LANG_PAGINA,
             'mainEntity' => ['@id' => $paginaCorrente . '#person'],
             'hasPart'    => $firmati,
             'isPartOf'   => ['@id' => $SITE_ID],
@@ -791,7 +796,7 @@ if ($type === 'page') {
         'url'         => $paginaCorrente,
         'name'        => $titoloNodo($res),
         'description' => $res->get('description'),
-        'inLanguage'  => $LANG,
+        'inLanguage'  => $LANG_PAGINA,
         'isPartOf'    => ['@id' => $SITE_ID],
         'about'       => $home ? ['@id' => $ORG_ID] : null,
         'mainEntity'  => $struttura ? ['@id' => $struttura['@id']] : ($lista ? ['@id' => $lista['@id']] : null),

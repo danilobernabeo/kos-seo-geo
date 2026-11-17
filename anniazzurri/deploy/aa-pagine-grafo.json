@@ -1,0 +1,6 @@
+{
+  "nome": "Sprint 3, /home-en e /azzurramente nel grafo unico: aaSchema accetta &lingua (lingua della pagina) e &briciole=`0` (nessun BreadcrumbList dove le briciole non si vedono)",
+  "elements": [
+    { "type": "snippet", "name": "aaSchema", "file": "anniazzurri/elements/aa-schede/aaSchema.php" }
+  ]
+}
