@@ -517,8 +517,68 @@ $retta = function ($r) use ($testo) {
     // breve: i caroselli di attività locali accettano priceRange sotto i 12 caratteri («Da 106,00 €»)
     return trim($da . str_replace('.', ',', $m[2]) . ' €');
 };
+/* --- reparti nella sede di una residenza (centri diurni, hospice, appartamenti; sprint 3, 17/11) -----------
+ * Una scheda con la TV str.sede (alias/uri o id della residenza che la ospita) non è una struttura autonoma: diventa
+ * {URL scheda}#department (convenzione «reparti nella stessa sede», come Villa Margherita su kosgroup.com), con
+ * parentOrganization verso il #localbusiness della residenza, che a sua volta la elenca in department. Nessuna di queste
+ * unità ha un profilo Google proprio (export Yext del 6/11: nessuna entità con il loro URL). */
+$FRAG_REPARTO = '#department';
+$TIPI_REPARTO = ['MedicalOrganization', 'LocalBusiness'];
+$sedeDi = function ($r) use ($modx, $tv, $CLS_RES) {
+    $v = trim((string) $tv($r, 'str.sede'));
+    if ($v === '') return null;
+    $id = ctype_digit($v) ? (int) $v : (int) $modx->findResource(trim($v, '/'));
+    $s = $id ? $modx->getObject($CLS_RES, $id) : null;
+    return ($s && $s->get('published') && !$s->get('deleted')) ? $s : null;
+};
+$repartiDi = function ($r) use ($modx, $CLS_TVR, $CLS_RES, $url, $FRAG_REPARTO) {
+    static $mappa = null;
+    if ($mappa === null) {
+        $mappa = [];
+        $cls = class_exists('\MODX\Revolution\modTemplateVar') ? \MODX\Revolution\modTemplateVar::class : 'modTemplateVar';
+        $tvo = $modx->getObject($cls, ['name' => 'str.sede']);
+        if ($tvo) {
+            foreach ($modx->getCollection($CLS_TVR, ['tmplvarid' => $tvo->get('id')]) as $v) {
+                $val = trim((string) $v->get('value'));
+                if ($val === '') continue;
+                $sid = ctype_digit($val) ? (int) $val : (int) $modx->findResource(trim($val, '/'));
+                $u = $modx->getObject($CLS_RES, (int) $v->get('contentid'));
+                if ($sid && $u && $u->get('published') && !$u->get('deleted')) $mappa[$sid][] = (int) $u->get('id');
+            }
+        }
+    }
+    $out = [];
+    foreach ($mappa[(int) $r->get('id')] ?? [] as $id) { $u = $url($id); if ($u !== '') $out[] = ['@id' => $u . $FRAG_REPARTO]; }
+    return $out;
+};
+$nodoReparto = function ($r, $sede) use ($url, $tv, $csv, $testo, $pulisci, $orari, $FRAG_STR, $FRAG_REPARTO, $TIPI_REPARTO) {
+    $pagina = $url($r->get('id'));
+    $paginaSede = $url($sede->get('id'));
+    if ($pagina === '' || $paginaSede === '') return null;
+    $tipi = array_values(array_intersect($csv($tv($r, 'str.tipo')), $TIPI_REPARTO)) ?: ['MedicalOrganization'];
+    return $pulisci([
+        '@type'       => count($tipi) === 1 ? $tipi[0] : $tipi,
+        '@id'         => $pagina . $FRAG_REPARTO,
+        'name'        => $tv($r, 'str.nome') ?: $r->get('pagetitle'),
+        'url'         => $pagina,
+        'description' => $testo($r->get('description') ?: $r->get('introtext')),
+        'telephone'   => $tv($r, 'str.telefono'),
+        'email'       => $tv($r, 'str.email'),
+        'address'     => (string) $tv($r, 'str.via') === '' ? null : [
+            '@type'           => 'PostalAddress',
+            'streetAddress'   => $tv($r, 'str.via'),
+            'postalCode'      => $tv($r, 'str.cap'),
+            'addressLocality' => $tv($r, 'str.citta'),
+            'addressRegion'   => strtoupper((string) $tv($r, 'str.provincia')),
+            'addressCountry'  => 'IT',
+        ],
+        'openingHoursSpecification' => $orari($tv($r, 'str.orari')),
+        'parentOrganization' => ['@id' => $paginaSede . $FRAG_STR],
+    ]);
+};
 $nodoStruttura = function ($r) use ($url, $tv, $csv, $righe, $testo, $pulisci, $orari, $orariSpeciali, $immagineScheda, $retta,
-                                    $TIPI_STRUTTURA, $SPECIALITA, $FRAG_STR, $ORG_ID, $cfg) {
+                                    $TIPI_STRUTTURA, $SPECIALITA, $FRAG_STR, $ORG_ID, $cfg, $sedeDi, $nodoReparto, $repartiDi) {
+    if ($sede = $sedeDi($r)) return $nodoReparto($r, $sede);
     $pagina = $url($r->get('id'));
     if ($pagina === '' || (string) $tv($r, 'str.via') === '') return null;
     $tipi = array_values(array_intersect($csv($tv($r, 'str.tipo')), $TIPI_STRUTTURA)) ?: ['MedicalBusiness', 'MedicalOrganization'];
@@ -565,6 +625,7 @@ $nodoStruttura = function ($r) use ($url, $tv, $csv, $righe, $testo, $pulisci, $
                          'actionPlatform' => ['https://schema.org/DesktopWebPlatform', 'https://schema.org/MobileWebPlatform']],
         ] : null,
         'sameAs'      => array_values(array_filter($righe($tv($r, 'str.sameAs')), function ($u) { return preg_match('#^https://#', $u); })),
+        'department'  => $repartiDi($r) ?: null,
         'parentOrganization' => ['@id' => $ORG_ID],
     ]);
 };
@@ -762,7 +823,7 @@ if ($type === 'page') {
         $q->sortby('menuindex', 'ASC');
         $voci = [];
         foreach ($modx->getCollection($CLS_RES, $q) as $figlia) {
-            if (!$eScheda($figlia) || !($n = $nodoStruttura($figlia))) continue;
+            if (!$eScheda($figlia) || $sedeDi($figlia) || !($n = $nodoStruttura($figlia))) continue;
             // voce del carosello (Google, attività locali): un solo tipo LocalBusiness, name, url, image obbligatori.
             // Il nodo completo resta sulla scheda: qui una sintesi senza @id, per non fondersi con il nodo a due tipi
             // (MedicalOrganization non è un'attività locale e il carosello non riconosce la voce).

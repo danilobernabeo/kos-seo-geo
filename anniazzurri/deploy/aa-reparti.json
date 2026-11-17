@@ -1,0 +1,23 @@
+{
+ "nome": "Sprint 3: reparti nella sede di una residenza (centri diurni, hospice, appartamenti): TV str.sede e nodo #department in aaSchema",
+ "tvs": [
+  {
+   "name": "str.sede",
+   "caption": "Residenza che ospita l'unità",
+   "description": "Solo per centri diurni, hospice e appartamenti nella sede di una residenza: alias della scheda della residenza (es. residenza-anni-azzurri-il-poggione). Con questo campo la scheda diventa un reparto (#department) della residenza.",
+   "type": "text",
+   "category": "Scheda residenza (dato strutturato)",
+   "templates": [
+    "rsa"
+   ],
+   "rank": 20
+  }
+ ],
+ "elements": [
+  {
+   "type": "snippet",
+   "name": "aaSchema",
+   "file": "anniazzurri/elements/aa-schede/aaSchema.php"
+  }
+ ]
+}

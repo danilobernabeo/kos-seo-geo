@@ -1,0 +1,133 @@
+{
+ "nome": "Sprint 3 (AA-2/11/21): 5 centri diurni, 2 hospice e appartamenti di Bergamo come reparti #department della residenza che li ospita (TV str.sede). Indirizzi dalle pagine e dalle carte dei servizi (Biancospino: Via Borri 5, Bagnolo in Piano, aperto lun-dom 7-19); email generiche della sede o dell'unità, mai personali; nessun profilo Google proprio (export Yext del 6/11).",
+ "risorse": [
+  {
+   "uri": "centro-diurno-anni-azzurri-la-limonaia",
+   "tv": {
+    "str.sede": "residenza-anni-azzurri-beato-angelico",
+    "str.nome": "",
+    "str.via": "Via Faentina 63/A",
+    "str.cap": "50032",
+    "str.citta": "Borgo San Lorenzo",
+    "str.provincia": "FI",
+    "str.telefono": "+390558408720",
+    "str.email": "residenzabeatoangelico@anniazzurri.it",
+    "str.orari": "",
+    "str.tipo": "MedicalOrganization",
+    "str.marchio": ""
+   }
+  },
+  {
+   "uri": "centro-diurno-anni-azzurri-la-maremma",
+   "tv": {
+    "str.sede": "residenza-anni-azzurri-il-poggione",
+    "str.nome": "",
+    "str.via": "Via Genova, 17",
+    "str.cap": "58100",
+    "str.citta": "Grosseto",
+    "str.provincia": "GR",
+    "str.telefono": "+39056418211",
+    "str.email": "residenzailpoggione@anniazzurri.it",
+    "str.orari": "",
+    "str.tipo": "MedicalOrganization",
+    "str.marchio": ""
+   }
+  },
+  {
+   "uri": "centro-diurno-integrato-anni-azzurri-san-rocco",
+   "tv": {
+    "str.sede": "residenza-anni-azzurri-san-rocco",
+    "str.nome": "",
+    "str.via": "Via Monviso 87",
+    "str.cap": "20054",
+    "str.citta": "Segrate",
+    "str.provincia": "MI",
+    "str.telefono": "+390226952323",
+    "str.email": "residenzasanrocco@anniazzurri.it",
+    "str.orari": "",
+    "str.tipo": "MedicalOrganization",
+    "str.marchio": ""
+   }
+  },
+  {
+   "uri": "centro-diurno-alzheimer-san-giuseppe",
+   "tv": {
+    "str.sede": "residenza-anni-azzurri-san-giuseppe",
+    "str.nome": "",
+    "str.via": "Via Luigi Luciani 83",
+    "str.cap": "63074",
+    "str.citta": "San Benedetto Del Tronto",
+    "str.provincia": "AP",
+    "str.telefono": "+390735780549",
+    "str.email": "residenzasangiuseppe@anniazzurri.it",
+    "str.orari": "",
+    "str.tipo": "MedicalOrganization",
+    "str.marchio": ""
+   }
+  },
+  {
+   "uri": "centro-diurno-integrato-anni-azzurri-biancospino",
+   "tv": {
+    "str.sede": "residenza-anni-azzurri-il-giardino",
+    "str.nome": "",
+    "str.via": "Via Giovan Battista Borri 5",
+    "str.cap": "42011",
+    "str.citta": "Bagnolo In Piano",
+    "str.provincia": "RE",
+    "str.telefono": "+390522953888",
+    "str.email": "residenzailgiardino@anniazzurri.it",
+    "str.orari": "Mo-Su 07:00-19:00",
+    "str.tipo": "MedicalOrganization",
+    "str.marchio": ""
+   }
+  },
+  {
+   "uri": "hospice-san-giorgio-a-colonica",
+   "tv": {
+    "str.sede": "residenza-anni-azzurri-campi-bisenzio",
+    "str.nome": "",
+    "str.via": "1 AC, Via delle Miccine",
+    "str.cap": "50013",
+    "str.citta": "Campi Bisenzio",
+    "str.provincia": "FI",
+    "str.telefono": "+39055199751",
+    "str.email": "residenzacampibisenzio@anniazzurri.it",
+    "str.orari": "",
+    "str.tipo": "MedicalOrganization",
+    "str.marchio": ""
+   }
+  },
+  {
+   "uri": "hospice-beati-coniugi-martin",
+   "tv": {
+    "str.sede": "residenza-anni-azzurri-pgr-milano",
+    "str.nome": "",
+    "str.via": "Via San Faustino 27",
+    "str.cap": "20134",
+    "str.citta": "Milano",
+    "str.provincia": "MI",
+    "str.telefono": "+3902210861",
+    "str.email": "hospicebeaticoniugimartin@anniazzurri.it",
+    "str.orari": "",
+    "str.tipo": "MedicalOrganization",
+    "str.marchio": ""
+   }
+  },
+  {
+   "uri": "appartamenti-anziani-bergamo",
+   "tv": {
+    "str.sede": "residenza-anni-azzurri-san-sisto-2",
+    "str.nome": "",
+    "str.via": "Via Colognola ai Colli, 9",
+    "str.cap": "24126",
+    "str.citta": "Bergamo",
+    "str.provincia": "BG",
+    "str.telefono": "+390350867487",
+    "str.email": "residenzasansisto@anniazzurri.it",
+    "str.orari": "",
+    "str.tipo": "LocalBusiness",
+    "str.marchio": ""
+   }
+  }
+ ]
+}

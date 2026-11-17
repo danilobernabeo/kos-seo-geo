@@ -36,7 +36,7 @@ $bk = rtrim((string) (getenv('HOME') ?: '.'), '/') . "/backup-kos-seo-geo/$stamp
 $converti = function (string $t): array {
     $n = 0;
     $nuovo = preg_replace_callback(
-        '~<(a|span)\b([^>]*?)\sdata-yext-field="(\w+)"\s+data-yext-id="\[\[\*data-yext-id\]\]"([^>]*)>\s*</\1>~s',
+        '~<(a|span)\b([^>]*?)\sdata-yext-field="(\w+)"\s+data-yext-id="(?:\[\[\*data-yext-id\]\]|[A-Z0-9_]+)"([^>]*)>\s*</\1>~s',
         function ($m) use (&$n) {
             $n++;
             $attr = $m[2] . $m[4];
