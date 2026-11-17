@@ -44,6 +44,7 @@ Rilascio del 1/11/2026, prima sugli stage e poi in produzione. Brief: `docs/pdf/
 - **Strumenti:** `sostituisci-pdf.php` e `pdf-metadati.php` con `anniazzurri/dati/pdf/carte-servizi-2026-11-08.json` e `kosgroup/dati/pdf/carte-servizi-2026-11-08.json` (titoli «Carta dei servizi – Residenza Anni Azzurri <nome>», oggetto con città ed edizione; KOS autore «Gruppo KOS»). Corretto in `sostituisci-pdf.php` il motivo dei sospesi (chiave `motivo`).
 - **Stage e produzione (8/11):** AA e KOS sostituiti e con metadati. Produzione KOS: 3 sostituiti, 3 metadati scritti, backup metadati `/paas/c0095/backup-pdf-metadati-20261108`, backup della sostituzione in `~/backup-kos-seo-geo/20261108-*-pdf-sostituiti`. `curl -I`: carta Parco di Veio 200, 664.556 byte; pieghevole 200, 1.295.779 byte; locandina 200 con `X-Robots-Tag: noindex`, 297.195 byte; carta AA Conero 200, 3.289.399 byte, senza `X-Robots-Tag`.
 - **Ripristino:** `php scripts/pdf/sostituisci-pdf.php /www --ripristina=<cartella del backup della sostituzione> --scrivi --forza` sul cloud interessato.
+- **Correzione del 17/11 (AA):** le 7 carte delle Marche in produzione erano ancora le edizioni di luglio 2026 (l'8/11 erano stati scritti solo i metadati). Sostituite su stage e produzione con `anniazzurri/dati/pdf/carte-marche-2026-11-17.json`; in linea edizione novembre 2026, titolo corretto, indicizzabili.
 
 ## PPSC 2026 di Villa Jolanda (KOS, 12/11/2026)
 
