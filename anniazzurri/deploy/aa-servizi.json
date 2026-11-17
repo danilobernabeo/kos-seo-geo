@@ -1,0 +1,17 @@
+{
+ "nome": "Sprint 3 (AA, convenzione «servizi senza sede propria»): nodo Service per RSA Aperta e cure domiciliari, provider verso le residenze che li erogano (RSA Aperta) o l'ente (Anni Azzurri a Casa), areaServed dalle pagine",
+ "settings": [
+  {
+   "key": "aa.servizi",
+   "value": "{\"rsa-aperta\":{\"nome\":\"RSA Aperta\",\"tipo\":\"Misura RSA Aperta di Regione Lombardia: interventi socio-sanitari gratuiti a domicilio o in RSA\",\"id\":\"rsa-aperta\",\"area\":[{\"tipo\":\"State\",\"nome\":\"Lombardia\"}],\"erogatori\":[\"residenza-anni-azzurri-melograno\",\"residenza-anni-azzurri-mirasole\",\"residenza-anni-azzurri-navigli\",\"residenza-anni-azzurri-parco-sempione\"],\"telefono\":\"+390236507408\"},\"rsa-aperta-lombardia\":{\"nome\":\"RSA Aperta\",\"tipo\":\"Misura RSA Aperta di Regione Lombardia: interventi socio-sanitari gratuiti a domicilio o in RSA\",\"id\":\"rsa-aperta\",\"area\":[{\"tipo\":\"State\",\"nome\":\"Lombardia\"}],\"erogatori\":[\"residenza-anni-azzurri-melograno\",\"residenza-anni-azzurri-mirasole\",\"residenza-anni-azzurri-navigli\",\"residenza-anni-azzurri-parco-sempione\"],\"telefono\":\"+390236507408\"},\"assistenza-e-cure-domiciliari-gratuite-con-il-servizio-sanitario\":{\"nome\":\"Anni Azzurri a Casa: assistenza e cure domiciliari con il Servizio Sanitario Regionale\",\"tipo\":\"Cure domiciliari (C-DOM) in regime SSR\",\"area\":[{\"tipo\":\"City\",\"nome\":\"Milano\"},{\"tipo\":\"AdministrativeArea\",\"nome\":\"Comuni del Nord Milano\"},{\"tipo\":\"AdministrativeArea\",\"nome\":\"ASST Melegnano e della Martesana\"}],\"erogatori\":[],\"telefono\":\"+390236507408\"},\"assistenza-e-cure-domiciliari-in-regime-privato\":{\"nome\":\"Anni Azzurri a Casa: assistenza e cure domiciliari private\",\"tipo\":\"Assistenza e cure domiciliari in regime privato\",\"area\":[{\"tipo\":\"City\",\"nome\":\"Milano\"},{\"tipo\":\"AdministrativeArea\",\"nome\":\"Città metropolitana di Milano\"}],\"erogatori\":[],\"telefono\":\"+390236507408\"}}",
+   "area": "aa"
+  }
+ ],
+ "elements": [
+  {
+   "type": "snippet",
+   "name": "aaSchema",
+   "file": "anniazzurri/elements/aa-schede/aaSchema.php"
+  }
+ ]
+}

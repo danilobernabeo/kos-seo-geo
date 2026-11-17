@@ -810,6 +810,37 @@ if ($type === 'profile') {
 }
 
 /* --------------------------------------------------------- pagina generica */
+/* --- servizi senza sede propria (RSA Aperta, cure domiciliari; sprint 3, 17/11) --------------------------------
+ * Impostazione aa.servizi (JSON): { "<uri pagina>": { "nome", "tipo" (serviceType), "id" (uri della pagina principale,
+ * se più pagine descrivono lo stesso servizio), "area": [ {"tipo": "State|City|AdministrativeArea", "nome"} ],
+ * "erogatori": [alias delle residenze] (vuoto = l'ente), "telefono" } }. Nodo Service {URL}#service con provider verso i
+ * #localbusiness delle residenze che lo erogano (convenzione del progetto), nessun nodo struttura né scheda Google. */
+$SERVIZI = json_decode((string) $cfg('servizi', ''), true) ?: [];
+$nodoServizio = function ($res) use ($SERVIZI, $modx, $url, $pulisci, $testo, $ORG_ID, $FRAG_STR, $CANON) {
+    $s = $SERVIZI[(string) $res->get('uri')] ?? null;
+    if (!is_array($s)) return null;
+    $principale = !empty($s['id']) ? rtrim($CANON, '/') . '/' . ltrim((string) $s['id'], '/') : $url($res->get('id'));
+    $erogatori = [];
+    foreach ((array) ($s['erogatori'] ?? []) as $alias) {
+        $id = (int) $modx->findResource(trim((string) $alias, '/'));
+        if ($id && ($u = $url($id)) !== '') $erogatori[] = ['@id' => $u . $FRAG_STR];
+    }
+    $aree = [];
+    foreach ((array) ($s['area'] ?? []) as $a) {
+        if (!empty($a['nome'])) $aree[] = ['@type' => $a['tipo'] ?? 'AdministrativeArea', 'name' => $a['nome']];
+    }
+    return $pulisci([
+        '@type'       => 'Service',
+        '@id'         => $principale . '#service',
+        'name'        => $s['nome'] ?? $res->get('pagetitle'),
+        'serviceType' => $s['tipo'] ?? null,
+        'url'         => $principale,
+        'description' => $testo($res->get('description') ?: $res->get('introtext')),
+        'provider'    => $erogatori ? (count($erogatori) === 1 ? $erogatori[0] : $erogatori) : ['@id' => $ORG_ID],
+        'areaServed'  => $aree ? (count($aree) === 1 ? $aree[0] : $aree) : null,
+        'telephone'   => $s['telefono'] ?? null,
+    ]);
+};
 if ($type === 'page') {
     $tpl = $res->getOne('Template');
     $nomeTpl = $tpl ? $tpl->get('templatename') : '';
@@ -817,6 +848,7 @@ if ($type === 'page') {
     $br = $nodoBriciole($res, $paginaCorrente);
 
     $struttura = $eScheda($res) ? $nodoStruttura($res) : null;
+    $servizio = $struttura ? null : $nodoServizio($res);
     $lista = null;
     if ($STR_ON && in_array($nomeTpl, $TPL_LISTA, true)) {
         $q = $modx->newQuery($CLS_RES, ['parent' => (int) $res->get('id'), 'published' => 1, 'deleted' => 0, 'hidemenu' => 0]);
@@ -860,11 +892,11 @@ if ($type === 'page') {
         'inLanguage'  => $LANG_PAGINA,
         'isPartOf'    => ['@id' => $SITE_ID],
         'about'       => $home ? ['@id' => $ORG_ID] : null,
-        'mainEntity'  => $struttura ? ['@id' => $struttura['@id']] : ($lista ? ['@id' => $lista['@id']] : null),
+        'mainEntity'  => $struttura ? ['@id' => $struttura['@id']] : ($servizio ? ['@id' => $servizio['@id']] : ($lista ? ['@id' => $lista['@id']] : null)),
         'breadcrumb'  => $br ? ['@id' => $paginaCorrente . '#breadcrumb'] : null,
         'dateModified'=> $data($res->get('editedon') ?: $res->get('publishedon')),
     ]);
-    return $json([$pagina, $struttura, $lista, $br, $sito(), $org()]);
+    return $json([$pagina, $struttura, $servizio, $lista, $br, $sito(), $org()]);
 }
 
 /* ---------------------------------------------------------------- articolo */
