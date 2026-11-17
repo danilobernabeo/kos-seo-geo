@@ -16,7 +16,9 @@
  *   JPEG qualità 78, 72, 66, 60, 54, 50, 46 (progressivo); WebP 74, 68, 62, 56, 50, 45, 40;
  *   PNG a tavolozza 256 e 128 colori con retinatura, poi 64 e 32 senza (le varianti PNG sono il ripiego dei browser
  *   senza WebP: oggi nessuno dei principali).
- * Se nessun gradino scende sotto il tetto si tiene il più leggero, purché più leggero dell'originale, e la riga è
+ * Se nessun gradino basta (foto molto dettagliate), JPEG e WebP si riducono di larghezza a passi del 10% (fino al 60%)
+ * con qualità 66 o 62: il nome della variante resta, il browser la mostra comunque alla larghezza della pagina.
+ * Se nemmeno così si scende sotto il tetto si tiene il più leggero, purché più leggero dell'originale, e la riga è
  * segnata «SOPRA». Gli originali sostituiti fuori da assets/cache-img: le varianti già generate vengono «toccate»
  * (data di modifica attuale), altrimenti lo snippet immagine le rigenererebbe dall'originale con la compressione
  * normale. Backup in ~/backup-kos-seo-geo/tetto-<data>/ con manifest.json.
@@ -101,7 +103,7 @@ $scale = [
     'png'  => [['colori' => 256, 'retina' => true], ['colori' => 128, 'retina' => true],
                ['colori' => 64, 'retina' => false], ['colori' => 32, 'retina' => false]],
 ];
-$etichetta = fn(string $fmt, array $g) => $fmt === 'png' ? "{$g['colori']} colori" . ($g['retina'] ? ' retinati' : '') : "qualità {$g['q']}";
+$etichetta = fn(string $fmt, array $g) => ($fmt === 'png' ? "{$g['colori']} colori" . ($g['retina'] ? ' retinati' : '') : "qualità {$g['q']}") . (isset($g['lati']) ? ", ridotta a {$g['lati']}" : '');
 
 $stamp = date('Ymd-His');
 $bk = "$bkRoot/tetto-$stamp";
@@ -134,6 +136,20 @@ foreach ($voci as $rel) {
                 @copy($tmp, "$tmp.migliore");
             }
             if ($dim <= $tetto) break;
+        }
+        // nessun gradino basta: si riduce la larghezza a passi del 10% con una qualità intermedia (il nome resta)
+        if ($migliore['dim'] > $tetto && $fmt !== 'png') {
+            $media = $fmt === 'jpg' ? ['q' => 66] : ['q' => 62];
+            $w0 = $im->getImageWidth();
+            foreach ([0.9, 0.8, 0.7, 0.6] as $f) {
+                $c = clone $im;
+                $c->resizeImage((int) round($w0 * $f), 0, \Imagick::FILTER_LANCZOS, 1);
+                $dim = $scriviGradino($c, $tmp, $fmt, $media);
+                $wf = $c->getImageWidth() . 'x' . $c->getImageHeight();
+                $c->clear();
+                if ($dim < $migliore['dim']) { $migliore = ['dim' => $dim, 'g' => $media + ['lati' => $wf]]; @copy($tmp, "$tmp.migliore"); }
+                if ($dim <= $tetto) break;
+            }
         }
         $im->clear();
         @unlink($tmp);
