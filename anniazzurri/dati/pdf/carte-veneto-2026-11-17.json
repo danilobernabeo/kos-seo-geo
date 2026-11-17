@@ -1,0 +1,40 @@
+{
+ "sito": "aa",
+ "descrizione": "Carte dei servizi delle RSA del Veneto, edizione dicembre 2026 (consegna del 17/11): Mestre (con il Nucleo La Fenice), Quarto d'Altino, Sant'Anna (Villadose, Rovigo). Stessi percorsi delle carte attuali (gennaio e maggio 2026).",
+ "pdf": [
+  {
+   "s": "VENETO/CDS RSA Mestre - Dic26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-mestre/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Mestre",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Mestre di Favaro Veneto, Venezia (VE), edizione dicembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "VENETO/CDS RSA Mestre - Nucleo La Fenice - Dic26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-mestre/Carta dei servizi Nucleo La Fenice.pdf",
+   "t": "Carta dei servizi Nucleo La Fenice – Anni Azzurri Mestre",
+   "d": "Carta dei servizi del Nucleo La Fenice della RSA Anni Azzurri Mestre di Favaro Veneto, Venezia (VE), edizione dicembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "VENETO/CDS RSA Quarto d'Altino - Dic26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-quarto-d-altino/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Quarto d'Altino",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Quarto d'Altino (VE), edizione dicembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  },
+  {
+   "s": "VENETO/CDS RSA Sant'Anna - Dic26 - PDFA-1B.pdf",
+   "p": "/assets/doc/strutture/residenza-anni-azzurri-sant-anna/Carta dei servizi.pdf",
+   "t": "Carta dei servizi – Residenza Anni Azzurri Sant'Anna",
+   "d": "Carta dei servizi e regolamento interno della RSA Anni Azzurri Sant'Anna di Villadose (RO), edizione dicembre 2026.",
+   "a": "Anni Azzurri",
+   "l": "it-IT"
+  }
+ ],
+ "sospesi": [],
+ "esclusi": []
+}
