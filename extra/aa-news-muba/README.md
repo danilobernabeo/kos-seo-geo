@@ -158,3 +158,7 @@ Ripristino: il comando è stampato alla fine di ogni scrittura
 
 TV `newsArticle` («Tipo articolo», etichetta sopra il titolo nelle card delle news): «News» (deciso il 28/10),
 in `$TV_NEWS` di `installa.php`; `--aggiorna` la riallinea. `soloStruttura` vuota va bene: il valore predefinito è 0, «Ovunque».
+
+## Immagini ricompresse dal progetto (17/11/2026)
+
+Le foto della galleria sopra 200 KB (`assets/news-muba/foto/san-luca-05-1600.*`, `san-rocco-06-1600.jpg`, `san-rocco-10-1600.jpg`) sono state ricompresse negli stessi file da `scripts/immagini/tetto-peso.php` (voce AA-17 del progetto): stesse dimensioni, nessun elemento di questo lavoro toccato. Backup in `~/backup-kos-seo-geo/tetto-<data>/` sul cloud.

@@ -69,8 +69,8 @@
 /assets/cache-img/img/rsa/residenza-anni-azzurri-villa-san-vincenzo-1500.webp
 /assets/cache-img/img/strutture/residenza-anni-azzurri-idice/Idice_16-1200.jpg
 /assets/cache-img/img/strutture/residenza-anni-azzurri-idice/Idice_16-1200.webp
-/assets/cache-img/img/strutture/residenza-anni-azzurri-idice/Idice_16-1600.jpg
-/assets/cache-img/img/strutture/residenza-anni-azzurri-idice/Idice_16-1600.webp
+/assets/cache-img/img/strutture/residenza-anni-azzurri-idice/Idice_16-1600.jpg;1280
+/assets/cache-img/img/strutture/residenza-anni-azzurri-idice/Idice_16-1600.webp;1280
 /assets/cache-img/img/strutture/residenza-anni-azzurri-navigli/NAVIGLI_03-1024.jpg
 /assets/cache-img/img/strutture/residenza-anni-azzurri-navigli/NAVIGLI_03-1024.webp
 /assets/cache-img/img/strutture/residenza-anni-azzurri-navigli/NAVIGLI_04-1024.jpg

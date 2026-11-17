@@ -9,9 +9,11 @@
  *   php scripts/immagini/tetto-peso.php /www <elenco.txt> [--kb=200] --scrivi
  *   php scripts/immagini/tetto-peso.php /www --ripristina=<cartella backup> [--scrivi]
  *
- * Elenco: un percorso per riga (/assets/... o URL del sito); righe con # ignorate.
+ * Elenco: un percorso per riga (/assets/... o URL del sito); righe con # ignorate. Facoltativo «;<larghezza>»: la
+ *   riduce a quella larghezza prima di comprimere (solo per le foto molto dettagliate che nessun gradino porta sotto il
+ *   tetto; il nome della variante resta quello, il browser la mostra comunque alla larghezza della pagina).
  * Per formato, scala di compressione fino al primo risultato sotto il tetto (con un margine del 3%):
- *   JPEG qualità 78, 72, 66, 60, 54 (progressivo); WebP 74, 68, 62, 56, 50;
+ *   JPEG qualità 78, 72, 66, 60, 54, 50, 46 (progressivo); WebP 74, 68, 62, 56, 50, 45, 40;
  *   PNG a tavolozza 256 e 128 colori con retinatura, poi 64 e 32 senza (le varianti PNG sono il ripiego dei browser
  *   senza WebP: oggi nessuno dei principali).
  * Se nessun gradino scende sotto il tetto si tiene il più leggero, purché più leggero dell'originale, e la riga è
@@ -57,10 +59,12 @@ $voci = [];
 foreach (file($elenco, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $r) {
     $r = trim((string) preg_replace('/\s+#.*$/', '', $r));
     if ($r === '' || $r[0] === '#') continue;
+    [$r, $lato] = array_pad(explode(';', $r, 2), 2, '');
     $p = preg_match('#^https?://#i', $r) ? (string) parse_url($r, PHP_URL_PATH) : $r;
-    $p = '/' . ltrim(rawurldecode((string) preg_replace('/[?#].*$/', '', $p)), '/');
-    $voci[$p] = true;
+    $p = '/' . ltrim(rawurldecode((string) preg_replace('/[?#].*$/', '', trim($p))), '/');
+    $voci[$p] = (int) $lato;
 }
+$larghezza = $voci;
 $voci = array_keys($voci);
 // originali prima delle varianti: le varianti toccate dopo un originale vanno poi trattate anch'esse
 usort($voci, fn($a, $b) => [str_contains($a, '/cache-img/'), $a] <=> [str_contains($b, '/cache-img/'), $b]);
@@ -92,8 +96,8 @@ $scriviGradino = function (\Imagick $im, string $dest, string $fmt, array $g): i
     return (int) filesize($dest);
 };
 $scale = [
-    'jpg'  => [['q' => 78], ['q' => 72], ['q' => 66], ['q' => 60], ['q' => 54]],
-    'webp' => [['q' => 74], ['q' => 68], ['q' => 62], ['q' => 56], ['q' => 50]],
+    'jpg'  => [['q' => 78], ['q' => 72], ['q' => 66], ['q' => 60], ['q' => 54], ['q' => 50], ['q' => 46]],
+    'webp' => [['q' => 74], ['q' => 68], ['q' => 62], ['q' => 56], ['q' => 50], ['q' => 45], ['q' => 40]],
     'png'  => [['colori' => 256, 'retina' => true], ['colori' => 128, 'retina' => true],
                ['colori' => 64, 'retina' => false], ['colori' => 32, 'retina' => false]],
 ];
@@ -118,6 +122,10 @@ foreach ($voci as $rel) {
         $im = new \Imagick($file);
         if ($im->getNumberImages() > 1) { $im = $im->coalesceImages(); $im->setIteratorIndex(0); $im = $im->getImage(); }
         $lati = $im->getImageWidth() . 'x' . $im->getImageHeight();
+        if ($larghezza[$rel] > 0 && $im->getImageWidth() > $larghezza[$rel]) {
+            $im->resizeImage($larghezza[$rel], 0, \Imagick::FILTER_LANCZOS, 1);
+            $lati .= ' → ' . $im->getImageWidth() . 'x' . $im->getImageHeight();
+        }
         $migliore = null;
         foreach ($scale[$fmt] as $g) {
             $dim = $scriviGradino($im, $tmp, $fmt, $g);
