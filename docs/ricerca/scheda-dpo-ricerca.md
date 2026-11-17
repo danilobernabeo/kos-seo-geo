@@ -23,14 +23,15 @@ con la ricerca Yext attuale sulle ricerche che gli utenti hanno fatto negli ulti
 
 ## 3. Dove stanno i dati
 
-- **Testi originali** (esportazione Yext, set ripulito, riscritture, elenco dei nomi esclusi): sul PC di Danilo
-  Bernabeo, in una cartella fuori dal repository del codice, accessibile solo a lui; copia temporanea nell'area di
-  lavoro durante l'elaborazione. **Cancellazione il 27/11/2026**, salvo decisione diversa.
+- **Testi originali** (esportazione Yext, set ripulito, riscritture, elenco dei nomi esclusi), proposta: **bucket Cloud
+  Storage in regione UE nel progetto Google Cloud di KOS** (`kos-ricerca`), con accesso limitato a Danilo Bernabeo e al
+  service account della prova; copia temporanea nell'area di lavoro solo durante l'elaborazione. **Cancellazione il
+  27/11/2026**, salvo decisione diversa.
+- **Oggi** i testi sono sul PC di Danilo Bernabeo, in una cartella fuori dal repository del codice e accessibile solo a
+  lui, **su un disco non cifrato**: per questo la proposta è spostarli nel bucket.
 - **Chiave del servizio** (service account della prova): in una cartella separata dai dati, mai nel codice né in chat;
   revocata a fine prova.
-- **Alternativa**, se il DPO preferisce che i testi restino su infrastruttura KOS: bucket Cloud Storage in regione UE
-  nel progetto Google Cloud di KOS (`kos-ricerca`), con accesso limitato a Danilo Bernabeo e al service account della
-  prova, stessa cancellazione.
+- **Alternativa**: PC di Danilo Bernabeo, solo dopo la cifratura del disco, stessa cancellazione.
 - **Google Cloud**: progetto di KOS, indice e ricerca in regione UE. Campionamento di input e risposte da parte di Google
   non consentito (scelta fatta all'attivazione); nessun addestramento sui dati.
 
@@ -45,12 +46,13 @@ con la ricerca Yext attuale sulle ricerche che gli utenti hanno fatto negli ulti
 - **Testi conservati da Vertex**: le app di ricerca tengono un registro delle ricerche per le statistiche, che non si
   può cancellare né spegnere su un'app esistente. Le due app di kosgroup.com che avevano ricevuto i testi sono state
   **eliminate e ricreate lo stesso giorno con le statistiche spente**; nessun evento utente è mai stato inviato.
-  L'app di anniazzurri.it ha ricevuto solo ricerche già ripulite.
+  L'app di anniazzurri.it ha le statistiche ancora attive (non si possono spegnere su un'app esistente) perché ha
+  ricevuto solo ricerche già ripulite, e il secondo controllo non ha trovato altro.
 - **Log di Google Cloud**: verificati il 16/11 (3.093 voci): il testo delle ricerche è oscurato in tutte le voci.
   Punto chiuso.
 - **Punto aperto**: Google non documenta per quanto tempo conserva i registri di un'app eliminata.
 - **Credenziali nello storico Yext**: le stesse credenziali sono anche nello storico delle ricerche di Yext, perché gli
-  utenti le scrivono nella barra. Segnalato a KOS il 16/11.
+  utenti le scrivono nella barra. Da segnalare a KOS.
 
 ## 5. Confronto con Yext
 
@@ -72,15 +74,18 @@ con la ricerca Yext attuale sulle ricerche che gli utenti hanno fatto negli ulti
 
 - Il browser non chiama Google direttamente: un servizio intermedio in regione UE riceve la ricerca, toglie email,
   telefoni, codici fiscali, codici, età e date, e la inoltra.
-- Log del servizio intermedio senza il testo delle ricerche; statistiche di ricerca di Google spente o conservate al
-  massimo 30 giorni (da decidere).
+- Log del servizio intermedio senza il testo delle ricerche; **statistiche di ricerca di Google spente** (le statistiche
+  del sito danno già il numero di ricerche e di ricerche senza risultati, senza il testo).
 - Statistiche del sito (GA4): evento di ricerca con il numero di risultati, senza il testo.
 - «Vicino a me»: posizione dal browser solo con consenso, usata per ordinare i risultati e non salvata; nessuna
   posizione ricavata dall'indirizzo IP.
 
 ## 8. Da verificare o decidere
 
-1. Cloud Data Processing Addendum di Google Cloud accettato sull'account di fatturazione di KOS.
-2. Conservazione dei testi della prova: PC di Danilo Bernabeo (proposta) o bucket UE nel progetto di KOS.
-3. Statistiche di ricerca di Google in produzione: spente o conservate 30 giorni.
-4. Conservazione dei registri delle app eliminate: chiedere a Google, se il DPO lo ritiene necessario.
+1. Cloud Data Processing Addendum di Google Cloud (accordo sul trattamento dei dati, con le clausole contrattuali tipo)
+   accettato per l'account di KOS: da verificare nella console Google Cloud, pagina «Privacy e sicurezza».
+2. Conservazione dei testi della prova: bucket UE nel progetto di KOS (proposta) o PC di Danilo Bernabeo con disco
+   cifrato.
+3. Conservazione dei registri delle app eliminate: chiedere a Google, se il DPO lo ritiene necessario.
+4. Ruolo di Danilo Bernabeo nel trattamento (responsabile ai sensi dell'art. 28 GDPR o persona autorizzata da KOS), da
+   inquadrare a cura del DPO.
