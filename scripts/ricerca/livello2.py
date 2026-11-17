@@ -279,6 +279,51 @@ def corrisponde(url, attesi, cache=None):
     return False
 
 
+def criterio_luoghi_uniforme(camp, giudizi, ver, prov, sigle, punti, geo, mancanti, elenco):
+    """Stesso criterio per tutte le forme, Yext compreso (decisione del 17/11): per le ricerche con luogo (giudicate,
+    non riconosciute dallo script) è giusta una struttura della stessa provincia (regione, se il luogo è una regione)
+    o, se lì non ce ne sono, la struttura più vicina («per regola»). I falsi allarmi dello script contano per quello
+    che sono: nomi di struttura letti come luogo e nomi di strutture di altri escono dalle ricerche per luogo."""
+    def per_luogo(nomi):
+        sig = set()
+        for n in nomi:
+            sig |= prov.get(' '.join(m.norm(n)), set())
+        dentro = sorted(u for u, s_ in sigle.items() if s_ in sig)
+        if dentro:
+            return dentro, False
+        xy = [geo[' '.join(m.norm(n))] for n in nomi if ' '.join(m.norm(n)) in geo]
+        if not xy:
+            return [], False
+        return [piu_vicine(xy[0], punti, 1)[0]], True
+    for v in camp:
+        q = v['ricerca']
+        g = giudizi.get(q) or []
+        segni = [a for a in g if a.startswith(('LUOGO:', 'CITTA:'))]
+        if q in ver['nomi_falsi']:
+            # nome di una struttura di altri riconosciuto come nostro: nessuna pagina giusta
+            v['attesi'], v['tipo_vero'] = [], 'escluso'
+            mancanti.setdefault('struttura di altri (falso allarme del riconoscimento dei nomi)', []).append(
+                (q, v['ricerche']))
+        elif v['categoria'] == 'luogo' and q in ver['luoghi_falsi']:
+            if g:
+                v['attesi'] = [a for a in g if not a.startswith('NESSUNA:')]
+            else:  # nome di struttura letto come luogo (es. «casa sanremo»): la scheda con quel nome
+                t = set(m.norm(q))
+                v['attesi'] = [x['url'] for x in elenco if t <= set(x['token'])] or v['attesi']
+            v['tipo_vero'] = 'struttura'
+        elif v['categoria'] == 'luogo':
+            v['attesi'], v['per_regola'] = per_luogo([v['luogo']])
+            v['tipo_vero'] = 'luogo'
+        elif segni:
+            altri = [a for a in g if not a.startswith(('LUOGO:', 'CITTA:', 'NESSUNA:'))]
+            luoghi, regola = per_luogo([a[6:] for a in segni])
+            v['attesi'], v['per_regola'] = altri + luoghi, regola and not altri
+            if not altri:
+                v['tipo_vero'] = 'luogo'
+        if q in ver.get('nomi_mancati', []) and v['tipo_vero'] == 'altro':
+            v['tipo_vero'] = 'struttura'
+
+
 def misura(o):
     camp = json.loads((Path(o.esiti) / f'campione-livello2-{o.sito}.json').read_text(encoding='utf-8'))
     gf = Path(o.esiti) / f'giudizi-livello2-{o.sito}.json'
@@ -300,15 +345,6 @@ def misura(o):
                 v['attesi'] = [ELENCO[o.sito]]  # luogo senza strutture: l'elenco
     cf = Path(o.esiti) / 'pagine-cache.json'
     cache = json.loads(cf.read_text(encoding='utf-8')) if cf.exists() else {}
-    valide = [v for v in camp if v['attesi']]
-    rapporto = {'sito': o.sito, 'campione': len(camp), 'giudicate': len(valide),
-                'da_giudicare': sum(1 for v in camp if v['attesi'] is None),
-                'senza_pagina_giusta': {k: {'ricerche': len(x), 'volte': sum(n for _, n in x)}
-                                        for k, x in sorted(mancanti.items())}}
-    (Path(o.esiti) / f'senza-pagina-giusta-{o.sito}.json').write_text(
-        json.dumps(mancanti, ensure_ascii=False, indent=1), encoding='utf-8')
-    ff = Path(o.esiti) / f'giudizi-faq-yext-{o.sito}.json'
-    faq = json.loads(ff.read_text(encoding='utf-8')) if ff.exists() else {}
     geo = geografia(o.comuni, o.geo) if getattr(o, 'geo', None) else None
     punti = {}
     if geo:
@@ -319,10 +355,29 @@ def misura(o):
                 punti[x['url']] = COORD_ALTRE[x['url']]
             elif ' '.join(m.norm(x['citta'])) in geo:
                 punti[x['url']] = geo[' '.join(m.norm(x['citta']))]
+    vf = Path(o.esiti) / f'verita-riconoscimento-{o.sito}.json'
+    ver = json.loads(vf.read_text(encoding='utf-8')) if vf.exists() else None
+    for v in camp:
+        v['tipo_vero'] = v['categoria']
+    if geo and ver:
+        criterio_luoghi_uniforme(camp, giudizi, ver, prov, sigle, punti, geo, mancanti, m.strutture(o.sito))
+    valide = [v for v in camp if v['attesi']]
+    rapporto = {'sito': o.sito, 'campione': len(camp), 'giudicate': len(valide),
+                'da_giudicare': sum(1 for v in camp if v['attesi'] is None),
+                'senza_pagina_giusta': {k: {'ricerche': len(x), 'volte': sum(n for _, n in x)}
+                                        for k, x in sorted(mancanti.items())}}
+    (Path(o.esiti) / f'senza-pagina-giusta-{o.sito}.json').write_text(
+        json.dumps(mancanti, ensure_ascii=False, indent=1), encoding='utf-8')
+    ff = Path(o.esiti) / f'giudizi-faq-yext-{o.sito}.json'
+    faq = json.loads(ff.read_text(encoding='utf-8')) if ff.exists() else {}
     for forma, motore, riconosci in FORME:
         if riconosci == 'completa' and not geo:
             continue
         es = esiti(o.esiti, motore, o.sito)
+        if not es and riconosci == 'completa':
+            # anniazzurri.it non ha l'archivio delle schede AA: la forma completa usa la sua app
+            motore = 'vertex'
+            es = esiti(o.esiti, motore, o.sito)
         if not es:
             continue
         righe = []
@@ -334,10 +389,10 @@ def misura(o):
                 ris = risultati_yext(ris, forma, faq.get(v['ricerca'], False))
             luogo = v.get('luogo') if v['categoria'] != 'struttura' else None
             if riconosci == 'completa' and luogo and luogo in geo:
-                # primo risultato: l'elenco delle strutture più vicine al luogo (giusto se contiene la struttura
-                # attesa tra le prime tre per distanza; per un luogo senza strutture attese vicine, attesi = l'elenco)
+                # primo risultato: l'elenco delle strutture più vicine al luogo RICONOSCIUTO dallo script (anche se
+                # è un falso allarme); giusto se tra le prime tre per distanza c'è una struttura attesa
                 vicine = piu_vicine(geo[luogo], punti)
-                giusto = any(corrisponde(u, v['attesi'], cache) for u in vicine) or v['attesi'] == [ELENCO[o.sito]]
+                giusto = any(corrisponde(u, v['attesi'], cache) for u in vicine)
                 ris = [{'url': 'ELENCO-GIUSTO' if giusto else 'ELENCO', 'titolo': ''}] + ris
             elif riconosci:
                 ris = m.componi(v['attesi'] if v['categoria'] == 'struttura' else None, ris)
@@ -359,13 +414,15 @@ def misura(o):
                                            'senza_nomi_non_pesata': quota(lunghe_senza_nomi, False)},
                            'per_meta_pesata': {k: quota([x for x in righe if x[0]['meta'] == k], True)
                                                for k in ('definizione', 'verifica')},
-                           'per_categoria_pesata': {c: quota([x for x in righe if x[0]['categoria'] == c], True)
-                                                    for c in ('struttura', 'luogo', 'altro')}}
-    vf = Path(o.esiti) / f'verita-riconoscimento-{o.sito}.json'
-    if vf.exists():
+                           'per_categoria_pesata': {c: quota([x for x in righe if x[0]['tipo_vero'] == c], True)
+                                                    for c in ('struttura', 'luogo', 'altro')},
+                           'luoghi_senza_per_regola_pesata': quota([x for x in righe if x[0]['tipo_vero'] == 'luogo'
+                                                                     and not x[0].get('per_regola')], True),
+                           'luoghi_per_regola': {'ricerche': sum(1 for x in righe if x[0].get('per_regola')),
+                                                 'giuste': sum(1 for x in righe if x[0].get('per_regola') and x[1])}}
+    if ver:
         # quarto indicatore: riconoscimento di nomi e luoghi sulle ricerche reali del campione, contro il giudizio a mano
         # ({"nomi_falsi": [...], "nomi_mancati": [...], "luoghi_falsi": [...], "luoghi_mancati": [...]})
-        ver = json.loads(vf.read_text(encoding='utf-8'))
         nel = {v['ricerca'] for v in camp}
         def conta(riconosciute, falsi, mancati):
             falsi = [q for q in falsi if q in nel]

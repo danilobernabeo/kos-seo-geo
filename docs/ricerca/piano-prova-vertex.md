@@ -512,54 +512,71 @@ sviluppo: l'entità Poliambulatorio Villa Pineta punta a `https://7ydxba3m.modx.
 marchio dismesso. L'esportazione completa delle entità Yext (xlsx usato da `scripts/yext/strutture-in-tv.py`) non è
 nell'area di lavoro: il controllo su tutte le entità si fa quando Danilo la mette a disposizione. Danilo segnala a KOS.
 
-**Confronto con Yext sul livello 2** (giro del 16/11; risultato atteso tra i primi tre):
+**Confronto con Yext sul livello 2** (giro del 16/11; risultato atteso tra i primi tre). **Dal 17/11 stesso criterio per
+tutte le forme, Yext compreso**: le categorie sono quelle giudicate, non quelle riconosciute dallo script (nomi e luoghi
+non riconosciuti contano nella loro categoria, i falsi allarmi per quello che sono: le 2 strutture di altri lette come
+nostre escono dal calcolo); per le ricerche con luogo è giusta una struttura della stessa provincia del luogo (della
+regione, se il luogo è una regione) o, se lì non ce ne sono, la struttura più vicina («per regola»); le pagine «RSA in
+provincia di …» di anniazzurri.it non contano più come risposta a una ricerca per luogo. I numeri dei giorni precedenti
+sono superati da questa tabella.
 
-| Sito | Forma | Pesato | Non pesato | Frasi da 4 parole senza nomi (pesato) | Metà di verifica (pesato) | Struttura / luogo / altro (pesato) |
-|---|---|---|---|---|---|---|
-| kosgroup.com | Yext | 65,7% | 56,8% | 65,1% | 61,6% | 99,5 / 82,2 / 41,4 |
-| kosgroup.com | Vertex da solo | 82,0% | 66,3% | 96,6% | 80,2% | 85,1 / 71,0 / 86,0 |
-| kosgroup.com | Vertex con riconoscimento | 85,6% | 76,4% | 96,6% | 83,6% | 100 / 71,0 / 86,0 |
-| kosgroup.com | Vertex con archivio delle schede AA (terza forma) | 88,9% | 80,4% | 99,0% | 85,7% | 99,8 / 77,3 / 89,4 |
-| kosgroup.com | Vertex con archivio delle schede AA e riconoscimento | 88,9% | 81,7% | 99,0% | 85,7% | 100 / 77,3 / 89,4 |
-| kosgroup.com | **Forma completa** (archivio AA + nomi + luoghi; simulazione della pagina dei risultati) | 94,7% | 93,1% | 99,0% | 92,8% | 100 / **100** / 89,4 |
-| anniazzurri.it | Yext (FAQ giudicate) | 30,7% | 28,3% | 14,0% | 31,1% | 86,4 / 78,2 / 23,0 |
-| anniazzurri.it | Vertex da solo | 85,4% | 80,6% | 86,8% | 85,4% | 86,4 / 74,5 / 86,6 |
-| anniazzurri.it | Vertex con riconoscimento | 85,9% | 80,9% | 86,8% | 85,4% | 100 / 74,5 / 86,6 |
+| Sito | Forma | Pesato | Non pesato | Frasi da 4 parole senza nomi | Metà di verifica | Nomi di struttura | **Luoghi** (senza i «per regola») | Altre |
+|---|---|---|---|---|---|---|---|---|
+| kosgroup.com | Yext | 66,1% | 57,0% | 65,1% | 62,3% | 99,0% | **83,6%** (90,8%) | 36,0% |
+| kosgroup.com | Vertex da solo | 81,6% | 66,0% | 96,6% | 79,5% | 87,3% | **69,0%** (76,4%) | 85,1% |
+| kosgroup.com | Vertex con riconoscimento dei nomi | 85,2% | 75,9% | 96,6% | 82,9% | 99,8% | **69,0%** (76,4%) | 85,1% |
+| kosgroup.com | Vertex con archivio delle schede AA | 89,4% | 81,6% | 99,0% | 86,4% | 99,5% | **79,7%** (85,8%) | 88,6% |
+| kosgroup.com | Vertex con archivio delle schede AA e riconoscimento dei nomi | 89,5% | 82,9% | 99,0% | 86,4% | 99,7% | **79,7%** (85,8%) | 88,6% |
+| kosgroup.com | **Forma completa** (simulazione) | 94,7% | 93,3% | 99,0% | 92,8% | 99,7% | **100%** (100%) | 88,6% |
+| anniazzurri.it | Yext (FAQ giudicate) | 30,7% | 28,3% | 14,0% | 31,1% | 81,5% | **81,1%** (89,6%) | 22,6% |
+| anniazzurri.it | Vertex da solo | 81,8% | 79,5% | 86,8% | 77,9% | 81,5% | **37,7%** (41,7%) | 86,5% |
+| anniazzurri.it | Vertex con riconoscimento dei nomi | 82,3% | 79,9% | 86,8% | 77,9% | 92,6% | **37,7%** (41,7%) | 86,5% |
+| anniazzurri.it | **Forma completa** (simulazione) | 88,2% | 84,5% | 87,6% | 87,9% | 92,6% | **100%** (100%) | 86,7% |
 
-**Forma completa (17/11).** Simula il comportamento della pagina dei risultati, **non è una risposta di Vertex**:
-archivio delle schede AA, riconoscimento dei nomi (la scheda in testa) e riconoscimento dei luoghi. Per le ricerche con un
-luogo riconosciuto (e nessun nome di struttura) il primo risultato è l'elenco delle strutture più vicine, calcolato sulle
+Valori pesati salvo «Non pesato». Ricerche per luogo giudicate: kosgroup.com 113 (106 riconosciute dallo script, 7 no:
+«reggio emilia», «anzano», «civitanova», «piemo te», «hlazio», «portorecanati», «mntecosaro»), di cui 28 «per regola»
+(zone senza strutture in provincia o regione: giuste solo se c'è la struttura più vicina; Yext 1 su 28, Vertex con
+l'archivio 4, forma completa 28 per costruzione, perché l'elenco parte dalla più vicina); anniazzurri.it 25, tutte
+riconosciute, 4 «per regola». Le altre colonne sono le stesse per tutte le forme. Ducale 1 ancora fuori dall'indice
+delle schede AA (vedi sotto).
+
+**Forma completa.** Simula il comportamento della pagina dei risultati, **non è una risposta di Vertex**: kosgroup.com
+con l'archivio delle schede AA, anniazzurri.it con la sua app; riconoscimento dei nomi (la scheda in testa) e
+**riconoscimento dei luoghi reale dello script**: per le ricerche in cui lo script riconosce un luogo (e nessun nome di
+struttura), anche quando è un falso allarme, il primo risultato è l'elenco delle strutture più vicine, calcolato sulle
 coordinate delle TV (`str.lat`, `str.lng`; per le schede aggiunte a mano il geo della landing o il comune) rispetto al
-comune, o al centro dei comuni della provincia o della regione (coordinate dei comuni: elenco ISTAT 2018 con
-coordinate, `italy_geo.json`, fuori dal repository); l'elenco è giusto se contiene la struttura attesa tra le prime tre
-per distanza; seguono i risultati di Vertex. **Colonna «Luoghi»: 100%, contro 82,2% di Yext e 77,3% di Vertex con
-l'archivio.** Da leggere con due avvertenze: delle 100 ricerche per luogo del campione (5.058 ricerche pesate) 28 (498)
-riguardano luoghi senza strutture in provincia o regione e sono giuste per regola (l'elenco «la struttura più vicina a
-… è a …» è la risposta attesa); le altre 72 sono tutte giuste, ma la struttura attesa è «una qualunque della stessa
-provincia», criterio largo. Le 27 ricerche con un luogo e un altro bisogno (es. «lavora con noi» e una città) non
-cambiano: l'elenco in testa non toglie il risultato giusto dai primi tre.
+comune riconosciuto o al centro dei comuni della provincia o della regione; l'elenco è giusto se tra le prime tre per
+distanza c'è una struttura attesa; seguono i risultati di Vertex. I luoghi non riconosciuti contano sui soli risultati
+di Vertex (qui tutti e 7 giusti grazie a Vertex). Coordinate dei comuni per la prova: elenco ISTAT del 2018 con
+coordinate (`italy_geo.json`, fuori dal repository). **Per lo sviluppo serve l'elenco ISTAT dei comuni in vigore, non
+quello del 2018**: dal 2018 diverse fusioni di comuni hanno cambiato nomi e codici.
 
-Forbice di Yext su anniazzurri.it: dal 9,4% (risultati così come sono) al 50,3% (ogni FAQ giusta; il 46,5% detto prima
-contava le FAQ solo per le ricerche «altro»). Su kosgroup.com Yext così com'è dà 37,8% (con gli annunci di
-`lavoraconnoi.kosgroup.com` accettati). Ricerche senza alcun risultato nel campione, pesate: kosgroup.com Yext 3,1%,
-Vertex 0,3%; anniazzurri.it Yext 15,5% (più 4,6% con la sola FAQ di ripiego), Vertex 2,2%.
+**Cosa dice la colonna «Luoghi».** Vertex da solo è sotto Yext sulle ricerche per luogo su entrambi i siti (kosgroup.com
+69,0% contro 83,6%; anniazzurri.it 37,7% contro 81,1%): il riconoscimento dei luoghi con l'elenco delle strutture vicine
+non è un di più ma parte necessaria della soluzione, come il riconoscimento dei nomi.
 
-**Soglia (decisa il 16/11) sul campione del livello 2:**
+Forbice di Yext su anniazzurri.it: dal 9,4% (risultati così come sono) al 50,3% (ogni FAQ giusta). Su kosgroup.com Yext
+così com'è dà 37,7% (con gli annunci di `lavoraconnoi.kosgroup.com` accettati). Ricerche senza alcun risultato nel
+campione, pesate: kosgroup.com Yext 3,1%, Vertex 0,3%; anniazzurri.it Yext 15,5% (più 4,6% con la sola FAQ di ripiego),
+Vertex 2,2%.
 
-1. risultato atteso tra i primi tre, pesato, +15 punti o metà del divario recuperata: kosgroup.com +16,3 punti (Vertex
-   da solo) e +19,9 (con riconoscimento); anniazzurri.it +54,7 e +55,2. **Superata.**
+**Soglia (decisa il 16/11) sul campione del livello 2, con il criterio uniforme:**
+
+1. risultato atteso tra i primi tre, pesato, +15 punti o metà del divario recuperata: kosgroup.com +15,5 punti (Vertex
+   da solo), +23,3 (con l'archivio delle schede AA), +28,6 (forma completa); anniazzurri.it +51,1 e +57,5. **Superata.**
 2. meno ricerche senza risultati su entrambi i siti: sì nel campione (3,1% → 0,3%; 15,5% → 2,2%); il dato su tutte le
    ricerche dei 12 mesi richiede il livello 1 su Yext, subordinato alla conferma di KOS. **Superata sul campione.**
-3. nessun peggioramento sulle ricerche per nome di struttura: non superata da Vertex con il solo archivio di
-   kosgroup.com (85,1% contro 99,5% di Yext: le residenze AA sono fuori); **superata con l'archivio delle schede AA**
-   (99,8%, terza forma, anche senza riconoscimento: le residenze cercate da kosgroup.com passano dallo 0% al 99,0%) e con
-   il riconoscimento dei nomi (100%); su anniazzurri.it 86,4% pari a Yext, 100% con il riconoscimento.
-4. anniazzurri.it non pesato e frasi lunghe: 80,6% contro 28,3%; frasi da 4 parole senza nomi 86,8% contro 14,0%.
+3. nessun peggioramento sulle ricerche per nome di struttura: kosgroup.com Yext 99,0%; non superata da Vertex da solo
+   (87,3%: le residenze AA sono fuori dall'archivio di kosgroup.com); superata con l'archivio delle schede AA (99,5%,
+   anche senza riconoscimento) e con il riconoscimento dei nomi (99,7–99,8%). anniazzurri.it: Yext 81,5%, Vertex 81,5%
+   (pari), con il riconoscimento 92,6%. **Superata con l'archivio delle schede AA o con il riconoscimento dei nomi.**
+4. anniazzurri.it non pesato e frasi lunghe: 79,5% contro 28,3%; frasi da 4 parole senza nomi 86,8% contro 14,0%.
    **Superata.**
 
-Esito provvisorio (17/11): Vertex supera la soglia **con l'archivio delle schede AA o con il riconoscimento dei nomi**
-(con entrambi, come deciso il 16/11: 88,9% contro 65,7% di Yext su kosgroup.com); con il solo archivio di kosgroup.com no,
-per il punto 3.
+Esito provvisorio (17/11): Vertex supera la soglia con l'archivio delle schede AA o con il riconoscimento dei nomi; la
+soluzione proposta (forma completa: archivio delle schede AA, riconoscimento dei nomi e dei luoghi) dà 94,7% su
+kosgroup.com e 88,2% su anniazzurri.it, contro 66,1% e 30,7% di Yext. Le ricerche per luogo, fuori dalla soglia decisa,
+sono l'unico punto in cui Vertex da solo è sotto Yext.
 
 **Terza forma (17/11).** Giro sul campione congelato di kosgroup.com (400 ricerche, dalle 12:18:01 alle 12:23:09, tutte
 con risposta 200), app `ricerca-kosgroup-schede-aa`, senza espansione (con due archivi non è accettata; su kosgroup.com
@@ -567,7 +584,7 @@ l'espansione non sposta nulla, vedi il confronto alla pari). Indice delle schede
 attesa» dalle 8:04 del 17/11, senza errori. Scelta di Danilo dopo tre controlli a vuoto: giro subito, e quando Ducale 1
 entra nell'indice si rilanciano solo le 4 ricerche del campione che la riguardano («modena», «emilia romagna»,
 «sassuolo», «residenza anni azzurri ducale 1») e si aggiornano i numeri. Oltre ai nomi di struttura, l'archivio delle
-schede AA migliora anche le ricerche per luogo (71,0% → 77,3%) e le altre (86,0% → 89,4%).
+schede AA migliora anche le ricerche per luogo (69,0% → 79,7% con il criterio uniforme) e le altre (85,1% → 88,6%).
 
 **Per lo sviluppo**: regola di posizionamento che mette in testa la pagina delle posizioni aperte per le ricerche di
 professioni (infermiere, oss, fisioterapista…), da definire sulla metà di definizione e misurare sulla metà di verifica.
