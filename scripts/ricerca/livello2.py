@@ -76,6 +76,7 @@ def pagine_luogo(sito, luogo, prov):
 FORME = [('vertex', 'vertex', False), ('vertex_con_riconoscimento', 'vertex', True),
          ('vertex_senza_espansione', 'vertex-senza-espansione', False),
          ('vertex_senza_espansione_con_riconoscimento', 'vertex-senza-espansione', True),
+         ('vertex_schede_aa', 'vertex-schede-aa', False),
          ('vertex_schede_aa_con_riconoscimento', 'vertex-schede-aa', True),
          # Yext (giro del 16/11): «yext» con le schede riportate al loro indirizzo dal nome dell'entità e le FAQ
          # giudicate; «yext_grezzo» com'è; «yext_faq_tutte_giuste» tetto con ogni FAQ giusta (decisione del 16/11)

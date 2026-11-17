@@ -519,6 +519,8 @@ nell'area di lavoro: il controllo su tutte le entità si fa quando Danilo la met
 | kosgroup.com | Yext | 65,7% | 56,8% | 65,1% | 61,6% | 99,5 / 82,2 / 41,4 |
 | kosgroup.com | Vertex da solo | 82,0% | 66,3% | 96,6% | 80,2% | 85,1 / 71,0 / 86,0 |
 | kosgroup.com | Vertex con riconoscimento | 85,6% | 76,4% | 96,6% | 83,6% | 100 / 71,0 / 86,0 |
+| kosgroup.com | Vertex con archivio delle schede AA (terza forma) | 88,9% | 80,4% | 99,0% | 85,7% | 99,8 / 77,3 / 89,4 |
+| kosgroup.com | Vertex con archivio delle schede AA e riconoscimento | 88,9% | 81,7% | 99,0% | 85,7% | 100 / 77,3 / 89,4 |
 | anniazzurri.it | Yext (FAQ giudicate) | 30,7% | 28,3% | 14,0% | 31,1% | 86,4 / 78,2 / 23,0 |
 | anniazzurri.it | Vertex da solo | 85,4% | 80,6% | 86,8% | 85,4% | 86,4 / 74,5 / 86,6 |
 | anniazzurri.it | Vertex con riconoscimento | 85,9% | 80,9% | 86,8% | 85,4% | 100 / 74,5 / 86,6 |
@@ -534,14 +536,24 @@ Vertex 0,3%; anniazzurri.it Yext 15,5% (più 4,6% con la sola FAQ di ripiego), V
    da solo) e +19,9 (con riconoscimento); anniazzurri.it +54,7 e +55,2. **Superata.**
 2. meno ricerche senza risultati su entrambi i siti: sì nel campione (3,1% → 0,3%; 15,5% → 2,2%); il dato su tutte le
    ricerche dei 12 mesi richiede il livello 1 su Yext, subordinato alla conferma di KOS. **Superata sul campione.**
-3. nessun peggioramento sulle ricerche per nome di struttura: **non superata da Vertex da solo su kosgroup.com** (85,1%
-   contro 99,5% di Yext: le residenze AA sono fuori dall'archivio di kosgroup.com); superata con il riconoscimento dei
-   nomi (100%), che quindi è parte necessaria della soluzione; su anniazzurri.it 86,4% pari a Yext, 100% con il
-   riconoscimento. La terza forma (archivio delle schede AA) è ancora da misurare.
+3. nessun peggioramento sulle ricerche per nome di struttura: non superata da Vertex con il solo archivio di
+   kosgroup.com (85,1% contro 99,5% di Yext: le residenze AA sono fuori); **superata con l'archivio delle schede AA**
+   (99,8%, terza forma, anche senza riconoscimento: le residenze cercate da kosgroup.com passano dallo 0% al 99,0%) e con
+   il riconoscimento dei nomi (100%); su anniazzurri.it 86,4% pari a Yext, 100% con il riconoscimento.
 4. anniazzurri.it non pesato e frasi lunghe: 80,6% contro 28,3%; frasi da 4 parole senza nomi 86,8% contro 14,0%.
    **Superata.**
 
-Esito provvisorio: Vertex supera la soglia **con il riconoscimento dei nomi di struttura**; da solo no, per il punto 3.
+Esito provvisorio (17/11): Vertex supera la soglia **con l'archivio delle schede AA o con il riconoscimento dei nomi**
+(con entrambi, come deciso il 16/11: 88,9% contro 65,7% di Yext su kosgroup.com); con il solo archivio di kosgroup.com no,
+per il punto 3.
+
+**Terza forma (17/11).** Giro sul campione congelato di kosgroup.com (400 ricerche, dalle 12:18:01 alle 12:23:09, tutte
+con risposta 200), app `ricerca-kosgroup-schede-aa`, senza espansione (con due archivi non è accettata; su kosgroup.com
+l'espansione non sposta nulla, vedi il confronto alla pari). Indice delle schede AA a 63 su 64: Residenza Ducale 1 «in
+attesa» dalle 8:04 del 17/11, senza errori. Scelta di Danilo dopo tre controlli a vuoto: giro subito, e quando Ducale 1
+entra nell'indice si rilanciano solo le 4 ricerche del campione che la riguardano («modena», «emilia romagna»,
+«sassuolo», «residenza anni azzurri ducale 1») e si aggiornano i numeri. Oltre ai nomi di struttura, l'archivio delle
+schede AA migliora anche le ricerche per luogo (71,0% → 77,3%) e le altre (86,0% → 89,4%).
 
 **Per lo sviluppo**: regola di posizionamento che mette in testa la pagina delle posizioni aperte per le ricerche di
 professioni (infermiere, oss, fisioterapista…), da definire sulla metà di definizione e misurare sulla metà di verifica.
