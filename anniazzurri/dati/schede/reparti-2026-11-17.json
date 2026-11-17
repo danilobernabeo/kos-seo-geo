@@ -78,7 +78,8 @@
     "str.email": "residenzailgiardino@anniazzurri.it",
     "str.orari": "Mo-Su 07:00-19:00",
     "str.tipo": "MedicalOrganization",
-    "str.marchio": ""
+    "str.marchio": "",
+    "str.fax": "+390522957111"
    }
   },
   {

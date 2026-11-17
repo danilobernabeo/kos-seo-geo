@@ -15,6 +15,9 @@
  * Prima di scrivere: tabella <prefisso>site_content_bak_<AAAAMMGG_HHMM> (id, content) e ripristino.json in
  * ~/backup-kos-seo-geo/<data>-yext-contenuti/. Ripristino solo delle pagine non modificate dopo (salvo --forza).
  * Alla fine svuota la cache.
+ * Chunk (riquadri scritti a mano con il testo già dentro, es. Biancospino, 17/11):
+ *   php scripts/deploy/aa-yext-contenuti.php /www --chunk=<nome> [--scrivi]   (backup del chunk nel ripristino.json;
+ *   ripristino con --ripristina come per le pagine). Dopo la scrittura esportare il chunk nel repository (README).
  */
 declare(strict_types=1);
 if (PHP_SAPI !== 'cli') { fwrite(STDERR, "Solo da riga di comando.\n"); exit(1); }
@@ -36,7 +39,7 @@ $bk = rtrim((string) (getenv('HOME') ?: '.'), '/') . "/backup-kos-seo-geo/$stamp
 $converti = function (string $t): array {
     $n = 0;
     $nuovo = preg_replace_callback(
-        '~<(a|span)\b([^>]*?)\sdata-yext-field="(\w+)"\s+data-yext-id="(?:\[\[\*data-yext-id\]\]|[A-Z0-9_]+)"([^>]*)>\s*</\1>~s',
+        '~<(a|span)\b([^>]*?)\sdata-yext-field="(\w+)"\s+data-yext-id="(?:\[\[\*data-yext-id\]\]|[A-Z0-9_]+)"([^>]*)>[^<]*</\1>~s',
         function ($m) use (&$n) {
             $n++;
             $attr = $m[2] . $m[4];
@@ -62,6 +65,24 @@ if (isset($opt['ripristina'])) {
     }
     if ($scrivi) $modx->cacheManager->refresh();
     echo "== " . ($scrivi ? "$fatte ripristinate" : 'prova') . ", $fermi fermi\n";
+    exit(0);
+}
+
+/* ---------------------------------------------------------------- chunk */
+if (isset($opt['chunk'])) {
+    $ch = $modx->getObject(\MODX\Revolution\modChunk::class, ['name' => (string) $opt['chunk']]);
+    if (!$ch) { fwrite(STDERR, "Chunk non trovato: {$opt['chunk']}\n"); exit(1); }
+    $prima = (string) $ch->get('snippet');
+    [$nuovo, $n] = $converti($prima);
+    $resta = substr_count($nuovo, 'data-yext-field');
+    echo "chunk {$opt['chunk']}: $n campi convertiti" . ($resta ? ", ATTENZIONE: $resta campi Yext restano" : '') . "\n";
+    if (!$scrivi) { echo $nuovo, "\nProva: nessuna scrittura. Rilanciare con --scrivi.\n"; exit(0); }
+    if ($n === 0) exit(0);
+    @mkdir($bk, 0700, true);
+    $ch->set('snippet', $nuovo); $ch->save();
+    file_put_contents("$bk/ripristino.json", json_encode(['creato' => date('c'), 'chunk' => ['nome' => $opt['chunk'], 'prima' => $prima, 'dopo' => $nuovo], 'pagine' => []], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+    $modx->cacheManager->refresh();
+    echo "== Chunk scritto, cache svuotata. Ripristino del chunk: contenuto «prima» in $bk/ripristino.json\n";
     exit(0);
 }
 
