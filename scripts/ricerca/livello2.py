@@ -78,9 +78,49 @@ FORME = [('vertex', 'vertex', False), ('vertex_con_riconoscimento', 'vertex', Tr
          ('vertex_senza_espansione_con_riconoscimento', 'vertex-senza-espansione', True),
          ('vertex_schede_aa', 'vertex-schede-aa', False),
          ('vertex_schede_aa_con_riconoscimento', 'vertex-schede-aa', True),
+         # forma completa (decisione del 17/11): simula la pagina dei risultati, non è una risposta di Vertex
+         ('completa', 'vertex-schede-aa', 'completa'),
          # Yext (giro del 16/11): «yext» con le schede riportate al loro indirizzo dal nome dell'entità e le FAQ
          # giudicate; «yext_grezzo» com'è; «yext_faq_tutte_giuste» tetto con ogni FAQ giusta (decisione del 16/11)
          ('yext', 'yext', False), ('yext_grezzo', 'yext', False), ('yext_faq_tutte_giuste', 'yext', False)]
+# coordinate delle schede aggiunte a mano (misura.ALTRE_SCHEDE) senza TV: Villa Margherita dal geo della landing
+# (17/11); le altre dal comune, perché la pagina non ha il geo nel dato strutturato
+COORD_ALTRE = {'https://kosgroup.com/villamargherita': (45.51335, 11.54432),
+               'https://kosgroup.com/it/centri/villa-margherita-vicenza-riabilitazione': (45.51335, 11.54432),
+               'https://kosgroup.com/it/centri/villa-margherita-vicenza-psichiatria': (45.51335, 11.54432)}
+
+
+def geografia(comuni_json, geo_json):
+    """Luogo normalizzato -> (lat, lng): comune dal file con le coordinate (codice ISTAT), provincia e regione come
+    media dei loro comuni."""
+    righe = [g for g in json.loads(Path(geo_json).read_text()) if str(g.get('istat', '')).isdigit()
+             and g.get('lat') and g.get('lng')]
+    geo = {int(g['istat']): (float(g['lat']), float(g['lng'])) for g in righe}
+    per_nome = {' '.join(m.norm(g['comune'])): (float(g['lat']), float(g['lng'])) for g in righe}
+    gruppi = {}
+    out = {}
+    for c in json.loads(Path(comuni_json).read_text(encoding='utf-8')):
+        nome = ' '.join(m.norm(c['nome']))
+        xy = geo.get(int(c['codice'])) or per_nome.get(nome)
+        if not xy:
+            continue
+        out[nome] = xy
+        for k in (c['provincia']['nome'], c['regione']['nome']):
+            gruppi.setdefault(' '.join(m.norm(k)), []).append(xy)
+    for k, l in gruppi.items():
+        out.setdefault(k, (sum(a for a, _ in l) / len(l), sum(b for _, b in l) / len(l)))
+    return out
+
+
+def piu_vicine(xy, punti, n=3):
+    import math
+    def km(a, b):
+        la1, lo1, la2, lo2 = map(math.radians, (*a, *b))
+        h = math.sin((la2 - la1) / 2) ** 2 + math.cos(la1) * math.cos(la2) * math.sin((lo2 - lo1) / 2) ** 2
+        return 6371 * 2 * math.asin(math.sqrt(h))
+    return [u for u, _ in sorted(punti.items(), key=lambda p: km(xy, p[1]))[:n]]
+
+
 ABBINAMENTI_YEXT = Path(__file__).resolve().parents[2] / 'docs/ricerca/abbinamenti-yext-2026-11-16.json'
 
 
@@ -269,7 +309,19 @@ def misura(o):
         json.dumps(mancanti, ensure_ascii=False, indent=1), encoding='utf-8')
     ff = Path(o.esiti) / f'giudizi-faq-yext-{o.sito}.json'
     faq = json.loads(ff.read_text(encoding='utf-8')) if ff.exists() else {}
+    geo = geografia(o.comuni, o.geo) if getattr(o, 'geo', None) else None
+    punti = {}
+    if geo:
+        for x in m.strutture(o.sito):
+            if x.get('lat') and x.get('lng'):
+                punti[x['url']] = (float(x['lat']), float(x['lng']))
+            elif x['url'] in COORD_ALTRE:
+                punti[x['url']] = COORD_ALTRE[x['url']]
+            elif ' '.join(m.norm(x['citta'])) in geo:
+                punti[x['url']] = geo[' '.join(m.norm(x['citta']))]
     for forma, motore, riconosci in FORME:
+        if riconosci == 'completa' and not geo:
+            continue
         es = esiti(o.esiti, motore, o.sito)
         if not es:
             continue
@@ -280,9 +332,16 @@ def misura(o):
             ris = es[v['ricerca']]['risultati']
             if motore == 'yext':
                 ris = risultati_yext(ris, forma, faq.get(v['ricerca'], False))
-            if riconosci:
+            luogo = v.get('luogo') if v['categoria'] != 'struttura' else None
+            if riconosci == 'completa' and luogo and luogo in geo:
+                # primo risultato: l'elenco delle strutture più vicine al luogo (giusto se contiene la struttura
+                # attesa tra le prime tre per distanza; per un luogo senza strutture attese vicine, attesi = l'elenco)
+                vicine = piu_vicine(geo[luogo], punti)
+                giusto = any(corrisponde(u, v['attesi'], cache) for u in vicine) or v['attesi'] == [ELENCO[o.sito]]
+                ris = [{'url': 'ELENCO-GIUSTO' if giusto else 'ELENCO', 'titolo': ''}] + ris
+            elif riconosci:
                 ris = m.componi(v['attesi'] if v['categoria'] == 'struttura' else None, ris)
-            righe.append((v, any(x['url'] == 'FAQ-GIUSTA' or corrisponde(x['url'], v['attesi'], cache)
+            righe.append((v, any(x['url'] in ('FAQ-GIUSTA', 'ELENCO-GIUSTO') or corrisponde(x['url'], v['attesi'], cache)
                                  for x in ris[:3])))
 
         def quota(sel, pesata):
@@ -332,6 +391,8 @@ def main():
         p.add_argument('--ricerche', required=True)
         p.add_argument('--esiti', required=True)
         p.add_argument('--comuni', required=True)
+        if nome == 'misura':
+            p.add_argument('--geo', help='comuni con coordinate (italy_geo.json): abilita la forma completa')
         if nome == 'campione':
             p.add_argument('--vocabolario', required=True)
             p.add_argument('--sostituisci', action='store_true')

@@ -521,9 +521,23 @@ nell'area di lavoro: il controllo su tutte le entità si fa quando Danilo la met
 | kosgroup.com | Vertex con riconoscimento | 85,6% | 76,4% | 96,6% | 83,6% | 100 / 71,0 / 86,0 |
 | kosgroup.com | Vertex con archivio delle schede AA (terza forma) | 88,9% | 80,4% | 99,0% | 85,7% | 99,8 / 77,3 / 89,4 |
 | kosgroup.com | Vertex con archivio delle schede AA e riconoscimento | 88,9% | 81,7% | 99,0% | 85,7% | 100 / 77,3 / 89,4 |
+| kosgroup.com | **Forma completa** (archivio AA + nomi + luoghi; simulazione della pagina dei risultati) | 94,7% | 93,1% | 99,0% | 92,8% | 100 / **100** / 89,4 |
 | anniazzurri.it | Yext (FAQ giudicate) | 30,7% | 28,3% | 14,0% | 31,1% | 86,4 / 78,2 / 23,0 |
 | anniazzurri.it | Vertex da solo | 85,4% | 80,6% | 86,8% | 85,4% | 86,4 / 74,5 / 86,6 |
 | anniazzurri.it | Vertex con riconoscimento | 85,9% | 80,9% | 86,8% | 85,4% | 100 / 74,5 / 86,6 |
+
+**Forma completa (17/11).** Simula il comportamento della pagina dei risultati, **non è una risposta di Vertex**:
+archivio delle schede AA, riconoscimento dei nomi (la scheda in testa) e riconoscimento dei luoghi. Per le ricerche con un
+luogo riconosciuto (e nessun nome di struttura) il primo risultato è l'elenco delle strutture più vicine, calcolato sulle
+coordinate delle TV (`str.lat`, `str.lng`; per le schede aggiunte a mano il geo della landing o il comune) rispetto al
+comune, o al centro dei comuni della provincia o della regione (coordinate dei comuni: elenco ISTAT 2018 con
+coordinate, `italy_geo.json`, fuori dal repository); l'elenco è giusto se contiene la struttura attesa tra le prime tre
+per distanza; seguono i risultati di Vertex. **Colonna «Luoghi»: 100%, contro 82,2% di Yext e 77,3% di Vertex con
+l'archivio.** Da leggere con due avvertenze: delle 100 ricerche per luogo del campione (5.058 ricerche pesate) 28 (498)
+riguardano luoghi senza strutture in provincia o regione e sono giuste per regola (l'elenco «la struttura più vicina a
+… è a …» è la risposta attesa); le altre 72 sono tutte giuste, ma la struttura attesa è «una qualunque della stessa
+provincia», criterio largo. Le 27 ricerche con un luogo e un altro bisogno (es. «lavora con noi» e una città) non
+cambiano: l'elenco in testa non toglie il risultato giusto dai primi tre.
 
 Forbice di Yext su anniazzurri.it: dal 9,4% (risultati così come sono) al 50,3% (ogni FAQ giusta; il 46,5% detto prima
 contava le FAQ solo per le ricerche «altro»). Su kosgroup.com Yext così com'è dà 37,8% (con gli annunci di
