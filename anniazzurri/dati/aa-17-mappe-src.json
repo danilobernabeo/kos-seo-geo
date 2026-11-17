@@ -1,0 +1,36 @@
+{
+ "sostituzioni": [
+  {
+   "da": "/assets/img/lombardia-m.png",
+   "a": "/assets/img/lombardia-m.jpg"
+  },
+  {
+   "da": "/assets/img/piemonte-m.png",
+   "a": "/assets/img/piemonte-m.jpg"
+  },
+  {
+   "da": "/assets/img/liguria-m.png",
+   "a": "/assets/img/liguria-m.jpg"
+  },
+  {
+   "da": "/assets/img/marche-m.png",
+   "a": "/assets/img/marche-m.jpg"
+  },
+  {
+   "da": "/assets/img/emilia-romagna-m.png",
+   "a": "/assets/img/emilia-romagna-m.jpg"
+  },
+  {
+   "da": "/assets/img/veneto-m.png",
+   "a": "/assets/img/veneto-m.jpg"
+  },
+  {
+   "da": "/assets/img/toscana-m.png",
+   "a": "/assets/img/toscana-m.jpg"
+  },
+  {
+   "da": "/assets/img/lazio-m.png",
+   "a": "/assets/img/lazio-m.jpg"
+  }
+ ]
+}

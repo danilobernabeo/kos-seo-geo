@@ -1,0 +1,59 @@
+{
+ "nome": "AA-17 mappe regionali: le 8 immagini delle regioni per i telefoni passano da PNG (234-264 KB, foto salvate in PNG) a JPEG (87-128 KB) con angoli su bianco; i chunk delle pagine residenze le servono con lo snippet immagine (WebP)",
+ "files": [
+  {
+   "file": "anniazzurri/files/assets/img/lombardia-m.jpg",
+   "dest": "assets/img/lombardia-m.jpg"
+  },
+  {
+   "file": "anniazzurri/files/assets/img/piemonte-m.jpg",
+   "dest": "assets/img/piemonte-m.jpg"
+  },
+  {
+   "file": "anniazzurri/files/assets/img/liguria-m.jpg",
+   "dest": "assets/img/liguria-m.jpg"
+  },
+  {
+   "file": "anniazzurri/files/assets/img/marche-m.jpg",
+   "dest": "assets/img/marche-m.jpg"
+  },
+  {
+   "file": "anniazzurri/files/assets/img/emilia-romagna-m.jpg",
+   "dest": "assets/img/emilia-romagna-m.jpg"
+  },
+  {
+   "file": "anniazzurri/files/assets/img/veneto-m.jpg",
+   "dest": "assets/img/veneto-m.jpg"
+  },
+  {
+   "file": "anniazzurri/files/assets/img/toscana-m.jpg",
+   "dest": "assets/img/toscana-m.jpg"
+  },
+  {
+   "file": "anniazzurri/files/assets/img/lazio-m.jpg",
+   "dest": "assets/img/lazio-m.jpg"
+  }
+ ],
+ "elements": [
+  {
+   "type": "chunk",
+   "name": "residenze-tutte-le-regioni",
+   "file": "anniazzurri/elements/chunks/residenze-tutte-le-regioni.html"
+  },
+  {
+   "type": "chunk",
+   "name": "residenze-ricovero-temporaneo",
+   "file": "anniazzurri/elements/chunks/residenze-ricovero-temporaneo.html"
+  },
+  {
+   "type": "chunk",
+   "name": "residenze-ricovero-post-dimissioni-ospedaliere",
+   "file": "anniazzurri/elements/chunks/residenze-ricovero-post-dimissioni-ospedaliere.html"
+  },
+  {
+   "type": "chunk",
+   "name": "residenze-ricovero-residenziale-temporaneo",
+   "file": "anniazzurri/elements/chunks/residenze-ricovero-residenziale-temporaneo.html"
+  }
+ ]
+}
