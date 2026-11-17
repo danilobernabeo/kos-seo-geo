@@ -122,6 +122,7 @@ Uso interno. Una riga per decisione: data, cosa si è deciso, chi o quale fonte,
 | 16/11/2026 | Esito provvisorio della soglia sul livello 2: Vertex la supera con il riconoscimento dei nomi di struttura (kosgroup.com 85,6% contro 65,7% di Yext; anniazzurri.it 85,9% contro 30,7%); da solo non supera il punto 3 su kosgroup.com (nomi di struttura 85,1% contro 99,5%) | Misura del 16/11 | `docs/ricerca/piano-prova-vertex.md` |
 | 16/11/2026 | Sviluppo: regola di posizionamento che mette in testa la pagina delle posizioni aperte per le ricerche di professioni | Danilo | `docs/ricerca/piano-prova-vertex.md` |
 | 16/11/2026 | Domini di sviluppo nei risultati Yext: Poliambulatorio Villa Pineta → `7ydxba3m.modx.dev`; Fisioclinics → `polodiagnostico.it` (marchio dismesso). Controllo sull'esportazione completa delle entità quando disponibile; Danilo segnala a KOS | Verifica del 16/11 sui risultati salvati | `docs/ricerca/piano-prova-vertex.md` |
+| 17/11/2026 | Indice delle schede AA a 3 su 64 senza errori espliciti: rilettura forzata delle 64 schede e di `/villamargherita` (fuori sitemap) alle 8 circa; verifica dopo un'ora e, a indice completo, terza forma sul campione congelato | Danilo | Progetto Google Cloud `kos-ricerca`, `docs/ricerca/piano-prova-vertex.md` |
 
 ## Store locator RetailTune (Linea C)
 

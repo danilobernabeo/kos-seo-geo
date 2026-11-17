@@ -201,6 +201,11 @@ coordinate) ed eventualmente il servizio, e mostra in testa le strutture vicine;
   `ricerca-anniazzurri`. Archivio `anniazzurri-schede`: **scansionato 64 su 64** (operazione di rilettura conclusa), ma
   **nell'indice 3 documenti su 64** (16/11 sera): il «64 su 64» detto prima era la scansione, non l'indice. Se il 17/11
   mattina l'indice è ancora sotto 64 si forza una nuova rilettura delle 64 schede.
+- 17/11, 8:00 circa: indice ancora a 3 su 64. Errori raccolti prima della nuova rilettura: nessuno esplicito (rilettura del
+  16/11 con 64 indirizzi validi e 64 riusciti, siti inclusi tutti «SUCCEEDED», nessun campione di errore; pagine con
+  risposta 200, canonical su sé stesse, nessun `noindex`). I 3 documenti indicizzati lo sono stati nei primi due minuti
+  della rilettura: ipotesi (non verificata) che la rilettura sia partita mentre i siti inclusi erano ancora in
+  attivazione. Forzate la rilettura delle 64 schede e quella di `/villamargherita` nell'archivio `kosgroup-it`.
 - Dal 16/11 pomeriggio: archivio `anniazzurri-schede` con le sole 64 schede delle strutture di anniazzurri.it (57
   residenze, 5 centri diurni, 2 hospice; inclusione per indirizzo esatto, niente news, pagine istituzionali né PDF) e app
   di prova `ricerca-kosgroup-schede-aa` (archivi `kosgroup-it` e `anniazzurri-schede`), per la terza forma
