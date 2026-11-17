@@ -3,7 +3,7 @@
  * aa-pagine-grafo.php — anniazzurri.it, sprint 3 (regola «un solo @graph per pagina, niente JSON-LD scritto a mano»):
  * per le pagine con head proprio (/home-en id 135, /azzurramente id 410):
  *   - toglie dal campo content i blocchi <script type="application/ld+json"> scritti a mano;
- *   - aggiunge prima di </head> del loro template la chiamata ad aaSchema (con le opzioni della pagina), se il template
+ *   - aggiunge prima di </head> del loro template (o del contenuto, per le pagine senza template) la chiamata ad aaSchema (con le opzioni della pagina), se il template
  *     non la contiene già, direttamente o in un chunk richiamato con [[$nome]].
  *
  * Uso (in SSH, dalla cartella dell'archivio del repository):
@@ -71,12 +71,18 @@ foreach ($PAGINE as $id => $chiamata) {
     $n = 0;
     $dopo = preg_replace('~\s*<script\b[^>]*type\s*=\s*["\']application/ld\+json["\'][^>]*>.*?</script>~is', '', $prima, -1, $n);
     echo sprintf("%-6d %-16s blocchi JSON-LD nel contenuto: %d\n", $id, $uri, $n);
-    if ($n > 0) {
+    $t = (int) $r->get('template') ? $r->getOne('Template') : null;
+    if (!$t) {
+        // pagina senza template: tutto l'HTML, head compreso, sta nel contenuto
+        if ($haSchema($dopo)) echo "       senza template: aaSchema già nel contenuto\n";
+        elseif (stripos($dopo, '</head>') === false) echo "       senza template e senza </head> nel contenuto: FERMO\n";
+        else { $dopo = preg_replace('~</head>~i', "  $chiamata\n</head>", $dopo, 1); echo "       senza template: aggiungo $chiamata prima di </head> nel contenuto\n"; }
+    }
+    if ($dopo !== $prima) {
         $rip['risorse'][] = ['id' => $id, 'prima' => $prima];
         if ($scrivi) { $r->set('content', $dopo); $r->save(); }
     }
-    $t = $r->getOne('Template');
-    if (!$t) { echo "       nessun template\n"; continue; }
+    if (!$t) continue;
     $nome = $t->get('templatename');
     $usato = (int) $modx->getCount(modResource::class, ['template' => $t->get('id'), 'deleted' => 0]);
     $tc = (string) $t->get('content');
