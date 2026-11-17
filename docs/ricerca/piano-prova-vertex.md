@@ -578,6 +578,21 @@ soluzione proposta (forma completa: archivio delle schede AA, riconoscimento dei
 kosgroup.com e 88,2% su anniazzurri.it, contro 66,1% e 30,7% di Yext. Le ricerche per luogo, fuori dalla soglia decisa,
 sono l'unico punto in cui Vertex da solo è sotto Yext.
 
+**Impostazione della restituzione del 26/11 (decisa il 17/11).**
+
+- La **forma completa** si presenta come la soluzione proposta (archivio delle schede AA, riconoscimento dei nomi e dei
+  luoghi con l'elenco delle strutture più vicine): 94,7% su kosgroup.com e 88,2% su anniazzurri.it, contro 66,1% e
+  30,7% di Yext.
+- Le forme intermedie si presentano come **scomposizione**, per mostrare perché serve ogni pezzo: Vertex da solo (sotto
+  Yext sui nomi di struttura e sui luoghi), più l'archivio delle schede AA (nomi di struttura), più il riconoscimento
+  dei nomi, più il riconoscimento dei luoghi (luoghi dal 69,0–79,7% al 100%).
+- In evidenza le **28 ricerche «per regola»** di kosgroup.com (zone senza strutture in provincia o regione): Yext ne
+  risolve 1 su 28, la forma completa 28 su 28 con l'elenco che parte dalla struttura più vicina.
+
+**Preventivo del 26/11.** Il **riconoscimento dei luoghi** va come voce a sé: elenco ISTAT dei comuni in vigore (con
+aggiornamento), calcolo delle distanze sulle coordinate delle TV, raggio che si allarga fino ad almeno una struttura,
+elenco testuale per distanza e collegamento al widget RetailTune.
+
 **Terza forma (17/11).** Giro sul campione congelato di kosgroup.com (400 ricerche, dalle 12:18:01 alle 12:23:09, tutte
 con risposta 200), app `ricerca-kosgroup-schede-aa`, senza espansione (con due archivi non è accettata; su kosgroup.com
 l'espansione non sposta nulla, vedi il confronto alla pari). Indice delle schede AA a 63 su 64: Residenza Ducale 1 «in
