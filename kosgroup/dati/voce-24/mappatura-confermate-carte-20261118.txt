@@ -1,0 +1,17 @@
+# Associazioni solo sulla pagina del servizio confermate dalle carte dei servizi, guide e pieghevoli (18/11)
+/it/centri/centro-ambulatoriale-santo-stefano-ascoli-piceno|/it/servizi-e-cure/riabilitazione/riabilitazione-urologica-e-del-pavimento-pelvico
+/it/centri/centro-ambulatoriale-santo-stefano-camerino|/it/servizi-e-cure/riabilitazione/riabilitazione-urologica-e-del-pavimento-pelvico
+/it/centri/centro-ambulatoriale-santo-stefano-fabriano|/it/servizi-e-cure/riabilitazione/trattamenti/coinvolgimento-dei-familiari
+/it/centri/centro-ambulatoriale-santo-stefano-tolentino|/it/servizi-e-cure/riabilitazione/riabilitazione-urologica-e-del-pavimento-pelvico
+/it/centri/centro-cardinal-ferrari|/it/servizi-e-cure/ambulatori-e-medicina-specialistica/elettromiografia
+/it/centri/centro-residenziale-santo-stefano-foligno|/it/servizi-e-cure/riabilitazione/trattamenti/reinserimento-sociale
+/it/centri/centro-residenziale-santo-stefano-foligno|/it/servizi-e-cure/riabilitazione/trattamenti/rieducazione-dei-disturbi-della-competenza-comunicativa
+/it/centri/villa-adria|/it/servizi-e-cure/riabilitazione/riabilitazione-urologica-e-del-pavimento-pelvico
+/it/centri/villa-adria|/it/servizi-e-cure/riabilitazione/trattamenti/percorsi-ludico-creativi
+/it/centri/villa-azzurra|/it/servizi-e-cure/psichiatria/trattamenti/mindfulness
+/it/centri/villa-azzurra|/it/servizi-e-cure/riabilitazione/trattamenti/percorsi-ludico-creativi
+/it/centri/villa-azzurra|/it/servizi-e-cure/riabilitazione/trattamenti/reinserimento-sociale
+/it/centri/villa-margherita-vicenza-psichiatria|/it/servizi-e-cure/psichiatria/trattamenti/terapia-occupazionale
+/it/centri/villa-rosa|/it/servizi-e-cure/riabilitazione/trattamenti/coinvolgimento-dei-familiari
+/it/centri/villa-rosa|/it/servizi-e-cure/riabilitazione/trattamenti/percorsi-ludico-creativi
+/it/centri/ville-di-nozzano|/it/servizi-e-cure/psichiatria/trattamenti/riabilitazione-psichiatrica
