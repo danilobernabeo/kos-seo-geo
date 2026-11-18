@@ -135,12 +135,6 @@
   },
   {
    "type": "chunk",
-   "name": "head-rsa",
-   "file": "anniazzurri/elements/chunks/head-rsa.html",
-   "baseline": "anniazzurri/baseline/chunks/head-rsa.html"
-  },
-  {
-   "type": "chunk",
    "name": "head-soluzioni",
    "file": "anniazzurri/elements/chunks/head-soluzioni.html",
    "baseline": "anniazzurri/baseline/chunks/head-soluzioni.html"
@@ -199,6 +193,12 @@
    "type": "chunk",
    "name": "news-list",
    "file": "anniazzurri/elements/chunks/news-list.html"
+  },
+  {
+   "type": "chunk",
+   "name": "heading-home2",
+   "file": "anniazzurri/elements/chunks/heading-home2.html",
+   "baseline": "anniazzurri/baseline/chunks/heading-home2.html"
   },
   {
    "type": "chunk",
