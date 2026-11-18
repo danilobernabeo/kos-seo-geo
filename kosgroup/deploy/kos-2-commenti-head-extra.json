@@ -1,0 +1,20 @@
+{
+  "nome": "KOS-2 head: commenti interni dei chunk head-extra-strutture, head-extra-landing e head-ricerca-yext come commenti MODX [[- ]] (non escono più nell'HTML; Screaming Frog del 18/11, revisione di Fable)",
+  "elements": [
+    {
+      "type": "chunk",
+      "name": "head-extra-strutture",
+      "file": "kosgroup/elements/voce-24-attivazione/head-extra-strutture.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-extra-landing",
+      "file": "kosgroup/elements/voce-24-attivazione/head-extra-landing.html"
+    },
+    {
+      "type": "chunk",
+      "name": "head-ricerca-yext",
+      "file": "kosgroup/elements/chunks/head-ricerca-yext.html"
+    }
+  ]
+}
