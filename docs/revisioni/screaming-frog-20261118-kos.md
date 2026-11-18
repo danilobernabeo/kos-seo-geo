@@ -126,3 +126,10 @@ Le affermazioni della nota sui siti sono vere sulla scansione del 18/11. La nota
 ## Revisione indipendente
 
 Verifica di Fable del 18/11: `docs/revisioni/screaming-frog-20261118-kos-revisione.md`. Rettifiche già riportate sopra: I2 non nuovo, C6 risolto solo in parte, I1 ridimensionato, San Pancrazio non difetto, spiegazione dei link «relativi», note dello sprint 3 senza avviso `department` e medici senza specialità.
+
+## Correzioni del 18/11 (dopo la scansione)
+
+- Aree di intervento verso pagine cestinate (I2): corrette, 4 voci.
+- Commenti interni nell'head (C6): commenti MODX.
+- 23 link interni verso redirect: 6 approfondimenti reindirizzati non pubblicati (18 link); Beata Corte tolta dai 5 trattamenti di psichiatria (5 link).
+- Diagnostica su tutte le TV `map%`: 0 collegamenti verso pagine cestinate o non pubblicate.
