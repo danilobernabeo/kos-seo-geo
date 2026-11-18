@@ -1,0 +1,59 @@
+{
+  "nome": "Collegamenti delle TV map* verso pagine cestinate o non pubblicate (diagnostica del 18/11): sostituiti o tolti",
+  "regole": [
+    {
+      "pagina": "it/centri/centro-ambulatoriale-santo-stefano-filottrano",
+      "tv": "mapAreeRiabilitazione",
+      "togli": 90,
+      "sostituisci_con": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/medicina-dello-sport"
+    },
+    {
+      "pagina": "it/centri/centro-ambulatoriale-santo-stefano-san-severino",
+      "tv": "mapAreeRiabilitazione",
+      "togli": 90,
+      "sostituisci_con": "it/servizi-e-cure/ambulatori-e-medicina-specialistica/medicina-dello-sport"
+    },
+    {
+      "pagina": "it/centri/ospedale-san-pancrazio",
+      "tv": "mapAreeRiabilitazione",
+      "togli": 273,
+      "sostituisci_con": "it/servizi-e-cure/psichiatria/dipendenze"
+    },
+    {
+      "pagina": "it/centri/istituto-santo-stefano",
+      "tv": "mapAreeRiabilitazione",
+      "togli": 92,
+      "sostituisci_con": ""
+    },
+    {
+      "pagina": "it/servizi-e-cure/psichiatria/trattamenti/farmacologico",
+      "tv": "mapServiziStrutture",
+      "togli": 168,
+      "sostituisci_con": ""
+    },
+    {
+      "pagina": "it/servizi-e-cure/psichiatria/trattamenti/psicoterapeutico-approccio-cognitivo-comportamentale",
+      "tv": "mapServiziStrutture",
+      "togli": 168,
+      "sostituisci_con": ""
+    },
+    {
+      "pagina": "it/servizi-e-cure/psichiatria/trattamenti/psicoterapeutico-approccio-psicoanalitico",
+      "tv": "mapServiziStrutture",
+      "togli": 168,
+      "sostituisci_con": ""
+    },
+    {
+      "pagina": "it/servizi-e-cure/psichiatria/trattamenti/psicoterapeutico-approccio-sistemico-relazionale",
+      "tv": "mapServiziStrutture",
+      "togli": 168,
+      "sostituisci_con": ""
+    },
+    {
+      "pagina": "it/servizi-e-cure/psichiatria/trattamenti/terapia-familiare",
+      "tv": "mapServiziStrutture",
+      "togli": 168,
+      "sostituisci_con": ""
+    }
+  ]
+}

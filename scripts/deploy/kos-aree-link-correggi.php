@@ -1,12 +1,13 @@
 <?php
 /**
- * kos-aree-link-correggi.php — sostituisce o toglie, nelle liste di id delle TV mapAree* delle schede kosgroup.com,
- * le voci che puntano a pagine cestinate (link vuoto verso la home; scansione del 18/11, diagnostica
+ * kos-aree-link-correggi.php — sostituisce o toglie, nelle liste di id delle TV map* (aree, mapServiziStrutture…) kosgroup.com,
+ * le voci che puntano a pagine cestinate o non pubblicate (link vuoto verso la home; scansione del 18/11, diagnostica
  * scripts/checks/kos-aree-link.php). Tocca solo l'id indicato, lascia le altre voci e il loro ordine.
  *
  * Uso (in SSH, dalla cartella dell'archivio):
- *   php scripts/deploy/kos-aree-link-correggi.php /www            # prova
- *   php scripts/deploy/kos-aree-link-correggi.php /www --scrivi   # applica, backup, svuota la cache
+ *   php scripts/deploy/kos-aree-link-correggi.php /www kosgroup/dati/link/map-cestinati-20261118.json            # prova
+ *   php scripts/deploy/kos-aree-link-correggi.php /www kosgroup/dati/link/map-cestinati-20261118.json --scrivi   # applica
+ * Regole nel JSON: pagina (uri), tv, togli (id), sostituisci_con (uri della pagina sostitutiva, "" = solo togliere).
  *   php scripts/deploy/kos-aree-link-correggi.php /www --ripristina=<ripristino.json> [--scrivi]
  * Backup: ~/backup-kos-seo-geo/<data>-aree-link/ripristino.json (valori delle TV prima della modifica).
  */
@@ -23,13 +24,13 @@ use MODX\Revolution\{modX, modResource, modTemplateVar, modTemplateVarResource};
 $modx = modX::getInstance();
 $modx->initialize('mgr');
 
-// scheda (uri) · TV · id da togliere · uri della pagina che lo sostituisce ('' = solo togliere)
-$regole = [
-    ['it/centri/centro-ambulatoriale-santo-stefano-filottrano', 'mapAreeRiabilitazione', 90, 'it/servizi-e-cure/ambulatori-e-medicina-specialistica/medicina-dello-sport'],
-    ['it/centri/centro-ambulatoriale-santo-stefano-san-severino', 'mapAreeRiabilitazione', 90, 'it/servizi-e-cure/ambulatori-e-medicina-specialistica/medicina-dello-sport'],
-    ['it/centri/ospedale-san-pancrazio', 'mapAreeRiabilitazione', 273, 'it/servizi-e-cure/psichiatria/dipendenze'],
-    ['it/centri/istituto-santo-stefano', 'mapAreeRiabilitazione', 92, ''],
-];
+$fileRegole = '';
+foreach (array_slice($argv, 2) as $x) if (!str_starts_with($x, '--')) $fileRegole = $x;
+if ($ripFile === null) {
+    if (!is_file($fileRegole)) { fwrite(STDERR, "Uso: php kos-aree-link-correggi.php /www <regole.json> [--scrivi]\n"); exit(1); }
+    $regole = array_map(fn($r) => [$r['pagina'], $r['tv'], (int) $r['togli'], (string) $r['sostituisci_con']],
+        json_decode((string) file_get_contents($fileRegole), true)['regole']);
+}
 
 $risorsa = fn(string $uri) => $modx->getObject(modResource::class, ['uri:IN' => [$uri, "$uri/"], 'deleted' => 0, 'published' => 1]);
 $valore = function (int $tvId, int $rid) use ($modx): ?modTemplateVarResource {
