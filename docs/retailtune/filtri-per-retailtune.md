@@ -90,7 +90,7 @@ I ricoveri temporanei e di sollievo sono presenti in quasi tutte le residenze, q
 
 ## Domande
 
-1. **Casella.** Si può limitare il completamento a comuni, province e regioni italiane? Il rischio da escludere è che, scrivendo «rsa», compaiano attività di altri gestori. Il completamento ha un costo a parte?
+1. **Casella.** Confermate che il completamento propone solo indirizzi, comuni, province e regioni italiane? Ha un costo a parte?
 2. **Gruppi dipendenti dall'area.** I gruppi del pannello possono comparire solo per l'area scelta? Il gruppo dei servizi, ad esempio, deve restare nascosto finché non si sceglie un'area.
 3. **Più aree per struttura.** Una struttura può avere più aree e un'area principale, che decide il colore del pin?
 4. **Parametri nell'indirizzo.** Il widget accetta tipologia, regione e servizi come parametri, per aprirlo dalla barra di ricerca del sito con i filtri già impostati?
