@@ -1,10 +1,10 @@
 # Nota di consegna dello sprint 3
 
-13/11/2026 · Danilo Bernabeo
+18/11/2026 · Danilo Bernabeo
 
 ## Sintesi
 
-Tutte le voci dello sprint 3 sono in produzione dall'8 novembre, in anticipo sulla consegna del 27 novembre. Le 57 residenze di anniazzurri.it hanno ora il dato strutturato e i contatti generati dal server, senza lo script Yext. Su kosgroup.com i professionisti sanitari sono descritti nel grafo unico e collegati alle strutture; il 13 novembre si aggiunge Villa Margherita Vicenza.
+Tutte le voci dello sprint 3 sono in produzione dall'8 novembre, in anticipo sulla consegna del 27 novembre. Le 57 residenze di anniazzurri.it hanno ora il dato strutturato e i contatti generati dal server, senza lo script Yext; il 17 novembre si aggiungono centri diurni, hospice e appartamenti, come reparti della residenza che li ospita, e i servizi senza sede propria. Su kosgroup.com i professionisti sanitari sono descritti nel grafo unico e collegati alle strutture; il 13 novembre si aggiunge Villa Margherita Vicenza.
 
 | Sito | Voce d'audit | Intervento | Stato | Data |
 | --- | --- | --- | --- | --- |
@@ -13,8 +13,8 @@ Tutte le voci dello sprint 3 sono in produzione dall'8 novembre, in anticipo sul
 | anniazzurri.it | 5 · Singola residenza: Organisation | Residenza collegata all'ente KOS Care, con marchio e immagine | In produzione | 8 novembre |
 | anniazzurri.it | 9 · Alt text | Testi alternativi su foto delle news, direttrice di Volpiano, icone decorative | In produzione | 8 novembre |
 | anniazzurri.it | 10 · Pagina provincia | Elenco delle residenze (ItemList) sulle 14 pagine provincia; idonee al carosello le 5 con almeno tre residenze | In produzione | 8 novembre |
-| anniazzurri.it | 11 · Singola residenza: Local Business | Nodo struttura su 57 schede | In produzione | 8 novembre |
-| anniazzurri.it | 21 · Scheda contatti | Riquadro contatti generato dal server dagli stessi dati del nodo struttura | In produzione | 8 novembre |
+| anniazzurri.it | 11 · Singola residenza: Local Business | Nodo struttura su 57 schede; 8 reparti e 3 servizi senza sede | In produzione | 8 novembre; reparti e servizi 17 novembre |
+| anniazzurri.it | 21 · Scheda contatti | Riquadro contatti generato dal server dagli stessi dati del nodo struttura | In produzione | 8 novembre; reparti 18 novembre |
 | kosgroup.com | 7 · Alt text | Pattern nel codice per gallerie, elenchi e testate; 140 immagini descritte nei contenuti | In produzione | 8 novembre |
 | kosgroup.com | 11 · Singolo medico | 150 professionisti: medici IndividualPhysician, altri professionisti Person | In produzione | 8 novembre; Villa Margherita 13 novembre |
 
@@ -27,10 +27,20 @@ Ogni residenza è ora descritta da un solo nodo `{URL scheda}#localbusiness`, em
 | 2 · Dati strutturati JavaScript | Dato strutturato e contatti delle residenze emessi dal server dalla libreria comune. Script Yext Knowledge Tags tolto dalla testata delle schede; markup Yext nei contenuti di 37 schede convertito. Il blocco iniettato da Yext, segnalato come errore atteso nella verifica dello sprint 2, non c'è più. | Sorgente di https://anniazzurri.it/residenza-anni-azzurri-villa-reale: un solo JSON-LD con `@graph`, nessuno script Yext Knowledge Tags (la barra di ricerca Yext resta fino alla sostituzione). |
 | 5 · Singola residenza: Organisation | Il nodo della residenza porta nome, immagine, il marchio Anni Azzurri (`brand`) e `parentOrganization` verso l'ente `https://anniazzurri.it/#organization` (KOS Care S.r.l.). | Stessa pagina, nodo `#localbusiness`. |
 | 11 · Singola residenza: Local Business | Nodo struttura su 57 schede: indirizzo, coordinate, telefono, email, specialità `Geriatric`, fax e orari dove presenti; `priceRange` sulle 24 schede che indicano la retta. Dati dall'esportazione Yext del 6 novembre, con le correzioni confermate da KOS il 9 novembre. | Rich Results Test su https://anniazzurri.it/residenza-anni-azzurri-rezzato: Attività locali, con il solo avviso facoltativo su priceRange dove la retta non è indicata. |
-| 21 · Scheda contatti | Riquadro contatti scritto nell'HTML dal server, dagli stessi dati del nodo struttura: indirizzo, telefono ed email della residenza. L'email della residenza non passa dall'offuscamento JavaScript, quindi resta leggibile dai crawler; l'email del direttore resta offuscata. | https://anniazzurri.it/residenza-anni-azzurri-villa-reale con JavaScript disattivato: indirizzo, telefono ed email della residenza si vedono. |
+| 21 · Scheda contatti | Riquadro contatti scritto nell'HTML dal server, dagli stessi dati del nodo struttura: indirizzo, telefono ed email della residenza. L'email della residenza non passa dall'offuscamento JavaScript, quindi resta leggibile dai crawler; l'email del direttore resta offuscata. Dal 18 novembre lo stesso riquadro è sulle 8 schede dei reparti, e l'email di RSA Aperta nelle schede lombarde è in chiaro. | https://anniazzurri.it/residenza-anni-azzurri-villa-reale con JavaScript disattivato: indirizzo, telefono ed email della residenza si vedono. |
 | 10 · Pagina provincia | Sulle 14 pagine provincia un `ItemList` delle residenze nel formato del carosello di attività locali di Google: nome, URL e immagine di ogni residenza, fascia di prezzo dove la retta è indicata. | Rich Results Test su https://anniazzurri.it/rsa-in-provincia-di-genova: `ItemList` di 6 residenze valido. |
 | 4 · CLS | Caroselli con l'altezza finale già prima dell'avvio dello script, spazio riservato alla barra di ricerca. Dettaglio e misure nella sezione dedicata. | PageSpeed Insights o pannello Prestazioni del browser sulla home da computer: nessuno spostamento della testata al caricamento. |
 | 9 · Alt text | Dopo il lavoro sulle immagini di sfondo (voce 1, sprint 2) restavano 10 immagini senza alt e 18 foto con alt vuoto in 3 news: descritte o marcate come decorative (icone). | Sorgente di https://anniazzurri.it/grosseto-presentato-il-centro-diurno-maremma: 5 foto con alt descrittivo. |
+
+### Reparti e servizi senza sede (17-18 novembre)
+
+Cinque centri diurni, due hospice e gli appartamenti di Bergamo stanno nella sede di una residenza: stesso indirizzo, nessun profilo Google proprio. Sono descritti come reparti (`{URL pagina}#department`, `MedicalOrganization`; gli appartamenti `LocalBusiness`) con `parentOrganization` verso il nodo della residenza, che li elenca in `department`. Il riquadro contatti delle loro pagine è generato dagli stessi dati.
+
+RSA Aperta e le cure domiciliari di Anni Azzurri a Casa non hanno una sede propria. Sono un nodo `Service` con `provider` e `areaServed`: per RSA Aperta il provider sono le quattro residenze lombarde che la erogano, per le cure domiciliari è l'ente.
+
+Sulle 8 residenze che ospitano un reparto il Rich Results Test mostra un avviso facoltativo: per `department` Google consiglia un tipo di attività locale. È atteso, per la stessa ragione di Villa Margherita Vicenza su kosgroup.com: i reparti non hanno un profilo Google proprio, e descriverli come attività locali li farebbe leggere come sedi separate.
+
+Verifica: https://anniazzurri.it/centro-diurno-integrato-anni-azzurri-san-rocco (reparto, `parentOrganization` verso la residenza San Rocco) e https://anniazzurri.it/rsa-aperta (nodo `Service`).
 
 ## Stabilità visiva (AA 4)
 
@@ -78,12 +88,13 @@ Correzione del 15 novembre: la struttura citata da `practicesAt` e `worksFor` (e
 
 ## Scostamenti dalle proposte dell'audit
 
-In sei punti la forma scelta differisce dall'esempio dell'audit; per ciascuno il motivo e la fonte.
+In sette punti la forma scelta differisce dall'esempio dell'audit; per ciascuno il motivo e la fonte.
 
 | Voce | Proposta dell'audit | Scelta | Motivo |
 | --- | --- | --- | --- |
 | AA 11 | `LocalBusiness` per la residenza (slide 30) | `["MedicalBusiness", "MedicalOrganization"]` con specialità `Geriatric` | `MedicalBusiness` è un sottotipo di `LocalBusiness`, quindi la richiesta è soddisfatta; `MedicalOrganization` porta la specialità. Su schema.org non esiste un tipo «casa di riposo». Tutte le 57 residenze sono autorizzate come unità socio-sanitarie (verifica sulle carte dei servizi), quindi il tipo è lo stesso per tutte. |
 | AA 10 | Prova su 1-2 pagine provincia (slide 33) | Tutte le 14 pagine provincia | Il markup è generato dalla stessa libreria delle schede, dagli stessi dati: non c'è una versione a mano da provare. Il carosello è una funzione di Google in prova (Spazio economico europeo, Turchia e Sudafrica) e richiede almeno tre elementi: sono idonee le 5 pagine provincia con almeno tre residenze (Milano, Genova, Torino, Ancona, Modena); le altre 9 hanno l'elenco ma non il carosello. La comparsa non è garantita ([Google](https://developers.google.com/search/docs/appearance/structured-data/carousels-beta)). |
+| AA 11 | Nodo `LocalBusiness` per ogni struttura | Centri diurni, hospice e appartamenti come reparti (`#department`) della residenza che li ospita | Stessa sede e nessun profilo Google proprio: un nodo autonomo li presenterebbe come strutture distinte. Convenzione schema.org per le unità di un'organizzazione ([schema.org](https://schema.org/department)). |
 | KOS 11 | `Physician` (slide 27) | `IndividualPhysician` | Dalla versione 24 schema.org distingue il singolo medico (`IndividualPhysician`) dallo studio (`PhysiciansOffice`); `Physician` vale per entrambi ([schema.org](https://schema.org/IndividualPhysician)). |
 | KOS 11 | `worksFor` con la struttura scritta per esteso | `practicesAt` verso il nodo `#localbusiness` della struttura | `worksFor` è una proprietà di `Person`, non di `IndividualPhysician`. Il riferimento lega il medico alla stessa entità della scheda e del profilo Google. I professionisti non medici restano `Person` con `worksFor`. |
 | KOS 11 | Frammento `#physician`, `jobTitle` sul medico | `#medico`; specialità in `medicalSpecialty`, niente `jobTitle` | Convenzione degli identificativi consegnata con lo sprint 1; `jobTitle` non è una proprietà di `IndividualPhysician`. Indirizzo e telefono della sede sul medico, perché Google tratta `IndividualPhysician` come attività locale. |
@@ -99,6 +110,7 @@ I collaudi controllano campo per campo il dato strutturato di ogni pagina contro
 | Professionisti kosgroup.com | 150 | 150 OK (99 medici, 51 altri professionisti) | 13 novembre |
 | Schede struttura e landing kosgroup.com | 63 | 63 OK | 13 novembre |
 | Villa Margherita Vicenza (landing e medici) | verifica sul sorgente | nodo `Hospital`, 2 reparti, medici `IndividualPhysician` | 13 novembre |
+| Scansione completa di anniazzurri.it (Screaming Frog) | 463 | un solo JSON-LD per pagina, nessun errore di convalida, canonical e sitemap corretti | 18 novembre |
 | Scansione completa di kosgroup.com (Screaming Frog) | 916 | un solo JSON-LD per pagina, nessun errore di convalida, canonical e sitemap corretti | 18 novembre |
 
 Come nei due sprint precedenti, il dato strutturato va controllato sull'HTML servito dal server, quello che leggono i crawler AI: sorgente della pagina (Ctrl+U), validator.schema.org o Rich Results Test sul codice incollato. Rapporti dei collaudi disponibili su richiesta.
