@@ -133,3 +133,5 @@ Verifica di Fable del 18/11: `docs/revisioni/screaming-frog-20261118-kos-revisio
 - Commenti interni nell'head (C6): commenti MODX.
 - 23 link interni verso redirect: 6 approfondimenti reindirizzati non pubblicati (18 link); Beata Corte tolta dai 5 trattamenti di psichiatria (5 link).
 - Diagnostica su tutte le TV `map%`: 0 collegamenti verso pagine cestinate o non pubblicate.
+- Link relativi dell'approfondimento 328 (C7): convertiti in `[[~id]]`.
+- Villa Margherita (I3): centralino 0444 15851 su landing, ringraziamento e pulsanti; descrizione del nodo coerente con `telephone`.
