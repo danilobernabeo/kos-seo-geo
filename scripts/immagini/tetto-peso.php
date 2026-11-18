@@ -1,6 +1,6 @@
 <?php
 /**
- * AA-17 (e KOS-2): porta sotto un tetto di peso (default 200 KB) le immagini di un elenco, nello stesso file e con lo
+ * AA-17 (e KOS-2): porta sotto un tetto di peso (default 200 kB decimali = 200.000 byte, come la scheda Rete di Chrome; dal 18/11, prima 1024) le immagini di un elenco, nello stesso file e con lo
  * stesso URL, senza cambiare dimensioni in pixel né formato. Serve per le varianti dello srcset (assets/cache-img) e per
  * gli originali già ottimizzati che restano sopra soglia.
  *
@@ -55,7 +55,7 @@ if (!class_exists(\Imagick::class)) { fwrite(STDERR, "Imagick non disponibile.\n
 $elenco = $pos[1] ?? '';
 if (!is_file($elenco)) { fwrite(STDERR, "Elenco non trovato: $elenco\n"); exit(1); }
 $kb = (int) ($opz['kb'] ?? 200);
-$tetto = (int) round($kb * 1024 * 0.97);
+$tetto = (int) round($kb * 1000 * 0.97);
 
 $voci = [];
 foreach (file($elenco, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $r) {
@@ -115,7 +115,7 @@ foreach ($voci as $rel) {
     $file = $webroot . $rel;
     if (!is_file($file)) { echo "  ? $rel: non trovata\n"; $tot['mancanti']++; continue; }
     $prima = (int) filesize($file);
-    if ($prima <= $kb * 1024) { $tot['sotto']++; continue; }
+    if ($prima <= $kb * 1000) { $tot['sotto']++; continue; }
     $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
     $fmt = $ext === 'jpeg' ? 'jpg' : $ext;
     if (!isset($scale[$fmt])) { echo "  ? $rel: formato non gestito\n"; $tot['mancanti']++; continue; }
@@ -156,12 +156,12 @@ foreach ($voci as $rel) {
         $dopo = $migliore['dim'];
         if ($dopo >= $prima) {
             @unlink("$tmp.migliore");
-            printf("  SOPRA      %6d KB  %-11s %s (nessun gradino più leggero)\n", $prima / 1024, $lati, $rel);
+            printf("  SOPRA      %6d KB  %-11s %s (nessun gradino più leggero)\n", $prima / 1000, $lati, $rel);
             $tot['sopra']++;
             continue;
         }
-        $sopra = $dopo > $kb * 1024;
-        printf("  %-10s %6d → %4d KB  %-11s %s (%s)\n", $sopra ? 'SOPRA' : 'ridotta', $prima / 1024, $dopo / 1024, $lati, $rel, $etichetta($fmt, $migliore['g']));
+        $sopra = $dopo > $kb * 1000;
+        printf("  %-10s %6d → %4d KB  %-11s %s (%s)\n", $sopra ? 'SOPRA' : 'ridotta', $prima / 1000, $dopo / 1000, $lati, $rel, $etichetta($fmt, $migliore['g']));
         $tot['n']++; $tot['prima'] += $prima; $tot['dopo'] += $dopo; if ($sopra) $tot['sopra']++;
         if (!$scrivi) { @unlink("$tmp.migliore"); continue; }
         $copia = $bk . $rel;
