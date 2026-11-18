@@ -218,6 +218,8 @@ scheda si completano sulla pagina del servizio (`kos-mappatura-inversa.php --sol
 del servizio diventano domande per KOS (stato «Da verificare» nell'Excel). La mappatura inversa completa scritta sullo
 stage nel pomeriggio va annullata con il suo file di ripristino.
 
+**Aggiornamento 18/11.** Il completamento sulla pagina del servizio non era stato applicato in produzione: fatto il 18/11 (101 associazioni). Restano 103 associazioni solo sulla pagina del servizio, da verificare con KOS.
+
 ### Servizi dal sito (25/10)
 
 La libreria legge i servizi della struttura dalle TV di mappatura della scheda (impostazione `kos.struttura_tv_servizi`:
