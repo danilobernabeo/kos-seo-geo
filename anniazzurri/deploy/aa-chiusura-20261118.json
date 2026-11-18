@@ -1,5 +1,5 @@
 {
- "nome": "anniazzurri.it, chiusura dei rilievi della scansione Screaming Frog del 18/11 (R3, R5, R7, R8, N2, N4, N8, N10, minori): og:url uguale al canonical in cache, piè di pagina (Radio, Domande frequenti, logo KOS), elenco news senza limite, commenti MODX, riquadro contatti dei reparti da aaContatto, titolo «Contatti» in paragrafo, Service dello Sportello sociale e descrizione unica di RSA Aperta, telefono dell'ente in formato internazionale, cookie di sessione Secure e SameSite",
+ "nome": "anniazzurri.it, chiusura dei rilievi della scansione Screaming Frog del 18/11 (R3, R5, R7, R8, N2, N4, N8, N10, minori): og:url uguale al canonical in cache, piè di pagina (Radio, Domande frequenti, logo KOS), elenco news senza limite, commenti MODX, riquadro contatti dei reparti da aaContatto, titolo «Contatti» in paragrafo, Service dello Sportello sociale e descrizione unica di RSA Aperta, telefono dell'ente in formato internazionale, cookie di sessione Secure e SameSite; email RSA Aperta in chiaro nel banner delle residenze",
  "settings": [
   {
    "key": "aa.org_phone",
@@ -262,6 +262,12 @@
    "name": "contactBox-lrsa-ap-san-sisto-2",
    "file": "anniazzurri/elements/chunks/contactBox-lrsa-ap-san-sisto-2.html",
    "baseline": "anniazzurri/baseline/chunks/contactBox-lrsa-ap-san-sisto-2.html"
+  },
+  {
+   "type": "chunk",
+   "name": "banner-rsa-aperta",
+   "file": "anniazzurri/elements/chunks/banner-rsa-aperta.html",
+   "baseline": "anniazzurri/baseline/chunks/banner-rsa-aperta.html"
   }
  ]
 }

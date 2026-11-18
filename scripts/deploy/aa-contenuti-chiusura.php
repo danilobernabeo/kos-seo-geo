@@ -113,7 +113,7 @@ $applica = function (string $testo, string $uri, bool $soloCommenti) use ($R, $r
             }, $testo);
             if ($n) $note[] = "tel senza prefisso → +39 ($n)";
         }
-        if (!empty($R['email_chiaro']) && preg_match('#' . $R['email_chiaro']['uri'] . '#', $uri)) {
+        if (!empty($R['email_chiaro']) && str_contains($testo, '<') && preg_match('#' . $R['email_chiaro']['uri'] . '#', $uri)) {   // solo testo HTML: le TV con il solo indirizzo (str.email, emailRsaAperta) restano com'erano
             $loc = $R['email_chiaro']['locali']; $n = 0;
             // ancore con l'email (mailto e testo) e poi email nude nel testo
             $testo = preg_replace_callback('#(?<!emo-exclude -->)<a\b[^>]*href=(["\'])mailto:(' . $loc . ')@anniazzurri\.it\1[^>]*>.*?</a>#is', function ($m) use (&$n) {
