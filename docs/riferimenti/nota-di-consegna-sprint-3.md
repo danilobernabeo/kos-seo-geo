@@ -113,7 +113,7 @@ I collaudi controllano campo per campo il dato strutturato di ogni pagina contro
 | Professionisti kosgroup.com | 150 | 150 OK (99 medici, 51 altri professionisti) | 13 novembre; ripetuto il 18 novembre |
 | Schede struttura (58) e landing (5) kosgroup.com | 63 | 63 OK | 13 novembre; ripetuto il 18 novembre |
 | Villa Margherita Vicenza (landing e medici) | verifica sul sorgente | nodo `Hospital`, 2 reparti, medici `IndividualPhysician` | 13 novembre |
-| Scansione completa di anniazzurri.it (Screaming Frog) | 468 pagine HTML, 463 con dato strutturato (le altre 5 sono i virtual tour, esclusi dall'indice dal 18 novembre) | un solo JSON-LD per pagina, nessun errore di convalida, canonical corretti, sitemap senza pagine non indicizzabili | 18 novembre |
+| Scansione completa di anniazzurri.it (Screaming Frog) | 468 pagine HTML, 463 con dato strutturato (le altre 5 sono i virtual tour, esclusi dall'indice dal 18 novembre) | un solo JSON-LD per pagina, nessun errore di convalida, canonical corretti, sitemap senza pagine non indicizzabili | 18 novembre; ripetuta dopo le correzioni del giorno sulle 453 pagine della sitemap, stesso esito |
 | Scansione completa di kosgroup.com (Screaming Frog) | 916 | un solo JSON-LD per pagina, nessun errore di convalida, canonical e sitemap corretti | 18 novembre |
 
 Come nei due sprint precedenti, il dato strutturato va controllato sull'HTML servito dal server, quello che leggono i crawler AI: sorgente della pagina (Ctrl+U), validator.schema.org o Rich Results Test sul codice incollato. Rapporti dei collaudi disponibili su richiesta.

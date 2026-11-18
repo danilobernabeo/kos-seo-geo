@@ -96,6 +96,16 @@ Tutti i rilievi correggibili lato sito sono chiusi in giornata, prima sullo stag
 - pulsante degli appartamenti verso `#contatti` della pagina;
 - virtual tour con `X-Robots-Tag: noindex, follow`.
 
+**Scansione rapida dopo le correzioni** (modalità elenco, 453 URL della sitemap, 12:09; cartella `screaming-frog\anniazzurri\2026.11.18.12.09.13`):
+- 453 pagine 200 e indicizzabili, un solo JSON-LD ciascuna, 0 errori di convalida;
+- `og:url` uguale al canonical su tutte, nessun riferimento a `fandomlab`;
+- 0 `data-yext-field`, 0 link relativi;
+- breadcrumb uguali tranne `/residenze` (noto).
+
+Gli avvisi sono solo quelli attesi: `department` su 8 residenze, i 3 degli appartamenti, `priceRange` e orari, `ScholarlyArticle` e profilo dell'autrice.
+
+Nota: la sitemap ha una cache pdoTools di un'ora, svuotata a mano alle 11:47 (registro).
+
 **Restano aperti**, in attesa di KOS o da dichiarare nella nota:
 - R2, la retta di Parco di Veio;
 - l'email degli appartamenti;
