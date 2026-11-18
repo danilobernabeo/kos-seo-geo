@@ -109,7 +109,8 @@ Dati: cartella `screaming-frog\kosgroup\2026.11.18.05.01.34` sul PC di Danilo: 7
 - **Pagine:** `/it/centri/centro-ambulatoriale-santo-stefano-filottrano` e `…-san-severino` («Medicina dello Sport»), `/it/centri/ospedale-san-pancrazio` («Riabilitazione da dipendenze»).
 - **Evidenza:** `pagine_con_tag_di_ancoraggio_vuoti.csv`: link relativo che si risolve in `https://kosgroup.com/` (301 verso `/it`), nel riquadro `#aree-intervento`. Le stesse tre righe sono nel CSV dei redirect del 15/11 (`reindirizzamento_(3xx)_link_in_entrata.csv`): sfuggite a quella revisione, non nuove.
 - **Causa probabile:** voci dell'elenco della scheda senza pagina collegata (`href=""`). Destinazioni naturali: `…/ambulatori-e-medicina-specialistica/medicina-dello-sport` e `/it/servizi-e-cure/psichiatria/dipendenze`, entrambe esistenti.
-- **Correzione:** collegare la voce alla pagina esistente, oppure mostrarla come testo senza link. Fuori dalle voci d'audit, ma tocca la regola dei link interni assoluti e validi dello sprint 1.
+- **Causa accertata (diagnostica del 18/11):** gli id nelle TV `mapAreeRiabilitazione` puntavano a pagine cestinate (90, 273), più una quarta non vista dal crawler (Istituto Santo Stefano, 92).
+- **Corretto il 18/11** stage e produzione (`kos-aree-link-correggi.php`): 90 → 64, 273 → 94, 92 tolta; diagnostica: 0 voci con problemi su 347.
 
 ### I3 · Villa Margherita: aperti dal 15/11
 
