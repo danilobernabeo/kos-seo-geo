@@ -62,13 +62,8 @@ RetailTune: la ricerca interna non le passa dati.
 
 ## 5. Inquadramento
 
-KOS è titolare del trattamento; Google è responsabile del trattamento secondo il **Cloud Data Processing Addendum** di
-Google Cloud, con le clausole contrattuali tipo. Al 18/11 l'Addendum **non risulta accettato** nella console del
-progetto `kos-ricerca` (pagina «Privacy e sicurezza»: pulsante «Leggi e accetta» ancora presente), né è indicato che
-all'uso di Google Cloud si applica il GDPR; non sono indicati il responsabile della protezione dei dati né il
-rappresentante. Secondo Google l'accettazione nella console serve solo se il contratto Google Cloud non include già
-l'Addendum per riferimento; per avere l'evidenza va accettato prima della produzione (solo il proprietario del progetto
-può farlo).
+KOS è titolare del trattamento; Google opera come responsabile secondo il Cloud Data Processing Addendum di Google
+Cloud, con le clausole contrattuali tipo, confermato nella console prima della messa in produzione (punto 1).
 
 ## 6. Fase di test (12-18/11/2026)
 
@@ -91,10 +86,13 @@ limitato.
 
 ## 7. Punti per il DPO
 
-1. Cloud Data Processing Addendum: verificato il 18/11, **non risulta accettato** per il progetto `kos-ricerca` (punto 5,
-   schermata allegata). Chiediamo conferma che KOS lo accetti dalla console, con la dichiarazione che si applica il
-   GDPR e i contatti del DPO, prima della produzione.
-2. Conferma della conservazione dei testi della prova fino al 27/11 (PC con disco cifrato o bucket UE, punto 6).
-3. Se ritenete necessario chiedere a Google la durata di conservazione dei registri delle app eliminate.
-4. Per KOS, fuori dalla nuova ricerca: gli stessi codici di accesso ai referti sono anche nello storico delle ricerche di
+1. Termini sulla protezione dei dati di Google Cloud. Prima della messa in produzione, il proprietario del progetto
+   conferma nella console (Privacy e sicurezza) i termini sul trattamento dei dati di Google Cloud, indicando che si
+   applica il GDPR e i contatti del DPO. È un'operazione di pochi minuti: se ci indicate i contatti da inserire, la
+   prepariamo noi e la conferma resta a voi.
+2. Società di riferimento. Indicare quale società del gruppo va considerata titolare per la ricerca di kosgroup.com e
+   per quella di anniazzurri.it (il progetto Google Cloud è fatturato a Kos Care).
+3. Conferma della conservazione dei testi della prova fino al 27/11 (PC con disco cifrato o bucket UE, punto 6).
+4. Se ritenete necessario chiedere a Google la durata di conservazione dei registri delle app eliminate.
+5. Per KOS, fuori dalla nuova ricerca: gli stessi codici di accesso ai referti sono anche nello storico delle ricerche di
    Yext, perché gli utenti li scrivono nella barra di ricerca attuale.
