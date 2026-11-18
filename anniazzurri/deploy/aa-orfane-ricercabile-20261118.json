@@ -1,0 +1,77 @@
+{
+ "nome": "anniazzurri.it, pagine orfane della scansione del 18/11: «Ricercabile» spento (fuori da sitemap e indice, noindex, follow) su 6 eventi e corsi passati e, finché KOS non le approva, su Le vostre storie e Argento Vivo",
+ "risorse": [
+  {
+   "uri": "convegno-santena",
+   "campi": {
+    "searchable": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  },
+  {
+   "uri": "convegno-sigot-2023",
+   "campi": {
+    "searchable": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  },
+  {
+   "uri": "la-gestione-della-persona-con-demenza",
+   "campi": {
+    "searchable": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  },
+  {
+   "uri": "la-comunicazione-che-accompagna",
+   "campi": {
+    "searchable": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  },
+  {
+   "uri": "sguardi-generativi-all-invecchiamento",
+   "campi": {
+    "searchable": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  },
+  {
+   "uri": "speaker-per-un-giorno",
+   "campi": {
+    "searchable": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  },
+  {
+   "uri": "le-vostre-storie",
+   "campi": {
+    "searchable": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  },
+  {
+   "uri": "melograno-argento-vivo",
+   "campi": {
+    "searchable": {
+     "prima": "1",
+     "dopo": "0"
+    }
+   }
+  }
+ ]
+}

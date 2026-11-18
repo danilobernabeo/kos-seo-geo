@@ -20,6 +20,12 @@ printf("id %d  «%s»\nuri %s  template %s (%d)\npubblicata %d  ricercabile %d  
     $r->get('id'), $r->get('pagetitle'), $r->get('uri'), $tpl ? $tpl->get('templatename') : '(nessuno)', $r->get('template'),
     $r->get('published'), $r->get('searchable'), $r->get('cacheable'),
     $d($r->get('createdon')), $d($r->get('editedon')), $d($r->get('publishedon')));
+$par = $r->get('parent') ? $modx->getObject(modResource::class, $r->get('parent')) : null;
+$ptpl = $par ? $modx->getObject(modTemplate::class, $par->get('template')) : null;
+printf("nascosta dai menu %d  menuindex %d\nmadre %s\n", $r->get('hidemenu'), $r->get('menuindex'),
+    $par ? sprintf('%d /%s «%s» template %s, pubblicata %d', $par->get('id'), $par->get('uri'), $par->get('pagetitle'), $ptpl ? $ptpl->get('templatename') : '(nessuno)', $par->get('published')) : '(radice)');
+$cit = $modx->getCount(modResource::class, ['deleted' => 0, 'published' => 1, 'content:LIKE' => '%[[~' . $r->get('id') . ']]%']);
+echo "pagine pubblicate che la citano con [[~{$r->get('id')}]] nel contenuto: $cit\n";
 echo "\nTV del template:\n";
 foreach ($modx->getIterator(modTemplateVarTemplate::class, ['templateid' => $r->get('template')]) as $tt) {
     $tv = $modx->getObject(modTemplateVar::class, $tt->get('tmplvarid'));

@@ -1,6 +1,6 @@
 <?php
 /**
- * aggiorna-campi.php — scrive nel database i campi pagetitle, longtitle, description, introtext e published di un insieme di
+ * aggiorna-campi.php — scrive nel database i campi pagetitle, longtitle, description, introtext, published e searchable di un insieme di
  * risorse preparato nel repository (es. anniazzurri/dati/aa-20/campi-giro-1.json), con controlli e ripristino.
  *
  * Uso (in SSH sul cloud, dalla cartella dell'archivio del repository):
@@ -40,8 +40,8 @@ $modx = \MODX\Revolution\modX::getInstance();
 $modx->initialize('mgr');
 use MODX\Revolution\{modResource, modTemplate, modChunk};
 
-const CAMPI = ['pagetitle', 'longtitle', 'description', 'introtext', 'published'];
-$val = fn($res, string $c): string => $c === 'published' ? (string) (int) $res->get($c) : (string) $res->get($c);
+const CAMPI = ['pagetitle', 'longtitle', 'description', 'introtext', 'published', 'searchable'];
+$val = fn($res, string $c): string => in_array($c, ['published', 'searchable'], true) ? (string) (int) $res->get($c) : (string) $res->get($c);
 $bkRoot = rtrim((string) (getenv('HOME') ?: '.'), '/') . '/backup-kos-seo-geo';
 $stamp = date('Ymd-His');
 $errori = 0; $fatte = 0;
@@ -161,7 +161,7 @@ if ($scrivi && $daFare) {
     file_put_contents("$bkDir/campi.json", json_encode($copia, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
     // Title, description e simili non sono una modifica del contenuto: si conserva la data di modifica
     // (editedon/editedby), che il dato strutturato usa come dateModified. «published» invece la aggiorna.
-    $soloMeta = fn(array $nuovi) => !array_diff(array_keys($nuovi), ['longtitle', 'description', 'pagetitle', 'menutitle', 'introtext']);
+    $soloMeta = fn(array $nuovi) => !array_diff(array_keys($nuovi), ['longtitle', 'description', 'pagetitle', 'menutitle', 'introtext', 'searchable']);
     foreach ($daFare as [$res, $nuovi]) {
         // editedon va letto grezzo (intero) dal database: in MODX 3 get('editedon') restituisce la data formattata
         // («2025-03-04 10:12:00») e (int) ne terrebbe solo l'anno, scritto poi come timestamp (1970-01-01). Corretto il 13/11.
