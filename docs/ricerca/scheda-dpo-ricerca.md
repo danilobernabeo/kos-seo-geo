@@ -60,10 +60,8 @@ RetailTune: la ricerca interna non le passa dati.
 
 ## 5. Inquadramento
 
-- KOS titolare del trattamento; Google responsabile del trattamento secondo il **Cloud Data Processing Addendum** di
-  Google Cloud, con le clausole contrattuali tipo.
-- Ruolo di Danilo Bernabeo, che configura e gestisce il sistema: da inquadrare (responsabile ai sensi dell'art. 28 GDPR o
-  persona autorizzata da KOS).
+KOS è titolare del trattamento; Google è responsabile del trattamento secondo il **Cloud Data Processing Addendum** di
+Google Cloud, con le clausole contrattuali tipo.
 
 ## 6. Fase di test (12-18/11/2026)
 
@@ -86,6 +84,5 @@ indicazione.
 2. Dove conservare i testi della prova fino al 27/11: bucket Cloud Storage in regione UE nel progetto di KOS, con accesso
    limitato (proposta), oppure il PC di Danilo Bernabeo, solo con disco cifrato.
 3. Se ritenete necessario chiedere a Google la durata di conservazione dei registri delle app eliminate.
-4. Inquadramento del ruolo di Danilo Bernabeo (punto 5).
-5. Per KOS, fuori dalla nuova ricerca: gli stessi codici di accesso ai referti sono anche nello storico delle ricerche di
+4. Per KOS, fuori dalla nuova ricerca: gli stessi codici di accesso ai referti sono anche nello storico delle ricerche di
    Yext, perché gli utenti li scrivono nella barra di ricerca attuale.

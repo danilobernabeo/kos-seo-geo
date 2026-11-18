@@ -42,8 +42,8 @@ invio il 18/11 alle 9. Scelte del 17/11: testi della prova nel **bucket UE del p
 principale (il disco del PC di Danilo non è cifrato; il PC resta alternativa solo con disco cifrato); il servizio
 intermedio toglie anche i codici; **statistiche di ricerca di Google spente in produzione** (GA4 dà già numero di
 ricerche e di ricerche senza risultati, senza testo); Cloud Data Processing Addendum da verificare nella console
-(«Privacy e sicurezza»); credenziali nello storico Yext da segnalare a KOS; tra i punti da verificare il ruolo di Danilo
-nel trattamento (responsabile ex art. 28 GDPR o persona autorizzata da KOS), da inquadrare a cura del DPO.
+(«Privacy e sicurezza»); credenziali nello storico Yext da segnalare a KOS; il ruolo di Danilo nella
+gestione dei dati è già regolato con il Gruppo KOS (18/11), non va nella scheda.
 
 - Ricerche della prova: «tutte le ricerche distinte dei 12 mesi, ripulite dai dati personali» (non «300 ricerche»).
 - Testi originali (export Yext, set ripulito, riscritture, elenco dei nomi): sul PC di Danilo in
