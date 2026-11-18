@@ -14,11 +14,11 @@ soluzione è prevista per il 27/11/2026.
 ```
 Browser dell'utente ──► Sito (MODX Cloud) ──► Servizio intermedio ──► Vertex AI Search
    testo della ricerca      pagina risultati      Cloud Run, regione UE      indice e ricerca, regione UE
-                                                   toglie i dati personali    solo pagine pubbliche dei siti
+                                                   toglie contatti e codici   solo pagine pubbliche dei siti
 ```
 
 - L'utente scrive una ricerca nella barra del sito. Il browser la invia al **servizio intermedio**, non direttamente a
-  Google.
+  Google, nel corpo della richiesta e non nell'indirizzo, così i log di accesso di Cloud Run non la registrano.
 - Il servizio intermedio toglie dal testo email, numeri di telefono, codici fiscali, codici alfanumerici (es. codici di
   accesso ai referti o di prenotazione), età e date, poi inoltra la ricerca a Vertex AI Search e restituisce i risultati
   alla pagina.
@@ -45,8 +45,9 @@ indicati da KOS.
 - **Minimizzazione**: pulizia del testo nel servizio intermedio prima di Google; nessun identificativo dell'utente
   inviato a Google (nessun cookie, nessun account, nessun evento utente).
 - **Nessuna conservazione del testo da parte nostra**: i log del servizio intermedio registrano tempo e numero di
-  risultati, non il testo. Le statistiche di ricerca di Google, che conserverebbero il testo, sono spente; i log di
-  Google Cloud registrano la richiesta con il testo oscurato (verificato il 16/11).
+  risultati, non il testo. Le statistiche di ricerca di Google, che conserverebbero il testo, sono spente sulle app di
+  produzione: si spengono solo alla creazione dell'app, quindi le app di produzione nascono così. I log di Google Cloud
+  registrano la richiesta con il testo oscurato (verificato il 16/11).
 - **Risposte generate dall'AI**: solo su anniazzurri.it e solo per domande pratiche (ricovero, costi, moduli, contatti),
   da un elenco chiuso di pagine, escluse le domande su sintomi, diagnosi, farmaci e terapie. Su kosgroup.com nessuna
   risposta generata, salvo diversa decisione di KOS.
@@ -72,7 +73,9 @@ automatico di Google Sensitive Data Protection (regione UE) prima di ogni invio.
 Il 16/11, prima che le regole di pulizia fossero completate, sono arrivate a Vertex 88 ricerche con nomi di persona e
 5 con codici di accesso ai referti scritti dagli utenti nella barra. Lo stesso giorno le regole sono state corrette e
 le app di ricerca che le avevano ricevute sono state eliminate e ricreate con le statistiche spente. Google non
-documenta per quanto conserva i registri di un'app eliminata.
+documenta per quanto conserva i registri di un'app eliminata. L'app di prova di anniazzurri.it, che ha ricevuto solo
+ricerche già ripulite, ha le statistiche attive; in produzione sarà sostituita da un'app nuova con le statistiche
+spente.
 
 I testi della prova (esportazione Yext e set ripulito) sono conservati sul PC di Danilo Bernabeo, in una cartella
 fuori dal repository del codice, con disco cifrato (BitLocker, XTS-AES 128, protezione attiva; verifica del 18/11), e
