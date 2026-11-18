@@ -21,6 +21,8 @@
  *     salta una scheda intera (ultimo pezzo del suo indirizzo) o una sola coppia scheda:servizio («>» va bene solo se
  *     l'argomento è tra virgolette, altrimenti la shell lo prende per una redirezione): per le associazioni
  *     sospette, da far verificare a KOS prima di completarle.
+ *   --solo=<file>  solo le coppie elencate nel file, una per riga «/it/centri/<scheda>|/it/servizi-e-cure/<pagina>»
+ *     (es. le associazioni confermate da TuoTempo o dal testo della scheda, 18/11).
  *   --solo-servizi  solo la prima direzione (scheda → pagina del servizio): decisione del 25/10, la scheda è la fonte;
  *     le associazioni presenti solo sulla pagina del servizio (in gran parte copiate dai filtri Yext) restano da
  *     verificare con KOS e non vengono aggiunte alle schede.
@@ -33,6 +35,17 @@ $scrivi  = in_array('--scrivi', $argv, true);
 $soloServizi = in_array('--solo-servizi', $argv, true);
 $escludi = [];
 foreach ($argv as $a) if (str_starts_with($a, '--escludi=')) $escludi = array_filter(array_map('trim', explode(',', substr($a, 10))));
+$solo = null;   // --solo=<file>: righe «/it/centri/<scheda>|/it/servizi-e-cure/<pagina>», solo queste coppie (in entrambe le direzioni)
+foreach ($argv as $a) if (str_starts_with($a, '--solo=')) {
+    $f = substr($a, 7);
+    if (!is_file($f)) { fwrite(STDERR, "File --solo non trovato: $f\n"); exit(1); }
+    $solo = [];
+    foreach (file($f, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $l) {
+        if (str_starts_with(trim($l), '#')) continue;
+        [$x, $y] = array_map(fn($u) => trim(trim($u), '/'), explode('|', $l) + [1 => '']);
+        $solo["$x|$y"] = false;
+    }
+}
 $ultimo = fn(string $uri) => basename(rtrim($uri, '/'));
 if ($webroot === '' || !is_file("$webroot/config.core.php")) { fwrite(STDERR, "Uso: php kos-mappatura-inversa.php /www [--scrivi]\n"); exit(1); }
 require "$webroot/config.core.php";
@@ -106,7 +119,12 @@ $aggScheda = [];     // sid => [tv => [pid...]]
 $csv = [['Struttura', 'Scheda', 'Servizio', 'Pagina del servizio', 'Aggiunta', 'Dove']];
 $saltate = [];
 $escluse = 0;
-$saltaCoppia = function (array $s, array $x) use ($escludi, $ultimo, &$escluse): bool {
+$saltaCoppia = function (array $s, array $x) use ($escludi, $ultimo, &$escluse, &$solo): bool {
+    if ($solo !== null) {
+        $k = trim($s['uri'], '/') . '|' . trim($x['uri'], '/');
+        if (!array_key_exists($k, $solo)) return true;
+        $solo[$k] = true;
+    }
     $a = $ultimo($s['uri']);
     $coppia = $a . ':' . $ultimo($x['uri']);
     if (in_array($a, $escludi, true) || in_array($coppia, $escludi, true) || in_array(str_replace(':', '>', $coppia), $escludi, true)) { $escluse++; return true; }
@@ -144,6 +162,11 @@ foreach ($aggScheda as $sid => $x) foreach ($x as $tv => $l) {
     echo "    {$schede[$sid]['pagetitle']} — $tv: + " . implode(', ', array_map(fn($pid) => $servizi[$pid]['pagetitle'], $l)) . "\n";
 }
 foreach ($saltate as $s) echo "  ! $s\n";
+if ($solo !== null) {
+    $nonUsate = array_keys(array_filter($solo, fn($v) => !$v));
+    echo "  coppie in --solo: " . count($solo) . ", applicabili: " . (count($solo) - count($nonUsate)) . "\n";
+    foreach ($nonUsate as $k) echo "  ! coppia non applicabile (già allineata, pagina non pubblicata o indirizzo sbagliato): $k\n";
+}
 if ($escludi) echo "  escluse su richiesta (--escludi): $escluse associazioni\n";
 
 $stamp = date('Ymd-His');
