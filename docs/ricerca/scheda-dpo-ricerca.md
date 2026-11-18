@@ -38,7 +38,7 @@ Browser dell'utente ──► Sito (MODX Cloud) ──► Servizio intermedio �
 | Statistiche del sito (GA4) | Account GA4 di KOS, già in uso | Evento di ricerca con il numero di risultati, **senza il testo** |
 
 Il progetto Google Cloud `kos-ricerca` è sull'account Google di KOS marketing.kos2019@gmail.com («KOS group») ed è
-collegato all'account di fatturazione «Kos Care» (verifica del 18/11). Accesso alla console: Danilo Bernabeo e gli
+collegato all'account di fatturazione «Kos Care». Accesso alla console: Danilo Bernabeo e gli
 amministratori indicati da KOS.
 
 ## 4. Misure sui dati
