@@ -42,6 +42,10 @@ Le residenze compaiono con l'etichetta «Anni Azzurri» e il link alla scheda di
 | Psichiatria | Cliniche psichiatriche (9), Comunità terapeutiche psichiatriche (8), Comunità terapeutiche riabilitative per minori (2) |
 | Residenze per anziani | Residenze per anziani (59), Hospice (2), Centri diurni (5) |
 
+### Filtri: prenotazione online
+
+Un interruttore «Prenotabile online» in testa al pannello, sempre visibile e indipendente dall'area, per le strutture con prenotazione online (circa 20, su TuoTempo). Il pulsante «Prenota online» nella scheda del punto e nel riquadro del pin è già previsto.
+
 ### Filtri: servizi (solo dopo la scelta dell'area)
 
 **Ambulatori — Visite specialistiche (25):** gruppo lungo, da comprimere o con la ricerca interna.

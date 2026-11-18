@@ -59,6 +59,10 @@ Le schede delle strutture con due tipi sono contate in entrambi.
 
 La pagina delle residenze di kosgroup.com elenca 59 residenze, mentre le schede di anniazzurri.it sono 57: Villa Olga e Villalba compaiono solo su kosgroup.com e vanno verificate prima dell'import.
 
+### Filtri: prenotazione online
+
+Un interruttore «Prenotabile online» in testa al pannello, sempre visibile e indipendente dall'area: oggi circa 20 strutture su TuoTempo, quasi tutte ambulatori e punti prelievo. La pagina «Prenota online» ha 44.351 pagine viste e i clic verso TuoTempo tracciati da metà ottobre sono 6.401. L'elenco giusto delle strutture viene dai dati TuoTempo che l'IT di KOS sta preparando (RetailTune ne indica 17). Il pulsante «Prenota online» nella scheda del punto è già previsto.
+
 ### Filtri: servizi
 
 Il gruppo dei servizi compare solo dopo la scelta dell'area: senza area le voci sarebbero più di 60. Le voci sono le pagine del menu di ciascuna area, con il numero di strutture associate sul sito.
