@@ -74,15 +74,17 @@ Il 16/11, prima che le regole di pulizia fossero completate, sono arrivate a Ver
 le app di ricerca che le avevano ricevute sono state eliminate e ricreate con le statistiche spente. Google non
 documenta per quanto conserva i registri di un'app eliminata.
 
-I testi della prova (esportazione Yext e set ripulito) saranno **cancellati il 27/11/2026**, salvo diversa
-indicazione.
+I testi della prova (esportazione Yext e set ripulito) sono conservati sul PC di Danilo Bernabeo, in una cartella
+fuori dal repository del codice, con disco cifrato (BitLocker, XTS-AES 128, protezione attiva; verifica del 18/11), e
+saranno **cancellati il 27/11/2026**, salvo diversa indicazione. In alternativa, se preferite che restino su
+infrastruttura KOS, possono essere spostati in un bucket Cloud Storage in regione UE nel progetto di KOS, con accesso
+limitato.
 
 ## 7. Punti per il DPO
 
 1. Conferma che il Cloud Data Processing Addendum risulti accettato per l'account Google Cloud di KOS (lo verifico
    nella console, pagina «Privacy e sicurezza», e ne invio l'evidenza).
-2. Dove conservare i testi della prova fino al 27/11: bucket Cloud Storage in regione UE nel progetto di KOS, con accesso
-   limitato (proposta), oppure il PC di Danilo Bernabeo, solo con disco cifrato.
+2. Conferma della conservazione dei testi della prova fino al 27/11 (PC con disco cifrato o bucket UE, punto 6).
 3. Se ritenete necessario chiedere a Google la durata di conservazione dei registri delle app eliminate.
 4. Per KOS, fuori dalla nuova ricerca: gli stessi codici di accesso ai referti sono anche nello storico delle ricerche di
    Yext, perché gli utenti li scrivono nella barra di ricerca attuale.

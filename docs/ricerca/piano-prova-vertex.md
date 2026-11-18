@@ -38,8 +38,9 @@ bloccati), lo si dice a KOS insieme all'invio della scheda al DPO.
 ## Scelte per la scheda del DPO (12/11, integrate il 16/11)
 
 Scheda per il DPO: `docs/ricerca/scheda-dpo-ricerca.md` (docx impaginato nel formato KOS), rivista con Danilo il 17/11,
-invio il 18/11 alle 9. Scelte del 17/11: testi della prova nel **bucket UE del progetto `kos-ricerca`** come proposta
-principale (il disco del PC di Danilo non è cifrato; il PC resta alternativa solo con disco cifrato); il servizio
+invio il 18/11 alle 9. Scelte del 17/11: testi della prova nel bucket UE del progetto `kos-ricerca` come proposta
+principale, superata il 18/11: il disco del PC di Danilo è cifrato (BitLocker XTS-AES 128, protezione attiva, `manage-bde -status C:`),
+i testi restano sul PC e il bucket è l'alternativa; il servizio
 intermedio toglie anche i codici; **statistiche di ricerca di Google spente in produzione** (GA4 dà già numero di
 ricerche e di ricerche senza risultati, senza testo); Cloud Data Processing Addendum da verificare nella console
 («Privacy e sicurezza»); credenziali nello storico Yext da segnalare a KOS; il ruolo di Danilo nella
