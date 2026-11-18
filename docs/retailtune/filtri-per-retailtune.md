@@ -88,6 +88,15 @@ RSA Aperta e assistenza domiciliare non sono punti sulla mappa: compaiono come s
 
 I ricoveri temporanei e di sollievo sono presenti in quasi tutte le residenze, quindi non sono un filtro. Chiediamo se si possono mostrare come etichetta nella scheda del punto.
 
+## Differenze rispetto alla «Struttura dati» dell'11/11
+
+La struttura dell'11/11 è stata ricavata dall'export di Yext. Questa proposta parte dai siti: dai menu, dalle pagine dei servizi e dalle schede delle strutture. Le differenze sono quattro:
+
+1. **Hospice e centri diurni sono tipi di struttura, non attributi.** Hanno una pagina propria su anniazzurri.it e un punto sulla mappa: su anniazzurri.it sono voci della tendina. È quanto avevamo indicato nel primo invio del 2/11, con 12 tipologie. L'Hospice Beati Coniugi Martin e i centri diurni non sono entità Yext: vanno aggiunti come punti nuovi.
+2. **Appartamenti per anziani:** un nuovo tipo su anniazzurri.it (Bergamo).
+3. **Aree di kosgroup.com:** un livello sopra le tipologie, per la tendina e per il colore dei pin.
+4. **Servizi:** le voci sono quelle dei menu dei siti, con i gruppi indicati sopra. Sostituiscono i gruppi dell'11/11 dove sono diversi.
+
 ## Domande
 
 1. **Casella.** Confermate che il completamento propone solo indirizzi, comuni, province e regioni italiane? Ha un costo a parte?
