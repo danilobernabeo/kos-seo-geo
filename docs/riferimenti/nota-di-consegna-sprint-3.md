@@ -4,7 +4,7 @@
 
 ## Sintesi
 
-Ho messo in produzione tutte le voci dello sprint 3 l'8 novembre e le ho completate entro il 18, in anticipo sulla consegna del 27 novembre. Le 57 residenze di anniazzurri.it hanno ora il dato strutturato e i contatti generati dal server, senza lo script Yext; il 17 novembre ho aggiunto centri diurni, hospice e appartamenti, come reparti della residenza che li ospita, e i servizi senza sede propria. Su kosgroup.com i professionisti sanitari sono descritti nel grafo unico e collegati alle strutture; il 13 novembre ho aggiunto Villa Margherita Vicenza.
+Ho messo in produzione tutte le voci dello sprint 3 l'8 novembre e le ho completate entro il 18. Le 57 residenze di anniazzurri.it hanno ora il dato strutturato e i contatti generati dal server, senza lo script Yext; il 17 novembre ho aggiunto centri diurni, hospice e appartamenti, come reparti della residenza che li ospita, e i servizi senza sede propria. Su kosgroup.com i professionisti sanitari sono descritti nel grafo unico e collegati alle strutture; il 13 novembre ho aggiunto Villa Margherita Vicenza.
 
 | Sito | Voce d'audit | Intervento | Stato | Data |
 | --- | --- | --- | --- | --- |
