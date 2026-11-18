@@ -3,11 +3,48 @@
  "risorse": [
   {
    "uri": "villamargherita",
-   "campi": ["description", "introtext", "longtitle", "content"],
+   "campi": [
+    "description",
+    "introtext",
+    "longtitle",
+    "content"
+   ],
    "sostituzioni": [
-    ["+390444043322", "+39044415851"],
-    ["0444 043322", "0444 15851"],
-    ["0444043322", "044415851"]
+    [
+     "+390444043322",
+     "+39044415851"
+    ],
+    [
+     "0444 043322",
+     "0444 15851"
+    ],
+    [
+     "0444043322",
+     "044415851"
+    ]
+   ]
+  },
+  {
+   "uri": "villamargherita/abbiamo-ricevuto-la-tua-richiesta-vmv",
+   "campi": [
+    "description",
+    "introtext",
+    "longtitle",
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "+390444043322",
+     "+39044415851"
+    ],
+    [
+     "0444 043322",
+     "0444 15851"
+    ],
+    [
+     "0444043322",
+     "044415851"
+    ]
    ]
   }
  ]

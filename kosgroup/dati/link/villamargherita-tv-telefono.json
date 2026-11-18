@@ -1,0 +1,11 @@
+{
+ "nome": "Landing Villa Margherita: TV telPrestazione (pulsanti CHIAMACI) con il centralino +39044415851 (18/11)",
+ "risorse": [
+  {
+   "uri": "villamargherita",
+   "tv": {
+    "telPrestazione": "+39044415851"
+   }
+  }
+ ]
+}
