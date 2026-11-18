@@ -37,8 +37,9 @@ Browser dell'utente ──► Sito (MODX Cloud) ──► Servizio intermedio �
 | Credenziali | Account di servizio dedicato | Chiave custodita come segreto del servizio intermedio, mai nel codice dei siti |
 | Statistiche del sito (GA4) | Account GA4 di KOS, già in uso | Evento di ricerca con il numero di risultati, **senza il testo** |
 
-Progetto Google Cloud e fatturazione sono intestati a KOS. Accesso alla console: Danilo Bernabeo e gli amministratori
-indicati da KOS.
+Il progetto Google Cloud `kos-ricerca` è sull'account Google di KOS marketing.kos2019@gmail.com («KOS group») ed è
+collegato all'account di fatturazione «Kos Care» (verifica del 18/11). Accesso alla console: Danilo Bernabeo e gli
+amministratori indicati da KOS.
 
 ## 4. Misure sui dati
 
@@ -62,7 +63,12 @@ RetailTune: la ricerca interna non le passa dati.
 ## 5. Inquadramento
 
 KOS è titolare del trattamento; Google è responsabile del trattamento secondo il **Cloud Data Processing Addendum** di
-Google Cloud, con le clausole contrattuali tipo.
+Google Cloud, con le clausole contrattuali tipo. Al 18/11 l'Addendum **non risulta accettato** nella console del
+progetto `kos-ricerca` (pagina «Privacy e sicurezza»: pulsante «Leggi e accetta» ancora presente), né è indicato che
+all'uso di Google Cloud si applica il GDPR; non sono indicati il responsabile della protezione dei dati né il
+rappresentante. Secondo Google l'accettazione nella console serve solo se il contratto Google Cloud non include già
+l'Addendum per riferimento; per avere l'evidenza va accettato prima della produzione (solo il proprietario del progetto
+può farlo).
 
 ## 6. Fase di test (12-18/11/2026)
 
@@ -85,8 +91,9 @@ limitato.
 
 ## 7. Punti per il DPO
 
-1. Conferma che il Cloud Data Processing Addendum risulti accettato per l'account Google Cloud di KOS (lo verifico
-   nella console, pagina «Privacy e sicurezza», e ne invio l'evidenza).
+1. Cloud Data Processing Addendum: verificato il 18/11, **non risulta accettato** per il progetto `kos-ricerca` (punto 5,
+   schermata allegata). Chiediamo conferma che KOS lo accetti dalla console, con la dichiarazione che si applica il
+   GDPR e i contatti del DPO, prima della produzione.
 2. Conferma della conservazione dei testi della prova fino al 27/11 (PC con disco cifrato o bucket UE, punto 6).
 3. Se ritenete necessario chiedere a Google la durata di conservazione dei registri delle app eliminate.
 4. Per KOS, fuori dalla nuova ricerca: gli stessi codici di accesso ai referti sono anche nello storico delle ricerche di
