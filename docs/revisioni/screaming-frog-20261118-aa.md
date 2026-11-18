@@ -68,6 +68,42 @@ Revisione indipendente in `screaming-frog-20261118-aa-revisione.md`. Ho ricontro
   - N9, virtual tour;
   - N10, link del logo KOS verso un 301.
 
+## Chiusura del 18/11 (stage e produzione)
+
+Tutti i rilievi correggibili lato sito sono chiusi in giornata, prima sullo stage e poi in produzione. Il dettaglio è nel registro delle decisioni del 18/11.
+
+**Rilievi chiusi:**
+- N1, R1: nessuna immagine sopra 200.000 byte;
+- N2: `og:url` uguale al canonical, compreso `/home-en`;
+- R3 con N3: link interni verso redirect, link «Radio» corretto;
+- R4: `utm_` e `telto:`;
+- R5 e N4: riquadri dei reparti generati dai dati della pagina;
+- R6: email generiche in chiaro nelle residenze;
+- R7: limite dell'elenco news;
+- R8 e N6: commenti interni;
+- N7: cookie di sessione;
+- N8: `Service` dello Sportello e di RSA Aperta;
+- N9: virtual tour in `noindex`;
+- N10: logo KOS;
+- minori: titolo «Contatti», telefoni con +39, PDF di Santa Maria in Chienti, notizia con redirect non pubblicata.
+
+**Controllo in produzione** (`curl` sulle pagine campione, 18/11 alle 10:59):
+- `og:url` uguale all'indirizzo della pagina, anche su home e `/news/`;
+- 0 `<h5>Contatti`, 0 `telto`, 0 commenti di sezione, 0 riferimenti a `fandomlab`;
+- CAP 20054 su San Rocco;
+- `ContactPoint` sullo Sportello;
+- email RSA Aperta in chiaro su Navigli;
+- pulsante degli appartamenti verso `#contatti` della pagina;
+- virtual tour con `X-Robots-Tag: noindex, follow`.
+
+**Restano aperti**, in attesa di KOS o da dichiarare nella nota:
+- R2, la retta di Parco di Veio;
+- l'email degli appartamenti;
+- le 10 pagine orfane non di news;
+- N5, l'avviso `department` atteso.
+
+`/cure-domiciliari-private-milano` non era nella scansione: non ha link interni né `og:url`. Va guardata con le altre landing.
+
 ## Esito dei rilievi del 15/11
 
 | Rilievo del 15/11 | Esito al 18/11 | Evidenza |
