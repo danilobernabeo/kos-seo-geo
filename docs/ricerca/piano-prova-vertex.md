@@ -606,7 +606,12 @@ con risposta 200), app `ricerca-kosgroup-schede-aa`, senza espansione (con due a
 l'espansione non sposta nulla, vedi il confronto alla pari). Indice delle schede AA a 63 su 64: Residenza Ducale 1 «in
 attesa» dalle 8:04 del 17/11, senza errori. Scelta di Danilo dopo tre controlli a vuoto: giro subito, e quando Ducale 1
 entra nell'indice si rilanciano solo le 4 ricerche del campione che la riguardano («modena», «emilia romagna»,
-«sassuolo», «residenza anni azzurri ducale 1») e si aggiornano i numeri. Oltre ai nomi di struttura, l'archivio delle
+«sassuolo», «residenza anni azzurri ducale 1») e si aggiornano i numeri. **Chiusa a 63 su 64 il 18/11** (ultimo controllo, scelta di Danilo
+del 17/11): la rilettura si è conclusa dopo 24 ore con Ducale 1 fallita, «Unknown crawl status» sia da desktop sia da
+mobile, senza altro dettaglio, mentre la pagina risponde 200, ha il canonical su sé stessa ed è nella sitemap. Le 4
+ricerche che la riguardano restano misurate con l'indice incompleto: nella terza forma e nella forma completa di
+kosgroup.com possono essere sottostimate (sono l'1,7% delle ricerche pesate del campione). Per lo sviluppo: controllare
+l'indicizzazione di ogni scheda dopo il caricamento e, per le pagine che falliscono, chiedere a Google il motivo. Oltre ai nomi di struttura, l'archivio delle
 schede AA migliora anche le ricerche per luogo (69,0% → 79,7% con il criterio uniforme) e le altre (85,1% → 88,6%).
 
 **Per lo sviluppo**: regola di posizionamento che mette in testa la pagina delle posizioni aperte per le ricerche di
