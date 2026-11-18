@@ -10,7 +10,8 @@
  * contesto, uri, URL generato da makeUrl. Stampa solo le voci con problemi, più i candidati con lo stesso titolo
  * pubblicati (per la correzione).
  *
- * Uso: php scripts/checks/kos-aree-link.php /www
+ * Uso: php scripts/checks/kos-aree-link.php /www [filtro sul nome delle TV, default mapAree%]
+ *   php scripts/checks/kos-aree-link.php /www map%      tutte le TV di collegamento (aree, interventi, tecnologie, mapServiziStrutture)
  */
 declare(strict_types=1);
 $webroot = rtrim($argv[1] ?? '', '/');
@@ -21,7 +22,8 @@ use MODX\Revolution\{modX, modResource, modTemplateVar, modTemplateVarResource};
 $modx = modX::getInstance();
 $modx->initialize('web');
 
-$tvs = $modx->getCollection(modTemplateVar::class, ['name:LIKE' => 'mapAree%']);
+$filtro = $argv[2] ?? 'mapAree%';
+$tvs = $modx->getCollection(modTemplateVar::class, ['name:LIKE' => $filtro]);
 $problemi = 0; $voci = 0; $schede = [];
 foreach ($tvs as $tv) {
     foreach ($modx->getCollection(modTemplateVarResource::class, ['tmplvarid' => $tv->get('id')]) as $val) {
@@ -52,4 +54,4 @@ foreach ($tvs as $tv) {
         }
     }
 }
-echo "\nSchede pubblicate con TV mapAree*: " . count($schede) . "; voci controllate: $voci; voci con problemi: $problemi\n";
+echo "\nRisorse pubblicate con TV $filtro: " . count($schede) . "; voci controllate: $voci; voci con problemi: $problemi\n";
