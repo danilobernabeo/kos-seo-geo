@@ -14,6 +14,7 @@
  *   "tel_spazi": true         href="tel:035 01151" o "tel:02210861" → href="tel:+3903501151" (numeri nazionali senza +39).
  *   "email_chiaro": {"uri": "regex sugli uri", "locali": "regex della parte locale"}  email generiche nel contenuto
  *       fuori dall'offuscamento di EMO: «@» scritta &#64; e marcatori <!-- emo-exclude -->, come lo snippet aaContatto.
+ *   "regex_chunk": [[modello, sostituzione], ...]  come "regex", anche nei chunk non statici (oltre a content e TV).
  *   "commenti": "regex"       commenti HTML che contengono il modello → commento MODX [[- …]] (anche nei chunk).
  *   "per_uri": {"uri": [[modello, sostituzione], ...]}  sostituzioni regex sul content di una pagina sola.
  *   "mostra_id": ["uri", ...]  stampa id e stato delle pagine (per i passi successivi).
@@ -153,9 +154,13 @@ foreach ($modx->getIterator(modTemplateVarResource::class) as $o) {
     [$nuovo, $note] = $applica($v, $uri, false);
     if ($note) { echo "  {$r->get('id')} /$uri · TV {$o->get('tmplvarid')}: " . implode('; ', $note) . "\n"; $rip[] = ['tipo' => 'tv', 'id' => (int) $r->get('id'), 'tv' => (int) $o->get('tmplvarid'), 'valore' => $v]; $fare[] = [$o, 'value', $nuovo]; }
 }
-if (!empty($R['commenti'])) {
+if (!empty($R['commenti']) || !empty($R['regex_chunk'])) {
     foreach ($modx->getIterator(modChunk::class, ['static' => 0]) as $c) {
-        [$nuovo, $note] = $applica((string) $c->get('snippet'), '', true);
+        [$nuovo, $note] = !empty($R['commenti']) ? $applica((string) $c->get('snippet'), '', true) : [(string) $c->get('snippet'), []];
+        foreach ($R['regex_chunk'] ?? [] as [$m, $s]) {
+            $k = 0; $nuovo = preg_replace($m, $s, $nuovo, -1, $k) ?? $nuovo;
+            if ($k) $note[] = "$m ($k)";
+        }
         if ($note) { echo "  chunk {$c->get('name')}: " . implode('; ', $note) . "\n"; $rip[] = ['tipo' => 'chunk', 'id' => (int) $c->get('id'), 'valore' => $c->get('snippet')]; $fare[] = [$c, 'snippet', $nuovo]; }
     }
 }

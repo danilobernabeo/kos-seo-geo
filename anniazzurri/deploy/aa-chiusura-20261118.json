@@ -268,6 +268,26 @@
    "name": "banner-rsa-aperta",
    "file": "anniazzurri/elements/chunks/banner-rsa-aperta.html",
    "baseline": "anniazzurri/baseline/chunks/banner-rsa-aperta.html"
+  },
+  {
+   "type": "chunk",
+   "name": "contactBox-villaggio-san-francesco",
+   "file": "anniazzurri/elements/aa-schede/contactBox-villaggio-san-francesco.html"
+  },
+  {
+   "type": "chunk",
+   "name": "contactBox-residenza-anni-azzurri-rezzato",
+   "file": "anniazzurri/elements/aa-schede/contactBox-residenza-anni-azzurri-rezzato.html"
+  },
+  {
+   "type": "chunk",
+   "name": "contactBox-residenza-anni-azzurri-casteldonino",
+   "file": "anniazzurri/elements/aa-schede/contactBox-residenza-anni-azzurri-casteldonino.html"
+  },
+  {
+   "type": "chunk",
+   "name": "contactBox-residenza-anni-azzurri-san-lorenzo",
+   "file": "anniazzurri/elements/aa-schede/contactBox-residenza-anni-azzurri-san-lorenzo.html"
   }
  ]
 }

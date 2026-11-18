@@ -1,0 +1,15 @@
+{
+ "nome": "anniazzurri.it, titolo «Contatti» dei riquadri in paragrafo con stile h5 (AA 6), anche nei chunk delle singole residenze e nei contenuti",
+ "regex": [
+  [
+   "#<h5 class=\"card-title\">Contatti</h5>#",
+   "<p class=\"h5 card-title\">Contatti</p>"
+  ]
+ ],
+ "regex_chunk": [
+  [
+   "#<h5 class=\"card-title\">Contatti</h5>#",
+   "<p class=\"h5 card-title\">Contatti</p>"
+  ]
+ ]
+}
