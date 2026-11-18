@@ -820,6 +820,8 @@ $nodoServizio = function ($res) use ($SERVIZI, $modx, $url, $pulisci, $testo, $O
     $s = $SERVIZI[(string) $res->get('uri')] ?? null;
     if (!is_array($s)) return null;
     $principale = !empty($s['id']) ? rtrim($CANON, '/') . '/' . ltrim((string) $s['id'], '/') : $url($res->get('id'));
+    $desc = $res;
+    if (!empty($s['id']) && ($idP = (int) $modx->findResource(trim((string) $s['id'], '/'))) && ($rp = $modx->getObject(\MODX\Revolution\modResource::class, $idP))) $desc = $rp;
     $erogatori = [];
     foreach ((array) ($s['erogatori'] ?? []) as $alias) {
         $id = (int) $modx->findResource(trim((string) $alias, '/'));
@@ -835,7 +837,8 @@ $nodoServizio = function ($res) use ($SERVIZI, $modx, $url, $pulisci, $testo, $O
         'name'        => $s['nome'] ?? $res->get('pagetitle'),
         'serviceType' => $s['tipo'] ?? null,
         'url'         => $principale,
-        'description' => $testo($res->get('description') ?: $res->get('introtext')),
+        // stesso @id su più pagine (RSA Aperta): descrizione della pagina principale, così il nodo è identico ovunque
+        'description' => $testo($desc->get('description') ?: $desc->get('introtext')),
         'provider'    => $erogatori ? (count($erogatori) === 1 ? $erogatori[0] : $erogatori) : ['@id' => $ORG_ID],
         'areaServed'  => $aree ? (count($aree) === 1 ? $aree[0] : $aree) : null,
         'telephone'   => $s['telefono'] ?? null,

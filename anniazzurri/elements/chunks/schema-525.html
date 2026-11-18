@@ -20,12 +20,15 @@
       "availableChannel": {
         "@type": "ServiceChannel",
         "serviceUrl": "https://anniazzurri.it/sportello-sociale-orientamento-per-assistenza-anziani#contatti",
-        "servicePhone": "800131851",
+        "servicePhone": {
+          "@type": "ContactPoint",
+          "telephone": "+39800131851"
+        },
         "availableLanguage": "Italian"
       },
       "hoursAvailable": {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Thursday",
+        "dayOfWeek": "https://schema.org/Thursday",
         "description": "Attivo tutti i giovedì pomeriggio e su richiesta anche in altri giorni"
       }
     },

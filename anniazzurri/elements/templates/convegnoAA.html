@@ -63,7 +63,7 @@
 		<meta property="og:title" content="[[*pagetitle:striptags:esc]]">
 		<meta property="og:description" content="[[*description:esc]]">
 		<meta property="og:type" content="website">
-		<meta property="og:url" content="[[++site_url]][[~[[*id]]]]">
+		<meta property="og:url" content="[[~[[*id]]? &scheme=`full`]]">
 		[[ogImage? &legacy=`assets/img/aa2025/XC4A5731.jpg` &default=`assets/img/anni-azzurri-condivisione-social.jpg` &meta=`1`]]
 
 	</head>
@@ -85,7 +85,7 @@
 				<!-- Briciole visibili, uguali al BreadcrumbList di aaSchema (voce AA-8) -->
 				[[$breadcrumb-stripe]]
 
-				<!-- Titolo e presentazione della pagina (voce AA-18): la galleria da sola non ha testo leggibile -->
+				[[- Titolo e presentazione della pagina (voce AA-18): la galleria da sola non ha testo leggibile ]]
 				<div class="container pt-5 pb-4">
 					<h1 class="h2 mb-2">[[*longtitle:default=`[[*pagetitle]]`]]</h1>
 					[[*introtext:notempty=`<p class="lead mb-0">[[*introtext]]</p>`]]

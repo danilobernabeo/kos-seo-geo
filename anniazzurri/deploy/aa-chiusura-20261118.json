@@ -1,0 +1,267 @@
+{
+ "nome": "anniazzurri.it, chiusura dei rilievi della scansione Screaming Frog del 18/11 (R3, R5, R7, R8, N2, N4, N8, N10, minori): og:url uguale al canonical in cache, piè di pagina (Radio, Domande frequenti, logo KOS), elenco news senza limite, commenti MODX, riquadro contatti dei reparti da aaContatto, titolo «Contatti» in paragrafo, Service dello Sportello sociale e descrizione unica di RSA Aperta, telefono dell'ente in formato internazionale, cookie di sessione Secure e SameSite",
+ "settings": [
+  {
+   "key": "aa.org_phone",
+   "value": "+39800131851",
+   "area": "aa"
+  },
+  {
+   "key": "session_cookie_secure",
+   "value": "1",
+   "xtype": "combo-boolean",
+   "area": "session"
+  },
+  {
+   "key": "session_cookie_samesite",
+   "value": "Lax",
+   "area": "session"
+  }
+ ],
+ "elements": [
+  {
+   "type": "chunk",
+   "name": "head-albero-ricordi",
+   "file": "anniazzurri/elements/chunks/head-albero-ricordi.html",
+   "baseline": "anniazzurri/baseline/chunks/head-albero-ricordi.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-assistenza-domiciliare",
+   "file": "anniazzurri/elements/chunks/head-assistenza-domiciliare.html",
+   "baseline": "anniazzurri/baseline/chunks/head-assistenza-domiciliare.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-centro-diurno",
+   "file": "anniazzurri/elements/chunks/head-centro-diurno.html",
+   "baseline": "anniazzurri/baseline/chunks/head-centro-diurno.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-chi-accogliamo",
+   "file": "anniazzurri/elements/chunks/head-chi-accogliamo.html",
+   "baseline": "anniazzurri/baseline/chunks/head-chi-accogliamo.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-chi-siamo",
+   "file": "anniazzurri/elements/chunks/head-chi-siamo.html",
+   "baseline": "anniazzurri/baseline/chunks/head-chi-siamo.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-contatti",
+   "file": "anniazzurri/elements/chunks/head-contatti.html",
+   "baseline": "anniazzurri/baseline/chunks/head-contatti.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-cure-avanzate",
+   "file": "anniazzurri/elements/chunks/head-cure-avanzate.html",
+   "baseline": "anniazzurri/baseline/chunks/head-cure-avanzate.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-cure-e-assistenza-domiciliari",
+   "file": "anniazzurri/elements/chunks/head-cure-e-assistenza-domiciliari.html",
+   "baseline": "anniazzurri/baseline/chunks/head-cure-e-assistenza-domiciliari.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-faq",
+   "file": "anniazzurri/elements/chunks/head-faq.html",
+   "baseline": "anniazzurri/baseline/chunks/head-faq.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-form-registrazione",
+   "file": "anniazzurri/elements/chunks/head-form-registrazione.html",
+   "baseline": "anniazzurri/baseline/chunks/head-form-registrazione.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-home",
+   "file": "anniazzurri/elements/chunks/head-home.html",
+   "baseline": "anniazzurri/baseline/chunks/head-home.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-home2",
+   "file": "anniazzurri/elements/chunks/head-home2.html",
+   "baseline": "anniazzurri/baseline/chunks/head-home2.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-il-nostro-approccio",
+   "file": "anniazzurri/elements/chunks/head-il-nostro-approccio.html",
+   "baseline": "anniazzurri/baseline/chunks/head-il-nostro-approccio.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-interna-menu",
+   "file": "anniazzurri/elements/chunks/head-interna-menu.html",
+   "baseline": "anniazzurri/baseline/chunks/head-interna-menu.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-landing",
+   "file": "anniazzurri/elements/chunks/head-landing.html",
+   "baseline": "anniazzurri/baseline/chunks/head-landing.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-news",
+   "file": "anniazzurri/elements/chunks/head-news.html",
+   "baseline": "anniazzurri/baseline/chunks/head-news.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-oss-landing",
+   "file": "anniazzurri/elements/chunks/head-oss-landing.html",
+   "baseline": "anniazzurri/baseline/chunks/head-oss-landing.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-patologie",
+   "file": "anniazzurri/elements/chunks/head-patologie.html",
+   "baseline": "anniazzurri/baseline/chunks/head-patologie.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-regione",
+   "file": "anniazzurri/elements/chunks/head-regione.html",
+   "baseline": "anniazzurri/baseline/chunks/head-regione.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-rsa",
+   "file": "anniazzurri/elements/chunks/head-rsa.html",
+   "baseline": "anniazzurri/baseline/chunks/head-rsa.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-soluzioni",
+   "file": "anniazzurri/elements/chunks/head-soluzioni.html",
+   "baseline": "anniazzurri/baseline/chunks/head-soluzioni.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-sos-famiglia",
+   "file": "anniazzurri/elements/chunks/head-sos-famiglia.html",
+   "baseline": "anniazzurri/baseline/chunks/head-sos-famiglia.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-sportello-sociale",
+   "file": "anniazzurri/elements/chunks/head-sportello-sociale.html",
+   "baseline": "anniazzurri/baseline/chunks/head-sportello-sociale.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-storia",
+   "file": "anniazzurri/elements/chunks/head-storia.html",
+   "baseline": "anniazzurri/baseline/chunks/head-storia.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-tariffe-e-convenzioni",
+   "file": "anniazzurri/elements/chunks/head-tariffe-e-convenzioni.html",
+   "baseline": "anniazzurri/baseline/chunks/head-tariffe-e-convenzioni.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head",
+   "file": "anniazzurri/elements/chunks/head.html",
+   "baseline": "anniazzurri/baseline/chunks/head.html"
+  },
+  {
+   "type": "chunk",
+   "name": "head-rsa",
+   "file": "anniazzurri/elements/aa-schede/head-rsa.html"
+  },
+  {
+   "type": "template",
+   "name": "convegnoAA",
+   "file": "anniazzurri/elements/templates/convegnoAA.html"
+  },
+  {
+   "type": "chunk",
+   "name": "footer",
+   "file": "anniazzurri/elements/chunks/footer.html"
+  },
+  {
+   "type": "chunk",
+   "name": "footer-cure-domiciliari",
+   "file": "anniazzurri/elements/chunks/footer-cure-domiciliari.html"
+  },
+  {
+   "type": "chunk",
+   "name": "news-list",
+   "file": "anniazzurri/elements/chunks/news-list.html"
+  },
+  {
+   "type": "chunk",
+   "name": "contactBox",
+   "file": "anniazzurri/elements/aa-schede/contactBox.html"
+  },
+  {
+   "type": "chunk",
+   "name": "schema-525",
+   "file": "anniazzurri/elements/chunks/schema-525.html"
+  },
+  {
+   "type": "snippet",
+   "name": "aaSchema",
+   "file": "anniazzurri/elements/aa-schede/aaSchema.php"
+  },
+  {
+   "type": "chunk",
+   "name": "contactBox-reparto",
+   "file": "anniazzurri/elements/chunks/contactBox-reparto.html",
+   "description": "Riquadro contatti dei reparti dalle TV str.* (R5/N4, Screaming Frog 18/11)"
+  },
+  {
+   "type": "chunk",
+   "name": "contactBox-centro-diurno-alzheimer-san-giuseppe",
+   "file": "anniazzurri/elements/chunks/contactBox-centro-diurno-alzheimer-san-giuseppe.html",
+   "baseline": "anniazzurri/baseline/chunks/contactBox-centro-diurno-alzheimer-san-giuseppe.html"
+  },
+  {
+   "type": "chunk",
+   "name": "contactBox-centro-diurno-anni-azzurri-la-limonaia",
+   "file": "anniazzurri/elements/chunks/contactBox-centro-diurno-anni-azzurri-la-limonaia.html",
+   "baseline": "anniazzurri/baseline/chunks/contactBox-centro-diurno-anni-azzurri-la-limonaia.html"
+  },
+  {
+   "type": "chunk",
+   "name": "contactBox-centro-diurno-anni-azzurri-la-maremma",
+   "file": "anniazzurri/elements/chunks/contactBox-centro-diurno-anni-azzurri-la-maremma.html",
+   "baseline": "anniazzurri/baseline/chunks/contactBox-centro-diurno-anni-azzurri-la-maremma.html"
+  },
+  {
+   "type": "chunk",
+   "name": "cb-centro-diurno-integrato-anni-azzurri-san-rocco",
+   "file": "anniazzurri/elements/chunks/cb-centro-diurno-integrato-anni-azzurri-san-rocco.html",
+   "baseline": "anniazzurri/baseline/chunks/cb-centro-diurno-integrato-anni-azzurri-san-rocco.html"
+  },
+  {
+   "type": "chunk",
+   "name": "contactBox-hospice-beati-coniugi-martin",
+   "file": "anniazzurri/elements/chunks/contactBox-hospice-beati-coniugi-martin.html",
+   "baseline": "anniazzurri/baseline/chunks/contactBox-hospice-beati-coniugi-martin.html"
+  },
+  {
+   "type": "chunk",
+   "name": "contactBox-hospice-san-giorgio-a-colonica",
+   "file": "anniazzurri/elements/chunks/contactBox-hospice-san-giorgio-a-colonica.html",
+   "baseline": "anniazzurri/baseline/chunks/contactBox-hospice-san-giorgio-a-colonica.html"
+  },
+  {
+   "type": "chunk",
+   "name": "contactBox-lrsa-ap-san-sisto-2",
+   "file": "anniazzurri/elements/chunks/contactBox-lrsa-ap-san-sisto-2.html",
+   "baseline": "anniazzurri/baseline/chunks/contactBox-lrsa-ap-san-sisto-2.html"
+  }
+ ]
+}

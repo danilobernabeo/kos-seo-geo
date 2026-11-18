@@ -1,0 +1,59 @@
+{
+ "nome": "anniazzurri.it, chiusura dei rilievi della scansione del 18/11: link verso redirect, link relativi, telto, utm interno, tel senza prefisso, email generiche in chiaro nelle residenze, commenti interni, tag Open Graph di /home-en",
+ "mostra_id": [
+  "il-segreto-per-tenersi-in-forma",
+  "home-en",
+  "radio-anni-azzurri",
+  "domande-frequenti",
+  "soluzioni",
+  "sos-famiglia",
+  "cure-domiciliari",
+  "le-nostre-case-in-lombardia",
+  "appartamenti-anziani-bergamo"
+ ],
+ "redirect": {
+  "cure-domiciliari": "cure-e-assistenza-domiciliare",
+  "le-nostre-case-in-lombardia": "rsa-in-lombardia",
+  "soluzioni": "",
+  "domande-frequenti": "",
+  "sos-famiglia": "cosa-aspettarsi",
+  "notizie-ed-eventi": "news"
+ },
+ "relativi": true,
+ "regex": [
+  [
+   "#href=([\"'])/?telto:#",
+   "href=$1tel:"
+  ],
+  [
+   "#(\\[\\[~544\\]\\]|/?homecare-academy)\\?utm_source=[^\"']*#",
+   "[[~544]]"
+  ]
+ ],
+ "tel_spazi": true,
+ "email_chiaro": {
+  "uri": "^residenza-anni-azzurri-",
+  "locali": "(?:residenza|rsaaperta|hospice)[a-z0-9._-]*"
+ },
+ "commenti": "RECENSIONI|Il chunk contiene|Trappola antispam|casella non spuntata|allegato F|COME SI ATTIVA|COPERTURA GEOGRAFICA",
+ "per_uri": {
+  "home-en": [
+   [
+    "#<meta property=\"og:title\" content=\"[^\"]*\">#",
+    "<meta property=\"og:title\" content=\"Welcome to our nursing homes\">"
+   ],
+   [
+    "#<meta property=\"og:description\" content=\"[^\"]*\">#",
+    "<meta property=\"og:description\" content=\"Clinical expertise, hospitality and passion are values that, for over 20 years, have distinguished us in the field of elderly care.\">"
+   ],
+   [
+    "#<meta property=\"og:image\" content=\"[^\"]*\">#",
+    "<meta property=\"og:image\" content=\"https://anniazzurri.it/assets/img/anni-azzurri-condivisione-social.jpg\">"
+   ],
+   [
+    "#<meta property=\"og:url\" content=\"[^\"]*\">#",
+    "<meta property=\"og:url\" content=\"[[~[[*id]]? &scheme=`full`]]\">"
+   ]
+  ]
+ }
+}
