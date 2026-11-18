@@ -218,7 +218,7 @@ scheda si completano sulla pagina del servizio (`kos-mappatura-inversa.php --sol
 del servizio diventano domande per KOS (stato «Da verificare» nell'Excel). La mappatura inversa completa scritta sullo
 stage nel pomeriggio va annullata con il suo file di ripristino.
 
-**Aggiornamento 18/11.** Il completamento sulla pagina del servizio non era stato applicato in produzione: fatto il 18/11 (101 associazioni). Delle 103 associazioni solo sulla pagina del servizio, 56 confermate da TuoTempo o dal testo della scheda sono state aggiunte alle schede (18/11); restano 42 da verificare con KOS e 5 sospette.
+**Aggiornamento 18/11.** Il completamento sulla pagina del servizio non era stato applicato in produzione: fatto il 18/11 (101 associazioni). Delle 103 associazioni solo sulla pagina del servizio, 72 confermate da TuoTempo (29), dal testo della scheda (27) o dalle carte dei servizi (16) sono state aggiunte alle schede (18/11); restano 26 da verificare con KOS e 5 sospette.
 
 ### Servizi dal sito (25/10)
 
