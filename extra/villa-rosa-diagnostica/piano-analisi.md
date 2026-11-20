@@ -264,9 +264,11 @@ Le giornate di lavoro si incastrano con lo sprint 4 del progetto (consegna 4/12,
 
 ## Da chiedere o decidere
 
-1. **Risonanza nella vecchia sede.** Il paziente si presenta all'ingresso storico o all'accettazione della nuova palazzina? Da qui la scelta tra una o due schede Google.
-2. **Nome nuovo su kosgroup.com e RetailTune**, nello stesso giorno del sito.
-3. **Dati TuoTempo e prenotazioni telefoniche:** chi li fornisce e con quale dettaglio.
-4. **Prezzi e tempi di attesa:** pubblicarli per le prestazioni private? È da verificare con KOS per i vincoli sulla pubblicità sanitaria.
-5. **Testi e foto:** chi fornisce le schede degli esami e le foto della nuova sede, e chi fa la revisione medica.
-6. **Tracciamento delle chiamate:** è possibile un numero dedicato al sito?
+Stato al 20/11:
+
+1. **Scheda Google:** una sola, quella esistente, spostata al nuovo indirizzo. Niente scheda a parte per la risonanza che resta nella vecchia sede. Resta aperto, lato struttura, come indicare quell'ingresso: va detto nella pagina della sede e nella scheda.
+2. **Nome nuovo su kosgroup.com e RetailTune:** da cambiare nello stesso giorno del sito.
+3. **Prenotazioni:** Danilo consulta il backend di TuoTempo, web e telefono, con il massimo dettaglio. Nel repository entrano solo dati aggregati per esame, canale, mese ed eventualmente comune, senza nomi né codici fiscali.
+4. **Prezzi e tempi di attesa:** da chiedere alla struttura, insieme ai vincoli di KOS sulla pubblicità sanitaria.
+5. **Testi e foto:** disponibili dopo la metà di dicembre. Le pagine per il 7/1 si preparano prima, con modelli e contenuti provvisori, e si completano appena arrivano.
+6. **Numero dedicato al sito:** difficile, Danilo chiede comunque. In alternativa si misurano i clic sul numero (già possibile con GA4) e si confrontano con le prenotazioni telefoniche di TuoTempo.
