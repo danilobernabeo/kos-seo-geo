@@ -112,6 +112,10 @@ def aa_voci(slug_):
         if any(re.search(rx, x) for x in sv): out.add(('ANZ', 'Servizi', lab))
     return out
 
+# voci citate nel testo della scheda ma assenti dal riquadro dei servizi (decisione di Danilo, 20/11)
+EXTRA_AA = {'residenza-anni-azzurri-santa-maria-in-chienti': {('ANZ', 'Nuclei specialistici', 'Nucleo Alzheimer'), ('ANZ', 'Nuclei specialistici', 'Nucleo demenze')}}
+NOTE_AA = {'residenza-anni-azzurri-santa-maria-in-chienti': 'Nucleo Alzheimer e Nucleo demenze dal testo della scheda («Nucleo Protetto destinato a ospiti malati di Alzheimer o con gravi forme di demenza»), non ancora nel riquadro dei servizi: segnalato alla redazione'}
+
 # prenotazione online: sedi TuoTempo (26/10) + campo str.prenotazione
 PRENOTA = {'kos:centro-cardinal-ferrari', 'kos:centro-medico-riabilitativo', 'kos:centro-santo-stefano-cagli', 'kos:myolab', 'kos:poliambulatorio-san-martino',
  'kos:poliambulatorio-santo-stefano', 'kos:poliambulatorio-valdaso', 'kos:poliambulatorio-villa-pineta', 'kos:poliambulatorio-villalba', 'kos:punto-prelievi-gamma',
@@ -145,6 +149,7 @@ def site_info(k):
     if k.startswith('aa:'):
         r = aa_voci(k[3:])
         if r: v |= r
+        v |= EXTRA_AA.get(k[3:], set())
     return t, v, unknown
 
 # ---------- colonne ----------
@@ -248,6 +253,7 @@ for r in rows:
     rt = sorted(TIPO_LABEL.get(x.lower().replace('_', '-').replace('laboratorio-analisi', 'punti-prelievo'), x) for x in str(tipo_rt).split(','))
     if site_tipi and site_tipi != rt: note.append('Tipo sul sito: ' + ', '.join(site_tipi) + ' (nel file: ' + ', '.join(rt) + ')')
     if k.startswith('aa:') and not aa.get(k[3:]): note.append('La scheda del sito non ha la sezione dei servizi: filtri da completare')
+    if k.startswith('aa:') and k[3:] in NOTE_AA: note.append(NOTE_AA[k[3:]])
     if k == 'kos:villa-margherita-vicenza': note.append('Unisce le due schede del sito (riabilitazione e psichiatria); pagina principale /villamargherita')
     write(r, k, 'Residenze per anziani' if k.startswith('aa:') else None, '; '.join(note))
 
