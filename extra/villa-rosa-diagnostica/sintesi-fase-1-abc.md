@@ -15,8 +15,8 @@
 **Struttura e indicizzazione**
 
 - 39 pagine HTML rispondono 200 e sono indicizzabili; 1 risponde 404 (`/antonella-rosi`, a livello 3). Le altre stanno a uno o due clic dalla home (home a livello 0, 34 pagine a livello 1, 4 a livello 2). [verificato]
-- La sitemap ha 49 voci: le 39 pagine, la pagina in 404 e 9 PDF. Una voce in 404 e 9 PDF in sitemap, tra cui il Codice Etico e il Modello organizzativo di KOS Care (documenti del gruppo, non della diagnostica) e moduli di consenso. [verificato]
-- Il 404 `/antonella-rosi` è linkato 3 volte dalla pagina della visita neurologica (la pagina di una professionista tolta e il link rimasto). [verificato]
+- Sitemap: **non verificata**. Screaming Frog segnala 0 URL nella sitemap (la scansione non l'ha letta; la scheda «Sitemap» elenca le 49 pagine e PDF scansionati, non le voci di un `sitemap.xml`). Il file va controllato a mano. Nei PDF scansionati ci sono il Codice Etico e il Modello organizzativo di KOS Care (documenti del gruppo, non della diagnostica) e moduli di consenso. [verificato per i PDF; sitemap da verificare]
+- Il 404 `/antonella-rosi` è linkato 3 volte dalla pagina della visita neurologica (ipotesi: pagina di una professionista tolta e link rimasto). [verificato il 404 e i 3 link; la causa è un'ipotesi]
 - `/medici/` è l'unica pagina con la barra finale nell'indirizzo; le altre no. [verificato]
 - Nessuna pagina ha il tag `canonical`, nessuna ha meta robots, nessuna ha hreflang. [verificato]
 
@@ -39,22 +39,22 @@
 
 **Link**
 
-- 152 link verso `app.tuotempo.com` (151 con testo «PRENOTA»): 136 prenotazioni con identificativo di prestazione distinto, 135 sulla sola pagina `/prenota-online`. Il sito ha già un collegamento diretto per esame. [verificato]
+- 152 link verso `app.tuotempo.com` (151 con testo «PRENOTA»): 136 prenotazioni con identificativo di prestazione distinto, 135 sulla sola pagina `/prenota-online`. I link TuoTempo stanno su 4 pagine: `/prenota-online` (135), odontoiatrica (11), ecocolordoppler vascolare (4), elettromiografia (2); risonanza, ecografia, RX, radiologia body e neuroradiologia non ne hanno. Il collegamento diretto per esame esiste quindi solo in parte. [verificato]
 - Ogni pagina ha un link alla scheda di kosgroup.com (`/it/centri/villa-rosa-diagnostica`, 39 + 1 nel testo) e uno nel piè di pagina a `https://kosgroup.com/`, che risponde 301 verso `/it`. [verificato]
 - Link rotti o da correggere in uscita: app iOS «MyPoloDiagnostico» (404 su Apple) in 2 pagine; link a `neomesia.com/villa-rosa` («Clinica Specialistica Psichiatrica») nella pagina Il centro, in 301; link a `sstefano.it/societa-trasparente` in 301; nel PDF della dichiarazione di accessibilità l'indirizzo scritto `villarosadiagnistica.it` (senza risposta). [verificato]
 
 **Sicurezza e intestazioni**
 
 - Tutti gli URL sono HTTPS; nessun contenuto misto. [verificato]
-- Sui 120 URL interni mancano HSTS (119) e `X-Content-Type-Options` (119) e una Referrer-Policy sicura (119); la Content-Security-Policy manca su 48 URL e `X-Frame-Options` su 39 pagine HTML, secondo il conteggio di Screaming Frog (la base di calcolo di questi due ultimi dati non è stata riverificata riga per riga). [verificato per HSTS, X-Content-Type-Options e Referrer-Policy; gli altri due da riscontrare]
-- Un cookie di sessione `PHPSESSID` viene emesso su tutte le 39 pagine HTML, prima di qualsiasi consenso. [verificato; se sia tecnico o analitico è da chiarire]
+- Nei 120 URL interni non risultano le intestazioni HSTS, Content-Security-Policy, X-Frame-Options, X-Content-Type-Options e Referrer-Policy (l'export degli header non ha colonne corrispondenti); i conteggi 119, 48 e 39 di Screaming Frog sono basi di calcolo, non quantità di pagine. [verificato]
+- Un cookie di sessione `PHPSESSID` viene emesso su tutte le 39 pagine HTML, prima di qualsiasi consenso. [verificato]. È il cookie di sessione PHP del CMS, quindi tecnico; resta da confermare nella cookie policy che sia dichiarato come tale.
 - Cache: l'HTML esce con `no-store, no-cache, must-revalidate` e scadenza 1981 (nessuna cache); le risorse statiche hanno `max-age=604800` (7 giorni) e compressione gzip. [verificato]
 - Server nginx, HTTP/1.1. Tempo medio di risposta dell'HTML 0,32 s (massimo 3,25 s, `/neuroradiologia`, un picco singolo da ripetere). [verificato; il picco è dedotto]
 
 **Immagini e file**
 
 - 31 immagini, 1.362 kB in tutto, nessuna sopra 200 kB. Per Screaming Frog 30 su 31 non hanno gli attributi larghezza e altezza e 1 non ha il testo alternativo; le estrazioni personalizzate per WebP e caricamento differito danno 0 su tutte le pagine. [verificato; la scelta delle espressioni di estrazione non è stata riletta]
-- 9 PDF: 7 sopra 200 kB, 3 senza titolo. I PDF di preparazione agli esami (ecografia e RX dell'addome) risultano modificati il 12/03/2026; il Codice Etico e il Modello organizzativo del 12/02/2019. [verificato]
+- 9 PDF: 7 sopra 200 kB, 3 senza titolo. I PDF di preparazione agli esami (ecografia e RX dell'addome) risultano modificati il 12/03/2026; il Codice Etico e il Modello organizzativo hanno data di creazione 12/02/2019 nei metadati e 18/03/2019 nell'header del server. [verificato]
 
 **Piattaforma**
 
@@ -71,13 +71,13 @@
 - **GTM:** contenitore `GTM-P5XL4PT` caricato nella testata di ogni pagina. Nessun `dataLayer.push` né attributo di tracciamento nel codice: gli eventi, se esistono, sono configurati dentro il contenitore (da esportare). [verificato nel codice; il resto non verificato]
 - **Consenso:** lo script di Cookiebot (`cd.js`, la dichiarazione) è presente solo nella pagina Privacy; il banner non si vede nel codice della home. Può essere caricato da GTM: **da verificare** prima di fidarsi dei dati GA4. [non verificato]
 - **Prenotazioni:** il collegamento a TuoTempo avviene con un indirizzo fisso (`app.tuotempo.com/mop/search_activity.php`, con base dati e area della sede) senza parametri di campagna: la sorgente della visita si perde a meno che TuoTempo o GTM non gestiscano il collegamento tra domini. [verificato; la conseguenza è dedotta]
-- **Telefono:** due numeri, 059 303034 (servizi ambulatoriali) e 059 306335 (servizi diagnostici); nessun numero dedicato al sito; i link `tel:` sono presenti in tutte le pagine. Il clic sul telefono si può misurare solo se GTM lo registra: da verificare. [verificato per i numeri; la misura non verificata]
+- **Telefono:** tre numeri: 059 303034 (servizi ambulatoriali), 059 306335 (servizi diagnostici) e 059 9763143 (consulto TMS, nella sola pagina TMS); nessun numero dedicato al sito; i link `tel:` sono presenti in tutte le pagine. Il clic sul telefono si può misurare solo se GTM lo registra: da verificare. [verificato per i numeri; la misura non verificata]
 - **Parametri UTM per le mail di dicembre:** i link verso TuoTempo non li prevedono; il piano di misura deve decidere dove si leggono (pagine di arrivo sul sito, non l'app di TuoTempo). [dedotto]
 
 ## Incongruenze nei contenuti attuali (da chiarire con la struttura)
 
-1. **Orari diversi su tre pagine.** Home: lun-ven 7:30-19:30, sab 7:30-19:00. Informazioni utili: ambulatoriali lun-sab 8:30-19:30, diagnostici lun-ven 9:30-16:30 e sab 8:30-13:00. Pagina Risonanza: ambulatoriali 8:00-19:30, diagnostici lun-ven 9:00-18:30 e sab 8:30-13:00. [verificato] Gli orari devono essere uno solo, uguale anche alla scheda Google e a RetailTune.
-2. **Due indirizzi email** nel sito: `diagnostica.villarosa@kosgroup.com` (testata) e `diagnostica@villarosa.it` (pagina Informazioni utili, dominio diverso). [verificato] Da capire se `villarosa.it` è di KOS.
+1. **Orari diversi nello stesso sito.** Testata di tutte le 39 pagine: lun-ven 7:30-19:30, sab 7:30-19:00. Colonna laterale di 14 pagine di servizio (es. Risonanza): ambulatoriali 8:00-19:30, diagnostici lun-ven 9:00-18:30, sab 8:30-13:00 (queste pagine si contraddicono quindi al loro interno). Informazioni utili: ambulatoriali lun-sab 8:30-19:30, diagnostici lun-ven 9:30-16:30 e sab 8:30-13:00. Pagina TMS: consulto lun-ven 8:30-16:00. [verificato] Gli orari devono essere uno solo, uguale anche alla scheda Google e a RetailTune.
+2. **Cinque indirizzi email** nel sito: `diagnostica.villarosa@kosgroup.com` (testata), `diagnostica@villarosa.it` (Informazioni utili), un indirizzo nominativo `@villarosa.it` (pagina TMS), `dpo@kosgroup.com` e una PEC di KOS Care (Privacy). [verificato] Il dominio `villarosa.it` risulta in uso operativo: da chiarire chi lo gestisce e se resta.
 3. **Avviso di sospensione sulla home:** dal 31 agosto sono sospesi RX, ortopantomografia, teleradiografia, Dentalscan e Cone Beam «a causa dei lavori del nuovo Polo». [verificato] Il piano marketing li elenca tra i servizi «già presenti»: serve la data di riattivazione.
 4. **Offerta oggi sul sito e offerta del piano.** Il sito presenta anche Stimolazione Magnetica Transcranica (TMS, in primo piano nella home «per il trattamento di patologie psichiatriche e neurologiche»), visita psichiatrica, colloqui di psicoterapia, visita neurologica e visita cardiologica; il piano non le cita. [verificato] Non è deciso se restano con il nuovo nome.
 5. **«Villa Rosa» e la psichiatria.** Il piano segnala l'associazione con la clinica psichiatrica come punto di attenzione; il sito stesso mette TMS e psichiatria in evidenza e linka la scheda psichiatrica di Neomesia. [verificato] Che questo rafforzi la confusione è un'ipotesi da misurare con le ricerche, non un dato. [dedotto]
@@ -90,7 +90,7 @@
 
 - Quale pagina TMS tenere e la regola sui doppioni (ecocolordoppler, TMS).
 - Se TMS, psichiatria e psicoterapia restano sul sito con il nuovo nome (cambia la strategia sul nome e sull'associazione con la psichiatria).
-- Se i PDF del gruppo (Codice Etico, Modello organizzativo) devono restare nella sitemap della diagnostica.
+- Se i PDF del gruppo (Codice Etico, Modello organizzativo) devono restare nel sito e nella sitemap della diagnostica (dopo aver verificato la sitemap).
 
 **Da chiedere alla struttura o a KOS**
 
@@ -105,10 +105,19 @@
 
 ## Priorità emerse (primo elenco, da validare)
 
-1. Dato strutturato assente: nuova struttura con `@id` stabili e `parentOrganization` verso KOS S.p.A. (regole del progetto).
+1. Dato strutturato assente (nessun JSON-LD; sulla pagina TMS ci sono 5 blocchi di microdati `Question` senza `FAQPage`, da rimuovere o convertire nel grafo unico; ente giuridico da confermare tra KOS S.p.A. e KOS Care, perché PEC e Modello organizzativo indicano KOS Care): nuova struttura con `@id` stabili e `parentOrganization` verso KOS S.p.A. (regole del progetto).
 2. Meta description, H1 e titoli: correggere il valore sbagliato delle descrizioni (16 pagine) e l'H1 generico (14 pagine).
 3. Anteprime social assenti su tutte le pagine.
-4. Pagina in 404 in sitemap, doppioni, link rotti in uscita.
+4. Pagina in 404 con link interni, doppioni, link rotti in uscita (e, dopo la verifica, sitemap).
 5. Orari, email e nome unificati prima del 7/1 (stesso giorno su sito, scheda Google, kosgroup.com e RetailTune).
 6. Misura: verificare GTM, consenso e collegamento con TuoTempo prima della mail di metà dicembre.
 7. Intestazioni di sicurezza e cache: interventi tecnici a basso rischio, sul server.
+
+## Aggiunte dopo la revisione indipendente (20/11/2026)
+
+- **Il menu «Prenota Online» porta fuori dal sito.** Su tutte le pagine la voce di navigazione punta a `https://kosgroup.com/it/centri/villa-rosa-diagnostica#prenota-online`: il percorso principale di prenotazione passa da kosgroup.com e non da `/prenota-online`. Cambia l'analisi C (conversione e attribuzione tra i due domini) e va portato nelle decisioni. [verificato]
+- **Nessun modulo** (`<form>`) nei 39 sorgenti: la misura dei moduli prevista dall'analisi C non si applica; le conversioni sono clic su TuoTempo, telefono ed email.
+- **Intestazioni di sicurezza:** nei 120 URL interni non risultano HSTS, CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy (nessuna colonna corrispondente nell'export degli header); i numeri 119, 48 e 39 sono solo le basi di calcolo di Screaming Frog.
+- **«39 pagine indicizzabili»** significa senza blocchi tecnici, non indicizzate da Google (serve Search Console).
+- **Priorità da riordinare:** la misura (scadenza più vicina) e i contenuti visibili (orari, avviso di sospensione, nome) precedono il dato strutturato; manca ancora una stima di sforzo e la distinzione «entro il 7/1» / «dopo».
+- **Non trattati in questa fase:** log e crawler AI, catene di redirect esterne, stato del cloud.
