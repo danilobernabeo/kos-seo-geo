@@ -1,0 +1,63 @@
+# Diagnostica Villa Rosa: analisi e restyling tecnico di villarosadiagnostica.it (fuori dal progetto SEO/GEO)
+
+Lavoro esterno al progetto, commissionato a parte dal referente marketing di Danilo. Riguarda il sito
+indipendente https://villarosadiagnostica.it (MODX Cloud, sviluppato e gestito da Danilo). Usa gli strumenti
+del repository, ma non è una voce d'audit e non compare nella documentazione del progetto. Si applicano le
+regole del dato strutturato del progetto (un solo `@graph`, `@id` stabili, `parentOrganization` verso
+KOS S.p.A., mai `sameAs` tra entità diverse).
+
+## Scopo
+
+Partendo dai dati, arrivare a una proposta completa di restyling tecnico e di contenuti, in vista
+dell'apertura della nuova palazzina della diagnostica (7/1/2027). La proposta deve rendere il sito più
+efficace per l'utenza locale di Modena: ricerca su Google e nella mappa, assistenti AI, prenotazione e
+contatto.
+
+## Contesto (dal piano marketing «DIAGNOSTICA VILLA ROSA_piano apertura 2027», gennaio 2027)
+
+- **Nuova sede.** Il polo diagnostico si sposta in una nuova palazzina adiacente alla vecchia (Via Fratelli
+  Rossetti / via Asiago, Modena), con ingresso indipendente e nuovo indirizzo. Una risonanza resta attiva
+  nella vecchia sede. Il cantiere chiude il 30/11/2026 e l'apertura è prevista per il 7/1/2027.
+- **Offerta.**
+  - Novità: risonanza magnetica (Siemens 1,5 T, esami neurologici, muscoloscheletrici e «body») e TAC.
+  - Già presenti: OPT e TC Cone Beam, RX, ecografie, ecocolordoppler ed elettromiografie.
+  - Nuova offerta ambulatoriale.
+  - Attività in convenzione SSN e privata.
+  - Prenotazione online su TuoTempo, oltre a telefono e sportello.
+- **Nome.** «Diagnostica Villa Rosa». Il dominio villarosadiagnostica.it resta lo stesso: secondo l'agenzia
+  arrivano circa 1.640 visite organiche al mese (settembre 2026).
+- **Punti di attenzione:**
+  - «Villa Rosa» è associata alla psichiatria (c'è anche la clinica psichiatrica Villa Rosa di KOS).
+  - Il pubblico percepito è oltre i 60 anni, mentre l'età media in città è di 48.
+  - A Sassuolo c'è un omonimo che non fa parte del gruppo, il Centro Medico Kos.
+- **Concorrenti indicati:** Hesperia (Gruppo Garofalo), Affidea Modena Medica, Ospedale Fogliani.
+- **Calendario marketing:**
+  - metà dicembre: mail ai contatti;
+  - 7/1: apertura;
+  - fine gennaio: inaugurazione;
+  - fine gennaio-febbraio: campagne digitali e pubblicità tradizionale;
+  - marzo-maggio: incontri con i medici di base e open day.
+
+## Contenuto della cartella
+
+| Percorso | Cosa |
+|---|---|
+| `piano-analisi.md` | piano dettagliato delle analisi, con le fonti, i metodi, i risultati attesi e le decisioni che ne dipendono |
+| `docx/` | versione Word dei documenti |
+| `dati/` | estrazioni e risultati delle analisi (senza dati personali) |
+
+## Decisioni
+
+| Data | Decisione | Fonte |
+|---|---|---|
+| 20/11/2026 | Progetto a parte per il referente marketing. Analisi completa e dettagliata, senza limite di tempo | Danilo |
+| 20/11/2026 | Il dominio resta villarosadiagnostica.it, con il nuovo nome «Diagnostica Villa Rosa» | piano marketing |
+| 20/11/2026 | Il marchio resta KOS. L'immagine grafica può differire, entro i limiti del marchio | Danilo |
+| 20/11/2026 | GA4 e Search Console del sito vanno esportati in BigQuery nel progetto `kos-analytics-482819`, con località europe-west3 | questa chat |
+
+## Rilasci e ripristino
+
+Da definire con la proposta. Valgono le regole del repository: installazione con script ripetibili (prova,
+`--scrivi`, backup, ripristino), prima sul cloud di sviluppo e poi in produzione. Niente rilasci in
+produzione il giorno prima di una consegna di sprint del progetto né durante le settimane di verifica di
+Cerved/ProWeb.
