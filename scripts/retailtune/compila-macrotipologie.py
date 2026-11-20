@@ -222,7 +222,9 @@ ws.cell(2, NOTE).font = Font(bold=True)
 
 ORDER = ['AMB', 'RIA', 'PSI', 'ANZ']
 log = []; seen = set()
+rows_keys = {}
 def write(r, k, extra_tipo=None, note=''):
+    rows_keys[r] = [k]
     areas, marks, unknown = build_row(k, extra_tipo)
     for i, a in enumerate([x for x in ORDER if x in areas]): ws.cell(r, c0 + i).value = AREA_LABEL[a]
     for m in marks:
@@ -346,6 +348,7 @@ testo = [
  'Struttura',
  '- Un solo foglio per tutte le strutture dei due siti. Macrotipologia = tendina di kosgroup.com. Per anniazzurri.it la tendina è il gruppo «Tipo di struttura» della macrotipologia Residenze per anziani.',
  '- Ogni gruppo di filtri vale solo per la sua macrotipologia (intestazione della riga 1 e colore della colonna). «Prenotabile online» vale per tutte.',
+ '- Il foglio «Servizi Google» elenca, per ogni struttura, i servizi personalizzati da caricare sulla scheda Google: nome, descrizione (max 300 caratteri) e categoria attuale della scheda a cui legarli. Le categorie verranno riviste dopo la pubblicazione; i servizi si adegueranno.',
  '- Il foglio «Voci e codici» elenca gruppi, voci, codici proposti (da usare come parametri nell\'indirizzo) e numero di strutture.',
  '',
  'Regole',
@@ -366,3 +369,67 @@ for row in wl.iter_rows():
     for c in row:
         if c.value in ('Struttura', 'Regole', 'Colori delle righe'): c.font = Font(bold=True)
 wb.save('KOS-macrotipologie-compilato.xlsx')
+
+# ---------- foglio «Servizi Google» (servizi personalizzati delle schede) ----------
+desc = json.load(open('srv/descrizioni.json'))
+DESC_KOS = json.load(open('srv/descrizioni-servizi.json'))
+def pulisci(d):
+    if not d: return ''
+    frasi = re.split(r'(?<=[.!?])\s+', d.strip())
+    frasi = [f for f in frasi if not re.match(r'(?i)(scopri|prenota|contatta|chiama|vieni)', f)]
+    t = ' '.join(frasi).strip()
+    t = re.sub(r'\b(del|dal) Gruppo KOS\b|\bKos\b', '', t).replace('  ', ' ').strip(' :,')
+    return t[:300]
+DESC_EXTRA = {
+ 'Assistenza persone con disabilità': 'Percorsi riabilitativi e assistenziali per persone con disabilità, con progetto individuale e équipe multiprofessionale.',
+ 'Riabilitazione da dipendenze': 'Percorsi riabilitativi per persone con dipendenze, in collaborazione con i servizi del territorio.'}
+NOME_PSI = lambda l: 'Cura ' + ({'Psicosi': 'delle psicosi', 'Schizofrenia': 'della schizofrenia', 'Dipendenze': 'delle dipendenze', 'Psicogeriatria': 'dei disturbi psicogeriatrici'}.get(l) or ('dei ' + l[0].lower() + l[1:] if l.startswith('Disturbi') else 'del ' + l[0].lower() + l[1:]))
+DESC_AA = {
+ 'Nucleo Alzheimer': 'Nucleo protetto dedicato alle persone con malattia di Alzheimer, con spazi sicuri e attività di stimolazione cognitiva.',
+ 'Nucleo demenze': 'Nucleo protetto per persone con demenza, con assistenza dedicata e attività di stimolazione cognitiva.',
+ 'Nucleo stati vegetativi': 'Nucleo dedicato all’assistenza di persone in stato vegetativo, con assistenza sanitaria continua.',
+ 'Nucleo alta complessità neurologica': 'Posti dedicati a persone con patologie neurologiche ad alta complessità assistenziale.',
+ 'Nucleo disabili': 'Nucleo dedicato all’accoglienza di persone con disabilità fisiche e psichiche.',
+ 'Riabilitazione': 'Trattamenti di riabilitazione e fisioterapia per il recupero e il mantenimento dell’autonomia degli ospiti.',
+ 'Assistenza domiciliare post dimissione': 'Assistenza a domicilio dopo la dimissione, per accompagnare il rientro a casa.',
+ 'RSA Aperta': 'Servizi sociosanitari a domicilio per anziani non autosufficienti e persone con demenza, secondo la misura regionale RSA Aperta.',
+ 'Cure intermedie': 'Posti di cure intermedie per il recupero dopo un ricovero ospedaliero, prima del rientro a casa.',
+ 'Visite ed esami': 'Visite specialistiche ed esami diagnostici nella struttura.',
+ 'Centro dialisi': 'Centro dialisi interno alla struttura.',
+ 'Ricoveri temporanei e di sollievo': 'Ricoveri per periodi brevi, anche di sollievo per le famiglie o dopo un ricovero ospedaliero.',
+ 'Palestra e fisioterapia': 'Palestra attrezzata e fisioterapia per mantenere la mobilità e l’autonomia.'}
+cat = {}
+for f in ['gbp-aa.xlsx', 'gbp-ca.xlsx', 'gbp-extra.xlsx']:
+    for row in openpyxl.load_workbook(f, read_only=True).active.iter_rows(min_row=2, values_only=True):
+        if row[2]: cat[row[2]] = (row[17] or '', row[18] or '')
+wsg = wb.create_sheet('Servizi Google', 3)
+wsg.append(['codice_negozio', 'Struttura', 'Categoria principale attuale (Google)', 'Categorie aggiuntive attuali', 'Servizio (nome sulla scheda)', 'Descrizione (max 300 caratteri)', 'Pagina del sito'])
+SERV_GROUPS = {'Visite specialistiche', 'Esami e diagnostica', 'Tipi di riabilitazione', 'Disturbi trattati', 'Nuclei specialistici', 'Servizi'}
+nserv = 0
+for rr in range(3, ws.max_row + 1):
+    cod = ws.cell(rr, 2).value; nome = ws.cell(rr, 4).value
+    if not nome or ws.cell(rr, 1).fill == GRIGIO: continue
+    voci = []
+    for (a, g, l), c in col_of.items():
+        if g in SERV_GROUPS and ws.cell(rr, c).value == 'X': voci.append((a, g, l))
+    # servizi delle residenze presenti in quasi tutte (non filtri, ma utili sulla scheda)
+    k = None
+    for x in rows_keys.get(rr, []): k = x
+    if k and k.startswith('aa:'):
+        d = aa.get(k[3:]) or {}
+        sv = [x.lower() for x in d.get('Servizi', [])]
+        if any(re.search(r'ricoveri (temporanei|estivi)', x) for x in sv): voci.append(('ANZ', 'Servizi', 'Ricoveri temporanei e di sollievo'))
+        if any('palestra' in x for x in sv): voci.append(('ANZ', 'Servizi', 'Palestra e fisioterapia'))
+    c1, c2 = cat.get(cod, ('', ''))
+    for a, g, l in voci:
+        if a == 'ANZ': nm, ds, url = l, DESC_AA.get(l, ''), ''
+        else:
+            info = desc.get(l, {}); url = info.get('url', '')
+            nm = NOME_PSI(l) if g == 'Disturbi trattati' else l
+            ds = DESC_KOS[l]
+        wsg.append([cod, nome, c1, c2, nm, ds, url]); nserv += 1
+for c, w in zip('ABCDEFG', (14, 46, 26, 40, 44, 90, 60)): wsg.column_dimensions[c].width = w
+for cell in wsg[1]: cell.font = Font(bold=True)
+wsg.freeze_panes = 'A2'
+wb.save('KOS-macrotipologie-compilato.xlsx')
+print('servizi Google', nserv)
