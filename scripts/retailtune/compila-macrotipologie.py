@@ -190,7 +190,7 @@ for mr in list(ws.merged_cells.ranges):
 for c in range(12, ws.max_column + 1):
     for r in (1, 2): ws.cell(r, c).value = None
 
-GIALLO = PatternFill('solid', fgColor='FFF2CC'); ARANCIO = PatternFill('solid', fgColor='FCE4D6'); GRIGIO = PatternFill('solid', fgColor='D9D9D9')
+GIALLO = PatternFill('solid', fgColor='FFF2CC'); ARANCIO = PatternFill('solid', fgColor='FCE4D6'); GRIGIO = PatternFill('solid', fgColor='D9D9D9'); AZZURRO = PatternFill('solid', fgColor='DDEBF7')
 AREA_FILL = {'TUTTE': 'E7E6E6', 'AMB': 'DDEBF7', 'RIA': 'E2EFDA', 'PSI': 'E9E1F2', 'ANZ': 'FCE4D6'}
 c0 = 12
 ws.cell(1, c0).value = 'Macrotipologie (4 valori: Ambulatori e medicina specialistica, Riabilitazione, Psichiatria, Residenze per anziani). Una per colonna'
@@ -237,8 +237,10 @@ for r in rows:
     nome = ws.cell(r, 4).value; tipo_rt = ws.cell(r, 3).value
     k = match(nome)
     if k == 'DOPPIONE':
-        ws.cell(r, NOTE).value = 'Doppione di Poliambulatorio Villalba (VPI00_VPM): da eliminare'
-        for c in range(1, NOTE): ws.cell(r, c).fill = GRIGIO
+        ws.cell(r, NOTE).value = ('Struttura contenitore di Poliambulatorio Villalba e Clinica Dentale Villalba (stessa sede): da tenere, '
+            'serve alle schede Google (recensioni sul contenitore e sulle due strutture contenute). Proposta: non visibile nel widget '
+            '(nessuna pagina sul sito, pin sovrapposto alle due strutture), quindi senza macrotipologie né filtri. Da confermare con RetailTune')
+        for c in range(1, NOTE): ws.cell(r, c).fill = AZZURRO
         continue
     known = k in site_types or k == 'kos:villa-margherita-vicenza' or (k.startswith('aa:') and k[3:] in aa)
     if not known:
@@ -355,7 +357,8 @@ testo = [
  '',
  'Colori delle righe',
  '- Giallo: righe aggiunte (strutture presenti sul sito e assenti nel file).',
- '- Grigio: righe da verificare o eliminare (doppione, strutture non presenti sul sito).',
+ '- Grigio: strutture non presenti sul sito, da eliminare (La Margherita chiusa, Casa Sanfré fuori perimetro).',
+ '- Azzurro: struttura contenitore (Villalba), da tenere per le schede Google ma non visibile nel widget.',
 ]
 for t in testo: wl.append([t])
 wl.column_dimensions['A'].width = 150
