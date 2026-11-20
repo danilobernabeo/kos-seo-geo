@@ -1,6 +1,6 @@
 # Google Cloud di KOS: progetti, dataset e flussi (uso interno)
 
-Stato al 20/11/2026. Questa è la mappa da leggere prima di attivare o modificare un flusso di dati: vale per il progetto e per i lavori extra. Le decisioni e i dettagli sono nel registro delle decisioni, alle date indicate.
+Stato al 20/11/2026 (aggiornato con i flussi di Diagnostica Villa Rosa, sigla `vrd`). Questa è la mappa da leggere prima di attivare o modificare un flusso di dati: vale per il progetto e per i lavori extra. Le decisioni e i dettagli sono nel registro delle decisioni, alle date indicate.
 
 ## Account e progetti
 
@@ -20,6 +20,8 @@ Stato al 20/11/2026. Questa è la mappa da leggere prima di attivare o modificar
 | --- | --- | --- | --- |
 | `analytics_333083624` | GA4 di kosgroup.com: solo eventi, giornaliero | collegamento GA4 → BigQuery | 30/12/2025 |
 | `analytics_250584060` | GA4 di anniazzurri.it: solo eventi, giornaliero | collegamento GA4 → BigQuery | 24/10/2026 |
+| `analytics_317279845` | GA4 di villarosadiagnostica.it (ID di misurazione `G-NYPJMGS60Q`): solo eventi, giornaliero, dati utente disattivati | collegamento GA4 → BigQuery | creato il 20/11/2026; il dataset compare con la prima esportazione |
+| `searchconsole_gsc_vrd` | Search Console di villarosadiagnostica.it, esportazione in blocco | esportazione diretta verso il progetto (nessuna esportazione dell'agenzia esisteva) | 20/11/2026 |
 | `gsc_kos`, `gsc_aa` | Search Console, esportazione in blocco | copia giornaliera con BigQuery Data Transfer dai dataset dell'agenzia in `import-gsc` (europe-west6 → europe-west3), decisa il 16/11 | 16/3/2025 |
 | `searchconsole_kos`, `searchconsole_aa` | Search Console dall'API (`storico_site_totali`, `storico_site_impression`, `storico_url_impression`) | `scripts/gsc/storico-search-console.py` (OAuth del progetto) | 14/6/2025-23/10/2026, ora solo archivio |
 | `google_ads_kos` | Google Ads, account 8545219698 | Data Transfer di Google Ads | attivo |
@@ -39,7 +41,9 @@ Da usare anche: `chrome-ux-report.materialized.country_summary` (dataset pubblic
 - **Search Console:**
   - una proprietà ammette **una sola** esportazione in blocco;
   - se l'agenzia la usa già (in `import-gsc`), non se ne crea un'altra: si chiede l'accesso in lettura e si copia con Data Transfer, come per i due siti;
-  - se non è usata, l'esportazione si fa direttamente verso `kos-analytics-482819`.
+  - se non è usata, l'esportazione si fa direttamente verso `kos-analytics-482819`;
+  - il nome del dataset di un'esportazione diretta deve iniziare con `searchconsole` (Search Console antepone il prefisso): per questo `vrd` è `searchconsole_gsc_vrd` e non `gsc_vrd`; `gsc_<sigla>` resta per le copie dei dataset dell'agenzia;
+  - **creare prima il dataset** vuoto in europe-west3 (`CREATE SCHEMA ... OPTIONS (location = 'europe-west3')`): senza, la configurazione rispondeva «Il progetto cloud non esiste» pur con permessi e ID giusti (verificato il 20/11/2026), e con il dataset già presente è riuscita. L'account di servizio `search-console-data-export@system.gserviceaccount.com` deve avere *BigQuery Job User* e *BigQuery Data Editor* sul progetto.
 - **Nomi dei dataset:**
   - `analytics_<id proprietà>` per GA4, nome dato da Google;
   - `gsc_<sigla>` per l'esportazione di Search Console;
@@ -59,6 +63,6 @@ Da usare anche: `chrome-ux-report.materialized.country_summary` (dataset pubblic
 2. **Storico GA4:** scaricarlo dall'API e caricarlo in `ga4storico_<sigla>`.
 3. **Search Console:** controlla in *Impostazioni → Esportazione collettiva dei dati* se un'esportazione esiste già.
    - Se esiste, è dell'agenzia: si chiede l'accesso e si copia in `gsc_<sigla>`.
-   - Se non esiste, la crei verso `kos-analytics-482819`, nel dataset `gsc_<sigla>`, località europe-west3.
+   - Se non esiste, crei prima il dataset `searchconsole_gsc_<sigla>` in europe-west3, poi imposti l'esportazione verso `kos-analytics-482819` con quel nome (vedi Regole dei flussi).
 4. **Storico di Search Console:** si scarica con `scripts/gsc/storico-search-console.py` in `searchconsole_<sigla>`.
 5. **Registro:** si annota il flusso in questo documento e nel registro (o nel README del lavoro extra).
