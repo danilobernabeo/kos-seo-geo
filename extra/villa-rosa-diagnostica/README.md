@@ -53,7 +53,7 @@ contatto.
 | 20/11/2026 | Progetto a parte per il referente marketing. Analisi completa e dettagliata, senza limite di tempo | Danilo |
 | 20/11/2026 | Il dominio resta villarosadiagnostica.it, con il nuovo nome «Diagnostica Villa Rosa» | piano marketing |
 | 20/11/2026 | Il marchio resta KOS. L'immagine grafica può differire, entro i limiti del marchio | Danilo |
-| 20/11/2026 | GA4 e Search Console del sito vanno esportati in BigQuery nel progetto `kos-analytics-482819`, con località europe-west3 | questa chat |
+| 20/11/2026 | GA4 e Search Console del sito vanno in BigQuery nel progetto `kos-analytics-482819`, località europe-west3, sigla `vrd`, seguendo `docs/riferimenti/google-cloud-kos.md` (per Search Console verificare prima se l'agenzia ha già l'esportazione in blocco) | questa chat |
 | 20/11/2026 | Una sola scheda Google: niente scheda a parte per la risonanza che resta nella vecchia sede (tema ancora aperto lato struttura) | Danilo |
 | 20/11/2026 | Prenotazioni (web e telefono) dal backend di TuoTempo, consultato da Danilo con il massimo dettaglio. Nel repository solo dati aggregati, senza dati personali | Danilo |
 | 20/11/2026 | Foto e testi della nuova sede disponibili dopo la metà di dicembre: le pagine per il 7/1 si preparano con modelli e contenuti provvisori | Danilo |
