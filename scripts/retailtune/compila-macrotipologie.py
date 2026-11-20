@@ -97,7 +97,7 @@ AA_CHI = [('Persone autosufficienti', r'^autosufficienti'), ('Persone con demenz
 AA_NUC = [('Nucleo Alzheimer', r'alzheimer'), ('Nucleo demenze', r'demenz|declino|decadimento|^nucleo protetto$'),
           ('Nucleo stati vegetativi', r'stati vegetativi'), ('Nucleo alta complessità neurologica', r'alta complessit'), ('Nucleo disabili', r'nucleo disabili')]
 AA_SRV = [('Riabilitazione', r'riabilitazione|fisioterapia respiratoria'), ('Assistenza domiciliare post dimissione', r'domiciliare'), ('RSA Aperta', r'rsa aperta'),
-          ('Cure intermedie', r'cure intermedie'), ('Visite ed esami', r'polo diagnostico|poliambulatorio|visite|esami'), ('Centro dialisi', r'dialisi')]
+          ('Cure intermedie', r'cure intermedie'), ('Visite ed esami', r'polo diagnostico|poliambulatorio|visite|esami|diagnostica'), ('Centro dialisi', r'dialisi')]
 
 def aa_voci(slug_):
     d = aa.get(slug_)
@@ -237,7 +237,7 @@ for r in rows:
         continue
     known = k in site_types or k == 'kos:villa-margherita-vicenza' or (k.startswith('aa:') and k[3:] in aa)
     if not known:
-        ws.cell(r, NOTE).value = 'Struttura non presente sul sito (nessuna pagina nelle tipologie): da confermare se è ancora aperta'
+        ws.cell(r, NOTE).value = {'Residenza Anni Azzurri La Margherita': 'Struttura chiusa, da eliminare', 'Casa Sanfré': 'Struttura uscita dal perimetro, da eliminare'}.get(nome, 'Struttura non presente sul sito (nessuna pagina nelle tipologie): da confermare se è ancora aperta')
         for c in range(1, NOTE): ws.cell(r, c).fill = GRIGIO
         log.append(('non sul sito', nome, k)); continue
     seen.add(k)
@@ -294,10 +294,11 @@ for x in rep:
     if x['uri'].startswith('hospice'): continue
     tv = x['tv']; tp = REP_TIPO(x['uri'])
     nome = ' '.join(w.capitalize() for w in x['uri'].split('-'))
+    if tp == 'Appartamenti per anziani': nome = 'Anni Azzurri Senior Living'
     nome = nome.replace('Anni Azzurri', 'Anni Azzurri')
     put_base(r, nome, tv.get('str.via', ''), tv.get('str.citta', ''), tv.get('str.provincia', ''), tv.get('str.cap', ''), RT_TIPO[tp])
     ws.cell(r, c0).value = AREA_LABEL['ANZ']; ws.cell(r, col_of[('ANZ', 'Tipo di struttura', tp)]).value = 'X'
-    ws.cell(r, NOTE).value = 'Riga aggiunta: ' + {'Centri diurni':'centro diurno','Appartamenti per anziani':'appartamenti'}[tp] + ' presente sul sito, reparto della ' + tv.get('str.sede', '').replace('-', ' ')
+    ws.cell(r, NOTE).value = 'Riga aggiunta: ' + {'Centri diurni':'centro diurno presente','Appartamenti per anziani':'appartamenti presenti'}[tp] + ' sul sito, reparto della ' + tv.get('str.sede', '').replace('-', ' ')
     for c in range(1, NOTE): ws.cell(r, c).fill = GIALLO
     added.append(k); r += 1
 ws.freeze_panes = 'E3'
