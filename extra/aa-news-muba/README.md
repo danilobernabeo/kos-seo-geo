@@ -159,6 +159,21 @@ Ripristino: il comando è stampato alla fine di ogni scrittura
 TV `newsArticle` («Tipo articolo», etichetta sopra il titolo nelle card delle news): «News» (deciso il 28/10),
 in `$TV_NEWS` di `installa.php`; `--aggiorna` la riallinea. `soloStruttura` vuota va bene: il valore predefinito è 0, «Ovunque».
 
+## Vincolo sul peso delle immagini (dal progetto, voce AA-17)
+
+Ogni immagine pubblicata (tutte le varianti: `-1600.jpg`, `-1600.webp`, `-800.webp`, `-q.webp`, anteprime dei video)
+deve pesare **meno di 200 kB decimali, cioè 200.000 byte** (la misura della scheda Rete di Chrome e dell'audit; non
+204.800). Dopo ogni generazione o aggiornamento della galleria:
+
+1. controllare i pesi in `foto/` (ad esempio `find files/assets/news-muba -type f -size +195k`, con margine);
+2. se un file supera la soglia, ricomprimerlo nello stesso file, stesse dimensioni, con
+   `php scripts/immagini/tetto-peso.php` (obiettivo 97% di 200.000 byte), oppure abbassare la qualità nello script
+   della galleria per quella foto;
+3. ricontrollare sul cloud dopo il rilascio, perché la verifica dell'agenzia misura i file pubblicati.
+
+Le foto nuove hanno anche il testo alternativo come le altre: descrittivo nel visore, vuoto per le miniature che
+duplicano una foto grande già descritta.
+
 ## Immagini ricompresse dal progetto (17/11/2026)
 
 Le foto della galleria sopra 200 KB (`assets/news-muba/foto/san-luca-05-1600.*`, `san-rocco-06-1600.jpg`, `san-rocco-10-1600.jpg`) sono state ricompresse negli stessi file da `scripts/immagini/tetto-peso.php` (voce AA-17 del progetto): stesse dimensioni, nessun elemento di questo lavoro toccato. Backup in `~/backup-kos-seo-geo/tetto-<data>/` sul cloud.
