@@ -1,0 +1,8 @@
+{
+ "nome": "anniazzurri.it, Villaggio San Francesco e Santa Maria in Chienti: titoli dei riquadri Servizi, Chi accogliamo ed Équipe assistenziale come sottotitoli h3, uguali alle altre schede (lettura dei filtri RetailTune)",
+ "regex_chunk": [
+  ["#<div class=\"card-header\">SERVIZI</div>#", "<h3 class=\"card-header text-uppercase\">Servizi</h3>"],
+  ["#<div class=\"card-header\">CHI ACCOGLIAMO</div>#", "<h3 class=\"card-header text-uppercase\">Chi accogliamo</h3>"],
+  ["#<div class=\"card-header\">ÈQUIPE ASSISTENZIALE</div>#u", "<h3 class=\"card-header text-uppercase\">Équipe assistenziale</h3>"]
+ ]
+}
