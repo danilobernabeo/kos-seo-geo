@@ -91,6 +91,22 @@ Da confermare sulla versione pubblicata. [verificato sul file]
 - **Sienna** viene caricato da `website-widgets.pages.dev`, non versionato: codice esterno che può cambiare. [verificato]
 - **Riscontro:** in Tempo reale arrivano `page_view`, `session_start`, `user_engagement`, `click`, `scroll` sulla proprietà 317279845: il tag funziona. [verificato]
 
+## Consenso e pagina dei risultati: verifiche del 21/11/2026 (pomeriggio)
+
+Fatte nel browser integrato di Claude sul computer di Danilo (profilo persistente, Google con l'account di Danilo, località sull'area di Modena: non è una navigazione anonima e i risultati sono personalizzati).
+
+- **Consenso, prima di qualsiasi scelta sul banner** (banner visibile, `Cookiebot.hasResponse = false`, consenso `statistics = false`) [verificato]:
+  - parte il tag GA4 e invia `page_view` a `region1.google-analytics.com/g/collect` con `gcs=G101` (stato del consenso: archiviazione pubblicitaria negata, archiviazione per l'analisi concessa), con un identificativo cliente nuovo (la sua data coincide con la visita) e i cookie `_ga` e `_ga_NYPJMGS60Q` creati;
+  - Clarity carica il suo script e invia quattro richieste a `b.clarity.ms/collect`; non risultano cookie di Clarity (`_clck`, `_clsk`) leggibili da JavaScript; se Clarity applichi il consenso con una modalità senza cookie non è verificato;
+  - viene caricato anche il widget di accessibilità da `website-widgets.pages.dev`.
+  - Conferma del comportamento dedotto dal container: le statistiche partono senza consenso. Cookie impostati dal server (non leggibili da JavaScript) non verificati. Un solo test, un solo browser.
+- **Pagina dei risultati di Google, ricerca da computer** [verificato]:
+  - «villa rosa modena»: in cima un annuncio di kosgroup.com («Villa Rosa Modena», con i collegamenti «Villa Rosa Prenotazioni Online» e «Prenota la tua radiografia»); poi due schede di luogo: «Villa Rosa» (clinica per la salute mentale, 3,3/5 su 124 recensioni) e «Villa Rosa Diagnostica» (centro diagnostico, 4,8/5 su 37 recensioni), entrambe in Via Fratelli Rosselli 83; poi la risposta generata da Google, che tratta le due strutture insieme e riporta orari, telefoni ed email letti dal sito e da kosgroup.com; poi i risultati naturali: scheda della clinica su kosgroup.com, home del sito, scheda della Diagnostica su kosgroup.com e altri.
+  - «villa rosa»: dominata da omonimi (località, alberghi, una cantina); la clinica compare tra i risultati di kosgroup.com; nella parte letta il sito della Diagnostica non compare.
+  - «villa rosa diagnostica»: home del sito al primo posto, scheda su kosgroup.com al secondo, `/risonanza-magnetica` al terzo, pannello della scheda Google con 4,8/5 (37 recensioni), telefono 059 306335 e «Chiude alle ore 19» (il sito dichiara 19:30), pulsanti «Sito web» e «Indicazioni». Il pulsante «Sito web» porta alla scheda su kosgroup.com (`/it/centri/villa-rosa-diagnostica`), non al sito. Omonimi in rilievo: un centro di dialisi con lo stesso nome ad Abruzzo e annunci sul portale MioDottore. Nella ricerca la home non mostra link di sezione.
+  - L'indirizzo della sede è Via Fratelli Rosselli 83 (non «Rossetti» come nel README): i dati del sito, di Google e di kosgroup.com coincidono. Il «Rossetti» del piano marketing va riverificato.
+  - Non verificati: ricerca da telefono, navigazione anonima, schermate non salvate nel repository, categorie secondarie e dati interni della scheda Google.
+
 ## Verifiche tecniche del 21/11/2026
 
 - **Varianti dell'indirizzo:** `http://`, `http://www` e `https://www` rispondono 301 verso `https://villarosadiagnostica.it/` in un solo passaggio; indirizzi inesistenti rispondono 404 con la pagina completa del sito; `/index.php` risponde 200, doppione della home senza canonical. [verificato]
@@ -125,7 +141,7 @@ Da confermare sulla versione pubblicata. [verificato sul file]
 - Conferma sul log del manager MODX delle date dei cambi di menu (26/6/2025) e dell'eventuale redirect di `/prenota-online`; verifica della pagina dei risultati di Google per «villa rosa modena» (link di sezione, evento del 7/1/2026) e della scheda Google (secondo gradino del calo).
 - Metodo dei conteggi della scheda su kosgroup.com (sessioni da Ads e da ricerca, clic `click_tuotempo` «dal sito»): i valori dipendono dalla sorgente usata; un secondo calcolo dà Ads 485-622 (846 a gennaio), organico 332-458, clic dal sito 24 e 41. Da fissare.
 - File `varianti.txt` e `ttfb.txt` non conservati tra i dati di appoggio: le verifiche del 21/11 sono riproducibili da PowerShell.
-- Comportamento reale del banner e dei cookie prima del consenso; stato di Clarity.
+- Cookie impostati dal server e comportamento di Clarity prima del consenso (le richieste partono, ma non risulta se Clarity applichi un proprio consenso senza cookie).
 - Conferma dell'ente giuridico (KOS S.p.A. o KOS Care) per il dato strutturato e dei dati di contatto.
 - TuoTempo (prenotazioni), Yext e scheda Google, log del server e dei crawler AI, backlink.
 - Confronto delle campagne di Ads con il calo organico di marca, con più mesi di dati dopo il 20/11.

@@ -81,12 +81,20 @@ Le ricerche di marca («villa rosa», «villa rosa modena», «villa rosa diagno
 2. Quale forma del nome in titolo, intestazioni, dato strutturato (`name`, `alternateName`) e scheda Google: «Diagnostica Villa Rosa» o «Villa Rosa Diagnostica»? Il nome «Villa Rosa» da solo porta alla clinica psichiatrica.
 3. Come distinguere nel dato strutturato le due strutture KOS con lo stesso marchio (due `#localbusiness` distinti, tipi e `alternateName` diversi, collegamento a KOS S.p.A. tramite `parentOrganization`)?
 4. Che ruolo dare alla scheda su kosgroup.com dopo il restyling (istituzionale, con rimando al sito per la prenotazione) e come evitare che le due pagine competano per la stessa ricerca?
-5. Dove mandare la campagna Ads di marca: alla scheda, come oggi, o al sito?
+5. Dove mandare la campagna Ads di marca e il pulsante «Sito web» della scheda Google: alla scheda su kosgroup.com, come oggi, o al sito?
 6. Serve una frase di disambiguazione tra Diagnostica e clinica psichiatrica nelle prime righe del sito e della scheda? (Nel piano marketing «Villa Rosa» è associata alla psichiatria.)
 
-## Verifiche richieste a Danilo
+## Pagina dei risultati di Google (21/11/2026)
 
-- Schermate dei risultati di Google per «villa rosa modena», «villa rosa» e «villa rosa diagnostica» (desktop e mobile, navigazione anonima).
-- Link «sito web» e categorie della scheda Google della Diagnostica.
-- Data del cambio della voce di menu «Prenota Online» dal registro del manager MODX.
-- Consenso: in navigazione anonima, prima di accettare il banner, se partono le richieste a google-analytics (collect) e a Clarity.
+Verificata nel browser integrato, da computer, con l'account Google di Danilo e località a Modena: non anonima. Dettagli in `sintesi-fase-2.md`. [verificato]
+
+- «villa rosa modena»: annuncio di kosgroup.com in cima, poi due schede di luogo (clinica 3,3/5 su 124 recensioni, Diagnostica 4,8/5 su 37), la risposta generata da Google che fonde le due strutture, poi i risultati naturali con la scheda della clinica per prima, la home del sito e la scheda della Diagnostica più in basso.
+- «villa rosa diagnostica»: home del sito al primo posto, scheda su kosgroup.com al secondo. Il pulsante «Sito web» della scheda Google della Diagnostica porta alla scheda su kosgroup.com, non al sito.
+- Risposta generata da Google sulla marca: tratta Villa Rosa come un'unica realtà con clinica e poliambulatorio.
+- Il quadro è compatibile con la lettura «marca divisa» e con i clic assorbiti da annuncio e schede di luogo, che Search Console non conta come clic organici sulle pagine. [ipotesi]
+
+## Verifiche ancora aperte
+
+- Ricerca da telefono e in navigazione anonima.
+- Categorie secondarie e dati interni della scheda Google (richiedono l'accesso al profilo).
+- Data del cambio della voce di menu «Prenota Online» dal registro del manager MODX (a cura di Danilo).
