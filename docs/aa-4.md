@@ -135,4 +135,29 @@ Analisi il 14/12.
 |---|---|
 | Pubblicazione del tag (inizio A) | 12/11/2026 07:24, versione 78 del container GTM-THMLNFX |
 | Cambio A→B | 21/11/2026 09:20, chatflow «KOS_Welcome Chatbot» pubblicato da Danilo (desktop: «Mostra l’utilità di avvio della chat al caricamento della pagina, quindi mostra il messaggio di benvenuto quando si verifica la condizione di attivazione»; mobile e attivazione a 7 s invariati) |
+| Prove sul sito, fase B | 21/11/2026 9:45-10:20: il fumetto non compare (vedi sotto) |
+| Attivazione tolta per prova | 21/11/2026 10:18 circa, «Tempo sulla pagina» senza spunta (anche sul telefono: pulsante subito) |
+| Attivazione ripristinata | 21/11/2026 10:20, «Tempo sulla pagina» 7 s, opzione desktop invariata |
 | Cambio B→A | |
+
+### Fase B effettiva: solo pulsante (21/11)
+
+Con l'opzione B il fumetto di benvenuto non compare sul sito, anche se l'anteprima di HubSpot lo mostra. Prove del 21/11
+sulla produzione (scheda di Mestre, 1024×768 e 1440×900, nuovo visitatore con i cookie HubSpot cancellati, con e senza
+clic sulla pagina; Danilo in incognito):
+- configurazione ricevuta dal widget (`livechat-public/v1/message/public`, `mobile=false`): `popOpenWelcomeMessage: true`,
+  `popOpenWidget: false`, `displayOnTimeDelay` 7 s, messaggio «Benvenuto sul nostro Sito Anni Azzurri.», bot
+  `AVAILABLE` e `online`, nessun orario d'ufficio: la pubblicazione delle 9:20 è arrivata e la disponibilità del
+  personale non c'entra;
+- dopo 10-16 s il riquadro della chat resta 92×92 px e la finestra di HubSpot non chiede di ingrandirsi;
+- stesso risultato senza attivazione (`displayOnTimeDelay` disattivato, 10:18-10:20), che secondo HubSpot fa partire il
+  fumetto subito: il difetto non è nell'attivazione a tempo;
+- il tag del test (`gtm-chat-hubspot`) ascolta soltanto gli eventi della chat; nessun cookie `hs-messages-hide-welcome-message`.
+
+Decisione (Danilo, 21/11): l'opzione resta questa e la fase B, dalle 9:20, è di fatto **«solo pulsante»** sul computer.
+È la prova più severa: se i contatti da computer tengono senza fumetto, terranno anche con il fumetto. La regola di
+decisione resta invariata e si legge come confronto fra apertura automatica (A) e solo pulsante (B). Se HubSpot
+corregge il difetto durante il test, nulla cambia fino al 6/12, per non mescolare due varianti nella stessa fase.
+Danilo segnala il difetto al referente HubSpot (lunedì 23/11). I minuti 10:18-10:20 senza attivazione anche sul telefono
+sono trascurabili per il gruppo di controllo.
+
