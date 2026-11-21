@@ -33,6 +33,7 @@
   - dicembre 2025-marzo 2026: da -17% a -29%;
   - luglio-ottobre 2026: da -38% a -49%.
 - Il calo di dicembre è stagionale (visibile nel 2022, 2023, 2024); il rimbalzo di gennaio 2026 è però più debole (+13% su dicembre contro +32-40% negli anni prima). [derivato]
+- Il rapporto tra clic di Search Console e sessioni GA4 è stabile da settembre 2025 a ottobre 2026 (0,66-0,72; luglio-agosto 2025 0,54-0,66): il calo è reale e non un effetto della misura. [derivato]
 - Da settembre 2026 le sessioni sono stabili intorno a 1.600 al mese. [verificato]
 
 **Scomposizione (Search Console, settembre-ottobre 2025 contro 2026).** [verificato]
@@ -66,18 +67,18 @@
   - ricerca Google: circa 200-420;
   - rinvio dal sito della Diagnostica: 169 a marzo-aprile, 73 a ottobre; è circa il 3-7% delle sessioni del sito;
   - clic sul telefono circa 150 al mese in primavera, 31-36 a ottobre-novembre; email 22-42 in primavera e 8-12 a ottobre-novembre.
-- **Evento `click_tuotempo`** sulla scheda solo da ottobre 2026: 154 a ottobre (35 da utenti arrivati dal sito), 209 a novembre in 19 giorni (54 dal sito). Prima non esisteva. Sul sito della Diagnostica non è mai esistito alcun evento verso TuoTempo. [verificato]
+- **Evento `click_tuotempo`** sulla scheda solo dal 15/10/2026: 154 a ottobre (17 giorni; 35 da utenti arrivati dal sito), 209 a novembre in 19 giorni (54 dal sito). Prima non esisteva. Sul sito della Diagnostica non è mai esistito alcun evento verso TuoTempo. [verificato]
 - **Google Ads:** le campagne «PWC - [S] - Villa Rosa - Brand» e «- Unbranded» hanno come pagina di destinazione la scheda su kosgroup.com. La prima ha la prima impressione il 18/11/2025, la seconda il 25/11/2025 (i dati di Ads partono dal 1/11/2025, quindi sono avvii veri). La campagna di marca porta 744 clic a dicembre, 875 a gennaio e circa 650 al mese fino a ottobre; il costo passa da circa 280 euro al mese a circa 90 da febbraio. [verificato]
-- **Data dello spostamento della prenotazione:** le visualizzazioni di `/prenota-online` crollano tra il 25 e il 26/6/2025 (da 15-30 al giorno a 2-10; mensili: 412 a giugno 2025, 112 a luglio, 42 ad agosto, poi circa 90) e le sessioni da ricerca Google passano da 175 a 87 a 23. [verificato] Compatibile con il cambio della voce di menu verso la scheda su kosgroup.com [ipotesi: confermare sul log del manager MODX]. La stima del referente (novembre-dicembre 2025) è quindi probabilmente tardiva. Il GA4 di kosgroup.com parte il 30/12/2025 e non permette di datarla.
+- **Data dello spostamento della prenotazione:** le visualizzazioni di `/prenota-online` crollano tra il 25 e il 26/6/2025 (da 15-30 al giorno a 2-10; la pagina era già in calo da febbraio: 726 viste a febbraio, 412 a giugno 2025; poi 112 a luglio, 42 ad agosto, poi circa 90) e le sessioni da ricerca Google passano da 175 a 87 a 23. [verificato] Compatibile con il cambio della voce di menu verso la scheda su kosgroup.com [ipotesi: confermare sul log del manager MODX]. La stima del referente (novembre-dicembre 2025) è quindi probabilmente tardiva. Il GA4 di kosgroup.com parte il 30/12/2025 e non permette di datarla.
 
 ## Cosa dicono i dati sulle cause del calo
 
 - **Tre eventi distinti e datati**, da non fondere:
   1. 26/6/2025: crollo delle visite a `/prenota-online` (prenotazione spostata sulla scheda, ipotesi).
   2. 18 e 25/11/2025: avvio delle campagne Ads verso la scheda. Con «villa rosa» le impressioni restano stabili e i clic calano: compatibile con annunci sopra il risultato naturale. [ipotesi]
-  3. 7/1/2026: in un solo giorno le impressioni di `/medici/` passano da 118 a 6 al giorno, `/prenota-online` da 146 a 27, `/radiologia-convenzionale` da 178 a 65, mentre la home resta invariata e le impressioni totali del sito a gennaio salgono. Le impressioni perse sono soprattutto su ricerche di marca, con quasi zero clic (posizione di `/radiologia-convenzionale` da 3,6 a 6,2). Compatibile con la perdita dei link di sezione («sitelink») sotto il risultato di marca. [ipotesi: verificare la pagina dei risultati] Né Ads né il widget possono ridurre le impressioni organiche.
+  3. 7/1/2026: in un solo giorno le impressioni di `/medici/` passano da 34-154 al giorno (6/1 festivo: 44) a 1-7, `/prenota-online` da 146 a 27, `/radiologia-convenzionale` da 178 a 65, mentre le impressioni della home salgono (332-346 il 7-8/1, 279 il 9/1, contro 123-229 nei giorni prima) e le impressioni totali del sito a gennaio crescono: coerente con la perdita dei link di sezione. Le impressioni perse sono soprattutto su ricerche di marca, con quasi zero clic (posizione di `/radiologia-convenzionale` da 3,6 a 6,2). Compatibile con la perdita dei link di sezione («sitelink») sotto il risultato di marca. [ipotesi: verificare la pagina dei risultati] Ads non riduce le impressioni organiche; la scheda su kosgroup.com compete invece con il sito nei risultati naturali.
 - Le campagne non bastano a spiegare il calo: le ricerche non di marca perdono impressioni (39.479 → 11.083, settembre-ottobre 2025 contro 2026) e la campagna di marca non incide su di esse; il calo di clic sulla marca è circa 445 al mese tra i due periodi. La campagna Unbranded ha avuto 530 clic e 372 euro a dicembre 2025, poi circa 90 clic e 61 euro al mese. [ipotesi sostenuta dai dati]
-- Il secondo gradino (primavera-estate 2026; «villa rosa» da sola cala del 75% tra giugno e agosto (583 → 145 clic; la posizione media migliora, quindi spariscono le impressioni in posizioni basse)) non è spiegato da questi fatti: le campagne sono stabili da febbraio. [ipotesi: serve vedere come cambia la pagina dei risultati di Google per «villa rosa modena» e la scheda Google dell'attività]
+- Il secondo gradino (primavera-estate 2026; «villa rosa» da sola cala del 75% tra giugno e agosto in impressioni, da 583 a 145; i clic scendono da 44 a 16 e la posizione media passa da 6,1 a 3,5: spariscono le impressioni in posizioni basse) non è spiegato da questi fatti: le campagne sono stabili da febbraio. [ipotesi: serve vedere come cambia la pagina dei risultati di Google per «villa rosa modena» e la scheda Google dell'attività]
 - Non esclusi: stagionalità, posizionamento, un effetto delle risposte generate da Google, un cambio di ricerca di marca. [ipotesi]
 
 ## Misurazione: il contenitore GTM-P5XL4PT (bozza workspace 7)
@@ -85,7 +86,7 @@
 Da confermare sulla versione pubblicata. [verificato sul file]
 
 - **Tag:** GA4 (`G-NYPJMGS60Q`, coincide con lo stream della proprietà 317279845), Cookiebot, aggiornamento del Consenso, Microsoft Clarity, widget di accessibilità Sienna (codice caricato da un dominio terzo), un vecchio tag Universal Analytics (`UA-267643-37`) in pausa. Nessun tag di evento: né prenotazioni, né telefono, né email, né moduli (nel sito non ci sono moduli).
-- **Consenso** (`defaultConsentStatistics = granted`, `waitForUpdate = 0`): il template Cookiebot imposta `statistics` su «granted» di default, e il tag di aggiornamento forza `analytics_storage = granted`. Se è così nella versione pubblicata, GA4 parte senza consenso. [dedotto dal container; da verificare sul comportamento del sito]
+- **Consenso** (`defaultConsentStatistics = granted`, `waitForUpdate = 0`): il template Cookiebot imposta `statistics` su «granted» di default, e il tag di aggiornamento forza `analytics_storage = granted`. Se è così nella versione pubblicata, GA4 parte senza consenso. [derivato dal container; da verificare sul comportamento del sito]
 - **Clarity** (registrazione di sessioni) parte su tutte le pagine senza condizioni di consenso nel container. [verificato nel container; da verificare se Clarity applica il consenso di Cookiebot]
 - **Sienna** viene caricato da `website-widgets.pages.dev`, non versionato: codice esterno che può cambiare. [verificato]
 - **Riscontro:** in Tempo reale arrivano `page_view`, `session_start`, `user_engagement`, `click`, `scroll` sulla proprietà 317279845: il tag funziona. [verificato]
@@ -93,7 +94,7 @@ Da confermare sulla versione pubblicata. [verificato sul file]
 ## Verifiche tecniche del 21/11/2026
 
 - **Varianti dell'indirizzo:** `http://`, `http://www` e `https://www` rispondono 301 verso `https://villarosadiagnostica.it/` in un solo passaggio; indirizzi inesistenti rispondono 404 con la pagina completa del sito; `/index.php` risponde 200, doppione della home senza canonical. [verificato]
-- **File alla radice:** `robots.txt`, `sitemap.xml` e `llms.txt` rispondono tutti 404. Senza `robots.txt` non ci sono restrizioni né indicazione di una sitemap; non esiste una sitemap al percorso standard. [verificato] Chiude il punto lasciato aperto nella sintesi della fase 1.
+- **File alla radice:** `robots.txt`, `sitemap.xml` e `llms.txt` rispondono tutti 404 (`llms.txt` è solo facoltativo). Senza `robots.txt` non ci sono restrizioni né indicazione di una sitemap; non esiste una sitemap al percorso standard. [verificato] Chiude il punto lasciato aperto nella sintesi della fase 1.
 - **Tempi del server** (dieci richieste da un PC in Italia): primo byte tra 0,16 e 0,21 secondi su home e Neuroradiologia. Il picco di 3,2 secondi della scansione del 20/11 non si è ripresentato. [verificato]
 - **PageSpeed Insights** (mobile, un test per pagina, laboratorio):
 
@@ -116,7 +117,7 @@ Da confermare sulla versione pubblicata. [verificato sul file]
 1. **Dove vive la prenotazione:** una sola strada, e di conseguenza il destino di `/prenota-online` (301 verso la nuova destinazione o ripresa nel sito), dei suoi 135 link TuoTempo, dei pulsanti della home e delle campagne Ads (che oggi puntano alla scheda su kosgroup.com). Riguarda chi gestisce le campagne e la scheda: va portata nella chat principale.
 2. **Misurazione prima del restyling:** eventi per i clic su TuoTempo, telefono ed email (come già fatto sulla scheda dall'ottobre 2026). Statistiche concesse di default e Clarity (registrazione di sessioni) senza consenso su un sito sanitario sono un tema di conformità da portare al DPO, non solo una verifica. Correggere il consenso ridurrà le sessioni misurate: va fatto e annotato prima del lancio del 7/1/2027, altrimenti la serie si rompe. Rimozione del tag Universal Analytics. Il calo dei clic sul telefono sulla scheda (circa 150 in primavera, 31-36 a ottobre-novembre) coincide con la comparsa di `click_tuotempo`: verificare se è cambiata la scheda o il tag prima di leggerlo come calo reale.
 3. **Contenuti incoerenti** (dalla fase 1): orari e telefoni diversi nelle pagine, indirizzi email, avviso di sospensione su due pagine.
-4. **File mancanti:** `robots.txt`, sitemap (e decisione sui crawler dell'intelligenza artificiale) e `llms.txt`.
+4. **File mancanti:** `robots.txt` e sitemap (e decisione sui crawler dell'intelligenza artificiale). `llms.txt` non è una mancanza: Google non lo usa, al massimo facoltativo.
 5. **Dominio `villarosa.it`:** posta attiva, sito morto con redirect a un server che non risponde; decisione su redirect e caselle da chiedere al referente (verifiche DNS e curl del 20/11/2026: MX attivo su un provider di posta, A del dominio con 302 verso www, www che non risponde sulla porta 80).
 
 ## Aperto
