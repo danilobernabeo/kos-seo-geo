@@ -90,11 +90,11 @@ Verificata nel browser integrato, da computer, con l'account Google di Danilo e 
 
 - «villa rosa modena»: annuncio di kosgroup.com in cima, poi due schede di luogo (clinica 3,3/5 su 124 recensioni, Diagnostica 4,8/5 su 37), la risposta generata da Google che fonde le due strutture, poi i risultati naturali con la scheda della clinica per prima, la home del sito e la scheda della Diagnostica più in basso.
 - «villa rosa diagnostica»: home del sito al primo posto, scheda su kosgroup.com al secondo. Il pulsante «Sito web» della scheda Google della Diagnostica porta alla scheda su kosgroup.com, non al sito.
+- Scheda Google della Diagnostica (dati del profilo): una sola categoria («Centro diagnostico»), link di prenotazione e servizi vuoti, descrizione ferma al testo della carta dei servizi, social di KOS Riabilitazione e di KOS Group. Elenco completo in `sintesi-fase-2.md`.
 - Risposta generata da Google sulla marca: tratta Villa Rosa come un'unica realtà con clinica e poliambulatorio.
 - Il quadro è compatibile con la lettura «marca divisa» e con i clic assorbiti da annuncio e schede di luogo, che Search Console non conta come clic organici sulle pagine. [ipotesi]
 
 ## Verifiche ancora aperte
 
 - Ricerca da telefono e in navigazione anonima.
-- Categorie secondarie e dati interni della scheda Google (richiedono l'accesso al profilo).
 - Data del cambio della voce di menu «Prenota Online» dal registro del manager MODX (a cura di Danilo).

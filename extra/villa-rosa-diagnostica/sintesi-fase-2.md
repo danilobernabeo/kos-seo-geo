@@ -100,12 +100,21 @@ Fatte nel browser integrato di Claude sul computer di Danilo (profilo persistent
   - Clarity carica il suo script e invia quattro richieste a `b.clarity.ms/collect`; non risultano cookie di Clarity (`_clck`, `_clsk`) leggibili da JavaScript; se Clarity applichi il consenso con una modalità senza cookie non è verificato;
   - viene caricato anche il widget di accessibilità da `website-widgets.pages.dev`.
   - Conferma del comportamento dedotto dal container: le statistiche partono senza consenso. Cookie impostati dal server (non leggibili da JavaScript) non verificati. Un solo test, un solo browser.
+- **Scheda Google della Diagnostica, dati del profilo** (copiati da Danilo il 21/11/2026) [verificato]:
+  - nome «Villa Rosa Diagnostica»; categoria unica «Centro diagnostico», nessuna categoria secondaria; nome breve «Polo-Diagnostico-Villa-Rosa»;
+  - sito web: la scheda su kosgroup.com (`/it/centri/villa-rosa-diagnostica`); telefono unico 059 306335; indirizzo «Via f.lli Rosselli, 83, 41125 Modena»;
+  - orari: lunedì-venerdì 7:30-19:30, sabato 7:30-19:00, domenica chiuso (coerenti con il sito); nessun orario speciale;
+  - descrizione: testo della carta dei servizi (poliambulatorio accreditato, elenco di visite specialistiche, compresa la psichiatria); nessuna menzione di risonanza, TAC o nuova sede;
+  - profili social: pagina Facebook «kosriabilitazione» e canale YouTube di KOS Group (non specifici della Diagnostica);
+  - campi vuoti: data di apertura, link di prenotazione («Pianificazione»), servizi e prodotti, area di servizio, chat, secondo numero di telefono, orari speciali;
+  - attributi presenti: accessibilità (sedia a rotelle), pagamenti, toilette.
+  - Per la nuova sede e il 7/1/2027 sono quindi da decidere: data di apertura, orari speciali di apertura e festività, link di prenotazione verso TuoTempo, elenco dei servizi (risonanza, TAC, ecografia e altri), categorie secondarie, descrizione aggiornata, nome breve, profili social, e chi modifica la scheda (Danilo, Yext, RetailTune). [domande per la proposta]
 - **Pagina dei risultati di Google, ricerca da computer** [verificato]:
   - «villa rosa modena»: in cima un annuncio di kosgroup.com («Villa Rosa Modena», con i collegamenti «Villa Rosa Prenotazioni Online» e «Prenota la tua radiografia»); poi due schede di luogo: «Villa Rosa» (clinica per la salute mentale, 3,3/5 su 124 recensioni) e «Villa Rosa Diagnostica» (centro diagnostico, 4,8/5 su 37 recensioni), entrambe in Via Fratelli Rosselli 83; poi la risposta generata da Google, che tratta le due strutture insieme e riporta orari, telefoni ed email letti dal sito e da kosgroup.com; poi i risultati naturali: scheda della clinica su kosgroup.com, home del sito, scheda della Diagnostica su kosgroup.com e altri.
   - «villa rosa»: dominata da omonimi (località, alberghi, una cantina); la clinica compare tra i risultati di kosgroup.com; nella parte letta il sito della Diagnostica non compare.
-  - «villa rosa diagnostica»: home del sito al primo posto, scheda su kosgroup.com al secondo, `/risonanza-magnetica` al terzo, pannello della scheda Google con 4,8/5 (37 recensioni), telefono 059 306335 e «Chiude alle ore 19» (il sito dichiara 19:30), pulsanti «Sito web» e «Indicazioni». Il pulsante «Sito web» porta alla scheda su kosgroup.com (`/it/centri/villa-rosa-diagnostica`), non al sito. Omonimi in rilievo: un centro di dialisi con lo stesso nome ad Abruzzo e la scheda del portale MioDottore. Nella ricerca la home non mostra link di sezione.
+  - «villa rosa diagnostica»: home del sito al primo posto, scheda su kosgroup.com al secondo, `/risonanza-magnetica` al terzo, pannello della scheda Google con 4,8/5 (37 recensioni), telefono 059 306335 e «Chiude alle ore 19» (la ricerca è del sabato, quando l'orario è 7:30-19:00: coerente con il profilo), pulsanti «Sito web» e «Indicazioni». Il pulsante «Sito web» porta alla scheda su kosgroup.com (`/it/centri/villa-rosa-diagnostica`), non al sito. Omonimi in rilievo: un centro di dialisi con lo stesso nome ad Abruzzo e la scheda del portale MioDottore. Nella ricerca la home non mostra link di sezione.
   - L'indirizzo della sede è Via Fratelli Rosselli 83 (non «Rossetti» come nel README): i dati del sito, di Google e di kosgroup.com coincidono. Il «Rossetti» del piano marketing va riverificato.
-  - Non verificati: ricerca da telefono, navigazione anonima, schermate non salvate nel repository, categorie secondarie e dati interni della scheda Google.
+  - Non verificati: ricerca da telefono, navigazione anonima, schermate non salvate nel repository.
 
 ## Verifiche tecniche del 21/11/2026
 
