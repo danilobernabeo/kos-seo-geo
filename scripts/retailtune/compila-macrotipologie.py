@@ -399,9 +399,10 @@ DESC_AA = {
  'Ricoveri temporanei e di sollievo': 'Ricoveri per periodi brevi, anche di sollievo per le famiglie o dopo un ricovero ospedaliero.',
  'Palestra e fisioterapia': 'Palestra attrezzata e fisioterapia per mantenere la mobilità e l’autonomia.'}
 cat = {}
-for f in ['gbp-aa.xlsx', 'gbp-ca.xlsx', 'gbp-extra.xlsx']:
+for f in ['gbp-aa.xlsx', 'gbp-ca.xlsx', 'gbp-extra.xlsx', 'gbp-poliambulatori.xlsx', 'gbp-psichiatria.xlsx', 'gbp-riabilitazione.xlsx']:
     for row in openpyxl.load_workbook(f, read_only=True).active.iter_rows(min_row=2, values_only=True):
         if row[2]: cat[row[2]] = (row[17] or '', row[18] or '')
+        if row[3]: cat['nome:' + row[3]] = (row[17] or '', row[18] or '')
 wsg = wb.create_sheet('Servizi Google', 3)
 wsg.append(['codice_negozio', 'Struttura', 'Categoria principale attuale (Google)', 'Categorie aggiuntive attuali', 'Servizio (nome sulla scheda)', 'Descrizione (max 300 caratteri)', 'Pagina del sito'])
 SERV_GROUPS = {'Visite specialistiche', 'Esami e diagnostica', 'Tipi di riabilitazione', 'Disturbi trattati', 'Nuclei specialistici', 'Servizi'}
@@ -420,7 +421,7 @@ for rr in range(3, ws.max_row + 1):
         sv = [x.lower() for x in d.get('Servizi', [])]
         if any(re.search(r'ricoveri (temporanei|estivi)', x) for x in sv): voci.append(('ANZ', 'Servizi', 'Ricoveri temporanei e di sollievo'))
         if any('palestra' in x for x in sv): voci.append(('ANZ', 'Servizi', 'Palestra e fisioterapia'))
-    c1, c2 = cat.get(cod, ('', ''))
+    c1, c2 = cat.get(cod) or cat.get('nome:' + str(nome), ('', ''))
     for a, g, l in voci:
         if a == 'ANZ': nm, ds, url = l, DESC_AA.get(l, ''), ''
         else:
