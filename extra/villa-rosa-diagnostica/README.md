@@ -43,6 +43,10 @@ contatto.
 | Percorso | Cosa |
 |---|---|
 | `piano-analisi.md` | piano dettagliato delle analisi, con le fonti, i metodi, i risultati attesi e le decisioni che ne dipendono |
+| `sintesi-fase-1-abc.md` | fase 1: sito, contenuti, misurazione (analisi A, B, C) |
+| `sintesi-fase-2.md` | fase 2: traffico, funnel di prenotazione, misurazione, verifiche tecniche (21/11/2026) |
+| `sintesi-marca-tre-pagine.md` | la marca «villa rosa» divisa tra sito, scheda su kosgroup.com e clinica psichiatrica |
+| `sql/` | interrogazioni BigQuery riproducibili |
 | `docx/` | versione Word dei documenti |
 | `dati/` | estrazioni e risultati delle analisi (senza dati personali) |
 
@@ -58,6 +62,10 @@ contatto.
 | 20/11/2026 | Prenotazioni (web e telefono) dal backend di TuoTempo, consultato da Danilo con il massimo dettaglio. Nel repository solo dati aggregati, senza dati personali | Danilo |
 | 20/11/2026 | Foto e testi della nuova sede disponibili dopo la metà di dicembre: le pagine per il 7/1 si preparano con modelli e contenuti provvisori | Danilo |
 | 20/11/2026 | Prezzi e tempi di attesa da chiedere alla struttura. Numero di telefono dedicato al sito difficile, Danilo chiede comunque | Danilo |
+
+| 21/11/2026 | Flussi BigQuery attivi: GA4 (proprietà 317279845, dataset `analytics_317279845` atteso con la prima esportazione), Search Console in blocco `searchconsole_gsc_vrd` (dal 20/11), storici `searchconsole_vrd` (8/7/2025-19/11/2026) e `ga4storico_vrd` (1/6/2022-19/11/2026). Eccezione al nome: `searchconsole_gsc_vrd` | Danilo, questa chat |
+| 21/11/2026 | Dominio `villarosa.it` (posta attiva, sito morto): decisione dopo la risposta del referente marketing | Danilo |
+| 21/11/2026 | Le conclusioni sul calo di traffico restano ipotesi finché mancano le schermate dei risultati di Google, il registro del manager MODX e la verifica del consenso | Chat principale |
 
 ## Rilasci e ripristino
 
