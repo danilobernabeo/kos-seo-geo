@@ -2,7 +2,7 @@
 -- Fasi (ora italiana): A = apertura automatica (impostazione attuale), B = solo pulsante e messaggio di benvenuto.
 -- Aggiornare gli istanti di passaggio con l'ora effettiva del cambio in HubSpot (registro in docs/aa-4.md).
 DECLARE inizio  TIMESTAMP DEFAULT TIMESTAMP('2026-11-12 07:24:00', 'Europe/Rome');  -- pubblicazione del tag (GTM v78)
-DECLARE a_b     TIMESTAMP DEFAULT TIMESTAMP('2026-11-21 00:00:00', 'Europe/Rome');  -- A -> B
+DECLARE a_b     TIMESTAMP DEFAULT TIMESTAMP('2026-11-21 09:20:00', 'Europe/Rome');  -- A -> B (pubblicazione del chatflow, 21/11 09:20)
 DECLARE b_a     TIMESTAMP DEFAULT TIMESTAMP('2026-12-07 09:00:00', 'Europe/Rome');  -- B -> A
 DECLARE fine    TIMESTAMP DEFAULT TIMESTAMP('2026-12-14 00:00:00', 'Europe/Rome');
 

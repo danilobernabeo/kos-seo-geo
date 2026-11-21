@@ -134,5 +134,5 @@ Analisi il 14/12.
 | Evento | Data e ora |
 |---|---|
 | Pubblicazione del tag (inizio A) | 12/11/2026 07:24, versione 78 del container GTM-THMLNFX |
-| Cambio A→B | |
+| Cambio A→B | 21/11/2026 09:20, chatflow «KOS_Welcome Chatbot» pubblicato da Danilo (desktop: «Mostra l’utilità di avvio della chat al caricamento della pagina, quindi mostra il messaggio di benvenuto quando si verifica la condizione di attivazione»; mobile e attivazione a 7 s invariati) |
 | Cambio B→A | |
