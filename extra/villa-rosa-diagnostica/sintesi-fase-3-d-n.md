@@ -7,7 +7,7 @@ Data: 22/11/2026. Stato: **bozza parziale, non ancora rivista**. Etichette: [ver
 | Analisi | Stato |
 |---|---|
 | D domanda locale | parziale: dati Search Console e SERP; Keyword Planner e Trends non disponibili |
-| E utenti | non fatta: serve estendere lo script GA4 (città, età, ora, pagina di arrivo) e farlo girare a Danilo |
+| E utenti | parziale: dati GA4 caricati il 22/11 (regione, ora, pagina di arrivo, link in uscita); città ed età/genere non disponibili; letti per ora regione e link in uscita |
 | F prenotazioni | non fatta: servono dati aggregati TuoTempo estratti da Danilo |
 | G presenza locale | parziale: dati Yext/profilo Google; portali (MioDottore, Micuro) non ancora controllati |
 | H concorrenti | parziale: SERP di 6 query; siti dei concorrenti non ancora analizzati |
@@ -53,6 +53,15 @@ Query e primi risultati organici rilevanti (host):
 - [verificato] Due pagine quasi omonime: `/ecocolordoppler` e `/ecocolordoppler-vascolare`; `/medici/` con la barra finale.
 - [verificato] Meta description a 15 caratteri su gran parte delle pagine (valore predefinito), assente su una; title di 31–80 caratteri.
 - [verificato] Nessuna pagina dedicata a TAC, ecografia per distretto, né agli esami annunciati per la nuova sede. [ipotesi] Va confrontata con l'elenco esami del piano marketing prima di proporre le nuove pagine.
+
+## E. Utenti (dati GA4 caricati il 22/11 in `ga4storico_vrd`, 1/1/2024-21/11/2026)
+
+- Lo script è stato lanciato in scrittura (non solo in prova) su tutto il periodo: tabelle `storico_geo`, `storico_orario`, `storico_arrivo`, `storico_uscite` popolate; `storico_utenti` vuota.
+- [verificato] **Città**: la dimensione è «(not set)» nel 100% delle sessioni in tutti i mesi: l'analisi per città non è possibile in questa proprietà. La regione è valorizzata (non assegnata in meno del 10% delle sessioni).
+- [verificato] **Età e genere**: nessun dato (la tabella `storico_utenti` ha 0 righe), probabilmente perché Google Signals non è attivo o per le soglie di privacy. Da non ripetere senza prima verificare l'impostazione.
+- [derivato] **Regione** (sessioni, settembre-ottobre 2025 → 2026, sito della Diagnostica): Emilia-Romagna 2.424 → 1.624 (−33%); Lombardia 1.245 → 599 (−52%); Veneto 413 → 138 (−67%); Lazio 251 → 113; Puglia 104 → 22. L'Emilia-Romagna passa da circa il 39% a circa il 50% delle sessioni. Il calo è quindi più forte fuori regione. [ipotesi] Per un centro diagnostico di Modena l'alto numero di sessioni dalla Lombardia nel 2025 (oltre un quinto del totale) è anomalo: potrebbe venire da campagne, da traffico non locale o da traffico automatico. Non si può dire senza incrociare regione e canale (non presenti nella stessa tabella).
+- [derivato] **Clic sui link in uscita** (evento `click`, settembre-ottobre): verso `app.tuotempo.com` 500 (2024) → 102 (2025) → 45 (2026); verso `kosgroup.com` 2 → 458 → 229. La somma dei due è 502 → 560 → 274: il percorso di prenotazione è passato dal collegamento diretto a TuoTempo al passaggio dalla scheda kosgroup, e il volume complessivo del 2026 è circa la metà di quello del 2025 (−51%), come le sessioni (−48%). [ipotesi] I link verso kosgroup.com includono anche link non di prenotazione (menu, scheda): il conteggio non è un conteggio di prenotazioni.
+- Da fare: ora del giorno e pagine di atterraggio (dati già in BigQuery); città ed età non ricavabili.
 
 ## D. Domanda locale (parziale)
 
