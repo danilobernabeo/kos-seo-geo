@@ -68,6 +68,11 @@ const INIT = () => {
     new PerformanceObserver(l => { for (const e of l.getEntries()) window.__lcp = e; })
       .observe({ type: 'largest-contentful-paint', buffered: true });
   } catch (e) {}
+  window.__cls = 0;   // sprint 4: spostamenti di impaginazione fino alla lettura (senza input dell'utente)
+  try {
+    new PerformanceObserver(l => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value; })
+      .observe({ type: 'layout-shift', buffered: true });
+  } catch (e) {}
 };
 const RACCOLTA = async () => {
   const dpr = window.devicePixelRatio || 1;
@@ -112,7 +117,8 @@ const RACCOLTA = async () => {
              necessaria: Math.round(r.width * dpr), fuoriSchermo: r.top > vh * 1.5,
              loading: i.getAttribute('loading') || '', alt: i.hasAttribute('alt') };
   });
-  return { lcp, ttfb: nav ? Math.round(nav.responseStart) : null, fcp: fcp ? Math.round(fcp.startTime) : null, immagini };
+  return { lcp, ttfb: nav ? Math.round(nav.responseStart) : null, fcp: fcp ? Math.round(fcp.startTime) : null,
+           cls: Math.round((window.__cls || 0) * 1000) / 1000, immagini };
 };
 
 const mediana = a => { const v = a.filter(x => x != null).sort((x, y) => x - y); return v.length ? v[Math.floor((v.length - 1) / 2)] : null; };
@@ -161,7 +167,7 @@ for (const nomeProf of profili) {
         await page.waitForTimeout(3000);
         // l'LCP si chiude alla prima interazione: lo leggiamo prima di scorrere
         const dati = await page.evaluate(RACCOLTA);
-        misure.push({ lcp: dati.lcp ? dati.lcp.ms : null, fcp: dati.fcp, ttfb: dati.ttfb });
+        misure.push({ lcp: dati.lcp ? dati.lcp.ms : null, fcp: dati.fcp, ttfb: dati.ttfb, cls: dati.cls });
         if (k === RIP - 1) dettagli = { stato, ...dati, scaricate: [...scaricate] };
       } catch (e) { errore = String(e.message || e).split('\n')[0]; misure.push({}); }
       await ctx.close();
@@ -177,6 +183,7 @@ for (const nomeProf of profili) {
     const r = {
       profilo: nomeProf, pagina: pag, stato: d.stato, errore: d.errore || '',
       lcp: mediana(misure.map(m => m.lcp)), fcp: mediana(misure.map(m => m.fcp)), ttfb: mediana(misure.map(m => m.ttfb)),
+      cls: mediana(misure.map(m => m.cls)),
       lcpElemento: d.lcp ? { ...d.lcp, formato: lcpFile ? lcpFile.formato : (lcpUrl ? formato(lcpUrl, '') : ''), byte: lcpFile ? lcpFile.byte : null } : null,
       immaginiNumero: d.scaricate.length, immaginiByte: tot,
       nonWebp: d.scaricate.filter(s => !['webp', 'avif', 'svg'].includes(s.formato)).length,
