@@ -68,7 +68,9 @@ Query e primi risultati organici rilevanti (host):
   - [derivato] Nel sito della Diagnostica la maggior parte delle sessioni di settembre-ottobre 2025 è organica (5.793 su 8.000 circa) e con la stessa quota di sessioni con interazione (0,61) del 2026 (0,59): non è traffico automatico evidente. Il traffico lombardo del 2025 era quindi in gran parte organico. [ipotesi] Può trattarsi di ricerche «villa rosa» di altre strutture omonime o di altre query non locali; i dati non permettono di distinguere. Il calo del 52% dalla Lombardia è soprattutto un calo organico.
   - [derivato] Il canale «AI Assistant» compare nel 2026 con 17 sessioni (0 nel 2025): piccolo, ma è la prima traccia di traffico da assistenti AI (da usare nell'analisi I).
   - Limiti: la cronologia delle modifiche dal 1/6/2025 non è leggibile via API (solo gli ultimi 30 giorni): per le date dei cambi di URL e di località serve l'interfaccia di Google Ads. Il budget delle due campagne Villa Rosa risulta modificato il 21/11/2026, il giorno prima delle verifiche. Impostazioni e budget sono quelli attuali.
-- Da fare: ora del giorno e pagine di atterraggio (dati già in BigQuery); città ed età non ricavabili.
+- [derivato] **Pagine di atterraggio** (sessioni, settembre-ottobre 2025 → 2026): home 1.896 → 985 (−48%); risonanza 686 → 418 (−39%); TMS (due pagine) 972 → 252 (−74%); radiologia convenzionale 168 → 25 (−85%); ecografia 90 → 25 (−72%); «il centro» 179 → 45 (−75%). Restano stabili: visita psichiatrica 153 → 143, neurologica 90 → 91, prenota-online 113 → 107. Il calo è quindi concentrato sulle pagine di esami diagnostici e sulla TMS, non su tutto il sito. [ipotesi] Per la TMS pesa il calo delle query non di marca già visto in sintesi-fase-2; per radiologia ed ecografia da verificare in Search Console per pagina.
+- [derivato] **Ora del giorno**: il calo è uniforme su tutte le ore (circa −45%/−50% a ogni ora); l'orario di punta resta 9-17. Nessuno spostamento di orario da leggere.
+- Non ricavabili: città (sempre «(not set)») ed età/genere (nessun dato).
 
 ## D. Domanda locale (parziale)
 
