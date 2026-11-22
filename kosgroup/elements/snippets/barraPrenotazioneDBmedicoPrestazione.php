@@ -310,7 +310,6 @@ ob_start();
         
         var currentBranca = '';
         var isUpdating = false;
-        var isAutoSelection = false;
         
         // ====== INIZIALIZZA TOM SELECT ======
         
@@ -363,10 +362,7 @@ ob_start();
                 }
             },
             onChange: function(value) {
-                if (isUpdating || isAutoSelection) {
-                    isAutoSelection = false;
-                    return;
-                }
+                if (isUpdating) return;
                 if (value) {
                     filterMediciByPrestazione(value);
                 }
@@ -402,10 +398,7 @@ ob_start();
                 }
             },
             onChange: function(value) {
-                if (isUpdating || isAutoSelection) {
-                    isAutoSelection = false;
-                    return;
-                }
+                if (isUpdating) return;
                 if (value) {
                     filterPrestazioniByMedico(value);
                 }
@@ -579,7 +572,6 @@ ob_start();
             }
             // Auto-selezione solo se uno solo E non c'era già un valore valido
             else if (mediciFiltrati.length === 1) {
-                isAutoSelection = true;
                 tsMedico.setValue(mediciFiltrati[0].id, true);
                 if (previousValue !== mediciFiltrati[0].id && infoMedicoAuto) {
                     infoMedicoAuto.innerHTML = '✓ Unica combinazione disponibile: puoi avviare la ricerca';
@@ -633,7 +625,6 @@ ob_start();
             }
             // Auto-selezione solo se una sola E non c'era già un valore valido
             else if (prestazioniFiltrate.length === 1) {
-                isAutoSelection = true;
                 tsPrestazione.setValue(prestazioniFiltrate[0].id, true);
                 if (previousValue !== prestazioniFiltrate[0].id && infoPrestazioneAuto) {
                     infoPrestazioneAuto.innerHTML = '✓ Unica combinazione disponibile: puoi avviare la ricerca';
