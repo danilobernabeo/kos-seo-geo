@@ -23,7 +23,7 @@ Data: 22/11/2026. Stato: **bozza parziale, non ancora rivista**. Etichette: [ver
 - [derivato] Gli ultimi due mesi (ottobre 2026 impressioni Search 1.417, novembre parziale) crollano in modo simile su entrambe le entità: [ipotesi] ritardo o cambio di fornitura del dato, da verificare prima di leggerlo come calo reale.
 - Lettura [ipotesi]: il profilo Google non perde visibilità, anzi genera più telefonate; ciò che cala è il passaggio dal profilo al sito. Coerente con il calo di clic di marca sul sito. Le chiamate non dicono se diventano prenotazioni (serve F).
 - La clinica (KCA00_DEG) ha un andamento diverso: chiamate in calo lento (1.067 a gennaio 2025 → 613 a ottobre 2026), clic sul sito 432 → 198 ad ottobre su ottobre.
-- Non verificato: coerenza di nome, indirizzo e telefono sui portali; indirizzo «Rosselli» (sito, Google, kosgroup) o «Rossetti» (README e piano marketing).
+- Non verificato: coerenza di nome, indirizzo e telefono sui portali; indirizzo confermato da Danilo il 22/11: Via Fratelli Rosselli 83 (il «Rossetti» del README era un errore, corretto).
 
 ## H. Concorrenti nelle SERP di Modena (browser di Danilo, personalizzato, desktop)
 

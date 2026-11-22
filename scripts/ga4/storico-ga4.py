@@ -18,12 +18,21 @@ Uso (PowerShell, dalla radice del repository):
 Opzioni:
     --progetto     progetto BigQuery (default kos-analytics-482819)
     --dal / --fino-al   intervallo (default: --fino-al = ieri)
+    --tabelle      elenco separato da virgole (default: storico_pagine,storico_eventi); le altre sono nella
+                   sezione «Tabelle opzionali» qui sotto
     --prova        scarica solo il primo mese dell'intervallo e stampa i conteggi, senza scrivere in BigQuery
 
 Tabelle (partizionate per data_date):
     storico_pagine   per giorno, host, pagina, canale, sorgente/mezzo, dispositivo: sessioni, utenti attivi,
                      visualizzazioni, sessioni con interazione, secondi di interazione
     storico_eventi   per giorno, nome evento, host: conteggio eventi e utenti totali
+Tabelle opzionali (si chiedono con --tabelle; tutte per giorno e host, dati aggregati):
+    storico_geo      regione e citta': sessioni, utenti attivi, sessioni con interazione
+    storico_utenti   fascia di eta', genere, nuovo/di ritorno: sessioni, utenti attivi
+                     (eta' e genere ci sono solo dove Google Signals e' attivo e sopra le soglie di privacy)
+    storico_orario   ora del giorno: sessioni, utenti attivi
+    storico_arrivo   pagina di atterraggio e canale: sessioni, sessioni con interazione
+    storico_uscite   clic su link in uscita (evento click): dominio e URL di destinazione, conteggio, utenti
 Gli utenti non si sommano tra righe o giorni: servono per confronti dentro la stessa riga, non per totali di periodo.
 Riprende per mese: i mesi gia' presenti nella tabella (qualunque riga) si saltano; per riscaricare un mese
 si cancellano le sue righe in BigQuery. Il token OAuth si salva in %APPDATA%\\kos-seo-geo\\token-ga4.json
@@ -48,7 +57,34 @@ TABELLE = {
         'met': ['eventCount', 'totalUsers'],
         'col': ['data_date', 'nome_evento', 'host', 'conteggio_eventi', 'utenti_totali'],
     },
+    'storico_geo': {
+        'dim': ['date', 'hostName', 'region', 'city'],
+        'met': ['sessions', 'activeUsers', 'engagedSessions'],
+        'col': ['data_date', 'host', 'regione', 'citta', 'sessioni', 'utenti_attivi', 'sessioni_con_interazione'],
+    },
+    'storico_utenti': {
+        'dim': ['date', 'hostName', 'userAgeBracket', 'userGender', 'newVsReturning'],
+        'met': ['sessions', 'activeUsers'],
+        'col': ['data_date', 'host', 'fascia_eta', 'genere', 'nuovo_ritorno', 'sessioni', 'utenti_attivi'],
+    },
+    'storico_orario': {
+        'dim': ['date', 'hostName', 'hour'],
+        'met': ['sessions', 'activeUsers'],
+        'col': ['data_date', 'host', 'ora', 'sessioni', 'utenti_attivi'],
+    },
+    'storico_arrivo': {
+        'dim': ['date', 'hostName', 'landingPage', 'sessionDefaultChannelGroup'],
+        'met': ['sessions', 'engagedSessions'],
+        'col': ['data_date', 'host', 'pagina_atterraggio', 'canale', 'sessioni', 'sessioni_con_interazione'],
+    },
+    'storico_uscite': {
+        'dim': ['date', 'hostName', 'linkDomain', 'linkUrl'],
+        'met': ['eventCount', 'totalUsers'],
+        'col': ['data_date', 'host', 'dominio_link', 'url_link', 'conteggio_eventi', 'utenti_totali'],
+        'eventi': ['click'],
+    },
 }
+PREDEFINITE = ['storico_pagine', 'storico_eventi']
 
 
 def credenziali(client_secret):
@@ -88,16 +124,21 @@ def mesi(dal, al):
 
 
 def scarica(client, proprieta, nome, inizio, fine):
-    from google.analytics.data_v1beta.types import (DateRange, Dimension, Metric, RunReportRequest)
+    from google.analytics.data_v1beta.types import (DateRange, Dimension, Filter, FilterExpression, Metric,
+                                                    RunReportRequest)
     t = TABELLE[nome]
     righe, offset = [], 0
+    filtro = None
+    if t.get('eventi'):
+        filtro = FilterExpression(filter=Filter(field_name='eventName',
+                                                in_list_filter=Filter.InListFilter(values=t['eventi'])))
     while True:
         r = client.run_report(RunReportRequest(
             property='properties/' + proprieta,
             dimensions=[Dimension(name=x) for x in t['dim']],
             metrics=[Metric(name=x) for x in t['met']],
             date_ranges=[DateRange(start_date=inizio.isoformat(), end_date=fine.isoformat())],
-            limit=100000, offset=offset))
+            dimension_filter=filtro, limit=100000, offset=offset))
         for rr in r.rows:
             v = [x.value for x in rr.dimension_values]
             d = dt.datetime.strptime(v[0], '%Y%m%d').date().isoformat()
@@ -116,6 +157,7 @@ def main():
     ap.add_argument('--progetto', default='kos-analytics-482819')
     ap.add_argument('--dal', required=True)
     ap.add_argument('--fino-al')
+    ap.add_argument('--tabelle', default=','.join(PREDEFINITE))
     ap.add_argument('--prova', action='store_true')
     a = ap.parse_args()
     dal = dt.date.fromisoformat(a.dal)
@@ -124,11 +166,15 @@ def main():
     from google.cloud import bigquery as bq
     cred = credenziali(a.client_secret)
     client = BetaAnalyticsDataClient(credentials=cred)
+    scelte = [x.strip() for x in a.tabelle.split(',') if x.strip()]
+    for x in scelte:
+        if x not in TABELLE:
+            sys.exit('tabella sconosciuta: %s (disponibili: %s)' % (x, ', '.join(TABELLE)))
     elenco = list(mesi(dal, al))
     if a.prova:
         elenco = elenco[:1]
     bqc = None if a.prova else bq.Client(project=a.progetto, credentials=cred)
-    for nome in TABELLE:
+    for nome in scelte:
         presenti = set()
         if bqc:
             tab = '%s.%s.%s' % (a.progetto, a.dataset, nome)

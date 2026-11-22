@@ -16,7 +16,7 @@ contatto.
 ## Contesto (dal piano marketing «DIAGNOSTICA VILLA ROSA_piano apertura 2027», gennaio 2027)
 
 - **Nuova sede.** Il polo diagnostico si sposta in una nuova palazzina adiacente alla vecchia (Via Fratelli
-  Rossetti / via Asiago, Modena), con ingresso indipendente e nuovo indirizzo. Una risonanza resta attiva
+  Rosselli / via Asiago, Modena; la sede attuale è in Via Fratelli Rosselli 83, confermato da Danilo il 22/11), con ingresso indipendente e nuovo indirizzo. Una risonanza resta attiva
   nella vecchia sede. Il cantiere chiude il 30/11/2026 e l'apertura è prevista per il 7/1/2027.
 - **Offerta.**
   - Novità: risonanza magnetica (Siemens 1,5 T, esami neurologici, muscoloscheletrici e «body») e TAC.
