@@ -63,3 +63,35 @@ Restano per dopo:
   `strutture`, in carico alla chat prestazioni fino all'arrivo dei suoi file;
 - home dei due siti: `answers.css` di Yext, che sparisce con la sostituzione della ricerca (linea C).
 
+## Misure dopo il rilascio (22/11)
+
+Laboratorio (`misura-lcp.mjs`, 3 caricamenti, mediane; `docs/evidenze/sprint4-prima/` e `sprint4-dopo/`). Il «dopo» di
+kosgroup.com è delle 17:42, con la linea più lenta (TTFB mediano 248 → 333 ms): il confronto per orari diversi non basta.
+
+| Sito, profilo | Prima visualizzazione − TTFB (mediana) prima → dopo | CLS massimo prima → dopo |
+|---|---|---|
+| anniazzurri.it mobile | 2.738 → 2.615 ms | 0,004 → 0,001 |
+| anniazzurri.it desktop | 412 → 315 ms | 0,009 → 0,019 |
+| kosgroup.com desktop | 367 → 268 ms | 0,041 → 0,049 (Prenota online, già prima) |
+| kosgroup.com mobile | 2.407 → 2.602 ms | 0,173 → 0,148 (Prenota online, già prima) |
+
+Il peggioramento di kosgroup.com mobile si concentra sulle pagine con sfondo `bg-pattern` e cambia molto da un caricamento
+all'altro; per separare l'effetto dei fogli dalla rete, confronto A/B alternato nello stesso momento
+(`scripts/css/ab-fcp-kos.py`: pagina di produzione con i 10 fogli originali contro la pagina com'è, 4 caricamenti per
+variante, mobile 4G lenta, CPU 4x, terze parti bloccate):
+
+| Pagina | Vecchio → nuovo (FCP − TTFB, mediana) |
+|---|---|
+| Home | 1.068 → 913 ms |
+| Strutture | 1.073 → 889 ms |
+| La nostra storia | 2.211 → 1.659 ms |
+| Il management | 2.238 → 2.016 ms |
+| Perché lavorare in KOS | 2.443 → 2.339 ms |
+| Prenota online | 2.043 → 1.934 ms |
+| Villa dei Pini Civitanova | 2.333 → 2.659 ms (*) |
+
+(*) Le schede dei centri caricano anche `tom-select.css` da jsdelivr, che blocca la prima visualizzazione; nell'ambiente
+di prova jsdelivr non è raggiungibile e il tempo del rifiuto diventa il limite (valori del «nuovo» tutti tra 2.610 e
+2.676 ms). Da segnalare alla chat prestazioni: `tom-select` in locale (template `strutture`), è proprio la voce KOS 15.
+Dati reali: Web Vitals sui visitatori (75° percentile) da rileggere a 2-3 settimane dal rilascio.
+
