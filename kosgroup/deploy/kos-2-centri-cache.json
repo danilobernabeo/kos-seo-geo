@@ -1,0 +1,6 @@
+{
+  "nome": "KOS 2 schede dei centri: barraPrenotazioneDBmedicoPrestazione con cache dell'HTML per scheda (kosseogeo.barra_cache_ttl, predefinito 3600 s; 0 = come prima). Dalla chat prestazioni del 22/11; insieme a scripts/deploy/kos-centri-cache.php sui contenuti.",
+  "elements": [
+    { "type": "snippet", "name": "barraPrenotazioneDBmedicoPrestazione", "file": "kosgroup/elements/snippets/barraPrenotazioneDBmedicoPrestazione.php", "baseline": "kosgroup/baseline/snippets/barraPrenotazioneDBmedicoPrestazione.php" }
+  ]
+}
