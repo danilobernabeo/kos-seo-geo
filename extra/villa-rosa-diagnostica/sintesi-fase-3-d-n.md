@@ -9,7 +9,7 @@ Data: 22/11/2026. Stato: **bozza parziale, non ancora rivista**. Etichette: [ver
 | D domanda locale | parziale: dati Search Console e SERP; Keyword Planner e Trends non disponibili |
 | E utenti | parziale: dati GA4 caricati il 22/11 (regione, ora, pagina di arrivo, link in uscita); città ed età/genere non disponibili; letti per ora regione e link in uscita |
 | F prenotazioni | non fatta: servono dati aggregati TuoTempo estratti da Danilo |
-| G presenza locale | parziale: dati Yext/profilo Google; portali (MioDottore, Micuro) non ancora controllati |
+| G presenza locale | parziale: dati Yext/profilo Google e prima ricerca sui portali (Micuro, QSalute, disabili.com, MioDottore, Doctolib); non fatta la verifica diretta delle schede |
 | H concorrenti | parziale: SERP di 6 query; siti dei concorrenti non ancora analizzati |
 | I assistenti AI | parziale: 3 domande in AI Mode di Google e 2 in ChatGPT (senza accesso) e 2 in Gemini (con l'account di Danilo); Perplexity non usato |
 | L contenuti | fatta sulla scansione del 20/11 |
@@ -25,6 +25,14 @@ Data: 22/11/2026. Stato: **bozza parziale, non ancora rivista**. Etichette: [ver
 - Lettura [ipotesi]: il profilo Google non perde visibilità, anzi genera più telefonate; ciò che cala è il passaggio dal profilo al sito. Coerente con il calo di clic di marca sul sito. Le chiamate non dicono se diventano prenotazioni (serve F).
 - La clinica (KCA00_DEG) ha un andamento diverso: chiamate in calo lento (1.067 a gennaio 2025 → 613 a ottobre 2026), clic sul sito 432 → 198 ad ottobre su ottobre.
 - Non verificato: coerenza di nome, indirizzo e telefono sui portali; indirizzo confermato da Danilo il 22/11: Via Fratelli Rosselli 83 (il «Rossetti» del README era un errore, corretto).
+
+### Portali e elenchi (ricerca web del 22/11, schede non aperte una per una)
+
+- [osservato] **Micuro** ha la scheda «Villa Rosa Neomesia di Modena - KOS», «Casa di Cura privata accreditata SSN», Via F.lli Rosselli 83, aggiornata il 17/7/2026, senza valutazioni: la sede è descritta come casa di cura, non come centro diagnostico.
+- [osservato] **QSalute** ha la scheda «Villa Rosa di Modena» con 3,8 su 15 recensioni (di cui 8 da 5 stelle); una recensione di diagnostica per immagini (radiografia a un figlio, scelta per il costo inferiore ad altre cliniche) conferma che le recensioni riguardano anche la Diagnostica, mescolate con quelle della casa di cura.
+- [osservato] **disabili.com** elenca «Casa di Cura Villa Rosa» Via Fratelli Rosselli 83, «privata accreditata», con il telefono 059 303034 (il centralino, non il numero della diagnostica 059 306335).
+- [non verificato] **MioDottore** e **Doctolib**: la ricerca non ha restituito una scheda della Diagnostica (compaiono altre strutture di Modena con prezzi, per esempio un'ecografia addome completo a 127 € da Affidea); l'assenza va verificata aprendo i portali.
+- [ipotesi] La Diagnostica e la casa di cura condividono indirizzo, nome e talvolta telefono nei portali: le recensioni e i dati si mescolano e la valutazione di Google (4,8) non si ritrova sulle altre piattaforme (QSalute 3,8). Per il restyling conta distinguere i due soggetti nei dati pubblici.
 
 ## H. Concorrenti nelle SERP di Modena (browser di Danilo, personalizzato, desktop)
 
