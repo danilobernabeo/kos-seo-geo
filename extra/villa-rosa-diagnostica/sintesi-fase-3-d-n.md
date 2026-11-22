@@ -11,7 +11,7 @@ Data: 22/11/2026. Stato: **bozza parziale, non ancora rivista**. Etichette: [ver
 | F prenotazioni | non fatta: servono dati aggregati TuoTempo estratti da Danilo |
 | G presenza locale | parziale: dati Yext/profilo Google; portali (MioDottore, Micuro) non ancora controllati |
 | H concorrenti | parziale: SERP di 6 query; siti dei concorrenti non ancora analizzati |
-| I assistenti AI | parziale: 3 domande in AI Mode di Google; Perplexity chiede l'accesso (non fatto), ChatGPT e Gemini non provati |
+| I assistenti AI | parziale: 3 domande in AI Mode di Google e 2 in ChatGPT (senza accesso); Perplexity non usato, Gemini non provato |
 | L contenuti | fatta sulla scansione del 20/11 |
 | M, N | non fatte (solo i vincoli già noti dal progetto) |
 
@@ -53,7 +53,11 @@ Metodo: AI Mode di Google (`udm=50`) dal browser di Danilo, personalizzato, Mode
 - [verificato] Il sito stesso riporta **due email diverse**: `diagnostica.villarosa@kosgroup.com` (intestazione) e `diagnostica@villarosa.it` (sezione Servizi diagnostici); l'AI ha ripreso la seconda, del dominio `villarosa.it` (posta attiva, sito morto, decisione pendente). Da uniformare, anche per il dato strutturato.
 - [osservato] «dove fare una elettromiografia a Modena»: la Diagnostica compare tra i poliambulatori privati e convenzionati, con indirizzo corretto e la dicitura «consegna immediata del referto» (da verificare con la pagina del sito). Concorrenti citati con prezzi indicativi presi dai portali (Poliambulatorio C.A.F. da circa 125 €, Coliseum Center 175-195 € per l'esame doppio) e con prenotazione tramite Doctolib/MioDottore; per la Diagnostica nessun prezzo.
 - [ipotesi] Le fonti citate dall'AI sono sia villarosadiagnostica.it sia kosgroup.com: i due domini sono letti insieme. I contenuti delle pagine del sito (orari, contatti, pagina esame) vengono ripresi quasi alla lettera: l'accuratezza dell'AI dipende dall'accuratezza e dalla coerenza di quelle pagine (due email, due telefoni).
-- Prossimi passi: provare ChatGPT e Gemini con le stesse domande (serve un account: da chiedere a Danilo se usarli), e aggiungere domande su TMS, TAC, ecografia e confronto tra centri.
+- [osservato] **ChatGPT** (22/11, nella sessione del browser risultava senza accesso, con ricerca web attiva; una esecuzione per domanda):
+  - «Dove posso fare una risonanza magnetica aperta a Modena?»: la Diagnostica **non compare**; risposta con Affidea Modena Medica (risonanza articolare aperta) e Policlinico di Modena.
+  - «Dove posso fare una elettromiografia a Modena?»: la Diagnostica compare **al primo posto** («anche SSN», Via Fratelli Rosselli 83, EMG semplice e a quattro arti, referto al termine dell'esame), seguita da Coliseum Center (100-175 €), Poliambulatorio C.A.F. (100-125 €) e Centro Alfa; per i concorrenti ci sono prezzi indicativi, per la Diagnostica no.
+  - Quindi, per la risonanza, ciò che AI Mode di Google dice (Diagnostica presente) e ciò che dice ChatGPT (assente) differisce: l'esito dipende dall'assistente e dalla domanda.
+- Prossimi passi: Gemini con le stesse domande; aggiungere domande su TMS, TAC, ecografia e confronto tra centri; ripetere in momenti diversi (una sola esecuzione per domanda non basta a parlare di frequenza).
 
 ## L. Contenuti del sito (scansione del 20/11/2026, 40 URL)
 
