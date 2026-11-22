@@ -54,6 +54,9 @@ function fontAnniAzzurri(css) {
     return /font-display:/.test(blocco) ? blocco.replace(/font-display:\s*[\w-]+/, 'font-display: swap')
       : blocco.replace(/\}$/, '  font-display: swap;\n}');
   });
+  // nelle regole, non nei descrittori di @font-face (lì il nome deve restare uno solo, altrimenti la faccia è scartata)
+  const facce = [];
+  css = css.replace(/@font-face\s*\{[^}]*\}/g, (b) => { facce.push(b); return `\u0000FACCIA${facce.length - 1}\u0000`; });
   css = css.replace(/(font-family|--bs-body-font-family)(\s*:\s*)([^;}]*)/g, (tutto, prop, sep, valore) => {
     if (/Fallback/.test(valore)) return tutto;
     const nuovo = valore
@@ -62,6 +65,7 @@ function fontAnniAzzurri(css) {
     if (nuovo !== valore) n.pile++;
     return prop + sep + nuovo;
   });
+  css = css.replace(/\u0000FACCIA(\d+)\u0000/g, (_, i) => facce[+i]);
   // le facce di ripiego dopo eventuali @import (che devono stare in testa)
   const m = css.match(/^(\s*(?:@charset[^;]*;\s*)?(?:@import[^;]*;\s*)*)/);
   return { css: m[1] + facceRipiego + '\n' + css.slice(m[1].length), n };
