@@ -1,0 +1,9 @@
+{
+  "nome": "KOS 15 e 25: foglio unico kos.min.css (uscita di scripts/css/costruisci-css.mjs) al posto dei 10 fogli dell'head; fontawesome.css tolto perché duplica all.min.css (KOS 16). I file originali restano sul server per il ripristino.",
+  "files": [
+    { "file": "kosgroup/files/assets/css/kos.min.css", "dest": "assets/css/kos.min.css" }
+  ],
+  "elements": [
+    { "type": "chunk", "name": "head", "file": "kosgroup/elements/chunks/head.html", "baseline": "kosgroup/baseline/chunks/head.html" }
+  ]
+}
