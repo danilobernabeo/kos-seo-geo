@@ -6,6 +6,7 @@ Data: 22/11/2026. Uso interno del progetto (non per KOS). Serve a capire se il c
 
 - Solo dati aggregati: nessun nome, codice fiscale, telefono, email, data di nascita, identificativo di paziente o di prenotazione.
 - Per le colonne facoltative, se una combinazione ha meno di 5 prenotazioni, raggrupparla in «altro» (soglia anti-reidentificazione).
+- I CSV estratti restano fuori dal repository (come gli xlsx); nel repository vanno solo tabelle elaborate. Danilo informa il referente marketing dell'uso dei dati aggregati.
 - Un file CSV (separatore `;`, UTF-8) per ogni tabella; intestazioni come sotto.
 - Periodo: da gennaio 2024 a novembre 2026 (novembre parziale, indicare l'ultimo giorno incluso). Se il gestionale non va così indietro, dal primo mese disponibile.
 - Sede: solo Villa Rosa Diagnostica (non la casa di cura).
@@ -34,11 +35,12 @@ Solo per le prenotazioni dal sito, se il gestionale registra l'origine del link 
 
 ## Tabella 3 (facoltativa): provenienza geografica
 
+Solo a livello di provincia e senza prestazione: comune + esame + mese renderebbe i pazienti ri-identificabili anche con la soglia di 5.
+
 | Colonna | Contenuto |
 |---|---|
 | `mese_prenotazione` | AAAA-MM |
-| `comune_residenza` | comune di residenza, o provincia se il comune ha meno di 5 prenotazioni |
-| `prestazione` | come sopra |
+| `provincia_residenza` | provincia di residenza (Modena, altre province emiliane, altre regioni, estero) |
 | `prenotazioni` | numero |
 
 ## Tabella 4 (facoltativa): primo accesso e ritorno

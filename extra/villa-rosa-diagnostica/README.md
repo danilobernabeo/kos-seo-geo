@@ -66,6 +66,10 @@ contatto.
 | 21/11/2026 | Flussi BigQuery attivi: GA4 (proprietà 317279845, dataset `analytics_317279845` atteso con la prima esportazione), Search Console in blocco `searchconsole_gsc_vrd` (dal 20/11), storici `searchconsole_vrd` (8/7/2025-19/11/2026) e `ga4storico_vrd` (1/6/2022-19/11/2026). Eccezione al nome: `searchconsole_gsc_vrd` | Danilo, questa chat |
 | 21/11/2026 | Dominio `villarosa.it` (posta attiva, sito morto): decisione dopo la risposta del referente marketing | Danilo |
 | 21/11/2026 | Le conclusioni sul calo di traffico restano ipotesi finché mancano le schermate dei risultati di Google, il registro del manager MODX e la verifica del consenso | Chat principale |
+| 22/11/2026 | Indirizzo della sede attuale: Via Fratelli Rosselli 83 (il «Rossetti» era un errore) | Danilo |
+| 22/11/2026 | Modifica a `scripts/ga4/storico-ga4.py` (opzione `--tabelle`, 5 tabelle opzionali) approvata; lo script resta del progetto principale, modifiche future da coordinare prima del commit | Chat principale |
+| 22/11/2026 | Richiesta dati TuoTempo: tabella provenienza solo per provincia e senza prestazione; CSV fuori dal repository, solo tabelle elaborate; nessun passaggio con il DPO, Danilo informa il referente marketing | Chat principale |
+| 22/11/2026 | La scelta della pagina principale per le query generiche (scheda kosgroup, sito Diagnostica o ruoli distinti) è di KOS/marketing: la proposta presenta le alternative. Richieste a Danilo al minimo fino al 26/11 (sprint 4) | Chat principale |
 
 ## Rilasci e ripristino
 

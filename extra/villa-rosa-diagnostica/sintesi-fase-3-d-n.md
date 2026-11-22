@@ -21,6 +21,7 @@ Data: 22/11/2026. Stato: **bozza parziale, non ancora rivista**. Etichette: [ver
 - [derivato] Diagnostica, azioni dal profilo: chiamate («Tap to Call») 509 a ottobre 2025, 600 a ottobre 2026 (+18%), con un massimo di 1.015 ad aprile 2026; richieste di indicazioni 195 → 237 (+22%); **clic sul sito 361 → 252 (−30%)**.
 - [derivato] Impressioni su Maps stabili o in crescita (395 → 610 a ottobre); impressioni su Search 5.757 a settembre 2025, 5.582 a settembre 2026, quindi stabili fino a settembre.
 - [derivato] Gli ultimi due mesi (ottobre 2026 impressioni Search 1.417, novembre parziale) crollano in modo simile su entrambe le entità: [ipotesi] ritardo o cambio di fornitura del dato, da verificare prima di leggerlo come calo reale.
+- [verificato] Il profilo 105, come incollato da Danilo, ha come link «Sito web» la scheda kosgroup.com, non villarosadiagnostica.it: i 252 clic mensili non sono quindi traffico del sito della Diagnostica. Non si sa se il link sia cambiato durante l'anno: senza questo dato il calo 361 → 252 non si può attribuire a un cambio di destinazione né escluderlo. Da chiedere a Danilo (storico del profilo o di Yext) o da leggere nell'export Yext.
 - Lettura [ipotesi]: il profilo Google non perde visibilità, anzi genera più telefonate; ciò che cala è il passaggio dal profilo al sito. Coerente con il calo di clic di marca sul sito. Le chiamate non dicono se diventano prenotazioni (serve F).
 - La clinica (KCA00_DEG) ha un andamento diverso: chiamate in calo lento (1.067 a gennaio 2025 → 613 a ottobre 2026), clic sul sito 432 → 198 ad ottobre su ottobre.
 - Non verificato: coerenza di nome, indirizzo e telefono sui portali; indirizzo confermato da Danilo il 22/11: Via Fratelli Rosselli 83 (il «Rossetti» del README era un errore, corretto).
@@ -38,8 +39,8 @@ Query e primi risultati organici rilevanti (host):
 | cone beam modena | villarosadiagnostica.it 2ª e 10ª, kosgroup.com 6ª | Clinica Cantoni, Affidea, studi odontoiatrici |
 | risonanza magnetica / tac / ecografia modena | rilevate nella fase precedente | vedi sintesi-fase-2 |
 
-- [verificato] Nelle query generiche («centro diagnostico») compare la scheda di kosgroup.com, non il sito della Diagnostica: la scheda di gruppo sta già lavorando come pagina principale per la domanda generica.
-- [verificato] Sulle query per esame la Diagnostica è presente ma in concorrenza con almeno 4–5 attori fissi (Fogliani, Affidea, Centro di Medicina, Alliance Medical/Centro Alfa) e con i portali di prenotazione (MioDottore, Doctolib, elty).
+- [ipotesi] Osservato una volta, con SERP personalizzata da desktop: per «centro diagnostico modena» compare la scheda di kosgroup.com in 1ª posizione e non il sito della Diagnostica. Da riverificare con rilevazioni non personalizzate prima di dire che la scheda lavora come pagina principale per la domanda generica.
+- [verificato come osservazione singola] Sulle query per esame la Diagnostica è presente ma in concorrenza con almeno 4–5 attori fissi (Fogliani, Affidea, Centro di Medicina, Alliance Medical/Centro Alfa) e con i portali di prenotazione (MioDottore, Doctolib, elty).
 - [verificato] Per «cone beam» la Diagnostica occupa due posizioni: è il tema dove è più forte.
 - Limite: SERP personalizzate (account di Danilo, sede Modena), una sola rilevazione, solo desktop.
 
@@ -60,11 +61,12 @@ Query e primi risultati organici rilevanti (host):
 
 ## M, N: vincoli già noti
 
-- [verificato] Il dato strutturato resta un unico `@graph` emesso lato server dalla libreria comune; la scheda kosgroup resta pagina principale per Google; nessun rilascio in produzione prima della consegna dello sprint 4.
+- [verificato] Il dato strutturato resta un unico `@graph` emesso lato server dalla libreria comune; nessun rilascio in produzione prima della consegna dello sprint 4.
+- [ipotesi] Quale pagina sia la principale per Google nelle query generiche (scheda kosgroup, sito della Diagnostica, o le due con ruoli distinti) è una scelta di KOS/marketing: la proposta presenterà le alternative.
 - Da chiedere a KOS: chi gestisce il profilo Google, destino di villarosa.it, uso dei dati TuoTempo, regole su pubblicità sanitaria e consenso.
 
 ## Prossimi passi
 
-1. Estensione dello script GA4 (E) e richiesta dei dati TuoTempo aggregati (F): serve Danilo.
+1. Primo lancio dello script GA4 con --prova (E) e richiesta dei dati TuoTempo aggregati (F): serve Danilo, richieste al minimo fino al 26/11 (rilascio sprint 4).
 2. Portali e coerenza dei dati di sede (G), siti dei concorrenti (H), assistenti AI (I).
 3. Revisione indipendente della bozza, poi il riepilogo per la chat principale.
