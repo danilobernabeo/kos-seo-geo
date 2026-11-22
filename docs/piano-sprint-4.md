@@ -95,3 +95,24 @@ di prova jsdelivr non è raggiungibile e il tempo del rifiuto diventa il limite 
 2.676 ms). Da segnalare alla chat prestazioni: `tom-select` in locale (template `strutture`), è proprio la voce KOS 15.
 Dati reali: Web Vitals sui visitatori (75° percentile) da rileggere a 2-3 settimane dal rilascio.
 
+## KOS 2 — schede dei centri in cache (22/11, dalla chat prestazioni)
+
+Causa (Web Vitals reali, tempo server p75 della sezione centri 764 ms contro 180-260 ms del resto del sito): chiamate
+`[[!...]]` nei contenuti e nelle TV delle schede (template 2 e 4) e della pagina dei medici, rieseguite a ogni visita.
+- `scripts/deploy/kos-centri-cache.php`: in cache Wayfinder (59), pdoMenu (2), getResources (2), getMedici e
+  getMediciStrutturaOrdered (6), myBreadcrumb (1), galleryStruttura (29); 31 contenuti e 48 valori TV su 59 risorse.
+  Restano non in cache `barraPrenotazioneDBmedicoPrestazione` e `mostraFino` (dipende dalla data).
+- Snippet `barraPrenotazioneDBmedicoPrestazione` (pacchetto `kos-2-centri-cache`): HTML della barra in cache per scheda
+  (`kosseogeo.barra_cache_ttl`, predefinito 3600 s; 0 = come prima). La produzione era cambiata dopo il 19/10 (tolta la
+  variabile JavaScript `isAutoSelection`, 6 righe): baseline aggiornata alla versione di produzione e cache applicata su
+  quella (b086bce).
+- Stage 22/11: collaudi KOS 24 63/63 e KOS 11 150/150; TTFB mediano (5 misure, 19:52) produzione prima → stage dopo:
+  Villa dei Pini Civitanova 714 → 308 ms, Myolab 597 → 304, Villa Margherita Vicenza Riabilitazione 666 → 287, Villa Rosa
+  Diagnostica 540 → 311, Centro Medico Riabilitativo 599 → 290, pagina dei medici 722 → 302; pagine non toccate uguali
+  (Ritiro referti 256/282, Strutture 329/335).
+- Produzione 22/11 alle 20:04: backup `/paas/c0095/backup-kos-seo-geo/20261122-130358-centri-cache/` (contenuti:
+  `kos-centri-cache.php /www --ripristina=<cartella>/ripristino.json --scrivi`; tabelle
+  `modx_site_content_bak_20261122c`, `modx_site_tmplvar_contentvalues_bak_20261122c`) e `20261122-130359` (snippet:
+  `installa-elementi.php /www <cartella>/ripristino.json --scrivi`).
+- Lo stage ha lo snippet con `isAutoSelection` (vecchia baseline): da riallineare con `--forza`.
+
