@@ -1,0 +1,7 @@
+{
+  "name": "kos-seo-geo-css",
+  "private": true,
+  "type": "module",
+  "description": "Costruzione dei fogli di stile minificati (sprint 4)",
+  "dependencies": { "lightningcss": "1.30.1" }
+}

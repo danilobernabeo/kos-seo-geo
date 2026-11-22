@@ -11,5 +11,6 @@
       "dest": "dist/css/kos-seo-geo.css",
       "baseline": "anniazzurri/baseline/files/dist/css/kos-seo-geo.css"
     }
-  ]
+  ],
+  "nota": "22/11: le sorgenti sono passate in anniazzurri/files/css/; i file in files/dist/css/ sono le uscite minificate di scripts/css/costruisci-css.mjs (pacchetto aa-13-22-css)."
 }

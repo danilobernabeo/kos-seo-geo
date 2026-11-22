@@ -1,0 +1,425 @@
+/* colore originale --azzurro: #2091B0 - rgb 32,145,176 */
+/* colore conforme AA --azzurro: #1B7F9D- rgb 27,127,157 */
+/* colore conforme AAA --azzurro: #125E77 - rgb 18,94,119 */
+
+/* 1. variabile di brand, se serve anche altrove */
+:root{
+    --bs-primary:#1B7F9D;
+    --bs-primary-rgb:27,127,157;
+}
+
+/* 2. colore reale del bottone */
+.btn-primary{
+    --bs-btn-bg: var(--azzurro);
+    --bs-btn-border-color:#1B7F9D;
+    background: var(--azzurro);
+    border-color:#1B7F9D;
+}
+
+/* 3. stati hover / active */
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active{
+    background:#1a7e96;
+    border-color:#1a7e96;
+}
+
+/* Contenitore social media */
+.social-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-text {
+    color: var(--blu);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18.9px;
+    text-align: left;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.social-icons a {
+    color: var(--blu);
+    transition: .3s all;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: var(--azzurro);
+}
+
+.social-icons svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    transition: fill 0.3s ease;
+}
+
+/* Responsive per mobile */
+@media (max-width: 767px) {
+    .social-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+.struttura-container address {
+    color: var(--blu);   
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; 
+    display: flex;
+  }
+
+.struttura-container address::before {
+    content: "";
+    background-image: url(../img/service-ico.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+  }
+
+.equipe-ruolo a {
+  color: var(--azzurro) !important;            /* azzurro accessibile */
+}
+
+.sr-only {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0);
+    white-space: nowrap; border: 0;
+}
+
+.info-mex a,
+.info-mex a:visited {
+  color: var(--azzurro) !important;   /* !important per sovrascrivere Bootstrap */
+}
+
+.info-mex a:hover,
+.info-mex a:focus {
+  color: var(--azzurro);
+  text-decoration: underline;
+}
+
+/* colore link/titolo solo quando lo snippet è dentro .dark-section */
+.dark-section .news-singola h3 a,
+.dark-section .news-singola h3 a:visited {
+    color: #ffffff;          /* bianco sul blu scuro */
+}
+
+/* opzionale: colore al passaggio mouse/focus per mantenere “feedback” */
+.dark-section .news-singola h3 a:hover,
+.dark-section .news-singola h3 a:focus {
+    color: #d0e4ff;          /* o un azzurro chiaro con contrasto AA */
+}
+
+#intro-pagina-foto-content-txt .tag {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    font-size: 13px;
+    background: #e8e8e8;
+    color: #4A4A4A;
+    padding: 10px 15px;
+    font-weight: 400;
+    border: none;
+    line-height: normal;
+    border-radius: 16px;
+}
+
+.team-info{
+    height: 100%;
+
+}
+
+.evento-calendario {
+    display: inline-flex;
+    align-items: stretch;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border: 1px solid #d0dfe2;
+}
+
+.evento-data {
+    background-color: #1a5c6b;
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    font-weight: 700;
+    font-size: .95rem;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.evento-luogo {
+    background-color: #eef4f5;
+    color: #1a5c6b;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    font-size: .95rem;
+    display: flex;
+    align-items: center;
+}
+
+.evento-locandina {
+    background-color: #1a5c6b;
+    color: #ffffff !important;
+    padding: 0.6rem 1.2rem;
+    font-weight: 700;
+    font-size: .95rem;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.evento-locandina:hover {
+    background-color: #134550;
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+/* ============================================================
+   ACCESSIBILITÀ — aggiunte (in coda a custom.css)
+   ============================================================ */
+
+/* Skip link */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    padding: 12px 24px;
+    background: #1B3F6B;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    z-index: 9999;
+    transition: top 0.1s ease;
+}
+.skip-link:focus {
+    top: 0;
+}
+
+/* --- WCAG 2.4.7 Focus Visible --- */
+html body a:focus-visible,
+html body button:focus-visible,
+html body input:focus-visible,
+html body textarea:focus-visible,
+html body select:focus-visible,
+html body [tabindex]:focus-visible {
+    outline: 3px solid var(--bluchiaro) !important;
+    outline-offset: 2px !important;
+    border-radius: 2px;
+}
+
+/* --- WCAG 2.1.1 Keyboard — dropdown desktop --- */
+/* Livello 1 */
+#menu-desktop nav > ul > li:hover > .sub-menu,
+#menu-desktop nav > ul > li:focus-within > .sub-menu {
+    display: block;
+}
+
+/* Livello 2 */
+#menu-desktop [data-level="1"] > ul > li:hover .sub-menu[data-level="2"],
+#menu-desktop [data-level="1"] > ul > li:focus-within .sub-menu[data-level="2"] {
+    display: block;
+    height: 100%;
+    background-color: var(--grigio-100);
+    padding-top: 48px;
+    padding-left: 25px;
+    width: calc(100% - 32%);
+    border-left: 1px solid var(--grigio-300);
+}
+
+/* Focus indicator card strutture */
+html body .struttura-container:focus-visible {
+    outline: 3px solid var(--bluchiaro) !important;
+    outline-offset: 4px !important;
+    border-radius: 4px;
+}
+
+/* Fix outline visibile su card strutture — display:block elimina frammentazione inline-box */
+.struttura-container {
+    display: block;
+}
+
+/* heading-order fix: mantiene dimensione ex-h5 dopo cambio in h3 */
+#blocco-servizi-benefit h3 {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    margin-bottom: 24px;
+}
+
+/* Fix tag <big> obsoleto (H49.Big) → span.testo-grande */
+.testo-grande {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+.linea-tempo {
+    list-style: none !important;   /* il tema azzera gli elenchi: vanno riaffermati */
+    padding: 0 !important;
+    margin: 32px 0 0 !important;
+    display: grid;
+    gap: 0;
+}
+.linea-tempo-tappa {
+    display: block !important;
+    position: relative;
+}
+
+/* l'indicatore della tappa */
+.linea-tempo-tappa::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #005893;
+}
+/* la linea che collega una tappa alla successiva */
+.linea-tempo-tappa::before {
+    content: "";
+    position: absolute;
+    background: var(--grigio-300);
+}
+.linea-tempo-tappa:last-child::before {
+    display: none;
+}
+
+.linea-tempo-quando {
+    display: block;
+    color: var(--blu);
+    font-size: 24px;
+    line-height: 28.8px;
+    font-weight: 500;
+    letter-spacing: -0.288px;
+    margin-bottom: 4px;
+}
+.linea-tempo-cosa {
+    display: block;
+}
+
+/* --- da 768px: orizzontale ---------------------------------------- */
+@media (min-width: 768px) {
+    .linea-tempo {
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
+    }
+    .linea-tempo-tappa {
+        padding: 28px 24px 0 0;   /* il padding destro fa da passo fra le tappe */
+    }
+    .linea-tempo-tappa::after {
+        left: 0;
+        top: 0;
+    }
+    .linea-tempo-tappa::before {
+        left: 0;
+        right: 0;
+        top: 5px;
+        height: 2px;
+    }
+}
+
+/* --- sotto 768px: verticale --------------------------------------- */
+@media (max-width: 767.98px) {
+    .linea-tempo-tappa {
+        padding: 0 0 24px 28px;
+    }
+    .linea-tempo-tappa:last-child {
+        padding-bottom: 0;
+    }
+    .linea-tempo-tappa::after {
+        left: 0;
+        top: 4px;
+    }
+    .linea-tempo-tappa::before {
+        left: 5px;
+        top: 4px;
+        bottom: 0;
+        width: 2px;
+    }
+}
+
+.card-content--static {
+    cursor: default;
+    pointer-events: none;
+}
+.card-content--static:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.box-highlight {
+    background: #e8f3fb;
+    border-left: 4px solid #005893;
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+}
+.box-highlight h2 {
+    margin-top: 0;
+}
+
+.search-item--empty {
+    visibility: hidden;
+}
+
+.elenco-numerato {
+    counter-reset: elenco-numerato;
+    list-style: none !important;
+    padding-left: 1.5rem !important;
+    margin: 0 0 1rem !important;
+}
+.elenco-numerato > li {
+    display: block !important;
+    position: relative;
+    margin-bottom: 1rem;
+}
+.elenco-numerato > li:last-child {
+    margin-bottom: 0;
+}
+.elenco-numerato > li::before {
+    counter-increment: elenco-numerato;
+    content: counter(elenco-numerato) ".";
+    position: absolute;
+    left: -1.5rem;
+    font-weight: 700;
+}

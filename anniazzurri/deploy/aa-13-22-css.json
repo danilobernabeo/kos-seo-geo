@@ -1,0 +1,8 @@
+{
+  "nome": "AA 13 font-display swap con facce di ripiego a metriche corrette, AA 22 fogli minificati, AA 12 Bootstrap Icons locale al posto dell'@import da jsdelivr (uscite di scripts/css/costruisci-css.mjs)",
+  "files": [
+    { "file": "anniazzurri/files/dist/css/app.css", "dest": "dist/css/app.css", "baseline": "anniazzurri/files/css/app.css" },
+    { "file": "anniazzurri/files/dist/css/custom.css", "dest": "dist/css/custom.css", "baseline": "anniazzurri/files/css/custom.css" },
+    { "file": "anniazzurri/files/dist/css/kos-seo-geo.css", "dest": "dist/css/kos-seo-geo.css", "baseline": "anniazzurri/files/css/kos-seo-geo.css" }
+  ]
+}
