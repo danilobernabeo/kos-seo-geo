@@ -73,6 +73,12 @@
 - **Effetto sul traffico del cambio di menu:** le visualizzazioni settimanali di `/prenota-online` passano da circa 90 (tra maggio e giugno 2025) a 17-32 dalla settimana del 30/6; le sessioni totali no: 550-735 a settimana prima e dopo (564-647 nelle settimane di luglio, 582 la settimana del 1/9). Il cambio di menu da solo non spiega il calo del traffico del sito. [derivato]
 - **Nessun redirect su `/prenota-online`:** la risorsa è una pagina normale (`modDocument`), pubblicata dal 8/2/2022, modificata l'ultima volta il 28/6/2024, ancora raggiungibile (risposta 200); non è mai diventata un collegamento. Esiste anche una pagina di prova non pubblicata, «Prenota online test». Regole a livello del server (nginx) non sono nel database e non verificate. [verificato]
 - Nel database ci sono altri elementi che contengono «Prenota Online» o il collegamento alla scheda su kosgroup.com: i chunk `home-slider`, `header-menu`, `banner-opt` e `widgeteer_tpl_tuotempo_item_branca` (un modello per un widget TuoTempo, da capire se usato), il template `home` e nove risorse (servizi, un medico, informazioni utili).
+- **Modifiche al sito dopo il 1/7/2025 (registro del manager)** [verificato]: molto poche.
+  - 11/9/2025: sostituzione di due PDF di consenso per le prestazioni radiologiche (da un secondo utente) e modifica dei chunk `info-6`, `info-9`, `info-10`.
+  - 13/1/2026: modifica della pagina di un medico; 16/1/2026: chunk `medici`.
+  - 12/3/2026: sostituzione di due PDF di preparazione (ecografia addome, RX addome a vuoto), come già visto nelle date dei PDF della fase 1.
+  - 19/8/2026: creato il chunk `alert` e modificati i template `home` e `prestazione` (l'avviso di sospensione presente su due pagine, fase 1).
+  - Niente nei giorni intorno al 18-25/11/2025 (campagne Ads), al 7/1/2026 (perdita dei link di sezione) né nella primavera-estate 2026 (secondo gradino del calo): il sito non è stato modificato dal manager in quei momenti. Il registro non vede modifiche fatte per altra via (SFTP, git, regole nginx del pannello, DNS, eventuale Cloud Edge) né quelle su kosgroup.com.
 La stima del referente (novembre-dicembre 2025) riguarda quindi un altro evento: probabilmente l'avvio delle campagne Ads e il widget sulla scheda lato kosgroup.com. Il GA4 di kosgroup.com parte il 30/12/2025 e non permette di datarlo.
 
 ## Cosa dicono i dati sulle cause del calo
@@ -83,7 +89,7 @@ La stima del referente (novembre-dicembre 2025) riguarda quindi un altro evento:
   3. 7/1/2026: in un solo giorno le impressioni di `/medici/` passano da 34-154 al giorno (6/1 festivo: 44) a 1-7, `/prenota-online` da 146 a 27, `/radiologia-convenzionale` da 178 a 65, mentre le impressioni della home salgono (332-346 il 7-8/1, 279 il 9/1, contro 123-229 nei giorni prima) e le impressioni totali del sito a gennaio crescono: coerente con la perdita dei link di sezione. Le impressioni perse sono soprattutto su ricerche di marca, con quasi zero clic (posizione di `/radiologia-convenzionale` da 3,6 a 6,2). Compatibile con la perdita dei link di sezione («sitelink») sotto il risultato di marca. [ipotesi: verificare la pagina dei risultati] Ads non riduce le impressioni organiche; la scheda su kosgroup.com compete invece con il sito nei risultati naturali.
 - Le campagne non bastano a spiegare il calo: le ricerche non di marca perdono impressioni (39.479 → 11.083, settembre-ottobre 2025 contro 2026) e la campagna di marca non incide su di esse; il calo di clic sulla marca è circa 445 al mese tra i due periodi. La campagna Unbranded ha avuto 530 clic e 372 euro a dicembre 2025, poi circa 90 clic e 61 euro al mese. [ipotesi sostenuta dai dati]
 - Il secondo gradino (primavera-estate 2026; «villa rosa» da sola cala del 75% tra giugno e agosto in impressioni, da 583 a 145; i clic scendono da 44 a 16 e la posizione media passa da 6,1 a 3,5: spariscono le impressioni in posizioni basse) non è spiegato da questi fatti: le campagne sono stabili da febbraio. [ipotesi: serve vedere come cambia la pagina dei risultati di Google per «villa rosa modena» e la scheda Google dell'attività]
-- Non esclusi: stagionalità, posizionamento, un effetto delle risposte generate da Google, un cambio di ricerca di marca. [ipotesi]
+- I due gradini non coincidono con modifiche del sito (vedi registro del manager): le cause cercate sono fuori dal sito, cioè Google (pagina dei risultati, link di sezione), Ads, scheda e widget su kosgroup.com, scheda Google. Non esclusi: stagionalità, un effetto delle risposte generate da Google, un cambio di ricerca di marca. [ipotesi]
 
 ## Misurazione: il contenitore GTM-P5XL4PT (bozza workspace 7)
 
@@ -151,7 +157,7 @@ Fatte nel browser integrato di Claude sul computer di Danilo (profilo persistent
 
 ## Aperto
 
-- Registro del manager MODX dopo il 1/7/2025 (modifiche a chunk, template, risorse e file, per datare i cambiamenti prima del calo di dicembre 2025 e di quello della primavera-estate 2026); verifica della pagina dei risultati di Google per «villa rosa modena» (link di sezione, evento del 7/1/2026) e della scheda Google (secondo gradino del calo).
+- Registro del manager MODX di kosgroup.com per la scheda `/it/centri/villa-rosa-diagnostica` e i suoi elementi (data del widget di prenotazione sulla scheda e di eventuali altre modifiche); verifica della pagina dei risultati di Google per «villa rosa modena» (link di sezione, evento del 7/1/2026) e della scheda Google (secondo gradino del calo).
 - Metodo dei conteggi della scheda su kosgroup.com (sessioni da Ads e da ricerca, clic `click_tuotempo` «dal sito»): i valori dipendono dalla sorgente usata; un secondo calcolo dà Ads 485-622 (846 a gennaio), organico 332-458, clic dal sito 24 e 41. Da fissare.
 - File `varianti.txt` e `ttfb.txt` non conservati tra i dati di appoggio: le verifiche del 21/11 sono riproducibili da PowerShell.
 - Cookie impostati dal server e comportamento di Clarity prima del consenso (le richieste partono, ma non risulta se Clarity applichi un proprio consenso senza cookie).
