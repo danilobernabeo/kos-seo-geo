@@ -161,4 +161,4 @@ corregge il difetto durante il test, nulla cambia fino al 6/12, per non mescolar
 Danilo segnala il difetto al referente HubSpot (lunedì 23/11). I minuti 10:18-10:20 senza attivazione anche sul telefono
 sono trascurabili per il gruppo di controllo.
 
-Nota (22/11): lo sprint 4 (CSS e JS dei due siti) va in produzione entro il 26/11, durante la fase B. Cambia la velocità del sito allo stesso modo su computer e telefono: la regola di decisione, che confronta le fasi al netto della variazione da telefono, ne tiene conto. Data e ora del rilascio da annotare qui.
+Nota (22/11): lo sprint 4 (CSS e JS dei due siti) va in produzione entro il 26/11, durante la fase B. Cambia la velocità del sito allo stesso modo su computer e telefono: la regola di decisione, che confronta le fasi al netto della variazione da telefono, ne tiene conto. Rilascio in produzione: 22/11/2026 alle 17:22 (pacchetti `kos-15-25-css` e `aa-13-22-css`, backup c0072 `20261122-102222`).

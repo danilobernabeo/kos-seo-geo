@@ -44,3 +44,22 @@ Tutte le attività svolte vanno nella nota di consegna, con le voci fuori perime
 | Mercoledì 25 | CSS critico e non utilizzati (KOS 16, AA 15-16); collaudo visivo stage/produzione a 390 e 1366 px; CLS |
 | Giovedì 26 | Produzione; misura del «dopo»; verifica di dato strutturato, title, canonical invariati |
 | Venerdì 27 | Riserva, nessun rilascio; bozza della nota dello sprint 4 |
+
+## Rilascio (22/11, anticipato)
+
+In produzione il 22/11 alle 17:22, dopo il confronto dei fogli sulle pagine di produzione (`scripts/css/confronta-css-*.py`)
+e due collaudi visivi stage/produzione (il primo ha trovato l'errore delle facce di Open Sans, corretto in 8243313).
+- kosgroup.com: `kos-15-25-css`, backup `/paas/c0095/backup-kos-seo-geo/20261122-102214/` (ripristino:
+  `installa-elementi.php /www <cartella>/ripristino.json --scrivi`). Verifica: head con il solo `kos.min.css` (200, 485 KB,
+  `max-age=15552000`), un solo JSON-LD.
+- anniazzurri.it: `aa-13-22-css`, backup `/paas/c0072/backup-kos-seo-geo/20261122-102222/`. Verifica: `app.css` minificato
+  con le facce di ripiego, nessun `@import` da jsdelivr, un solo JSON-LD.
+
+Restano per dopo:
+- `head-rsa` carica ancora `/dist/css/bootstrap-icons.min.css`, ora già dentro `app.css` (doppione in cache): da togliere
+  dopo il 4/12, perché `head-rsa` è tra gli elementi della verifica dello sprint 3;
+- schede dei centri KOS: foglio `tom-select@2.3.1` da jsdelivr (l'indirizzo esce in entità HTML perché il plugin
+  ObfuscateEmail scambia «@2.3.1» per un'email; il browser lo legge comunque) e `lite-yt-embed.css`: dentro il template
+  `strutture`, in carico alla chat prestazioni fino all'arrivo dei suoi file;
+- home dei due siti: `answers.css` di Yext, che sparisce con la sostituzione della ricerca (linea C).
+
