@@ -11,7 +11,7 @@ Data: 22/11/2026. Stato: **bozza parziale, non ancora rivista**. Etichette: [ver
 | F prenotazioni | non fatta: servono dati aggregati TuoTempo estratti da Danilo |
 | G presenza locale | parziale: dati Yext/profilo Google; portali (MioDottore, Micuro) non ancora controllati |
 | H concorrenti | parziale: SERP di 6 query; siti dei concorrenti non ancora analizzati |
-| I assistenti AI | non fatta |
+| I assistenti AI | parziale: 3 domande in AI Mode di Google; Perplexity chiede l'accesso (non fatto), ChatGPT e Gemini non provati |
 | L contenuti | fatta sulla scansione del 20/11 |
 | M, N | non fatte (solo i vincoli già noti dal progetto) |
 
@@ -43,6 +43,17 @@ Query e primi risultati organici rilevanti (host):
 - [verificato come osservazione singola] Sulle query per esame la Diagnostica è presente ma in concorrenza con almeno 4–5 attori fissi (Fogliani, Affidea, Centro di Medicina, Alliance Medical/Centro Alfa) e con i portali di prenotazione (MioDottore, Doctolib, elty).
 - [verificato] Per «cone beam» la Diagnostica occupa due posizioni: è il tema dove è più forte.
 - Limite: SERP personalizzate (account di Danilo, sede Modena), una sola rilevazione, solo desktop.
+
+## I. Assistenti AI (parziale: AI Mode di Google, 22/11/2026, 3 domande)
+
+Metodo: AI Mode di Google (`udm=50`) dal browser di Danilo, personalizzato, Modena, desktop; una sola esecuzione per domanda. Perplexity richiede l'accesso e non l'ho usato; ChatGPT e Gemini non sono stati provati. Il campione è piccolo: serve per osservare come viene descritta la Diagnostica, non per misurarne la frequenza.
+
+- [osservato] «dove fare una risonanza magnetica aperta a Modena»: la Diagnostica compare, con indirizzo corretto (Via Fratelli Rosselli 83), risonanza 1,5 Tesla, attenzione ai pazienti ansiosi o claustrofobici, privato e convenzione SSN, con fonte villarosadiagnostica.it. Compare accanto ad Affidea, Fogliani e Centro di Medicina (Carpi); la risposta distingue le macchine «aperte» (Affidea, Carpi) da quelle «semiaperte» (Fogliani, Diagnostica).
+- [osservato] «Villa Rosa Diagnostica Modena orari e come prenotare»: orari corretti (lun-ven 7:30-19:30, sab 7:30-19:00), segreterie, due telefoni (059 306335 diagnostica, 059 303034 centralino), fonti villarosadiagnostica.it, kosgroup.com e MioDottore. Le informazioni coincidono con quelle di `/informazioni-utili`, tranne due punti: la risposta dice «prenotazione online solo regime privato» (il sito non usa questa categoria) e cita gli sportelli CUP (il sito cita solo le farmacie secondo l'AUSL).
+- [verificato] Il sito stesso riporta **due email diverse**: `diagnostica.villarosa@kosgroup.com` (intestazione) e `diagnostica@villarosa.it` (sezione Servizi diagnostici); l'AI ha ripreso la seconda, del dominio `villarosa.it` (posta attiva, sito morto, decisione pendente). Da uniformare, anche per il dato strutturato.
+- [osservato] «dove fare una elettromiografia a Modena»: la Diagnostica compare tra i poliambulatori privati e convenzionati, con indirizzo corretto e la dicitura «consegna immediata del referto» (da verificare con la pagina del sito). Concorrenti citati con prezzi indicativi presi dai portali (Poliambulatorio C.A.F. da circa 125 €, Coliseum Center 175-195 € per l'esame doppio) e con prenotazione tramite Doctolib/MioDottore; per la Diagnostica nessun prezzo.
+- [ipotesi] Le fonti citate dall'AI sono sia villarosadiagnostica.it sia kosgroup.com: i due domini sono letti insieme. I contenuti delle pagine del sito (orari, contatti, pagina esame) vengono ripresi quasi alla lettera: l'accuratezza dell'AI dipende dall'accuratezza e dalla coerenza di quelle pagine (due email, due telefoni).
+- Prossimi passi: provare ChatGPT e Gemini con le stesse domande (serve un account: da chiedere a Danilo se usarli), e aggiungere domande su TMS, TAC, ecografia e confronto tra centri.
 
 ## L. Contenuti del sito (scansione del 20/11/2026, 40 URL)
 
