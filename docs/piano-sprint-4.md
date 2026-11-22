@@ -114,5 +114,10 @@ Causa (Web Vitals reali, tempo server p75 della sezione centri 764 ms contro 180
   `kos-centri-cache.php /www --ripristina=<cartella>/ripristino.json --scrivi`; tabelle
   `modx_site_content_bak_20261122c`, `modx_site_tmplvar_contentvalues_bak_20261122c`) e `20261122-130359` (snippet:
   `installa-elementi.php /www <cartella>/ripristino.json --scrivi`).
+- Verifica in produzione (22/11, 20:04-20:13): collaudi KOS 24 63/63 e KOS 11 150/150 (99 `IndividualPhysician`, 51
+  `Person`), esiti identici riga per riga a quelli dello stage; TTFB mediano prima (19:52) → dopo (20:04): Villa dei Pini
+  Civitanova 714 → 304 ms, Myolab 597 → 297, Villa Margherita Vicenza Riabilitazione 666 → 295, Villa Rosa Diagnostica
+  540 → 274, Centro Medico Riabilitativo 599 → 281, pagina dei medici 722 → 258, Villa Pineta 321 → 293; pagine non
+  toccate Ritiro referti 256 → 292, Strutture 329 → 325. Effetto sui Web Vitals reali: controllo della chat prestazioni
+  in BigQuery una settimana dopo.
 - Lo stage ha lo snippet con `isAutoSelection` (vecchia baseline): da riallineare con `--forza`.
-
