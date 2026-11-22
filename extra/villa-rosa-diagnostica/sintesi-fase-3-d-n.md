@@ -11,7 +11,7 @@ Data: 22/11/2026. Stato: **bozza parziale, non ancora rivista**. Etichette: [ver
 | F prenotazioni | non fatta: servono dati aggregati TuoTempo estratti da Danilo |
 | G presenza locale | parziale: dati Yext/profilo Google; portali (MioDottore, Micuro) non ancora controllati |
 | H concorrenti | parziale: SERP di 6 query; siti dei concorrenti non ancora analizzati |
-| I assistenti AI | parziale: 3 domande in AI Mode di Google e 2 in ChatGPT (senza accesso); Perplexity non usato, Gemini non provato |
+| I assistenti AI | parziale: 3 domande in AI Mode di Google e 2 in ChatGPT (senza accesso) e 2 in Gemini (con l'account di Danilo); Perplexity non usato |
 | L contenuti | fatta sulla scansione del 20/11 |
 | M, N | non fatte (solo i vincoli già noti dal progetto) |
 
@@ -57,7 +57,9 @@ Metodo: AI Mode di Google (`udm=50`) dal browser di Danilo, personalizzato, Mode
   - «Dove posso fare una risonanza magnetica aperta a Modena?»: la Diagnostica **non compare**; risposta con Affidea Modena Medica (risonanza articolare aperta) e Policlinico di Modena.
   - «Dove posso fare una elettromiografia a Modena?»: la Diagnostica compare **al primo posto** («anche SSN», Via Fratelli Rosselli 83, EMG semplice e a quattro arti, referto al termine dell'esame), seguita da Coliseum Center (100-175 €), Poliambulatorio C.A.F. (100-125 €) e Centro Alfa; per i concorrenti ci sono prezzi indicativi, per la Diagnostica no.
   - Quindi, per la risonanza, ciò che AI Mode di Google dice (Diagnostica presente) e ciò che dice ChatGPT (assente) differisce: l'esito dipende dall'assistente e dalla domanda.
-- Prossimi passi: Gemini con le stesse domande; aggiungere domande su TMS, TAC, ecografia e confronto tra centri; ripetere in momenti diversi (una sola esecuzione per domanda non basta a parlare di frequenza).
+- [osservato] **Gemini** (22/11, con l'account Google di Danilo, che risulta localizzato a Milano «in base ai luoghi di lavoro»: possibile distorsione; una esecuzione per domanda): la Diagnostica compare in entrambe le risposte, con indirizzo corretto, orari corretti e **valutazione 4,8 stelle**, la più alta tra i centri elencati (Fogliani 4,1, Policlinico 3,9, Coliseum 3,7, Affidea e Centro di Medicina 3,6, C.A.F. 3,5). Per l'elettromiografia è la prima citata; per la risonanza è tra i centri diagnostici ma non è descritta come «aperta». Gemini la definisce «accreditato» e convenzionato con il Servizio Sanitario Regionale: [non verificato] se l'accreditamento è corretto per la sede.
+- [derivato] Sintesi dei tre assistenti: sulla risonanza aperta la Diagnostica compare in 2 su 3 (non in ChatGPT); sull'elettromiografia compare in 3 su 3, in prima posizione in ChatGPT e Gemini. Con una sola esecuzione per domanda e sessioni non anonime non si può dire altro.
+- Prossimi passi: aggiungere domande su TMS, TAC, ecografia e confronto tra centri; ripetere in momenti diversi (una sola esecuzione per domanda non basta a parlare di frequenza).
 
 ## L. Contenuti del sito (scansione del 20/11/2026, 40 URL)
 
