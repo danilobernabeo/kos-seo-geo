@@ -4,9 +4,9 @@
  * residenza come nella slide 23 dell'audit. Frase introduttiva sotto l'H1 da <p class="h3 text-primary"> a H2; tutti i
  * titoli delle sezioni scendono di un livello (H2 → H3, H3 → H4, H4 → H5); «Contatti» (h5.card-title) diventa
  * paragrafo. La resa grafica non cambia: chi perde il livello prende la classe del livello di prima (.h2, .h3…),
- * salvo le intestazioni con regole proprie (card-header, accordion-header). Le schede caricano app.css e
- * kos-seo-geo.css, non custom.css: la regola h3.card-title di custom.css non vale qui, quindi anche i card-title
- * prendono la classe del livello di prima.
+ * salvo le intestazioni con regole proprie (card-header, accordion-header). I card-title prima H3 prendono anche
+ * aa6-card-title (regola h3.card-title di custom.css). Le schede caricano custom.css e app.css, le landing lrsa-*,
+ * che usano gli stessi chunk, app.css e kos-seo-geo.css: le regole CSS di AA 6 stanno nei fogli che servono a ciascuna.
  *
  * Ambito: risorse non cestinate con template «rsa» (contenuto) e i chunk della singola scheda richiamati dal contenuto
  * ([[$prefisso-[[*alias]]]] → prefisso-<alias>), più podcast-spreaker-casa-anni-azzurri e documents. I chunk comuni
@@ -63,7 +63,7 @@ function trasforma(string $html, bool $contenuto, array &$conta): string {
         $protette = '/\b(h[1-6]|display-\d|card-header|accordion-header)\b/';
         if (preg_match('/class="([^"]*)"/', $attr, $c)) {
             if (!preg_match($protette, $c[1])) {
-                $agg = "h$liv";
+                $agg = ($liv === 3 && str_contains($c[1], 'card-title')) ? 'h3 aa6-card-title' : "h$liv";
                 $attr = str_replace('class="' . $c[1] . '"', 'class="' . trim($c[1] . " $agg") . '"', $attr);
                 $conta['classe_aggiunta']++;
             }

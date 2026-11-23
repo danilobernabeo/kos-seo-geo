@@ -337,3 +337,11 @@ img.card-img-top[height] { height: auto; }
 /* AA-4: barra di ricerca Yext Answers della home, scritta da JavaScript (+58 px dopo il caricamento): spazio riservato.
    Da togliere con la sostituzione della ricerca Yext (linea C). */
 #main-content .search_form { min-height: 58px; }
+
+/* AA 6, riscontro della verifica dello sprint 2 (23/11/2026, scripts/deploy/aa-6-titoli.php): i titoli delle schede
+   residenza scendono di un livello. Le schede caricano custom.css e app.css; le landing lrsa-*, che usano gli stessi
+   chunk, caricano app.css e kos-seo-geo.css: la regola h4.card-header sta in entrambi i fogli. I card-title prima H3
+   prendono .h3 (aspetto nelle landing) e aa6-card-title, che qui rifà la regola h3.card-title (aspetto nelle schede) */
+h4.card-header { font-size: inherit; font-weight: inherit; line-height: inherit; font-family: inherit;
+  color: inherit; letter-spacing: inherit; margin-top: 0; margin-bottom: 0; }
+h4.aa6-card-title { font-size: 22.5px; line-height: 27px; }

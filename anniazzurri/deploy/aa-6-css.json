@@ -1,5 +1,5 @@
 {
-  "nome": "AA 6 riscontro sprint 2: regola h4.card-header in kos-seo-geo.css (le schede non caricano custom.css); custom.css riportato alla versione di produzione",
+  "nome": "AA 6 riscontro sprint 2: regole h4.card-header in custom.css (schede) e kos-seo-geo.css (landing lrsa-*), h4.aa6-card-title in custom.css",
   "files": [
     { "file": "anniazzurri/files/dist/css/kos-seo-geo.css", "dest": "dist/css/kos-seo-geo.css", "baseline": "anniazzurri/files/css/kos-seo-geo.css" },
     { "file": "anniazzurri/files/dist/css/custom.css", "dest": "dist/css/custom.css", "baseline": "anniazzurri/files/css/custom.css" }
