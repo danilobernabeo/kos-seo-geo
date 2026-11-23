@@ -38,3 +38,16 @@ $out = $modx->runSnippet('BreadCrumb', [
 echo "\nBreadCrumb → " . var_export($out, true) . "\n";
 $sn = $modx->getObject(MODX\Revolution\modSnippet::class, ['name' => 'BreadCrumb']);
 if ($sn) echo "snippet BreadCrumb: id {$sn->get('id')}, statico " . (int) $sn->get('static') . ", " . strlen((string) $sn->get('snippet')) . " byte\n";
+
+/* Come nella pagina: il chunk breadcrumb-stripe passato dal parser, con i tag della risorsa. */
+$ch = $modx->getObject(MODX\Revolution\modChunk::class, ['name' => 'breadcrumb-stripe']);
+echo "\nchunk breadcrumb-stripe: statico " . (int) $ch->get('static') . " file " . $ch->get('static_file') . "\n" . $ch->get('snippet') . "\n";
+$modx->getParser();
+$html = $ch->get('snippet');
+$modx->parser->processElementTags('', $html, false, false, '[[', ']]', [], 10);
+$modx->parser->processElementTags('', $html, true, true, '[[', ']]', [], 10);
+echo "\nchunk passato dal parser → " . trim($html) . "\n";
+$cache = MODX_CORE_PATH . 'cache/resource/web/resources/' . $res->get('id') . '.cache.php';
+echo "\ncache della risorsa: " . (is_file($cache) ? $cache . ' (' . date('d/m H:i', filemtime($cache)) . ')' : 'assente') . "\n";
+if (is_file($cache) && preg_match('#stripe-breadcrumb.{0,400}#s', (string) file_get_contents($cache), $m)) echo $m[0] . "\n";
+
