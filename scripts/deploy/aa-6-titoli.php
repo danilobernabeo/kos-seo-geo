@@ -36,7 +36,9 @@ $modx = modX::getInstance();
 $modx->initialize('mgr');
 
 if ($rip) {
+    if (!is_file($rip)) { fwrite(STDERR, "File di ripristino non trovato: $rip\n"); exit(1); }
     $righe = json_decode((string) file_get_contents($rip), true);
+    if (!is_array($righe)) { fwrite(STDERR, "File di ripristino non leggibile: $rip\n"); exit(1); }
     foreach ($righe as $r) {
         $o = $r['tipo'] === 'risorsa' ? $modx->getObject(modResource::class, $r['id']) : $modx->getObject(modChunk::class, ['name' => $r['nome']]);
         if (!$o) { echo "  ! non trovato: " . ($r['nome'] ?? $r['id']) . "\n"; continue; }
