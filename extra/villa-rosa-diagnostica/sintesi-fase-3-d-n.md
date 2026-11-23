@@ -13,7 +13,7 @@ Data: 22/11/2026. Stato: **bozza parziale, non ancora rivista**. Etichette: [ver
 | H concorrenti | parziale: SERP di 6 query; siti dei concorrenti non ancora analizzati |
 | I assistenti AI | parziale: 3 domande in AI Mode di Google e 2 in ChatGPT (senza accesso) e 2 in Gemini (con l'account di Danilo); Perplexity non usato |
 | L contenuti | fatta sulla scansione del 20/11 |
-| M, N | non fatte (solo i vincoli già noti dal progetto) |
+| M, N | fatte sui documenti del progetto (nessuna verifica esterna) |
 
 ## G. Profilo Google (dati Yext, entità 105 Diagnostica e KCA00_DEG Villa Rosa clinica)
 
@@ -116,14 +116,24 @@ Metodo: AI Mode di Google (`udm=50`) dal browser di Danilo, personalizzato, Mode
 - Dati Search Console già in sintesi-fase-2 e sintesi-marca-tre-pagine: la domanda di marca è la parte più grande e quella che cala; la domanda per esame (risonanza, elettromiografia, cone beam) tiene meno bene dopo aprile 2026.
 - Mancano volumi di ricerca esterni; non si stimano.
 
-## M, N: vincoli già noti
+## M. Rapporto tra sito, scheda kosgroup e RetailTune (dai documenti del progetto)
 
-- [verificato] Il dato strutturato resta un unico `@graph` emesso lato server dalla libreria comune; nessun rilascio in produzione prima della consegna dello sprint 4.
-- [ipotesi] Quale pagina sia la principale per Google nelle query generiche (scheda kosgroup, sito della Diagnostica, o le due con ruoli distinti) è una scelta di KOS/marketing: la proposta presenterà le alternative.
-- Da chiedere a KOS: chi gestisce il profilo Google, destino di villarosa.it, uso dei dati TuoTempo, regole su pubblicità sanitaria e consenso.
+- [verificato] Per il gruppo, RetailTune è l'archivio delle sedi: da lì derivano la scheda Google (nome, indirizzo, telefono, sito, categorie, orari), la pagina del sito (import nelle TV `str.*` di MODX) e il dato strutturato, letto dalle stesse TV (`docs/specifica-grafo-kos.md`). Quindi i dati della Diagnostica (indirizzo, telefono, orari, email) devono nascere in un punto solo e arrivare a scheda, sito e markup uguali.
+- [verificato] Nel dataset Yext la Diagnostica (entità 105) e la casa di cura (KCA00_DEG) sono già due schede distinte; la casa di cura e la Diagnostica condividono indirizzo e nome. Nell'elenco di Yext la Diagnostica risulta senza email (`docs/yext-schema-kos.md`), mentre il sito ne riporta due diverse.
+- [ipotesi] Il ruolo di ciascuna pagina nella proposta è una scelta di KOS e marketing. Alternative da presentare: (a) la scheda kosgroup resta la pagina di riferimento per Google e il sito diventa il luogo di approfondimento per esame; (b) il sito della Diagnostica torna a essere il riferimento e la scheda kosgroup resta pagina istituzionale; (c) due ruoli distinti, con collegamenti reciproci e dato strutturato coerente (un `@graph` per pagina, `@id` della struttura sulla scheda `#localbusiness`). Le osservazioni a favore e contro (traffico di marca, link «Sito web» del profilo spostato a fine febbraio 2025, annunci a pagamento verso la scheda) sono nelle sezioni precedenti.
+- Da chiedere a KOS: il sito della Diagnostica resterà un dominio proprio dopo l'apertura della nuova sede (7/1/2027)? La sede nuova avrà un indirizzo e una scheda Google propri?
+
+## N. Vincoli (dai documenti del progetto)
+
+- [verificato] Comunicazione sanitaria solo informativa, senza elementi promozionali o suggestivi (L. 145/2018, art. 1 c. 525; Codice deontologico artt. 55-56), con revisione dei testi prima della pubblicazione: vale per descrizione della scheda, post e pagine. Pubblicare prezzi o confronti tra centri va valutato con questo vincolo.
+- [verificato] Nelle risposte alle recensioni mai dati sanitari né conferma che l'autore è un paziente; richiesta di recensione uguale per tutti, senza incentivi né filtri; foto solo con consenso scritto (`docs/specifica-grafo-kos.md`).
+- [verificato] «Villa Rosa» (la casa di cura) è tra le 16 strutture psichiatriche senza richiesta attiva di recensioni (decisione del 29/10). Poiché Diagnostica e casa di cura condividono nome e indirizzo, e nei portali le recensioni si mescolano (QSalute, sezione G), va deciso come trattare le recensioni della Diagnostica senza fare richieste che ricadano sulla casa di cura.
+- [verificato] Consenso: nel container GTM della Diagnostica (GTM-P5XL4PT) vale lo stesso schema segnalato per gli altri siti (GA4 e Clarity partono prima della scelta nel banner); è un tema unico di gruppo per il DPO, senza modifiche prima del parere (registro decisioni del 21/11).
+- [ipotesi] Accessibilità: non analizzata in questa fase; per il restyling va prevista una verifica specifica (contrasti, tastiera, moduli di prenotazione), da fare sul nuovo sito.
+- Domande per KOS: chi approva i testi sanitari del nuovo sito; se la Diagnostica può mostrare le valutazioni Google (nel dato strutturato non entrano, `docs/kos-24.md`); regole del marchio KOS sul nome «Villa Rosa Diagnostica» e sul logo dopo il trasferimento.
 
 ## Prossimi passi
 
-1. Primo lancio dello script GA4 con --prova (E) e richiesta dei dati TuoTempo aggregati (F): serve Danilo, richieste al minimo fino al 26/11 (rilascio sprint 4).
-2. Portali e coerenza dei dati di sede (G), siti dei concorrenti (H), assistenti AI (I).
+1. Dati TuoTempo aggregati (F): serve Danilo, richieste al minimo fino al 26/11 (rilascio sprint 4). Lo script GA4 (E) è già stato lanciato il 22/11.
+2. Aprire direttamente le schede dei portali (MioDottore, Doctolib) e completare gli assistenti AI (domande su TMS, TAC, ecografia).
 3. Revisione indipendente della bozza, poi il riepilogo per la chat principale.
