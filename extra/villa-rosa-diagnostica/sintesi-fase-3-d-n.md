@@ -51,7 +51,20 @@ Query e primi risultati organici rilevanti (host):
 - [verificato come osservazione singola] Sulle query per esame la Diagnostica è presente ma in concorrenza con almeno 4–5 attori fissi (Fogliani, Affidea, Centro di Medicina, Alliance Medical/Centro Alfa) e con i portali di prenotazione (MioDottore, Doctolib, elty).
 - [verificato] Per «cone beam» la Diagnostica occupa due posizioni: è il tema dove è più forte.
 - Limite: SERP personalizzate (account di Danilo, sede Modena), una sola rilevazione, solo desktop.
-- Non ancora fatto: lettura dei siti dei concorrenti (Fogliani, Affidea Modena Medica, Centro di Medicina) per confrontare prezzi pubblicati, prenotazione online, tipo di risonanza e contenuti informativi. Il 23/11 l'accesso a quelle pagine non è stato approvato; da riprendere.
+
+### Siti dei concorrenti (lettura con Chrome, 23/11/2026, una pagina per sito)
+
+| Aspetto | Fogliani (pagina risonanza) | Affidea Modena Medica (scheda sede) | Centro di Medicina (diagnostica per immagini) |
+|---|---|---|---|
+| Prezzi pubblicati | nessuno sulla pagina | nessuno rilevato | nessuno rilevato |
+| Prenotazione | solo canali diretti: numero unico 059 49 26 999 ed email, con la richiesta del medico allegata; non online | pulsante «Prenota» nel menu | pulsanti «Prenota» e «Richiedi informazioni» |
+| Contenuti | elenco di circa 45 esami, istruzioni, controindicazioni, 13 domande frequenti, referto in 5 giorni lavorativi con scarico online | descrizione, servizi, orari, dottori, documenti; direttore sanitario nominato | testo generale sulla diagnostica per immagini; nessuna sezione di domande frequenti rilevata |
+| Risonanza | dichiara 1,5 Tesla, «macchina chiusa ma tubo di 70 cm (semiaperta)», con avvertenza sulla maschera per encefalo e rachide cervicale | (non letto sulla pagina) | (non letto sulla pagina) |
+| Dato strutturato | non letto | `@graph` con Organization, WebSite, WebPage, MedicalClinic, BreadcrumbList | un solo nodo MedicalOrganization |
+
+- [osservato] La pagina risonanza di Fogliani risponde in chiaro alle domande più comuni dei pazienti (campo alto, aperta o chiusa, claustrofobia, durata, protesi, peso massimo): è il tipo di contenuto che gli assistenti AI riprendono. [ipotesi] Una pagina equivalente per la risonanza della Diagnostica potrebbe migliorare le risposte sulla «risonanza aperta», dove oggi la Diagnostica non è sempre citata.
+- [osservato] Nessuno dei tre siti letti pubblica prezzi nelle pagine esaminate; i prezzi compaiono nei portali di prenotazione. [ipotesi] Pubblicare prezzi di riferimento sarebbe un elemento distintivo, ma è una scelta commerciale di KOS e va verificata con le regole sulla pubblicità sanitaria (analisi N).
+- Limite: una sola pagina per sito, da desktop, senza aprire le altre sezioni (prezzi nei listini, pagine dei singoli esami).
 
 ## I. Assistenti AI (parziale: AI Mode di Google, 22/11/2026, 3 domande)
 
