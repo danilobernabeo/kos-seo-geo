@@ -51,6 +51,7 @@ Query e primi risultati organici rilevanti (host):
 - [verificato come osservazione singola] Sulle query per esame la Diagnostica è presente ma in concorrenza con almeno 4–5 attori fissi (Fogliani, Affidea, Centro di Medicina, Alliance Medical/Centro Alfa) e con i portali di prenotazione (MioDottore, Doctolib, elty).
 - [verificato] Per «cone beam» la Diagnostica occupa due posizioni: è il tema dove è più forte.
 - Limite: SERP personalizzate (account di Danilo, sede Modena), una sola rilevazione, solo desktop.
+- Non ancora fatto: lettura dei siti dei concorrenti (Fogliani, Affidea Modena Medica, Centro di Medicina) per confrontare prezzi pubblicati, prenotazione online, tipo di risonanza e contenuti informativi. Il 23/11 l'accesso a quelle pagine non è stato approvato; da riprendere.
 
 ## I. Assistenti AI (parziale: AI Mode di Google, 22/11/2026, 3 domande)
 
