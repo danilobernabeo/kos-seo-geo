@@ -3,6 +3,7 @@
 -- Aggiornare gli istanti di passaggio con l'ora effettiva del cambio in HubSpot (registro in docs/aa-4.md).
 DECLARE inizio  TIMESTAMP DEFAULT TIMESTAMP('2026-11-12 07:24:00', 'Europe/Rome');  -- pubblicazione del tag (GTM v78)
 DECLARE a_b     TIMESTAMP DEFAULT TIMESTAMP('2026-11-21 09:20:00', 'Europe/Rome');  -- A -> B (pubblicazione del chatflow, 21/11 09:20)
+DECLARE b_vera  TIMESTAMP DEFAULT TIMESTAMP('2026-11-23 09:12:00', 'Europe/Rome');  -- fumetto visto da Danilo: inizio della B per il confronto
 DECLARE b_a     TIMESTAMP DEFAULT TIMESTAMP('2026-12-07 09:00:00', 'Europe/Rome');  -- B -> A
 DECLARE fine    TIMESTAMP DEFAULT TIMESTAMP('2026-12-14 00:00:00', 'Europe/Rome');
 
@@ -22,7 +23,7 @@ WITH ev AS (
   WHERE _TABLE_SUFFIX BETWEEN '20261112' AND '20261213'
 ),
 f AS (
-  SELECT *, CASE WHEN ts < inizio OR ts >= fine THEN NULL WHEN ts < a_b OR ts >= b_a THEN 'A' ELSE 'B' END AS fase
+  SELECT *, CASE WHEN ts < inizio OR ts >= fine THEN NULL WHEN ts < a_b OR ts >= b_a THEN 'A' WHEN ts < b_vera THEN 'B-solo-pulsante' ELSE 'B' END AS fase
   FROM ev WHERE disp IN ('desktop', 'mobile')
 )
 SELECT

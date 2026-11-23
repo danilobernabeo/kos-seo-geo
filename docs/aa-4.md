@@ -168,10 +168,10 @@ Nota (22/11): lo sprint 4 (CSS e JS dei due siti) va in produzione entro il 26/1
 Il 23/11 alle 9:12 Danilo segnala che sul computer la chat si presenta chiusa con il fumetto di benvenuto, cioè la
 variante B come decisa in origine. Verificato alle 9:15 sulla scheda di Mestre (1024 px, nuovo visitatore): fumetto
 «Benvenuto sul nostro Sito Anni Azzurri.» accanto al pulsante, finestra della chat chiusa. Nessuna modifica nostra né in
-HubSpot dalle 10:20 del 21/11: il difetto è stato corretto da HubSpot, in un momento non rilevabile dai dati (il tag
+HubSpot dalle 10:20 del 21/11: secondo Danilo non una correzione di HubSpot (domenica, segnalazione non ancora inviata) ma un ritardo di aggiornamento della configurazione o della cache lato HubSpot, concluso in un momento non rilevabile dai dati (il tag
 `chat_hubspot` registra aperture e conversazioni, non la comparsa del fumetto).
 
-Proposta per l'analisi (da confermare con Danilo): fase B = dal 23/11 alle 9:12 al 6/12 (fumetto); i giorni dal 21/11
+Deciso da Danilo il 23/11: fase B = dal 23/11 alle 9:12 al 6/12 (fumetto); i giorni dal 21/11
 alle 9:20 al 23/11 alle 9:12 (solo pulsante, con fine incerta) restano fuori dal confronto principale e si riportano a
 parte. Il rilascio dello sprint 4 del 22/11 cade in quei giorni esclusi.
-
+Nella query (`chat-hubspot-bigquery.sql`) i giorni esclusi escono come fase `B-solo-pulsante`. Segnalazione al referente HubSpot non più necessaria.
