@@ -121,3 +121,11 @@ Causa (Web Vitals reali, tempo server p75 della sezione centri 764 ms contro 180
   toccate Ritiro referti 256 → 292, Strutture 329 → 325. Effetto sui Web Vitals reali: controllo della chat prestazioni
   in BigQuery una settimana dopo.
 - Lo stage ha lo snippet con `isAutoSelection` (vecchia baseline): da riallineare con `--forza`.
+- Aggiornamento delle barre (23/11, deciso da Danilo): le tabelle `kos_*` si aggiornano una volta al giorno (crontab:
+  `cron_syncPrestazioni` 6:00, `cron_syncBase_v3` 6:05, `cron_syncMappatura_v2` 6:10, `cron_syncMediciInvisibili` 6:15,
+  `update_prestazioni_tt` 7:00), quindi le barre si rigenerano una volta al giorno: `kosseogeo.barra_cache_ttl` = 90000
+  (25 ore, un'ora di margine) e `scripts/deploy/kos-svuota-barre.php` (copia in `~/kos-cron/`) accodato con `;` al comando
+  delle 7:00, registro in `~/kos-cron/svuota-barre.log`; crontab precedente in `~/crontab.bak`. Modifiche a mano agli
+  abbinamenti durante il giorno: svuotare la cache dal manager. Medici e altre risorse salvati dal manager svuotano la
+  cache da soli; importazioni dirette nel database e foto caricate dal gestore file no.
+
