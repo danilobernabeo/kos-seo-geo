@@ -193,6 +193,7 @@ Uso interno. Una riga per decisione: data, cosa si è deciso, chi o quale fonte,
 |---|---|---|---|
 | 9/11/2026 | GA4 su BigQuery, progetto `kos-analytics-482819`: kosgroup.com `analytics_333083624` (dal 30/12/2025), anniazzurri.it `analytics_250584060` (dal 24/10/2026). Conservazione GA4: 14 mesi su entrambi | Danilo, BigQuery | Questo registro |
 | 9/11/2026 | Plugin: installato `claude-code-setup` (Anthropic); scartati Agent Skills, Context7, Graphify, 21st MCP, Strix (non adatti o, per Strix, senza autorizzazione di KOS) | Valutazione del 9/11 | Questo registro |
+| 23/11/2026 | Verifica generale dello sprint 4 (verifica-sprint-1, 23/11): nessuna regressione; title oltre 65 caratteri corretti a mano da Danilo (7 articoli e pagine AA; su KOS l'articolo afasia/disartria e la pagina della struttura `/villamargherita`, entrata in sitemap dopo la verifica del 6/11: title «Villa Margherita Vicenza: neuroriabilitazione e psichiatria \| KOS», description entro 160 caratteri con anno, città, Fresco Parkinson Institute, Colli Berici e telefono). `anniazzurri.it/nucleo-disabili` con le briciole visibili sostituite da «1» alle 16:33 e corrette alle 17:00 senza interventi sul codice (copia in cache generata male dopo lo svuotamento di AA 6): controllo con la scansione Screaming Frog del 23-24/11 | Danilo e Claude | `scripts/checks/prova-briciole.php` |
 
 ## Aperte (in attesa di risposta)
 
