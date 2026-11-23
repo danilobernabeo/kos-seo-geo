@@ -40,6 +40,10 @@ footer[stripe-footer] p.h3 { font-size: calc(0.875rem + 1.5vw); }
    stesso aspetto della vecchia intestazione della scheda */
 h3.card-header { font-size: inherit; font-weight: inherit; line-height: inherit; font-family: inherit;
   color: inherit; letter-spacing: inherit; margin-top: 0; margin-bottom: 0; }
+/* AA 6, riscontro della verifica dello sprint 2 (23/11/2026, scripts/deploy/aa-6-titoli.php): le stesse intestazioni
+   scendono ancora di un livello (H4). Le schede caricano app.css e questo foglio, non custom.css */
+h4.card-header { font-size: inherit; font-weight: inherit; line-height: inherit; font-family: inherit;
+  color: inherit; letter-spacing: inherit; margin-top: 0; margin-bottom: 0; }
 
 /* Immagini delle news (snippet `immagine`): il <picture> non cambia l'impaginazione della card; con gli attributi
    width/height l'altezza segue la larghezza (Bootstrap dà alla card-img-top solo width: 100%) */

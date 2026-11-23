@@ -337,10 +337,3 @@ img.card-img-top[height] { height: auto; }
 /* AA-4: barra di ricerca Yext Answers della home, scritta da JavaScript (+58 px dopo il caricamento): spazio riservato.
    Da togliere con la sostituzione della ricerca Yext (linea C). */
 #main-content .search_form { min-height: 58px; }
-
-/* AA 6 (riscontro della verifica dello sprint 2, 23/11/2026, scripts/deploy/aa-6-titoli.php): i titoli delle schede
-   residenza scendono di un livello. Stesso aspetto di prima per le intestazioni dei riquadri (ora H4) e per i titoli
-   card-title (ora H4, prima H3 con la regola h3.card-title qui sopra). */
-h4.card-header { font-size: inherit; font-weight: inherit; line-height: inherit; font-family: inherit;
-  color: inherit; letter-spacing: inherit; margin-top: 0; margin-bottom: 0; }
-.aa6-card-title { font-size: 22.5px; line-height: 27px; }
