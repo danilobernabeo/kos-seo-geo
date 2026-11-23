@@ -1,0 +1,6 @@
+{
+  "nome": "KOS 12 (riscontro della verifica dello sprint 2): briciole su mobile con voci intere, a capo per voce, pagina corrente non troncata, senza la riduzione a «...» dopo il caricamento. Solo kos.min.css (regola in fondo a kosgroup/files/css-sorgenti/custom.css).",
+  "files": [
+    { "file": "kosgroup/files/assets/css/kos.min.css", "dest": "assets/css/kos.min.css" }
+  ]
+}

@@ -423,3 +423,32 @@ html body .struttura-container:focus-visible {
     left: -1.5rem;
     font-weight: 700;
 }
+
+/* KOS 12 (verifica dello sprint 2, 23/11/2026): briciole su mobile. Prima le voci lunghe andavano a capo dentro la voce
+   e la pagina corrente veniva troncata con i puntini. Ora ogni voce resta intera su una riga e, se la riga non basta, la
+   voce successiva passa alla riga sotto. La riduzione dei livelli intermedi a «...» che lo script del tema (main.js)
+   applica dopo il caricamento resta senza effetto visivo: cambiava l'altezza delle briciole a pagina già disegnata
+   (spostamento del contenuto) e nascondeva i nomi dei livelli anche ai lettori di schermo. */
+@media (max-width: 767px) {
+    #breadcrumbs {
+        flex-wrap: wrap !important;
+        row-gap: 6px;
+    }
+    #breadcrumbs > * {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    #breadcrumbs .bc-txt {
+        display: inline !important;
+    }
+    #breadcrumbs a > i {
+        display: none;
+    }
+    #breadcrumbs .bc-attivo {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        flex-shrink: 1;
+        max-width: 100%;
+    }
+}
