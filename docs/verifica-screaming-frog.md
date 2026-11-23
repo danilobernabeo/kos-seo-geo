@@ -59,6 +59,9 @@ Le voci di menu sono quelle della versione in inglese.
   | yext-campi | `data-yext-field` | campi riempiti da Yext nel browser |
   | http | `href="http://` | link non https |
   | lorem | `Lorem ipsum` | testo segnaposto |
+  | css-vecchi (KOS) | `/assets/css/style.css` | fogli singoli rimasti dopo l'unione in `kos.min.css` (KOS 15/25, 22/11): 0 attesi |
+  | css-bundle (KOS, «Does Not Contain») | `kos.min.css` | pagine senza il foglio unico: 0 attese |
+  | bi-cdn (AA) | `cdn.jsdelivr.net/npm/bootstrap-icons` | icone ancora dal CDN invece della copia locale (AA 12): 0 attese |
 
 - **Configuration › Custom › Extraction** (una riga per estrazione; «Extract Text» salvo dove scritto diverso):
 
