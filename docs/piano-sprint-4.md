@@ -120,7 +120,7 @@ Causa (Web Vitals reali, tempo server p75 della sezione centri 764 ms contro 180
   540 → 274, Centro Medico Riabilitativo 599 → 281, pagina dei medici 722 → 258, Villa Pineta 321 → 293; pagine non
   toccate Ritiro referti 256 → 292, Strutture 329 → 325. Effetto sui Web Vitals reali: controllo della chat prestazioni
   in BigQuery una settimana dopo.
-- Lo stage ha lo snippet con `isAutoSelection` (vecchia baseline): da riallineare con `--forza`.
+- Snippet della barra sullo stage: controllato il 23/11 con la prova di `kos-2-centri-cache.json`, già uguale alla versione di produzione (nessun riallineamento necessario).
 - Aggiornamento delle barre (23/11, deciso da Danilo): le tabelle `kos_*` si aggiornano una volta al giorno (crontab:
   `cron_syncPrestazioni` 6:00, `cron_syncBase_v3` 6:05, `cron_syncMappatura_v2` 6:10, `cron_syncMediciInvisibili` 6:15,
   `update_prestazioni_tt` 7:00), quindi le barre si rigenerano una volta al giorno: `kosseogeo.barra_cache_ttl` = 90000
