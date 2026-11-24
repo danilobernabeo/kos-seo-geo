@@ -15,7 +15,7 @@ $prima = microtime(true) - (float) ($_SERVER['REQUEST_TIME_FLOAT'] ?? microtime(
 header('Content-Type: text/plain; charset=utf-8');
 header('Cache-Control: no-store');
 header('X-Robots-Tag: noindex');
-if (!function_exists('opcache_is_script_cached')) exit("opcache_is_script_cached non disponibile\n");
+if (!function_exists('opcache_is_script_cached')) { function opcache_is_script_cached(string $f): bool { return false; } }   // CLI senza OPcache
 /* Attenzione (24/11): sullo stage opcache_is_script_cached ha dato 0 anche per /usr/share/modxcloud/flush-probe.php,
  * incluso da ogni richiesta del server: su MODX Cloud la funzione non è affidabile (chiavi diverse, es. validate_root).
  * Contano i TEMPI stampati alla fine. Gli elenchi per gruppo restano solo per confronto. */
