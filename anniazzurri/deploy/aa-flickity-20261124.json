@@ -1,0 +1,23 @@
+{
+ "nome": "AA anomalia 6 della scansione del 23/11: Flickity 2.3.0 in copia locale (/assets/js/flickity-2.3.0.pkgd.min.js, dal pacchetto npm) invece di unpkg flickity@2 (redirect, versione non fissata) nelle pagine di regioni e province",
+ "files": [
+  {
+   "file": "anniazzurri/files/assets/js/flickity-2.3.0.pkgd.min.js",
+   "dest": "assets/js/flickity-2.3.0.pkgd.min.js"
+  }
+ ],
+ "elements": [
+  {
+   "type": "chunk",
+   "name": "footer-script-provincia",
+   "file": "anniazzurri/elements/chunks/footer-script-provincia.html",
+   "baseline": "anniazzurri/deploy/aa-flickity-20261124/base-footer-script-provincia.html"
+  },
+  {
+   "type": "chunk",
+   "name": "footer-script-regione",
+   "file": "anniazzurri/elements/chunks/footer-script-regione.html",
+   "baseline": "anniazzurri/deploy/aa-flickity-20261124/base-footer-script-regione.html"
+  }
+ ]
+}

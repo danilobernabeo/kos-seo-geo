@@ -1,0 +1,17 @@
+{
+ "nome": "AA anomalia 6: Flickity locale anche nel contenuto di home-en",
+ "risorse": [
+  {
+   "id": 135,
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js",
+     "/assets/js/flickity-2.3.0.pkgd.min.js"
+    ]
+   ]
+  }
+ ]
+}
