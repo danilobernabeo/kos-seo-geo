@@ -10,7 +10,7 @@
  *    Lavora su una copia dell'HTML in memoria: non scrive nulla, non tocca la cache.
  *
  * Uso: php scripts/checks/misura-php.php /www https://kosgroup.com/it/strutture [altre pagine...]
- *      (sullo stage aggiungere --auth=kos:PASSWORD, letta da $AUTH: --auth=kos:$AUTH)
+ *      sullo stage: --utente=kos --password-env=AUTH (password letta dalla variabile d'ambiente AUTH)
  */
 declare(strict_types=1);
 if (PHP_SAPI !== 'cli') exit(1);
@@ -18,15 +18,19 @@ if (PHP_SAPI !== 'cli') exit(1);
 $args = array_slice($argv, 1);
 $auth = $soloPlugin = $soloHtml = '';
 $soloId = 0;
-$soloTag = '';
+$soloTag = $utente = '';
+$pwEnv = 'AUTH';
 foreach ($args as $i => $a) {
     if (str_starts_with($a, '--auth=')) { $auth = substr($a, 7); unset($args[$i]); }
     elseif (str_starts_with($a, '--plugin=')) { $soloPlugin = substr($a, 9); unset($args[$i]); }
     elseif (str_starts_with($a, '--html=')) { $soloHtml = substr($a, 7); unset($args[$i]); }
     elseif (str_starts_with($a, '--id=')) { $soloId = (int) substr($a, 5); unset($args[$i]); }
+    elseif (str_starts_with($a, '--utente=')) { $utente = substr($a, 9); unset($args[$i]); }
+    elseif (str_starts_with($a, '--password-env=')) { $pwEnv = substr($a, 15); unset($args[$i]); }
     elseif (str_starts_with($a, '--tag=')) { $soloTag = base64_decode(substr($a, 6)); unset($args[$i]); }
 }
 $args = array_values($args);
+if ($utente !== '' && $auth === '') $auth = $utente . ':' . (string) getenv($pwEnv);
 $webroot = rtrim($args[0] ?? '', '/');
 $pagine = array_slice($args, 1);
 if (!$webroot || !$pagine) exit("Uso: php misura-php.php /www <url pagina> [altre]\n");
@@ -159,7 +163,8 @@ foreach ($pagine as $url) {
     $f = MODX_CORE_PATH . 'cache/resource/web/resources/' . $r->get('id') . '.cache.php';
     echo "\n== Tag non in cache nella cache di $url (risorsa {$r->get('id')}; mediana di 3, in ms)\n";
     if (!is_file($f)) { echo "  cache della risorsa assente (aprire la pagina e rilanciare)\n"; continue; }
-    $c = include $f;                                         // cache del sito: solo il contenuto della pagina, non il codice degli elementi
+    $grezzo = (string) file_get_contents($f);                // cache del sito, in PHP o in JSON (cache_resource_format)
+    $c = str_starts_with($grezzo, '<?php') ? include $f : json_decode($grezzo, true);
     $testo = (string) ($c['resource']['_content'] ?? '');
     if ($testo === '') { echo "  contenuto in cache non trovato\n"; continue; }
     preg_match_all('/\[\[!(?:[^\[\]]|\[\[(?:[^\[\]]|\[\[[^\[\]]*\]\])*\]\])*\]\]/', $testo, $mm);
