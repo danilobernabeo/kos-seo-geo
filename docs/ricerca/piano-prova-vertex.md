@@ -174,6 +174,10 @@ coordinate) ed eventualmente il servizio, e mostra in testa le strutture vicine;
 - **Nessuna fase intermedia (16/11):** con la messa online a metà gennaio il widget RetailTune c'è dal primo giorno, già
   filtrato su coordinate e raggio (ed eventuale servizio), caricato solo per le ricerche con un luogo. Parametri,
   comportamento senza strutture nel raggio e caricamento su richiesta da confermare con RetailTune.
+- **Il widget accetta il nome di un luogo (24/11):** la pagina dei risultati gli passa il luogo riconosciuto, senza
+  coordinate. Restano nostri il riconoscimento del luogo nella frase (luogo o nome di struttura) e l'elenco testuale per
+  distanza; da chiedere a RetailTune se esiste un servizio lato server che restituisca le strutture vicine a un luogo,
+  che toglierebbe anche il calcolo delle distanze.
 - **Elenco testuale per distanza sempre presente**, sotto il widget o al suo posto senza consenso: il widget è in categoria
   Cookiebot «marketing» (vale anche per i motori AI). Ogni struttura ha la distanza e il link «Indicazioni» al suo profilo
   Google Maps.
