@@ -1,0 +1,11 @@
+{
+ "nome": "AA anomalia 9 della scansione del 23/11: pulsanti dell'app Radio Anni Azzurri (scaduta, store in 404) nascosti con [[- ]], da riattivare se l'app viene rinnovata; resta il link a Spotify (title e alt corretti, immagine con /assets/)",
+ "elements": [
+  {
+   "type": "chunk",
+   "name": "spotify-e-app-radio",
+   "file": "anniazzurri/elements/chunks/spotify-e-app-radio.html",
+   "baseline": "anniazzurri/baseline/chunks/spotify-e-app-radio.html"
+  }
+ ]
+}
