@@ -10,10 +10,15 @@
  * Stampa per gruppo: file, in OPcache, fuori; e i primi file fuori. Non scrive nulla.
  */
 declare(strict_types=1);
+$t0 = hrtime(true);
+$prima = microtime(true) - (float) ($_SERVER['REQUEST_TIME_FLOAT'] ?? microtime(true));
 header('Content-Type: text/plain; charset=utf-8');
 header('Cache-Control: no-store');
 header('X-Robots-Tag: noindex');
 if (!function_exists('opcache_is_script_cached')) exit("opcache_is_script_cached non disponibile\n");
+/* Attenzione (24/11): sullo stage opcache_is_script_cached ha dato 0 anche per /usr/share/modxcloud/flush-probe.php,
+ * incluso da ogni richiesta del server: su MODX Cloud la funzione non è affidabile (chiavi diverse, es. validate_root).
+ * Contano i TEMPI stampati alla fine. Gli elenchi per gruppo restano solo per confronto. */
 $root = __DIR__;
 require $root . '/config.core.php';
 $core = rtrim(MODX_CORE_PATH, '/');
@@ -27,7 +32,7 @@ $gruppi = [
     'core/components'            => "$core/components",
 ];
 echo "PHP " . PHP_VERSION . ", SAPI " . PHP_SAPI . ", utente " . (get_current_user()) . ", " . date('c') . "\n\n";
-foreach ($gruppi as $nome => $dir) {
+foreach (!empty($_GET['elenchi']) ? $gruppi : [] as $nome => $dir) {
     if (!is_dir($dir)) { printf("%-32s cartella assente\n", $nome); continue; }
     $tot = $si = 0; $fuori = [];
     foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir, FilesystemIterator::SKIP_DOTS)) as $f) {
@@ -40,15 +45,20 @@ foreach ($gruppi as $nome => $dir) {
 }
 /* Campione più vicino a una pagina: avvio di MODX (contesto web) e lettura dalla cache della risorsa ?id= (predefinita
  * la home), poi i file inclusi da questa richiesta: quelli fuori OPcache sono stati compilati adesso. */
+$t1 = hrtime(true);
 require $core . '/vendor/autoload.php';
 $modx = \MODX\Revolution\modX::getInstance();
 $modx->initialize('web');
+$t2 = hrtime(true);
 $id = max(1, (int) ($_GET['id'] ?? $modx->getOption('site_start', null, 1)));
 $modx->cacheManager->get('web/resources/' . $id, [\xPDO\xPDO::OPT_CACHE_KEY => $modx->getOption('cache_resource_key', null, 'resource')]);
+$t3 = hrtime(true);
+printf("\n== TEMPI (la misura che conta): avvio di MODX %.1f ms, lettura della pagina dalla cache %.1f ms; prima dello script (prepend) %.1f ms\n"
+     . "   Riferimento senza OPcache (CLI, 24/11): avvio 40,5 ms. Con OPcache funzionante l'avvio sta intorno a 5-15 ms.\n",
+     ($t2 - $t1) / 1e6, ($t3 - $t2) / 1e6, $prima * 1000);
 $inc = get_included_files();
 $si = 0; $fuori = [];
 foreach ($inc as $x) { if (opcache_is_script_cached($x)) $si++; else $fuori[] = str_replace($core . '/', '', $x); }
 printf("\nAvvio di MODX e cache della risorsa %d: %d file inclusi, %d in OPcache, %d fuori (compilati a ogni richiesta)\n", $id, count($inc), $si, count($inc) - $si);
-foreach (array_slice($fuori, 0, 40) as $x) echo "    fuori: $x\n";
-if (count($fuori) > 40) echo "    ... e altri " . (count($fuori) - 40) . "\n";
+if (!empty($_GET['elenchi'])) { foreach (array_slice($fuori, 0, 40) as $x) echo "    fuori: $x\n"; }
 echo "\nNota: in core/src e core/vendor «fuori» comprende anche i file che nessuna richiesta usa; conta il campione qui sopra.\n";
