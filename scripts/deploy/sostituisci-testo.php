@@ -3,7 +3,7 @@
  * sostituisci-testo.php — sostituzioni di testo esatte nei campi di una o più risorse MODX (content, description,
  * introtext, longtitle, pagetitle), da un file di regole nel repository, con prova, backup e ripristino.
  *
- *   {"nome": "...", "risorse": [{"uri": "villamargherita", "campi": ["description", "content"],
+ *   {"nome": "...", "risorse": [{"uri": "villamargherita", "campi": ["description", "content"],   (oppure "id": 1)
  *     "sostituzioni": [["tel:+390444043322", "tel:+39044415851"], ["0444 043322", "0444 15851"]]}]}
  * Le sostituzioni si applicano nell'ordine scritto (prima le forme più lunghe).
  *
@@ -44,8 +44,13 @@ $d = json_decode((string) file_get_contents($file), true);
 echo ($scrivi ? "== APPLICAZIONE" : "== PROVA (nessuna scrittura; aggiungere --scrivi)") . " — " . ($d['nome'] ?? $file) . "\n";
 $rip = []; $daFare = [];
 foreach ($d['risorse'] as $voce) {
-    $uri = trim((string) $voce['uri'], '/');
-    $r = $modx->getObject(modResource::class, ['uri:IN' => [$uri, "$uri/"], 'deleted' => 0]);
+    if (isset($voce['id'])) {                                // in alternativa all'uri (es. la home, uri vuoto)
+        $r = $modx->getObject(modResource::class, ['id' => (int) $voce['id'], 'deleted' => 0]);
+        $uri = $r ? (string) $r->get('uri') : '#' . (int) $voce['id'];
+    } else {
+        $uri = trim((string) $voce['uri'], '/');
+        $r = $modx->getObject(modResource::class, ['uri:IN' => [$uri, "$uri/"], 'deleted' => 0]);
+    }
     if (!$r) { echo "  ! /$uri non trovata — FERMO\n"; exit(2); }
     $prima = []; $cambi = 0;
     foreach ($voce['campi'] as $c) {

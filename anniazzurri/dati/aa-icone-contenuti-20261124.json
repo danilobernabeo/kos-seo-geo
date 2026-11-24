@@ -1,0 +1,137 @@
+{
+ "nome": "AA anomalia 15 della scansione del 23/11: icone dei numeri nel contenuto di home, home-en, Parco di Veio e 8 landing di assunzione con percorso assoluto /assets/",
+ "risorse": [
+  {
+   "id": 1,
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "src=\"../assets/",
+     "src=\"/assets/"
+    ]
+   ]
+  },
+  {
+   "id": 135,
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "src=\"../assets/",
+     "src=\"/assets/"
+    ]
+   ]
+  },
+  {
+   "id": 360,
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "src=\"../assets/",
+     "src=\"/assets/"
+    ]
+   ]
+  },
+  {
+   "id": 374,
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "src=\"../assets/",
+     "src=\"/assets/"
+    ]
+   ]
+  },
+  {
+   "id": 373,
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "src=\"../assets/",
+     "src=\"/assets/"
+    ]
+   ]
+  },
+  {
+   "id": 397,
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "src=\"../assets/",
+     "src=\"/assets/"
+    ]
+   ]
+  },
+  {
+   "id": 405,
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "src=\"../assets/",
+     "src=\"/assets/"
+    ]
+   ]
+  },
+  {
+   "id": 443,
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "src=\"../assets/",
+     "src=\"/assets/"
+    ]
+   ]
+  },
+  {
+   "id": 481,
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "src=\"../assets/",
+     "src=\"/assets/"
+    ]
+   ]
+  },
+  {
+   "id": 429,
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "src=\"../assets/",
+     "src=\"/assets/"
+    ]
+   ]
+  },
+  {
+   "id": 461,
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "src=\"../assets/",
+     "src=\"/assets/"
+    ]
+   ]
+  }
+ ]
+}
