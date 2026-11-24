@@ -1,0 +1,23 @@
+{
+ "nome": "AA-8 Briciole delle pagine in aa.breadcrumb_exclude: saltate solo come livelli intermedi, mostrate quando sono la pagina corrente (/residenze: Anni Azzurri › Residenze, BreadcrumbList a due livelli)",
+ "elements": [
+  {
+   "type": "snippet",
+   "name": "aaBricioleEscludi",
+   "file": "anniazzurri/elements/snippets/aaBricioleEscludi.php",
+   "description": "aa.breadcrumb_exclude senza la pagina corrente (briciole visibili, AA 8)"
+  },
+  {
+   "type": "snippet",
+   "name": "aaSchema",
+   "file": "anniazzurri/elements/snippets/aaSchema.php",
+   "baseline": "anniazzurri/deploy/aa-8-residenze-20261124/base-aaSchema.php"
+  },
+  {
+   "type": "chunk",
+   "name": "breadcrumb-stripe",
+   "file": "anniazzurri/elements/chunks/breadcrumb-stripe.html",
+   "baseline": "anniazzurri/deploy/aa-8-residenze-20261124/base-breadcrumb-stripe.html"
+  }
+ ]
+}

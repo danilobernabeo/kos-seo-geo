@@ -507,7 +507,7 @@ $briciole = function ($res) use ($modx, $url, $urlHome, $linguaDi, $CLS_RES, $ST
     for ($giri = 0; $rid > 0 && $giri < 100; $giri++) {
         $r = ($rid === $id) ? $res : $modx->getObject($CLS_RES, $rid);
         if (!$r) break;
-        $fuori = $rid === $START || $rid === $L['home'] || isset($LINGUE[$rid]) || in_array($rid, $ESCLUDI, true)
+        $fuori = $rid === $START || $rid === $L['home'] || isset($LINGUE[$rid]) || ($rid !== $id && in_array($rid, $ESCLUDI, true))
               || ($rid !== $id && $saltaIntermedio($r));
         if (!$fuori) array_unshift($catena, $r);
         $rid = (int) $r->get('parent');
