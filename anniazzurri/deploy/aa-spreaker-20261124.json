@@ -1,0 +1,17 @@
+{
+  "nome": "AA-6 Link di riserva del widget Spreaker: /episode/<podcastEpisodeID> invece di /user/16783839/<podcastDirettore> (24 link in 404 e 25 in 301 nella scansione del 23/11; i 47 episodi verificati il 24/11)",
+  "elements": [
+    {
+      "type": "chunk",
+      "name": "podcast-spreaker-casa-anni-azzurri",
+      "file": "anniazzurri/elements/chunks/podcast-spreaker-casa-anni-azzurri.html",
+      "baseline": "anniazzurri/deploy/aa-spreaker-20261124/base-podcast-spreaker-casa-anni-azzurri.html"
+    },
+    {
+      "type": "chunk",
+      "name": "podcast-spreaker-news",
+      "file": "anniazzurri/elements/chunks/podcast-spreaker-news.html",
+      "baseline": "anniazzurri/baseline/chunks/podcast-spreaker-news.html"
+    }
+  ]
+}
