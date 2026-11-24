@@ -14,23 +14,23 @@ switch($eventName) {
         $paginationPages = [
             30 => [
                 'section' => 'News',
-                'title_format' => 'News - Pagina %d | Gruppo KOS' 
+                'title_format' => 'News – Pagina %d | KOS' 
             ],
             31 => [
                 'section' => 'Approfondimenti',
-                'title_format' => 'Approfondimenti - Pagina %d | Gruppo KOS' 
+                'title_format' => 'Approfondimenti – Pagina %d | KOS' 
             ],
             32 => [
                 'section' => 'Eventi e convegni',
-                'title_format' => 'Eventi e convegni- Pagina %d | Gruppo KOS'
+                'title_format' => 'Eventi e convegni – Pagina %d | KOS'
             ],
             34=> [
                 'section' => 'Video',
-                'title_format' => 'Video - Pagina %d | Gruppo KOS'
+                'title_format' => 'Video – Pagina %d | KOS'
             ],
             33 => [
                 'section' => 'Comunicati stampa',
-                'title_format' => 'Comunicati stampa - Pagina %d | Gruppo KOS'
+                'title_format' => 'Comunicati stampa – Pagina %d | KOS'
             ]
             // Aggiungi altre pagine qui secondo necessità
         ];
@@ -58,6 +58,10 @@ switch($eventName) {
                 $output = preg_replace($headPattern, $canonicalTag, $output);
             }
             
+            // og:url uguale al canonical (scansione del 24/11: sulle pagine 2+ restava l'indirizzo della pagina 1)
+            $output = preg_replace('/<meta property="og:url"[^>]*>/i', '<meta property="og:url" content="' . $pageUrl . '">', $output);
+
+            // Title delle pagine 2+ con il marchio « | KOS» come gli altri title del sito (24/11; prima « | Gruppo KOS»)
             // Modifica il title solo se siamo in una pagina di paginazione successiva alla prima
             if ($page > 1) {
                 $pageTitle = sprintf($pageConfig['title_format'], $page);

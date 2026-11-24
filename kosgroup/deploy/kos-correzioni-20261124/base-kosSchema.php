@@ -1,0 +1,1362 @@
+<?php
+/**
+ * seoSchema — libreria comune del dato strutturato (kosgroup.com, anniazzurri.it)
+ * -----------------------------------------------------------------------------
+ * Costruisce il JSON-LD delle pagine (un solo @graph, lato server), le briciole
+ * visibili e il box autore. Nata da aaSchema (anniazzurri.it, voce AA-8) e resa
+ * comune per kosgroup.com (voci KOS-9, KOS-12, KOS-13). Installata con il nome del
+ * sito (kosSchema, in futuro anche aaSchema) e con la proprietà predefinita
+ * &prefisso che sceglie le impostazioni di sistema: kos.* oppure aa.*.
+ *
+ * USO
+ *   tutte le pagine, una sola volta (chunk scripts / footer-script*):  [[kosSchema]]
+ *       il tipo si ricava dal template: articolo, pagina autore o pagina generica
+ *   briciole visibili (chunk breadcrumb, snippet myBreadcrumb):        [[kosSchema? &type=`briciole`]]
+ *   box autore, nel template articolo:                                 [[kosSchema? &type=`box`]]
+ *   firma sotto il titolo, nel template articolo:                      [[kosSchema? &type=`firma`]]
+ *       box e firma escono solo sugli articoli firmati (aut.ref); vuoti sulla redazione
+ *
+ * PARAMETRI
+ *   &prefisso  prefisso delle impostazioni di sistema (default: aa)
+ *   &type      auto | page | article | video | profile | box | firma | briciole   (default: auto)
+ *   &redazione 1 = sul box degli articoli della redazione «A cura della Redazione…» (default: niente)
+ *   &author    id risorsa autore; se omesso lo legge dalla TV aut.ref
+ *   &pretty    1 = JSON indentato (solo per debug)
+ *
+ * STRUTTURE (voce 24 KosGroup; anniazzurri.it dallo sprint 3)
+ *   Sulle pagine dei template <prefisso>.tpl_struttura la pagina ha come mainEntity il nodo
+ *   {URL scheda}#localbusiness, costruito dalle TV anagrafiche str.* (importate da Yext/RetailTune);
+ *   sulle landing (<prefisso>.tpl_landing) la pagina è «about» la struttura indicata in lnd.struttura,
+ *   con i servizi della landing (lnd.servizi). Acceso solo con <prefisso>.struttura_attiva = 1: va
+ *   attivato nello stesso rilascio in cui si toglie lo script Yext che descrive la stessa struttura.
+ *   REPARTI (<prefisso>.reparti = "idPaginaUnità:idPaginaSede,..."): unità specialistiche nella stessa sede
+ *   (es. Villa Margherita Vicenza, una Casa di Cura con due unità). La pagina dell'unità ha come mainEntity il nodo
+ *   {URL pagina unità}#department (MedicalOrganization, parentOrganization verso la sede); la sede è il solo nodo
+ *   #localbusiness (indirizzo, profilo Google) e dichiara department verso le unità. Chi cita l'unità (medici,
+ *   articoli) cita la sede: practicesAt e mentions vogliono un'organizzazione con indirizzo (il riferimento porta
+ *   address e telephone della scheda).
+ *
+ * ARTICOLI (AA-8; kosgroup.com voce KOS-10)
+ *   Pagine dei template <prefisso>.tpl_article: Article (o il tipo della sezione, <prefisso>.article_sezioni =
+ *   "id cartella:Tipo,...", es. News → NewsArticle) con headline, image (solo se il file esiste), datePublished,
+ *   dateModified, author, publisher, articleSection, mentions verso il #localbusiness delle strutture collegate.
+ *   Con article_sezioni impostata, una pagina del template fuori da quelle cartelle resta una WebPage.
+ *   Pagine dei template <prefisso>.tpl_video (kosgroup.com: video YouTube incorporato): VideoObject.
+ *
+ * REGOLE
+ *   - Briciole visibili e BreadcrumbList escono dalla STESSA funzione: stesso percorso.
+ *   - TV aut.ref vuota = contenuto della redazione = author è l'Organization.
+ *     Nessuna Person inventata per "La Redazione".
+ *   - Ogni @id deriva da <prefisso>.canonical_base (convenzione degli identificativi) ed è costruito da una sola
+ *     funzione, $idDi(URL pagina, tipo), con i frammenti fissi di $FRAG.
+ * -----------------------------------------------------------------------------
+ */
+
+/* --- compatibilità MODX 2 / 3 ---------------------------------------------- */
+$CLS_RES = class_exists('\MODX\Revolution\modResource')
+    ? \MODX\Revolution\modResource::class : 'modResource';
+$CLS_TV = class_exists('\MODX\Revolution\modTemplateVar')
+    ? \MODX\Revolution\modTemplateVar::class : 'modTemplateVar';
+$CLS_TVR = class_exists('\MODX\Revolution\modTemplateVarResource')
+    ? \MODX\Revolution\modTemplateVarResource::class : 'modTemplateVarResource';
+
+/* --- impostazioni ----------------------------------------------------------
+ * Tutte sovrascrivibili da Sistema → Impostazioni di sistema, con il prefisso del
+ * sito (aa.* su anniazzurri.it, kos.* su kosgroup.com). I valori predefiniti qui
+ * sotto sono quelli di anniazzurri.it: kosgroup.com li imposta tutti nel manifest.
+ * Nessun valore derivato da site_url: su due siti diversi deve restare lo stesso.
+ */
+$P = preg_replace('/[^a-z0-9_]/i', '', (string) $modx->getOption('prefisso', $scriptProperties, 'aa')) ?: 'aa';
+$cfg = function ($chiave, $default) use ($modx, $P) {
+    $v = $modx->getOption($P . '.' . $chiave, null, null);
+    return ($v === null || $v === '') ? $default : $v;
+};
+
+/* Base canonica: UNICA fonte della forma del dominio (con o senza www).
+ * Ogni @id emesso da questo snippet ne deriva, così articoli, persone e
+ * organizzazione non possono finire su host diversi — che nel grafo
+ * significherebbe entità duplicate. */
+$CANON = rtrim($cfg('canonical_base', 'https://anniazzurri.it'), '/');
+
+$ORG_ID   = $cfg('org_id',     $CANON . '/#organization');
+$SITE_ID  = $cfg('website_id', $CANON . '/#website');
+$PARENT_ID= $cfg('parent_org_id', 'https://kosgroup.com/#organization');
+$LANG     = $cfg('lang',      'it-IT');
+/* Slash finale: 0 = tolto (anniazzurri.it, URL piatti), 1 = aggiunto,
+ * 2 = come lo genera MODX (kosgroup.com: cartelle con "/", pagine senza). */
+$SLASH    = (int) $cfg('trailing_slash', 0);
+$FRAG_PAT = $cfg('frag_patologia', '#condition');
+$FRAG_STR = $cfg('frag_struttura', '#localbusiness');   // convenzione del 20/10/2026 (audit AA, slide 29-30)
+$FRAG_DEV = $cfg('frag_dispositivo', '#device');
+/* Frammenti fissi per tipo di entità (convenzione degli identificativi). */
+$FRAG = [
+    'webpage'    => '#webpage',
+    'breadcrumb' => '#breadcrumb',
+    'article'    => '#article',
+    'video'      => '#video',
+    'person'     => '#person',
+    'medico'     => $cfg('frag_medico', '#medico'),
+    'struttura'  => $FRAG_STR,
+    'patologia'  => $FRAG_PAT,
+    'dispositivo'=> $FRAG_DEV,
+    'reparto'    => $cfg('frag_reparto', '#department'),
+];
+/** UNICA funzione che compone gli @id delle entità di pagina: URL canonico della pagina + frammento del tipo. */
+$idDi = function ($pagina, $tipo) use ($FRAG) {
+    return ($pagina === '' || $pagina === null) ? '' : $pagina . $FRAG[$tipo];
+};
+
+$csv = function ($v) {
+    return array_values(array_filter(array_map('trim', explode(',', (string) $v)), 'strlen'));
+};
+$START = (int) $modx->getOption('site_start', null, 1);
+/* Esclusioni delle briciole: la STESSA impostazione usata dallo snippet BreadCrumb
+ * nel chunk breadcrumb-stripe (&exclude=`[[++aa.breadcrumb_exclude]]`), così
+ * briciole visibili e BreadcrumbList hanno sempre lo stesso percorso. */
+$ESCLUDI = array_map('intval', $csv($cfg('breadcrumb_exclude', '2,4,48,54,55,68,78,85,93,97,98,100,109,156')));
+/* Template per tipo di pagina (nomi, separati da virgola). */
+$TPL_ARTICOLO   = $csv($cfg('tpl_article',    'interna-articolo'));
+$TPL_PROFILO    = $csv($cfg('tpl_profile',    'autore'));
+$TPL_COLLEZIONE = $csv($cfg('tpl_collection', 'regione,provincia,residenze,news,le-nostre-storie-indice'));
+$TPL_VIDEO      = $csv($cfg('tpl_video',      ''));
+$TPL_MEDICO     = $csv($cfg('tpl_medico',     ''));
+/* Articoli: tipo e sezione dalla cartella che li contiene ("30:NewsArticle,31:Article"); vuoto = Article ovunque.
+ * Headline: "longtitle" (longtitle o pagetitle, anniazzurri.it) o "pagetitle" (kosgroup.com: il longtitle è il
+ * title con « | KOS», l'H1 è il pagetitle). TV dell'immagine e delle strutture collegate (id separati da virgola). */
+$ART_SEZIONI = [];
+foreach ($csv($cfg('article_sezioni', '')) as $voce) {
+    $p = array_map('trim', explode(':', $voce, 2));
+    if (count($p) === 2 && (int) $p[0] > 0 && in_array($p[1], ['Article', 'NewsArticle', 'BlogPosting'], true)) {
+        $ART_SEZIONI[(int) $p[0]] = $p[1];
+    }
+}
+$ART_HEADLINE = $cfg('article_headline', 'longtitle');
+$ART_TV_IMG   = $cfg('article_tv_immagine', 'art.immagine');
+$ART_TV_STR   = $cfg('article_tv_strutture', 'art.mentions');
+
+/* Lingue (kosgroup.com): "radice:lingua:home" separati da virgola, es.
+ * "253:it-IT:1,385:en-GB:990". La radice è la cartella di lingua (it, en), la home è
+ * la pagina che le briciole mettono in testa. Vuoto (anniazzurri.it): una lingua, home = site_start. */
+$LINGUE = [];
+foreach ($csv($cfg('lingue', '')) as $voce) {
+    $p = array_map('trim', explode(':', $voce));
+    if (count($p) === 3) $LINGUE[(int) $p[0]] = ['lang' => $p[1], 'home' => (int) $p[2]];
+}
+/* Briciole (regole del sito):
+ * - breadcrumb_titolo: "pagetitle" = pagetitle per i livelli intermedi (anniazzurri.it, come lo
+ *   snippet BreadCrumb); "menutitle" = menutitle o pagetitle per tutti i livelli (kosgroup.com,
+ *   come il menu: «Strutture» per /it/centri);
+ * - breadcrumb_solo_pubblicate: 1 = si saltano i livelli non pubblicati, i link simbolici/web e le
+ *   cartelle con FirstChildRedirect, che non sono pagine da linkare (kosgroup.com: cartelle degli anni,
+ *   «Chi siamo»); i livelli nascosti dal menu ma pubblicati restano e sono cliccabili;
+ * - breadcrumb_home: etichetta della home (vuoto = pagetitle della home);
+ * - breadcrumb_templates: template che mostrano le briciole; la BreadcrumbList esce solo lì e sulle
+ *   pagine che le richiamano nel contenuto (myBreadcrumb o chunk breadcrumb). Vuoto = tutte le pagine (anniazzurri.it). */
+$BC_TITOLO   = $cfg('breadcrumb_titolo', 'pagetitle');
+$BC_SOLO_PUB = (int) $cfg('breadcrumb_solo_pubblicate', 0);
+$BC_HOME     = (string) $cfg('breadcrumb_home', '');
+$BC_TPL      = $csv($cfg('breadcrumb_templates', ''));
+
+/* --- helper ---------------------------------------------------------------- */
+
+/** URL assoluto di una risorsa, riportato alla forma canonica del dominio. */
+$url = function ($id) use ($modx, $SLASH, $CANON) {
+    // makeUrl con scheme 'full' restituisce GIÀ l'URL assoluto: non anteporre site_url.
+    $u = $modx->makeUrl((int) $id, '', '', 'full');
+    if (!$u) return '';
+    // site_url può avere una forma di host diversa da quella canonica (www / non www):
+    // la sostituiamo sempre, altrimenti gli @id degli articoli divergono da quello
+    // dell'organizzazione e nel grafo nascono due siti distinti.
+    $u = preg_replace('#^https?://[^/]+#i', $CANON, $u);
+    if ($SLASH === 2) return $u;
+    return $SLASH ? rtrim($u, '/') . '/' : rtrim($u, '/');
+};
+
+/** Righe non vuote da una textarea. */
+$righe = function ($v) {
+    $r = preg_split('/\r\n|\r|\n/', (string) $v);
+    return array_values(array_filter(array_map('trim', $r), 'strlen'));
+};
+
+/** Valore TV pulito. */
+$tv = function ($res, $nome) {
+    if (!$res) return '';
+    $v = $res->getTVValue($nome);
+    return is_string($v) ? trim($v) : $v;
+};
+
+/** Testo da un campo richtext: niente tag, niente spazi doppi. */
+$testo = function ($html) {
+    $t = strip_tags((string) $html);
+    $t = html_entity_decode($t, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    return trim(preg_replace('/\s+/u', ' ', $t));
+};
+
+/** ImageObject da un percorso TV, con dimensioni reali se il file è leggibile. Percorso del sito codificato
+ *  (spazi e accenti nei nomi dei file). $soloSeEsiste: un percorso del sito il cui file non c'è non esce. */
+$immagine = function ($percorso, $soloSeEsiste = false) use ($modx, $CANON) {
+    $percorso = trim((string) $percorso);
+    if ($percorso === '') return null;
+
+    if (preg_match('#^https?://#i', $percorso)) return ['@type' => 'ImageObject', 'url' => $percorso];
+
+    $rel = ltrim(rawurldecode((string) preg_replace('/[?#].*$/', '', $percorso)), '/');
+    if ($rel === '' || strpos($rel, '..') !== false) return null;
+    $img = ['@type' => 'ImageObject', 'url' => $CANON . '/' . implode('/', array_map('rawurlencode', explode('/', $rel)))];
+
+    $file = MODX_BASE_PATH . $rel;
+    if (is_readable($file) && is_file($file)) {
+        if ($d = @getimagesize($file)) {
+            $img['width']  = (int) $d[0];
+            $img['height'] = (int) $d[1];
+        }
+    } elseif ($soloSeEsiste) {
+        return null;
+    }
+    return $img;
+};
+
+/** Data ISO 8601 con fuso. In MODX 3 get('publishedon'/'editedon') restituisce la data
+ *  già formattata ("2025-03-04 10:12:00"), non il timestamp: si accettano entrambi.
+ *  $fusoSito = true per le TV di tipo data: il valore è quello scelto dalla redazione, già nel fuso del sito. */
+$data = function ($v, $fusoSito = false) use ($cfg) {
+    if ($v === null || $v === '' || $v === '0' || $v === 0 || strpos((string) $v, '0000-00-00') === 0) return null;
+    $tz = new DateTimeZone($cfg('timezone', 'Europe/Rome'));
+    if ($fusoSito && !is_numeric($v)) {
+        try { $d = new DateTime((string) $v, $tz); } catch (\Throwable $e) { return null; }
+        return $d->format('c');
+    }
+    // La stringa formattata da MODX è nel fuso del server (MODX Cloud: America/Chicago):
+    // si interpreta in quel fuso e si emette nel fuso del sito, così l'offset è +01:00/+02:00.
+    $ts = is_numeric($v) ? (int) $v : strtotime((string) $v);
+    if ($ts === false || $ts <= 0) return null;
+    $d = new DateTime('@' . $ts);
+    $d->setTimezone($tz);
+    return $d->format('c');
+};
+
+/** [datePublished, dateModified] di una risorsa: pubblicazione (o creazione) e ultima modifica, mai prima della
+ *  pubblicazione (con la pubblicazione programmata editedon può precederla). */
+$dateRisorsa = function ($r) use ($data) {
+    $pub = $data($r->get('publishedon')) ?: $data($r->get('createdon'));
+    $mod = $data($r->get('editedon'));
+    if ($pub && (!$mod || strtotime($mod) < strtotime($pub))) $mod = $pub;
+    return [$pub, $mod];
+};
+
+/** Riassunto di un nodo da usare come riferimento (author, publisher, mentions): tipo, @id, nome, URL. Il nodo
+ *  completo sta nel grafo; il riassunto serve a chi non risolve gli @id. */
+$rif = function ($n) {
+    if (!is_array($n) || empty($n['@id'])) return null;
+    return array_filter(['@type' => $n['@type'] ?? null, '@id' => $n['@id'], 'name' => $n['name'] ?? null, 'url' => $n['url'] ?? null],
+        function ($x) { return $x !== null && $x !== ''; });
+};
+
+/** Toglie ricorsivamente null, stringhe vuote e array vuoti. */
+$pulisci = function ($a) use (&$pulisci) {
+    if (!is_array($a)) return $a;
+    $out = [];
+    foreach ($a as $k => $v) {
+        if (is_array($v)) $v = $pulisci($v);
+        if ($v === null || $v === '' || $v === []) continue;
+        $out[$k] = $v;
+    }
+    return $out;
+};
+
+/* --- nodo Organization ------------------------------------------------------
+ * Emesso per intero su ogni pagina: è anche il valore di author sui contenuti
+ * della redazione, quindi deve essere risolvibile senza seguire altri @id.
+ */
+$org = function ($lingua = '') use ($cfg, $csv, $ORG_ID, $PARENT_ID, $CANON, $pulisci, $P) {
+    // Nome dell'ente nella lingua della pagina (kosgroup.com: «Gruppo KOS» in italiano,
+    // «KOS Group» in inglese); l'altra forma va in alternateName. Stesso @id: l'entità è una.
+    $nome = $cfg('org_name', 'Anni Azzurri');
+    $altro = $cfg('org_alternate', '');
+    if ($lingua !== '' && strpos($lingua, 'it') !== 0 && ($nomeEn = $cfg('org_name_en', ''))) {
+        $altro = $nome;
+        $nome = $nomeEn;
+    }
+
+    // Logo con @id proprio, URL assoluto (il footer storico aveva una doppia barra).
+    $logo = null;
+    if ($l = $cfg('org_logo', '/assets/logo-anni.svg')) {
+        $logo = [
+            '@type' => 'ImageObject',
+            '@id'   => $CANON . '/#logo',
+            'url'   => preg_match('#^https?://#i', $l) ? $l : $CANON . '/' . ltrim($l, '/'),
+        ];
+    }
+    // Profili social ufficiali (impostazione aa.org_sameAs, separati da virgola).
+    // Mai kosgroup.com: è un'altra società, collegata con parentOrganization.
+    $social = $csv($cfg('org_sameAs', ''));
+
+    // KOS Care S.r.l. e KOS S.p.A. sono soggetti giuridici distinti, con partite
+    // IVA diverse: il legame è di controllo, non di identità. Quindi
+    // parentOrganization, MAI sameAs — che le dichiarerebbe la stessa entità.
+    // Su kosgroup.com la controllante (CIR S.p.A.) non ha un @id nostro: parent_org_id vuoto,
+    // nodo descritto per nome. parent_org_name = "-" toglie il collegamento.
+    $parent = null;
+    $nomeP = $cfg('parent_org_name', 'KOS S.p.A.');
+    if ($nomeP !== '-') {
+        $parent = array_filter([
+            '@id'       => $PARENT_ID === '-' ? null : $PARENT_ID,
+            '@type'     => 'Organization',
+            'name'      => $nomeP,
+            'legalName' => $cfg('parent_org_legal', $nomeP),
+            'vatID'     => $cfg('parent_org_vat', $P === 'aa' ? 'IT10674520159' : ''),
+            'url'       => $cfg('parent_org_url', $P === 'aa' ? 'https://kosgroup.com/it' : ''),
+        ]);
+    }
+    // Società controllate con un proprio sito e @id (kosgroup.com → KOS Care su anniazzurri.it).
+    $figlie = array_map(function ($id) { return ['@id' => $id]; }, $csv($cfg('sub_org_ids', '')));
+
+    return $pulisci([
+        '@type'              => 'Organization',
+        '@id'                => $ORG_ID,
+        'name'               => $nome,
+        'alternateName'      => $altro,
+        'legalName'          => $cfg('org_legal', 'KOS Care S.r.l.'),
+        'vatID'              => $cfg('org_vat',   'IT01148190547'),
+        'taxID'              => $cfg('org_taxid', ''),
+        'url'                => $cfg('org_url',   $CANON . '/'),
+        'subOrganization'    => $figlie,
+        'logo'               => $logo,
+        // image: foto rappresentativa (aa.org_image) o, in mancanza, il logo per riferimento.
+        'image'              => ($img = $cfg('org_image', ''))
+                                    ? (preg_match('#^https?://#i', $img) ? $img : $CANON . '/' . ltrim($img, '/'))
+                                    : ($logo ? ['@id' => $logo['@id']] : null),
+        'telephone'          => $cfg('org_phone', ''),
+        'sameAs'             => $social,
+        'parentOrganization' => $parent,
+        'address'            => [
+            '@type'           => 'PostalAddress',
+            'streetAddress'   => $cfg('org_street', 'Via Durini, 9'),
+            'postalCode'      => $cfg('org_zip',    '20122'),
+            'addressLocality' => $cfg('org_city',   'Milano'),
+            'addressCountry'  => 'IT',
+        ],
+    ]);
+};
+
+/* --- nodo Person ------------------------------------------------------------
+ * Restituisce null se la risorsa autore non esiste o non è pubblicata:
+ * il chiamante ricade sull'Organization.
+ * Se la pagina dell'autore è la scheda di un professionista (template <prefisso>.tpl_medico, kosgroup.com: medici) il
+ * nodo è quello di $professionista (voce KOS-11): IndividualPhysician #medico per i medici, Person #person per gli
+ * altri professionisti sanitari.
+ */
+$MED_TV_STR = $cfg('medico_tv_struttura', 'idSedeLavoro');
+$MED_TV_IMG = $cfg('medico_tv_immagine', 'infoImage');
+$MED_TV_RUOLO = $cfg('medico_tv_ruolo', 'ruolo');
+$persona = function ($idAutore) use (
+    $modx, $CLS_RES, $url, $tv, $righe, $testo, $immagine, $pulisci, $idDi, $ORG_ID, $TPL_MEDICO, $MED_TV_STR, $MED_TV_IMG,
+    &$riferimentiStrutture, &$professionista
+) {
+    $idAutore = (int) $idAutore;
+    if ($idAutore <= 0) return null;
+
+    $a = $modx->getObject($CLS_RES, $idAutore);
+    if (!$a || !$a->get('published') || $a->get('deleted')) return null;
+
+    $pagina = $url($idAutore);
+    if ($pagina === '') return null;
+
+    $tpl = $TPL_MEDICO ? $a->getOne('Template') : null;
+    if ($tpl && in_array($tpl->get('templatename'), $TPL_MEDICO, true)) return $professionista($a);
+
+    $nome = trim($tv($a, 'aut.given') . ' ' . $tv($a, 'aut.family'));
+    if ($nome === '') $nome = $a->get('pagetitle');
+
+    $p = [
+        '@type'       => 'Person',
+        '@id'         => $idDi($pagina, 'person'),
+        'name'        => $nome,
+        'givenName'   => $tv($a, 'aut.given'),
+        'familyName'  => $tv($a, 'aut.family'),
+        'url'         => $pagina,
+        'jobTitle'    => $tv($a, 'aut.jobTitle'),
+        'description' => $testo($tv($a, 'aut.bio')),
+        'worksFor'    => ['@id' => $ORG_ID],
+        'image'       => $immagine($tv($a, 'aut.foto')),
+    ];
+
+    // honorificPrefix solo se valorizzato: su Antonella Schiavino resta vuoto.
+    if ($h = $tv($a, 'aut.honorific')) $p['honorificPrefix'] = $h;
+
+    if ($prof = $tv($a, 'aut.professione')) {
+        $p['hasOccupation'] = [
+            '@type' => 'Occupation',
+            'name'  => $prof,
+            'occupationalCategory' => $tv($a, 'aut.professione_cat'),
+        ];
+    }
+
+    if ($k = $righe($tv($a, 'aut.knowsAbout'))) $p['knowsAbout'] = $k;
+
+    // Struttura di afferenza: aggancia la persona all'entità residenza.
+    if ($aff = (int) $tv($a, 'aut.affiliazione')) {
+        if ($u = $url($aff)) $p['affiliation'] = ['@id' => $idDi($u, 'struttura')];
+    }
+
+    // Iscrizione all'albo: identificativo verificabile, più la credenziale.
+    $albo = $tv($a, 'aut.albo_nome');
+    $num  = $tv($a, 'aut.albo_numero');
+    if ($albo !== '' && $num !== '') {
+        $p['identifier'] = [
+            '@type'      => 'PropertyValue',
+            'propertyID' => $albo,
+            'value'      => $num,
+        ];
+        $p['hasCredential'][] = [
+            '@type'              => 'EducationalOccupationalCredential',
+            'credentialCategory' => 'ProfessionalCertification',
+            'name'               => 'Iscrizione ' . $albo . ', n. ' . $num,
+            'identifier'         => $num,
+            'recognizedBy'       => ['@type' => 'Organization', 'name' => $albo],
+        ];
+        $p['memberOf'] = ['@type' => 'Organization', 'name' => $albo];
+    }
+
+    // Titoli di studio: una riga per titolo, con anno facoltativo dopo "|".
+    foreach ($righe($tv($a, 'aut.credential')) as $c) {
+        $parti = array_map('trim', explode('|', $c, 2));
+        $p['hasCredential'][] = [
+            '@type'              => 'EducationalOccupationalCredential',
+            'credentialCategory' => 'degree',
+            'name'               => $parti[0],
+            'dateCreated'        => $parti[1] ?? null,
+        ];
+    }
+
+    $sameAs = $righe($tv($a, 'aut.sameAs'));
+
+    // Pubblicazione scientifica: è la credenziale più forte, va anche in sameAs.
+    $doi = $tv($a, 'aut.pub_doi');
+    if ($titolo = $tv($a, 'aut.pub_titolo')) {
+        $pub = [
+            '@type'         => 'ScholarlyArticle',
+            'name'          => $titolo,
+            'headline'      => $titolo,   // Google la chiede su ogni *Article (Rich Results Test)
+            'datePublished' => $tv($a, 'aut.pub_data'),
+            'url'           => $tv($a, 'aut.pub_url'),
+            'author'        => ['@id' => $idDi($pagina, 'person')],
+        ];
+        if ($doi !== '') {
+            $pub['@id'] = 'https://doi.org/' . $doi;
+            $pub['identifier'] = ['@type' => 'PropertyValue', 'propertyID' => 'DOI', 'value' => $doi];
+            $sameAs[] = 'https://doi.org/' . $doi;
+        }
+        $p['subjectOf'] = $pub;
+    }
+
+    if ($sameAs) $p['sameAs'] = array_values(array_unique($sameAs));
+
+    return $pulisci($p);
+};
+
+/* --- lingua e home della pagina ---------------------------------------------
+ * anniazzurri.it: una lingua, home = site_start. kosgroup.com: la cartella di lingua
+ * (it / en) tra gli antenati decide lingua e home (impostazione <prefisso>.lingue).
+ */
+$linguaDi = function ($res) use ($modx, $CLS_RES, $LINGUE, $LANG, $START) {
+    if (!$LINGUE) return ['lang' => $LANG, 'home' => $START, 'radice' => 0];
+    $id = (int) $res->get('id');
+    $rid = $id;
+    for ($giri = 0; $rid > 0 && $giri < 100; $giri++) {
+        if (isset($LINGUE[$rid])) return $LINGUE[$rid] + ['radice' => $rid];
+        $r = ($rid === $id) ? $res : $modx->getObject($CLS_RES, $rid);
+        if (!$r) break;
+        $rid = (int) $r->get('parent');
+    }
+    // Pagine fuori dalle cartelle di lingua (landing alla radice): prima lingua.
+    foreach ($LINGUE as $radice => $l) return $l + ['radice' => $radice];
+};
+
+/** URL della home: su anniazzurri.it la radice con slash, altrove l'URL della pagina home. */
+$urlHome = function ($homeId) use ($url, $LINGUE, $START, $CANON) {
+    return (!$LINGUE && $homeId === $START) ? $CANON . '/' : $url($homeId);
+};
+
+/* --- briciole di pane -------------------------------------------------------
+ * UNA funzione per briciole visibili (&type=`briciole`) e BreadcrumbList: stesso percorso.
+ * - si risale l'albero MODX fino alla radice (su anniazzurri.it gli URL sono piatti, l'albero no);
+ * - in testa la home della lingua; si saltano home, cartelle di lingua, site_start e le risorse
+ *   in <prefisso>.breadcrumb_exclude;
+ * - con breadcrumb_solo_pubblicate = 1 si saltano anche i livelli intermedi che non sono pagine
+ *   da linkare (non pubblicati, link web/simbolici, cartelle con FirstChildRedirect);
+ *   altrimenti restano tutti, come fa lo snippet BreadCrumb per default (anniazzurri.it);
+ * - titoli secondo breadcrumb_titolo; URL assoluti nella forma canonica;
+ * - sulla home (e sulle cartelle di lingua) nessuna briciola.
+ */
+$briciole = function ($res) use ($modx, $url, $urlHome, $linguaDi, $CLS_RES, $START, $ESCLUDI, $LINGUE,
+                                 $BC_TITOLO, $BC_SOLO_PUB, $BC_HOME) {
+    $id = (int) $res->get('id');
+    $L = $linguaDi($res);
+    if ($id === $L['home'] || $id === $START || isset($LINGUE[$id])) return [];
+
+    $saltaIntermedio = function ($r) use ($BC_SOLO_PUB) {
+        if (!$BC_SOLO_PUB) return false;
+        return !$r->get('published') || $r->get('deleted')
+            || strpos((string) $r->get('class_key'), 'modDocument') === false
+            || stripos((string) $r->get('content'), 'FirstChildRedirect') !== false;
+    };
+
+    $catena = [];
+    $rid = $id;
+    for ($giri = 0; $rid > 0 && $giri < 100; $giri++) {
+        $r = ($rid === $id) ? $res : $modx->getObject($CLS_RES, $rid);
+        if (!$r) break;
+        $fuori = $rid === $START || $rid === $L['home'] || isset($LINGUE[$rid]) || in_array($rid, $ESCLUDI, true)
+              || ($rid !== $id && $saltaIntermedio($r));
+        if (!$fuori) array_unshift($catena, $r);
+        $rid = (int) $r->get('parent');
+    }
+
+    $voci = [];
+    if ($home = $modx->getObject($CLS_RES, $L['home'])) {
+        $voci[] = ['name' => $BC_HOME !== '' ? $BC_HOME : $home->get('pagetitle'), 'item' => $urlHome($L['home'])];
+    }
+    foreach ($catena as $r) {
+        $corrente = ((int) $r->get('id') === $id);
+        $voci[] = [
+            'name' => ($corrente || $BC_TITOLO === 'menutitle')
+                        ? ($r->get('menutitle') ?: $r->get('pagetitle'))
+                        : $r->get('pagetitle'),
+            'item' => $url($r->get('id')),
+        ];
+    }
+
+    $lista = [];
+    foreach ($voci as $i => $v) {
+        $lista[] = array_filter([
+            '@type'    => 'ListItem',
+            'position' => $i + 1,
+            'name'     => $v['name'],
+            'item'     => $v['item'],
+        ], function ($x) { return $x !== null && $x !== ''; });
+    }
+    return $lista;
+};
+
+/* La pagina mostra le briciole? Solo lì esce la BreadcrumbList, che deve essere coerente con
+ * quelle visibili (audit KosGroup, slide 29). Vuoto = tutte le pagine. */
+$mostraBriciole = function ($res) use ($BC_TPL) {
+    if (!$BC_TPL) return true;
+    $tpl = $res->getOne('Template');
+    if ($tpl && in_array($tpl->get('templatename'), $BC_TPL, true)) return true;
+    $c = (string) $res->get('content');
+    // Nel contenuto: snippet myBreadcrumb, chunk [[$breadcrumb]] (es. news, pagine generica-en) o chiamata diretta.
+    return stripos($c, 'myBreadcrumb') !== false || stripos($c, 'type=`briciole`') !== false
+        || preg_match('/\[\[\$breadcrumb(?![\w.-])/i', $c) === 1;
+};
+
+/* Nodo BreadcrumbList, o null se la pagina non mostra briciole o ha meno di due livelli. */
+$nodoBriciole = function ($res, $pagina) use ($briciole, $mostraBriciole, $idDi) {
+    if (!$mostraBriciole($res)) return null;
+    $l = $briciole($res);
+    return count($l) < 2 ? null : [
+        '@type'           => 'BreadcrumbList',
+        '@id'             => $idDi($pagina, 'breadcrumb'),
+        'itemListElement' => $l,
+    ];
+};
+
+/* Nodo WebSite. */
+$sito = function ($lingua = null) use ($cfg, $CANON, $SITE_ID, $ORG_ID, $LANG, $LINGUE) {
+    // Il sito è una sola entità: con più lingue le dichiara tutte, uguale su ogni pagina.
+    if ($LINGUE) $lingua = array_values(array_unique(array_column($LINGUE, 'lang')));
+    return [
+        '@type'      => 'WebSite',
+        '@id'        => $SITE_ID,
+        'url'        => $cfg('website_url', $cfg('org_url', $CANON . '/')),
+        'name'       => $cfg('org_name', 'Anni Azzurri'),
+        'inLanguage' => $lingua ?: $LANG,
+        'publisher'  => ['@id' => $ORG_ID],
+    ];
+};
+
+/* --- riferimenti a patologie (id di risorse separati da virgola) ------------- */
+$riferimenti = function ($csv, $tipo) use ($url, $idDi) {
+    $out = [];
+    foreach (array_unique(array_filter(array_map('intval', explode(',', (string) $csv)))) as $id) {
+        if ($u = $url($id)) $out[] = ['@id' => $idDi($u, $tipo)];
+    }
+    return $out;
+};
+
+/* --- nodo struttura (#localbusiness) ----------------------------------------
+ * Dati dalle TV str.* della scheda; nessun dato inventato: un campo vuoto non esce, e senza indirizzo (str.via)
+ * il nodo non esce affatto.
+ * Tipi e specialità solo da elenchi noti di schema.org (un valore sconosciuto si scarta:
+ * l'errore di Yext era usare le specialità come tipo).
+ */
+$STR_TPL = $csv($cfg('tpl_struttura', ''));
+$LND_TPL = $csv($cfg('tpl_landing', ''));
+$STR_ON  = (int) $cfg('struttura_attiva', 0);
+/* Reparti: id della pagina dell'unità => id della pagina della sede. */
+$REPARTI = [];
+foreach ($csv($cfg('reparti', '')) as $coppia) {
+    if (preg_match('/^\s*(\d+)\s*:\s*(\d+)\s*$/', $coppia, $m)) $REPARTI[(int) $m[1]] = (int) $m[2];
+}
+$TIPI_STRUTTURA = ['MedicalClinic', 'Hospital', 'DiagnosticLab', 'Dentist', 'Physiotherapy', 'MedicalOrganization',
+    'MedicalBusiness', 'LocalBusiness', 'Pharmacy', 'Optician'];
+$SPECIALITA = ['Anesthesia', 'Cardiovascular', 'CommunityHealth', 'Dentistry', 'Dermatology', 'DietNutrition',
+    'Emergency', 'Endocrine', 'Gastroenterologic', 'Genetic', 'Geriatric', 'Gynecologic', 'Hematologic', 'Infectious',
+    'LaboratoryScience', 'Midwifery', 'Musculoskeletal', 'Neurologic', 'Nursing', 'Obstetric', 'Oncologic',
+    'Optometric', 'Otolaryngologic', 'Pathology', 'Pediatric', 'PharmacySpecialty', 'Physiotherapy', 'PlasticSurgery',
+    'Podiatric', 'PrimaryCare', 'Psychiatric', 'PublicHealth', 'Pulmonary', 'Radiography', 'Renal',
+    'RespiratoryTherapy', 'Rheumatologic', 'SpeechPathology', 'Surgical', 'Toxicologic', 'Urologic'];
+$GIORNI = ['Mo' => 'Monday', 'Tu' => 'Tuesday', 'We' => 'Wednesday', 'Th' => 'Thursday', 'Fr' => 'Friday',
+    'Sa' => 'Saturday', 'Su' => 'Sunday'];
+
+/** "Mo-Fr 08:00-13:00,14:00-18:00" → OpeningHoursSpecification (una per fascia). */
+$orari = function ($testo) use ($righe, $GIORNI) {
+    $out = [];
+    $chiavi = array_keys($GIORNI);
+    foreach ($righe($testo) as $r) {
+        if (!preg_match('/^([A-Za-z,\- ]+?)\s+(\d{1,2}:\d{2}\s*-\s*\d{1,2}:\d{2}(?:\s*,\s*\d{1,2}:\d{2}\s*-\s*\d{1,2}:\d{2})*)$/', $r, $m)) continue;
+        $giorni = [];
+        foreach (preg_split('/\s*,\s*/', trim($m[1])) as $g) {
+            $g = preg_split('/\s*-\s*/', $g);
+            $a = array_search(ucfirst(strtolower($g[0])), $chiavi, true);
+            $b = isset($g[1]) ? array_search(ucfirst(strtolower($g[1])), $chiavi, true) : $a;
+            if ($a === false || $b === false || $b < $a) continue;
+            for ($i = $a; $i <= $b; $i++) $giorni[] = 'https://schema.org/' . $GIORNI[$chiavi[$i]];
+        }
+        if (!$giorni) continue;
+        foreach (preg_split('/\s*,\s*/', $m[2]) as $fascia) {
+            [$da, $a2] = array_map(fn($x) => sprintf('%05s', trim($x)), explode('-', $fascia));
+            $out[] = ['@type' => 'OpeningHoursSpecification', 'dayOfWeek' => array_values(array_unique($giorni)),
+                      'opens' => $da, 'closes' => $a2];
+        }
+    }
+    return $out;
+};
+/** "2026-12-25 chiuso" | "2026-12-24 08:00-12:00" | "2026-08-10/2026-08-21 chiuso". Chiuso = opens e closes 00:00. */
+$orariSpeciali = function ($testo) use ($righe) {
+    $out = [];
+    foreach ($righe($testo) as $r) {
+        if (!preg_match('#^(\d{4}-\d{2}-\d{2})(?:/(\d{4}-\d{2}-\d{2}))?\s+(chiuso|closed|(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2}))$#i', $r, $m)) continue;
+        $chiuso = !isset($m[4]) || $m[4] === '';
+        $out[] = ['@type' => 'OpeningHoursSpecification', 'validFrom' => $m[1], 'validThrough' => ($m[2] ?? '') ?: $m[1],
+                  'opens' => $chiuso ? '00:00' : sprintf('%05s', $m[4]), 'closes' => $chiuso ? '00:00' : sprintf('%05s', $m[5])];
+    }
+    return $out;
+};
+/** Prima immagine esistente tra TV e percorsi di ripiego (stessa regola dello snippet ogImage). */
+$immagineStruttura = function ($r) use ($tv, $immagine, $cfg) {
+    $cand = [$tv($r, 'infoImage')];
+    foreach (explode('|', (string) $cfg('struttura_immagini', 'assets/img/header/{alias}.jpg|assets/img/strutture/{alias}/')) as $p) {
+        $cand[] = str_replace('{alias}', (string) $r->get('alias'), trim($p));
+    }
+    foreach ($cand as $c) {
+        $c = ltrim(trim((string) $c), '/');
+        if ($c === '' || preg_match('#^https?://#i', $c)) continue;
+        $f = MODX_BASE_PATH . $c;
+        if (substr($c, -1) === '/') {
+            $file = is_dir($f) ? (glob($f . '*.{jpg,jpeg,png,webp,JPG,JPEG,PNG}', GLOB_BRACE) ?: []) : [];
+            sort($file);
+            if ($file) return $immagine($c . basename($file[0]));
+        } elseif (is_file($f)) {
+            return $immagine($c);
+        }
+    }
+    return null;
+};
+/** Servizi della landing: «Tipo|Nome|Descrizione» per riga. */
+$servizi = function ($testo) use ($righe) {
+    $out = [];
+    foreach ($righe($testo) as $r) {
+        $p = array_map('trim', explode('|', $r, 3));
+        if (count($p) < 2 || !in_array($p[0], ['MedicalTest', 'MedicalProcedure', 'MedicalTherapy', 'MedicalCondition'], true)) continue;
+        $out[] = array_filter(['@type' => $p[0], 'name' => $p[1], 'description' => $p[2] ?? '']);
+    }
+    return $out;
+};
+/* Servizi dal sito: le pagine di «Servizi e cure» indicate nelle TV di mappatura della scheda (impostazione
+ * <prefisso>.struttura_tv_servizi). Tipo e specialità dalla TV srv.schema della pagina del servizio
+ * («MedicalTherapy|Physiotherapy,Neurologic»); se vuota, dal ramo del sito (trattamenti → terapia,
+ * psichiatria → condizione trattata, altrimenti prestazione). Ogni voce porta l'URL della sua pagina. */
+$TV_SERVIZI = $csv($cfg('struttura_tv_servizi', ''));
+$serviziSito = function ($r) use ($modx, $CLS_RES, $tv, $csv, $url, $TV_SERVIZI) {
+    $voci = []; $spec = [];
+    if (!$TV_SERVIZI) return [$voci, $spec];
+    $visti = [];
+    foreach ($TV_SERVIZI as $nome) {
+        foreach (array_filter(array_map('intval', preg_split('/[^\d]+/', (string) $tv($r, $nome)))) as $id) {
+            if (isset($visti[$id])) continue;
+            $visti[$id] = true;
+            $s = $modx->getObject($CLS_RES, $id);
+            if (!$s || !$s->get('published') || $s->get('deleted')) continue;
+            $u = (string) $s->get('uri');
+            $def = strpos($u, '/trattamenti/') !== false ? 'MedicalTherapy'
+                 : (strpos($u, '/psichiatria/') !== false ? 'MedicalCondition'
+                 : (strpos($u, '/riabilitazione/') !== false ? 'MedicalTherapy' : 'MedicalProcedure'));
+            $p = array_map('trim', explode('|', (string) $tv($s, 'srv.schema'), 2));
+            if (($p[0] ?? '') === '-') continue;   // pagina da non dichiarare
+            $tipo = in_array($p[0] ?? '', ['MedicalTherapy', 'MedicalTest', 'MedicalProcedure', 'MedicalCondition'], true) ? $p[0] : $def;
+            $spec = array_merge($spec, $csv($p[1] ?? ''));
+            $voci[] = ['@type' => $tipo, 'name' => $s->get('pagetitle'), 'url' => $url($id)];
+        }
+    }
+    return [$voci, array_values(array_unique($spec))];
+};
+/* Tecnologie della struttura: le pagine indicate nelle TV <prefisso>.struttura_tv_tecnologie della scheda (kosgroup.com:
+ * mapTecnologie, pagine di «Tecnologia e innovazione»). schema.org non ha una proprietà «dispositivo della struttura»:
+ * vanno in knowsAbout come MedicalDevice, con @id {URL della pagina}<frag_dispositivo> (default #device) per collegarle
+ * al nodo della pagina della tecnologia quando sarà emesso. Nome dal longtitle senza il suffisso «| …» (su kosgroup.com
+ * il longtitle è il title completo), altrimenti dal pagetitle. */
+$TV_TECNOLOGIE = $csv($cfg('struttura_tv_tecnologie', ''));
+$tecnologie = function ($r) use ($modx, $CLS_RES, $tv, $url, $idDi, $TV_TECNOLOGIE) {
+    $out = []; $visti = [];
+    foreach ($TV_TECNOLOGIE as $nome) {
+        foreach (array_filter(array_map('intval', preg_split('/[^\d]+/', (string) $tv($r, $nome)))) as $id) {
+            if (isset($visti[$id])) continue;
+            $visti[$id] = true;
+            $s = $modx->getObject($CLS_RES, $id);
+            if (!$s || !$s->get('published') || $s->get('deleted')) continue;
+            $u = $url($id);
+            $out[] = ['@type' => 'MedicalDevice', '@id' => $idDi($u, 'dispositivo'), 'name' => trim((string) preg_replace('/\s+\|[^|]*$/u', '', (string) ($s->get('longtitle') ?: $s->get('pagetitle')))), 'url' => $u];
+        }
+    }
+    return $out;
+};
+/* Prenotazione online dal portale TuoTempo (kosgroup.com). La TV <prefisso>.prenotazione_tv (default istanza) contiene
+ * l'areaid TuoTempo della sede: compilata = prenotazione attiva (è la stessa che accende la barra di prenotazione).
+ *   - azione «Prenota online» della struttura: portale filtrato sulla sede;
+ *   - catalogo «Prestazioni prenotabili online» (hasOfferCatalog), diviso per branca, con il link diretto
+ *     sede + prestazione; stesse regole della barra: sede non nascosta, prestazione non nascosta o prenotabile in
+ *     differita, almeno un medico (tabelle kos_strutture, kos_prestazioni, kos_medici_prestazioni).
+ * Ogni link porta kos_referrer = <prefisso>.prenotazione_referrer (default dato-strutturato) per il funnel.
+ * Le tabelle si aggiornano dalla sincronizzazione TuoTempo; il JSON-LD è nella cache della pagina e si rinnova con lei. */
+$PREN_PORTALE = (string) $cfg('prenotazione_portale', '');
+$PREN_TV      = (string) $cfg('prenotazione_tv', 'istanza');
+$PREN_REF     = (string) $cfg('prenotazione_referrer', 'dato-strutturato');
+$prenotazione = function ($r) use ($modx, $tv, $PREN_PORTALE, $PREN_TV, $PREN_REF) {
+    $area = trim((string) $tv($r, $PREN_TV));
+    if ($PREN_PORTALE === '' || $area === '') return [null, null];
+    $link = function (array $q) use ($PREN_PORTALE, $PREN_REF) {
+        return $PREN_PORTALE . (strpos($PREN_PORTALE, '?') === false ? '?' : '&')
+             . http_build_query($q + ['kos_referrer' => $PREN_REF], '', '&', PHP_QUERY_RFC3986);
+    };
+    $catalogo = null;
+    try {
+        $st = $modx->prepare("SELECT 1 FROM kos_strutture WHERE areaid = ? AND is_hidden = 0 LIMIT 1");
+        $st->execute([$area]);
+        if (!$st->fetchColumn()) return [null, null];   // sede nascosta: la barra non la mostra, il dato neppure
+        $st = $modx->prepare("SELECT p.activity_id, p.title, p.typology FROM kos_prestazioni p
+                              WHERE p.areaid = ? AND (p.is_hidden = 0 OR p.mop_bookability = 2)
+                                AND EXISTS (SELECT 1 FROM kos_medici_prestazioni mp WHERE mp.activity_id = p.activity_id AND mp.areaid = p.areaid)
+                              ORDER BY p.typology, p.title");
+        $st->execute([$area]);
+        $branche = [];
+        foreach ($st->fetchAll(PDO::FETCH_ASSOC) as $p) {
+            $branche[(string) $p['typology']][] = [
+                '@type'       => 'Offer',
+                'itemOffered' => ['@type' => 'Service', 'name' => trim((string) $p['title'])],
+                // la branca è il nome dell'OfferCatalog che contiene l'offerta: niente `category` ripetuta
+                'url'         => $link(['activityid' => $p['activity_id'], 'areaid' => $area]),
+            ];
+        }
+        if ($branche) {
+            $catalogo = ['@type' => 'OfferCatalog', 'name' => 'Prestazioni prenotabili online', 'itemListElement' => []];
+            foreach ($branche as $b => $offerte) {
+                $catalogo['itemListElement'][] = ['@type' => 'OfferCatalog', 'name' => $b, 'itemListElement' => $offerte];
+            }
+        }
+    } catch (\Throwable $e) {
+        // tabelle della prenotazione assenti (es. anniazzurri.it): solo il link della sede
+    }
+    return [$link(['areaid' => $area]), $catalogo];
+};
+/** Tipi schema.org della struttura dalla TV str.tipo (solo tipi noti; default MedicalClinic). Indirizzo, coordinate,
+ *  orari e mappa sono proprietà dei luoghi e delle attività locali: un tipo che non lo è (DiagnosticLab e
+ *  MedicalOrganization sono solo organizzazioni) si affianca a MedicalBusiness, altrimenti il validatore li segnala come
+ *  proprietà sconosciute e Google non riconosce l'attività locale. */
+$tipiStruttura = function ($r) use ($tv, $csv, $TIPI_STRUTTURA) {
+    $tipi = array_values(array_intersect($csv($tv($r, 'str.tipo')), $TIPI_STRUTTURA)) ?: ['MedicalClinic'];
+    if (!array_intersect($tipi, ['MedicalClinic', 'Hospital', 'Dentist', 'Physiotherapy', 'MedicalBusiness', 'LocalBusiness', 'Pharmacy', 'Optician'])) {
+        $tipi[] = 'MedicalBusiness';
+    }
+    return $tipi;
+};
+/* Riferimenti alle strutture (id delle schede separati da virgola, es. TV idStruttura degli articoli kosgroup.com).
+ * Con i template delle schede configurati (<prefisso>.tpl_struttura) si cita solo una struttura il cui nodo
+ * #localbusiness esiste davvero: scheda pubblicata con quel template, nodo acceso (struttura_attiva) e indirizzo
+ * (str.via). Senza tpl_struttura (anniazzurri.it oggi) solo l'@id, come prima. */
+$riferimentiStrutture = function ($csvId) use ($modx, $CLS_RES, $url, $tv, $idDi, $tipiStruttura, $STR_TPL, $STR_ON, $REPARTI) {
+    $out = [];
+    $ids = array_map(fn($i) => $REPARTI[$i] ?? $i, array_filter(array_map('intval', preg_split('/[^\d]+/', (string) $csvId))));
+    foreach (array_unique($ids) as $id) {
+        if (!$STR_TPL) {
+            if ($u = $url($id)) $out[] = ['@id' => $idDi($u, 'struttura')];
+            continue;
+        }
+        $r = $STR_ON ? $modx->getObject($CLS_RES, $id) : null;
+        if (!$r || !$r->get('published') || $r->get('deleted')) continue;
+        $t = $r->getOne('Template');
+        if (!$t || !in_array($t->get('templatename'), $STR_TPL, true)) continue;
+        if ((string) $tv($r, 'str.via') === '' || ($u = $url($id)) === '') continue;
+        $tipi = $tipiStruttura($r);
+        // Il riferimento è tipizzato (attività locale): Google lo convalida come tale e vuole address (errore
+        // «address obbligatorio» del Rich Results Test su medici e articoli, Screaming Frog 15/11). Indirizzo e
+        // telefono della scheda, gli stessi del nodo completo sulla sua pagina.
+        $out[] = array_filter([
+            '@type' => count($tipi) === 1 ? $tipi[0] : $tipi, '@id' => $idDi($u, 'struttura'),
+            'name' => $tv($r, 'str.nome') ?: $r->get('pagetitle'), 'url' => $u,
+            'address' => [
+                '@type'           => 'PostalAddress',
+                'streetAddress'   => (string) $tv($r, 'str.via'),
+                'postalCode'      => (string) $tv($r, 'str.cap'),
+                'addressLocality' => (string) $tv($r, 'str.citta'),
+                'addressRegion'   => strtoupper((string) $tv($r, 'str.provincia')),
+                'addressCountry'  => 'IT',
+            ],
+            'telephone' => (string) $tv($r, 'str.telefono'),
+        ], fn($x) => $x !== '' && $x !== null);
+    }
+    return $out;
+};
+/* --- professionisti (voce KOS-11) --------------------------------------------
+ * Pagine del template <prefisso>.tpl_medico (kosgroup.com: «medici»). Il ruolo scritto nella pagina (TV
+ * <prefisso>.medico_tv_ruolo, «ruolo») decide il tipo, come da convenzione del progetto:
+ * - medico («Ortopedico», «Radiologa», «Medico estetico», «Geriatra e Fisiatra»…) che opera in una struttura con nodo
+ *   (TV <prefisso>.medico_tv_struttura): IndividualPhysician con @id {URL}#medico, medicalSpecialty ricavate dal ruolo
+ *   (solo valori di schema.org), address della sede, practicesAt verso le schede struttura. IndividualPhysician è un
+ *   tipo di organizzazione medica: niente jobTitle;
+ * - medico senza una sede con nodo: Person come i professionisti qui sotto (un IndividualPhysician senza indirizzo
+ *   è un'attività locale non valida per Google);
+ * - altro professionista sanitario (fisioterapista, psicologo, infermiere, logopedista, nutrizionista…): Person con
+ *   @id {URL}#person, jobTitle = ruolo, worksFor verso le strutture (practicesAt esiste solo su IndividualPhysician) o,
+ *   senza struttura con nodo, verso l'ente.
+ * Ruolo non riconosciuto = Person: un professionista non medico descritto come medico sarebbe un dato falso, il
+ * contrario solo un dato meno preciso. Il riconoscimento è nella tabella $RUOLI_MEDICI qui sotto; l'elenco della
+ * classificazione delle pagine esce dal collaudo scripts/collaudo/collaudo-kos-11.mjs.
+ */
+$RUOLI_NON_MEDICI = '~assistente|coordinat|tecnico|infermier|fisioterapist|logoped|terapist|podolog|psicolog|nutrizion|dietist|chinesiolog|musicoterap|biolog~u';
+$RUOLI_MEDICI = [   // espressione sul ruolo (minuscolo) => specialità schema.org (anche vuote: medico senza specialità)
+    'anestesi' => ['Anesthesia'], 'dolore' => ['Anesthesia'],
+    'cardiochir' => ['Surgical', 'Cardiovascular'], 'cardiolog' => ['Cardiovascular'],
+    'angiolog' => ['Cardiovascular'], 'flebolog' => ['Cardiovascular'], 'vascolar' => ['Surgical', 'Cardiovascular'],
+    'chirur' => ['Surgical'], 'chiurur' => ['Surgical'], 'chirrug' => ['Surgical'],
+    'dermatolog' => ['Dermatology'], 'gastroenter' => ['Gastroenterologic'], 'geriatr' => ['Geriatric'],
+    'ginecolog' => ['Gynecologic'], 'ostetric' => ['Obstetric'], 'oncolog' => ['Oncologic'],
+    'ortoped' => ['Musculoskeletal'], 'traumatolog' => ['Musculoskeletal'], 'fisiatr' => ['Physiotherapy'],
+    'neurochir' => ['Surgical', 'Neurologic'], 'neurolog' => ['Neurologic'], 'neuroradiolog' => ['Neurologic', 'Radiography'],
+    'radiolog' => ['Radiography'], 'ecografist' => ['Radiography'], 'otorino' => ['Otolaryngologic'],
+    'oculist' => ['Optometric'], 'oftalmolog' => ['Optometric'], 'psichiatr' => ['Psychiatric'],
+    'reumatolog' => ['Rheumatologic'], '(?<![a-z])urolog' => ['Urologic'], 'androlog' => ['Urologic'],
+    'pediatr' => ['Pediatric'], 'pneumolog' => ['Pulmonary'], 'patolog' => ['Pathology'], 'endocrinolog' => ['Endocrine'],
+    'nefrolog' => ['Renal'], 'ematolog' => ['Hematologic'], 'infettivolog' => ['Infectious'],
+    'medic' => [],   // «Medico estetico», «Medicina del dolore»: medico, specialità dagli altri frammenti
+];
+/** ['medico' => bool, 'specialita' => [...]] dal ruolo scritto nella pagina. */
+$ruoloProfessionista = function ($ruolo) use ($RUOLI_NON_MEDICI, $RUOLI_MEDICI, $SPECIALITA) {
+    $r = mb_strtolower(trim((string) $ruolo), 'UTF-8');
+    if ($r === '' || preg_match($RUOLI_NON_MEDICI, $r)) return ['medico' => false, 'specialita' => []];
+    $medico = false; $spec = [];
+    foreach ($RUOLI_MEDICI as $frammento => $s) {
+        if (!preg_match('~' . $frammento . '~u', $r)) continue;
+        $medico = true;
+        $spec = array_merge($spec, $s);
+    }
+    return ['medico' => $medico, 'specialita' => array_values(array_intersect($SPECIALITA, array_unique($spec)))];
+};
+$professionista = function ($r) use (
+    $modx, $CLS_RES, $url, $tv, $testo, $immagine, $pulisci, $idDi, $ORG_ID, $MED_TV_STR, $MED_TV_IMG, $MED_TV_RUOLO,
+    $ruoloProfessionista, &$riferimentiStrutture, &$nodoStruttura, $REPARTI
+) {
+    if (!$r || !$r->get('published') || $r->get('deleted')) return null;
+    $pagina = $url($r->get('id'));
+    if ($pagina === '') return null;
+    $ruolo = trim((string) preg_replace('/[\s\x{00A0}]+/u', ' ', (string) $tv($r, $MED_TV_RUOLO)));
+    $tipo = $ruoloProfessionista($ruolo);
+    // Strutture con nodo (#localbusiness) e indirizzo della prima: IndividualPhysician è un'attività locale per Google,
+    // che vuole address (Rich Results Test, «Attività locali»). Il medico riceve l'indirizzo della sede in cui opera;
+    // senza una sede con nodo resta Person (jobTitle, worksFor verso l'ente), che è vero e valido.
+    $strutture = []; $indirizzo = null; $telefono = null;
+    foreach (array_unique(array_filter(array_map('intval', preg_split('/[^\d]+/', (string) $tv($r, $MED_TV_STR))))) as $sid) {
+        if (!($rif = $riferimentiStrutture((string) $sid))) continue;
+        $strutture = array_merge($strutture, $rif);
+        if ($indirizzo === null && ($sr = $modx->getObject($CLS_RES, $REPARTI[$sid] ?? $sid)) && ($ns = $nodoStruttura($sr))) {
+            $indirizzo = $ns['address'] ?? null;
+            $telefono  = $ns['telephone'] ?? null;   // centralino della sede: è il numero a cui si prenota il medico
+        }
+    }
+    if (!$indirizzo) $tipo['medico'] = false;
+    $nodo = [
+        '@type'       => $tipo['medico'] ? 'IndividualPhysician' : 'Person',
+        '@id'         => $idDi($pagina, $tipo['medico'] ? 'medico' : 'person'),
+        // spazi doppi e finali nei titoli inseriti a mano (es. «Michele  Tulli», «… Rocchetti »): via dal nome
+        'name'        => trim((string) preg_replace('/[\s\x{00A0}]+/u', ' ', (string) $r->get('pagetitle'))),
+        'url'         => $pagina,
+        'image'       => $immagine($tv($r, $MED_TV_IMG), true),
+        'description' => $testo($r->get('description')),
+    ];
+    if ($tipo['medico']) {
+        $nodo['medicalSpecialty'] = $tipo['specialita'];
+        $nodo['address'] = $indirizzo;
+        $nodo['telephone'] = $telefono;
+        $nodo['practicesAt'] = $strutture;
+    } else {
+        $nodo['jobTitle'] = $ruolo;
+        $nodo['worksFor'] = $strutture ?: ['@id' => $ORG_ID];
+    }
+    return $pulisci($nodo);
+};
+$nodoStruttura = function ($r, $extraServizi = []) use (
+    $url, $tv, $servizi, $serviziSito, $tecnologie, $prenotazione, $righe, $testo, $csv, $pulisci, $orari, $orariSpeciali, $immagineStruttura,
+    $tipiStruttura, $idDi, $SPECIALITA, $ORG_ID, $REPARTI, $modx, $CLS_RES
+) {
+    $pagina = $url($r->get('id'));
+    if ($pagina === '') return null;
+    // Senza indirizzo non è un'attività locale descrivibile (Google richiede l'indirizzo): niente nodo, la pagina
+    // resta una WebPage. Vale anche per le pagine di servizio con il template delle schede (es. Ritiro referti).
+    if ($tv($r, 'str.via') === '' || $tv($r, 'str.via') === null) return null;
+    $tipi = $tipiStruttura($r);
+    $via = $tv($r, 'str.via');
+    $lat = str_replace(',', '.', (string) $tv($r, 'str.lat'));
+    $lng = str_replace(',', '.', (string) $tv($r, 'str.lng'));
+    $place = $tv($r, 'str.place_id');
+    $nome = $tv($r, 'str.nome') ?: $r->get('pagetitle');
+    $marchio = $tv($r, 'str.marchio');
+    // Prenotazione: portale TuoTempo della sede se attiva (TV istanza), altrimenti il link di str.prenotazione (Yext)
+    [$prenotaSede, $catalogo] = $prenotazione($r);
+    $prenota = $prenotaSede ?: (string) $tv($r, 'str.prenotazione');
+    // Servizi della scheda (str.servizi) più quelli della landing, senza doppioni. Ogni voce va nella proprietà che
+    // schema.org prevede per il tipo: availableService (MedicalClinic, Hospital), availableTest (DiagnosticLab);
+    // le condizioni trattate e ciò che il tipo non ammette vanno in knowsAbout (valido per ogni organizzazione).
+    // Fonte dei servizi: le associazioni della scheda sul sito (decisione del 25/10); str.servizi (filtri Yext) solo
+    // se la scheda non ne ha.
+    [$dalSito, $specSito] = $serviziSito($r);
+    $voci = [];
+    foreach (array_merge($dalSito ?: $servizi($tv($r, 'str.servizi')), $extraServizi) as $v) $voci[mb_strtolower($v['name'])] = $v;
+    $offerti = []; $test = []; $sa = [];
+    $conServizi = (bool) array_intersect($tipi, ['MedicalClinic', 'Hospital']);
+    foreach ($voci as $v) {
+        if ($v['@type'] !== 'MedicalCondition' && $conServizi) $offerti[] = $v;
+        elseif ($v['@type'] === 'MedicalTest' && in_array('DiagnosticLab', $tipi, true)) $test[] = $v;
+        else $sa[] = array_filter(['@type' => $v['@type'], 'name' => $v['name'], 'url' => $v['url'] ?? null]);
+    }
+    return $pulisci([
+        '@type'       => count($tipi) === 1 ? $tipi[0] : $tipi,
+        '@id'         => $idDi($pagina, 'struttura'),
+        'name'        => $nome,
+        'url'         => $pagina,
+        'description' => $testo($r->get('description') ?: $r->get('introtext')),
+        'image'       => $immagineStruttura($r),
+        'telephone'   => $tv($r, 'str.telefono'),
+        'email'       => $tv($r, 'str.email'),
+        'address'     => $via === '' ? null : [
+            '@type'           => 'PostalAddress',
+            'streetAddress'   => $via,
+            'postalCode'      => $tv($r, 'str.cap'),
+            'addressLocality' => $tv($r, 'str.citta'),
+            'addressRegion'   => strtoupper((string) $tv($r, 'str.provincia')),
+            'addressCountry'  => 'IT',
+        ],
+        'geo'         => (is_numeric($lat) && is_numeric($lng))
+                            ? ['@type' => 'GeoCoordinates', 'latitude' => (float) $lat, 'longitude' => (float) $lng] : null,
+        'hasMap'      => $place ? 'https://www.google.com/maps/search/?api=1&query=' . rawurlencode($nome)
+                            . '&query_place_id=' . rawurlencode($place) : null,
+        'openingHoursSpecification'        => $orari($tv($r, 'str.orari')),
+        'specialOpeningHoursSpecification' => $orariSpeciali($tv($r, 'str.orari_speciali')),
+        'medicalSpecialty' => array_values(array_intersect(array_unique(array_merge($csv($tv($r, 'str.specialita')), $specSito)), $SPECIALITA)),
+        'brand'       => $marchio ? ['@type' => 'Brand', 'name' => $marchio] : null,
+        'hasOfferCatalog'  => $catalogo,
+        'availableService' => $offerti,
+        'availableTest'    => $test,
+        'knowsAbout'       => array_merge($sa, $tecnologie($r)),
+        // Prenotazione online: azione dichiarata, utile agli assistenti AI che rimandano a «dove si prenota».
+        'potentialAction' => preg_match('#^https://#', $prenota) ? [
+            '@type'  => 'ReserveAction',
+            'name'   => 'Prenota online',
+            'target' => ['@type' => 'EntryPoint', 'urlTemplate' => $prenota,
+                         'actionPlatform' => ['https://schema.org/DesktopWebPlatform', 'https://schema.org/MobileWebPlatform']],
+        ] : null,
+        'sameAs'      => array_values(array_filter($righe($tv($r, 'str.sameAs')), fn($u) => preg_match('#^https://#', $u))),
+        'department'  => (function () use ($r, $REPARTI, $modx, $CLS_RES, $url, $idDi) {
+            $out = [];
+            foreach (array_keys($REPARTI, (int) $r->get('id'), true) as $uid) {
+                $u = $modx->getObject($CLS_RES, $uid);
+                if (!$u || !$u->get('published') || $u->get('deleted') || ($pu = $url($uid)) === '') continue;
+                $out[] = ['@type' => 'MedicalOrganization', '@id' => $idDi($pu, 'reparto'),
+                          'name' => trim((string) preg_replace('/\s+\|[^|]*$/u', '', (string) ($u->get('longtitle') ?: $u->get('pagetitle')))), 'url' => $pu];
+            }
+            return $out;
+        })(),
+        'parentOrganization' => ['@id' => $ORG_ID],
+    ]);
+};
+/* Nodo dell'unità specialistica (#department) nella sede indicata da <prefisso>.reparti: MedicalOrganization, non
+ * attività locale (l'indirizzo e il profilo Google sono della sede). Specialità dai servizi collegati alla pagina. */
+$nodoReparto = function ($r, $sedeNodo) use ($url, $testo, $idDi, $serviziSito, $SPECIALITA, $pulisci) {
+    $pagina = $url($r->get('id'));
+    if ($pagina === '' || !$sedeNodo) return null;
+    [$voci, $spec] = $serviziSito($r);
+    return $pulisci([
+        '@type'              => 'MedicalOrganization',
+        '@id'                => $idDi($pagina, 'reparto'),
+        // nome dal longtitle senza il suffisso «| KOS» (su kosgroup.com il longtitle è il title completo)
+        'name'               => trim((string) preg_replace('/\s+\|[^|]*$/u', '', (string) ($r->get('longtitle') ?: $r->get('pagetitle')))),
+        'url'                => $pagina,
+        'description'        => $testo($r->get('description') ?: $r->get('introtext')),
+        'medicalSpecialty'   => array_values(array_intersect(array_unique($spec), $SPECIALITA)),
+        'knowsAbout'         => array_map(fn($v) => array_filter(['@type' => $v['@type'], 'name' => $v['name'], 'url' => $v['url'] ?? null]), $voci),
+        'telephone'          => $sedeNodo['telephone'] ?? null,
+        'parentOrganization' => ['@id' => $sedeNodo['@id']],
+    ]);
+};
+
+/* =============================================================================
+ * ESECUZIONE
+ * ========================================================================== */
+
+$type   = strtolower((string) $modx->getOption('type', $scriptProperties, 'auto'));
+$pretty = (int) $modx->getOption('pretty', $scriptProperties, 0);
+$res    = $modx->resource;
+if (!$res) return '';
+
+$flags = JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE;
+if ($pretty) $flags |= JSON_PRETTY_PRINT;
+
+$L = $linguaDi($res);
+$LANG = $L['lang'];   // lingua della pagina (kosgroup.com: it-IT o en-GB)
+$paginaCorrente = $url($res->get('id'));
+if (!$LINGUE && (int) $res->get('id') === $START) $paginaCorrente = $CANON . '/';
+
+/* ---------------------------------------------------------- briciole visibili
+ * Stesso markup delle briciole storiche di kosgroup.com (#breadcrumbs, separatore |,
+ * .bc-attivo sulla pagina corrente), in un <nav> con etichetta per i lettori di schermo.
+ * Link a percorso assoluto (/it/...), come link_tag_scheme = abs. */
+if ($type === 'briciole') {
+    $l = $briciole($res);
+    if (count($l) < 2) return '';
+    $e = function ($s) { return htmlspecialchars((string) $s, ENT_QUOTES, 'UTF-8'); };
+    $etichetta = strpos($LANG, 'en') === 0 ? 'Breadcrumb' : 'Percorso di navigazione';
+    $pezzi = [];
+    foreach ($l as $i => $v) {
+        $ultimo = ($i === count($l) - 1);
+        $percorso = (string) parse_url($v['item'], PHP_URL_PATH);
+        $pezzi[] = $ultimo
+            ? '<span class="bc-attivo" aria-current="page">' . $e($v['name']) . '</span>'
+            : '<a href="' . $e($percorso) . '">' . $e($v['name']) . '</a>';
+    }
+    return '<nav class="col" id="breadcrumbs" aria-label="' . $etichetta . '">' . implode('<span>|</span>', $pezzi) . '</nav>';
+}
+
+/* Sezione dell'articolo: la prima cartella di <prefisso>.article_sezioni tra gli antenati (id, tipo, nome). */
+$sezione = null;
+if ($ART_SEZIONI) {
+    $rid = (int) $res->get('parent');
+    for ($giri = 0; $rid > 0 && $giri < 100; $giri++) {
+        $r = $modx->getObject($CLS_RES, $rid);
+        if (!$r) break;
+        if (isset($ART_SEZIONI[$rid])) {
+            $sezione = ['id' => $rid, 'tipo' => $ART_SEZIONI[$rid], 'nome' => $r->get('menutitle') ?: $r->get('pagetitle')];
+            break;
+        }
+        $rid = (int) $r->get('parent');
+    }
+}
+if ($type === 'auto') {
+    $tpl = $res->getOne('Template');
+    $nomeTpl = $tpl ? $tpl->get('templatename') : '';
+    $type = in_array($nomeTpl, $TPL_VIDEO, true) ? 'video'
+          : (in_array($nomeTpl, $TPL_ARTICOLO, true) ? (($ART_SEZIONI && !$sezione) ? 'page' : 'article')
+          : (in_array($nomeTpl, $TPL_PROFILO, true) ? 'profile' : 'page'));
+}
+$json = function ($grafo) use ($flags) {
+    $s = json_encode(['@context' => 'https://schema.org', '@graph' => array_values(array_filter($grafo))], $flags);
+    // I plugin che offuscano le email nell'HTML (ObfuscateEmail su KOS, EMO su AA) riconoscono «testo@testo» anche
+    // dentro il JSON-LD e lo trasformano in entità HTML, che nello script non vengono decodificate: sameAs come
+    // https://www.youtube.com/@KOSGroupIT diventava un URL non valido (verifica del 6/11), e lo stesso varrebbe per
+    // le email delle strutture. Una «@» preceduta da un carattere di indirizzo si scrive \u0040: per JSON è identica,
+    // per le espressioni regolari dei plugin no. Le chiavi «@id», «@type» non sono toccate (precedute da virgolette).
+    $s = preg_replace('~(?<=[-!#$%&\'*+/=?^_`{|}\~0-9A-Za-z.])@~', '\\u0040', $s);
+    return '<script type="application/ld+json">' . $s . '</script>';
+};
+
+/* --- autore della pagina corrente ------------------------------------------ */
+$idAutore = (int) $modx->getOption('author', $scriptProperties, $tv($res, 'aut.ref'));
+$autore   = $persona($idAutore);
+
+/* ------------------------------------------------------- firma e box autore
+ * Solo sugli articoli firmati (aut.ref verso una pagina autore pubblicata): sugli articoli della redazione
+ * non esce markup (lavoro extra aa-firma-autore, 3/11/2026); &redazione=`1` rimette la riga «A cura della Redazione».
+ *   &type=`firma`  riga sotto il titolo: «Nome — ruolo», con link alla pagina autore
+ *   &type=`box`    box a fine articolo
+ * Box, firma e JSON-LD leggono lo stesso nodo $persona: nome e ruolo sono identici carattere per carattere.
+ * Link interni nella forma /percorso (regola dei link assoluti del repository): sullo stage restano sullo stage.
+ */
+if ($type === 'box' || $type === 'firma') {
+    $e = function ($s) { return htmlspecialchars((string) $s, ENT_QUOTES, 'UTF-8'); };
+    $percorso = function ($u) { return (string) (parse_url((string) $u, PHP_URL_PATH) ?: '/'); };
+
+    if (!$autore) {
+        if ($type === 'box' && (int) $modx->getOption('redazione', $scriptProperties, 0)) {
+            return '<div class="box-autore box-autore--redazione">'
+                 . '<p class="box-autore__firma">A cura della Redazione ' . $e($cfg('org_name', 'Anni Azzurri')) . '</p>'
+                 . '</div>';
+        }
+        return '';
+    }
+    $link = $percorso($autore['url']);
+
+    if ($type === 'firma') {
+        return '<span class="firma-autore"><a href="' . $e($link) . '">' . $e($autore['name']) . '</a>'
+             . (!empty($autore['jobTitle']) ? ' — ' . $e($autore['jobTitle']) : '') . '</span>';
+    }
+
+    $h = '<aside class="box-autore" aria-label="Chi firma l\'articolo">';
+    if (!empty($autore['image']['url'])) {
+        // Foto con lo snippet immagine (WebP, srcset), se installato; altrimenti <img> semplice.
+        $src = $percorso($autore['image']['url']);
+        $clsSnippet = class_exists('\MODX\Revolution\modSnippet') ? \MODX\Revolution\modSnippet::class : 'modSnippet';
+        $foto = $modx->getCount($clsSnippet, ['name' => 'immagine'])
+            ? (string) $modx->runSnippet('immagine', ['src' => $src, 'alt' => $autore['name'], 'class' => 'box-autore__foto', 'sizes' => '120px'])
+            : '';
+        if ($foto === '') {
+            $foto = '<img class="box-autore__foto" src="' . $e($src) . '" alt="' . $e($autore['name']) . '" width="120" height="120" loading="lazy">';
+        }
+        $h .= '<div class="box-autore__media">' . $foto . '</div>';
+    }
+    $h .= '<div class="box-autore__testo">';
+    $h .= '<p class="box-autore__nome"><a href="' . $e($link) . '">' . $e($autore['name']) . '</a></p>';
+    if (!empty($autore['jobTitle'])) {
+        $h .= '<p class="box-autore__ruolo">' . $e($autore['jobTitle']) . '</p>';
+    }
+    if (!empty($autore['description'])) {
+        $h .= '<p class="box-autore__bio">' . $e($autore['description']) . '</p>';
+    }
+    if (!empty($autore['identifier']['value'])) {
+        $h .= '<p class="box-autore__albo">' . $e($autore['identifier']['propertyID'])
+            . ' — n. ' . $e($autore['identifier']['value']) . '</p>';
+    }
+    if (!empty($autore['sameAs'])) {
+        $h .= '<ul class="box-autore__link">';
+        foreach ((array) $autore['sameAs'] as $u) {
+            $etichetta = (strpos($u, 'doi.org') !== false) ? 'Pubblicazione scientifica'
+                      : ((strpos($u, 'linkedin') !== false) ? 'Profilo LinkedIn' : 'Profilo');
+            $h .= '<li><a href="' . $e($u) . '" rel="noopener">' . $etichetta . '</a></li>';
+        }
+        $h .= '</ul>';
+    }
+    $h .= '<p class="box-autore__profilo"><a href="' . $e($link) . '">Scheda completa</a></p>';
+    $h .= '</div></aside>';
+
+    // Revisione clinica, se presente.
+    if ($revisore = $persona((int) $tv($res, 'rev.ref'))) {
+        $quando = $tv($res, 'rev.data');
+        $h .= '<p class="box-revisione">Revisione clinica a cura di '
+            . '<a href="' . $e($percorso($revisore['url'])) . '">' . $e($revisore['name']) . '</a>'
+            . (!empty($revisore['jobTitle']) ? ', ' . $e($revisore['jobTitle']) : '')
+            . ($quando ? ' — ' . $e($quando) : '') . '</p>';
+    }
+
+    return $h;
+}
+
+/* ------------------------------------------------------------ pagina autore */
+if ($type === 'profile') {
+    $io = $persona($res->get('id'));
+    if (!$io) return '';
+
+    // Articoli firmati: risorse la cui TV aut.ref vale l'id di questa pagina.
+    $firmati = [];
+    if ($tvRef = $modx->getObject($CLS_TV, ['name' => 'aut.ref'])) {
+        $legami = $modx->getCollection($CLS_TVR, [
+            'tmplvarid' => $tvRef->get('id'),
+            'value'     => (string) $res->get('id'),
+        ]);
+        $ids = [];
+        foreach ($legami as $l) $ids[] = (int) $l->get('contentid');
+
+        if ($ids) {
+            $q = $modx->newQuery($CLS_RES);
+            $q->where(['id:IN' => $ids, 'published' => 1, 'deleted' => 0]);
+            $q->sortby('publishedon', 'DESC');
+            foreach ($modx->getCollection($CLS_RES, $q) as $r) {
+                if ($u = $url($r->get('id'))) $firmati[] = ['@id' => $idDi($u, 'article')];
+            }
+        }
+    }
+
+    $grafo = [
+        $pulisci([
+            '@type'      => 'ProfilePage',
+            '@id'        => $idDi($paginaCorrente, 'webpage'),
+            'url'        => $paginaCorrente,
+            'name'       => $res->get('longtitle') ?: $res->get('pagetitle'),
+            'inLanguage' => $LANG,
+            'mainEntity' => ['@id' => $io['@id']],
+            'hasPart'    => $firmati,
+            'isPartOf'   => ['@id' => $SITE_ID],
+            'breadcrumb' => ['@id' => $idDi($paginaCorrente, 'breadcrumb')],
+        ]),
+        $io,
+        $nodoBriciole($res, $paginaCorrente),
+        $sito($LANG),
+        $org($LANG),
+    ];
+    return $json($grafo);
+}
+
+/* --------------------------------------------------------- pagina generica */
+if ($type === 'page') {
+    $tpl = $res->getOne('Template');
+    $nomeTpl = $tpl ? $tpl->get('templatename') : '';
+    $home = ((int) $res->get('id') === $L['home']);
+    $br = $nodoBriciole($res, $paginaCorrente);
+
+    // Scheda struttura: la pagina descrive la struttura. Landing: la pagina parla di una struttura.
+    $struttura = null; $rel = null; $sede = null;
+    if ($STR_ON && isset($REPARTI[(int) $res->get('id')])) {
+        // Unità specialistica: mainEntity è il reparto; la sede (attività locale) segue per intero.
+        $sr = $modx->getObject($CLS_RES, $REPARTI[(int) $res->get('id')]);
+        $sede = ($sr && $sr->get('published') && !$sr->get('deleted')) ? $nodoStruttura($sr) : null;
+        if ($struttura = $nodoReparto($res, $sede)) $rel = 'mainEntity';
+        else $sede = null;
+    }
+    if (!$struttura && $STR_ON && in_array($nomeTpl, $STR_TPL, true) && ($struttura = $nodoStruttura($res))) {
+        $rel = 'mainEntity';
+    }
+    if (!$struttura && $STR_ON && in_array($nomeTpl, $LND_TPL, true) && ($sid = (int) $tv($res, 'lnd.struttura'))) {
+        $sr = $modx->getObject($CLS_RES, $sid);
+        if ($sr && $sr->get('published') && !$sr->get('deleted')) {
+            $struttura = $nodoStruttura($sr, $servizi($tv($res, 'lnd.servizi')));
+            $rel = 'about';
+        }
+    }
+
+    // Scheda di un professionista (voce KOS-11): la pagina descrive il medico o il professionista.
+    if (!$struttura && $TPL_MEDICO && in_array($nomeTpl, $TPL_MEDICO, true) && ($pro = $professionista($res))) {
+        $struttura = $pro;
+        $rel = 'mainEntity';
+    }
+
+    $pagina = $pulisci([
+        '@type'       => in_array($nomeTpl, $TPL_COLLEZIONE, true) ? 'CollectionPage' : 'WebPage',
+        '@id'         => $idDi($paginaCorrente, 'webpage'),
+        'url'         => $paginaCorrente,
+        'name'        => $res->get('longtitle') ?: $res->get('pagetitle'),
+        'description' => $res->get('description'),
+        'inLanguage'  => $LANG,
+        'isPartOf'    => ['@id' => $SITE_ID],
+        'about'       => $home ? ['@id' => $ORG_ID] : (($struttura && $rel === 'about') ? ['@id' => $struttura['@id']] : null),
+        'mainEntity'  => ($struttura && $rel === 'mainEntity') ? ['@id' => $struttura['@id']] : null,
+        'breadcrumb'  => $br ? ['@id' => $br['@id']] : null,
+        'dateModified'=> $data($res->get('editedon') ?: $res->get('publishedon')),
+    ]);
+    // Il nodo struttura per intero, anche sulle landing: i crawler AI raramente seguono un @id.
+    return $json([$pagina, $struttura, $sede, $br, $sito($LANG), $org($LANG)]);
+}
+
+/* ------------------------------------------------------------------- video
+ * kosgroup.com, template video: la pagina è il video YouTube incorporato in testa, con titolo e testo.
+ * VideoObject come entità principale (campi richiesti da Google: name, thumbnailUrl, uploadDate). Senza un
+ * identificativo YouTube valido la pagina resta una WebPage.
+ */
+$orgNodo = $org($LANG);
+$nodoPagina = function ($tipo, array $extra = []) use ($res, $paginaCorrente, $idDi, $LANG, $SITE_ID, $testo, $dateRisorsa) {
+    [, $mod] = $dateRisorsa($res);
+    return array_merge([
+        '@type'        => $tipo,
+        '@id'          => $idDi($paginaCorrente, 'webpage'),
+        'url'          => $paginaCorrente,
+        'name'         => $res->get('longtitle') ?: $res->get('pagetitle'),
+        'description'  => $testo($res->get('description')),
+        'inLanguage'   => $LANG,
+        'isPartOf'     => ['@id' => $SITE_ID],
+        'dateModified' => $mod,
+    ], $extra);
+};
+if ($type === 'video') {
+    $codice = trim((string) $tv($res, $cfg('video_tv_embed', 'embedCode')));
+    $yt = preg_match('~(?:youtu\.be/|/embed/|[?&]v=)([A-Za-z0-9_-]{11})(?![A-Za-z0-9_-])~', $codice, $m) ? $m[1]
+        : (preg_match('~^([A-Za-z0-9_-]{11})(?![A-Za-z0-9_-])~', $codice, $m) ? $m[1] : '');
+    if ($yt !== '') {
+        $br = $nodoBriciole($res, $paginaCorrente);
+        [$pub, $mod] = $dateRisorsa($res);
+        $miniatura = [];
+        if ($i = $immagine($tv($res, $ART_TV_IMG), true)) $miniatura[] = $i['url'];
+        $miniatura[] = 'https://i.ytimg.com/vi/' . $yt . '/hqdefault.jpg';
+        $video = $pulisci([
+            '@type'            => 'VideoObject',
+            '@id'              => $idDi($paginaCorrente, 'video'),
+            'name'             => $res->get('pagetitle'),
+            'description'      => $testo($res->get('description') ?: $res->get('introtext')) ?: $res->get('pagetitle'),
+            'thumbnailUrl'     => $miniatura,
+            'uploadDate'       => $data($tv($res, $cfg('video_tv_data', 'videoData')), true) ?: $pub,
+            'embedUrl'         => 'https://www.youtube.com/embed/' . $yt,
+            'inLanguage'       => $LANG,
+            'isPartOf'         => ['@id' => $idDi($paginaCorrente, 'webpage')],
+            'mainEntityOfPage' => ['@id' => $idDi($paginaCorrente, 'webpage')],
+            'publisher'        => $rif($orgNodo),
+            'mentions'         => $riferimentiStrutture($tv($res, $ART_TV_STR)),
+        ]);
+        $pagina = $pulisci($nodoPagina('WebPage', [
+            'mainEntity' => ['@id' => $video['@id']],
+            'breadcrumb' => $br ? ['@id' => $br['@id']] : null,
+        ]));
+        return $json([$pagina, $video, $br, $sito($LANG), $orgNodo]);
+    }
+    $br = $nodoBriciole($res, $paginaCorrente);
+    return $json([$pulisci($nodoPagina('WebPage', ['breadcrumb' => $br ? ['@id' => $br['@id']] : null])), $br, $sito($LANG), $orgNodo]);
+}
+
+/* ---------------------------------------------------------------- articolo
+ * Campi indicati da Google per Article: headline, image, datePublished, dateModified, author (con name e url),
+ * publisher. author: la persona o il medico della TV aut.ref se c'è, altrimenti l'ente (contenuto della redazione:
+ * su kosgroup.com il box «Articolo scritto da» mostra «Redazione Gruppo KOS»).
+ */
+
+$sanitario = (int) $tv($res, 'art.medical') === 1;
+$revisore  = $persona((int) $tv($res, 'rev.ref'));
+[$pub, $mod] = $dateRisorsa($res);
+$titolo = $ART_HEADLINE === 'pagetitle'
+    ? ($res->get('pagetitle') ?: $res->get('longtitle'))
+    : ($res->get('longtitle') ?: $res->get('pagetitle'));
+
+$articolo = [
+    '@type'            => $sezione ? $sezione['tipo'] : 'Article',
+    '@id'              => $idDi($paginaCorrente, 'article'),
+    'isPartOf'         => ['@id' => $idDi($paginaCorrente, 'webpage')],
+    'mainEntityOfPage' => ['@id' => $idDi($paginaCorrente, 'webpage')],
+    'headline'         => $testo($titolo),
+    'description'      => $testo($res->get('description') ?: $res->get('introtext')),
+    'image'            => $immagine($tv($res, $ART_TV_IMG), true),
+    'datePublished'    => $pub,
+    'dateModified'     => $mod,
+    'inLanguage'       => $LANG,
+    'articleSection'   => $sezione ? $sezione['nome'] : null,
+    // Qui sta la regola: niente autore assegnato = firma dell'organizzazione.
+    'author'           => $rif($autore ?: $orgNodo),
+    'publisher'        => $rif($orgNodo),
+    'about'            => $riferimenti($tv($res, 'art.about'), 'patologia'),
+    'mentions'         => $riferimentiStrutture($tv($res, $ART_TV_STR)),
+];
+if ($revisore) $articolo['reviewedBy'] = ['@id' => $revisore['@id']];
+
+$nodoBr = $nodoBriciole($res, $paginaCorrente);
+$pagina = $nodoPagina($sanitario ? 'MedicalWebPage' : 'WebPage', [
+    'breadcrumb' => $nodoBr ? ['@id' => $nodoBr['@id']] : null,
+]);
+if ($sanitario) {
+    $pagina['audience'] = ['@type' => 'MedicalAudience', 'audienceType' => 'Patient'];
+    if ($rev = $tv($res, 'rev.data')) $pagina['lastReviewed'] = $rev;
+}
+
+$grafo = [$pulisci($articolo), $pulisci($pagina)];
+
+// Il nodo Person va ripetuto per intero: i crawler degli assistenti AI
+// raramente seguono un @id verso un'altra pagina.
+if ($autore)  $grafo[] = $autore;
+if ($revisore && (!$autore || $revisore['@id'] !== $autore['@id'])) $grafo[] = $revisore;
+
+$grafo[] = $nodoBr;
+$grafo[] = $sito($LANG);
+$grafo[] = $orgNodo;
+
+return $json($grafo);

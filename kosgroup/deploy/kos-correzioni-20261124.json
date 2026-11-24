@@ -1,0 +1,37 @@
+{
+ "nome": "KOS correzioni dalla scansione del 24/11: title e og:url delle pagine paginate (MultiPaginationCanonical), immagine di riserva negli elenchi news (prepareNews), immagine di riserva per Article e dateModified con ripiego (kosSchema)",
+ "settings": [
+  {
+   "key": "kos.article_immagine_predefinita",
+   "value": "assets/img/kos-condivisione-social.jpg",
+   "area": "kos"
+  }
+ ],
+ "elements": [
+  {
+   "type": "plugin",
+   "name": "MultiPaginationCanonical",
+   "file": "kosgroup/elements/plugins/MultiPaginationCanonical.php",
+   "baseline": "kosgroup/deploy/kos-correzioni-20261124/base-MultiPaginationCanonical.php",
+   "events": [
+    "OnWebPagePrerender"
+   ],
+   "disabled": false
+  },
+  {
+   "type": "snippet",
+   "name": "prepareNews",
+   "file": "kosgroup/elements/snippets/prepareNews.php",
+   "baseline": "kosgroup/deploy/kos-correzioni-20261124/base-prepareNews.php"
+  },
+  {
+   "type": "snippet",
+   "name": "kosSchema",
+   "file": "shared/snippets/seoSchema.php",
+   "baseline": "kosgroup/deploy/kos-correzioni-20261124/base-kosSchema.php",
+   "properties": {
+    "prefisso": "kos"
+   }
+  }
+ ]
+}

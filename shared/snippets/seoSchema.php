@@ -1247,7 +1247,8 @@ if ($type === 'page') {
         'about'       => $home ? ['@id' => $ORG_ID] : (($struttura && $rel === 'about') ? ['@id' => $struttura['@id']] : null),
         'mainEntity'  => ($struttura && $rel === 'mainEntity') ? ['@id' => $struttura['@id']] : null,
         'breadcrumb'  => $br ? ['@id' => $br['@id']] : null,
-        'dateModified'=> $data($res->get('editedon') ?: $res->get('publishedon')),
+        // ultima modifica, altrimenti pubblicazione o creazione (19 convenzioni senza editedon né publishedon, 24/11)
+        'dateModified'=> $dateRisorsa($res)[1],
     ]);
     // Il nodo struttura per intero, anche sulle landing: i crawler AI raramente seguono un @id.
     return $json([$pagina, $struttura, $sede, $br, $sito($LANG), $org($LANG)]);
@@ -1326,7 +1327,9 @@ $articolo = [
     'mainEntityOfPage' => ['@id' => $idDi($paginaCorrente, 'webpage')],
     'headline'         => $testo($titolo),
     'description'      => $testo($res->get('description') ?: $res->get('introtext')),
-    'image'            => $immagine($tv($res, $ART_TV_IMG), true),
+    // senza copertina, l'immagine di condivisione del sito (<prefisso>.article_immagine_predefinita; avviso Google Article, 24/11)
+    'image'            => $immagine($tv($res, $ART_TV_IMG), true)
+                          ?: (($imgArt = (string) $cfg('article_immagine_predefinita', '')) !== '' ? $immagine($imgArt, true) : null),
     'datePublished'    => $pub,
     'dateModified'     => $mod,
     'inLanguage'       => $LANG,
