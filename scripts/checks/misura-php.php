@@ -159,9 +159,11 @@ foreach ($pagine as $url) {
     $f = MODX_CORE_PATH . 'cache/resource/web/resources/' . $r->get('id') . '.cache.php';
     echo "\n== Tag non in cache nella cache di $url (risorsa {$r->get('id')}; mediana di 3, in ms)\n";
     if (!is_file($f)) { echo "  cache della risorsa assente (aprire la pagina e rilanciare)\n"; continue; }
-    $testo = (string) file_get_contents($f);
+    $c = include $f;                                         // cache del sito: solo il contenuto della pagina, non il codice degli elementi
+    $testo = (string) ($c['resource']['_content'] ?? '');
+    if ($testo === '') { echo "  contenuto in cache non trovato\n"; continue; }
     preg_match_all('/\[\[!(?:[^\[\]]|\[\[(?:[^\[\]]|\[\[[^\[\]]*\]\])*\]\])*\]\]/', $testo, $mm);
-    $tag = array_count_values(array_map('stripslashes', $mm[0]));
+    $tag = array_count_values($mm[0]);
     if (!$tag) { echo "  nessuno\n"; continue; }
     $tot = 0.0;
     foreach ($tag as $tg => $n) {
