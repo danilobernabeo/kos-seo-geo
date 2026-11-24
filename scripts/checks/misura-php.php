@@ -16,8 +16,14 @@ declare(strict_types=1);
 if (PHP_SAPI !== 'cli') exit(1);
 
 $args = array_slice($argv, 1);
-$auth = '';
-foreach ($args as $i => $a) if (str_starts_with($a, '--auth=')) { $auth = substr($a, 7); unset($args[$i]); }
+$auth = $soloPlugin = $soloHtml = '';
+$soloId = 0;
+foreach ($args as $i => $a) {
+    if (str_starts_with($a, '--auth=')) { $auth = substr($a, 7); unset($args[$i]); }
+    elseif (str_starts_with($a, '--plugin=')) { $soloPlugin = substr($a, 9); unset($args[$i]); }
+    elseif (str_starts_with($a, '--html=')) { $soloHtml = substr($a, 7); unset($args[$i]); }
+    elseif (str_starts_with($a, '--id=')) { $soloId = (int) substr($a, 5); unset($args[$i]); }
+}
 $args = array_values($args);
 $webroot = rtrim($args[0] ?? '', '/');
 $pagine = array_slice($args, 1);
@@ -33,6 +39,24 @@ use MODX\Revolution\modSystemEvent;
 
 $modx = modX::getInstance();
 $modx->initialize('web');
+
+/* Modalità interna: esegue un solo plugin di OnWebPagePrerender sull'HTML dato e stampa «OK ms differenza». */
+if ($soloPlugin !== '') {
+    $res = $modx->getObject(modResource::class, $soloId);
+    $html = (string) file_get_contents($soloHtml);
+    $modx->resource = $res;
+    $modx->resourceIdentifier = $res->get('id');
+    $modx->resource->_output = $html;
+    $p = $modx->getObject(modPlugin::class, ['name' => $soloPlugin]);
+    $modx->event = new modSystemEvent();
+    $modx->event->name = 'OnWebPagePrerender';
+    $modx->event->activePlugin = $soloPlugin;
+    $t0 = hrtime(true);
+    $p->process([]);
+    $ms = (hrtime(true) - $t0) / 1e6;
+    echo 'OK ' . round($ms, 2) . ' ' . (strlen((string) $modx->resource->_output) - strlen($html)) . "\n";
+    exit(0);
+}
 
 $mediana = function (array $v): float { sort($v); $n = count($v); return $n ? ($n % 2 ? $v[intdiv($n, 2)] : ($v[$n / 2 - 1] + $v[$n / 2]) / 2) : 0.0; };
 
@@ -70,7 +94,8 @@ $misura = function (string $url) use ($auth, $mediana): array {
     return [$codice, $mediana($t), min($t), max($t), is_string($body) ? $body : ''];
 };
 echo "\n== Tempo fino al primo byte, misurato dal server (mediana di 7, in ms)\n";
-$base = rtrim((string) $modx->getOption('site_url'), '/');
+$u0 = parse_url($pagine[0]);
+$base = $u0['scheme'] . '://' . $u0['host'];
 $statici = [$base . '/robots.txt'];
 $html0 = '';
 foreach (array_merge($pagine, $statici) as $k => $u) {
@@ -88,21 +113,22 @@ if (!$res || $html0 === '') exit("  risorsa o HTML non trovati per «{$uri}»\n"
 $modx->resource = $res;
 $modx->resourceIdentifier = $res->get('id');
 printf("  risorsa %d, template %d, HTML %d byte\n", $res->get('id'), $res->get('template'), strlen($html0));
+$tmp = sys_get_temp_dir() . '/misura-php-' . getmypid() . '.html';
+file_put_contents($tmp, $html0);
 foreach ($perEvento['OnWebPagePrerender'] ?? [] as $nome) {
-    $p = $modx->getObject(modPlugin::class, ['name' => $nome]);
+    // un processo per esecuzione: alcuni plugin dichiarano funzioni e non si possono rieseguire nello stesso processo
     $t = [];
+    $diff = 0;
     for ($i = 0; $i < 6; $i++) {
-        $modx->resource->_output = $html0;
-        $modx->event = new modSystemEvent();
-        $modx->event->name = 'OnWebPagePrerender';
-        $modx->event->activePlugin = $nome;
-        $p->_processed = false;
-        $t0 = hrtime(true);
-        $p->process([]);
-        if ($i > 0) $t[] = (hrtime(true) - $t0) / 1e6;
+        $r = trim((string) shell_exec(escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg(__FILE__) . ' --plugin='
+            . escapeshellarg($nome) . ' --html=' . escapeshellarg($tmp) . ' --id=' . (int) $res->get('id') . ' '
+            . escapeshellarg($webroot) . ' x 2>&1'));
+        if (!preg_match('/^OK ([\d.]+) (-?\d+)$/m', $r, $m)) { echo "  $nome: errore\n    " . substr($r, 0, 300) . "\n"; continue 2; }
+        if ($i > 0) $t[] = (float) $m[1];                        // la prima compila il file del plugin
+        $diff = (int) $m[2];
     }
-    $diff = strlen((string) $modx->resource->_output) - strlen($html0);
     printf("  %-28s %7.1f ms  (HTML %+d byte)\n", $nome, $mediana($t), $diff);
 }
+@unlink($tmp);
 echo "\nNota: i plugin degli altri eventi non si eseguono qui (possono reindirizzare o uscire): se il totale dei\n"
    . "Prerender non spiega la differenza pagina − file statico, si provano disattivandoli uno alla volta sullo stage.\n";
