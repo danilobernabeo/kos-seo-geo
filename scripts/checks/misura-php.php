@@ -18,11 +18,13 @@ if (PHP_SAPI !== 'cli') exit(1);
 $args = array_slice($argv, 1);
 $auth = $soloPlugin = $soloHtml = '';
 $soloId = 0;
+$soloTag = '';
 foreach ($args as $i => $a) {
     if (str_starts_with($a, '--auth=')) { $auth = substr($a, 7); unset($args[$i]); }
     elseif (str_starts_with($a, '--plugin=')) { $soloPlugin = substr($a, 9); unset($args[$i]); }
     elseif (str_starts_with($a, '--html=')) { $soloHtml = substr($a, 7); unset($args[$i]); }
     elseif (str_starts_with($a, '--id=')) { $soloId = (int) substr($a, 5); unset($args[$i]); }
+    elseif (str_starts_with($a, '--tag=')) { $soloTag = base64_decode(substr($a, 6)); unset($args[$i]); }
 }
 $args = array_values($args);
 $webroot = rtrim($args[0] ?? '', '/');
@@ -37,8 +39,25 @@ use MODX\Revolution\modPluginEvent;
 use MODX\Revolution\modResource;
 use MODX\Revolution\modSystemEvent;
 
+$tInit = hrtime(true);
 $modx = modX::getInstance();
 $modx->initialize('web');
+$tInit = (hrtime(true) - $tInit) / 1e6;
+
+/* Modalità interna: elabora un solo tag non in cache con la risorsa data e stampa «OK ms lunghezza». */
+if ($soloTag !== '') {
+    $res = $modx->getObject(modResource::class, $soloId);
+    $modx->resource = $res;
+    $modx->resourceIdentifier = $res->get('id');
+    $modx->getParser();
+    $html = $soloTag;
+    $t0 = hrtime(true);
+    $modx->parser->processElementTags('', $html, true, false, '[[', ']]', [], 10);
+    $modx->parser->processElementTags('', $html, true, true, '[[', ']]', [], 10);
+    $ms = (hrtime(true) - $t0) / 1e6;
+    echo 'OK ' . round($ms, 2) . ' ' . strlen($html) . "\n";
+    exit(0);
+}
 
 /* Modalità interna: esegue un solo plugin di OnWebPagePrerender sull'HTML dato e stampa «OK ms differenza». */
 if ($soloPlugin !== '') {
@@ -74,6 +93,7 @@ foreach ($modx->getIterator(modPlugin::class, ['disabled' => 0]) as $p) {
     $file = $p->get('static') ? ' statico ' . $p->get('static_file') : '';
     printf("  %-28s %5d byte%s\n    %s\n", $p->get('name'), strlen((string) $p->get('plugincode')), $file, implode(', ', $ev));
 }
+echo "\n== Avvio di MODX (contesto web) da riga di comando: " . round($tInit, 1) . " ms\n";
 echo "\n== Eventi che girano a ogni richiesta\n";
 foreach ($perEvento as $e => $nomi) echo "  $e: " . implode(', ', $nomi) . "\n";
 
@@ -130,5 +150,34 @@ foreach ($perEvento['OnWebPagePrerender'] ?? [] as $nome) {
     printf("  %-28s %7.1f ms  (HTML %+d byte)\n", $nome, $mediana($t), $diff);
 }
 @unlink($tmp);
+/* --- 4. Tag non in cache rimasti nella cache delle pagine: girano a ogni richiesta --- */
+foreach ($pagine as $url) {
+    $uri = ltrim((string) parse_url($url, PHP_URL_PATH), '/');
+    $r = $modx->getObject(modResource::class, ['uri' => $uri, 'context_key' => 'web'])
+        ?: $modx->getObject(modResource::class, ['uri' => $uri . '/', 'context_key' => 'web']);
+    if (!$r) continue;
+    $f = MODX_CORE_PATH . 'cache/resource/web/resources/' . $r->get('id') . '.cache.php';
+    echo "\n== Tag non in cache nella cache di $url (risorsa {$r->get('id')}; mediana di 3, in ms)\n";
+    if (!is_file($f)) { echo "  cache della risorsa assente (aprire la pagina e rilanciare)\n"; continue; }
+    $testo = (string) file_get_contents($f);
+    preg_match_all('/\[\[!(?:[^\[\]]|\[\[(?:[^\[\]]|\[\[[^\[\]]*\]\])*\]\])*\]\]/', $testo, $mm);
+    $tag = array_count_values(array_map('stripslashes', $mm[0]));
+    if (!$tag) { echo "  nessuno\n"; continue; }
+    $tot = 0.0;
+    foreach ($tag as $tg => $n) {
+        $t = [];
+        for ($i = 0; $i < 4; $i++) {
+            $out = trim((string) shell_exec(escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg(__FILE__) . ' --tag='
+                . escapeshellarg(base64_encode($tg)) . ' --id=' . (int) $r->get('id') . ' ' . escapeshellarg($webroot) . ' x 2>&1'));
+            if (!preg_match('/^OK ([\d.]+) (\d+)$/m', $out, $m)) { $t = []; break; }
+            if ($i > 0) $t[] = (float) $m[1];
+        }
+        $v = $t ? $mediana($t) : -1;
+        if ($v > 0) $tot += $v * $n;
+        printf("  %7s ms  x%d  %s\n", $v < 0 ? 'errore' : number_format($v, 1), $n, substr(preg_replace('/\s+/', ' ', $tg), 0, 150));
+    }
+    printf("  totale stimato %.1f ms\n", $tot);
+}
+
 echo "\nNota: i plugin degli altri eventi non si eseguono qui (possono reindirizzare o uscire): se il totale dei\n"
    . "Prerender non spiega la differenza pagina − file statico, si provano disattivandoli uno alla volta sullo stage.\n";
