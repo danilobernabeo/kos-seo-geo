@@ -11,7 +11,11 @@
  *
  * Senza --scrivi stampa lo stato: valore attuale, numero e peso dei file di cache per formato.
  * Con --scrivi: copia del valore attuale in ~/backup-kos-seo-geo/<data>/cache_resource_format.json, imposta il valore nuovo,
- * svuota la cache di MODX (come «Svuota cache» del manager). Dopo, lanciare scalda-cache.php.
+ * svuota la cache di MODX due volte a 5 s di distanza (una richiesta in corso può riscrivere una pagina nel formato
+ * vecchio). Da fare a traffico basso. Dopo, lanciare scalda-cache.php e rilanciare lo script senza --scrivi: il numero
+ * di file «pagine JSON» deve avvicinarsi alle pagine della sitemap (un json_encode fallito, es. UTF-8 non valido,
+ * lascia la pagina fuori cache senza errori visibili: controllare anche il log di MODX).
+ * Il guadagno arriva solo dopo un riavvio di OPcache (opcache_reset è disattivata su MODX Cloud: lo fa il supporto).
  *
  * Uso:
  *   php scripts/deploy/cache-formato.php /www 1               (prova)
@@ -63,8 +67,10 @@ if (isset($opt['ripristina'])) {
     else {
         if (!$s) { $s = $modx->newObject(modSystemSetting::class); $s->set('key', 'cache_resource_format'); $s->set('xtype', 'textfield'); $s->set('namespace', 'core'); $s->set('area', 'caching'); }
         $s->set('value', (string) $b['valore']);
-        $s->save();
+        if (!$s->save()) exit("Salvataggio dell'impostazione non riuscito.\n");
     }
+    $modx->cacheManager->refresh();
+    sleep(5);                                                // una richiesta in corso può aver riscritto una pagina nel formato vecchio
     $modx->cacheManager->refresh();
     echo "Ripristinato cache_resource_format = " . var_export($b['valore'], true) . " e svuotata la cache.\n";
     $stato();
@@ -86,6 +92,8 @@ file_put_contents("$dirB/cache_resource_format.json", json_encode(['chiave' => '
 if (!$s) { $s = $modx->newObject(modSystemSetting::class); $s->set('key', 'cache_resource_format'); $s->set('xtype', 'textfield'); $s->set('namespace', 'core'); $s->set('area', 'caching'); }
 $s->set('value', $nuovo);
 if (!$s->save()) exit("Salvataggio dell'impostazione non riuscito.\n");
+$modx->cacheManager->refresh();
+sleep(5);
 $modx->cacheManager->refresh();
 echo "\nImpostato cache_resource_format = $nuovo e svuotata la cache. Backup: $dirB/cache_resource_format.json\n"
    . "Ripristino: php scripts/deploy/cache-formato.php /www --ripristina=$dirB/cache_resource_format.json\n\n== Dopo\n";
