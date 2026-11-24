@@ -18,13 +18,20 @@
  *   php scripts/deploy/aa-6-titoli.php /www                  # prova: conteggi, chunk, esempio
  *   php scripts/deploy/aa-6-titoli.php /www --scrivi
  *   php scripts/deploy/aa-6-titoli.php /www --ripristina=<cartella>/ripristino.json --scrivi
+ *   php scripts/deploy/aa-6-titoli.php /www --template=<nome>   # altro template (24/11: centri diurni), stessa regola;
+ *       i chunk comuni già convertiti con le schede (podcast-spreaker-casa-anni-azzurri, documents) non si ritoccano
+ *   php scripts/deploy/aa-6-titoli.php /www --trova=centro-diurno  # template delle risorse con quel testo nell'uri
  */
 declare(strict_types=1);
 if (PHP_SAPI !== 'cli') exit(1);
 $webroot = rtrim($argv[1] ?? '', '/');
 $scrivi = in_array('--scrivi', $argv, true);
-$rip = null;
-foreach ($argv as $a) if (str_starts_with($a, '--ripristina=')) $rip = substr($a, 13);
+$rip = null; $nomeTpl = 'rsa'; $trova = null;
+foreach ($argv as $a) {
+    if (str_starts_with($a, '--ripristina=')) $rip = substr($a, 13);
+    if (str_starts_with($a, '--template=')) $nomeTpl = substr($a, 11);
+    if (str_starts_with($a, '--trova=')) $trova = substr($a, 8);
+}
 if (!is_file("$webroot/config.core.php")) { fwrite(STDERR, "Uso: php aa-6-titoli.php /www [--scrivi]\n"); exit(1); }
 require "$webroot/config.core.php";
 require MODX_CORE_PATH . 'vendor/autoload.php';
@@ -34,6 +41,14 @@ use MODX\Revolution\modTemplate;
 use MODX\Revolution\modChunk;
 $modx = modX::getInstance();
 $modx->initialize('mgr');
+
+if ($trova !== null) {
+    foreach ($modx->getIterator(modResource::class, ['uri:LIKE' => '%' . $trova . '%', 'deleted' => 0]) as $r) {
+        $t = $r->getOne('Template');
+        printf("%5d /%-60s template %s (pubblicata %d)\n", $r->get('id'), $r->get('uri'), $t ? $t->get('templatename') : '-', $r->get('published'));
+    }
+    exit(0);
+}
 
 if ($rip) {
     if (!is_file($rip)) { fwrite(STDERR, "File di ripristino non trovato: $rip\n"); exit(1); }
@@ -83,15 +98,17 @@ function trasforma(string $html, bool $contenuto, array &$conta): string {
     return $html;
 }
 
-$tpl = $modx->getObject(modTemplate::class, ['templatename' => 'rsa']);
-if (!$tpl) { fwrite(STDERR, "template rsa non trovato\n"); exit(1); }
+$tpl = $modx->getObject(modTemplate::class, ['templatename' => $nomeTpl]);
+if (!$tpl) { fwrite(STDERR, "template $nomeTpl non trovato\n"); exit(1); }
 $risorse = $modx->getCollection(modResource::class, ['template' => $tpl->get('id'), 'deleted' => 0]);
-$chunkNomi = ['podcast-spreaker-casa-anni-azzurri' => true, 'documents' => true];
+/* I chunk comuni sono stati convertiti una volta sola, con le schede (23/11): non vanno riabbassati. */
+$chunkNomi = $nomeTpl === 'rsa' ? ['podcast-spreaker-casa-anni-azzurri' => true, 'documents' => true] : [];
+$giaFatti = ['podcast-spreaker-casa-anni-azzurri', 'documents'];
 $modifiche = [];
 foreach ($risorse as $r) {
     $alias = $r->get('alias'); $prima = (string) $r->get('content');
     preg_match_all('#\[\[\$([A-Za-z0-9_-]*)\[\[\*alias\]\]#', $prima, $m);
-    foreach ($m[1] as $pref) $chunkNomi[$pref . $alias] = true;
+    foreach ($m[1] as $pref) if ($nomeTpl === 'rsa' || !in_array($pref . $alias, $giaFatti, true)) $chunkNomi[$pref . $alias] = true;
     $dopo = trasforma($prima, true, $conta);
     if ($dopo !== $prima) $modifiche[] = ['tipo' => 'risorsa', 'id' => $r->get('id'), 'nome' => $r->get('uri'), 'prima' => $prima, 'dopo' => $dopo];
 }
@@ -107,8 +124,12 @@ foreach (array_keys($chunkNomi) as $nome) {
     }
 }
 $nr = count(array_filter($modifiche, fn($x) => $x['tipo'] === 'risorsa'));
-echo "== " . ($scrivi ? 'APPLICAZIONE' : 'PROVA') . " — AA 6 titoli delle schede residenza (slide 23)\n";
-echo "Risorse con template rsa: " . count($risorse) . "; contenuti da modificare: $nr\n";
+echo "== " . ($scrivi ? 'APPLICAZIONE' : 'PROVA') . " — AA 6 titoli (slide 23), template $nomeTpl\n";
+echo "Risorse con template $nomeTpl: " . count($risorse) . "; contenuti da modificare: $nr\n";
+foreach ($modifiche as $x) if ($x['tipo'] === 'chunk') echo "  chunk: {$x['nome']}\n";
+foreach ($modifiche as $x) if ($x['tipo'] === 'risorsa' && $nomeTpl !== 'rsa') {
+    preg_match_all('#<(h[1-6]|p class="h[1-6][^"]*")[^>]*>#', $x['dopo'], $t); echo "  esempio (/{$x['nome']}): " . implode(' ', array_slice($t[0], 0, 10)) . "\n"; break;
+}
 echo "Chunk da modificare: " . (count($modifiche) - $nr) . " (statici " . count($statici) . ")\n";
 foreach ($conta as $k => $v) echo "  $k: $v\n";
 foreach ($modifiche as $x) if ($x['tipo'] === 'risorsa' && str_contains($x['nome'], 'vico-mercati')) {
@@ -116,7 +137,7 @@ foreach ($modifiche as $x) if ($x['tipo'] === 'risorsa' && str_contains($x['nome
 }
 if (!$scrivi) { echo "Prova: nessuna modifica. Rilanciare con --scrivi.\n"; exit(0); }
 
-$dir = getenv('HOME') . '/backup-kos-seo-geo/' . date('Ymd-His') . '-aa-6-titoli';
+$dir = getenv('HOME') . '/backup-kos-seo-geo/' . date('Ymd-His') . '-aa-6-titoli' . ($nomeTpl === 'rsa' ? '' : '-' . preg_replace('/[^a-z0-9-]/i', '', $nomeTpl));
 @mkdir("$dir/chunk", 0775, true);
 file_put_contents("$dir/ripristino.json", json_encode(array_map(fn($x) => ['tipo' => $x['tipo'], 'id' => $x['id'] ?? null, 'nome' => $x['nome'], 'valore' => $x['prima']], $modifiche), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 foreach ($modifiche as $x) {
