@@ -1,0 +1,29 @@
+{
+ "nome": "AA anomalia 9 della scansione del 23/11: nel contenuto di /radio-anni-azzurri pulsanti dell'app (scaduta, store in 404) nascosti con [[- ]]; refuso «Spotif» e immagine con /assets/",
+ "risorse": [
+  {
+   "id": 164,
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "<h2 class=\"h4 text-primary mt-4\">SCARICA L'APP RADIO ANNI AZZURRI</h2>",
+     "[[- App Radio Anni Azzurri scaduta (24/11/2026): blocco nascosto, da riattivare togliendo questo commento se l'app viene rinnovata.\r\n<h2 class=\"h4 text-primary mt-4\">SCARICA L'APP RADIO ANNI AZZURRI</h2>"
+    ],
+    [
+     "Scarica da play store</a>\r\n    </div>",
+     "Scarica da play store</a>\r\n    </div>\r\n]]"
+    ],
+    [
+     "Ascolta i nostri Podcast su Spotif\"",
+     "Ascolta i nostri podcast su Spotify\""
+    ],
+    [
+     "src=\"assets/img/spotify-logo.png\"",
+     "src=\"/assets/img/spotify-logo.png\""
+    ]
+   ]
+  }
+ ]
+}
