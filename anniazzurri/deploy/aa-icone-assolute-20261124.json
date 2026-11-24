@@ -1,0 +1,23 @@
+{
+ "nome": "AA anomalia 15 della scansione del 23/11: icone dei numeri (home e landing) con percorso assoluto /assets/ invece di ../assets/",
+ "elements": [
+  {
+   "type": "chunk",
+   "name": "numeri-landing",
+   "file": "anniazzurri/elements/chunks/numeri-landing.html",
+   "baseline": "anniazzurri/deploy/aa-icone-assolute-20261124/base-numeri-landing.html"
+  },
+  {
+   "type": "chunk",
+   "name": "footer-rsa-landing",
+   "file": "anniazzurri/elements/chunks/footer-rsa-landing.html",
+   "baseline": "anniazzurri/deploy/aa-icone-assolute-20261124/base-footer-rsa-landing.html"
+  },
+  {
+   "type": "chunk",
+   "name": "footer-ap-landing",
+   "file": "anniazzurri/elements/chunks/footer-ap-landing.html",
+   "baseline": "anniazzurri/deploy/aa-icone-assolute-20261124/base-footer-ap-landing.html"
+  }
+ ]
+}

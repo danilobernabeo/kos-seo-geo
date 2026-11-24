@@ -1,0 +1,157 @@
+{
+ "nome": "AA anomalia 5 della scansione del 23/11: link ai siti del gruppo senza redirect (kosgroup.com/it, privacy, scheda e news del Centro Medico Riabilitativo, pagina Sostenibilità al posto dell'articolo rimosso)",
+ "risorse": [
+  {
+   "uri": "il-gruppo-kos",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://kosgroup.com\"",
+     "href=\"https://kosgroup.com/it\""
+    ]
+   ]
+  },
+  {
+   "uri": "il-gruppo-kos-adotta-il-nuovo-ccnl-di-confcommercio-salute-sanita-e-cura",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://kosgroup.com\"",
+     "href=\"https://kosgroup.com/it\""
+    ]
+   ]
+  },
+  {
+   "uri": "kosplayers-una-squadra-di-professionisti",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://kosgroup.com\"",
+     "href=\"https://kosgroup.com/it\""
+    ]
+   ]
+  },
+  {
+   "uri": "residenza-dorica-anni-azzurri-nasce-il-comitato-mensa",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://kosgroup.com\"",
+     "href=\"https://kosgroup.com/it\""
+    ]
+   ]
+  },
+  {
+   "uri": "sei-un-operatore-socio-sanitario-stiamo-cercando-te!",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://kosgroup.com\"",
+     "href=\"https://kosgroup.com/it\""
+    ]
+   ]
+  },
+  {
+   "uri": "tabu-accettare-e-gestire-l-espressione-della-sessualita",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://kosgroup.com/\"",
+     "href=\"https://kosgroup.com/it\""
+    ]
+   ]
+  },
+  {
+   "uri": "home-en",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://kosgroup.com/\"",
+     "href=\"https://kosgroup.com/it\""
+    ]
+   ]
+  },
+  {
+   "uri": "il-sito-web-di-anni-azzurri-e-accessibile-alle-persone-con-disabilita",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://kosgroup.com/ita/\"",
+     "href=\"https://kosgroup.com/it\""
+    ]
+   ]
+  },
+  {
+   "uri": "privacy",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://www.kosgroup.com/it/privacy\"",
+     "href=\"https://kosgroup.com/it/privacy\""
+    ],
+    [
+     ">https://www.kosgroup.com/privacy/<",
+     ">https://kosgroup.com/it/privacy<"
+    ]
+   ]
+  },
+  {
+   "uri": "anni-azzurri-promuove-sei-incontri-formativi-gratuiti-per-i-caregiver",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://polodiagnostico.it/centro-medico-riabilitativo\"",
+     "href=\"https://kosgroup.com/it/centri/centro-medico-riabilitativo\""
+    ]
+   ]
+  },
+  {
+   "uri": "open-day-centro-medico-riabilitativo-cinisello-balsamo",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "https://polodiagnostico.it/centro-medico-riabilitativo-di-cinisello-balsamo-una-mattinata-aperta-al-territorio",
+     "https://kosgroup.com/it/news-e-media/news/2024/centro-medico-riabilitativo-di-cinisello-balsamo-una-mattinata-aperta-al-territorio"
+    ],
+    [
+     "href=\"https://polodiagnostico.it/centro-medico-riabilitativo\"",
+     "href=\"https://kosgroup.com/it/centri/centro-medico-riabilitativo\""
+    ]
+   ]
+  },
+  {
+   "uri": "piano-di-sostenibilita-impegno-di-anni-azzurri",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://kosgroup.com/il-gruppo-kos-pubblica-il-primo-bilancio-di-sostenibilita/\"",
+     "href=\"https://kosgroup.com/it/chi-siamo/governance/sostenibilita\""
+    ]
+   ]
+  }
+ ]
+}
