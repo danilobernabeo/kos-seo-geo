@@ -1,8 +1,9 @@
 {
  "sito": "kos",
- "descrizione": "Correzione di KOS 8 dalla scansione del 24/11: comunicato del 31/01/2024 rimasto con il titolo «Microsoft Word - 1 - COMITATI OSPITI_AA_31.01.24». Titolo scritto a mano (il titolo automatico taglierebbe a «Anni Azzurri Gruppo KOS…»).",
+ "descrizione": "Correzione di KOS 8 dalla scansione del 24/11: comunicato del 31/01/2024 rimasto con il titolo «Microsoft Word - 1 - COMITATI OSPITI_AA_31.01.24». Titolo scritto a mano (il titolo automatico taglierebbe a «Anni Azzurri Gruppo KOS…»). L'originale (Microsoft Print To PDF) ha la tabella dei riferimenti sbagliata (oggetto 34 fuori posto): prima si sostituisce con la copia riparata da qpdf/pikepdf (stesso testo, pagine identiche al pixel a 50 dpi), poi si scrivono i metadati.",
  "pdf": [
   {
+   "s": "01-comitati-ospiti-aa.pdf",
    "p": "/assets/doc/comunicati/2024/01-comitati-ospiti-aa.pdf",
    "t": "Comunicato stampa – Comitati ospiti nelle RSA – gennaio 2024",
    "d": "Comunicato stampa del Gruppo KOS (31 gennaio 2024): nelle RSA Anni Azzurri nascono i comitati ospiti per il miglioramento continuo della qualità.",
