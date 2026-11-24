@@ -1,6 +1,6 @@
 # Nuova ricerca interna dei siti: scheda tecnica per la valutazione privacy
 
-Gruppo KOS, kosgroup.com e anniazzurri.it. 24/11/2026, Danilo Bernabeo. Parere richiesto entro il 25/11/2026.
+Gruppo KOS, kosgroup.com e anniazzurri.it. 24/11/2026, Danilo Bernabeo. Parere richiesto entro il 2/12/2026.
 
 ## 1. Scopo
 
@@ -38,14 +38,14 @@ Browser dell'utente ──► Sito (MODX Cloud) ──► Servizio intermedio �
 | Statistiche del sito (GA4) | Account GA4 di KOS, già in uso | Evento di ricerca con il numero di risultati, **senza il testo** |
 
 Il progetto Google Cloud `kos-ricerca` è sull'account Google di KOS marketing.kos2019@gmail.com («KOS group») ed è
-collegato all'account di fatturazione «Kos Care». Accesso alla console: Danilo Bernabeo e gli
+collegato all'account di fatturazione «Kos Care». Accesso alla console: io e gli
 amministratori indicati da KOS.
 
 ## 4. Misure sui dati
 
 - **Minimizzazione**: pulizia del testo nel servizio intermedio prima di Google; nessun identificativo dell'utente
   inviato a Google (nessun cookie, nessun account, nessun evento utente).
-- **Nessuna conservazione del testo da parte nostra**: i log del servizio intermedio registrano tempo e numero di
+- **Nessuna conservazione del testo da parte mia o di KOS**: i log del servizio intermedio registrano tempo e numero di
   risultati, non il testo. Le statistiche di ricerca di Google, che conserverebbero il testo, sono spente sulle app di
   produzione: si spengono solo alla creazione dell'app, quindi le app di produzione nascono così. I log di Google Cloud
   registrano la richiesta con il testo oscurato (verificato il 16/11).
@@ -67,7 +67,7 @@ Cloud, con le clausole contrattuali tipo, confermato nella console prima della m
 
 ## 6. Fase di test (12-18/11/2026)
 
-Abbiamo confrontato Vertex AI Search con la ricerca Yext sulle ricerche reali degli ultimi 12 mesi, esportate da Yext
+Ho confrontato Vertex AI Search con la ricerca Yext sulle ricerche reali degli ultimi 12 mesi, esportate da Yext
 e ripulite dai dati personali (kosgroup.com 2.668 ricerche distinte, anniazzurri.it 320), con un secondo controllo
 automatico di Google Sensitive Data Protection (regione UE) prima di ogni invio. Nulla è stato pubblicato sui siti.
 
@@ -91,9 +91,9 @@ documenta per quanto conserva i registri di un'app eliminata. L'app di prova di 
 ricerche già ripulite, ha le statistiche attive; in produzione sarà sostituita da un'app nuova con le statistiche
 spente.
 
-I testi della prova (esportazione Yext e set ripulito) sono conservati sul PC di Danilo Bernabeo, in una cartella
+I testi della prova (esportazione Yext e set ripulito) sono conservati sul mio PC, in una cartella
 fuori dal repository del codice, con disco cifrato (BitLocker, XTS-AES 128, protezione attiva; verifica del 18/11), e
-saranno **cancellati il 27/11/2026**, salvo diversa indicazione. In alternativa, se preferite che restino su
+saranno **cancellati il 4/12/2026**, salvo diversa indicazione. In alternativa, se preferite che restino su
 infrastruttura KOS, possono essere spostati in un bucket Cloud Storage in regione UE nel progetto di KOS, con accesso
 limitato.
 
@@ -115,11 +115,11 @@ limitato.
 
 1. Termini sulla protezione dei dati di Google Cloud. Prima della messa in produzione, il proprietario del progetto
    conferma nella console (Privacy e sicurezza) i termini sul trattamento dei dati di Google Cloud, indicando che si
-   applica il GDPR e i contatti del DPO. È un'operazione di pochi minuti: se ci indicate i contatti da inserire, la
-   prepariamo noi e la conferma resta a voi.
+   applica il GDPR e i contatti del DPO. È un'operazione di pochi minuti: se mi indicate i contatti da inserire, la
+   preparo io e la conferma resta a voi.
 2. Società di riferimento. Indicare quale società del gruppo va considerata titolare per la ricerca di kosgroup.com e
    per quella di anniazzurri.it (il progetto Google Cloud è fatturato a Kos Care).
-3. Conferma della conservazione dei testi della prova fino al 27/11 (PC con disco cifrato o bucket UE, paragrafo 6).
+3. Conferma della conservazione dei testi della prova fino al 4/12 (PC con disco cifrato o bucket UE, paragrafo 6).
 4. Se ritenete necessario chiedere a Google la durata di conservazione dei registri delle app eliminate.
 5. Per KOS, fuori dalla nuova ricerca: gli stessi codici di accesso ai referti sono anche nello storico delle ricerche di
    Yext, perché gli utenti li scrivono nella barra di ricerca attuale.
