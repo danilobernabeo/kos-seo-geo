@@ -91,8 +91,11 @@ Le voci di menu sono quelle della versione in inglese.
 
   Per le regex Screaming Frog restituisce tutte le corrispondenze in colonne successive (jsonld_tipi 1, 2, ...).
 
-- **Custom › Search, in più** (opzione «Regex»): `link_relativi` con `href="(?!https?:|/|#|mailto:|tel:|javascript:)`
-  (link interni non assoluti, regola del progetto).
+- **Custom › Search, in più** (opzione «Regex»): `link_relativi` con `href="(?!https?:|/|#|mailto:|tel:|javascript:|(?:[mailto:]|&#x?[0-9a-fA-F]+;){7})`
+  (link interni non assoluti, regola del progetto). L'ultima alternativa esclude gli indirizzi email offuscati in
+  entità HTML con codifica casuale (a volte i primi caratteri restano in chiaro, es. `m&#97;&#x69;…`), che altrimenti
+  risultano su quasi tutte le pagine di kosgroup.com (scansione e revisione del 24/11). Da aggiornare anche nei profili
+  `aa-completa` e `kos-completa` salvati sul PC.
 - **Spider › Extraction:** spunta anche **HTTP Headers** (per `X-Robots-Tag` e `Link rel="canonical"` dei PDF) e le
   proprietà dei **PDF** (titolo, oggetto, autore: i titoli riscritti nei metadati con lo sprint 2). I nomi esatti delle
   caselle possono variare con la versione di Screaming Frog.
