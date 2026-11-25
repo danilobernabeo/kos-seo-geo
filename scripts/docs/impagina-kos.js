@@ -37,10 +37,10 @@ const body={spacing:{after:120,before:0,line:290},alignment:AlignmentType.JUSTIF
 const H2=t=>new Paragraph({keepNext:true,border:{bottom:{style:BorderStyle.SINGLE,color:LINE,size:6,space:4}},spacing:{after:140,before:300},children:[new TextRun({text:t,font:F,bold:true,color:TEAL,size:28})]});
 const W=9638;
 let numInst=0; // istanza della numerazione corrente
-const WIDTHS={5:[1750,2050,3238,1500,1100],3:[2000,4238,3400],4:[1700,2400,2938,2600],2:[2200,7438]};
+const WIDTHS={6:[1650,1900,1150,1150,1000,2788],5:[1750,2050,3238,1500,1100],3:[2000,4238,3400],4:[1700,2400,2938,2600],2:[2200,7438]};
 const WBOT=[3638,2000,2000,2000];
 function table(rows){
-  const n=rows[0].length; let cw=WIDTHS[n];
+  const n=rows[0].length; let cw=WIDTHS[n]||Array(n).fill(Math.floor(W/n));
   if(rows[0][0].startsWith('Bot')) cw=WBOT;
   if(rows[0][0].startsWith('Entità')) cw=[1800,2050,2238,3550];
   if(rows[0][0]==='Sito'&&n===3) cw=[1700,2700,5238];
