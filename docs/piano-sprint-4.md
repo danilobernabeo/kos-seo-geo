@@ -1,6 +1,6 @@
 # Piano dello sprint 4 (23-27 novembre 2026)
 
-Documento interno (Danilo e Claude). Consegna sprint 4: 4/12; verifica di Cerved/ProWeb 7-11/12; chiusura 14-18/12.
+Documento interno (Danilo e Claude). Consegna sprint 4: **venerdì 27/11** (anticipata dal 4/12, registro 24/11); verifica di Cerved/ProWeb da confermare (calendario: 7-11/12); chiusura 14-18/12.
 
 ## Voci
 
@@ -27,7 +27,7 @@ Tutte le attività svolte vanno nella nota di consegna, con le voci fuori perime
 
 ## Vincoli
 
-- Tutto in produzione entro **giovedì 26/11**. Dal 27/11 al 4/12 nessuna modifica a CSS e head di anniazzurri.it: la
+- Tutto in produzione entro **mercoledì 25/11** (registro 24/11); giovedì 26/11, giorno prima della consegna, nessun rilascio in produzione. Dal 27/11 al 4/12 nessuna modifica a CSS e head di anniazzurri.it: la
   verifica dello sprint 3 (30/11-4/12) controlla AA-4, la cui correzione sta in `custom.css` e `kos-seo-geo.css`.
 - Il risultato di AA-4 (stabilità visiva) non deve peggiorare: controllo del CLS nel collaudo.
 - Test A/B della chat HubSpot (AA-4) in corso fino al 13/12: la velocità del sito cambia allo stesso modo su computer e
