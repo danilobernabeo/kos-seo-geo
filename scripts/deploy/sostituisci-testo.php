@@ -6,6 +6,7 @@
  *   {"nome": "...", "risorse": [{"uri": "villamargherita", "campi": ["description", "content"],   (oppure "id": 1)
  *     "sostituzioni": [["tel:+390444043322", "tel:+39044415851"], ["0444 043322", "0444 15851"]]}]}
  * Le sostituzioni si applicano nell'ordine scritto (prima le forme più lunghe).
+ * Nel testo nuovo «[[~uri:it/percorso]]» diventa il link MODX «[[~id]]» della risorsa con quell'uri (25/11).
  *
  * Uso (in SSH, dalla cartella dell'archivio):
  *   php scripts/deploy/sostituisci-testo.php /www <regole.json>            # prova: occorrenze per campo
@@ -57,6 +58,13 @@ foreach ($d['risorse'] as $voce) {
         if (!in_array($c, $ammessi, true)) { echo "  ! campo $c non ammesso — FERMO\n"; exit(2); }
         $v = (string) $r->get($c); $nv = $v;
         foreach ($voce['sostituzioni'] as [$da, $a]) {
+            // [[~uri:it/percorso]] nel testo nuovo diventa [[~id]] della risorsa (link interni come li scrive la redazione)
+            $a = preg_replace_callback('/\[\[~uri:([^\]]+)\]\]/', function ($m) use ($modx) {
+                $u = trim($m[1], '/');
+                $d = $modx->getObject(modResource::class, ['uri:IN' => [$u, "$u/"], 'deleted' => 0]);
+                if (!$d) { echo "  ! [[~uri:$u]]: risorsa non trovata — FERMO\n"; exit(2); }
+                return '[[~' . $d->get('id') . ']]';
+            }, (string) $a);
             $n = substr_count($nv, $da);
             if ($n) { echo "  {$r->get('id')} /$uri · $c: «$da» → «$a» ($n)\n"; $cambi += $n; }
             $nv = str_replace($da, $a, $nv);

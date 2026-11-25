@@ -1,0 +1,129 @@
+{
+ "nome": "KOS link esterni rotti o con redirect dalla scansione del 24/11: siti del gruppo verso le schede di kosgroup.com ([[~id]]), Anni Azzurri all'indirizzo finale, ASST Pavia e Bollini RosaArgento alla home (pagine rimosse), biblioteca di Arco in https, embed YouTube senza la doppia barra",
+ "risorse": [
+  {
+   "uri": "it/centri/santo-stefano-mede",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://www.asst-pavia.it/node/67\"",
+     "href=\"https://www.asst-pavia.it/\""
+    ]
+   ]
+  },
+  {
+   "uri": "it/news-e-media/news/2024/a-villa-margherita-uno-screening-dedicato-all-alzheimer",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://sstefano.it/villa-margherita-vicenza\"",
+     "href=\"[[~uri:it/centri/villa-margherita-vicenza-riabilitazione]]\""
+    ]
+   ]
+  },
+  {
+   "uri": "it/news-e-media/news/2024/le-patologie-per-i-bimbi-prematuri-e-limportanza-di-una-presa-in-carico-precoce",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://sstefano.it/centro-ambulatoriale-ascoli-piceno\"",
+     "href=\"[[~uri:it/centri/centro-ambulatoriale-santo-stefano-ascoli-piceno]]\""
+    ]
+   ]
+  },
+  {
+   "uri": "it/news-e-media/approfondimenti/ortottista",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://www.centromedicoriabilitativo.it/blog/ortottista-cosa-fa\"",
+     "href=\"https://www.centromedicoriabilitativo.it/blog/ortottista-cosa-fa/\""
+    ]
+   ]
+  },
+  {
+   "uri": "it/news-e-media/news/2024/anni-azzurri-promuove-sei-incontri-formativi-gratuiti-per-i-caregiver",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://anniazzurri.it/cure-domiciliari\"",
+     "href=\"https://anniazzurri.it/cure-e-assistenza-domiciliare\""
+    ],
+    [
+     "href=\"https://polodiagnostico.it/centro-medico-riabilitativo\"",
+     "href=\"[[~uri:it/centri/centro-medico-riabilitativo]]\""
+    ]
+   ]
+  },
+  {
+   "uri": "it/news-e-media/news/2024/centro-medico-riabilitativo-di-cinisello-balsamo-una-mattinata-aperta-al-territorio",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://polodiagnostico.it/centro-medico-riabilitativo\"",
+     "href=\"[[~uri:it/centri/centro-medico-riabilitativo]]\""
+    ]
+   ]
+  },
+  {
+   "uri": "it/news-e-media/news/2024/apre-il-centro-medico-riabilitativo-di-cinisello",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://polodiagnostico.it/centro-medico-riabilitativo\"",
+     "href=\"[[~uri:it/centri/centro-medico-riabilitativo]]\""
+    ]
+   ]
+  },
+  {
+   "uri": "it/news-e-media/news/2025/al-via-la-ventesima-edizione-del-concorso-letterario-storie-di-donne",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"http://www.biblioteca.comune.arco.tn.it\"",
+     "href=\"https://www.biblioteca.comune.arco.tn.it/\""
+    ]
+   ]
+  },
+  {
+   "uri": "it/news-e-media/news/2026/diagnostica-per-immagini-a-modena-i-servizi-del-poliambulatorio-diagnostico-villa-rosa-kos",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "https://www.youtube.com/embed//Ebs9uhIeSIw",
+     "https://www.youtube.com/embed/Ebs9uhIeSIw"
+    ]
+   ]
+  },
+  {
+   "uri": "it/news-e-media/news/2024/residenze-anni-azzurri-premiate-con-i-bollini-rosaargento",
+   "campi": [
+    "content"
+   ],
+   "sostituzioni": [
+    [
+     "href=\"https://bollinirosargento.it/news/cerimonia-di-presentazione-del-network-d\"",
+     "href=\"https://bollinirosargento.it/\""
+    ]
+   ]
+  }
+ ]
+}
