@@ -1,101 +1,209 @@
 {
-  "nota": "Dati della scheda Clinica Dentale Villa dei Pini (decisioni di Danilo del 25/11). Letti da installa.php: niente id fissi, tutto si risolve dall'URI (stage e produzione hanno id diversi per le risorse nuove).",
-
-  "cloud_stage": ["c0044"],
-  "cloud_produzione": ["c0095"],
-
-  "modello_uri": "it/centri/clinica-dentale-villalba",
-  "sede_uri": "it/centri/villa-dei-pini-civitanova",
-  "landing_uri": "it/landing/clinica-dentale-civitanova",
-  "elenco_uri": "it/strutture/cliniche-dentali",
-
-  "campi": {
-    "pagetitle": "Clinica Dentale Villa dei Pini",
-    "longtitle": "Clinica Dentale Villa dei Pini a Civitanova Marche | KOS",
-    "menutitle": "",
-    "description": "Clinica dentale KOS dentro Villa dei Pini a Civitanova Marche: cure per adulti e bambini e percorsi per pazienti fragili, con sedazione e sala operatoria.",
-    "introtext": "Cure dentali per adulti e bambini all'interno della Casa di Cura Villa dei Pini di Civitanova Marche, con percorsi dedicati ai pazienti fragili.",
-    "alias": "clinica-dentale-villa-dei-pini"
-  },
-
-  "tv": {
-    "str.nome": "Clinica Dentale Villa dei Pini",
-    "str.via": "Viale dei Pini, 31",
-    "str.cap": "62012",
-    "str.citta": "Civitanova Marche",
-    "str.provincia": "MC",
-    "str.telefono": "+393456026346",
-    "str.email": "",
-    "str.orari": "Mo-Fr 08:30-19:00\nSa 08:30-13:00",
-    "str.orari_speciali": "",
-    "str.place_id": "",
-    "str.tipo": "Dentist",
-    "str.specialita": "Dentistry",
-    "str.marchio": "",
-    "str.sameAs": "",
-    "str.prenotazione": "",
-    "indirizzo_struttura": "Viale dei Pini, 31 - 62012 Civitanova Marche (MC)",
-    "translationId": ""
-  },
-  "tv_dalla_sede": ["istanza", "str.lat", "str.lng"],
-  "tv_non_copiare": ["^lnd\\.", "^mapTecnologie$", "^idYext$", "^idHubspot"],
-
-  "servizi_uri": ["it/servizi-e-cure/ambulatori-e-medicina-specialistica/odontoiatria"],
-
-  "barra": "[[!barraPrenotazioneDBmedicoPrestazione? &branca=`Odontoiatria`]]",
-  "barra_branca": "Odontoiatria",
-  "barra_prestazioni_attese": 2,
-
-  "parole_del_modello": ["villalba", "Robusti", "62100", "1930310", "19 30 310", "Chiaromonte", "De Gregori", "Rapanelli", "710baa66", "Cesaretti", "Bracalenti", "Di Noia", "Felicetti", "Genga", "Vescovi"],
-
-  "sostituzioni": [
-    { "nome": "intestazione (H1 e indirizzo)", "apertura": "<div\\b[^>]*\\bid=\"intro-pagina-foto-content-txt\"", "tag": "div", "occorrenze": 1, "file": "elementi/intestazione.html" },
-    { "nome": "contatti (barra laterale e versione mobile)", "apertura": "<ul\\b[^>]*\\bclass=\"lista-contatti-struttura\"", "tag": "ul", "occorrenze": 2, "file": "elementi/contatti.html" },
-    { "nome": "pulsanti dei contatti", "apertura": "<div\\b[^>]*\\bclass=\"sidebar-btns\"", "tag": "div", "occorrenze": 2, "file": "elementi/pulsanti.html" },
-    { "nome": "La struttura", "apertura": "<div\\b[^>]*\\bid=\"intro-dettagli\"", "tag": "div", "occorrenze": 1, "file": "elementi/struttura.html" },
-    { "nome": "approfondimenti (come funziona e domande)", "apertura": "<div\\b[^>]*\\bclass=\"accordion-faq-approfondimenti\"", "tag": "div", "occorrenze": 1, "file": "elementi/approfondimenti.html" },
-    { "nome": "équipe", "apertura": "<div\\b[^>]*\\bid=\"equipe-medica\"", "tag": "div", "occorrenze": 1, "file": "elementi/equipe.html" },
-    { "nome": "come raggiungerci", "apertura": "<section\\b[^>]*\\bid=\"blocco-mappa\"", "tag": "section", "occorrenze": 1, "file": "elementi/mappa.html" }
-  ],
-  "aggiunte": [
-    { "nome": "trattamenti dentro Aree di intervento", "dentro_fine": "<div\\b[^>]*\\bid=\"aree-intervento\"", "tag": "div", "file": "elementi/servizi.html" }
-  ],
-  "sostituzioni_testo": [
-    ["clinica-dentale-villalba", "clinica-dentale-villa-dei-pini"],
-    ["Clinica Dentale Villalba", "Clinica Dentale Villa dei Pini"],
-    ["[[!galleryStruttura", "[[galleryStruttura"]
-  ],
-  "barra_prima_di": ["\\[\\[\\$box-citazione","<section\\b[^>]*\\bid=\"blocco-foto-citazione\"", "<section\\b[^>]*\\bid=\"blocco-mappa\""],
-
-  "news_uri": [
-    "it/news-e-media/news/2026/villa-dei-pini-inaugurata-la-clinica-dentale-kos",
-    "it/news-e-media/approfondimenti/sensibilita-dentale-cause-sintomi-e-rimedi-piu-comuni",
-    "it/news-e-media/approfondimenti/sbiancamento-dentale-come-funziona-e-quanto-dura"
-  ],
-
-  "sede_voce": {
-    "file": "elementi/vdp-voce.html",
-    "dopo_voce_con": "<span>Diagnostica e Servizi Ambulatoriali</span>"
-  },
-
-  "landing": {
-    "url_prenota": "/it/centri/clinica-dentale-villa-dei-pini#prenota-online",
-    "robots": "<meta name=\"robots\" content=\"noindex, follow\">"
-  },
-
-  "llms": {
-    "dopo_riga_con": "(https://kosgroup.com/it/centri/clinica-dentale-villalba)",
-    "riga": "- [Clinica Dentale Villa dei Pini](https://kosgroup.com/it/centri/clinica-dentale-villa-dei-pini): clinica dentale, Civitanova Marche (MC)"
-  },
-
-  "foto_provvisorie": {
-    "nota": "Solo con --foto-provvisorie (stage): dalle foto della landing, finché KOS non manda quelle della clinica. Ritaglio centrato, JPEG, sotto il tetto di peso.",
-    "tetto_byte": 200000,
-    "voci": [
-      { "da": "assets/img/landing/clinica-dentale-civitanova/hero-largo-2048.jpg", "a": "assets/img/strutture/clinica-dentale-villa-dei-pini/01.jpg", "larghezza": 1200, "altezza": 800 },
-      { "da": "assets/img/landing/clinica-dentale-civitanova/equipe-gruppo-1440.jpg", "a": "assets/img/strutture/clinica-dentale-villa-dei-pini/02.jpg", "larghezza": 1200, "altezza": 800 },
-      { "da": "assets/img/landing/clinica-dentale-civitanova/hero-largo-2048.jpg", "a": "assets/img/strutture/clinica-dentale-villa-dei-pini.jpg", "come": "assets/img/strutture/clinica-dentale-villalba.jpg" },
-      { "da": "assets/img/landing/clinica-dentale-civitanova/hero-largo-2048.jpg", "a": "assets/img/bg-clinica-dentale-villa-dei-pini.jpg", "come": "assets/img/bg-clinica-dentale-villalba.jpg" }
-    ]
-  }
+    "nota": "Dati della scheda Clinica Dentale Villa dei Pini (decisioni di Danilo del 25/11). Letti da installa.php: niente id fissi, tutto si risolve dall'URI (stage e produzione hanno id diversi per le risorse nuove).",
+    "cloud_stage": [
+        "c0044"
+    ],
+    "cloud_produzione": [
+        "c0095"
+    ],
+    "modello_uri": "it/centri/clinica-dentale-villalba",
+    "sede_uri": "it/centri/villa-dei-pini-civitanova",
+    "landing_uri": "it/landing/clinica-dentale-civitanova",
+    "elenco_uri": "it/strutture/cliniche-dentali",
+    "campi": {
+        "pagetitle": "Clinica Dentale Villa dei Pini",
+        "longtitle": "Clinica Dentale Villa dei Pini a Civitanova Marche | KOS",
+        "menutitle": "",
+        "description": "Clinica dentale KOS dentro Villa dei Pini a Civitanova Marche: cure per adulti e bambini e percorsi per pazienti fragili, con sedazione e sala operatoria.",
+        "introtext": "Cure dentali per adulti e bambini all'interno della Casa di Cura Villa dei Pini di Civitanova Marche, con percorsi dedicati ai pazienti fragili.",
+        "alias": "clinica-dentale-villa-dei-pini"
+    },
+    "tv": {
+        "str.nome": "Clinica Dentale Villa dei Pini",
+        "str.via": "Viale dei Pini, 31",
+        "str.cap": "62012",
+        "str.citta": "Civitanova Marche",
+        "str.provincia": "MC",
+        "str.telefono": "+393456026346",
+        "str.email": "",
+        "str.orari": "Mo-Fr 08:30-19:00\nSa 08:30-13:00",
+        "str.orari_speciali": "",
+        "str.place_id": "",
+        "str.tipo": "Dentist",
+        "str.specialita": "Dentistry",
+        "str.marchio": "",
+        "str.sameAs": "",
+        "str.prenotazione": "",
+        "indirizzo_struttura": "Viale dei Pini, 31 - 62012 Civitanova Marche (MC)",
+        "translationId": ""
+    },
+    "tv_dalla_sede": [
+        "istanza",
+        "str.lat",
+        "str.lng"
+    ],
+    "tv_non_copiare": [
+        "^lnd\\.",
+        "^mapTecnologie$",
+        "^idYext$",
+        "^idHubspot"
+    ],
+    "servizi_uri": [
+        "it/servizi-e-cure/ambulatori-e-medicina-specialistica/odontoiatria"
+    ],
+    "barra": "[[!barraPrenotazioneDBmedicoPrestazione? &branca=`Odontoiatria`]]",
+    "barra_branca": "Odontoiatria",
+    "barra_prestazioni_attese": 2,
+    "parole_del_modello": [
+        "villalba",
+        "Robusti",
+        "62100",
+        "1930310",
+        "19 30 310",
+        "Chiaromonte",
+        "De Gregori",
+        "Rapanelli",
+        "710baa66",
+        "Cesaretti",
+        "Bracalenti",
+        "Di Noia",
+        "Felicetti",
+        "Genga",
+        "Vescovi"
+    ],
+    "sostituzioni": [
+        {
+            "nome": "intestazione (H1 e indirizzo)",
+            "apertura": "<div\\b[^>]*\\bid=\"intro-pagina-foto-content-txt\"",
+            "tag": "div",
+            "occorrenze": 1,
+            "file": "elementi/intestazione.html"
+        },
+        {
+            "nome": "contatti (barra laterale e versione mobile)",
+            "apertura": "<ul\\b[^>]*\\bclass=\"lista-contatti-struttura\"",
+            "tag": "ul",
+            "occorrenze": 2,
+            "file": "elementi/contatti.html"
+        },
+        {
+            "nome": "pulsanti dei contatti",
+            "apertura": "<div\\b[^>]*\\bclass=\"sidebar-btns\"",
+            "tag": "div",
+            "occorrenze": 2,
+            "file": "elementi/pulsanti.html"
+        },
+        {
+            "nome": "La struttura",
+            "apertura": "<div\\b[^>]*\\bid=\"intro-dettagli\"",
+            "tag": "div",
+            "occorrenze": 1,
+            "file": "elementi/struttura.html"
+        },
+        {
+            "nome": "approfondimenti (come funziona e domande)",
+            "apertura": "<div\\b[^>]*\\bclass=\"accordion-faq-approfondimenti\"",
+            "tag": "div",
+            "occorrenze": 1,
+            "file": "elementi/approfondimenti.html"
+        },
+        {
+            "nome": "équipe",
+            "apertura": "<div\\b[^>]*\\bid=\"equipe-medica\"",
+            "tag": "div",
+            "occorrenze": 1,
+            "file": "elementi/equipe.html"
+        },
+        {
+            "nome": "come raggiungerci",
+            "apertura": "<section\\b[^>]*\\bid=\"blocco-mappa\"",
+            "tag": "section",
+            "occorrenze": 1,
+            "file": "elementi/mappa.html"
+        }
+    ],
+    "aggiunte": [
+        {
+            "nome": "trattamenti dentro Aree di intervento",
+            "dentro_fine": "<div\\b[^>]*\\bid=\"aree-intervento\"",
+            "tag": "div",
+            "file": "elementi/servizi.html"
+        }
+    ],
+    "sostituzioni_testo": [
+        [
+            "clinica-dentale-villalba",
+            "clinica-dentale-villa-dei-pini"
+        ],
+        [
+            "Clinica Dentale Villalba",
+            "Clinica Dentale Villa dei Pini"
+        ],
+        [
+            "[[!galleryStruttura",
+            "[[galleryStruttura"
+        ]
+    ],
+    "barra_prima_di": [
+        "\\[\\[\\$box-citazione",
+        "<section\\b[^>]*\\bid=\"blocco-foto-citazione\"",
+        "<section\\b[^>]*\\bid=\"blocco-mappa\""
+    ],
+    "news_uri": [
+        "it/news-e-media/news/2026/villa-dei-pini-inaugurata-la-clinica-dentale-kos",
+        "it/news-e-media/approfondimenti/sensibilita-dentale-cause-sintomi-e-rimedi-piu-comuni",
+        "it/news-e-media/approfondimenti/sbiancamento-dentale-come-funziona-e-quanto-dura"
+    ],
+    "sede_voce": {
+        "file": "elementi/vdp-voce.html",
+        "dopo_voce_con": "<span>Diagnostica e Servizi Ambulatoriali</span>"
+    },
+    "landing": {
+        "url_prenota": "/it/centri/clinica-dentale-villa-dei-pini#prenota-online",
+        "robots": "<meta name=\"robots\" content=\"noindex, follow\">"
+    },
+    "llms": {
+        "dopo_riga_con": "(https://kosgroup.com/it/centri/clinica-dentale-villalba)",
+        "riga": "- [Clinica Dentale Villa dei Pini](https://kosgroup.com/it/centri/clinica-dentale-villa-dei-pini): clinica dentale, Civitanova Marche (MC)"
+    },
+    "testata": {
+        "nota": "Testata a immagine unica come la Clinica Dentale Porto Potenza Picena (Danilo, 25/11): il blocco div#intro-pagina-foto di quella scheda al posto della galleria, con la foto dello studio della landing sfumata in bianco.",
+        "modello_uri": "it/centri/clinica-dentale-porto-potenza-picena",
+        "apertura": "<div\\b[^>]*\\bid=\"intro-pagina-foto\"",
+        "galleria": "\\[\\[!?galleryStruttura\\b(?:[^\\[\\]]|\\[\\[[^\\[\\]]*\\]\\])*\\]\\]",
+        "sostituzioni_testo": [
+            [
+                "clinica-dentale-porto-potenza-picena",
+                "clinica-dentale-villa-dei-pini"
+            ],
+            [
+                "Clinica Dentale Porto Potenza Picena",
+                "Clinica Dentale Villa dei Pini"
+            ]
+        ],
+        "alt": "Studio odontoiatrico luminoso con poltrona, lampada e monitor con l'immagine di un'arcata dentale"
+    },
+    "immagini": [
+        {
+            "da": "assets/img/landing/clinica-dentale-civitanova/hero-largo-2048.jpg",
+            "a": "assets/img/header/clinica-dentale-villa-dei-pini.jpg",
+            "come": "assets/img/header/clinica-dentale-porto-potenza-picena.jpg"
+        },
+        {
+            "da": "assets/img/landing/clinica-dentale-civitanova/hero-mobile-1290.jpg",
+            "a": "assets/img/header/clinica-dentale-villa-dei-pini-mobile.jpg",
+            "come": "assets/img/header/clinica-dentale-porto-potenza-picena-mobile.jpg"
+        },
+        {
+            "da": "assets/img/landing/clinica-dentale-civitanova/hero-largo-2048.jpg",
+            "a": "assets/img/strutture/clinica-dentale-villa-dei-pini.jpg",
+            "come": "assets/img/strutture/clinica-dentale-villalba.jpg"
+        },
+        {
+            "da": "assets/img/landing/clinica-dentale-civitanova/hero-largo-2048.jpg",
+            "a": "assets/img/bg-clinica-dentale-villa-dei-pini.jpg",
+            "come": "assets/img/bg-clinica-dentale-villalba.jpg"
+        }
+    ],
+    "tetto_byte": 200000
 }

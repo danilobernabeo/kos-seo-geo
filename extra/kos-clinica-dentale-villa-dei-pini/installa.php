@@ -5,7 +5,7 @@
  * Uso (in SSH sul cloud, dalla radice dell'archivio del repository):
  *   php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www                        prova: controlla e mostra, non scrive
  *   php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www --scrivi               applica (ripetibile: aggiorna)
- *   ... --scrivi --foto-provvisorie   anche le foto provvisorie ricavate da quelle della landing (SOLO STAGE)
+ *   (immagini di testata, card e piè di pagina: create sempre se mancano, dalla foto dello studio della landing)
  *   ... --senza-sede                  non tocca la scheda di Villa dei Pini (link da mettere dopo il 4/12)
  *   ... --prestazioni-stage           SOLO STAGE: procede anche se Odontoiatria non ha le prestazioni attese (tabelle
  *                                     kos_* dello stage ferme al 18/10, Odontoiatria aggiunta in TuoTempo il 29/10)
@@ -90,7 +90,7 @@ $leggi = function (string $rel) use ($DIR): string {
  * in parte nel contenuto e in parte nelle TV (contatti_struttura, approfondimenti, come_raggiungerci...), quindi ogni
  * sostituzione cerca l'elemento ovunque. Restituisce le parti modificate.
  */
-$costruisci = function (array $parti) use ($C, $leggi, $ferma, $corto): array {
+$costruisci = function (array $parti, string $testata = '') use ($C, $leggi, $ferma, $corto): array {
     // Mappa: il blocco <div id="mappa-map"> del modello così com'è (iframe, chunk o segnaposto: nessuna chiave nel
     // repository), con il nome e l'alias della clinica sostituiti; va al posto di {{MAPPA_MODELLO}} in elementi/mappa.html
     $mappaModello = '';
@@ -130,6 +130,13 @@ $costruisci = function (array $parti) use ($C, $leggi, $ferma, $corto): array {
         $chiusura = strrpos(substr($p, 0, $f), '</');
         $parti[$k] = substr($p, 0, $chiusura) . $segna($leggi($a['file'])) . "\n                                " . substr($p, $chiusura);
         echo "  + {$a['nome']}: in " . $nome($k) . " ← {$a['file']}\n";
+    }
+    // Testata a immagine unica (come Porto Potenza) al posto della galleria del modello
+    if ($testata !== '') {
+        $n = 0;
+        $parti['content'] = preg_replace_callback('#' . $C['testata']['galleria'] . '#', function () use ($segna, $testata, &$n) { $n++; return $segna($testata); }, $parti['content']);
+        if ($n !== 1) $ferma("testata: chiamata della galleria trovata $n volte nel contenuto (attesa 1)");
+        else echo "  = testata a immagine unica al posto della galleria (blocco da /{$C['testata']['modello_uri']})\n";
     }
     if (preg_match('/barraPrenotazioneDBmedicoPrestazione/', implode("\n", $parti))) $ferma('il modello richiama già la barra');
     $fatto = false;
@@ -227,7 +234,9 @@ if (($argv[1] ?? '') === '--test') {
     echo "-- Contenuto da {$argv[2]}\n";
     // file .json: {"content": ..., "tv:<nome>": ...} (contenuto e TV del modello, es. da ispeziona.php); altrimenti solo il contenuto
     $parti = str_ends_with($argv[2], '.json') ? json_decode($mod, true) : ['content' => $mod];
-    $parti = $costruisci($parti);
+    $testata = (string) ($parti['testata'] ?? '');
+    unset($parti['testata']);
+    $parti = $costruisci($parti, $testata);
     foreach ($parti as $k => $p) if ($k !== 'content') echo "  $k: " . $corto($p, 140) . "\n";
     $c = $parti['content'];
     $out = sys_get_temp_dir() . '/clinica-dentale-contenuto.html';
@@ -365,7 +374,27 @@ echo "\n-- Contenuto e TV (dal modello {$modello->get('id')}: contenuto " . strl
    . count($tvModello) . " TV da copiare; escluse: " . (implode(', ', $tvEscluse) ?: 'nessuna') . ")\n";
 $parti = ['content' => str_replace("\r\n", "\n", (string) $modello->get('content'))];
 foreach ($tvModello as $n => $v) $parti["tv:$n"] = $v;
-$parti = $costruisci($parti);
+$testata = '';
+$pp = $perUri($C['testata']['modello_uri']);
+if (!$pp) $ferma("testata: /{$C['testata']['modello_uri']} non trovata");
+else {
+    $ppParti = ['content' => (string) $pp->get('content')];
+    foreach ($modx->getIterator(modTemplateVarResource::class, ['contentid' => $pp->get('id')]) as $tvr) {
+        $tv = $modx->getObject(modTemplateVar::class, $tvr->get('tmplvarid'));
+        if ($tv) $ppParti['tv:' . $tv->get('name')] = (string) $tvr->get('value');
+    }
+    foreach ($ppParti as $p) {
+        if ($el = elementi($p, $C['testata']['apertura'], 'div')) { $testata = str_replace("\r\n", "\n", substr($p, $el[0][0], $el[0][1] - $el[0][0])); break; }
+    }
+    if ($testata === '') $ferma('testata: blocco ' . $C['testata']['apertura'] . " non trovato in /{$C['testata']['modello_uri']}");
+    else {
+        foreach ($C['testata']['sostituzioni_testo'] as [$da, $a]) $testata = str_replace($da, $a, $testata);
+        $testata = preg_replace('/\balt="[^"]*"/', 'alt="' . htmlspecialchars($C['testata']['alt'], ENT_QUOTES) . '"', $testata);
+        if (preg_match('/Porto Potenza|porto-potenza|Santo Stefano/i', $testata, $mm)) $ferma("testata: resta «{$mm[0]}»");
+        echo "\n  testata da /{$C['testata']['modello_uri']}: " . $corto(preg_replace('#\s+#', ' ', $testata), 260) . "\n";
+    }
+}
+$parti = $costruisci($parti, $testata);
 $c = $parti['content'];
 foreach ($tvEscluse as $n) if (preg_match('/\[\[\*' . preg_quote($n, '/') . '\b/', implode("\n", $parti))) $ferma("la TV esclusa $n è richiamata nel contenuto o in una TV: la pagina la mostrerebbe vuota");/* {{uri:…}} nei frammenti: id della risorsa (link [[~id]], registro del 25/11); la scheda nuova si risolve dopo la creazione */
 $risolvi = function (string $s, ?int $idNuova = null) use ($perUri, $ferma, $C): string {
@@ -508,40 +537,38 @@ if (is_file("$webroot/llms.txt")) {
     }
 } else echo "\n-- llms.txt assente (stage): niente da fare\n";
 
-/* ============================================================ 9. FOTO PROVVISORIE */
-$foto = [];
-if ($fotoProvv) {
-    echo "\n-- Foto provvisorie (dalla landing)\n";
-    if (!$STAGE) $ferma('foto provvisorie solo sullo stage');
-    if (!class_exists('Imagick') && !function_exists('imagecreatefromjpeg')) $ferma('né Imagick né GD disponibili');
-    foreach ($C['foto_provvisorie']['voci'] as $v) {
-        $w = $v['larghezza'] ?? null; $h = $v['altezza'] ?? null;
-        if (isset($v['come'])) {
-            $d = @getimagesize("$webroot/{$v['come']}");
-            if (!$d) { echo "  i /{$v['come']} assente: salto /{$v['a']}\n"; continue; }
-            [$w, $h] = $d;
-        }
-        if (!is_file("$webroot/{$v['da']}")) { $ferma("/{$v['da']} assente"); continue; }
-        if (is_file("$webroot/{$v['a']}")) { echo "  = /{$v['a']} esiste già: non la tocco\n"; continue; }
-        $foto[] = [$v['da'], $v['a'], (int) $w, (int) $h];
-        echo "  + /{$v['a']} ({$w}×{$h}) da /{$v['da']}\n";
-    }
-} else {
-    $dirFoto = "$webroot/assets/img/strutture/{$C['campi']['alias']}";
-    $n = is_dir($dirFoto) ? count(glob("$dirFoto/*.{jpg,jpeg,png}", GLOB_BRACE)) : 0;
-    echo "\n-- Foto: $n nella galleria /assets/img/strutture/{$C['campi']['alias']}/" . ($n ? '' : ' (nessuna: per lo stage --foto-provvisorie)') . "\n";
-    // In produzione niente galleria vuota né immagini rotte (card dell'elenco delle cliniche, piè di pagina)
-    $servono = ["assets/img/strutture/{$C['campi']['alias']}.jpg" => 'card di /' . $C['elenco_uri']];
-    if (preg_match_all('#assets/img/[\w/.-]*' . preg_quote($C['campi']['alias'], '#') . '[\w.-]*\.(?:jpe?g|png|webp)#', $c, $im)) {
-        foreach (array_unique($im[0]) as $p) $servono[$p] = 'immagine nel contenuto';
-    }
-    foreach ($servono as $p => $cosa) {
-        $ok = is_file("$webroot/$p");
-        echo '  ' . ($ok ? '=' : 'i') . " /$p ($cosa): " . ($ok ? filesize("$webroot/$p") . ' byte' : 'assente') . "\n";
-        if (!$STAGE && !$ok) $ferma("in produzione manca /$p ($cosa)");
-    }
-    if (!$STAGE && !$n) $ferma('in produzione la galleria della scheda non può essere vuota');
+/* ============================================================ 9. IMMAGINI */
+// Testata (come Porto Potenza), card dell'elenco e piè di pagina: dalla foto dello studio della landing, alle dimensioni
+// delle immagini corrispondenti della clinica indicata in «come». Si creano solo se mancano (mai sovrascritte).
+echo "\n-- Immagini (dalla foto dello studio della landing)\n";
+$foto = []; $previste = [];
+if (!class_exists('Imagick') && !function_exists('imagecreatefromjpeg')) $ferma('né Imagick né GD disponibili');
+foreach ($C['immagini'] as $v) {
+    if (is_file("$webroot/{$v['a']}")) { echo "  = /{$v['a']} esiste già (" . filesize("$webroot/{$v['a']}") . " byte): non la tocco\n"; continue; }
+    $d = @getimagesize("$webroot/{$v['come']}");
+    if (!$d) { $ferma("/{$v['come']} assente: dimensioni di /{$v['a']} sconosciute"); continue; }
+    if (!is_file("$webroot/{$v['da']}")) { $ferma("/{$v['da']} assente"); continue; }
+    [$w, $h] = $d;
+    $foto[] = [$v['da'], $v['a'], (int) $w, (int) $h];
+    $previste[$v['a']] = true;
+    echo "  + /{$v['a']} ({$w}×{$h}, come /{$v['come']}) da /{$v['da']}\n";
 }
+// Nessuna immagine rotta: card dell'elenco delle cliniche e immagini della scheda nel contenuto e nelle TV
+$servono = ["assets/img/strutture/{$C['campi']['alias']}.jpg" => 'card di /' . $C['elenco_uri']];
+$tuttoScheda = implode("\n", $parti) . "\n" . implode("\n", array_column($tvNuove, 1));
+if (preg_match_all('#assets/img/[\w/.-]*' . preg_quote($C['campi']['alias'], '#') . '[\w.-]*\.(?:jpe?g|png|webp)#', $tuttoScheda, $im)) {
+    foreach (array_unique($im[0]) as $p) $servono[$p] = 'immagine della scheda';
+}
+if (str_contains($tuttoScheda, '/header/[[*alias]]')) {
+    $servono["assets/img/header/{$C['campi']['alias']}.jpg"] = 'testata';
+    $servono["assets/img/header/{$C['campi']['alias']}-mobile.jpg"] = 'testata, telefono';
+}
+foreach ($servono as $p => $cosa) {
+    $ok = is_file("$webroot/$p") || isset($previste[$p]);
+    echo '  ' . ($ok ? '=' : '!') . " /$p ($cosa): " . (is_file("$webroot/$p") ? 'c\'è' : (isset($previste[$p]) ? 'da creare' : 'MANCA')) . "\n";
+    if (!$ok) $ferma("manca /$p ($cosa)");
+}
+if ($fotoProvv) echo "  i --foto-provvisorie non serve più: le immagini si creano sempre se mancano\n";
 
 /* ============================================================ SCRITTURA */
 if ($errori) { echo "\n== $errori problemi (FERMO): niente è stato scritto.\n"; exit(2); }
@@ -642,7 +669,7 @@ if ($llmsNuovo !== null) {
     echo "  ~ /llms.txt\n";
 }
 
-// Foto provvisorie: ritaglio centrato, JPEG progressivo, qualità decrescente fino al tetto
+// Immagini: ritaglio centrato, JPEG progressivo, qualità decrescente fino al tetto
 foreach ($foto as [$da, $a, $w, $h]) {
     $cartella = dirname("$webroot/$a");
     if (!is_dir($cartella)) { mkdir($cartella, 0775, true); $R['cartelle_create'][] = dirname($a); }
@@ -666,7 +693,7 @@ foreach ($foto as [$da, $a, $w, $h]) {
             imagejpeg($dst, "$webroot/$a", $q);
         }
         clearstatcache();
-        if (filesize("$webroot/$a") <= (int) $C['foto_provvisorie']['tetto_byte']) break;
+        if (filesize("$webroot/$a") <= (int) $C['tetto_byte']) break;
     }
     $R['file_creati'][] = $a; $salvaR();
     printf("  + /%s %d×%d, %d byte (qualità %d)\n", $a, $w, $h, filesize("$webroot/$a"), $q);
