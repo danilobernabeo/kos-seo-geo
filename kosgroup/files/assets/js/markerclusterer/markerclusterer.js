@@ -911,7 +911,10 @@ Cluster.prototype.getBounds = function() {
  * Removes the cluster
  */
 Cluster.prototype.remove = function() {
-  this.clusterIcon_.remove();
+  // KOS 25/11/2026: setMap(null) diretto. Dalla versione attuale di Maps JavaScript API OverlayView.prototype
+  // ha un metodo enumerabile «remove», che extend() copia sopra ClusterIcon.prototype.remove: l'icona del
+  // gruppo non veniva più tolta dalla mappa e restava visibile dopo ogni cambio di zoom.
+  this.clusterIcon_.setMap(null);
   this.markers_.length = 0;
   delete this.markers_;
 };
