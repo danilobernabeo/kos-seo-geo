@@ -45,7 +45,7 @@
 /aspetto-economico
 /il-gruppo-kos
 /perche-anni-azzurri
-/sportello-sociale-orientamento-per-assistenza-anziani
+/sos-caregiver-orientamento-per-assistenza-anziani
 /radio-anni-azzurri
 /contatti
 /lavora-con-noi

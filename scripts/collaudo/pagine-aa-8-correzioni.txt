@@ -6,6 +6,6 @@
 /albero-dei-ricordi
 /galleria-fotografica-convegno-anni-azzurri-2025
 /news/
-/sportello-sociale-orientamento-per-assistenza-anziani
+/sos-caregiver-orientamento-per-assistenza-anziani
 /giorno-della-memoria-intervista-a-guido-hassan
 /residenza-anni-azzurri-vico-mercati

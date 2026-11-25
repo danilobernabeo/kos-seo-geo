@@ -653,12 +653,15 @@ if ($type === 'auto') {
     $type = in_array($nomeTpl, $TPL_ARTICOLO, true) ? 'article'
           : (in_array($nomeTpl, $TPL_PROFILO, true) ? 'profile' : 'page');
 }
-/* Nodi propri di una pagina (es. Service e FAQPage dello Sportello sociale) dal chunk statico schema-<id>, se esiste:
- * entrano nello stesso @graph invece di un secondo blocco JSON-LD (regola: un solo @graph per pagina). */
+/* Nodi propri di una pagina (es. Service e FAQPage di SOS caregiver) dal chunk statico schema-<id>, se esiste:
+ * entrano nello stesso @graph invece di un secondo blocco JSON-LD (regola: un solo @graph per pagina).
+ * Nel chunk {URL} vale l'URL canonico della pagina, così gli @id seguono un cambio di alias (rinomina di /sportello-
+ * sociale-... in /sos-caregiver-..., scansione del 25/11). */
 $nodiPagina = [];
 $CLS_CHUNK = class_exists('\MODX\Revolution\modChunk') ? \MODX\Revolution\modChunk::class : 'modChunk';
 if ($ch = $modx->getObject($CLS_CHUNK, ['name' => 'schema-' . (int) $res->get('id')])) {
     $raw = preg_replace('#^\s*<script[^>]*>|</script>\s*$#i', '', trim((string) $ch->get('snippet')));
+    $raw = str_replace('{URL}', $url((int) $res->get('id')), $raw);
     $dec = json_decode((string) $raw, true);
     if (is_array($dec)) {
         $lista = isset($dec['@graph']) ? $dec['@graph'] : (isset($dec['@type']) ? [$dec] : $dec);

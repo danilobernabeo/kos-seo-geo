@@ -1,0 +1,17 @@
+{
+ "nome": "AA-8 SOS caregiver (ex Sportello sociale, risorsa 525): Service e FAQPage del chunk schema-525 con l'URL della pagina dal segnaposto {URL} (aaSchema), nome «SOS caregiver», prima domanda come in pagina, immagine esistente. Scansione del 25/11, revisione Fable N2.",
+ "elements": [
+  {
+   "type": "snippet",
+   "name": "aaSchema",
+   "file": "anniazzurri/elements/aa-schede/aaSchema.php",
+   "baseline": "anniazzurri/deploy/aa-sos-caregiver-20261125/base-aaSchema.php"
+  },
+  {
+   "type": "chunk",
+   "name": "schema-525",
+   "file": "anniazzurri/elements/chunks/schema-525.html",
+   "baseline": "anniazzurri/deploy/aa-sos-caregiver-20261125/base-schema-525.html"
+  }
+ ]
+}

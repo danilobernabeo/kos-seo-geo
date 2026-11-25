@@ -635,7 +635,7 @@ function campione(s, sm) {
   // una pagina per forma di URL (primo livello del percorso) più le pagine dell'audit, al massimo 25
   const fissi = s === SITI.aa
     ? ['/', '/news/', '/residenza-anni-azzurri-vico-mercati', '/residenza-anni-azzurri-navigli', '/rsa-in-lombardia', '/rsa-a-milano-e-provincia',
-       '/come-vivono-gli-anziani-in-rsa', '/sportello-sociale-orientamento-per-assistenza-anziani', '/galleria-fotografica-convegno-anni-azzurri-2025',
+       '/come-vivono-gli-anziani-in-rsa', '/sos-caregiver-orientamento-per-assistenza-anziani', '/galleria-fotografica-convegno-anni-azzurri-2025',
        '/cure-e-assistenza-domiciliare', '/residenze', '/il-mondo-anni-azzurri']
     : ['/it', '/en', '/it/centri/casa-cima', '/it/centri/villa-rosa', '/it/chi-siamo/qualita-delle-cure/medici/stefano-albanelli',
        '/it/servizi-e-cure/riabilitazione/riabilitazione-mielolesioni', '/it/news-e-media/approfondimenti/come-bere-piu-acqua-durante-la-giornata',

@@ -1,0 +1,963 @@
+<?php
+/**
+ * aaSchema — Anni Azzurri
+ * -----------------------------------------------------------------------------
+ * Costruisce il JSON-LD delle pagine e il box autore visibile.
+ * Un solo snippet: la logica dell'@id dell'entità persona sta in un posto solo.
+ *
+ * USO
+ *   tutte le pagine, una sola volta (chunk footer-script*):   [[aaSchema]]
+ *       il tipo si ricava dal template: articolo, pagina autore o pagina generica
+ *   box autore, nel template articolo:                       [[aaSchema? &type=`box`]]
+ *   firma sotto il titolo, nel template articolo:            [[aaSchema? &type=`firma`]]
+ *       box e firma escono solo sugli articoli firmati (aut.ref); vuoti sulla redazione
+ *
+ *   Sostituisce i tre JSON-LD scritti a mano nei footer (Organization, WebSite,
+ *   BreadcrumbList): un solo @graph per pagina, emesso lato server (voce AA-8).
+ *
+ * PARAMETRI
+ *   &type     auto | page | article | profile | box | firma   (default: auto)
+ *   &redazione 1 = sul box degli articoli della redazione «A cura della Redazione…» (default: niente)
+ *   &author   id risorsa autore; se omesso lo legge dalla TV aut.ref
+ *   &pretty   1 = JSON indentato (solo per debug)
+ *
+ * RITORNA
+ *   article/profile → il blocco <script type="application/ld+json">
+ *   box / firma     → l'HTML del box autore / della riga di firma ('' sugli articoli della redazione)
+ *
+ * REGOLA CARDINE
+ *   TV aut.ref vuota  =  contenuto della redazione  =  author è l'Organization.
+ *   Nessuna Person inventata per "La Redazione".
+ * -----------------------------------------------------------------------------
+ */
+
+/* --- compatibilità MODX 2 / 3 ---------------------------------------------- */
+$CLS_RES = class_exists('\MODX\Revolution\modResource')
+    ? \MODX\Revolution\modResource::class : 'modResource';
+$CLS_TV = class_exists('\MODX\Revolution\modTemplateVar')
+    ? \MODX\Revolution\modTemplateVar::class : 'modTemplateVar';
+$CLS_TVR = class_exists('\MODX\Revolution\modTemplateVarResource')
+    ? \MODX\Revolution\modTemplateVarResource::class : 'modTemplateVarResource';
+
+/* --- impostazioni ----------------------------------------------------------
+ * Tutte sovrascrivibili da Sistema → Impostazioni di sistema, namespace "aa".
+ * Nessun valore derivato da site_url: su due siti diversi deve restare lo stesso.
+ */
+$cfg = function ($chiave, $default) use ($modx) {
+    $v = $modx->getOption('aa.' . $chiave, null, null);
+    return ($v === null || $v === '') ? $default : $v;
+};
+
+/* Base canonica: UNICA fonte della forma del dominio (con o senza www).
+ * Ogni @id emesso da questo snippet ne deriva, così articoli, persone e
+ * organizzazione non possono finire su host diversi — che nel grafo
+ * significherebbe entità duplicate. */
+$CANON = rtrim($cfg('canonical_base', 'https://anniazzurri.it'), '/');
+
+$ORG_ID   = $cfg('org_id',     $CANON . '/#organization');
+$SITE_ID  = $cfg('website_id', $CANON . '/#website');
+$PARENT_ID= $cfg('parent_org_id', 'https://kosgroup.com/#organization');
+$LANG     = $cfg('lang',      'it-IT');
+/* Pagine in un'altra lingua (es. /home-en): &lingua=`en` cambia solo la lingua della pagina, non quella del sito;
+ * &briciole=`0` toglie il BreadcrumbList dove le briciole non si vedono (pagine con head proprio, sprint 3, 17/11). */
+$LANG_PAGINA = (string) $modx->getOption('lingua', $scriptProperties, $LANG) ?: $LANG;
+$CON_BRICIOLE = (int) $modx->getOption('briciole', $scriptProperties, 1) === 1;
+$SLASH    = (int) $cfg('trailing_slash', 0);   // gli URL del sito sono piatti, senza slash finale
+$FRAG_PAT = $cfg('frag_patologia', '#condition');
+$FRAG_STR = $cfg('frag_struttura', '#localbusiness');   // convenzione del 20/10/2026 (audit AA, slide 29-30)
+
+$csv = function ($v) {
+    return array_values(array_filter(array_map('trim', explode(',', (string) $v)), 'strlen'));
+};
+$START = (int) $modx->getOption('site_start', null, 1);
+/* Esclusioni delle briciole: la STESSA impostazione usata dallo snippet BreadCrumb
+ * nel chunk breadcrumb-stripe (&exclude=`[[++aa.breadcrumb_exclude]]`), così
+ * briciole visibili e BreadcrumbList hanno sempre lo stesso percorso. */
+$ESCLUDI = array_map('intval', $csv($cfg('breadcrumb_exclude', '2,4,48,54,55,68,78,85,93,97,98,100,109,156')));
+/* Template per tipo di pagina (nomi, separati da virgola). */
+$TPL_ARTICOLO   = $csv($cfg('tpl_article',    'interna-articolo'));
+$TPL_PROFILO    = $csv($cfg('tpl_profile',    'autore'));
+$TPL_COLLEZIONE = $csv($cfg('tpl_collection', 'regione,provincia,residenze,news,le-nostre-storie-indice'));
+/* Schede residenza (sprint 3, voci AA-2/5/11/21): sulle pagine di questi template la pagina ha come mainEntity il nodo
+ * {URL scheda}#localbusiness dalle TV str.* (import dall'export Yext, poi RetailTune). Acceso solo con
+ * aa.struttura_attiva = 1, nello stesso rilascio in cui si toglie lo script Yext dalle schede (head-rsa). */
+$TPL_STRUTTURA = $csv($cfg('tpl_struttura', 'rsa'));
+$STR_ON        = (int) $cfg('struttura_attiva', 0);
+/* Pagine provincia (voce AA-10): ItemList delle residenze elencate (figlie della pagina, stesso criterio del menu
+ * Wayfinder della pagina: pubblicate, visibili nel menu, ordine menuindex), ogni voce con la residenza per intero, come
+ * chiede la forma «summary page + full details» dei caroselli di Google. Solo con le schede accese. */
+$TPL_LISTA     = $csv($cfg('tpl_lista_strutture', 'provincia'));
+
+/* --- helper ---------------------------------------------------------------- */
+
+/** URL assoluto di una risorsa, riportato alla forma canonica del dominio. */
+$url = function ($id) use ($modx, $SLASH, $CANON) {
+    // makeUrl con scheme 'full' restituisce GIÀ l'URL assoluto: non anteporre site_url.
+    $u = $modx->makeUrl((int) $id, '', '', 'full');
+    if (!$u) return '';
+    // site_url può avere una forma di host diversa da quella canonica (www / non www):
+    // la sostituiamo sempre, altrimenti gli @id degli articoli divergono da quello
+    // dell'organizzazione e nel grafo nascono due siti distinti.
+    $u = preg_replace('#^https?://[^/]+#i', $CANON, $u);
+    // Senza aa.trailing_slash si tiene la forma di makeUrl: le pagine normali non hanno la barra finale, i
+    // contenitori (es. /news/) sì, esattamente come il canonical; toglierla darebbe un URL che risponde 301.
+    return $SLASH ? rtrim($u, '/') . '/' : $u;
+};
+
+/** Testo semplice per i nomi (niente tag HTML né entità, spazi normalizzati). */
+$nomeTesto = function ($s) {
+    $s = html_entity_decode(strip_tags((string) $s), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    return trim((string) preg_replace('/\s+/u', ' ', $s));
+};
+
+/** Titolo della pagina per name/headline: longtitle (mai un alias di cartella, senza « | Anni Azzurri»), altrimenti pagetitle. */
+$titoloNodo = function ($r) use ($nomeTesto, $cfg) {
+    $lt = $nomeTesto($r->get('longtitle'));
+    if (preg_match('/^[a-z0-9]+(?:-[a-z0-9]+)*$/', $lt)) $lt = '';
+    $marchio = preg_quote((string) $cfg('org_name', 'Anni Azzurri'), '/');
+    $lt = trim((string) preg_replace('/\s*[|\x{2013}\x{2014}-]\s*' . $marchio . '\s*$/iu', '', $lt));
+    return $lt !== '' ? $lt : $nomeTesto($r->get('pagetitle'));
+};
+
+/** Righe non vuote da una textarea. */
+$righe = function ($v) {
+    $r = preg_split('/\r\n|\r|\n/', (string) $v);
+    return array_values(array_filter(array_map('trim', $r), 'strlen'));
+};
+
+/** Valore TV pulito. */
+$tv = function ($res, $nome) {
+    if (!$res) return '';
+    $v = $res->getTVValue($nome);
+    return is_string($v) ? trim($v) : $v;
+};
+
+/** Testo da un campo richtext: niente tag, niente spazi doppi. */
+$testo = function ($html) {
+    $t = strip_tags((string) $html);
+    $t = html_entity_decode($t, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    return trim(preg_replace('/\s+/u', ' ', $t));
+};
+
+/** ImageObject da un percorso TV, con dimensioni reali se il file è leggibile. */
+$immagine = function ($percorso) use ($modx, $CANON) {
+    $percorso = trim((string) $percorso);
+    if ($percorso === '') return null;
+
+    $abs = preg_match('#^https?://#i', $percorso)
+        ? $percorso
+        : $CANON . '/' . ltrim($percorso, '/');
+
+    $img = ['@type' => 'ImageObject', 'url' => $abs];
+
+    if (!preg_match('#^https?://#i', $percorso)) {
+        $file = MODX_BASE_PATH . ltrim($percorso, '/');
+        if (is_readable($file) && ($d = @getimagesize($file))) {
+            $img['width']  = (int) $d[0];
+            $img['height'] = (int) $d[1];
+        }
+    }
+    return $img;
+};
+
+/** Data ISO 8601 con fuso. In MODX 3 get('publishedon'/'editedon') restituisce la data
+ *  già formattata ("2025-03-04 10:12:00"), non il timestamp: si accettano entrambi. */
+$data = function ($v) use ($cfg) {
+    if ($v === null || $v === '' || $v === '0' || $v === 0) return null;
+    // La stringa formattata da MODX è nel fuso del server (MODX Cloud: America/Chicago):
+    // si interpreta in quel fuso e si emette nel fuso del sito, così l'offset è +01:00/+02:00.
+    $ts = is_numeric($v) ? (int) $v : strtotime((string) $v);
+    if ($ts === false || $ts <= 0) return null;
+    $d = new DateTime('@' . $ts);
+    $d->setTimezone(new DateTimeZone($cfg('timezone', 'Europe/Rome')));
+    return $d->format('c');
+};
+
+/** Toglie ricorsivamente null, stringhe vuote e array vuoti. */
+$pulisci = function ($a) use (&$pulisci) {
+    if (!is_array($a)) return $a;
+    $out = [];
+    foreach ($a as $k => $v) {
+        if (is_array($v)) $v = $pulisci($v);
+        if ($v === null || $v === '' || $v === []) continue;
+        $out[$k] = $v;
+    }
+    return $out;
+};
+
+/* --- nodo Organization ------------------------------------------------------
+ * Emesso per intero su ogni pagina: è anche il valore di author sui contenuti
+ * della redazione, quindi deve essere risolvibile senza seguire altri @id.
+ */
+$org = function () use ($cfg, $csv, $ORG_ID, $PARENT_ID, $CANON, $pulisci) {
+
+    // Logo con @id proprio, URL assoluto (il footer storico aveva una doppia barra).
+    $logo = null;
+    if ($l = $cfg('org_logo', '/assets/logo-anni.svg')) {
+        $logo = [
+            '@type' => 'ImageObject',
+            '@id'   => $CANON . '/#logo',
+            'url'   => preg_match('#^https?://#i', $l) ? $l : $CANON . '/' . ltrim($l, '/'),
+        ];
+    }
+    // Profili social ufficiali (impostazione aa.org_sameAs, separati da virgola).
+    // Mai kosgroup.com: è un'altra società, collegata con parentOrganization.
+    $social = $csv($cfg('org_sameAs', ''));
+
+    // KOS Care S.r.l. e KOS S.p.A. sono soggetti giuridici distinti, con partite
+    // IVA diverse: il legame è di controllo, non di identità. Quindi
+    // parentOrganization, MAI sameAs — che le dichiarerebbe la stessa entità.
+    $parent = ['@id' => $PARENT_ID];
+    if ($nome = $cfg('parent_org_name', 'KOS S.p.A.')) {
+        $parent['@type']     = 'Organization';
+        $parent['name']      = $nome;
+        $parent['legalName'] = $nome;
+        $parent['vatID']     = $cfg('parent_org_vat', 'IT10674520159');
+        $parent['url']       = $cfg('parent_org_url', 'https://kosgroup.com/it');
+    }
+
+    return $pulisci([
+        '@type'              => 'Organization',
+        '@id'                => $ORG_ID,
+        'name'               => $cfg('org_name',  'Anni Azzurri'),
+        'legalName'          => $cfg('org_legal', 'KOS Care S.r.l.'),
+        'vatID'              => $cfg('org_vat',   'IT01148190547'),
+        'url'                => $cfg('org_url',   $CANON . '/'),
+        'logo'               => $logo,
+        // image: foto rappresentativa (aa.org_image) o, in mancanza, il logo per riferimento.
+        'image'              => ($img = $cfg('org_image', ''))
+                                    ? (preg_match('#^https?://#i', $img) ? $img : $CANON . '/' . ltrim($img, '/'))
+                                    : ($logo ? ['@id' => $logo['@id']] : null),
+        'telephone'          => $cfg('org_phone', ''),
+        'sameAs'             => $social,
+        'parentOrganization' => $parent,
+        'address'            => [
+            '@type'           => 'PostalAddress',
+            'streetAddress'   => $cfg('org_street', 'Via Durini, 9'),
+            'postalCode'      => $cfg('org_zip',    '20122'),
+            'addressLocality' => $cfg('org_city',   'Milano'),
+            'addressCountry'  => 'IT',
+        ],
+    ]);
+};
+
+/* --- nodo Person ------------------------------------------------------------
+ * Restituisce null se la risorsa autore non esiste o non è pubblicata:
+ * il chiamante ricade sull'Organization.
+ */
+$persona = function ($idAutore) use (
+    $modx, $CLS_RES, $url, $tv, $righe, $testo, $immagine, $pulisci, $ORG_ID, $FRAG_STR
+) {
+    $idAutore = (int) $idAutore;
+    if ($idAutore <= 0) return null;
+
+    $a = $modx->getObject($CLS_RES, $idAutore);
+    if (!$a || !$a->get('published') || $a->get('deleted')) return null;
+
+    $pagina = $url($idAutore);
+    if ($pagina === '') return null;
+
+    $nome = trim($tv($a, 'aut.given') . ' ' . $tv($a, 'aut.family'));
+    if ($nome === '') $nome = $a->get('pagetitle');
+
+    $p = [
+        '@type'       => 'Person',
+        '@id'         => $pagina . '#person',
+        'name'        => $nome,
+        'givenName'   => $tv($a, 'aut.given'),
+        'familyName'  => $tv($a, 'aut.family'),
+        'url'         => $pagina,
+        'jobTitle'    => $tv($a, 'aut.jobTitle'),
+        'description' => $testo($tv($a, 'aut.bio')),
+        'worksFor'    => ['@id' => $ORG_ID],
+        'image'       => $immagine($tv($a, 'aut.foto')),
+    ];
+
+    // honorificPrefix solo se valorizzato: su Antonella Schiavino resta vuoto.
+    if ($h = $tv($a, 'aut.honorific')) $p['honorificPrefix'] = $h;
+
+    if ($prof = $tv($a, 'aut.professione')) {
+        $p['hasOccupation'] = [
+            '@type' => 'Occupation',
+            'name'  => $prof,
+            'occupationalCategory' => $tv($a, 'aut.professione_cat'),
+        ];
+    }
+
+    if ($k = $righe($tv($a, 'aut.knowsAbout'))) $p['knowsAbout'] = $k;
+
+    // Struttura di afferenza: aggancia la persona all'entità residenza.
+    if ($aff = (int) $tv($a, 'aut.affiliazione')) {
+        if ($u = $url($aff)) $p['affiliation'] = ['@id' => $u . $FRAG_STR];
+    }
+
+    // Iscrizione all'albo: identificativo verificabile, più la credenziale.
+    $albo = $tv($a, 'aut.albo_nome');
+    $num  = $tv($a, 'aut.albo_numero');
+    if ($albo !== '' && $num !== '') {
+        $p['identifier'] = [
+            '@type'      => 'PropertyValue',
+            'propertyID' => $albo,
+            'value'      => $num,
+        ];
+        $p['hasCredential'][] = [
+            '@type'              => 'EducationalOccupationalCredential',
+            'credentialCategory' => 'ProfessionalCertification',
+            'name'               => 'Iscrizione ' . $albo . ', n. ' . $num,
+            'identifier'         => $num,
+            'recognizedBy'       => ['@type' => 'Organization', 'name' => $albo],
+        ];
+        $p['memberOf'] = ['@type' => 'Organization', 'name' => $albo];
+    }
+
+    // Titoli di studio: una riga per titolo, con anno facoltativo dopo "|".
+    foreach ($righe($tv($a, 'aut.credential')) as $c) {
+        $parti = array_map('trim', explode('|', $c, 2));
+        $p['hasCredential'][] = [
+            '@type'              => 'EducationalOccupationalCredential',
+            'credentialCategory' => 'degree',
+            'name'               => $parti[0],
+            'dateCreated'        => $parti[1] ?? null,
+        ];
+    }
+
+    $sameAs = $righe($tv($a, 'aut.sameAs'));
+
+    // Pubblicazione scientifica: è la credenziale più forte, va anche in sameAs.
+    $doi = $tv($a, 'aut.pub_doi');
+    if ($titolo = $tv($a, 'aut.pub_titolo')) {
+        $pub = [
+            '@type'         => 'ScholarlyArticle',
+            'name'          => $titolo,
+            'headline'      => $titolo,   // Google la chiede su ogni *Article (Rich Results Test)
+            'datePublished' => $tv($a, 'aut.pub_data'),
+            'url'           => $tv($a, 'aut.pub_url'),
+            'author'        => ['@id' => $pagina . '#person'],
+        ];
+        if ($doi !== '') {
+            $pub['@id'] = 'https://doi.org/' . $doi;
+            $pub['identifier'] = ['@type' => 'PropertyValue', 'propertyID' => 'DOI', 'value' => $doi];
+            $sameAs[] = 'https://doi.org/' . $doi;
+        }
+        $p['subjectOf'] = $pub;
+    }
+
+    if ($sameAs) $p['sameAs'] = array_values(array_unique($sameAs));
+
+    return $pulisci($p);
+};
+
+/* --- briciole di pane -------------------------------------------------------
+ * Stesse regole dello snippet BreadCrumb del chunk breadcrumb-stripe:
+ * - si risale l'albero MODX fino alla radice (gli URL sono piatti, l'albero no);
+ * - si saltano la home (aggiunta in testa) e le risorse in aa.breadcrumb_exclude come livelli intermedi;
+ *   la pagina corrente si mostra sempre, anche se è nell'elenco (es. /residenze: Anni Azzurri › Residenze;
+ *   AA 8, 24/11), come il chunk breadcrumb-stripe con lo snippet aaBricioleEscludi;
+ * - risorse nascoste o non pubblicate restano, come fa BreadCrumb per default;
+ * - pagetitle per home e livelli intermedi, menutitle (o pagetitle) per la pagina corrente;
+ * - URL assoluti nella forma canonica.
+ * Sulla home non si emette nessuna BreadcrumbList.
+ */
+/* Pagina a cui porta davvero un livello intermedio: i contenitori con FirstChildRedirect reindirizzano alla prima figlia
+ * pubblicata per menuindex (stessa regola dello snippet aaLinkArrivo delle briciole visibili; AA-8, 15/11). */
+$arrivo = function (int $id) use ($modx, $CLS_RES) {
+    for ($giri = 0; $giri < 5; $giri++) {
+        $r = $modx->getObject($CLS_RES, $id);
+        if (!$r || stripos((string) $r->get('content'), 'FirstChildRedirect') === false) break;
+        $c = $modx->newQuery($CLS_RES);
+        $c->where(['parent' => $id, 'published' => 1, 'deleted' => 0]);
+        $c->sortby('menuindex', 'ASC');
+        $c->limit(1);
+        $f = $modx->getObject($CLS_RES, $c);
+        if (!$f) break;
+        $id = (int) $f->get('id');
+    }
+    return $id;
+};
+$briciole = function ($res) use ($modx, $url, $CLS_RES, $START, $ESCLUDI, $CANON, $nomeTesto, $arrivo) {
+    $id = (int) $res->get('id');
+    if ($id === $START) return [];
+
+    $catena = [];
+    $rid = $id;
+    for ($giri = 0; $rid > 0 && $giri < 100; $giri++) {
+        $r = ($rid === $id) ? $res : $modx->getObject($CLS_RES, $rid);
+        if (!$r) break;
+        if ($rid !== $START && ($rid === $id || !in_array($rid, $ESCLUDI, true))) array_unshift($catena, $r);
+        $rid = (int) $r->get('parent');
+    }
+
+    $voci = [];
+    if ($home = $modx->getObject($CLS_RES, $START)) {
+        $voci[] = ['name' => $nomeTesto($home->get('pagetitle')), 'item' => $CANON . '/'];
+    }
+    foreach ($catena as $r) {
+        $corrente = ((int) $r->get('id') === $id);
+        $voci[] = [
+            'name' => $nomeTesto($corrente ? ($r->get('menutitle') ?: $r->get('pagetitle')) : $r->get('pagetitle')),
+            'item' => $url($corrente ? $r->get('id') : $arrivo((int) $r->get('id'))),
+        ];
+    }
+
+    $lista = [];
+    foreach ($voci as $i => $v) {
+        $lista[] = array_filter([
+            '@type'    => 'ListItem',
+            'position' => $i + 1,
+            'name'     => $v['name'],
+            'item'     => $v['item'],
+        ], function ($x) { return $x !== null && $x !== ''; });
+    }
+    return $lista;
+};
+
+/* Nodo BreadcrumbList, o null se non ci sono almeno due livelli. */
+$nodoBriciole = function ($res, $pagina) use ($briciole, $CON_BRICIOLE) {
+    if (!$CON_BRICIOLE) return null;
+    $l = $briciole($res);
+    return count($l) < 2 ? null : [
+        '@type'           => 'BreadcrumbList',
+        '@id'             => $pagina . '#breadcrumb',
+        'itemListElement' => $l,
+    ];
+};
+
+/* Nodo WebSite. */
+$sito = function () use ($cfg, $CANON, $SITE_ID, $ORG_ID, $LANG) {
+    return [
+        '@type'      => 'WebSite',
+        '@id'        => $SITE_ID,
+        'url'        => $cfg('org_url', $CANON . '/'),
+        'name'       => $cfg('org_name', 'Anni Azzurri'),
+        'inLanguage' => $LANG,
+        'publisher'  => ['@id' => $ORG_ID],
+    ];
+};
+
+/* --- riferimenti a patologie e strutture ------------------------------------ */
+$riferimenti = function ($csv, $frammento) use ($url) {
+    $out = [];
+    foreach (array_filter(array_map('trim', explode(',', (string) $csv)), 'strlen') as $id) {
+        if ($u = $url((int) $id)) $out[] = ['@id' => $u . $frammento];
+    }
+    return $out;
+};
+
+/* --- nodo struttura (#localbusiness) — schede residenza -----------------------
+ * Stessa forma del nodo delle schede kosgroup.com (libreria seoSchema, voce KOS-24), con le regole delle residenze:
+ * tipo dalla TV str.tipo (residenze socio-sanitarie: MedicalBusiness + MedicalOrganization, decisione del 29/10),
+ * specialità Geriatric, brand come riferimento all'ente Anni Azzurri (convenzione: brand solo sulle residenze),
+ * parentOrganization verso KOS Care (#organization). Nessun dato inventato: un campo vuoto non esce, e senza
+ * indirizzo (str.via) il nodo non esce affatto.
+ */
+$TIPI_STRUTTURA = ['MedicalBusiness', 'MedicalOrganization', 'MedicalClinic', 'Hospital', 'LocalBusiness'];
+$SPECIALITA = ['Geriatric', 'Psychiatric', 'Neurologic', 'Physiotherapy', 'Nursing', 'PrimaryCare'];
+$GIORNI = ['Mo' => 'Monday', 'Tu' => 'Tuesday', 'We' => 'Wednesday', 'Th' => 'Thursday', 'Fr' => 'Friday',
+    'Sa' => 'Saturday', 'Su' => 'Sunday'];
+/** "Mo-Fr 08:00-13:00,14:00-18:00" (una riga per gruppo di giorni) → OpeningHoursSpecification. */
+$orari = function ($testo) use ($righe, $GIORNI) {
+    $out = [];
+    $chiavi = array_keys($GIORNI);
+    foreach ($righe($testo) as $r) {
+        if (!preg_match('/^([A-Za-z,\- ]+?)\s+(\d{1,2}:\d{2}\s*-\s*\d{1,2}:\d{2}(?:\s*,\s*\d{1,2}:\d{2}\s*-\s*\d{1,2}:\d{2})*)$/', $r, $m)) continue;
+        $giorni = [];
+        foreach (preg_split('/\s*,\s*/', trim($m[1])) as $g) {
+            $g = preg_split('/\s*-\s*/', $g);
+            $a = array_search(ucfirst(strtolower($g[0])), $chiavi, true);
+            $b = isset($g[1]) ? array_search(ucfirst(strtolower($g[1])), $chiavi, true) : $a;
+            if ($a === false || $b === false || $b < $a) continue;
+            for ($i = $a; $i <= $b; $i++) $giorni[] = 'https://schema.org/' . $GIORNI[$chiavi[$i]];
+        }
+        if (!$giorni) continue;
+        foreach (preg_split('/\s*,\s*/', $m[2]) as $fascia) {
+            [$da, $a2] = array_map(function ($x) { return sprintf('%05s', trim($x)); }, explode('-', $fascia));
+            $out[] = ['@type' => 'OpeningHoursSpecification', 'dayOfWeek' => array_values(array_unique($giorni)),
+                      'opens' => $da, 'closes' => $a2];
+        }
+    }
+    return $out;
+};
+/** "2026-12-25 chiuso" | "2026-12-24 08:00-12:00" | "2026-08-10/2026-08-21 chiuso". */
+$orariSpeciali = function ($testo) use ($righe) {
+    $out = [];
+    foreach ($righe($testo) as $r) {
+        if (!preg_match('#^(\d{4}-\d{2}-\d{2})(?:/(\d{4}-\d{2}-\d{2}))?\s+(chiuso|closed|(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2}))$#i', $r, $m)) continue;
+        $chiuso = !isset($m[4]) || $m[4] === '';
+        $out[] = ['@type' => 'OpeningHoursSpecification', 'validFrom' => $m[1], 'validThrough' => (isset($m[2]) && $m[2] !== '') ? $m[2] : $m[1],
+                  'opens' => $chiuso ? '00:00' : sprintf('%05s', $m[4]), 'closes' => $chiuso ? '00:00' : sprintf('%05s', $m[5])];
+    }
+    return $out;
+};
+/** La pagina è una scheda residenza con il nodo acceso? */
+$eScheda = function ($r) use ($TPL_STRUTTURA, $STR_ON, $tv) {
+    if (!$STR_ON || !$r || !$r->get('published') || $r->get('deleted')) return false;
+    $t = $r->getOne('Template');
+    if (!$t || !in_array($t->get('templatename'), $TPL_STRUTTURA, true)) return false;
+    return (string) $tv($r, 'str.via') !== '';
+};
+/** Foto della residenza: TV indicata in aa.struttura_tv_immagine (imgHeader), altrimenti la foto storica della scheda
+ *  assets/img/rsa/<alias>.jpg (la stessa dell'og:image di head-rsa), altrimenti la prima foto locale del contenuto;
+ *  solo se il file esiste. */
+$immagineScheda = function ($r) use ($tv, $cfg, $immagine) {
+    $p = (string) $tv($r, $cfg('struttura_tv_immagine', 'imgHeader'));
+    if ($p === '') {
+        $f = 'assets/img/rsa/' . $r->get('alias') . '.jpg';
+        if (is_readable(MODX_BASE_PATH . $f)) $p = $f;
+    }
+    // ultima possibilità: la prima foto locale del contenuto (galleria), così ogni voce del carosello ha un'immagine
+    if ($p === '' && preg_match('~<img\b[^>]*\bsrc="/?(assets/[^"?#]+\.(?:jpe?g|png|webp))"~i', (string) $r->get('content'), $m)
+        && is_readable(MODX_BASE_PATH . $m[1])) $p = $m[1];
+    return $p !== '' ? $immagine($p) : null;
+};
+/** Fascia di prezzo dalla sezione Tariffe della scheda («La retta giornaliera … parte da 106,00 €» → «Da 106,00 €»), solo
+ *  se il testo è nella pagina. Breve perché i caroselli di Google la vogliono sotto i 12 caratteri (attività locali: 100).
+ *  Nessuna retta nel testo = nessun priceRange. */
+$retta = function ($r) use ($testo) {
+    $t = $testo((string) $r->get('content'));
+    if (!preg_match('/retta giornaliera.{0,120}?(parte da|a partire da|è di)\s*(\d{2,4}(?:[.,]\d{1,2})?)\s*(?:€|euro)/iu', $t, $m)) return null;
+    $da = (mb_stripos($m[1], 'è di') === 0) ? '' : 'Da ';   // «è di 64,86 €» = retta unica
+    // breve: i caroselli di attività locali accettano priceRange sotto i 12 caratteri («Da 106,00 €»)
+    return trim($da . str_replace('.', ',', $m[2]) . ' €');
+};
+/* --- reparti nella sede di una residenza (centri diurni, hospice, appartamenti; sprint 3, 17/11) -----------
+ * Una scheda con la TV str.sede (alias/uri o id della residenza che la ospita) non è una struttura autonoma: diventa
+ * {URL scheda}#department (convenzione «reparti nella stessa sede», come Villa Margherita su kosgroup.com), con
+ * parentOrganization verso il #localbusiness della residenza, che a sua volta la elenca in department. Nessuna di queste
+ * unità ha un profilo Google proprio (export Yext del 6/11: nessuna entità con il loro URL). */
+$FRAG_REPARTO = '#department';
+$TIPI_REPARTO = ['MedicalOrganization', 'LocalBusiness'];
+$sedeDi = function ($r) use ($modx, $tv, $CLS_RES) {
+    $v = trim((string) $tv($r, 'str.sede'));
+    if ($v === '') return null;
+    $id = ctype_digit($v) ? (int) $v : (int) $modx->findResource(trim($v, '/'));
+    $s = $id ? $modx->getObject($CLS_RES, $id) : null;
+    return ($s && $s->get('published') && !$s->get('deleted')) ? $s : null;
+};
+$repartiDi = function ($r) use ($modx, $CLS_TVR, $CLS_RES, $url, $FRAG_REPARTO) {
+    static $mappa = null;
+    if ($mappa === null) {
+        $mappa = [];
+        $cls = class_exists('\MODX\Revolution\modTemplateVar') ? \MODX\Revolution\modTemplateVar::class : 'modTemplateVar';
+        $tvo = $modx->getObject($cls, ['name' => 'str.sede']);
+        if ($tvo) {
+            foreach ($modx->getCollection($CLS_TVR, ['tmplvarid' => $tvo->get('id')]) as $v) {
+                $val = trim((string) $v->get('value'));
+                if ($val === '') continue;
+                $sid = ctype_digit($val) ? (int) $val : (int) $modx->findResource(trim($val, '/'));
+                $u = $modx->getObject($CLS_RES, (int) $v->get('contentid'));
+                if ($sid && $u && $u->get('published') && !$u->get('deleted')) $mappa[$sid][] = (int) $u->get('id');
+            }
+        }
+    }
+    $out = [];
+    foreach ($mappa[(int) $r->get('id')] ?? [] as $id) { $u = $url($id); if ($u !== '') $out[] = ['@id' => $u . $FRAG_REPARTO]; }
+    return $out;
+};
+$nodoReparto = function ($r, $sede) use ($url, $tv, $csv, $testo, $pulisci, $orari, $FRAG_STR, $FRAG_REPARTO, $TIPI_REPARTO) {
+    $pagina = $url($r->get('id'));
+    $paginaSede = $url($sede->get('id'));
+    if ($pagina === '' || $paginaSede === '') return null;
+    $tipi = array_values(array_intersect($csv($tv($r, 'str.tipo')), $TIPI_REPARTO)) ?: ['MedicalOrganization'];
+    return $pulisci([
+        '@type'       => count($tipi) === 1 ? $tipi[0] : $tipi,
+        '@id'         => $pagina . $FRAG_REPARTO,
+        'name'        => $tv($r, 'str.nome') ?: $r->get('pagetitle'),
+        'url'         => $pagina,
+        'description' => $testo($r->get('description') ?: $r->get('introtext')),
+        'telephone'   => $tv($r, 'str.telefono'),
+        'email'       => $tv($r, 'str.email'),
+        'address'     => (string) $tv($r, 'str.via') === '' ? null : [
+            '@type'           => 'PostalAddress',
+            'streetAddress'   => $tv($r, 'str.via'),
+            'postalCode'      => $tv($r, 'str.cap'),
+            'addressLocality' => $tv($r, 'str.citta'),
+            'addressRegion'   => strtoupper((string) $tv($r, 'str.provincia')),
+            'addressCountry'  => 'IT',
+        ],
+        'openingHoursSpecification' => $orari($tv($r, 'str.orari')),
+        'parentOrganization' => ['@id' => $paginaSede . $FRAG_STR],
+    ]);
+};
+$nodoStruttura = function ($r) use ($url, $tv, $csv, $righe, $testo, $pulisci, $orari, $orariSpeciali, $immagineScheda, $retta,
+                                    $TIPI_STRUTTURA, $SPECIALITA, $FRAG_STR, $ORG_ID, $cfg, $sedeDi, $nodoReparto, $repartiDi) {
+    if ($sede = $sedeDi($r)) return $nodoReparto($r, $sede);
+    $pagina = $url($r->get('id'));
+    if ($pagina === '' || (string) $tv($r, 'str.via') === '') return null;
+    $tipi = array_values(array_intersect($csv($tv($r, 'str.tipo')), $TIPI_STRUTTURA)) ?: ['MedicalBusiness', 'MedicalOrganization'];
+    // indirizzo, orari e mappa sono proprietà delle attività locali: un tipo solo organizzativo si affianca a MedicalBusiness
+    if (!array_intersect($tipi, ['MedicalBusiness', 'MedicalClinic', 'Hospital', 'LocalBusiness'])) $tipi[] = 'MedicalBusiness';
+    $nome  = $tv($r, 'str.nome') ?: $r->get('pagetitle');
+    $lat   = str_replace(',', '.', (string) $tv($r, 'str.lat'));
+    $lng   = str_replace(',', '.', (string) $tv($r, 'str.lng'));
+    $place = $tv($r, 'str.place_id');
+    $marchio = (string) $tv($r, 'str.marchio');
+    $pren  = (string) $tv($r, 'str.prenotazione');
+    return $pulisci([
+        '@type'       => count($tipi) === 1 ? $tipi[0] : $tipi,
+        '@id'         => $pagina . $FRAG_STR,
+        'name'        => $nome,
+        'url'         => $pagina,
+        'description' => $testo($r->get('description') ?: $r->get('introtext')),
+        'image'       => $immagineScheda($r),
+        'priceRange'  => $retta($r),
+        'telephone'   => $tv($r, 'str.telefono'),
+        'faxNumber'   => $tv($r, 'str.fax'),
+        'email'       => $tv($r, 'str.email'),
+        'address'     => [
+            '@type'           => 'PostalAddress',
+            'streetAddress'   => $tv($r, 'str.via'),
+            'postalCode'      => $tv($r, 'str.cap'),
+            'addressLocality' => $tv($r, 'str.citta'),
+            'addressRegion'   => strtoupper((string) $tv($r, 'str.provincia')),
+            'addressCountry'  => 'IT',
+        ],
+        'geo'         => (is_numeric($lat) && is_numeric($lng))
+                            ? ['@type' => 'GeoCoordinates', 'latitude' => (float) $lat, 'longitude' => (float) $lng] : null,
+        'hasMap'      => $place ? 'https://www.google.com/maps/search/?api=1&query=' . rawurlencode($nome)
+                            . '&query_place_id=' . rawurlencode($place) : null,
+        'openingHoursSpecification'        => $orari($tv($r, 'str.orari')),
+        'specialOpeningHoursSpecification' => $orariSpeciali($tv($r, 'str.orari_speciali')),
+        'medicalSpecialty' => array_values(array_intersect($csv($tv($r, 'str.specialita')), $SPECIALITA)),
+        // brand solo sulle residenze, come riferimento all'ente Anni Azzurri (convenzione degli identificativi)
+        'brand'       => (stripos($marchio, 'anni azzurri') !== false) ? ['@id' => $ORG_ID] : null,
+        'potentialAction' => preg_match('#^https://#', $pren) ? [
+            '@type'  => 'ReserveAction',
+            'name'   => 'Prenota una visita',
+            'target' => ['@type' => 'EntryPoint', 'urlTemplate' => $pren,
+                         'actionPlatform' => ['https://schema.org/DesktopWebPlatform', 'https://schema.org/MobileWebPlatform']],
+        ] : null,
+        'sameAs'      => array_values(array_filter($righe($tv($r, 'str.sameAs')), function ($u) { return preg_match('#^https://#', $u); })),
+        'department'  => $repartiDi($r) ?: null,
+        'parentOrganization' => ['@id' => $ORG_ID],
+    ]);
+};
+
+/* =============================================================================
+ * ESECUZIONE
+ * ========================================================================== */
+
+$type   = strtolower((string) $modx->getOption('type', $scriptProperties, 'auto'));
+$pretty = (int) $modx->getOption('pretty', $scriptProperties, 0);
+$res    = $modx->resource;
+if (!$res) return '';
+
+$flags = JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE;
+if ($pretty) $flags |= JSON_PRETTY_PRINT;
+
+$paginaCorrente = $url($res->get('id'));
+if ((int) $res->get('id') === $START) $paginaCorrente = $CANON . '/';
+
+if ($type === 'auto') {
+    $tpl = $res->getOne('Template');
+    $nomeTpl = $tpl ? $tpl->get('templatename') : '';
+    $type = in_array($nomeTpl, $TPL_ARTICOLO, true) ? 'article'
+          : (in_array($nomeTpl, $TPL_PROFILO, true) ? 'profile' : 'page');
+}
+/* Nodi propri di una pagina (es. Service e FAQPage dello Sportello sociale) dal chunk statico schema-<id>, se esiste:
+ * entrano nello stesso @graph invece di un secondo blocco JSON-LD (regola: un solo @graph per pagina). */
+$nodiPagina = [];
+$CLS_CHUNK = class_exists('\MODX\Revolution\modChunk') ? \MODX\Revolution\modChunk::class : 'modChunk';
+if ($ch = $modx->getObject($CLS_CHUNK, ['name' => 'schema-' . (int) $res->get('id')])) {
+    $raw = preg_replace('#^\s*<script[^>]*>|</script>\s*$#i', '', trim((string) $ch->get('snippet')));
+    $dec = json_decode((string) $raw, true);
+    if (is_array($dec)) {
+        $lista = isset($dec['@graph']) ? $dec['@graph'] : (isset($dec['@type']) ? [$dec] : $dec);
+        foreach ((array) $lista as $nodo) if (is_array($nodo)) { unset($nodo['@context']); $nodiPagina[] = $nodo; }
+    }
+}
+$json = function ($grafo) use ($flags, $nodiPagina) {
+    $grafo = array_merge(array_values(array_filter($grafo)), $nodiPagina);
+    $s = json_encode(['@context' => 'https://schema.org', '@graph' => $grafo], $flags);
+    // «@» negli indirizzi email e negli URL scritta \u0040: EMO (offuscamento delle email) non la tocca, e il JSON resta
+    // valido e leggibile (stessa correzione della libreria comune seoSchema, verifica del 6/11).
+    $s = preg_replace('~(?<=[-!#$%&\'*+/=?^_`{|}\~0-9A-Za-z.])@~', '\\u0040', $s);
+    return '<script type="application/ld+json">' . $s . '</script>';
+};
+
+/* --- autore della pagina corrente ------------------------------------------ */
+$idAutore = (int) $modx->getOption('author', $scriptProperties, $tv($res, 'aut.ref'));
+$autore   = $persona($idAutore);
+
+/* ------------------------------------------------------- firma e box autore
+ * Solo sugli articoli firmati (aut.ref verso una pagina autore pubblicata): sugli articoli della redazione
+ * non esce markup (lavoro extra aa-firma-autore, 3/11/2026); &redazione=`1` rimette la riga «A cura della Redazione».
+ *   &type=`firma`  riga sotto il titolo: «Nome — ruolo», con link alla pagina autore
+ *   &type=`box`    box a fine articolo
+ * Box, firma e JSON-LD leggono lo stesso nodo $persona: nome e ruolo sono identici carattere per carattere.
+ * Link interni nella forma /percorso (regola dei link assoluti del repository): sullo stage restano sullo stage.
+ */
+if ($type === 'box' || $type === 'firma') {
+    $e = function ($s) { return htmlspecialchars((string) $s, ENT_QUOTES, 'UTF-8'); };
+    $percorso = function ($u) { return (string) (parse_url((string) $u, PHP_URL_PATH) ?: '/'); };
+
+    if (!$autore) {
+        if ($type === 'box' && (int) $modx->getOption('redazione', $scriptProperties, 0)) {
+            return '<div class="box-autore box-autore--redazione">'
+                 . '<p class="box-autore__firma">A cura della Redazione ' . $e($cfg('org_name', 'Anni Azzurri')) . '</p>'
+                 . '</div>';
+        }
+        if ($type === 'firma') {
+            // Firma della redazione (3/11): stesso formato della firma d'autore, nome non cliccabile (nessuna pagina
+            // della redazione), monogramma AA della favicon. Nome = nome dell'ente nel dato strutturato (author).
+            $logo = (string) $cfg('redazione_logo', '/dist/assets/android-chrome-192x192.png');
+            return '<span class="firma-autore firma-autore--redazione">'
+                 . '<span class="firma-autore__foto"><img class="firma-autore__img" src="' . $e($logo) . '" alt="" width="40" height="40"></span>'
+                 . '<span class="firma-autore__testo"><span class="firma-autore__nome">Redazione ' . $e($cfg('org_name', 'Anni Azzurri')) . '</span>'
+                 . '<span class="firma-autore__ruolo">' . $e($cfg('redazione_sottotitolo', 'Gruppo KOS')) . '</span></span></span>';
+        }
+        return '';
+    }
+    $link = $percorso($autore['url']);
+
+    if ($type === 'firma') {
+        // Firma sotto il titolo (3/11, modello chiesto dal cliente): foto tonda piccola, nome con link, ruolo.
+        // Foto senza caricamento differito (è sopra la piega) e senza priorità alta (l'immagine principale è la foto dell'articolo).
+        $foto = '';
+        if (!empty($autore['image']['url'])) {
+            $src = $percorso($autore['image']['url']);
+            $clsSnippet = class_exists('\MODX\Revolution\modSnippet') ? \MODX\Revolution\modSnippet::class : 'modSnippet';
+            $foto = $modx->getCount($clsSnippet, ['name' => 'immagine'])
+                ? (string) $modx->runSnippet('immagine', ['src' => $src, 'alt' => '', 'class' => 'firma-autore__img', 'sizes' => '40px', 'differita' => 0])
+                : '';
+            if ($foto === '') $foto = '<img class="firma-autore__img" src="' . $e($src) . '" alt="" width="40" height="40">';
+            $foto = '<a class="firma-autore__foto" href="' . $e($link) . '" tabindex="-1" aria-hidden="true">' . $foto . '</a>';
+        }
+        return '<span class="firma-autore">' . $foto . '<span class="firma-autore__testo">'
+             . '<a class="firma-autore__nome" href="' . $e($link) . '">' . $e($autore['name']) . '</a>'
+             . (!empty($autore['jobTitle']) ? '<span class="firma-autore__ruolo">' . $e($autore['jobTitle']) . '</span>' : '')
+             . '</span></span>';
+    }
+
+    $h = '<aside class="box-autore" aria-label="Chi firma l\'articolo">';
+    if (!empty($autore['image']['url'])) {
+        // Foto con lo snippet immagine (WebP, srcset), se installato; altrimenti <img> semplice.
+        $src = $percorso($autore['image']['url']);
+        $clsSnippet = class_exists('\MODX\Revolution\modSnippet') ? \MODX\Revolution\modSnippet::class : 'modSnippet';
+        $foto = $modx->getCount($clsSnippet, ['name' => 'immagine'])
+            ? (string) $modx->runSnippet('immagine', ['src' => $src, 'alt' => $autore['name'], 'class' => 'box-autore__foto', 'sizes' => '120px'])
+            : '';
+        if ($foto === '') {
+            $foto = '<img class="box-autore__foto" src="' . $e($src) . '" alt="' . $e($autore['name']) . '" width="120" height="120" loading="lazy">';
+        }
+        $h .= '<div class="box-autore__media">' . $foto . '</div>';
+    }
+    $h .= '<div class="box-autore__testo">';
+    $h .= '<p class="box-autore__nome"><a href="' . $e($link) . '">' . $e($autore['name']) . '</a></p>';
+    if (!empty($autore['jobTitle'])) {
+        $h .= '<p class="box-autore__ruolo">' . $e($autore['jobTitle']) . '</p>';
+    }
+    // Box sintetico (3/11): foto, nome, ruolo, biografia breve (aut.bio, 2-3 frasi) e link alla scheda. Iscrizione
+    // all'albo, competenze, pubblicazioni e profili esterni stanno nella pagina autore e nel nodo Person.
+    if (!empty($autore['description'])) {
+        $h .= '<p class="box-autore__bio">' . $e($autore['description']) . '</p>';
+    }
+    $h .= '<p class="box-autore__profilo"><a href="' . $e($link) . '">Chi è ' . $e($autore['name']) . '</a></p>';
+    $h .= '</div></aside>';
+
+    // Revisione clinica, se presente.
+    if ($revisore = $persona((int) $tv($res, 'rev.ref'))) {
+        $quando = $tv($res, 'rev.data');
+        $h .= '<p class="box-revisione">Revisione clinica a cura di '
+            . '<a href="' . $e($percorso($revisore['url'])) . '">' . $e($revisore['name']) . '</a>'
+            . (!empty($revisore['jobTitle']) ? ', ' . $e($revisore['jobTitle']) : '')
+            . ($quando ? ' - ' . $e($quando) : '') . '</p>';
+    }
+
+    return $h;
+}
+
+/* ------------------------------------------------------------ pagina autore */
+if ($type === 'profile') {
+    $io = $persona($res->get('id'));
+    if (!$io) return '';
+
+    // Articoli firmati: risorse la cui TV aut.ref vale l'id di questa pagina.
+    $firmati = [];
+    if ($tvRef = $modx->getObject($CLS_TV, ['name' => 'aut.ref'])) {
+        $legami = $modx->getCollection($CLS_TVR, [
+            'tmplvarid' => $tvRef->get('id'),
+            'value'     => (string) $res->get('id'),
+        ]);
+        $ids = [];
+        foreach ($legami as $l) $ids[] = (int) $l->get('contentid');
+
+        if ($ids) {
+            $q = $modx->newQuery($CLS_RES);
+            $q->where(['id:IN' => $ids, 'published' => 1, 'deleted' => 0]);
+            $q->sortby('publishedon', 'DESC');
+            foreach ($modx->getCollection($CLS_RES, $q) as $r) {
+                if ($u = $url($r->get('id'))) $firmati[] = ['@id' => $u . '#article'];
+            }
+        }
+    }
+
+    $grafo = [
+        $pulisci([
+            '@type'      => 'ProfilePage',
+            '@id'        => $paginaCorrente . '#webpage',
+            'url'        => $paginaCorrente,
+            'name'       => $titoloNodo($res),
+            'inLanguage' => $LANG_PAGINA,
+            'mainEntity' => ['@id' => $paginaCorrente . '#person'],
+            'hasPart'    => $firmati,
+            'isPartOf'   => ['@id' => $SITE_ID],
+            'breadcrumb' => ['@id' => $paginaCorrente . '#breadcrumb'],
+        ]),
+        $io,
+        $nodoBriciole($res, $paginaCorrente),
+        $sito(),
+        $org(),
+    ];
+    return $json($grafo);
+}
+
+/* --------------------------------------------------------- pagina generica */
+/* --- servizi senza sede propria (RSA Aperta, cure domiciliari; sprint 3, 17/11) --------------------------------
+ * Impostazione aa.servizi (JSON): { "<uri pagina>": { "nome", "tipo" (serviceType), "id" (uri della pagina principale,
+ * se più pagine descrivono lo stesso servizio), "area": [ {"tipo": "State|City|AdministrativeArea", "nome"} ],
+ * "erogatori": [alias delle residenze] (vuoto = l'ente), "telefono" } }. Nodo Service {URL}#service con provider verso i
+ * #localbusiness delle residenze che lo erogano (convenzione del progetto), nessun nodo struttura né scheda Google. */
+$SERVIZI = json_decode((string) $cfg('servizi', ''), true) ?: [];
+$nodoServizio = function ($res) use ($SERVIZI, $modx, $url, $pulisci, $testo, $ORG_ID, $FRAG_STR, $CANON) {
+    $s = $SERVIZI[(string) $res->get('uri')] ?? null;
+    if (!is_array($s)) return null;
+    $principale = !empty($s['id']) ? rtrim($CANON, '/') . '/' . ltrim((string) $s['id'], '/') : $url($res->get('id'));
+    $desc = $res;
+    if (!empty($s['id']) && ($idP = (int) $modx->findResource(trim((string) $s['id'], '/'))) && ($rp = $modx->getObject(\MODX\Revolution\modResource::class, $idP))) $desc = $rp;
+    $erogatori = [];
+    foreach ((array) ($s['erogatori'] ?? []) as $alias) {
+        $id = (int) $modx->findResource(trim((string) $alias, '/'));
+        if ($id && ($u = $url($id)) !== '') $erogatori[] = ['@id' => $u . $FRAG_STR];
+    }
+    $aree = [];
+    foreach ((array) ($s['area'] ?? []) as $a) {
+        if (!empty($a['nome'])) $aree[] = ['@type' => $a['tipo'] ?? 'AdministrativeArea', 'name' => $a['nome']];
+    }
+    return $pulisci([
+        '@type'       => 'Service',
+        '@id'         => $principale . '#service',
+        'name'        => $s['nome'] ?? $res->get('pagetitle'),
+        'serviceType' => $s['tipo'] ?? null,
+        'url'         => $principale,
+        // stesso @id su più pagine (RSA Aperta): descrizione della pagina principale, così il nodo è identico ovunque
+        'description' => $testo($desc->get('description') ?: $desc->get('introtext')),
+        'provider'    => $erogatori ? (count($erogatori) === 1 ? $erogatori[0] : $erogatori) : ['@id' => $ORG_ID],
+        'areaServed'  => $aree ? (count($aree) === 1 ? $aree[0] : $aree) : null,
+        'telephone'   => $s['telefono'] ?? null,
+    ]);
+};
+if ($type === 'page') {
+    $tpl = $res->getOne('Template');
+    $nomeTpl = $tpl ? $tpl->get('templatename') : '';
+    $home = ((int) $res->get('id') === $START);
+    $br = $nodoBriciole($res, $paginaCorrente);
+
+    $struttura = $eScheda($res) ? $nodoStruttura($res) : null;
+    $servizio = $struttura ? null : $nodoServizio($res);
+    $lista = null;
+    if ($STR_ON && in_array($nomeTpl, $TPL_LISTA, true)) {
+        $q = $modx->newQuery($CLS_RES, ['parent' => (int) $res->get('id'), 'published' => 1, 'deleted' => 0, 'hidemenu' => 0]);
+        $q->sortby('menuindex', 'ASC');
+        $voci = [];
+        foreach ($modx->getCollection($CLS_RES, $q) as $figlia) {
+            if (!$eScheda($figlia) || $sedeDi($figlia) || !($n = $nodoStruttura($figlia))) continue;
+            // voce del carosello (Google, attività locali): un solo tipo LocalBusiness, name, url, image obbligatori.
+            // Il nodo completo resta sulla scheda: qui una sintesi senza @id, per non fondersi con il nodo a due tipi
+            // (MedicalOrganization non è un'attività locale e il carosello non riconosce la voce).
+            $voci[] = ['@type' => 'ListItem', 'position' => count($voci) + 1, 'item' => $pulisci([
+                '@type'      => 'MedicalBusiness',
+                'name'       => $n['name'] ?? null,
+                'url'        => $n['url'] ?? null,
+                'image'      => $n['image'] ?? null,
+                'priceRange' => $n['priceRange'] ?? null,
+                'telephone'  => $n['telephone'] ?? null,
+                'address'    => $n['address'] ?? null,
+                'geo'        => $n['geo'] ?? null,
+                'medicalSpecialty' => $n['medicalSpecialty'] ?? null,
+            ])];
+        }
+        if ($voci) {
+            $lista = [
+                '@type'           => 'ItemList',
+                '@id'             => $paginaCorrente . '#itemlist',
+                'name'            => $titoloNodo($res),
+                'url'             => $paginaCorrente,
+                'numberOfItems'   => count($voci),
+                'itemListOrder'   => 'https://schema.org/ItemListUnordered',
+                'itemListElement' => $voci,
+            ];
+        }
+    }
+    $pagina = $pulisci([
+        '@type'       => in_array($nomeTpl, $TPL_COLLEZIONE, true) ? 'CollectionPage' : 'WebPage',
+        '@id'         => $paginaCorrente . '#webpage',
+        'url'         => $paginaCorrente,
+        'name'        => $titoloNodo($res),
+        'description' => $res->get('description'),
+        'inLanguage'  => $LANG_PAGINA,
+        'isPartOf'    => ['@id' => $SITE_ID],
+        'about'       => $home ? ['@id' => $ORG_ID] : null,
+        'mainEntity'  => $struttura ? ['@id' => $struttura['@id']] : ($servizio ? ['@id' => $servizio['@id']] : ($lista ? ['@id' => $lista['@id']] : null)),
+        'breadcrumb'  => $br ? ['@id' => $paginaCorrente . '#breadcrumb'] : null,
+        'dateModified'=> $data($res->get('editedon') ?: $res->get('publishedon')),
+    ]);
+    return $json([$pagina, $struttura, $servizio, $lista, $br, $sito(), $org()]);
+}
+
+/* ---------------------------------------------------------------- articolo */
+
+$sanitario = (int) $tv($res, 'art.medical') === 1;
+$revisore  = $persona((int) $tv($res, 'rev.ref'));
+
+$articolo = [
+    '@type'            => 'Article',
+    '@id'              => $paginaCorrente . '#article',
+    'isPartOf'         => ['@id' => $paginaCorrente . '#webpage'],
+    'mainEntityOfPage' => ['@id' => $paginaCorrente . '#webpage'],
+    'headline'         => $titoloNodo($res),
+    'description'      => $res->get('description') ?: $res->get('introtext'),
+    // Immagine dell'articolo: TV indicata in aa.article_tv_immagine (default newsImage, quella del template
+    // interna-articolo); art.immagine resta come prima scelta se un giorno viene creata (3/11: mancava l'image).
+    'image'            => $immagine($tv($res, 'art.immagine') ?: $tv($res, $cfg('article_tv_immagine', 'newsImage'))),
+    'datePublished'    => $data($res->get('publishedon')),
+    // Con la pubblicazione programmata editedon può precedere publishedon: mai una modifica prima della pubblicazione.
+    'dateModified'     => (function () use ($res, $data) {
+        $ts = fn($v) => $v ? (is_numeric($v) ? (int) $v : (int) strtotime((string) $v)) : 0;
+        $m = max($ts($res->get('editedon')), $ts($res->get('publishedon')));
+        return $m > 0 ? $data($m) : null;
+    })(),
+    'inLanguage'       => $LANG,
+    // Qui sta la regola: niente autore assegnato = firma dell'organizzazione.
+    'author'           => ['@id' => $autore ? $autore['@id'] : $ORG_ID],
+    'publisher'        => ['@id' => $ORG_ID],
+    'about'            => $riferimenti($tv($res, 'art.about'), $FRAG_PAT),
+    'mentions'         => $riferimenti($tv($res, 'art.mentions'), $FRAG_STR),
+];
+if ($revisore) $articolo['reviewedBy'] = ['@id' => $revisore['@id']];
+
+$pagina = [
+    '@type'      => $sanitario ? 'MedicalWebPage' : 'WebPage',
+    '@id'        => $paginaCorrente . '#webpage',
+    'url'        => $paginaCorrente,
+    'name'       => $titoloNodo($res),
+    'inLanguage' => $LANG,
+    'isPartOf'   => ['@id' => $SITE_ID],
+];
+if ($nodoBr = $nodoBriciole($res, $paginaCorrente)) $pagina['breadcrumb'] = ['@id' => $paginaCorrente . '#breadcrumb'];
+if ($sanitario) {
+    $pagina['audience'] = ['@type' => 'MedicalAudience', 'audienceType' => 'Patient'];
+    if ($rev = $tv($res, 'rev.data')) $pagina['lastReviewed'] = $rev;
+}
+
+$grafo = [$pulisci($articolo), $pulisci($pagina)];
+
+// Il nodo Person va ripetuto per intero: i crawler degli assistenti AI
+// raramente seguono un @id verso un'altra pagina.
+if ($autore)  $grafo[] = $autore;
+if ($revisore) $grafo[] = $revisore;
+
+$grafo[] = $nodoBr;
+$grafo[] = $sito();
+$grafo[] = $org();
+
+return $json($grafo);
