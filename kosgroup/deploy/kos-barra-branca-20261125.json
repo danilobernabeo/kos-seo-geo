@@ -1,0 +1,6 @@
+{
+  "nome": "Barra di prenotazione delle schede: proprietà facoltativa &branca= (filtro per specialità, inclusa nella chiave della cache kos_barra/). Senza la proprietà HTML identico al byte (verifica-barra.php dell'extra kos-clinica-dentale-villa-dei-pini). Modifica autorizzata da Danilo il 25/11 per la scheda Clinica Dentale Villa dei Pini.",
+  "elements": [
+    { "type": "snippet", "name": "barraPrenotazioneDBmedicoPrestazione", "file": "kosgroup/elements/snippets/barraPrenotazioneDBmedicoPrestazione.php", "baseline": "kosgroup/baseline/snippets/barraPrenotazioneDBmedicoPrestazione.php" }
+  ]
+}

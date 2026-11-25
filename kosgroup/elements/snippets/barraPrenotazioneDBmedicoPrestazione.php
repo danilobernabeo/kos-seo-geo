@@ -27,7 +27,23 @@ if (empty($ist)) {
  * Si salvano solo le uscite riuscite (non i messaggi "Nessuna prestazione" o "Errore database").
  */
 $barraTtl = (int) $modx->getOption('kosseogeo.barra_cache_ttl', null, 3600);
-$barraChiave = 'kos_barra/' . (int) $modx->resource->get('id') . '-' . md5($ist . '|' . $centroNome);
+
+/*
+ * Filtro facoltativo per specialità (25/11/2026, scheda Clinica Dentale Villa dei Pini): &branca=`Odontoiatria`, anche
+ * più nomi separati da virgola, confrontati con kos_branche.branca senza distinzione tra maiuscole e minuscole. Restano
+ * solo quelle specialità, con le loro prestazioni e i loro medici. Senza la proprietà nulla cambia (stessa chiave della
+ * cache, stesso HTML); con la proprietà la chiave della cache la include.
+ */
+$brancaFiltro = [];
+foreach (explode(',', (string) $modx->getOption('branca', $scriptProperties, '')) as $brancaNome) {
+    $brancaNome = mb_strtolower(trim($brancaNome), 'UTF-8');
+    if ($brancaNome !== '') $brancaFiltro[$brancaNome] = true;
+}
+$brancaTieni = function ($nome) use ($brancaFiltro) {
+    return isset($brancaFiltro[mb_strtolower(trim((string) $nome), 'UTF-8')]);
+};
+$barraChiave = 'kos_barra/' . (int) $modx->resource->get('id') . '-' . md5($ist . '|' . $centroNome
+    . ($brancaFiltro ? '|branca:' . implode(',', array_keys($brancaFiltro)) : ''));
 if ($barraTtl > 0) {
     $barraHtml = $modx->cacheManager->get($barraChiave);
     if (is_string($barraHtml) && $barraHtml !== '') {
@@ -58,7 +74,10 @@ try {
     ");
     $stmtBranche->execute([$ist]);
     $brancheDb = $stmtBranche->fetchAll(PDO::FETCH_ASSOC);
-    
+    if ($brancaFiltro) {
+        $brancheDb = array_values(array_filter($brancheDb, function ($b) use ($brancaTieni) { return $brancaTieni($b['branca']); }));
+    }
+
     if (empty($brancheDb)) {
         return '<div class="alert alert-warning">Nessuna prestazione disponibile.</div>';
     }
@@ -101,7 +120,13 @@ try {
     ");
     $stmtMedPrest->execute([$ist]);
     $mappingDb = $stmtMedPrest->fetchAll(PDO::FETCH_ASSOC);
-    
+    if ($brancaFiltro) {
+        $perTipologia = function ($riga) use ($brancaTieni) { return $brancaTieni($riga['typology']); };
+        $prestazioniDb = array_values(array_filter($prestazioniDb, $perTipologia));
+        $mediciDb = array_values(array_filter($mediciDb, $perTipologia));
+        $mappingDb = array_values(array_filter($mappingDb, $perTipologia));
+    }
+
     // Organizza dati per JavaScript
     $branche = [];
     

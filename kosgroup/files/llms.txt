@@ -76,6 +76,7 @@ Questo file elenca le pagine principali di kosgroup.com per aiutare i sistemi di
 - [Centro Venerabile Marcucci](https://kosgroup.com/it/centri/centro-venerabile-marcucci): centro di riabilitazione, Ascoli Piceno (AP)
 - [Clinica Dentale Porto Potenza Picena](https://kosgroup.com/it/centri/clinica-dentale-porto-potenza-picena): clinica dentale, Porto Potenza Picena (MC)
 - [Clinica Dentale Villalba](https://kosgroup.com/it/centri/clinica-dentale-villalba): clinica dentale, Macerata (MC)
+- [Clinica Dentale Villa dei Pini](https://kosgroup.com/it/centri/clinica-dentale-villa-dei-pini): clinica dentale, Civitanova Marche (MC)
 - [Fidia](https://kosgroup.com/it/centri/fidia): ambulatorio di riabilitazione, Civitanova Marche (MC)
 - [Istituto Santo Stefano](https://kosgroup.com/it/centri/istituto-santo-stefano): centro di riabilitazione, Porto Potenza Picena (MC)
 - [Laboratorio Analisi Gamma](https://kosgroup.com/it/centri/punto-prelievi-gamma): punto prelievi, Fano (PU)

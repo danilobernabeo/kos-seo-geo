@@ -1,0 +1,2574 @@
+<!DOCTYPE html>
+<html class="cd-page" lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+
+<title>Nuova Clinica Dentale a Villa dei Pini, Civitanova Marche | KOS</title>
+<meta content="Cure dentali per adulti e bambini all'interno di Villa dei Pini a Civitanova Marche, con percorsi dedicati ai pazienti fragili. Prenotazioni 345 6026346." name="description"/>
+<!-- Google Tag Manager -->
+<script>!function(){"use strict";function l(e){for(var t=e,r=0,n=document.cookie.split(";");r<n.length;r++){var o=n[r].split("=");if(o[0].trim()===t)return o[1]}}function s(e){return localStorage.getItem(e)}function u(e){return window[e]}function A(e,t){e=document.querySelector(e);return t?null==e?void 0:e.getAttribute(t):null==e?void 0:e.textContent}var e=window,t=document,r="script",n="dataLayer",o="https://gtm.kosgroup.com",a="",i="7eayjekjrea",c="dokavrv=",g="stapeUserId",v="",E="",d=!1;try{var d=!!g&&(m=navigator.userAgent,!!(m=new RegExp("Version/([0-9._]+)(.*Mobile)?.*Safari.*").exec(m)))&&16.4<=parseFloat(m[1]),f="stapeUserId"===g,I=d&&!f?function(e,t,r){void 0===t&&(t="");var n={cookie:l,localStorage:s,jsVariable:u,cssSelector:A},t=Array.isArray(t)?t:[t];if(e&&n[e])for(var o=n[e],a=0,i=t;a<i.length;a++){var c=i[a],c=r?o(c,r):o(c);if(c)return c}else console.warn("invalid uid source",e)}(g,v,E):void 0;d=d&&(!!I||f)}catch(e){console.error(e)}var m=e,g=(m[n]=m[n]||[],m[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"}),t.getElementsByTagName(r)[0]),v=I?"&bi="+encodeURIComponent(I):"",E=t.createElement(r),f=(d&&(i=8<i.length?i.replace(/([a-z]{8}$)/,"kp$1"):"kp"+i),!d&&a?a:o);E.async=!0,E.src=f+"/"+i+".js?"+c+v,null!=(e=g.parentNode)&&e.insertBefore(E,g)}();</script>
+<!-- End Google Tag Manager -->
+
+
+<link href="https://kosgroup.com/it/landing/clinica-dentale-civitanova" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="it_IT" property="og:locale"/>
+<meta content="KOS Group" property="og:site_name"/>
+<meta content="Nuova Clinica Dentale a Villa dei Pini - Civitanova Marche" property="og:title"/>
+<meta content="Cure dentali per adulti e bambini, con percorsi dedicati ai pazienti fragili, nella rete delle cliniche dentali di KOS Group." property="og:description"/>
+<meta content="https://kosgroup.com/it/landing/clinica-dentale-civitanova" property="og:url"/>
+<meta content="https://kosgroup.com/assets/img/landing/clinica-dentale-civitanova/og-clinica-dentale-civitanova.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+
+<link href="/assets/css/bootstrap.min.css?v=1750773970" rel="stylesheet"/>
+<link href="/assets/css/all.min.css?v=1726204414" rel="stylesheet"/>
+<link href="/assets/css/fontawesome.css?v=1726204415" rel="stylesheet"/>
+<link href="/assets/css/default.css?v=1745314641" rel="stylesheet"/>
+<link href="/assets/css/nice-select.css?v=1726204415" rel="stylesheet"/>
+<link href="/assets/css/aos.css?v=1726204414" rel="stylesheet"/>
+<link href="/assets/css/swiper.min.css?v=1750656688" rel="stylesheet"/>
+<link href="/assets/css/photoswipe.css?v=1726204415" rel="stylesheet"/>
+<link href="/assets/css/style.css?v=1790018611" rel="stylesheet"/>
+<link href="/assets/css/custom.css?v=20260915" rel="stylesheet"/>
+
+<style>
+/* =====================================================================
+   Landing KOS – foglio della pagina (modello del landing-kit).
+   Unico foglio aggiunto al template delle landing. Solo classi con il prefisso del progetto
+   (nel kit "cd-": lo script di init lo sostituisce con quello di config.json, vedi README).
+   Nessuno stile globale: gli override dei componenti del sito sono sempre limitati a .cd-page
+   o a un contenitore con il prefisso.
+   Token del sito riusati (definiti in style.css / custom.css): --azzurro #115974 (AAA),
+   --bluchiaro, --blu #1A2031, --grigio-100 #F6F8FA, --grigio-300 #E5EBEF.
+   Breakpoint: quelli del sito, soprattutto 992 px.
+   ===================================================================== */
+
+.cd-page {
+    --cd-raggio: 16px;
+    --cd-errore-scuro: #FFB4B4;        /* testo d'errore su .bg-dark: contrasto 10:1 su #0F1020 */
+    --cd-bordo-scuro: rgb(255 255 255 / 24%);
+    --cd-azzurro-chiaro: #9FD3E3;      /* icone su fondo scuro: contrasto 10:1 */
+}
+
+.cd-h2 {
+    margin-bottom: 12px;
+}
+
+.cd-lead {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+}
+
+.cd-link {
+    color: var(--azzurro);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.cd-link:hover,
+.cd-link:focus {
+    color: var(--bluchiaro);
+}
+
+.cd-tel {
+    color: var(--azzurro);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* =====================================================================
+   Hero: fondo bianco, testi --blu, titolo --azzurro, pulsanti standard del sito (con la loro animazione).
+   Composizione decisa dal cliente il 20/10/2026 (SPEC 5.1), sul modello dell'hero a tutta larghezza di Terapia del dolore.
+   Sotto 992 px: foto 3:2 a tutta larghezza in alto che sfuma nel bianco; titolo sulla parte sfumata.
+     Altezza della foto: 2/3 della larghezza, al massimo 39svh, così i pulsanti restano nel primo schermo
+     anche nel browser interno di Instagram e Facebook (390x640).
+   Da 992 px: fascia a tutta larghezza (vedi sotto).
+   ===================================================================== */
+.cd-hero {
+    --cd-hero-fondo: #fff;
+    --cd-hero-fondo-0: rgb(255 255 255 / 0);
+    background: var(--cd-hero-fondo);
+}
+
+.cd-hero__griglia {
+    display: grid;
+    gap: 0;
+}
+
+.cd-hero__media {
+    position: relative;
+}
+
+.cd-hero__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.cd-hero__titolo {
+    color: var(--azzurro);              /* 7,3:1 sul bianco */
+    font-size: 28px;
+    line-height: 34px;
+    font-weight: 500;
+    letter-spacing: -0.4px;
+    margin-bottom: 8px;
+}
+
+.cd-hero__sottotitolo {
+    color: var(--blu);
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.cd-hero__azioni {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 24px;
+}
+
+.cd-hero__azioni .btn {
+    width: 100%;
+    min-height: 48px;
+}
+
+.cd-hero__azioni .btn .bi {
+    margin-right: 2px;
+}
+
+.cd-hero__azioni .btn[hidden],
+.cd-hero__link[hidden] {
+    display: none !important;
+}
+
+.cd-hero__link {
+    margin: 2px 0 0;
+}
+
+.cd-hero__link a {
+    color: var(--azzurro);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* focus visibile sul fondo scuro dei contatti: il colore globale (--bluchiaro) lì non ha contrasto.
+   Nell'hero, su fondo bianco, resta il focus globale del sito. */
+html.cd-page body .bg-dark a:focus-visible,
+html.cd-page body .bg-dark button:focus-visible,
+html.cd-page body .bg-dark input:focus-visible {
+    outline: 3px solid #fff !important;
+    outline-offset: 3px !important;
+}
+
+/* la foto della fascia esiste solo da 992 px */
+.cd-hero__sfondo,
+.cd-hero__sfondo img {
+    display: none;
+}
+
+@media (max-width: 991px) {
+    .cd-hero {
+        --cd-foto-lim: 39vh;
+    }
+    @supports (height: 1svh) {
+        .cd-hero {
+            --cd-foto-lim: 39svh;
+        }
+    }
+    .cd-hero__media {
+        margin: 0 calc(var(--bs-gutter-x, 1.5rem) * -.5);
+    }
+    .cd-hero__media img {
+        height: var(--cd-foto-h);
+        object-position: 50% 0;
+    }
+    /* sfumatura nel bianco: trasparente fino al 62%, piena al 92% */
+    .cd-hero__media::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg,
+            var(--cd-hero-fondo-0) 0%,
+            var(--cd-hero-fondo-0) 62%,
+            var(--cd-hero-fondo) 92%,
+            var(--cd-hero-fondo) 100%);
+        pointer-events: none;
+    }
+    .cd-hero__testo {
+        position: relative;
+        z-index: 1;
+        margin-top: calc(var(--cd-foto-h) * -0.08);
+    }
+    /* varianti con titolo lungo (oltre 45 caratteri, classe aggiunta dallo script delle varianti) */
+    .cd-hero__titolo--lungo {
+        font-size: 23px;
+        line-height: 28px;
+        letter-spacing: -0.3px;
+    }
+}
+
+@media (max-width: 575px) {
+    .cd-hero {
+        --cd-foto-h: min(calc(100vw * 2 / 3), var(--cd-foto-lim));
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+    .cd-hero__media {
+        margin: 16px 0 0;
+    }
+    .cd-hero__media img {
+        border-radius: var(--cd-raggio) var(--cd-raggio) 0 0;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .cd-hero {
+        --cd-foto-h: min(344px, var(--cd-foto-lim));
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .cd-hero {
+        --cd-foto-h: min(464px, var(--cd-foto-lim));
+    }
+}
+
+/* ---------- Da 992 px: fascia a tutta larghezza ----------
+   Foto 2:1 alta quanto la fascia e ancorata a destra; a sinistra il bianco della foto (#FEFEFE) e del fondo.
+   Sfumatura bianca da sinistra (::before) per il contrasto del testo (≥ 4,5:1 su tutta l'area del testo, collaudo
+   automatico): piena fino a poco oltre la fine del testo, trasparente prima della poltrona.
+   Geometria (originale 2:1): la poltrona inizia al 62% della larghezza della foto, cioè a 100% − 0,766 × altezza
+   della fascia. Per ogni contenitore del sito altezza, larghezza del testo e sfumatura sono scelte in modo che
+   la sfumatura finisca prima della poltrona su tutto l'intervallo; il logo sulla parete può restare coperto.
+   L'altezza è un minimo: i testi (anche la variante più lunga) ci stanno; con lo zoom del testo la fascia cresce. */
+@media (min-width: 992px) {
+    .cd-hero__fascia {
+        position: relative;
+        overflow: hidden;
+        background: var(--cd-hero-fondo);
+    }
+    .cd-hero__sfondo {
+        display: block;
+    }
+    .cd-hero__sfondo img {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: auto;
+        max-width: none;
+        height: 100%;
+    }
+    .cd-hero__fascia::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(90deg,
+            var(--cd-hero-fondo) 0,
+            var(--cd-hero-fondo) var(--cd-sfuma-da),
+            var(--cd-hero-fondo-0) var(--cd-sfuma-a));
+    }
+    .cd-hero__fascia > .container {
+        position: relative;
+        z-index: 2;
+    }
+    .cd-hero__media {
+        display: none;
+    }
+    .cd-hero__griglia {
+        grid-template-columns: minmax(0, var(--cd-testo-l));
+        align-content: center;
+        min-height: var(--cd-fascia-h);
+        padding: 48px 0;
+    }
+    .cd-hero__sottotitolo {
+        font-size: 20px;
+        line-height: 28px;
+        margin-bottom: 28px;
+    }
+    .cd-hero__azioni {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        padding-bottom: 0;
+    }
+    .cd-hero__azioni .btn {
+        width: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .cd-hero__link {
+        flex-basis: 100%;
+    }
+}
+
+/* 992–1199 px (contenitore di 960 px, testo da 50% − 468 px): testo largo 440 px, fascia alta 520 px.
+   Fine del testo 50% − 28 px; poltrona da 100% − 398 px (a 992 px: testo fino a 468, sfumatura fino a 566, poltrona da 594). */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .cd-hero {
+        --cd-testo-l: 440px;
+        --cd-fascia-h: 520px;
+        --cd-sfuma-da: calc(50% - 4px);
+        --cd-sfuma-a: calc(50% + 70px);
+    }
+    .cd-hero__titolo {
+        font-size: 40px;
+        line-height: 46px;
+        letter-spacing: -0.6px;
+        margin-bottom: 16px;
+    }
+}
+
+/* 1200–1399 px (contenitore di 1140 px, testo da 50% − 558 px): testo largo 560 px, fascia alta 560 px.
+   Fine del testo 50% + 2 px; poltrona da 100% − 429 px (a 1200 px: sfumatura fino a 730, poltrona da 771). */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .cd-hero {
+        --cd-testo-l: 560px;
+        --cd-fascia-h: 560px;
+        --cd-sfuma-da: calc(50% + 26px);
+        --cd-sfuma-a: calc(50% + 130px);
+    }
+}
+
+/* da 1400 px (contenitore di 1320 px, testo da 50% − 648 px): testo largo 560 px, fascia alta 640 px.
+   Fine del testo 50% − 88 px; poltrona da 100% − 490 px (a 1400 px: sfumatura fino a 760, poltrona da 910). */
+@media (min-width: 1400px) {
+    .cd-hero {
+        --cd-testo-l: 560px;
+        --cd-fascia-h: 640px;
+        --cd-sfuma-da: calc(50% - 64px);
+        --cd-sfuma-a: calc(50% + 60px);
+    }
+    .cd-hero__griglia {
+        padding: 72px 0;
+    }
+}
+
+@media (min-width: 1200px) {
+    .cd-hero__titolo {
+        font-size: 52px;
+        line-height: 58px;
+        letter-spacing: -0.84px;
+        margin-bottom: 20px;
+    }
+}
+
+/* ---------- Fascia dei fatti ---------- */
+
+/* fondo grigio: separa l'hero bianco dall'introduzione bianca */
+.cd-fatti {
+    background: var(--grigio-100);
+    border-top: 1px solid var(--grigio-300);
+    border-bottom: 1px solid var(--grigio-300);
+}
+
+.cd-fatti__lista {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 16px;
+    margin: 0;
+    padding: 12px 0;
+}
+
+.cd-fatti__lista li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 8px 0;
+    font-size: 14px;
+    line-height: 1.35;
+    font-weight: 500;
+}
+
+/* numero dispari di voci: l'ultima occupa la riga intera (solo sotto 992 px, vedi sotto) */
+.cd-fatti__lista li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+}
+
+.cd-fatti__lista .bi,
+.cd-fatti__lista .cd-ico {
+    color: var(--azzurro);
+    font-size: 20px;
+    line-height: 1;
+    flex: 0 0 20px;
+}
+
+@media (min-width: 992px) {
+    .cd-fatti__lista {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0;
+        padding: 0;
+    }
+    .cd-fatti__lista li {
+        padding: 20px 20px 20px 0;
+        font-size: 15px;
+        align-items: center;
+    }
+    .cd-fatti__lista li:last-child:nth-child(odd) {
+        grid-column: auto;
+    }
+    .cd-fatti__lista li + li {
+        padding-left: 20px;
+        border-left: 1px solid var(--grigio-300);
+    }
+}
+
+/* ---------- Introduzione ---------- */
+
+.cd-apertura {
+    padding: 32px 0 0;
+}
+
+.cd-apertura__lead {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    margin-bottom: 0;
+}
+
+@media (min-width: 992px) {
+    .cd-apertura {
+        padding-top: 56px;
+    }
+    .cd-apertura__lead {
+        font-size: 26px;
+        line-height: 36px;
+        letter-spacing: -0.4px;
+    }
+}
+
+/* ---------- In breve + video ----------
+   Smartphone: in colonna nell'ordine del codice. Desktop: In breve a sinistra (7/12), video a destra (5/12). */
+
+.cd-sintesi {
+    padding: 32px 0 40px;
+}
+
+.cd-sintesi__griglia {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+}
+
+@media (min-width: 992px) {
+    .cd-sintesi {
+        padding: 40px 0 56px;
+    }
+    .cd-sintesi__griglia {
+        grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+        column-gap: 48px;
+        align-items: center;
+    }
+    /* video disattivato (config.json → sezioni.video): "In breve" resta sola, centrata, larga come una col-lg-8 */
+    .cd-sintesi__griglia > .cd-sintesi__inbreve:only-child {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: calc(100% * 2 / 3);
+    }
+}
+
+.cd-inbreve {
+    padding: 24px;
+    border: 1px solid var(--grigio-300);
+}
+
+.cd-inbreve__titolo {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.48px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--grigio-300);
+}
+
+.cd-inbreve__lista {
+    margin: 0;
+    padding: 0;
+}
+
+.cd-inbreve__lista li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
+
+.cd-inbreve__lista .bi,
+.cd-inbreve__prenota .bi {
+    color: var(--azzurro);
+    font-size: 20px;
+    line-height: 24px;
+    flex: 0 0 20px;
+}
+
+.cd-inbreve__prenota {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin: 20px -24px -24px;
+    padding: 16px 24px;
+    border-top: 1px solid var(--grigio-300);
+    border-radius: 0 0 var(--bs-border-radius-xl) var(--bs-border-radius-xl);
+}
+
+.cd-inbreve__prenota p {
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .cd-inbreve__lista--griglia {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 24px;
+    }
+    .cd-inbreve__largo {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (min-width: 992px) {
+    .cd-inbreve {
+        padding: 32px;
+    }
+    .cd-inbreve__prenota {
+        margin: 24px -32px -32px;
+        padding: 20px 32px;
+    }
+}
+
+/* ---------- Video verticale 9:16, nota e trascrizione ---------- */
+
+.cd-video__titolo {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.48px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.cd-video {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+    background: var(--blu);
+}
+
+.cd-video__video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: var(--blu);
+}
+
+.cd-video__nota {
+    max-width: 300px;
+    margin: 8px auto 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+.cd-trascrizione {
+    max-width: 300px;
+    margin: 12px auto 0;
+    border: 1px solid var(--grigio-300);
+    border-radius: 12px;
+    background: #fff;
+}
+
+.cd-trascrizione summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 48px;
+    padding: 10px 16px;
+    font-weight: 700;
+    color: var(--azzurro);
+    cursor: pointer;
+    list-style: none;
+}
+
+.cd-trascrizione summary::-webkit-details-marker {
+    display: none;
+}
+
+.cd-trascrizione summary::after {
+    content: "\F282";                  /* bi-chevron-down */
+    font-family: "bootstrap-icons";
+    font-weight: 400;
+    transition: transform .2s;
+}
+
+.cd-trascrizione[open] summary::after {
+    transform: rotate(180deg);
+}
+
+.cd-trascrizione__testo {
+    padding: 0 16px 16px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.cd-trascrizione__testo p {
+    margin-bottom: 10px;
+}
+
+.cd-trascrizione__testo p:last-child {
+    margin-bottom: 0;
+}
+
+.cd-trascrizione__scena {
+    font-style: italic;
+    color: #4A5568;                    /* contrasto 7,5:1 su bianco */
+}
+
+@media (min-width: 992px) {
+    /* il video non supera l'altezza dello schermo */
+    .cd-video,
+    .cd-video__nota,
+    .cd-trascrizione {
+        max-width: min(320px, calc((100vh - 200px) * 9 / 16));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cd-trascrizione summary::after {
+        transition: none;
+    }
+}
+
+/* ---------- Sezioni di solo testo: larghezza di lettura (~70 caratteri) ---------- */
+
+.cd-leggibile {
+    max-width: 720px;
+}
+
+.cd-fragili,
+.cd-struttura,
+.cd-servizi,
+.cd-faq {
+    padding: 48px 0;
+}
+
+@media (min-width: 992px) {
+    .cd-fragili,
+    .cd-struttura,
+    .cd-servizi,
+    .cd-faq {
+        padding: 72px 0;
+    }
+}
+
+/* ---------- Pazienti fragili: tre riquadri (icona + titolo), affiancati da 768 px ---------- */
+
+.cd-fragili__lista {
+    display: grid;
+    gap: 12px;
+    margin: 24px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.cd-fragili__voce {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+}
+
+.cd-fragili__voce .bi {
+    color: var(--azzurro);
+    font-size: 26px;
+    line-height: 1;
+    flex: 0 0 26px;
+}
+
+@media (min-width: 768px) {
+    .cd-fragili__lista {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin: 32px 0;
+    }
+    .cd-fragili__voce {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px;
+    }
+}
+
+/* ---------- Servizi: elenco compatto con righe divisorie, 1 / 2 / 3 colonne ----------
+   Due colonne su smartphone non sono leggibili (circa 175 px per colonna a 390 px): sotto 768 px una colonna. */
+
+.cd-servizi__elenco {
+    display: grid;
+    margin: 20px 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--grigio-300);
+}
+
+.cd-servizi__elenco li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--grigio-300);
+    font-size: 15px;
+    line-height: 21px;
+}
+
+.cd-servizi__voce {
+    margin: 0 0 2px;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+}
+
+.cd-servizi__elenco p {
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .cd-servizi__elenco {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 32px;
+        margin-top: 28px;
+    }
+}
+
+@media (min-width: 992px) {
+    .cd-servizi__elenco {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .cd-servizi__elenco li {
+        padding: 14px 0;
+    }
+}
+
+/* ---------- Segnaposto delle foto (nessun file immagine): grigio chiaro, bordo, angoli delle card del sito ----------
+   Testo --blu su --grigio-100: 16:1. Il testo resta leggibile dagli screen reader; l'icona è aria-hidden.
+   La classe .cd-foto-attesa resta nella definitiva: "controlli_statici.py --rilascio" la rifiuta. */
+
+.cd-foto-attesa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 24px;
+    background: var(--grigio-100);
+    border: 1px solid var(--grigio-300);
+    border-radius: var(--bs-border-radius-xl);
+    color: var(--blu);
+    font-weight: 500;
+    text-align: center;
+}
+
+.cd-foto-attesa .bi {
+    font-size: 28px;
+    line-height: 1;
+    color: var(--azzurro);
+}
+
+.cd-foto-attesa--struttura {
+    aspect-ratio: 3 / 2;
+}
+
+/* sul fondo .bg-grigio il riquadro è bianco, con lo stesso bordo */
+.bg-grigio .cd-foto-attesa {
+    background: #fff;
+}
+
+.cd-struttura .cd-foto-attesa {
+    margin-top: 28px;
+}
+
+@media (min-width: 992px) {
+    .cd-struttura__griglia {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 56px;
+        align-items: center;
+    }
+    /* foto spenta (sezioni.foto_struttura: false): il testo resta in una colonna */
+    .cd-struttura__griglia > :only-child {
+        grid-column: 1 / -1;
+    }
+    .cd-struttura .cd-foto-attesa {
+        margin-top: 0;
+    }
+}
+
+/* ---------- Spazi della clinica: galleria segnaposto degli interni, riquadri 4:3 ----------
+   Smartphone: striscia orizzontale con scroll-snap, riquadri all'85% della larghezza dello schermo (il successivo si intravede);
+   la striscia arriva ai bordi dello schermo e il primo riquadro resta allineato al contenitore.
+   Da 576 px griglia a 2 colonne, da 992 px a 3. Il contenitore è focalizzabile (tabindex="0"): si scorre con le frecce. */
+
+.cd-spazi {
+    padding: 48px 0;
+}
+
+.cd-spazi__griglia {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.cd-foto-attesa--spazi {
+    aspect-ratio: 4 / 3;
+    height: 100%;
+}
+
+.cd-spazi__striscia {
+    margin-top: 20px;
+}
+
+.cd-spazi__striscia:focus-visible {
+    outline: 3px solid var(--bluchiaro);
+    outline-offset: 4px;
+}
+
+@media (max-width: 575px) {
+    .cd-spazi__striscia {
+        margin-left: calc(var(--bs-gutter-x, 1.5rem) * -.5);
+        margin-right: calc(var(--bs-gutter-x, 1.5rem) * -.5);
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: calc(var(--bs-gutter-x, 1.5rem) * .5);
+        -webkit-overflow-scrolling: touch;
+    }
+    .cd-spazi__griglia {
+        display: flex;
+        gap: 12px;
+        padding: 0 calc(var(--bs-gutter-x, 1.5rem) * .5) 8px;
+    }
+    .cd-spazi__voce {
+        flex: 0 0 85vw;                 /* 85% dello schermo (sotto 576 px nessuna barra di scorrimento verticale) */
+        scroll-snap-align: start;
+    }
+    /* il focus della striscia resta dentro lo schermo */
+    .cd-spazi__striscia:focus-visible {
+        outline-offset: -3px;
+    }
+}
+
+@media (min-width: 576px) {
+    .cd-spazi__griglia {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+}
+
+@media (min-width: 992px) {
+    .cd-spazi {
+        padding: 72px 0;
+    }
+    .cd-spazi__striscia {
+        margin-top: 28px;
+    }
+    .cd-spazi__griglia {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+    }
+}
+
+/* percorso a step su fondo .bg-grigio: linea tra i passi più scura (il --grigio-300 quasi sparisce) */
+.bg-grigio .cd-passo::before {
+    background: #C9D3DA;
+}
+
+/* ---------- FAQ: da 992 px colonna centrata, larga come "In breve" (2/3 del contenitore) ---------- */
+
+.cd-faq__colonna {
+    max-width: 720px;
+}
+
+@media (min-width: 992px) {
+    .cd-faq__colonna {
+        width: calc(100% * 2 / 3);
+        max-width: none;
+        margin: 0 auto;
+    }
+}
+
+/* ---------- Domande frequenti: <details> nativi ---------- */
+
+.cd-faq__elenco {
+    display: grid;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.cd-faq__voce {
+    background: #fff;
+    border: 1px solid var(--grigio-300);
+    border-radius: 12px;
+}
+
+.cd-faq__voce summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 48px;
+    padding: 14px 20px;
+    font-weight: 700;
+    color: var(--blu);
+    cursor: pointer;
+    list-style: none;
+}
+
+.cd-faq__voce summary::-webkit-details-marker {
+    display: none;
+}
+
+.cd-faq__voce summary .bi {
+    flex: 0 0 auto;
+    color: var(--azzurro);
+    transition: transform .2s;
+}
+
+.cd-faq__voce[open] summary .bi {
+    transform: rotate(180deg);
+}
+
+.cd-faq__voce summary:hover {
+    color: var(--azzurro);
+}
+
+.cd-faq__risposta {
+    padding: 0 20px 18px;
+}
+
+.cd-faq__risposta p:last-child {
+    margin-bottom: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cd-faq__voce summary .bi {
+        transition: none;
+    }
+}
+
+/* ---------- Percorso a step ---------- */
+
+.cd-percorso {
+    padding: 48px 0;
+}
+
+.cd-passi {
+    margin: 28px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.cd-passo {
+    position: relative;
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 16px;
+    padding-bottom: 36px;
+}
+
+.cd-passo::before {                    /* linea che collega i passi */
+    content: "";
+    position: absolute;
+    left: 21px;
+    top: 52px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--grigio-300);
+}
+
+.cd-passo:last-child {
+    padding-bottom: 0;
+}
+
+.cd-passo:last-child::before {
+    display: none;
+}
+
+.cd-passo__numero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--azzurro);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.cd-passo__titolo {
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    margin: 8px 0 10px;
+}
+
+.cd-passo__colonne {
+    display: grid;
+    gap: 0 40px;
+}
+
+.cd-schede {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 1rem;
+}
+
+.cd-scheda {
+    padding: 18px;
+    background: var(--grigio-100);
+    border-radius: var(--cd-raggio);
+}
+
+.cd-scheda .bi,
+.cd-scheda .cd-ico {
+    color: var(--azzurro);
+    font-size: 26px;
+    line-height: 1;
+}
+
+.cd-scheda__titolo {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+    margin: 10px 0 6px;
+}
+
+@media (min-width: 768px) {
+    .cd-schede {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 1fr;
+    }
+}
+
+@media (min-width: 992px) {
+    .cd-percorso {
+        padding: 72px 0;
+    }
+    .cd-passo {
+        grid-template-columns: 56px 1fr;
+        gap: 24px;
+        padding-bottom: 48px;
+    }
+    .cd-passo::before {
+        left: 27px;
+        top: 64px;
+    }
+    .cd-passo__numero {
+        width: 56px;
+        height: 56px;
+        font-size: 22px;
+    }
+    .cd-passo__titolo {
+        font-size: 26px;
+        line-height: 32px;
+        margin-top: 12px;
+    }
+    .cd-passo__colonne {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ---------- Équipe: foto di gruppo, elenco dei nomi e ritratti tondi ----------
+   Foto 3:2 a ogni larghezza: il ritaglio tiene intere le 10 persone in fila (immagini.json), nessun object-fit che tagli.
+   Elenco (18 voci, 26/10/2026): una colonna su smartphone, compatta; due da 576 px, tre da 992 px; l'ordine segue
+   le colonne (dall'alto in basso). Le prime tre voci (direzione e responsabile dei pazienti fragili) in leggero risalto. */
+
+.cd-equipe {
+    padding: 48px 0;
+}
+
+.cd-equipe__foto img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+}
+
+.cd-equipe__nomi {
+    margin-top: 24px;
+}
+
+.cd-equipe__elenco {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 15px;
+    line-height: 22px;
+}
+
+.cd-equipe__elenco li {
+    margin-bottom: 4px;
+    break-inside: avoid;
+}
+
+.cd-equipe__elenco strong {
+    font-weight: 500;
+}
+
+.cd-equipe__elenco .cd-equipe__voce--risalto strong {
+    font-weight: 700;
+}
+
+@media (min-width: 576px) {
+    .cd-equipe__elenco {
+        columns: 2;
+        column-gap: 32px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+@media (min-width: 992px) {
+    .cd-equipe__nomi {
+        margin-top: 40px;
+    }
+    .cd-equipe__elenco {
+        columns: 3;
+        column-gap: 40px;
+    }
+}
+
+.cd-ritratti {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 8px;
+    margin: 32px 0 0;
+    padding: 0;
+}
+
+.cd-ritratti li {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    align-content: start;
+    text-align: center;
+}
+
+.cd-ritratti__foto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    border: 1px solid var(--grigio-300);
+    font-size: 24px;
+    letter-spacing: .5px;
+}
+
+.cd-ritratti picture.cd-ritratti__foto {
+    display: block;
+    overflow: hidden;
+}
+
+.cd-ritratti picture.cd-ritratti__foto img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* senza foto: stessa misura, iniziali nello stile dei nomi */
+.cd-ritratti__foto--iniziali {
+    background: var(--grigio-300);
+    color: var(--blu);
+    font-weight: 500;
+}
+
+.cd-ritratti__nome {
+    margin-top: 10px;
+    min-height: calc(2 * 17px);         /* nome su massimo due righe */
+    font-size: 13px;
+    line-height: 17px;
+    font-weight: 500;
+}
+
+.cd-ritratti__ruolo {
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 15px;
+    color: var(--azzurro);
+}
+
+@media (min-width: 992px) {
+    .cd-equipe {
+        padding: 72px 0;
+    }
+    .cd-ritratti {
+        grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+        gap: 16px;
+        margin-top: 48px;
+    }
+    .cd-ritratti__foto {
+        width: 128px;
+        height: 128px;
+        font-size: 32px;
+    }
+    .cd-ritratti__nome {
+        font-size: 15px;
+        line-height: 20px;
+        min-height: calc(2 * 20px);
+    }
+    .cd-ritratti__ruolo {
+        font-size: 13px;
+        line-height: 17px;
+    }
+}
+
+/* ---------- Contatti ---------- */
+
+.cd-contatti__sottotitolo {
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.cd-blocco {
+    padding: 24px;
+    background: rgb(255 255 255 / 10%);
+    border: 1px solid var(--cd-bordo-scuro);
+    border-radius: var(--bs-border-radius-xl);
+}
+
+.cd-blocco__titolo {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.cd-blocco__titolo:focus {
+    outline: none;
+}
+
+.cd-blocco__titolo .bi {
+    font-size: .9em;
+    margin-right: 6px;
+}
+
+.cd-blocco--prenota p {
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.cd-blocco--prenota .btn {
+    min-width: 220px;
+}
+
+.cd-numero__etichetta {
+    display: block;
+    font-weight: 500;
+}
+
+.cd-numero__orari {
+    font-weight: 700;
+}
+
+.cd-numero a {
+    display: inline-block;
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 700;
+    letter-spacing: -0.48px;
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 2px;
+    white-space: nowrap;
+}
+
+@media (max-width: 575px) {
+    .cd-blocco--prenota .btn {
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .cd-blocco {
+        padding: 32px;
+    }
+    /* "Prenota online" e "Chiama" alla stessa altezza, pulsante in basso */
+    .cd-contatti .cd-col-scheda {
+        align-self: stretch;
+    }
+    .cd-contatti .cd-col-scheda > .cd-blocco {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .cd-blocco--prenota .btn {
+        margin-top: auto;
+        align-self: flex-start;
+    }
+}
+
+/* ---------- Form ---------- */
+
+.cd-form__familiare {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.cd-form__nota-obbligatori,
+.cd-form__hint,
+.cd-form__facoltativo {
+    color: rgb(255 255 255 / 85%);
+}
+
+.cd-form__fascia legend {
+    float: none;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+/* opzioni in colonna, riga intera cliccabile alta almeno 32 px (WCAG 2.2, 2.5.8) */
+.cd-form__fascia .form-check {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 32px;
+    padding-left: 0;
+    margin: 0 0 12px;
+}
+
+.cd-form__fascia .form-check:last-child {
+    margin-bottom: 0;
+}
+
+.cd-form__fascia .form-check-input {
+    float: none;
+    flex: 0 0 auto;
+    margin: 0;
+}
+
+.cd-form__fascia .form-check-label {
+    flex: 1 1 auto;
+    cursor: pointer;
+}
+
+.cd-form__fascia .form-check-label::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.cd-form .form-check-input {
+    width: 1.25em;
+    height: 1.25em;
+    margin-top: .15em;
+}
+
+.cd-form .form-check-label.small {
+    line-height: 1.5;
+}
+
+.cd-form__invio {
+    padding: 8px 0 0;
+}
+
+.cd-form__invio .btn {
+    width: 100%;
+}
+
+@media (min-width: 576px) {
+    .cd-form__invio .btn {
+        width: auto;
+        min-width: 280px;
+    }
+}
+
+/* errori leggibili su sfondo scuro */
+.cd-contatti .invalid-feedback {
+    color: var(--cd-errore-scuro);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* errori restituiti da FormIt: <span class="error">, che style.css colora #e74c3c (3,8:1 sul fondo scuro) */
+.cd-contatti .invalid-feedback .error,
+.cd-form__riepilogo .error {
+    color: inherit;
+}
+
+.cd-contatti .invalid-feedback:not(:empty)::before {
+    content: "\F33A";                  /* bi-exclamation-circle-fill */
+    font-family: "bootstrap-icons";
+    margin-right: 6px;
+}
+
+.cd-contatti .form-control.is-invalid {
+    border-color: var(--cd-errore-scuro);
+    border-width: 2px;
+    background-image: none;
+}
+
+.cd-contatti .form-check-input.is-invalid {
+    border-color: var(--cd-errore-scuro);
+    border-width: 2px;
+}
+
+.cd-contatti .form-check-input.is-invalid ~ .form-check-label {
+    color: #fff;
+}
+
+.cd-form__riepilogo:not(:empty) {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    border-left: 4px solid var(--cd-errore-scuro);
+    background: rgb(255 255 255 / 8%);
+    color: #fff;
+    font-weight: 500;
+}
+
+/* honeypot: fuori schermo, non display:none (alcuni bot lo ignorano) */
+.cd-hp {
+    position: absolute !important;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* ---------- Barra mobile (Prenota/Chiama o Chiama/Richiamatemi) ---------- */
+
+.cd-mobilebar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1020;
+    display: flex;
+    gap: 12px;
+    padding: 12px 15px calc(12px + env(safe-area-inset-bottom, 0px));
+    background: var(--grigio-300);
+    box-shadow: 0 -2px 12px rgb(0 0 0 / 12%);
+    transform: translateY(110%);
+    visibility: hidden;
+    transition: transform .2s ease-out, visibility 0s linear .2s;
+}
+
+.cd-mobilebar.is-visible {
+    transform: none;
+    visibility: visible;
+    transition: transform .2s ease-out, visibility 0s;
+}
+
+.cd-mobilebar > .btn {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 48px;
+    white-space: nowrap;
+}
+
+/* sotto i 360 px "Richiamatemi" non sta in metà barra: larghezze in base al testo */
+@media (max-width: 359.98px) {
+    .cd-mobilebar > .btn {
+        flex-basis: auto;
+    }
+}
+
+.cd-mobilebar > .btn[hidden] {
+    display: none;
+}
+
+.cd-mobilebar > .btn .bi {
+    margin-right: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cd-mobilebar,
+    .cd-mobilebar.is-visible {
+        transition: none;
+    }
+}
+
+/* main.js imposta display:block inline su #backToTop: con la barra visibile va nascosto */
+@media (max-width: 991px) {
+    html.cd-bar-visibile #backToTop {
+        display: none !important;
+    }
+}
+
+/* ---------- Pagina di conferma ---------- */
+
+.cd-conferma {
+    padding-bottom: 32px;
+}
+
+.cd-conferma .titolo-sezione {
+    margin-bottom: 32px;
+}
+
+/* ---------- Card evento a scadenza (versione landing, vedi src/modx/card-evento-landing.html) ---------- */
+
+.cd-evento {
+    margin-top: 24px;
+    padding: 24px;
+    border: 1px solid var(--grigio-300);
+}
+
+.cd-evento__griglia {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+}
+
+.cd-evento__immagine img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--grigio-300);
+    border-radius: var(--bs-border-radius-lg);
+}
+
+.cd-evento__etichetta {
+    margin-bottom: 4px;
+    color: var(--azzurro);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+.cd-evento__titolo {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.48px;
+    margin-bottom: 12px;
+}
+
+.cd-evento__testo > p:not(.cd-evento__etichetta) {
+    margin-bottom: 16px;
+}
+
+.cd-evento__dettagli li:last-child {
+    margin-bottom: 0;
+}
+
+.cd-evento__testo > p.cd-evento__avviso {
+    margin: 16px 0 0;
+    padding: 8px 12px;
+    border-left: 3px solid var(--azzurro);
+    background: var(--grigio-100);
+    color: var(--blu);
+}
+
+.cd-evento__email {
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+@media (min-width: 768px) {
+    .cd-evento__griglia {
+        grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+        gap: 24px;
+        align-items: start;
+    }
+}
+
+@media (min-width: 992px) {
+    .cd-evento {
+        padding: 32px;
+    }
+}
+
+/* Icone SVG inline: stessa griglia 16x16 e stesso colore delle Bootstrap Icons */
+.cd-ico {
+    width: 1em;
+    height: 1em;
+}
+
+</style>
+<script defer="" src="/assets/js/scroll-anchors.js?v=1753286992"></script>
+<link href="/assets/img/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/assets/img/favicon.ico" rel="shortcut icon"/>
+<link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<meta content="KOS Group" name="apple-mobile-web-app-title"/>
+<link href="https:&#47;&#47;&#x63;&#100;&#x6e;&#x2e;&#x6a;&#115;d&#x65;l&#x69;v&#114;&#x2e;&#x6e;&#x65;t/&#x6e;&#112;&#109;&#47;&#98;&#111;&#x6f;&#116;&#x73;&#x74;&#114;&#x61;&#112;&#x2d;i&#99;&#x6f;&#110;&#x73;&#64;&#x31;&#46;&#49;&#x31;&#x2e;&#51;&#x2f;&#x66;&#111;&#110;&#116;&#x2f;&#98;&#x6f;&#x6f;t&#115;&#x74;&#x72;&#x61;&#x70;&#x2d;&#x69;&#99;&#x6f;&#x6e;s&#46;&#x6d;i&#x6e;&#46;&#99;&#x73;&#x73;" rel="stylesheet"/>
+
+<link as="image" fetchpriority="high" imagesizes="(min-width:768px) 696px, (min-width:576px) 516px, 100vw" imagesrcset="/assets/img/landing/clinica-dentale-civitanova/hero-mobile-540.webp 540w, /assets/img/landing/clinica-dentale-civitanova/hero-mobile-800.webp 800w, /assets/img/landing/clinica-dentale-civitanova/hero-mobile-1290.webp 1290w" media="(max-width:991px)" rel="preload" type="image/webp"/>
+
+<link as="image" fetchpriority="high" imagesizes="(min-width:1400px) 1280px, (min-width:1200px) 1120px, 1040px" imagesrcset="/assets/img/landing/clinica-dentale-civitanova/hero-largo-1600.webp 1600w, /assets/img/landing/clinica-dentale-civitanova/hero-largo-2048.webp 2048w" media="(min-width:992px)" rel="preload" type="image/webp"/>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "MedicalClinic", "name": "Clinica Dentale di Villa dei Pini - KOS Group", "description": "Cure dentali per adulti e bambini all'interno di Villa dei Pini a Civitanova Marche, con percorsi dedicati ai pazienti fragili. Prenotazioni 345 6026346.", "url": "https://kosgroup.com/it/landing/clinica-dentale-civitanova", "logo": "https://kosgroup.com/assets/img/logo.svg", "image": "https://kosgroup.com/assets/img/landing/clinica-dentale-civitanova/og-clinica-dentale-civitanova.jpg", "telephone": "+393456026346", "address": {"@type": "PostalAddress", "streetAddress": "Viale Dei Pini, 31", "addressLocality": "Civitanova Marche", "addressRegion": "MC", "postalCode": "62012", "addressCountry": "IT"}, "parentOrganization": {"@type": "Organization", "name": "KOS Group", "url": "https://kosgroup.com"}, "medicalSpecialty": "Dentistry"}
+  </script>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Vai al contenuto principale</a>
+<div class="main__area" id="main-content" tabindex="-1">
+
+<div class="menu-container d-xl-none" id="menu-mobile">
+<div class="header-btn-container">
+<div class="header-btn">
+<a class="btn btn-primary" href="#contatti" onclick="scrollToAnchor(event, 'contatti')" title="Contattaci">CONTATTACI</a>
+</div>
+</div>
+</div>
+<div class="overlay d-xl-none"></div>
+
+
+<div id="topbar">
+<div class="container"></div>
+</div>
+<header class="header-area">
+<div class="container">
+<div class="header-inner">
+<div class="header-logo">
+<img alt="logo Gruppo KOS" src="/assets/img/logo.svg"/>
+</div>
+<div class="menu-container d-flex flex-row-reverse" id="menu-desktop">
+<div class="header-btn-container">
+<div class="header-btn">
+<a class="btn btn-primary" href="#contatti" onclick="scrollToAnchor(event, 'contatti')" title="Contattaci">CONTATTACI</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<div class="main__content" id="skip-target" role="main" tabindex="-1">
+
+
+<section aria-labelledby="cd-hero-title" class="cd-hero">
+<div class="cd-hero__fascia">
+
+<picture class="cd-hero__sfondo">
+<source media="(max-width:991px)" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+<source sizes="(min-width:1400px) 1280px, (min-width:1200px) 1120px, 1040px" srcset="/assets/img/landing/clinica-dentale-civitanova/hero-largo-1600.webp 1600w, /assets/img/landing/clinica-dentale-civitanova/hero-largo-2048.webp 2048w" type="image/webp"/>
+<img alt="Studio odontoiatrico luminoso con poltrona, lampada e monitor con l'immagine di un'arcata dentale" decoding="async" fetchpriority="high" height="1024" sizes="(min-width:1400px) 1280px, (min-width:1200px) 1120px, 1040px" src="/assets/img/landing/clinica-dentale-civitanova/hero-largo-1600.jpg" srcset="/assets/img/landing/clinica-dentale-civitanova/hero-largo-1600.jpg 1600w, /assets/img/landing/clinica-dentale-civitanova/hero-largo-2048.jpg 2048w" width="2048"/>
+</picture>
+<div class="container">
+<div class="cd-hero__griglia">
+<div class="cd-hero__media">
+<picture>
+<source media="(min-width:992px)" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+<source sizes="(min-width:768px) 696px, (min-width:576px) 516px, 100vw" srcset="/assets/img/landing/clinica-dentale-civitanova/hero-mobile-540.webp 540w, /assets/img/landing/clinica-dentale-civitanova/hero-mobile-800.webp 800w, /assets/img/landing/clinica-dentale-civitanova/hero-mobile-1290.webp 1290w" type="image/webp"/>
+<img alt="Studio odontoiatrico luminoso con poltrona, lampada e monitor con l'immagine di un'arcata dentale" decoding="async" fetchpriority="high" height="860" sizes="(min-width:768px) 696px, (min-width:576px) 516px, 100vw" src="/assets/img/landing/clinica-dentale-civitanova/hero-mobile-800.jpg" srcset="/assets/img/landing/clinica-dentale-civitanova/hero-mobile-540.jpg 540w, /assets/img/landing/clinica-dentale-civitanova/hero-mobile-800.jpg 800w, /assets/img/landing/clinica-dentale-civitanova/hero-mobile-1290.jpg 1290w" width="1290"/>
+</picture>
+</div>
+<div class="cd-hero__testo">
+<h1 class="cd-hero__titolo" id="cd-hero-title">Nuova Clinica Dentale a Villa dei Pini</h1>
+<p class="cd-hero__sottotitolo">Entra a far parte della rete delle cliniche dentali di KOS Group, ampliando l'offerta di servizi dedicati alla salute orale.</p>
+<div class="cd-hero__azioni" data-cd-hero-cta="">
+
+<a class="btn btn-primary cd-prenota" data-cd-pos="hero" href="#"><i aria-hidden="true" class="bi bi-calendar-check"></i> Prenota online</a>
+<a class="btn btn-secondary cd-solo-con-prenota" data-cd-pos="hero" href="tel:+393456026346"><i aria-hidden="true" class="bi bi-telephone-fill"></i> Chiama la clinica</a>
+<p class="cd-hero__link cd-solo-con-prenota"><a href="#richiamata">Preferisci essere richiamato?</a></p>
+
+<a class="btn btn-primary cd-solo-senza-prenota" data-cd-pos="hero" hidden="" href="tel:+393456026346"><i aria-hidden="true" class="bi bi-telephone-fill"></i> Chiama la clinica</a>
+<a class="btn btn-secondary cd-solo-senza-prenota" hidden="" href="#richiamata">Chiedi di essere richiamato</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="cd-fatti">
+<div class="container">
+<ul class="cd-fatti__lista">
+<li><i aria-hidden="true" class="bi bi-hospital"></i><span>All'interno di Villa dei Pini · KOS Group</span></li>
+<li><i aria-hidden="true" class="bi bi-people"></i><span>Odontoiatria per adulti e bambini</span></li>
+<li><i aria-hidden="true" class="bi bi-heart-pulse"></i><span>Percorsi per i pazienti fragili</span></li>
+<li><i aria-hidden="true" class="bi bi-clipboard2-pulse"></i><span>Sedazione e sala operatoria, quando clinicamente indicate</span></li>
+<li><i aria-hidden="true" class="bi bi-geo-alt"></i><span>Parte della rete delle cliniche dentali di KOS Group</span></li>
+</ul>
+</div>
+</div>
+</section>
+<script>
+  (function () {
+    /* Varianti del titolo: valore neutro (lettera), whitelist, ripiego sulla generica. Prima che l'hero venga disegnato. */
+    var V = {"g": "Nuova Clinica Dentale a Villa dei Pini", "a": "Cure dentali anche per pazienti fragili e odontofobici"};
+    var v = (new URLSearchParams(location.search).get('v') || '').toLowerCase();
+    if (!Object.prototype.hasOwnProperty.call(V, v)) v = 'g';
+    window.CD_VARIANTE = v;
+    if (v === 'g') return;
+    var h1 = document.getElementById('cd-hero-title');
+    h1.textContent = V[v];
+    /* titoli lunghi: corpo ridotto sotto 992 px, così i pulsanti restano nel primo schermo */
+    if (V[v].length > 45) h1.classList.add('cd-hero__titolo--lungo');
+  })();
+  </script>
+
+
+<section class="cd-apertura">
+<div class="container">
+
+<p class="cd-apertura__lead">Dalla prevenzione ai trattamenti odontoiatrici, un percorso di cura attento alle esigenze della persona, con la possibilità di accedere alle cure in un contesto ospedaliero protetto.</p>
+</div>
+</section>
+
+
+<section class="cd-sintesi">
+<div class="container">
+<div class="cd-sintesi__griglia">
+<div class="cd-sintesi__inbreve">
+<div aria-labelledby="cd-inbreve-titolo" class="cd-inbreve bg-white rounded-4">
+<h2 class="cd-inbreve__titolo text-primary" id="cd-inbreve-titolo">In breve</h2>
+<ul class="cd-inbreve__lista cd-inbreve__lista--griglia">
+
+<li><i aria-hidden="true" class="bi bi-hospital"></i><span>Servizio in regime privato.</span></li>
+<li><i aria-hidden="true" class="bi bi-clipboard2-pulse"></i><span><strong>Prima visita:</strong> valutazione clinica dello stato di salute della bocca e ortopanoramica.</span></li>
+<li class="cd-inbreve__largo"><i aria-hidden="true" class="bi bi-geo-alt"></i>
+<span><strong>Dove:</strong> Clinica Dentale di Villa dei Pini, Viale Dei Pini, 31 - 62012 Civitanova Marche (MC)<br/>
+<a class="cd-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Casa%20di%20Cura%20Villa%20dei%20Pini%2C%20Viale%20dei%20Pini%2031%2C%2062012%20Civitanova%20Marche%20MC" rel="noopener" target="_blank">Indicazioni stradali<span class="sr-only"> (si apre in una nuova scheda)</span> <i aria-hidden="true" class="bi bi-box-arrow-up-right"></i></a>
+</span>
+</li>
+
+<li class="cd-inbreve__largo"><i aria-hidden="true" class="bi bi-person-badge"></i><span><strong>Direttore sanitario:</strong> Prof. Dott. Vincenzo Tosco, DDS, PhD - Albo degli Odontoiatri dell'Ordine dei Medici Chirurghi e degli Odontoiatri della Provincia di Fermo, n. 159</span></li>
+</ul>
+
+<div class="cd-inbreve__prenota bg-azzurro">
+<i aria-hidden="true" class="bi bi-calendar-check"></i>
+<p><strong>Per prenotare:</strong> <a class="cd-tel" data-cd-pos="in_breve" href="tel:+393456026346">345 6026346</a>, dal lunedì al venerdì dalle 8:30 alle 19:00, il sabato dalle 8:30 alle 13:00<span class="cd-solo-con-prenota">, oppure <a class="cd-tel" data-cd-pos="in_breve" data-cd-prenota-link="" href="#">online</a></span></p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+<section aria-labelledby="cd-fragili-titolo" class="bg-grigio cd-fragili">
+<div class="container">
+<div class="cd-leggibile">
+<h2 class="text-primary cd-h2" id="cd-fragili-titolo">Un'attenzione particolare ai pazienti fragili</h2>
+<p>Non tutti possono affrontare il dentista nello stesso modo. Per i pazienti fragili (persone con disabilità, chi ha difficoltà a collaborare durante le cure o pazienti odontofobici) la clinica prevede modalità di assistenza dedicate.</p>
+<p class="mb-0">Il percorso è personalizzato e, quando clinicamente indicato, può comprendere:</p>
+</div>
+<ul class="cd-fragili__lista" role="list">
+<li class="cd-fragili__voce bg-white rounded-4 shadow-sm"><i aria-hidden="true" class="bi bi-person-heart"></i><span>Sedazione cosciente</span></li>
+<li class="cd-fragili__voce bg-white rounded-4 shadow-sm"><i aria-hidden="true" class="bi bi-activity"></i><span>Assistenza anestesiologica</span></li>
+<li class="cd-fragili__voce bg-white rounded-4 shadow-sm"><i aria-hidden="true" class="bi bi-plus-square"></i><span>Trattamenti in sala operatoria</span></li>
+</ul>
+<div class="cd-leggibile">
+<p>Ogni percorso parte da una valutazione clinica e tiene conto delle condizioni e delle necessità del paziente.</p>
+
+<p>Responsabile clinico per i pazienti fragili: Dott. Vittorio Zavaglia, odontoiatra.</p>
+<p class="mb-0"><a class="cd-link" href="#richiamata">Chiedi di essere richiamato</a></p>
+</div>
+</div>
+</section>
+
+
+
+<section aria-labelledby="cd-struttura-titolo" class="cd-struttura">
+<div class="container">
+<div class="cd-struttura__griglia">
+<div class="cd-leggibile">
+<h2 class="text-primary cd-h2" id="cd-struttura-titolo">Una clinica dentale in un contesto ospedaliero</h2>
+<p class="mb-0">La Clinica Dentale di Villa dei Pini è inserita in un contesto ospedaliero che consente, quando necessario e sulla base delle condizioni cliniche del paziente, di valutare percorsi di cura personalizzati, con il supporto di anestesisti e la disponibilità della sala operatoria.</p>
+
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+
+
+
+
+<section aria-labelledby="cd-servizi-titolo" class="cd-servizi">
+<div class="container">
+<div class="cd-leggibile">
+<h2 class="text-primary cd-h2" id="cd-servizi-titolo">Tutti i servizi per la salute della tua bocca</h2>
+<p class="mb-0">Dalla prevenzione alle cure più complesse, con trattamenti definiti in base alle esigenze di ogni paziente.</p>
+</div>
+
+<ul class="cd-servizi__elenco" role="list">
+<li><h3 class="cd-servizi__voce">Prevenzione e igiene orale</h3><p>Igiene professionale e controlli per mantenere sana la bocca.</p></li>
+<li><h3 class="cd-servizi__voce">Odontoiatria conservativa ed endodonzia</h3><p>Cura della carie e dei problemi della polpa del dente, comprese le devitalizzazioni.</p></li>
+<li><h3 class="cd-servizi__voce">Parodontologia</h3><p>Cura delle gengive e dei tessuti che sostengono i denti.</p></li>
+<li><h3 class="cd-servizi__voce">Chirurgia orale</h3><p>Interventi chirurgici, comprese le estrazioni più complesse.</p></li>
+<li><h3 class="cd-servizi__voce">Implantologia</h3><p>Impianti e protesi su impianti per ripristinare la masticazione e l'estetica del sorriso.</p></li>
+<li><h3 class="cd-servizi__voce">Protesi fissa e mobile</h3><p>Protesi fisse e mobili per ripristinare funzione ed estetica dei denti.</p></li>
+<li><h3 class="cd-servizi__voce">Ortodonzia fissa, mobile e invisibile</h3><p>Apparecchi fissi, mobili e invisibili, con un percorso definito sulle esigenze cliniche.</p></li>
+<li><h3 class="cd-servizi__voce">Odontoiatria estetica</h3><p>Trattamenti come sbiancamento, faccette e corone.</p></li>
+<li><h3 class="cd-servizi__voce">Odontoiatria pediatrica</h3><p>Prevenzione e cure dentali per i bambini.</p></li>
+</ul>
+</div>
+</section>
+
+
+<section class="bg-grigio cd-percorso">
+<div class="container">
+<h2 class="text-primary cd-h2">Come funziona, dalla prima visita ai controlli</h2>
+
+<ol class="cd-passi">
+<li class="cd-passo">
+<span aria-hidden="true" class="cd-passo__numero">1</span>
+<div class="cd-passo__corpo">
+<h3 class="cd-passo__titolo">Prima visita e valutazione clinica</h3>
+<p class="cd-passo__testo">Lo specialista valuta la salute della tua bocca ed esegue un'ortopanoramica per avere un quadro completo.</p>
+</div>
+</li>
+<li class="cd-passo">
+<span aria-hidden="true" class="cd-passo__numero">2</span>
+<div class="cd-passo__corpo">
+<h3 class="cd-passo__titolo">Piano di trattamento personalizzato</h3>
+<p class="cd-passo__testo">Ricevi un piano di cura con le prestazioni previste e i tempi.</p>
+</div>
+</li>
+<li class="cd-passo">
+<span aria-hidden="true" class="cd-passo__numero">3</span>
+<div class="cd-passo__corpo">
+<h3 class="cd-passo__titolo">Trattamenti e controlli</h3>
+<p class="cd-passo__testo">Le cure si svolgono in clinica oppure, quando le condizioni del paziente lo richiedono, in sala operatoria. Seguono i controlli definiti dallo specialista.</p>
+</div>
+</li>
+</ol>
+</div>
+</section>
+
+
+
+<section aria-labelledby="cd-equipe-titolo" class="cd-equipe">
+<div class="container">
+<div class="row g-4 g-lg-5 align-items-center">
+<div class="col-12 col-lg-5">
+<h2 class="text-primary cd-h2" id="cd-equipe-titolo">Chi ti segue</h2>
+<p class="cd-lead mb-0">Le persone che ti accolgono e ti seguono in clinica.</p>
+</div>
+<div class="col-12 col-lg-7">
+<picture class="cd-equipe__foto">
+<source sizes="(min-width:1400px) 726px, (min-width:1200px) 627px, (min-width:992px) 527px, (min-width:768px) 696px, (min-width:576px) 516px, calc(100vw - 30px)" srcset="/assets/img/landing/clinica-dentale-civitanova/equipe-gruppo-720.webp 720w, /assets/img/landing/clinica-dentale-civitanova/equipe-gruppo-1080.webp 1080w, /assets/img/landing/clinica-dentale-civitanova/equipe-gruppo-1440.webp 1440w" type="image/webp"/>
+<img alt="L'équipe della Clinica Dentale di Villa dei Pini" class="rounded-4" decoding="async" height="960" loading="lazy" sizes="(min-width:1400px) 726px, (min-width:1200px) 627px, (min-width:992px) 527px, (min-width:768px) 696px, (min-width:576px) 516px, calc(100vw - 30px)" src="/assets/img/landing/clinica-dentale-civitanova/equipe-gruppo-1080.jpg" srcset="/assets/img/landing/clinica-dentale-civitanova/equipe-gruppo-720.jpg 720w, /assets/img/landing/clinica-dentale-civitanova/equipe-gruppo-1080.jpg 1080w, /assets/img/landing/clinica-dentale-civitanova/equipe-gruppo-1440.jpg 1440w" width="1440"/>
+</picture>
+</div>
+</div>
+<div class="cd-equipe__nomi">
+<ul aria-label="L'équipe della clinica" class="cd-equipe__elenco" role="list">
+<li class="cd-equipe__voce--risalto"><strong>Prof. Dott. Vincenzo Tosco</strong> - Direttore Sanitario e Odontoiatra</li>
+<li class="cd-equipe__voce--risalto"><strong>Prof. Dott. Matteo Nagni</strong> - Direttore Strategico</li>
+<li class="cd-equipe__voce--risalto"><strong>Dott. Vittorio Zavaglia</strong> - Odontoiatra e Responsabile clinico pazienti fragili</li>
+<li><strong>Dott. Eugenio Tosco</strong> - Odontoiatra</li>
+<li><strong>Dott.ssa Virginia Cesaretti</strong> - Ortodontista</li>
+<li><strong>Dott.ssa Agnese Arcangeli</strong> - Odontoiatra</li>
+<li><strong>Dott.ssa Giorgia Tomassetti</strong> - Odontoiatra</li>
+<li><strong>Dott.ssa Alessandra Bucci</strong> - Odontoiatra</li>
+<li><strong>Dott.ssa Asia Zannotti</strong> - Odontoiatra</li>
+<li><strong>Alessandro Barbieri</strong> - Igienista dentale</li>
+<li><strong>Lucia Aversano Stabile</strong> - Assistente alla poltrona (ASO)</li>
+<li><strong>Fiorenza Borioni</strong> - Assistente alla poltrona (ASO)</li>
+<li><strong>Giulia D'Agostino</strong> - Assistente alla poltrona (ASO)</li>
+<li><strong>Serenella Frascarelli</strong> - Assistente alla poltrona (ASO)</li>
+<li><strong>Daniela Principi</strong> - Assistente alla poltrona (ASO)</li>
+<li><strong>Morena Corradini</strong> - Infermiera</li>
+<li><strong>Gianluca Cappellacci</strong> - Front office</li>
+<li><strong>Silvia Torresi</strong> - Front office</li>
+</ul>
+</div>
+</div>
+</section>
+
+
+
+<section aria-labelledby="cd-faq-titolo" class="bg-grigio cd-faq">
+<div class="container">
+<div class="cd-faq__colonna">
+<h2 class="text-primary cd-h2" id="cd-faq-titolo">Domande frequenti</h2>
+<div class="cd-faq__elenco">
+<details class="cd-faq__voce">
+<summary><span>La clinica cura pazienti fragili o con disabilità?</span><i aria-hidden="true" class="bi bi-chevron-down"></i></summary>
+<div class="cd-faq__risposta">
+<p>Sì. Per i pazienti fragili, comprese le persone con disabilità o con difficoltà a collaborare durante le cure, la clinica definisce percorsi personalizzati che, quando clinicamente indicato, possono prevedere l'assistenza dell'anestesista e trattamenti in sala operatoria.</p>
+</div>
+</details>
+<details class="cd-faq__voce">
+<summary><span>È possibile ricorrere alla sedazione cosciente?</span><i aria-hidden="true" class="bi bi-chevron-down"></i></summary>
+<div class="cd-faq__risposta">
+<p>Sì, quando è clinicamente indicata. Può essere d'aiuto anche ai pazienti odontofobici, cioè con una forte paura del dentista.</p>
+</div>
+</details>
+<details class="cd-faq__voce">
+<summary><span>Dove si trova la Clinica Dentale?</span><i aria-hidden="true" class="bi bi-chevron-down"></i></summary>
+<div class="cd-faq__risposta">
+<p>All'interno della Casa di Cura Villa dei Pini, in Viale Dei Pini 31 a Civitanova Marche. La rete delle cliniche dentali di KOS Group è presente anche a Macerata, presso Villalba, e a Porto Potenza Picena, presso l'Istituto Santo Stefano.</p>
+</div>
+</details>
+
+<details class="cd-faq__voce">
+<summary><span>Sono disponibili soluzioni di finanziamento?</span><i aria-hidden="true" class="bi bi-chevron-down"></i></summary>
+<div class="cd-faq__risposta">
+<p>Sì. È possibile richiedere maggiori informazioni contattando la clinica.</p>
+</div>
+</details>
+<details class="cd-faq__voce">
+<summary><span>Come si prenota la prima visita?</span><i aria-hidden="true" class="bi bi-chevron-down"></i></summary>
+<div class="cd-faq__risposta">
+<p class="cd-solo-senza-prenota" hidden="">Chiama la clinica al numero <a class="cd-link" data-cd-pos="faq" href="tel:+393456026346">345 6026346</a>, dal lunedì al venerdì dalle 8:30 alle 19:00 e il sabato dalle 8:30 alle 13:00, oppure lascia il tuo numero nel <a class="cd-link" href="#richiamata">modulo qui sotto</a>: ti richiameremo noi.</p>
+<p class="cd-solo-con-prenota">Puoi prenotare <a class="cd-link" data-cd-pos="faq" data-cd-prenota-link="" href="#">online</a> oppure chiamare la clinica al numero <a class="cd-link" data-cd-pos="faq" href="tel:+393456026346">345 6026346</a>, dal lunedì al venerdì dalle 8:30 alle 19:00 e il sabato dalle 8:30 alle 13:00, oppure lasciare il tuo numero nel <a class="cd-link" href="#richiamata">modulo qui sotto</a>: ti richiameremo noi.</p>
+</div>
+</details>
+</div>
+</div>
+</div>
+</section>
+
+
+
+<section aria-labelledby="cd-contatti-titolo" class="bg-dark cd-contatti" data-clarity-mask="true">
+<div class="container py-5" id="contatti" stripe-contacts="" style="scroll-margin-top: 6em;">
+<div class="row justify-content-center">
+<div class="col-12 col-lg-9 text-center">
+<h2 class="h3 mt-3" id="cd-contatti-titolo">Contatta la Clinica Dentale di Villa dei Pini</h2>
+<p class="h5 cd-contatti__sottotitolo">Una visita di controllo, una cura o un percorso dedicato ai pazienti fragili: chiama la clinica o chiedi di essere richiamato.</p>
+</div>
+</div>
+<div class="row g-4 justify-content-center align-items-start mt-3">
+
+<div class="col-12 col-lg-6 cd-col-scheda cd-solo-con-prenota">
+<div class="cd-blocco cd-blocco--prenota">
+<h3 class="h4 cd-blocco__titolo"><i aria-hidden="true" class="bi bi-calendar-check"></i> Prenota online</h3>
+<p>Scegli giorno e orario sul servizio di prenotazione online di Clinica Dentale di Villa dei Pini.</p>
+<a class="btn btn-primary cd-prenota" data-cd-pos="contatti" href="#">Prenota online</a>
+</div>
+</div>
+
+<div class="col-12 col-lg-6 cd-col-scheda">
+<div class="cd-blocco">
+<h3 class="h4 cd-blocco__titolo"><i aria-hidden="true" class="bi bi-telephone-fill"></i> Chiama</h3>
+<p class="cd-numero mb-2">
+<span class="cd-numero__etichetta">Prenotazioni</span>
+<a data-cd-pos="contatti" href="tel:+393456026346">345 6026346</a>
+</p>
+<p class="mb-0"><span class="cd-numero__orari">Orari di risposta:</span> Dal lunedì al venerdì dalle 8:30 alle 19:00, il sabato dalle 8:30 alle 13:00</p>
+</div>
+</div>
+
+<div class="col-12">
+<div class="cd-blocco" id="richiamata" style="scroll-margin-top: 6em;">
+<h3 class="h4 cd-blocco__titolo" id="cd-form-titolo" tabindex="-1">Preferisci essere richiamato?</h3>
+
+            <!-- Chunk contactLandingForm_VDP_DENT: form di richiamata. Generato da scripts/build/build.py: non modificarlo a mano.
+     Va richiamato nel contenuto della risorsa, subito dopo la chiamata FormIt. Nessun tag MODX nei commenti. -->
+<form action="https://kosgroup.com/it/landing/clinica-dentale-civitanova#richiamata" aria-labelledby="cd-form-titolo" class="cd-form" id="cd-form-richiamata" method="post" novalidate="">
+
+<input name="nospam:blank" type="hidden"/>
+
+
+
+
+<input name="v" type="hidden" value=""/>
+<input name="utm_source" type="hidden" value=""/>
+<input name="utm_medium" type="hidden" value=""/>
+<input name="utm_campaign" type="hidden" value=""/>
+<input name="utm_content" type="hidden" value=""/><input name="provenienza" type="hidden" value=""/>
+<p class="cd-form__familiare">Chiedi per un familiare? Lascia i tuoi dati: ti richiameremo noi.</p>
+<p class="small cd-form__nota-obbligatori">I campi contrassegnati con * sono obbligatori.</p>
+<div aria-live="polite" class="cd-form__riepilogo" id="cd-form-riepilogo"></div>
+<div class="row g-4 mb-3">
+<div class="col-12 col-md-6">
+<label class="form-label text-white" for="cd-name">Nome*</label>
+<input aria-describedby="cd-name-err" autocomplete="given-name" class="form-control form-control-lg" id="cd-name" name="name" required="" type="text" value="" />
+<div class="invalid-feedback" id="cd-name-err"></div>
+</div>
+<div class="col-12 col-md-6">
+<label class="form-label text-white" for="cd-surname">Cognome*</label>
+<input aria-describedby="cd-surname-err" autocomplete="family-name" class="form-control form-control-lg" id="cd-surname" name="surname" required="" type="text" value="" />
+<div class="invalid-feedback" id="cd-surname-err"></div>
+</div>
+<div class="col-12">
+<label class="form-label text-white" for="cd-phone">Telefono*</label>
+<input aria-describedby="cd-phone-hint cd-phone-err" autocomplete="tel" class="form-control form-control-lg" id="cd-phone" name="cellulare" required="" type="tel" value="" />
+<div class="form-text cd-form__hint" id="cd-phone-hint">Cellulare o fisso. Esempio: 333 1234567</div>
+<div class="invalid-feedback" id="cd-phone-err"></div>
+</div>
+<div class="col-12">
+<fieldset class="cd-form__fascia">
+<legend class="form-label text-white">Fascia oraria preferita <span class="cd-form__facoltativo">(facoltativo)</span></legend>
+<div class="form-check">
+<input class="form-check-input" id="cd-fascia-mattina" name="fascia" type="radio" value="Mattina"   />
+<label class="form-check-label text-white" for="cd-fascia-mattina">Mattina</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="cd-fascia-pomeriggio" name="fascia" type="radio" value="Pomeriggio"   />
+<label class="form-check-label text-white" for="cd-fascia-pomeriggio">Pomeriggio</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="cd-fascia-indifferente" name="fascia" type="radio" value="Indifferente"   />
+<label class="form-check-label text-white" for="cd-fascia-indifferente">Indifferente</label>
+</div>
+</fieldset>
+</div>
+<div class="col-12">
+<div class="form-check">
+<input aria-describedby="cd-privacy-err" class="form-check-input" id="cd-privacy" name="privacy" required="" type="checkbox" value="accetto"   />
+<label class="form-check-label small text-white" for="cd-privacy">Ho letto l'<a class="text-white text-decoration-underline" href="/assets/doc/kos-care-gdpr-informativa.pdf" rel="noopener" target="_blank">Informativa sul trattamento dei miei dati personali<span class="sr-only"> (PDF, si apre in una nuova scheda)</span></a> ed acconsento alla loro elaborazione nelle formule espresse.*</label>
+<div class="invalid-feedback" id="cd-privacy-err"></div>
+</div>
+</div>
+</div>
+
+              <script src="https://www.google.com/recaptcha/api.js?render=6LemOAQrAAAAADKGEiUVhnyN5tjEy_P-fD5FzL87&hl=it"></script>
+<input type="hidden" name="recaptcha-token">
+<input type="hidden" name="recaptcha-action" value="itlandingclinicadentalecivitanova">
+<script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6LemOAQrAAAAADKGEiUVhnyN5tjEy_P-fD5FzL87', {action: 'itlandingclinicadentalecivitanova'}).then(function(token) {
+            document.querySelector('[name="recaptcha-token"]').value = token;
+        });
+    });
+</script>
+
+              <div class="cd-form__riepilogo" role="alert"></div>
+              <div class="cd-form__invio">
+
+<button class="btn btn-primary" name="submit" type="submit">Sì, richiamatemi</button>
+<p class="small mt-3 mb-0">Gli operatori ti ricontatteranno nel più breve tempo possibile, di norma entro 24-48 ore.</p>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</div>
+
+
+<footer class="footer-area pt-0 mt-0">
+<div class="container">
+<div class="footer-content row g-4">
+<div class="col-xl-5 col-lg-4">
+<div class="footer__identity__blk">
+<div class="footger__identity">
+<img alt="logo Gruppo KOS" src="/assets/img/logo.svg"/>
+</div>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div id="footer-copyright-text">
+<p>© KOS S.p.A. 2026 - C.F. 02058910874, P.I. 10674520159 - R.E.A. di Milano n. 1400104 - Capitale sociale € 8.565.211,70 i-v Direzione Coordinamento (art. 2497 C.C): CIR SpA</p>
+</div>
+<div class="footer-bottom-right">
+<div class="footer-menu">
+<nav aria-label="Navigazione a piè di pagina">
+<ul>
+<li><a href="https://kosgroup.com/it/termini-di-utilizzo">Termini e condizioni</a></li>
+<li><a href="https://kosgroup.com/it/privacy">Privacy Policy</a></li>
+</ul>
+</nav>
+</div>
+<div class="linkedin__link">
+<a aria-label="Seguici su LinkedIn (apre in nuova finestra)" href="https://www.linkedin.com/company/kos" rel="noopener" target="_blank" title="Seguici su LinkedIn">
+                                Seguici su LinkedIn
+                                <span><img alt="" src="/assets/img/linkedin-link.svg"/></span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+</div>
+
+<div aria-label="Contatti rapidi" class="cd-mobilebar d-lg-none" role="region">
+<a class="btn btn-primary cd-prenota" data-cd-pos="sticky" href="#"><i aria-hidden="true" class="bi bi-calendar-check"></i> Prenota<span class="sr-only"> online</span></a>
+<a class="btn btn-secondary cd-solo-con-prenota" data-cd-pos="sticky" href="tel:+393456026346"><i aria-hidden="true" class="bi bi-telephone-fill"></i> Chiama</a>
+<a class="btn btn-primary cd-solo-senza-prenota" data-cd-pos="sticky" hidden="" href="tel:+393456026346"><i aria-hidden="true" class="bi bi-telephone-fill"></i> Chiama</a>
+<a class="btn btn-secondary cd-solo-senza-prenota" hidden="" href="#richiamata"><i aria-hidden="true" class="bi bi-chat-dots"></i> Richiamatemi</a>
+</div>
+
+<button aria-label="Torna su" id="backToTop" title="Torna su">↑</button>
+
+<script src="/assets/js/jquery.min.js?v=1726204494"></script>
+<script src="/assets/js/popper.js?v=1726204494"></script>
+<script src="/assets/js/bootstrap.min.js?v=1726204493"></script>
+<script src="/assets/js/aos.js?v=1726204493"></script>
+<script src="/assets/js/jquery.nice-select.min.js?v=1726204494"></script>
+<script src="/assets/js/ResizeSensor.min.js?v=1726204495"></script>
+<script src="/assets/js/sticky-sidebar.min.js?v=1726204495"></script>
+<script src="/assets/js/swiper-bundle.min.js?v=1726204495"></script>
+<script src="/assets/js/photoswipe.umd.min.js?v=1726204494"></script>
+<script src="/assets/js/photoswipe-lightbox.umd.min.js?v=1726204494"></script>
+<script src="/assets/js/main.js?v=1783082516"></script>
+<script>
+      $('select').niceSelect();
+    </script>
+
+<script>
+      window.CD_CONFIG = {"prototipo": false, "varianti": ["g", "a"], "prenotaOnline": {"attivo": false, "url": ""}, "creativita": {"a": "pazienti fragili e non collaboranti"}, "recaptcha": {"esterno": true}};
+    </script>
+<script>
+/* =====================================================================
+   Landing KOS – script della pagina (modello del landing-kit).
+   Nessuna dipendenza (jQuery e gli altri script restano quelli del template).
+   Moduli: provenienza (v + UTM), prenotazione online, barra mobile, form di richiamata,
+   tracciamento (dataLayer), marcatura dei testi (?debug=1).
+   Configurazione: window.CD_CONFIG, scritta dalla build (diversa per prototipo, anteprima, definitiva).
+
+   REGOLA: nessuna sequenza simile a un indirizzo email in questo file. Il filtro anti-spam di
+   kosgroup.com trasforma in entità HTML tutto ciò che sembra un indirizzo, anche dentro gli script,
+   e l'intero script andrebbe in errore (SyntaxError intermittente, la codifica cambia a ogni richiesta).
+   ===================================================================== */
+(function () {
+    'use strict';
+
+    var CFG = window.CD_CONFIG || {};
+    var doc = document;
+    var html = doc.documentElement;
+    var params = new URLSearchParams(location.search);
+
+    var VARIANTI = CFG.varianti || ['g'];
+    var UTM = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
+    var CHIAVE_SESSIONE = 'cd_provenienza';
+    var CHIAVE_INVIATO = 'cd_inviato';
+
+    /* sessionStorage protetto: in alcuni browser interni delle app può lanciare eccezioni */
+    var store = {
+        get: function (k) {
+            try { return JSON.parse(sessionStorage.getItem(k)); } catch (e) { return null; }
+        },
+        set: function (k, v) {
+            try { sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* ignora */ }
+        }
+    };
+
+    /* ------------------------------------------------------------------
+       1. Provenienza: v + UTM dall'URL di arrivo, conservati per la sessione (non localStorage:
+          su un computer condiviso non devono restare dopo la chiusura della scheda).
+          Ordine delle fonti: URL, sessione, campi nascosti già valorizzati da FormIt (dopo un errore del
+          server la pagina torna all'indirizzo dell'action, senza parametri). Valori ripuliti, max 100 caratteri.
+       ------------------------------------------------------------------ */
+    function pulisci(s) {
+        return String(s || '').replace(/[^\w\-.~ ]/g, '').slice(0, 100);
+    }
+
+    var FONTE_PROVENIENZA = 'nessuna';
+
+    function daiCampiDelForm() {
+        var f = doc.getElementById('cd-form-richiamata');
+        var p = {};
+        if (!f) return p;
+        ['v'].concat(UTM).forEach(function (k) {
+            var el = f.querySelector('[name="' + k + '"]');
+            var val = el ? pulisci(el.value) : '';
+            if (val) p[k] = k === 'v' ? val.toLowerCase() : val;
+        });
+        if (p.v && VARIANTI.indexOf(p.v) === -1) delete p.v;
+        return p;
+    }
+
+    function leggiProvenienza() {
+        var inUrl = params.has('v') || UTM.some(function (k) { return params.has(k); });
+        if (inUrl) {
+            var v = (params.get('v') || '').toLowerCase();
+            var p = { v: VARIANTI.indexOf(v) > -1 ? v : 'g' };
+            UTM.forEach(function (k) { p[k] = pulisci(params.get(k)); });
+            store.set(CHIAVE_SESSIONE, p);
+            FONTE_PROVENIENZA = 'url';
+            return p;
+        }
+        var salvata = store.get(CHIAVE_SESSIONE);
+        if (salvata && typeof salvata === 'object' && Object.keys(salvata).length) {
+            FONTE_PROVENIENZA = 'sessione';
+            return salvata;
+        }
+        var campi = daiCampiDelForm();
+        if (Object.keys(campi).length) {
+            FONTE_PROVENIENZA = 'form';
+            store.set(CHIAVE_SESSIONE, campi);
+            return campi;
+        }
+        return {};
+    }
+
+    var provenienza = leggiProvenienza();
+    if (!provenienza.v) provenienza.v = window.CD_VARIANTE || 'g';
+    window.CD_PROVENIENZA = provenienza;
+
+    /* Provenienza leggibile per l'email del form ("Meta - creatività …"). I temi delle creatività stanno
+       in CD_CONFIG.creativita: arrivano solo nel campo nascosto del form, mai nel tracciamento. */
+    function provenienzaLeggibile(p) {
+        var CREATIVITA = CFG.creativita || {};
+        /* sorgenti raggruppate come Meta: facebook (valore dei link delle campagne), le sigle che Meta
+           può scrivere da sé (fb, ig, instagram, msg = Messenger, an = Audience Network) e meta */
+        var SORGENTI_META = ['facebook', 'fb', 'ig', 'instagram', 'msg', 'an', 'meta'];
+        var src = (p.utm_source || '').toLowerCase();
+        if (!src && (!p.v || p.v === 'g')) return 'Diretto / altro';
+        var canale = SORGENTI_META.indexOf(src) > -1 ? 'Meta' : (src || 'Diretto / altro');
+        var crea = CREATIVITA[p.v] ? 'creatività ' + CREATIVITA[p.v] : 'creatività generica';
+        return canale + ' - ' + crea;
+    }
+
+    /* ------------------------------------------------------------------
+       2. Prenotazione online: un'unica impostazione (CD_CONFIG.prenotaOnline, da config.json).
+          Attiva: compaiono .cd-prenota e .cd-solo-con-prenota, spariscono i .cd-solo-senza-prenota.
+          I link si aprono nella STESSA scheda (sessione GA4 continua): nessun attributo target.
+          Nel prototipo ?prenota=1 / ?prenota=0 forzano lo stato.
+       ------------------------------------------------------------------ */
+    var cfgPrenota = CFG.prenotaOnline || {};
+    var prenotaAttiva = !!cfgPrenota.attivo;
+    if (CFG.prototipo && (params.get('prenota') === '1' || params.get('prenota') === '0')) {
+        prenotaAttiva = params.get('prenota') === '1';
+    }
+    var SEL_LINK_PRENOTA = 'a.cd-prenota, .cd-prenota a, a[data-cd-prenota-link]';
+    Array.prototype.forEach.call(doc.querySelectorAll('.cd-prenota, .cd-solo-con-prenota'), function (el) {
+        el.hidden = !prenotaAttiva;
+    });
+    Array.prototype.forEach.call(doc.querySelectorAll('.cd-solo-senza-prenota'), function (el) {
+        el.hidden = prenotaAttiva;
+    });
+    if (cfgPrenota.url) {
+        Array.prototype.forEach.call(doc.querySelectorAll(SEL_LINK_PRENOTA), function (a) {
+            a.setAttribute('href', cfgPrenota.url);
+        });
+    }
+    html.classList.toggle('cd-prenota-attiva', prenotaAttiva);
+
+    /* ------------------------------------------------------------------
+       3. Barra mobile: visibile dopo che i pulsanti dell'hero sono usciti dallo schermo;
+          nascosta con contatti o footer a schermo e quando un campo del form ha il focus.
+       ------------------------------------------------------------------ */
+    var barra = doc.querySelector('.cd-mobilebar');
+    var form = doc.getElementById('cd-form-richiamata');
+
+    if (barra) {
+        var stato = { hero: true, contatti: false, footer: false, focus: false };
+        var aggiorna = function () {
+            var visibile = !stato.hero && !stato.contatti && !stato.footer && !stato.focus;
+            barra.classList.toggle('is-visible', visibile);
+            html.classList.toggle('cd-bar-visibile', visibile);
+        };
+        var osserva = function (el, chiave) {
+            if (!el) { stato[chiave] = false; return; }
+            new IntersectionObserver(function (entries) {
+                stato[chiave] = entries[0].isIntersecting;
+                aggiorna();
+            }).observe(el);
+        };
+        if ('IntersectionObserver' in window) {
+            osserva(doc.querySelector('[data-cd-hero-cta]'), 'hero');
+            osserva(doc.querySelector('.cd-contatti'), 'contatti');
+            osserva(doc.querySelector('footer.footer-area'), 'footer');
+        } else {
+            stato.hero = false;
+        }
+        if (form) {
+            form.addEventListener('focusin', function () { stato.focus = true; aggiorna(); });
+            form.addEventListener('focusout', function () {
+                setTimeout(function () {
+                    stato.focus = form.contains(doc.activeElement);
+                    aggiorna();
+                }, 50);
+            });
+        }
+        aggiorna();
+    }
+
+    /* Link al form: dopo lo scorrimento il focus va sul titolo del blocco (non su un campo:
+       su smartphone aprirebbe la tastiera) */
+    Array.prototype.forEach.call(doc.querySelectorAll('a[href="#richiamata"]'), function (a) {
+        a.addEventListener('click', function (e) {
+            var dest = doc.getElementById('richiamata');
+            var titolo = doc.getElementById('cd-form-titolo');
+            if (!dest) return;
+            e.preventDefault();
+            dest.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            try { history.replaceState(null, '', location.href.split('#')[0] + '#richiamata'); } catch (err) { /* ignora */ }
+            if (titolo) setTimeout(function () { titolo.focus({ preventScroll: true }); }, 400);
+        });
+    });
+
+    /* "CONTATTACI" della testata: lo scorrimento è quello del sito (scrollToAnchor); qui solo il focus */
+    var titoloContatti = doc.getElementById('cd-contatti-titolo');
+    if (titoloContatti) {
+        if (!titoloContatti.hasAttribute('tabindex')) titoloContatti.setAttribute('tabindex', '-1');
+        Array.prototype.forEach.call(doc.querySelectorAll('a[href="#contatti"]'), function (a) {
+            a.addEventListener('click', function () {
+                setTimeout(function () { titoloContatti.focus({ preventScroll: true }); }, 400);
+            });
+        });
+    }
+
+    /* ------------------------------------------------------------------
+       4. Form di richiamata
+       ------------------------------------------------------------------ */
+    if (form) initForm(form);
+
+    function initForm(form) {
+        var campi = {
+            name: form.querySelector('[name="name"]'),
+            surname: form.querySelector('[name="surname"]'),
+            cellulare: form.querySelector('[name="cellulare"]'),
+            privacy: form.querySelector('[name="privacy"]')
+        };
+        var riepilogo = doc.getElementById('cd-form-riepilogo');
+        var invio = form.querySelector('[type="submit"]');
+
+        /* campi nascosti della provenienza: con URL o sessione prendono quei valori; altrimenti restano
+           quelli già scritti da FormIt (invio precedente) */
+        var sovrascrivi = FONTE_PROVENIENZA === 'url' || FONTE_PROVENIENZA === 'sessione';
+        ['v'].concat(UTM).forEach(function (k) {
+            var el = form.querySelector('[name="' + k + '"]');
+            if (el && (sovrascrivi || !el.value)) el.value = provenienza[k] || '';
+        });
+        var campoProvenienza = form.querySelector('[name="provenienza"]');
+        if (campoProvenienza && (sovrascrivi || !campoProvenienza.value)) campoProvenienza.value = provenienzaLeggibile(provenienza);
+
+        /* errori restituiti dal server (FormIt): il primo campo da correggere riceve il focus */
+        var erratoServer = form.querySelector('[aria-invalid="true"]');
+        if (erratoServer) {
+            erratoServer.focus({ preventScroll: true });
+            erratoServer.scrollIntoView({ block: 'center' });
+        }
+
+        var MSG = {
+            name: 'Inserisci il tuo nome.',
+            surname: 'Inserisci il tuo cognome.',
+            cellulareVuoto: 'Inserisci un numero di telefono.',
+            cellulare: 'Controlla il numero di telefono: sembra incompleto o non valido.',
+            privacy: 'Per inviare la richiesta devi dichiarare di aver letto l’informativa sulla privacy.'
+        };
+
+        /* telefono: formato italiano tollerante (spazi, punti, trattini, parentesi, +39/0039), anche esteri +XX… */
+        function telefonoValido(s) {
+            var n = String(s).replace(/[\s.\-()\/]/g, '');
+            if (/^(\+|00)39/.test(n)) n = n.replace(/^(\+|00)39/, '');
+            else if (/^(\+|00)\d/.test(n)) return /^(\+|00)\d{7,14}$/.test(n);
+            return /^(3\d{8,9}|0\d{5,10})$/.test(n);
+        }
+
+        function controlla(nome) {
+            var el = campi[nome];
+            if (!el) return '';
+            var val = el.type === 'checkbox' ? el.checked : el.value.trim();
+            switch (nome) {
+                case 'name':
+                case 'surname':
+                    return val ? '' : MSG[nome];
+                case 'cellulare':
+                    if (!val) return MSG.cellulareVuoto;
+                    return telefonoValido(val) ? '' : MSG.cellulare;
+                case 'privacy':
+                    return val ? '' : MSG.privacy;
+            }
+            return '';
+        }
+
+        function mostra(nome, errore) {
+            var el = campi[nome];
+            if (!el) return;
+            var box = doc.getElementById(el.id + '-err');
+            el.classList.toggle('is-invalid', !!errore);
+            if (errore) el.setAttribute('aria-invalid', 'true');
+            else el.removeAttribute('aria-invalid');
+            if (box) box.textContent = errore;
+        }
+
+        /* validazione progressiva: al blur solo se il campo è compilato; dopo il primo errore si aggiorna digitando */
+        Object.keys(campi).forEach(function (nome) {
+            var el = campi[nome];
+            if (!el) return;
+            el.addEventListener(el.type === 'checkbox' ? 'change' : 'input', function () {
+                if (el.classList.contains('is-invalid')) mostra(nome, controlla(nome));
+            });
+            if (el.type !== 'checkbox') {
+                el.addEventListener('blur', function () {
+                    if (el.value.trim()) mostra(nome, controlla(nome));
+                });
+            }
+        });
+
+        /* reCAPTCHA v3: nella definitiva script e token li inserisce lo snippet recaptchav3_render.
+           Il token dura 2 minuti: si rinnova al momento dell'invio. */
+        var recaptcha = CFG.recaptcha || {};
+        function chiaveDaScript() {
+            var s = doc.querySelector('script[src*="recaptcha/api.js"]');
+            var m = s && /[?&]render=([^&]+)/.exec(s.src);
+            return m ? decodeURIComponent(m[1]) : '';
+        }
+        function tokenRecaptcha() {
+            return new Promise(function (resolve) {
+                var g = window.grecaptcha;
+                var campoAzione = form.querySelector('[name="recaptcha-action"]');
+                if (!recaptcha.esterno || !g || !g.ready || !campoAzione) return resolve('');
+                g.ready(function () {
+                    var chiave = chiaveDaScript();
+                    if (!chiave) return resolve('');
+                    g.execute(chiave, { action: campoAzione.value }).then(resolve, function () { resolve(''); });
+                });
+            });
+        }
+
+        /* Invio: la nostra validazione viene eseguita per prima (fase di cattura) e ferma ogni altro gestore
+           (per esempio formit.js): con errori l'invio si blocca; senza errori invia questo script, una volta sola. */
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+            var errori = [];
+            Object.keys(campi).forEach(function (nome) {
+                var msg = controlla(nome);
+                mostra(nome, msg);
+                if (msg) errori.push(campi[nome]);
+            });
+            if (errori.length) {
+                riepilogo.textContent = errori.length === 1
+                    ? 'C’è un campo da correggere.'
+                    : 'Ci sono ' + errori.length + ' campi da correggere.';
+                errori[0].focus();
+                return;
+            }
+            riepilogo.textContent = '';
+
+            /* telefono: punti e barre diventano spazi (il controllo del server ammette cifre, spazi, - + e parentesi) */
+            if (campi.cellulare) campi.cellulare.value = campi.cellulare.value.replace(/[.\/]/g, ' ').replace(/\s+/g, ' ').trim();
+
+            if (invio.dataset.inviato) return;       /* blocco del doppio invio */
+            invio.dataset.inviato = '1';
+            invio.disabled = true;
+            invio.setAttribute('aria-busy', 'true');
+
+            tokenRecaptcha().then(function (token) {
+                var campoToken = form.querySelector('[name="recaptcha-token"]');
+                if (campoToken && token) campoToken.value = token;
+
+                /* anteprima per l'approvazione: nessun invio, conferma sul posto */
+                if (typeof CFG.invioDimostrativo === 'function') {
+                    CFG.invioDimostrativo(form);
+                    return;
+                }
+                store.set(CHIAVE_INVIATO, 1);          /* solo un segnale per la conferma, nessun dato del form */
+                if (CFG.prototipo) {
+                    /* prototipo: nessun invio reale, si simula il redirect di FormIt; nessun dato nell'URL */
+                    location.href = CFG.paginaConferma || 'conferma.html';
+                    return;
+                }
+                /* il pulsante si chiama "submit" e nasconde form.submit */
+                HTMLFormElement.prototype.submit.call(form);
+            });
+        }, true);
+    }
+
+    /* ------------------------------------------------------------------
+       5. Tracciamento (docs del kit: TRACCIAMENTO.md). Nomi neutri e uguali in tutte le landing,
+          parametri solo "posizione" e "variante" (lettera): nessun dato personale, nessun nome di disturbo.
+       ------------------------------------------------------------------ */
+    window.dataLayer = window.dataLayer || [];
+    var variante = provenienza.v || 'g';
+
+    function traccia(evento, extra) {
+        var dati = { event: evento, variante: variante };
+        if (extra) Object.keys(extra).forEach(function (k) { dati[k] = extra[k]; });
+        window.dataLayer.push(dati);
+    }
+
+    doc.addEventListener('click', function (e) {
+        var a = e.target.closest ? e.target.closest('a') : null;
+        if (!a) return;
+        if ((a.getAttribute('href') || '').indexOf('tel:') === 0) {
+            traccia('clic_telefono', { posizione: a.getAttribute('data-cd-pos') || 'altro' });
+        } else if (a.matches(SEL_LINK_PRENOTA)) {
+            traccia('clic_prenota_online', { posizione: a.getAttribute('data-cd-pos') || 'altro' });
+        }
+    });
+
+    /* prima interazione con un CAMPO del form, una volta per pagina (non "once": il primo focus può cadere
+       sul pulsante di invio, e l'evento andrebbe perso) */
+    if (form) {
+        var formAvviato = false;
+        form.addEventListener('focusin', function (e) {
+            if (formAvviato || !e.target.matches('input:not([type="hidden"]), select, textarea')) return;
+            formAvviato = true;
+            traccia('avvio_form');
+        });
+    }
+
+    var video = doc.querySelector('.cd-video__video');
+    if (video) video.addEventListener('play', function () { traccia('play_reel'); }, { once: true });
+
+    var contatti = doc.querySelector('.cd-contatti');
+    if (contatti && 'IntersectionObserver' in window) {
+        var ioContatti = new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting) {
+                traccia('scroll_contatti');
+                ioContatti.disconnect();
+            }
+        });
+        ioContatti.observe(contatti);
+    }
+
+    /* conferma: l'evento parte solo dopo un invio vero (segnale in sessione, consumato subito) */
+    if (CFG.pagina === 'conferma' && store.get(CHIAVE_INVIATO)) {
+        traccia('invio_richiesta');
+        try { sessionStorage.removeItem(CHIAVE_INVIATO); } catch (err) { /* ignora */ }
+    }
+
+    /* ------------------------------------------------------------------
+       6. Marcatura dei testi (solo prototipo): ?debug=1
+       ------------------------------------------------------------------ */
+    if (CFG.prototipo && params.get('debug') === '1') initDebug();
+
+    function initDebug() {
+        html.classList.add('cd-debug');
+        var tipi = [ ['INVARIATO', '#4A5568'], ['RITOCCATO', '#B7791F'], ['NUOVO', '#C0267E'], ['DATO', '#2F855A'], ['SEGNAPOSTO', '#C53030'] ];
+        var p = doc.createElement('aside');
+        p.className = 'cd-debug-pannello';
+        p.setAttribute('aria-label', 'Marcatura dei testi');
+        p.style.cssText = 'position:fixed;top:12px;right:12px;z-index:2000;width:min(320px,calc(100vw - 24px));padding:14px 16px;font:13px/1.45 Arial,sans-serif;color:#1A2031;background:#fff;border:1px solid #ccc;box-shadow:0 4px 20px rgb(0 0 0/20%)';
+        var h = doc.createElement('h2');
+        h.textContent = 'Marcatura dei testi';
+        h.style.cssText = 'font:700 14px/1.3 Arial,sans-serif;margin:0 0 8px';
+        p.appendChild(h);
+        tipi.forEach(function (t) {
+            var r = doc.createElement('div');
+            r.textContent = t[0] + ': ' + doc.querySelectorAll('[data-cd-testo="' + t[0] + '"]').length;
+            r.style.borderLeft = '12px solid ' + t[1];
+            r.style.paddingLeft = '6px';
+            p.appendChild(r);
+        });
+        var info = doc.createElement('p');
+        info.textContent = 'Variante: ' + (window.CD_VARIANTE || 'g') + ' · Provenienza nell’email: ' + provenienzaLeggibile(provenienza);
+        p.appendChild(info);
+        var b = doc.createElement('button');
+        b.type = 'button';
+        b.textContent = 'Nascondi pannello';
+        b.addEventListener('click', function () { p.remove(); });
+        p.appendChild(b);
+        doc.body.appendChild(p);
+    }
+})();
+
+</script>
+<script src="/assets/components/formit/js/web/formit.js?v=1782207772"></script>
+<script>Object.assign(FormIt,{"actionUrl":"\/assets\/components\/formit\/action.php"});</script>
+</body>
+</html>

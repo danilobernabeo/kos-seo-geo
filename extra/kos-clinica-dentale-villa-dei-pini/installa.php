@@ -1,0 +1,595 @@
+<?php
+/**
+ * Clinica Dentale Villa dei Pini su kosgroup.com — scheda nuova sotto Centri (lavoro extra, fuori dal progetto SEO/GEO).
+ *
+ * Uso (in SSH sul cloud, dalla radice dell'archivio del repository):
+ *   php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www                        prova: controlla e mostra, non scrive
+ *   php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www --scrivi               applica (ripetibile: aggiorna)
+ *   ... --scrivi --foto-provvisorie   anche le foto provvisorie ricavate da quelle della landing (SOLO STAGE)
+ *   ... --forza                       procede anche con le voci segnate FERMO (non in produzione con segnaposto)
+ *   php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www --ripristina <cartella>/ripristino.json [--scrivi]
+ *
+ * Cosa fa (dati in config.json, testi in elementi/; nessun id fisso: tutto dall'URI):
+ *   1. controlla che lo snippet della barra abbia &branca (pacchetto kosgroup/deploy/kos-barra-branca-20261125.json) e
+ *      che Odontoiatria a Villa dei Pini abbia le prestazioni attese (2): altrimenti FERMO;
+ *   2. crea (o aggiorna) la risorsa /it/centri/clinica-dentale-villa-dei-pini copiando campi, template, TV e contenuto
+ *      della Clinica Dentale Villalba; nel contenuto sostituisce intestazione, contatti, pulsanti, La struttura,
+ *      approfondimenti, équipe e Come raggiungerci con i frammenti di elementi/, aggiunge i trattamenti in Aree di
+ *      intervento e la barra di prenotazione limitata a Odontoiatria; TV str.* e indirizzo da config.json, istanza e
+ *      coordinate da Villa dei Pini, servizi (TV di mappatura) solo quelli di config.json;
+ *   3. aggiunge l'id della scheda alla TV idStruttura delle news indicate (blocco «Le ultime news da …»);
+ *   4. scheda di Villa dei Pini Civitanova: voce «Clinica Dentale» con il link, dopo «Diagnostica e Servizi Ambulatoriali»;
+ *   5. landing /it/landing/clinica-dentale-civitanova: noindex, follow; via il JSON-LD scritto a mano; prenotazione
+ *      online attiva verso la sezione #prenota-online della scheda (CD_CONFIG e href dei link);
+ *   6. llms.txt (se c'è, cioè in produzione): riga della clinica dopo quella di Villalba;
+ *   7. svuota la cache. Backup di tutto in ~/backup-kos-seo-geo/<data>-clinica-dentale/ con ripristino.json.
+ */
+if (PHP_SAPI !== 'cli') { fwrite(STDERR, "Solo da riga di comando.\n"); exit(1); }
+
+$DIR = __DIR__;
+$C = json_decode((string) file_get_contents("$DIR/config.json"), true);
+if (!is_array($C)) { fwrite(STDERR, "config.json non leggibile\n"); exit(1); }
+
+$webroot = rtrim($argv[1] ?? '', '/');
+$scrivi = in_array('--scrivi', $argv, true);
+$forza = in_array('--forza', $argv, true);
+$fotoProvv = in_array('--foto-provvisorie', $argv, true);
+$iRip = array_search('--ripristina', $argv, true);
+$fileRip = $iRip !== false ? ($argv[$iRip + 1] ?? '') : null;
+
+$errori = 0;
+$ferma = function (string $msg) use (&$errori, $forza) {
+    echo "  ! $msg" . ($forza ? " — procedo per --forza\n" : " — FERMO\n");
+    if (!$forza) $errori++;
+};
+$corto = fn($s, $n = 110) => mb_strlen($s = str_replace(["\r", "\n"], ['', '\n'], (string) $s)) > $n ? mb_substr($s, 0, $n) . '…' : $s;
+
+/* ============================================================ FUNZIONI PURE (provate con --test, senza MODX) */
+
+/** Fine (offset dopo la chiusura) dell'elemento <$tag> che si apre in $pos, contando l'annidamento. */
+function fineTag(string $c, int $pos, string $tag): ?int
+{
+    $prof = 0;
+    $off = $pos;
+    while (preg_match('#<' . $tag . '\b|</' . $tag . '\s*>#i', $c, $m, PREG_OFFSET_CAPTURE, $off)) {
+        $prof += str_starts_with($m[0][0], '</') ? -1 : 1;
+        $off = $m[0][1] + strlen($m[0][0]);
+        if ($prof === 0) return $off;
+    }
+    return null;
+}
+
+/** Tutti gli elementi che si aprono con la regex $apertura: [[inizio, fine], ...] (non sovrapposti). */
+function elementi(string $c, string $apertura, string $tag): array
+{
+    $out = [];
+    $off = 0;
+    while (preg_match('#' . $apertura . '#i', $c, $m, PREG_OFFSET_CAPTURE, $off)) {
+        $ini = $m[0][1];
+        $fine = fineTag($c, $ini, $tag);
+        if ($fine === null) return [];
+        $out[] = [$ini, $fine];
+        $off = $fine;
+    }
+    return $out;
+}
+
+$leggi = function (string $rel) use ($DIR): string {
+    $p = "$DIR/$rel";
+    if (!is_file($p)) { fwrite(STDERR, "File mancante: $rel\n"); exit(1); }
+    return rtrim(str_replace("\r\n", "\n", (string) file_get_contents($p)), "\n");
+};
+
+/** Contenuto della scheda dal contenuto del modello: sostituzioni, aggiunte, barra, testi, controlli. */
+$costruisci = function (string $c) use ($C, $leggi, $ferma, $corto): string {
+    $frammenti = [];                                   // segnaposto => testo: il controllo dei residui li esclude
+    $segna = function (string $testo) use (&$frammenti): string {
+        $k = "\x01F" . count($frammenti) . "\x01";
+        $frammenti[$k] = $testo;
+        return $k;
+    };
+    foreach ($C['sostituzioni'] as $s) {
+        $el = elementi($c, $s['apertura'], $s['tag']);
+        if (count($el) !== (int) $s['occorrenze']) { $ferma("{$s['nome']}: trovati " . count($el) . " elementi, attesi {$s['occorrenze']}"); continue; }
+        $nuovo = $leggi($s['file']);
+        foreach (array_reverse($el) as [$i, $f]) $c = substr($c, 0, $i) . $segna($nuovo) . substr($c, $f);
+        echo "  = {$s['nome']}: sostituito ({$s['occorrenze']}) con {$s['file']}\n";
+    }
+    foreach ($C['aggiunte'] as $a) {
+        $el = elementi($c, $a['dentro_fine'], $a['tag']);
+        if (count($el) !== 1) { $ferma("{$a['nome']}: trovati " . count($el) . " elementi, atteso 1"); continue; }
+        [, $f] = $el[0];
+        $chiusura = strrpos(substr($c, 0, $f), '</');
+        $c = substr($c, 0, $chiusura) . $segna($leggi($a['file'])) . "\n                                " . substr($c, $chiusura);
+        echo "  + {$a['nome']}: {$a['file']}\n";
+    }
+    if (preg_match('/barraPrenotazioneDBmedicoPrestazione/', $c)) $ferma('il modello richiama già la barra');
+    $fatto = false;
+    foreach ($C['barra_prima_di'] as $re) {
+        if (preg_match('#' . $re . '#i', $c, $m, PREG_OFFSET_CAPTURE)) {
+            $c = substr($c, 0, $m[0][1]) . $segna($C['barra']) . "\n\n            " . substr($c, $m[0][1]);
+            echo "  + barra di prenotazione prima di «{$m[0][0]}»: {$C['barra']}\n";
+            $fatto = true;
+            break;
+        }
+    }
+    if (!$fatto) $ferma('posto della barra di prenotazione non trovato');
+    foreach ($C['sostituzioni_testo'] as [$da, $a]) {
+        $n = substr_count($c, $da);
+        if ($n) { $c = str_replace($da, $a, $c); echo "  ~ «{$da}» → «{$a}»: $n\n"; }
+    }
+    // Residui del modello (fuori dai frammenti nuovi): nomi, indirizzo, telefono, persone di Villalba
+    foreach ($C['parole_del_modello'] as $p) {
+        if (preg_match_all('#.{0,50}' . preg_quote($p, '#') . '.{0,50}#isu', $c, $mm)) {
+            foreach ($mm[0] as $x) $ferma("nel contenuto resta «{$p}»: …" . $corto(trim($x)) . '…');
+        }
+    }
+    $c = strtr($c, $frammenti);
+    // Chiamate non in cache: ammessa solo la barra (cache interna dello snippet, registro del 22/11)
+    preg_match_all('/\[\[!\s*([\w.\-$]+)/', $c, $nc);
+    foreach ($nc[1] as $n) if ($n !== 'barraPrenotazioneDBmedicoPrestazione') $ferma("chiamata non in cache [[!$n…]] nel contenuto");
+    preg_match_all('/\[\[[^\[\]]{0,80}/', $c, $tag);
+    echo '  chiamate MODX nel contenuto: ' . (implode(' | ', array_map(fn($t) => $corto($t, 60), array_unique($tag[0]))) ?: 'nessuna') . "\n";
+    if (preg_match_all('/(?:href|src)="(?!\/|#|https?:|tel:|mailto:|data:|\[\[)([^"]*)"/', $c, $rel)) {
+        foreach (array_unique($rel[1]) as $h) echo "  i indirizzo relativo nel contenuto (dal modello, fuori da questo lavoro): $h\n";
+    }
+    if (preg_match_all('#href="//[^"]*"#', $c, $rel)) foreach (array_unique($rel[0]) as $h) echo "  i link senza schema nel contenuto (dal modello, fuori da questo lavoro): $h\n";
+    return $c;
+};
+
+/** Modifiche della landing su contenuto e template: [testi modificati, parti toccate]. */
+$pianoLanding = function (array $dove, int $usiTpl, string $nomeTpl) use ($C, $ferma, $corto): array {
+    $url = $C['landing']['url_prenota'];
+    $reLd = '#[ \t]*<script type="application/ld\+json">(?:(?!</script>).)*?"MedicalClinic"(?:(?!</script>).)*</script>[ \t]*\r?\n?#s';
+    $operazioni = [
+        'JSON-LD scritto a mano' => fn($s) => preg_match_all($reLd, $s) === 1 ? preg_replace($reLd, '', $s) : null,
+        'noindex, follow' => function ($s) use ($C) {
+            if (preg_match('#<meta\s+name="robots"#i', $s)) return null;
+            if (!preg_match('#<meta\b[^>]*\bname="viewport"[^>]*>#i', $s, $m, PREG_OFFSET_CAPTURE)) return null;
+            $p = $m[0][1] + strlen($m[0][0]);
+            return substr($s, 0, $p) . "\n" . $C['landing']['robots'] . substr($s, $p);
+        },
+        'prenotazione online attiva (CD_CONFIG)' => function ($s) use ($url) {
+            $n = 0;
+            $r = preg_replace('#"prenotaOnline"\s*:\s*\{[^{}]*\}#', '"prenotaOnline": {"attivo": true, "url": "' . $url . '"}', $s, -1, $n);
+            return $n === 1 && $r !== $s ? $r : null;
+        },
+        'href dei link «Prenota online»' => function ($s) use ($url) {
+            $n = 0;
+            $r = preg_replace_callback('#<a\b[^>]*>#i', function ($m) use ($url, &$n) {
+                if (!preg_match('#\bcd-prenota\b|data-cd-prenota-link#', $m[0]) || !str_contains($m[0], 'href="#"')) return $m[0];
+                $n++;
+                return str_replace('href="#"', 'href="' . $url . '"', $m[0]);
+            }, $s);
+            return $n ? $r : null;
+        },
+    ];
+    $piano = [];
+    foreach ($operazioni as $nome => $f) {
+        $fatta = false;
+        foreach ($dove as $d => $s) {
+            $r = $f($s);
+            if ($r === null) continue;
+            if ($d === 'template' && $usiTpl > 1) { $ferma("landing, $nome: va fatta nel template $nomeTpl, usato da $usiTpl risorse"); $fatta = true; break; }
+            $dove[$d] = $r;
+            $piano[$d] = true;
+            echo "  ~ $nome ($d)\n";
+            $fatta = true;
+            break;
+        }
+        if ($fatta) continue;
+        $tutto = implode("\n", $dove);
+        if ($nome === 'noindex, follow' && preg_match('#<meta\s+name="robots"[^>]*>#i', $tutto, $m)) echo "  = $nome: già presente «{$m[0]}»\n";
+        elseif ($nome === 'JSON-LD scritto a mano' && !str_contains($tutto, '"MedicalClinic"')) echo "  = $nome: già tolto\n";
+        elseif ($nome === 'prenotazione online attiva (CD_CONFIG)' && str_contains($tutto, '"attivo": true, "url": "' . $url . '"')) echo "  = $nome: già attiva\n";
+        elseif ($nome === 'href dei link «Prenota online»' && str_contains($tutto, 'href="' . $url . '"')) echo "  = $nome: già fatto\n";
+        else $ferma("landing, $nome: punto non trovato né nel contenuto né nel template");
+    }
+    $restanti = preg_match_all('#<a\b[^>]*href="\#"[^>]*>#', implode("\n", $dove), $mm);
+    if ($restanti) echo "  i link con href=\"#\" rimasti: $restanti (" . implode(' ', array_map(fn($x) => $corto($x, 60), $mm[0])) . ")\n";
+    return [$dove, $piano];
+};
+
+/* ---------- --test <contenuto modello> [<landing>]: prova le funzioni pure su file locali, senza MODX ---------- */
+if (($argv[1] ?? '') === '--test') {
+    $mod = (string) @file_get_contents($argv[2] ?? '');
+    if ($mod === '') { fwrite(STDERR, "Uso: php installa.php --test <contenuto-modello.html> [<landing.html>]\n"); exit(1); }
+    echo "-- Contenuto da {$argv[2]}\n";
+    $c = $costruisci($mod);
+    $out = sys_get_temp_dir() . '/clinica-dentale-contenuto.html';
+    file_put_contents($out, $c);
+    echo "  scritto $out (" . strlen($c) . " byte)\n";
+    if (!empty($argv[3])) {
+        echo "\n-- Landing da {$argv[3]}\n";
+        [$d] = $pianoLanding(['contenuto' => (string) file_get_contents($argv[3])], 1, '-');
+        file_put_contents(sys_get_temp_dir() . '/clinica-dentale-landing.html', $d['contenuto']);
+        echo "  scritto " . sys_get_temp_dir() . "/clinica-dentale-landing.html\n";
+    }
+    echo $errori ? "\n== $errori problemi\n" : "\n== Nessun problema\n";
+    exit($errori ? 2 : 0);
+}
+
+if ($webroot === '' || !is_file("$webroot/config.core.php")) {
+    fwrite(STDERR, "Uso: php installa.php /www [--scrivi] [--foto-provvisorie] [--forza] | --ripristina <file> [--scrivi] | --test <modello.html> [<landing.html>]\n");
+    exit(1);
+}
+require "$webroot/config.core.php";
+require MODX_CORE_PATH . 'vendor/autoload.php';
+use MODX\Revolution\{modX, modResource, modTemplate, modTemplateVar, modTemplateVarResource, modSnippet, modResourceGroupResource};
+$modx = modX::getInstance();
+$modx->initialize('mgr');
+
+$siteUrl = (string) $modx->getOption('site_url');
+$STAGE = str_contains($siteUrl, 'stage.') || str_contains($siteUrl, '.modx.dev');
+$tvValore = function (modResource $r, string $nome) use ($modx): string {
+    $tv = $modx->getObject(modTemplateVar::class, ['name' => $nome]);
+    if (!$tv) return '';
+    $v = $modx->getObject(modTemplateVarResource::class, ['tmplvarid' => $tv->get('id'), 'contentid' => $r->get('id')]);
+    return $v ? (string) $v->get('value') : '';
+};
+
+/* ============================================================ RIPRISTINO */
+if ($fileRip !== null) {
+    $R = json_decode((string) @file_get_contents($fileRip), true);
+    if (!is_array($R)) { fwrite(STDERR, "Manifest di ripristino non leggibile: $fileRip\n"); exit(1); }
+    echo ($scrivi ? "== RIPRISTINO" : "== PROVA DI RIPRISTINO (aggiungere --scrivi)") . " da $fileRip\n";
+    if (!empty($R['creata'])) {
+        $o = $modx->getObject(modResource::class, (int) $R['creata']);
+        echo "  - risorsa creata {$R['creata']}" . ($o ? " /{$o->get('uri')}" : ' (già assente)') . " (con le sue TV)\n";
+        if ($scrivi && $o) $o->remove();
+    }
+    foreach ($R['risorse'] ?? [] as $x) {
+        $o = $modx->getObject(modResource::class, (int) $x['id']);
+        if (!$o) { echo "  ! risorsa {$x['id']} non trovata\n"; continue; }
+        echo "  ~ risorsa {$x['id']} /{$o->get('uri')}: " . implode(', ', array_merge(isset($x['content']) ? ['contenuto'] : [],
+            array_keys($x['campi'] ?? []), array_map(fn($n) => "TV $n", array_keys($x['tv'] ?? [])))) . "\n";
+        if (!$scrivi) continue;
+        if (isset($x['content'])) $o->set('content', (string) file_get_contents($x['content']));
+        foreach ($x['campi'] ?? [] as $k => $v) $o->set($k, $v);
+        $o->save();
+        foreach ($x['tv'] ?? [] as $n => $v) $o->setTVValue($n, $v);
+    }
+    foreach ($R['template'] ?? [] as $x) {
+        $t = $modx->getObject(modTemplate::class, (int) $x['id']);
+        echo "  ~ template {$x['id']}" . ($t ? " {$t->get('templatename')}" : ' (assente)') . ": contenuto originale\n";
+        if ($scrivi && $t) { $t->set('content', (string) file_get_contents($x['file'])); $t->save(); }
+    }
+    foreach ($R['file_modificati'] ?? [] as $x) {
+        echo "  ~ /{$x['rel']}: versione originale\n";
+        if ($scrivi) copy($x['backup'], "$webroot/{$x['rel']}");
+    }
+    foreach (array_reverse($R['file_creati'] ?? []) as $rel) {
+        echo "  - /$rel\n";
+        if ($scrivi) @unlink("$webroot/$rel");
+    }
+    foreach (array_reverse($R['cartelle_create'] ?? []) as $rel) {
+        if ($scrivi) @rmdir("$webroot/$rel");
+    }
+    if ($scrivi) { $modx->cacheManager->refresh(); echo "== Cache svuotata. Ripristino completato.\n"; }
+    exit(0);
+}
+
+/* ============================================================ 1. RISORSE DI RIFERIMENTO */
+echo ($scrivi ? "== INSTALLAZIONE" : "== PROVA (nessuna scrittura; aggiungere --scrivi)") . " — Clinica Dentale Villa dei Pini su $siteUrl"
+   . ($STAGE ? ' (stage)' : ' (PRODUZIONE)') . "\n";
+$perUri = fn(string $u) => $modx->getObject(modResource::class, ['uri' => $u, 'deleted' => 0]);
+$modello = $perUri($C['modello_uri']);
+$sede = $perUri($C['sede_uri']);
+$landing = $perUri($C['landing_uri']);
+$elenco = $perUri($C['elenco_uri']);
+if (!$modello) $ferma("modello /{$C['modello_uri']} non trovato");
+if (!$sede) $ferma("Villa dei Pini /{$C['sede_uri']} non trovata");
+if (!$modello || !$sede) exit(2);
+$tplModello = $modx->getObject(modTemplate::class, $modello->get('template'));
+printf("  modello  %d /%s (template %s, genitore %d, pubblicata %d, menu %s, ricercabile %d)\n", $modello->get('id'),
+    $modello->get('uri'), $tplModello ? $tplModello->get('templatename') : '-', $modello->get('parent'), $modello->get('published'),
+    $modello->get('hidemenu') ? 'nascosta' : 'visibile', $modello->get('searchable'));
+printf("  sede     %d /%s\n", $sede->get('id'), $sede->get('uri'));
+echo '  landing  ' . ($landing ? "{$landing->get('id')} /{$landing->get('uri')}" : "/{$C['landing_uri']} assente: salto la landing") . "\n";
+echo '  elenco   ' . ($elenco ? "{$elenco->get('id')} /{$elenco->get('uri')} (pdoMenu su tipo_struttura: la scheda entra copiando la TV del modello)" : 'assente') . "\n";
+
+/* ============================================================ 2. BARRA DI PRENOTAZIONE */
+echo "\n-- Barra di prenotazione\n";
+$sn = $modx->getObject(modSnippet::class, ['name' => 'barraPrenotazioneDBmedicoPrestazione']);
+if (!$sn || !str_contains((string) $sn->get('snippet'), '$brancaFiltro')) {
+    $ferma("lo snippet barraPrenotazioneDBmedicoPrestazione installato non ha &branca: installare prima kosgroup/deploy/kos-barra-branca-20261125.json");
+} else echo "  snippet con &branca: sì\n";
+$istanza = $tvValore($sede, 'istanza');
+if ($istanza === '') $ferma('Villa dei Pini non ha la TV istanza');
+else {
+    $st = $modx->prepare("SELECT p.activity_id, p.title, p.typology FROM kos_prestazioni p
+        WHERE p.areaid = ? AND LOWER(p.typology) = LOWER(?) AND (p.is_hidden = 0 OR p.mop_bookability = 2)
+          AND EXISTS (SELECT 1 FROM kos_medici_prestazioni mp WHERE mp.activity_id = p.activity_id AND mp.areaid = p.areaid)
+        ORDER BY p.title");
+    $st->execute([$istanza, $C['barra_branca']]);
+    $prest = $st->fetchAll(PDO::FETCH_ASSOC);
+    echo "  istanza di Villa dei Pini: $istanza; prestazioni prenotabili di {$C['barra_branca']}: " . count($prest) . "\n";
+    foreach ($prest as $p) echo "     {$p['activity_id']}  {$p['title']}  ({$p['typology']})\n";
+    if (count($prest) !== (int) $C['barra_prestazioni_attese']) {
+        $ferma(count($prest) . " prestazioni invece di {$C['barra_prestazioni_attese']}: decidere con Danilo prima di installare (filtro per prestazione?)");
+    }
+}
+
+/* ============================================================ 3. CONTENUTO DELLA SCHEDA */
+echo "\n-- Contenuto (dal modello {$modello->get('id')}, " . strlen((string) $modello->get('content')) . " byte)\n";
+$c = $costruisci((string) $modello->get('content'));
+/* {{uri:…}} nei frammenti: id della risorsa (link [[~id]], registro del 25/11); la scheda nuova si risolve dopo la creazione */
+$risolvi = function (string $s, ?int $idNuova = null) use ($perUri, $ferma, $C): string {
+    return preg_replace_callback('/\{\{uri:([^}]+)\}\}/', function ($m) use ($perUri, $ferma, $idNuova, $C) {
+        if ($m[1] === "it/centri/{$C['campi']['alias']}" && $idNuova !== null) return (string) $idNuova;
+        if ($r = $perUri($m[1])) return (string) $r->get('id');
+        if ($idNuova === null && $m[1] === "it/centri/{$C['campi']['alias']}") return $m[0];
+        $ferma("link a /{$m[1]}: risorsa non trovata");
+        return $m[0];
+    }, $s);
+};
+$c = $risolvi($c);
+preg_match_all('/\[\[~(\d+)\]\]/', $c, $ln);
+echo '  link [[~id]] nel contenuto: ' . implode(', ', array_map(fn($i) => $i . ' /' . (($r = $modx->getObject(modResource::class, (int) $i)) ? $r->get('uri') : '?'), array_unique($ln[1]))) . "\n";
+$segnaposto = preg_match_all('/\[DA COMPLETARE[^\]]*\]/u', $c, $sp);
+if ($segnaposto) {
+    echo "  i segnaposto da completare: $segnaposto\n";
+    foreach ($sp[0] as $x) echo "     $x\n";
+    if (!$STAGE) { echo "  ! in produzione non si installa una scheda con segnaposto (nemmeno con --forza) — FERMO\n"; $errori++; }
+}
+
+/* ============================================================ 4. CAMPI E TV */
+echo "\n-- Campi e TV\n";
+$esistente = $modx->getObject(modResource::class, ['parent' => $modello->get('parent'), 'alias' => $C['campi']['alias'], 'deleted' => 0]);
+$altro = $modx->getObject(modResource::class, ['alias' => $C['campi']['alias'], 'deleted' => 0, 'context_key' => $modello->get('context_key')]);
+if ($altro && (!$esistente || $altro->get('id') !== $esistente->get('id'))) $ferma("alias {$C['campi']['alias']} già usato da {$altro->get('id')} /{$altro->get('uri')}");
+echo $esistente ? "  la scheda esiste già (id {$esistente->get('id')}): AGGIORNAMENTO, con backup dello stato attuale\n" : "  scheda nuova\n";
+
+$campi = $modello->toArray('', true);
+foreach (['id', 'uri', 'createdon', 'createdby', 'editedon', 'editedby', 'publishedon', 'publishedby', 'deleted',
+          'deletedon', 'deletedby', 'pub_date', 'unpub_date'] as $k) unset($campi[$k]);
+$campi['uri_override'] = 0;
+$campi = array_merge($campi, $C['campi'], ['content' => $c]);
+if (!$esistente) {
+    $campi['menuindex'] = (int) $modello->get('menuindex') + 1;
+} else {
+    $campi['menuindex'] = (int) $esistente->get('menuindex');
+}
+foreach (['pagetitle', 'longtitle', 'description', 'introtext', 'alias'] as $k) printf("  %-12s %s\n", $k, $corto($campi[$k], 170));
+printf("  %-12s published %d, searchable %d, hidemenu %d, cacheable %d, richtext %d, menuindex %d, template %d\n", 'impostazioni',
+    $campi['published'], $campi['searchable'], $campi['hidemenu'], $campi['cacheable'], $campi['richtext'], $campi['menuindex'], $campi['template']);
+$lt = mb_strlen($campi['longtitle']); $ld = mb_strlen($campi['description']);
+if ($lt > 65 || substr_count($campi['longtitle'], '| KOS') !== 1) $ferma("title di $lt caratteri o senza « | KOS» una volta");
+if ($ld > 160) $ferma("description di $ld caratteri");
+echo "  title $lt caratteri, description $ld\n";
+
+// TV: quelle del modello, meno le escluse; poi config.json, poi quelle prese da Villa dei Pini, poi i servizi
+$tvNuove = [];
+foreach ($modx->getIterator(modTemplateVarResource::class, ['contentid' => $modello->get('id')]) as $tvr) {
+    $tv = $modx->getObject(modTemplateVar::class, $tvr->get('tmplvarid'));
+    if (!$tv) continue;
+    $n = $tv->get('name');
+    foreach ($C['tv_non_copiare'] as $re) if (preg_match('#' . $re . '#', $n)) continue 2;
+    $tvNuove[$n] = ['modello', (string) $tvr->get('value')];
+}
+foreach ($C['tv'] as $n => $v) $tvNuove[$n] = ['config', (string) $v];
+foreach ($C['tv_dalla_sede'] as $n) $tvNuove[$n] = ['Villa dei Pini', $tvValore($sede, $n)];
+$csv = fn($s) => array_values(array_filter(array_map('trim', explode(',', (string) $s)), 'strlen'));
+$idServizi = [];
+foreach ($C['servizi_uri'] as $u) {
+    $s = $perUri($u);
+    if (!$s) $ferma("servizio /$u non trovato"); else $idServizi[(int) $s->get('id')] = $u;
+}
+$tvMappa = $csv($modx->getOption('kos.struttura_tv_servizi'));
+$messi = [];
+foreach ($tvMappa as $n) {
+    if (!isset($tvNuove[$n]) || $tvNuove[$n][1] === '') continue;
+    $ids = array_filter(array_map('intval', preg_split('/[^\d]+/', $tvNuove[$n][1])));
+    $tieni = array_values(array_filter($ids, fn($i) => isset($idServizi[$i])));
+    $tvNuove[$n] = ['servizi', implode(',', $tieni)];
+    foreach ($tieni as $i) $messi[$i] = true;
+}
+foreach ($idServizi as $i => $u) if (!isset($messi[$i])) $ferma("servizio /$u non è nelle TV di mappatura del modello (" . implode(',', $tvMappa) . ')');
+ksort($tvNuove);
+foreach ($tvNuove as $n => [$da, $v]) {
+    printf("  TV %-22s %-15s %s\n", $n, "($da)", $corto($v, 90));
+    if ($da === 'modello') foreach ($C['parole_del_modello'] as $p) {
+        if (stripos($v, $p) !== false) $ferma("la TV $n copiata dal modello contiene «{$p}»: aggiungerla a config.json (tv o tv_non_copiare)");
+    }
+}
+foreach (['str.lat', 'str.lng', 'istanza'] as $n) if (($tvNuove[$n][1] ?? '') === '') $ferma("TV $n vuota");
+$tvEsiste = fn(string $n) => (bool) $modx->getCount(modTemplateVar::class, ['name' => $n]);
+foreach ($tvNuove as $n => [, $v]) if ($v !== '' && !$tvEsiste($n)) $ferma("TV $n inesistente sul sito");
+
+/* ============================================================ 5. NEWS */
+echo "\n-- News («Le ultime news da …», TV idStruttura)\n";
+$news = [];
+foreach ($C['news_uri'] as $u) {
+    $r = $perUri($u);
+    if (!$r) { echo "  i /$u assente: salto\n"; continue; }
+    $v = $tvValore($r, 'idStruttura');
+    $news[] = [$r, $v];
+    echo "  {$r->get('id')} /$u: idStruttura «{$v}» + id della scheda\n";
+}
+
+/* ============================================================ 6. VILLA DEI PINI */
+echo "\n-- Villa dei Pini Civitanova ({$sede->get('id')}): voce «Clinica Dentale»\n";
+$cs = (string) $sede->get('content');
+$sedeNuovo = null;
+if (str_contains($cs, 'faqClinicaDentale')) echo "  già presente: invariata\n";
+else {
+    $p = strpos($cs, $C['sede_voce']['dopo_voce_con']);
+    $ini = $p === false ? false : strrpos(substr($cs, 0, $p), '<div class="faq-singola"');
+    $fine = $ini === false ? null : fineTag($cs, $ini, 'div');
+    if ($fine === null || substr_count($cs, $C['sede_voce']['dopo_voce_con']) !== 1) $ferma("voce «{$C['sede_voce']['dopo_voce_con']}» non trovata una sola volta nel contenuto");
+    else {
+        $sedeNuovo = [$fine, $leggi($C['sede_voce']['file'])];
+        echo "  + dopo la voce «" . strip_tags($C['sede_voce']['dopo_voce_con']) . "» (offset $fine)\n";
+    }
+}
+
+/* ============================================================ 7. LANDING */
+$landingPiano = []; $dove = []; $tl = null;
+if ($landing) {
+    echo "\n-- Landing {$landing->get('id')} /{$landing->get('uri')}\n";
+    $tl = $modx->getObject(modTemplate::class, $landing->get('template'));
+    $usiTpl = $tl ? $modx->getCount(modResource::class, ['template' => $tl->get('id'), 'deleted' => 0]) : 0;
+    echo '  template ' . ($tl ? "{$tl->get('id')} {$tl->get('templatename')} (usato da $usiTpl risorse)" : 'vuoto') . "\n";
+    $dove = ['contenuto' => (string) $landing->get('content')];
+    if ($tl) $dove['template'] = (string) $tl->get('content');
+    [$dove, $landingPiano] = $pianoLanding($dove, (int) $usiTpl, $tl ? (string) $tl->get('templatename') : '-');
+}
+
+/* ============================================================ 8. LLMS.TXT */
+$llmsNuovo = null;
+if (is_file("$webroot/llms.txt")) {
+    $l = (string) file_get_contents("$webroot/llms.txt");
+    if (str_contains($l, $C['llms']['riga'])) echo "\n-- llms.txt: riga già presente\n";
+    else {
+        $righe = explode("\n", $l);
+        $dopo = null;
+        foreach ($righe as $i => $r) if (str_contains($r, $C['llms']['dopo_riga_con'])) $dopo = $i;
+        if ($dopo === null) $ferma('llms.txt: riga di Villalba non trovata');
+        else { array_splice($righe, $dopo + 1, 0, [$C['llms']['riga']]); $llmsNuovo = implode("\n", $righe); echo "\n-- llms.txt: + {$C['llms']['riga']}\n"; }
+    }
+} else echo "\n-- llms.txt assente (stage): niente da fare\n";
+
+/* ============================================================ 9. FOTO PROVVISORIE */
+$foto = [];
+if ($fotoProvv) {
+    echo "\n-- Foto provvisorie (dalla landing)\n";
+    if (!$STAGE) $ferma('foto provvisorie solo sullo stage');
+    if (!function_exists('imagecreatefromjpeg')) $ferma('GD non disponibile');
+    foreach ($C['foto_provvisorie']['voci'] as $v) {
+        $w = $v['larghezza'] ?? null; $h = $v['altezza'] ?? null;
+        if (isset($v['come'])) {
+            $d = @getimagesize("$webroot/{$v['come']}");
+            if (!$d) { echo "  i /{$v['come']} assente: salto /{$v['a']}\n"; continue; }
+            [$w, $h] = $d;
+        }
+        if (!is_file("$webroot/{$v['da']}")) { $ferma("/{$v['da']} assente"); continue; }
+        if (is_file("$webroot/{$v['a']}")) { echo "  = /{$v['a']} esiste già: non la tocco\n"; continue; }
+        $foto[] = [$v['da'], $v['a'], (int) $w, (int) $h];
+        echo "  + /{$v['a']} ({$w}×{$h}) da /{$v['da']}\n";
+    }
+} else {
+    $dirFoto = "$webroot/assets/img/strutture/{$C['campi']['alias']}";
+    $n = is_dir($dirFoto) ? count(glob("$dirFoto/*.{jpg,jpeg,png}", GLOB_BRACE)) : 0;
+    echo "\n-- Foto: $n nella galleria /assets/img/strutture/{$C['campi']['alias']}/" . ($n ? '' : ' (nessuna: per lo stage --foto-provvisorie)') . "\n";
+}
+
+/* ============================================================ SCRITTURA */
+if ($errori) { echo "\n== $errori problemi (FERMO): niente è stato scritto.\n"; exit(2); }
+if (!$scrivi) { echo "\n== Prova completata senza problemi. Per applicare: stesso comando con --scrivi\n"; exit(0); }
+
+$bk = rtrim((string) (getenv('HOME') ?: '.'), '/') . '/backup-kos-seo-geo/' . date('Ymd-His') . '-clinica-dentale';
+@mkdir($bk, 0775, true);
+$R = ['creata' => null, 'risorse' => [], 'template' => [], 'file_creati' => [], 'cartelle_create' => [], 'file_modificati' => []];
+$salvaR = fn() => file_put_contents("$bk/ripristino.json", json_encode($R, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+$fotografa = function (modResource $r, array $tvNomi, array $campiNomi = []) use ($bk, $tvValore) {
+    $f = "$bk/risorsa-{$r->get('id')}.html";
+    file_put_contents($f, (string) $r->get('content'));
+    $x = ['id' => (int) $r->get('id'), 'content' => $f, 'campi' => [], 'tv' => []];
+    foreach ($campiNomi as $k) $x['campi'][$k] = $r->get($k);
+    foreach ($tvNomi as $n) $x['tv'][$n] = $tvValore($r, $n);
+    return $x;
+};
+echo "\n== Backup in $bk\n";
+
+// Scheda
+if ($esistente) {
+    $R['risorse'][] = $fotografa($esistente, array_keys($tvNuove), array_keys(array_diff_key($campi, ['content' => 1])));
+    $salvaR();
+    $o = $esistente;
+    unset($campi['menuindex']);
+    $o->fromArray($campi);
+} else {
+    $o = $modx->newObject($modello->get('class_key') ?: modResource::class);
+    $o->fromArray($campi);
+    $o->set('createdon', time());
+    $o->set('createdby', 1);
+    if ($campi['published']) { $o->set('publishedon', time()); $o->set('publishedby', 1); }
+}
+if (!$o->save()) { echo "  ! scheda: salvataggio fallito\n"; exit(2); }
+if ((string) $o->get('uri') === '') { $o->set('uri', $o->getAliasPath($o->get('alias'))); $o->save(); }
+$ID = (int) $o->get('id');
+if (!$esistente) {
+    $R['creata'] = $ID; $salvaR();
+    foreach ($modx->getIterator(modResourceGroupResource::class, ['document' => $modello->get('id')]) as $g) {
+        $ng = $modx->newObject(modResourceGroupResource::class);
+        $ng->fromArray(['document_group' => $g->get('document_group'), 'document' => $ID]);
+        $ng->save();
+    }
+}
+foreach ($tvNuove as $n => [, $v]) {
+    if (!$tvEsiste($n) || ($v === '' && !$esistente)) continue;     // TV assente o vuota su una scheda nuova: niente da scrivere
+    if (!$o->setTVValue($n, $v)) { echo "  ! TV $n non scritta\n"; $errori++; }
+}
+echo "  " . ($esistente ? '~' : '+') . " scheda $ID /{$o->get('uri')}\n";
+
+// News
+foreach ($news as [$r, $v]) {
+    $ids = $csv(str_replace(' ', '', $v));
+    if (in_array((string) $ID, $ids, true)) { echo "  = news {$r->get('id')}: id già presente\n"; continue; }
+    $R['risorse'][] = ['id' => (int) $r->get('id'), 'tv' => ['idStruttura' => $v]]; $salvaR();
+    $r->setTVValue('idStruttura', implode(',', array_merge($ids, [(string) $ID])));
+    echo "  ~ news {$r->get('id')}: idStruttura «" . implode(',', array_merge($ids, [(string) $ID])) . "»\n";
+}
+
+// Villa dei Pini
+if ($sedeNuovo) {
+    $R['risorse'][] = $fotografa($sede, []); $salvaR();
+    [$p, $testo] = $sedeNuovo;
+    $sede->set('content', substr($cs, 0, $p) . $risolvi($testo, $ID) . substr($cs, $p));
+    $sede->save();
+    echo "  ~ Villa dei Pini {$sede->get('id')}: voce «Clinica Dentale» con il link a [[~$ID]]\n";
+}
+
+// Landing
+if ($landing && $landingPiano) {
+    if (!empty($landingPiano['contenuto'])) {
+        $R['risorse'][] = $fotografa($landing, []); $salvaR();
+        $landing->set('content', $dove['contenuto']);
+        $landing->save();
+        echo "  ~ landing {$landing->get('id')}: contenuto\n";
+    }
+    if (!empty($landingPiano['template'])) {
+        $f = "$bk/template-{$tl->get('id')}.html";
+        file_put_contents($f, (string) $tl->get('content'));
+        $R['template'][] = ['id' => (int) $tl->get('id'), 'file' => $f]; $salvaR();
+        $tl->set('content', $dove['template']);
+        $tl->save();
+        echo "  ~ landing: template {$tl->get('templatename')}\n";
+    }
+}
+
+// llms.txt
+if ($llmsNuovo !== null) {
+    copy("$webroot/llms.txt", "$bk/llms.txt");
+    $R['file_modificati'][] = ['rel' => 'llms.txt', 'backup' => "$bk/llms.txt"]; $salvaR();
+    file_put_contents("$webroot/llms.txt", $llmsNuovo);
+    echo "  ~ /llms.txt\n";
+}
+
+// Foto provvisorie: ritaglio centrato, JPEG progressivo, qualità decrescente fino al tetto
+foreach ($foto as [$da, $a, $w, $h]) {
+    $src = imagecreatefromjpeg("$webroot/$da");
+    $sw = imagesx($src); $sh = imagesy($src);
+    $scala = max($w / $sw, $h / $sh);
+    $cw = (int) round($w / $scala); $ch = (int) round($h / $scala);
+    $dst = imagecreatetruecolor($w, $h);
+    imagecopyresampled($dst, $src, 0, 0, (int) (($sw - $cw) / 2), (int) (($sh - $ch) / 2), $w, $h, $cw, $ch);
+    imageinterlace($dst, true);
+    $cartella = dirname("$webroot/$a");
+    if (!is_dir($cartella)) { mkdir($cartella, 0775, true); $R['cartelle_create'][] = dirname($a); }
+    foreach ([82, 76, 70, 64, 58, 52] as $q) {
+        imagejpeg($dst, "$webroot/$a", $q);
+        clearstatcache();
+        if (filesize("$webroot/$a") <= (int) $C['foto_provvisorie']['tetto_byte']) break;
+    }
+    $R['file_creati'][] = $a; $salvaR();
+    printf("  + /%s %d×%d, %d byte (qualità %d)\n", $a, $w, $h, filesize("$webroot/$a"), $q);
+}
+
+$salvaR();
+$modx->cacheManager->refresh();
+echo "== Cache svuotata.\n";
+echo "== Scheda: {$siteUrl}{$o->get('uri')}\n";
+echo "== Ripristino: php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www --ripristina $bk/ripristino.json --scrivi\n";
+echo $errori ? "== $errori problemi: vedi sopra.\n" : "== Nessun problema.\n";
+exit($errori ? 2 : 0);
