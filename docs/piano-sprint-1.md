@@ -601,3 +601,14 @@ titolo dalla pagina che le richiama); per gli altri proposta via email. Riscritt
 manifest; backup, PDF/A mantenuto, PDF firmati o cifrati saltati, rapporto per email. Innesco: plugin MODX sull'upload del
 manager più giro notturno (da verificare la pianificazione su MODX Cloud, altrimenti scheduler esterno via SSH). Base:
 `controllo-pdf-nuovi.php`. Stima circa un giorno. Non è una voce d'audit: fuori dai documenti condivisi.
+
+## Da valutare: sameAs verso le pagine MioDottore delle strutture (25/11, dopo la correzione iniziale)
+
+Possibile valore per le risposte generative: il `sameAs` dichiarerebbe che pagina MioDottore e scheda di kosgroup.com sono
+la stessa struttura, collegando all'entità KOS recensioni e prestazioni che i motori generativi leggono comunque. Non è un
+link e non incide sul posizionamento. Oggi no: nomi, telefoni e siti non coincidono, alcune pagine sono di un'altra entità
+(Polo Geriatrico, Villa Rosa Diagnostica) e non sappiamo chi gestisce l'account. Da rivalutare dopo la correzione iniziale
+(opzione D dell'analisi MioDottore), come deroga alla convenzione «mai directory di terzi», solo per schede struttura con
+pagina gestita da KOS, stessa entità, nome, indirizzo e telefono uguali al sito, e controllo trimestrale dell'URL. Per i
+medici nessun `sameAs` (profilo del professionista, spesso con studi di altri gruppi). Fuori dai documenti per KOS: l'analisi
+lascia solo la domanda 5 a KOS.
