@@ -8,7 +8,7 @@ La ricerca interna dei due siti, oggi fornita da Yext, va sostituita entro fine 
 Google Vertex AI Search nel progetto Google Cloud di KOS: usa l'account Google Cloud che KOS ha già, senza nuovi
 contratti né canoni. Questa scheda descrive il sistema che andrebbe in produzione,
 i dati che tratta e le misure previste, più i dati trattati nella fase di test appena conclusa. La decisione sulla
-soluzione è prevista per il 27/11/2026.
+soluzione è prevista per il 4/12/2026.
 
 ## 2. Come funziona
 
@@ -39,7 +39,7 @@ Browser dell'utente ──► Sito (MODX Cloud) ──► Servizio intermedio �
 | Siti kosgroup.com e anniazzurri.it | MODX Cloud (hosting attuale) | Pagina dei risultati; nessun dato della ricerca salvato |
 | Servizio intermedio | Google Cloud Run, regione UE, progetto `kos-ricerca` | Pulizia del testo, limite giornaliero di ricerche; log senza il testo delle ricerche |
 | Vertex AI Search (Discovery Engine) | Regione UE, stesso progetto | Un indice per sito; statistiche di ricerca di Google spente; campionamento di input e risposte da parte di Google non consentito; nessun addestramento sui dati |
-| Credenziali | Account di servizio dedicato | Chiave custodita come segreto del servizio intermedio, mai nel codice dei siti |
+| Credenziali | Account di servizio dedicato | Nessuna chiave da custodire: il servizio intermedio usa un'identità tecnica dedicata, con il solo permesso di fare ricerche; nessuna credenziale nel codice dei siti |
 | Statistiche del sito (GA4) | Account GA4 di KOS, già in uso | Evento di ricerca con il numero di risultati, **senza il testo** |
 
 Il progetto Google Cloud `kos-ricerca` è sull'account Google di KOS marketing.kos2019@gmail.com («KOS group») ed è
@@ -117,8 +117,8 @@ limitato.
   Addendum. Non servono altri dati: i contatti del DPO sono un campo facoltativo, e la dichiarazione GDPR, il
   rappresentante locale e l'autorità di controllo riguardano solo chi ha l'indirizzo di fatturazione fuori da Europa,
   Medio Oriente e Africa.
-- **Alla messa in produzione**: servizio intermedio su Cloud Run in regione UE (proposta Milano, `europe-west8`), con la
-  chiave come segreto del servizio; app di ricerca nuove create con le statistiche spente; limite giornaliero di ricerche
+- **Alla messa in produzione**: servizio intermedio su Cloud Run in regione UE (proposta Milano, `europe-west8`), con
+  la sua identità tecnica dedicata, senza chiavi; app di ricerca nuove create con le statistiche spente; limite giornaliero di ricerche
   e avviso di budget.
 - **Dati e addestramento**: Google non usa i dati per addestrare o rifinire i modelli senza autorizzazione del cliente
   (condizioni specifiche dei servizi, sezione 17).
