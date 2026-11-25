@@ -1,6 +1,6 @@
 # Piano dello sprint 4 (23-27 novembre 2026)
 
-Documento interno (Danilo e Claude). Consegna sprint 4: **venerdì 27/11** (anticipata dal 4/12, registro 24/11); verifica di Cerved/ProWeb da confermare (calendario: 7-11/12); chiusura 14-18/12.
+Documento interno (Danilo e Claude). Consegna sprint 4: **venerdì 27/11** (anticipata dal 4/12, registro 24/11); verifica di Cerved/ProWeb da **lunedì 30/11** (Danilo, 25/11); chiusura 14-18/12.
 
 ## Voci
 
