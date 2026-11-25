@@ -1,6 +1,6 @@
 # Nuova ricerca interna dei siti: scheda tecnica per la valutazione privacy
 
-Gruppo KOS, kosgroup.com e anniazzurri.it. 24/11/2026, Danilo Bernabeo. Parere richiesto entro il 2/12/2026.
+Gruppo KOS, kosgroup.com e anniazzurri.it. 25/11/2026, Danilo Bernabeo. Parere richiesto entro il 2/12/2026.
 
 ## 1. Scopo
 
@@ -65,6 +65,25 @@ RetailTune: la ricerca interna non le passa dati.
 KOS è titolare del trattamento; Google opera come responsabile secondo il Cloud Data Processing Addendum di Google
 Cloud, con le clausole contrattuali tipo, confermato nella console prima della messa in produzione (paragrafo 8, punto 1).
 
+**Perché Google, dal punto di vista della privacy.** Prima di proporre Vertex AI Search ho valutato anche altri servizi
+di ricerca. Rispetto a questi, la soluzione Google ha alcuni vantaggi per la protezione dei dati:
+
+- **Nessun nuovo fornitore.** Google è già un fornitore di KOS (account Google Cloud e GA4 già in uso): non si aggiunge
+  un altro responsabile del trattamento, con un altro contratto e altri sub-responsabili da valutare.
+- **Tutto nel progetto di KOS.** Indice, servizio intermedio e credenziali stanno nel progetto Google Cloud di KOS, che
+  ne controlla accessi e configurazione. Con un servizio di ricerca pronto, i dati stanno sulla piattaforma del
+  fornitore.
+- **Il testo viene ripulito prima di arrivare al motore.** Il servizio intermedio è nostro e gira nello stesso
+  progetto: toglie contatti e codici prima della ricerca. I servizi pronti di norma ricevono la ricerca direttamente dal
+  browser dell'utente, così com'è scritta.
+- **Dati nell'UE.** Indice e servizio intermedio sono in regione UE.
+- **Conservazione del testo sotto il nostro controllo.** Le statistiche di ricerca si possono spegnere e i log di Google
+  Cloud oscurano il testo (verificato nella prova). Negli altri servizi lo storico delle ricerche è una funzione del
+  prodotto: è così che nomi e codici sono finiti nello storico di Yext (paragrafo 8, punto 5).
+- **Nessun addestramento sui dati**, per impegno contrattuale di Google, e nessun identificativo dell'utente inviato.
+- **Controllo automatico dei dati personali** con Google Sensitive Data Protection, nella stessa infrastruttura e in
+  regione UE, già usato nella prova.
+
 ## 6. Fase di test (12-18/11/2026)
 
 Ho confrontato Vertex AI Search con la ricerca Yext sulle ricerche reali degli ultimi 12 mesi, esportate da Yext
@@ -101,10 +120,10 @@ limitato.
 
 - **Già fatto**: progetto `kos-ricerca`, fatturazione attiva, indici nella regione UE (`eu`), che per Google garantisce
   la conservazione dei dati nell'UE.
-- **Nella console, pagina «Privacy e sicurezza»** (proprietario del progetto): accettazione del Cloud Data Processing
-  Addendum e contatto del DPO, con nome completo, indirizzo, numero di telefono ed email. La dichiarazione GDPR, il
-  rappresentante locale e l'autorità di controllo richiesti nella stessa pagina riguardano solo chi ha l'indirizzo di
-  fatturazione fuori da Europa, Medio Oriente e Africa: per KOS non servono.
+- **Nella console, pagina «Privacy e sicurezza»** (proprietario del progetto): conferma del Cloud Data Processing
+  Addendum. Non servono altri dati: i contatti del DPO sono un campo facoltativo, e la dichiarazione GDPR, il
+  rappresentante locale e l'autorità di controllo riguardano solo chi ha l'indirizzo di fatturazione fuori da Europa,
+  Medio Oriente e Africa.
 - **Alla messa in produzione**: servizio intermedio su Cloud Run in regione UE (proposta Milano, `europe-west8`), con la
   chiave come segreto del servizio; app di ricerca nuove create con le statistiche spente; limite giornaliero di ricerche
   e avviso di budget.
@@ -114,9 +133,8 @@ limitato.
 ## 8. Punti per il DPO
 
 1. Termini sulla protezione dei dati di Google Cloud. Prima della messa in produzione, il proprietario del progetto
-   conferma nella console (Privacy e sicurezza) i termini sul trattamento dei dati di Google Cloud, indicando che si
-   applica il GDPR e i contatti del DPO. È un'operazione di pochi minuti: se mi indicate i contatti da inserire, la
-   preparo io e la conferma resta a voi.
+   conferma nella console (Privacy e sicurezza) i termini sul trattamento dei dati di Google Cloud. È un'operazione di
+   pochi minuti, che preparo io; la conferma resta a KOS. Non è richiesto alcun dato del DPO.
 2. Società di riferimento. Indicare quale società del gruppo va considerata titolare per la ricerca di kosgroup.com e
    per quella di anniazzurri.it (il progetto Google Cloud è fatturato a Kos Care).
 3. Conferma della conservazione dei testi della prova fino al 4/12 (PC con disco cifrato o bucket UE, paragrafo 6).
