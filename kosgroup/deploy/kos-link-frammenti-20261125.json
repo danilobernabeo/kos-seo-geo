@@ -1,0 +1,19 @@
+{
+ "nome": "KOS scansione del 24/11, anomalia 3: link con il solo frammento (href=\"#id\") che per il <base href> i crawler risolvono nella home (835 link). Plugin LinkFrammenti (OnWebPagePrerender, interruttore kosseogeo.link_frammenti) che scrive href=\"/percorso-della-pagina#id\", escluso href=\"#\" (GTM) e i componenti Bootstrap; main.js riconosce entrambe le forme e fa scorrere la pagina come prima",
+ "settings": [
+  {"key": "kosseogeo.link_frammenti", "value": "1", "area": "kosseogeo"}
+ ],
+ "files": [
+  {"file": "kosgroup/files/assets/js/main.js", "dest": "assets/js/main.js", "baseline": "kosgroup/deploy/kos-link-frammenti-20261125/base-main.js"}
+ ],
+ "elements": [
+  {
+   "type": "plugin",
+   "name": "LinkFrammenti",
+   "file": "kosgroup/elements/plugins/LinkFrammenti.php",
+   "description": "Scansione 24/11, anomalia 3: href=\"#id\" → href=\"/percorso#id\" (per il <base href>); kosseogeo.link_frammenti = 0 lo spegne",
+   "events": ["OnWebPagePrerender"],
+   "disabled": false
+  }
+ ]
+}
