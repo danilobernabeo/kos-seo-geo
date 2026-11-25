@@ -37,6 +37,9 @@ const css = await p.evaluate((tenuti) => {
     [...rules].forEach((r, i) => {
       const k = pth + '/' + i;
       if (r.type === 1) {
+        // sempre le classi .order-* di Bootstrap: un elemento della parte iniziale può seguire nel codice sezioni che
+        // l'ordine flex porta più in basso (es. /it/news-e-media, 25/11); senza le loro regole salirebbero sopra
+        if (!tenuti[k] && /^\.order-[\w-]+(\s*,\s*\.order-[\w-]+)*$/.test(r.selectorText)) tenuti[k] = r.selectorText.split(',').map(x => x.trim());
         if (tenuti[k]) {
           (r.style.animationName || '').split(',').forEach(x => x.trim() && animUsate.add(x.trim()));
           parts.push(`${tenuti[k].join(',')}{${r.style.cssText}}`);
@@ -54,7 +57,12 @@ const css = await p.evaluate((tenuti) => {
 }, tenuti);
 const href = await p.evaluate(() => [...document.styleSheets].find(s => (s.href || '').includes('kos.min.css')).href);
 await b.close();
-let min = transform({ filename: 'critico.css', code: Buffer.from(css), minify: true }).code.toString();
+// Regole aggiunte a mano, non nel foglio intero: spazio riservato per la foto di testata delle schede struttura a immagine
+// unica (img/header/, 900×400 e versione mobile quadrata), che non ha width e height nel contenuto. Senza, con la prima
+// visualizzazione anticipata, il testo sotto la foto scendeva all'arrivo dell'immagine (CLS 0,12 da desktop, 25/11).
+// La larghezza al 100% è quella che la foto ha già (colonna più stretta di 900 px a ogni larghezza).
+const aggiunte = '#intro-pagina-img img[src*="/img/header/"]{width:100%}#intro-pagina-img img.d-md-block[src*="/img/header/"]{aspect-ratio:9/4}#intro-pagina-img img.d-md-none[src*="/img/header/"]{aspect-ratio:1}';
+let min = transform({ filename: 'critico.css', code: Buffer.from(css + aggiunte), minify: true }).code.toString();
 if (min.includes('[[') || min.includes(']]')) throw new Error('il CSS contiene [[ o ]]: MODX lo leggerebbe come tag');
 // Il plugin ObfuscateEmail cambia in entità HTML tutto ciò che somiglia a un indirizzo email (caratteri «atom» RFC 2822,
 // tra cui { } | ~, attorno a una @): nel CSS in linea «border-box}@media» diventava entità e la regola si rompeva (25/11,

@@ -21,9 +21,10 @@ const shot = async (url, v, solo) => {
     await p.route('**/assets/css/kos.min.css*', r => r.abort());
     await p.route(url, async r => {
       const resp = await r.fetch(); let html = await resp.text();
+      html = html.replace(/<style>:root[\s\S]*?<\/style>/, () => `<style>${critico}</style>`); // pagina già con il CSS critico: quello nuovo
       const n0 = html.length;
       html = html.replace(/<link href="\/assets\/css\/kos\.min\.css[^"]*" rel="stylesheet" \/>/, `<style>${critico}</style>`);
-      if (html.length === n0) console.error('link non trovato', url);
+      if (html.length === n0 && !html.includes('rel="preload" href="/assets/css/kos.min.css')) console.error('link non trovato', url); // pagina già con il CSS critico: basta bloccare il foglio
       await r.fulfill({ response: resp, body: html, headers: { ...resp.headers(), 'content-type': 'text/html; charset=utf-8' } });
     });
   }

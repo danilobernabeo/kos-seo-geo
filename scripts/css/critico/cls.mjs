@@ -23,6 +23,8 @@ const conDimensioni = async html => {
   return html;
 };
 const trasforma = html => {
+  // pagina già con il CSS critico (dal 25/11): si sostituisce solo il contenuto dello <style> iniziale
+  if (/<style>:root/.test(html)) return html.replace(/<style>:root[\s\S]*?<\/style>/, () => `<style>${critico}</style>`);
   const m = html.match(/<link href="(\/assets\/css\/kos\.min\.css[^"]*)" rel="stylesheet" \/>/);
   if (!m) return null;
   const font = (process.env.FONT || 'satoshi-regular,satoshi-medium,satoshi-bold').split(',').map(f => `<link rel="preload" href="/assets/fonts/${f}.woff2" as="font" type="font/woff2" crossorigin>`).join('');
@@ -38,7 +40,7 @@ const misura = async (url, v, nuovo) => {
     window.__lcp = 0; new PerformanceObserver(l => { const e = l.getEntries().pop(); window.__lcp = e.startTime; }).observe({ type: 'largest-contentful-paint', buffered: true }); });
   if (lento) { const c = await ctx.newCDPSession(p); await c.send('Network.emulateNetworkConditions', { offline: false, latency: 150, downloadThroughput: 1.6e6 / 8, uploadThroughput: 750e3 / 8 }); await c.send('Emulation.setCPUThrottlingRate', { rate: 4 }); }
   await p.route('**/*', r => { const u = r.request().url(); if (/googletagmanager|google-analytics|cookiebot|acsbapp|hubspot|sitescdn|doubleclick|facebook/.test(u)) return r.abort(); return r.continue(); });
-  await p.route(url, async r => { const resp = await r.fetch(); const tx = await resp.text(); const h = nuovo ? await conDimensioni(trasforma(tx)) : tx; await r.fulfill({ response: resp, body: h ?? '', headers: { ...resp.headers(), 'content-type': 'text/html; charset=utf-8' } }); });
+  await p.route(url, async r => { const resp = await r.fetch(); const tx = await resp.text(); const h = nuovo ? await conDimensioni(trasforma(tx) ?? tx) : tx; await r.fulfill({ response: resp, body: h ?? '', headers: { ...resp.headers(), 'content-type': 'text/html; charset=utf-8' } }); });
   await p.goto(url, { waitUntil: 'load', timeout: 90000 }); await p.waitForTimeout(4000);
   const r = await p.evaluate(() => ({ cls: window.__cls, sh: window.__sh, lcp: window.__lcp, fcp: (performance.getEntriesByName('first-contentful-paint')[0] || {}).startTime, ttfb: performance.getEntriesByType('navigation')[0].responseStart }));
   await ctx.close(); return r;

@@ -22,18 +22,21 @@ async function una(url, v) {
     const r = await p.evaluate(({ h }) => {
       const sheet = [...document.styleSheets].find(s => (s.href || '').includes('kos.min.css'));
       if (!sheet) return { err: 'foglio non trovato' };
+      // Elementi della parte iniziale, indipendentemente dall'ordine nel documento (25/11: con il taglio «in ordine di
+      // documento» un elemento posizionato in basso ma presente presto nel codice fermava la raccolta, e la fascia in
+      // evidenza di /it/news-e-media restava senza regole): visibili con il bordo alto entro 1,3 finestre, fissi o sticky,
+      // e quelli nascosti (menu, pannelli) il cui primo antenato visibile sta nella parte iniziale.
       const all = [...document.querySelectorAll('body *')];
-      const lim = h * 1.3; let cut = all.length;
-      for (let i = 0; i < all.length; i++) {
-        const el = all[i]; const cs = getComputedStyle(el);
-        if (cs.position === 'fixed') continue;
-        const rc = el.getBoundingClientRect();
-        if (rc.width > 0 && rc.height > 0 && rc.top + scrollY > lim) { cut = i; break; }
-      }
-      const S = [document.documentElement, document.body, ...all.slice(0, cut)];
-      for (const el of all.slice(cut)) {
+      const lim = h * 1.3;
+      const vis = new Map();
+      const visibile = el => { if (vis.has(el)) return vis.get(el); const rc = el.getBoundingClientRect(); const v = rc.width > 0 && rc.height > 0 ? rc.top + scrollY : null; vis.set(el, v); return v; };
+      const S = [document.documentElement, document.body];
+      for (const el of all) {
         const cs = getComputedStyle(el);
-        if (cs.position === 'fixed' || cs.position === 'sticky') { S.push(el, ...el.querySelectorAll('*')); }
+        if (cs.position === 'fixed' || cs.position === 'sticky') { S.push(el); continue; }
+        let top = visibile(el), a = el;
+        while (top === null && a.parentElement && a.parentElement !== document.body) { a = a.parentElement; top = visibile(a); }
+        if (top !== null && top < lim) S.push(el);
       }
       const split = s => { const out = []; let d = 0, cur = ''; for (const c of s) { if (c === '(') d++; if (c === ')') d--; if (c === ',' && d === 0) { out.push(cur.trim()); cur = ''; } else cur += c; } if (cur.trim()) out.push(cur.trim()); return out; };
       const dyn = /::?(before|after|first-letter|first-line|placeholder|selection|marker|backdrop|-webkit-[\w-]+|-moz-[\w-]+|-ms-[\w-]+)(\([^)]*\))?|:(hover|focus|focus-visible|focus-within|active|visited|link|target|checked|disabled|enabled|invalid|valid|required|optional|placeholder-shown|indeterminate|default|empty)\b/gi;
@@ -60,7 +63,7 @@ async function una(url, v) {
   finally { await ctx.close(); fatte++; }
 }
 const lavori = []; for (const u of urls) for (const v of VIEW) lavori.push([u, v]);
-const conc = 6; let idx = 0;
+const conc = +(process.env.CONC || 6); let idx = 0;
 await Promise.all(Array.from({ length: conc }, async () => { while (idx < lavori.length) { const [u, v] = lavori[idx++]; await una(u, v); } }));
 await b.close();
 fs.writeFileSync('tenuti.json', JSON.stringify(Object.fromEntries(Object.entries(tenuti).map(([k, s]) => [k, [...s]]))));

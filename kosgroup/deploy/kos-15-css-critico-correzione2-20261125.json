@@ -1,0 +1,6 @@
+{
+ "nome": "KOS 15 CSS critico, seconda correzione: regole raccolte per posizione sullo schermo e non per ordine nel codice (fascia in evidenza di /it/news-e-media), sempre le classi .order-*, spazio riservato per la foto di testata delle schede a immagine unica (img/header/)",
+ "elements": [
+  {"type": "chunk", "name": "kos-css-critico", "file": "kosgroup/elements/chunks/kos-css-critico.html", "baseline": "kosgroup/deploy/kos-15-css-critico-20261125/base-kos-css-critico-2.html"}
+ ]
+}
