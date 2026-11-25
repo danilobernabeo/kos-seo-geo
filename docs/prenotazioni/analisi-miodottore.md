@@ -9,6 +9,7 @@ KOS è presente su MioDottore in modo parziale e poco curato: delle 18 strutture
 - **Come funziona.** TuoTempo fa parte del gruppo Docplanner, proprietario di MioDottore, dal 2019. Tramite il servizio «Visibility» di TuoTempo le prenotazioni fatte su MioDottore entrano direttamente nelle agende TuoTempo delle strutture.
 - **Cosa si aggiorna da solo e cosa no.** Prestazioni, prezzi e disponibilità seguono TuoTempo. Nome, telefono, sito, descrizioni e foto invece si cambiano solo dentro MioDottore, a mano.
 - **Traffico.** Chi cerca su Google il nome di una struttura trova soprattutto kosgroup.com (Villa dei Pini: circa 15.800 clic in un anno sulla sua pagina). Da MioDottore verso il sito, invece, sono arrivate solo 3 visite in undici mesi.
+- **Incongruenze.** Nei due casi verificati in dettaglio (San Martino e Myolab), oltre un terzo dei profili e oltre metà delle prestazioni mostrate su MioDottore non sono allineati con le agende KOS: profili di professionisti senza agenda, professionisti prenotabili sul sito ma non su MioDottore, prestazioni elencate ma non prenotabili.
 - **Proposta.** Correggere subito gli errori più evidenti; poi una sistemazione completa delle pagine fatta da MioDottore su dati forniti da KOS, e da lì un aggiornamento periodico a cura di chi gestisce l'account. Non serve nessuno sviluppo tecnico.
 
 ## Da correggere subito
@@ -79,6 +80,56 @@ Altre note:
 - «Assente» significa che la pagina non compare nella ricerca di MioDottore: potrebbe esistere con un nome diverso.
 - MioDottore non mostra gli orari delle strutture, quindi non è stato possibile confrontarli.
 
+## Incongruenze nei dati: due casi verificati
+
+Per capire da dove nascono le differenze tra MioDottore e i dati KOS, due strutture sono state confrontate nel dettaglio, professionista per professionista e prestazione per prestazione: Poliambulatorio San Martino e Myolab. Il confronto è con le agende e le prestazioni che TuoTempo rende prenotabili sul sito kosgroup.com, alla data del 25/11/2026.
+
+### Professionisti
+
+| Situazione | San Martino | Myolab |
+| --- | --- | --- |
+| Profili collegati alla struttura su MioDottore | 26 | 33 |
+| Prenotabili su MioDottore e presenti su TuoTempo: allineati | 11 | 22 |
+| Presenti su TuoTempo, ma su MioDottore senza pulsante «Prenota» | 5 | 7 |
+| Su MioDottore senza pulsante «Prenota» e senza agenda su TuoTempo | 10 | 3 |
+| Prenotabili su MioDottore ma senza agenda su TuoTempo | 0 | 1 |
+| Agende su TuoTempo senza profilo su MioDottore | 1 | 3 |
+
+Le voci senza agenda comprendono, in entrambe le strutture, un'agenda «Covid Test» ancora pubblicata. In un caso lo stesso professionista è scritto in due modi diversi (Mirko e Mirco) nei due sistemi.
+
+### Prestazioni
+
+| Voce | San Martino | Myolab |
+| --- | --- | --- |
+| Prestazioni mostrate su MioDottore | 90 | 143 |
+| di cui prenotabili su MioDottore | 26 | 63 |
+| di cui solo elencate, senza pulsante «Prenota» | 64 | 80 |
+| Prestazioni prenotabili sul sito (TuoTempo) | 73 | 114 |
+
+Su MioDottore si vedono quindi più prestazioni che sul sito, ma se ne possono prenotare molte meno. Le voci senza «Prenota» sono in gran parte generiche o dichiarate dai singoli professionisti sul proprio profilo (per esempio «Prima visita», «Visita di controllo», interventi chirurgici, trattamenti di medicina estetica): non corrispondono necessariamente a prestazioni che la struttura offre oggi. A San Martino, per esempio, la visita cardiologica compare su MioDottore ma non è prenotabile né lì né sul sito.
+
+### Da dove nascono le differenze
+
+Sono ipotesi coerenti con quanto osservato, da confermare con MioDottore e TuoTempo:
+
+1. **I profili non si cancellano da soli.** Quando un professionista smette di lavorare in una struttura o perde l'agenda, il suo profilo resta collegato alla pagina della struttura, con recensioni e prestazioni. Il collegamento con TuoTempo aggiorna le disponibilità, non crea e non toglie i profili.
+2. **Il collegamento agenda-profilo è fatto a mano.** Ogni agenda TuoTempo va abbinata al profilo MioDottore corrispondente. Se l'abbinamento manca o si interrompe, il professionista resta visibile ma senza «Prenota» (12 casi nei due esempi), oppure non compare affatto (4 casi). Nomi scritti in modo diverso rendono l'abbinamento più fragile.
+3. **Le prestazioni hanno due origini.** Quelle prenotabili arrivano da TuoTempo; le altre le inseriscono i professionisti o MioDottore e nessuno le rimuove. Il risultato è una pagina con un'offerta più ampia di quella reale e con molte voci non prenotabili.
+4. **Esiste almeno un'agenda prenotabile su MioDottore che non passa da TuoTempo** (Myolab, 1 caso). Va capito chi la gestisce e dove finiscono quelle prenotazioni: è il punto più delicato, perché una prenotazione fuori da TuoTempo potrebbe non essere vista dalla struttura.
+
+### Cosa comporta per i pazienti
+
+- Possono trovare professionisti che non lavorano più nella struttura, con recensioni che continuano a pesare sulla pagina.
+- Possono vedere prestazioni che la struttura non offre, o che offre ma non si possono prenotare online.
+- Professionisti realmente prenotabili sul sito risultano non prenotabili su MioDottore, e quindi meno visibili proprio dove il paziente cerca.
+
+### Cosa proponiamo
+
+1. **Un elenco ufficiale per struttura** dei professionisti attivi e delle prestazioni offerte, confermato dalle strutture. Il sito ha già i dati delle agende TuoTempo: lo prepariamo noi e le strutture lo confermano.
+2. **Pulizia su MioDottore** sulla base di quell'elenco: scollegare i profili non più attivi, togliere le prestazioni non offerte e l'agenda «Covid Test», completare gli abbinamenti mancanti.
+3. **Una regola per ingressi e uscite:** quando un professionista entra o esce da una struttura, chi aggiorna TuoTempo avvisa anche chi gestisce l'account MioDottore.
+4. **Un controllo periodico** con lo stesso confronto, esteso a tutte le strutture con pagina attiva: il conteggio è automatico sui dati del sito, la verifica su MioDottore è manuale.
+
 ## Visibilità su Google e traffico verso il sito
 
 **Ricerche con il nome della struttura** (Google Search Console di kosgroup.com, novembre 2025-novembre 2026):
@@ -115,8 +166,9 @@ Il sito è ben visibile quando si cerca il nome. Dove la posizione media è oltr
 
 1. **Subito:** le correzioni della sezione «Da correggere subito».
 2. **Sistemazione completa:** KOS chiede a MioDottore di correggere in una volta nomi, telefoni, link e pagine vuote o superate, partendo da un file preparato da noi con i dati ufficiali delle strutture.
-3. **Manutenzione:** chi gestisce l'account aggiorna le pagine quando cambia qualcosa; ogni tre mesi un controllo delle circa 15 pagine, insieme a quello dei profili Google.
-4. **Solo se serve:** strumenti di controllo automatico, se le prenotazioni da MioDottore risultano un canale importante.
+3. **Pulizia dei profili e delle prestazioni** sulla base di un elenco ufficiale per struttura (vedi «Incongruenze nei dati»).
+4. **Manutenzione:** chi gestisce l'account aggiorna le pagine quando cambia qualcosa; ogni tre mesi un controllo delle circa 15 pagine, insieme a quello dei profili Google.
+5. **Solo se serve:** strumenti di controllo automatico, se le prenotazioni da MioDottore risultano un canale importante.
 
 ## Domande
 
@@ -138,12 +190,13 @@ Le domande a MioDottore e a TuoTempo le pone KOS: nessuno dei due è stato conta
 2. Come si correggono nome, telefono e sito di una pagina, e come si chiudono o si uniscono le pagine vuote, superate o doppie?
 3. Il pulsante «Prenota» su Google è attivo per le strutture KOS? Si può disattivare per struttura?
 4. La richiesta automatica di recensione si può spegnere per struttura o per agenda?
-5. Il link «Sito web» di ogni struttura e di ogni medico può puntare alla pagina su kosgroup.com?
+5. Esistono agende prenotabili su MioDottore non collegate a TuoTempo? Dove arrivano quelle prenotazioni?
+6. Il link «Sito web» di ogni struttura e di ogni medico può puntare alla pagina su kosgroup.com?
 
 ### Per TuoTempo
 
 1. Quali dati invia Visibility a MioDottore (prestazioni, prezzi, disponibilità, dati dei medici) e con quale frequenza?
-2. Si può avere l'elenco dei collegamenti tra strutture e medici di TuoTempo e le pagine MioDottore corrispondenti?
+2. Si può avere l'elenco dei collegamenti tra le agende TuoTempo e i profili MioDottore, per struttura? Perché alcune agende attive non risultano prenotabili su MioDottore?
 3. Una prestazione nascosta in TuoTempo sparisce anche da MioDottore?
 
 ## Cosa serve da KOS
