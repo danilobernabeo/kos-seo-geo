@@ -14,13 +14,14 @@ soluzione è prevista per il 27/11/2026.
 
 ```
 Browser dell'utente ──► Sito (MODX Cloud) ──► Servizio intermedio ──► Motore di ricerca
-   testo della ricerca      pagina risultati      programma nostro           Vertex AI Search
-                                                   Cloud Run, regione UE      indice e ricerca, regione UE
+   testo della ricerca      pagina risultati      programma di KOS           Vertex AI Search
+                                                   ospitato su Cloud Run, UE  indice e ricerca, regione UE
                                                    toglie contatti e codici   solo pagine pubbliche dei siti
 ```
 
 - L'utente scrive una ricerca nella barra del sito. Il browser non la invia al motore di ricerca, ma a un **servizio
-  intermedio**: un programma nostro che gira su Google Cloud Run, in regione UE, nel progetto di KOS. Il testo originale
+  intermedio**: un programma scritto da me per KOS, ospitato su Google Cloud Run (regione UE) nel progetto di KOS. Il
+  testo originale
   passa da qui solo per il tempo dell'elaborazione e non viene salvato: viaggia nel corpo della richiesta, che i log di
   Cloud Run non registrano.
 - Il servizio intermedio toglie dal testo email, numeri di telefono, codici fiscali, codici alfanumerici (es. codici di
@@ -77,7 +78,7 @@ di ricerca. Rispetto a questi, la soluzione Google ha alcuni vantaggi per la pro
 - **Tutto nel progetto di KOS.** Indice, servizio intermedio e credenziali stanno nel progetto Google Cloud di KOS, su
   server di Google in regione UE: KOS ne controlla accessi e configurazione. Con un servizio di ricerca pronto, i dati
   stanno sulla piattaforma del fornitore, configurata da lui.
-- **Il testo viene ripulito prima di arrivare al motore.** Il servizio intermedio è nostro e gira nello stesso
+- **Il testo viene ripulito prima di arrivare al motore.** Il servizio intermedio è un programma di KOS e gira nello stesso
   progetto: toglie contatti e codici prima della ricerca. I servizi pronti di norma ricevono la ricerca direttamente dal
   browser dell'utente, così com'è scritta.
 - **Dati nell'UE.** Indice e servizio intermedio sono in regione UE.
@@ -104,7 +105,7 @@ spente.
 
 I testi della prova (esportazione Yext e set ripulito) sono conservati sul mio PC, in una cartella
 fuori dal repository del codice, con disco cifrato (BitLocker, XTS-AES 128, protezione attiva; verifica del 18/11), e
-saranno **cancellati il 4/12/2026**, salvo diversa indicazione. In alternativa, se preferite che restino su
+saranno **cancellati l'11/12/2026**, salvo diversa indicazione. In alternativa, se preferite che restino su
 infrastruttura KOS, possono essere spostati in un bucket Cloud Storage in regione UE nel progetto di KOS, con accesso
 limitato.
 
@@ -129,7 +130,7 @@ limitato.
    pochi minuti, che preparo io; la conferma resta a KOS. Non è richiesto alcun dato del DPO.
 2. Società di riferimento. Indicare quale società del gruppo va considerata titolare per la ricerca di kosgroup.com e
    per quella di anniazzurri.it (il progetto Google Cloud è fatturato a Kos Care).
-3. Conferma della conservazione dei testi della prova fino al 4/12 (PC con disco cifrato o bucket UE, paragrafo 6).
+3. Conferma della conservazione dei testi della prova fino all'11/12 (PC con disco cifrato o bucket UE, paragrafo 6).
 4. Se ritenete necessario chiedere a Google la durata di conservazione dei registri delle app eliminate.
 5. Per KOS, fuori dalla nuova ricerca: gli stessi codici di accesso ai referti sono anche nello storico delle ricerche di
    Yext, perché gli utenti li scrivono nella barra di ricerca attuale.
