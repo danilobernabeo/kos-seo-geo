@@ -5,7 +5,8 @@ Gruppo KOS, kosgroup.com e anniazzurri.it. 25/11/2026, Danilo Bernabeo. Parere r
 ## 1. Scopo
 
 La ricerca interna dei due siti, oggi fornita da Yext, va sostituita entro fine gennaio 2027. La soluzione proposta usa
-Google Vertex AI Search nel progetto Google Cloud di KOS. Questa scheda descrive il sistema che andrebbe in produzione,
+Google Vertex AI Search nel progetto Google Cloud di KOS: usa l'account Google Cloud che KOS ha già, senza nuovi
+contratti né canoni. Questa scheda descrive il sistema che andrebbe in produzione,
 i dati che tratta e le misure previste, più un breve resoconto della fase di test appena conclusa. La decisione sulla
 soluzione è prevista per il 27/11/2026.
 
