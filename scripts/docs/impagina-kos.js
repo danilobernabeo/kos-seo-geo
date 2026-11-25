@@ -44,6 +44,8 @@ function table(rows){
   if(rows[0][0].startsWith('Bot')) cw=WBOT;
   if(rows[0][0].startsWith('Entità')) cw=[1800,2050,2238,3550];
   if(rows[0][0]==='Sito'&&n===3) cw=[1700,2700,5238];
+  if(rows[0][0]==='Struttura'&&n===4) cw=[2500,1300,1300,4538];
+  if(rows[0][0]==='Struttura'&&n===3) cw=[4638,2500,2500];
   const mar={top:60,left:110,bottom:60,right:110};
   const b={style:BorderStyle.SINGLE,color:LINE,size:4};
   const numeric=c=>/^[\d.,]+$/.test(c.trim());
