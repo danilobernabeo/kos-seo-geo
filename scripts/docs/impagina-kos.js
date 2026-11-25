@@ -1,6 +1,6 @@
 // Impagina un Markdown nel formato dei documenti per KOS e Cerved/ProWeb (come calendario-sprint-linee-a-b.docx):
 // testata «GRUPPO KOS», titolo, sottotitolo linee A e B, firma, intestazione «Documento riservato», numero di pagina,
-// Arial, tabelle con intestazione #1F5C6E. Uso: node scripts/docs/impagina-kos.js <file.md> <uscita.docx> ["Danilo Bernabeo · data"]
+// Arial, tabelle con intestazione #1F5C6E. Variabili: SOTTOTITOLO, INTESTAZIONE (riga in testa alle pagine). Uso: node scripts/docs/impagina-kos.js <file.md> <uscita.docx> ["Danilo Bernabeo · data"]
 // Sottotitolo diverso con la variabile d'ambiente SOTTOTITOLO (es. documenti della linea C).
 // Argomenti 5 e 6 (facoltativi): immagini PNG al posto dei contenuti incorporati della scheda, nell'ordine, separate da virgola,
 // e dimensioni LxA in px (una per immagine, separate da virgola; una sola vale per tutte).
@@ -91,7 +91,7 @@ const doc=new Document({
     {reference:'bul',levels:[{level:0,format:LevelFormat.BULLET,text:'•',alignment:AlignmentType.LEFT,style:{paragraph:{indent:{left:360,hanging:240}}}}]},
     {reference:'num',levels:[{level:0,format:LevelFormat.DECIMAL,text:'%1.',alignment:AlignmentType.LEFT,style:{paragraph:{indent:{left:360,hanging:300}}}}]}]},
   sections:[{properties:{page:{size:{width:11906,height:16838},margin:{top:1300,right:1134,bottom:1134,left:1134,header:560,footer:500}}},
-    headers:{default:new Header({children:[new Paragraph({children:[new TextRun({text:'Documento riservato - destinato a Gruppo KOS e Cerved/ProWeb.',font:F,color:GREY,size:15})]})]})},
+    headers:{default:new Header({children:[new Paragraph({children:[new TextRun({text:process.env.INTESTAZIONE||'Documento riservato - destinato a Gruppo KOS e Cerved/ProWeb.',font:F,color:GREY,size:15})]})]})},
     footers:{default:new Footer({children:[new Paragraph({alignment:AlignmentType.RIGHT,children:[new TextRun({children:[PageNumber.CURRENT],font:F,color:GREY,size:16})]})]})},
     children:kids}]});
 Packer.toBuffer(doc).then(b=>fs.writeFileSync(process.argv[3]||'nota-di-consegna-sprint-1.docx',b));

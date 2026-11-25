@@ -1,6 +1,6 @@
 # Nuova ricerca interna dei siti: scheda tecnica per la valutazione privacy
 
-Gruppo KOS, kosgroup.com e anniazzurri.it. 25/11/2026, Danilo Bernabeo. Parere richiesto entro il 2/12/2026.
+Gruppo KOS, kosgroup.com e anniazzurri.it. 25/11/2026, Danilo Bernabeo. Parere richiesto entro il 4/12/2026.
 
 ## 1. Scopo
 
@@ -13,13 +13,16 @@ soluzione è prevista per il 27/11/2026.
 ## 2. Come funziona
 
 ```
-Browser dell'utente ──► Sito (MODX Cloud) ──► Servizio intermedio ──► Vertex AI Search
-   testo della ricerca      pagina risultati      Cloud Run, regione UE      indice e ricerca, regione UE
+Browser dell'utente ──► Sito (MODX Cloud) ──► Servizio intermedio ──► Motore di ricerca
+   testo della ricerca      pagina risultati      programma nostro           Vertex AI Search
+                                                   Cloud Run, regione UE      indice e ricerca, regione UE
                                                    toglie contatti e codici   solo pagine pubbliche dei siti
 ```
 
-- L'utente scrive una ricerca nella barra del sito. Il browser la invia al **servizio intermedio**, non direttamente a
-  Google, nel corpo della richiesta e non nell'indirizzo, così i log di accesso di Cloud Run non la registrano.
+- L'utente scrive una ricerca nella barra del sito. Il browser non la invia al motore di ricerca, ma a un **servizio
+  intermedio**: un programma nostro che gira su Google Cloud Run, in regione UE, nel progetto di KOS. Il testo originale
+  passa da qui solo per il tempo dell'elaborazione e non viene salvato: viaggia nel corpo della richiesta, che i log di
+  Cloud Run non registrano.
 - Il servizio intermedio toglie dal testo email, numeri di telefono, codici fiscali, codici alfanumerici (es. codici di
   accesso ai referti o di prenotazione), età e date, poi inoltra la ricerca a Vertex AI Search e restituisce i risultati
   alla pagina.
@@ -71,9 +74,9 @@ di ricerca. Rispetto a questi, la soluzione Google ha alcuni vantaggi per la pro
 
 - **Nessun nuovo fornitore.** Google è già un fornitore di KOS (account Google Cloud e GA4 già in uso): non si aggiunge
   un altro responsabile del trattamento, con un altro contratto e altri sub-responsabili da valutare.
-- **Tutto nel progetto di KOS.** Indice, servizio intermedio e credenziali stanno nel progetto Google Cloud di KOS, che
-  ne controlla accessi e configurazione. Con un servizio di ricerca pronto, i dati stanno sulla piattaforma del
-  fornitore.
+- **Tutto nel progetto di KOS.** Indice, servizio intermedio e credenziali stanno nel progetto Google Cloud di KOS, su
+  server di Google in regione UE: KOS ne controlla accessi e configurazione. Con un servizio di ricerca pronto, i dati
+  stanno sulla piattaforma del fornitore, configurata da lui.
 - **Il testo viene ripulito prima di arrivare al motore.** Il servizio intermedio è nostro e gira nello stesso
   progetto: toglie contatti e codici prima della ricerca. I servizi pronti di norma ricevono la ricerca direttamente dal
   browser dell'utente, così com'è scritta.
