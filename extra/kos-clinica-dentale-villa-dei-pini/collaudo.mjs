@@ -8,6 +8,9 @@
  *   node extra/kos-clinica-dentale-villa-dei-pini/collaudo.mjs --base=https://stage.kosgroup.com
  *   node extra/kos-clinica-dentale-villa-dei-pini/collaudo.mjs --base=https://kosgroup.com
  *
+ *   ... --senza-sede   il link dalla scheda di Villa dei Pini non è ancora atteso (installa.php --senza-sede)
+ *   ... --uri=it/centri/clinica-dentale-villalba   prova del collaudo stesso su una scheda esistente (attesi KO sui valori)
+ *
  * Esiti: OK, KO (da correggere), AVV (da guardare: segnaposto sullo stage, difetti ereditati dal modello).
  * Scrive collaudo-clinica-dentale-<host>.csv nella cartella corrente. Una richiesta ogni 0,5 s.
  */
@@ -21,7 +24,8 @@ const base = arg.base.replace(/\/$/, '');
 const PROD = !/stage\.|modx\.dev/.test(base);
 const C = JSON.parse(fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), 'config.json'), 'utf8'));
 const ALIAS = C.campi.alias;
-const URI = `it/centri/${ALIAS}`;
+const URI = (arg.uri || `it/centri/${ALIAS}`).replace(/^\/|\/$/g, '');   // --uri: prova del collaudo su un'altra scheda
+const SENZA_SEDE = 'senza-sede' in arg;
 const auth = process.env.AUTH ? 'Basic ' + Buffer.from(process.env.AUTH.includes(':') ? process.env.AUTH : 'kos:' + process.env.AUTH).toString('base64') : null;
 const pausa = ms => new Promise(r => setTimeout(r, ms));
 
@@ -77,8 +81,8 @@ const g = grafi(h);
 verifica(pScheda, 'un solo JSON-LD', g.length === 1, String(g.length));
 let nodi = [];
 try { nodi = JSON.parse(g[0] || '{}')['@graph'] || []; } catch (e) { verifica(pScheda, 'JSON-LD valido', false, e.message); }
-const canon = `https://kosgroup.com${pScheda}`;
-const lb = nodi.find(n => n['@id'] === `${canon}#localbusiness`);
+// @id con l'host del sito servito (sullo stage stage.kosgroup.com): confronto sul percorso, come collaudo-kos-24
+const lb = nodi.find(n => String(n['@id']).endsWith(`${pScheda}#localbusiness`));
 verifica(pScheda, 'nodo #localbusiness', !!lb, lb ? [].concat(lb['@type']).join(',') : 'assente');
 if (lb) {
   verifica(pScheda, '@type Dentist', [].concat(lb['@type']).includes('Dentist'));
@@ -97,7 +101,7 @@ if (lb) {
   verifica(pScheda, 'parentOrganization come Villalba', JSON.stringify(lb.parentOrganization) === JSON.stringify(lbV?.parentOrganization), JSON.stringify(lb.parentOrganization));
 }
 const wp = nodi.find(n => [].concat(n['@type']).includes('WebPage'));
-verifica(pScheda, 'WebPage → mainEntity #localbusiness', wp?.mainEntity?.['@id'] === `${canon}#localbusiness`);
+verifica(pScheda, 'WebPage → mainEntity #localbusiness', String(wp?.mainEntity?.['@id'] || '').endsWith(`${pScheda}#localbusiness`));
 const bl = nodi.find(n => [].concat(n['@type']).includes('BreadcrumbList'));
 const briciole = (bl?.itemListElement || []).map(i => i.name);
 const visibili = (h.match(/<nav[^>]*id="breadcrumbs"[\s\S]*?<\/nav>/i)?.[0].match(/<(?:a|span)\b[^>]*>([^<]*)<\/(?:a|span)>/gi) || []).map(testo).filter(x => x && x !== '|');
@@ -163,7 +167,15 @@ for (const [p, cosa] of [[`/${C.sede_uri}`, 'Villa dei Pini Civitanova'], [`/${C
   console.log(`\n== ${cosa} ${base}${p}`);
   const r = await scarica(base + p);
   verifica(p, 'HTTP 200', r.stato === 200, String(r.stato));
-  verifica(p, 'link alla scheda', r.html.includes(`href="${pScheda}"`) || r.html.includes(`href="https://kosgroup.com${pScheda}"`));
+  const collegata = r.html.includes(`href="${pScheda}"`) || r.html.includes(`href="https://kosgroup.com${pScheda}"`);
+  if (SENZA_SEDE && p === `/${C.sede_uri}`) esito(p, 'link alla scheda', collegata ? 'AVV' : 'OK', collegata ? 'presente, ma con --senza-sede non era atteso' : 'non ancora (--senza-sede: dopo il 4/12)');
+  else verifica(p, 'link alla scheda', collegata);
+  if (p === `/${C.elenco_uri}`) {
+    // card dell'elenco: immagine /assets/img/strutture/<alias>.jpg (chunk servizi-centri-row)
+    const card = (r.html.match(new RegExp(`<a[^>]+href="[^"]*${pScheda}"[^>]*>[\\s\\S]*?<img[^>]+src="([^"]+)"`)) || [])[1];
+    if (card) { const c = await scarica(base + card, 'HEAD'); verifica(p, `card ${card}`, c.stato === 200 && c.lunghezza <= 200000, `${c.stato}, ${c.lunghezza} byte`); }
+    else verifica(p, 'card della scheda con immagine', false);
+  }
   verifica(p, 'un solo JSON-LD', grafi(r.html).length === 1, String(grafi(r.html).length));
 }
 console.log(`\n== Sitemap e llms.txt`);

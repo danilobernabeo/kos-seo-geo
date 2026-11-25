@@ -24,7 +24,7 @@ nella documentazione del progetto.
 |---|---|
 | `config.json` | campi, TV, regole di costruzione del contenuto, news, landing, llms.txt, foto provvisorie |
 | `elementi/*.html` | testi della scheda: intestazione (H1 e indirizzo), contatti, pulsanti, La struttura, approfondimenti (come funziona e domande frequenti), trattamenti (dentro Aree di intervento), équipe, Come raggiungerci; voce per la scheda di Villa dei Pini |
-| `installa.php` | installazione ripetibile: prova, `--scrivi`, `--foto-provvisorie` (solo stage), `--ripristina`, `--test` (senza MODX) |
+| `installa.php` | installazione ripetibile: prova, `--scrivi`, `--foto-provvisorie` (solo stage), `--senza-sede` (non tocca la 218), `--ripristina`, `--test` (senza MODX). La chiave di Google Maps della mappa si prende dall'iframe di Villalba: nel repository non c'è |
 | `verifica-barra.php` | sola lettura: la barra con e senza `&branca`, confronto byte per byte su tutte le schede |
 | `ispeziona.php` | sola lettura: campi, TV, contenuti e template delle risorse coinvolte (`~/clinica-dentale-ispezione/`) |
 | `collaudo.mjs` | collaudo sul sito servito (scheda, landing, Villa dei Pini, elenco, sitemap, llms.txt) |
@@ -79,21 +79,39 @@ orari lunedì-venerdì 8:30-19:00, sabato 8:30-13:00; sito `https://kosgroup.com
 
 ## Rilasci
 
-Calendario (Danilo, 25/11): oggi e domani stage e collaudo; produzione venerdì 27/11 dopo l'invio della nota dello
-sprint 4, oppure lunedì 30/11, insieme al link dalla risorsa 218. Se slitta, dopo il 4/12. Il 26/11 niente produzione.
+Calendario (Danilo, 25/11): il 25 e il 26/11 stage e collaudo; produzione venerdì 27/11 dopo l'invio della nota dello
+sprint 4, oppure lunedì 30/11. Il 26/11 niente produzione. Il link dalla risorsa 218 (Villa dei Pini) va in produzione
+solo prima del 30/11, quindi il 27/11 insieme alla scheda; se la scheda slitta al 30/11, si installa con `--senza-sede` e
+il link si aggiunge dopo il 4/12 (stesso script, senza l'opzione). Da decidere con Danilo se anche lo snippet della barra
+(tocca tutte le schede con la barra) può andare il 30/11: il rilascio della cache della barra del 22/11 indicava «entro il
+26/11 oppure dopo il 4/12» per la verifica dello sprint 3 (KOS 11) dal 30/11 al 4/12.
 
 Ordine, prima sullo stage poi in produzione, sempre prima la prova e poi `--scrivi` (comandi pronti nella chat):
 
-1. barra: `php scripts/deploy/installa-elementi.php /www kosgroup/deploy/kos-barra-branca-20261125.json`, poi
-   `php extra/kos-clinica-dentale-villa-dei-pini/verifica-barra.php /www` (atteso IDENTICO su tutte le schede e 2
-   prestazioni di Odontoiatria; se sono di più ci si ferma);
-2. scheda: `php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www` (sullo stage `--foto-provvisorie`);
+1. barra, **prima di installarla**: `php extra/kos-clinica-dentale-villa-dei-pini/verifica-barra.php /www` confronta la
+   versione installata con quella del repository (atteso IDENTICO su tutte le schede) e conta le prestazioni di
+   Odontoiatria a Villa dei Pini (attese 2; se sono di più ci si ferma). Dopo l'installazione il confronto non dice più
+   nulla: le due versioni coincidono. Poi `php scripts/deploy/installa-elementi.php /www kosgroup/deploy/kos-barra-branca-20261125.json`
+   (prova, poi `--scrivi`);
+2. scheda: `php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www` (sullo stage `--foto-provvisorie`). La prova
+   scrive il contenuto costruito in `~/clinica-dentale-contenuto.html`: è il primo controllo sul contenuto vero di
+   Villalba (le prove in locale sono state fatte sull'HTML pubblico); può fermarsi su un elemento non riconosciuto;
 3. peso delle immagini, anche delle varianti generate alla prima visita: aprire la scheda, poi
-   `find /www/assets/img/strutture /www/assets/img/bg-clinica-dentale-villa-dei-pini.jpg /www/assets/cache-img -path '*clinica-dentale-villa-dei-pini*' -type f > ~/cdvdp-tetto.txt`
-   e `php scripts/immagini/tetto-peso.php /www ~/cdvdp-tetto.txt` (poi `--scrivi`);
-4. collaudo: `node extra/kos-clinica-dentale-villa-dei-pini/collaudo.mjs --base=https://stage.kosgroup.com`, poi la
-   regressione delle schede (`scripts/collaudo/collaudo-kos-24.mjs`) e il confronto visivo di Villa dei Pini e delle
-   due cliniche esistenti (`scripts/collaudo/collaudo-visivo.mjs`).
+   `cd /www && find assets/img/strutture assets/img/bg-clinica-dentale-villa-dei-pini.jpg assets/cache-img -path '*clinica-dentale-villa-dei-pini*' -type f > ~/cdvdp-tetto.txt`
+   e, dalla radice dell'archivio, `php scripts/immagini/tetto-peso.php /www ~/cdvdp-tetto.txt` (poi `--scrivi`);
+4. collaudo: `node extra/kos-clinica-dentale-villa-dei-pini/collaudo.mjs --base=https://stage.kosgroup.com`
+   (`--senza-sede` se la 218 non è stata toccata), poi la regressione delle schede (`scripts/collaudo/collaudo-kos-24.mjs`)
+   e il confronto visivo di Villa dei Pini e delle due cliniche esistenti (`scripts/collaudo/collaudo-visivo.mjs`).
+   Il collaudo è stato provato su Villalba in produzione (`--uri=it/centri/clinica-dentale-villalba`): controlli di
+   struttura OK, KO attesi solo sui valori di Villa dei Pini.
+
+In produzione lo script si ferma se restano segnaposto `[DA COMPLETARE]` o se mancano le foto (galleria, card
+dell'elenco `/assets/img/strutture/clinica-dentale-villa-dei-pini.jpg`, piè di pagina): le foto provvisorie sono solo
+per lo stage.
+
+La landing è stata costruita con il kit delle landing di Danilo (`CD_CONFIG` scritto dalla build): una nuova build
+dal kit rimetterebbe `prenotaOnline` spento, il JSON-LD e niente `noindex`. Le stesse modifiche vanno portate nel
+`config.json` e nel modello del kit, oppure si rilancia questo script dopo ogni ripubblicazione.
 
 | Data | Ambiente | Cosa | Backup / ripristino |
 |---|---|---|---|
@@ -106,7 +124,9 @@ Ordine, prima sullo stage poi in produzione, sempre prima la prova e poi `--scri
     php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www --ripristina ~/backup-kos-seo-geo/<data>-clinica-dentale/ripristino.json --scrivi
 
 Toglie la scheda creata (con le sue TV), rimette contenuto della 218 e della landing (o il suo template), `idStruttura`
-delle news, `llms.txt`, e cancella le foto create. La barra si ripristina con il `ripristino.json` stampato da
+delle news, `llms.txt`, e cancella le foto create. Solo il `ripristino.json` della **prima** installazione toglie la
+scheda: quelli dei rilanci successivi (aggiornamenti) la riportano allo stato precedente. Per tornare a prima di tutto,
+si applicano i ripristini dal più recente al primo. La barra si ripristina con il `ripristino.json` stampato da
 `installa-elementi.php`.
 
 ## Fuori da questo lavoro: difetti trovati nelle schede esistenti

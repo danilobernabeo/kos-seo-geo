@@ -6,6 +6,7 @@
  *   php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www                        prova: controlla e mostra, non scrive
  *   php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www --scrivi               applica (ripetibile: aggiorna)
  *   ... --scrivi --foto-provvisorie   anche le foto provvisorie ricavate da quelle della landing (SOLO STAGE)
+ *   ... --senza-sede                  non tocca la scheda di Villa dei Pini (link da mettere dopo il 4/12)
  *   ... --forza                       procede anche con le voci segnate FERMO (non in produzione con segnaposto)
  *   php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www --ripristina <cartella>/ripristino.json [--scrivi]
  *
@@ -34,6 +35,7 @@ $webroot = rtrim($argv[1] ?? '', '/');
 $scrivi = in_array('--scrivi', $argv, true);
 $forza = in_array('--forza', $argv, true);
 $fotoProvv = in_array('--foto-provvisorie', $argv, true);
+$senzaSede = in_array('--senza-sede', $argv, true);
 $iRip = array_search('--ripristina', $argv, true);
 $fileRip = $iRip !== false ? ($argv[$iRip + 1] ?? '') : null;
 
@@ -82,6 +84,9 @@ $leggi = function (string $rel) use ($DIR): string {
 
 /** Contenuto della scheda dal contenuto del modello: sostituzioni, aggiunte, barra, testi, controlli. */
 $costruisci = function (string $c) use ($C, $leggi, $ferma, $corto): string {
+    // Chiave di Google Maps: quella dell'iframe del modello (nessuna chiave nel repository)
+    $chiaveMaps = preg_match('#maps/embed/v1/place\?key=([\w-]+)#', $c, $km) ? $km[1] : '';
+    if ($chiaveMaps === '') $ferma('chiave di Google Maps non trovata nell\'iframe del modello');
     $frammenti = [];                                   // segnaposto => testo: il controllo dei residui li esclude
     $segna = function (string $testo) use (&$frammenti): string {
         $k = "\x01F" . count($frammenti) . "\x01";
@@ -124,7 +129,7 @@ $costruisci = function (string $c) use ($C, $leggi, $ferma, $corto): string {
             foreach ($mm[0] as $x) $ferma("nel contenuto resta «{$p}»: …" . $corto(trim($x)) . '…');
         }
     }
-    $c = strtr($c, $frammenti);
+    $c = str_replace('{{MAPS_KEY}}', $chiaveMaps, strtr($c, $frammenti));
     // Chiamate non in cache: ammessa solo la barra (cache interna dello snippet, registro del 22/11)
     preg_match_all('/\[\[!\s*([\w.\-$]+)/', $c, $nc);
     foreach ($nc[1] as $n) if ($n !== 'barraPrenotazioneDBmedicoPrestazione') $ferma("chiamata non in cache [[!$n…]] nel contenuto");
@@ -210,7 +215,7 @@ if (($argv[1] ?? '') === '--test') {
 }
 
 if ($webroot === '' || !is_file("$webroot/config.core.php")) {
-    fwrite(STDERR, "Uso: php installa.php /www [--scrivi] [--foto-provvisorie] [--forza] | --ripristina <file> [--scrivi] | --test <modello.html> [<landing.html>]\n");
+    fwrite(STDERR, "Uso: php installa.php /www [--scrivi] [--foto-provvisorie] [--senza-sede] [--forza] | --ripristina <file> [--scrivi] | --test <modello.html> [<landing.html>]\n");
     exit(1);
 }
 require "$webroot/config.core.php";
@@ -326,6 +331,9 @@ $risolvi = function (string $s, ?int $idNuova = null) use ($perUri, $ferma, $C):
 $c = $risolvi($c);
 preg_match_all('/\[\[~(\d+)\]\]/', $c, $ln);
 echo '  link [[~id]] nel contenuto: ' . implode(', ', array_map(fn($i) => $i . ' /' . (($r = $modx->getObject(modResource::class, (int) $i)) ? $r->get('uri') : '?'), array_unique($ln[1]))) . "\n";
+$fileProva = rtrim((string) (getenv('HOME') ?: '.'), '/') . '/clinica-dentale-contenuto.html';
+file_put_contents($fileProva, $c);
+echo "  contenuto costruito in $fileProva (" . strlen($c) . " byte)\n";
 $segnaposto = preg_match_all('/\[DA COMPLETARE[^\]]*\]/u', $c, $sp);
 if ($segnaposto) {
     echo "  i segnaposto da completare: $segnaposto\n";
@@ -411,7 +419,8 @@ foreach ($C['news_uri'] as $u) {
 echo "\n-- Villa dei Pini Civitanova ({$sede->get('id')}): voce «Clinica Dentale»\n";
 $cs = (string) $sede->get('content');
 $sedeNuovo = null;
-if (str_contains($cs, 'faqClinicaDentale')) echo "  già presente: invariata\n";
+if ($senzaSede) echo "  saltata per --senza-sede (la scheda di Villa dei Pini non si tocca)\n";
+elseif (str_contains($cs, 'faqClinicaDentale')) echo "  già presente: invariata\n";
 else {
     $p = strpos($cs, $C['sede_voce']['dopo_voce_con']);
     $ini = $p === false ? false : strrpos(substr($cs, 0, $p), '<div class="faq-singola"');
@@ -454,7 +463,7 @@ $foto = [];
 if ($fotoProvv) {
     echo "\n-- Foto provvisorie (dalla landing)\n";
     if (!$STAGE) $ferma('foto provvisorie solo sullo stage');
-    if (!function_exists('imagecreatefromjpeg')) $ferma('GD non disponibile');
+    if (!class_exists('Imagick') && !function_exists('imagecreatefromjpeg')) $ferma('né Imagick né GD disponibili');
     foreach ($C['foto_provvisorie']['voci'] as $v) {
         $w = $v['larghezza'] ?? null; $h = $v['altezza'] ?? null;
         if (isset($v['come'])) {
@@ -471,6 +480,17 @@ if ($fotoProvv) {
     $dirFoto = "$webroot/assets/img/strutture/{$C['campi']['alias']}";
     $n = is_dir($dirFoto) ? count(glob("$dirFoto/*.{jpg,jpeg,png}", GLOB_BRACE)) : 0;
     echo "\n-- Foto: $n nella galleria /assets/img/strutture/{$C['campi']['alias']}/" . ($n ? '' : ' (nessuna: per lo stage --foto-provvisorie)') . "\n";
+    // In produzione niente galleria vuota né immagini rotte (card dell'elenco delle cliniche, piè di pagina)
+    $servono = ["assets/img/strutture/{$C['campi']['alias']}.jpg" => 'card di /' . $C['elenco_uri']];
+    if (preg_match_all('#assets/img/[\w/.-]*' . preg_quote($C['campi']['alias'], '#') . '[\w.-]*\.(?:jpe?g|png|webp)#', $c, $im)) {
+        foreach (array_unique($im[0]) as $p) $servono[$p] = 'immagine nel contenuto';
+    }
+    foreach ($servono as $p => $cosa) {
+        $ok = is_file("$webroot/$p");
+        echo '  ' . ($ok ? '=' : 'i') . " /$p ($cosa): " . ($ok ? filesize("$webroot/$p") . ' byte' : 'assente') . "\n";
+        if (!$STAGE && !$ok) $ferma("in produzione manca /$p ($cosa)");
+    }
+    if (!$STAGE && !$n) $ferma('in produzione la galleria della scheda non può essere vuota');
 }
 
 /* ============================================================ SCRITTURA */
@@ -568,17 +588,27 @@ if ($llmsNuovo !== null) {
 
 // Foto provvisorie: ritaglio centrato, JPEG progressivo, qualità decrescente fino al tetto
 foreach ($foto as [$da, $a, $w, $h]) {
-    $src = imagecreatefromjpeg("$webroot/$da");
-    $sw = imagesx($src); $sh = imagesy($src);
-    $scala = max($w / $sw, $h / $sh);
-    $cw = (int) round($w / $scala); $ch = (int) round($h / $scala);
-    $dst = imagecreatetruecolor($w, $h);
-    imagecopyresampled($dst, $src, 0, 0, (int) (($sw - $cw) / 2), (int) (($sh - $ch) / 2), $w, $h, $cw, $ch);
-    imageinterlace($dst, true);
     $cartella = dirname("$webroot/$a");
     if (!is_dir($cartella)) { mkdir($cartella, 0775, true); $R['cartelle_create'][] = dirname($a); }
     foreach ([82, 76, 70, 64, 58, 52] as $q) {
-        imagejpeg($dst, "$webroot/$a", $q);
+        if (class_exists('Imagick')) {
+            $im = new Imagick("$webroot/$da");
+            $im->cropThumbnailImage($w, $h);
+            $im->stripImage();
+            $im->setImageFormat('jpeg');
+            $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);
+            $im->setImageCompressionQuality($q);
+            $im->writeImage("$webroot/$a");
+        } else {
+            $src = imagecreatefromjpeg("$webroot/$da");
+            $sw = imagesx($src); $sh = imagesy($src);
+            $scala = max($w / $sw, $h / $sh);
+            $cw = (int) round($w / $scala); $ch = (int) round($h / $scala);
+            $dst = imagecreatetruecolor($w, $h);
+            imagecopyresampled($dst, $src, 0, 0, (int) (($sw - $cw) / 2), (int) (($sh - $ch) / 2), $w, $h, $cw, $ch);
+            imageinterlace($dst, true);
+            imagejpeg($dst, "$webroot/$a", $q);
+        }
         clearstatcache();
         if (filesize("$webroot/$a") <= (int) $C['foto_provvisorie']['tetto_byte']) break;
     }
