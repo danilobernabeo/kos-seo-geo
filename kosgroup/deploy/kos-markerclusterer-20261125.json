@@ -1,0 +1,19 @@
+{
+ "nome": "KOS scansione del 24/11, 3xx esterni: MarkerClusterer in copia locale (/assets/js/markerclusterer/, dal ramo gh-pages di googlemaps/js-marker-clusterer, commit 8c2be07 del 16/06/2019, lo stesso file servito da cdn.rawgit.com, servizio dismesso che reindirizza) con le icone dei gruppi m1-m5 locali invece di developers.google.com; nel chunk anche fetch e icone con percorso assoluto, senza il tag non in cache [[!++site_url]]",
+ "files": [
+  {"file": "kosgroup/files/assets/js/markerclusterer/markerclusterer.js", "dest": "assets/js/markerclusterer/markerclusterer.js"},
+  {"file": "kosgroup/files/assets/js/markerclusterer/m1.png", "dest": "assets/js/markerclusterer/m1.png"},
+  {"file": "kosgroup/files/assets/js/markerclusterer/m2.png", "dest": "assets/js/markerclusterer/m2.png"},
+  {"file": "kosgroup/files/assets/js/markerclusterer/m3.png", "dest": "assets/js/markerclusterer/m3.png"},
+  {"file": "kosgroup/files/assets/js/markerclusterer/m4.png", "dest": "assets/js/markerclusterer/m4.png"},
+  {"file": "kosgroup/files/assets/js/markerclusterer/m5.png", "dest": "assets/js/markerclusterer/m5.png"}
+ ],
+ "elements": [
+  {
+   "type": "chunk",
+   "name": "mappa-kos-nel-mondo",
+   "file": "kosgroup/elements/chunks/mappa-kos-nel-mondo.html",
+   "baseline": "kosgroup/deploy/kos-markerclusterer-20261125/base-mappa-kos-nel-mondo.html"
+  }
+ ]
+}
