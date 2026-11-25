@@ -7,7 +7,7 @@ Gruppo KOS, kosgroup.com e anniazzurri.it. 25/11/2026, Danilo Bernabeo. Parere r
 La ricerca interna dei due siti, oggi fornita da Yext, va sostituita entro fine gennaio 2027. La soluzione proposta usa
 Google Vertex AI Search nel progetto Google Cloud di KOS: usa l'account Google Cloud che KOS ha già, senza nuovi
 contratti né canoni. Questa scheda descrive il sistema che andrebbe in produzione,
-i dati che tratta e le misure previste, più un breve resoconto della fase di test appena conclusa. La decisione sulla
+i dati che tratta e le misure previste, più i dati trattati nella fase di test appena conclusa. La decisione sulla
 soluzione è prevista per il 27/11/2026.
 
 ## 2. Come funziona
@@ -85,24 +85,12 @@ di ricerca. Rispetto a questi, la soluzione Google ha alcuni vantaggi per la pro
 - **Controllo automatico dei dati personali** con Google Sensitive Data Protection, nella stessa infrastruttura e in
   regione UE, già usato nella prova.
 
-## 6. Fase di test (12-18/11/2026)
+## 6. Dati trattati nella fase di test (12-18/11/2026)
 
-Ho confrontato Vertex AI Search con la ricerca Yext sulle ricerche reali degli ultimi 12 mesi, esportate da Yext
-e ripulite dai dati personali (kosgroup.com 2.668 ricerche distinte, anniazzurri.it 320), con un secondo controllo
-automatico di Google Sensitive Data Protection (regione UE) prima di ogni invio. Nulla è stato pubblicato sui siti.
-
-**Risultato del confronto.** La ricerca di Google trova la pagina giusta molto più spesso di quella attuale. Sul
-campione giudicato (kosgroup.com 400 ricerche, anniazzurri.it tutte le 320, pesate per frequenza), la pagina attesa è
-tra i primi tre risultati:
-
-| Sito | Yext oggi | Vertex AI Search | Soluzione proposta |
-| --- | --- | --- | --- |
-| kosgroup.com | 66,1% | 81,6% | 94,7% |
-| anniazzurri.it | 30,7% | 81,8% | 88,2% |
-
-La soluzione proposta aggiunge a Vertex il riconoscimento dei nomi delle strutture e dei luoghi nella pagina dei
-risultati: da solo Vertex è più debole di Yext sulle ricerche per luogo, che la pagina risolve
-mostrando in testa le strutture più vicine. I numeri definitivi sono nella restituzione del 26/11.
+Per la prova ho usato le ricerche reali degli ultimi 12 mesi, esportate da Yext e ripulite dai dati personali
+(kosgroup.com 2.668 ricerche distinte, anniazzurri.it 320), con un secondo controllo automatico di Google Sensitive
+Data Protection (regione UE) prima di ogni invio. Nulla è stato pubblicato sui siti. La prova ha confermato che la
+nuova ricerca trova la pagina giusta più spesso di quella attuale.
 
 Il 16/11, prima che le regole di pulizia fossero completate, sono arrivate a Vertex 88 ricerche con nomi di persona e
 5 con codici di accesso ai referti scritti dagli utenti nella barra. Lo stesso giorno le regole sono state corrette e
