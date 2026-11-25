@@ -10,8 +10,9 @@
   {
    "type": "snippet",
    "name": "aaSchema",
-   "file": "anniazzurri/elements/snippets/aaSchema.php",
-   "baseline": "anniazzurri/deploy/aa-8-residenze-20261124/base-aaSchema.php"
+   "file": "anniazzurri/elements/aa-schede/aaSchema.php",
+   "baseline": "anniazzurri/deploy/aa-8-residenze-20261124/base-aaSchema.php",
+   "nota": "Corretto il 25/11: prima puntava alla versione vecchia (elements/snippets/aaSchema.php), vedi aa-8-correzione-schema-20261125.json"
   },
   {
    "type": "chunk",

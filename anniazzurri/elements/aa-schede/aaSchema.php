@@ -350,7 +350,9 @@ $persona = function ($idAutore) use (
 /* --- briciole di pane -------------------------------------------------------
  * Stesse regole dello snippet BreadCrumb del chunk breadcrumb-stripe:
  * - si risale l'albero MODX fino alla radice (gli URL sono piatti, l'albero no);
- * - si saltano la home (aggiunta in testa) e le risorse in aa.breadcrumb_exclude;
+ * - si saltano la home (aggiunta in testa) e le risorse in aa.breadcrumb_exclude come livelli intermedi;
+ *   la pagina corrente si mostra sempre, anche se è nell'elenco (es. /residenze: Anni Azzurri › Residenze;
+ *   AA 8, 24/11), come il chunk breadcrumb-stripe con lo snippet aaBricioleEscludi;
  * - risorse nascoste o non pubblicate restano, come fa BreadCrumb per default;
  * - pagetitle per home e livelli intermedi, menutitle (o pagetitle) per la pagina corrente;
  * - URL assoluti nella forma canonica.
@@ -381,7 +383,7 @@ $briciole = function ($res) use ($modx, $url, $CLS_RES, $START, $ESCLUDI, $CANON
     for ($giri = 0; $rid > 0 && $giri < 100; $giri++) {
         $r = ($rid === $id) ? $res : $modx->getObject($CLS_RES, $rid);
         if (!$r) break;
-        if ($rid !== $START && !in_array($rid, $ESCLUDI, true)) array_unshift($catena, $r);
+        if ($rid !== $START && ($rid === $id || !in_array($rid, $ESCLUDI, true))) array_unshift($catena, $r);
         $rid = (int) $r->get('parent');
     }
 

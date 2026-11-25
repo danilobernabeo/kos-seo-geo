@@ -1,0 +1,11 @@
+{
+ "nome": "AA-8 correzione del 25/11: il pacchetto aa-8-residenze-20261124 aveva installato la versione vecchia di aaSchema (anniazzurri/elements/snippets/aaSchema.php, baseline delle schede) al posto di quella in uso (anniazzurri/elements/aa-schede/aaSchema.php): sparivano #localbusiness, #department, ItemList, Service e brand. Reinstalla la versione delle schede con la correzione delle briciole di AA 8.",
+ "elements": [
+  {
+   "type": "snippet",
+   "name": "aaSchema",
+   "file": "anniazzurri/elements/aa-schede/aaSchema.php",
+   "baseline": "anniazzurri/deploy/aa-8-correzione-schema-20261125/base-aaSchema.php"
+  }
+ ]
+}
