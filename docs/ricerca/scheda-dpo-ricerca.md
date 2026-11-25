@@ -13,17 +13,18 @@ soluzione è prevista per il 4/12/2026.
 ## 2. Come funziona
 
 ```
-Browser dell'utente ──► Sito (MODX Cloud) ──► Servizio intermedio ──► Motore di ricerca
-   testo della ricerca      pagina risultati      programma di KOS           Vertex AI Search
-                                                   ospitato su Cloud Run, UE  indice e ricerca, regione UE
-                                                   toglie contatti e codici   solo pagine pubbliche dei siti
+Browser dell'utente  ──► Sito (MODX Cloud)  ──►  Servizio intermedio  ──►  Motore di ricerca
+testo della ricerca       pagina risultati       programma di KOS            Vertex AI Search
+                                                    ospitato su Cloud Run, UE   indice e ricerca, regione UE
+                                                    toglie contatti e codici    solo pagine pubbliche dei siti
 ```
 
 - L'utente scrive una ricerca nella barra del sito. Il browser non la invia al motore di ricerca, ma a un **servizio
   intermedio**: un programma scritto da me per KOS, ospitato su Google Cloud Run (regione UE) nel progetto di KOS. Il
   testo originale
   passa da qui solo per il tempo dell'elaborazione e non viene salvato: viaggia nel corpo della richiesta, che i log di
-  Cloud Run non registrano.
+  Cloud Run non registrano. I dati tecnici della richiesta (indirizzo IP, browser, pagina di provenienza) sono esclusi
+  dai log con un filtro (paragrafo 4).
 - Il servizio intermedio toglie dal testo email, numeri di telefono, codici fiscali, codici alfanumerici (es. codici di
   accesso ai referti o di prenotazione), età e date, poi inoltra la ricerca a Vertex AI Search e restituisce i risultati
   alla pagina.
@@ -37,10 +38,10 @@ Browser dell'utente ──► Sito (MODX Cloud) ──► Servizio intermedio �
 | Componente | Dove | Note |
 | --- | --- | --- |
 | Siti kosgroup.com e anniazzurri.it | MODX Cloud (hosting attuale) | Pagina dei risultati; nessun dato della ricerca salvato |
-| Servizio intermedio | Google Cloud Run, regione UE, progetto `kos-ricerca` | Pulizia del testo, limite giornaliero di ricerche; log senza il testo delle ricerche |
+| Servizio intermedio | Google Cloud Run, regione UE, progetto `kos-ricerca` | Pulizia del testo, limite giornaliero di ricerche; log senza il testo delle ricerche e senza indirizzo IP |
 | Vertex AI Search (Discovery Engine) | Regione UE, stesso progetto | Un indice per sito; statistiche di ricerca di Google spente; campionamento di input e risposte da parte di Google non consentito; nessun addestramento sui dati |
 | Credenziali | Account di servizio dedicato | Nessuna chiave da custodire: il servizio intermedio usa un'identità tecnica dedicata, con il solo permesso di fare ricerche; nessuna credenziale nel codice dei siti |
-| Statistiche del sito (GA4) | Account GA4 di KOS, già in uso | Evento di ricerca con il numero di risultati, **senza il testo** |
+| Statistiche del sito (GA4) | Account GA4 di KOS, già in uso | Evento di ricerca con il numero di risultati, **senza il testo**: il testo è oscurato anche nell'indirizzo della pagina dei risultati (paragrafo 4) |
 
 Il progetto Google Cloud `kos-ricerca` è sull'account Google di KOS marketing.kos2019@gmail.com («KOS group») ed è
 collegato all'account di fatturazione «Kos Care». Accesso alla console: io e gli
@@ -49,11 +50,18 @@ amministratori indicati da KOS.
 ## 4. Misure sui dati
 
 - **Minimizzazione**: pulizia del testo nel servizio intermedio prima di Google; nessun identificativo dell'utente
-  inviato a Google (nessun cookie, nessun account, nessun evento utente).
+  inviato al motore di ricerca (nessun cookie, nessun account, nessun evento utente).
 - **Nessuna conservazione del testo da parte mia o di KOS**: i log del servizio intermedio registrano tempo e numero di
-  risultati, non il testo. Le statistiche di ricerca di Google, che conserverebbero il testo, sono spente sulle app di
+  risultati, non il testo. Il registro automatico delle richieste di Cloud Run conterrebbe indirizzo IP, browser e
+  pagina di provenienza dell'utente: un filtro di esclusione dei log lo scarta, quindi questi dati non vengono
+  conservati. Le statistiche di ricerca di Google, che conserverebbero il testo, sono spente sulle app di
   produzione: si spengono solo alla creazione dell'app, quindi le app di produzione nascono così. I log di Google Cloud
   registrano la richiesta con il testo oscurato (verificato il 16/11).
+- **Statistiche del sito (GA4)**: la pagina dei risultati ha il testo della ricerca nell'indirizzo (es.
+  `/it/cerca?q=…`), che GA4 riceverebbe con ogni visualizzazione di pagina. Nello stream GA4 di ciascun sito il
+  parametro della ricerca è oscurato (funzione «Oscura dati») e la rilevazione automatica delle ricerche nel sito della
+  misurazione avanzata è spenta; verifica in DebugView prima della messa in produzione. GA4 riceve solo l'evento di
+  ricerca con il numero di risultati.
 - **Risposte generate dall'AI**: solo su anniazzurri.it e solo per domande pratiche (ricovero, costi, moduli, contatti),
   da un elenco chiuso di pagine, escluse le domande su sintomi, diagnosi, farmaci e terapie. Su kosgroup.com nessuna
   risposta generata, salvo diversa decisione di KOS.
@@ -85,7 +93,8 @@ di ricerca. Rispetto a questi, la soluzione Google ha alcuni vantaggi per la pro
 - **Conservazione del testo sotto il nostro controllo.** Le statistiche di ricerca si possono spegnere e i log di Google
   Cloud oscurano il testo (verificato nella prova). Negli altri servizi lo storico delle ricerche è una funzione del
   prodotto: è così che nomi e codici sono finiti nello storico di Yext (paragrafo 8, punto 5).
-- **Nessun addestramento sui dati**, per impegno contrattuale di Google, e nessun identificativo dell'utente inviato.
+- **Nessun addestramento sui dati**, per impegno contrattuale di Google, e nessun identificativo dell'utente inviato al
+  motore di ricerca.
 - **Controllo automatico dei dati personali** con Google Sensitive Data Protection, nella stessa infrastruttura e in
   regione UE, già usato nella prova.
 
@@ -118,8 +127,9 @@ limitato.
   rappresentante locale e l'autorità di controllo riguardano solo chi ha l'indirizzo di fatturazione fuori da Europa,
   Medio Oriente e Africa.
 - **Alla messa in produzione**: servizio intermedio su Cloud Run in regione UE (proposta Milano, `europe-west8`), con
-  la sua identità tecnica dedicata, senza chiavi; app di ricerca nuove create con le statistiche spente; limite giornaliero di ricerche
-  e avviso di budget.
+  la sua identità tecnica dedicata, senza chiavi; filtro di esclusione dei log delle richieste; app di ricerca nuove
+  create con le statistiche spente; limite giornaliero di ricerche e avviso di budget; nei due stream GA4 parametro
+  della ricerca oscurato e ricerca nel sito della misurazione avanzata spenta, con verifica in DebugView.
 - **Dati e addestramento**: Google non usa i dati per addestrare o rifinire i modelli senza autorizzazione del cliente
   (condizioni specifiche dei servizi, sezione 17).
 
@@ -138,4 +148,6 @@ limitato.
    quasi sempre il solo cognome o nome e cognome; 29 con codici alfanumerici (46 ricerche), tra cui i 5 codici di
    accesso ai referti. Su anniazzurri.it 3 ricerche con nomi di persona. Esempi in forma mascherata (X = lettera,
    9 = cifra; nessun testo originale esce dall'archivio della prova): «login XXX99», «referti … 999XX9X9»,
-   «XXXXX:XXX999», «[cognome]», «[nome] [cognome]».
+   «XXXXX:XXX999», «[cognome]», «[nome] [cognome]». Per lo stesso motivo il testo delle ricerche Yext arriva
+   probabilmente anche in GA4, nell'indirizzo delle pagine dei risultati attuali: si può verificare con un conteggio
+   aggregato, senza leggere i testi, e oscurare subito il parametro nello stream GA4, senza aspettare la nuova ricerca.
