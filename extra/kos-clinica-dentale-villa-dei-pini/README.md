@@ -13,6 +13,7 @@ nella documentazione del progetto.
 | Dato strutturato | `Dentist` `#localbusiness` con le TV `str.*`, `parentOrganization` come le altre due cliniche: la clinica ha una scheda Google propria («Clinica Dentale Villa dei Pini, Viale dei Pini 31», gruppo Poliambulatori, attiva da aprile 2025), anche se l'indirizzo è quello della Casa di Cura. `containedInPlace` verso Villa dei Pini dopo il 4/12, nella libreria comune |
 | Telefono e orari | 345 6026346; lun-ven 8:30-19:00, sabato 8:30-13:00 (quelli della landing) nella scheda, nelle TV e nel dato strutturato |
 | Alias | `clinica-dentale-villa-dei-pini`, anche per le cartelle delle immagini |
+| Testata | per ora a immagine unica come Porto Potenza (blocco `div#intro-pagina-foto` di quella scheda al posto della galleria): foto dello studio della landing sfumata in bianco (`header/clinica-dentale-villa-dei-pini.jpg` e `-mobile.jpg`, alle dimensioni di Porto Potenza), alt descrittivo della landing. Card dell'elenco e piè di pagina dalla stessa foto. Le immagini si creano su stage e produzione se mancano |
 | Prenotazione | barra delle schede (`barraPrenotazioneDBmedicoPrestazione`, Tom Select) con l'istanza di Villa dei Pini, limitata a Odontoiatria con la nuova proprietà `&branca` (2 prestazioni attese). I «Prenota online» della scheda e della landing portano alla sezione `#prenota-online` |
 | Landing | è di Danilo ed entra in questo pacchetto: `noindex, follow`, via il JSON-LD scritto a mano (`MedicalClinic` senza `@id`, doppione del nodo della scheda), prenotazione online attiva verso la scheda |
 | News | la news dell'inaugurazione e i due approfondimenti dentali (sensibilità, sbiancamento, già sulla scheda di Porto Potenza) hanno l'id della scheda nella TV `idStruttura`: escono in «Le ultime news da …». Le 5 news orfane di Villa dei Pini sono già collegate dalla sua scheda (`contenutiStruttura` del 25/11) |
@@ -22,9 +23,9 @@ nella documentazione del progetto.
 
 | Percorso | Cosa |
 |---|---|
-| `config.json` | campi, TV, regole di costruzione del contenuto, news, landing, llms.txt, foto provvisorie |
+| `config.json` | campi, TV, regole di costruzione del contenuto, testata, news, landing, llms.txt, immagini |
 | `elementi/*.html` | testi della scheda: intestazione (H1 e indirizzo), contatti, pulsanti, La struttura, approfondimenti (come funziona e domande frequenti), trattamenti (dentro Aree di intervento), équipe, Come raggiungerci; voce per la scheda di Villa dei Pini |
-| `installa.php` | installazione ripetibile: prova, `--scrivi`, `--foto-provvisorie` (solo stage), `--senza-sede` (non tocca la 218), `--ripristina`, `--test` (senza MODX). Il blocco della mappa (div#mappa-map) si prende da Villalba con il nome della clinica sostituito: nessuna chiave di Google Maps nel repository |
+| `installa.php` | installazione ripetibile: prova, `--scrivi`, `--prestazioni-stage` (solo stage), `--senza-sede` (non tocca la 218), `--ripristina`, `--test` (senza MODX). Il blocco della mappa (div#mappa-map) si prende da Villalba con il nome della clinica sostituito: nessuna chiave di Google Maps nel repository |
 | `verifica-barra.php` | sola lettura: la barra con e senza `&branca`, confronto byte per byte su tutte le schede |
 | `ispeziona.php` | sola lettura: campi, TV, contenuti e template delle risorse coinvolte (`~/clinica-dentale-ispezione/`) |
 | `collaudo.mjs` | collaudo sul sito servito (scheda, landing, Villa dei Pini, elenco, sitemap, llms.txt) |
@@ -68,7 +69,7 @@ contiene, nemmeno con `--forza`. Si completano nel repository (`elementi/`), poi
 | `elementi/contatti.html` | nome del responsabile delle cliniche dentali |
 | `elementi/equipe.html` | conferma dell'elenco e dei ruoli (oggi i 9 odontoiatri e direttori della landing); igienista, assistenti alla poltrona, infermiera e front office sì o no; foto singole |
 | `elementi/servizi.html` | chirurgia maxillofacciale e TC Cone Beam: se ci sono, si aggiungono alle TV di mappatura dei servizi (`config.json` → `servizi_uri`) e il segnaposto si toglie |
-| foto e documenti | foto della clinica per galleria (`/assets/img/strutture/clinica-dentale-villa-dei-pini/01.jpg`…), card dell'elenco (`/assets/img/strutture/clinica-dentale-villa-dei-pini.jpg`) e piè di pagina (`/assets/img/bg-clinica-dentale-villa-dei-pini.jpg`); carta dei servizi, se c'è. Sullo stage, intanto, `--foto-provvisorie` le ricava dalle foto della landing |
+| foto e documenti | foto vere della clinica (oggi testata, card e piè di pagina vengono dalla foto dello studio della landing); carta dei servizi, se c'è |
 | `config.json` → `str.place_id` | place_id della scheda Google (serve per `hasMap`; il collaudo lo segnala come avviso) |
 
 Testi alternativi: la galleria usa il testo comune delle schede (`galleryStruttura`, KOS-7: «Clinica Dentale Villa dei
@@ -98,7 +99,7 @@ Ordine, prima sullo stage poi in produzione, sempre prima la prova e poi `--scri
    Odontoiatria a Villa dei Pini (attese 2; se sono di più ci si ferma). Dopo l'installazione il confronto non dice più
    nulla: le due versioni coincidono. Poi `php scripts/deploy/installa-elementi.php /www kosgroup/deploy/kos-barra-branca-20261125.json`
    (prova, poi `--scrivi`);
-2. scheda: `php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www` (sullo stage `--foto-provvisorie`). La prova
+2. scheda: `php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www` (sullo stage `--prestazioni-stage`). La prova
    scrive il contenuto costruito in `~/clinica-dentale-contenuto.html`: è il primo controllo sul contenuto vero di
    Villalba (le prove in locale sono state fatte sull'HTML pubblico); può fermarsi su un elemento non riconosciuto;
 3. peso delle immagini, anche delle varianti generate alla prima visita: aprire la scheda, poi
@@ -112,9 +113,10 @@ Ordine, prima sullo stage poi in produzione, sempre prima la prova e poi `--scri
 
 Sullo stage le tabelle `kos_*` sono ferme al 18/10 e Odontoiatria (aggiunta in TuoTempo il 29/10) non ha prestazioni; in produzione sì (verifica di Danilo del 25/11). Sullo stage la scheda si installa con `--prestazioni-stage` (vale solo lì): la barra mostra «Nessuna prestazione disponibile» e il collaudo dà KO attesi sui due controlli della barra. In produzione il controllo delle 2 prestazioni resta.
 
-In produzione lo script si ferma se restano segnaposto `[DA COMPLETARE]` o se mancano le foto (galleria, card
-dell'elenco `/assets/img/strutture/clinica-dentale-villa-dei-pini.jpg`, piè di pagina): le foto provvisorie sono solo
-per lo stage.
+In produzione lo script si ferma se restano segnaposto `[DA COMPLETARE]`; su entrambi gli ambienti se manca
+un'immagine della scheda (testata, card dell'elenco, piè di pagina) e non la può creare. Con la barra senza prestazioni
+(stage) mancano anche l'H2 «Prenota online» e l'ancora `#prenota-online`: i link «Prenota online» della scheda e della
+landing restano senza destinazione finché TuoTempo non ha le prestazioni.
 
 La landing è stata costruita con il kit delle landing di Danilo (`CD_CONFIG` scritto dalla build): una nuova build
 dal kit rimetterebbe `prenotaOnline` spento, il JSON-LD e niente `noindex`. Le stesse modifiche vanno portate nel
