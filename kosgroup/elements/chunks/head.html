@@ -19,8 +19,17 @@
   <base href="[[++site_url]]">
 
   [[- KOS 15 e 25: un solo foglio unito e minificato (scripts/css/costruisci-css.mjs) al posto di bootstrap.min, all.min,
-      fontawesome (duplicato di all.min), default, nice-select, aos, swiper.min, photoswipe, style, custom ]]
-  <link href="/assets/css/kos.min.css" rel="stylesheet" />
+      fontawesome (duplicato di all.min), default, nice-select, aos, swiper.min, photoswipe, style, custom.
+      KOS 15, CSS critico (25/11/2026): le regole della parte iniziale delle pagine sono scritte qui (chunk kos-css-critico,
+      generato da scripts/css/critico/); il foglio intero si scarica subito (preload) e si applica dal chunk scripts, in fondo
+      al body prima degli script: non blocca la prima visualizzazione, e gli script partono solo con il foglio applicato.
+      I tre pesi di Satoshi (usati in tutte le pagine) si scaricano subito: con la prima visualizzazione anticipata, il cambio
+      di carattere all'arrivo dei file spostava il testo (CLS fino a 0,15 nelle prove). ]]
+  <link rel="preload" href="/assets/fonts/satoshi-regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/satoshi-medium.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/satoshi-bold.woff2" as="font" type="font/woff2" crossorigin />
+[[$kos-css-critico]]
+  <link rel="preload" href="/assets/css/kos.min.css" as="style" />
 
   <script src="/assets/js/scroll-anchors.js" defer></script>
 

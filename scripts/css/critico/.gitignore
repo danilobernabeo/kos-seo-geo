@@ -1,0 +1,6 @@
+node_modules
+diff/
+*.log
+validazione.json
+cls.json
+cls-lento.json

@@ -1,0 +1,48 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  [[- Head unico di kosgroup.com (consolidamento 2026: KOS-2, voce 24). Parametri dei chunk head-* che lo richiamano:
+       &lingua (it|en), &ogType (website|article|video.other), &ogDescrizione (testo di ripiego della descrizione og quando
+       description è vuota, es. la TV ruolo; default introtext), &ogTv (TV dell'immagine, default infoImage), &ogLegacy (percorsi di ripiego per ogImage),
+       &canonical (0 = nessun canonical: elenchi paginati), &extra (chunk con gli extra del template).
+       Tutto in cache: nessuna chiamata non in cache. Commento MODX: non arriva nella pagina.]]
+
+  <title>[[*longtitle:default=`[[*pagetitle]]`]]</title>
+  <meta name="description" content="[[*description:htmlent]]">
+  [[*noindex:is=`1`:then=`<meta name="robots" content="noindex, nofollow">`]]
+
+[[$GTM_head]]
+
+  [[kosHreflang? &lingua=`[[+lingua:default=`it`]]`]]
+
+  [[+canonical:is=`0`:then=``:else=`[[Canonical]]`]]
+  <base href="[[++site_url]]">
+
+  [[- KOS 15 e 25: un solo foglio unito e minificato (scripts/css/costruisci-css.mjs) al posto di bootstrap.min, all.min,
+      fontawesome (duplicato di all.min), default, nice-select, aos, swiper.min, photoswipe, style, custom ]]
+  <link href="/assets/css/kos.min.css" rel="stylesheet" />
+
+  <script src="/assets/js/scroll-anchors.js" defer></script>
+
+  <link rel="icon" type="image/png" href="/assets/img/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
+  <link rel="shortcut icon" href="/assets/img/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="KOS Group" />
+  <link rel="manifest" href="/assets/img/site.webmanifest" />
+
+[[*id:is=`1`:or:is=`3`:or:is=`4`:or:is=`983`:then=`[[$head-ricerca-yext]]`]]
+[[+extra:notempty=`[[$[[+extra]]]]`]]
+
+  <meta property="og:site_name" content="KOS Group">
+  <meta property="og:locale" content="[[+lingua:is=`en`:then=`en_GB`:else=`it_IT`]]">
+  <meta property="og:type" content="[[+ogType:default=`website`]]">
+  <meta property="og:title" content="[[*longtitle:default=`[[*pagetitle]]`:htmlent]]">
+  <meta property="og:description" content="[[*description:default=`[[+ogDescrizione:default=`[[*introtext]]`]]`:striptags:htmlent]]">
+  <meta property="og:url" content="[[~[[*id]]? &scheme=`full`]]">
+  [[ogImage? &tvs=`[[+ogTv]]` &tvsDefault=`infoImage` &legacy=`[[+ogLegacy]]` &default=`assets/img/kos-condivisione-social.jpg` &meta=`1`]]
+  <meta property="og:image:alt" content="[[*pagetitle:htmlent]]">
+  <meta name="twitter:card" content="summary_large_image">
+  [[+ogType:is=`article`:then=`<meta property="article:published_time" content="[[*publishedon:strtotime:date=`%Y-%m-%d`]]">`]]
+
+</head>

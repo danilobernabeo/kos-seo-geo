@@ -1,0 +1,41 @@
+{
+ "nome": "KOS 15 CSS critico: regole della parte iniziale delle pagine nell'head (chunk kos-css-critico, da scripts/css/critico/), preload di kos.min.css nell'head e foglio intero in fondo al body prima degli script (chunk scripts): la prima visualizzazione non aspetta il foglio, gli script partono con il foglio applicato; preload dei tre pesi di Satoshi; dimensioni dell'immagine di testata dei template informativo e tecnologie (snippet kosDimInfoImage) (spazio riservato prima del caricamento)",
+ "elements": [
+  {
+   "type": "snippet",
+   "name": "kosDimInfoImage",
+   "file": "kosgroup/elements/snippets/kosDimInfoImage.php",
+   "description": "KOS 15: width e height dell'immagine infoImage dal file (testata di informativo e tecnologie)"
+  },
+  {
+   "type": "chunk",
+   "name": "kos-css-critico",
+   "file": "kosgroup/elements/chunks/kos-css-critico.html",
+   "description": "KOS 15: CSS critico generato da scripts/css/critico/costruisci.mjs (non modificare a mano)"
+  },
+  {
+   "type": "chunk",
+   "name": "head",
+   "file": "kosgroup/elements/chunks/head.html",
+   "baseline": "kosgroup/deploy/kos-15-css-critico-20261125/base-head.html"
+  },
+  {
+   "type": "chunk",
+   "name": "scripts",
+   "file": "kosgroup/elements/chunks/scripts.html",
+   "baseline": "kosgroup/deploy/kos-15-css-critico-20261125/base-scripts.html"
+  },
+  {
+   "type": "template",
+   "name": "tecnologie",
+   "file": "kosgroup/elements/templates/tecnologie.html",
+   "baseline": "kosgroup/deploy/kos-15-css-critico-20261125/base-tecnologie.html"
+  },
+  {
+   "type": "template",
+   "name": "informativo",
+   "file": "kosgroup/elements/templates/informativo.html",
+   "baseline": "kosgroup/deploy/kos-15-css-critico-20261125/base-informativo.html"
+  }
+ ]
+}
