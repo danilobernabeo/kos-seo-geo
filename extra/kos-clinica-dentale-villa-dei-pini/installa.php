@@ -7,6 +7,8 @@
  *   php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www --scrivi               applica (ripetibile: aggiorna)
  *   ... --scrivi --foto-provvisorie   anche le foto provvisorie ricavate da quelle della landing (SOLO STAGE)
  *   ... --senza-sede                  non tocca la scheda di Villa dei Pini (link da mettere dopo il 4/12)
+ *   ... --prestazioni-stage           SOLO STAGE: procede anche se Odontoiatria non ha le prestazioni attese (tabelle
+ *                                     kos_* dello stage ferme al 18/10, Odontoiatria aggiunta in TuoTempo il 29/10)
  *   ... --forza                       procede anche con le voci segnate FERMO (non in produzione con segnaposto)
  *   php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www --ripristina <cartella>/ripristino.json [--scrivi]
  *
@@ -36,6 +38,7 @@ $scrivi = in_array('--scrivi', $argv, true);
 $forza = in_array('--forza', $argv, true);
 $fotoProvv = in_array('--foto-provvisorie', $argv, true);
 $senzaSede = in_array('--senza-sede', $argv, true);
+$prestStage = in_array('--prestazioni-stage', $argv, true);
 $iRip = array_search('--ripristina', $argv, true);
 $fileRip = $iRip !== false ? ($argv[$iRip + 1] ?? '') : null;
 
@@ -310,7 +313,10 @@ else {
     $prest = $st->fetchAll(PDO::FETCH_ASSOC);
     echo "  istanza di Villa dei Pini: $istanza; prestazioni prenotabili di {$C['barra_branca']}: " . count($prest) . "\n";
     foreach ($prest as $p) echo "     {$p['activity_id']}  {$p['title']}  ({$p['typology']})\n";
-    if (count($prest) !== (int) $C['barra_prestazioni_attese']) {
+    if (count($prest) !== (int) $C['barra_prestazioni_attese'] && $prestStage && $STAGE) {
+        echo "  i " . count($prest) . " prestazioni invece di {$C['barra_prestazioni_attese']}: accettato per --prestazioni-stage (dati TuoTempo dello stage vecchi; la barra mostrerà «Nessuna prestazione disponibile»)\n";
+    } elseif (count($prest) !== (int) $C['barra_prestazioni_attese']) {
+        if ($prestStage) echo "  ! --prestazioni-stage vale solo sullo stage\n";
         $ferma(count($prest) . " prestazioni invece di {$C['barra_prestazioni_attese']}: decidere con Danilo prima di installare (filtro per prestazione?)");
     }
 }

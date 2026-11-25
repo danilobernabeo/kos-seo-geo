@@ -105,6 +105,8 @@ Ordine, prima sullo stage poi in produzione, sempre prima la prova e poi `--scri
    Il collaudo è stato provato su Villalba in produzione (`--uri=it/centri/clinica-dentale-villalba`): controlli di
    struttura OK, KO attesi solo sui valori di Villa dei Pini.
 
+Sullo stage le tabelle `kos_*` sono ferme al 18/10 e Odontoiatria (aggiunta in TuoTempo il 29/10) non ha prestazioni; in produzione sì (verifica di Danilo del 25/11). Sullo stage la scheda si installa con `--prestazioni-stage` (vale solo lì): la barra mostra «Nessuna prestazione disponibile» e il collaudo dà KO attesi sui due controlli della barra. In produzione il controllo delle 2 prestazioni resta.
+
 In produzione lo script si ferma se restano segnaposto `[DA COMPLETARE]` o se mancano le foto (galleria, card
 dell'elenco `/assets/img/strutture/clinica-dentale-villa-dei-pini.jpg`, piè di pagina): le foto provvisorie sono solo
 per lo stage.
