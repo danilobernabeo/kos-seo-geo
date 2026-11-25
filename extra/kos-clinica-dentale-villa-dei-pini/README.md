@@ -36,14 +36,19 @@ va installato prima della scheda, che lo richiede.
 
 ### Come si costruisce la scheda
 
-Il contenuto non è scritto da zero: `installa.php` parte dal contenuto della scheda di Villalba (stesso markup, stesse
-chiamate per galleria, briciole e piè di pagina) e:
+Il contenuto non è scritto da zero: `installa.php` parte dal contenuto **e dalle TV** della scheda di Villalba. Nel
+database (prova sullo stage del 25/11) il contenuto ha intestazione, pulsanti, La struttura ed équipe, mentre contatti
+(`contatti_struttura`), approfondimenti (`approfondimenti`), Come raggiungerci (`come_raggiungerci`) e foto del piè di
+pagina (`bgCitazione`, chunk `box-citazione`) sono TV richiamate dal contenuto. Ogni regola cerca l'elemento in entrambi.
+Le TV `idYext` (entità Yext di Villalba) e `idHubspot*` (modulo «Parla con noi» di Villalba) non si copiano; lo script si
+ferma se il contenuto le richiama ancora. Stage o produzione si riconoscono dall'utente del cloud (`c0044` / `c0095`).
+Passi:
 
 1. sostituisce per intero gli elementi riconosciuti dall'apertura (`config.json` → `sostituzioni`): intestazione,
    contatti e pulsanti (due volte: barra laterale e versione mobile), La struttura, approfondimenti, équipe, Come
    raggiungerci; si ferma se un elemento non c'è o compare un numero di volte diverso;
 2. aggiunge i nove trattamenti dentro «Aree di intervento» (le card restano quelle delle TV di mappatura dei servizi:
-   per ora solo Odontoiatria) e la barra di prenotazione prima del blocco foto;
+   per ora solo Odontoiatria) e la barra di prenotazione nel contenuto, prima di `[[$box-citazione]]`;
 3. sostituisce l'alias e il nome di Villalba nel resto (galleria, piè di pagina) e rende in cache la galleria;
 4. si ferma se nel contenuto restano parole di Villalba (indirizzo, telefono, persone, modulo «Parla con noi») o
    chiamate non in cache diverse dalla barra (ammessa: ha la sua cache interna, registro del 22/11);

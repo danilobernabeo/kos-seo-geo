@@ -85,64 +85,79 @@ $leggi = function (string $rel) use ($DIR): string {
     return rtrim(str_replace("\r\n", "\n", (string) file_get_contents($p)), "\n");
 };
 
-/** Contenuto della scheda dal contenuto del modello: sostituzioni, aggiunte, barra, testi, controlli. */
-$costruisci = function (string $c) use ($C, $leggi, $ferma, $corto): string {
+/**
+ * Scheda dal modello. $parti = ['content' => contenuto, 'tv:<nome>' => valore, ...]: le sezioni delle schede stanno
+ * in parte nel contenuto e in parte nelle TV (contatti_struttura, approfondimenti, come_raggiungerci...), quindi ogni
+ * sostituzione cerca l'elemento ovunque. Restituisce le parti modificate.
+ */
+$costruisci = function (array $parti) use ($C, $leggi, $ferma, $corto): array {
     // Chiave di Google Maps: quella dell'iframe del modello (nessuna chiave nel repository)
-    $chiaveMaps = preg_match('#maps/embed/v1/place\?key=([\w-]+)#', $c, $km) ? $km[1] : '';
-    if ($chiaveMaps === '') $ferma('chiave di Google Maps non trovata nell\'iframe del modello');
+    $chiaveMaps = preg_match('#maps/embed/v1/place\?key=([\w-]+)#', implode("\n", $parti), $km) ? $km[1] : '';
+    if ($chiaveMaps === '') $ferma('chiave di Google Maps non trovata nell\'iframe del modello (contenuto e TV)');
     $frammenti = [];                                   // segnaposto => testo: il controllo dei residui li esclude
     $segna = function (string $testo) use (&$frammenti): string {
         $k = "\x01F" . count($frammenti) . "\x01";
         $frammenti[$k] = $testo;
         return $k;
     };
+    $nome = fn($k) => $k === 'content' ? 'contenuto' : 'TV ' . substr($k, 3);
     foreach ($C['sostituzioni'] as $s) {
-        $el = elementi($c, $s['apertura'], $s['tag']);
-        if (count($el) !== (int) $s['occorrenze']) { $ferma("{$s['nome']}: trovati " . count($el) . " elementi, attesi {$s['occorrenze']}"); continue; }
         $nuovo = $leggi($s['file']);
-        foreach (array_reverse($el) as [$i, $f]) $c = substr($c, 0, $i) . $segna($nuovo) . substr($c, $f);
-        echo "  = {$s['nome']}: sostituito ({$s['occorrenze']}) con {$s['file']}\n";
+        $dove = [];
+        foreach ($parti as $k => $p) {
+            $el = elementi($p, $s['apertura'], $s['tag']);
+            if (!$el) continue;
+            foreach (array_reverse($el) as [$i, $f]) $p = substr($p, 0, $i) . $segna($nuovo) . substr($p, $f);
+            $parti[$k] = $p;
+            $dove[] = $nome($k) . (count($el) > 1 ? ' (' . count($el) . ')' : '');
+        }
+        if (!$dove) $ferma("{$s['nome']}: elemento non trovato né nel contenuto né nelle TV del modello");
+        else echo "  = {$s['nome']}: in " . implode(', ', $dove) . " ← {$s['file']}\n";
     }
     foreach ($C['aggiunte'] as $a) {
-        $el = elementi($c, $a['dentro_fine'], $a['tag']);
-        if (count($el) !== 1) { $ferma("{$a['nome']}: trovati " . count($el) . " elementi, atteso 1"); continue; }
-        [, $f] = $el[0];
-        $chiusura = strrpos(substr($c, 0, $f), '</');
-        $c = substr($c, 0, $chiusura) . $segna($leggi($a['file'])) . "\n                                " . substr($c, $chiusura);
-        echo "  + {$a['nome']}: {$a['file']}\n";
+        $trovati = [];
+        foreach ($parti as $k => $p) foreach (elementi($p, $a['dentro_fine'], $a['tag']) as $e) $trovati[] = [$k, $e];
+        if (count($trovati) !== 1) { $ferma("{$a['nome']}: trovati " . count($trovati) . " elementi, atteso 1"); continue; }
+        [$k, [, $f]] = $trovati[0];
+        $p = $parti[$k];
+        $chiusura = strrpos(substr($p, 0, $f), '</');
+        $parti[$k] = substr($p, 0, $chiusura) . $segna($leggi($a['file'])) . "\n                                " . substr($p, $chiusura);
+        echo "  + {$a['nome']}: in " . $nome($k) . " ← {$a['file']}\n";
     }
-    if (preg_match('/barraPrenotazioneDBmedicoPrestazione/', $c)) $ferma('il modello richiama già la barra');
+    if (preg_match('/barraPrenotazioneDBmedicoPrestazione/', implode("\n", $parti))) $ferma('il modello richiama già la barra');
     $fatto = false;
     foreach ($C['barra_prima_di'] as $re) {
-        if (preg_match('#' . $re . '#i', $c, $m, PREG_OFFSET_CAPTURE)) {
-            $c = substr($c, 0, $m[0][1]) . $segna($C['barra']) . "\n\n            " . substr($c, $m[0][1]);
-            echo "  + barra di prenotazione prima di «{$m[0][0]}»: {$C['barra']}\n";
+        if (preg_match('#' . $re . '#i', $parti['content'], $m, PREG_OFFSET_CAPTURE)) {
+            $parti['content'] = substr($parti['content'], 0, $m[0][1]) . $segna($C['barra']) . "\n\n            " . substr($parti['content'], $m[0][1]);
+            echo "  + barra di prenotazione nel contenuto, prima di «{$m[0][0]}»: {$C['barra']}\n";
             $fatto = true;
             break;
         }
     }
-    if (!$fatto) $ferma('posto della barra di prenotazione non trovato');
-    foreach ($C['sostituzioni_testo'] as [$da, $a]) {
-        $n = substr_count($c, $da);
-        if ($n) { $c = str_replace($da, $a, $c); echo "  ~ «{$da}» → «{$a}»: $n\n"; }
+    if (!$fatto) $ferma('posto della barra di prenotazione non trovato nel contenuto');
+    foreach ($parti as $k => $p) foreach ($C['sostituzioni_testo'] as [$da, $a]) {
+        $n = substr_count($p, $da);
+        if ($n) { $p = str_replace($da, $a, $p); echo "  ~ " . $nome($k) . ": «{$da}» → «{$a}» ($n)\n"; }
+        $parti[$k] = $p;
     }
-    // Residui del modello (fuori dai frammenti nuovi): nomi, indirizzo, telefono, persone di Villalba
-    foreach ($C['parole_del_modello'] as $p) {
-        if (preg_match_all('#.{0,50}' . preg_quote($p, '#') . '.{0,50}#isu', $c, $mm)) {
-            foreach ($mm[0] as $x) $ferma("nel contenuto resta «{$p}»: …" . $corto(trim($x)) . '…');
+    // Residui del modello (fuori dai frammenti nuovi): nomi, indirizzo, telefono, persone, modulo di Villalba
+    foreach ($parti as $k => $p) foreach ($C['parole_del_modello'] as $w) {
+        if (preg_match_all('#.{0,50}' . preg_quote($w, '#') . '.{0,50}#isu', $p, $mm)) {
+            foreach ($mm[0] as $x) $ferma($nome($k) . ": resta «{$w}»: …" . $corto(trim($x)) . '…');
         }
     }
-    $c = str_replace('{{MAPS_KEY}}', $chiaveMaps, strtr($c, $frammenti));
+    foreach ($parti as $k => $p) $parti[$k] = str_replace('{{MAPS_KEY}}', $chiaveMaps, strtr($p, $frammenti));
+    $tutto = implode("\n", $parti);
     // Chiamate non in cache: ammessa solo la barra (cache interna dello snippet, registro del 22/11)
-    preg_match_all('/\[\[!\s*([\w.\-$]+)/', $c, $nc);
-    foreach ($nc[1] as $n) if ($n !== 'barraPrenotazioneDBmedicoPrestazione') $ferma("chiamata non in cache [[!$n…]] nel contenuto");
-    preg_match_all('/\[\[[^\[\]]{0,80}/', $c, $tag);
+    preg_match_all('/\[\[!\s*([\w.\-$]+)/', $tutto, $nc);
+    foreach ($nc[1] as $n) if ($n !== 'barraPrenotazioneDBmedicoPrestazione') $ferma("chiamata non in cache [[!$n…]]");
+    preg_match_all('/\[\[[^\[\]]{0,80}/', $parti['content'], $tag);
     echo '  chiamate MODX nel contenuto: ' . (implode(' | ', array_map(fn($t) => $corto($t, 60), array_unique($tag[0]))) ?: 'nessuna') . "\n";
-    if (preg_match_all('/(?:href|src)="(?!\/|#|https?:|tel:|mailto:|data:|\[\[)([^"]*)"/', $c, $rel)) {
-        foreach (array_unique($rel[1]) as $h) echo "  i indirizzo relativo nel contenuto (dal modello, fuori da questo lavoro): $h\n";
+    if (preg_match_all('/(?:href|src)="(?!\/|#|https?:|tel:|mailto:|data:|javascript:|\[\[)([^"]*)"/', $tutto, $rel)) {
+        foreach (array_unique($rel[1]) as $h) echo "  i indirizzo relativo (dal modello, fuori da questo lavoro): $h\n";
     }
-    if (preg_match_all('#href="//[^"]*"#', $c, $rel)) foreach (array_unique($rel[0]) as $h) echo "  i link senza schema nel contenuto (dal modello, fuori da questo lavoro): $h\n";
-    return $c;
+    if (preg_match_all('#href="//[^"]*"#', $tutto, $rel)) foreach (array_unique($rel[0]) as $h) echo "  i link senza schema (dal modello, fuori da questo lavoro): $h\n";
+    return $parti;
 };
 
 /** Modifiche della landing su contenuto e template: [testi modificati, parti toccate]. */
@@ -203,7 +218,11 @@ if (($argv[1] ?? '') === '--test') {
     $mod = (string) @file_get_contents($argv[2] ?? '');
     if ($mod === '') { fwrite(STDERR, "Uso: php installa.php --test <contenuto-modello.html> [<landing.html>]\n"); exit(1); }
     echo "-- Contenuto da {$argv[2]}\n";
-    $c = $costruisci($mod);
+    // file .json: {"content": ..., "tv:<nome>": ...} (contenuto e TV del modello, es. da ispeziona.php); altrimenti solo il contenuto
+    $parti = str_ends_with($argv[2], '.json') ? json_decode($mod, true) : ['content' => $mod];
+    $parti = $costruisci($parti);
+    foreach ($parti as $k => $p) if ($k !== 'content') echo "  $k: " . $corto($p, 140) . "\n";
+    $c = $parti['content'];
     $out = sys_get_temp_dir() . '/clinica-dentale-contenuto.html';
     file_put_contents($out, $c);
     echo "  scritto $out (" . strlen($c) . " byte)\n";
@@ -228,7 +247,10 @@ $modx = modX::getInstance();
 $modx->initialize('mgr');
 
 $siteUrl = (string) $modx->getOption('site_url');
-$STAGE = str_contains($siteUrl, 'stage.') || str_contains($siteUrl, '.modx.dev');
+// Stage o produzione dall'utente del cloud (in CLI site_url vale http://127.0.0.1/); sconosciuto = produzione
+$cloud = basename(rtrim((string) (getenv('HOME') ?: ''), '/'));
+$STAGE = in_array($cloud, $C['cloud_stage'], true)
+    || (!in_array($cloud, $C['cloud_produzione'], true) && (str_contains($siteUrl, 'stage.') || str_contains($siteUrl, '.modx.dev')));
 $tvValore = function (modResource $r, string $nome) use ($modx): string {
     $tv = $modx->getObject(modTemplateVar::class, ['name' => $nome]);
     if (!$tv) return '';
@@ -279,7 +301,7 @@ if ($fileRip !== null) {
 
 /* ============================================================ 1. RISORSE DI RIFERIMENTO */
 echo ($scrivi ? "== INSTALLAZIONE" : "== PROVA (nessuna scrittura; aggiungere --scrivi)") . " — Clinica Dentale Villa dei Pini su $siteUrl"
-   . ($STAGE ? ' (stage)' : ' (PRODUZIONE)') . "\n";
+   . " (cloud $cloud: " . ($STAGE ? 'stage' : 'PRODUZIONE') . ")\n";
 $perUri = fn(string $u) => $modx->getObject(modResource::class, ['uri' => $u, 'deleted' => 0]);
 $modello = $perUri($C['modello_uri']);
 $sede = $perUri($C['sede_uri']);
@@ -321,10 +343,24 @@ else {
     }
 }
 
-/* ============================================================ 3. CONTENUTO DELLA SCHEDA */
-echo "\n-- Contenuto (dal modello {$modello->get('id')}, " . strlen((string) $modello->get('content')) . " byte)\n";
-$c = $costruisci((string) $modello->get('content'));
-/* {{uri:…}} nei frammenti: id della risorsa (link [[~id]], registro del 25/11); la scheda nuova si risolve dopo la creazione */
+/* ============================================================ 3. CONTENUTO E TV DELLA SCHEDA */
+// TV del modello da copiare (meno le escluse in config.json): passano dalle stesse sostituzioni del contenuto
+$tvModello = []; $tvEscluse = [];
+foreach ($modx->getIterator(modTemplateVarResource::class, ['contentid' => $modello->get('id')]) as $tvr) {
+    $tv = $modx->getObject(modTemplateVar::class, $tvr->get('tmplvarid'));
+    if (!$tv) continue;
+    $n = $tv->get('name');
+    foreach ($C['tv_non_copiare'] as $re) if (preg_match('#' . $re . '#', $n)) { $tvEscluse[] = $n; continue 2; }
+    if (array_key_exists($n, $C['tv'])) continue;          // la scrive config.json
+    $tvModello[$n] = str_replace("\r\n", "\n", (string) $tvr->get('value'));
+}
+echo "\n-- Contenuto e TV (dal modello {$modello->get('id')}: contenuto " . strlen((string) $modello->get('content')) . " byte, "
+   . count($tvModello) . " TV da copiare; escluse: " . (implode(', ', $tvEscluse) ?: 'nessuna') . ")\n";
+$parti = ['content' => str_replace("\r\n", "\n", (string) $modello->get('content'))];
+foreach ($tvModello as $n => $v) $parti["tv:$n"] = $v;
+$parti = $costruisci($parti);
+$c = $parti['content'];
+foreach ($tvEscluse as $n) if (preg_match('/\[\[\*' . preg_quote($n, '/') . '\b/', implode("\n", $parti))) $ferma("la TV esclusa $n è richiamata nel contenuto o in una TV: la pagina la mostrerebbe vuota");/* {{uri:…}} nei frammenti: id della risorsa (link [[~id]], registro del 25/11); la scheda nuova si risolve dopo la creazione */
 $risolvi = function (string $s, ?int $idNuova = null) use ($perUri, $ferma, $C): string {
     return preg_replace_callback('/\{\{uri:([^}]+)\}\}/', function ($m) use ($perUri, $ferma, $idNuova, $C) {
         if ($m[1] === "it/centri/{$C['campi']['alias']}" && $idNuova !== null) return (string) $idNuova;
@@ -334,13 +370,14 @@ $risolvi = function (string $s, ?int $idNuova = null) use ($perUri, $ferma, $C):
         return $m[0];
     }, $s);
 };
-$c = $risolvi($c);
+foreach ($parti as $k => $p) $parti[$k] = $risolvi($p);
+$c = $parti['content'];
 preg_match_all('/\[\[~(\d+)\]\]/', $c, $ln);
 echo '  link [[~id]] nel contenuto: ' . implode(', ', array_map(fn($i) => $i . ' /' . (($r = $modx->getObject(modResource::class, (int) $i)) ? $r->get('uri') : '?'), array_unique($ln[1]))) . "\n";
 $fileProva = rtrim((string) (getenv('HOME') ?: '.'), '/') . '/clinica-dentale-contenuto.html';
-file_put_contents($fileProva, $c);
+file_put_contents($fileProva, implode("\n\n", array_map(fn($k, $p) => "<!-- ===== $k ===== -->\n$p", array_keys($parti), $parti)));
 echo "  contenuto costruito in $fileProva (" . strlen($c) . " byte)\n";
-$segnaposto = preg_match_all('/\[DA COMPLETARE[^\]]*\]/u', $c, $sp);
+$segnaposto = preg_match_all('/\[DA COMPLETARE[^\]]*\]/u', implode("\n", $parti), $sp);
 if ($segnaposto) {
     echo "  i segnaposto da completare: $segnaposto\n";
     foreach ($sp[0] as $x) echo "     $x\n";
@@ -372,15 +409,9 @@ if ($lt > 65 || substr_count($campi['longtitle'], '| KOS') !== 1) $ferma("title 
 if ($ld > 160) $ferma("description di $ld caratteri");
 echo "  title $lt caratteri, description $ld\n";
 
-// TV: quelle del modello, meno le escluse; poi config.json, poi quelle prese da Villa dei Pini, poi i servizi
+// TV: quelle del modello (trasformate come il contenuto); poi config.json, poi quelle prese da Villa dei Pini, poi i servizi
 $tvNuove = [];
-foreach ($modx->getIterator(modTemplateVarResource::class, ['contentid' => $modello->get('id')]) as $tvr) {
-    $tv = $modx->getObject(modTemplateVar::class, $tvr->get('tmplvarid'));
-    if (!$tv) continue;
-    $n = $tv->get('name');
-    foreach ($C['tv_non_copiare'] as $re) if (preg_match('#' . $re . '#', $n)) continue 2;
-    $tvNuove[$n] = ['modello', (string) $tvr->get('value')];
-}
+foreach ($tvModello as $n => $v) $tvNuove[$n] = [$parti["tv:$n"] === $v ? 'modello' : 'modello, modificata', $parti["tv:$n"]];
 foreach ($C['tv'] as $n => $v) $tvNuove[$n] = ['config', (string) $v];
 foreach ($C['tv_dalla_sede'] as $n) $tvNuove[$n] = ['Villa dei Pini', $tvValore($sede, $n)];
 $csv = fn($s) => array_values(array_filter(array_map('trim', explode(',', (string) $s)), 'strlen'));
@@ -401,10 +432,7 @@ foreach ($tvMappa as $n) {
 foreach ($idServizi as $i => $u) if (!isset($messi[$i])) $ferma("servizio /$u non è nelle TV di mappatura del modello (" . implode(',', $tvMappa) . ')');
 ksort($tvNuove);
 foreach ($tvNuove as $n => [$da, $v]) {
-    printf("  TV %-22s %-15s %s\n", $n, "($da)", $corto($v, 90));
-    if ($da === 'modello') foreach ($C['parole_del_modello'] as $p) {
-        if (stripos($v, $p) !== false) $ferma("la TV $n copiata dal modello contiene «{$p}»: aggiungerla a config.json (tv o tv_non_copiare)");
-    }
+    printf("  TV %-22s %-21s %s\n", $n, "($da)", $corto($v, 90));
 }
 foreach (['str.lat', 'str.lng', 'istanza'] as $n) if (($tvNuove[$n][1] ?? '') === '') $ferma("TV $n vuota");
 $tvEsiste = fn(string $n) => (bool) $modx->getCount(modTemplateVar::class, ['name' => $n]);
@@ -423,18 +451,27 @@ foreach ($C['news_uri'] as $u) {
 
 /* ============================================================ 6. VILLA DEI PINI */
 echo "\n-- Villa dei Pini Civitanova ({$sede->get('id')}): voce «Clinica Dentale»\n";
-$cs = (string) $sede->get('content');
+$sedeParti = ['content' => (string) $sede->get('content')];
+foreach ($modx->getIterator(modTemplateVarResource::class, ['contentid' => $sede->get('id')]) as $tvr) {
+    $tv = $modx->getObject(modTemplateVar::class, $tvr->get('tmplvarid'));
+    if ($tv) $sedeParti['tv:' . $tv->get('name')] = (string) $tvr->get('value');
+}
 $sedeNuovo = null;
+$cercata = $C['sede_voce']['dopo_voce_con'];
+$conVoce = array_keys(array_filter($sedeParti, fn($p) => str_contains($p, $cercata)));
 if ($senzaSede) echo "  saltata per --senza-sede (la scheda di Villa dei Pini non si tocca)\n";
-elseif (str_contains($cs, 'faqClinicaDentale')) echo "  già presente: invariata\n";
-else {
-    $p = strpos($cs, $C['sede_voce']['dopo_voce_con']);
-    $ini = $p === false ? false : strrpos(substr($cs, 0, $p), '<div class="faq-singola"');
-    $fine = $ini === false ? null : fineTag($cs, $ini, 'div');
-    if ($fine === null || substr_count($cs, $C['sede_voce']['dopo_voce_con']) !== 1) $ferma("voce «{$C['sede_voce']['dopo_voce_con']}» non trovata una sola volta nel contenuto");
+elseif (array_filter($sedeParti, fn($p) => str_contains($p, 'faqClinicaDentale'))) echo "  già presente: invariata\n";
+elseif (count($conVoce) !== 1 || substr_count($sedeParti[$conVoce[0]], $cercata) !== 1) {
+    $ferma("voce «{$cercata}» trovata in " . (implode(', ', $conVoce) ?: 'nessuna parte') . ": attesa una volta sola");
+} else {
+    $k = $conVoce[0];
+    $ps = $sedeParti[$k];
+    $ini = strrpos(substr($ps, 0, strpos($ps, $cercata)), '<div class="faq-singola"');
+    $fine = $ini === false ? null : fineTag($ps, $ini, 'div');
+    if ($fine === null) $ferma("voce «{$cercata}»: riquadro faq-singola non riconosciuto");
     else {
-        $sedeNuovo = [$fine, $leggi($C['sede_voce']['file'])];
-        echo "  + dopo la voce «" . strip_tags($C['sede_voce']['dopo_voce_con']) . "» (offset $fine)\n";
+        $sedeNuovo = [$k, $fine, $leggi($C['sede_voce']['file'])];
+        echo "  + in " . ($k === 'content' ? 'contenuto' : 'TV ' . substr($k, 3)) . ", dopo la voce «" . strip_tags($cercata) . "»\n";
     }
 }
 
@@ -559,13 +596,19 @@ foreach ($news as [$r, $v]) {
 
 // Villa dei Pini
 if ($sedeNuovo) {
-    $R['risorse'][] = $fotografa($sede, []); $salvaR();
-    [$p, $testo] = $sedeNuovo;
-    $sede->set('content', substr($cs, 0, $p) . $risolvi($testo, $ID) . substr($cs, $p));
-    $sede->save();
-    echo "  ~ Villa dei Pini {$sede->get('id')}: voce «Clinica Dentale» con il link a [[~$ID]]\n";
+    [$k, $p, $testo] = $sedeNuovo;
+    $ps = $sedeParti[$k];
+    $nuovoTesto = substr($ps, 0, $p) . $risolvi($testo, $ID) . substr($ps, $p);
+    if ($k === 'content') {
+        $R['risorse'][] = $fotografa($sede, []); $salvaR();
+        $sede->set('content', $nuovoTesto);
+        $sede->save();
+    } else {
+        $R['risorse'][] = ['id' => (int) $sede->get('id'), 'tv' => [substr($k, 3) => $ps]]; $salvaR();
+        $sede->setTVValue(substr($k, 3), $nuovoTesto);
+    }
+    echo "  ~ Villa dei Pini {$sede->get('id')} (" . ($k === 'content' ? 'contenuto' : 'TV ' . substr($k, 3)) . "): voce «Clinica Dentale» con il link a [[~$ID]]\n";
 }
-
 // Landing
 if ($landing && $landingPiano) {
     if (!empty($landingPiano['contenuto'])) {

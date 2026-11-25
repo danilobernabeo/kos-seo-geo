@@ -1,6 +1,9 @@
 {
   "nota": "Dati della scheda Clinica Dentale Villa dei Pini (decisioni di Danilo del 25/11). Letti da installa.php: niente id fissi, tutto si risolve dall'URI (stage e produzione hanno id diversi per le risorse nuove).",
 
+  "cloud_stage": ["c0044"],
+  "cloud_produzione": ["c0095"],
+
   "modello_uri": "it/centri/clinica-dentale-villalba",
   "sede_uri": "it/centri/villa-dei-pini-civitanova",
   "landing_uri": "it/landing/clinica-dentale-civitanova",
@@ -35,7 +38,7 @@
     "translationId": ""
   },
   "tv_dalla_sede": ["istanza", "str.lat", "str.lng"],
-  "tv_non_copiare": ["^lnd\\.", "^mapTecnologie$"],
+  "tv_non_copiare": ["^lnd\\.", "^mapTecnologie$", "^idYext$", "^idHubspot"],
 
   "servizi_uri": ["it/servizi-e-cure/ambulatori-e-medicina-specialistica/odontoiatria"],
 
@@ -43,7 +46,7 @@
   "barra_branca": "Odontoiatria",
   "barra_prestazioni_attese": 2,
 
-  "parole_del_modello": ["villalba", "Robusti", "62100", "1930310", "19 30 310", "Macerata", "Chiaromonte", "De Gregori", "Rapanelli", "710baa66", "Cesaretti", "Bracalenti", "Di Noia", "Felicetti", "Genga", "Vescovi"],
+  "parole_del_modello": ["villalba", "Robusti", "62100", "1930310", "19 30 310", "Chiaromonte", "De Gregori", "Rapanelli", "710baa66", "Cesaretti", "Bracalenti", "Di Noia", "Felicetti", "Genga", "Vescovi"],
 
   "sostituzioni": [
     { "nome": "intestazione (H1 e indirizzo)", "apertura": "<div\\b[^>]*\\bid=\"intro-pagina-foto-content-txt\"", "tag": "div", "occorrenze": 1, "file": "elementi/intestazione.html" },
@@ -62,7 +65,7 @@
     ["Clinica Dentale Villalba", "Clinica Dentale Villa dei Pini"],
     ["[[!galleryStruttura", "[[galleryStruttura"]
   ],
-  "barra_prima_di": ["<section\\b[^>]*\\bid=\"blocco-foto-citazione\"", "<section\\b[^>]*\\bid=\"blocco-mappa\""],
+  "barra_prima_di": ["\\[\\[\\$box-citazione","<section\\b[^>]*\\bid=\"blocco-foto-citazione\"", "<section\\b[^>]*\\bid=\"blocco-mappa\""],
 
   "news_uri": [
     "it/news-e-media/news/2026/villa-dei-pini-inaugurata-la-clinica-dentale-kos",
