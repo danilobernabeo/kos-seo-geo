@@ -91,9 +91,16 @@ $leggi = function (string $rel) use ($DIR): string {
  * sostituzione cerca l'elemento ovunque. Restituisce le parti modificate.
  */
 $costruisci = function (array $parti) use ($C, $leggi, $ferma, $corto): array {
-    // Chiave di Google Maps: quella dell'iframe del modello (nessuna chiave nel repository)
-    $chiaveMaps = preg_match('#maps/embed/v1/place\?key=([\w-]+)#', implode("\n", $parti), $km) ? $km[1] : '';
-    if ($chiaveMaps === '') $ferma('chiave di Google Maps non trovata nell\'iframe del modello (contenuto e TV)');
+    // Mappa: il blocco <div id="mappa-map"> del modello così com'è (iframe, chunk o segnaposto: nessuna chiave nel
+    // repository), con il nome e l'alias della clinica sostituiti; va al posto di {{MAPPA_MODELLO}} in elementi/mappa.html
+    $mappaModello = '';
+    foreach ($parti as $k => $p) {
+        if ($el = elementi($p, '<div\b[^>]*\bid="mappa-map"', 'div')) { $mappaModello = substr($p, $el[0][0], $el[0][1] - $el[0][0]); break; }
+    }
+    if ($mappaModello === '') $ferma('blocco della mappa (div#mappa-map) non trovato nel modello (contenuto e TV)');
+    foreach ($C['sostituzioni_testo'] as [$da, $a]) $mappaModello = str_replace($da, $a, $mappaModello);
+    foreach ($C['parole_del_modello'] as $w) if (stripos($mappaModello, $w) !== false) $ferma("mappa del modello: resta «{$w}»");
+    echo '  mappa dal modello: ' . $corto(preg_replace(['#key=[\w-]{12,}#', '#\s+#'], ['key=…', ' '], $mappaModello), 220) . "\n";
     $frammenti = [];                                   // segnaposto => testo: il controllo dei residui li esclude
     $segna = function (string $testo) use (&$frammenti): string {
         $k = "\x01F" . count($frammenti) . "\x01";
@@ -146,7 +153,7 @@ $costruisci = function (array $parti) use ($C, $leggi, $ferma, $corto): array {
             foreach ($mm[0] as $x) $ferma($nome($k) . ": resta «{$w}»: …" . $corto(trim($x)) . '…');
         }
     }
-    foreach ($parti as $k => $p) $parti[$k] = str_replace('{{MAPS_KEY}}', $chiaveMaps, strtr($p, $frammenti));
+    foreach ($parti as $k => $p) $parti[$k] = str_replace('{{MAPPA_MODELLO}}', $mappaModello, strtr($p, $frammenti));
     $tutto = implode("\n", $parti);
     // Chiamate non in cache: ammessa solo la barra (cache interna dello snippet, registro del 22/11)
     preg_match_all('/\[\[!\s*([\w.\-$]+)/', $tutto, $nc);

@@ -24,7 +24,7 @@ nella documentazione del progetto.
 |---|---|
 | `config.json` | campi, TV, regole di costruzione del contenuto, news, landing, llms.txt, foto provvisorie |
 | `elementi/*.html` | testi della scheda: intestazione (H1 e indirizzo), contatti, pulsanti, La struttura, approfondimenti (come funziona e domande frequenti), trattamenti (dentro Aree di intervento), équipe, Come raggiungerci; voce per la scheda di Villa dei Pini |
-| `installa.php` | installazione ripetibile: prova, `--scrivi`, `--foto-provvisorie` (solo stage), `--senza-sede` (non tocca la 218), `--ripristina`, `--test` (senza MODX). La chiave di Google Maps della mappa si prende dall'iframe di Villalba: nel repository non c'è |
+| `installa.php` | installazione ripetibile: prova, `--scrivi`, `--foto-provvisorie` (solo stage), `--senza-sede` (non tocca la 218), `--ripristina`, `--test` (senza MODX). Il blocco della mappa (div#mappa-map) si prende da Villalba con il nome della clinica sostituito: nessuna chiave di Google Maps nel repository |
 | `verifica-barra.php` | sola lettura: la barra con e senza `&branca`, confronto byte per byte su tutte le schede |
 | `ispeziona.php` | sola lettura: campi, TV, contenuti e template delle risorse coinvolte (`~/clinica-dentale-ispezione/`) |
 | `collaudo.mjs` | collaudo sul sito servito (scheda, landing, Villa dei Pini, elenco, sitemap, llms.txt) |
