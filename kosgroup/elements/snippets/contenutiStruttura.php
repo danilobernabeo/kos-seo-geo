@@ -1,9 +1,9 @@
 <?php
 $id = $modx->getOption('id', $scriptProperties, $modx->resource->get('id'));
 // Quanti contenuti mostrare subito; gli altri sono nella pagina (link visibili ai crawler) e si aprono con
-// «Mostra altri», a gruppi della stessa misura. Prima il limite era 12 e i contenuti più vecchi delle strutture
+// «Mostra altri contenuti», 9 alla volta come gli elenchi news e approfondimenti. Prima il limite era 12 e i contenuti più vecchi delle strutture
 // restavano senza link (news con soloStruttura, scansione del 24/11). Lo snippet resta in cache: niente ?page.
-$visibili = max(1, (int) $modx->getOption('visibili', $scriptProperties, 12));
+$visibili = max(1, (int) $modx->getOption('visibili', $scriptProperties, 9));
 $massimo = max($visibili, (int) $modx->getOption('massimo', $scriptProperties, 120));
 
 // Abilita debug se necessario

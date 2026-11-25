@@ -1,5 +1,5 @@
 {
- "nome": "KOS Contenuti delle strutture: tutti i contenuti collegati alla struttura nella pagina (fino a 120), 12 visibili e gli altri con «Mostra altri contenuti»; lo snippet resta in cache (pagine orfane della scansione del 24/11: news con soloStruttura oltre le prime 12)",
+ "nome": "KOS Contenuti delle strutture: tutti i contenuti collegati alla struttura nella pagina (fino a 120), 9 visibili e 9 alla volta e gli altri con «Mostra altri contenuti»; lo snippet resta in cache (pagine orfane della scansione del 24/11: news con soloStruttura oltre le prime 12)",
  "elements": [
   {
    "type": "snippet",
