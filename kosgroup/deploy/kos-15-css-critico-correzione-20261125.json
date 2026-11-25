@@ -1,0 +1,6 @@
+{
+ "nome": "KOS 15 CSS critico, correzione: a capo prima di ogni @ nel chunk kos-css-critico, perché il plugin ObfuscateEmail trasformava in entità HTML «border-box}@media» e simili (CSS in linea rotto, CLS 1 in produzione)",
+ "elements": [
+  {"type": "chunk", "name": "kos-css-critico", "file": "kosgroup/elements/chunks/kos-css-critico.html", "baseline": "kosgroup/deploy/kos-15-css-critico-20261125/base-kos-css-critico.html"}
+ ]
+}

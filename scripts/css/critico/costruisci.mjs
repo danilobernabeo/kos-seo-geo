@@ -54,8 +54,14 @@ const css = await p.evaluate((tenuti) => {
 }, tenuti);
 const href = await p.evaluate(() => [...document.styleSheets].find(s => (s.href || '').includes('kos.min.css')).href);
 await b.close();
-const min = transform({ filename: 'critico.css', code: Buffer.from(css), minify: true }).code.toString();
+let min = transform({ filename: 'critico.css', code: Buffer.from(css), minify: true }).code.toString();
 if (min.includes('[[') || min.includes(']]')) throw new Error('il CSS contiene [[ o ]]: MODX lo leggerebbe come tag');
+// Il plugin ObfuscateEmail cambia in entità HTML tutto ciò che somiglia a un indirizzo email (caratteri «atom» RFC 2822,
+// tra cui { } | ~, attorno a una @): nel CSS in linea «border-box}@media» diventava entità e la regola si rompeva (25/11,
+// CLS 1 in produzione). Con un a capo prima di ogni @ non c'è più nulla di attaccato a sinistra della @.
+min = min.replace(/([^\n])@/g, '$1\n@');
+const atom = "[-!#$%&'*+/=?^_`{|}~0-9A-Za-z]+", meta = atom + '(?:\\.' + atom + ')*';
+if (new RegExp(meta + '@' + meta).test(min)) throw new Error('il CSS contiene ancora testo che ObfuscateEmail scambierebbe per un indirizzo email');
 const chunk = `<style>${min}</style>\n`;
 const dest = path.join(qui, '../../../kosgroup/elements/chunks/kos-css-critico.html');
 fs.writeFileSync(dest, chunk);
