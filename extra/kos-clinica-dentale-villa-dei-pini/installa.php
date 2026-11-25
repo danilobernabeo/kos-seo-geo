@@ -617,7 +617,7 @@ foreach ($servono as $p => $cosa) {
 }
 if ($fotoProvv) echo "  i --foto-provvisorie non serve più: le immagini si creano sempre se mancano\n";
 // Nessun rimando alla foto di testata della landing (generata o di repertorio: non è una foto della sede)
-if (preg_match('#landing/clinica-dentale-civitanova/hero#', $tuttoScheda . json_encode($C['immagini']))) $ferma('la scheda usa ancora la foto di testata della landing');
+if (preg_match('#landing/clinica-dentale-civitanova/hero#', $tuttoScheda . json_encode($C['immagini'], JSON_UNESCAPED_SLASHES))) $ferma('la scheda usa ancora la foto di testata della landing');
 
 /* ============================================================ SCRITTURA */
 if ($errori) { echo "\n== $errori problemi (FERMO): niente è stato scritto.\n"; exit(2); }

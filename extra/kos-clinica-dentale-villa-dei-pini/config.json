@@ -180,29 +180,29 @@
                 "Clinica Dentale Villa dei Pini"
             ]
         ],
-        "alt": "L'edificio della Casa di Cura Villa dei Pini a Civitanova Marche visto dal giardino, tra prato e pini",
+        "alt": "L'ingresso della Casa di Cura Villa dei Pini a Civitanova Marche, con l'insegna sulla facciata",
         "dopo": "<div\\b[^>]*\\bid=\"intro-pagina-gallery\"[^>]*>",
         "prima_di": "<div\\b[^>]*\\bid=\"intro-pagina-foto-content-txt\""
     },
     "immagini_nota": "Testata (con la versione mobile), card dell'elenco e fascia prima del piè di pagina dalla foto reale di Villa dei Pini (galleria della risorsa 218), alle dimensioni delle immagini indicate in «come»; foto di gruppo dell'équipe dalla landing, copiata senza ridimensionare (anche «image» del dato strutturato, TV infoImage). Tetto di peso tetto_byte.",
     "immagini": [
         {
-            "da": "assets/img/strutture/villa-dei-pini-civitanova/01.jpg",
+            "da": "assets/img/strutture/villa-dei-pini-civitanova/07.jpg",
             "a": "assets/img/header/clinica-dentale-villa-dei-pini.jpg",
             "come": "assets/img/header/clinica-dentale-porto-potenza-picena.jpg"
         },
         {
-            "da": "assets/img/strutture/villa-dei-pini-civitanova/01.jpg",
+            "da": "assets/img/strutture/villa-dei-pini-civitanova/07.jpg",
             "a": "assets/img/header/clinica-dentale-villa-dei-pini-mobile.jpg",
             "come": "assets/img/header/clinica-dentale-porto-potenza-picena-mobile.jpg"
         },
         {
-            "da": "assets/img/strutture/villa-dei-pini-civitanova/01.jpg",
+            "da": "assets/img/strutture/villa-dei-pini-civitanova/07.jpg",
             "a": "assets/img/strutture/clinica-dentale-villa-dei-pini.jpg",
             "come": "assets/img/strutture/clinica-dentale-villalba.jpg"
         },
         {
-            "da": "assets/img/strutture/villa-dei-pini-civitanova/01.jpg",
+            "da": "assets/img/strutture/villa-dei-pini-civitanova/07.jpg",
             "a": "assets/img/bg-clinica-dentale-villa-dei-pini.jpg",
             "come": "assets/img/bg-clinica-dentale-villalba.jpg"
         },
