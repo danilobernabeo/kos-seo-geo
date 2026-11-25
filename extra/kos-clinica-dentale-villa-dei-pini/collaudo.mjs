@@ -94,7 +94,7 @@ if (lb) {
   verifica(pScheda, 'medicalSpecialty Dentistry', [].concat(lb.medicalSpecialty || []).includes('Dentistry'));
   verifica(pScheda, 'knowsAbout con Odontoiatria', (lb.knowsAbout || []).some(k => /odontoiatria$/.test(k.url || '')), (lb.knowsAbout || []).map(k => k.name).join(', '));
   esito(pScheda, 'hasMap (place_id della scheda Google)', lb.hasMap ? 'OK' : 'AVV', lb.hasMap || 'manca str.place_id: da aggiungere quando c\'è');
-  esito(pScheda, 'image', lb.image ? 'OK' : 'AVV', lb.image?.url || 'nessuna foto nella galleria');
+  verifica(pScheda, 'image = foto di gruppo dell\'équipe (reale)', /equipe-gruppo/.test(lb.image?.url || ''), lb.image?.url || 'nessuna immagine');
   // parentOrganization come le altre due cliniche
   const v = await scarica(`${base}/${C.modello_uri}`);
   const lbV = (JSON.parse(grafi(v.html)[0] || '{}')['@graph'] || []).find(n => String(n['@id']).endsWith('#localbusiness'));
@@ -130,6 +130,16 @@ if (b64) {
 
 // news
 verifica(pScheda, 'news dell\'inaugurazione nel blocco «Le ultime news da …»', /Le ultime news da[\s\S]*villa-dei-pini-inaugurata-la-clinica-dentale-kos/.test(h));
+
+// revisione del 25/11: foto, elenco dei trattamenti, richiamata
+const imgEquipe = (h.match(/<img\b[^>]*equipe-gruppo[^>]*>/i) || [''])[0];
+verifica(pScheda, 'foto di gruppo: alt, width, height, lazy', /alt="L'équipe della Clinica Dentale Villa dei Pini"/.test(ent(imgEquipe)) && /\swidth="\d+"/.test(imgEquipe) && /\sheight="\d+"/.test(imgEquipe) && /loading="lazy"/.test(imgEquipe), imgEquipe.slice(0, 200) || 'assente');
+verifica(pScheda, 'nessuna foto di testata della landing', !/landing\/clinica-dentale-civitanova\/hero/.test(h));
+const imgTestata = (h.match(/<img\b[^>]*header\/clinica-dentale-villa-dei-pini[^>]*>/i) || [''])[0];
+verifica(pScheda, 'testata: alt sull\'edificio di Villa dei Pini', /alt="[^"]*Villa dei Pini[^"]*"/.test(ent(imgTestata)), ent(imgTestata).match(/alt="[^"]*"/)?.[0] || 'img di testata non trovata');
+verifica(pScheda, 'trattamenti con punti elenco (ul.lista-con-icone)', /<ul class="lista-con-icone">\s*<li><strong>Prevenzione/.test(h));
+verifica(pScheda, 'pulsante «Richiedi di essere richiamato» verso la landing', (h.match(/href="\/it\/landing\/clinica-dentale-civitanova#richiamata"[^>]*>Richiedi di essere richiamato/g) || []).length >= 1);
+verifica(pScheda, 'domanda sulla prenotazione con la richiamata entro 24-48 ore', /24-48 ore/.test(h));
 
 // immagini: peso e alt
 const imgs = [...h.matchAll(/<img\b[^>]*>/gi)].map(m => m[0]);

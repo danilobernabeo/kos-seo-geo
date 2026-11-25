@@ -35,7 +35,8 @@
         "str.sameAs": "",
         "str.prenotazione": "",
         "indirizzo_struttura": "Viale dei Pini, 31 - 62012 Civitanova Marche (MC)",
-        "translationId": ""
+        "translationId": "",
+        "infoImage": "assets/img/strutture/clinica-dentale-villa-dei-pini/equipe-gruppo.jpg"
     },
     "tv_dalla_sede": [
         "istanza",
@@ -167,7 +168,7 @@
         "riga": "- [Clinica Dentale Villa dei Pini](https://kosgroup.com/it/centri/clinica-dentale-villa-dei-pini): clinica dentale, Civitanova Marche (MC)"
     },
     "testata": {
-        "nota": "Testata a immagine unica come la Clinica Dentale Porto Potenza Picena (Danilo, 25/11): il tratto di pagina tra l'apertura di #intro-pagina-gallery e il blocco del titolo, preso dal contenuto di quella scheda (con le TV che richiama), al posto della galleria; foto dello studio della landing sfumata in bianco.",
+        "nota": "Testata a immagine unica come la Clinica Dentale Porto Potenza Picena (Danilo, 25/11): il tratto di pagina tra l'apertura di #intro-pagina-gallery e il blocco del titolo, preso dal contenuto di quella scheda (con le TV che richiama), al posto della galleria. Foto reale di Villa dei Pini dalla galleria della risorsa 218 (la foto di testata della landing è generata o di repertorio: non si usa come foto della sede).",
         "modello_uri": "it/centri/clinica-dentale-porto-potenza-picena",
         "sostituzioni_testo": [
             [
@@ -179,30 +180,35 @@
                 "Clinica Dentale Villa dei Pini"
             ]
         ],
-        "alt": "Studio odontoiatrico luminoso con poltrona, lampada e monitor con l'immagine di un'arcata dentale",
+        "alt": "L'edificio della Casa di Cura Villa dei Pini a Civitanova Marche visto dal giardino, tra prato e pini",
         "dopo": "<div\\b[^>]*\\bid=\"intro-pagina-gallery\"[^>]*>",
         "prima_di": "<div\\b[^>]*\\bid=\"intro-pagina-foto-content-txt\""
     },
+    "immagini_nota": "Testata (con la versione mobile), card dell'elenco e fascia prima del piè di pagina dalla foto reale di Villa dei Pini (galleria della risorsa 218), alle dimensioni delle immagini indicate in «come»; foto di gruppo dell'équipe dalla landing, copiata senza ridimensionare (anche «image» del dato strutturato, TV infoImage). Tetto di peso tetto_byte.",
     "immagini": [
         {
-            "da": "assets/img/landing/clinica-dentale-civitanova/hero-largo-2048.jpg",
+            "da": "assets/img/strutture/villa-dei-pini-civitanova/01.jpg",
             "a": "assets/img/header/clinica-dentale-villa-dei-pini.jpg",
             "come": "assets/img/header/clinica-dentale-porto-potenza-picena.jpg"
         },
         {
-            "da": "assets/img/landing/clinica-dentale-civitanova/hero-mobile-1290.jpg",
+            "da": "assets/img/strutture/villa-dei-pini-civitanova/01.jpg",
             "a": "assets/img/header/clinica-dentale-villa-dei-pini-mobile.jpg",
             "come": "assets/img/header/clinica-dentale-porto-potenza-picena-mobile.jpg"
         },
         {
-            "da": "assets/img/landing/clinica-dentale-civitanova/hero-largo-2048.jpg",
+            "da": "assets/img/strutture/villa-dei-pini-civitanova/01.jpg",
             "a": "assets/img/strutture/clinica-dentale-villa-dei-pini.jpg",
             "come": "assets/img/strutture/clinica-dentale-villalba.jpg"
         },
         {
-            "da": "assets/img/landing/clinica-dentale-civitanova/hero-largo-2048.jpg",
+            "da": "assets/img/strutture/villa-dei-pini-civitanova/01.jpg",
             "a": "assets/img/bg-clinica-dentale-villa-dei-pini.jpg",
             "come": "assets/img/bg-clinica-dentale-villalba.jpg"
+        },
+        {
+            "da": "assets/img/landing/clinica-dentale-civitanova/equipe-gruppo-1080.jpg",
+            "a": "assets/img/strutture/clinica-dentale-villa-dei-pini/equipe-gruppo.jpg"
         }
     ],
     "tetto_byte": 200000

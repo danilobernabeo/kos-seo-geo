@@ -5,7 +5,9 @@
  * Uso (in SSH sul cloud, dalla radice dell'archivio del repository):
  *   php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www                        prova: controlla e mostra, non scrive
  *   php extra/kos-clinica-dentale-villa-dei-pini/installa.php /www --scrivi               applica (ripetibile: aggiorna)
- *   (immagini di testata, card e piè di pagina: create sempre se mancano, dalla foto dello studio della landing)
+ *   (immagini di testata, card, piè di pagina e foto dell'équipe: create se mancano, vedi config.json → immagini)
+ *   ... --rifai-immagini              ricrea anche le immagini che esistono già (backup e ripristino), es. dopo un cambio
+ *                                     di foto di partenza in config.json
  *   ... --senza-sede                  non tocca la scheda di Villa dei Pini (link da mettere dopo il 4/12)
  *   ... --prestazioni-stage           SOLO STAGE: procede anche se Odontoiatria non ha le prestazioni attese (tabelle
  *                                     kos_* dello stage ferme al 18/10, Odontoiatria aggiunta in TuoTempo il 29/10)
@@ -39,6 +41,7 @@ $forza = in_array('--forza', $argv, true);
 $fotoProvv = in_array('--foto-provvisorie', $argv, true);
 $senzaSede = in_array('--senza-sede', $argv, true);
 $prestStage = in_array('--prestazioni-stage', $argv, true);
+$rifai = in_array('--rifai-immagini', $argv, true);
 $iRip = array_search('--ripristina', $argv, true);
 $fileRip = $iRip !== false ? ($argv[$iRip + 1] ?? '') : null;
 
@@ -265,7 +268,7 @@ if (($argv[1] ?? '') === '--test') {
 }
 
 if ($webroot === '' || !is_file("$webroot/config.core.php")) {
-    fwrite(STDERR, "Uso: php installa.php /www [--scrivi] [--foto-provvisorie] [--senza-sede] [--forza] | --ripristina <file> [--scrivi] | --test <modello.html> [<landing.html>]\n");
+    fwrite(STDERR, "Uso: php installa.php /www [--scrivi] [--senza-sede] [--rifai-immagini] [--prestazioni-stage] [--forza] | --ripristina <file> [--scrivi] | --test <modello.html> [<landing.html>]\n");
     exit(1);
 }
 require "$webroot/config.core.php";
@@ -495,6 +498,12 @@ foreach ($tvNuove as $n => [$da, $v]) {
 foreach (['str.lat', 'str.lng', 'istanza'] as $n) if (($tvNuove[$n][1] ?? '') === '') $ferma("TV $n vuota");
 $tvEsiste = fn(string $n) => (bool) $modx->getCount(modTemplateVar::class, ['name' => $n]);
 foreach ($tvNuove as $n => [, $v]) if ($v !== '' && !$tvEsiste($n)) $ferma("TV $n inesistente sul sito");
+foreach ($tvNuove as $n => [, $v]) {
+    if ($v === '' || !($tvo = $modx->getObject(modTemplateVar::class, ['name' => $n]))) continue;
+    if (!$modx->getCount(modTemplateVarTemplate::class, ['tmplvarid' => $tvo->get('id'), 'templateid' => (int) $campi['template']])) {
+        echo "  i TV $n non assegnata al template {$campi['template']}: il valore si scrive comunque, ma non compare nel pannello\n";
+    }
+}
 
 /* ============================================================ 5. NEWS */
 echo "\n-- News («Le ultime news da …», TV idStruttura)\n";
@@ -518,7 +527,22 @@ $sedeNuovo = null;
 $cercata = $C['sede_voce']['dopo_voce_con'];
 $conVoce = array_keys(array_filter($sedeParti, fn($p) => str_contains($p, $cercata)));
 if ($senzaSede) echo "  saltata per --senza-sede (la scheda di Villa dei Pini non si tocca)\n";
-elseif (array_filter($sedeParti, fn($p) => str_contains($p, 'faqClinicaDentale'))) echo "  già presente: invariata\n";
+elseif ($conGia = array_keys(array_filter($sedeParti, fn($p) => str_contains($p, 'faqClinicaDentale')))) {
+    // Voce già presente: si confronta con elementi/ (link risolto con l'id della scheda esistente) e si sostituisce se diversa
+    $k = $conGia[0];
+    $ps = str_replace("\r\n", "\n", $sedeParti[$k]);
+    $ini = strrpos(substr($ps, 0, strpos($ps, 'faqClinicaDentale')), '<div class="faq-singola"');
+    $fine = $ini === false ? null : fineTag($ps, $ini, 'div');
+    $voce = trim($leggi($C['sede_voce']['file']));
+    if (count($conGia) !== 1 || $fine === null) $ferma('voce «Clinica Dentale» già presente ma non riconosciuta (riquadro faq-singola)');
+    elseif (!$esistente) $ferma('voce «Clinica Dentale» presente su Villa dei Pini ma la scheda non esiste: ripristinare prima la voce');
+    elseif (substr($ps, $ini, $fine - $ini) === $risolvi($voce, (int) $esistente->get('id'))) echo "  già presente e uguale: invariata\n";
+    else {
+        $sedeParti[$k] = $ps;
+        $sedeNuovo = [$k, $fine, $voce, $ini];
+        echo "  ~ già presente in " . ($k === 'content' ? 'contenuto' : 'TV ' . substr($k, 3)) . ": testo aggiornato da {$C['sede_voce']['file']}\n";
+    }
+}
 elseif (count($conVoce) !== 1 || substr_count($sedeParti[$conVoce[0]], $cercata) !== 1) {
     $ferma("voce «{$cercata}» trovata in " . (implode(', ', $conVoce) ?: 'nessuna parte') . ": attesa una volta sola");
 } else {
@@ -560,25 +584,26 @@ if (is_file("$webroot/llms.txt")) {
 } else echo "\n-- llms.txt assente (stage): niente da fare\n";
 
 /* ============================================================ 9. IMMAGINI */
-// Testata (come Porto Potenza), card dell'elenco e piè di pagina: dalla foto dello studio della landing, alle dimensioni
-// delle immagini corrispondenti della clinica indicata in «come». Si creano solo se mancano (mai sovrascritte).
-echo "\n-- Immagini (dalla foto dello studio della landing)\n";
+// Testata (come Porto Potenza), card dell'elenco e piè di pagina: dalla foto reale di Villa dei Pini (galleria della 218),
+// alle dimensioni delle immagini corrispondenti indicate in «come»; senza «come» la foto si copia alle sue dimensioni
+// (foto di gruppo dell'équipe). Si creano se mancano; con --rifai-immagini si ricreano anche se ci sono (con backup).
+echo "\n-- Immagini (config.json → immagini)\n";
 $foto = []; $previste = [];
 if (!class_exists('Imagick') && !function_exists('imagecreatefromjpeg')) $ferma('né Imagick né GD disponibili');
 foreach ($C['immagini'] as $v) {
-    if (is_file("$webroot/{$v['a']}")) { echo "  = /{$v['a']} esiste già (" . filesize("$webroot/{$v['a']}") . " byte): non la tocco\n"; continue; }
-    $d = @getimagesize("$webroot/{$v['come']}");
-    if (!$d) { $ferma("/{$v['come']} assente: dimensioni di /{$v['a']} sconosciute"); continue; }
+    if (is_file("$webroot/{$v['a']}") && !$rifai) { echo "  = /{$v['a']} esiste già (" . filesize("$webroot/{$v['a']}") . " byte): non la tocco (--rifai-immagini per ricrearla)\n"; continue; }
     if (!is_file("$webroot/{$v['da']}")) { $ferma("/{$v['da']} assente"); continue; }
+    $d = @getimagesize(isset($v['come']) ? "$webroot/{$v['come']}" : "$webroot/{$v['da']}");
+    if (!$d) { $ferma('/' . ($v['come'] ?? $v['da']) . " assente o non leggibile: dimensioni di /{$v['a']} sconosciute"); continue; }
     [$w, $h] = $d;
     $foto[] = [$v['da'], $v['a'], (int) $w, (int) $h];
     $previste[$v['a']] = true;
-    echo "  + /{$v['a']} ({$w}×{$h}, come /{$v['come']}) da /{$v['da']}\n";
+    echo '  ' . (is_file("$webroot/{$v['a']}") ? '~' : '+') . " /{$v['a']} ({$w}×{$h}, " . (isset($v['come']) ? "come /{$v['come']}" : 'copia') . ") da /{$v['da']}\n";
 }
 // Nessuna immagine rotta: card dell'elenco delle cliniche e immagini della scheda nel contenuto e nelle TV
 $servono = ["assets/img/strutture/{$C['campi']['alias']}.jpg" => 'card di /' . $C['elenco_uri']];
 $tuttoScheda = implode("\n", $parti) . "\n" . implode("\n", array_column($tvNuove, 1));
-if (preg_match_all('#assets/img/[\w/.-]*' . preg_quote($C['campi']['alias'], '#') . '[\w.-]*\.(?:jpe?g|png|webp)#', $tuttoScheda, $im)) {
+if (preg_match_all('#assets/img/[\w/.-]*' . preg_quote($C['campi']['alias'], '#') . '[\w/.-]*\.(?:jpe?g|png|webp)#', $tuttoScheda, $im)) {
     foreach (array_unique($im[0]) as $p) $servono[$p] = 'immagine della scheda';
 }
 if (str_contains($tuttoScheda, '/header/[[*alias]]')) {
@@ -591,6 +616,8 @@ foreach ($servono as $p => $cosa) {
     if (!$ok) $ferma("manca /$p ($cosa)");
 }
 if ($fotoProvv) echo "  i --foto-provvisorie non serve più: le immagini si creano sempre se mancano\n";
+// Nessun rimando alla foto di testata della landing (generata o di repertorio: non è una foto della sede)
+if (preg_match('#landing/clinica-dentale-civitanova/hero#', $tuttoScheda . json_encode($C['immagini']))) $ferma('la scheda usa ancora la foto di testata della landing');
 
 /* ============================================================ SCRITTURA */
 if ($errori) { echo "\n== $errori problemi (FERMO): niente è stato scritto.\n"; exit(2); }
@@ -653,8 +680,9 @@ foreach ($news as [$r, $v]) {
 // Villa dei Pini
 if ($sedeNuovo) {
     [$k, $p, $testo] = $sedeNuovo;
+    $da = $sedeNuovo[3] ?? $p;                          // voce già presente: si sostituisce il riquadro [da, p)
     $ps = $sedeParti[$k];
-    $nuovoTesto = substr($ps, 0, $p) . $risolvi($testo, $ID) . substr($ps, $p);
+    $nuovoTesto = substr($ps, 0, $da) . $risolvi($testo, $ID) . substr($ps, $p);
     if ($k === 'content') {
         $R['risorse'][] = $fotografa($sede, []); $salvaR();
         $sede->set('content', $nuovoTesto);
@@ -691,10 +719,25 @@ if ($llmsNuovo !== null) {
     echo "  ~ /llms.txt\n";
 }
 
-// Immagini: ritaglio centrato, JPEG progressivo, qualità decrescente fino al tetto
+// Immagini: ritaglio centrato, JPEG progressivo, qualità decrescente fino al tetto; copia semplice se le dimensioni sono
+// quelle della foto di partenza e il peso sta nel tetto. Le immagini già presenti (--rifai-immagini) vanno nel backup.
 foreach ($foto as [$da, $a, $w, $h]) {
     $cartella = dirname("$webroot/$a");
     if (!is_dir($cartella)) { mkdir($cartella, 0775, true); $R['cartelle_create'][] = dirname($a); }
+    $eraLi = is_file("$webroot/$a");
+    if ($eraLi) {
+        $b = "$bk/immagini/" . str_replace('/', '__', $a);
+        @mkdir("$bk/immagini", 0775, true);
+        copy("$webroot/$a", $b);
+        $R['file_modificati'][] = ['rel' => $a, 'backup' => $b]; $salvaR();
+    }
+    $dd = getimagesize("$webroot/$da");
+    if ($dd && (int) $dd[0] === $w && (int) $dd[1] === $h && filesize("$webroot/$da") <= (int) $C['tetto_byte']) {
+        copy("$webroot/$da", "$webroot/$a");
+        if (!$eraLi) { $R['file_creati'][] = $a; $salvaR(); }
+        printf("  %s /%s %d×%d, %d byte (copia)\n", $eraLi ? '~' : '+', $a, $w, $h, filesize("$webroot/$a"));
+        continue;
+    }
     foreach ([82, 76, 70, 64, 58, 52] as $q) {
         if (class_exists('Imagick')) {
             $im = new Imagick("$webroot/$da");
@@ -717,8 +760,9 @@ foreach ($foto as [$da, $a, $w, $h]) {
         clearstatcache();
         if (filesize("$webroot/$a") <= (int) $C['tetto_byte']) break;
     }
-    $R['file_creati'][] = $a; $salvaR();
-    printf("  + /%s %d×%d, %d byte (qualità %d)\n", $a, $w, $h, filesize("$webroot/$a"), $q);
+    if (!$eraLi) { $R['file_creati'][] = $a; $salvaR(); }
+    printf("  %s /%s %d×%d, %d byte (qualità %d)\n", $eraLi ? '~' : '+', $a, $w, $h, filesize("$webroot/$a"), $q);
+    if (filesize("$webroot/$a") > (int) $C['tetto_byte']) { echo "  ! /$a oltre il tetto di {$C['tetto_byte']} byte\n"; $errori++; }
 }
 
 $salvaR();
