@@ -136,7 +136,7 @@ const imgEquipe = (h.match(/<img\b[^>]*equipe-gruppo[^>]*>/i) || [''])[0];
 verifica(pScheda, 'foto di gruppo: alt, width, height, lazy', /alt="L'équipe della Clinica Dentale Villa dei Pini"/.test(ent(imgEquipe)) && /\swidth="\d+"/.test(imgEquipe) && /\sheight="\d+"/.test(imgEquipe) && /loading="lazy"/.test(imgEquipe), imgEquipe.slice(0, 200) || 'assente');
 verifica(pScheda, 'nessuna foto di testata della landing', !/landing\/clinica-dentale-civitanova\/hero/.test(h));
 const imgTestata = (h.match(/<img\b[^>]*header\/clinica-dentale-villa-dei-pini[^>]*>/i) || [''])[0];
-verifica(pScheda, 'testata: alt sull\'edificio di Villa dei Pini', /alt="[^"]*Villa dei Pini[^"]*"/.test(ent(imgTestata)), ent(imgTestata).match(/alt="[^"]*"/)?.[0] || 'img di testata non trovata');
+verifica(pScheda, 'testata: alt sull\'edificio (config.json → testata.alt)', ent(imgTestata).includes(`alt="${C.testata.alt}"`), ent(imgTestata).match(/alt="[^"]*"/)?.[0] || 'img di testata non trovata');
 verifica(pScheda, 'trattamenti con punti elenco (ul.lista-con-icone)', /<ul class="lista-con-icone">\s*<li><strong>Prevenzione/.test(h));
 verifica(pScheda, 'pulsante «Richiedi di essere richiamato» verso la landing', (h.match(/href="\/it\/landing\/clinica-dentale-civitanova#richiamata"[^>]*>Richiedi di essere richiamato/g) || []).length >= 1);
 verifica(pScheda, 'domanda sulla prenotazione con la richiamata entro 24-48 ore', /24-48 ore/.test(h));
