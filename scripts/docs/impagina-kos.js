@@ -46,6 +46,7 @@ function table(rows){
   if(rows[0][0]==='Sito'&&n===3) cw=[1700,2700,5238];
   if(rows[0][0]==='Struttura'&&n===4) cw=[2500,1300,1300,4538];
   if(rows[0][0]==='Struttura'&&n===3) cw=[4638,2500,2500];
+  if(rows[0][0]==='Struttura'&&n===6) cw=[2838,1300,1400,1400,1400,1300];
   const mar={top:60,left:110,bottom:60,right:110};
   const b={style:BorderStyle.SINGLE,color:LINE,size:4};
   const numeric=c=>/^[\d.,]+$/.test(c.trim());

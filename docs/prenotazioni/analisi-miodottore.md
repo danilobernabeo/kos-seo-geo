@@ -21,35 +21,63 @@ Questi errori danno oggi un'informazione sbagliata ai pazienti. Vanno segnalati 
 
 ## La situazione struttura per struttura
 
-Consultazione del 25/11/2026. «Vuota» indica una pagina senza professionisti né prestazioni, probabilmente creata da MioDottore e mai completata.
+Consultazione del 25/11/2026; i dati TuoTempo sono quelli usati dalla prenotazione online del sito, alla stessa data. «Vuota» indica una pagina senza professionisti né prestazioni, probabilmente creata da MioDottore e mai completata.
 
-| Struttura | Pagina su MioDottore | Professionisti in pagina | Differenze rispetto al sito |
-| --- | --- | --- | --- |
-| Centro Cardinal Ferrari, Fontanellato | Attiva | 4 | Nome e indirizzo uguali; telefono e sito assenti |
-| Centro Medico Riabilitativo, Cinisello Balsamo | Vuota | 0 | Pagina vuota; stesso indirizzo, nome di un'altra unità |
-| Myolab, Jesi | Attiva | 33 | Corretta; rimanda a kosgroup.com |
-| Poliambulatorio San Martino, Bollate | Attiva | 26 | Nome e indirizzo uguali; telefono e sito assenti |
-| Poliambulatorio Santo Stefano, Porto Potenza Picena | Attiva | 17 | Corretta; link a polodiagnostico.it/prenota (sito non più in uso) |
-| Poliambulatorio Valdaso, Campofilone | Assente | - | - |
-| Poliambulatorio Villalba, Macerata | Attiva | 34 | Nome uguale; CAP e città ripetuti nell'indirizzo; telefono e sito assenti |
-| Punto Prelievi Gamma, Fano | Assente | - | - |
-| Punto Prelievi Salus, Macerata | Assente | - | - |
-| Villa Margherita, Arcugnano | Attiva | 1 | Nome diverso; indirizzo uguale; telefono e sito assenti |
-| Villa Rosa, Modena | Attiva | 2 | Telefono 059 303034, che sul sito è di Villa Rosa; Villa Rosa Diagnostica ha 059 306335 |
-| Villa San Giuseppe, Anzano del Parco | Attiva | 18 | Telefono 031 6340515 (sito: 031 6340555); link a villasangiuseppecdc.it (sito non più in uso) |
-| Villa Sant'Alessandro, Roma | Vuota | 0 | Pagina vuota; nome superato |
-| Villa dei Pini, Civitanova Marche | Attiva | 50 | Nome con maiuscole e virgolette; telefono scritto +39 39 0733 7861 (prefisso doppio); link a casadicuravillapini.it (sito non più in uso) |
-| Ville di Nozzano, Nozzano San Pietro | Vuota | 0 | Pagina vuota; CAP 55050 Lucca (sito: 55100) |
-| Poliambulatorio Villa Pineta, Modena | Vuota | 0 | Pagina vuota; «Via Scaglia Est 21-27» (sito: Strada Scaglia Est, 27) |
-| Villa Pineta, Pavullo nel Frignano | Attiva | 1 | Nome e indirizzo uguali; telefono e sito assenti |
-| Centro Santo Stefano, Cagli | Vuota | 0 | Pagina vuota; nome diverso |
+| Struttura | Pagina su MioDottore | Professionisti MioDottore | Agende TuoTempo | Prestazioni MioDottore | Prestazioni TuoTempo |
+| --- | --- | --- | --- | --- | --- |
+| Centro Cardinal Ferrari, Fontanellato | Attiva | 4 | 9 | 28 | 106 |
+| Centro Medico Riabilitativo, Cinisello Balsamo | Vuota | 0 | 16 | 0 | 96 |
+| Myolab, Jesi | Attiva | 33 | 32 | 143 | 114 |
+| Poliambulatorio San Martino, Bollate | Attiva | 26 | 17 | 90 | 73 |
+| Poliambulatorio Santo Stefano, Porto Potenza Picena | Attiva | 17 | 16 | 107 | 314 |
+| Poliambulatorio Valdaso, Campofilone | Assente | - | 20 | - | 52 |
+| Poliambulatorio Villalba, Macerata | Attiva | 34 | 27 | 49 | 282 |
+| Punto Prelievi Gamma, Fano | Assente | - | 1 | - | 16 |
+| Punto Prelievi Salus, Macerata | Assente | - | 1 | - | 14 |
+| Villa Margherita, Arcugnano | Attiva | 1 | 11 | 6 | 17 |
+| Villa Rosa, Modena | Attiva | 2 | 8 | 62 | 180 |
+| Villa San Giuseppe, Anzano del Parco | Attiva | 18 | 35 | 60 | 66 |
+| Villa Sant'Alessandro, Roma | Vuota | 0 | 26 | 0 | 40 |
+| Villa dei Pini, Civitanova Marche | Attiva | 50 | 58 | 83 | 275 |
+| Ville di Nozzano, Nozzano San Pietro | Vuota | 0 | 3 | 0 | 3 |
+| Poliambulatorio Villa Pineta, Modena | Vuota | 0 | 4 | 0 | 7 |
+| Villa Pineta, Pavullo nel Frignano | Attiva | 1 | 15 | 4 | 23 |
+| Centro Santo Stefano, Cagli | Vuota | 0 | 1 | 0 | 74 |
 
-Note:
+Come leggerla: le «agende prenotabili» di TuoTempo comprendono medici, altri professionisti e a volte team o macchinari (per esempio un'agenda per la TAC), quindi il confronto con i professionisti di MioDottore è indicativo. Anche le prestazioni non si confrontano una a una: MioDottore usa un proprio elenco di voci.
+
+Cosa emerge:
+
+- **Pagine vuote o assenti con un'offerta prenotabile ampia:** Centro Medico Riabilitativo di Cinisello (16 agende, 96 prestazioni), Villa Sant'Alessandro (26 agende), Poliambulatorio Valdaso (20 agende, nessuna pagina).
+- **Pagine molto incomplete:** Villa Pineta Pavullo (1 professionista su MioDottore, 15 agende su TuoTempo), Villa Margherita (1 su 11), Villa Rosa (2 su 8), Centro Cardinal Ferrari (4 su 9), Villa San Giuseppe (18 su 35).
+- **Più professionisti su MioDottore che agende su TuoTempo:** Poliambulatorio San Martino (26 contro 17) e Villalba (34 contro 27). Possono essere professionisti che non lavorano più nella struttura o non sono prenotabili online: da verificare.
+- **Allineate:** Villa dei Pini (50 su 58), Myolab (33 su 32), Poliambulatorio Santo Stefano (17 su 16).
+
+**Differenze di nome, indirizzo e telefono rispetto al sito:**
+
+| Struttura | Differenze rispetto al sito |
+| --- | --- |
+| Centro Cardinal Ferrari, Fontanellato | Nome e indirizzo uguali; telefono e sito assenti |
+| Centro Medico Riabilitativo, Cinisello Balsamo | Pagina vuota; stesso indirizzo, nome di un'altra unità |
+| Myolab, Jesi | Corretta; rimanda a kosgroup.com |
+| Poliambulatorio San Martino, Bollate | Nome e indirizzo uguali; telefono e sito assenti |
+| Poliambulatorio Santo Stefano, Porto Potenza Picena | Corretta; link a polodiagnostico.it/prenota (sito non più in uso) |
+| Poliambulatorio Villalba, Macerata | Nome uguale; CAP e città ripetuti nell'indirizzo; telefono e sito assenti |
+| Villa Margherita, Arcugnano | Nome diverso; indirizzo uguale; telefono e sito assenti |
+| Villa Rosa, Modena | Telefono 059 303034, che sul sito è di Villa Rosa; Villa Rosa Diagnostica ha 059 306335 |
+| Villa San Giuseppe, Anzano del Parco | Telefono 031 6340515 (sito: 031 6340555); link a villasangiuseppecdc.it (sito non più in uso) |
+| Villa Sant'Alessandro, Roma | Pagina vuota; nome superato |
+| Villa dei Pini, Civitanova Marche | Nome con maiuscole e virgolette; telefono scritto +39 39 0733 7861 (prefisso doppio); link a casadicuravillapini.it (sito non più in uso) |
+| Ville di Nozzano, Nozzano San Pietro | Pagina vuota; CAP 55050 Lucca (sito: 55100) |
+| Poliambulatorio Villa Pineta, Modena | Pagina vuota; «Via Scaglia Est 21-27» (sito: Strada Scaglia Est, 27) |
+| Villa Pineta, Pavullo nel Frignano | Nome e indirizzo uguali; telefono e sito assenti |
+| Centro Santo Stefano, Cagli | Pagina vuota; nome diverso |
+
+Altre note:
 
 - Nelle 10 pagine attive ci sono in tutto 186 professionisti, 632 prestazioni e 2.733 recensioni.
 - «Assente» significa che la pagina non compare nella ricerca di MioDottore: potrebbe esistere con un nome diverso.
 - MioDottore non mostra gli orari delle strutture, quindi non è stato possibile confrontarli.
-- Il numero di professionisti attesi per struttura non è disponibile: serve l'elenco dei medici prenotabili da TuoTempo (vedi «Cosa serve da KOS»).
 
 ## Visibilità su Google e traffico verso il sito
 
@@ -122,7 +150,6 @@ Le domande a MioDottore e a TuoTempo le pone KOS: nessuno dei due è stato conta
 
 - Il contratto con MioDottore (o la parte Visibility del contratto TuoTempo): strutture, profili inclusi, durata, clausole su contenuti e recensioni.
 - Il nome di chi gestisce l'account MioDottore e i referenti di MioDottore e TuoTempo; se possibile un accesso in sola lettura per Danilo Bernabeo.
-- L'elenco dei medici e delle prestazioni prenotabili per struttura (da TuoTempo).
 - Le statistiche di MioDottore per struttura: visite alle pagine e prenotazioni.
 - La decisione sulle strutture psichiatriche.
 
