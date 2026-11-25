@@ -79,6 +79,15 @@ function elementi(string $c, string $apertura, string $tag): array
     return $out;
 }
 
+/** Tratto della testata: [inizio, fine] tra la fine dell'apertura di #intro-pagina-gallery e il blocco del titolo. */
+function trattoTestata(string $p, array $T): ?array
+{
+    if (!preg_match('#' . $T['dopo'] . '#i', $p, $a, PREG_OFFSET_CAPTURE)) return null;
+    $ini = $a[0][1] + strlen($a[0][0]);
+    if (!preg_match('#' . $T['prima_di'] . '#i', $p, $b, PREG_OFFSET_CAPTURE, $ini)) return null;
+    return [$ini, $b[0][1]];
+}
+
 $leggi = function (string $rel) use ($DIR): string {
     $p = "$DIR/$rel";
     if (!is_file($p)) { fwrite(STDERR, "File mancante: $rel\n"); exit(1); }
@@ -108,6 +117,16 @@ $costruisci = function (array $parti, string $testata = '') use ($C, $leggi, $fe
         return $k;
     };
     $nome = fn($k) => $k === 'content' ? 'contenuto' : 'TV ' . substr($k, 3);
+    // Testata a immagine unica (come Porto Potenza) al posto della galleria del modello: stesso tratto di pagina
+    if ($testata !== '') {
+        $t = trattoTestata($parti['content'], $C['testata']);
+        if (!$t) $ferma('testata: tratto tra #intro-pagina-gallery e il titolo non trovato nel contenuto del modello');
+        else {
+            $vecchio = trim(substr($parti['content'], $t[0], $t[1] - $t[0]));
+            $parti['content'] = substr($parti['content'], 0, $t[0]) . "\n" . $segna($testata) . "\n" . substr($parti['content'], $t[1]);
+            echo "  = testata a immagine unica (da /{$C['testata']['modello_uri']}) al posto di: " . $corto(preg_replace('#\s+#', ' ', $vecchio), 160) . "\n";
+        }
+    }
     foreach ($C['sostituzioni'] as $s) {
         $nuovo = $leggi($s['file']);
         $dove = [];
@@ -130,13 +149,6 @@ $costruisci = function (array $parti, string $testata = '') use ($C, $leggi, $fe
         $chiusura = strrpos(substr($p, 0, $f), '</');
         $parti[$k] = substr($p, 0, $chiusura) . $segna($leggi($a['file'])) . "\n                                " . substr($p, $chiusura);
         echo "  + {$a['nome']}: in " . $nome($k) . " ← {$a['file']}\n";
-    }
-    // Testata a immagine unica (come Porto Potenza) al posto della galleria del modello
-    if ($testata !== '') {
-        $n = 0;
-        $parti['content'] = preg_replace_callback('#' . $C['testata']['galleria'] . '#', function () use ($segna, $testata, &$n) { $n++; return $segna($testata); }, $parti['content']);
-        if ($n !== 1) $ferma("testata: chiamata della galleria trovata $n volte nel contenuto (attesa 1)");
-        else echo "  = testata a immagine unica al posto della galleria (blocco da /{$C['testata']['modello_uri']})\n";
     }
     if (preg_match('/barraPrenotazioneDBmedicoPrestazione/', implode("\n", $parti))) $ferma('il modello richiama già la barra');
     $fatto = false;
@@ -374,7 +386,7 @@ echo "\n-- Contenuto e TV (dal modello {$modello->get('id')}: contenuto " . strl
    . count($tvModello) . " TV da copiare; escluse: " . (implode(', ', $tvEscluse) ?: 'nessuna') . ")\n";
 $parti = ['content' => str_replace("\r\n", "\n", (string) $modello->get('content'))];
 foreach ($tvModello as $n => $v) $parti["tv:$n"] = $v;
-$testata = '';
+$testata = ''; $tvTestata = [];
 $pp = $perUri($C['testata']['modello_uri']);
 if (!$pp) $ferma("testata: /{$C['testata']['modello_uri']} non trovata");
 else {
@@ -383,15 +395,24 @@ else {
         $tv = $modx->getObject(modTemplateVar::class, $tvr->get('tmplvarid'));
         if ($tv) $ppParti['tv:' . $tv->get('name')] = (string) $tvr->get('value');
     }
-    foreach ($ppParti as $p) {
-        if ($el = elementi($p, $C['testata']['apertura'], 'div')) { $testata = str_replace("\r\n", "\n", substr($p, $el[0][0], $el[0][1] - $el[0][0])); break; }
-    }
-    if ($testata === '') $ferma('testata: blocco ' . $C['testata']['apertura'] . " non trovato in /{$C['testata']['modello_uri']}");
+    $t = trattoTestata(str_replace("\r\n", "\n", $ppParti['content']), $C['testata']);
+    if ($t) $testata = trim(substr(str_replace("\r\n", "\n", $ppParti['content']), $t[0], $t[1] - $t[0]));
+    if ($testata === '') $ferma("testata: tratto tra #intro-pagina-gallery e il titolo non trovato nel contenuto di /{$C['testata']['modello_uri']}");
     else {
+        echo "\n  testata di /{$C['testata']['modello_uri']} nel database: " . $corto(preg_replace('#\s+#', ' ', $testata), 300) . "\n";
+        // TV richiamate dalla testata (es. immagine di testata): valori di Porto Potenza con alias e nome della scheda nuova
+        preg_match_all('/\[\[\*([\w.\-]+)/', $testata, $rif);
+        foreach (array_unique($rif[1]) as $n) {
+            if (in_array($n, ['alias', 'pagetitle', 'longtitle', 'id', 'uri', 'introtext', 'description'], true)) continue;
+            $v = str_replace("\r\n", "\n", (string) ($ppParti["tv:$n"] ?? ''));
+            foreach ($C['testata']['sostituzioni_testo'] as [$da, $a]) $v = str_replace($da, $a, $v);
+            $tvTestata[$n] = $v;
+            echo "  TV $n della testata: «" . $corto($v, 120) . "» (da Porto Potenza)\n";
+            if (preg_match('/Porto Potenza|porto-potenza|Santo Stefano/i', $v, $mm)) $ferma("testata, TV $n: resta «{$mm[0]}»");
+        }
         foreach ($C['testata']['sostituzioni_testo'] as [$da, $a]) $testata = str_replace($da, $a, $testata);
         $testata = preg_replace('/\balt="[^"]*"/', 'alt="' . htmlspecialchars($C['testata']['alt'], ENT_QUOTES) . '"', $testata);
-        if (preg_match('/Porto Potenza|porto-potenza|Santo Stefano/i', $testata, $mm)) $ferma("testata: resta «{$mm[0]}»");
-        echo "\n  testata da /{$C['testata']['modello_uri']}: " . $corto(preg_replace('#\s+#', ' ', $testata), 260) . "\n";
+        if (preg_match('/Porto Potenza|porto-potenza|Santo Stefano/i', $testata, $mm)) $ferma("testata: resta «{$mm[0]}»");        echo "  testata per la scheda nuova: " . $corto(preg_replace('#\s+#', ' ', $testata), 300) . "\n";
     }
 }
 $parti = $costruisci($parti, $testata);
@@ -448,6 +469,7 @@ echo "  title $lt caratteri, description $ld\n";
 // TV: quelle del modello (trasformate come il contenuto); poi config.json, poi quelle prese da Villa dei Pini, poi i servizi
 $tvNuove = [];
 foreach ($tvModello as $n => $v) $tvNuove[$n] = [$parti["tv:$n"] === $v ? 'modello' : 'modello, modificata', $parti["tv:$n"]];
+foreach ($tvTestata as $n => $v) $tvNuove[$n] = ['Porto Potenza', $v];
 foreach ($C['tv'] as $n => $v) $tvNuove[$n] = ['config', (string) $v];
 foreach ($C['tv_dalla_sede'] as $n) $tvNuove[$n] = ['Villa dei Pini', $tvValore($sede, $n)];
 $csv = fn($s) => array_values(array_filter(array_map('trim', explode(',', (string) $s)), 'strlen'));
@@ -482,7 +504,7 @@ foreach ($C['news_uri'] as $u) {
     if (!$r) { echo "  i /$u assente: salto\n"; continue; }
     $v = $tvValore($r, 'idStruttura');
     $news[] = [$r, $v];
-    echo "  {$r->get('id')} /$u: idStruttura «{$v}» + id della scheda\n";
+    echo "  {$r->get('id')} /$u: idStruttura «{$v}»" . ($esistente && in_array((string) $esistente->get('id'), array_map('trim', explode(',', $v)), true) ? " (id della scheda già presente)\n" : " + id della scheda\n");
 }
 
 /* ============================================================ 6. VILLA DEI PINI */
