@@ -181,6 +181,9 @@
             ]
         ],
         "alt": "L'ingresso della Casa di Cura Villa dei Pini a Civitanova Marche, con l'insegna sulla facciata",
+        "chunk_da_copiare": [
+            "imgSingola"
+        ],
         "dopo": "<div\\b[^>]*\\bid=\"intro-pagina-gallery\"[^>]*>",
         "prima_di": "<div\\b[^>]*\\bid=\"intro-pagina-foto-content-txt\""
     },

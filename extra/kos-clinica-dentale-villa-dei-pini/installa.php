@@ -413,6 +413,17 @@ else {
             echo "  TV $n della testata: «" . $corto($v, 120) . "» (da Porto Potenza)\n";
             if (preg_match('/Porto Potenza|porto-potenza|Santo Stefano/i', $v, $mm)) $ferma("testata, TV $n: resta «{$mm[0]}»");
         }
+        // Chunk della testata (imgSingola: alt = titolo della pagina, comune a tutte le schede): il suo markup si copia nella
+        // scheda, così l'alt descrittivo vale solo qui e il chunk comune non si tocca
+        foreach ($C['testata']['chunk_da_copiare'] ?? [] as $nc) {
+            $tag = "[[\$$nc]]";
+            if (!str_contains($testata, $tag)) continue;
+            $ch = $modx->getObject(modChunk::class, ['name' => $nc]);
+            if (!$ch) { $ferma("testata: chunk $nc non trovato"); continue; }
+            $testata = str_replace($tag, trim(str_replace("\r\n", "\n", (string) $ch->get('snippet'))), $testata);
+            echo "  testata: chunk $nc copiato nella scheda (alt descrittivo al posto del titolo della pagina)\n";
+        }
+        if (preg_match_all('/\[\[\$([\w.\-]+)/', $testata, $chRest)) echo '  i chunk rimasti nella testata: ' . implode(', ', array_unique($chRest[1])) . "\n";
         foreach ($C['testata']['sostituzioni_testo'] as [$da, $a]) $testata = str_replace($da, $a, $testata);
         $testata = preg_replace('/\balt="[^"]*"/', 'alt="' . htmlspecialchars($C['testata']['alt'], ENT_QUOTES) . '"', $testata);
         if (preg_match('/Porto Potenza|porto-potenza|Santo Stefano/i', $testata, $mm)) $ferma("testata: resta «{$mm[0]}»");        echo "  testata per la scheda nuova: " . $corto(preg_replace('#\s+#', ' ', $testata), 300) . "\n";
