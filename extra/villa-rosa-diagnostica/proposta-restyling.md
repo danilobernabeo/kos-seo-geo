@@ -134,9 +134,9 @@ Danilo, Yext o RetailTune. Pro e contro dipendono da come procede la migrazione:
 | Alternativa | Pro | Contro |
 | --- | --- | --- |
 | A. Nuova grafica online il 7 gennaio | Sito nuovo nel giorno dell'apertura | Meno di quattro settimane, con le feste in mezzo, per proposta, approvazione e sviluppo; foto della nuova sede disponibili solo da metà dicembre |
-| B. Il 7 gennaio informazioni e nuova sede sulla grafica attuale; nuova grafica a fine gennaio | Apertura sicura; grafica fatta con le foto vere e approvata con calma; online per l'inaugurazione e le campagne | Per tre settimane il sito nuovo nei contenuti ha la grafica attuale |
+| B. Il 7 gennaio informazioni e nuova sede sulla grafica attuale; proposta grafica il 12 gennaio, nuova grafica online a fine gennaio | Apertura sicura; proposta fatta con le foto della sede aperta e approvata senza le feste in mezzo; online per l'inaugurazione e le campagne | Per tre settimane il sito nuovo nei contenuti ha la grafica attuale; approvazione da dare in una settimana |
 
-**Il mio consiglio: B.** Il 7 gennaio contano informazioni giuste (indirizzo, orari, telefoni, prenotazione); l'impatto della nuova immagine conta di più a fine gennaio, quando partono inaugurazione e campagne. La grafica resta nei limiti del marchio KOS.
+**Il mio consiglio: B.** Il 7 gennaio contano informazioni giuste (indirizzo, orari, telefoni, prenotazione); l'impatto della nuova immagine conta di più a fine gennaio, quando partono inaugurazione e campagne. Una proposta presentata durante le feste difficilmente verrebbe approvata prima di gennaio: presentarla il 12 gennaio, con la sede già aperta, lascia una settimana per l'approvazione e una per lo sviluppo. La grafica resta nei limiti del marchio KOS.
 
 ### Decisioni tecniche
 
@@ -158,7 +158,7 @@ Interventi utili qualunque siano le decisioni del paragrafo 7. Sono gli stessi g
 
 ### Fase 2: nuova immagine e decisioni (gennaio-febbraio)
 
-1. **Nuova immagine grafica.** Proposta per la home e per una pagina d'esame entro fine dicembre, con due giri di revisione; sviluppo del nuovo modello su tutte le pagine, adatto al telefono e accessibile, nei limiti del marchio KOS e con le foto della nuova sede. Online per l'inaugurazione di fine gennaio.
+1. **Nuova immagine grafica.** Proposta per la home e per una pagina d'esame il 12 gennaio, con due giri di revisione entro il 19 gennaio; sviluppo del nuovo modello su tutte le pagine, adatto al telefono e accessibile, nei limiti del marchio KOS e con le foto della nuova sede. Online per l'inaugurazione di fine gennaio; se l'approvazione arriva dopo il 19 gennaio, nei primi giorni di febbraio, comunque in tempo per le campagne.
 2. **Ruolo delle pagine** secondo la scelta del paragrafo 7: collegamenti tra sito e kosgroup.com, destinazione del profilo Google e delle campagne.
 3. **Prenotazione** secondo la scelta del paragrafo 7: collegamento diretto a TuoTempo per ogni esame (risonanza, TAC, ecografia, elettromiografia, radiologia) e una pagina «Prenota online» più semplice dei 135 collegamenti attuali.
 4. **Pagine per le novità:** risonanza magnetica 1,5 T, TAC, nuova sede con foto e testi definitivi, nuova offerta ambulatoriale.
@@ -175,7 +175,7 @@ Tre mesi di assistenza (correzioni e piccoli aggiornamenti) e un breve report me
 | entro il 12 dicembre | decisioni del paragrafo 7 e informazioni della struttura |
 | dal 12 dicembre al 6 gennaio | fase 1, provata su un sito di prova e poi pubblicata |
 | metà dicembre | testi e foto della nuova sede; mail ai contatti con collegamenti misurabili |
-| fine dicembre | proposta della nuova immagine grafica; approvazione entro metà gennaio |
+| 12 gennaio | proposta della nuova immagine grafica; approvazione entro il 19 gennaio |
 | 7 gennaio | apertura: sito, profilo Google e portali con il nuovo indirizzo |
 | fine gennaio | nuova immagine online e fase 2, pronte per l'inaugurazione e le campagne |
 | febbraio-aprile | assistenza e report mensili |
@@ -225,7 +225,7 @@ Il trasferimento delle pagine TMS, psichiatria e psicoterapia alla pagina della 
 
 ### Condizioni
 
-- **Tempi.** Fase 1 tra il 12 dicembre 2026 e il 6 gennaio 2027; fase 2 e nuova immagine entro fine gennaio 2027 (proposta grafica entro fine dicembre), a partire dalle decisioni del paragrafo 7. Decisioni e informazioni della struttura richieste entro il 12 dicembre: se arrivano dopo, la fase 2 slitta di conseguenza; la fase 1 resta per il 7 gennaio.
+- **Tempi.** Fase 1 tra il 12 dicembre 2026 e il 6 gennaio 2027; fase 2 e nuova immagine entro fine gennaio 2027 (proposta grafica il 12 gennaio, approvazione entro il 19 gennaio), a partire dalle decisioni del paragrafo 7. Decisioni e informazioni della struttura richieste entro il 12 dicembre: se arrivano dopo, la fase 2 slitta di conseguenza; la fase 1 resta per il 7 gennaio.
 - **Contenuti.** I testi partono da quelli attuali del sito, rivisti in ottica ricerca e assistenti AI. Testi, foto e indirizzo della nuova sede sono forniti dalla struttura; i testi sanitari sono approvati dalla struttura prima della pubblicazione.
 - **Fatturazione.** In due rate: metà alla pubblicazione del 7 gennaio, metà alla pubblicazione della nuova immagine.
 - **Validità** dell'offerta: 30 giorni.

@@ -22,7 +22,7 @@ Danilo nel 2017.
 | | Pagine novità (RM 1,5 T, TAC, nuova sede, offerta ambulatoriale) | 1 |
 | | Collaudo e pubblicazione | 0,5 |
 | | **Totale fase 2** | **2,5** |
-| Nuova immagine | Proposta grafica (home e pagina d'esame, due giri) | 1 |
+| Nuova immagine | Proposta grafica il 12/1 (home e pagina d'esame, due giri entro il 19/1) | 1 |
 | | Nuovo modello MODX su tutte le pagine | 2 |
 | | Accessibilità, prove su dispositivi, collaudo | 1 |
 | | **Totale nuova immagine** | **4** |
