@@ -27,6 +27,8 @@ Dove si vede di più:
 
 Non risultano modifiche al sito nei giorni dei due cali. Il registro non vede però tutti i tipi di intervento (per esempio le modifiche di configurazione del server) né le modifiche a kosgroup.com.
 
+L'avviso di sospensione di radiografie, ortopanoramica, Dentalscan e Cone Beam (dal 31/8/2026) non spiega il calo: da luglio a metà novembre 2026 le visite restano stabili, tra circa 340 e 390 alla settimana, senza variazioni prima e dopo l'avviso, e le visite alle pagine di radiologia erano già scese prima dell'estate. Il divario con il 2025 cresce in autunno perché nel 2025 le visite salivano (da circa 570 a circa 870 alla settimana), mentre nel 2026 restano ferme. L'avviso pesa invece sugli appuntamenti, perché quelle prestazioni non sono prenotabili.
+
 Altri fatti che possono aver contato nelle stesse date, da verificare: l'avvio delle campagne a pagamento (18 e 25/11/2025), la perdita dei collegamenti di sezione sotto il risultato di marca (7/1/2026, ipotesi) e gli aggiornamenti di Google, in particolare le risposte generate dall'intelligenza artificiale.
 
 ## 2. Le ricerche con il nome «villa rosa» e le tre pagine
