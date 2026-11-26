@@ -25,3 +25,5 @@ Previsti per lo sprint 1:
 - `sorgente-media-prefisso.php /www [sorgente]` — sul cloud, sola lettura: perché le immagini delle TV escono senza
   barra iniziale (tipo della TV, sorgente per contesto, `base_url` dei contesti), valori salvati che iniziano già con
   `/` ed elementi che mettono `/` o `site_url` davanti alle TV immagine (26/11, link relativi).
+- `tv-uscita.php /www [id|0] [tv]` — sul cloud, sola lettura: valore salvato, `prepareOutput`, `renderOutput` e basi
+  della sorgente di una TV immagine per una risorsa (con 0 sceglie una risorsa con `assets/...` e una con `/...`).
