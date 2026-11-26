@@ -1,6 +1,6 @@
 # Diagnostica Villa Rosa: analisi e proposta di restyling del sito
 
-Ho analizzato il sito villarosadiagnostica.it, il profilo Google, la scheda su kosgroup.com e le prenotazioni di TuoTempo, in vista dell'apertura della nuova sede il 7/1/2027. Questo documento riassume cosa ho trovato, cosa è ancora un'ipotesi, quali decisioni servono da voi e come propongo di intervenire sul sito, in due fasi. La quotazione è in un documento a parte. Il dettaglio dei dati è disponibile su richiesta.
+Ho analizzato il sito villarosadiagnostica.it, il profilo Google, la scheda su kosgroup.com e le prenotazioni di TuoTempo, in vista dell'apertura della nuova sede il 7/1/2027. Questo documento riassume cosa ho trovato, cosa è ancora un'ipotesi, quali decisioni servono da voi, con il mio consiglio per ciascuna, e come propongo di intervenire sul sito, compresa la nuova immagine grafica, in due fasi. La quotazione è in un documento a parte. Il dettaglio dei dati è disponibile su richiesta.
 
 ## In breve
 
@@ -10,8 +10,8 @@ Ho analizzato il sito villarosadiagnostica.it, il profilo Google, la scheda su k
 4. La spiegazione più probabile è l'effetto della campagna a pagamento di marca, attiva dal 18/11/2025 e diretta alla scheda su kosgroup.com. È un'ipotesi: la campagna non basta a spiegare tutto.
 5. Il profilo Google genera più telefonate e più richieste di indicazioni (+18% e +22% in un anno), ma meno clic verso il sito.
 6. Nel gestionale TuoTempo solo il 2,3% degli appuntamenti risulta prenotato online dal paziente. Per gli altri il file non dice come siano nati.
-7. Molte correzioni sul sito sono necessarie in ogni caso. Le scelte che richiedono la vostra decisione sono quattro e sono nel paragrafo 7: servono entro il 12 dicembre.
-8. Propongo un restyling in due fasi (paragrafo 8): una prima fase da fare comunque, pronta per l'apertura del 7 gennaio, e una seconda che segue le vostre decisioni, in tempo per le campagne di fine gennaio.
+7. Molte correzioni sul sito sono necessarie in ogni caso. Le scelte che spettano a voi sono cinque (paragrafo 7), ciascuna con il mio consiglio: servono entro il 12 dicembre. Le scelte tecniche le prendo io, come sviluppatore del sito.
+8. Propongo un restyling in due fasi (paragrafo 8): una prima fase da fare comunque, pronta per l'apertura del 7 gennaio, e una seconda con la nuova immagine grafica del sito e le vostre decisioni, pronta per l'inaugurazione e le campagne di fine gennaio.
 
 ## 1. Che cosa è successo al traffico
 
@@ -95,7 +95,7 @@ Dal sito non è possibile leggere città, età e genere: Google non li fornisce 
 
 ## 7. Decisioni da prendere
 
-Per ciascuna presento le alternative con pro e contro, senza raccomandare. Per rispettare il calendario del paragrafo 8 servono entro il 12 dicembre.
+Per ciascuna presento le alternative con pro e contro e poi il mio consiglio. Per rispettare il calendario del paragrafo 8 servono entro il 12 dicembre.
 
 ### Quale pagina risponde alle ricerche generiche
 
@@ -105,6 +105,8 @@ Per ciascuna presento le alternative con pro e contro, senza raccomandare. Per r
 | B. Il sito torna a essere il riferimento; la scheda resta istituzionale | Un dominio dedicato alla Diagnostica, con spazio per le pagine per esame e per le novità della nuova sede | Vanno spostati link del profilo e campagne; oggi per le ricerche generiche Google preferisce la scheda |
 | C. Due ruoli distinti, con collegamenti reciproci | Ogni pagina fa ciò che fa meglio; dati coerenti tra le due | Due pagine da tenere allineate; rischio di competere per la stessa ricerca se i ruoli non sono ben distinti |
 
+**Il mio consiglio: B.** Con la nuova sede e il nuovo nome, la Diagnostica ha bisogno di un punto di riferimento proprio: il dominio resta, la campagna di apertura e le mail ai contatti porteranno lì, e solo il sito ha lo spazio per le pagine per esame, la nuova sede e le novità (risonanza 1,5 T, TAC). La scheda su kosgroup.com resta la presenza della Diagnostica nel gruppo, con le informazioni essenziali e un collegamento evidente al sito. Il rischio di B (Google oggi preferisce la scheda) si riduce spostando sul sito il profilo Google e la campagna di marca e rendendo il sito il più completo dei due.
+
 ### Dove vive la prenotazione
 
 | Alternativa | Pro | Contro |
@@ -113,13 +115,32 @@ Per ciascuna presento le alternative con pro e contro, senza raccomandare. Per r
 | B. Dalla scheda su kosgroup.com, come nel menu del sito oggi | Già in uso; le campagne portano già lì | Le pagine per esame del sito restano senza collegamento diretto |
 | C. Pulsante per esame verso TuoTempo da entrambe | Pochi passaggi per l'utente | Più link da mantenere se le prestazioni cambiano; misura da impostare su due pagine |
 
+**Il mio consiglio: A, con la scheda su kosgroup.com che mantiene il sistema di prenotazione comune a tutte le strutture del gruppo.** Sul sito un pulsante di prenotazione in ogni pagina per esame e una pagina «Prenota online» con il calendario TuoTempo; sulla scheda resta il calendario che hanno tutte le strutture KOS, perché chi arriva dal sito del gruppo possa prenotare senza cambiare sito. I collegamenti si generano dallo stesso elenco di prestazioni, quindi la manutenzione non raddoppia; la misura copre entrambe.
+
 ### Link del profilo Google e campagne a pagamento
 
 Oggi il pulsante «Sito web» del profilo e le campagne di marca portano alla scheda su kosgroup.com. Se cambia il ruolo delle pagine, vanno cambiati anche questi. Una pausa di prova della campagna di marca dà un'indicazione sul suo effetto, ma può ridurre le visite alla scheda per qualche settimana: va scelta dal marketing.
 
+**Il mio consiglio:** profilo Google e campagna di marca verso il sito dal 7 gennaio, con i collegamenti marcati per distinguerli nelle statistiche. Per capire l'effetto della campagna, prima il rapporto «Organico e a pagamento» di Google Ads, che non costa nulla; la pausa di prova solo se il rapporto non basta, e non nelle settimane dell'apertura.
+
 ### Chi aggiorna il profilo e i portali il 7/1/2027
 
 Danilo, Yext o RetailTune. Pro e contro dipendono da come procede la migrazione: ne parlo con chi la segue.
+
+**Il mio consiglio:** un solo responsabile per quel giorno. Se il passaggio a RetailTune è completato, aggiorna RetailTune; altrimenti aggiorno io profilo e portali, con Yext fermo su quella scheda per non sovrascrivere i dati.
+
+### Nuova immagine del sito: quando
+
+| Alternativa | Pro | Contro |
+| --- | --- | --- |
+| A. Nuova grafica online il 7 gennaio | Sito nuovo nel giorno dell'apertura | Meno di quattro settimane, con le feste in mezzo, per proposta, approvazione e sviluppo; foto della nuova sede disponibili solo da metà dicembre |
+| B. Il 7 gennaio informazioni e nuova sede sulla grafica attuale; nuova grafica a fine gennaio | Apertura sicura; grafica fatta con le foto vere e approvata con calma; online per l'inaugurazione e le campagne | Per tre settimane il sito nuovo nei contenuti ha la grafica attuale |
+
+**Il mio consiglio: B.** Il 7 gennaio contano informazioni giuste (indirizzo, orari, telefoni, prenotazione); l'impatto della nuova immagine conta di più a fine gennaio, quando partono inaugurazione e campagne. La grafica resta nei limiti del marchio KOS.
+
+### Decisioni tecniche
+
+Le prendo io, come sviluppatore del sito dal 2017, nel rispetto delle regole del gruppo: struttura delle pagine e reindirizzamenti, pagine doppie da unire, dati strutturati, misura, velocità, modo di collegare la prenotazione, e il dominio `villarosa.it` (resta per la posta; il vecchio indirizzo web rimanda al sito giusto).
 
 ## 8. Il piano di restyling
 
@@ -135,12 +156,13 @@ Interventi utili qualunque siano le decisioni del paragrafo 7. Sono gli stessi g
 6. **Misura.** Clic su telefono, email e prenotazione, con le mail di dicembre e le campagne di gennaio distinguibili. Il sito si adegua alla decisione di gruppo sul consenso ai cookie.
 7. **Profilo Google e portali.** Nuovo indirizzo, orari, servizi, categorie, link di prenotazione e descrizione, uguali su profilo Google, sito, kosgroup.com e portali, con chi sarà incaricato di aggiornarli (paragrafo 7).
 
-### Fase 2: dopo le decisioni (gennaio-febbraio)
+### Fase 2: nuova immagine e decisioni (gennaio-febbraio)
 
-1. **Ruolo delle pagine** secondo la scelta del paragrafo 7: collegamenti tra sito e kosgroup.com, destinazione del profilo Google e delle campagne.
-2. **Prenotazione** secondo la scelta del paragrafo 7: collegamento diretto a TuoTempo per ogni esame (risonanza, TAC, ecografia, elettromiografia, radiologia) e una pagina «Prenota online» più semplice dei 135 collegamenti attuali.
-3. **Pagine per le novità:** risonanza magnetica 1,5 T, TAC, nuova sede con foto e testi definitivi, nuova offerta ambulatoriale.
-4. **TMS, psichiatria e psicoterapia**, se si decide di spostarle: trasferimento alla pagina della clinica con reindirizzamento, per non perdere le visite.
+1. **Nuova immagine grafica.** Proposta per la home e per una pagina d'esame entro fine dicembre, con due giri di revisione; sviluppo del nuovo modello su tutte le pagine, adatto al telefono e accessibile, nei limiti del marchio KOS e con le foto della nuova sede. Online per l'inaugurazione di fine gennaio.
+2. **Ruolo delle pagine** secondo la scelta del paragrafo 7: collegamenti tra sito e kosgroup.com, destinazione del profilo Google e delle campagne.
+3. **Prenotazione** secondo la scelta del paragrafo 7: collegamento diretto a TuoTempo per ogni esame (risonanza, TAC, ecografia, elettromiografia, radiologia) e una pagina «Prenota online» più semplice dei 135 collegamenti attuali.
+4. **Pagine per le novità:** risonanza magnetica 1,5 T, TAC, nuova sede con foto e testi definitivi, nuova offerta ambulatoriale.
+5. **TMS, psichiatria e psicoterapia**, se si decide di spostarle: trasferimento alla pagina della clinica con reindirizzamento, per non perdere le visite.
 
 ### Dopo il lancio
 
@@ -153,8 +175,9 @@ Tre mesi di assistenza (correzioni e piccoli aggiornamenti) e un breve report me
 | entro il 12 dicembre | decisioni del paragrafo 7 e informazioni della struttura |
 | dal 12 dicembre al 6 gennaio | fase 1, provata su un sito di prova e poi pubblicata |
 | metà dicembre | testi e foto della nuova sede; mail ai contatti con collegamenti misurabili |
+| fine dicembre | proposta della nuova immagine grafica; approvazione entro metà gennaio |
 | 7 gennaio | apertura: sito, profilo Google e portali con il nuovo indirizzo |
-| gennaio-febbraio | fase 2, pronta per le campagne di fine gennaio e l'inaugurazione |
+| fine gennaio | nuova immagine online e fase 2, pronte per l'inaugurazione e le campagne |
 | febbraio-aprile | assistenza e report mensili |
 
 Se le decisioni arrivano dopo il 12 dicembre, la fase 1 resta per il 7 gennaio e la fase 2 slitta di conseguenza.
@@ -171,8 +194,8 @@ Alla struttura:
 Al marketing:
 
 5. Le decisioni del paragrafo 7, entro il 12 dicembre.
-6. Il destino del dominio `villarosa.it` (la posta è attiva, il sito no).
-7. Se TMS, psichiatria e psicoterapia restano nel sito con il nuovo nome.
+6. Se TMS, psichiatria e psicoterapia restano nel sito con il nuovo nome.
+7. Le indicazioni del marchio KOS per la nuova grafica (manuale, colori, caratteri) e chi approva la proposta.
 
 ## 10. Cosa non è ancora verificato
 

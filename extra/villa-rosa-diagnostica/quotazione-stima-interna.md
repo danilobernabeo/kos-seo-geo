@@ -30,6 +30,16 @@ strutturato, plugin immagini e velocità, script di installazione, collaudi).
 | **Totale** | **4** |
 | Opzione: trasferimento TMS/psichiatria/psicoterapia alla pagina della clinica (kosgroup.com) con 301 | 0,5 |
 
+## Nuova immagine grafica
+
+| Attività | Giornate |
+|---|---|
+| Proposta grafica: home e pagina d'esame, due giri di revisione, nei limiti del marchio KOS | 1,5 |
+| Nuovo modello MODX: testata, piè di pagina, home, esame, medico, prenota, contatti; adatto al telefono | 3 |
+| Accessibilità e prove su dispositivi | 1 |
+| Collaudo e pubblicazione | 0,5 |
+| **Totale** | **6** |
+
 ## Dopo il lancio
 
 Assistenza 3 mesi (correzioni, piccoli aggiornamenti, fino a 4 ore al mese) e report mensile: 1 giornata al mese, 3 in tutto.
