@@ -59,7 +59,7 @@ Rilievi nuovi:
 
 | # | Pagine | Cosa | Correzione | Quando |
 |---|---|---|---|---|
-| N1 | 158 pagine con il banner «Diventa un KOSplayer» | 316 link `href="//it/lavorare-in-kos/perche-lavorare-in-kos"` (indirizzo senza dominio valido: link rotto) | Chunk `kosplayer-banner-small`: `href="/[[~36]]"` → `href="[[~36]]"` (pacchetto `kos-kosplayer-banner-20261126`) | entro il 27/11 |
+| N1 | 158 pagine con il banner «Diventa un KOSplayer» | 316 link `href="//it/lavorare-in-kos/perche-lavorare-in-kos"` (indirizzo senza dominio valido: link rotto) | Chunk `kosplayer-banner-small`: `href="/[[~36]]"` → `href="[[~36]]"` (pacchetto `kos-kosplayer-banner-20261126`) | **in produzione il 26/11 alle 06:17**, controllo su 25 pagine: nessun `href="//` |
 | N2 | Tutte | CSS critico di 94 kB (19 kB compressi): HTML mediano da 89 a 184 kB, meta `og:*` a circa 97 kB dall'inizio | Ridurre il CSS critico; prova di un'anteprima di condivisione subito | dopo il 4/12 |
 | N3 | Configurazione `kos-completa` | `kos.min.css` non più scansionato (foglio nel body), `briciole_visibili` vuota (il sito usa `#breadcrumbs`), `link_relativi` con la regola vecchia (905 falsi positivi) | Aggiornare il profilo di scansione | subito, senza toccare il sito |
 | N4 | Eventi «Settimana del cervello» 2025 e 2026 (Roma) | Due link relativi ai PDF del programma (`assets/doc/eventi/...` senza barra iniziale), salvati dal manager il 25/11 | Nel manager: `/assets/doc/eventi/...` | entro il 27/11 |
