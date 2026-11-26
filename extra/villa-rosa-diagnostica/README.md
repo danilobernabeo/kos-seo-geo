@@ -43,6 +43,7 @@ contatto.
 | Percorso | Cosa |
 |---|---|
 | `piano-analisi.md` | piano dettagliato delle analisi, con le fonti, i metodi, i risultati attesi e le decisioni che ne dipendono |
+| `analisi-consolidata.md` | documento di analisi che riunisce le fasi 1-3, la marca e la prima lettura TuoTempo (26/11), con le decisioni aperte |
 | `sintesi-fase-1-abc.md` | fase 1: sito, contenuti, misurazione (analisi A, B, C) |
 | `sintesi-fase-2.md` | fase 2: traffico, funnel di prenotazione, misurazione, verifiche tecniche (21/11/2026) |
 | `sintesi-marca-tre-pagine.md` | la marca «villa rosa» divisa tra sito, scheda su kosgroup.com e clinica psichiatrica |
