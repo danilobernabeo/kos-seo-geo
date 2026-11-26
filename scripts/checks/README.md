@@ -22,3 +22,6 @@ Previsti per lo sprint 1:
   `progetti-speciali` per sezione (cartelle di `kos.article_sezioni`), immagini mancanti o piccole, strutture collegate,
   JSON-LD scritto a mano nel contenuto, date; con un id stampa il `@graph` che `kosSchema` produce per quella risorsa.
 - Prova locale della libreria senza MODX: `php scripts/test/seo-schema-simulazione.php` (vedi l'intestazione dello script).
+- `sorgente-media-prefisso.php /www [sorgente]` — sul cloud, sola lettura: perché le immagini delle TV escono senza
+  barra iniziale (tipo della TV, sorgente per contesto, `base_url` dei contesti), valori salvati che iniziano già con
+  `/` ed elementi che mettono `/` o `site_url` davanti alle TV immagine (26/11, link relativi).
