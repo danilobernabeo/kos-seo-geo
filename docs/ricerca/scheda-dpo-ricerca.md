@@ -123,7 +123,7 @@ limitato.
 - **Già fatto**: progetto `kos-ricerca`, fatturazione attiva, indici nella regione UE (`eu`), che per Google garantisce
   la conservazione dei dati nell'UE.
 - **Nella console, pagina «Privacy e sicurezza»** (proprietario del progetto): conferma del Cloud Data Processing
-  Addendum. Non servono altri dati: i contatti del DPO sono un campo facoltativo, e la dichiarazione GDPR, il
+  Addendum. Non servono altri dati obbligatori: la dichiarazione GDPR, il
   rappresentante locale e l'autorità di controllo riguardano solo chi ha l'indirizzo di fatturazione fuori da Europa,
   Medio Oriente e Africa.
 - **Alla messa in produzione**: servizio intermedio su Cloud Run in regione UE (proposta Milano, `europe-west8`), con
@@ -137,7 +137,7 @@ limitato.
 
 1. Termini sulla protezione dei dati di Google Cloud. Prima della messa in produzione, il proprietario del progetto
    conferma nella console (Privacy e sicurezza) i termini sul trattamento dei dati di Google Cloud. È un'operazione di
-   pochi minuti, che preparo io; la conferma resta a KOS. Non è richiesto alcun dato del DPO.
+   pochi minuti, che preparo io; la conferma resta a KOS.
 2. Società di riferimento. Indicare quale società del gruppo va considerata titolare per la ricerca di kosgroup.com e
    per quella di anniazzurri.it (il progetto Google Cloud è fatturato a Kos Care).
 3. Conferma della conservazione dei testi della prova fino all'11/12 (PC con disco cifrato o bucket UE, paragrafo 6).
