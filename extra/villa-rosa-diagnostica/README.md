@@ -44,6 +44,7 @@ contatto.
 |---|---|
 | `piano-analisi.md` | piano dettagliato delle analisi, con le fonti, i metodi, i risultati attesi e le decisioni che ne dipendono |
 | `analisi-consolidata.md` | documento di analisi che riunisce le fasi 1-3, la marca e la prima lettura TuoTempo (26/11), con le decisioni aperte |
+| `versione-marketing.md` | versione per il referente marketing (5 pagine, formato KOS, firmata Danilo): solo ipotesi a parole, decisioni con alternative, pro e contro, senza raccomandazione; il docx è in `docx/` e non va condivisa senza passare dalla chat principale |
 | `sintesi-fase-1-abc.md` | fase 1: sito, contenuti, misurazione (analisi A, B, C) |
 | `sintesi-fase-2.md` | fase 2: traffico, funnel di prenotazione, misurazione, verifiche tecniche (21/11/2026) |
 | `sintesi-marca-tre-pagine.md` | la marca «villa rosa» divisa tra sito, scheda su kosgroup.com e clinica psichiatrica |
@@ -71,6 +72,7 @@ contatto.
 | 22/11/2026 | Modifica a `scripts/ga4/storico-ga4.py` (opzione `--tabelle`, 5 tabelle opzionali) approvata; lo script resta del progetto principale, modifiche future da coordinare prima del commit | Chat principale |
 | 22/11/2026 | Richiesta dati TuoTempo: tabella provenienza solo per provincia e senza prestazione; CSV fuori dal repository, solo tabelle elaborate; nessun passaggio con il DPO, Danilo informa il referente marketing | Chat principale |
 | 22/11/2026 | La scelta della pagina principale per le query generiche (scheda kosgroup, sito Diagnostica o ruoli distinti) è di KOS/marketing: la proposta presenta le alternative. Richieste a Danilo al minimo fino al 26/11 (sprint 4) | Chat principale |
+| 26/11/2026 | Revisione della chat principale su `analisi-consolidata.md`: nome «Diagnostica Villa Rosa» già deciso (resta l'allineamento del titolo della scheda kosgroup); ente giuridico da verificare (società e partita IVA), non una scelta; il sito usa lo stesso `@id` della scheda kosgroup (`#localbusiness`); ipotesi principale sul calo di marca: campagna Ads di marca dal 18/11/2025; paragrafo 9 diviso in «da fare comunque» e «dipende dalle decisioni»; cambio di indirizzo del 7/1 come vincolo; versione per il marketing | Chat principale |
 
 ## Rilasci e ripristino
 
