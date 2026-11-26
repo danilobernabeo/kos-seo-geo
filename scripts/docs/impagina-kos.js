@@ -48,6 +48,7 @@ function table(rows){
   if(rows[0][0]==='Struttura'&&n===4&&/^Prenotabili/.test(rows[0][3]||'')) cw=[3838,1900,1900,2000];
   if(rows[0][0]==='Struttura'&&n===3) cw=[4638,2500,2500];
   if((rows[0][0]==='Situazione'||rows[0][0]==='Voce')&&n===3) cw=[5638,2000,2000];
+  if(rows[0][0]==='Voce'&&n===3&&rows[0][2]==='Importo') cw=[1700,6238,1700];
   if(rows[0][0]==='Struttura'&&n===6) cw=[2838,1300,1400,1400,1400,1300];
   const mar={top:60,left:110,bottom:60,right:110};
   const b={style:BorderStyle.SINGLE,color:LINE,size:4};
