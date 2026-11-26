@@ -1,28 +1,47 @@
 {
     "nota": "Sezione «Punto Prelievi» nelle schede di due strutture (lavoro extra punti-prelievo, 26/11). Letto da installa.php: risorse dall'URI, nessun id fisso. Le TV str.* non si toccano.",
-    "cloud_stage": ["c0044"],
-    "cloud_produzione": ["c0095"],
+    "cloud_stage": [
+        "c0044"
+    ],
+    "cloud_produzione": [
+        "c0095"
+    ],
     "inserisci_prima_di": "<div\\b[^>]*\\bid=\"box-dettagli\"[^>]*>\\s*<div\\b[^>]*\\bid=\"orari-struttura\"",
     "sedi": [
         {
             "uri": "it/centri/poliambulatorio-san-martino",
             "FRASE_INIZIALE": "Al Poliambulatorio San Martino di Bollate puoi fare prelievi ed esami ematochimici <strong>dal lunedì al venerdì, dalle 7:00 alle 9:30</strong>, in collaborazione con MeticaLab.",
-            "ACCESSO": "",
             "REFERTI_SEDE": "8:30 - 19:30",
             "PDF": "punto-prelievi-poliambulatorio-san-martino-bollate.pdf",
             "IMG": "pieghevole-punto-prelievi-poliambulatorio-san-martino",
             "ALT": "Copertina del pieghevole del Punto Prelievi del Poliambulatorio San Martino di Bollate",
-            "parole_vietate": ["Cinisello", "Lavoratori", "45409465", "9737941", "Centro Medico Riabilitativo", "8:00 - 18:00"]
+            "parole_vietate": [
+                "Cinisello",
+                "Lavoratori",
+                "45409465",
+                "9737941",
+                "Centro Medico Riabilitativo",
+                "8:00 - 18:00"
+            ],
+            "CUP": "02 38306561",
+            "CUP_TEL": "+390238306561"
         },
         {
             "uri": "it/centri/centro-medico-riabilitativo",
             "FRASE_INIZIALE": "Al Centro Medico Riabilitativo di Cinisello Balsamo puoi fare prelievi ed esami ematochimici <strong>dal lunedì al venerdì, dalle 7:00 alle 9:30</strong>, in collaborazione con MeticaLab.",
-            "ACCESSO": "",
             "REFERTI_SEDE": "8:00 - 18:00",
             "PDF": "punto-prelievi-centro-medico-riabilitativo-cinisello.pdf",
             "IMG": "pieghevole-punto-prelievi-centro-medico-riabilitativo",
             "ALT": "Copertina del pieghevole del Punto Prelievi del Centro Medico Riabilitativo di Cinisello Balsamo",
-            "parole_vietate": ["Bollate", "Uboldi", "38306561", "San Martino", "8:30 - 19:30"]
+            "parole_vietate": [
+                "Bollate",
+                "Uboldi",
+                "38306561",
+                "San Martino",
+                "8:30 - 19:30"
+            ],
+            "CUP": "02 45409465",
+            "CUP_TEL": "+390245409465"
         }
     ]
 }

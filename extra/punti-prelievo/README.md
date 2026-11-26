@@ -14,6 +14,7 @@ registrata in `docs/registro-decisioni.md` (voce del 26/11).
 | Prelievi | lunedì-venerdì 7:00-9:30 | lunedì-venerdì 7:00-9:30 |
 | Esami | prelievi ed esami ematochimici, in collaborazione con MeticaLab; percorsi di prevenzione | idem |
 | Ritiro referti in sede | lunedì-venerdì 8:30-19:30 | lunedì-venerdì 8:00-18:00 |
+| CUP (informazioni e prenotazioni, dal pieghevole) | 02 38306561 | 02 45409465 (la scheda indica 02 9737941: da confermare con KOS) |
 | Referti online | disponibili; link da KOS, non ancora arrivato (niente segnaposto né link vuoti) | idem |
 | Pieghevole | `/assets/doc/punto-prelievi-poliambulatorio-san-martino-bollate.pdf` | `/assets/doc/punto-prelievi-centro-medico-riabilitativo-cinisello.pdf` |
 

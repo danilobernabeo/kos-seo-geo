@@ -49,7 +49,6 @@ function sezione(array $sede, string $dir): string
     $stile = rtrim(str_replace("\r\n", "\n", (string) file_get_contents("$dir/elementi/stile.html")), "\n");
     $val = $sede + ['PESO' => peso("$dir/files/assets/doc/{$sede['PDF']}"), 'STILE' => $stile];
     foreach ($val as $k => $v) if (is_string($v)) $t = str_replace('{{' . $k . '}}', $v, $t);
-    $t = preg_replace("#^\{\{ACCESSO\}\}\n#m", '', $t);   // riga vuota se ACCESSO non c'è
     return rtrim($t, "\n");
 }
 
@@ -65,7 +64,7 @@ function controlla(string $s, array $sede): array
         preg_match_all('#\b' . $a . '="([^"]*)"#', $s, $mm);
         foreach ($mm[1] as $v) foreach (preg_split('#\s*,\s*#', $v) as $u) {
             $u = preg_replace('#\s.*$#', '', trim($u));
-            if ($u === '' || str_starts_with($u, '//') || !preg_match('#^(/|https://)#', $u)) $p[] = "$a non assoluto o vuoto: «{$u}»";
+            if ($u === '' || str_starts_with($u, '//') || !preg_match('#^(/|https://|tel:\+39\d{6,11}$)#', $u)) $p[] = "$a non assoluto o vuoto: «{$u}»";
         }
     }
     preg_match_all('#<img\b[^>]*>#i', $s, $imgs);
