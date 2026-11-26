@@ -1,0 +1,14 @@
+<style>
+/* Punto Prelievi: stesse regole del box pieghevole di HomeCare Academy (stile nel contenuto di quella pagina) */
+#punto-prelievi .box-pieghevole { display: flex; align-items: stretch; gap: 2rem; padding: 0; overflow: hidden; }
+#punto-prelievi .box-pieghevole__testo { flex: 1 1 auto; align-self: center; padding: 1.5rem 2rem; }
+#punto-prelievi .box-pieghevole__testo h3 { margin-top: 0; }
+#punto-prelievi .box-pieghevole__testo .btn { margin-top: 1rem; }
+#punto-prelievi .box-pieghevole__img { flex: 0 0 280px; align-self: stretch; }
+#punto-prelievi .box-pieghevole__img img { display: block; width: 280px; height: 100%; object-fit: cover; object-position: center; }
+@media (max-width: 767.98px) {
+    #punto-prelievi .box-pieghevole { flex-direction: column-reverse; }
+    #punto-prelievi .box-pieghevole__img { flex: 0 0 auto; }
+    #punto-prelievi .box-pieghevole__img img { width: 100%; height: auto; }
+}
+</style>
