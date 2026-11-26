@@ -72,3 +72,10 @@ Rilievi nuovi:
 Hreflang coerenti; sitemap senza URL non indicizzabili; nessun redirect interno da link HTML diversi da quelli
 dell'anomalia 2; 219 PDF indicizzabili fuori sitemap (comunicati e documenti pubblici, come il 24/11); `jsonld_tipi`
 con i conteggi del 24/11 più le 3 pagine nuove.
+
+**Anomalie nuove, esito (26/11, mattina).**
+
+- Foto della news Villa dei Pini e Meyer: originale ricompresso da 212 a 192 KB (qualità 76, 1365×768) con `scripts/immagini/ottimizza-immagini.php --obiettivo=200`, produzione; backup `/paas/c0095/backup-kos-seo-geo/immagini-20261126-025441/`. Chiusa.
+- Link dei referti (`services.kosservizi.com`): dal browser non rispondono 500; uno funziona, l'altro mostra un errore Java dentro l'interfaccia del servizio. Servizio esterno: segnalato da Danilo a chi lo gestisce. Il 500 a Screaming Frog dipende dal servizio (richieste senza sessione). Chiusa per il sito.
+- Offerta chiusa (410) su `/en/work-in-kos/current-openings`: l'elenco viene dalla tabella `kos_jobs`, riempita dallo snippet `arca24Import` con l'API del portale delle candidature. Un'offerta chiusa resta in pagina fino al successivo import e allo svuotamento della cache della pagina. Da verificare dopo l'11/12, senza toccare elementi in verifica: frequenza dell'import e cache dell'elenco (non è un elemento del progetto). Aperta, minore.
+- Description degli elenchi paginati: titoli e description delle risorse di elenco corretti da Danilo nel manager (contenuto). «– Pagina N» sulle pagine successive e `og:title` delle paginazioni con `MultiPaginationCanonical`, dopo l'11/12 (piano interno). Chiusa per il testo.
