@@ -1,0 +1,24 @@
+{
+ "sito": "kos",
+ "descrizione": "Pieghevoli A5 2026 del Poliambulatorio San Martino (Bollate) e del Centro Medico Riabilitativo (Cinisello Balsamo), consegna KOS del 26/11/2026 (zip aggiornamento6bollatecinisello.zip), stessi percorsi dei pieghevoli pubblicati (link delle schede invariati). San Martino: nuove specialità (senza Cardiologia e Dietologia, con Diabetologia, Fisioterapia, Senologia). Cinisello: telefono 02 9737941 e direttore sanitario come nella scheda.",
+ "pdf": [
+  {
+   "s": "KOS POLI SAN MARTINO A5 2026 ESE-VIVO.pdf",
+   "p": "/assets/doc/strutture/poliambulatorio-san-martino/pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Poliambulatorio San Martino",
+   "d": "Pieghevole del Poliambulatorio San Martino di Bollate, presso la Residenza Anni Azzurri San Martino: specialità, sede, orari, contatti e prenotazioni.",
+   "a": "Gruppo KOS",
+   "l": "it-IT"
+  },
+  {
+   "s": "KOS CMR CINISELLO A5-26 ESE.pdf",
+   "p": "/assets/doc/strutture/centro-medico-riabilitativo/pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Centro Medico Riabilitativo",
+   "d": "Pieghevole del Centro Medico Riabilitativo KOS di Cinisello Balsamo, presso il Polo Geriatrico Riabilitativo: specialità, prestazioni, sede, orari, contatti e prenotazioni.",
+   "a": "Gruppo KOS",
+   "l": "it-IT"
+  }
+ ],
+ "sospesi": [],
+ "esclusi": []
+}
