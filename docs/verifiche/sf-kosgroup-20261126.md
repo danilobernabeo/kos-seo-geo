@@ -63,6 +63,8 @@ Rilievi nuovi:
 | N2 | Tutte | CSS critico di 94 kB (19 kB compressi): HTML mediano da 89 a 184 kB, meta `og:*` a circa 97 kB dall'inizio | Ridurre il CSS critico; prova di un'anteprima di condivisione subito | dopo il 4/12 |
 | N3 | Configurazione `kos-completa` | `kos.min.css` non più scansionato (foglio nel body), `briciole_visibili` vuota (il sito usa `#breadcrumbs`), `link_relativi` con la regola vecchia (905 falsi positivi) | Aggiornare il profilo di scansione | subito, senza toccare il sito |
 | N4 | Eventi «Settimana del cervello» 2025 e 2026 (Roma) | Due link relativi ai PDF del programma (`assets/doc/eventi/...` senza barra iniziale), salvati dal manager il 25/11 | Nel manager: `/assets/doc/eventi/...` | entro il 27/11 |
+
+**N4, esito (26/11):** risolto all'uscita, insieme alle 3.006 immagini relative, con il plugin nuovo `PercorsiAssoluti` (con `<base href>` sulla radice riscrive `assets/...` in `/assets/...`, stesso indirizzo per il browser). Collaudo `scripts/collaudo/percorsi-assoluti.mjs` su 21 pagine (`pagine-kos-percorsi.txt`), stage e produzione: 21 su 21 equivalenti, 314 percorsi relativi → 0, nessun `//` nuovo. Produzione 26/11, backup `/paas/c0095/backup-kos-seo-geo/20261126-003711/` e `20261126-003747/`. Editor: `tinymcerte.settings` con `"convert_urls": false` (stage; produzione da allineare).
 | N5 | 45 paginazioni | `og:title` non allineato al title | Nel chunk `head-paginazione` | dopo il 4/12 |
 
 ## Confermato
