@@ -1,0 +1,23 @@
+# N4 percorsi relativi (26/11): pagine con più percorsi relativi nella scansione del 26/11, un esempio per tipo, più i
+# due eventi con i PDF, i comunicati (href="/[[+tv.comunicatoPdf]]"), una news con barra nella TV (risorsa 484).
+/it
+/en
+/it/convenzioni
+/it/strutture
+/it/servizi-e-cure
+/it/servizi-e-cure/ambulatori-e-medicina-specialistica
+/it/chi-siamo/qualita-delle-cure/tecnologia-e-innovazione
+/en/who-we-are/kos-group/our-history
+/en/work-in-kos/why-work-at-kos
+/it/centri/centro-cardinal-ferrari
+/it/centri/villa-dei-pini-civitanova
+/it/centri/villa-sant-alessandro
+/it/news-e-media/news?page=2
+/it/news-e-media/approfondimenti
+/it/news-e-media/video
+/it/news-e-media/comunicati-stampa
+/it/news-e-media/news/2026/l-attivita-di-ricerca-del-centro-cardinal-ferrari-kos
+/it/news-e-media/eventi-e-convegni/2025/la-gestione-della-persona-con-demenza
+/it/news-e-media/eventi-e-convegni/2025/settimana-del-cervello-2025-eventi-gratuiti-per-la-salute-mentale-a-roma
+/it/strutture/cliniche-dentali
+/en/book-online

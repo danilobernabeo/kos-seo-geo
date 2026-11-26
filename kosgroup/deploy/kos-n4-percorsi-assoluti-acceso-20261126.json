@@ -1,0 +1,7 @@
+{
+ "nome": "KOS N4: accende il plugin PercorsiAssoluti (kosseogeo.percorsi_assoluti = 1). Prima: pacchetto kos-n4-percorsi-assoluti-20261126 installato e fase «prima» di scripts/collaudo/percorsi-assoluti.mjs. Spegnimento: --ripristina oppure impostazione a 0 dal manager",
+ "settings": [
+  {"key": "kosseogeo.percorsi_assoluti", "value": "1", "area": "kosseogeo"}
+ ],
+ "elements": []
+}

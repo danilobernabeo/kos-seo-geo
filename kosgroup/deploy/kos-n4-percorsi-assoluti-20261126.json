@@ -1,0 +1,16 @@
+{
+ "nome": "KOS scansione del 26/11, N4: percorsi relativi nell'HTML (3.006 immagini su 787 pagine, 2 PDF). Plugin PercorsiAssoluti (OnWebPagePrerender) che con <base href> sulla radice riscrive src/href/srcset «assets/...» in «/assets/...» (stesso indirizzo per il browser). Installato spento: kosseogeo.percorsi_assoluti = 0; si accende dopo la fase «prima» di scripts/collaudo/percorsi-assoluti.mjs",
+ "settings": [
+  {"key": "kosseogeo.percorsi_assoluti", "value": "0", "area": "kosseogeo"}
+ ],
+ "elements": [
+  {
+   "type": "plugin",
+   "name": "PercorsiAssoluti",
+   "file": "kosgroup/elements/plugins/PercorsiAssoluti.php",
+   "description": "Scansione 26/11, N4: percorsi relativi «assets/...» → «/assets/...» nell'HTML in uscita (con <base href> sulla radice); kosseogeo.percorsi_assoluti = 1 lo accende",
+   "events": ["OnWebPagePrerender"],
+   "disabled": false
+  }
+ ]
+}
