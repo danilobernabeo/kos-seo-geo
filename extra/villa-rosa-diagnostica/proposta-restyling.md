@@ -115,7 +115,7 @@ Per ciascuna presento le alternative con pro e contro e poi il mio consiglio. Pe
 | B. Dalla scheda su kosgroup.com, come nel menu del sito oggi | Già in uso; le campagne portano già lì | Le pagine per esame del sito restano senza collegamento diretto |
 | C. Pulsante per esame verso TuoTempo da entrambe | Pochi passaggi per l'utente | Più link da mantenere se le prestazioni cambiano; misura da impostare su due pagine |
 
-**Il mio consiglio: A, con la scheda su kosgroup.com che mantiene il sistema di prenotazione comune a tutte le strutture del gruppo.** Sul sito un pulsante di prenotazione in ogni pagina per esame e una pagina «Prenota online» con il calendario TuoTempo; sulla scheda resta il calendario che hanno tutte le strutture KOS, perché chi arriva dal sito del gruppo possa prenotare senza cambiare sito. I collegamenti si generano dallo stesso elenco di prestazioni, quindi la manutenzione non raddoppia; la misura copre entrambe.
+**Il mio consiglio: A, con la scheda su kosgroup.com che mantiene il calendario comune a tutte le strutture del gruppo.** Sul sito la prenotazione si trova in tre punti: una pagina «Prenota online» con il calendario di tutte le prestazioni; in ogni pagina d'esame il calendario già filtrato su quell'esame, oppure un pulsante diretto se l'esame ha un solo professionista; in ogni pagina di un professionista il calendario filtrato sulle sue prestazioni, oppure un pulsante se ne offre una sola. Sulla scheda di kosgroup.com resta il calendario generale, come per tutte le strutture KOS. Tutto nasce dallo stesso elenco di prestazioni e professionisti di TuoTempo, quindi la manutenzione non raddoppia e la misura copre tutti i punti.
 
 ### Link del profilo Google e campagne a pagamento
 
@@ -160,7 +160,7 @@ Interventi utili qualunque siano le decisioni del paragrafo 7. Sono gli stessi g
 
 1. **Nuova immagine grafica.** Proposta per la home e per una pagina d'esame il 12 gennaio, con due giri di revisione entro il 19 gennaio; sviluppo del nuovo modello su tutte le pagine, adatto al telefono e accessibile, nei limiti del marchio KOS e con le foto della nuova sede. Online per l'inaugurazione di fine gennaio; se l'approvazione arriva dopo il 19 gennaio, nei primi giorni di febbraio, comunque in tempo per le campagne.
 2. **Ruolo delle pagine** secondo la scelta del paragrafo 7: collegamenti tra sito e kosgroup.com, destinazione del profilo Google e delle campagne.
-3. **Prenotazione** secondo la scelta del paragrafo 7: collegamento diretto a TuoTempo per ogni esame (risonanza, TAC, ecografia, elettromiografia, radiologia) e una pagina «Prenota online» più semplice dei 135 collegamenti attuali.
+3. **Prenotazione** secondo la scelta del paragrafo 7: pagina «Prenota online» con il calendario di tutte le prestazioni, al posto dei 135 collegamenti attuali; calendario filtrato (o pulsante diretto) nelle pagine d'esame e in quelle dei professionisti; prima della pubblicazione, controllo dei nomi delle agende che il calendario mostra.
 4. **Pagine per le novità:** risonanza magnetica 1,5 T, TAC, nuova sede con foto e testi definitivi, nuova offerta ambulatoriale.
 5. **TMS, psichiatria e psicoterapia**, se si decide di spostarle: trasferimento alla pagina della clinica con reindirizzamento, per non perdere le visite.
 
