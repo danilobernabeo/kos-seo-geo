@@ -62,7 +62,7 @@ Prima lo stage, poi la produzione; sempre prima la prova e poi `--scrivi`. Coman
 
 | Data | Ambiente | Esito | Ripristino |
 |---|---|---|---|
-| | stage | | |
+| 26/11/2026 | stage KOS (c0044) | sezione nelle due schede, pieghevoli, copertine e varianti WebP; collaudo 49 OK. JSON-LD: stesso contenuto di prima, `dateModified` invariato; cambia solo l'ordine delle Offer del catalogo TuoTempo (rigenerazione della cache, non dipende dalla sezione: da segnalare alla chat principale) | `~/backup-kos-seo-geo/<data>-punti-prelievo/ripristino.json` sullo stage |
 
 ## Ripristino
 
@@ -79,6 +79,8 @@ sostituiti). Le varianti WebP si ripristinano con il backup stampato da `ottimiz
 - **Elenco `/it/strutture/punti-prelievo`**: inserire le due strutture.
 - **Profili Google (Yext/RetailTune)**: orari dei prelievi come orari speciali o servizio.
 - **Link ai referti online**: quando KOS lo fornisce, si aggiunge alla riga «online» (rilancio dello script).
+- **Ordine delle Offer nel catalogo TuoTempo del JSON-LD**: cambia tra una generazione della cache e l'altra (stage
+  26/11, stesso contenuto): un ordinamento stabile nella libreria rende confrontabili le versioni.
 - **Orari «Ritiro referti» delle schede**: il blocco «Orari Poliambulatorio» delle due schede indica
   «Diagnostica - Poliambulatorio - Ritiro referti 8:00-20:00», diverso dagli orari degli sportelli referti indicati da
   KOS (8:30-19:30 Bollate, 8:00-18:00 Cinisello): da chiarire con KOS; quel blocco non si tocca qui.

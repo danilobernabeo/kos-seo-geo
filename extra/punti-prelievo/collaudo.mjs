@@ -46,6 +46,11 @@ const verifica = (ok, controllo, dettaglio = '') => esito(ok ? 'OK' : 'KO', cont
 const testo = s => String(s).replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&rsquo;/g, '’').replace(/\s+/g, ' ').trim();
 const grafi = html => [...html.matchAll(/<script[^>]+application\/ld\+json[^>]*>([\s\S]*?)<\/script>/gi)].map(m => m[1].trim());
 const senzaData = j => j.replace(/"dateModified":"[^"]*"/g, '"dateModified":"…"');
+// forma canonica: chiavi ordinate ed elenchi ordinati (l'ordine delle Offer del catalogo TuoTempo varia tra una
+// generazione della cache e l'altra, senza che cambi il contenuto: stage 26/11)
+const canon = o => Array.isArray(o) ? o.map(canon).map(x => JSON.stringify(x)).sort().map(x => JSON.parse(x))
+  : o && typeof o === 'object' ? Object.fromEntries(Object.keys(o).sort().map(k => [k, canon(o[k])])) : o;
+const insieme = arr => JSON.stringify(canon(arr.map(j => { try { return JSON.parse(senzaData(j)); } catch { return j; } })));
 
 for (const sede of C.sedi) {
   const url = `${base}/${sede.uri}`;
@@ -94,8 +99,10 @@ for (const sede of C.sedi) {
   const prima = JSON.parse(fs.readFileSync(fileLd, 'utf8'));
   const uguale = JSON.stringify(prima) === JSON.stringify(ld);
   const ugualeSenzaData = JSON.stringify(prima.map(senzaData)) === JSON.stringify(ld.map(senzaData));
+  const ugualeContenuto = insieme(prima) === insieme(ld);
   if (uguale) esito('OK', 'JSON-LD identico a prima');
   else if (ugualeSenzaData) esito('AVV', 'JSON-LD identico a prima tranne dateModified', 'la risorsa è stata salvata: data di modifica aggiornata');
+  else if (ugualeContenuto) esito('AVV', 'JSON-LD con lo stesso contenuto di prima, elementi in ordine diverso', 'ordine delle Offer del catalogo: non dipende dalla sezione');
   else {
     esito('KO', 'JSON-LD diverso da prima');
     fs.writeFileSync(path.join(cartella, `jsonld-${host}-${nome}-dopo.json`), JSON.stringify(ld, null, 1));
