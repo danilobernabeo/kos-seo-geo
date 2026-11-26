@@ -51,6 +51,20 @@ Le anomalie 5, 12, 14 e 16 non sono ricontrollate in questa nota.
 | 3 | `/it/ritiro-referti` | Due link verso `services.kosservizi.com/referti/…` rispondono 500 a Screaming Frog (anche il 24/11) | Servizio esterno dei referti, probabilmente non risponde a richieste senza sessione | Verifica dal browser; se il servizio funziona per gli utenti, nessuna azione | da verificare |
 | 4 | 50 pagine di elenco paginate | Description uguale tra le pagine dello stesso elenco, con testi generici e fuori tono («la tua marca preferita», «settore IT») | Description dell'elenco ripetuta sulle pagine `?page=N` (già il 24/11) | Description propria per ciascun elenco, con «– Pagina N» sulle successive | contenuto, minore |
 
+## Revisione indipendente
+
+Fable, 26/11 (`docs/revisioni/screaming-frog-20261126-kos-revisione.md`): confermata l'assenza di regressioni pagina per pagina sulle 918 pagine comuni (codice, canonical, meta robots, description, H1, hreflang, `og:image`, briciole JSON-LD, identificativi del grafo); CSS critico in produzione identico byte per byte al chunk; nessun pacchetto di kosgroup.com dal 24/11 installa una copia vecchia. Correzioni alla nota: title cambiati 45 (non 49); PDF `noindex` con titoli Word/PowerPoint 67 (non 49); «Cerca» su 18 schede più `/it/prenota-online`; tipi del grafo con 8 `ImageObject` e 19 `dateModified` in più; anomalia 15 chiusa in parte (due title senza marchio e due con «| Kos»); `href="http://` da 1 a 0; anomalie 5 e 14 risolte, 12 (139 pagine) e 16 (77) invariate.
+
+Rilievi nuovi:
+
+| # | Pagine | Cosa | Correzione | Quando |
+|---|---|---|---|---|
+| N1 | 158 pagine con il banner «Diventa un KOSplayer» | 316 link `href="//it/lavorare-in-kos/perche-lavorare-in-kos"` (indirizzo senza dominio valido: link rotto) | Chunk `kosplayer-banner-small`: `href="/[[~36]]"` → `href="[[~36]]"` (pacchetto `kos-kosplayer-banner-20261126`) | entro il 27/11 |
+| N2 | Tutte | CSS critico di 94 kB (19 kB compressi): HTML mediano da 89 a 184 kB, meta `og:*` a circa 97 kB dall'inizio | Ridurre il CSS critico; prova di un'anteprima di condivisione subito | dopo il 4/12 |
+| N3 | Configurazione `kos-completa` | `kos.min.css` non più scansionato (foglio nel body), `briciole_visibili` vuota (il sito usa `#breadcrumbs`), `link_relativi` con la regola vecchia (905 falsi positivi) | Aggiornare il profilo di scansione | subito, senza toccare il sito |
+| N4 | Eventi «Settimana del cervello» 2025 e 2026 (Roma) | Due link relativi ai PDF del programma (`assets/doc/eventi/...` senza barra iniziale), salvati dal manager il 25/11 | Nel manager: `/assets/doc/eventi/...` | entro il 27/11 |
+| N5 | 45 paginazioni | `og:title` non allineato al title | Nel chunk `head-paginazione` | dopo il 4/12 |
+
 ## Confermato
 
 Hreflang coerenti; sitemap senza URL non indicizzabili; nessun redirect interno da link HTML diversi da quelli

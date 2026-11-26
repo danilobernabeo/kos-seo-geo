@@ -1,0 +1,6 @@
+{
+ "nome": "KOS link interni: banner «Diventa un KOSplayer» con href=\"[[~36]]\" (era \"/[[~36]]\", che con link_tag_scheme abs dava //it/lavorare-in-kos/... su 158 pagine). Scansione del 26/11, revisione Fable N1.",
+ "elements": [
+  {"type": "chunk", "name": "kosplayer-banner-small", "file": "kosgroup/elements/chunks/kosplayer-banner-small.html", "baseline": "kosgroup/baseline/chunks/kosplayer-banner-small.html"}
+ ]
+}
