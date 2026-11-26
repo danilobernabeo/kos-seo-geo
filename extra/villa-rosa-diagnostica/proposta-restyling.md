@@ -210,24 +210,24 @@ Fonti, verificate tra il 20 e il 26 novembre 2026: sito villarosadiagnostica.it 
 
 Restyling tecnico, di contenuto e grafico del sito villarosadiagnostica.it per l'apertura della nuova sede, come descritto al paragrafo 8, sulla piattaforma attuale (MODX Cloud), con lo stesso dominio e una nuova immagine grafica nei limiti del marchio KOS.
 
-### Importi
+### Cosa comprende
 
-| Voce | Contenuto | Importo |
-| --- | --- | --- |
-| Fase 1 | Informazioni uniche e nuova sede, dati strutturati per Google e assistenti AI, pagine e titoli, velocità e immagini, testi in ottica ricerca e AI, misura di telefonate, email e prenotazioni, allineamento di profilo Google e portali; prova su un sito di prova e pubblicazione entro il 6 gennaio 2027 | € [FASE1] |
-| Fase 2 | Ruolo delle pagine e prenotazione secondo le decisioni di KOS (collegamento a TuoTempo per esame e pagina «Prenota online»), pagine per risonanza magnetica, TAC, nuova sede e nuova offerta ambulatoriale | € [FASE2] |
-| Nuova immagine | Proposta grafica per la home e una pagina d'esame con due giri di revisione; nuovo modello su tutte le pagine, adatto al telefono e accessibile, con le foto della nuova sede; online per l'inaugurazione di fine gennaio | € [GRAFICA] |
-| Opzione | Trasferimento delle pagine TMS, psichiatria e psicoterapia alla pagina della clinica, con reindirizzamento | € [OPZIONE] |
-| Assistenza | Tre mesi dopo l'apertura: correzioni e piccoli aggiornamenti, report mensile (visite, ricerche, telefonate, prenotazioni, assistenti AI) | € [ASSISTENZA] |
-| **Totale** | Fase 1, fase 2, nuova immagine e assistenza (opzione esclusa) | **€ [TOTALE]** |
+- **Per l'apertura del 7 gennaio:** informazioni uniche e corrette, nuovo indirizzo e indicazioni per la nuova sede, dati strutturati per Google e per gli assistenti AI, titoli e descrizioni delle pagine, pagine doppie unite, mappa del sito e file per i motori di ricerca, velocità e immagini, testi rivisti in ottica ricerca e assistenti AI, misura di telefonate, email e prenotazioni, allineamento di profilo Google e portali.
+- **Per l'inaugurazione di fine gennaio:** nuova immagine grafica (proposta per la home e per una pagina d'esame con due giri di revisione, nuovo modello su tutte le pagine, adatto al telefono e accessibile), ruolo delle pagine e prenotazione secondo le decisioni del paragrafo 7, pagine per risonanza magnetica, TAC, nuova sede e nuova offerta ambulatoriale.
+- **Dopo il lancio:** tre mesi di assistenza (correzioni e piccoli aggiornamenti) e report mensile.
+- Prova di ogni intervento su un sito di prova prima della pubblicazione.
 
-Importi a corpo, IVA esclusa.
+### Importo
+
+**€ [IMPORTO] a corpo, IVA esclusa**, per tutte le attività elencate.
+
+Il trasferimento delle pagine TMS, psichiatria e psicoterapia alla pagina della clinica, se deciso, si quota a parte.
 
 ### Condizioni
 
 - **Tempi.** Fase 1 tra il 12 dicembre 2026 e il 6 gennaio 2027; fase 2 e nuova immagine entro fine gennaio 2027 (proposta grafica entro fine dicembre), a partire dalle decisioni del paragrafo 7. Decisioni e informazioni della struttura richieste entro il 12 dicembre: se arrivano dopo, la fase 2 slitta di conseguenza; la fase 1 resta per il 7 gennaio.
 - **Contenuti.** I testi partono da quelli attuali del sito, rivisti in ottica ricerca e assistenti AI. Testi, foto e indirizzo della nuova sede sono forniti dalla struttura; i testi sanitari sono approvati dalla struttura prima della pubblicazione.
-- **Fatturazione.** Fase 1 alla pubblicazione; fase 2 e nuova immagine alla pubblicazione; assistenza a fine periodo.
+- **Fatturazione.** In due rate: metà alla pubblicazione del 7 gennaio, metà alla pubblicazione della nuova immagine.
 - **Validità** dell'offerta: 30 giorni.
 
 ### Escluso
