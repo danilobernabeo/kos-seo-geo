@@ -14,7 +14,7 @@ registrata in `docs/registro-decisioni.md` (voce del 26/11).
 | Prelievi | lunedì-venerdì 7:00-9:30 | lunedì-venerdì 7:00-9:30 |
 | Esami | prelievi ed esami ematochimici, in collaborazione con MeticaLab; percorsi di prevenzione | idem |
 | Ritiro referti in sede | lunedì-venerdì 8:30-19:30 | lunedì-venerdì 8:00-18:00 |
-| CUP (informazioni e prenotazioni, dal pieghevole) | 02 38306561 | 02 45409465 (la scheda indica 02 9737941: da confermare con KOS) |
+| Informazioni e prenotazioni | CUP 02 38306561 | 02 9737941 (il CUP 02 45409465 non esiste più, conferma di KOS del 26/11; il pieghevole lo riporta ancora) |
 | Referti online | disponibili; link da KOS, non ancora arrivato (niente segnaposto né link vuoti) | idem |
 | Pieghevole | `/assets/doc/punto-prelievi-poliambulatorio-san-martino-bollate.pdf` | `/assets/doc/punto-prelievi-centro-medico-riabilitativo-cinisello.pdf` |
 
@@ -83,5 +83,7 @@ sostituiti). Le varianti WebP si ripristinano con il backup stampato da `ottimiz
 - **Ordine delle Offer nel catalogo TuoTempo del JSON-LD**: cambia tra una generazione della cache e l'altra (stage
   26/11, stesso contenuto): un ordinamento stabile nella libreria rende confrontabili le versioni.
 - **Orari «Ritiro referti» delle schede**: il blocco «Orari Poliambulatorio» delle due schede indica
-  «Diagnostica - Poliambulatorio - Ritiro referti 8:00-20:00», diverso dagli orari degli sportelli referti indicati da
-  KOS (8:30-19:30 Bollate, 8:00-18:00 Cinisello): da chiarire con KOS; quel blocco non si tocca qui.
+  «Diagnostica - Poliambulatorio - Ritiro referti 8:00-20:00»; KOS (26/11) conferma come corretti quelli della news
+  approvata: 8:30-19:30 Bollate, 8:00-18:00 Cinisello. Quel blocco non si tocca qui (orari della struttura, TV `str.*`
+  e dato strutturato): da correggere separatamente.
+- **Pieghevole di Cinisello**: riporta il CUP 02 45409465, che non esiste più; KOS deve aggiornare il PDF.

@@ -23,8 +23,9 @@
                 "Centro Medico Riabilitativo",
                 "8:00 - 18:00"
             ],
-            "CUP": "02 38306561",
-            "CUP_TEL": "+390238306561"
+            "TEL_TESTO": "chiama il CUP al",
+            "TEL": "02 38306561",
+            "TEL_LINK": "+390238306561"
         },
         {
             "uri": "it/centri/centro-medico-riabilitativo",
@@ -38,10 +39,13 @@
                 "Uboldi",
                 "38306561",
                 "San Martino",
-                "8:30 - 19:30"
+                "8:30 - 19:30",
+                "45409465",
+                "CUP"
             ],
-            "CUP": "02 45409465",
-            "CUP_TEL": "+390245409465"
+            "TEL_TESTO": "chiama lo",
+            "TEL": "02 9737941",
+            "TEL_LINK": "+39029737941"
         }
     ]
 }

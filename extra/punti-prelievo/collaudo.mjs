@@ -75,13 +75,13 @@ for (const sede of C.sedi) {
   verifica((s.match(/<h2\b/gi) || []).length === 1 && /<h2[^>]*>\s*Punto Prelievi\s*<\/h2>/.test(s), 'H2 «Punto Prelievi»');
   verifica(s.includes('id="punto-prelievi"') && (p.html.match(/id="punto-prelievi"/g) || []).length === 1, 'ancora #punto-prelievi unica');
   const t = testo(s);
-  for (const w of ['dal lunedì al venerdì, dalle 7:00 alle 9:30', '7:00 - 9:30', 'MeticaLab', 'percorsi di prevenzione', sede.REFERTI_SEDE, 'online', `CUP al ${sede.CUP}`])
+  for (const w of ['dal lunedì al venerdì, dalle 7:00 alle 9:30', '7:00 - 9:30', 'MeticaLab', 'percorsi di prevenzione', sede.REFERTI_SEDE, 'online', `${sede.TEL_TESTO} ${sede.TEL}`])
     verifica(t.includes(w), `testo HTML: «${w}»`);
   for (const w of sede.parole_vietate) verifica(!t.includes(w) && !s.includes(w), `nessun «${w}» (altra sede)`);
   verifica(!s.includes('[['), 'nessun tag MODX non elaborato');
   const link = [...s.matchAll(/\b(?:href|src|srcset)="([^"]*)"/g)].flatMap(m => m[1].split(/\s*,\s*/).map(u => u.trim().split(/\s+/)[0]));
   const cattivi = link.filter(u => !u || u.startsWith('//') || !/^(\/|https:\/\/|tel:\+39\d{6,11}$)/.test(u));
-  verifica(s.includes(`href="tel:${sede.CUP_TEL}"`), 'link tel: del CUP', sede.CUP_TEL);
+  verifica(s.includes(`href="tel:${sede.TEL_LINK}"`), 'link tel: per informazioni e prenotazioni', sede.TEL_LINK);
   verifica(!cattivi.length, 'link e immagini con percorso assoluto', cattivi.join(' '));
   for (const img of s.match(/<img\b[^>]*>/gi) || [])
     verifica(/\balt="[^"]+"/.test(img) && /\bwidth="\d+"/.test(img) && /\bheight="\d+"/.test(img) && /loading="lazy"/.test(img), 'immagine con alt, dimensioni e lazy', img.slice(0, 120));
