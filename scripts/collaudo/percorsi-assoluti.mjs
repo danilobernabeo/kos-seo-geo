@@ -9,6 +9,7 @@
  *   - EQUIVALENTE: togliendo da entrambe le versioni la «/» davanti ai valori degli attributi URL, l'HTML è identico,
  *     cioè l'unica differenza è la barra aggiunta (che con <base href> sulla radice non cambia l'indirizzo);
  *   - relativi rimasti dopo (deve essere 0) e numero di valori «//» (deve restare uguale: nessun doppio slash nuovo).
+ * L'HTML si confronta con le entità numeriche decodificate (offuscamento casuale di email e link a ogni richiesta).
  * Esito FERMO se una pagina non è equivalente o compare un «//» nuovo. La password dello stage solo in $env:AUTH.
  */
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
@@ -27,6 +28,10 @@ const pagine = readFileSync(arg.pagine, 'utf8').replace(/^﻿/, '').split(/\r?\n
 const dir = `percorsi-${new URL(base).host}`;
 const nome = p => (p.replace(/[^a-z0-9]+/gi, '_').replace(/^_|_$/g, '') || 'home') + '.html';
 
+// Il sito offusca email e alcuni link con entità numeriche scelte a caso a ogni richiesta (&#x6d; / &#109; / m):
+// si confronta l'HTML con le entità numeriche decodificate, così contano solo le differenze vere.
+const decodifica = h => h.replace(/&#x([0-9a-f]+);/gi, (_, x) => String.fromCodePoint(parseInt(x, 16)))
+  .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(+d));
 const ATTR = /(\s(?:src|href|poster|action|data-src|srcset|data-srcset)\s*=\s*)(["'])(.*?)\2/gis;
 const senzaBlocchi = h => h.replace(/<!--[\s\S]*?-->|<(style|template|textarea)\b[^>]*>[\s\S]*?<\/\1\s*>|(<script\b[^>]*>)[\s\S]*?<\/script\s*>/gi,
   (m, _b, s) => s ? s + '</script>' : '');
@@ -47,21 +52,22 @@ for (const p of pagine) {
   const { stato, html } = await scarica(p);
   writeFileSync(join(dir, arg.fase, nome(p)), html);
   if (arg.fase === 'prima') {
-    console.log(`${stato} ${p}: relativi ${valori(html).filter(relativo).length}`);
+    console.log(`${stato} ${p}: relativi ${valori(decodifica(html)).filter(relativo).length}`);
     continue;
   }
   const f = join(dir, 'prima', nome(p));
   if (!existsSync(f)) { console.log(`?? ${p}: manca la fase prima`); continue; }
-  const prima = readFileSync(f, 'utf8');
-  const vp = valori(prima), vd = valori(html);
+  const prima = decodifica(readFileSync(f, 'utf8'));
+  const dopo = decodifica(html);
+  const vp = valori(prima), vd = valori(dopo);
   const relP = vp.filter(relativo).length, relD = vd.filter(relativo).length;
   const dsP = vp.filter(v => v.startsWith('//')).length, dsD = vd.filter(v => v.startsWith('//')).length;
-  const eq = normalizza(prima) === normalizza(html);
+  const eq = normalizza(prima) === normalizza(dopo);
   const ok = eq && dsD === dsP;
   if (!ok) fermo++;
   let nota = '';
   if (!eq) {
-    const a = normalizza(prima), b = normalizza(html);
+    const a = normalizza(prima), b = normalizza(dopo);
     let i = 0; while (i < a.length && a[i] === b[i]) i++;
     nota = `\n     prima: ${JSON.stringify(a.slice(Math.max(0, i - 60), i + 60))}\n     dopo : ${JSON.stringify(b.slice(Math.max(0, i - 60), i + 60))}`;
   }
