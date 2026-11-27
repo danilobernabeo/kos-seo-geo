@@ -25,8 +25,8 @@
 </style>
 <script>
 (function () {
-    /* Slide-in «Nuovo punto prelievi»: compare dopo 2 s con la scheda visibile se la sezione non è ancora stata vista,
-       sparisce quando la sezione entra nello schermo e ricompare quando l'utente l'ha superata senza cliccare.
+    /* Slide-in «Nuovo punto prelievi»: compare dopo 2 s con la scheda visibile se la sezione non è nello schermo,
+       sparisce quando la sezione entra nello schermo e ricompare quando ne esce (sopra o sotto) se l'utente non ha cliccato.
        Una pagina per sessione; chiuso con la X: 30 giorni; cliccato: mai più. Scade il 26/01/2027.
        Chiavi: sessionStorage kosPuntoPrelieviVisto, localStorage kosPuntoPrelieviStato. */
     var SCADENZA = new Date('2027-01-27T00:00:00+01:00').getTime();
@@ -46,14 +46,13 @@
         return false;
     }
     if (leggi('sessionStorage', K_SESS) || fermato()) return;   // già mostrato in un'altra pagina di questa sessione
-    var vista = false, dentro = false, passata = false, pronto = false, aperto = false, mostrato = false;
+    var dentro = false, pronto = false, aperto = false, mostrato = false;
     var el = null, sceltaCookie = 0, visibileMs = 0;
     var ridotto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     new IntersectionObserver(function (voci) {
         voci.forEach(function (v) {
             dentro = v.isIntersecting;
-            if (dentro) { vista = true; passata = false; chiudi(false); }
-            else { passata = v.boundingClientRect.bottom <= 0; prova(); }   // sezione superata (sopra lo schermo)
+            if (dentro) chiudi(false); else prova();   // fuori dallo schermo, sopra o sotto: ricompare
         });
     }, { rootMargin: '0px 0px -10% 0px' }).observe(sez);
     function bannerCookie() {
@@ -125,7 +124,6 @@
     }
     function prova() {
         if (!pronto || aperto || dentro || fermato() || bannerCookie() || Date.now() - sceltaCookie < 8000) return;
-        if (vista && !passata) return;   // già vista e ora più in alto: ricompare solo dopo averla superata
         apri();
     }
     function apri() {
