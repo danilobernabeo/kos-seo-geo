@@ -1,0 +1,16 @@
+{
+ "sito": "kos",
+ "descrizione": "Pieghevole A5 2026 del Poliambulatorio San Martino (Bollate), versione corretta consegnata da KOS il 27/11/2026 (KOS POLI SAN MARTINO A5 2026 ESE-VIVO (1).pdf): toglie il pallino vuoto nell'elenco delle specialità segnalato il 26/11; testo per il resto identico. Stesso percorso e stessi metadati della versione del 26/11 (pieghevoli-bollate-cinisello-2026-11-26.json).",
+ "pdf": [
+  {
+   "s": "KOS POLI SAN MARTINO A5 2026 ESE-VIVO (1).pdf",
+   "p": "/assets/doc/strutture/poliambulatorio-san-martino/pieghevole-informativo.pdf",
+   "t": "Pieghevole informativo – Poliambulatorio San Martino",
+   "d": "Pieghevole del Poliambulatorio San Martino di Bollate, presso la Residenza Anni Azzurri San Martino: specialità, sede, orari, contatti e prenotazioni.",
+   "a": "Gruppo KOS",
+   "l": "it-IT"
+  }
+ ],
+ "sospesi": [],
+ "esclusi": []
+}
