@@ -23,7 +23,8 @@ Pieghevoli: i due «6 ante» forniti da Danilo, versione v6 del 26/11 (`KOS PREL
 `KOS PRELIEVI CMR CINISELLO 6ino ESE v6.pdf`, cartella locale `20261126/`, non nel repository), con testo selezionabile (non sono solo immagine). Metadati (titolo, oggetto,
 autore, lingua it-IT) aggiunti con `scripts/pdf/pdf-metadati.php` e `pdf-metadati.json` (aggiornamento incrementale:
 i byte originali restano un prefisso del file). Copertine: pannello destro della prima pagina, 600 × 857, JPG 82, circa
-78 KB (`files/assets/img/pieghevole-punto-prelievi-*.jpg`). Le locandine A3 dell'Open Day non sono usate.
+77 KB, con il riquadro di indirizzo e orari coperto di bianco (gli orari sono nel testo della sezione; decisione del 27/11),
+generate con `sh prepara-copertine.sh` (da rilanciare a ogni nuova versione dei PDF) (`files/assets/img/pieghevole-punto-prelievi-*.jpg`). Le locandine A3 dell'Open Day non sono usate.
 
 ## Cosa tocca
 
