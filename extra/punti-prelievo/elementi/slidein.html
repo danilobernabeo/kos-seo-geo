@@ -25,9 +25,10 @@
 </style>
 <script>
 (function () {
-    /* Slide-in «Nuovo punto prelievi»: compare dopo 5 s con la scheda visibile se la sezione non è ancora stata vista,
-       sparisce quando la sezione entra nello schermo. Una volta per sessione; chiuso: 30 giorni; cliccato: mai più.
-       Scade il 26/01/2027. Chiavi: sessionStorage kosPuntoPrelieviVisto, localStorage kosPuntoPrelieviStato. */
+    /* Slide-in «Nuovo punto prelievi»: compare dopo 2 s con la scheda visibile se la sezione non è ancora stata vista,
+       sparisce quando la sezione entra nello schermo e ricompare quando l'utente l'ha superata senza cliccare.
+       Una pagina per sessione; chiuso con la X: 30 giorni; cliccato: mai più. Scade il 26/01/2027.
+       Chiavi: sessionStorage kosPuntoPrelieviVisto, localStorage kosPuntoPrelieviStato. */
     var SCADENZA = new Date('2027-01-27T00:00:00+01:00').getTime();
     if (Date.now() >= SCADENZA || !('IntersectionObserver' in window)) return;
     var sez = document.getElementById('punto-prelievi');
@@ -38,18 +39,22 @@
     function leggi(tipo, k) { try { var s = mem(tipo); return s ? s.getItem(k) : null; } catch (e) { return null; } }
     function scrivi(tipo, k, v) { try { var s = mem(tipo); if (s) s.setItem(k, v); } catch (e) {} }
     function evento(nome) { try { (window.dataLayer = window.dataLayer || []).push({ event: 'punto_prelievi_' + nome, punto_prelievi_sede: sede }); } catch (e) {} }
-    function bloccato() {
-        if (leggi('sessionStorage', K_SESS)) return true;
+    function fermato() {   // cliccato, o chiuso con la X negli ultimi 30 giorni
         var st = leggi('localStorage', K_STATO) || '';
         if (st.indexOf('cliccato') === 0) return true;
         if (st.indexOf('chiuso:') === 0 && Date.now() - Number(st.slice(7)) < 30 * 864e5) return true;
         return false;
     }
-    if (bloccato()) return;
-    var vista = false, aperto = false, el = null, sceltaCookie = 0, visibileMs = 0;
+    if (leggi('sessionStorage', K_SESS) || fermato()) return;   // già mostrato in un'altra pagina di questa sessione
+    var vista = false, dentro = false, passata = false, pronto = false, aperto = false, mostrato = false;
+    var el = null, sceltaCookie = 0, visibileMs = 0;
     var ridotto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     new IntersectionObserver(function (voci) {
-        voci.forEach(function (v) { if (v.isIntersecting) { vista = true; if (aperto) chiudi(false); } });
+        voci.forEach(function (v) {
+            dentro = v.isIntersecting;
+            if (dentro) { vista = true; passata = false; chiudi(false); }
+            else { passata = v.boundingClientRect.bottom <= 0; prova(); }   // sezione superata (sopra lo schermo)
+        });
     }, { rootMargin: '0px 0px -10% 0px' }).observe(sez);
     function bannerCookie() {
         var d = document.getElementById('CybotCookiebotDialog');
@@ -118,8 +123,12 @@
         el.appendChild(img); el.appendChild(testo); el.appendChild(x);
         document.body.appendChild(el);
     }
+    function prova() {
+        if (!pronto || aperto || dentro || fermato() || bannerCookie() || Date.now() - sceltaCookie < 8000) return;
+        if (vista && !passata) return;   // già vista e ora più in alto: ricompare solo dopo averla superata
+        apri();
+    }
     function apri() {
-        if (aperto || vista || bloccato()) return;
         if (!el) crea();
         scrivi('sessionStorage', K_SESS, '1');
         el.hidden = false;
@@ -127,7 +136,7 @@
         void el.offsetWidth;   // fa partire la transizione
         el.classList.add('is-open');
         aperto = true;
-        evento('impression');
+        if (!mostrato) { mostrato = true; evento('impression'); }
     }
     function chiudi(utente) {
         if (!aperto) return;
@@ -142,11 +151,9 @@
     window.addEventListener('resize', ricalcola);
     window.addEventListener('scroll', ricalcola, { passive: true });
     var giro = setInterval(function () {
-        if (vista || bloccato()) { clearInterval(giro); return; }
-        if (document.visibilityState === 'visible') visibileMs += 500;
-        if (visibileMs < 5000 || bannerCookie() || Date.now() - sceltaCookie < 8000) return;
-        clearInterval(giro);
-        apri();
-    }, 500);
+        if (fermato()) { clearInterval(giro); return; }
+        if (!pronto && document.visibilityState === 'visible') { visibileMs += 250; pronto = visibileMs >= 2000; }
+        prova();   // ripete il tentativo finché il banner dei cookie o la pausa dopo la scelta lo impediscono
+    }, 250);
 })();
 </script>

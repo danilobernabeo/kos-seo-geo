@@ -115,7 +115,8 @@ for (const sede of C.sedi) {
   }
 }
 console.log(`\n== ${conta.OK} OK, ${conta.KO} KO, ${conta.AVV} AVV`);
-console.log('A mano, da computer e da telefono: dopo 5 s compare lo slide-in in basso; «Scopri di più» scorre alla sezione\n'
+console.log('A mano, da computer e da telefono: dopo 2 s compare lo slide-in in basso; sparisce sulla sezione e ricompare dopo averla superata;\n'
+  + '«Scopri di più» scorre alla sezione\n'
   + '(URL che finisce con #punto-prelievi, non la home); non copre accessiBe, Cookiebot, «torna su», barra da telefono.\n'
   + 'Per rivederlo: sessionStorage.clear(); localStorage.removeItem(\'kosPuntoPrelieviStato\') nella console.');
 console.log('URL da controllare:\n' + C.sedi.map(s => `  ${base}/${s.uri}#punto-prelievi`).join('\n'));

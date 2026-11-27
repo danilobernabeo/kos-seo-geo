@@ -51,9 +51,12 @@ sezione dentro i segni, quindi nel contenuto delle due risorse; `data-sede` sul 
 - **Link**: `location.pathname + '#punto-prelievi'` con `scrollIntoView` e `preventDefault`. Le pagine hanno
   `<base href="https://kosgroup.com/">`: un `href="#punto-prelievi"` creato via JS porterebbe alla home (il plugin
   LinkFrammenti corregge solo l'HTML servito). `scroll-margin-top: 120px` sulla sezione.
-- **Quando**: dopo 5 s con la scheda visibile, se la sezione non è ancora entrata nello schermo e il banner Cookiebot non è
-  aperto (8 s di pausa dopo la scelta); sparisce quando la sezione entra nello schermo (`IntersectionObserver`).
-- **Quante volte**: una per sessione; chiuso: 30 giorni; cliccato: mai più. **Scade il 26/01/2027** (data nel codice).
+- **Quando**: dopo 2 s con la scheda visibile, se la sezione non è ancora entrata nello schermo e il banner Cookiebot non è
+  aperto (8 s di pausa dopo la scelta); sparisce quando la sezione entra nello schermo (`IntersectionObserver`) e
+  **ricompare quando l'utente l'ha superata** (sezione sopra lo schermo) senza cliccare; risalendo sopra la sezione già
+  vista non ricompare. Evento `impression` una volta per pagina.
+- **Quante volte**: una pagina per sessione (nella pagina può ricomparire); chiuso con X o Esc: 30 giorni; cliccato: mai più.
+  **Scade il 26/01/2027** (data nel codice).
 - **Posizione**: in basso a destra (da telefono a tutta larghezza), sopra gli elementi fissi in basso che occuperebbero lo
   stesso spazio, compresi quelli negli shadow DOM: pulsante di accessiBe (acsbapp.com, in basso a sinistra), widget
   Cookiebot, «torna su», barra da telefono. Verificato il 27/11 sulla pagina di produzione con lo script iniettato:
