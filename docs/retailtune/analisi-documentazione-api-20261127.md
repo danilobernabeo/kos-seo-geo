@@ -68,3 +68,25 @@ un'impostazione di sistema MODX; mai nel repository né in chiamate dal browser)
   struttura (decisione di KOS/marketing).
 - Prima dell'importatore: confronto una tantum API ↔ schede (nome, indirizzo, telefono, orari) con l'elenco delle
   differenze per KOS, come per Yext.
+
+## Prima lettura dei dati (27/11, `list.json.php` e `list.attribute.php`, file fuori dal repository)
+
+Credenziali della Stores API verificate da Danilo il 27/11 (risposta di `list.type.php` corretta).
+
+- **128 strutture**, tutte `open`: 65 residenze, 17 riabilitazione, 17 ambulatori, 14 psichiatria, 15 con due o tre aree.
+  **92 attributi** in 12 gruppi; i tipi di struttura sono nei gruppi 2, 5, 7, 9 (poliambulatori, punti prelievo,
+  cliniche dentali, ospedali, hospice, centri diurni…), più `prenotabile-online` (gruppo 1).
+- **Manca la Clinica Dentale Villa dei Pini** (Civitanova Marche, pubblicata sul sito il 27/11): da aggiungere.
+- **Villalba ancora doppia:** `VPI00_VPM` «Poliambulatorio Villalba» e `Villalba` «Villalba», entrambe ambulatori
+  (punto 1 del 12/11): ne va tenuta una.
+- **Indirizzi abbreviati: 75 su 128** (`V.`, `V.le`…, es. «V. Bolzano 5», «V.le Don Giovanni Minzoni 29/A»), mentre i
+  siti scrivono «Via», «Viale». Sono gli indirizzi che finiscono nei profili Google: vanno scritti per intero e uguali
+  alle schede (coerenza di nome, indirizzo e telefono).
+- **Dati mancanti:** 34 strutture senza email (tra cui i centri ambulatoriali Santo Stefano), 10 senza telefono e 12
+  senza orari (Sestri Ponente, Il Poggione, Santo Stefano Casorate e Mede, i due hospice, i centri diurni, Anni Azzurri
+  Senior Living): sono in gran parte le strutture senza profilo Google (le stesse 10 senza link per le recensioni).
+- **Campi concordati assenti in tutte le 128:** `link` (URL della scheda), `media`, `description`; nei `custom_fields`
+  solo `gbp_add_review_link`/`_qr_code` (118) e un solo `orari_2_*` (Villa dei Pini, con «utti i giorni»). Mancano
+  prenotazione, marchio, link al profilo Maps, «Richiedi informazioni».
+- **Entità HTML nei nomi degli attributi** («Comunit&#224; terapeutiche…»): l'importatore le decodifica.
+- 113 strutture con recensioni Google (`reviews_summary`): solo monitoraggio interno, non dato strutturato.
