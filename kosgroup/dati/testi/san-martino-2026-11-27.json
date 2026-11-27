@@ -12,18 +12,19 @@
      "<p>Il Poliambulatorio San Martino offre <strong>diagnostica, cura e riabilitazione</strong> con specialisti per la salute a tutte le età: <strong>prestazioni medico-specialistiche</strong> e di <strong>diagnostica strumentale</strong> nei <strong>sei ambulatori medici</strong> presenti, oltre a un servizio di <strong>fisioterapia</strong>, <strong>terapie elettromedicali</strong> e <strong>riabilitazione</strong>.</p>"
     ],
     [
-     "<p>Il Poliambulatorio dispone di un congruo numero di specialità gestite da professionisti altamente qualificati.</p>\n<p>Le diagnostiche <strong>cardiologica</strong> ed <strong>ecografica</strong> si avvalgono di <strong>apparecchiature di ultima generazione</strong> in grado di soddisfare con estrema celerità ed attendibilità esigenze clinico-diagnostiche sempre più specifiche, ponendo particolare attenzione e riguardo nel ridurre i tempi di refertazione.</p>",
-     "<p>Si trova al piano -1 della <strong>Residenza Anni Azzurri San Martino</strong> di Bollate, con <strong>ingresso indipendente</strong> e area parcheggio interna.</p>\n<p>Le specialità vanno dalla chirurgia generale alla dermatologia, dalla diabetologia alla senologia, dall’ortopedia all’urologia. Le visite si possono prenotare anche <strong>in convenzione con fondi e assicurazioni</strong>.</p>"
+     "<p>Il Poliambulatorio dispone di un congruo numero di specialità gestite da professionisti altamente qualificati.</p>\r\n<p>Le diagnostiche <strong>cardiologica</strong> ed <strong>ecografica</strong> si avvalgono di <strong>apparecchiature di ultima generazione</strong> in grado di soddisfare con estrema celerità ed attendibilità esigenze clinico-diagnostiche sempre più specifiche, ponendo particolare attenzione e riguardo nel ridurre i tempi di refertazione.</p>",
+     "<p>Si trova al piano -1 della <strong>Residenza Anni Azzurri San Martino</strong> di Bollate, con <strong>ingresso indipendente</strong> e area parcheggio interna.</p>\r\n<p>Le specialità vanno dalla chirurgia generale alla dermatologia, dalla diabetologia alla senologia, dall’ortopedia all’urologia. Le visite si possono prenotare anche <strong>in convenzione con fondi e assicurazioni</strong>.</p>"
     ],
     [
-     "<div class=\"col-12 col-md-6 equipe-persona\">\n                                   <img class=\"equipe-foto\" src=\"/assets/img/medico-thumb.svg\" alt=\"\" loading=\"lazy\" decoding=\"async\">\n                                   <div class=\"equipe-info\">\n                                       <span class=\"equipe-ruolo\">Cardiologo</span>\n                                   </div>                                       \n                               </div>\n                               ",
+     "<div class=\"col-12 col-md-6 equipe-persona\">\r\n                                   <img class=\"equipe-foto\" src=\"/assets/img/medico-thumb.svg\" alt=\"\" loading=\"lazy\" decoding=\"async\">\r\n                                   <div class=\"equipe-info\">\r\n                                       <span class=\"equipe-ruolo\">Cardiologo</span>\r\n                                   </div>                                       \r\n                               </div>\r\n                               ",
      ""
     ],
     [
-     "<div class=\"col-12 col-md-6 equipe-persona\">\n                                   <img class=\"equipe-foto\" src=\"/assets/img/medico-thumb.svg\" alt=\"\" loading=\"lazy\" decoding=\"async\">\n                                   <div class=\"equipe-info\">\n                                       <span class=\"equipe-ruolo\">Dietologo</span>\n                                   </div>                                       \n                               </div>\n                               ",
+     "<div class=\"col-12 col-md-6 equipe-persona\">\r\n                                   <img class=\"equipe-foto\" src=\"/assets/img/medico-thumb.svg\" alt=\"\" loading=\"lazy\" decoding=\"async\">\r\n                                   <div class=\"equipe-info\">\r\n                                       <span class=\"equipe-ruolo\">Dietologo</span>\r\n                                   </div>                                       \r\n                               </div>\r\n                               ",
      ""
     ]
    ]
   }
- ]
+ ],
+ "nota": "Il contenuto della risorsa ha fine riga Windows (\\r\\n): le regole li riportano esattamente (correzione del 27/11 dopo la prima prova sullo stage, che aveva applicato solo il primo paragrafo)."
 }
