@@ -47,7 +47,8 @@ function sezione(array $sede, string $dir): string
 {
     $t = str_replace("\r\n", "\n", (string) file_get_contents("$dir/elementi/sezione.html"));
     $stile = rtrim(str_replace("\r\n", "\n", (string) file_get_contents("$dir/elementi/stile.html")), "\n");
-    $val = $sede + ['PESO' => peso("$dir/files/assets/doc/{$sede['PDF']}"), 'STILE' => $stile];
+    $slide = rtrim(str_replace("\r\n", "\n", (string) file_get_contents("$dir/elementi/slidein.html")), "\n");
+    $val = $sede + ['PESO' => peso("$dir/files/assets/doc/{$sede['PDF']}"), 'STILE' => $stile, 'SLIDEIN' => $slide];
     foreach ($val as $k => $v) if (is_string($v)) $t = str_replace('{{' . $k . '}}', $v, $t);
     return rtrim($t, "\n");
 }
@@ -71,7 +72,7 @@ function controlla(string $s, array $sede): array
     preg_match_all('#<img\b[^>]*>#i', $s, $imgs);
     foreach ($imgs[0] as $i) foreach (['alt="', 'width="', 'height="', 'loading="lazy"'] as $att)
         if (!str_contains($i, $att) || str_contains($i, 'alt=""')) $p[] = "immagine senza $att";
-    foreach ($sede['parole_vietate'] as $w) if (stripos($s, $w) !== false) $p[] = "parola dell'altra sede: «{$w}»";
+    foreach ($sede['parole_vietate'] as $w) if (strpos($s, $w) !== false) $p[] = "parola dell'altra sede: «{$w}»";
     foreach (['7:00 - 9:30', 'MeticaLab', $sede['REFERTI_SEDE']] as $w) if (!str_contains($s, $w)) $p[] = "manca «{$w}»";
     return $p;
 }

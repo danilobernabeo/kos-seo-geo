@@ -26,7 +26,8 @@
                 "prenotazioni"
             ],
             "TEL": "02 38306561",
-            "TEL_LINK": "+390238306561"
+            "TEL_LINK": "+390238306561",
+            "SEDE": "bollate"
         },
         {
             "uri": "it/centri/centro-medico-riabilitativo",
@@ -46,7 +47,8 @@
                 "prenotazioni"
             ],
             "TEL": "02 9737941",
-            "TEL_LINK": "+39029737941"
+            "TEL_LINK": "+39029737941",
+            "SEDE": "cinisello"
         }
     ]
 }

@@ -1,0 +1,152 @@
+<style>
+/* Slide-in «Nuovo punto prelievi» (lavoro extra punti-prelievo, 27/11): avviso non modale che porta alla sezione */
+#punto-prelievi { scroll-margin-top: 120px; }
+.kpp-slide { position: fixed; right: 16px; bottom: var(--kpp-basso, 16px); z-index: 9990; width: 360px; max-width: calc(100vw - 32px);
+    display: grid; grid-template-columns: 72px 1fr; gap: 14px; align-items: center; box-sizing: border-box;
+    padding: 14px 40px 14px 14px; background: #fff; border: 1px solid #dee2e6; border-left: 4px solid #115974; border-radius: 6px;
+    box-shadow: 0 6px 24px rgba(17, 89, 116, .18); opacity: 0; transform: translateY(20px); transition: opacity .35s ease, transform .35s ease; }
+.kpp-slide.is-open { opacity: 1; transform: none; }
+.kpp-slide[hidden] { display: none; }
+.kpp-slide img { display: block; width: 72px; height: 72px; border-radius: 4px; object-fit: cover; }
+.kpp-titolo { font-weight: 700; font-size: 1rem; line-height: 1.3; color: #1a2031; }
+.kpp-riga { font-size: .875rem; line-height: 1.4; color: #3d4556; margin-top: 2px; }
+.kpp-link { display: inline-block; margin-top: 6px; font-size: .8125rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: #115974; text-decoration: underline; }
+.kpp-chiudi { position: absolute; top: 6px; right: 6px; width: 32px; height: 32px; padding: 0; border: 0; background: transparent;
+    font-size: 22px; line-height: 32px; color: #3d4556; cursor: pointer; border-radius: 4px; }
+.kpp-chiudi:hover, .kpp-chiudi:focus-visible { background: #eef6f9; color: #115974; }
+@media (max-width: 600px) {
+    .kpp-slide { right: 8px; left: 8px; width: auto; max-width: none; grid-template-columns: 1fr; padding: 10px 40px 10px 12px; transform: translateY(100%); }
+    .kpp-slide img { display: none; }
+    .kpp-riga { font-size: .8125rem; }
+    .kpp-link { margin-top: 4px; }
+}
+@media (prefers-reduced-motion: reduce) { .kpp-slide, .kpp-slide.is-open { transform: none; transition: opacity .2s linear; } }
+@media print { .kpp-slide { display: none !important; } }
+</style>
+<script>
+(function () {
+    /* Slide-in «Nuovo punto prelievi»: compare dopo 5 s con la scheda visibile se la sezione non è ancora stata vista,
+       sparisce quando la sezione entra nello schermo. Una volta per sessione; chiuso: 30 giorni; cliccato: mai più.
+       Scade il 26/01/2027. Chiavi: sessionStorage kosPuntoPrelieviVisto, localStorage kosPuntoPrelieviStato. */
+    var SCADENZA = new Date('2027-01-27T00:00:00+01:00').getTime();
+    if (Date.now() >= SCADENZA || !('IntersectionObserver' in window)) return;
+    var sez = document.getElementById('punto-prelievi');
+    if (!sez) return;
+    var sede = sez.getAttribute('data-sede') || '';
+    var K_SESS = 'kosPuntoPrelieviVisto', K_STATO = 'kosPuntoPrelieviStato';
+    function mem(tipo) { try { return window[tipo]; } catch (e) { return null; } }
+    function leggi(tipo, k) { try { var s = mem(tipo); return s ? s.getItem(k) : null; } catch (e) { return null; } }
+    function scrivi(tipo, k, v) { try { var s = mem(tipo); if (s) s.setItem(k, v); } catch (e) {} }
+    function evento(nome) { try { (window.dataLayer = window.dataLayer || []).push({ event: 'punto_prelievi_' + nome, punto_prelievi_sede: sede }); } catch (e) {} }
+    function bloccato() {
+        if (leggi('sessionStorage', K_SESS)) return true;
+        var st = leggi('localStorage', K_STATO) || '';
+        if (st.indexOf('cliccato') === 0) return true;
+        if (st.indexOf('chiuso:') === 0 && Date.now() - Number(st.slice(7)) < 30 * 864e5) return true;
+        return false;
+    }
+    if (bloccato()) return;
+    var vista = false, aperto = false, el = null, sceltaCookie = 0, visibileMs = 0;
+    var ridotto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    new IntersectionObserver(function (voci) {
+        voci.forEach(function (v) { if (v.isIntersecting) { vista = true; if (aperto) chiudi(false); } });
+    }, { rootMargin: '0px 0px -10% 0px' }).observe(sez);
+    function bannerCookie() {
+        var d = document.getElementById('CybotCookiebotDialog');
+        if (!d) return false;
+        var r = d.getBoundingClientRect(), cs = getComputedStyle(d);
+        return cs.display !== 'none' && cs.visibility !== 'hidden' && r.width > 0 && r.height > 0;
+    }
+    window.addEventListener('CybotCookiebotOnDialogDisplay', function () { if (aperto) chiudi(false); });
+    window.addEventListener('CybotCookiebotOnAccept', function () { sceltaCookie = Date.now(); });
+    window.addEventListener('CybotCookiebotOnDecline', function () { sceltaCookie = Date.now(); });
+    /* distanza dal fondo: sopra gli elementi fissi in basso che occuperebbero lo stesso spazio (barra da telefono,
+       pulsante dell'accessibilità accessiBe, che sta in uno shadow DOM, widget dei cookie, «torna su») */
+    var fissi = [], ultimaRaccolta = 0;
+    function raccogli() {   // elementi fixed/sticky della pagina, anche dentro gli shadow DOM aperti (anche nascosti: compaiono dopo)
+        fissi = []; ultimaRaccolta = Date.now();
+        (function giro(radice) {
+            var tutti = radice.querySelectorAll('*');
+            for (var i = 0; i < tutti.length; i++) {
+                var e = tutti[i];
+                if (e === el || (el && el.contains(e))) continue;
+                var p = getComputedStyle(e).position;
+                if (p === 'fixed' || p === 'sticky') fissi.push(e);
+                if (e.shadowRoot) giro(e.shadowRoot);
+            }
+        })(document.body);
+    }
+    function basso() {
+        if (!el) return;
+        if (Date.now() - ultimaRaccolta > 2000) raccogli();
+        var r0 = el.getBoundingClientRect(), h = window.innerHeight, alt = 16;
+        for (var i = 0; i < fissi.length; i++) {
+            var e = fissi[i], cs = getComputedStyle(e);
+            if (cs.display === 'none' || cs.visibility === 'hidden' || Number(cs.opacity) === 0) continue;
+            var r = e.getBoundingClientRect();
+            if (r.width === 0 || r.height === 0 || r.bottom < h - 4 || r.top < h * 0.6) continue;
+            if (r.right <= r0.left || r.left >= r0.right) continue;   // non si sovrappone in orizzontale
+            alt = Math.max(alt, Math.ceil(h - r.top) + 8);
+        }
+        el.style.setProperty('--kpp-basso', alt + 'px');
+    }
+    function crea() {
+        el = document.createElement('aside');
+        el.className = 'kpp-slide';
+        el.setAttribute('aria-label', 'Nuovo punto prelievi');
+        el.hidden = true;
+        var img = document.createElement('img');
+        img.src = '/assets/img/punto-prelievi-miniatura.jpg'; img.alt = ''; img.width = 72; img.height = 72;
+        var testo = document.createElement('div');
+        var t = document.createElement('div'); t.className = 'kpp-titolo'; t.textContent = 'Nuovo punto prelievi';
+        var riga = document.createElement('div'); riga.className = 'kpp-riga'; riga.textContent = 'Dal lunedì al venerdì, 7:00-9:30, ad accesso libero';
+        var a = document.createElement('a'); a.className = 'kpp-link'; a.textContent = 'Scopri di più';
+        a.href = location.pathname + '#punto-prelievi';   // la pagina ha <base href>: un «#…» relativo porterebbe alla home
+        a.addEventListener('click', function (ev) {
+            ev.preventDefault();
+            scrivi('localStorage', K_STATO, 'cliccato:' + Date.now());
+            evento('click');
+            chiudi(false);
+            sez.scrollIntoView({ behavior: ridotto ? 'auto' : 'smooth', block: 'start' });
+            try { history.replaceState(null, '', location.pathname + location.search + '#punto-prelievi'); } catch (e) {}
+            var h2 = sez.querySelector('h2');
+            if (h2) { h2.setAttribute('tabindex', '-1'); try { h2.focus({ preventScroll: true }); } catch (e) {} }
+        });
+        testo.appendChild(t); testo.appendChild(riga); testo.appendChild(a);
+        var x = document.createElement('button'); x.type = 'button'; x.className = 'kpp-chiudi'; x.setAttribute('aria-label', 'Chiudi'); x.textContent = '×';
+        x.addEventListener('click', function () { chiudi(true); });
+        el.appendChild(img); el.appendChild(testo); el.appendChild(x);
+        document.body.appendChild(el);
+    }
+    function apri() {
+        if (aperto || vista || bloccato()) return;
+        if (!el) crea();
+        scrivi('sessionStorage', K_SESS, '1');
+        el.hidden = false;
+        basso();
+        void el.offsetWidth;   // fa partire la transizione
+        el.classList.add('is-open');
+        aperto = true;
+        evento('impression');
+    }
+    function chiudi(utente) {
+        if (!aperto) return;
+        aperto = false;
+        el.classList.remove('is-open');
+        setTimeout(function () { if (!aperto) el.hidden = true; }, 380);
+        if (utente) { scrivi('localStorage', K_STATO, 'chiuso:' + Date.now()); evento('dismiss'); }
+    }
+    document.addEventListener('keydown', function (ev) { if (aperto && (ev.key === 'Escape' || ev.key === 'Esc')) chiudi(true); });
+    var inAttesa = false;   // la barra fissa da telefono compare con lo scroll: si ricalcola la distanza dal fondo
+    function ricalcola() { if (!aperto || inAttesa) return; inAttesa = true; requestAnimationFrame(function () { inAttesa = false; basso(); }); }
+    window.addEventListener('resize', ricalcola);
+    window.addEventListener('scroll', ricalcola, { passive: true });
+    var giro = setInterval(function () {
+        if (vista || bloccato()) { clearInterval(giro); return; }
+        if (document.visibilityState === 'visible') visibileMs += 500;
+        if (visibileMs < 5000 || bannerCookie() || Date.now() - sceltaCookie < 8000) return;
+        clearInterval(giro);
+        apri();
+    }, 500);
+})();
+</script>

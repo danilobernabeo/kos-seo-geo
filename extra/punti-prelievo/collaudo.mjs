@@ -79,6 +79,10 @@ for (const sede of C.sedi) {
     verifica(t.includes(w), `testo HTML: «${w}»`);
   for (const w of sede.parole_vietate) verifica(!t.includes(w) && !s.includes(w), `nessun «${w}» (altra sede)`);
   verifica(!s.includes('[['), 'nessun tag MODX non elaborato');
+  verifica(s.includes("a.href = location.pathname + '#punto-prelievi'") && s.includes(`data-sede="${sede.SEDE}"`), 'slide-in: link con location.pathname, data-sede');
+  verifica(/new Date\('2027-01-27T00:00:00\+01:00'\)/.test(s), 'slide-in: scadenza 26/01/2027');
+  const rm = await scarica(`${base}/assets/img/punto-prelievi-miniatura.jpg`);
+  verifica(rm.stato === 200 && rm.byte < 30 * 1024, 'miniatura dello slide-in 200', `${rm.stato} ${Math.round(rm.byte / 1024)} KB`);
   const link = [...s.matchAll(/\b(?:href|src|srcset)="([^"]*)"/g)].flatMap(m => m[1].split(/\s*,\s*/).map(u => u.trim().split(/\s+/)[0]));
   const cattivi = link.filter(u => !u || u.startsWith('//') || !/^(\/|https:\/\/|tel:\+39\d{6,11}$)/.test(u));
   verifica(s.includes(`href="tel:${sede.TEL_LINK}"`), 'link tel: per informazioni', sede.TEL_LINK);
@@ -111,5 +115,8 @@ for (const sede of C.sedi) {
   }
 }
 console.log(`\n== ${conta.OK} OK, ${conta.KO} KO, ${conta.AVV} AVV`);
+console.log('A mano, da computer e da telefono: dopo 5 s compare lo slide-in in basso; «Scopri di più» scorre alla sezione\n'
+  + '(URL che finisce con #punto-prelievi, non la home); non copre accessiBe, Cookiebot, «torna su», barra da telefono.\n'
+  + 'Per rivederlo: sessionStorage.clear(); localStorage.removeItem(\'kosPuntoPrelieviStato\') nella console.');
 console.log('URL da controllare:\n' + C.sedi.map(s => `  ${base}/${s.uri}#punto-prelievi`).join('\n'));
 process.exit(conta.KO ? 2 : 0);

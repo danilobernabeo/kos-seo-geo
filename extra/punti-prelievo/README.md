@@ -33,10 +33,41 @@ i byte originali restano un prefisso del file). Copertine: pannello destro della
 | `assets/doc/` | i due pieghevoli |
 | `assets/img/` | le due copertine (varianti WebP 480 e 600 in `assets/cache-img/img/` con `ottimizza-immagini.php`) |
 
-Non tocca template, chunk, snippet, plugin, CSS, head, libreria del dato strutturato, né le TV `str.*` (gli orari dei
+Non tocca template, chunk, snippet, plugin, CSS o JS del sito, head, libreria del dato strutturato, né le TV `str.*` (gli orari dei
 prelievi e degli sportelli referti non sono quelli della struttura). Lo stile del box pieghevole non è nel CSS del sito:
 sta in un `<style>` nel contenuto della pagina HomeCare Academy; le stesse regole sono copiate nella sezione
 (`elementi/stile.html`), limitate a `#punto-prelievi`. Da spostare nel CSS del sito quando il box si usa altrove.
+
+## Slide-in «Nuovo punto prelievi» (27/11)
+
+Richiesta di KOS: un pop-up all'apertura delle schede. Al suo posto (meno invasivo, nessun interstitial da telefono) uno
+slide-in non modale, sul modello di Newsletter27 di 27factory.ch, approvato dalla chat principale (seconda eccezione,
+`docs/registro-decisioni.md`, voce del 27/11). Codice: `elementi/slidein.html` (`<style>` e `<script>`), inserito nella
+sezione dentro i segni, quindi nel contenuto delle due risorse; `data-sede` sul contenitore `#punto-prelievi`.
+
+- **Contenuto**: `<aside aria-label="Nuovo punto prelievi">` con miniatura (`/assets/img/punto-prelievi-miniatura.jpg`,
+  144 × 144, 72 × 72 a schermo, assente da telefono), «Nuovo punto prelievi», «Dal lunedì al venerdì, 7:00-9:30, ad accesso
+  libero», link «Scopri di più» e X (anche Esc). Non sposta il focus all'apertura; al clic il focus va all'H2 della sezione.
+- **Link**: `location.pathname + '#punto-prelievi'` con `scrollIntoView` e `preventDefault`. Le pagine hanno
+  `<base href="https://kosgroup.com/">`: un `href="#punto-prelievi"` creato via JS porterebbe alla home (il plugin
+  LinkFrammenti corregge solo l'HTML servito). `scroll-margin-top: 120px` sulla sezione.
+- **Quando**: dopo 5 s con la scheda visibile, se la sezione non è ancora entrata nello schermo e il banner Cookiebot non è
+  aperto (8 s di pausa dopo la scelta); sparisce quando la sezione entra nello schermo (`IntersectionObserver`).
+- **Quante volte**: una per sessione; chiuso: 30 giorni; cliccato: mai più. **Scade il 26/01/2027** (data nel codice).
+- **Posizione**: in basso a destra (da telefono a tutta larghezza), sopra gli elementi fissi in basso che occuperebbero lo
+  stesso spazio, compresi quelli negli shadow DOM: pulsante di accessiBe (acsbapp.com, in basso a sinistra), widget
+  Cookiebot, «torna su», barra da telefono. Verificato il 27/11 sulla pagina di produzione con lo script iniettato:
+  da computer nessuna sovrapposizione (accessiBe e Cookiebot a sinistra), link corretto con `<base href>`, sezione a
+  120 px dal bordo, focus sull'H2.
+- **Misure**: `dataLayer` con `punto_prelievi_impression`, `punto_prelievi_click`, `punto_prelievi_dismiss`
+  (`punto_prelievi_sede`: bollate o cinisello). I tag vanno nel contenitore GTM di **kosgroup.com** (gtm.kosgroup.com),
+  non in GTM-THMLNFX, che è di anniazzurri.it; senza tag gli eventi non producono nulla.
+- **Cookiebot**: alla prossima scansione dichiarare `sessionStorage` `kosPuntoPrelieviVisto` (sessione) e `localStorage`
+  `kosPuntoPrelieviStato` (`chiuso:<ms>` o `cliccato:<ms>`, funzionale, nessun dato personale).
+- **Promemoria**: dopo il 26/01/2027 togliere il codice (`elementi/slidein.html` e `{{SLIDEIN}}` in
+  `elementi/sezione.html`, poi rilancio dello script con `--scrivi`); fino ad allora non fa nulla dopo la scadenza.
+- **Editor**: il contenuto delle due schede ora contiene `<script>`. Se qualcuno apre e salva la risorsa con TinyMCE, il
+  codice può essere tolto o alterato: dopo modifiche manuali alle schede, rilanciare lo script (ripristina la sezione).
 
 ## Contenuto
 
@@ -67,6 +98,10 @@ Prima lo stage, poi la produzione; sempre prima la prova e poi `--scrivi`. Coman
 | 26/11/2026 | stage KOS (c0044) | sezione nelle due schede, pieghevoli, copertine e varianti WebP; collaudo 49 OK. JSON-LD: stesso contenuto di prima, `dateModified` invariato; cambia solo l'ordine delle Offer del catalogo TuoTempo (rigenerazione della cache, non dipende dalla sezione: da segnalare alla chat principale) | `~/backup-kos-seo-geo/<data>-punti-prelievo/ripristino.json` sullo stage |
 
 ## Ripristino
+
+Attenzione: il ripristino rimette il **contenuto intero** delle schede com'era prima di quel `--scrivi`; se nel frattempo
+qualcuno ha modificato altre parti delle schede (es. «Aree di intervento», 26/11), per togliere solo la sezione meglio
+rilanciare lo script senza i frammenti, oppure togliere a mano il blocco tra i segni.
 
     php extra/punti-prelievo/installa.php /www --ripristina ~/backup-kos-seo-geo/<data>-punti-prelievo/ripristino.json --scrivi
 
