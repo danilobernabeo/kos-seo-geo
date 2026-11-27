@@ -122,10 +122,10 @@ sostituiti). Le varianti WebP si ripristinano con il backup stampato da `ottimiz
 - **Link ai referti online**: quando KOS lo fornisce, si aggiunge alla riga «online» (rilancio dello script).
 - **Ordine delle Offer nel catalogo TuoTempo del JSON-LD**: cambia tra una generazione della cache e l'altra (stage
   26/11, stesso contenuto): un ordinamento stabile nella libreria rende confrontabili le versioni.
-- **Orari «Ritiro referti» delle schede**: il blocco «Orari Poliambulatorio» delle due schede indica
-  «Diagnostica - Poliambulatorio - Ritiro referti 8:00-20:00»; KOS (26/11) conferma come corretti quelli della news
-  approvata: 8:30-19:30 Bollate, 8:00-18:00 Cinisello. Quel blocco non si tocca qui (orari della struttura, TV `str.*`
-  e dato strutturato): da correggere separatamente.
+- **Orari «Ritiro referti» delle schede**: chiuso il 27/11, nessuna modifica. Il blocco «Orari Poliambulatorio»
+  («Diagnostica - Poliambulatorio - Ritiro referti 8:00-20:00») riguarda i referti degli esami del poliambulatorio ed è
+  corretto; gli orari del ritiro referti nella sezione (Bollate 8:00-18:00, Cinisello 8:30-19:30) riguardano solo i
+  prelievi, gestiti con una società esterna (MeticaLab). Fonte: Danilo, 27/11.
 - **News «Nuovi punti prelievi KOS a Cinisello Balsamo e Bollate»**: ha gli orari del ritiro referti invertiti
   (KOS, 27/11: Bollate 8:00-18:00, Cinisello 8:30-19:30, come i pieghevoli v6); va corretta prima della pubblicazione.
 - **Pop-up «Nuovo punto prelievi»** all'apertura della pagina: richiesto da KOS il 27/11, sospeso (da valutare dopo).
