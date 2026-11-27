@@ -13,7 +13,7 @@ registrata in `docs/registro-decisioni.md` (voce del 26/11).
 |---|---|---|
 | Prelievi | lunedì-venerdì 7:00-9:30 | lunedì-venerdì 7:00-9:30 |
 | Esami | prelievi ed esami ematochimici, in collaborazione con MeticaLab; percorsi di prevenzione | idem |
-| Ritiro referti in sede | lunedì-venerdì 8:30-19:30 | lunedì-venerdì 8:00-18:00 |
+| Ritiro referti in sede | lunedì-venerdì 8:00-18:00 | lunedì-venerdì 8:30-19:30 (conferma di KOS del 27/11, come i pieghevoli v6; la news del 26/11 li aveva invertiti) |
 | Accesso | libero, senza prenotazione; solo in regime privato (KOS, 27/11) | idem |
 | Informazioni | Tel. 02 38306561 | Tel. 02 9737941 (il CUP non esiste più: niente «CUP» nella sezione, KOS 27/11) |
 | Referti online | sul sito di MeticaLab, `https://www.meticalab.it/ritiro-referti` (servizio di MeticaLab, link chiesto da KOS il 27/11) | idem |
@@ -125,6 +125,6 @@ sostituiti). Le varianti WebP si ripristinano con il backup stampato da `ottimiz
   «Diagnostica - Poliambulatorio - Ritiro referti 8:00-20:00»; KOS (26/11) conferma come corretti quelli della news
   approvata: 8:30-19:30 Bollate, 8:00-18:00 Cinisello. Quel blocco non si tocca qui (orari della struttura, TV `str.*`
   e dato strutturato): da correggere separatamente.
-- **Pieghevoli v6, ritiro referti (solo in copertina)**: indicano Bollate 8:00-18:00 e Cinisello 8:30-19:30, cioè gli orari scambiati
-  rispetto alla news approvata e alla sezione (Bollate 8:30-19:30, Cinisello 8:00-18:00): da chiarire con KOS (27/11).
+- **News «Nuovi punti prelievi KOS a Cinisello Balsamo e Bollate»**: ha gli orari del ritiro referti invertiti
+  (KOS, 27/11: Bollate 8:00-18:00, Cinisello 8:30-19:30, come i pieghevoli v6); va corretta prima della pubblicazione.
 - **Pop-up «Nuovo punto prelievi»** all'apertura della pagina: richiesto da KOS il 27/11, sospeso (da valutare dopo).

@@ -11,7 +11,7 @@
         {
             "uri": "it/centri/poliambulatorio-san-martino",
             "FRASE_INIZIALE": "Al Poliambulatorio San Martino di Bollate puoi fare prelievi ed esami ematochimici <strong>dal lunedì al venerdì, dalle 7:00 alle 9:30</strong>, ad <strong>accesso libero, senza prenotazione</strong>, in collaborazione con MeticaLab.",
-            "REFERTI_SEDE": "8:30 - 19:30",
+            "REFERTI_SEDE": "8:00 - 18:00",
             "PDF": "punto-prelievi-poliambulatorio-san-martino-bollate.pdf",
             "IMG": "pieghevole-punto-prelievi-poliambulatorio-san-martino",
             "ALT": "Copertina del pieghevole del punto prelievi del Poliambulatorio San Martino di Bollate",
@@ -21,7 +21,7 @@
                 "45409465",
                 "9737941",
                 "Centro Medico Riabilitativo",
-                "8:00 - 18:00",
+                "8:30 - 19:30",
                 "CUP",
                 "prenotazioni"
             ],
@@ -32,7 +32,7 @@
         {
             "uri": "it/centri/centro-medico-riabilitativo",
             "FRASE_INIZIALE": "Al Centro Medico Riabilitativo di Cinisello Balsamo puoi fare prelievi ed esami ematochimici <strong>dal lunedì al venerdì, dalle 7:00 alle 9:30</strong>, ad <strong>accesso libero, senza prenotazione</strong>, in collaborazione con MeticaLab.",
-            "REFERTI_SEDE": "8:00 - 18:00",
+            "REFERTI_SEDE": "8:30 - 19:30",
             "PDF": "punto-prelievi-centro-medico-riabilitativo-cinisello.pdf",
             "IMG": "pieghevole-punto-prelievi-centro-medico-riabilitativo",
             "ALT": "Copertina del pieghevole del punto prelievi del Centro Medico Riabilitativo di Cinisello Balsamo",
@@ -41,7 +41,7 @@
                 "Uboldi",
                 "38306561",
                 "San Martino",
-                "8:30 - 19:30",
+                "8:00 - 18:00",
                 "45409465",
                 "CUP",
                 "prenotazioni"
