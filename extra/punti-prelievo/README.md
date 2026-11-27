@@ -99,7 +99,7 @@ Prima lo stage, poi la produzione; sempre prima la prova e poi `--scrivi`. Coman
 | Data | Ambiente | Esito | Ripristino |
 |---|---|---|---|
 | 26/11/2026 | stage KOS (c0044) | sezione nelle due schede, pieghevoli, copertine e varianti WebP; collaudo 49 OK. JSON-LD: stesso contenuto di prima, `dateModified` invariato; cambia solo l'ordine delle Offer del catalogo TuoTempo (rigenerazione della cache, non dipende dalla sezione: da segnalare alla chat principale) | `~/backup-kos-seo-geo/<data>-punti-prelievo/ripristino.json` sullo stage |
-| 27/11/2026 | produzione KOS (c0095) | sezione aggiornata (niente CUP, accesso libero, regime privato, referti online MeticaLab, referti in sede Bollate 8:00-18:00 e Cinisello 8:30-19:30, minuscole), pieghevoli v6, copertine senza orari, slide-in; collaudo da completare | `php extra/punti-prelievo/installa.php /www --ripristina /paas/c0095/backup-kos-seo-geo/20261127-032343-punti-prelievo/ripristino.json --scrivi` |
+| 27/11/2026 | produzione KOS (c0095) | sezione aggiornata (niente CUP, accesso libero, regime privato, referti online MeticaLab, referti in sede Bollate 8:00-18:00 e Cinisello 8:30-19:30, minuscole), pieghevoli v6, copertine senza orari, slide-in; collaudo 0 KO (JSON-LD con lo stesso contenuto, solo l'ordine delle Offer diverso), varianti WebP 200, miniatura 200; clic su «Scopri di più» provato con Chrome su entrambe le schede: URL `…#punto-prelievi`, sezione a 120 px, slide-in chiuso; da computer nessuna sovrapposizione con accessiBe e Cookiebot | `php extra/punti-prelievo/installa.php /www --ripristina /paas/c0095/backup-kos-seo-geo/20261127-032343-punti-prelievo/ripristino.json --scrivi` |
 
 ## Ripristino
 
