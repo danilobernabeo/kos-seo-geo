@@ -1,7 +1,7 @@
 <?php
 /**
  * Punto Prelievi nelle schede di kosgroup.com (lavoro extra `punti-prelievo`, fuori dal progetto SEO/GEO).
- * Sezione «Punto Prelievi» (H2, ancora #punto-prelievi) nelle schede Poliambulatorio San Martino (Bollate) e Centro
+ * Sezione «Punto prelievi» (H2, ancora #punto-prelievi) nelle schede Poliambulatorio San Martino (Bollate) e Centro
  * Medico Riabilitativo (Cinisello Balsamo), con orari dei prelievi e dei referti e box del pieghevole.
  *
  * Uso (in SSH sul cloud, dalla radice dell'archivio del repository):
@@ -60,6 +60,7 @@ function controlla(string $s, array $sede): array
     if (str_contains($s, '[[')) $p[] = 'tag MODX nella sezione';
     if (preg_match('#<h1\b#i', $s)) $p[] = 'H1 nella sezione';
     if (substr_count($s, '<h2') !== 1) $p[] = 'la sezione deve avere un solo H2';
+    if (preg_match('#\bCUP\b|Punto Prelievi#', $s, $m)) $p[] = "testo da togliere: «{$m[0]}»";
     foreach (['href', 'src', 'srcset'] as $a) {
         preg_match_all('#\b' . $a . '="([^"]*)"#', $s, $mm);
         foreach ($mm[1] as $v) foreach (preg_split('#\s*,\s*#', $v) as $u) {

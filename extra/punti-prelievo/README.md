@@ -14,12 +14,13 @@ registrata in `docs/registro-decisioni.md` (voce del 26/11).
 | Prelievi | lunedì-venerdì 7:00-9:30 | lunedì-venerdì 7:00-9:30 |
 | Esami | prelievi ed esami ematochimici, in collaborazione con MeticaLab; percorsi di prevenzione | idem |
 | Ritiro referti in sede | lunedì-venerdì 8:30-19:30 | lunedì-venerdì 8:00-18:00 |
-| Informazioni e prenotazioni | CUP 02 38306561 | 02 9737941 (il CUP 02 45409465 non esiste più, conferma di KOS del 26/11; il pieghevole lo riporta ancora) |
-| Referti online | disponibili; link da KOS, non ancora arrivato (niente segnaposto né link vuoti) | idem |
+| Accesso | libero, senza prenotazione; solo in regime privato (KOS, 27/11) | idem |
+| Informazioni | Tel. 02 38306561 | Tel. 02 9737941 (il CUP non esiste più: niente «CUP» nella sezione, KOS 27/11) |
+| Referti online | sul sito di MeticaLab, `https://www.meticalab.it/ritiro-referti` (servizio di MeticaLab, link chiesto da KOS il 27/11) | idem |
 | Pieghevole | `/assets/doc/punto-prelievi-poliambulatorio-san-martino-bollate.pdf` | `/assets/doc/punto-prelievi-centro-medico-riabilitativo-cinisello.pdf` |
 
-Pieghevoli: i due «6 ante» forniti da Danilo (file originali `KOS PRELIEVI SMARTINO 6ino ESE.pdf`,
-`KOS PRELIEVI CMR CINISELLO 6ino ESE.pdf`), con testo selezionabile (non sono solo immagine). Metadati (titolo, oggetto,
+Pieghevoli: i due «6 ante» forniti da Danilo, versione v6 del 26/11 (`KOS PRELIEVI SMARTINO 6ino ESE v6.pdf`,
+`KOS PRELIEVI CMR CINISELLO 6ino ESE v6.pdf`, cartella locale `20261126/`, non nel repository), con testo selezionabile (non sono solo immagine). Metadati (titolo, oggetto,
 autore, lingua it-IT) aggiunti con `scripts/pdf/pdf-metadati.php` e `pdf-metadati.json` (aggiornamento incrementale:
 i byte originali restano un prefisso del file). Copertine: pannello destro della prima pagina, 600 × 857, JPG 82, circa
 78 KB (`files/assets/img/pieghevole-punto-prelievi-*.jpg`). Le locandine A3 dell'Open Day non sono usate.
@@ -86,4 +87,6 @@ sostituiti). Le varianti WebP si ripristinano con il backup stampato da `ottimiz
   «Diagnostica - Poliambulatorio - Ritiro referti 8:00-20:00»; KOS (26/11) conferma come corretti quelli della news
   approvata: 8:30-19:30 Bollate, 8:00-18:00 Cinisello. Quel blocco non si tocca qui (orari della struttura, TV `str.*`
   e dato strutturato): da correggere separatamente.
-- **Pieghevole di Cinisello**: riporta il CUP 02 45409465, che non esiste più; KOS deve aggiornare il PDF.
+- **Pieghevoli v6, ritiro referti**: indicano Bollate 8:00-18:00 e Cinisello 8:30-19:30, cioè gli orari scambiati
+  rispetto alla news approvata e alla sezione (Bollate 8:30-19:30, Cinisello 8:00-18:00): da chiarire con KOS (27/11).
+- **Pop-up «Nuovo punto prelievi»** all'apertura della pagina: richiesto da KOS il 27/11, sospeso (da valutare dopo).

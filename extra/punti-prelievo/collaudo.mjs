@@ -9,7 +9,7 @@
  *        salva il JSON-LD delle due schede in extra/punti-prelievo/collaudo/jsonld-<host>-<scheda>.json
  *   node extra/punti-prelievo/collaudo.mjs --base=https://stage.kosgroup.com             DOPO: controlli e confronto
  *
- * Controlli: 200; un solo H1; sezione #punto-prelievi con un solo H2 «Punto Prelievi»; orari e MeticaLab in testo HTML;
+ * Controlli: 200; un solo H1; sezione #punto-prelievi con un solo H2 «Punto prelievi»; orari e MeticaLab in testo HTML;
  * nessun link relativo o «//» e nessun tag MODX nella sezione; immagini con alt, width, height, loading="lazy";
  * PDF 200 application/pdf; copertina 200 e sotto 200 KB; varianti WebP 200 (AVV se mancano: si generano dopo);
  * nessuna parola dell'altra sede nella sezione; JSON-LD identico a quello salvato (dateModified a parte: cambia
@@ -72,16 +72,17 @@ for (const sede of C.sedi) {
   verifica(i >= 0 && f > i, 'sezione presente (segni di inizio e fine)');
   if (i < 0 || f < i) continue;
   const s = p.html.slice(i, f);
-  verifica((s.match(/<h2\b/gi) || []).length === 1 && /<h2[^>]*>\s*Punto Prelievi\s*<\/h2>/.test(s), 'H2 «Punto Prelievi»');
+  verifica((s.match(/<h2\b/gi) || []).length === 1 && /<h2[^>]*>\s*Punto prelievi\s*<\/h2>/.test(s), 'H2 «Punto prelievi»');
   verifica(s.includes('id="punto-prelievi"') && (p.html.match(/id="punto-prelievi"/g) || []).length === 1, 'ancora #punto-prelievi unica');
   const t = testo(s);
-  for (const w of ['dal lunedì al venerdì, dalle 7:00 alle 9:30', '7:00 - 9:30', 'MeticaLab', 'percorsi di prevenzione', sede.REFERTI_SEDE, 'online', `${sede.TEL_TESTO} ${sede.TEL}`])
+  for (const w of ['dal lunedì al venerdì, dalle 7:00 alle 9:30', '7:00 - 9:30', 'MeticaLab', 'percorsi di prevenzione', sede.REFERTI_SEDE, 'online', `Tel. ${sede.TEL}`, 'accesso libero, senza prenotazione', 'regime privato', 'sul sito di MeticaLab'])
     verifica(t.includes(w), `testo HTML: «${w}»`);
   for (const w of sede.parole_vietate) verifica(!t.includes(w) && !s.includes(w), `nessun «${w}» (altra sede)`);
   verifica(!s.includes('[['), 'nessun tag MODX non elaborato');
   const link = [...s.matchAll(/\b(?:href|src|srcset)="([^"]*)"/g)].flatMap(m => m[1].split(/\s*,\s*/).map(u => u.trim().split(/\s+/)[0]));
   const cattivi = link.filter(u => !u || u.startsWith('//') || !/^(\/|https:\/\/|tel:\+39\d{6,11}$)/.test(u));
-  verifica(s.includes(`href="tel:${sede.TEL_LINK}"`), 'link tel: per informazioni e prenotazioni', sede.TEL_LINK);
+  verifica(s.includes(`href="tel:${sede.TEL_LINK}"`), 'link tel: per informazioni', sede.TEL_LINK);
+  verifica(s.includes('href="https://www.meticalab.it/ritiro-referti" target="_blank" rel="noopener"'), 'link ai referti online di MeticaLab');
   verifica(!cattivi.length, 'link e immagini con percorso assoluto', cattivi.join(' '));
   for (const img of s.match(/<img\b[^>]*>/gi) || [])
     verifica(/\balt="[^"]+"/.test(img) && /\bwidth="\d+"/.test(img) && /\bheight="\d+"/.test(img) && /loading="lazy"/.test(img), 'immagine con alt, dimensioni e lazy', img.slice(0, 120));
